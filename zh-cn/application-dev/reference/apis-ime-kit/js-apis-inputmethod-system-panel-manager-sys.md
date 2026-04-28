@@ -1,17 +1,19 @@
 # @ohos.inputMethodSystemPanelManager (输入法系统面板管理器)(系统接口)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块提供输入法系统面板管理功能，用于输入法系统面板和系统预置输入法应用之间的通信和状态同步。
+
 **起始版本：** 26.0.0
 
 > **说明：**
 >
-> - 本模块为系统接口。
+> - 本模块接口为系统接口。
+>
 > - 本模块仅支持Stage模型。
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
@@ -194,7 +196,6 @@ onSystemPanelStatusChange(callback: Callback\<SystemPanelStatus\>): void
 
 **示例：**
 
-
 ```ts
 try {
   inputMethodSystemPanelManager.onSystemPanelStatusChange((status) => {
@@ -249,7 +250,7 @@ try {
 
 sendPrivateCommand(commandData: Record\<string, CommandDataType\>): Promise\<void\>
 
-发送私有命令到系统预置输入法应用。
+发送私有命令给系统预置输入法应用。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

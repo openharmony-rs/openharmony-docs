@@ -1,4 +1,4 @@
-# 弧形按钮 (ArcButton)
+# 弧形按钮 (ArcButton)(圆形屏幕推荐使用)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
@@ -121,7 +121,7 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 
 ## 添加事件
 
-- 绑定onClick事件来响应点击操作后的自定义行为。
+- 绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)事件来响应点击操作后的自定义行为。
   <!-- @[button_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
   
   ``` TypeScript
@@ -135,7 +135,7 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
     })
   })
   ```
-- 绑定onTouch事件来响应触摸操作后的自定义行为。
+- 绑定[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件来响应触摸操作后的自定义行为。
   <!-- @[button_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
   
   ``` TypeScript

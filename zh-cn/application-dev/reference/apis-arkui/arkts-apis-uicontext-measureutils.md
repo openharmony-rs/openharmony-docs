@@ -24,7 +24,9 @@
 
 ## measureText<sup>12+</sup>
 
-measureText(options: MeasureOptions): number
+ArkTS-Dyn: measureText(options: MeasureOptions): number
+
+ArkTS-Sta: measureText(options: MeasureOptions): double
 
 计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
 
@@ -36,6 +38,10 @@ measureText(options: MeasureOptions): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |
@@ -46,7 +52,7 @@ measureText(options: MeasureOptions): number
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| number        | 文本宽度。<br/>**说明:**<br/>浮点数会向上取整。<br/>单位：px |
+| ArkTS-Dyn: number <br>ArkTS-Sta: double        | 文本宽度。<br/>**说明:**<br/>浮点数会向上取整。<br/>单位：px |
 
 
 **示例：** 

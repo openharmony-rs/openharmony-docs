@@ -1,7 +1,7 @@
 # @ohos.inputMethodList (输入法切换列表控件)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -35,6 +36,10 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
@@ -42,19 +47,41 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 | controller | [CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | - | 输入法切换列表弹窗控制器。 |
 | patternOptions | [PatternOptions](#patternoptions) | 否 | - | 输入法模式选项（仅系统预置输入法支持）。 |
 
+### build
+
+build(): void
+
+输入法切换列表弹窗控件的build函数，开发者无需实现。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**装饰器类型：**@Builder
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本：** 23
+
 ## PatternOptions
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| defaultSelected | number | 否 | 是 | 非必填。默认选择的模式。 |
+| defaultSelected | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 非必填。默认选择的模式。 |
 | patterns   | Array<[Pattern](#pattern)> | 否 | 否 | 必填。模式选项的资源。 |
-| action | (index: number) => void | 否 | 否 | 必填。模式选项改变时的回调。 |
+| action | ArkTS-Dyn: (index: number) => void<br/>ArkTS-Sta: (index: int) => void | 否 | 否 | 必填。模式选项改变时的回调。 |
 
 ## Pattern
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -66,6 +93,8 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 不支持[通用事件](../apis-arkui/arkui-ts/ts-component-general-events.md)
 
 ##  示例
+
+ArkTS-Dyn示例:
 
 ```ts
 import { Pattern, PatternOptions } from '@kit.IMEKit';
@@ -91,6 +120,58 @@ struct SettingsItem {
         selectedIcon: $r('app.media.hand_icon_selected2'),
       }],
     action:(index: number)=>{
+      console.info(`pattern is changed, current is ${index}`);
+      this.defaultPattern = index;
+    }
+  };
+  private listController: CustomDialogController = new CustomDialogController({
+    builder: InputMethodListDialog({ patternOptions: this.oneHandAction }),
+    customStyle: true,
+    maskColor: '#00000000'
+  });
+
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column,
+        alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Text("输入法切换列表").fontSize(20)
+      }
+    }
+    .width("13%")
+    .id('bindInputMethod')
+    .onClick((event?: ClickEvent) => {
+      this.listController.open();
+    })
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Pattern, PatternOptions } from '@kit.IMEKit';
+
+@Entry
+// 设置组件
+@Component
+struct SettingsItem {
+  @State defaultPattern: int = 1;
+  private oneHandAction: PatternOptions = {
+    defaultSelected: this.defaultPattern,
+    patterns: [ // patterns中的图标需要在工程的resource中添加对应图标资源后使用
+      {
+        icon: $r('app.media.hand_icon'), // 此处为输入法模式选项的图标资源，例如单手模式图标
+        selectedIcon: $r('app.media.hand_icon_selected') // 此处为输入法模式选项的图标资源选中状态，例如单手模式选中状态的图标
+      },
+      {
+        icon: $r('app.media.hand_icon1'),
+        selectedIcon: $r('app.media.hand_icon_selected1')
+      },
+      {
+        icon: $r('app.media.hand_icon2'),
+        selectedIcon: $r('app.media.hand_icon_selected2'),
+      }],
+    action:(index: int)=>{
       console.info(`pattern is changed, current is ${index}`);
       this.defaultPattern = index;
     }

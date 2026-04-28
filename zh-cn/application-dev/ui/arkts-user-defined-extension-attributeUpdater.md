@@ -1,8 +1,8 @@
 # 属性更新器 (AttributeUpdater)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,6 +18,8 @@
 
 <!-- @[att_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/Common.ets) -->
 
+ArkTS-Dyn:
+
 ``` TypeScript
 export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T> {
 
@@ -31,15 +33,30 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 }
 ```
 
-`AttributeUpdater`实现了`AttributeModifier`接口，并额外提供了`initializeModifier`，可以对组件的属性进行初始化。通过`attribute`属性方法可以获取属性对象，直接更新对应组件的属性。另外也可以直接通过`updateConstructorParams`更新组件的构造参数。
+ArkTS-Sta：
+
+``` TypeScript
+export declare class AttributeUpdater<T> implements AttributeModifier<T> {
+  
+  get attribute(): T | undefined;
+  
+  initializeModifier(instance: T): void;
+  
+  get updateConstructorParams(): Initializer<T>;
+  
+  onComponentChanged(component: T): void;
+}
+```
+
+`AttributeUpdater`实现了`AttributeModifier`接口，并额外提供了[initializeModifier](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#initializemodifier)，可以对组件的属性进行初始化。通过[attribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#attribute)属性方法可以获取属性对象，直接更新对应组件的属性。另外也可以直接通过[updateConstructorParams](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)更新组件的构造参数。
 
 ## 使用说明
 
 - 开发者可以继承`AttributeUpdater<T>`类，并通过组件的通用方法`attributeModifier`设置，首次绑定时会触发`initializeModifier`方法，进行属性的初始化，后续其它的生命周期和`AttributeModifier`保持一致。
 - 组件初始化完成之后，开发者可以通过`AttributeUpdater`实例的`attribute`属性方法，获取到属性对象，若获取不到则为undefined。
 - 通过`attribute`属性对象直接修改属性，会将最新设置的属性记录在当前对象中，并立即触发组件属性的更新。
-- 如果将`AttributeUpdater`实例标记为状态变量进行修改，或者通过其它状态变量更新对应组件的属性，会触发`applyNormalAttribute`的流程，如果开发者没有复写该逻辑，默认会将属性对象记录的所有属性，进行一次批量更新。
-- 如果开发者复写`applyNormalAttribute`的逻辑，并且不调用super的该方法，将会失去获取`attribute`属性对象的能力，不会调用`initializeModifier`方法。
+- 如果将`AttributeUpdater`实例标记为状态变量进行修改，或者通过其它状态变量更新对应组件的属性，会触发[applyNormalAttribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#applynormalattribute)的流程，如果开发者没有复写该逻辑，默认会将属性对象记录的所有属性，进行一次批量更新。
+- 如果开发者复写[applyNormalAttribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#applynormalattribute)的逻辑，并且不调用super的该方法，将会失去获取`attribute`属性对象的能力，不会调用`initializeModifier`方法。
 - 一个`AttributeUpdater`对象只能同时关联一个组件，否则只会有一个组件的属性设置生效。
 
 ## 通过modifier直接修改属性
@@ -90,6 +107,8 @@ struct updaterDemo {
 
 <!-- @[att_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets) -->
 
+ArkTS-Dyn示例：
+
 ``` TypeScript
 import { AttributeUpdater } from '@kit.ArkUI';
 
@@ -127,4 +146,49 @@ struct updaterDemo {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// index.ets
+
+import { Entry, Text, Column, Row, Component, Button, ClickEvent, TextAttribute,Color, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { AttributeUpdater } from '@ohos.arkui.modifier';
+
+class MyTextModifier extends AttributeUpdater<TextAttribute> {
+  initializeModifier(instance: TextAttribute): void {
+  }
+}
+
+@Entry
+@Component
+struct MyStateSample {
+
+  modifier: MyTextModifier = new MyTextModifier();
+  build() {
+    Row() {
+      Column() {
+        Text("Text")
+          .attributeModifier(this.modifier)
+          .fontColor(Color.White)
+          .fontSize(14)
+          .border({ width: 1 })
+          .textAlign(TextAlign.Center)
+          .lineHeight(20)
+          .width(200)
+          .height(50)
+          .backgroundColor('#2787D9')
+          .onClick((e: ClickEvent) => {
+            // 调用updateConstructorParams方法，直接更新组件的构造参数
+            this.modifier.updateConstructorParams('Update');
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![AttributeUpdater](figures/AttributeUpdater2.gif)

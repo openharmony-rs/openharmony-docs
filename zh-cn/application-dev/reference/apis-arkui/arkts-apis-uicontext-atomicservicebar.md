@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Interface首批接口从API version 11开始支持。
@@ -26,11 +28,15 @@ setVisible(visible: boolean): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar默认隐藏，变为悬浮按钮，通过该接口无法改变menuBar的可见性。
+> 从API version 12开始，原子化服务menuBar默认隐藏并以悬浮按钮替代。**在原子化服务中调用setVisible()时，visible参数将被忽略，无法实现menuBar的显示或隐藏。**
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -66,23 +72,29 @@ export default class EntryAbility extends UIAbility {
 
 ## setBackgroundColor<sup>11+</sup>
 
-setBackgroundColor(color:Nullable<Color | number | string>): void
+ArkTS-Dyn: setBackgroundColor(color:Nullable<Color | number | string>): void
+
+ArkTS-Sta: setBackgroundColor(color:Nullable<Color | int | string>): void
 
 通过该方法设置原子化服务menuBar的背景颜色。
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的背景默认隐藏，通过该接口无法改变menuBar的背景颜色。
+> 从API version 12开始，原子化服务menuBar背景默认隐藏。**在原子化服务中调用setBackgroundColor()时，color参数将被忽略，无法设置menuBar的背景颜色。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------ |
-| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | 是 | 通过该方法设置原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。|
+| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 通过该方法设置原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。|
 
 **示例：**
 
@@ -117,11 +129,15 @@ setTitleContent(content:string): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的标题默认隐藏，通过该接口无法改变menuBar的标题内容。
+> 从API version 12开始，原子化服务menuBar标题默认隐藏。**在原子化服务中调用setTitleContent()时，content参数将被忽略，无法设置menuBar的标题内容。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -162,11 +178,15 @@ setTitleFontStyle(font:FontStyle):void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的标题默认隐藏，通过该接口无法改变menuBar的字体样式。
+> 从API version 12开始，原子化服务menuBar标题默认隐藏。**在原子化服务中调用setTitleFontStyle()时，font参数将被忽略，无法设置menuBar标题的字体样式，例如斜体显示。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -201,23 +221,29 @@ export default class EntryAbility extends UIAbility {
 
 ## setIconColor<sup>11+</sup>
 
-setIconColor(color:Nullable<Color | number | string>): void
+ArkTS-Dyn: setIconColor(color:Nullable<Color | number | string>): void
+
+ArkTS-Sta: setIconColor(color:Nullable<Color | int | string>): void
 
 通过该方法设置原子化服务图标的颜色。
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar默认隐藏，悬浮按钮图标不予用户设置，通过该接口无法改变menuBar的图标颜色。
+> 从API version 12开始，原子化服务menuBar默认隐藏并以悬浮按钮替代。**在原子化服务中调用setIconColor()时，color参数将被忽略，无法设置menuBar图标颜色。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | 是 | 原子化服务图标的颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 原子化服务图标的颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
 
 **示例：**
@@ -258,6 +284,10 @@ getBarRect(): Frame
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

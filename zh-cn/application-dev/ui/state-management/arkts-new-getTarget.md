@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -18,7 +18,7 @@
 
 状态管理框架会对class、Date、Map、Set、Array类型的原始对象添加代理，用于观测属性变化与API调用。这一层代理会使得变量类型改变，在类型判断、NAPI调用等场景，会由于类型并非原始对象的类型产生预料之外的结果。
 
-- 使用getTarget接口需要导入UIUtils工具。
+- 使用getTarget接口需要导入[UIUtils](../../reference/apis-arkui/js-apis-stateManagement.md#uiutils)工具。
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';

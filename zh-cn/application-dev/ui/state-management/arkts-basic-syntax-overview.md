@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -24,15 +24,15 @@
 >
 > 自定义变量不能与基础通用属性/事件名重复。
 
-- [UI装饰器](./arkts-decorator-overview.md)： 用于装饰类、结构、方法以及变量，并赋予其特殊的含义。如上述示例中\@Entry、\@Component和\@State都是装饰器，[@Component](arkts-create-custom-components.md#component)表示自定义组件，[@Entry](arkts-create-custom-components.md#entry)表示该自定义组件为入口组件，[@State](arkts-state.md)表示组件中的状态变量，状态变量变化会触发UI刷新。
+- [UI装饰器](./arkts-decorator-overview.md)： 用于装饰类、结构、方法以及变量，并赋予其特殊的含义。如上述示例中[\@Entry](arkts-create-custom-components.md#entry)、[\@Component](arkts-create-custom-components.md#component)和[\@State](arkts-state.md)都是装饰器，\@Component表示自定义组件，\@Entry表示该自定义组件为入口组件，\@State表示组件中的状态变量，状态变量变化会触发UI刷新。
 
 - [UI描述](arkts-declarative-ui-description.md)：以声明式的方式来描述UI的结构，例如build()方法中的代码块。
 
 - [自定义组件](arkts-create-custom-components.md)：可复用的UI单元，可组合其他组件，如上述被\@Component装饰的struct Hello。
 
-- 系统组件：ArkUI框架中默认内置的基础和容器组件，可以直接调用，例如示例中的Column、Text、Divider、Button。
+- 系统组件：ArkUI框架中默认内置的基础和容器组件，可以直接调用，例如示例中的[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Divider](../../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md)、[Button](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)。
 
-- [属性方法](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)：组件可以通过链式调用配置多项属性，如fontSize()、width()、height()、backgroundColor()等。
+- [属性方法](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)：组件可以通过链式调用配置多项属性，如[fontSize()](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)、[width()](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height()](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[backgroundColor()](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)等。
 
 - [事件方法](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)：组件可以通过链式调用设置多个事件的响应逻辑，如跟随在Button后面的onClick()。
 

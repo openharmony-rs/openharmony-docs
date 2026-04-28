@@ -1,8 +1,8 @@
 # @ohos.enterprise.restrictions （限制类策略）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -972,4 +972,5 @@ try {
 
 | 名称      | 值   | 说明     |
 | --------- | ---- | -------- |
-| SUPER_HUB | 2    | 中转站。禁用后，无法使用中转站功能。若中转站已开启，本次使用不受影响，但关闭后将无法再次使用。 |
+| MULTI_WINDOW | 0    | 系统多窗口。当前仅支持手机、平板设备使用，禁用后无法使用系统多窗口功能（分屏、一键分屏、智慧多窗、悬浮窗口）。若系统多窗口功能已开启，本次使用不受影响，但关闭后将无法再次使用。 |
+| SUPER_HUB | 2    | 中转站。当前仅支持手机、平板设备使用，禁用后无法使用中转站功能。若中转站已开启，本次使用不受影响，但关闭后将无法再次使用。 |

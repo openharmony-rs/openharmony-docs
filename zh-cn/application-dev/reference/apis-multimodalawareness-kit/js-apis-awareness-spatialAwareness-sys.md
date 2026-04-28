@@ -162,6 +162,7 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callb
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -216,6 +217,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -270,6 +272,7 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callbac
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -324,6 +327,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 sensor模块提供了获取传感器数据的能力，包括获取传感器属性列表，订阅传感器数据，以及一些通用的传感器算法。
@@ -12101,6 +12101,8 @@ on(type:  SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;Acceler
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER](#sensoronaccelerometer9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACCELEROMETER
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -12137,6 +12139,8 @@ on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Line
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.LINEAR_ACCELEROMETER](#sensoronlinear_accelerometer9)<sup>9+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACCELEROMETER
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -12158,6 +12162,8 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronaccelerometer_uncalibrated9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -12199,6 +12205,8 @@ on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityRespons
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GRAVITY](#sensorongravity9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12232,6 +12240,8 @@ on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeRes
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GYROSCOPE](#sensorongyroscope9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -12268,6 +12278,8 @@ on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback:Callback&lt;G
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GYROSCOPE_UNCALIBRATED](#sensorongyroscope_uncalibrated9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -12308,6 +12320,8 @@ on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;Sig
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.SIGNIFICANT_MOTION](#sensoronsignificant_motion9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12339,6 +12353,8 @@ on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;Pe
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PEDOMETER_DETECTION](#sensoronpedometer_detection9)<sup>9+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -12374,6 +12390,8 @@ on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerRes
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PEDOMETER](#sensoronpedometer9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION 
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -12408,6 +12426,8 @@ on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback:Callback&lt;Ambi
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.AMBIENT_TEMPERATURE](#sensoronambient_temperature9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12439,6 +12459,8 @@ on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;Magneti
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.MAGNETIC_FIELD](#sensoronmagnetic_field9)<sup>9+</sup>代替。  
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12473,6 +12495,8 @@ on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callbac
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED](#sensoronmagnetic_field_uncalibrated9)<sup>9+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12511,6 +12535,8 @@ on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityRes
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PROXIMITY](#sensoronproximity9)<sup>9+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12542,6 +12568,8 @@ on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityRespo
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HUMIDITY](#sensoronhumidity9)<sup>9+</sup>代替。  
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12575,6 +12603,8 @@ on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerRes
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.BAROMETER](#sensoronbarometer9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12606,6 +12636,8 @@ on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;,
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HALL](#sensoronhall9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12639,6 +12671,8 @@ on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightRes
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.AMBIENT_LIGHT](#sensoronambient_light9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12670,6 +12704,8 @@ on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;Orientatio
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ORIENTATION](#sensoronorientation9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12705,6 +12741,8 @@ on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateRe
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HEART_RATE](#sensoronheart_rate9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.HEALTH_DATA 
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -12726,6 +12764,8 @@ on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,callback: Callback&lt;Rotatio
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ROTATION_VECTOR](#sensoronrotation_vector9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12762,6 +12802,8 @@ on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDet
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.WEAR_DETECTION](#sensoronwear_detection9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12796,6 +12838,8 @@ once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;Accele
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER](#sensoronceaccelerometer9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACCELEROMETER
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -12829,6 +12873,8 @@ once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Li
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.LINEAR_ACCELEROMETER](#sensoroncelinear_accelerometer9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACCELERATION
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -12849,6 +12895,8 @@ once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callba
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoronceaccelerometer_uncalibrated9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -12886,6 +12934,8 @@ once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityRespo
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GRAVITY](#sensoroncegravity9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -12916,6 +12966,8 @@ once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeR
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GYROSCOPE](#sensoroncegyroscope9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -12949,6 +13001,8 @@ once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback: Callback&l
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GYROSCOPE_UNCALIBRATED](#sensoroncegyroscope_uncalibrated9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -12987,6 +13041,8 @@ once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION,callback: Callback&lt;Si
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.SIGNIFICANT_MOTION](#sensoroncesignificant_motion9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13015,6 +13071,8 @@ once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION,callback: Callback&lt;P
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PEDOMETER_DETECTION](#sensoroncepedometer_detection9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -13047,6 +13105,8 @@ once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerR
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PEDOMETER](#sensoroncepedometer9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -13078,6 +13138,8 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback: Callback&lt;A
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.AMBIENT_TEMPERATURE](#sensoronceambient_temperature9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13106,6 +13168,8 @@ once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;Magne
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.MAGNETIC_FIELD](#sensoroncemagnetic_field9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13137,6 +13201,8 @@ once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callb
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED](#sensoroncemagnetic_field_uncalibrated9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13172,6 +13238,8 @@ once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityR
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PROXIMITY](#sensoronceproximity9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13202,6 +13270,8 @@ once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityRes
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HUMIDITY](#sensoroncehumidity9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13230,6 +13300,8 @@ once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerR
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.BAROMETER](#sensoroncebarometer9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13260,6 +13332,8 @@ once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HALL](#sensoroncehall9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13289,6 +13363,8 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightR
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.AMBIENT_LIGHT](#sensoronceambient_light9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13317,6 +13393,8 @@ once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;Orientat
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ORIENTATION](#sensoronceorientation9)<sup>9+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13348,6 +13426,8 @@ once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;Rota
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ROTATION_VECTOR](#sensoroncerotation_vector9)<sup>9+</sup>代替。  
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13381,6 +13461,8 @@ once(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRate
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HEART_RATE](#sensoronceheart_rate9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.HEART_RATE  
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -13413,6 +13495,8 @@ once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearD
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.WEAR_DETECTION](#sensoroncewear_detection9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13444,6 +13528,8 @@ off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;Accele
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER](#sensoroffaccelerometer19)<sup>19+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -13479,6 +13565,8 @@ off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback?: Callb
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ACCELEROMETER_UNCALIBRATED](#sensoroffaccelerometer_uncalibrated19)<sup>19+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -13518,6 +13606,8 @@ off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightR
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.AMBIENT_LIGHT](#sensoroffambient_light19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13548,6 +13638,8 @@ off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback&lt;
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.AMBIENT_TEMPERATURE](#sensoroffambient_temperature19)<sup>19+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13580,6 +13672,8 @@ off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerR
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.BAROMETER](#sensoroffbarometer19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13610,6 +13704,8 @@ off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback&lt;GravityRespo
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GRAVITY](#sensoroffgravity19)<sup>19+</sup>代替。  
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13643,6 +13739,8 @@ off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeR
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GYROSCOPE](#sensoroffgyroscope19)<sup>19+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -13679,6 +13777,8 @@ off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback?: Callback&
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.GYROSCOPE_UNCALIBRATED](#sensoroffgyroscope_uncalibrated19)<sup>19+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.GYROSCOPE
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -13714,6 +13814,8 @@ off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback&lt;HallResponse&gt
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HALL](#sensoroffhall19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13744,6 +13846,8 @@ off(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRate
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HEART_RATE](#sensoroffheart_rate19)<sup>19+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.HEALTH_DATA 
 
@@ -13778,6 +13882,8 @@ off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback&lt;HumidityRes
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.HUMIDITY](#sensoroffhumidity19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13808,6 +13914,8 @@ off(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback?: Callback&lt;
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.LINEAR_ACCELEROMETER](#sensorofflinear_accelerometer19)<sup>19+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -13844,6 +13952,8 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.MAGNETIC_FIELD](#sensoroffmagnetic_field19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13876,6 +13986,8 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED](#sensoroffmagnetic_field_uncalibrated19)<sup>19+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -13913,6 +14025,8 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ORIENTATION](#sensorofforientation19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -13945,6 +14059,8 @@ off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerR
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PEDOMETER](#sensoroffpedometer19)<sup>19+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -13979,6 +14095,8 @@ off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback?: Callback&lt;
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PEDOMETER_DETECTION](#sensoroffpedometer_detection19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.Sensors.Sensor
@@ -14012,6 +14130,8 @@ off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback&lt;ProximityR
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.PROXIMITY](#sensoroffproximity19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14042,6 +14162,8 @@ off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback&lt;Rota
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.ROTATION_VECTOR](#sensoroffrotation_vector19)<sup>19+</sup>代替。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14077,6 +14199,8 @@ off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback&lt;S
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.SIGNIFICANT_MOTION](#sensoroffsignificant_motion19)<sup>19+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14108,6 +14232,8 @@ off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearD
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId.WEAR_DETECTION](#sensoroffwear_detection19)<sup>19+</sup>代替。 
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14138,6 +14264,8 @@ transformCoordinateSystem(inRotationVector: Array&lt;number&gt;, coordinates: Co
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.transformRotationMatrix](#sensortransformrotationmatrix9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14176,6 +14304,8 @@ transformCoordinateSystem(inRotationVector: Array&lt;number&gt;, coordinates: Co
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.transformRotationMatrix](#sensortransformrotationmatrix9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14219,6 +14349,8 @@ getGeomagneticField(locationOptions: LocationOptions, timeMillis: number, callba
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14255,6 +14387,8 @@ getGeomagneticField(locationOptions: LocationOptions, timeMillis: number): Promi
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14297,6 +14431,8 @@ getAltitude(seaPressure: number, currentPressure: number, callback: AsyncCallbac
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getDeviceAltitude](#sensorgetdevicealtitude9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14331,6 +14467,8 @@ getAltitude(seaPressure: number, currentPressure: number): Promise&lt;number&gt;
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getDeviceAltitude](#sensorgetdevicealtitude9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14372,6 +14510,8 @@ getGeomagneticDip(inclinationMatrix: Array&lt;number&gt;, callback: AsyncCallbac
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getInclination](#sensorgetinclination9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14405,6 +14545,8 @@ getGeomagneticDip(inclinationMatrix: Array&lt;number&gt;): Promise&lt;number&gt;
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getInclination](#sensorgetinclination9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14444,6 +14586,8 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getAngleVariation](#sensorgetanglevariation9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14481,6 +14625,8 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getAngleVariation](#sensorgetanglevariation9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14525,6 +14671,8 @@ createRotationMatrix(rotationVector: Array&lt;number&gt;, callback: AsyncCallbac
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14561,6 +14709,8 @@ createRotationMatrix(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;n
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14603,6 +14753,8 @@ createQuaternion(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14639,6 +14791,8 @@ createQuaternion(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;numbe
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14681,6 +14835,8 @@ getDirection(rotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Arr
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getOrientation](#sensorgetorientation9)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14717,6 +14873,8 @@ getDirection(rotationMatrix: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getOrientation](#sensorgetorientation9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -14759,6 +14917,8 @@ createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-2)<sup>9+</sup>代替。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
@@ -14794,6 +14954,8 @@ createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&
 > **说明**：
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-3)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 

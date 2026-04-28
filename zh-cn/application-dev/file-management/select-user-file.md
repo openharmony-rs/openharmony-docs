@@ -1,9 +1,9 @@
 # 选择用户文件
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[文件选择器（FilePicker）](../reference/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker选择文件或文件夹获取到的URI只具有**临时读写权限**，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
@@ -24,14 +24,27 @@
 
 1. 导入选择器模块和文件管理模块。
 
+   ArkTS-Dyn示例：
+
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
+   import { picker } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   import { common } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   import picker from '@ohos.file.picker';
    import { fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 需根据实际业务需求配置[文档选择选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)。以下代码仅例举各选项的配置参考。
+
+   ArkTS-Dyn示例：
 
    ```ts
    const documentSelectOptions = new picker.DocumentSelectOptions();
@@ -58,10 +71,29 @@
    documentSelectOptions.allowsMulFolderSelection = false;
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   const documentSaveOptions: picker.DocumentSaveOptions = {
+      maxSelectNumber: 5,
+      defaultFilePathUri: "file://docs/storage/Users/currentUser/test",
+      selectMode: picker.DocumentPickerMode.FILE,
+      fileSuffixFilters: ['图片(.png, .jpg)|.png,.jpg', '文档|.txt', '视频|.mp4', '.pdf'],
+      authMode: false,
+      multiAuthMode: false,
+      multiUriArray: ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"],
+      mergeMode: picker.MergeTypeMode.DEFAULT,
+      isEncryptionSupported: false,
+      allowsMulFolderSelection: false
+   };
+   ```
+
 3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)接口拉起FilePicker应用界面进行文件选择。
 
-   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
-   
+   ArkTS-Dyn示例：
+
+   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
    ``` TypeScript
    let uris: string[] = [];
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -75,6 +107,19 @@
    });
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   let uris: Array<string> = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const documentViewPicker = new picker.DocumentViewPicker(context);
+   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
+     uris = documentSelectResult;
+     console.info('documentViewPicker.select to file succeed and uris are:' + uris);
+   }).catch((err: BusinessError): void => {
+     console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+   });
+   ```
 
    > **注意：**
    >
@@ -108,8 +153,19 @@
 
 1. 导入选择器模块和文件管理模块。
 
+   ArkTS-Dyn示例：
+
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
+   import { picker } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   import picker from '@ohos.file.picker';
    import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
@@ -121,14 +177,24 @@
    >
    > 目前AudioSelectOptions不支持参数配置，默认可以选择所有类型的用户文件。
 
+   ArkTS-Dyn示例：
+
    ```ts
    const audioSelectOptions = new picker.AudioSelectOptions();
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   const audioSelectOptions: picker.AudioSelectOptions = {};
+   ```
+
 3. 创建音频选择器[AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5)接口拉起AudioPicker应用界面进行文件选择。
 
-   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
-   
+   ArkTS-Dyn示例：
+
+   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
    ``` TypeScript
    let uris: string[] = [];
    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
@@ -144,6 +210,19 @@
    })
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   let uris: Array<string> = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const audioViewPicker = new picker.AudioViewPicker(context);
+   audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+     uris = audioSelectResult;
+     console.info('audioViewPicker.select to file succeed and uri is:' + uris);
+   }).catch((err: BusinessError): void => {
+     console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+   });
+   ```
 
    > **注意：**
    >

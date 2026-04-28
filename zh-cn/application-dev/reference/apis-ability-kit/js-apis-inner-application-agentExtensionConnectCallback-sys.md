@@ -5,7 +5,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 开发者可以通过AgentExtensionConnectCallback中提供的回调接口来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。
 

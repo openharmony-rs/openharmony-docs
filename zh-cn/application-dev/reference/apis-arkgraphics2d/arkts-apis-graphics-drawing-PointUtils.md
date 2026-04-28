@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API版本26.0.0开始支持。
@@ -48,9 +50,9 @@ static negate(point: common2D.Point): void
 **示例：**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let point = { x: 10, y: 20 };
+let point: common2D.Point = { x: 10, y: 20 };
 drawing.PointUtils.negate(point);
 console.info('point.x:', point.x);
 console.info('point.y:', point.y);
@@ -83,9 +85,9 @@ ArkTS-Sta: static offset(point: common2D.Point, dx: double, dy: double): void
 **示例：**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let point = { x: 10, y: 20 };
+let point: common2D.Point = { x: 10, y: 20 };
 drawing.PointUtils.offset(point, 5, 10);
 console.info('point.x:', point.x);
 console.info('point.y:', point.y);

@@ -2,14 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供UI组件行为变化的无感监听能力。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -28,6 +30,12 @@ on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdate<sup>23+</sup>](#onnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -92,6 +100,145 @@ struct Index {
 }
 ```
 
+## onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(callback: Callback\<observer.NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 是   | 回调函数。返回当前的NavDestination组件状态。                 |
+
+## offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdate')](#offnavdestinationupdate11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要取消的监听回调，不传参数时，取消所有的Navigation监听回调。                 |
+
+## onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback: Callback<observer.NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | [observer.NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<[observer.NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+// Index.ets
+// 演示 uiObserver.on('navDestinationUpdate', navigationId, callback)
+// uiObserver.off('navDestinationUpdate', navigationId, callback)
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      Text("pageOne")
+    }.title("pageOne")
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageBuilder(name: string) {
+    PageOne()
+  }
+
+  aboutToAppear() {
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
+      console.info('NavDestination state update', JSON.stringify(info));
+    });
+  }
+
+  aboutToDisappear() {
+    this.getUIContext().getUIObserver().off('navDestinationUpdate', { navigationId: "testId" });
+  }
+
+  build() {
+    Column() {
+      Navigation(this.stack) {
+        Button("push").onClick(() => {
+          this.stack.pushPath({ name: "pageOne" });
+        })
+      }
+      .id("testId")
+      .title("Navigation")
+      .navDestination(this.PageBuilder)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdate')](#offnavdestinationupdate11-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 回调函数。返回当前的NavDestination组件状态。                             |
+
+**示例：**
+
+参考[uiObserver.on('navDestinationUpdate')](#onnavdestinationupdate11-1)示例。
+
 ## off('navDestinationUpdate')<sup>11+</sup>
 
 off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationInfo\>): void
@@ -101,6 +248,12 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdate<sup>23+</sup>](#offnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -122,6 +275,12 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdate<sup>23+</sup>](#onnavdestinationupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -198,6 +357,12 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdate<sup>23+</sup>](#offnavdestinationupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -219,6 +384,12 @@ on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback:
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdateByUniqueId](#onnavdestinationupdatebyuniqueid23)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：** 
 
@@ -307,6 +478,12 @@ off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdateByUniqueId](#offnavdestinationupdatebyuniqueid23)。
+
+**ArkTS-Dyn起始版本：** 20
+
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
@@ -319,6 +496,116 @@ off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback
 
 参考[on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20)接口示例。
 
+## onNavDestinationUpdateByUniqueId<sup>23+</sup>
+
+onNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback: Callback\<observer.NavDestinationInfo\>): void
+
+通过Navigation的uniqueId监听NavDestination组件的状态变化，uniqueId可通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| navigationUniqueId  | int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
+
+**示例：**
+
+通过Navigation的uniqueId，可以触发NavDestination组件的状态变化。
+
+```ts
+// Index.ets
+// 演示 on('navDestinationUpdateByUniqueId', navigationUniqueId, callback)
+// off('navDestinationUpdateByUniqueId', navigationUniqueId, callback)
+@Component
+struct PageOne {
+  private text = '';
+  private uniqueid = -1;
+  aboutToAppear() {
+    let navigationuniqueid = this.queryNavigationInfo()?.uniqueId;
+    if (navigationuniqueid) {
+      this.uniqueid = navigationuniqueid.valueOf();
+    }
+    this.text = JSON.stringify(this.uniqueid);
+    this.getUIContext().getUIObserver().on('navDestinationUpdateByUniqueId', this.uniqueid, (info) => {
+      console.info('NavDestination state update navigationId', JSON.stringify(info));
+    });
+  }
+  aboutToDisappear() {
+    this.getUIContext().getUIObserver().off('navDestinationUpdateByUniqueId', this.uniqueid);
+  }
+  build() {
+    NavDestination() {
+      Text("pageOne")
+      Text('navigationuniqueid是:' + this.text)
+        .width('80%')
+        .height(50)
+        .margin(50)
+        .fontSize(20)
+    }.title("pageOne")
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageBuilder(name: string) {
+    PageOne()
+  }
+
+  build() {
+    Column() {
+      Navigation(this.stack) {
+        Button("push").onClick(() => {
+          this.stack.pushPath({ name: "pageOne" });
+        })
+      }
+      .id("testId")
+      .title("Navigation")
+      .navDestination(this.PageBuilder)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offNavDestinationUpdateByUniqueId<sup>23+</sup>
+
+offNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消通过navigationUniqueId监听NavDestination组件的变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdateByUniqueId')](#offnavdestinationupdatebyuniqueid20)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| navigationUniqueId  | int | 是   | 指定监听的[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                             |
+
+**示例：**
+
+参考[uiObserver.on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20)示例。
+
 ## on('scrollEvent')<sup>12+</sup>
 
 on(type: 'scrollEvent', callback: Callback\<observer.ScrollEventInfo\>): void
@@ -328,6 +615,10 @@ on(type: 'scrollEvent', callback: Callback\<observer.ScrollEventInfo\>): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -421,6 +712,10 @@ off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
@@ -441,6 +736,10 @@ on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<o
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -464,6 +763,10 @@ off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -485,6 +788,12 @@ on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): voi
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onRouterPageUpdate](#onrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -554,6 +863,12 @@ off(type: 'routerPageUpdate', callback?: Callback\<observer.RouterPageInfo\>): v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offRouterPageUpdate](#offrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -565,6 +880,88 @@ off(type: 'routerPageUpdate', callback?: Callback\<observer.RouterPageInfo\>): v
 
 参考[on('routerPageUpdate')](#onrouterpageupdate11)接口示例。
 
+## onRouterPageUpdate<sup>23+</sup>
+
+onRouterPageUpdate(callback: Callback\<observer.RouterPageInfo\>): void
+
+监听router中page页面的状态变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('routerPageUpdate')](#onrouterpageupdate11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | 是   | 回调函数。携带pageInfo，返回当前的page页面状态。                 |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+// ArkTS-Sta示例
+import uiObserver from '@ohos.arkui.observer';
+import { Entry, Component, Column, Button, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear() {
+    // 添加监听
+    let observer: uiObserver.UIObserver = this.getUIContext().getUIObserver();
+    observer.onRouterPageUpdate((info) => {
+      console.info('RouterPage state updated, called by ' + `${info.name}`);
+    });
+  }
+
+  aboutToDisappear() {
+    // 取消监听，不选择回调时，取消所有监听的回调
+    let observer: uiObserver.UIObserver = this.getUIContext().getUIObserver();
+    observer.offRouterPageUpdate();
+  }
+
+  build() {
+    Column() {
+      Button("pushUrl").onClick(() => {
+        // router跳转到PageOne.ets页面
+        this.getUIContext().getRouter().pushUrl({ url: 'pages/PageOne' })
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offRouterPageUpdate<sup>23+</sup>
+
+offRouterPageUpdate(callback?: Callback\<observer.RouterPageInfo\>): void
+
+取消监听router中page页面的状态变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('routerPageUpdate')](#offrouterpageupdate11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | 否   | 需要被注销的回调函数。                 |
+
+**示例：**
+
+参考[onRouterPageUpdate](#onrouterpageupdate23)接口示例。
+
 ## on('densityUpdate')<sup>12+</sup>
 
 on(type: 'densityUpdate', callback: Callback\<observer.DensityInfo\>): void
@@ -574,6 +971,12 @@ on(type: 'densityUpdate', callback: Callback\<observer.DensityInfo\>): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDensityUpdate](#ondensityupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -636,6 +1039,12 @@ off(type: 'densityUpdate', callback?: Callback\<observer.DensityInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDensityUpdate](#offdensityupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                                         |
@@ -647,6 +1056,118 @@ off(type: 'densityUpdate', callback?: Callback\<observer.DensityInfo\>): void
 
 参考[on('densityUpdate')](#ondensityupdate12)接口示例。
 
+## onDensityUpdate<sup>23+</sup>
+
+onDensityUpdate(callback: Callback\<observer.DensityInfo\>): void
+
+监听屏幕像素密度变化。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('densityUpdate')](#ondensityupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import uiObserver from '@ohos.arkui.observer';
+import { Entry, Component, Column, Text, Button, FontWeight, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State density: number = 0;
+  @State message: string = '未注册监听';
+
+  densityUpdateCallback: (info: uiObserver.DensityInfo) => void = (info: uiObserver.DensityInfo) => {
+    this.density = info.density;
+    this.message = '变化后的DPI：' + this.density.toString();
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
+      Button('注册屏幕像素密度变化监听')
+        .onClick(() => {
+          this.message = '已注册监听';
+          this.getUIContext().getUIObserver().onDensityUpdate(this.densityUpdateCallback);
+        })
+    }
+  }
+}
+```
+
+## offDensityUpdate<sup>23+</sup>
+
+offDensityUpdate(callback?: Callback\<observer.DensityInfo\>): void
+
+取消监听屏幕像素密度的变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('densityUpdate')](#offdensityupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                                         |
+| -------- | -------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------- |
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有densityUpdate事件监听。 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import uiObserver from '@ohos.arkui.observer';
+import { Entry, Component, Column, Text, Button, FontWeight, Margin, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State density: number = 0;
+  @State message: string = '未注册监听';
+
+  densityUpdateCallback: (info: observer.DensityInfo) => void = (info: observer.DensityInfo) => {
+    this.density = info.density;
+    this.message = '变化后的DPI：' + this.density.toString();
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
+      Button('注册屏幕像素密度变化监听')
+        .margin({ bottom: 10 } as Margin)
+        .onClick(() => {
+          this.message = '已注册监听';
+          this.getUIContext().getUIObserver().onDensityUpdate(this.densityUpdateCallback);
+        })
+      Button('解除注册屏幕像素密度变化监听')
+        .onClick(() => {
+          this.message = '未注册监听';
+          this.getUIContext().getUIObserver().offDensityUpdate(this.densityUpdateCallback);
+        })
+    }
+  }
+}
+```
+
 ## on('willDraw')<sup>12+</sup>
 
 on(type: 'willDraw', callback: Callback\<void\>): void
@@ -656,6 +1177,12 @@ on(type: 'willDraw', callback: Callback\<void\>): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWillDraw](#onwilldraw23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -707,6 +1234,12 @@ off(type: 'willDraw', callback?: Callback\<void\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWillDraw](#offwilldraw23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -718,6 +1251,98 @@ off(type: 'willDraw', callback?: Callback\<void\>): void
 
 参考[on('willDraw')](#onwilldraw12)接口示例。
 
+## onWillDraw<sup>23+</sup>
+
+onWillDraw(callback: Callback\<void\>): void
+
+监听每一帧绘制指令下发情况。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('willDraw')](#onwilldraw12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 是   | 回调函数。                 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  willDrawCallback: () => void = () => {
+    console.info("willDraw指令下发");
+  }
+  build() {
+    Column() {
+      Button('注册绘制指令下发监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onWillDraw(this.willDrawCallback);
+        })
+    }
+  }
+}
+```
+
+## offWillDraw<sup>23+</sup>
+
+offWillDraw(callback?: Callback\<void\>): void
+
+取消监听每一帧绘制指令下发情况。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('willDraw')](#offwilldraw12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有willDraw事件监听。                  |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button, Margin } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  willDrawCallback: () => void = () => {
+    console.info("willDraw指令下发")
+  }
+
+  build() {
+    Column() {
+      Button('注册绘制指令下发监听')
+        .margin({ bottom: 10 } as Margin)
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onWillDraw(this.willDrawCallback);
+        })
+      Button('解除注册绘制指令下发监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().offWillDraw(this.willDrawCallback);
+        })
+    }
+  }
+}
+```
+
 ## on('didLayout')<sup>12+</sup>
 
 on(type: 'didLayout', callback: Callback\<void\>): void
@@ -727,6 +1352,12 @@ on(type: 'didLayout', callback: Callback\<void\>): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDidLayout](#ondidlayout23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -778,6 +1409,12 @@ off(type: 'didLayout', callback?: Callback\<void\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDidLayout](#offdidlayout23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -785,10 +1422,101 @@ off(type: 'didLayout', callback?: Callback\<void\>): void
 | type     | string                                                       | 是   | 监听事件，固定为'didLayout'，即是否布局完成。 |
 | callback | Callback\<void\>        | 否   | 需要被注销的回调函数。不传参数时，取消所有布局完成的监听回调。                  |
 
-
 **示例：**
 
 参考[on('didLayout')](#ondidlayout12)接口示例。
+
+## onDidLayout<sup>23+</sup>
+
+onDidLayout(callback: Callback\<void\>): void
+
+监听每一帧布局完成情况。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('didLayout')](#ondidlayout12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 是   | 回调函数。                 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  didLayoutCallback: () => void = () => {
+    console.info("layout布局完成");
+  }
+  build() {
+    Column() {
+      Button('注册布局完成监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onDidLayout(this.didLayoutCallback);
+        })
+    }
+  }
+}
+```
+
+## offDidLayout<sup>23+</sup>
+
+offDidLayout(callback?: Callback\<void\>): void
+
+取消监听每一帧布局完成情况。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('didLayout')](#offdidlayout12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有didLayout事件监听。                  |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button, Margin } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  didLayoutCallback: () => void = () => {
+    console.info("layout布局完成");
+  }
+
+  build() {
+    Column() {
+      Button('注册布局完成监听')
+        .margin({ bottom: 10 } as Margin)
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onDidLayout(this.didLayoutCallback);
+        })
+      Button('解除注册布局完成监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().offDidLayout(this.didLayoutCallback);
+        })
+    }
+  }
+}
+```
 
 ## on('navDestinationSwitch')<sup>12+</sup>
 
@@ -2436,7 +3164,7 @@ struct Index {
       .border({ width: 2, color: '#FF6B81' })
       .justifyContent(FlexAlign.Center)
       .gesture(TapGesture().onAction((event: GestureEvent)=>{
-        //具体实现内容
+        // 具体实现内容
       }))
 
       Row() {
@@ -2451,10 +3179,10 @@ struct Index {
       .gesture(
         PanGesture()
           .onActionStart((event: GestureEvent) => {
-            //具体实现内容
+            // 具体实现内容
           })
           .onActionEnd((event: GestureEvent) => {
-            //具体实现内容
+            // 具体实现内容
           })
       )
 
@@ -2470,10 +3198,10 @@ struct Index {
       .gesture(
         LongPressGesture()
           .onAction((event: GestureEvent)=>{
-            //具体实现内容
+            // 具体实现内容
           })
           .onActionEnd((event: GestureEvent) => {
-            //具体实现内容
+            // 具体实现内容
           })
       )
     }
@@ -2862,74 +3590,6 @@ onNavDestinationSizeChange(callback: Callback\<observer.NavDestinationInfo\>): v
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | 是   | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。  |
 
-**示例：**
-
-``` ts
-import { uiObserver } from '@kit.ArkUI';
-
-@Component
-struct PageOneContent {
-  destSizeCallback(info: uiObserver.NavDestinationInfo): void {
-    console.info(`testTag destSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
-  }
-
-  aboutToAppear(): void {
-    // 可以通过注册监听的方式获取NavDestination页面大小信息
-    this.getUIContext().getUIObserver().onNavDestinationSizeChange(this.destSizeCallback);
-  }
-
-  aboutToDisappear(): void {
-    this.getUIContext().getUIObserver().offNavDestinationSizeChange(this.destSizeCallback);
-  }
-
-  build() {
-    Column() {
-      Button('queryDestSize').onClick(() => {
-        // 也可以主动获取NavDestination页面大小信息
-        let info = this.queryNavDestinationInfo();
-        console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct PageOne {
-  build() {
-    NavDestination() {
-      PageOneContent()
-    }
-    .title('pageOne')
-  }
-}
-
-@Entry
-@Component
-struct QueryNavDestinationSize {
-  private stack: NavPathStack = new NavPathStack();
-
-  aboutToAppear(): void {
-    this.stack.pushPath({name: 'one'});
-  }
-
-  @Builder
-  MyPageMap(name: string) {
-    PageOne()
-  }
-
-  build() {
-    Navigation(this.stack) {
-    }
-    .width('100%')
-    .height('100%')
-    .navDestination(this.MyPageMap)
-    .hideNavBar(true)
-  }
-}
-```
-
 ## offNavDestinationSizeChange<sup>23+</sup>
 
 offNavDestinationSizeChange(callback?: Callback\<observer.NavDestinationInfo\>): void
@@ -2946,13 +3606,9 @@ offNavDestinationSizeChange(callback?: Callback\<observer.NavDestinationInfo\>):
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有回调函数。 |
 
-**示例：**
-
-参考[onNavDestinationSizeChange](#onnavdestinationsizechange23)接口示例。
-
 ## onNavDestinationSizeChangeByUniqueId<sup>23+</sup>
 
-onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
+onNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback: Callback<observer.NavDestinationInfo>): void
 
 注册监听回调函数，当属于指定Navigation的可见NavDestination的大小发生变化时，会触发该回调函数。使用callback异步回调。
 
@@ -2964,86 +3620,12 @@ onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callb
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| navigationUniqueId | number | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
+| navigationUniqueId | int | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | 是   | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。  |
-
-**示例：**
-
-``` ts
-import { uiObserver } from '@kit.ArkUI';
-
-@Component
-struct PageOneContent {
-  private navUniqueId: number = 0;
-
-  destSizeCallback(info: uiObserver.NavDestinationInfo): void {
-    console.info(`testTag destSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
-  }
-
-  aboutToAppear(): void {
-    let navInfo = this.queryNavigationInfo();
-    if (navInfo && navInfo.uniqueId) {
-      this.navUniqueId = navInfo.uniqueId;
-      // 可以通过注册监听的方式获取NavDestination页面大小信息
-      this.getUIContext().getUIObserver().onNavDestinationSizeChangeByUniqueId(this.navUniqueId, this.destSizeCallback);
-    }
-  }
-
-  aboutToDisappear(): void {
-    this.getUIContext().getUIObserver().offNavDestinationSizeChangeByUniqueId(this.navUniqueId, this.destSizeCallback);
-  }
-
-  build() {
-    Column() {
-      Button('queryDestSize').onClick(() => {
-        // 也可以主动获取NavDestination页面大小信息
-        let info = this.queryNavDestinationInfo();
-        console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct PageOne {
-  build() {
-    NavDestination() {
-      PageOneContent()
-    }
-    .title('pageOne')
-  }
-}
-
-@Entry
-@Component
-struct QueryNavDestinationSize {
-  private stack: NavPathStack = new NavPathStack();
-
-  aboutToAppear(): void {
-    this.stack.pushPath({name: 'one'});
-  }
-
-  @Builder
-  MyPageMap(name: string) {
-    PageOne()
-  }
-
-  build() {
-    Navigation(this.stack) {
-    }
-    .width('100%')
-    .height('100%')
-    .navDestination(this.MyPageMap)
-    .hideNavBar(true)
-  }
-}
-```
 
 ## offNavDestinationSizeChangeByUniqueId<sup>23+</sup>
 
-offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
+offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback?: Callback<observer.NavDestinationInfo>): void
 
 移除使用onNavDestinationSizeChangeByUniqueId接口注册的监听回调函数。使用callback异步回调。
 
@@ -3055,9 +3637,116 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Cal
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| navigationUniqueId | number | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
+| navigationUniqueId | int | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
+
+## onWindowSizeLayoutBreakpointChange<sup>23+</sup>
+
+onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutBreakpointInfo\>): void
+
+注册窗口尺寸布局断点变化的回调函数。该方法用于监听窗口尺寸断点变化，可用于根据窗口尺寸自适应调整UI布局。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+  
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名       | 类型                                                         | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback     | Callback\<observer.[WindowSizeLayoutBreakpointInfo](js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)> | 是   | 回调函数。携带WindowSizeLayoutBreakpointinfo，包含窗口宽度和高度所在的布局断点枚举。 |
 
 **示例：**
 
-参考[onNavDestinationSizeChangeByUniqueId](#onnavdestinationsizechangebyuniqueid23)接口示例。
+该示例展示添加和取消监听窗口尺寸布局断点变化的方法。
+
+``` ts
+import { Entry, Text, Column, Component, Button, WidthBreakpoint, HeightBreakpoint, Margin, Callback } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import window from '@ohos.window';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { common } from '@kit.AbilityKit';
+import uiObserver from '@ohos.arkui.observer';
+
+@Entry
+@Component
+struct Index {
+  private changeOrientation(isLandscape: boolean) {
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    window.getLastWindow(context).then((lastWindow) => {
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+    });
+  }
+
+  @State message: string = '';
+  @State message1: string = '';
+  @State widthBreakpoint: WidthBreakpoint = WidthBreakpoint.WIDTH_SM;
+  @State heightBreakpoint: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
+  private winSizeLayoutBreakpointCallback: Callback<uiObserver.WindowSizeLayoutBreakpointInfo> =
+    (info: uiObserver.WindowSizeLayoutBreakpointInfo): void => {
+      this.message1 = '回调已触发';
+      this.widthBreakpoint = info.widthBreakpoint;
+      this.heightBreakpoint = info.heightBreakpoint;
+      this.message = `widthBpt:${info.widthBreakpoint} heightBpt:${info.heightBreakpoint}`;
+    }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .width('20%')
+        .borderWidth(1)
+        .margin({ bottom: 20 } as Margin)
+      Text(this.message1)
+        .width('20%')
+        .borderWidth(1)
+        .margin({ bottom: 20 } as Margin)
+      Button('注册窗口尺寸布局断点变化监听')
+        .onClick(() => {
+          this.getUIContext()
+            .getUIObserver()
+            .onWindowSizeLayoutBreakpointChange(this.winSizeLayoutBreakpointCallback);
+        })
+      Button('解除窗口尺寸布局断点变化监听')
+        .onClick(() => {
+          this.getUIContext()
+            .getUIObserver()
+            .offWindowSizeLayoutBreakpointChange(this.winSizeLayoutBreakpointCallback);
+        })
+      Button('竖屏').onClick(() => {
+        this.changeOrientation(false)
+      })
+      Button('横屏').onClick(() => {
+        this.changeOrientation(true)
+      })
+      Button('clear').onClick(() => {
+        this.message = ''
+        this.message1 = ''
+      })
+    }
+  }
+}
+```
+
+## offWindowSizeLayoutBreakpointChange<sup>23+</sup>
+
+offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayoutBreakpointInfo>): void
+
+移除之前注册的窗口尺寸布局断点变化回调函数。如果未提供回调函数参数，将移除指定上下文的所有回调函数。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名       | 类型                                           | 必填 | 说明                                                         |
+| ------------ | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback     | Callback\<observer.[WindowSizeLayoutBreakpointInfo](js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)>    | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-apis-uicontext-uicontext.md)下所有窗口尺寸布局断点变化事件监听。 |
+
+**示例：**
+
+参考[onWindowSizeLayoutBreakpointChange](#onwindowsizelayoutbreakpointchange23)接口示例。

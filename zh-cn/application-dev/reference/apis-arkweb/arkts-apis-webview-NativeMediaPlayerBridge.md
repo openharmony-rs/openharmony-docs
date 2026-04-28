@@ -59,10 +59,10 @@ updateRect(x: number, y: number, width: number, height: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-|x|number| 是 |surface相对于Web组件的x坐标信息。 |
-|y|number| 是 |surface相对于Web组件的y坐标信息。 |
-|width|number| 是 |surface的宽度。<br>单位：像素。 |
-|height|number| 是 |surface的高度。<br>单位：像素。 |
+| x | number | 是 | surface相对于Web组件的x坐标信息。 |
+| y | number | 是 | surface相对于Web组件的y坐标信息。 |
+| width | number | 是 | surface的宽度。<br>单位：像素。 |
+| height | number | 是 | surface的高度。<br>单位：像素。 |
 
 **示例：**
 
@@ -72,7 +72,7 @@ updateRect(x: number, y: number, width: number, height: number): void
 
 play(): void
 
-播放视频。
+播放媒体。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -104,7 +104,7 @@ pause(): void
 
 seek(targetTime: number): void
 
-播放跳转到某个时间点。
+跳转播放进度到指定时间点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -128,6 +128,8 @@ setVolume(volume: number): void
 
 设置播放器音量值。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -135,8 +137,6 @@ setVolume(volume: number): void
 | volume | number | 是 | 播放器的音量。<br>取值范围：[0, 1.0]，其中0表示静音，1.0表示最大音量。 |
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -170,7 +170,7 @@ setMuted(muted: boolean): void
 
 setPlaybackRate(playbackRate: number): void
 
-设置播放速度。
+设置播放速率。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -182,7 +182,7 @@ setPlaybackRate(playbackRate: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| playbackRate | number | 是 | 播放倍率。<br>取值范围: [0, 10.0]，其中1表示原速播放。 |
+| playbackRate | number | 是 | 播放速率。<br>取值范围：[0, 10.0]，其中1表示原速播放。 |
 
 **示例：**
 
@@ -240,7 +240,7 @@ exitFullscreen(): void
 
 resumePlayer?(): void
 
-通知应用重建应用内播放器，并恢复应用内播放器的状态信息。
+通知应用重建播放器，并恢复播放器的状态信息。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -256,7 +256,7 @@ resumePlayer?(): void
 
 suspendPlayer?(type: SuspendType): void
 
-通知应用销毁应用内播放器，并保存应用内播放器的状态信息。
+通知应用销毁播放器，并保存播放器的状态信息。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

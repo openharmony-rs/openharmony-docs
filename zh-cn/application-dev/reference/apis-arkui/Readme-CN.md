@@ -1,8 +1,8 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -69,6 +69,7 @@
     - [@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)
     - [getContext](js-apis-getContext.md)
     - [postCardAction](js-apis-postCardAction.md)
+    - [@ohos.arkui.Parallelize (UI并行化创建)](js-apis-arkui-Parallelize.md)
     <!--Del-->
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](js-apis-arkui-drawableDescriptor-sys.md)
     - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)
@@ -82,7 +83,8 @@
     - [@ohos.arkui.uiMaterial (系统材质)(系统接口)](arkts-apis-uimaterial-sys.md)
     <!--DelEnd-->
     - arkui<!--ui-interface-arkui-->
-      - [BuilderNode](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Dyn)](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Sta)](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
@@ -466,16 +468,50 @@
     - [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)
     - [ContentSlot](arkui-ts/ts-components-contentSlot.md)
   - 自定义组件<!--custom-comp-->
+    - [页面生命周期](arkui-ts/ts-custom-component-pagelifecycle.md)
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
     - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
+    - [自定义组件内置方法（静态）](arkui-ts/ts-custom-component-api-sta.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
-    - 组件扩展装饰器<!--arkts-extend-component-decorator-->
-      - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
-      - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
-      - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
-      - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
+    - 动态ArkTS自定义组件
+      - 自定义组件装饰器
+        - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component.md)
+        - [@ComponentV2：自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2.md)
+        - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
+      - 组件扩展装饰器<!--arkts-extend-component-decorator-->
+        - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
+        - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-dynamic.md)
+        - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-dynamic.md)
+        - [@Extend：扩展组件样式](arkui-ts/ts-custom-component-decorator-extend.md)
+        - [@LocalBuilder装饰器：维持组件关系](arkui-ts/ts-universal-localbuilder.md)
+        - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-dynamic.md)
+        - [@Reusable：组件复用](arkui-ts/ts-custom-component-decorator-reusable.md)
+        - [@ReusableV2：组件复用V2](arkui-ts/ts-custom-component-decorator-reusablev2.md)
+        - [@Styles：组件重用样式](arkui-ts/ts-custom-component-decorator-styles.md)
+        - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
+        - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
+    - 静态ArkTS自定义组件
+      - 自定义组件装饰器
+        - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component-static.md)
+        - [@ComponentV2:自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2-static.md)
+        - [@Entry：页面入口](arkui-ts/ts-custom-component-decorator-entry-static.md)
+      - 组件扩展装饰器
+        - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-static.md)
+        - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-static.md)
+        - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-static.md)
+        - [@Reusable：组件复用](arkui-ts/ts-custom-component-decorator-reusable-static.md)
+        - [@ReusableV2：组件复用V2](arkui-ts/ts-custom-component-decorator-reusablev2-static.md)
+        - [applyStyles：定义组件重用样式](arkui-ts/ts-universal-applyStyles.md)
+        - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-static.md)
+        - [rememberVariable：@Builder内部状态](arkui-ts/ts-universal-remembervariable-static.md)
+  - 互操作
+    - [compatibleComponent (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
+    - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)
+    - [transferCompatibleBuilder (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-builder.md)
+    - [compatibleWrappedBuilder (ArkTS-Sta)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
+    - [enableCompatibleObservedV2ForStatic\<T\> (ArkTS-Sta)](arkui-ts/ts-interop-compatible-ObservedV2.md)
   - 组件预览<!--component-preview-->
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
@@ -518,12 +554,70 @@
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
-    - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
-    - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
-    - [Repeat](arkui-ts/ts-rendering-control-repeat.md)
+    - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
+    - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
+    - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)
+    - [LazyForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-lazyforeach.md)
+    - [LazyForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-lazyforeach-sta.md)
+    - [Repeat (ArkTS-Dyn)](arkui-ts/ts-rendering-control-repeat.md)
+    - [Repeat (ArkTS-Sta)](arkui-ts/ts-rendering-control-repeat-sta.md)
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
+    - 动态ArkTS状态管理
+      - 状态管理V1装饰器 
+        - [@Consume](arkui-ts/ts-state-management-consume.md)
+        - [@Link](arkui-ts/ts-state-management-link.md)
+        - [@LocalStorageLink](arkui-ts/ts-state-management-localstoragelink.md)
+        - [@LocalStorageProp](arkui-ts/ts-state-management-localstorageprop.md)
+        - [@ObjectLink](arkui-ts/ts-state-management-objectlink.md)
+        - [@Observed](arkui-ts/ts-state-management-observed.md)
+        - [@Prop](arkui-ts/ts-state-management-prop.md)
+        - [@Provide](arkui-ts/ts-state-management-provide.md)
+        - [@State](arkui-ts/ts-state-management-state.md)
+        - [@StorageLink](arkui-ts/ts-state-management-storagelink.md)
+        - [@StorageProp](arkui-ts/ts-state-management-storageprop.md)
+        - [@Track](arkui-ts/ts-state-management-track.md)
+        - [@Watch](arkui-ts/ts-state-management-watch.md)
+      - 状态管理V2装饰器
+        - [@Computed](arkui-ts/ts-state-management-computed.md)
+        - [@Consumer](arkui-ts/ts-state-management-consumer.md)
+        - [@Event](arkui-ts/ts-state-management-event.md)
+        - [@Local](arkui-ts/ts-state-management-local.md)
+        - [@Monitor](arkui-ts/ts-state-management-monitor.md)
+        - [@ObservedV2](arkui-ts/ts-state-management-observedv2.md)
+        - [@Once](arkui-ts/ts-state-management-once.md)
+        - [@Param](arkui-ts/ts-state-management-param.md)
+        - [@Provider](arkui-ts/ts-state-management-provider.md)
+        - [@Trace](arkui-ts/ts-state-management-trace.md)
+        - [@Type](arkui-ts/ts-state-management-type.md)
+    - 静态ArkTS状态管理
+      - 状态管理V1装饰器 
+        - [@Consume](arkui-ts/ts-state-management-consume-static.md)
+        - [@Link](arkui-ts/ts-state-management-link-static.md)
+        - [@LocalStorageLink](arkui-ts/ts-state-management-localstoragelink-static.md)
+        - [@LocalStoragePropRef](arkui-ts/ts-state-management-localstoragepropref-static.md)
+        - [@ObjectLink](arkui-ts/ts-state-management-objectlink-static.md)
+        - [@Observed](arkui-ts/ts-state-management-observed-static.md)
+        - [@PropRef](arkui-ts/ts-state-management-propref-static.md)
+        - [@Provide](arkui-ts/ts-state-management-provide-static.md)
+        - [@State](arkui-ts/ts-state-management-state-static.md)
+        - [@StorageLink](arkui-ts/ts-state-management-storagelink-static.md)
+        - [@StoragePropref](arkui-ts/ts-state-management-storagepropref-static.md)
+        - [@Track](arkui-ts/ts-state-management-track-static.md)
+        - [@Watch](arkui-ts/ts-state-management-watch-static.md)
+      - 状态管理V2装饰器
+        - [@Computed](arkui-ts/ts-state-management-computed-static.md)
+        - [@Consumer](arkui-ts/ts-state-management-consumer-static.md)
+        - [@Event](arkui-ts/ts-state-management-event-static.md)
+        - [@Local](arkui-ts/ts-state-management-local-static.md)
+        - [@Monitor](arkui-ts/ts-state-management-monitor-static.md)
+        - [@ObservedV2](arkui-ts/ts-state-management-observedv2-static.md)
+        - [@Once](arkui-ts/ts-state-management-once-static.md)
+        - [@Param](arkui-ts/ts-state-management-param-static.md)
+        - [@Provider](arkui-ts/ts-state-management-provider-static.md)
+        - [@Trace](arkui-ts/ts-state-management-trace-static.md)
+        - [@Env](arkui-ts/ts-state-management-env-static.md)
   - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
   - 公共定义<!--common-definitions-->
@@ -542,6 +636,7 @@
     - [PluginComponent (系统接口)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (系统接口)](arkui-ts/ts-container-ui-extension-component-sys.md)
     - [UnionEffectContainer (系统接口)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
+    - [DistortionComponent (系统接口)](arkui-ts/ts-container-distortioncomponent-sys.md)
   <!--DelEnd-->
   - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
     <!--Del-->
@@ -580,6 +675,25 @@
     - [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
     - [native_key_event.h](capi-native-key-event-h.md)
     - [native_node.h](capi-native-node-h.md)
+      - [ArkUI_NodeAttributeType（基础属性）](capi-native-node-h-nodeattributetype-base.md)
+      - [ArkUI_NodeAttributeType（通用属性）](capi-native-node-h-nodeattributetype-common.md)
+      - [ArkUI_NodeAttributeType（布局属性）](capi-native-node-h-nodeattributetype-layoutattributes.md)
+      - [ArkUI_NodeAttributeType（布局类组件相关属性）](capi-native-node-h-nodeattributetype-layoutcomponent.md)
+      - [ArkUI_NodeAttributeType（动效、视效相关属性）](capi-native-node-h-nodeattributetype-animator.md)
+      - [ArkUI_NodeAttributeType（交互类相关属性）](capi-native-node-h-nodeattributetype-interaction.md)
+      - [ArkUI_NodeAttributeType（表单类组件相关属性）](capi-native-node-h-nodeattributetype-form.md)
+      - [ArkUI_NodeAttributeType（滚动容器类组件相关属性）](capi-native-node-h-nodeattributetype-scrollablecontainer.md)
+      - [ArkUI_NodeAttributeType（导航类组件相关属性）](capi-native-node-h-nodeattributetype-navigationrelatedcomponents.md)
+      - [ArkUI_NodeAttributeType（信息展示类组件相关属性）](capi-native-node-h-nodeattributetype-informationdisplay.md)
+      - [ArkUI_NodeAttributeType（信息选择类组件相关属性）](capi-native-node-h-nodeattributetype-informationselection.md)
+      - [ArkUI_NodeAttributeType（无障碍相关属性）](capi-native-node-h-nodeattributetype-accessibility.md)
+      - [ArkUI_NodeAttributeType（文本显示类组件相关属性）](capi-native-node-h-nodeattributetype-text.md)
+      - [ArkUI_NodeAttributeType（文本输入类组件相关属性）](capi-native-node-h-nodeattributetype-textinputcategory.md)
+      - [ArkUI_NodeAttributeType（富文本类组件相关属性）](capi-native-node-h-nodeattributetype-richeditor.md)
+      - [ArkUI_NodeAttributeType（图类组件相关属性）](capi-native-node-h-nodeattributetype-image.md)
+      - [ArkUI_NodeAttributeType（XComponent组件相关属性）](capi-native-node-h-nodeattributetype-xcomponent.md)
+      - [ArkUI_NodeAttributeType（EmbeddedComponent组件相关属性）](capi-native-node-h-nodeattributetype-embeddedcomponent.md)
+      - [ArkUI_NodeAttributeType（其他）](capi-native-node-h-nodeattributetype-other.md)
     - [native_node_napi.h](capi-native-node-napi-h.md)
     - [native_render.h](capi-native-render-h.md)
     - [native_type.h](capi-native-type-h.md)
@@ -629,6 +743,7 @@
     - [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)
     - [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)
     - [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)
+    - [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)
     - [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)
     - [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)
     - [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)
@@ -740,6 +855,7 @@
     - [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md)
     - [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md)
     - [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)
+    - [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)
     - [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)
     - [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)
     - [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md)
@@ -756,6 +872,7 @@
     - [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)
     - [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)
     - [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md)
+    - [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)
     - [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md)

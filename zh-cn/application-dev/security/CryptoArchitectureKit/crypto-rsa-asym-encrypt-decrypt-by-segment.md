@@ -17,7 +17,7 @@
 
 2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。
 
-3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
 
 4. 多次调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入明文，获取加密后的数据。
 
@@ -31,7 +31,7 @@
 
 1. 由于RSA算法的Cipher实例不支持重复init操作，需要调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，重新生成Cipher实例。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1模式无加密参数，直接传入null。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1模式无加密参数，直接传入null。
 
 3. 多次调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入密文，获取解密后的数据。
 
@@ -84,14 +84,14 @@
   }
   
   async function rsaEncryptLongMessage() {
-    let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!';
+    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
     let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
     let keyPair = await asyKeyGenerator.generateKeyPair(); // 随机生成RSA密钥
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
@@ -156,14 +156,14 @@
   }
   
   function main() {
-    let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!';
+    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
     let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
     let keyPair = asyKeyGenerator.generateKeyPairSync(); // 随机生成RSA密钥
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };

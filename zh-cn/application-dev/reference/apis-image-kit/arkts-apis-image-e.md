@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -31,6 +31,7 @@
 | RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位。 |
 | YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
 | YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
+| ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。所有像素紧密排列，不进行对齐。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
 | ASTC_4x4<sup>18+</sup> | 102 | 存储格式为ASTC 4x4格式，内存使用量仅为RGBA_8888的1/4。该格式仅用于直接显示场景，不支持像素访问或后期处理编辑，不支持仿射变换级联使用。  |
 
 ## AlphaType<sup>9+</sup>
@@ -82,6 +83,9 @@
 | HEIFS_METADATA<sup>23+</sup> | 15    | HEIF序列图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DNG_METADATA<sup>24+</sup> | 16    | DNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | WEBP_METADATA<sup>24+</sup> | 17    | WebP图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| PNG_METADATA | 19    | PNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| JFIF_METADATA | 20    | JFIF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| TIFF_METADATA | 21    | TIFF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -313,8 +317,13 @@
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| GIF_DELAY_TIME    | "GifDelayTime"    | GIF图片的每帧播放时长（单位为毫秒）。 |
-| GIF_DISPOSAL_TYPE | "GifDisposalType" | GIF图片每帧的帧过渡模式。 |
+| GIF_DELAY_TIME    | 'GifDelayTime'    | GIF图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。 |
+| GIF_DISPOSAL_TYPE | 'GifDisposalType' | GIF图片的每帧处置方式。<br>- 0表示未指定。<br>- 1表示不处置。<br>- 2表示还原为背景色。<br>- 3表示还原为前一帧。<br>该值为正整数。 |
+| GIF_HAS_GLOBAL_COLOR_MAP | 'GifHasGlobalColorMap' | GIF图像是否包含全局调色板。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_CANVAS_WIDTH | 'GifCanvasWidth' | GIF图像的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_CANVAS_HEIGHT | 'GifCanvasHeight' | GIF图像的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_LOOP_COUNT | 'GifLoopCount' | GIF图片循环次数。<br>取值为0或正整数。0表示无限循环，其他值表示实际循环次数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_UNCLAMPED_DELAY_TIME | 'GifUnclampedDelayTime' | GIF图片未钳制的帧延迟时间。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## HeifsPropertyKey<sup>23+</sup>
 
@@ -327,6 +336,9 @@
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
 | HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒。 |
+| HEIFS_UNCLAMPED_DELAY_TIME | 'HeifsUnclampedDelayTime' | HEIF序列图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0 |
+| HEIFS_CANVAS_HEIGHT | 'HeifsCanvasHeight' | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
+| HEIFS_CANVAS_WIDTH | 'HeifsCanvasWidth' | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
 
 ## WebPPropertyKey<sup>24+</sup>
 
@@ -447,6 +459,101 @@
 | NEW_RAW_IMAGE_DIGEST | 'NewRawImageDigest' | 修改后原始图像数据的新MD5摘要。 |
 | RAW_TO_PREVIEW_GAIN | 'RawToPreviewGain' | 主RAW图与预览图之间的增益比。 |
 | DEFAULT_USER_CROP | 'DefaultUserCrop' | 默认用户裁剪区域。 |
+
+## PngPropertyKey
+
+枚举，PNG图片信息。
+
+> **说明：**
+>
+> - 格式示例中的key为：image.PngPropertyKey.XXX（XXX为枚举的名称，如：image.PngPropertyKey.X_PIXELS_PER_METER）。
+> - 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| X_PIXELS_PER_METER | 'PngXPixelsPerMeter' | PNG图像X方向每米像素数。 |
+| MODIFICATION_TIME | 'PngModificationTime' | PNG图像的最后一次修改的时间。 |
+| SOFTWARE | 'PngSoftware' | 用于生成PNG图像的软件名称和版本。 |
+| COPYRIGHT | 'PngCopyright' | PNG图像的版权信息。 |
+| CREATION_TIME | 'PngCreationTime' | PNG图像的创建时间。 |
+| SRGB_INTENT | 'PngSRGBIntent' | PNG图像的sRGB（standard Red Green Blue，标准红绿蓝）渲染意图。<br>- 0表示感知意图。<br>- 1表示相对比色意图。<br>- 2表示饱和度意图。<br>- 3绝对色度意图。 |
+| AUTHOR | 'PngAuthor' | PNG图像的作者。 |
+| INTERLACE_TYPE | 'PngInterlaceType' | PNG图像的交错模式。<br>- 0表示无交错模式（图像按照从上到下、从左到右的顺序加载）。<br>- 1表示交错模式（通过多次扫描逐步显示图像，图像在加载过程中逐渐清晰）。 |
+| WARNING | 'PngWarning' | PNG图像的警告信息。 |
+| Y_PIXELS_PER_METER | 'PngYPixelsPerMeter' | PNG图像Y方向每米像素数。 |
+| GAMMA | 'PngGamma' | PNG图像的系数伽马的值。 |
+| CHROMATICITIES | 'PngChromaticities' | PNG图像的原色与白点色度坐标cHRM（primary chromaticities and white point）。该信息可用于与设备无关的色彩校正。 |
+| DESCRIPTION | 'PngDescription' | PNG图像的描述。 |
+| TITLE | 'PngTitle' | PNG图像的标题。 |
+| COMMENT | 'PngComment' | PNG图像的注释。 |
+| DISCLAIMER | 'PngDisclaimer' | PNG图像的免责声明。 |
+
+## JfifPropertyKey
+
+枚举，JFIF图片信息。
+
+> **说明：**
+>
+> - 格式示例中的key为：image.JfifPropertyKey.XXX（XXX为枚举的名称，如：image.JfifPropertyKey.DENSITY_UNIT）。
+> - 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| DENSITY_UNIT | 'JfifDensityUnit' | 用于定义JfifXDensity（水平像素密度）和JfifYDensity（垂直像素密度）的物理度量单位。<br>- 0表示无单位（仅像素宽高比）。<br>- 1表示每英寸像素数（DPI）。<br>- 2表示每厘米像素数（DPC）。<br>该值为正整数。 |
+| X_DENSITY | 'JfifXDensity' | JFIF图像X方向密度。 |
+| Y_DENSITY | 'JfifYDensity' | JFIF图像Y方向密度。 |
+| VERSION | 'JfifVersion' | JFIF图像版本。 |
+| IS_PROGRESSIVE | 'JfifIsProgressive' | 图像是否采用渐进式编码，即图像在加载过程中按多次扫描逐步提升清晰度。true表示采用，false表示不采用。 |
+
+## TiffPropertyKey
+
+枚举，TIFF图片信息。
+
+> **说明：**
+>
+> - 格式示例中的key为：image.TiffPropertyKey.XXX（XXX为枚举的名称，如：image.TiffPropertyKey.DOCUMENT_NAME）。
+> - 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| DOCUMENT_NAME | 'TiffDocumentName' | 文档或图像的名称。 |
+| PHOTOMETRIC_INTERPRETATION | 'TiffPhotometricInterpretation' | 定义像素颜色的解释方式（如RGB、灰度）。 |
+| ORIENTATION | 'TiffOrientation' | 图像方向。<br/>- 1表示"Top-left"，图像未旋转。<br/>- 2表示"Top-right"，镜像水平翻转。<br/>- 3表示"Bottom-right"，图像旋转180°。<br/>- 4表示"Bottom-left"，镜像垂直翻转。<br/>- 5表示"Left-top"，镜像水平翻转后再顺时针旋转270°。<br/>- 6表示"Right-top"，顺时针旋转90°。<br/>- 7表示"Right-bottom"，镜像水平翻转后再顺时针旋转90°。<br/>- 8表示"Left-bottom"，顺时针旋转270°。<br/>若读到未定义值，会返回 `Unknown Value x`，其中 `x` 表示该标签的原始取值。 |
+| RESOLUTION_UNIT | 'TiffResolutionUnit' | XResolution（水平分辨率）和YResolution（垂直分辨率）的单位，取值为英寸（Inch）或厘米（Centimeter）。 |
+| COPYRIGHT | 'TiffCopyright' | 图像的版权信息。 |
+| DATE_TIME | 'TiffDateTime' | 与图像关联的日期和时间（通常为最后修改时间）。 |
+| IMAGE_DESCRIPTION | 'TiffImageDescription' | 图像信息描述。 |
+| Y_RESOLUTION | 'TiffYResolution' | 垂直方向分辨率（每分辨率单位的像素数）。 |
+| X_RESOLUTION | 'TiffXResolution' | 水平方向分辨率（每分辨率单位的像素数）。 |
+| WHITE_POINT | 'TiffWhitePoint' | 用于指定图像的白点（white point）色度坐标，即图像颜色空间中被认为是“白色”的参考点。 |
+| TILE_LENGTH | 'TiffTileLength' | 每个图像分块的高度。单位为像素（px）。 |
+| TRANSFER_FUNCTION | 'TiffTransferFunction' | 图像的传递函数，通常用于颜色校正。 |
+| TILE_WIDTH | 'TiffTileWidth' | 每个图像分块的宽度。单位为像素（px）。 |
+| MAKE | 'TiffMake' | 拍摄设备制造商。 |
+| MODEL | 'TiffModel' | 拍摄设备型号名称或编号。 |
+| HOST_COMPUTER | 'TiffHostComputer' | 用于图像处理的主机或系统。 |
+| COMPRESSION | 'TiffCompression' | TIFF图像数据所用的压缩方案。<br>- 1表示无压缩。<br>- 5表示LZW（基于字典的无损压缩算法）。<br>- 7表示JPEG基线。<br>- 8表示Deflate（基于LZ77+Huffman的无损压缩算法） |
+| SOFTWARE | 'TiffSoftware' | 用于生成图像的软件名称和版本。 |
+| PRIMARY_CHROMATICITIES | 'TiffPrimaryChromaticities' | 图像中RGB三原色的色度坐标。 |
+| ARTIST | 'TiffArtist' | 创建图像的用户名称。 |
 
 ## ImageFormat<sup>9+</sup>
 

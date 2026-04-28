@@ -8,6 +8,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
@@ -22,6 +24,10 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型       | 说明     |
 |------------|--------|
 | 'status'   | 状态栏。   |
@@ -30,17 +36,23 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 
 ## WindowAnimationCurveParam<sup>20+</sup>
 
-type WindowAnimationCurveParam = Array&lt;number&gt;
+ArkTS-Dyn: type WindowAnimationCurveParam = Array&lt;number&gt;
+
+ArkTS-Sta: type WindowAnimationCurveParam = Array&lt;double&gt;
 
 动画曲线参数。不同曲线类型[WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)，对应的WindowAnimationCurveParam参数含义不同。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型      | 说明                          |
 | -----------| ---------------------------- |
-| Array&lt;number&gt;    | 表示值类型为数字数组，元素取值范围见对应曲线描述。     |
+| ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 表示值类型为数字数组，元素取值范围见对应曲线描述。     |
 
 当曲线类型为LINEAR，动画曲线参数选填，且不生效。
 
@@ -78,11 +90,15 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 旋转事件通知通用回调函数。
 
-开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void。
+开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型在ArkTS-Dyn下为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void，在ArkTS-Sta下为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -94,11 +110,13 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
-| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值。 |
+| U | <br>ArkTS-Dyn: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值。<br>ArkTS-Sta: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined类型的返回值。 |
 
 ## WindowEventListener<sup>24+</sup>
 
-type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
+ArkTS-Dyn: type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
+
+ArkTS-Sta: type WindowEventListener = (windowId: int, event: window.WindowEventType) => void
 
 窗口生命周期事件通知的回调函数。
 
@@ -106,9 +124,13 @@ type WindowEventListener = (windowId: number, event: window.WindowEventType) => 
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | ------------------ |
-| windowId | number  | 是  | 触发生命周期变更的窗口ID。|
+| windowId | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 是  | 触发生命周期变更的窗口ID。|
 | event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | 是 | 窗口生命周期回调的事件类型。|

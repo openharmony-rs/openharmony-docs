@@ -11,18 +11,24 @@
 
 > **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[安全控件通用属性](ts-securitycomponent-attributes.md)。
 
-
 ## key
 
-key(value: string): T
+ArkTS-Dyn: key(value: string): T
+
+ArkTS-Sta: key(value: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。与[id](ts-securitycomponent-attributes.md#id15)同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。
 
 此接口仅用于对应用的测试。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -32,10 +38,10 @@ key(value: string): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | string |是 |组件的唯一标识，唯一性由使用者保证。<br/>默认值为空字符串。|
+| value | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined |是 |组件的唯一标识，唯一性由使用者保证。<br/>默认值为空字符串。<br/>ArkTS-Sta：设定为undefined时不生效。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |

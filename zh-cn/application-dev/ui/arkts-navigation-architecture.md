@@ -189,9 +189,21 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
   ![mini](figures/mini.jpg)
 
+  ArkTS-Dyn示例：
+
   <!-- @[NavigationTitleModeMini](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeMini.ets) -->
   
   ``` TypeScript
+  Navigation() {
+    // ...
+  }
+  .titleMode(NavigationTitleMode.Mini)
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { Navigation, NavigationTitleMode } from '@kit.ArkUI';
   Navigation() {
     // ...
   }
@@ -206,9 +218,21 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
   ![free1](figures/free1.jpg)
 
+  ArkTS-Dyn示例：
+
   <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
   
   ``` TypeScript
+  Navigation() {
+    // ...
+  }
+  .titleMode(NavigationTitleMode.Full)
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { Navigation, NavigationTitleMode } from '@kit.ArkUI';
   Navigation() {
     // ...
   }
@@ -222,6 +246,8 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 **图6** 设置了3个图标的菜单栏
 
 ![菜单栏2](figures/菜单栏2.jpg)
+
+   ArkTS-Dyn示例：
 
    <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
    
@@ -238,7 +264,26 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
          .menus([menuItem, menuItem, menuItem])
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   import { Navigation, NavigationMenuItem } from '@kit.ArkUI';
+
+   let menuItem: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+     'action': () => {}
+   };
+   Navigation() {
+     // ...
+   }
+   .menus([menuItem, menuItem, menuItem])
+   ```
+
+
 图片也可以引用resources中的资源。
+
+   ArkTS-Dyn示例：
 
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
    
@@ -255,12 +300,30 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
          .menus([menuItem, menuItem, menuItem])
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   import {Navigation, NavigationMenuItem } from '@kit.ArkUI';
+
+   let menuItem: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'resources/base/media/ic_public_add.svg',
+     'action': () => {}
+   };
+   Navigation() {
+     // ...
+   }
+   .menus([menuItem, menuItem, menuItem])
+   ```
+
 **图7** 设置了4个图标的菜单栏 
 
 ![菜单栏](figures/菜单栏.jpg)
 
 竖屏状态下菜单栏，最多支持显示3个按钮，当按钮超过3个时，多余的按钮会被折叠。
 
+   ArkTS-Dyn示例：
+   
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
    
    ``` TypeScript
@@ -277,6 +340,23 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
          .menus([menuItem, menuItem, menuItem, menuItem])
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   import { Navigation, NavigationMenuItem } from '@kit.ArkUI';
+
+   let menuItem: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+     'action': () => {}
+   };
+
+   Navigation() {
+     // ...
+   }
+   .menus([menuItem, menuItem, menuItem, menuItem])
+   ```
+
 ## 工具栏
 
 工具栏位于组件的底部，开发者可以通过[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)属性设置Navigation的工具栏。NavDestination同样支持[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#toolbarconfiguration13)属性用于设置工具栏。
@@ -284,6 +364,8 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
   **图8** 工具栏
 
 ![free3](figures/free3.jpg)
+
+   ArkTS-Dyn示例：
 
    <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
    
@@ -299,4 +381,20 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
            // ...
          }
          .toolbarConfiguration(toolBar)
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   import { Navigation, ToolbarItem } from '@kit.ArkUI';
+
+   let toolTmp: ToolbarItem = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
+     'action': () => {}
+   };
+   Navigation() {
+     // ...
+   }
+   .toolbarConfiguration(toolBar)
    ```

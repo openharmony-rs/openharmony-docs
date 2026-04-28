@@ -591,6 +591,8 @@ export default class EntryAbility extends UIAbility {
 
 在需要迁移的数据较少（100KB以下）时，开发者可以选择在`wantParam`中增加字段进行数据迁移。示例如下：
 
+**ArkTS-Dyn示例：**
+
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -633,6 +635,30 @@ export default class MigrationAbility extends UIAbility {
       // 触发页面恢复
       this.context.restoreWindowStage(this.storage);
     }
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+ import { AbilityConstant, wantConstant } from '@kit.AbilityKit';
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class EntryAbility extends UIAbility {
+  onContinue(wantParam: Record<string, Object>):AbilityConstant.OnContinueResult {
+    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onContinue');
+    try {
+      const continueInput = '迁移的数据';
+      if (continueInput) {
+        wantParam['data'] = continueInput;
+      }
+      wantParam[wantConstant.Params.SUPPORT_CONTINUE_PAGE_STACK_KEY] = false;
+      wantParam[wantConstant.Params.SUPPORT_CONTINUE_SOURCE_EXIT_KEY] = false;
+    } catch(err) {
+      hilog.info(0x0000, 'testTag EntryAbility', JSON.stringify(err));
+    }
+    return AbilityConstant.OnContinueResult.AGREE;
   }
 }
 ```
@@ -737,7 +763,8 @@ export default class MigrationAbility extends UIAbility {
 
 - 创建空的分布式数据对象，用于接收恢复的数据。
 - 从[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中读取分布式数据对象组网id。
-- 注册[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md#onstatus9)接口监听数据变更。在收到`status`为`restore`的事件的回调中，实现数据恢复完毕时需要进行的业务操作。
+- 注册：动态接口[on()](../reference/apis-arkdata/js-apis-data-distributedobject.md)，静态接口[onStatus()](../reference/apis-arkdata/js-apis-data-distributedobject.md)。接口监听数据变更。在收到`status`为`restore`的事件的回调中，实现数据恢复完毕时需要进行的业务操作。
+
 - 调用[setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9)加入组网，激活分布式数据对象。
 
 > **注意**
@@ -747,6 +774,8 @@ export default class MigrationAbility extends UIAbility {
 > 3. 应当在激活分布式数据对象之前，调用on()接口进行注册监听，防止错过`restore`事件导致数据恢复失败。
 
 示例代码如下：
+
+**ArkTS-Dyn示例：**
 
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -803,6 +832,120 @@ export default class MigrationAbility extends UIAbility {
 
     // 激活分布式数据对象
     this.d_object.setSessionId(dataSessionId);
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+import { distributedDataObject as distributedObject, commonType } from '@kit.ArkData';
+import { RecordData } from '@kit.BasicServicesKit';
+import { AppStorage } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class EntryAbility extends UIAbility {
+  async onContinue(wantParam: Record<string, Object | undefined>): Promise<AbilityConstant.OnContinueResult> {
+  // 获取需要设置的分布式对象的资产关键uri
+  try {
+    console.info('OnContinue start');
+    let attachment: commonType.Asset = {
+    name: 'test_img.jpg',
+    uri: 'file://com.example.staticcontinue/data/storage/el2/distributedfiles/dir/test_img.jpg',
+    path: '/dir/test_img.jpg',
+    createTime: '2024-01-02 10:00:00',
+    modifyTime: '2024-01-02 10:00:00',
+    size: '5',
+    status: commonType.AssetStatus.ASSET_NORMAL
+    }
+    // 创建分布式数据对象
+    let sessionId: string = distributedObject.genSessionId();
+    (wantParam as Record<string, Object | undefined>)['distributedSessionId'] = sessionId;
+    let note: Note = new Note('data_object_title', 'data_object_text', attachment);
+    let uri = 'file://com.example.staticcontinue/data/storage/el2/distributedfiles/dir/test_img.jpg';
+    g_object = distributedObject.create(this.context, note);
+    g_object!.setAsset('attachment', uri).then(() => {
+    console.info('setAsset success.');
+    }).catch((err: Error) => {
+    console.error('setAsset failed, error code = ' + err.code);
+    });
+    // 将设置的资产或资产数组保存至迁移发起端
+    await g_object!.setSessionId(sessionId);
+    g_object!.save((wantParam as Record<string, Object | undefined>)['targetDevice'] as string).then((result:
+    distributedObject.SaveSuccessResponse) => {
+    console.info('Succeeded in saving. SessionId: ' + result.sessionId);
+    }).catch((err) => {
+    console.error('OnContinue failed to save. code: ' + err.code);
+    console.error('OnContinue failed to save. message: ', err.message);
+    });
+  } catch (error) {
+    console.error('OnContinue failed code: ', error.code);
+    console.error('OnContinue failed message: ', error.message);
+  }
+  console.info('OnContinue end!');
+  return AbilityConstant.OnContinueResult.AGREE;
+  }
+
+  // 2. 接收端在onCreate和onNewWant接口中创建分布式数据对象并加入组网进行数据恢复
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  console.info('onCreate start!');
+  AppStorage.setOrCreate<common.UIAbilityContext>("UIAbilityContext", this.context)
+  if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
+    if (want.parameters && (want.parameters as Record<string, RecordData>)['distributedSessionId']) {
+    this.restoreDistributedObject(want);
+    }
+  }
+  }
+
+  // 2. 接收端在onCreate和onNewWant接口中创建分布式数据对象并加入组网进行数据恢复
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
+    if (want.parameters && (want.parameters as Record<string, RecordData>)['distributedSessionId']) {
+    this.restoreDistributedObject(want);
+    }
+  }
+  }
+
+  async restoreDistributedObject(want: Want): Promise<void> {
+  console.info('restoreDistributedObject start!');
+  if (!want.parameters) {
+    console.error('want.parameters');
+    return;
+  }
+  if (!(want.parameters as Record<string, RecordData>)['distributedSessionId']) {
+    console.error('want.parameters as');
+    return;
+  }
+  // 调用create接口创建并得到一个分布式数据对象实例
+  let attachment: commonType.Asset = {
+    name: '',
+    uri: '',
+    path: '',
+    createTime: '',
+    modifyTime: '',
+    size: '',
+    status: commonType.AssetStatus.ASSET_NORMAL
+  }
+
+  let note: Note = new Note(undefined, undefined, attachment);
+  g_object = distributedObject.create(this.context, note);
+  // 注册恢复状态监听。收到状态为'restored'的回调通知时，表示接收端分布式数据对象已恢复发起端保存过来的数据（有资产数据时，对应的文件也迁移过来了）
+  let statusCallback: distributedObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
+    console.info(`status change, sessionId:  ${sessionId}`);
+    console.info(`status change, networkId:  ${networkId}`);
+    if (status === 'restored') { // 收到'restored'的状态通知表示已恢复发起端保存的数据
+    console.info('restored title:' + g_object!['title']);
+    console.info('restored text:' + g_object!['text']);
+    }
+  }
+  g_object!.onStatus(statusCallback);
+
+  // 从want.parameters中获取发起端放入的sessionId，调用setSessionId接口设置同步的sessionId
+  let sessionId = (want.parameters as Record<string, RecordData>)['distributedSessionId'] as string;
+  await g_object!.setSessionId(sessionId);
+  console.info('restoreDistributedObject end');
   }
 }
 ```
