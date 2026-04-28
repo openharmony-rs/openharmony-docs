@@ -153,8 +153,8 @@
     #include "openssl/err.h"
     #include "openssl/ssl.h"
 
-    #define SERVER_PEM "/data/sdcard/serverKey.pem"  //使用绝对路径
-    #define SERVER_CER "/data/sdcard/serverCert.cer" //使用绝对路径
+    #define SERVER_PEM "/data/sdcard/serverKey.pem"  // 使用绝对路径
+    #define SERVER_CER "/data/sdcard/serverCert.cer" // 使用绝对路径
 
     #define LOG_PRINT(fmt, ...) printf("[ServerProcess][%s:%d] " fmt "\n", __func__, __LINE__, ##__VA_ARGS__)
     #define DO_CHECK(cond, log, ...) \
