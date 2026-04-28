@@ -1746,7 +1746,7 @@ dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) 
 
 closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt;
 
-关闭所有符合指定选项的当前打开的企业DLP文件。使用Promise异步回调。
+关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。
 
 >**说明：**
 >
