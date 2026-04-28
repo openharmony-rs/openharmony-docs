@@ -851,7 +851,7 @@ ws.off('open', callback1);
 
 offOpen(callback?: Callback\<OpenResult\>): void
 
-取消订阅WebSocket的打开事件。
+取消订阅WebSocket的打开事件。使用callback异步回调。
 
 > **说明：**
 >
