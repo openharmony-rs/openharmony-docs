@@ -48,15 +48,16 @@
 
 <!-- @[tranferabledObject_Layout ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) -->
 
-```ts
-import { Serializable, SerialName } from "@hadss/turbo-trans-core";
+``` TypeScript
+import { Serializable, SerialName } from '@hadss/turbo-trans-core';
+// ...
 
 @Serializable({ generateSendable: true})
 export class Layout {
   @SerialName({ name: 'type'})
-  type: string = '';
+  public type: string = '';
   @SerialName({ name: 'arr'})
-  arr: number[] = [];
+  public arr: number[] = [];
 }
 ```
 
