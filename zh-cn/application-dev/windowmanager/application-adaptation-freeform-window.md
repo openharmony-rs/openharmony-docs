@@ -331,7 +331,7 @@
 
 **标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域。
 
-示意图中，windowRect为窗口尺寸，类型为rect；drawableRect为可绘制区域尺寸，类型为rect；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number。
+示意图中，windowRect为窗口尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；drawableRect为可绘制区域尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number；w为窗口宽度，类型为number，单位为px；h为窗口高度，类型为number，单位为px。
 
 ![window](figures/window.png)
 
