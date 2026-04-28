@@ -47,7 +47,7 @@
        hilog.error(DOMAIN_NUMBER, TAG, `Failed to remove sticky common event. Code is ${err.code}, message is ${err.message}`);
        return;
      }
-     //...
+     // ...
      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in removing sticky event.`);
    });
    ```
