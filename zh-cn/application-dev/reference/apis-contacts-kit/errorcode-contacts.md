@@ -3,7 +3,7 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @yanghaoqian-->
+<!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 > **说明：**
@@ -111,3 +111,105 @@ User canceled.
 **处理步骤**
 
 当前用户主动取消操作，请稍后重试。
+
+
+## 401 打开联系人头像文件失败
+
+**错误信息**
+
+Failed to open contact portrait file.
+
+**错误描述**
+
+无法打开联系人头像文件。
+
+**可能原因**
+
+头像文件路径错误、文件不存在、磁盘损坏。
+
+**处理步骤**
+
+检查文件是否存在。
+
+
+## 401 系统内部错误
+
+**错误信息**
+
+Internal error. Invalid contact id. Failed to generate contact profile.
+
+**错误描述**
+
+内部关联联系人id无效。
+
+**可能原因**
+
+系统内部处理异常。
+
+**处理步骤**
+
+系统异常，请稍后重试。
+
+**错误信息**
+
+Internal error. Failed to save contact portrait.
+
+**错误描述**
+
+保存联系人头像失败。
+
+**可能原因**
+
+头像文件异常。
+
+**处理步骤**
+
+检查文件。
+
+**错误信息**
+
+Internal error. The query resultSet is nullptr.
+
+**错误描述**
+
+数据库查询插入结果集为空指针。
+
+**可能原因**
+
+系统内部处理异常。
+
+**处理步骤**
+
+系统异常，请稍后重试。
+
+**错误信息**
+
+Internal error. The query resultSet is empty.
+
+**错误描述**
+
+数据库查询插入结果集存在但无数据。
+
+**可能原因**
+
+系统内部处理异常。
+
+**处理步骤**
+
+系统异常，请稍后重试。
+
+**错误信息**
+
+Internal error. Invalid contact rawid.
+
+**错误描述**
+
+内部关联联系人rawid无效。
+
+**可能原因**
+
+系统内部处理异常。
+
+**处理步骤**
+
+系统异常，请稍后重试。
