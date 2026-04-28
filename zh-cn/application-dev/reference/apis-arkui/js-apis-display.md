@@ -44,7 +44,7 @@ import { display } from '@kit.ArkUI';
 
 ## Orientation<sup>10+</sup>
 
-显示设备当前显示的方向枚举。
+显示设备的显示方向枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -107,7 +107,7 @@ import { display } from '@kit.ArkUI';
 
 ## FoldDisplayMode<sup>10+</sup>
 
-可折叠设备的显示模式枚举。
+可折叠设备的屏幕显示模式枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -126,8 +126,10 @@ import { display } from '@kit.ArkUI';
 | FOLD_DISPLAY_MODE_COORDINATION | 4 | 表示设备当前双屏协同显示。|
 
 >**说明：**<br>
->&bullet; 对于内外屏均可作为主屏幕使用的折叠产品，例如大折叠、阔折叠，内屏显示状态为FOLD_DISPLAY_MODE_FULL，外屏显示状态为FOLD_DISPLAY_MODE_MAIN。<br>
->&bullet; 对于外屏只有简单的辅助显示作用的折叠产品，例如小折叠，内屏显示状态为FOLD_DISPLAY_MODE_MAIN，外屏显示状态为FOLD_DISPLAY_MODE_SUB。
+>
+>- 对于内外屏均可作为主屏幕使用的折叠产品，例如大折叠、阔折叠，内屏显示状态为FOLD_DISPLAY_MODE_FULL，外屏显示状态为FOLD_DISPLAY_MODE_MAIN。<br>
+>
+>- 对于外屏只有简单的辅助显示作用的折叠产品，例如小折叠，内屏显示状态为FOLD_DISPLAY_MODE_MAIN，外屏显示状态为FOLD_DISPLAY_MODE_SUB。
 
 ## CornerType<sup>23+</sup>
 
@@ -170,7 +172,7 @@ import { display } from '@kit.ArkUI';
 
 ## FoldCreaseRegion<sup>10+</sup>
 
-折叠折痕区域。
+折叠设备屏幕的折痕区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -199,8 +201,8 @@ import { display } from '@kit.ArkUI';
 
 | 名称   | 类型 |  只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| left   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左边界，单位为px，该参数为整数。 |
-| top    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的上边界，单位为px，该参数为整数。 |
+| left   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左上角顶点相对所在逻辑屏幕左顶点的x轴坐标，单位为px，该参数为整数。 |
+| top    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左上角顶点相对所在逻辑屏幕左顶点的y轴坐标，单位为px，该参数为整数。 |
 | width  | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的宽度，单位为px，该参数为整数。   |
 | height | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的高度，单位为px，该参数为整数。   |
 
@@ -1207,7 +1209,7 @@ console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ## display.getCurrentFoldCreaseRegion<sup>10+</sup>
 getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
-在当前显示模式下获取折叠折痕区域。
+获取折叠设备屏幕的折痕区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1223,7 +1225,7 @@ getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 | 类型 | 说明 |
 | ----------------------------------------------- | ------------------------------------------------------- |
-| [FoldCreaseRegion](#foldcreaseregion10) | FoldCreaseRegion对象，返回设备在当前显示模式下的折叠折痕区域。 |
+| [FoldCreaseRegion](#foldcreaseregion10) | FoldCreaseRegion对象，返回折叠设备在当前显示模式下的折痕区域。 |
 
 **错误码：**
 
@@ -1266,8 +1268,8 @@ on(type: 'foldStatusChange', callback: Callback&lt;FoldStatus&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态发生变化。 |
-| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 是   | 回调函数。表示折叠设备折叠状态。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态变化事件。 |
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 是   | 回调函数。返回折叠设备折叠状态。 |
 
 **错误码：**
 
@@ -1362,8 +1364,8 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态发生变化。 |
-| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 否   | 需要取消注册的回调函数。表示折叠设备折叠状态。若无此参数，则取消注册折叠状态变化监听的所有回调函数。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态变化事件。 |
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 否   | 需要取消注册的回调函数。返回折叠设备折叠状态。若无此参数，则取消注册折叠状态变化监听的所有回调函数。 |
 
 **错误码：**
 
@@ -1450,7 +1452,7 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
+| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态变化事件。 |
 | callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
 
 **错误码：**
@@ -1470,7 +1472,7 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
-  display.on("brightnessInfoChange", callback);
+  display.on('brightnessInfoChange', callback);
 } catch (error) {
   console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
 }
@@ -1542,7 +1544,7 @@ off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, Brigh
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
+| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态变化事件。 |
 | callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。表示brightnessInfo状态发生改变。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。参数1为displayId，参数2为屏幕亮度信息。 |
 
 **错误码：**
@@ -1562,7 +1564,7 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
-  display.off("brightnessInfoChange", callback);
+  display.off('brightnessInfoChange', callback);
 } catch (error) {
   console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
 }
@@ -1634,8 +1636,8 @@ on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'foldAngleChange'，表示折叠设备折叠角度发生变化。|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。|
+| type     | string                                   | 是 | 监听事件，固定为'foldAngleChange'，表示折叠设备折叠角度变化事件。|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。返回折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。|
 
 **错误码：**
 
@@ -1716,8 +1718,8 @@ off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): vo
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                    | 是  | 监听事件，固定为'foldAngleChange'表示折叠设备折叠角度发生变化。|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | 否  | 需要取消注册的回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。若无此参数，则取消注册折叠角度变化监听的所有回调函数。|
+| type     | string                                    | 是  | 监听事件，固定为'foldAngleChange'表示折叠设备折叠角度变化事件。|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | 否  | 需要取消注册的回调函数。返回折叠设备屏幕折叠角度值（0度~180度）。若无此参数，则取消注册折叠角度变化监听的所有回调函数。|
 
 **错误码：**
 
@@ -1805,7 +1807,7 @@ on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态变化事件。|
 | callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。|
 
 **错误码：**
@@ -1887,7 +1889,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态变化事件。|
 | callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。|
 
 **错误码：**
@@ -2833,8 +2835,8 @@ promise.then((data: Array<display.Display>) => {
 | yDPI | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 否 | y轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23                                 |
 | colorSpaces<sup>11+</sup> | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md)> | 是 | 否 | 显示设备支持的所有色域类型。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11   <br/>  **ArkTS-Sta起始版本：** 23                  |
 | hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md)> | 是 | 否 | 显示设备支持的所有HDR格式。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11   <br/>  **ArkTS-Sta起始版本：** 23                          |
-| availableWidth<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23              |
-| availableHeight<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23          |
+| availableWidth<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**  API版本26.0.0之前，该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度；从API版本26.0.0开始，不存在设备行为差异。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23              |
+| availableHeight<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**  API版本26.0.0之前，该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域高度；从API版本26.0.0开始，不存在设备行为差异。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23          |
 | screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | 是 | 是 | 显示设备的屏幕形状，默认值为RECTANGLE。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18   <br/>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>19+</sup> | [DisplaySourceMode](#displaysourcemode19) | 是 | 是 | 显示设备的显示模式枚举，默认值为DisplaySourceMode.NONE。<br/>**系统能力：** SystemCapability.Window.SessionManager <br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 23                 |
 | x<sup>19+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 是 | 显示设备左上角相对于原点的x轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br/>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 23           |
@@ -3123,7 +3125,7 @@ let callback: Callback<display.Rect> = (data: display.Rect) => {
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
-  displayClass.on("availableAreaChange", callback);
+  displayClass.on('availableAreaChange', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -3224,7 +3226,7 @@ let callback: Callback<display.Rect> = (data: display.Rect) => {
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
-  displayClass.off("availableAreaChange", callback);
+  displayClass.off('availableAreaChange', callback);
 } catch (exception) {
   console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -3295,7 +3297,7 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| [FoldCreaseRegion](#foldcreaseregion10) | 返回设备在当前显示模式下的折叠折痕区域。 |
+| [FoldCreaseRegion](#foldcreaseregion10) | 返回折叠设备在当前显示模式下的折痕区域。 |
 
 **错误码：**
 
