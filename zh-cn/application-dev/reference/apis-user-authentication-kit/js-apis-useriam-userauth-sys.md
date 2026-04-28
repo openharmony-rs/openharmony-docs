@@ -28,14 +28,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。|
-| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID。<br>**系统接口**: 此接口为系统接口。<br>**模型约束**: 此接口仅可在Stage模型下使用。|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：**:此接口为系统接口。<br>**模型约束：**此接口仅可在Stage模型下使用。|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -417,29 +413,11 @@ ArkTS-Sta: getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 
 **示例：**
 
-ArkTS-Dyn示例:
-
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let userAuthWidgetMgrVersion: number = 1;
-try {
-  let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
-} catch (error) {
-  const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
-}
-```
-
-ArkTS-Sta示例:
-
-```ts
-import { userAuth } from '@kit.UserAuthenticationKit';
-import { BusinessError } from '@ohos.base';
-
-let userAuthWidgetMgrVersion: int = 1;
+let userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
   console.info('get userAuthWidgetMgr instance successfully.');
@@ -481,7 +459,7 @@ type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
 
 | 名称         | 类型   | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
-| sendCommand  | [AuthWidgetCallbackSendCommandFunc](#authwidgetcallbacksendcommandfunc23) | 否 | 否   | 用于用户认证框架向组件发送命令。  |
+| sendCommand<sup>23+</sup> | [AuthWidgetCallbackSendCommandFunc](#authwidgetcallbacksendcommandfunc23) | 否 | 否   | 用于用户认证框架向组件发送命令。  |
 
 ### sendCommand<sup>10+</sup>
 
@@ -505,7 +483,7 @@ sendCommand(cmdData: string): void
 
 **示例：**
 
-ArkTS-Dyn**示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -527,7 +505,7 @@ try {
 }
 ```
 
-ArkTS-Sta**示例：**
+ArkTS-Sta示例：
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -567,7 +545,7 @@ try {
 
 发起用户认证，采用认证可信等级≥ATL3的隐私密码认证，获取认证结果。
 
-ArkTS-Dyn**示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -604,7 +582,7 @@ try {
 }
 ```
 
-ArkTS-Sta**示例：**
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -724,6 +702,6 @@ try {
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
-| AUTH_TOKEN_EXPIRED      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| AUTH_TOKEN_EXPIRED<sup>18+</sup>       | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
 | REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|

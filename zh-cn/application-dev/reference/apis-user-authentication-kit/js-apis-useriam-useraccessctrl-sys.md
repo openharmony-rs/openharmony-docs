@@ -107,8 +107,10 @@ ArkTS-Sta: verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promi
 | 12500015 | AuthToken integrity check failed.     |
 | 12500016 | AuthToken has expired.                |
 
-ArkTS-Dyn**示例：**
+**示例：**
 
+ArkTS-Dyn示例：
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -176,7 +178,7 @@ try {
 }
 ```
 
-ArkTS-Dyn**示例：**
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';

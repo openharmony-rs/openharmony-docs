@@ -273,7 +273,9 @@ getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
 | -------- | ------------------------------------------------------------ |
 | 32600001 | The system service is not working properly. Please try again later. |
 
-ArkTS-Dyn**示例：**
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -289,7 +291,7 @@ statusMonitor.getTemplateStatus()
   })
 ```
 
-ArkTS-Dyn**示例：**
+ArkTS-Sta示例：
 
 ```ts
 const localUserId = 100;
@@ -844,7 +846,6 @@ unregisterDeviceSelectCallback(): void
 
 **示例：**
 <!--code_no_check-->
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -901,7 +902,9 @@ ArkTS-Sta: updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: 
 | 32600002 | The template is not found. |
 | 32600003 | The business ID is invalid. |
 
-ArkTS-Dyn**示例：**
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -916,7 +919,7 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
   })
 ```
 
-ArkTS-Sta**示例：**
+ArkTS-Sta示例：
 
 ```ts
 const templateId = new Uint8Array([1, 2, 3]);
