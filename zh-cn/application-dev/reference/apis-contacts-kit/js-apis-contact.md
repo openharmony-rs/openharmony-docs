@@ -41,7 +41,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -150,7 +150,7 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -434,6 +434,8 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
@@ -542,6 +544,8 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -659,6 +663,8 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -2541,7 +2547,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -2628,7 +2634,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -2724,7 +2730,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -2816,7 +2822,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -2922,7 +2928,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
