@@ -26,7 +26,7 @@
 
 ## 约束与限制
 
-在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
+在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。从**API版本26.0.0**开始，当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
 
 
 ## 日志获取
@@ -81,6 +81,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**[libuv](../reference/native-lib/libuv.md)和[ffrt](../reference/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
 | AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
+| ModuleImportStack | 模块加载链路 | 26.0.0 | 否 | ARM 64位系统下，若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则包含此字段。 |
 
 以下是JS Crash崩溃日志规格。
 ```text
