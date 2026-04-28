@@ -1580,6 +1580,31 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100011 | The system ability works abnormally. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { Callback } from '@kit.BasicServicesKit';
+
+export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
+  private accountId: string;
+  private accountName: string;
+  constructor() {
+    this.accountId = 'accountId';
+    this.accountName = 'accountName';
+  }
+
+  connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
+    let callbackJson = JSON.stringify({
+      'requestId': requestId,
+    });
+    callback(callbackJson);
+  }
+}
+
+let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
+```
 
  
 ## DlpConnManager<sup>21+</sup>
@@ -1607,6 +1632,14 @@ constructor()
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnManager();
+```
 
 ### registerPlugin<sup>21+</sup>
 static registerPlugin(plugin: DlpConnPlugin): number
@@ -1644,6 +1677,31 @@ static registerPlugin(plugin: DlpConnPlugin): number
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { Callback } from '@kit.BasicServicesKit';
+
+export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
+  private accountId: string;
+  private accountName: string;
+  constructor() {
+    this.accountId = 'accountId';
+    this.accountName = 'accountName';
+  }
+
+  connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
+    let callbackJson = JSON.stringify({
+      'requestId': requestId,
+    });
+    callback(callbackJson);
+  }
+}
+  
+let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsulePlugin());
+```
 
 ### unregisterPlugin<sup>21+</sup>
 static unregisterPlugin(): void
@@ -1669,3 +1727,11 @@ static unregisterPlugin(): void
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.DlpConnManager.unregisterPlugin();
+```
