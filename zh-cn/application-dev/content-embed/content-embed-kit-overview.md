@@ -1,9 +1,10 @@
 # Content Embed Kit简介
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
-<!--Tester: @zhaotianyu-->
+<!--Owner: @qq_41146650-->
+<!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
+<!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 从API version 24开始，Content Embed Kit（内容嵌入服务）为开发者提供应用间文档互相嵌入与协同编辑的能力，帮助用户在本应用文档中嵌入其他格式的文档，并实现跨应用的文档编辑能力，丰富应用编辑体验。

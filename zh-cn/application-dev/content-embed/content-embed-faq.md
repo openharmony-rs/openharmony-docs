@@ -1,9 +1,10 @@
 # Content Embed Kit常见问题
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
-<!--Tester: @zhaotianyu-->
+<!--Owner: @qq_41146650-->
+<!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
+<!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 ## 如何根据需求选择链接或嵌入模式来创建OE文档
