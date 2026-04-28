@@ -60,7 +60,7 @@
      <!-- @[create_copyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
      ``` TypeScript
-     
+     let copyData: ArrayBuffer = new ArrayBuffer(0);
      ```
    
    - pixelMap编码到ArrayBuffer。
