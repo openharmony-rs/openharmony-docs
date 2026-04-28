@@ -1520,7 +1520,7 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 | 参数名               | 类型                                      | 必填   | 说明     |
 | ----------------- | --------------------------------------- | ---- | ------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息。 |
-| clearOptions      | [ClearOptions](#clearoptions)           | 是    | 更新选项。   |
+| clearOptions      | [ClearOptions](#clearoptions)           | 是    | 清除选项。   |
 
 **返回值：**
 
