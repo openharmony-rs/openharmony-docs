@@ -2910,7 +2910,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId：number): Promis
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象, 无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2928,9 +2928,9 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId：number): Promis
 import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class ServiceExtension extends ServiceExtensionAbility {
+export default class ServiceExtension extends ServiceExtensionAbility {
   onCreate(want: Want) {
-    let pickerWant: Want = {
+    let pullUIExtWant: Want = {
       bundleName: 'com.example.myapplication',
       abilityName: 'UIExtAbility',
       moduleName: 'entry_test',
@@ -2943,7 +2943,7 @@ class ServiceExtension extends ServiceExtensionAbility {
     let accountId = 100;
 
     try {
-      this.context.requestModalUIExtensionWithAccount(want, accountId)
+      this.context.requestModalUIExtensionWithAccount(pullUIExtWant, accountId)
         .then(() => {
           // 执行正常业务
           console.info('requestModalUIExtensionWithAccount succeed');
