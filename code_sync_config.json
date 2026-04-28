@@ -5475,19 +5475,19 @@
 						"start_line":16
 					},
 					{
-						"end_line":70,
+						"end_line":82,
 						"name":"uniform_type_descriptor_test",
 						"start_line":22
 					},
 					{
-						"end_line":87,
+						"end_line":103,
 						"name":"get_filename_extensions_by_mimeType",
-						"start_line":73
+						"start_line":85
 					},
 					{
-						"end_line":105,
+						"end_line":125,
 						"name":"get_filename_extension_by_mimeType",
-						"start_line":91
+						"start_line":107
 					}
 				]
 			}
