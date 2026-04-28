@@ -215,7 +215,7 @@ try {
   let bucket2: ValuesBucket = {"key":"age", "value": Number(20)};
   let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
   let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
-  kvStore.putValuesBuckets(people, (err: BusinessError | null) => {
+  kvStore!.putValuesBuckets(people, (err: BusinessError | null) => {
     if (err != undefined) {
       console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
       return;
@@ -283,7 +283,7 @@ try {
   let bucket2: ValuesBucket = {"key":"age", "value": Number(20)};
   let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
   let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
-  kvStore.putValuesBuckets(people).then(() => {
+  kvStore!.putValuesBuckets(people).then(() => {
     console.info(`Succeeded in putting patch`);
   }).catch((err: BusinessError) :void => {
     console.error(`Failed to do putValuesBuckets error.code is ${err.code},message is ${err.message}`);
