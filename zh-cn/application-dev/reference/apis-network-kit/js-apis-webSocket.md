@@ -782,7 +782,7 @@ onOpen(callback: Callback\<OpenResult\>): void
 
 订阅WebSocket的打开事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
