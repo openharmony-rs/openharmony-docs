@@ -334,7 +334,7 @@ connectToDevice(config: WifiDeviceConfig): void
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | 否 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| chload | number | 否 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 |
+| chload | number | 否 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 |
 | snr | number | 否 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 |
 | suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
 | isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
@@ -389,7 +389,7 @@ getSupportedFeatures(): number
 | 0x0001 | 基础结构模式特性。 |
 | 0x0002 | 5&nbsp;GHz带宽特性。 |
 | 0x0004 | GAS/ANQP特性。 |
-| 0x0008 | Wifi-Direct特性。 |
+| 0x0008 | WiFi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
 | 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
@@ -737,6 +737,12 @@ getDisconnectedReason(): DisconnectedReason
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [DisconnectedReason](#disconnectedreason-10) | 最近断开的原因 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
@@ -746,12 +752,6 @@ getDisconnectedReason(): DisconnectedReason
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| [DisconnectedReason](#disconnectedreason-10) | 最近断开的原因 |
 
 **示例：**
 ```ts
@@ -1513,7 +1513,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示所有群组信息。如果error为非0，表示处理出现错误。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
+| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示所有群组信息。如果err为非0，表示处理出现错误。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
 
 **错误码：**
 
@@ -1822,7 +1822,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -1853,7 +1853,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-| callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -1891,7 +1891,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPrp网络。<br /> **系统接口：** 此接口为系统接口。 |
+| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
 
 ## wifiManager.isRandomMacDisabled<sup>21+</sup>
 
