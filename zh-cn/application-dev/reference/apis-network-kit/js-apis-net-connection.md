@@ -3012,7 +3012,7 @@ ArkTS-Dyn: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote:
 
 | 类型   | 说明                     |
 | ------ | ----------------------- |
-| Promise\<number> | Promise对象，返回应用程序的UID。如果不存在匹配的UID则返回-1。 |
+| ArkTS-Dyn: Promise\<number><br/> ArkTS-Sta: Promise\<int>| Promise对象，返回应用程序的UID。如果不存在匹配的UID则返回-1。 |
 
 **错误码：**
 
@@ -3078,7 +3078,7 @@ ArkTS-Sta: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, rem
 
 | 类型   | 说明                     |
 | ------ | ----------------------- |
-| number | 返回应用程序的UID。如果不存在匹配的UID则返回-1。|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int| 返回应用程序的UID。如果不存在匹配的UID则返回-1。|
 
 **错误码：**
 
@@ -3340,7 +3340,10 @@ connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[
 
 ## connection.queryProbeResult
 
-queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
+ArkTS-Dyn: queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
+
+ArkTS-Sta: queryProbeResult(destination: string, duration: int): Promise\<ProbeResultInfo\>
+
 
 查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口使用Promise方式作为异步方法。
 
@@ -3361,7 +3364,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
-| duration | number | 是 | 探测持续时间，单位为秒，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
+| duration | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 探测持续时间，单位为秒，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
 
 **返回值：**
 
@@ -4747,7 +4750,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 | 链路信息。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23                           |
 | routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 | 路由信息。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23                         |
 | dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23             |
-| mtu           | number                              | 否 | 否 | 最大传输单元。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23                                       |
+| mtu           | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 最大传输单元。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23                                       |
 | isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -4781,7 +4784,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称         |           类型            | 只读 | 可选 |        说明         |
 | ------ | ------ | --- |---|------------------------- |
 | address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |	
-| prefixLength | number                    | 否 | 否  |链路地址前缀的长度。  |
+| prefixLength | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |链路地址前缀的长度。  |
 
 ## NetAddress
 
@@ -4867,10 +4870,14 @@ IP邻居表条目信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+ **ArkTS-Dyn起始版本：** 23
+ 
+ **ArkTS-Sta起始版本：** 26.0.0
+
 | 名称            | 值   | 说明          |
 | --------------- | ---- | ------------ |
-| PROTO_TYPE_TCP  | 6    | TCP网络协议。<br> **ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 26.0.0 |
-| PROTO_TYPE_UDP  | 17   | UDP网络协议。<br> **ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 26.0.0 |
+| PROTO_TYPE_TCP  | 6    | TCP网络协议。 |
+| PROTO_TYPE_UDP  | 17   | UDP网络协议。 |
 
 ## TcpNetPortStatesInfo<sup>24+</sup>
 
