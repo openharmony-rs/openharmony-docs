@@ -97,41 +97,41 @@
     #define __SERVER_PROCESS_H__
 
     /*
-    Init函数：用于创建socket环境，并预设置一些属性
-    */
+     Init函数：用于创建socket环境，并预设置一些属性
+     */
     int Init();
 
     /*
-    SetParam函数：所有插件参数设置的统一接口
-    */
+     SetParam函数：所有插件参数设置的统一接口
+     */
     int SetParam(const char *key, const char *value);
 
     /*
-    GetParam函数：所有插件参数获取的统一接口
-    */
+     GetParam函数：所有插件参数获取的统一接口
+     */
     int GetParam(const char *key, char *value);
 
     /*
-    ReverseSetParamCallback函数：回调
-    */
+     ReverseSetParamCallback函数：回调
+     */
     int ReverseSetParamCallback(int(*setParam)(const char *key, const char *value));
 
     /*
-    Open函数：用于服务打开的接口
-    */
+     Open函数：用于服务打开的接口
+     */
     int Open();
 
     /*
-    MainLoop函数：每隔100ms调用一次
-    */
+     MainLoop函数：每隔100ms调用一次
+     */
     int MainLoop();
 
     /*
-    Close函数，用于关闭服务并释放资源
-    */
+     Close函数，用于关闭服务并释放资源
+     */
     int Close();
 
-    #endif //__SERVER_PROCESS_H__
+    #endif // __SERVER_PROCESS_H__
     ```
 
 6. 编写server_process.c、main.cpp
@@ -153,8 +153,8 @@
     #include "openssl/err.h"
     #include "openssl/ssl.h"
 
-    #define SERVER_PEM "/data/sdcard/serverKey.pem"  //使用绝对路径
-    #define SERVER_CER "/data/sdcard/serverCert.cer" //使用绝对路径
+    #define SERVER_PEM "/data/sdcard/serverKey.pem"  // 使用绝对路径
+    #define SERVER_CER "/data/sdcard/serverCert.cer" // 使用绝对路径
 
     #define LOG_PRINT(fmt, ...) printf("[ServerProcess][%s:%d] " fmt "\n", __func__, __LINE__, ##__VA_ARGS__)
     #define DO_CHECK(cond, log, ...) \
