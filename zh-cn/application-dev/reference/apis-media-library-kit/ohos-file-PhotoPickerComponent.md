@@ -685,7 +685,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
 | 名称     | 类型    | 只读 | 可选  | 说明                                                |
 |----------|--------|-----|-----|---------------------------------------------------|
-| uri      | string                | 否 | 是   | 图片、视频的uri。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。</br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
+| uri      | string                | 否 | 是   | 图片、视频的uri。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**注意：**<br>当资源为连拍照片类型时，仅返回该连拍组的封面资源。</br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
 | mimeType | string                | 否 | 是   | 图片、视频的mimeType。<br>开发者可以通过mimeType的字符串前缀判断媒体类型：以'image/'开头表示图片，以'video/'开头表示视频。具体判断方式请参考[使用mimeType字段来判断资源类型](../../media//medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#使用mimetype字段来判断资源类型)。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | height   | number                | 否 | 是   | 图片、视频的高（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
@@ -1303,7 +1303,8 @@ struct Drawer {
 
   aboutToAppear(): void {
     // 获取屏幕高度。
-    this.screenHeight = px2vp(display.getDefaultDisplaySync().height);
+    let displayInfo = display.getDefaultDisplaySync();
+    this.screenHeight = displayInfo.height / displayInfo.densityPixels;
     // 获取抽屉高度，示例为屏幕高度的0.8倍，可自定义修改。
     this.drawerHeight = this.screenHeight * this.drawerRatio;
     // 初始时抽屉在底部（隐藏高度），示例为隐藏抽屉的0.8倍。
@@ -1333,7 +1334,7 @@ struct Drawer {
   }
 
   private hideDrawer() {
-    animateTo({
+    this.getUIContext()?.animateTo({
       duration: 300,
       curve: Curve.EaseOut,
       onFinish: () => {
@@ -1346,7 +1347,7 @@ struct Drawer {
   }
 
   private showDrawer() {
-    animateTo({
+    this.getUIContext()?.animateTo({
       duration: 300,
       curve: Curve.EaseOut,
       onFinish: () => {

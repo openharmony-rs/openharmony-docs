@@ -28,3 +28,27 @@ function getMediaTypeByMimeType(mimeType: string): string {
   return 'unKnown';
 }
 ```
+
+## 通过URI判断连拍图资源
+
+连拍照片的URI中包含特定标识，开发者可以通过检查URI中的关键字来判断是否为连拍图资源：
+
+- URI同时包含`burst`和`cover`时，表示该资源为连拍封面。
+- URI仅包含`burst`时，表示该资源为连拍照片（非封面）。
+- URI中不包含`burst`关键字时，表示该资源为非连拍图。
+
+**示例：**
+
+```ts
+function getBurstTypeByUri(uri: string): string {
+  const hasBurst = uri.includes('burst');
+  const hasCover = uri.includes('cover');
+  
+  if (hasBurst && hasCover) {
+    return '连拍封面';
+  } else if (hasBurst) {
+    return '连拍照片';
+  }
+  return '非连拍图';
+}
+```
