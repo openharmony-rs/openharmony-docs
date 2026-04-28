@@ -193,6 +193,7 @@ export default class EntryAbility extends UIAbility {
 getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取指定文件名的所有文件列表，按优先级从低到高。使用callback异步回调。
+
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml。
 
 **系统能力：** SystemCapability.Customization.ConfigPolicy
@@ -585,6 +586,7 @@ export default class EntryAbility extends UIAbility {
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;string&gt;): void
 
 根据跟随模式获取指定文件优先级最高的配置文件路径。使用callback异步回调。
+
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/sys_pod/etc/carrier/46060/etc/config.xml。
 
 **系统能力：** SystemCapability.Customization.ConfigPolicy
