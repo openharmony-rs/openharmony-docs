@@ -42,7 +42,7 @@ static show(options?: TimePickerDialogOptions)
 
 | 参数名  | 类型                                                        | 必填 | 说明                       |
 | ------- | ----------------------------------------------------------- | ---- | -------------------------- |
-| options | [TimePickerDialogOptions](#timepickerdialogoptions对象说明) | 否   | 配置时间选择器弹窗的参数。 |
+| options | [TimePickerDialogOptions](#timepickerdialogoptions对象说明) | 否   | 配置时间选择器弹窗的参数。参数缺省时无法弹出弹窗。 |
 
 ## TimePickerDialogOptions对象说明
 

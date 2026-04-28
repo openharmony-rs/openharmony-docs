@@ -42,7 +42,7 @@ static show(options?: TextPickerDialogOptions)
 
 | 参数名  | 类型                                                        | 必填 | 说明                       |
 | ------- | ----------------------------------------------------------- | ---- | -------------------------- |
-| options | [TextPickerDialogOptions](#textpickerdialogoptions对象说明) | 否   | 配置文本选择器弹窗的参数。 |
+| options | [TextPickerDialogOptions](#textpickerdialogoptions对象说明) | 否   | 配置文本选择器弹窗的参数。参数缺省时无法弹出弹窗。 |
 
 ## TextPickerDialogOptions对象说明
 
