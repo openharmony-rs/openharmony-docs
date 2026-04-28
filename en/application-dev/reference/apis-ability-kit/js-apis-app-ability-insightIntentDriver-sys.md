@@ -47,7 +47,6 @@ Defines the parameter used to execute an intent call.
 | uris<sup>18+</sup> | Array&lt;string&gt; | No| Yes| List of URIs authorized by the intent caller to the intent executor during the call. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this field is mandatory. Only the first element in the array is read as the URI of [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12).|
 | flags<sup>18+</sup> | number | No| Yes| [Flags](js-apis-app-ability-wantConstant.md#flags) of the URIs authorized by the intent caller to the intent executor during the call.<br>**NOTE**<br>This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION\||FLAG_AUTH_WRITE_URI_PERMISSION.|
 | userId<sup>23+</sup> | number | No| Yes| ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.   |
-| deviceId<sup>26+</sup> | string | No| Yes| ID of the device on which the intent is to be executed.   |
 
 ## InsightIntentInfoFilter<sup>23+<sup>
 
@@ -339,8 +338,6 @@ When the caller is in the background, the ohos.permission.START_ABILITIES_FROM_B
 
 When [ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) of the intent call is set to **UI_ABILITY_BACKGROUND**, the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission is required.
 
-When **deviceId** in [ExecuteParam](#executeparam) is not empty, the ohos.permission.EXECUTE_DISTRIBUTED_INTENT permission is required.
-
 **Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
@@ -423,8 +420,6 @@ Executes a call to an intent. This API uses a promise to return the result.
 When the caller is in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required.
 
 When [ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) of the intent call is set to **UI_ABILITY_BACKGROUND**, the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission is required.
-
-When **deviceId** in [ExecuteParam](#executeparam) is not empty, the ohos.permission.EXECUTE_DISTRIBUTED_INTENT permission is required.
 
 **Model restriction**: This API can be used only in the stage model.
 

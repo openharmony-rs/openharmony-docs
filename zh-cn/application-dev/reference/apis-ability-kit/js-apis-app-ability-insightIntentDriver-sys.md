@@ -47,7 +47,6 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)的URI。 |
 | flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
 | userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。    |
-| deviceId<sup>26+</sup> | string | 否 | 是 | 目标意图执行的设备ID。    |
 
 ## InsightIntentInfoFilter<sup>23+<sup>
 
@@ -339,8 +338,6 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
-当[ExecuteParam](#executeparam)中的**deviceId**不为空时，需要申请`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`权限。
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -423,8 +420,6 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
 
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
-
-当[ExecuteParam](#executeparam)中的**deviceId**不为空时，需要申请`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`权限。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
