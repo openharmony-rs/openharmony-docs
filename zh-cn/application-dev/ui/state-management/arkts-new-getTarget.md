@@ -39,15 +39,6 @@
   let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   ```
   
-  ``` TypeScript
-  import { UIUtils } from '@kit.ArkUI';
-  @Observed
-  class Info {
-    public name: string = 'Tom';
-  }
-  let info: Info = new Info();
-  let rawInfo: Info = UIUtils.getTarget(info); // 正确用法
-  ```
 
 
 - 更改getTarget获取的原始对象中的内容不会被观察到变化，也不会触发UI刷新。
@@ -271,14 +262,6 @@ class Info {
 let info: Info = new Info(); // NAPI接口传入info实例
 ```
 
-| 影响接口名              | 影响结果                                       |
-| ----------------------- | ---------------------------------------------- |
-| [napi_get_property_names](../../napi/use-napi-about-property.md#napi_get_property_names) | 返回值为"\_\_ob\_name"，"\_\_ob\_age"。        |
-| [napi_set_property](../../napi/use-napi-about-property.md#napi_set_property)       | 使用"name"，"\_\_ob\_name"均能赋值成功。       |
-| [napi_get_property](../../napi/use-napi-about-property.md#napi_get_property)       | 使用"name"，"\_\_ob\_name"均能获取到值。       |
-| [napi_has_property](../../napi/use-napi-about-property.md#napi_has_property)       | 使用"name"，"\_\_ob\_name"均返回true。         |
-| [napi_delete_property](../../napi/use-napi-about-property.md#napi_delete_property)    | 删除属性时需要加上"\_\_ob\_"前缀才能删除成功。 |
-| [napi_has_own_property](../../napi/use-napi-about-property.md#napi_has_own_property)   | 使用"name"，"\_\_ob\_name"均返回true。         |
 | [napi_set_named_property](../../napi/use-napi-about-property.md#napi_set_named_property) | 使用"name"，"\_\_ob\_name"均能赋值成功。       |
 | [napi_get_named_property](../../napi/use-napi-about-property.md#napi_get_named_property) | 使用"name"，"\_\_ob\_name"均能获取到值。       |
 | [napi_has_named_property](../../napi/use-napi-about-property.md#napi_has_named_property) | 使用"name"，"\_\_ob\_name"均返回true。         |

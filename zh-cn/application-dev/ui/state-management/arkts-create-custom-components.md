@@ -565,13 +565,6 @@ struct Son {
     })
     ```
     
-    ``` TypeScript
-    // 正确的执行方式为：filter返回一个新数组，后面的sort方法才不会改变原数组this.arr
-    ForEach(this.arr.filter((item, index) => index >= 2).sort(),
-      (item: number) => {
-        // ...
-      });
-    ```
   
   该问题可以参考[常见问题：build函数中更改状态变量导致appfreeze](./arkts-state-management-faq-inner-component.md#build函数中更改状态变量导致appfreeze)。
 
