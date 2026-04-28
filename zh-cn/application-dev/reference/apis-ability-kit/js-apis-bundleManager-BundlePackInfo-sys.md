@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 应用包信息，通过接口[freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo)获取。
 
