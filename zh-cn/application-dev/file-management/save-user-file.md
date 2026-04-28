@@ -17,7 +17,7 @@
 
 **约束限制**
 
-如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse](../../reference/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
+如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse](../reference/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
 
 ```ts
 if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
