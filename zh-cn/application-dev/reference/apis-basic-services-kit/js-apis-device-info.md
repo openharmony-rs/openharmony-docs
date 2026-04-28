@@ -73,7 +73,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 |
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号<br/> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 |
-| deviceColor<sup>26+</sup> | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/> 示例：gold |
+| deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/> 示例：gold<br/> **起始版本**：26.0.0 |
 
 **示例**
 
