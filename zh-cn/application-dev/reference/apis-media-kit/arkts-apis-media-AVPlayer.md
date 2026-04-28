@@ -49,7 +49,7 @@ import { media } from '@kit.MediaKit';
 | duration<sup>9+</sup> | number                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | width<sup>9+</sup>                                  | number                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | number                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| playlistLoopMode                      | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| playlistLoopMode                      | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -129,9 +129,9 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 9
-
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange23)。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -211,7 +211,7 @@ avPlayer.onStateChange(async (state: string, reason: media.StateChangeReason) =>
 
 ## offStateChange()<sup>23+</sup>
 
-offStateChange(callback?: OnAVPlayerStateChangeHandle): void;
+offStateChange(callback?: OnAVPlayerStateChangeHandle): void
 
 取消监听播放状态机[AVPlayerState](arkts-apis-media-t.md#avplayerstate9)切换的事件。使用callback异步回调。
 
@@ -308,9 +308,15 @@ off(type: 'error', callback?: ErrorCallback): void
 
 取消监听播放的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
 
 **参数：**
 
@@ -1910,7 +1916,9 @@ async function  test(){
 
 ## getCurrentPresentationTimestamp<sup>23+</sup>
 
-getCurrentPresentationTimestamp() : number
+ArkTS-Dyn: getCurrentPresentationTimestamp() : number
+
+ArkTS-Sta: getCurrentPresentationTimestamp() : long
 
 获取当前播放位置，可以在播放（playing）/暂停（paused）/完成（completed）状态调用。
 
@@ -3433,11 +3441,15 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 取消监听资源播放至结尾的事件。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEndOfStream](#offendofstream23)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offEndOfStream](#offendofstream23)。
 
 **参数：**
 
@@ -3583,6 +3595,12 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 >- 直播场景不支持timeUpdate上报。
 >- 操作（seek）时必须等待seekdone结束才能根据timeUpdate来更新进度条。
 >- 在pause状态下，缓冲结束时播放器会上报timeUpdate事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[ontimeupdate](#ontimeupdate23)。
+
+**ArkTS-Dyn起始版本：** 9
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3790,6 +3808,8 @@ async function test(){
 off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void
 
 取消监听音视频缓存更新事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4254,21 +4274,19 @@ async function test(){
 
 ## onVideoSizeChange()<sup>23+</sup>
 
-onVideoSizeChange(callback: OnVideoSizeChangeHandler): void;
+onVideoSizeChange(callback: OnVideoSizeChangeHandler): void
 
-监听视频播放宽高变化事件，使用callback异步回调。
+监听视频播放宽高变化事件。使用callback异步回调。
 
 仅视频播放支持该订阅事件，默认只在prepared状态上报一次，但HLS协议码流会在切换分辨率时上报。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23 开始，该接口支持在原子化服务中使用。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onvideosizechange9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **ArkTS-Sta起始版本：** 23
-
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onvideosizechange9)。
 
 **参数：**
 
@@ -5242,19 +5260,19 @@ avPlayer.offSubtitleUpdate('subtitleUpdate');
 
 ## onTrackChange()<sup>23+</sup>
 
-onTrackChange(callback: OnTrackChangeHandler): void;
+onTrackChange(callback: OnTrackChangeHandler): void
 
-订阅获取轨道变更的事件，使用callback异步回调。
+订阅获取轨道变更的事件。使用callback异步回调。
 
 当播放的轨道变更时，会通过订阅的回调方法通知用户。用户只能订阅一个轨道变更事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#ontrackchange12)。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 23
-
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#ontrackchange12)。
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5611,9 +5629,7 @@ async function test(){
 
 ## getPlaybackStatisticMetrics<sup>23+</sup>
 
-ArkTS-Dyn: getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
-
-ArkTS-Sta: getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
+getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
 
 获取当前播放器的统计指标信息。使用Promise异步回调。
 
@@ -5658,9 +5674,7 @@ media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
 
 ## onMetricsEvent<sup>23+</sup>
 
-ArkTS-Dyn: onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
-
-ArkTS-Sta: onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
+onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
 
 订阅播放过程中的指标事件。使用callback异步回调。
 
@@ -5695,9 +5709,7 @@ async function test(){
 
 ## offMetricsEvent<sup>23+</sup>
 
-ArkTS-Dyn: offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
-
-ArkTS-Sta: offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
+offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 
 取消订阅播放过程中的指标事件。
 
