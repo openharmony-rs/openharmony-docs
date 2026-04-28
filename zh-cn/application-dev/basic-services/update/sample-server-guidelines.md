@@ -131,7 +131,7 @@
     */
     int Close();
 
-    #endif //__SERVER_PROCESS_H__
+    #endif // __SERVER_PROCESS_H__
     ```
 
 6. 编写server_process.c、main.cpp
