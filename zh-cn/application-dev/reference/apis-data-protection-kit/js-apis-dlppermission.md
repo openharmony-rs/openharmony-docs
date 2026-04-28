@@ -1687,13 +1687,13 @@ static unregisterPlugin(): void
 
 queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-查询已打开且符合指定选项的DLP文件的URI列表。使用Promise异步回调。
+查询已打开且符合指定选项的企业DLP文件的URI列表。使用Promise异步回调。
 
 >**说明：**
 >
-> - 该接口仅能查询调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的DLP文件，无法查询其他应用生成的DLP文件。
+> - 该接口仅能查询调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件，无法查询其他应用生成的企业DLP文件。
 > - 相同分类标签的只读企业DLP文件在同一个沙箱中打开。如果一个沙箱中打开了多个相同标签的只读企业DLP文件，则查询结果返回所有该沙箱打开过文件的URI（包括手动关闭的文件）。
-> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则查询所有标签的所有DLP文件。
+> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则查询所有标签的所有企业DLP文件。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1705,13 +1705,13 @@ queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | DLP文件的查询选项。未指定时查询所有DLP文件。|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。未指定时查询所有企业DLP文件。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回已打开的目标DLP文件的URI列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回已打开的目标企业DLP文件的URI列表。 |
 
 **错误码：**
 
@@ -1746,12 +1746,12 @@ dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) 
 
 closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt;
 
-关闭所有符合指定选项的当前打开的DLP文件。使用Promise异步回调。
+关闭所有符合指定选项的当前打开的企业DLP文件。使用Promise异步回调。
 
 >**说明：**
 >
-> - 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的DLP文件。
-> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则关闭所有标签的所有DLP文件。
+> - 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件。
+> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则关闭所有标签的所有企业DLP文件。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1763,7 +1763,7 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | DLP文件的查询选项。未指定时关闭所有DLP文件。|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。未指定时关闭所有企业DLP文件。|
 
 **返回值：**
 
