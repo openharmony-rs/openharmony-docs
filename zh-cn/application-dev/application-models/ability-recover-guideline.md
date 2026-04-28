@@ -27,6 +27,8 @@
 
 - 重启设备不支持还原备份。
 
+- 备份恢复机制依赖任务保留机制，如果应用设置了[removeMissionAfterTerminate](../quick-start/module-configuration-file.md#abilities标签)为true，或者设备不支持任务保留（比如PC/2in1设备），则备份恢复机制无法生效。
+
 - [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复。
 
 ## 接口说明
