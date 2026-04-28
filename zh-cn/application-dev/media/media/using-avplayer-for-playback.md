@@ -106,7 +106,7 @@
    **示例一：播放网络媒体资源**
 
    ```ts
-   let url = 'https://xxx.xxx.xxx.mp3';
+   let url = 'https://abc.bcd.example.mp3'; // 此处仅为示意，请替换为真实资源文件URL。
    if (avPlayer == null) {
        return;
    }
@@ -116,10 +116,11 @@
    **示例二：应用沙箱文件播放**
 
    ```ts
-   let fdPath = 'fd://';
-   let path = `${this.context.filesDir}/${this.fileName}`;
+   let fdPath = 'fd://'; // 此处仅为示意，请替换为真实资源文件URL。
+   let path : string = `${this.context.filesDir}/${this.fileName}`; // 此处仅为示意，请替换为真实资源文件URL。
    let file = await fs.open(path);
    fdPath = fdPath + file.fd;
+   this.avPlayer = await media.createAVPlayer();
    this.avPlayer.url = url;
    ```
 
