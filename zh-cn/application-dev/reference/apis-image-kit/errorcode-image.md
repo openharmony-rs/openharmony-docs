@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -1044,6 +1044,42 @@ Failed to get the data from Surface.
 
 检查图像数据来源或使用新的图像数据。
 
+## 7600105 PixelMap已被释放
+
+**错误信息**
+
+PixelMap has been released.
+
+**错误描述**
+
+PixelMap已被释放。
+
+**可能原因**
+
+PixelMap对象已被释放，其关联的native对象已不存在。
+
+**处理步骤**
+
+检查该PixelMap对象是否存在被提前释放的风险（例如，在异步任务或另一个线程中意外释放），需确保该对象在使用结束前及所有异步方法执行完成前不被释放。
+
+## 7600106 PixelMap已被传递至另一个线程
+
+**错误信息**
+
+PixelMap has been passed to another thread.
+
+**错误描述**
+
+PixelMap已被传递至另一个线程。
+
+**可能原因**
+
+PixelMap对象已被传递至另一个线程。
+
+**处理步骤**
+
+不要在PixelMap对象被传递到另一个线程后仍在当前线程调用该对象的方法。
+
 ## 7600173 DMA内存不存在
 
 **错误信息**
@@ -1188,6 +1224,25 @@ Invalid parameter.
 
 检查并重新输入正确的参数。
 
+## 7600207 不支持的数据格式
+
+**错误信息**
+
+Unsupported data format.
+
+**错误描述**
+
+不支持的数据格式。
+
+**可能原因**
+
+1. 接口不支持传入的像素数据格式。
+2. 对象中的数据格式不支持特定的操作。
+
+**处理步骤**
+
+查看接口文档并使用接口支持的数据格式。
+
 ## 7600301 申请内存失败
 
 **错误信息**
@@ -1260,6 +1315,26 @@ Failed to create the PixelMap.
 **处理步骤**
 
 检查函数入参或检查是否提前释放了实例。
+
+## 7600306 数据转换失败
+
+**错误信息**
+
+Data conversion failed.
+
+**错误描述**
+
+数据转换失败。
+
+**可能原因**
+
+1. 传入的像素数据缓冲区的大小不符合预期。
+2. PixelMap内部的像素数据损坏。
+
+**处理步骤**
+
+1. 如果传入了一个缓冲区，检查缓冲区的大小是否符合预期。
+2. 检查PixelMap的像素数据和元数据是否正常。
 
 ## 7600501 不支持的分配器模式
 

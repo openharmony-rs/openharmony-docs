@@ -2,7 +2,7 @@
 
 为了增强状态管理框架对应用全局UI状态变量存储的能力，开发者可以使用AppStorageV2存储应用全局UI状态变量数据。
 
-从API version 23开始AppStorageV2提供状态变量在应用级全局共享的能力。开发者可以通过connect绑定同一个key，进行跨ability的数据共享。
+从API版本26.0.0开始AppStorageV2提供状态变量在应用级全局共享的能力。开发者可以通过[connect](../../reference/apis-arkui/js-apis-stateManagement-static.md#connect)绑定同一个key，进行跨ability的数据共享。
 
 ## 概述
 
@@ -21,7 +21,7 @@ import { AppStorageV2 } from '@kit.ArkUI';
 
 ## 使用说明
 
-以下接口详细描述请参考API文档：[AppStorageV2](../../../application-dev/reference/apis-arkui/js-apis-stateManagement-static.md#appstoragev222)。
+以下接口详细描述请参考API文档：[AppStorageV2](../../../application-dev/reference/apis-arkui/js-apis-stateManagement-static.md#appstoragev2)。
 
 ### connect
 
@@ -80,12 +80,12 @@ class Message {
   }
 }
 
-const IMessageType = Type.from<Message>();
+const IMessageType = Class.from<Message>();
 
 @Entry
 @ComponentV2
 struct Index {
-  // 使用connect在AppStorageV2中创建一个ttype为Message的Type的对象
+  // 使用connect在AppStorageV2中创建一个ttype为Message的Class的对象
   // 修改connect的返回值即可同步回AppStorageV2
   @Local message: Message = AppStorageV2.connect<Message>(IMessageType, () => new Message())!;
 
@@ -101,13 +101,13 @@ struct Index {
         .onClick((e: ClickEvent) => {
           this.message.userName += 'suf';
         })
-      // remove keyOrType IMessageType, 会从AppStorageV2中删除keyOrType为Message的Type的对象
+      // remove keyOrType IMessageType, 会从AppStorageV2中删除keyOrType为Message的Class的对象
       // remove之后，修改父组件的userId，子组件能同步变化，因为remove只是从AppStorageV2删除，不会影响组件中已存在的数据
       Button('remove keyOrType: IMessageType')
         .onClick((e: ClickEvent) => {
           AppStorageV2.remove(IMessageType);
         })
-      // connect ttype IMessageType, 会从AppStorageV2中添加ttype为Message的Type的对象
+      // connect ttype IMessageType, 会从AppStorageV2中添加ttype为Message的Class的对象
       // remove之后，重新添加，修改父子组件的userID，可以发现数据已经不同步，子组件重新connect之后，数据一致
       Button('connect ttype: IMessageType')
         .onClick((e: ClickEvent) => {
@@ -123,7 +123,7 @@ struct Index {
 
 @ComponentV2
 struct Child {
-  // 使用connect在AppStorageV2中取出一个ttype为Message的Type的对象，该对象已在父组件中创建
+  // 使用connect在AppStorageV2中取出一个ttype为Message的Class的对象，该对象已在父组件中创建
   @Local message: Message = AppStorageV2.connect<Message>(IMessageType, () => new Message())!;
   @Local name: string = this.message.userName;
 
@@ -139,12 +139,12 @@ struct Child {
         .onClick((e: ClickEvent) => {
           this.name = this.message.userName;
         })
-      // remove keyOrType IMessageType，会从AppStorageV2中删除keyOrType为Message的Type的对象
+      // remove keyOrType IMessageType，会从AppStorageV2中删除keyOrType为Message的Class的对象
       Button('remove keyOrType: IMessageType')
         .onClick((e: ClickEvent) => {
           AppStorageV2.remove(IMessageType);
         })
-      // connect ttype IMessageType，会从AppStorageV2中添加ttype为Message的Type的对象
+      // connect ttype IMessageType，会从AppStorageV2中添加ttype为Message的Class的对象
       Button('connect ttype: IMessageType')
         .onClick((e: ClickEvent) => {
           this.message = AppStorageV2.connect<Message>(IMessageType, () => new Message(10, 'Lucy'))!;
@@ -170,7 +170,7 @@ export class Sample {
   p2: number = 10;
 }
 
-export const ISampleType = Type.from<Sample>();
+export const ISampleType = Class.from<Sample>();
 ```
 
 页面1（Page1.ets）。
@@ -184,7 +184,7 @@ import { AppStorageV2, Builder, Button, ButtonType, ClickEvent, Column, Componen
 @Entry
 @ComponentV2
 struct Page1 {
-  // 在AppStorageV2中创建一个ttype为Sample的Type的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
+  // 在AppStorageV2中创建一个ttype为Sample的Class的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
   @Local prop: Sample = AppStorageV2.connect<Sample>(ISampleType, () => new Sample())!;
   pageStack: NavPathStack = new NavPathStack();
 
@@ -218,7 +218,7 @@ struct Page1 {
 
         Button('Page1 remove keyOrType ISampleType')
           .onClick((e: ClickEvent) => {
-            // 从AppStorageV2中删除后，AppStorageV2中不存在ttype为Sample的Type的对象，但prop关联的对象并没有被删除，所以点击下方的Text组件修改prop.p1，其值仍然会变化。
+            // 从AppStorageV2中删除后，AppStorageV2中不存在ttype为Sample的Class的对象，但prop关联的对象并没有被删除，所以点击下方的Text组件修改prop.p1，其值仍然会变化。
             AppStorageV2.remove(ISampleType);
           })
 
@@ -261,7 +261,7 @@ export function Page2Builder() {
 
 @ComponentV2
 export struct Page2 {
-  // 在AppStorageV2中创建一个ttype为Sample的Type的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
+  // 在AppStorageV2中创建一个ttype为Sample的Class的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
   @Local prop: Sample = AppStorageV2.connect<Sample>(ISampleType, () => new Sample())!;
   pathStack: NavPathStack = new NavPathStack();
 

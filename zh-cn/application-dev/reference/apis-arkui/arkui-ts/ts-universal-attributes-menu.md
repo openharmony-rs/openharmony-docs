@@ -14,13 +14,13 @@
 >
 >  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - 不支持在CustomBuilder中使用bindMenu和bindContextMenu弹出多级菜单。对此，可以使用[Menu组件](ts-basic-components-menu.md)来实现多级菜单。
+>  - 不支持在[CustomBuilder](ts-types.md#custombuilder8)中使用[bindMenu](#bindmenu)和[bindContextMenu](#bindcontextmenu8)弹出多级菜单。对此，可以使用[Menu组件](ts-basic-components-menu.md)来实现多级菜单。
 >
 >  - 弹出菜单的文本内容不支持长按选中。
 >
 >  - 当窗口大小发生变化以及点击菜单内容区时，菜单自动隐藏。
 >
->  - 如果绑定菜单的组件是可拖动节点且未指定bindContextMenu的preview，菜单弹出时会显示拖拽预览图，且菜单选项和预览图不会相互避让。开发者可根据使用场景设置preview或将目标节点设置为不可拖动。
+>  - 如果绑定菜单的组件是可拖动节点且未指定[bindContextMenu](#bindcontextmenu8)的preview，菜单弹出时会显示拖拽预览图，且菜单选项和预览图不会相互避让。开发者可根据使用场景设置preview或将目标节点设置为不可拖动。
 >
 >  - 从API version 12开始，菜单支持长按500ms弹出子菜单，支持按压态跟随手指移动。
 >
@@ -58,7 +58,7 @@ ArkTS-Sta: bindMenu(content: Array\<MenuElement\> | CustomBuilder | undefined, o
 
 | 参数名  | 类型                                                         | 必填 | 说明                                         |
 | ------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| content | ArkTS-Dyn: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置菜单项图标和文本的数组，或者自定义组件。 |
+| content | ArkTS-Dyn: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置菜单项图标和文本的数组，或者自定义组件。设置undefined时，与上一次弹出内容保持一致。 |
 | options | [MenuOptions](#menuoptions10)                                | 否   | 配置弹出菜单的参数。                         |
 
 **返回值：**
@@ -92,7 +92,7 @@ ArkTS-Sta: bindMenu(isShow: boolean \| Bindable\<boolean\> \| undefined, content
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | isShow  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable\<boolean\> \| undefined                                                      | 是   | 支持开发者通过状态变量控制显隐。菜单必须等待页面全部构建才能展示，因此不能在页面构建中设置为true，否则会导致显示位置及形状错误，该参数从API version 18开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
-| content | ArkTS-Dyn: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置菜单项图标和文本的数组，或者自定义组件。                 |
+| content | ArkTS-Dyn: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置菜单项图标和文本的数组，或者自定义组件。设置undefined时，与上一次弹出内容保持一致。                 |
 | options | [MenuOptions](#menuoptions10)                                | 否   | 配置弹出菜单的参数。                                         |
 
 **返回值：**
@@ -248,11 +248,11 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | 名称                  | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | offset                | [Position](ts-types.md#position)                            | 否   | 是   | 菜单弹出位置的偏移量，不会导致菜单显示超出屏幕范围。<br/>默认值：{ x: 0, y: 0 }，不支持设置百分比。<br/>**说明：** <br />菜单类型为相对父组件区域弹出时，自动根据菜单位置属性 (placement)将区域的宽或高计入偏移量中。<br/>offset最终取值与placement设置值的关系参见表1：同时设置offset与placement时菜单的偏移位置。<br/>未设置、异常值或者undefined时按默认{ x: 0, y: 0 }处理。若传入偏移量超出屏幕范围外，则会就近约束到屏幕范围内。<br/>如果菜单调整了显示位置（与placement初始值主方向不一致），则偏移值 (offset) 失效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| placement             | [Placement](ts-appendix-enums.md#placement8)                 | 否   | 是   | 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br/>**说明：**<br/>1. 作为[bindMenu](#bindmenu11)入参时，默认值为Placement.BottomLeft。<br/>2. 作为[bindContextMenu<sup>8+</sup>](#bindcontextmenu8)或[bindContextMenuWithResponse<sup>23+</sup>](#bindcontextmenuwithresponse23)入参时，默认效果为菜单跟随点击位置弹出。<br/>3. 作为[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)入参时，默认值为Placement.BottomLeft。<br/>4. placement值设置为undefined、null或缺省时，按默认值处理。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| placement             | [Placement](ts-appendix-enums.md#placement8)                 | 否   | 是   | 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br/>**说明：**<br/>1. 作为[bindMenu](#bindmenu)入参时，默认值为Placement.BottomLeft。<br/>2. 作为[bindContextMenu<sup>8+</sup>](#bindcontextmenu8)或[bindContextMenuWithResponse<sup>23+</sup>](#bindcontextmenuwithresponse23)入参时，默认效果为菜单跟随点击位置弹出。<br/>3. 作为[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)入参时，默认值为Placement.BottomLeft。<br/>4. placement值设置为undefined、null或缺省时，按默认值处理。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | enableArrow           | boolean                                                      | 否   | 是   | 是否显示箭头。如果菜单的大小和位置不足以放置箭头时，不会显示箭头。 <br/>默认值：false，不显示箭头。<br/>**说明：**<br />enableArrow为true时，placement未设置或者值为非法值，默认在目标物上方显示（此时菜单默认位置与接口的关系参见表3：enableArrow为true且placement未设置或者值为非法值的菜单默认位置），否则按照placement的位置优先显示。当前位置显示不下时，会自动调整位置，enableArrow为undefined时，不显示箭头。bindContextMenu从API version 10开始支持该属性；bindMenu从API version 12开始支持该属性。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | enableHoverMode<sup>18+</sup>      | boolean                                                      | 否   | 是   | 菜单组件是否响应悬停态（半折叠状态）变化，即在悬停态下是否触发避让折痕区域。<br/>默认值：false，2in1设备默认为true。未设置或者值为非法值时，生效默认值。<br/>**说明：** <br/>1. 如果菜单的弹出位置在悬停态折痕区域，菜单组件不会响应悬停态。<br/>2. 2in1设备从API version 20开始生效。<br/>3. 2in1设备仅在窗口瀑布模式下生效。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | arrowOffset           | [Length](ts-types.md#length)                                 | 否   | 是   | 箭头在菜单处的偏移。偏移量必须合法且转换为具体数值时大于0才会生效，另外该值生效时不会导致箭头超出菜单四周的安全距离。<br/>默认值：0<br />单位：vp<br />**说明：**<br />箭头距菜单四周的安全距离为菜单圆角大小与箭头宽度的一半之和。<br />根据配置的placement来计算是在水平还是垂直方向上偏移。<br />箭头在菜单水平方向时，偏移量为箭头至最左侧箭头安全距离处的距离。箭头在菜单垂直方向时，偏移量为箭头至最上侧箭头安全距离处的距离。<br />根据配置的placement的不同，箭头展示的默认位置不同：<br />在菜单不发生避让的情况下，箭头最终位置与placement设置值的关系参见表2：同时设置arrowOffset与placement时菜单箭头的默认位置。<br />  bindContextMenu从API version 10开始支持该属性；bindMenu从API version 12开始支持该属性。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| preview<sup>11+</sup> | [MenuPreviewMode](#menupreviewmode11)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 长按悬浮菜单或使用[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。<br/>默认值：MenuPreviewMode.NONE，无预览内容。<br/>**说明：**<br />- 不支持responseType为ResponseType.RightClick时触发，如果responseType为ResponseType.RightClick，则不会显示预览内容。<br />- 当未设置preview参数或preview参数设置为MenuPreviewMode.NONE时，enableArrow参数生效。<br />- 当preview参数设置为MenuPreviewMode.IMAGE或CustomBuilder时，enableArrow为true时也不显示箭头。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| preview<sup>11+</sup> | [MenuPreviewMode](#menupreviewmode11)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 长按悬浮菜单或使用[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。<br/>默认值：MenuPreviewMode.NONE，无预览内容。<br/>**说明：**<br />- 不支持[responseType](ts-appendix-enums.md#responsetype8)为ResponseType.RightClick时触发，如果[responseType](ts-appendix-enums.md#responsetype8)为ResponseType.RightClick，则不会显示预览内容。<br />- 当未设置preview参数或preview参数设置为MenuPreviewMode.NONE时，enableArrow参数生效。<br />- 当preview参数设置为MenuPreviewMode.IMAGE或CustomBuilder时，enableArrow为true时也不显示箭头。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | previewAnimationOptions<sup>11+</sup> | [ContextMenuAnimationOptions](#contextmenuanimationoptions11) | 否   | 是   | 控制长按预览的显示效果。<br/>默认值：{ scale: [0.95, 1.1], transition: undefined, hoverScale: undefined }。<br/>**说明：**<br />倍率设置参数小于等于0时，不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | previewBorderRadius<sup>19+</sup>  | [BorderRadiusType](#borderradiustype19) | 否   | 是   | 设置预览图边框圆角半径。<br/>默认值：16vp <br />**说明：** <br /> 当水平方向上两个圆角半径之和的最大值超过预览图的宽度，或者垂直方向上两个圆角半径之和的最大值超过预览图的高度时，应采用预览图所能允许的最大圆角半径值。<br/>圆角设置越大，圆角动画变化越快。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19 <br/>**ArkTS-Sta起始版本：** 23 |
 | layoutRegionMargin<sup>13+</sup>  | [Margin](ts-types.md#margin) | 否   | 是   | 设置预览图与菜单布局时距上下左右边界的最小边距。<br />**说明：** <br/> 仅支持vp、px、fp、lpx、百分比。<br/> 当margin设置异常值或负值时，按默认值处理。<br/> 若preview为CustomBuilder，设置margin.left或margin.right时，预览图取消最大栅格的宽度限制。<br/> 注意应避免设置过大的margin导致布局区域变小，使得预览图和菜单无法正常布局。<br />当水平方向上margin之和超过布局最大宽度时，margin.left和margin.right均不生效，按默认值处理。<br/> 当垂直方向上margin之和超过布局最大高度时，margin.top和margin.bottom均不生效，按默认值处理。<br/>边距默认值为左右边距16vp，上边距16vp, 下边距为4vp。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 13 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -282,6 +282,7 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 | scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或者设置为undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| targetSpace | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单与目标组件之间的间距。<br /> **说明：** <br />- 同时使用targetSpace与offset时，两者会叠加生效。推荐使用targetSpace设置菜单与目标的间距，使用offset设置菜单弹出位置的偏移量。<br />- 二级菜单会避让targetSpace范围。<br />- 设置为负数或undefined时，菜单与目标组件之间的间距为默认8vp，且子菜单不避让targetSpace。<br />- targetSpace属性在存在默认placement时可直接生效，无默认placement的场景，需配合placement属性使用才可生效。<br />- anchorPosition的优先级要高于targetSpace。<br />- 不支持设置百分比。<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 **表1：同时设置offset与placement时菜单的偏移位置**
 
@@ -339,8 +340,8 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | ----- | ------------------------------------------ | ---- | ---- | ------------------------------------ |
 | scale | ArkTS-Dyn: [AnimationRange](#animationrange11)\<number\><br/>ArkTS-Sta: [AnimationNumberRange](#animationnumberrange23) | 否   | 是   | 动画开始和结束时相对预览原图缩放比例。<br/>默认值：[0.95, 1.1]<br/>**说明：** <br/>缩放比例需要根据实际开发场景设置，建议设置值为小于预览图宽度或布局的最大限制。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 设置菜单显示和退出的过渡效果。<br/>**说明：** <br/>在菜单退出动效过程中，横竖屏切换时，菜单会避让。二级菜单不继承自定义动效。弹出过程中可以点击二级菜单，但在退出动效执行过程中不允许点击二级菜单。<br />详细描述见[TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明)对象说明。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
-| hoverScale<sup>12+</sup> | ArkTS-Dyn: [AnimationRange](#animationrange11)\<number\><br/>ArkTS-Sta: [AnimationNumberRange](#animationnumberrange23) | 否   | 是   | 在自定义预览图（preview为CustomBuilder类型）以及长按弹出（responseType指定为LongPress）菜单的场景下，hoverScale用于为绑定组件的截图浮起动画设置两个参数：相对于预览原图的起始与结束缩放比例。hoverScale设置后，浮起动画和预览图之间会有切换过渡动效。 <br/>**说明：**<br /> 倍率设置参数小于等于0时，不生效。<br />[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)场景下，不生效。<br /> 设置transition接口时，不生效。 <br /> 使用此接口且同时使用scale接口时，scale接口起始值不生效。<br /> 为保障最佳体验，最终预览图尺寸不建议小于原组件截图尺寸。当前预览动效宽高会受组件截图和自定义预览大小影响，请根据实际使用情况自行保障展示效果。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
-| hoverScaleInterruption<sup>20+</sup> | boolean | 否   | 是   | 在自定义预览图（preview为CustomBuilder类型）以及长按弹出（responseType指定为LongPress）菜单的场景下，且hoverScaleInterruption为true时，在触发拖拽效果前抬起手是否允许取消预览菜单弹出。true表示允许取消预览菜单弹出，false表示不允许取消预览菜单弹出。<br/>默认值：false <br/>**说明：** <br />未设置hoverScale接口或设置了transition接口时，该参数不生效。长按时长不足以触发拖拽效果时抬起手，预览菜单hoverScale效果回退，预览菜单不弹出，并可触发原组件上绑定的click等手势事件。长按时长足以触发拖拽效果后抬起手，预览菜单正常弹出，并不再触发原组件上绑定的click等手势事件。 <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| hoverScale<sup>12+</sup> | ArkTS-Dyn: [AnimationRange](#animationrange11)\<number\><br/>ArkTS-Sta: [AnimationNumberRange](#animationnumberrange23) | 否   | 是   | 在自定义预览图（preview为CustomBuilder类型）以及长按弹出（[responseType](ts-appendix-enums.md#responsetype8)指定为LongPress）菜单的场景下，hoverScale用于为绑定组件的截图浮起动画设置两个参数：相对于预览原图的起始与结束缩放比例。hoverScale设置后，浮起动画和预览图之间会有切换过渡动效。 <br/>**说明：**<br /> 倍率设置参数小于等于0时，不生效。<br />[bindContextMenu<sup>12+</sup>](#bindcontextmenu12)场景下，不生效。<br /> 设置transition接口时，不生效。 <br /> 使用此接口且同时使用scale接口时，scale接口起始值不生效。<br /> 为保障最佳体验，最终预览图尺寸不建议小于原组件截图尺寸。当前预览动效宽高会受组件截图和自定义预览大小影响，请根据实际使用情况自行保障展示效果。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| hoverScaleInterruption<sup>20+</sup> | boolean | 否   | 是   | 在自定义预览图（preview为CustomBuilder类型）以及长按弹出（[responseType](ts-appendix-enums.md#responsetype8)指定为LongPress）菜单的场景下，且hoverScaleInterruption为true时，在触发拖拽效果前抬起手是否允许取消预览菜单弹出。true表示允许取消预览菜单弹出，false表示不允许取消预览菜单弹出。<br/>默认值：false <br/>**说明：** <br />未设置hoverScale接口或设置了transition接口时，该参数不生效。长按时长不足以触发拖拽效果时抬起手，预览菜单hoverScale效果回退，预览菜单不弹出，并可触发原组件上绑定的click等手势事件。长按时长足以触发拖拽效果后抬起手，预览菜单正常弹出，并不再触发原组件上绑定的click等手势事件。 <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## AnimationNumberRange<sup>23+</sup>
 
@@ -575,7 +576,7 @@ struct MenuExample {
 
 ### 示例2（弹出自定义菜单）
 
-该示例为bindMenu通过配置CustomBuilder弹出自定义菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
+该示例为[bindMenu](#bindmenu)通过配置[CustomBuilder](ts-types.md#custombuilder8)弹出自定义菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
 
 ArkTS-Dyn示例：
 ```ts
@@ -697,7 +698,7 @@ struct MenuExample {
 
 ### 示例3（长按弹出菜单）
 
-该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress弹出菜单。
+该示例为[bindContextMenu](#bindcontextmenu8)通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress弹出菜单。
 
 ArkTS-Dyn示例：
 ```ts
@@ -787,7 +788,7 @@ struct ContextMenuExample {
 
 ### 示例4（右键弹出指向型菜单）
 
-该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).RightClick和[ContextMenuOptions](#contextmenuoptions10)中的enableArrow属性弹出指向型菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
+该示例为[bindContextMenu](#bindcontextmenu8)通过配置[responseType](ts-appendix-enums.md#responsetype8).RightClick和[ContextMenuOptions](#contextmenuoptions10)中的enableArrow属性弹出指向型菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
 
 ArkTS-Dyn示例：
 ```ts
@@ -890,7 +891,7 @@ struct DirectiveMenuExample {
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
-该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](#contextmenuoptions10)中preview属性的[MenuPreviewMode](#menupreviewmode11)类型弹出菜单预览样式。
+该示例为[bindContextMenu](#bindcontextmenu8)通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](#contextmenuoptions10)中preview属性的[MenuPreviewMode](#menupreviewmode11)类型弹出菜单预览样式。
 
 ArkTS-Dyn示例：
 ```ts
@@ -1255,7 +1256,7 @@ struct Index {
 
 ### 示例8（设置菜单和预览的动效）
 
-该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的transition属性，实现自定义菜单以及菜单预览时的显示和退出动效。
+该示例为[bindContextMenu](#bindcontextmenu8)通过配置[ContextMenuOptions](#contextmenuoptions10)中的transition属性，实现自定义菜单以及菜单预览时的显示和退出动效。
 
 ArkTS-Dyn示例：
 ```ts
@@ -1400,7 +1401,7 @@ struct MenuExample {
 
 ### 示例9（设置symbol类型图标）
 
-该示例为bindMenu通过配置[MenuElement](#menuelement)的symbolIcon弹出菜单。
+该示例为[bindMenu](#bindmenu)通过配置[MenuElement](#menuelement)的symbolIcon弹出菜单。
 
 ArkTS-Dyn示例：
 ```ts
@@ -1486,7 +1487,7 @@ struct MenuExample {
 
 ### 示例10（设置一镜到底动效）
 
-该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中previewAnimationOptions属性的hoverScale，实现组件截图到自定义预览图的一镜到底过渡动效。
+该示例为[bindContextMenu](#bindcontextmenu8)通过配置[ContextMenuOptions](#contextmenuoptions10)中previewAnimationOptions属性的hoverScale，实现组件截图到自定义预览图的一镜到底过渡动效。
 
 ArkTS-Dyn示例：
 ```ts
@@ -1619,7 +1620,7 @@ struct Index {
 
 ### 示例11（自定义背景模糊效果参数）
 
-该示例为bindMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundBlurStyleOptions属性，实现了自定义菜单背景模糊效果。
+该示例为[bindMenu](#bindmenu)通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundBlurStyleOptions属性，实现了自定义菜单背景模糊效果。
 
 从API version 18开始，在ContextMenuOptions中新增了backgroundBlurStyleOptions属性。
 
@@ -1734,7 +1735,7 @@ struct MenuExample {
 
 ### 示例12（自定义背景效果参数）
 
-该示例为bindMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundEffect属性，实现了自定义菜单背景效果。
+该示例为[bindMenu](#bindmenu)通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundEffect属性，实现了自定义菜单背景效果。
 
 从API version 18开始，在ContextMenuOptions中新增了backgroundEffect属性。
 
@@ -1847,7 +1848,7 @@ struct MenuExample {
 
 ### 示例13（设置一镜到底动效支持抬手打断）
 
-该示例通过为bindContextMenu配置[ContextMenuOptions](#contextmenuoptions10)中的previewAnimationOptions属性实现了一镜到底过渡动效的同时，再配置hoverScaleInterruption控制是否允许长按抬手取消菜单弹出。
+该示例通过为[bindContextMenu](#bindcontextmenu8)配置[ContextMenuOptions](#contextmenuoptions10)中的previewAnimationOptions属性实现了一镜到底过渡动效的同时，再配置hoverScaleInterruption控制是否允许长按抬手取消菜单弹出。
 
 从API version 20开始，在previewAnimationOptions的类型[ContextMenuAnimationOptions](#contextmenuanimationoptions11)中新增了hoverScaleInterruption属性。
 
@@ -1964,7 +1965,7 @@ struct Index {
 
 ### 示例14（设置预览图边框圆角半径）
 
-该示例通过bindContextMenu配置[responseType](ts-appendix-enums.md#responsetype8).LongPress来实现功能。同时，在[ContextMenuOptions](#contextmenuoptions10)中配置preview属性的[MenuPreviewMode](#menupreviewmode11)类型来设置菜单预览样式。最后，通过设置previewBorderRadius来实现预览图边框的圆角半径。
+该示例通过[bindContextMenu](#bindcontextmenu8)配置[responseType](ts-appendix-enums.md#responsetype8).LongPress来实现功能。同时，在[ContextMenuOptions](#contextmenuoptions10)中配置preview属性的[MenuPreviewMode](#menupreviewmode11)类型来设置菜单预览样式。最后，通过设置previewBorderRadius来实现预览图边框的圆角半径。
 
 从API version 19开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了previewBorderRadius属性。
 
@@ -2072,7 +2073,7 @@ struct Index {
 
 ### 示例15（bindMenu配置生命周期回调）
 
-该示例为bindMenu配置生命周期回调。
+该示例为[bindMenu](#bindmenu)配置生命周期回调。
 
 从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
 
@@ -2222,7 +2223,7 @@ struct Index {
 
 ### 示例16（设置菜单蒙层）
 
-该示例为bindMenu通过配置mask属性设置菜单蒙层。
+该示例为[bindMenu](#bindmenu)通过配置mask属性设置菜单蒙层。
 
 从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了mask属性。
 
@@ -2314,7 +2315,7 @@ struct Index {
 
 ### 示例17（bindMenu设置下拉菜单外描边样式）
 
-该示例为bindMenu通过配置outlineWidth和outlineColor属性设置下拉菜单外描边样式。
+该示例为[bindMenu](#bindmenu)通过配置outlineWidth和outlineColor属性设置下拉菜单外描边样式。
 
 从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了outlineWidth和outlineColor属性。
 
@@ -2403,7 +2404,7 @@ struct Index {
 
 ### 示例18（bindMenu传入带参数的CustomBuilder）
 
-该示例通过在bindMenu中传入带参数的CustomBuilder来配置菜单的具体属性。
+该示例通过在[bindMenu](#bindmenu)中传入带参数的[CustomBuilder](ts-types.md#custombuilder8)来配置菜单的具体属性。
 
 ```ts
 @Entry
@@ -2551,7 +2552,7 @@ struct Index {
 
 ### 示例20（设置菜单避让软键盘）
 
-该示例通过在bindMenu中配置keyboardAvoidMode设置菜单避让软键盘，通过minKeyboardAvoidDistance设置菜单避让软键盘的最小距离。
+该示例通过在[bindMenu](#bindmenu)中配置keyboardAvoidMode设置菜单避让软键盘，通过minKeyboardAvoidDistance设置菜单避让软键盘的最小距离。
 
 从API version 23开始，[ContextMenuOptions](#contextmenuoptions10)中新增keyboardAvoidMode、minKeyboardAvoidDistance属性。
 
@@ -2690,7 +2691,7 @@ struct Index {
 
 ### 示例22（设置菜单的最大高度）
 
-该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的maxHeight属性，设置菜单的最大高度。
+该示例为[bindContextMenu](#bindcontextmenu8)通过配置[ContextMenuOptions](#contextmenuoptions10)中的maxHeight属性，设置菜单的最大高度。
 
 未设置maxHeight属性时，默认按照菜单的最大高度，可展示全部列表项，通过设置默认最大高度为窗口可用高度的50%时，仅能显示8个列表项。
 
@@ -2792,3 +2793,102 @@ struct Index {
 ```
 
 ![maxHeight-menu](figures/menuMaxHeight.png)
+
+### 示例23 （设置菜单与目标组件间距）
+     
+该示例通过设置[ContextMenuOptions](#contextmenuoptions10)中的targetSpace属性，介绍如何增加菜单与目标组件之间的间距。
+      
+从API版本26.0.0开始，在ContextMenuOptions中新增了targetSpace属性。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+      
+@Entry
+@Component
+struct Alone {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项1' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项2' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项3' })
+    }
+  }
+
+  build() {
+    Column() {
+      Stack() {
+        Column()
+          .width(120 + 40 * 2)
+          .height(120 + 40 * 2)
+          .borderWidth(2)
+          .borderColor(Color.Orange)
+          .borderStyle(BorderStyle.Dotted)
+
+        Image($r('app.media.startIcon'))
+          .width(120)
+          .height(120)
+          .bindMenu(this.MyMenu,
+            {
+              targetSpace: LengthMetrics.vp(40)
+            })
+      }.height('75%')
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, Menu, Stack, MenuItem, Image, Color, MenuItemOptions, MenuOptions, BorderStyle, $r } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Alone {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项1' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项2' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项3' } as MenuItemOptions)
+    }
+  }
+
+  build() {
+    Column() {
+      Stack() {
+        Column()
+          .width(120 + 40 * 2)
+          .height(120 + 40 * 2)
+          .borderWidth(2)
+          .borderColor(Color.Orange)
+          .borderStyle(BorderStyle.Dotted)
+
+        Image($r('app.media.startIcon'))
+          .width(120)
+          .height(120)
+          .bindMenu(this.MyMenu,
+            {
+              targetSpace: LengthMetrics.vp(40)
+            } as MenuOptions)
+      }.height('75%')
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![targetSpaceMenu](figures/targetSpaceMenu.png)

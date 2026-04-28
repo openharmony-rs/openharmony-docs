@@ -30,6 +30,8 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 23
@@ -318,7 +320,7 @@ ArkTS-Sta: alignStyle(value: IndexerAlign | undefined, offset?: Length | undefin
 
 ArkTS-Dyn: selected(index: number)
 
-ArkTS-Sta: selected(index: int | Bindable\<int> | undefined)
+ArkTS-Sta: selected(index: int \| Bindable\<int> \| undefined)
 
 设置选中项索引值。
 

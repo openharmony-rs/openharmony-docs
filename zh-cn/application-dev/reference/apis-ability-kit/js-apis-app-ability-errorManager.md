@@ -717,7 +717,7 @@ setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 16000205      | The API is not called in the main thread. |
+| 16000205      | The API is not called on the main thread. |
 
 **示例**：
     
@@ -778,7 +778,7 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 16000205      | The API is not called in the main thread. |
+| 16000205      | The API is not called on the main thread. |
 
 **示例**：
 

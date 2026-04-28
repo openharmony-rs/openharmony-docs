@@ -124,7 +124,7 @@ struct Index {
 
 ### ArkTS-Sta使用ArkTS-Dyn AppStorage中的数据
 
-使用ArkTS-Sta自定义组件中的\@StorageLink与ArkTS-Dyn的AppStorage数据双向绑定；使用ArkTS-Sta自定义组件中的\@StoragePropRef与ArkTS-Dyn的AppStorage数据单向绑定。
+使用ArkTS-Sta自定义组件中的[\@StorageLink](../ui/state-management-static/arkts-static-appstorage.md#storagelink)与ArkTS-Dyn的AppStorage数据双向绑定；使用ArkTS-Sta自定义组件中的[\@StoragePropRef](../ui/state-management-static/arkts-static-appstorage.md#storagepropref)与ArkTS-Dyn的AppStorage数据单向绑定。
 
 示例如下：
 
@@ -374,7 +374,7 @@ struct Index {
 
 ### ArkTS-Sta使用ArkTS-Dyn Environment中的数据
 
-使用ArkTS-Sta自定义组件中的\@StorageLink与ArkTS-Dyn的Environment数据双向绑定；使用ArkTS-Sta自定义组件中的\@StorageProp与ArkTS-Dyn的Environment数据单向绑定。
+使用ArkTS-Sta自定义组件中的\@StorageLink与ArkTS-Dyn的Environment数据双向绑定；使用ArkTS-Sta自定义组件中的\@StoragePropRef与ArkTS-Dyn的Environment数据单向绑定。
 
 示例如下：
 

@@ -57,7 +57,7 @@ import { LocalStoragePropRef } from '@kit.ArkUI';
 | \@LocalStoragePropRef变量装饰器 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | 装饰器参数                   | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，需要和LocalStorage中对应属性类型相同，否则会因类型不一致导致应用行为异常。<br/>支持上述支持类型的[联合类型](#localstorage支持联合类型)，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@LocalStoragePropRef('AA') a: number \| null = null`能通过编译，`@LocalStoragePropRef('AA') a: number = null`无法通过编译。 |
+| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)、[Date](#装饰date类型变量)、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，需要和LocalStorage中对应属性类型相同，否则会因类型不一致导致应用行为异常。<br/>支持上述支持类型的[联合类型](#localstorage支持联合类型)，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@LocalStoragePropRef('AA') a: number \| null = null`能通过编译，`@LocalStoragePropRef('AA') a: number = null`无法通过编译。 |
 | 同步类型                     | 单向同步：从LocalStorage的对应属性到组件的状态变量。组件本地的修改是允许的，但是LocalStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
 | 被装饰变量的初始值           | 必须指定，如果LocalStorage实例中不存在属性，则用该初始值初始化该属性，并存入LocalStorage中。 |
 
@@ -188,6 +188,8 @@ import { LocalStorageLink } from '@kit.ArkUI';
 3. LocalStorage是页面级存储，getSharedLocalStorage接口仅能获取当前Stage通过[windowStage.loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)传入的LocalStorage实例，否则返回undefined。例子可见[将LocalStorage实例从UIAbility共享到一个或多个页面](#将localstorage实例从uiability共享到一个或多个页面)。
 
 4. \@LocalStoragePropRef/\@LocalStorageLink不支持装饰Function 与() => void类型的变量，API version 23之前，框架会抛出运行时错误。从API version 23开始，添加对\@LocalStoragePropRef/\@LocalStorageLink装饰Function与() => void类型变量的校验，编译期会报错。
+
+5. 如果使用了\@LocalStoragePropRef/\@LocalStorageLink装饰器，且没有向[\@Entry](./arkts-static-create-component.md#entry)中传入[useSharedStorage](./arkts-static-create-component.md#entry)参数或是storage实例，则会编辑、编译告警，提示开发者应至少向\@Entry传入一个参数。
 
 ## 使用场景
 
@@ -460,75 +462,75 @@ struct Parent {
 
 Child自定义组件中的变化：
 
-1. playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父组件相应的刷新。
+playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父组件相应的刷新。
 
-    ```ts
-    'use static'
-    
-    import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, Text } from '@kit.ArkUI';
-    
-    let count: Record<string, Any> = { 'countStorage': 1 };
-    let storageA: LocalStorage = new LocalStorage(count);
-    let storageFunc = (): LocalStorage => {
-      return storageA;
+```ts
+'use static'
+
+import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, Text } from '@kit.ArkUI';
+
+let count: Record<string, Any> = { 'countStorage': 1 };
+let storageA: LocalStorage = new LocalStorage(count);
+let storageFunc = (): LocalStorage => {
+  return storageA;
+}
+
+@Component
+struct Child {
+  // 子组件实例的名字
+  label: string = 'no name';
+  // 和LocalStorage中“countStorage”的双向绑定数据
+  @LocalStorageLink('countStorage') playCountLink: int = 0;
+
+  build() {
+    Row() {
+      Text(this.label)
+        .width(50).height(60).fontSize(12)
+      Text(`playCountLink ${this.playCountLink}: inc by 1`)
+        .onClick((e: ClickEvent) => {
+          this.playCountLink += 1;
+        })
+        .width(200).height(60).fontSize(12)
+    }.width(300).height(60)
+  }
+}
+
+@Entry({storage: 'storageFunc'})
+@Component
+struct Parent {
+  @LocalStorageLink('countStorage') playCount: int = 0;
+
+  build() {
+    Column() {
+      Row() {
+        Text('Parent')
+          .width(50).height(60).fontSize(12)
+        Text(`playCount ${this.playCount} dec by 1`)
+          .onClick((e: ClickEvent) => {
+            this.playCount -= 1;
+          })
+          .width(250).height(60).fontSize(12)
+      }.width(300).height(60)
+
+      Row() {
+        Text('LocalStorage')
+          .width(50).height(60).fontSize(12)
+        Text(`countStorage ${this.playCount} incr by 1`)
+          .onClick((e: ClickEvent) => {
+            storageA.set<int>('countStorage', storageA.get<int>('countStorage')! + 1);
+          })
+          .width(250).height(60).fontSize(12)
+      }.width(300).height(60)
+
+      Child({ label: 'ChildA' })
+      Child({ label: 'ChildB' })
+
+      Text(`playCount in LocalStorage for debug ${storageA.get<int>('countStorage')}`)
+        .width(300).height(60).fontSize(12)
     }
-    
-    @Component
-    struct Child {
-      // 子组件实例的名字
-      label: string = 'no name';
-      // 和LocalStorage中“countStorage”的双向绑定数据
-      @LocalStorageLink('countStorage') playCountLink: int = 0;
-    
-      build() {
-        Row() {
-          Text(this.label)
-            .width(50).height(60).fontSize(12)
-          Text(`playCountLink ${this.playCountLink}: inc by 1`)
-            .onClick((e: ClickEvent) => {
-              this.playCountLink += 1;
-            })
-            .width(200).height(60).fontSize(12)
-        }.width(300).height(60)
-      }
-    }
-    
-    @Entry({storage: 'storageFunc'})
-    @Component
-    struct Parent {
-      @LocalStorageLink('countStorage') playCount: int = 0;
-    
-      build() {
-        Column() {
-          Row() {
-            Text('Parent')
-              .width(50).height(60).fontSize(12)
-            Text(`playCount ${this.playCount} dec by 1`)
-              .onClick((e: ClickEvent) => {
-                this.playCount -= 1;
-              })
-              .width(250).height(60).fontSize(12)
-          }.width(300).height(60)
-    
-          Row() {
-            Text('LocalStorage')
-              .width(50).height(60).fontSize(12)
-            Text(`countStorage ${this.playCount} incr by 1`)
-              .onClick((e: ClickEvent) => {
-                storageA.set<int>('countStorage', storageA.get<int>('countStorage')! + 1);
-              })
-              .width(250).height(60).fontSize(12)
-          }.width(300).height(60)
-    
-          Child({ label: 'ChildA' })
-          Child({ label: 'ChildB' })
-    
-          Text(`playCount in LocalStorage for debug ${storageA.get<int>('countStorage')}`)
-            .width(300).height(60).fontSize(12)
-        }
-      }
-    }
-    ```
+  }
+}
+```
 
 ### 将LocalStorage实例从UIAbility共享到一个或多个页面
 

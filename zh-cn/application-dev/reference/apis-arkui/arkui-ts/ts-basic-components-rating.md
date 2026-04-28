@@ -182,7 +182,7 @@ starStyle(options: StarStyleOptions)
 
 设置评分的样式。该属性所支持的图片类型能力参考[Image](ts-basic-components-image.md)组件。
 
-支持加载本地图片和网络图片，暂不支持PixelMap类型。
+支持加载本地图片和网络图片，暂不支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。
 
 默认图片加载方式为异步，暂不支持同步加载。
 
@@ -212,7 +212,7 @@ ArkTS-Sta: starStyle(options: StarStyleOptions | undefined)
 
 设置评分的样式。该属性所支持的图片类型能力参考[Image](ts-basic-components-image.md)组件。
 
-支持加载本地图片和网络图片，暂不支持PixelMap类型。
+支持加载本地图片和网络图片，暂不支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。
 
 默认图片加载方式为异步，暂不支持同步加载。
 
@@ -260,7 +260,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 
 | 参数名    | 类型                                          | 必填 | 说明                                             |
 | --------- | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier\<RatingConfiguration>](#ratingconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier\<RatingConfiguration>](#ratingconfiguration12对象说明) \| undefined| 是   | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[RatingConfiguration](#ratingconfiguration12对象说明)><br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[RatingConfiguration](#ratingconfiguration12对象说明)> \| undefined| 是   | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### contentModifier<sup>18+</sup>
 
@@ -282,7 +282,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<RatingConfiguration>](#ratingconfiguration12对象说明)><br/>ArkTS-Sta: [ContentModifier\<RatingConfiguration>](#ratingconfiguration12对象说明) \| undefined | 是   | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[RatingConfiguration](#ratingconfiguration12对象说明)>><br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[RatingConfiguration](#ratingconfiguration12对象说明)> \| undefined | 是   | 在Rating组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -432,7 +432,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | rating<sup>7+</sup>    | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double>  | 否   | 否   | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
-| indicator<sup>7+</sup> | boolean | 否   | 是   | 设置评分组件作为指示器使用，值为true时，不可改变评分。<br/>默认值：false，可进行评分<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| indicator<sup>7+</sup> | boolean | 否   | 是   | 设置评分组件作为指示器使用，值为true时，不可改变评分，值为false时，可进行评分。<br/>默认值：false<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## StarStyleOptions<sup>18+</sup>对象说明
 

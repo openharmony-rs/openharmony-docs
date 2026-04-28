@@ -1,8 +1,8 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -83,7 +83,8 @@
     - [@ohos.arkui.uiMaterial (系统材质)(系统接口)](arkts-apis-uimaterial-sys.md)
     <!--DelEnd-->
     - arkui<!--ui-interface-arkui-->
-      - [BuilderNode](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Dyn)](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Sta)](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
@@ -553,9 +554,13 @@
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
-    - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
-    - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
-    - [Repeat](arkui-ts/ts-rendering-control-repeat.md)
+    - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
+    - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
+    - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)
+    - [LazyForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-lazyforeach.md)
+    - [LazyForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-lazyforeach-sta.md)
+    - [Repeat (ArkTS-Dyn)](arkui-ts/ts-rendering-control-repeat.md)
+    - [Repeat (ArkTS-Sta)](arkui-ts/ts-rendering-control-repeat-sta.md)
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
@@ -850,6 +855,7 @@
     - [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md)
     - [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md)
     - [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)
+    - [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)
     - [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)
     - [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)
     - [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md)

@@ -614,7 +614,7 @@ struct GrandParent {
 
 ### 无@Provide，仅使用本地默认值初始化@Consume
 
-以下示例中仅使用\@Consume，点击Child组件中的Button，对应Button下方的UI会刷新，且会触发\@Watch的回调。
+以下示例中仅使用\@Consume，点击Child组件中的Button，对应Button下方的UI会刷新，且会触发[\@Watch](./arkts-static-watch.md)的回调。
 
 ```ts
 'use static'

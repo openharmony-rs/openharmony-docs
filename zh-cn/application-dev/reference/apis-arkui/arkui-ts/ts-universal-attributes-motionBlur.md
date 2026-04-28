@@ -148,7 +148,7 @@ motionBlur(value: MotionBlurOptions | undefined): this
 
 | 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
-| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。 |
+| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。单位：px。 |
 | anchor | ArkTS-Dyn: [MotionBlurAnchor](#motionbluranchor对象说明) <br> ArkTS-Sta: [MotionBlurAnchor](#motionbluranchor对象说明) \| undefined | 否    | 否    | 运动模糊锚点坐标。运动模糊锚点坐标设置时需要与动画缩放的锚点保持一致设置。 |
 
 ## MotionBlurAnchor对象说明
@@ -161,8 +161,8 @@ motionBlur(value: MotionBlurOptions | undefined): this
 
 | 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
-| x | number      | 否    | 否    | 锚点坐标x值，取值范围[0.0, 1.0]。 |
-| y | number      | 否    | 否    | 锚点坐标y值，取值范围[0.0, 1.0]。 |
+| x | number      | 否    | 否    | 锚点坐标x值，取值范围[0.0, 1.0]。无单位，基于组件尺寸，代表横向尺寸相对占比。 |
+| y | number      | 否    | 否    | 锚点坐标y值，取值范围[0.0, 1.0]。无单位，基于组件尺寸，代表纵向尺寸相对占比。 |
 
 ## 示例
 

@@ -25,7 +25,7 @@ import { Consumer, Provider } from '@kit.ArkUI';
 | ------------------ | ----------------------------------------------------- |----------------------------------------------------- |
 | \@Consume(r)         |需要本地初始化，当找不到\@Provider的时候使用本地默认值。| 禁止本地初始化，当找不到对应的\@Provide时候，会抛出异常。 |
 | 支持类型           | 支持Function类型。 | 不支持Function类型。 |
-| 观察能力           | 仅能观察自身赋值变化，如果要观察嵌套场景，配合[\@Trace](./arkts-static-new-observedV2-and-trace.md)一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合\@Observed和\@ObjectLink一起使用。 |
+| 观察能力           | 仅能观察自身赋值变化，如果要观察嵌套场景，配合[\@Trace](./arkts-static-new-observedV2-and-trace.md)一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合[\@Observed和\@ObjectLink](./arkts-static-observed-and-objectlink.md)一起使用。 |
 | alias和属性名         | alias是唯一匹配的key，缺省时默认属性名为alias。 | alias和属性名都为key，优先匹配alias，匹配不到可以匹配属性名。|
 | \@Provide(r) 从父组件初始化      | 不允许。 | 允许。|
 | \@Provide(r)支持重载  | 默认开启，即\@Provider可以重名，\@Consumer向上查找最近的\@Provider。 | 默认关闭，即在组件树上不允许有同名\@Provide。如果需要重载，则需要配置allowOverride。|
@@ -160,7 +160,7 @@ struct Child {
    }
    ```
 
-2. \@Provider和\@Consumer为状态管理V2装饰器，只能在[\@ComponentV2](./arkts-static-componentv2.md)中使用，不能在\@Component中使用。
+2. \@Provider和\@Consumer为状态管理V2装饰器，只能在[\@ComponentV2](./arkts-static-componentv2.md)中使用，不能在[\@Component](./arkts-static-create-component.md)中使用。
 
    ```ts
    'use static'
@@ -414,10 +414,6 @@ struct Parent {
 
   build() {
     Column() {
-      ForEach(this.arr,
-        (item: number) => {
-          Text(`${item}`)
-        })
       Button('parent change whole arr')
         .onClick((e: ClickEvent) => {
           this.arr = [100, 200, 300];
@@ -425,8 +421,12 @@ struct Parent {
       Button('parent push new item')
         .onClick((e: ClickEvent) => {
           this.arr.push(111);
-        })
+        })   
       Child()
+      ForEach(this.arr,
+        (item: number) => {
+          Text(`${item}`)
+        })
     }
   }
 }
@@ -665,7 +665,6 @@ struct Parent {
 
   build() {
     Column() {
-      Child()
       Button('add new user')
         .onClick((e: ClickEvent) => {
           this.users.push(new User('Molly', 18));
@@ -678,6 +677,11 @@ struct Parent {
         .onClick((e: ClickEvent) => {
           this.users[0].name = 'Shelly';
         })
+      Button('reset users')
+        .onClick((e: ClickEvent) => {
+          this.users = [new User('Json', 10), new User('Eric', 15)];
+        })       
+      Child()
     }
   }
 }

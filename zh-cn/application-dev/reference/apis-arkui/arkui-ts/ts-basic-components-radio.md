@@ -123,7 +123,7 @@ checked(isChecked: boolean | undefined | Bindable\<boolean\>)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | boolean \| undefined \|Bindable\<boolean\> | 是   | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+| isChecked | boolean \| undefined \|Bindable\<boolean\> | 是   | 单选框的选中状态。<br/>默认值：false<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
 ### checked<sup>18+</sup>
 
@@ -149,7 +149,7 @@ checked(isChecked: Optional\<boolean\>)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+| isChecked | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 单选框的选中状态。<br/>默认值：false<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
 ### radioStyle<sup>10+</sup>
 
@@ -173,7 +173,7 @@ ArkTS-Sta: radioStyle(value?: RadioStyle | undefined)
 
 | 参数名 | 类型                                | 必填 | 说明                               |
 | ------ | ----------------------------------- | ---- | ---------------------------------- |
-| value  | ArkTS-Dyn: [RadioStyle](#radiostyle10对象说明)<br/>ArkTS-Sta: [RadioStyle](#radiostyle10对象说明) \| undefined | 否   | 单选框选中状态和非选中状态的样式。 <br/> 未设置时，则按照RadioStyle中各参数的默认值配置。 |
+| value  | ArkTS-Dyn: [RadioStyle](#radiostyle10对象说明)<br/>ArkTS-Sta: [RadioStyle](#radiostyle10对象说明) \| undefined | 否   | 单选框选中状态和非选中状态的样式。 <br/> 未设置或设置undefined时，则按照RadioStyle中各参数的默认值配置。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -195,7 +195,7 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration\>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<RadioConfiguration\>](#radioconfiguration12对象说明) | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[RadioConfiguration](#radioconfiguration12对象说明)\> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### contentModifier<sup>18+</sup>
 
@@ -217,7 +217,7 @@ contentModifier(modifier: Optional\<ContentModifier\<RadioConfiguration\>\>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<RadioConfiguration\>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[RadioConfiguration](#radioconfiguration12对象说明)\>> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### contentModifier<sup>23+</sup>
 
@@ -239,7 +239,7 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration\> | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[RadioConfiguration](#radioconfiguration12对象说明)>> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### attributeModifier<sup>23+</sup>
 

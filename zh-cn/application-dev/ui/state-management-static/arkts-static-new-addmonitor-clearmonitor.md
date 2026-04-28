@@ -279,8 +279,8 @@ struct Page {
 
     // 传递path多于状态变量个数
     // 多余的path忽略不计，也不会抛出错误
-    const valueCallback = this.multipleValue.map((_: int, index: number): (() => Any) => (
-      () => this.multipleValue[Double.toInt(index)]
+    const valueCallback = this.multipleValue.map((_: int, index: int): (() => Any) => (
+      () => this.multipleValue[index]
     ));
     this.multipleValueMonitor = UIUtils.addMonitor(valueCallback, this.onChange, { owner: this, path: ['First', 'Second', 'Third', 'Fourth'] });
   }
@@ -385,7 +385,7 @@ struct FreezeChild {
 
 ## 限制条件
 
-* 对于可选参数`MonitorOptions.owner`，若其被@Component而非@ComponentV2装饰，则在运行时抛出130000错误。
+* 对于可选参数`MonitorOptions.owner`，若其被[@Component](./arkts-static-create-component.md)而非@ComponentV2装饰，则在运行时抛出130000错误。
 
 ```typescript
 'use static'
@@ -711,7 +711,7 @@ class Test {
     // 对于每个数组元素映射到一个
     // 返回该元素的箭头函数
     let callbackArray = this.array.map(
-      (_: int, index: number): (() => Any) => () => this.array[Double.toInt(index)]
+      (_: int, index: int): (() => Any) => () => this.array[index]
     );
 
     // 监听数组长度

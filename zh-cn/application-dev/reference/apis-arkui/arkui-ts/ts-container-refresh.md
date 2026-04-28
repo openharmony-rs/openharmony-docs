@@ -94,7 +94,33 @@ ArkTS-Sta: refreshOffset(value: double | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | nuArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefinedmber |  是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。|
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined |  是 | 下拉偏移量。<br/>单位：vp<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。<br/>取值为undefined时，按默认值处理。|
+
+### refreshOffset
+
+ArkTS-Dyn: refreshOffset(value: number | Resource)
+
+ArkTS-Sta: refreshOffset(value: Resource | undefined)
+
+设置触发刷新的下拉偏移量，当下拉距离小于该属性设置值时离手不会触发刷新，支持Resource资源类型。
+
+未通过该接口设置时，当未设置[promptText](#refreshoptions对象说明)参数时，默认偏移量为64vp；设置了[promptText](#refreshoptions对象说明)参数时，默认偏移量为96vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| value  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Resource](ts-types.md#resource) \| undefined |  是 | 下拉偏移量。<br/>单位：vp<br/>取值范围：(0, +∞)。值为0或负数时，按默认值处理。<br/>取值为undefined时，按默认值处理。|
 
 ### pullToRefresh<sup>12+</sup>
 
@@ -116,7 +142,7 @@ ArkTS-Sta: pullToRefresh(value: boolean | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true <br/>取值为undefined时，按默认值处理。|
 
 ### pullUpToCancelRefresh<sup>23+</sup>
 
@@ -140,7 +166,7 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 
 ### pullDownRatio<sup>12+</sup>
 
-ArkTS-Dyn: pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>)
+ArkTS-Dyn: pullDownRatio(ratio: Optional\<number>)
 
 ArkTS-Sta: pullDownRatio(ratio: double | undefined)
 
@@ -181,6 +207,32 @@ ArkTS-Sta: maxPullDownDistance(distance: double | undefined)
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | distance  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number><br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
+
+### maxPullDownDistance
+
+ArkTS-Dyn: maxPullDownDistance(distance: number | Resource | undefined)
+
+ArkTS-Sta: maxPullDownDistance(distance: Resource | undefined)
+
+设置最大下拉距离，支持Resource资源类型。
+
+未通过该接口设置时，设置最大下拉距离为undefined。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| distance  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) \| undefined<br/>ArkTS-Sta: [Resource](ts-types.md#resource) \| undefined |  是 | 最大下拉距离。<br/>默认值：undefined<br/>单位：vp<br/>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](#refreshoffset12)时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
 
 ## 事件
 
@@ -228,7 +280,7 @@ ArkTS-Sta: onRefreshing(callback: (() => void) | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined | 是 | 进入刷新状态时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined | 是 | 进入刷新状态时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onOffsetChange<sup>12+</sup>
 
@@ -254,7 +306,7 @@ ArkTS-Sta: onOffsetChange(callback: Callback\<double> | undefined)
 
 | 参数名 | 类型                                    | 必填 | 说明       |
 | ------ | --------------------------------------- | ---- | ---------- |
-| callback  | ArkTS-Dyn: Callback\<number><br/>ArkTS-Sta: Callback\<double>&nbsp;\|&nbsp;undefined | 是   | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。<br/>单位：vp |
+| callback  | ArkTS-Dyn: Callback\<number><br/>ArkTS-Sta: Callback\<double>&nbsp;\|&nbsp;undefined | 是   | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。<br/>单位：vp <br/>取值为undefined时，不使用回调函数。|
 
 
 ## RefreshStatus枚举说明

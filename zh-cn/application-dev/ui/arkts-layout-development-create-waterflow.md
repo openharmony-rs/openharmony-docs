@@ -9,7 +9,7 @@
 
 [瀑布流](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)常用于展示图片信息，尤其在购物和资讯类应用中。
 
-ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组件支持条件渲染、循环渲染和懒加载等方式生成子组件。
+ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组件支持[条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)、[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)和[懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)等方式生成子组件。
 
 > **说明：** 
 >
@@ -141,7 +141,7 @@ import { Entry, Text, Column, Component, WaterFlow, SectionOptions, Margin, Wate
 
 ### 提前新增数据
 
-虽然在onReachEnd()触发时加载数据可以实现无限加载，但在滑动到底部会出现明显的停顿。
+虽然在[onReachEnd](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#onreachend)触发时加载数据可以实现无限加载，但在滑动到底部会出现明显的停顿。
 
 为了实现更加流畅的无限滑动，需要调整增加新数据的时机。比如可以在LazyForEach还剩余若干个数据未遍历的情况下提前加载新数据。以下代码通过在WaterFlow的[onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#onscrollindex11)中判断当前显示的最后一个子节点相对数据集终点的距离，并在合适时机提前加载新数据，实现了无停顿的无限滚动。
 
@@ -329,6 +329,7 @@ struct ReusableListItem {
 
   build() {
     Row() {
+      // 注意：需要确保对应的jpg文件存在才会正常显示
       Image('res/waterFlow(' + this.item % 5 + ').JPG')
         .objectFit(ImageFit.Fill)
         .height(100)
@@ -382,7 +383,7 @@ struct ReusableListItem {
 
 ## 分组混合布局
 
-许多应用界面在瀑布流上方包含其他内容，这类场景可通过在Scroll或List内部嵌套WaterFlow来实现。类似下图：
+许多应用界面在瀑布流上方包含其他内容，这类场景可通过在[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)或[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)内部嵌套[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)来实现。类似下图：
 
 ![](figures/waterflow-sections1.png)
 

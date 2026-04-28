@@ -38,7 +38,7 @@ ArkTS-Sta: visualEffect(effect: VisualEffect | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| effect | ArkTS-Dyn: [VisualEffect](#visualeffect-1) <br/>  ArkTS-Sta: [VisualEffect](#visualeffect-1) \| undefined| 是   | 非滤镜视觉效果。 |
+| effect | ArkTS-Dyn: [VisualEffect](#visualeffect-1) <br/>  ArkTS-Sta: [VisualEffect](#visualeffect-1) \| undefined| 是   | 非滤镜视觉效果。<br/>当effect的值为undefined时，无非滤镜视觉效果。 |
 
 **返回值：**
 
@@ -54,7 +54,7 @@ ArkTS-Sta: backgroundFilter(filter: Filter | undefined): this
 
 设置背景滤镜视觉效果。
 
->**说明：**
+> **说明：**
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -70,7 +70,7 @@ ArkTS-Sta: backgroundFilter(filter: Filter | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| filter | ArkTS-Dyn: [Filter](#filter)<br/>  ArkTS-Sta: [Filter](#filter) \| undefined| 是   | 背景滤镜视觉效果。 |
+| filter | ArkTS-Dyn: [Filter](#filter)<br/>  ArkTS-Sta: [Filter](#filter) \| undefined| 是   | 背景滤镜视觉效果。<br/>当filter的值为undefined时，无背景滤镜视觉效果。 |
 
 **返回值：**
 
@@ -102,7 +102,7 @@ ArkTS-Sta: foregroundFilter(filter: Filter | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| filter | ArkTS-Dyn: [Filter](#filter)<br/>  ArkTS-Sta: [Filter](#filter) \| undefined | 是   | 前景滤镜（内容）视觉效果。 |
+| filter | ArkTS-Dyn: [Filter](#filter)<br/>  ArkTS-Sta: [Filter](#filter) \| undefined | 是   | 前景滤镜（内容）视觉效果。<br/>当filter的值为undefined时，无前景滤镜（内容）视觉效果。 |
 
 **返回值：**
 
@@ -134,13 +134,13 @@ ArkTS-Sta: compositingFilter(filter: Filter | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| filter | ArkTS-Dyn: [Filter](#filter)<br/>  ArkTS-Sta: [Filter](#filter) \| undefined | 是   | 合成滤镜视觉效果。 |
+| filter | ArkTS-Dyn: [Filter](#filter)<br/>  ArkTS-Sta: [Filter](#filter) \| undefined | 是   | 合成滤镜视觉效果。<br/>当filter的值为undefined时，无合成滤镜视觉效果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this  | 返回当前组件。 |
 
 ## materialFilter<sup>23+</sup>
 

@@ -4,13 +4,13 @@
 
 PersistenceV2是应用程序中的可选单例对象。此对象的作用是持久化存储UI相关的数据，以确保这些属性在应用程序重新启动时的值与应用程序关闭时的值相同。
 
-PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变换和应用冷启动时，实现持久化能力。
+PersistenceV2提供状态变量持久化能力，开发者可以通过[connect](../../reference/apis-arkui/js-apis-stateManagement-static.md#connect)或者[globalConnect](../../reference/apis-arkui/js-apis-stateManagement-static.md#globalconnect)绑定同一个key，在状态变量变换和应用冷启动时，实现持久化能力。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-static-componentv2.md)，[\@ObservedV2和\@Trace](./arkts-static-new-observedV2-and-trace.md)，配合阅读：[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement-static.md#persistencev222)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-static-componentv2.md)，[\@ObservedV2和\@Trace](./arkts-static-new-observedV2-and-trace.md)，配合阅读：[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement-static.md#persistencev2)。
 
 >**说明：**
 >
->从API version 23开始支持。
+>从API版本26.0.0开始支持。
 >
 >globalConnect行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别。
 
@@ -19,7 +19,7 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过connect或
 
 PersistenceV2是在应用UI启动时会被创建的单例。它的目的是为了提供应用状态数据的中心存储，这些状态数据在应用级别都是可访问的。数据通过唯一的键字符串值访问。不同于AppStorageV2，PersistenceV2还将最新数据储存在设备磁盘上（持久化）。这意味着，应用退出再次启动后，依然能保存选定的结果。
 
-对于与PersistenceV2关联的[\@ObservedV2](./arkts-static-new-observedV2-and-trace.md)对象，该对象的[\@Trace](./arkts-static-new-observedV2-and-trace.md)属性的变化，可通过[enableAutoSave](../../reference/apis-arkui/js-apis-stateManagement-static.md#connect23-1)接口控制是否自动持久化。如未设置该参数或设置为true，则修改会自动存储，否则，需要通过调用PersistenceV2的save接口手动持久化。
+对于与PersistenceV2关联的[\@ObservedV2](./arkts-static-new-observedV2-and-trace.md)对象，该对象的[\@Trace](./arkts-static-new-observedV2-and-trace.md)属性的变化，可通过[enableAutoSave](../../reference/apis-arkui/js-apis-stateManagement-static.md#baseconnectoptions)接口控制是否自动持久化。如未设置该参数或设置为true，则修改会自动存储，否则，需要通过调用PersistenceV2的save接口手动持久化。
 
 PersistenceV2可以和UI组件同步，且可以在应用业务逻辑中被访问。
 
@@ -70,29 +70,6 @@ import { PersistenceV2, ObservedV2 } from '@kit.ArkUI';
 @ObservedV2
 class Storage {
   @Trace isPersist: boolean = false;
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const isPersistEle = new jsonx.JsonElement();
-    isPersistEle.setBoolean(this.isPersist);
-    root.setElement('isPersist', isPersistEle);
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.isPersist = json.getElement('isPersist').asBoolean();
-  }
-}
-
-const toJsonStorage = (s: Storage) => {
-  return s.toJson();
-}
-
-const fromJsonStorage = (json: jsonx.JsonElement): Storage => {
-  let s = new Storage();
-  s.fromJson(json);
-  return s;
 }
 
 // 在onWindowStageCreate的loadContent回调中调用PersistenceV2
@@ -102,9 +79,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
       return;
     }
     PersistenceV2.connect<Storage>(
-      Type.from<Storage>(),
-      toJsonStorage,
-      fromJsonStorage,
+      Class.from<Storage>(),
       (): Storage => {
         return new Storage();
       })!;
@@ -122,12 +97,12 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 'use static'
 
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
-  Button, Column, ClickEvent, ComponentV2, Text, SerializableObject, ConnectOptions } from '@kit.ArkUI';
+  Button, Column, ClickEvent, ComponentV2, Text, ConnectOptions } from '@kit.ArkUI';
 
 import contextConstant from '@ohos.app.ability.contextConstant';
 
 // 接受序列化失败的回调
-PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
@@ -137,35 +112,10 @@ class Info {
 }
 
 @ObservedV2
-class Person implements SerializableObject {
+class Person {
   @Trace userName: string = 'John';
   userId: int = 1;
   @Trace info: Info = new Info();
-
-  public toJSON(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJSON(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
 }
 
 @Entry
@@ -173,7 +123,7 @@ class Person implements SerializableObject {
 struct Index {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
-    type: Type.from<Person>(),
+    type: Class.from<Person>(),
     key: 'Person',
     defaultCreator: (): Person => {
       return new Person();
@@ -183,15 +133,17 @@ struct Index {
   })!;
 
   @Local cp2: Person = PersistenceV2.connect<Person>(
-    Type.from<Person>(),
+    Class.from<Person>(),
     'Person1',
     (): Person => {
       return new Person();
-    },true // 持久化存储
-    )!;
+    }, {
+      enableAutoSave: true, // 持久化存储
+    }
+  )!;
 
   options: ConnectOptions<Person> =
-    { type: Type.from<Person>(), key: 'Person2', defaultCreator: () => new Person(), areaMode: contextConstant.AreaMode.EL1, enableAutoSave: true} as ConnectOptions<Person>;
+    { type: Class.from<Person>(), key: 'Person2', defaultCreator: () => new Person(), areaMode: contextConstant.AreaMode.EL1, enableAutoSave: true} as ConnectOptions<Person>;
   @Local refresh: number = 0;
 
   build() {
@@ -282,41 +234,6 @@ class Person {
   @Trace userName: string = 'John';
   userId: int = 1;
   @Trace info: Info = new Info();
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const toJsonPerson = (person: Person) => {
-  return person.toJson();
-}
-
-const fromJsonPerson = (json: jsonx.JsonElement): Person => {
-  let person = new Person();
-  person.fromJson(json);
-  return person;
 }
 
 @Entry
@@ -324,10 +241,8 @@ const fromJsonPerson = (json: jsonx.JsonElement): Person => {
 struct Index {
   // 调用connect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.connect<Person>(
-    Type.from<Person>(),
+    Class.from<Person>(),
     'Person',
-    toJsonPerson,
-    fromJsonPerson,
     (): Person => {
       return new Person();
     })!;
@@ -371,7 +286,7 @@ import { PersistenceV2, ObservedV2, Trace, Local, Entry,
 import contextConstant from '@ohos.app.ability.contextConstant';
 
 // 接受序列化失败的回调
-PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
@@ -385,93 +300,32 @@ class Person {
   @Trace userName: string = 'John';
   userId: int = 1;
   @Trace info: Info = new Info();
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const toJsonPerson = (person: Person) => {
-  return person.toJson();
-}
-
-const fromJsonPerson = (json: jsonx.JsonElement): Person => {
-  let person = new Person();
-  person.fromJson(json);
-  return person;
 }
 
 // 用于判断是否完成数据迁移的辅助数据
 @ObservedV2
 class StorageState {
   @Trace isCompleteMoving: boolean = false;
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const movingStateEle = new jsonx.JsonElement();
-    movingStateEle.setBoolean(this.isCompleteMoving);
-    root.setElement('movingState', movingStateEle);
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.isCompleteMoving = json.getElement('movingState').asBoolean();
-  }
-}
-
-const toJsonState = (s: StorageState) => {
-  return s.toJson();
-}
-
-const fromJsonState = (json: jsonx.JsonElement): StorageState => {
-  let s = new StorageState();
-  s.fromJson(json);
-  return s;
 }
 
 function move() {
   let movingState =
-    PersistenceV2.globalConnect({ type: Type.from<StorageState>(), defaultCreator: () => new StorageState() },
-      toJsonState, fromJsonState)!;
+    PersistenceV2.globalConnect<StorageState>({ type: Class.from<StorageState>(), defaultCreator: () => new StorageState() })!;
   if (!movingState.isCompleteMoving) {
     let p: Person = PersistenceV2.connect<Person>(
-      Type.from<Person>(),
+      Class.from<Person>(),
       'Person',
-      toJsonPerson,
-      fromJsonPerson,
       (): Person => {
         return new Person();
       })!;
     PersistenceV2.remove('Person');
 
     let p1 = PersistenceV2.globalConnect<Person>({
-      type: Type.from<Person>(),
+      type: Class.from<Person>(),
       key: 'Person',
       defaultCreator: (): Person => p,
       areaMode: contextConstant.AreaMode.EL1 // EL1-EL5代表5种加密等级。
-    }, toJsonPerson, fromJsonPerson)!;
+    })!;
     // 将迁移标志设置为true
     movingState.isCompleteMoving = true;
   }
@@ -482,13 +336,13 @@ function move() {
 struct Index {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
-    type: Type.from<Person>(),
+    type: Class.from<Person>(),
     key: 'Person',
     defaultCreator: (): Person => {
       return new Person();
     },
     areaMode: contextConstant.AreaMode.EL1 // EL1-EL5代表5种加密等级。
-  }, toJsonPerson, fromJsonPerson)!;
+  })!;
   @Local refresh: number = 0;
   // 在ArkTS-Sta中，全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移至static代码块中，以达到与ArkTS-Dyn一样的效果。
   static {

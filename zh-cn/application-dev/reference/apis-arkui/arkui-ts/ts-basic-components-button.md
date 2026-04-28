@@ -245,7 +245,7 @@ ArkTS-Sta: stateEffect(value: boolean | undefined)
 
 >  **说明：**
 >
->  使用多态样式设置按压态时，需优先设置stateEffect为false，防止内置按压态与多态样式按压态冲突。
+>  使用[多态样式](../../../ui/state-management/arkts-statestyles.md)设置按压态时，需优先设置stateEffect为false，防止内置按压态与多态样式按压态冲突。
 
 ### fontFamily<sup>8+</sup>
 
@@ -389,7 +389,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ButtonConfiguration\> | un
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier\<ButtonConfiguration\>](#buttonconfiguration12对象说明) <br/>ArkTS-Sta: [ContentModifier\<ButtonConfiguration\>](#buttonconfiguration12对象说明) \| undefined| 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: ContentModifier[\<ButtonConfiguration\>](#buttonconfiguration12对象说明) <br/>ArkTS-Sta: ContentModifier[\<ButtonConfiguration\>](#buttonconfiguration12对象说明) \| undefined| 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### minFontScale<sup>18+</sup>
 

@@ -170,8 +170,8 @@ struct ParentComponent {
 
 在 `build()` 函数中声明的所有语句统称为UI描述，这些描述需遵循以下规则：
 
--  @Entry装饰的自定义组件，其build()函数下的根节点是容器组件，并且必须和唯一存在。ForEach不能作为根节点。
-- 使用 `@Component` 或 `@ComponentV2` 装饰的自定义组件，其`build()` 函数下的根节点必须唯一且必要，可以是非容器组件，但 `ForEach` 不能作为根节点。
+-  [@Entry](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-entry-static.md)装饰的自定义组件，其build()函数下的根节点是容器组件，并且必须和唯一存在。[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach-sta.md)不能作为根节点。
+- 使用 [`@Component`](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-component-static.md) 或 [`@ComponentV2`](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2-static.md) 装饰的自定义组件，其`build()` 函数下的根节点必须唯一且必要，可以是非容器组件，但 `ForEach` 不能作为根节点。
 
 ```typescript
   'use static'
@@ -199,7 +199,7 @@ struct ParentComponent {
 ```
 ### build()函数支持写非UI的逻辑
 
-`build()`函数支持编写非 UI 逻辑，如变量声明、`switch/case` 语句和打印日志。但是，不能执行耗时操作，否则会阻塞 UI 主线程，影响应用界面的渲染性能。
+`build()`函数支持编写非 UI 逻辑，如变量声明、[`switch/case`](../../quick-start/introduction-to-arkts.md) 语句和打印日志。但是，不能执行耗时操作，否则会阻塞 UI 主线程，影响应用界面的渲染性能。
 **建议用法**
 
 **在build()根节点中进行变量声明**
@@ -334,7 +334,7 @@ struct MyComponent {
 ```
   > **说明：**
   >
-  > 上述代码中，通过三元表达式，也能实现条件渲染。
+  > 上述代码中，通过三元表达式，也能实现条件渲染。this.stateVar为1时，展示本文内容为`is equal to 1`，this.stateVar不为1时，展示本文内容为`is not euqal to 1`。
 
 
 **不建议用法**
@@ -463,8 +463,8 @@ struct MyComponent {
 
 ## 支持自定义组件扩展
 
-从API version 23开始，开发者可以在自定义组件中重写通用属性的方法，并使用`super`关键字调用基类的通用属性的方法。当使用“.”链式调用自定义组件方法时，需注意以下事项：
-1. 实现链式调用的关键是：每个方法必须返回`this`，以允许连续调用。如果某个方法未返回`this`，则无法作为链式调用的中间步骤，导致后续调用无法解析，从而引发编译错误。
+从API version 23开始，开发者可以在自定义组件中重写通用属性的方法，并使用[`super`](../../quick-start/introduction-to-arkts.md)关键字调用基类的通用属性的方法。当使用"."链式调用自定义组件方法时，需注意以下事项：
+1. 实现链式调用的关键是：每个方法必须返回[`this`](../../quick-start/introduction-to-arkts.md#this)，以允许连续调用。如果某个方法未返回`this`，则无法作为链式调用的中间步骤，导致后续调用无法解析，从而引发编译错误。
 2. 通过链式调用的方法，其调用时机是在创建自定义组件时，所以在方法内，不能改变关联其他组件或方法的状态变量，否则会有运行时报错。
 
 示例如下。

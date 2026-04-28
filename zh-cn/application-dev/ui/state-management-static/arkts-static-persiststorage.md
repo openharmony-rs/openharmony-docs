@@ -26,12 +26,13 @@ import { PersistentStorage } from '@kit.ArkUI';
 
 PersistentStorage允许的类型和值有：
 
-- `number, string, boolean, enum` 等简单类型，对于简单类型，开发者无需传入[toJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#tojsontypet)和[fromJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#fromjsontypet)方法即可实现持久化。
-- 对于以下复杂类型，开发者必须传入toJson和fromJson才能实现数据持久化：
-- 支持Map类型，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。且更新的值被持久化存储。详见[装饰Map类型变量](#装饰map类型变量)。
-- 支持Set类型，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。且更新的值被持久化存储。详见[装饰Set类型变量](#装饰set类型变量)。
-- 支持Date类型，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。且更新的值被持久化存储。详见[装饰Date类型变量](#装饰date类型变量)。
-- 支持class类型，class需要被@Observed装饰才能够持久化。
+- `number, string, boolean, enum` 等简单类型。
+- 可以被`JSON.stringify()`和`JSON.parse()`或`JSON.parseUpdate()`重构的对象，但是对象中的成员方法不支持持久化。
+- 对于以下复杂类型，开发者必须传入[toJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#tojsontypet)和[fromJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#fromjsontypet)才能实现数据持久化：
+- 支持[Map](#装饰map类型变量)类型，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。且更新的值被持久化存储。详见[装饰Map类型变量](#装饰map类型变量)。
+- 支持[Set](#装饰set类型变量)类型，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。且更新的值被持久化存储。详见[装饰Set类型变量](#装饰set类型变量)。
+- 支持[Date](#装饰date类型变量)类型，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。且更新的值被持久化存储。详见[装饰Date类型变量](#装饰date类型变量)。
+- 支持class类型，class需要被[@Observed](./arkts-static-observed-and-objectlink.md)装饰才能够持久化。
 - [支持联合类型](#支持联合类型)。
 
 持久化数据是一个相对缓慢的操作，应用程序应避免以下情况：
@@ -42,7 +43,7 @@ PersistentStorage允许的类型和值有：
 
 PersistentStorage的持久化变量应小于2kb，避免大量数据的持久化。因为PersistentStorage写入磁盘的操作是同步的，大量数据的本地化读写会同步在UI线程中执行，影响UI渲染性能。如果开发者需要存储大量数据，建议使用数据库API。
 
-PsistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败, 最早使用时机如下：
+PersistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败, 最早使用时机如下：
 
 ```ts
 // EntryAbility.ets
@@ -172,7 +173,7 @@ if (AppStorage.get('aProp') > 50) {
 
 在静态ArkTS中，联合类型都是Object类型，因此所有的联合类型都是复杂类型，需要传入toJson和fromJson才能实现持久化。
 
-静态ArkTS中,语言不支持序列化undefined，因此，不建议开发者使用PersitentStorage时去持久化undefined，可使用null代替，如在下面的示例中，使用persistProp方法初始化'P'为12。通过@StorageLink('P')绑定变量p，类型为number | string | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
+静态ArkTS中,语言不支持序列化undefined，因此，不建议开发者使用PersistentStorage时去持久化undefined，可使用null代替，如在下面的示例中，使用persistProp方法初始化'P'为12。通过@StorageLink('P')绑定变量p，类型为number | string | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
 ```ts
 'use static'
@@ -186,7 +187,7 @@ struct MapSample {
     (val: number | string | null): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
       const unionElmt = new jsonx.JsonElement();
-      if (Type.of(val) === Type.from<number>()) {
+      if (Class.of(val) === Class.from<number>()) {
         unionElmt.setDouble(val as Double);
       } else if (val === null) {
         unionElmt.setNull();
@@ -215,7 +216,7 @@ struct MapSample {
       Text(`${this.union}`)
       Button(`union change:`)
         .onClick((e: ClickEvent) => {
-          if (Type.of(this.union) === Type.from<number>()) {
+          if (Class.of(this.union) === Class.from<number>()) {
             this.union = null
           } else if (this.union === null) {
             this.union = 'strUnion';
@@ -432,16 +433,8 @@ struct SetSample {
 
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
-interface JsonSerializable {
-  toJson(): jsonx.JsonElement;
-}
-
-interface JsonDeserializable {
-  fromJson(json: jsonx.JsonElement): void;
-}
-
 @Observed
-class User implements JsonSerializable, JsonDeserializable {
+class User {
   userId: number = 1;
   userName: string = 'jack';
   isUser: boolean = false;
@@ -451,47 +444,12 @@ class User implements JsonSerializable, JsonDeserializable {
     this.userId = userId ?? 1;
     this.isUser = isUser ?? false;
   }
-
-  toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-
-    // 存储ID
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setDouble(this.userId);
-    root.setElement('userId', userIdEle);
-
-    // 存储 userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-
-    const isUserEle = new jsonx.JsonElement();
-    isUserEle.setBoolean(this.isUser);
-    root.setElement('isUser', isUserEle);
-
-    return root;
-  }
-
-  fromJson(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.isUser = json.getElement('isUser').asBoolean();
-  }
 }
 
 @Entry
 @Component
 struct ClassSample {
-  success: boolean = PersistentStorage.persistProp<User>('user', new User(),
-    (user: User) => {
-      return user.toJson();
-    }, 
-    (json: jsonx.JsonElement): User => {
-      let temp = new User();
-      temp.fromJson(json);
-      return temp;
-    }
-  );
+  success: boolean = PersistentStorage.persistProp<User>('user', new User());
   @StorageLink('user') user: User = new User();
 
   build() {

@@ -223,7 +223,7 @@ getSysResourceManager(): ResourceManager
 
 获取系统资源管理对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -265,7 +265,7 @@ try {
 
 用于表示设备屏幕方向。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -279,7 +279,7 @@ try {
 
 用于表示当前设备类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 <!--RP1-->
@@ -297,7 +297,7 @@ try {
 
 用于表示当前设备屏幕密度。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -315,7 +315,7 @@ try {
 
 用于表示当前设备颜色模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -333,13 +333,13 @@ try {
 
 | 名称                        | 类型                            | 只读 | 可选 | 说明               |
 | --------------------------- | ------------------------------- | ---- | ---- | ------------------ |
-| direction                   | [Direction](#direction)         | 否   | 否   | 屏幕方向。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| locale                      | string                          | 否   | 否   | 语言文字国家地区。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| deviceType<sup>12+</sup>    | [DeviceType](#devicetype)       | 否   | 否   | 设备类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| screenDensity<sup>12+</sup> | [ScreenDensity](#screendensity) | 否   | 否   | 屏幕密度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| colorMode<sup>12+</sup>     | [ColorMode](#colormode12)       | 否   | 否   | 颜色模式。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
-| mcc<sup>12+</sup>           | number                          | 否   | 否   | 移动国家码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| mnc<sup>12+</sup>           | number                          | 否   | 否   | 移动网络码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| direction                   | [Direction](#direction)         | 否   | 否   | 屏幕方向。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。         |
+| locale                      | string                          | 否   | 否   | 语言文字国家地区。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| deviceType<sup>12+</sup>    | [DeviceType](#devicetype)       | 否   | 否   | 设备类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| screenDensity<sup>12+</sup> | [ScreenDensity](#screendensity) | 否   | 否   | 屏幕密度。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| colorMode<sup>12+</sup>     | [ColorMode](#colormode12)       | 否   | 否   | 颜色模式。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。        |
+| mcc<sup>12+</sup>           | number                          | 否   | 否   | 移动国家码。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| mnc<sup>12+</sup>           | number                          | 否   | 否   | 移动网络码。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。       |
 
 
 
@@ -347,7 +347,7 @@ try {
 
 表示设备支持的能力。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -361,7 +361,7 @@ try {
 
 type RawFileDescriptor = _RawFileDescriptor
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -373,7 +373,7 @@ type RawFileDescriptor = _RawFileDescriptor
 
 type Resource = _Resource
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -403,7 +403,7 @@ getStringSync(resId: number): string
 
 获取指定资源ID对应的字符串，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -468,7 +468,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 获取指定资源ID对应的字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -535,7 +535,7 @@ getStringByNameSync(resName: string): string
 
 获取指定资源名称对应的字符串，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -600,7 +600,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
 获取指定资源名称对应的字符串，并根据args参数对字符串进行格式化，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -667,7 +667,7 @@ getStringValue(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 
 获取指定资源ID对应的字符串，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -726,7 +726,7 @@ getStringValue(resId: number): Promise&lt;string&gt;
 
 获取指定资源ID对应的字符串，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -788,7 +788,7 @@ getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 
 获取指定资源名称对应的字符串，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -847,7 +847,7 @@ getStringByName(resName: string): Promise&lt;string&gt;
 
 获取指定资源名称对应的字符串，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -909,7 +909,7 @@ getStringArrayValueSync(resId: number): Array&lt;string&gt;
 
 获取指定资源ID对应的字符串数组，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -978,7 +978,7 @@ getStringArrayByNameSync(resName: string): Array&lt;string&gt;
 
 获取指定资源名称对应的字符串数组，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1047,7 +1047,7 @@ getStringArrayValue(resId: number, callback: _AsyncCallback&lt;Array&lt;string&g
 
 获取指定资源ID对应的字符串数组，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1111,7 +1111,7 @@ getStringArrayValue(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 获取指定资源ID对应的字符串数组，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1179,7 +1179,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback&lt;Array&lt;strin
 
 获取指定资源名称对应的字符串数组，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1243,7 +1243,7 @@ getStringArrayByName(resName: string): Promise&lt;Array&lt;string&gt;&gt;
 
 获取指定资源名称对应的字符串数组，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1317,7 +1317,7 @@ getIntPluralStringValueSync(resId: number, num: number, ...args: Array<string | 
 > 
 > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1401,7 +1401,7 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 > 
 > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1485,7 +1485,7 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 > 
 > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1569,7 +1569,7 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 > 
 > - 在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本接口仅支持在基数词类型下使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1647,7 +1647,7 @@ getMediaContentSync(resId: number, density?: number): Uint8Array
 
 获取指定资源ID对应的默认或指定的屏幕密度媒体文件内容，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1708,7 +1708,7 @@ getMediaByNameSync(resName: string, density?: number): Uint8Array
 
 获取指定资源名称对应的默认或指定的屏幕密度媒体文件内容，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1769,7 +1769,7 @@ getMediaContent(resId: number, callback: _AsyncCallback&lt;Uint8Array&gt;): void
 
 获取指定资源ID对应的媒体文件内容，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1822,7 +1822,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback&lt;Uint
 
 获取指定资源ID对应的指定屏幕密度媒体文件内容，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1875,7 +1875,7 @@ getMediaContent(resId: number): Promise&lt;Uint8Array&gt;
 
 获取指定资源ID对应的媒体文件内容，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1930,7 +1930,7 @@ getMediaContent(resId: number, density: number): Promise&lt;Uint8Array&gt;
 
 获取指定资源ID对应的指定屏幕密度媒体文件内容，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1986,7 +1986,7 @@ getMediaByName(resName: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 
 获取指定资源名称对应的媒体文件内容，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2038,7 +2038,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback&lt;Uin
 
 获取指定资源名称对应的指定屏幕密度媒体文件内容，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2091,7 +2091,7 @@ getMediaByName(resName: string): Promise&lt;Uint8Array&gt;
 
 获取指定资源名称对应的媒体文件内容，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2146,7 +2146,7 @@ getMediaByName(resName: string, density: number): Promise&lt;Uint8Array&gt;
 
 获取指定资源名称对应的指定屏幕密度媒体文件内容，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2202,7 +2202,7 @@ getMediaContentBase64Sync(resId: number, density?: number): string
 
 获取指定资源ID对应的默认或指定的屏幕密度图片资源Base64编码，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2263,7 +2263,7 @@ getMediaBase64ByNameSync(resName: string, density?: number): string
 
 获取指定资源名称对应的默认或指定的屏幕密度图片资源Base64编码，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2324,7 +2324,7 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback&lt;string&gt;): vo
 
 获取指定资源ID对应的图片资源Base64编码，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2376,7 +2376,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback&l
 
 获取指定资源ID对应的指定屏幕密度图片资源Base64编码，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2429,7 +2429,7 @@ getMediaContentBase64(resId: number): Promise&lt;string&gt;
 
 获取指定资源ID对应的图片资源Base64编码，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2484,7 +2484,7 @@ getMediaContentBase64(resId: number, density: number): Promise&lt;string&gt;
 
 获取指定资源ID对应的指定屏幕密度图片资源Base64编码，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2540,7 +2540,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback&lt;string&gt;): v
 
 获取指定资源名称对应的图片资源Base64编码，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2596,7 +2596,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback&
 >
 > 推荐使用[getMediaBase64ByName](#getmediacontentbase6410)或[getMediaContentBase64](#getmediacontentbase6410)接口，具体请参考[ResourceManager](#resourcemanager)的说明。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2649,7 +2649,7 @@ getMediaBase64ByName(resName: string): Promise&lt;string&gt;
 
 获取指定资源名称对应的图片资源Base64编码，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2704,7 +2704,7 @@ getMediaBase64ByName(resName: string, density: number): Promise&lt;string&gt;
 
 获取指定资源名称对应的指定屏幕密度图片资源Base64编码，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2760,7 +2760,7 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 
 获取指定资源ID对应的DrawableDescriptor对象，用于图标的显示，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2830,7 +2830,7 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 
 获取指定资源名称对应的DrawableDescriptor对象，用于图标的显示，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2900,7 +2900,7 @@ getBoolean(resId: number): boolean
 
 获取指定资源ID值对应的布尔值，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -2965,7 +2965,7 @@ getBooleanByName(resName: string): boolean
 
 获取指定资源名称对应的布尔值，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3030,7 +3030,7 @@ getNumber(resId: number): number
 
 获取指定资源ID对应的integer数值或者float数值，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3122,7 +3122,7 @@ getNumberByName(resName: string): number
 
 获取指定资源名称对应的integer数值或者float数值，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3213,7 +3213,7 @@ getColorSync(resId: number) : number
 
 获取指定资源ID对应的颜色值，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3279,7 +3279,7 @@ getColorByNameSync(resName: string) : number
 
 获取指定资源名称对应的颜色值，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3344,7 +3344,7 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 
 获取指定资源ID对应的颜色值，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3403,7 +3403,7 @@ getColor(resId: number): Promise&lt;number&gt;
 
 获取指定资源ID对应的颜色值，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3468,7 +3468,7 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 
 获取指定资源名称对应的颜色值，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3527,7 +3527,7 @@ getColorByName(resName: string): Promise&lt;number&gt;
 
 获取指定资源名称对应的颜色值，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3591,7 +3591,7 @@ getRawFileContentSync(path: string): Uint8Array
 
 获取resources/rawfile目录下对应的rawfile文件内容，使用同步形式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3641,7 +3641,7 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
 
 获取resources/rawfile目录下对应的rawfile文件内容，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3692,7 +3692,7 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
 
 获取resources/rawfile目录下对应的rawfile文件内容，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3750,7 +3750,7 @@ getRawFileListSync(path: string): Array\<string>
 >
 > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3807,7 +3807,7 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
 >
 > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3858,7 +3858,7 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
 >
 > 若文件夹中无文件，则抛出异常；若文件夹中有文件，则返回文件夹及文件列表。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3914,7 +3914,7 @@ getRawFdSync(path: string): RawFileDescriptor
 >
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄露。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -3968,7 +3968,7 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 >
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄露。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4026,7 +4026,7 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 >
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄露。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4083,7 +4083,7 @@ closeRawFdSync(path: string): void
 
 关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4131,7 +4131,7 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
 
 关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4184,7 +4184,7 @@ closeRawFd(path: string): Promise&lt;void&gt;
 
 关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4237,7 +4237,7 @@ getConfigurationSync(): Configuration
 
 获取设备的Configuration，使用同步形式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4270,7 +4270,7 @@ getConfiguration(callback: _AsyncCallback&lt;Configuration&gt;): void
 
 获取设备的Configuration，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4310,7 +4310,7 @@ getConfiguration(): Promise&lt;Configuration&gt;
 
 获取设备的Configuration，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4348,7 +4348,7 @@ getDeviceCapabilitySync(): DeviceCapability
 
 获取设备的DeviceCapability，使用同步形式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4381,7 +4381,7 @@ getDeviceCapability(callback: _AsyncCallback&lt;DeviceCapability&gt;): void
 
 获取设备的DeviceCapability，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4421,7 +4421,7 @@ getDeviceCapability(): Promise&lt;DeviceCapability&gt;
 
 获取设备的DeviceCapability，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4463,7 +4463,7 @@ addResource(path: string): void
 >
 > rawfile和resfile目录不支持资源覆盖。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4512,7 +4512,7 @@ removeResource(path: string): void
 >
 > rawfile和resfile目录不支持资源覆盖。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4557,7 +4557,7 @@ getLocales(includeSystem?: boolean): Array\<string>
 
 获取应用的语言列表。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4622,7 +4622,7 @@ getSymbol(resId: number): number
 
 获取指定资源ID对应的[Symbol字符](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol)Unicode码，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4677,7 +4677,7 @@ getSymbolByName(resName: string): number
 
 获取指定资源名称对应的[Symbol字符](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol)Unicode码，使用同步方式返回。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4731,7 +4731,7 @@ isRawDir(path: string): boolean
 
 判断指定路径是否为rawfile下的目录，使用同步方式返回。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4792,7 +4792,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 普通的资源管理对象获取的资源的配置（语言、深浅色、分辨率、横竖屏等）是由系统决定的，而通过该接口返回的对象，应用可以获取符合指定配置的资源，即差异化资源，比如在浅色模式时可以获取深色资源。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4845,7 +4845,7 @@ getOverrideConfiguration(): Configuration
 
 获取差异化资源的配置，使用同步方式返回。普通资源管理对象与通过它的[getOverrideResourceManager](#getoverrideresourcemanager12)接口获取的差异化资源管理对象调用该方法可获得相同的返回值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4884,7 +4884,7 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 更新差异化资源配置。普通资源管理对象与通过它的[getOverrideResourceManager](#getoverrideresourcemanager12)接口获取的差异化资源管理对象调用该方法均可更新差异化资源管理对象的配置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4933,7 +4933,7 @@ getResourceName(resId: number): string
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -4999,7 +4999,7 @@ release()
 >
 > 从API version 7开始支持，从API version 12开始废弃。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5091,7 +5091,7 @@ getStringSync(resource: Resource): string
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringByNameSync](#getstringbynamesync9)或[getStringSync](#getstringsync9)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5162,7 +5162,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringByNameSync](#getstringbynamesync10)或[getStringSync](#getstringsync10)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5234,7 +5234,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringByName](#getstringbyname9)或[getStringValue](#getstringvalue9)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5299,7 +5299,7 @@ getStringValue(resource: Resource): Promise&lt;string&gt;
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringByName](#getstringbyname9-1)或[getStringValue](#getstringvalue9-1)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5428,7 +5428,7 @@ getStringArrayValueSync(resource: Resource): Array&lt;string&gt;
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getStringArrayByNameSync](#getstringarraybynamesync10)或[getStringArrayValueSync](#getstringarrayvaluesync10)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5502,7 +5502,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;str
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringArrayByName](#getstringarraybyname9)或[getStringArrayValue](#getstringarrayvalue9)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5571,7 +5571,7 @@ getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getStringArrayByName](#getstringarraybyname9-1)或[getStringArrayValue](#getstringarrayvalue9-1)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5715,7 +5715,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaByNameSync](#getmediabynamesync10)或[getMediaContentSync](#getmediacontentsync10)替代。
 
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5781,7 +5781,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback&lt;Uint8Array&gt;):
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname9)或[getMediaContent](#getmediacontent9)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5839,7 +5839,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback&lt
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname10)或[getMediaContent](#getmediacontent10)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5898,7 +5898,7 @@ getMediaContent(resource: Resource): Promise&lt;Uint8Array&gt;
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname9-1)或[getMediaContent](#getmediacontent9-1)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -5959,7 +5959,7 @@ getMediaContent(resource: Resource, density: number): Promise&lt;Uint8Array&gt;
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaByName](#getmediabyname10-1)或[getMediaContent](#getmediacontent10-1)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6090,7 +6090,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByNameSync](#getmediabase64bynamesync10)或[getMediaContentBase64Sync](#getmediacontentbase64sync10)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6155,7 +6155,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname9)或[getMediaContentBase64](#getmediacontentbase649)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6213,7 +6213,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname10)或[getMediaContentBase64](#getmediacontentbase6410)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6272,7 +6272,7 @@ getMediaContentBase64(resource: Resource): Promise&lt;string&gt;
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname9-1)或[getMediaContentBase64](#getmediacontentbase649-1)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6333,7 +6333,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise&lt;string&gt
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getMediaBase64ByName](#getmediabase64byname10-1)或[getMediaContentBase64](#getmediacontentbase6410-1)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6394,7 +6394,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getDrawableDescriptorByName](#getdrawabledescriptorbyname10)或[getDrawableDescriptor](#getdrawabledescriptor10)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6470,7 +6470,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 >
 > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6557,7 +6557,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 >
 > - 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6644,7 +6644,7 @@ getPluralStringValueSync(resId: number, num: number): string
 >
 > 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6721,7 +6721,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 >
 > 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6806,7 +6806,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 >
 > 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6883,7 +6883,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;str
 >
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -6955,7 +6955,7 @@ getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 >
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7031,7 +7031,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
 >
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7111,7 +7111,7 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 >
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7195,7 +7195,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;
 >
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7266,7 +7266,7 @@ getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 >
 > 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7419,7 +7419,7 @@ getBoolean(resource: Resource): boolean
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getBooleanByName](#getbooleanbyname9)或[getBoolean](#getboolean9)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7489,7 +7489,7 @@ getNumber(resource: Resource): number
 >
 > 从API version 9开始支持，从API version 20开始废弃，建议使用[getNumberByName](#getnumberbyname9)或[getNumber](#getnumber9)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7561,7 +7561,7 @@ getColorSync(resource: Resource): number
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorByNameSync](#getcolorbynamesync10)或[getColorSync](#getcolorsync10)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7631,7 +7631,7 @@ getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorByName](#getcolorbyname10)或[getColor](#getcolor10)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7696,7 +7696,7 @@ getColor(resource: Resource): Promise&lt;number&gt;
 >
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[getColorByName](#getcolorbyname10-1)或[getColor](#getcolor10-1)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7764,7 +7764,7 @@ getSymbol(resource: Resource): number
 >
 > 从API version 11开始支持，从API version 20开始废弃，建议使用[getSymbolByName](#getsymbolbyname11)或[getSymbol](#getsymbol11)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -8040,7 +8040,7 @@ getSystemResourceManager(): ResourceManager
 > 
 > 从API version 10开始支持，从API version 20开始废弃，建议使用[resourceManager.getSysResourceManager](#resourcemanagergetsysresourcemanager20)替代。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 

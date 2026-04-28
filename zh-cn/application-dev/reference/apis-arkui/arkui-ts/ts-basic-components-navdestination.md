@@ -122,6 +122,32 @@ ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined
 | hide  |ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined  | 是   | 是否隐藏标题栏。<br/>取值为undefined时，按默认值处理。<br/>默认值：false<br/>true：隐藏标题栏。<br/>false：显示标题栏。<br/>取值为undefined时，按默认值处理。 |
 | animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined  | 是   | 设置是否使用动画显隐标题栏。<br/>取值为undefined时，按默认值处理。<br/>默认值：false<br/>true：使用动画显示隐藏标题栏。<br/>false：不使用动画显示隐藏标题栏。<br/>取值为undefined时，按默认值处理。 |
 
+### fullScreenOverlay
+
+ArkTS-Dyn: fullScreenOverlay(fullScreenOverlay: Optional&lt;boolean&gt;)
+
+ArkTS-Sta: fullScreenOverlay(fullScreenOverlay: boolean | undefined)
+
+设置NavDestination是否以全屏覆盖模式显示。
+
+当参数设置为true时，在Navigation分栏模式下，当前页面会覆盖整个Navigation容器，包括NavBar和内容区。该配置作用于当前NavDestination的所有实例；当路由栈中已有页面以全屏覆盖模式显示时，其后入栈的[DIALOG](#navdestinationmode枚举说明11)页面与未设置fullScreenOverlay为false的[STANDARD](#navdestinationmode枚举说明11)页面也会继承为全屏覆盖显示。未通过该接口设置时，NavDestination默认是普通显示模式，遵循Navigation分栏显示规则。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| fullScreenOverlay | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否以全屏覆盖模式显示。<br/>true：全屏覆盖模式，覆盖整个Navigation容器。<br/>false：普通显示模式，遵循Navigation分栏显示规则。指定为false的STANDARD类型页面不会继承全屏显示。<br/>undefined：普通显示模式，遵循Navigation分栏显示规则。指定为undefined的页面会继承全屏显示。 |
+
 ### toolbarConfiguration<sup>13+</sup>
 
 ArkTS-Dyn: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: NavigationToolbarOptions)

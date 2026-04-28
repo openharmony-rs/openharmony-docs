@@ -1,7 +1,7 @@
 # 自定义组件的生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @huyisuo-->
+<!--Owner: @seaside_wu1; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -71,7 +71,7 @@ ArkTS-Dyn: aboutToDisappear?(): void
 
 ArkTS-Sta: default aboutToDisappear(): void
 
-aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。不建议在aboutToDisappear函数调用后再触发例如[自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open)等逻辑，这可能会因为组件树信息丢失导致应用行为异常，例如[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)找不到对应的[@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、弹窗内白屏不显示组件等。
+aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是[\@Link](../../../ui/state-management/arkts-link.md)变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。不建议在aboutToDisappear函数调用后再触发例如[自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open)等逻辑，这可能会因为组件树信息丢失导致应用行为异常，例如[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)找不到对应的[@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、弹窗内白屏不显示组件等。
 
 > **说明：**
 >
@@ -147,16 +147,19 @@ struct IndexComponent {
   @State textColor: Color = Color.Black;
 
   onPageShow() {
+    // onPageShow触发时将textColor置为Blue
     this.textColor = Color.Blue;
     console.info('IndexComponent onPageShow');
   }
 
   onPageHide() {
+    // onPageHide触发时将textColor置为Transparent
     this.textColor = Color.Transparent;
     console.info('IndexComponent onPageHide');
   }
 
   onBackPress() {
+    // 点击返回键触发onBackPress，将textColor置为Red
     this.textColor = Color.Red;
     console.info('IndexComponent onBackPress');
   }
@@ -228,6 +231,7 @@ struct Index {
             params: new routerParam('push pageOne Standard')
           }, router.RouterMode.Standard);
         })
+      // Single模式下若PageOne已在栈中，会复用并触发PageOne.onNewParam
       Button('push pageOne Single')
         .margin(10)
         .onClick(() => {
@@ -269,6 +273,7 @@ struct PageOne {
             params: new routerParam('push Index Standard')
           }, router.RouterMode.Standard);
         })
+      // Single模式下若Index已在栈中，会复用并触发Index.onNewParam
       Button('push Index Single')
         .margin(10)
         .onClick(() => {
@@ -331,6 +336,7 @@ struct Index {
 
   build() {
     Column() {
+      // 点击Button切换switch，控制Child从组件树移除或重新加入
       Button('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -815,6 +821,7 @@ struct WidgetCard {
 
   onFormRecycle(): string {
     let formId: string = "1859635745"
+    // 卡片回收时触发回调
     console.info("card is recycled, formID: " + formId);
     return formId;
   }
@@ -885,6 +892,7 @@ struct WidgetCard {
   }
 
   onFormRecover(statusData: string): void {
+    // 在卡片恢复时触发回调
     console.info("card has been restored, formID: " + statusData);
   }
 

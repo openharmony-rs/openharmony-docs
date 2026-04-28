@@ -158,12 +158,14 @@ import { formInfo } from '@kit.FormKit';
 
 定义卡片形状枚举。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Ability.Form
 
 | 名称        | 值   | 说明         |
 | ----------- | ---- | ------------ |
-| RECT        | 1   | 方形 form。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| CIRCLE      | 2   | 圆形 form。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| RECT        | 1   | 方形 form。|
+| CIRCLE      | 2   | 圆形 form。|
 
 ## FormInfoFilter
 

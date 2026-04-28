@@ -67,7 +67,7 @@ transition(value: TransitionEffect | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- |  ---- | -------- |
-| value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。|
+| value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。<br/>当value的值为undefined时，无过渡效果。 |
 
 **返回值：**
 
@@ -134,7 +134,7 @@ transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;Transitio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- |  ---- | -------- |
-| value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。|
+| value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。<br/>当value的值为undefined时，无过渡效果。 |
 
 **返回值：**
 
@@ -485,7 +485,7 @@ move(edge: TransitionEdge): TransitionEffect
 
 asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect\<"asymmetric">
 
-设置非对称的转场效果。
+设置非对称的转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体效果可参考[示例2](#示例2使用不同接口实现图片出现消失)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

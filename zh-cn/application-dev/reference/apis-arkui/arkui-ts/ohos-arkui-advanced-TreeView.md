@@ -410,17 +410,21 @@ import { TreeController, TreeListener, TreeListenerManager, TreeListenType, Node
 @Entry
 @Component
 struct TreeViewDemo {
+  // 创建树视图组件的控制器
   private treeController: TreeController = new TreeController();
+  // 创建树视图组件的监听器
   private treeListener: TreeListener = TreeListenerManager.getInstance().getTreeListener();
   @State clickId: number = 0;
 
   aboutToDisappear(): void {
+    // 取消监听
     this.treeListener.off(TreeListenType.NODE_CLICK, undefined);
     this.treeListener.off(TreeListenType.NODE_ADD, undefined);
     this.treeListener.off(TreeListenType.NODE_DELETE, undefined);
     this.treeListener.off(TreeListenType.NODE_MOVE, undefined);
   }
 
+  // 创建右侧菜单操作区
   @Builder menuBuilder1() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('新增').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
@@ -441,6 +445,7 @@ struct TreeViewDemo {
   }
 
   aboutToAppear(): void {
+    // 注册监听
     this.treeListener.on(TreeListenType.NODE_CLICK, (callbackParam: CallbackParam) => {
       this.clickId = callbackParam.currentNodeId;
     })
@@ -460,6 +465,7 @@ struct TreeViewDemo {
     let nodeParam: NodeParam = { parentNodeId:-1, currentNodeId: 1, isFolder: true, icon: normalResource, selectedIcon: selectedResource,
       editIcon: editResource, primaryTitle: '目录1验证悬浮框自适应效果是否OK',
       secondaryTitle: '6' };
+    // 添加树节点
     this.treeController
       .addNode(nodeParam)
       .addNode({parentNodeId:1, currentNodeId: 2, isFolder: false, primaryTitle: '项目1_1' })
@@ -483,8 +489,7 @@ struct TreeViewDemo {
 
   build() {
     Column(){
-      SideBarContainer(SideBarContainerType.Embed)
-      {
+      SideBarContainer(SideBarContainerType.Embed) {
         TreeView({ treeController: this.treeController })
         Row() {
           Divider().vertical(true).strokeWidth(2).color(0x000000).lineCap(LineCapStyle.Round)
@@ -528,17 +533,21 @@ import {
 @Entry
 @Component
 struct TreeViewDemo {
+  // 创建树视图组件的控制器
   private treeController: TreeController = new TreeController();
+  // 创建树视图组件的监听器
   private treeListener: TreeListener = TreeListenerManager.getInstance().getTreeListener();
   @State clickId: number = 0;
 
   aboutToDisappear(): void {
+    // 取消监听
     this.treeListener.off(TreeListenType.NODE_CLICK, undefined);
     this.treeListener.off(TreeListenType.NODE_ADD, undefined);
     this.treeListener.off(TreeListenType.NODE_DELETE, undefined);
     this.treeListener.off(TreeListenType.NODE_MOVE, undefined);
   }
 
+  // 创建右侧菜单操作区
   @Builder
   menuBuilder1() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -572,6 +581,7 @@ struct TreeViewDemo {
   }
 
   aboutToAppear(): void {
+    // 注册监听
     this.treeListener.on(TreeListenType.NODE_CLICK, (callbackParam: CallbackParam) => {
       this.clickId = callbackParam.currentNodeId;
     })
@@ -601,6 +611,7 @@ struct TreeViewDemo {
       primaryTitle: '目录1验证悬浮框自适应效果是否OK',
       secondaryTitle: '6'
     };
+    // 添加树节点
     this.treeController
       .addNode(nodeParam)
       .addNode({
@@ -733,17 +744,21 @@ import { TreeController, TreeListener, TreeListenerManager, TreeListenType, Node
 @Entry
 @Component
 struct TreeViewDemo {
+  // 创建树视图组件的控制器
   private treeController: TreeController = new TreeController();
+  // 创建树视图组件的监听器
   private treeListener: TreeListener = TreeListenerManager.getInstance().getTreeListener();
   @State clickNodeId: number = 0;
 
   aboutToDisappear(): void {
+    // 取消监听
     this.treeListener.off(TreeListenType.NODE_CLICK, undefined);
     this.treeListener.off(TreeListenType.NODE_ADD, undefined);
     this.treeListener.off(TreeListenType.NODE_DELETE, undefined);
     this.treeListener.off(TreeListenType.NODE_MOVE, undefined);
   }
 
+  // 创建右侧菜单操作区
   @Builder menuBuilder1() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('新增').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
@@ -764,6 +779,7 @@ struct TreeViewDemo {
   }
 
   aboutToAppear(): void {
+    // 注册监听
     this.treeListener.on(TreeListenType.NODE_CLICK, (callbackParam: CallbackParam) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
@@ -786,6 +802,7 @@ struct TreeViewDemo {
     let nodeParam: NodeParam = { parentNodeId:-1, currentNodeId: 1, isFolder: true, icon: normalResource, selectedIcon: selectedResource,
       editIcon: editResource, primaryTitle: '目录1',
       secondaryTitle: '6' };
+    // 添加树节点
     this.treeController
       .addNode(nodeParam)
       .addNode({parentNodeId:1, currentNodeId: 2, isFolder: false, primaryTitle: '项目1_1' })
@@ -814,8 +831,7 @@ struct TreeViewDemo {
 
   build() {
     Column(){
-      SideBarContainer(SideBarContainerType.Embed)
-      {
+      SideBarContainer(SideBarContainerType.Embed) {
         TreeView({ treeController: this.treeController })
         Row() {
           Divider().vertical(true).strokeWidth(2).color(0x000000).lineCap(LineCapStyle.Round)
@@ -859,17 +875,21 @@ import {
 @Entry
 @Component
 struct TreeViewDemo {
+  // 创建树视图组件的控制器
   private treeController: TreeController = new TreeController();
+  // 创建树视图组件的监听器
   private treeListener: TreeListener = TreeListenerManager.getInstance().getTreeListener();
   @State clickNodeId: number = 0;
 
   aboutToDisappear(): void {
+    // 注册监听
     this.treeListener.off(TreeListenType.NODE_CLICK, undefined);
     this.treeListener.off(TreeListenType.NODE_ADD, undefined);
     this.treeListener.off(TreeListenType.NODE_DELETE, undefined);
     this.treeListener.off(TreeListenType.NODE_MOVE, undefined);
   }
 
+  // 创建右侧菜单操作区
   @Builder menuBuilder1() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('新增').fontSize(16).width(100).height(30).textAlign(TextAlign.Center)
@@ -890,6 +910,7 @@ struct TreeViewDemo {
   }
 
   aboutToAppear(): void {
+    // 注册监听
     this.treeListener.on(TreeListenType.NODE_CLICK, (callbackParam: CallbackParam) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
@@ -915,6 +936,7 @@ struct TreeViewDemo {
     let nodeParam: NodeParam = { parentNodeId:-1, currentNodeId: 1, isFolder: true, icon: normalResource, selectedIcon: selectedResource,
       editIcon: editResource, primaryTitle: '目录1',
       secondaryTitle: '6' };
+    // 添加树节点
     this.treeController
       .addNode(nodeParam)
       .addNode({parentNodeId:1, currentNodeId: 2, isFolder: false, primaryTitle: '项目1_1' })
@@ -943,8 +965,7 @@ struct TreeViewDemo {
 
   build() {
     Column(){
-      SideBarContainer(SideBarContainerType.Embed)
-      {
+      SideBarContainer(SideBarContainerType.Embed) {
         TreeView({ treeController: this.treeController })
         Row() {
           Divider().vertical(true).strokeWidth(2).color(0x000000).lineCap(LineCapStyle.Round)

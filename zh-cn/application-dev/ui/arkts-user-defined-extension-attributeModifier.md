@@ -33,22 +33,39 @@
 
   <!-- @[Common_AttributeModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
   
-  ``` TypeScript
-  declare interface AttributeModifier<T> {
-  
-    applyNormalAttribute?(instance: T): void;
-  
-    applyPressedAttribute?(instance: T): void;
-  
-    applyFocusedAttribute?(instance: T): void;
-  
-    applyDisabledAttribute?(instance: T): void;
-  
-    applySelectedAttribute?(instance: T): void;
-  
-  }
-  ```
+ArkTS-Dyn:
+``` TypeScript
+declare interface AttributeModifier<T> {
 
+  applyNormalAttribute?(instance: T): void;
+
+  applyPressedAttribute?(instance: T): void;
+
+  applyFocusedAttribute?(instance: T): void;
+
+  applyDisabledAttribute?(instance: T): void;
+
+  applySelectedAttribute?(instance: T): void;
+
+}
+```
+
+ArkTS-Sta：
+``` TypeScript
+declare interface AttributeModifier<T> {
+
+  default applyNormalAttribute(instance: T): void;
+  
+  default applyPressedAttribute(instance: T): void;
+  
+  default applyFocusedAttribute(instance: T): void;
+  
+  default applyDisabledAttribute(instance: T): void;
+  
+  default applySelectedAttribute(instance: T): void;
+
+}
+```
 
 `AttributeModifier`是一个接口，开发者需要实现其中的`applyXxxAttribute`方法来实现对应场景的属性设置。`Xxx`表示多态的场景，支持默认态（`Normal`）、按压态（`Pressed`）、焦点态（`Focused`）、禁用态（`Disabled`）、选择态（`Selected`）。`T`是组件的属性类型，开发者可以在回调中获取到属性对象，通过该对象设置属性。
 
@@ -65,12 +82,12 @@
 
 ## 使用说明
 
-- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是`CommonAttribute`。
+- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是[CommonAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#commonattribute12)。
 - 在组件首次初始化或者关联的状态变量发生变化时，如果传入的实例实现了对应接口，会触发`applyNormalAttribute`。
-- 回调`applyNormalAttribute`时，会传入组件属性对象，通过该对象可以设置当前组件的属性/事件。
+- 回调[applyNormalAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applynormalattribute)时，会传入组件属性对象，通过该对象可以设置当前组件的属性/事件。
 - 暂未支持的属性/事件，执行时会抛异常。
 - 属性变化触发`applyXxxAttribute`函数时，该组件之前已设置的属性，在本次变化后未设置的属性会恢复为属性的默认值。
-- 可以通过该接口使用多态样式的功能，例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现`applyPressedAttribute`方法完成。
+- 可以通过该接口使用多态样式的功能，例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现[applyPressedAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applypressedattribute)方法完成。
 - 一个组件上同时使用属性方法和`applyNormalAttribute`设置相同的属性，遵循属性覆盖原则，即后设置的属性生效。
 - 一个Modifier实例对象可以在多个组件上使用。
 - 一个组件上多次使用`applyNormalAttribute`设置不同的Modifier实例，每次状态变量刷新均会按顺序执行这些实例的方法属性设置，同样遵循属性覆盖原则。

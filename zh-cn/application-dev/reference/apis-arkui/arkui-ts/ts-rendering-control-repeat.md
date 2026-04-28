@@ -1,4 +1,4 @@
-# Repeat
+# Repeat (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->

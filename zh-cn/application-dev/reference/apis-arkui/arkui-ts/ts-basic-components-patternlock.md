@@ -269,7 +269,7 @@ ArkTS-Sta: activateCircleStyle(options: CircleStyleOptions | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| options  | ArkTS-Dyn: Optional\<[CircleStyleOptions](#circlestyleoptions12对象说明)\> <br/>ArkTS-Sta: [CircleStyleOptions](#circlestyleoptions12对象说明) \| undefined | 是   | 宫格圆点在“激活”状态的背景圆环样式。 |
+| options  | ArkTS-Dyn: Optional\<[CircleStyleOptions](#circlestyleoptions12对象说明)\> <br/>ArkTS-Sta: [CircleStyleOptions](#circlestyleoptions12对象说明) \| undefined | 是   | 宫格圆点在“激活”状态的背景圆环样式。设置undefined时按默认样式处理。 |
 
 ### skipUnselectedPoint<sup>15+</sup>
 
@@ -337,7 +337,7 @@ onPatternComplete(callback: Callback<Array\<int\>> | undefined)
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| callback  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<Array\<int>> \| undefined | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
+| callback  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<Array\<int>> \| undefined | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。<br/>设置为undefined时不会执行回调。 |
 
 ### onDotConnect<sup>11+</sup>
 

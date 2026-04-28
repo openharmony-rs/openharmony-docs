@@ -14516,7 +14516,7 @@ struct Example{
 
 setUrlTrustList(urlTrustList: string): void
 
-设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+设置Web的URL白名单，只有白名单内的URL才能允许加载/跳转，否则将拦截并弹出告警页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -18526,13 +18526,13 @@ struct WebComponent {
 
 static setUserAgentClientHintsEnabled(enabled: boolean): void
 
-设置是否开启UserAgent Client Hints功能。
+设置是否开启User-Agent Client Hints功能。
 
 > **说明：**
 >
 > User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
 >
-> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+> 不使用该方法时，默认不开启User-Agent Client Hints功能。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -18546,7 +18546,7 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+| enabled | boolean | 是   | 是否开启User-Agent Client Hints功能。<br/>true表示开启，false表示不开启。 |
 
 **示例：**
 
@@ -18640,7 +18640,7 @@ struct WebComponent {
 
 static getUserAgentClientHintsEnabled(): boolean
 
-查询UserAgent Client Hints功能当前是否开启。
+查询User-Agent Client Hints功能当前是否开启。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -18676,7 +18676,7 @@ static getUserAgentClientHintsEnabled(): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
+| boolean | 返回User-Agent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
 
 **示例：**
 
@@ -18812,7 +18812,7 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
 
-设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+设置Web的URL白名单，只有白名单内的URL才能允许加载/跳转，否则将拦截并弹出告警页。扩展了对Opaque Origin URL以及通配符规则的控制能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

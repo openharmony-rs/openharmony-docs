@@ -5627,7 +5627,7 @@
 
 **起始版本**：24
 
-### ohos.permission.READ_APP_PROTECTION_RECORD
+## ohos.permission.READ_APP_PROTECTION_RECORD
 
 允许系统应用读取应用保护记录。
 
@@ -5641,7 +5641,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.WRITE_APP_PROTECTION_RECORD
+## ohos.permission.WRITE_APP_PROTECTION_RECORD
 
 允许系统应用修改应用保护记录。
 
@@ -5655,7 +5655,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.READ_SPAM_SHIELD_SETTING
+## ohos.permission.READ_SPAM_SHIELD_SETTING
 
 允许系统应用读取骚扰拦截配置项。
 
@@ -5669,7 +5669,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+## ohos.permission.WRITE_SPAM_SHIELD_SETTING
 
 允许系统应用修改骚扰拦截配置项。
 

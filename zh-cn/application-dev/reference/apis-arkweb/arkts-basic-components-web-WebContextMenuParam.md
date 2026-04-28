@@ -50,7 +50,7 @@ ArkTS-Sta: x(): int
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 显示正常返回非负整数，否则返回-1。<br>单位：vp（虚拟像素）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## y<sup>9+</sup>
 
@@ -70,7 +70,7 @@ ArkTS-Sta: y(): int
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 显示正常返回非负整数，否则返回-1。<br>单位：vp（虚拟像素）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## getLinkUrl<sup>9+</sup>
 
@@ -272,7 +272,7 @@ ArkTS-Sta: getPreviewWidth(): int
 
 | 类型     | 说明       |
 | ------ | ----------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的宽。<br>单位：vp（虚拟像素）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的宽。<br>单位：px（物理像素）。 |
 
 ## getPreviewHeight<sup>13+</sup>
 
@@ -292,7 +292,7 @@ ArkTS-Sta: getPreviewHeight(): int
 
 | 类型     | 说明       |
 | ------ | ----------  |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的高。<br>单位：vp（虚拟像素）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的高。<br>单位：px（物理像素）。 |
 
 ## getContextMenuMediaType<sup>22+</sup>
 
