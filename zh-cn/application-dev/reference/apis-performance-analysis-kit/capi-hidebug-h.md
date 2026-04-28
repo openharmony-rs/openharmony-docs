@@ -54,6 +54,9 @@
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。 |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofiler) | - | 异步启动当前进程资源采集功能。<br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。<br>若采集异常，则文件路径为NULL。 |
 | [HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)](#oh_hidebug_stopprofiler) | - | 停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。 |
+| [typedef bool (\*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)](#oh_hidebug_memdumplistener) | OH_HiDebug_MemDumpListener | 内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用hidumper命令导出数据。 |
+| [HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)](#oh_hidebug_registermemdumplistener) | - | 注册内存导出监听。当应用的内存占用较高，或通过hidumper命令手动导出内存信息时，系统会主动调用已注册的回调函数，以便第三方应用框架或开发者将应用的内部内存信息转储到hidumper中，或通过商业灰度上传至OEM厂商。<br> 对应的注销函数为：[OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener) |
+| [HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)](#oh_hidebug_unregistermemdumplistener) | - | 注销已经注册成功的内存导出监听。 |
 
 ## 函数说明
 
@@ -641,11 +644,13 @@ HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
 
 ### OH_HiDebug_MemDumpListener()
 
+```c
 typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)
+```
 
 **描述**
 
-监听时触发的回调函数类型定义。开发者在应用中使用文件描述符（FD）来写入内存数据，这样就可以使用 hidumper 命令导出数据。
+内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用hidumper命令导出数据。
 
 **起始版本：** 26.0.0
 
@@ -653,29 +658,26 @@ typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerTyp
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t fd | 开发者使用 FD 在应用程序中写入内存数据。 |
-| OH_HiDebug_MemListenerType tag | 回调类型。开发人员根据回调类型处理相关逻辑。 |
-| bool mayReportToOEM | 当值为 true 时，告知开发者该数据将上传给 OEM 厂商。请注意数据隐私和安全问题。 |
-| const char* arg | 回调参数。根据 tag 的值传递不同的参数。 |
+| int32_t fd | 写入内存数据的应用程序文件描述符。 |
+| [OH_HiDebug_MemListenerType](capi-hidebug-type-h.md#oh_hidebug_memlistenertype)  tag | 内存监听回调的类型。开发者根据回调类型处理相关逻辑。 |
+| bool mayReportToOEM | 数据上报OEM厂商的标识。true表示数据将上传至OEM厂商，请注意数据隐私与安全；false表示数据不会上报。 |
+| const char\* arg | 回调参数。根据回调类型携带不同的数据内容，供开发者使用。 |
 
-**返回值：**
+**返回：**
 
-| 返回值 | 描述 |
+| 类型 | 说明 |
 | -- | -- |
-| bool | 操作是否成功。true 表示成功，false 表示失败。 |
-
-**注意：**
-
-- 该回调函数由开发者实现，用于在内存转储时写入自定义的内存数据。
-- 当 mayReportToOEM 为 true 时，数据可能被上传给厂商，请确保不包含敏感隐私信息。
+| bool | 操作结果：<br>        true：内存数据写入成功。<br>        false：写入失败。 |
 
 ### OH_HiDebug_RegisterMemDumpListener()
 
+```c
 HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)
+```
 
 **描述**
 
-注册内存导出监听回调函数。当应用的内存水位较高，或者内存信息被 hidumper 手动导出时，第三方应用框架或第三方应用开发者会回调已注册的函数，将应用的内部内存信息转储到 hidumper 中，或者通过商业灰度上传到 OEM 厂商。
+注册内存导出监听。当应用的内存占用较高，或通过hidumper命令手动导出内存信息时，系统会主动调用已注册的回调函数，以便第三方应用框架或开发者将应用的内部内存信息转储到hidumper中，或通过商业灰度上传至OEM厂商。<br> 对应的注销函数为：[OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener)
 
 **起始版本：** 26.0.0
 
@@ -683,25 +685,20 @@ HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebu
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* name | 消费者类型的标识。 |
-| OH_HiDebug_MemDumpListener listener | 触发监听的回调函数。具体参数请参见 OH_HiDebug_MemDumpListener。 |
+| const char* name | 监听器的唯一标识。用于标识本次注册的监听，注销时需传入相同的name。<br> 相同name只能注册一次，重复注册将返回HIDEBUG_INVALID_ARGUMENT；如需更新，请先注销原监听器。 |
+| [OH_HiDebug_MemDumpListener](capi-hidebug-h.md#oh_hidebug_memdumplistener) listener | 触发监听的回调函数。 |
 
-**返回码：**
+**返回：**
 
-| 返回码 | 描述 |
+| 类型 | 说明 |
 | -- | -- |
-| HIDEBUG_SUCCESS | 操作成功。 |
-| HIDEBUG_INVALID_ARGUMENT | 参数无效。 |
-
-**注意：**
-
-- 注册成功后，当触发内存导出时，系统会调用传入的 listener 回调。
-- 数据上报给 OEM 厂商时，mayReportToOEM 参数为 true，开发者需注意数据隐私和安全问题。
-- 对应的注销函数为 OH_HiDebug_UnregisterMemDumpListener。
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>         HIDEBUG_SUCCESS：操作成功。<br>         HIDEBUG_INVALID_ARGUMENT：无效参数。 |
 
 ### OH_HiDebug_UnregisterMemDumpListener()
 
+```c
 HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
+```
 
 **描述**
 
@@ -713,16 +710,10 @@ HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* name | 消费者类型的标识。需要与注册时使用的 name 一致。 |
+| const char* name | 监听器的唯一标识。需要与注册时传入的name保持一致。 |
 
-**返回码：**
+**返回：**
 
-| 返回码 | 描述 |
+| 类型 | 说明 |
 | -- | -- |
-| HIDEBUG_SUCCESS | 操作成功。 |
-| HIDEBUG_INVALID_ARGUMENT | 参数无效。 |
-
-**注意：**
-
-- 注销后，对应的内存导出回调将不再被触发。
-- 建议在不需要监听时及时注销，避免不必要的资源占用。
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>         HIDEBUG_SUCCESS：操作成功。<br>         HIDEBUG_INVALID_ARGUMENT：无效参数。 |
