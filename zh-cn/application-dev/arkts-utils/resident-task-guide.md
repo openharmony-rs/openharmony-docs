@@ -1,7 +1,7 @@
 # 常驻任务开发指导（Worker）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -20,7 +20,7 @@
    
    ``` TypeScript
    import { worker } from '@kit.ArkTS';
-   import resource from '../util/resource';
+   import p2pManager from '../util/resource';
    
    const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
    
@@ -38,7 +38,7 @@
            .onClick(() => {
              workerInstance.postMessage({ type: 'End' });
              workerInstance.onmessage = (event) => {
-               console.info(resource.resourceToString($r('app.string.Information')), event.data);
+               console.info(p2pManager.resourceToString($r('app.string.Information').id), event.data);
              }
              // 10秒后停止worker
              setTimeout(() => {
