@@ -991,22 +991,22 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":94,
 						"name":"app_json5",
 						"start_line":16
 					},
 					{
-						"end_line":77,
+						"end_line":93,
 						"name":"app_json5_appEnvironments",
 						"start_line":17
 					},
 					{
-						"end_line":76,
+						"end_line":92,
 						"name":"app_json5_multiAppMode",
 						"start_line":18
 					},
 					{
-						"end_line":75,
+						"end_line":91,
 						"name":"app_json5_configuration",
 						"start_line":19
 					}
