@@ -846,7 +846,7 @@ Adds transition animations for state changes in closure code.
 
 | Name  | Type                                      | Mandatory  | Description                                   |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| value | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
+| value | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam)| Yes   | Animation settings.                          |
 | event | () => void                               | Yes   | Closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
 
 **Example**
