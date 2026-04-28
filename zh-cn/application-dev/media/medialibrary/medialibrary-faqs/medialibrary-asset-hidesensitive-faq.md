@@ -10,6 +10,7 @@
 
 ## 解决措施
 应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的去隐私级别变为不脱敏，应用即可正常获取图片所有敏感信息。
+
 **示例**
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
