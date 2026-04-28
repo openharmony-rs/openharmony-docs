@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -78,53 +78,7 @@ this.objLink= ...
 
 ### 观察变化
 
-API version 19之前，\@Observed装饰的类，如果其属性为非简单类型，如class、Object、Array、Map、Set和Date，那么这些属性也需要被\@Observed装饰，否则将观察不到这些属性的变化或内置类型的API调用。API version 19及以后，也可以通过使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来观察嵌套类属性的变化。
-
-<!-- @[Observe_the_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
-
-``` TypeScript
-class Child {
-  public num: number;
-
-  constructor(num: number) {
-    this.num = num;
-  }
-}
-
-@Observed
-class Parent {
-  public child: Child;
-  public count: number;
-
-  constructor(child: Child, count: number) {
-    this.child = child;
-    this.count = count;
-  }
-}
-```
-
-以上示例中，Parent被\@Observed装饰，其成员变量的赋值的变化是可以被观察到的，但对于Child，没有被\@Observed装饰，其属性的修改不能被观察到。若想观察Child的属性修改变化，示例请参考[嵌套对象](#嵌套对象)。
-
-
-<!-- @[Modify_and_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
-
-``` TypeScript
-@ObjectLink parent: Parent;
-
-build() {
-  Column() {
-    Button('click me')
-      .onClick(() => {
-        // 赋值变化可以被观察到
-        this.parent.child = new Child(5);
-        this.parent.count = 5;
-        // Child没有被@Observed装饰，其属性的变化观察不到
-        this.parent.child.num = 5;
-      // ···
-      })
-  }
-}
-```
+API version 19之前，如果需要观察嵌套场景的变化，如嵌套类，二维数组，对象数组等，那么内层的数据类型也需要被\@Observed装饰。API version 19及以后，也可以通过使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来使内层数据可观察。内层数据需要传递给\@ObjectLink，使其在UI上可观察。示例请参考[嵌套对象](#嵌套对象)。
 
 \@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
 
@@ -138,7 +92,7 @@ build() {
 
 \@ObjectLink装饰继承于Date的class时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。
 
-<!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) -->
+<!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -164,6 +118,7 @@ struct Child {
 
   build() {
     Column() {
+      // data被@Observed和@ObjectLink装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('child increase the day by 1')
         .onClick(() => {
           this.data.setDate(this.data.getDate() + 1);
@@ -240,9 +195,7 @@ struct Parent {
    // 错误写法，Test未被@Observed装饰，编译报错
    @ObjectLink test: Test;
    ```
-
-   <!-- @[Test_Info_Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
-   
+     
    ``` TypeScript
    @Observed
    class Info {
@@ -263,8 +216,6 @@ struct Parent {
    // 错误写法，编译报错
    @ObjectLink count: CountInfo = new CountInfo(10);
    ```
-
-   <!-- @[Info_Initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
    
    ``` TypeScript
    @Observed
@@ -497,8 +448,9 @@ struct Index {
 
 上述示例中：
 
-- 点击`change bag.book.name`，Index组件中的Text组件不刷新，因为该变化属于第二层的变化，\@State无法观察到第二层的变化。然而，Book被\@Observed装饰，Book的属性name可以被\@ObjectLink观察到，所以BookCard组件中Text组件可以刷新。
-- 点击`change book.name`，Bookcard组件中的Text组件刷新，因为该变化在BooKCard中属于第一层的变化，亦可被\@ObjectLink观察到。
+- 对于Index组件内状态变量`@State bag: Bag`，`bag.book`是第一层，`bag.book.name`是第二层。因此，当点击`change bag.book.name`直接修改`this.bag.book.name`时，Index中的`Text('Index: ${this.bag.book.name}')`不会刷新，因为\@State只能观察到第一层属性变化，不能直接观察嵌套对象内部属性`name`的变化。
+- 对于BookCard组件内状态变量`@ObjectLink book: Book`，`Book`被\@Observed装饰，且`book`被\@ObjectLink接收。`book.name`变化可以被`@ObjectLink`观察，因此无论是在父组件Index中点击`change bag.book.name`，还是在子组件BookCard中点击`change book.name`，BookCard中的`Text('BookCard: ${this.book.name}')`都会刷新。
+- \@State负责感知外层对象`Bag`的第一层变化，`@Observed + @ObjectLink`负责感知内层对象`Book`的属性变化。
 
 ### 对象数组
 
@@ -621,8 +573,6 @@ struct Parent {
 使用\@Observed观察二维数组的变化。可以声明一个被\@Observed装饰的继承Array的子类。
 
 
-<!-- @[Two_dimensional_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) -->
-
 ``` TypeScript
 @Observed
 class ObservedArray<T> extends Array<T> {
@@ -633,7 +583,7 @@ class ObservedArray<T> extends Array<T> {
 
 在下面的示例中，展示了如何利用\@Observed观察二维数组的变化。
 
-<!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) -->
+<!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -658,6 +608,7 @@ struct Item {
 @Entry
 @Component
 struct IndexPage {
+  // new操作符创建的ObservedArray<string>的实例可以观察到属性变化
   @State arr: Array<ObservedArray<string>> = [
     new ObservedArray<string>('apple'),
     new ObservedArray<string>('banana'),
@@ -704,7 +655,7 @@ API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../referen
 
 完整例子如下。
 
-<!-- @[Complete_Example_Two_Dimensional_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/CompleteExampleTwoDimensionalArray.ets) -->
+<!-- @[Complete_Example_Two_Dimensional_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/CompleteExampleTwoDimensionalArray.ets) --> 
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -727,6 +678,7 @@ struct Item {
 @Entry
 @Component
 struct IndexPage {
+  // 利用makeV1Observed观察二维数组的变化
   @State arr: Array<Array<string>> =
     [UIUtils.makeV1Observed(['apple']), UIUtils.makeV1Observed(['banana']), UIUtils.makeV1Observed(['orange'])];
 
@@ -776,7 +728,7 @@ struct IndexPage {
 
 在下面的示例中，myMap类型为MyMap\<number, string\>，点击Button改变myMap的属性，视图会随之刷新。
 
-<!-- @[Inherit_From_Map_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromMapClass.ets) -->
+<!-- @[Inherit_From_Map_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromMapClass.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -831,6 +783,7 @@ struct MapSampleNestedChild {
           Divider().strokeWidth(5)
         })
 
+        // myMap被@Observed和@ObjectLink装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
         Button('set new one')
           .width(200)
           .margin(10)
@@ -873,7 +826,7 @@ struct MapSampleNestedChild {
 
 在下面的示例中，mySet类型为MySet\<number\>，点击Button改变mySet的属性，视图会随之刷新。
 
-<!-- @[Inherit_From_Set_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromSetClass.ets) -->
+<!-- @[Inherit_From_Set_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromSetClass.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -926,6 +879,7 @@ struct SetSampleNestedChild {
           Text(`${item}`).fontSize(30)
           Divider()
         })
+        // mySet被@Observed和@ObjectLink装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
         Button('set new one')
           .width(200)
           .margin(10)
@@ -1459,7 +1413,7 @@ struct CounterChild {
 该方法可用于实现“两个层级”的观察，即外部对象和内部嵌套对象的观察。但是该方法只能用于\@ObjectLink装饰器，无法作用于\@Prop（\@Prop通过深拷贝传入对象）。详情参考[@Prop与@ObjectLink的差异](#prop与objectlink的差异)。
 
 
-<!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) -->
+<!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) --> 
 
 ``` TypeScript
 let nextId = 1;
@@ -1530,6 +1484,7 @@ struct CounterChild {
 @Entry
 @Component
 struct ParentComp {
+  // @ObjectLink分别代理了ParentCounter和SubCounter的属性，这两个类的属性的变化都可以观察到
   @State counter: ParentCounter[] = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
 
   build() {

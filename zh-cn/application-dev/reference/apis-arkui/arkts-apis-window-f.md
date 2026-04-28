@@ -182,7 +182,7 @@ findWindow(name: string): Window
 
 | 类型 | 说明 |
 | ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回对象为空。 |
+| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回1300002错误码。 |
 
 **错误码：**
 
@@ -615,7 +615,7 @@ struct Index {
 
 getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?: number): Promise&lt;Array&lt;Window&gt;&gt;
 
-查询本应用指定坐标下的可见窗口数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
+查询本应用指定坐标下的可见窗口（可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)接口监听）数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -766,6 +766,7 @@ try {
       console.info(`abilityName:${windowInfo.abilityName}`);
       console.info(`bundleName:${windowInfo.bundleName}`);
       console.info(`isFocused:${windowInfo.isFocused}`);
+      console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
     })
   }).catch((err: BusinessError) => {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
@@ -1119,75 +1120,6 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 }
 ```
 
-## window.onApplicationFocusStateChange
-
-onApplicationFocusStateChange(callback: Callback\<boolean\>): void
-
-开启应用进程获焦状态变化的监听。此监听针对应用间的获焦状态变化，若同应用内窗口间的获焦状态发生变化，则不会触发回调函数。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明                                                          | 
-| -------- |-------------------------|---|-------------------------------------------------------------|
-| callback | Callback&lt;boolean&gt; | 是 | 回调函数。返回当前应用进程获焦状态的变化。true表示当前应用进程变为获焦状态；false表示当前应用进程变为失焦状态。|
-
-
-**示例：**
-
-```ts
-import { window } from '@kit.ArkUI';
-
-try {
-  window.onApplicationFocusStateChange((data) =>{
-      console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
-  })
-} catch(exception){
-  console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-## window.offApplicationFocusStateChange
-
-offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
-
-关闭应用进程获焦状态变化的监听。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名   | 类型                     | 必填 | 说明                                                |
-| -------- | ----------------------- | -- |---------------------------------------------------|
-| callback | Callback&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有应用进程焦点状态变化的监听。|
-
-**示例：**
-
-```ts
-import { window } from '@kit.ArkUI';
-
-const callback = (bool: boolean) => {
-  // ...
-}
-try {
-  window.onApplicationFocusStateChange(callback);
-  window.offApplicationFocusStateChange(callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
-  window.offApplicationFocusStateChange(); 
-} catch (exception) {
-  console.error(`Failed to enable or disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 ## window.create<sup>(deprecated)</sup>
 
 create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): void
@@ -1198,7 +1130,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，参数id传入null或undefined时，可能会导致callback无法得到执行，建议使用[createWindow()](#windowcreatewindow9)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

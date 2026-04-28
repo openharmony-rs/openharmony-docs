@@ -5,7 +5,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
  
@@ -84,7 +84,7 @@ const TAG: string = '[AppServiceExtAbility]';
 export default class AgentExt extends AgentExtensionAbility {
   // 创建AgentExtensionAbility
   onCreate(want: Want) {
-    hilog.info(0x0000, TAG, `onConnect, want: ${want.abilityName}, bundlename: ${want.bundleName}`);
+    hilog.info(0x0000, TAG, `onCreate, want: ${want.abilityName}, bundlename: ${want.bundleName}`);
   }
 }
 ```

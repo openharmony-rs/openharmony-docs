@@ -1,10 +1,10 @@
 # @ohos.enterprise.accountManager（账户管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供设备账户管理能力，包括禁止创建本地用户等。
 
@@ -194,7 +194,7 @@ let wantTemp: Want = {
 accountManager.addOsAccountAsync(wantTemp, "TestAccountName", osAccount.OsAccountType.NORMAL).then((info) => {
   console.info(`Succeeded in creating os account: ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to creating os account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create os account. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 ## accountManager.setDomainAccountPolicy<sup>19+</sup>
@@ -215,7 +215,7 @@ setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountIn
 
 **参数：**
 
-<!--Table: 10%; auto; 10%; auto-->
+<!--Table: 19%; 21%; 8%; 52%-->
 | 参数名            | 类型                                                         | 必填 | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin             | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
@@ -384,7 +384,7 @@ async function getDomainAccountPolicy() {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-<!--Table: auto; 10%; 10%; 10%; auto-->
+<!--Table: 28%; 10%; 8%; 8%; 46%-->
 | 名称                           | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------ | ------ | ---- | ---- |------------------------------------------------------------ |
 | authenticationValidityPeriod   | number | 否   | 是   |表示域账号认证Token的有效期（单位：s），取值范围是[-1,2147483647]。有效期起始时间为最后一次域账号的认证时间点，如登录、锁屏后解锁等。<br/>默认值为-1，表示Token永久有效。取值为0，表示Token立即失效。Token过期/失效后，用户进入系统时必须进行域账号认证，验证域账号和密码。 |

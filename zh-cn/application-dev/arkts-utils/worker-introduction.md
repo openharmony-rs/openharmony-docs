@@ -2,7 +2,7 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
-<!--Designer: @weng-changcheng-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -119,7 +119,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 >
 >* 当开发者加载entry、[feature](../quick-start/hap-package.md)及hsp包的Worker线程文件时，不建议采用写法三，推荐使用写法一，此写法无需拼接路径，可实现Worker的快速创建。
 >
->* Worker线程文件的路径后缀.ets/ts可以省略。
+>* Worker线程文件的路径后缀（.ets/.ts）可以省略。
 >
 >* 跨源码HSP/HAR的场景下，需在创建Worker的模块包对应的oh-package.json5文件中，配置所需HSP/HAR包的依赖项，详见[引用共享包](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
 >
@@ -440,7 +440,7 @@ workerPort.onmessage = (e: MessageEvents) => {
 
 ### 不推荐使用示例
 
-不建议在父Worker销毁后，子Worker继续向父Worker发送消息。
+不建议在父Worker销毁后，子Worker继续向父Worker发送消息。因为父Worker已被销毁，消息无法被正确处理。
 
 <!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/notrecommendedone.ets) -->
 

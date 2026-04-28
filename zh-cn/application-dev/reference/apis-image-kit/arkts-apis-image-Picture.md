@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -360,7 +360,7 @@ async function SetPictureObjMetadata(exifContext: Context) {
       console.error('Failed to set metadata. error.code: ' +JSON.stringify(error.code) + ' ,error.message:' + JSON.stringify(error.message));
     });
   } else {
-    console.error('exifPictureOb is null');
+    console.error('exifPictureObj is null');
   }
 }
 ```

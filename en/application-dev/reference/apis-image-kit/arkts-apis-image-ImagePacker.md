@@ -59,7 +59,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -100,7 +100,6 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 Compresses or re-encodes an image. This API uses a promise to return the result.
 
 > **NOTE**
->
 > If error code 401 is returned, the parameters are abnormal. The possible cause is that the PixelMap object is released in advance. You need to check the code and ensure that the PixelMap object is released after this API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
@@ -122,7 +121,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -182,7 +181,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -383,7 +382,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 'test.png' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
@@ -391,7 +390,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts, (err: BusinessError) => {
     if (err) {
@@ -445,7 +444,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 'test.png' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
@@ -453,7 +452,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts).then(() => {
     console.info('Succeeded in packing the image to file.');
@@ -503,7 +502,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
@@ -511,7 +510,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts, (err: BusinessError) => {
       if (err) {
@@ -569,7 +568,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
@@ -577,7 +576,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts)
       .then(() => {
@@ -613,7 +612,7 @@ Encodes the Picture into a file based on the specified encoding parameters. This
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -624,7 +623,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context: Context) {
   const resourceMgr = context.resourceManager;
@@ -640,7 +639,7 @@ async function PackToFile(context: Context) {
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   if (imagePackerObj != null) {
     const filePath: string = context.filesDir + "/test.jpg";
-    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     let packOpts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
@@ -690,7 +689,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const resourceMgr = context.resourceManager;
@@ -700,7 +699,7 @@ async function PackToFile(context : Context) {
   let imageSource = image.createImageSource(color);
   let pixelMapList = await imageSource.createPixelMapList();
   let path: string = context.cacheDir + '/result.gif';
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   let ops: image.PackingOptionsForSequence = {
     frameCount: 3, // Set the number of frames in GIF encoding to 3.
     delayTimeList: [10, 10, 10], // Set the delay time of three frames in GIF encoding to 100 ms, 100 ms, and 100 ms, respectively.
@@ -865,7 +864,8 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 13. Use [packToData](#packtodata13) instead.
->
+
+> **NOTE**
 > If the message "PixelMap mismatch" is returned, the parameters are abnormal. The possible cause is that the PixelMap object is released in advance. You need to check the code and ensure that the PixelMap object is released after this API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.

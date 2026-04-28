@@ -4382,6 +4382,8 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 代理其他应用设定角标个数。使用Promise异步回调。
 
+需要当前应用与其他应用存在代理关系，或者当前应用有ohos.permission.NOTIFICATION_AGENT_CONTROLLER权限。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。

@@ -1,7 +1,7 @@
 # JSVM-API常见问题
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -10,7 +10,7 @@
 
 程序崩溃类问题：通过C++崩溃时调用栈查询FAQ的方式定位代码问题
 
-程序执行结果不符合预期类问题：需要应用通过JSVM-API调用返回值定位到执行失败或执行结果不符合预期的位置，通过函数名查询FAQ
+程序执行结果不符合预期类问题：需要通过JSVM-API调用返回值定位问题位置，再通过函数名查询FAQ
 
 ## 程序崩溃类
 

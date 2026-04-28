@@ -1874,7 +1874,7 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 | SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。 |
 | SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。|
 | CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 |
-| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。 |
+| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容<!--RP1--><!--RP1End-->。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。 |
 | CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。  |
 | OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 |
 
@@ -1996,6 +1996,20 @@ type NotificationRequest = _NotificationRequest
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | 通知请求。 |
+
+## NotificationParameters<sup>24+</sup>
+
+type NotificationParameters = _NotificationParameters
+
+描述通知请求中wantAgent的部分信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**： SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24) | 描述通知请求中wantAgent的部分信息。 |
 
 ## DistributedOptions
 

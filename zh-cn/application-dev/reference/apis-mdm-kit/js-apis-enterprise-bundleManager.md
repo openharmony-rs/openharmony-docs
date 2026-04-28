@@ -1,10 +1,10 @@
 # @ohos.enterprise.bundleManager（包管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供包管理能力，包括添加包安装允许名单、获取包安装允许名单、移除包安装允许名单等。
 
@@ -1002,10 +1002,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let bundleNames: Array<string> = [ 'com.huaweicloud.m' ];
 try {
-    bundleManager.installMarketApps(wantTemp, bundleNames);
-    console.info(`Succeeded in installing market apps.`);
+  bundleManager.installMarketApps(wantTemp, bundleNames);
+  console.info(`Succeeded in installing market apps.`);
 } catch(err) {
-    console.error(`Failed to install market apps. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to install market apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

@@ -19,7 +19,7 @@ import { shortKey } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs provided by the **shortKey** module. For details, see [ohos.multimodalInput.shortKey](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
+The following table lists common APIs for event injection. For details, see [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |

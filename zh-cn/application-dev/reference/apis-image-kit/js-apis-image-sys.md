@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -82,7 +82,7 @@ createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): 
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePictureTest(context: Context) {
@@ -109,7 +109,7 @@ async function CreatePictureTest(context: Context) {
   let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
   packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
   const path: string = context.filesDir + "/hdr-test.jpg";
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
   }).catch((error : BusinessError) => {
     console.error('Failed to pack the image. And the error is: ' + error);
@@ -126,6 +126,73 @@ ImageSource类，用于获取图片相关信息。
 ImageSource的所有方法均不支持并发调用。
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+### createWideGamutSdrPixelMap<sup>20+</sup>
+
+createWideGamutSdrPixelMap(): Promise\<PixelMap>
+
+创建SDR的PixelMap对象。当图片为带有3通道GainMap的HDR图片时，会将其基础图扩展为BT.2020色域的SDR图。使用Promise异步回调。
+
+> **说明：**
+>
+>- 对SDR图片源，按图片自带的色彩空间解码，输出SDR图。
+>- 对带有单通道GainMap的HDR图片源，解码其基础图（SDR图），忽略GainMap。
+>- 对带有3通道GainMap的HDR图片源，解码其基础图（SDR图），并将输出SDR图的色域扩展为[ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).DISPLAY_BT2020_SRGB。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**返回值：**
+
+| 类型                             | 说明                        |
+| -------------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7700101  | Bad source.                                                  |
+| 7700102  | Unsupported MIME type.                                       |
+| 7700103  | Image too large.                                             |
+| 7700301  | Decoding failed.                                             |
+
+**示例：**
+```ts
+async function CreateWideGamutSdrPixelMap(context: Context) {
+  // 此处'sdr.jpg'仅作示例，请开发者自行替换。
+  let filePath: string = context.filesDir + "/sdr.jpg";
+  let sdrImageSource = image.createImageSource(filePath);
+  let pixelmap = sdrImageSource.createWideGamutSdrPixelMap();
+  if (pixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap object.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+
+  // 此处'singleChannelGainmapFilePath.jpg'仅作示例，请开发者自行替换。
+  let singleChannelGainmapFilePath: string = context.filesDir + "/singleChannelGainmapFilePath.jpg";
+  let singleChannelGainmapImageSource = image.createImageSource(singleChannelGainmapFilePath);
+  let singleChannelGainmapPixelmap = singleChannelGainmapImageSource.createWideGamutSdrPixelMap();
+  if (singleChannelGainmapPixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap object by using singleChannelGainmapImageSource.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+  // 此处'threeChannelGainmapFilePath.jpg'仅作示例，请开发者自行替换。
+  let threeChannelGainmapFilePath: string = context.filesDir + "/threeChannelGainmapFilePath.jpg";
+  let threeChannelGainmapImageSource = image.createImageSource(threeChannelGainmapFilePath);
+  let threeChannelGainmapPixelmap = threeChannelGainmapImageSource.createWideGamutSdrPixelMap();
+  if (threeChannelGainmapPixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap using DISPLAY_BT2020_SRGB.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+}
+```
 
 ### isJpegProgressive<sup>22+</sup>
 

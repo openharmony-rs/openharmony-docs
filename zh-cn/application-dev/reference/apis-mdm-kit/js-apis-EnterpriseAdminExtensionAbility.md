@@ -1,10 +1,10 @@
 # @ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)。
 
@@ -54,7 +54,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminEnabled() {
   }
-};
+}
 ```
 
 ### onAdminDisabled
@@ -76,7 +76,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminDisabled() {
   }
-};
+}
 ```
 
 ### onBundleAdded
@@ -105,7 +105,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleAdded(bundleName: string) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onBundleAdded<sup>14+</sup>
@@ -136,7 +136,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleAdded(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}, accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onBundleRemoved
@@ -165,7 +165,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleRemoved(bundleName: string) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onBundleRemoved<sup>14+</sup>
@@ -196,7 +196,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleRemoved(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}, accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAppStart
@@ -225,7 +225,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAppStart(bundleName: string) {
     console.info(`Succeeded in calling onAppStart callback, started bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onAppStop
@@ -254,7 +254,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAppStop(bundleName: string) {
     console.info(`Succeeded in calling onAppStop callback, stopped bundle name : ${bundleName}`);
   }
-};
+}
 ```
 ### onSystemUpdate
 
@@ -283,7 +283,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo) {
     console.info(`Succeeded in calling onSystemUpdate callback, version name  : ${systemUpdateInfo.versionName}`);
   }
-};
+}
 ```
 
 ### onStart
@@ -306,7 +306,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onStart() {
     console.info(`Succeeded in calling onStart callback.`);
   }
-};
+}
 ```
 
 ### onAccountAdded<sup>18+</sup>
@@ -334,7 +334,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountAdded(accountId: number) {
     console.info(`Succeeded in calling onAccountAdded callback, added accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAccountSwitched<sup>18+</sup>
@@ -362,7 +362,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountSwitched(accountId: number) {
     console.info(`Succeeded in calling onAccountSwitched callback, switched accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAccountRemoved<sup>18+</sup>
@@ -390,7 +390,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountRemoved(accountId: number) {
     console.info(`Succeeded in calling onAccountRemoved callback, removed accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onKioskModeEntering<sup>20+</sup>
@@ -421,7 +421,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKioskModeEntering(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeEntering callback, bundleName:${bundleName}, accountId:${accountId}`);
   }
-};
+}
 ```
 
 ### onKioskModeExiting<sup>20+</sup>
@@ -450,7 +450,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKioskModeExiting(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeExiting callback, bundleName:${bundleName}, accountId:${accountId}`);
   }
-};
+}
 ```
 
 ### onMarketAppInstallResult<sup>22+</sup>
@@ -479,7 +479,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void {
     console.info(`Succeeded in calling onMarketAppInstallResult callback, bundleName:${bundleName}, result:${result}`);
   }
-};
+}
 ```
 
 ### onDeviceAdminEnabled<sup>23+</sup>
@@ -506,7 +506,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminEnabled(bundleName: string) {
   }
-};
+}
 ```
 
 ### onDeviceAdminDisabled<sup>23+</sup>
@@ -533,7 +533,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminDisabled(bundleName: string) {
   }
-};
+}
 ```
 
 ### onKeyEvent<sup>23+</sup>
@@ -576,7 +576,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 1.2 用户短按电源键
   * 1.3 触发回调
   * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
-  *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
+  *          "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
   *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
   *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 1895101259}]}
   *
@@ -654,7 +654,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKeyEvent(keyEvent: systemManager.KeyEvent): void {
     console.info(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
   }
-};
+}
 ```
 
 ### onLogCollected<sup>23+</sup>
@@ -697,17 +697,17 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
       // 应用沙箱路径，需根据实际情况进行替换
       let targetPath = this.context.tempDir;
       try {
-          let files: string[] = fs.listFileSync(filesDir);
-          // 从/data/edm/log沙箱目录取走日志
-          files.forEach(value => {
-             fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
-          });
-          let wantTemp: Want = {
-              // 需根据实际情况进行替换
-              bundleName: 'com.example.myapplication',
-              abilityName: 'EnterpriseAdminAbility'
-          };
-          systemManager.finishLogCollected(wantTemp);
+        let files: string[] = fs.listFileSync(filesDir);
+        // 从/data/edm/log沙箱目录取走日志
+        files.forEach(value => {
+          fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
+        });
+        let wantTemp: Want = {
+          // 需根据实际情况进行替换
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EnterpriseAdminAbility'
+        };
+        systemManager.finishLogCollected(wantTemp);
       } catch (error) {
           console.info("onLogCollected", "error: " + JSON.stringify(error))
       }
@@ -716,11 +716,11 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
       console.error("onLogCollected", "Failed to collect log.")
     }
   }
-};
+}
 ```
 
 ### onStartupGuideCompleted<sup>24+</sup>
- 	 
+
 onStartupGuideCompleted(scene: common.StartupScene): void
 
 开机向导完成事件回调。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_STARTUP_GUIDE_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅开机向导完成事件，端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导时会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
@@ -738,7 +738,7 @@ onStartupGuideCompleted(scene: common.StartupScene): void
 **示例：**
 
 ```ts
-import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onStartupGuideCompleted(scene: common.StartupScene) {
@@ -750,9 +750,9 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
       console.info('onStartupGuideCompleted scene is DEVICE_PROVISION');
     }
   }
-};
+}
 ```
- 	 
+
 ### onDeviceBootCompleted<sup>24+</sup>
 
 onDeviceBootCompleted(): void
@@ -772,5 +772,5 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onDeviceBootCompleted() {
     console.info("EnterpriseAdminExtensionAbility onDeviceBootCompleted");
   }
-};
+}
 ```

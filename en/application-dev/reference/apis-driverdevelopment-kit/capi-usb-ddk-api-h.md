@@ -1,14 +1,14 @@
 # usb_ddk_api.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-Claims the USB DDK APIs used by the USB host to access USB devices.
+Declares the USB DDK APIs used by the USB host to access USB devices.
 
 **File to include**: <usb/usb_ddk_api.h>
 

@@ -869,9 +869,11 @@ With this permission, the application can enable communication between browser e
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 21
+
+**Changelog**: Since API version 24, this permission is also available on phones and tablets.
 
 ## ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -1071,6 +1073,20 @@ With this permission, the application can provide embedded content editing servi
 
 **Since**: 24
 
+## ohos.permission.CHECK_CALL_LOG
+
+Allow the application to query whether there are matching call records in the system within a specified time based on specific conditions (phone number, call duration).
+
+<!--RP71--><!--RP71End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: General
+
+**Since**: 24
+
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
 
 Allows an application to apply for a continuous task of the special scenario type.
@@ -1082,5 +1098,19 @@ Allows an application to apply for a continuous task of the special scenario typ
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24
+
+## ohos.permission.PRINTER_DRIVER
+
+Allows an application to manage the printing system.
+
+<!--RP89--><!--RP89End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 24

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -42,7 +42,7 @@
 
 V1：
 
-<!-- @[Child1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets) -->
+<!-- @[Child1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets) --> 
 
 ``` TypeScript
 const INITIAL_VALUE = 10;
@@ -50,6 +50,7 @@ const INITIAL_VALUE = 10;
 @Entry
 @Component
 struct Child {
+  // V1的@State装饰简单类型变量
   @State val: number = INITIAL_VALUE;
 
   build() {
@@ -60,7 +61,7 @@ struct Child {
 
 V2迁移策略：直接替换。
 
-<!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
+<!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) --> 
 
 ``` TypeScript
 const INITIAL_VALUE = 10;
@@ -68,6 +69,7 @@ const INITIAL_VALUE = 10;
 @Entry
 @ComponentV2
 struct Child {
+  // V2的@Local装饰简单类型变量
   @Local val: number = INITIAL_VALUE;
 
   build() {
@@ -300,11 +302,12 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV1.ets) -->
+<!-- @[Parent9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV1.ets) --> 
 
 ``` TypeScript
 @Component
 struct Child {
+  // V1的@Prop装饰简单类型变量
   @Prop value: number;
 
   build() {
@@ -325,11 +328,12 @@ struct Parent {
 
 V2迁移策略：直接替换。
 
-<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) -->
+<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) --> 
 
 ``` TypeScript
 @ComponentV2
 struct Child {
+  // V2的@Param装饰简单类型变量
   @Param value: number = 0;
 
   build() {
@@ -971,6 +975,7 @@ struct WatchExample {
   build() {
     Column() {
       Text(`apple count: ${this.apple}`)
+      // 点击Button累加apple，触发UI刷新
       Button('add apple')
         .onClick(() => {
           this.apple++;
@@ -1003,6 +1008,7 @@ struct MonitorExample {
   build() {
     Column() {
       Text(`apple count: ${this.apple}`)
+      // 点击Button累加apple，触发UI刷新
       Button('add apple')
         .onClick(() => {
           this.apple++;
@@ -1124,6 +1130,7 @@ struct Index {
     Column() {
       Text(this.lastName + ' ' + this.firstName)
       Text(this.lastName + ' ' + this.firstName)
+      // 每次改变lastName都会触发Text组件的刷新
       Button('changed lastName').onClick(() => {
         this.lastName += 'a';
       })
@@ -1148,6 +1155,7 @@ struct Index {
 
   @Computed
   get fullName() {
+    // 每次改变lastName仅会触发一次计算
     return this.firstName + ' ' + this.lastName;
   }
 
@@ -1190,6 +1198,7 @@ struct TextInputExample {
   build() {
     Column({ space: 20 }) {
       Text(this.text)
+      // $$运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步
       TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
         .placeholderColor(Color.Grey)
         .placeholderFont({ size: 14, weight: 400 })
