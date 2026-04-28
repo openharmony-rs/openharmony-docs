@@ -10,13 +10,12 @@
 typedef struct JSVM_VM__* JSVM_VM
 ```
 
-## 概述
+## Overview
 
-表示JavaScript虚拟机实例。
+Defines the JavaScript VM instance.
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
-
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)

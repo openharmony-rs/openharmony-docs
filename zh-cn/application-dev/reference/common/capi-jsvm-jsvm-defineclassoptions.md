@@ -10,26 +10,24 @@
 typedef struct {...} JSVM_DefineClassOptions
 ```
 
-## 概述
+## Overview
 
-定义Class的选项。
+Defines the options of a class.
 
-**起始版本：** 18
+**Since**: 18
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称                                                                            | 描述            |
+| Name                                                                           | Description           |
 |-------------------------------------------------------------------------------|---------------|
-| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | 定义Class的选项ID。 |
-| content     | id对应的定义Class选项值联合体。 |
-| content.ptr   | 指向定义Class选项值的指针。 |
-| content.num      | 存储整数类型的定义Class选项值。 |
-| content.boolean   | 存储布尔类型的定义Class选项值。|
-
-
+| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | Option ID of a class.|
+| content     | Union of the option value of a class corresponding to the ID.|
+| content.ptr   | Pointer to the class option value.|
+| content.num      | Used to store the class option value of the integer type.|
+| content.boolean   | Used to store the class option value of the Boolean type.|

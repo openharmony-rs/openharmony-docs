@@ -10,32 +10,32 @@
 typedef struct {...} JSVM_CallbackStruct
 ```
 
-## 概述
+## Overview
 
-用户提供的Native回调函数的指针和数据，这些函数通过JSVM-API接口暴露给JavaScript。
+Defines the pointer to the data of the native callbacks provided by the user. These functions are exposed to JavaScript via JSVM-API.
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| void* data | 用户提供的Native回调函数的数据。 |
+| void* data | Data of the native callbacks provided by the user.|
 
 
-### 成员函数
+### Member Functions
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#callback) | 用户提供的Native回调函数的指针。 |
+| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#callback) | Defines a pointer to the native callback provided by users.|
 
-## 成员函数说明
+## Member Function Description
 
 ### callback()
 
@@ -43,8 +43,6 @@ typedef struct {...} JSVM_CallbackStruct
 JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)
 ```
 
-**描述**
+**Description**
 
-用户提供的Native回调函数的指针。
-
-
+Defines a pointer to the native callback provided by users.

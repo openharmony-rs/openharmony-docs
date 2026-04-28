@@ -6,261 +6,261 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
-## 概述
+## Overview
 
-提供JSVM-API接口定义。通过API接口为开发者提供独立、标准、完整的JavaScript引擎能力，包括管理引擎生命周期、编译运行JS代码、实现JS/C++跨语言调用、拍摄快照等。
+Defines JSVM-APIs. These APIs are used to provide independent, standard, and complete JS engine capabilities, including managing the engine lifecycle, compiling and running JS code, implementing JS/C++ cross-language calls, and taking snapshots.
 
-**引用文件：** <ark_runtime/jsvm.h>
+**Reference file**: <ark_runtime/jsvm.h>
 
-**库：** libjsvm.so
+**Library**: libjsvm.so
 
-**系统能力：** SystemCapability.ArkCompiler.JSVM
+**System capability**: SystemCapability.ArkCompiler.JSVM
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-## 汇总
+## Summary
 
-### 宏定义
+### Macros
 
-| 名称                                               | 描述                                                                                                                                                 |
+| Name                                              | Description                                                                                                                                                |
 |--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| **JSVM_VERSION_EXPERIMENTAL** 2147483647           | JSVM 实验性版本号。                                                                                                                                       |
-| **JSVM_VERSION** 8                                 | JSVM 版本号。                                                                                                                                          |
-| **JSVM_EXTERN  __attribute__**((visibility("default")))  | 指定符号对外部可见。                                                                                                                                         |
-| **JSVM_AUTO_LENGTH**   SIZE_MAX | 自动长度。                                                                                                                                              |
-| **EXTERN_C_START**                                 | 用于告知编译器按C Code编译以下代码段的段起始标识：<br>当预处理指令__cplusplus检查到C++编译器正在进行编译时：EXTERN_C_START被赋值为"extern "C" {" ，表示其后代码为C代码。当预处理指令__cplusplus检查到不是C++编译器时，无须标记。 |
-| **EXTERN_C_END**                                   | 用于告知编译器按C Code编译以下代码段的段终止标识：<br>当使用预处理指令__cplusplus检查到C++编译器正在编译时：EXTERN_C_START被赋值为"}" ，表示C代码到此为止。当预处理指令__cplusplus检查到不是C++编译器时，无须标记。                                                                                                                   |
+| **JSVM_VERSION_EXPERIMENTAL** 2147483647           | Defines the experimental JSVM version number.                                                                                                                                      |
+| **JSVM_VERSION** 8                                 | Defines the JSVM version number.                                                                                                                                         |
+| **JSVM_EXTERN  __attribute__**((visibility("default")))  | Defines the symbol that is externally visible.                                                                                                                                        |
+| **JSVM_AUTO_LENGTH**   SIZE_MAX | Defines the automatic length.                                                                                                                                             |
+| **EXTERN_C_START**                                 | Defines the segment start identifier for a compiler to compile the following code segment as C code.<br>When **__cplusplus** detects that a C++ compiler is being used, the value **"extern "C" {"** is assigned to **EXTERN_C_START**, indicating that the subsequent code is C code. If a C++ compiler is not being used, no tag is required.|
+| **EXTERN_C_END**                                   | Defines the segment end identifier for a compiler to compile the following code segment as C code.<br>When **__cplusplus** detects that a C++ compiler is being used, the value **"}"** is assigned to **EXTERN_C_START**, indicating that the C code ends here. If a C++ compiler is not being used, no tag is required.                                                                                                                  |
 
-### 函数
+### Functions
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)](#oh_jsvm_init) | 初始化一个JavaScript虚拟机。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options,JSVM_VM* result)](#oh_jsvm_createvm) | 创建一个虚拟机实例。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm,JSVM_MicrotaskPolicy policy)](#oh_jsvm_setmicrotaskpolicy) | 用于设置虚拟机实例的微任务执行策略。如果该方法未被调用，虚拟机实例的默认策略为 JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)](#oh_jsvm_destroyvm) | 销毁一个虚拟机实例。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env,JSVM_Value target,JSVM_Value handler,JSVM_Value* result)](#oh_jsvm_createproxy) | 创建JavaScript Proxy，等价于在 JavaScript 中执行 new Proxy(target, handler)。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)](#oh_jsvm_isproxy) | 判断传入值value是否为 JavaScript Proxy。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_proxygettarget) | 获取 JavaScript Proxy 中的目标对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm,JSVM_VMScope* result)](#oh_jsvm_openvmscope) | 为虚拟机实例打开一个新的虚拟机作用域。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm,JSVM_VMScope scope)](#oh_jsvm_closevmscope) | 关闭虚拟机实例的虚拟机作用域。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Env* result)](#oh_jsvm_createenv) | 基于新环境上下文的可选属性，创建一个新环境。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm,size_t index,JSVM_Env* result)](#oh_jsvm_createenvfromsnapshot) | 基于虚拟机的起始快照，创建一个新的环境。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)](#oh_jsvm_destroyenv) | 销毁环境。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env,JSVM_EnvScope* result)](#oh_jsvm_openenvscope) | 打开一个新的环境作用域。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env,JSVM_EnvScope scope)](#oh_jsvm_closeenvscope) | 关闭环境作用域。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env,JSVM_VM* result)](#oh_jsvm_getvm) | 检索给定环境的虚拟机实例。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_Script* result)](#oh_jsvm_compilescript) | 编译一串JavaScript代码，并返回编译后的脚本。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_ScriptOrigin* origin,JSVM_Script* result)](#oh_jsvm_compilescriptwithorigin) | 编译一串包含 sourcemap 信息的 JavaScript 代码，并返回编译后的脚本。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Script* result)](#oh_jsvm_compilescriptwithoptions) | 编译一串JavaScript代码，并返回编译后的脚本。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env,JSVM_Script script,const uint8_t** data,size_t* length)](#oh_jsvm_createcodecache) | 为编译后的脚本创建代码缓存。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env,JSVM_Script script,JSVM_Value* result)](#oh_jsvm_runscript) | 执行一串JavaScript代码并返回其结果，其中包含以下注意事项：与eval不同的是，该函数不允许脚本访问当前词法作用域，因此也不允许访问模块作用域，这意味着require等伪全局变量将不可用。脚本可以访问全局作用域。脚本中的函数和var声明将被添加到全局对象。使用let和const的变量声明将全局可见，但不会被添加到全局对象。this的值在脚本内是global。如果没有 JIT 权限支持，执行含wasm的脚本会失败，在特定场景下存在性能差异，并打印一行日志提示开发者。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint)](#oh_jsvm_setinstancedata) | 将data与当前运行的JSVM环境相关联。后续可以使用OH_JSVM_GetInstanceData()检索data。通过先前调用OH_JSVM_SetInstanceData()设置的任何与当前运行的JSVM环境相关联的现有数据都将被覆盖。如果先前提供了finalizeCb，则不会调用它。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env,void** data)](#oh_jsvm_getinstancedata) | 检索通过调用OH_JSVM_SetInstanceData()与当前运行JSVM环境产生关联的数据。如果未设置任何关联数据，该函数调用将成功，且data设置为NULL。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env,const JSVM_ExtendedErrorInfo** result)](#oh_jsvm_getlasterrorinfo) | 检索JSVM_ExtendedErrorInfo结构，其中包含发生的最后一个错误的有关信息。返回的JSVM_ExtendedErrorInfo的内容仅在对同一env调用JSVM-API函数之前有效。这包括对OH_JSVM_IsExceptionPending的调用，因此可能经常需要复制信息以便以后使用。error_message中返回的指针指向一个静态定义的字符串，因此如果你在调用另一个JSVM-API函数之前将它从error_message字段（将被覆盖）中复制出来，则可以安全地使用该指针。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env,JSVM_Value error)](#oh_jsvm_throw) | 抛出提供的JavaScript值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwerror) | 抛出带有所提供文本的JavaScript Error。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwtypeerror) | 抛出带有所提供文本的JavaScript TypeError。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwrangeerror) | 抛出带有所提供文本的JavaScript RangeError。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwsyntaxerror) | 抛出带有所提供文本的JavaScript SyntaxError。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_iserror) | 查询JSVM_Value以检查它是否表示错误对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createerror) | 返回带有所提供文本的JavaScript Error。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createtypeerror) | 返回带有所提供文本的JavaScript TypeError。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createrangeerror) | 返回带有所提供文本的JavaScript RangeError。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createsyntaxerror) | 返回带有所提供文本的JavaScript SyntaxError。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getandclearlastexception) | 获取并清除上一次异常。如果出现挂起，则返回JavaScript异常，否则返回NULL。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env,bool* result)](#oh_jsvm_isexceptionpending) | 查询上一次异常是否由挂起导致的。如果由异常导致，则返回true，否则返回false。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env,JSVM_HandleScope* result)](#oh_jsvm_openhandlescope) | 开辟了一个新的作用域。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env,JSVM_HandleScope scope)](#oh_jsvm_closehandlescope) | （必须）按照创建作用域的相反顺序关闭传入的作用域。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env,JSVM_EscapableHandleScope* result)](#oh_jsvm_openescapablehandlescope) | 打开一个可以将某对象从其中提到外部作用域的新作用域。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env,JSVM_EscapableHandleScope scope)](#oh_jsvm_closeescapablehandlescope) | （必须）按照创建作用域的相反顺序关闭传入的作用域。即使存在挂起的JavaScript异常，也可以调用此JSVM_API。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env,JSVM_EscapableHandleScope scope,JSVM_Value escapee,JSVM_Value* result)](#oh_jsvm_escapehandle) | 提升JavaScript对象的句柄，使其在外部作用域的生命周期内有效。每个作用域只能调用一次。如果多次调用，将返回错误。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env,JSVM_Value value,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createreference) | 对传入的值创建一个具有指定引用计数的新引用。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env,JSVM_Ref ref)](#oh_jsvm_deletereference) | 删除传入的引用。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env,JSVM_Ref ref,uint32_t* result)](#oh_jsvm_referenceref) | 增加传入引用的引用计数并返回生成的引用计数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env,JSVM_Ref ref,uint32_t* result)](#oh_jsvm_referenceunref) | 递减传入引用的引用计数并返回生成的引用计数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env,JSVM_Ref ref,JSVM_Value* result)](#oh_jsvm_getreferencevalue) | 如果仍然有效，此JSVM-API将返回JSVM_Value，表示与JSVM_Ref关联的JavaScript值。否则，结果将为NULL。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createarray) | 返回对应于JavaScript Array类型的JSVM-API值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env,size_t length,JSVM_Value* result)](#oh_jsvm_createarraywithlength) | 返回对应于JavaScript Array类型的JSVM-API值。Array的长度属性设置为传入的长度参数。但是，不保证底层缓冲区在创建数组时由VM预先分配。该行为留给底层VM实现。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env,size_t byteLength,void** data,JSVM_Value* result)](#oh_jsvm_createarraybuffer) | 返回JavaScript ArrayBuffer类型对应的JSVM-API值。ArrayBuffer用于表示固定长度的二进制数据缓冲区。通常用作TypedArray对象的后备缓冲区。分配的ArrayBuffer有一个底层字节缓冲区，其大小由传入的length参数决定。底层缓冲区可选择返回给调用方，调用方可直接操作该缓冲区。此缓冲区只能直接从native代码写入。如果想从JavaScript写入该缓冲区，需创建TypedArray或DataView对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | 申请一段 BackingStore 内存给 array buffer 使用。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | 释放由 OH_JSVM_AllocateArrayBufferBackingStoreData 申请的 BackingStore 内存。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | 在申请得到的 BackingStore 内存上创建 array buffer。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)](#oh_jsvm_createdate) | 分配一个JavaScript Date对象。此API不处理闰秒。这是因为ECMAScript遵循POSIX时间规范，对闰秒进行忽略。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)](#oh_jsvm_createexternal) | 分配一个带有外部数据的JavaScript值。这用于通过JavaScript代码传递外部数据。后续可以使用OH_JSVM_GetValueExternal由native代码检索。该API添加了一个JSVM_Finalize回调，当刚刚创建的JavaScript对象被垃圾回收时将调用该回调。创建的值不是一个对象，因此不支持附加属性。它被认为是一个独特的值类型：使用外部值调用OH_JSVM_Typeof()会生成JSVM_EXTERNAL。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createobject) | 分配一个默认的JavaScript对象。该函数功能等同于在JavaScript中执行new Object()。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env,JSVM_Value description,JSVM_Value* result)](#oh_jsvm_createsymbol) | 用UTF8编码的C字符串创建JavaScript symbol值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env,const char* utf8description,size_t length,JSVM_Value* result)](#oh_jsvm_symbolfor) | 在全局注册表中搜索具有给定描述的现有符号。如果该符号已经存在，它将被返回，否则将在注册表中创建一个新符号。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayType type,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createtypedarray) | 基于已有的ArrayBuffer对象，创建一个JavaScript TypedArray对象。TypedArray对象在底层数据缓冲区上提供了一个类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。要求：length * 元素标量byte值 + byteOffset 不大于传入数组的ByteLength()，否则抛出范围错误（RangeError）。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createdataview) | 基于已有的ArrayBuffer对象，创建一个JavaScript DataView对象。DataView对象在底层数据缓冲区上提供了一个类似数组的视图，其中的元素可以具有不同的大小和类型。要求：二进制的length + byteOffset不大于传入数组的大小（byte数）。否则，抛出范围错误（RangeError）。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env,int32_t value,JSVM_Value* result)](#oh_jsvm_createint32) | 将一个C int32_t类型值转换为JavaScript number类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env,uint32_t value,JSVM_Value* result)](#oh_jsvm_createuint32) | 将一个C uint32_t类型值转换为JavaScript number类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env,int64_t value,JSVM_Value* result)](#oh_jsvm_createint64) | 将一个C int64_t类型值转换为JavaScript number类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env,double value,JSVM_Value* result)](#oh_jsvm_createdouble) | 将一个C double类型值转换为JavaScript number类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env,int64_t value,JSVM_Value* result)](#oh_jsvm_createbigintint64) | 将一个C int64_t类型值转换为JavaScript BigInt类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env,uint64_t value,JSVM_Value* result)](#oh_jsvm_createbigintuint64) | 将一个C uint64_t类型值转换为JavaScript BigInt类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env,int signBit,size_t wordCount,const uint64_t* words,JSVM_Value* result)](#oh_jsvm_createbigintwords) | 将一组64位无符号比特位转换为单个BigInt值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env,const char* str,size_t length,JSVM_Value* result)](#oh_jsvm_createstringlatin1) | 将ISO-8859-1编码的C字符串转换为JavaScript字符串值。复制原生字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env,const char16_t* str,size_t length,JSVM_Value* result)](#oh_jsvm_createstringutf16) | 将UTF16-LE编码的C字符串转换为JavaScript字符串值。复制原生字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env,const char* str,size_t length,JSVM_Value* result)](#oh_jsvm_createstringutf8) | 用UTF8编码的C字符串创建JavaScript字符串值。复制原生字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env,JSVM_Value value,uint32_t* result)](#oh_jsvm_getarraylength) | 返回数组的长度。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env,JSVM_Value arraybuffer,void** data,size_t* byteLength)](#oh_jsvm_getarraybufferinfo) | 用于检索ArrayBuffer的底层数据缓冲区及其长度。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_getprototype) | 返回对象的原型。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env,JSVM_Value typedarray,JSVM_TypedarrayType* type,size_t* length,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)](#oh_jsvm_gettypedarrayinfo) | 返回类型化数组的各种属性。如果不需要该属性，则任何输出参数都可以是 NULL。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env,JSVM_Value dataview,size_t* bytelength,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)](#oh_jsvm_getdataviewinfo) | 返回DataView的各种属性。如果不需要某一属性，则任何出参都可以设置为NULL。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env,JSVM_Value value,double* result)](#oh_jsvm_getdatevalue) | 返回与给定的JavaScript Date时间值等价的C双精度基础类型值。如果调用成功，返回JSVM_OK。如果传入一个非JavaScript Date类型的JSVM_Value，返回JSVM_DATA_EXPECTED。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_getvaluebool) | 返回与给定的JavaScript Boolean等价的C布尔基础类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env,JSVM_Value value,double* result)](#oh_jsvm_getvaluedouble) | 返回与给定的JavaScript number等价的C双精度基础类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value value,int64_t* result,bool* lossless)](#oh_jsvm_getvaluebigintint64) | 返回与给定的JavaScript BigInt等价的C int64_t基础类型值。如果需要，它将截断该值，将lossless设置为false。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env,JSVM_Value value,uint64_t* result,bool* lossless)](#oh_jsvm_getvaluebigintuint64) | 返回与给定的JavaScript BigInt等价的C uint64_t基础类型值。如果需要，它将截断该值，将lossless设置为false。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env,JSVM_Value value,int* signBit,size_t* wordCount,uint64_t* words)](#oh_jsvm_getvaluebigintwords) | 将单个BigInt值转换为符号位、64位小端数组和数组中的元素数。signBit和words参数可以都设置为NULL。这种情况下，只获取wordCount。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env,JSVM_Value value,void** result)](#oh_jsvm_getvalueexternal) | 检索之前传递给OH_JSVM_CreateExternal()的外部数据指针。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env,JSVM_Value value,int32_t* result)](#oh_jsvm_getvalueint32) | 返回与给定的JavaScript number等价的C int32基础类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env,JSVM_Value value,int64_t* result)](#oh_jsvm_getvalueint64) | 返回与给定的JavaScript number等价的C int64基础类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env,JSVM_Value value,char* buf,size_t bufsize,size_t* result)](#oh_jsvm_getvaluestringlatin1) | 返回与传入值对应的ISO-8859-1编码字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env,JSVM_Value value,char* buf,size_t bufsize,size_t* result)](#oh_jsvm_getvaluestringutf8) | 返回与传入值对应的UTF8编码字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env,JSVM_Value value,char16_t* buf,size_t bufsize,size_t* result)](#oh_jsvm_getvaluestringutf16) | 查询与传入值对应的UTF16编码字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env,JSVM_Value value,uint32_t* result)](#oh_jsvm_getvalueuint32) | 返回与给定的JavaScript number等价的C uint_32基础类型值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env,bool value,JSVM_Value* result)](#oh_jsvm_getboolean) | 返回表示给定布尔值的JavaScript单例对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getglobal) | 返回global对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getnull) | 返回null对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getundefined) | 返回Undefined对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetobool) | 实现抽象操作ToBoolean()。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetonumber) | 实现抽象操作ToNumber()。如果传入的值是对象，则函数可能会运行JavaScript代码。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetoobject) | 实现抽象操作ToObject()。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetostring) | 实现抽象操作ToString()。如果传入的值是对象，则函数可能会运行JavaScript代码。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env,JSVM_Value value,JSVM_ValueType* result)](#oh_jsvm_typeof) | 提供类似于在定义的对象上调用typeof运算符的行为。不同点在于，该函数支持检测外部值；它将null检测为单独的类型，而ECMAScript typeof将用于检测object。如果value的类型无效，则返回错误。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env,JSVM_Value object,JSVM_Value constructor,bool* result)](#oh_jsvm_instanceof) | 提供类似于在对象上调用instanceof运算符的行为。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isarray) | 提供类似于在对象上调用IsArray的行为。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isarraybuffer) | 检查传入的对象是否为ArrayBuffer。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env,JSVM_Value value,bool* isDate)](#oh_jsvm_isdate) | 检查传入的Object是否为日期。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_istypedarray) | 检查传入的Object是否为类型化数组。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isdataview) | 检查传入的对象是否是DataView。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env,JSVM_Value lhs,JSVM_Value rhs,bool* result)](#oh_jsvm_strictequals) | 提供类似调用严格相等算法的行为。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env,JSVM_Value lhs,JSVM_Value rhs,bool* result)](#oh_jsvm_equals) | 提供类似调用宽松相等算法的行为。无论JavaScript值类型如何，只要值相等，就返回true。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env,JSVM_Value arraybuffer)](#oh_jsvm_detacharraybuffer) | 提供类似于调用ArrayBuffer detach操作的行为。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isdetachedarraybuffer) | 提供类似调用ArrayBuffer IsDetachedBuffer操作的行为。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_getpropertynames) | 以字符数组的形式返回object的可枚举属性的名称。key为符号的object的属性将不会被包含在内。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env,JSVM_Value object,JSVM_KeyCollectionMode keyMode,JSVM_KeyFilter keyFilter,JSVM_KeyConversion keyConversion,JSVM_Value* result)](#oh_jsvm_getallpropertynames) | 返回包含object所有可用属性名称的数组。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,JSVM_Value value)](#oh_jsvm_setproperty) | 为传入的object设置名为key的属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,JSVM_Value* result)](#oh_jsvm_getproperty) | 从传入的object中获取名为key的属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)](#oh_jsvm_hasproperty) | 检查传入的Object是否具有命名为key的属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)](#oh_jsvm_deleteproperty) | 尝试从object中删除名为key的属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)](#oh_jsvm_hasownproperty) | 检查传入的Object是否具有名为key的属性。key必须是string或symbol，否则将抛出错误。JSVM-API不会执行任何数据类型之间的转换。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,JSVM_Value value)](#oh_jsvm_setnamedproperty) | 此方法等效于object调用OH_JSVM_SetProperty设置名为`utf8Name`的属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,JSVM_Value* result)](#oh_jsvm_getnamedproperty) | 此方法等效于object调用OH_JSVM_GetProperty获取名为`utf8Name`的属性对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,bool* result)](#oh_jsvm_hasnamedproperty) | 此方法等效于object对象调用OH_JSVM_HasProperty查询其内部是否存在名为`utf8Name`的属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env,JSVM_Value object,uint32_t index,JSVM_Value value)](#oh_jsvm_setelement) | 在传入的Object上设置一个元素。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env,JSVM_Value object,uint32_t index,JSVM_Value* result)](#oh_jsvm_getelement) | 获取请求索引处的元素。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env,JSVM_Value object,uint32_t index,bool* result)](#oh_jsvm_haselement) | 如果传入的Object在指定的索引处有一个元素，则此JSVM-API返回true。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env,JSVM_Value object,uint32_t index,bool* result)](#oh_jsvm_deleteelement) | 尝试从object中删除指定index处的元素。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env,JSVM_Value object,size_t propertyCount,const JSVM_PropertyDescriptor* properties)](#oh_jsvm_defineproperties) | 通过此方法可以在给定对象上高效定义多个属性，这些属性使用属性描述符进行定义。通过一个属性描述符的数组，此API将为对象依次设置数组中的属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env,JSVM_Value object)](#oh_jsvm_objectfreeze) | 冻结指定的对象，防止为其添加新的属性、删除现有属性、更改现有属性的可枚举性/可配置性/可写性、更改现有属性的值、改变对象原型等操作。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env,JSVM_Value object)](#oh_jsvm_objectseal) | 封装指定的对象，防止为其添加新的属性并将所有现有属性标记为不可配置。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env,JSVM_Value recv,JSVM_Value func,size_t argc,const JSVM_Value* argv,JSVM_Value* result)](#oh_jsvm_callfunction) | 支持从native代码调用JavaScript函数对象，这是从native代码回调到JavaScript的主要机制。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback cb,JSVM_Value* result)](#oh_jsvm_createfunction) | 支持在native代码中创建函数对象，这是从JavaScript调用native代码的主要机制。在此调用之后，新创建的函数在脚本中不再自动可见。相反，必须在JavaScript可见的任何对象上显示设置属性，才能从脚本访问该函数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env,JSVM_CallbackInfo cbinfo,size_t* argc,JSVM_Value* argv,JSVM_Value* thisArg,void** data)](#oh_jsvm_getcbinfo) | 此方法在回调函数中用于检索有关调用的详细信息，例如来自给定回调信息的参数和this指针。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env,JSVM_CallbackInfo cbinfo,JSVM_Value* result)](#oh_jsvm_getnewtarget) | 返回构造函数调用的new target。如果当前回调不是构造函数调用，结果为NULL。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env,JSVM_Value constructor,size_t argc,const JSVM_Value* argv,JSVM_Value* result)](#oh_jsvm_newinstance) | 使用给定的JSVM_Value表示的构造函数来实例化新的JavaScript值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value* result)](#oh_jsvm_defineclass) | 定义一个JavaScript类。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env,JSVM_Value jsObject,void* nativeObject,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Ref* result)](#oh_jsvm_wrap) | 在JavaScript对象中封装native实例，该实例后续可以通过OH_JSVM_Unwrap()进行检索。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env,JSVM_Value jsObject,void** result)](#oh_jsvm_unwrap) | 当JavaScript代码调用类的方法或属性访问器时，对应的JSVM_Callback将被调用。如果回调是针对实例方法或访问器的，则回调的this参数是封装器对象；然后可以通过调用封装器对象的OH_JSVM_Unwrap()获得作为调用目标的C++实例。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env,JSVM_Value jsObject,void** result)](#oh_jsvm_removewrap) | 使用OH_JSVM_Wrap()检索先前封装在JavaScript对象——js_object中的native实例并移除封装。如果finalize回调与封装相关联，则当JavaScript对象被垃圾回收时将不再调用它。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env,JSVM_Value value,const JSVM_TypeTag* typeTag)](#oh_jsvm_typetagobject) | 将typeTag指针的值与JavaScript对象或外部值相关联。可调用OH_JSVM_CheckObjectTypeTag()判断附加在对象上的标记类型，以确保对象的类型正确。如果对象已经有关联的类型标记，则返回JSVM_INVALID_ARG。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env,JSVM_Value value,const JSVM_TypeTag* typeTag,bool* result)](#oh_jsvm_checkobjecttypetag) | 将类型标签typeTag与JavaScript对象或外部值上的标签作对比。如果找到相同标签，设置result为true，否则为false。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env,JSVM_Value jsObject,void* finalizeData,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Ref* result)](#oh_jsvm_addfinalizer) | 为JavaScript对象添加JSVM_Finalize回调，当JavaScript对象被垃圾回收时调用该回调函数。可以在单个JavaScript对象上多次调用OH_JSVM_AddFinalizer。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env,uint32_t* result)](#oh_jsvm_getversion) | 返回JSVM运行时支持的最高JSVM-API版本。后续将新增JSVM-API，以便支持更多的功能。引入该API的目的：在支持某功能的JSVM版本，可以使用新的功能；在不支持某功能的JSVM版本，可以提供回调行为。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)](#oh_jsvm_getvminfo) | 返回虚拟机的信息。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env,int64_t changeInBytes,int64_t* result)](#oh_jsvm_adjustexternalmemory) | 此函数将因JavaScript对象而保持活跃的外部分配的内存大小通知给底层虚拟机。注册外部分配的内存将比其他方式更频繁地触发全局垃圾回收。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env,JSVM_MemoryPressureLevel level)](#oh_jsvm_memorypressurenotification) | 通知虚拟机系统内存不足并有选择地触发垃圾回收。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env,JSVM_Deferred* deferred,JSVM_Value* promise)](#oh_jsvm_createpromise) | 创建一个延迟对象和一个JavaScript promise。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env,JSVM_Deferred deferred,JSVM_Value resolution)](#oh_jsvm_resolvedeferred) | 通过与之关联的延迟对象来解析JavaScript promise。它只能用于解析对应的可用的延迟对象的JavaScript Promise。这意味着Promise必须使用OH_JSVM_CreatePromise()创建，并且从该调用返回的对象必须保留，才能将其传递给此API。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env,JSVM_Deferred deferred,JSVM_Value rejection)](#oh_jsvm_rejectdeferred) | 通过与之关联的延迟对象来拒绝JavaScript Promise。它只能用于拒绝对应的可用延迟对象的JavaScript Promise。这意味着Promise必须使用OH_JSVM_CreatePromise()创建，并且从该调用返回的对象必须保留，才能将其传递给此API。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env,JSVM_Value value,bool* isPromise)](#oh_jsvm_ispromise) | 查询Promise是否为原生Promise对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env,JSVM_Value promise,JSVM_Value onFulfilled,JSVM_Value onRejected,JSVM_Value* result)](#oh_jsvm_promiseregisterhandler) | 注册 处理Promise兑现/拒绝的 回调函数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env,JSVM_Value jsonString,JSVM_Value* result)](#oh_jsvm_jsonparse) | 解析JSON字符串，并返回成功解析的值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env,JSVM_Value jsonObject,JSVM_Value* result)](#oh_jsvm_jsonstringify) | 将对象字符串化，并返回成功转换后的字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm,size_t contextCount,const JSVM_Env* contexts,const char** blobData,size_t* blobSize)](#oh_jsvm_createsnapshot) | 创建虚拟机的启动快照。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm,JSVM_HeapStatistics* result)](#oh_jsvm_getheapstatistics) | 返回一组虚拟机堆的统计数据。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler* result)](#oh_jsvm_startcpuprofiler) | 创建并启动一个CPU profiler。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler profiler,JSVM_OutputStream stream,void* streamData)](#oh_jsvm_stopcpuprofiler) | 停止CPU profiler并将结果输出到流。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm,JSVM_OutputStream stream,void* streamData)](#oh_jsvm_takeheapsnapshot) | 获取当前堆快照并将其输出到流。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env,const char* host,uint16_t port)](#oh_jsvm_openinspector) | 在指定的主机和端口上激活inspector，将用来调试JS代码。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)](#oh_jsvm_closeinspector) | 尝试关闭剩余的所有inspector连接。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env,bool breakNextLine)](#oh_jsvm_waitfordebugger) | 等待主机与inspector建立socket连接，连接建立后程序将继续运行。发送Runtime.runIfWaitingForDebugger命令。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_PropertyHandlerCfg propertyHandlerCfg,JSVM_Callback callAsFunctionCallback,JSVM_Value* result)](#oh_jsvm_defineclasswithpropertyhandler) | 定义一个具有给定类名、构造函数、属性和回调处理程序的JavaScript类，属性操作包括getter、setter、deleter、enumerator等，并作为函数回调进行调用。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)](#oh_jsvm_islocked) | 判断当前线程是否持有指定环境的锁。只有持有锁的线程才能使用该环境。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)](#oh_jsvm_acquirelock) | 获取指定环境的锁。只有持有锁的线程才能使用该环境。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)](#oh_jsvm_releaselock) | 释放指定环境的锁。只有持有锁的线程才能使用该环境。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env,JSVM_Value value,bool* isUndefined)](#oh_jsvm_isundefined) | 此API检查传入的值是否为Undefined。这相当于JS中的`value === undefined`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env,JSVM_Value value,bool* isNull)](#oh_jsvm_isnull) | 此API检查传入的值是否为Null对象。这相当于JS中的`value === null`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env,JSVM_Value value,bool* isNullOrUndefined)](#oh_jsvm_isnullorundefined) | 此API检查传入的值是否为Null或Undefined。这相当于JS中的`value == null`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env,JSVM_Value value,bool* isBoolean)](#oh_jsvm_isboolean) | 此API检查传入的值是否为Boolean。这相当于JS中的`typeof value === 'boolean'`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env,JSVM_Value value,bool* isNumber)](#oh_jsvm_isnumber) | 此API检查传入的值是否为Number。这相当于JS中的`typeof value === 'number'`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env,JSVM_Value value,bool* isString)](#oh_jsvm_isstring) | 此API检查传入的值是否为String。这相当于JS中的`typeof value === 'string'`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env,JSVM_Value value,bool* isSymbol)](#oh_jsvm_issymbol) | 此API检查传入的值是否为Symbol。这相当于JS中的`typeof value === 'symbol'`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env,JSVM_Value value,bool* isFunction)](#oh_jsvm_isfunction) | 此API检查传入的值是否为Function。这相当于JS中的`typeof value === 'function'`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env,JSVM_Value value,bool* isObject)](#oh_jsvm_isobject) | 此API检查传入的值是否为Object。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env,JSVM_Value value,bool* isBigInt)](#oh_jsvm_isbigint) | 此API检查传入的值是否为BigInt。这相当于JS中的`typeof value === 'bigint'`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_createmap) | 此API返回与JavaScript Map类型对应的JavaScript值。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)](#oh_jsvm_ismap) | 此API检查传入的值是否为Map。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)](#oh_jsvm_isconstructor) | 此API检查传入的值是否为构造函数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)](#oh_jsvm_createregexp) | 此API返回与输入的JavaScript字符串对应的正则表达式对象。接口可能会抛出异常。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_objectgetprototypeof) | 获取JavaScript object的原型。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value prototype)](#oh_jsvm_objectsetprototypeof) | 设置给定的JavaScript object的原型。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createset) | 创建JavaScript Set对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env,JSVM_Value value,bool* isSet)](#oh_jsvm_isset) | 判断给定的对象是否是Set类型。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetobigint) | 实现抽象操作`ToBigInt()`。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isregexp) | 此API检查传入的值是否为JavaScript RegExp对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env,const char* funcName,size_t length,size_t argc,const JSVM_Value* argv,JSVM_Value script,JSVM_Value* result)](#oh_jsvm_createfunctionwithscript) | 创建一个以给定JavaScript为函数体的函数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm,bool* result)](#oh_jsvm_pumpmessageloop) | 启动虚拟机内任务队列，这个任务队列可以通过外部事件循环执行。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)](#oh_jsvm_performmicrotaskcheckpoint) | 检查队列中是否有微任务等待，如果存在则执行它们。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool* isCallable)](#oh_jsvm_iscallable) | 此API检查传入的值是否可调用。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)](#oh_jsvm_retainscript) | 持久保存一个JSVM_Script并将其生命周期延长到当前作用域之外。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)](#oh_jsvm_releasescript) | 释放由 OH_JSVM_RetainScript 保留的脚本，释放后应避免对传入 script 的再次使用。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env,int pid,const char* name)](#oh_jsvm_openinspectorwithname) | 打开一个名为 name 的 inspector，为其打开对应 pid 的 unix domain 端口。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env,const uint8_t *wasmBytecode,size_t wasmBytecodeLength,const uint8_t *cacheData,size_t cacheDataLength,bool *cacheRejected,JSVM_Value *wasmModule)](#oh_jsvm_compilewasmmodule) | 将 WebAssembly 字节码编译得到一个 WebAssembly 模块。如果提供了 WebAssembly 缓存，则会先尝试对缓存进行反序列化。如果没有 JIT 权限支持，则打印一行日志提示开发者。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env,JSVM_Value wasmModule,uint32_t functionIndex,JSVM_WasmOptLevel optLevel)](#oh_jsvm_compilewasmfunction) | 对当前 WebAssembly 模块中指定索引的函数进行指定优化等级的编译优化。如果没有 JIT 权限支持，则打印一行日志提示开发者。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_iswasmmoduleobject) | 判断给定的 JSVM_Value 是否是一个 WebAssembly 模块。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env,JSVM_Value wasmModule,const uint8_t** data,size_t* length)](#oh_jsvm_createwasmcache) | 为给定的 WebAssembly 模块生成缓存。如果没有 JIT 权限支持，则打印一行日志提示开发者。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env,const uint8_t* cacheData,JSVM_CacheType cacheType)](#oh_jsvm_releasecache) | 释放给定类型的缓存数据。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isbigintobject) | 判断给定的 JSVM_Value 是否是一个 BigInt对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isbooleanobject) | 判断给定的 JSVM_Value 是否是一个 Boolean对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isstringobject) | 判断给定的 JSVM_Value 是否是一个 String对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isnumberobject) | 判断给定的 JSVM_Value 是否是一个 Number对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_issymbolobject) | 判断给定的 JSVM_Value 是否是一个 Symbol对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolasynciterator) | 获取Well-Known symbol里的Symbol.AsyncIterator能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolhasinstance) | 获取Well-Known symbol里的Symbol.HasInstance能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolisconcatspreadable) | 获取Well-Known symbol里的Symbol.IsConcatSpreadable能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolmatch) | 获取Well-Known symbol里的Symbol.Match能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolreplace) | 获取Well-Known symbol里的Symbol.Replace能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolsearch) | 获取Well-Known symbol里的Symbol.Search能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolsplit) | 获取Well-Known symbol里的Symbol.Split能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymboltoprimitive) | 获取Well-Known symbol里的Symbol.ToPrimitive能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolunscopables) | 获取Well-Known symbol里的Symbol.Unscopables能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymboltostringtag) | 获取Well-Known symbol里的Symbol.ToStringTag能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymboliterator) | 获取Well-Known symbol里的Symbol.Iterator能力。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count,const JSVM_TraceCategory* categories,const char* tag,size_t eventsCount)](#oh_jsvm_tracestart) | 对所有 JSVM 运行时实例，开始采集指定 Trace 类别的信息（线程不安全）。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* streamData)](#oh_jsvm_tracestop) | 对所有 JSVM 运行时，停止采集指定 Trace 类别的信息（线程不安全）。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTimeForGC triggerTime,JSVM_HandlerForGC handler,JSVM_GCType gcType,void* userData)](#oh_jsvm_addhandlerforgc) | 在VM中添加GC的回调函数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTimeForGC triggerTime,JSVM_HandlerForGC handler,void* userData)](#oh_jsvm_removehandlerforgc) | 在VM中移除GC的回调函数。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm,JSVM_HandlerForOOMError handler)](#oh_jsvm_sethandlerforoomerror) | 为OOM错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption debugOption, bool isEnabled)](#oh_jsvm_setdebugoption) | 启用/禁用特定JSVM_Env的指定调试选项。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm,JSVM_HandlerForFatalError handler)](#oh_jsvm_sethandlerforfatalerror) | 为Fatal错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_HandlerForPromiseReject handler)](#oh_jsvm_sethandlerforpromisereject) | 为PromiseReject错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)](#oh_jsvm_defineclasswithoptions) | 在封装一个 C++ 类时，通过构造函数传递的 C++ 构造函数回调应该是类中的一个静态方法，该方法调用实际的类构造函数，然后根据传入的不同选项，将新的 C++ 实例封装在一个 JavaScript 对象中并返回封装对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env,char* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringlatin1) | 此 API 使用 ISO-8859-1 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | 此 API 使用 UTF16-LE 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env,JSVM_Value description,JSVM_Data* result)](#oh_jsvm_createprivate) | 创建一个 JavaScript private key 对象。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value value)](#oh_jsvm_setprivate) | 为传入的object设置一个 private 属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value *result)](#oh_jsvm_getprivate) | 从传入的object获取 private key 对应的 private 属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key)](#oh_jsvm_deleteprivate) | 从传入的 object 上删除 private key 对应的 private 属性。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createdatareference) | 创建一个对于给定 JSVM_Data 对象的引用，初始的引用计数为传入的 initialRefcount。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)](#oh_jsvm_getreferencedata) | 如果引用仍然有效，通过 result 参数返回对应的 JSVM_Data，表示与 JSVM_Ref 关联的 JavaScript 值。否则结果将为空。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)](#oh_jsvm_init) | Initializes a JavaScript VM.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options,JSVM_VM* result)](#oh_jsvm_createvm) | Creates a VM instance.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm,JSVM_MicrotaskPolicy policy)](#oh_jsvm_setmicrotaskpolicy) | Sets the microtask execution policy for a VM instance. If this method is not called, the default policy **JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO** is used.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)](#oh_jsvm_destroyvm) | Destroys a VM instance.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env,JSVM_Value target,JSVM_Value handler,JSVM_Value* result)](#oh_jsvm_createproxy) | Creates a JavaScript proxy. This API is equivalent to calling **new Proxy(target, handler)** in JS.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)](#oh_jsvm_isproxy) | Checks whether the input value is a JavaScript proxy.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_proxygettarget) | Obtains the target object in the JavaScript Proxy.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm,JSVM_VMScope* result)](#oh_jsvm_openvmscope) | Opens a new VM scope for a VM instance.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm,JSVM_VMScope scope)](#oh_jsvm_closevmscope) | Closes the VM scope of a VM instance.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Env* result)](#oh_jsvm_createenv) | Creates a new environment based on the optional properties of the new context.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm,size_t index,JSVM_Env* result)](#oh_jsvm_createenvfromsnapshot) | Creates a new environment based on the startup snapshot of the VM.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)](#oh_jsvm_destroyenv) | Destroys the environment.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env,JSVM_EnvScope* result)](#oh_jsvm_openenvscope) | Opens a new environment scope.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env,JSVM_EnvScope scope)](#oh_jsvm_closeenvscope) | Closes the environment scope.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env,JSVM_VM* result)](#oh_jsvm_getvm) | Obtains a VM instance.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_Script* result)](#oh_jsvm_compilescript) | Compiles a JavaScript code snippet and returns the compiled script.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_ScriptOrigin* origin,JSVM_Script* result)](#oh_jsvm_compilescriptwithorigin) | Compiles a JavaScript code snippet that contains source map information and returns the compiled script.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Script* result)](#oh_jsvm_compilescriptwithoptions) | Compiles a JavaScript code snippet and returns the compiled script.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env,JSVM_Script script,const uint8_t** data,size_t* length)](#oh_jsvm_createcodecache) | Creates a code cache for the compiled script.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env,JSVM_Script script,JSVM_Value* result)](#oh_jsvm_runscript) | Runs a JavaScript code snippet and returns its result, including the following precautions: Unlike eval, this function does not allow the script to access the current lexical scope, and therefore does not allow the script to access the module scope. This means that pseudo-global variables such as **require** will be unavailable. The script can access the global scope. The functions and variable declarations in the script will be added to the global object. Variable declarations using **let** and **const** are globally visible, but are not added to the global object. The value of **this** is **global** in the script. Without the JIT permission, the script containing WebAssembly fails to be executed. The performance varies in specific scenarios, and a log is printed to notify you.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint)](#oh_jsvm_setinstancedata) | Sets instance data so that it is associated with the currently running JSVM environment. You can use **OH_JSVM_GetInstanceData()** to obtain data later. Any existing data set by a previous call to **OH_JSVM_SetInstanceData()** will be overwritten. If **finalizeCb** was previously provided, it will not be called.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env,void** data)](#oh_jsvm_getinstancedata) | Obtains instance data that has been set by **OH_JSVM_SetInstanceData()**. If no associated data is set, this function is called successfully and **data** is set to **NULL**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env,const JSVM_ExtendedErrorInfo** result)](#oh_jsvm_getlasterrorinfo) | Obtains the **JSVM_ExtendedErrorInfo** struct that contains the last error. The content of **JSVM_ExtendedErrorInfo** returned is valid only before the JSVM-API function is called for the same environment. This includes a call to **OH_JSVM_IsExceptionPending**, so you may need to copy information for later use. The pointer returned in **error_message** points to a statically defined string, so if you copy it from the **error_message** field (which will be overwritten) before calling another JSVM-API function, you can safely use the pointer.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env,JSVM_Value error)](#oh_jsvm_throw) | Throws the provided JavaScript value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwerror) | Throws a JavaScript Error with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwtypeerror) | Throws a JavaScript TypeError with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwrangeerror) | Throws a JavaScript RangeError with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env,const char* code,const char* msg)](#oh_jsvm_throwsyntaxerror) | Throws a JavaScript SyntaxError with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_iserror) | Checks whether the given **JSVM_Value** indicates an error.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createerror) | Creates a JavaScript Error with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createtypeerror) | Creates a JavaScript TypeError with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createrangeerror) | Creates a JavaScript RangeError with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)](#oh_jsvm_createsyntaxerror) | Creates a JavaScript SyntaxError with the provided text.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getandclearlastexception) | Obtains and clears the last exception. If pending occurs, a JavaScript exception is returned. Otherwise, **NULL** is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env,bool* result)](#oh_jsvm_isexceptionpending) | Checks whether the last exception is caused by pending. If yes, **true** is returned. Otherwise, **false** is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env,JSVM_HandleScope* result)](#oh_jsvm_openhandlescope) | Opens a new handle scope.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env,JSVM_HandleScope scope)](#oh_jsvm_closehandlescope) | (Mandatory) Closes the handle scope in the reverse order of opening it.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env,JSVM_EscapableHandleScope* result)](#oh_jsvm_openescapablehandlescope) | Opens an escapable handle scope.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env,JSVM_EscapableHandleScope scope)](#oh_jsvm_closeescapablehandlescope) | (Mandatory) Closes the escapable handle scope in the reverse order of opening it. This JSVM_API can be called even if there is a pending JavaScript exception.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env,JSVM_EscapableHandleScope scope,JSVM_Value escapee,JSVM_Value* result)](#oh_jsvm_escapehandle) | Escapes a handle of a JavaScript object so that it is valid through the lifecycle of the outer scope. Each scope can be called only once. If it is called for multiple times, an error is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env,JSVM_Value value,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createreference) | Creates a reference with the specified reference count for the input value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env,JSVM_Ref ref)](#oh_jsvm_deletereference) | Deletes the input reference.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env,JSVM_Ref ref,uint32_t* result)](#oh_jsvm_referenceref) | Increases the reference count and returns the new reference count.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env,JSVM_Ref ref,uint32_t* result)](#oh_jsvm_referenceunref) | Decreases the reference count and returns the new reference count.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env,JSVM_Ref ref,JSVM_Value* result)](#oh_jsvm_getreferencevalue) | Obtains the **JSVM_Value** returned by the JSVM-API, which is the JavaScript value associated with **JSVM_Ref**. If the value is invalid, **NULL** is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createarray) | Creates an array. This API returns the JSVM-API value of the JavaScript Array type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env,size_t length,JSVM_Value* result)](#oh_jsvm_createarraywithlength) | Creates an array with a specified length. This API returns the JSVM-API value of the JavaScript Array type. The **length** property of the array is set to the input **length** parameter. However, there is no guarantee that the underlying buffer is pre-allocated by the VM when the array is created. This behavior is implemented by the underlying VM.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env,size_t byteLength,void** data,JSVM_Value* result)](#oh_jsvm_createarraybuffer) | Creates an array buffer. This API returns the JSVM-API value of the JavaScript ArrayBuffer type. ArrayBuffer is used to represent a fixed-length binary data buffer. It is usually used as the backup buffer of the **TypedArray** object. The allocated ArrayBuffer has an underlying byte buffer whose size is determined by the **length** parameter. The underlying buffer can be returned to and operated by the caller. This buffer can only be written directly from the native code. To write data from JavaScript to this buffer, you need to create a **TypedArray** or **DataView** object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | Allocates a segment of BackingStore memory to the array buffer.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | Frees the BackingStore memory allocated by **OH_JSVM_AllocateArrayBufferBackingStoreData**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | Creates an array buffer in the allocated BackingStore memory.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)](#oh_jsvm_createdate) | Creates a date. This API ignores leap seconds because ECMAScript complies with the POSIX time specifications.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)](#oh_jsvm_createexternal) | Creates a JavaScript value with external data. This is used to pass external data through JavaScript code. You can use **OH_JSVM_GetValueExternal** to retrieve the value from the native code. This API adds a **JSVM_Finalize** callback, which will be called when the newly created JavaScript object is garbage-collected. The created value is not an object, so it does not support additional properties. It is considered as a unique value type: Calling **OH_JSVM_Typeof()** with an external value generates **JSVM_EXTERNAL**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createobject) | Creates a default JavaScript object. This function is equivalent to executing **new Object()** in JavaScript.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env,JSVM_Value description,JSVM_Value* result)](#oh_jsvm_createsymbol) | Creates a JavaScript symbol value with a UTF-8-encoded C string.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env,const char* utf8description,size_t length,JSVM_Value* result)](#oh_jsvm_symbolfor) | Searches the global registry for an existing symbol with the given description. This API returns the symbol if it already exists; otherwise, a symbol is created in the registry.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayType type,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createtypedarray) | Creates a JavaScript **TypedArray** object based on an existing **ArrayBuffer** object. The **TypedArray** object provides an array-like view on the underlying data buffer, where each element has the same underlying binary scalar data type. The value of "**length** × element scalar bytes + **byteOffset**" must not be greater than the value of **ByteLength()** of the input array. Otherwise, a range error is thrown.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)](#oh_jsvm_createdataview) | Creates a JavaScript **DataView** object based on an existing **ArrayBuffer** object. The **DataView** object provides an array-like view on the underlying data buffer, where elements can have different sizes and types. The sum of the binary length and byte offset cannot be greater than the size (in bytes) of the input array. Otherwise, a range error is thrown.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env,int32_t value,JSVM_Value* result)](#oh_jsvm_createint32) | Converts a value of the C int32_t type to a value of the JavaScript number type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env,uint32_t value,JSVM_Value* result)](#oh_jsvm_createuint32) | Converts a value of the C uint32_t type to a value of the JavaScript number type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env,int64_t value,JSVM_Value* result)](#oh_jsvm_createint64) | Converts a value of the C int64_t type to a value of the JavaScript number type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env,double value,JSVM_Value* result)](#oh_jsvm_createdouble) | Converts a value of the C double type to a value of the JavaScript number type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env,int64_t value,JSVM_Value* result)](#oh_jsvm_createbigintint64) | Converts a value of the C int64_t type to a value of the JavaScript BigInt type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env,uint64_t value,JSVM_Value* result)](#oh_jsvm_createbigintuint64) | Converts a value of the C uint64_t type to a value of the JavaScript BigInt type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env,int signBit,size_t wordCount,const uint64_t* words,JSVM_Value* result)](#oh_jsvm_createbigintwords) | Converts a group of 64-bit unsigned bits to a single BigInt value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env,const char* str,size_t length,JSVM_Value* result)](#oh_jsvm_createstringlatin1) | Converts an ISO-8859-1-encoded C string to a JavaScript string. A native string is copied.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env,const char16_t* str,size_t length,JSVM_Value* result)](#oh_jsvm_createstringutf16) | Converts a UTF-16LE-encoded C string to a JavaScript string. A native string is copied.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env,const char* str,size_t length,JSVM_Value* result)](#oh_jsvm_createstringutf8) | Creates a JavaScript string using a UTF-8-encoded C string. A native string is copied.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env,JSVM_Value value,uint32_t* result)](#oh_jsvm_getarraylength) | Obtains the length of an array.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env,JSVM_Value arraybuffer,void** data,size_t* byteLength)](#oh_jsvm_getarraybufferinfo) | Obtains the underlying data buffer of the **ArrayBuffer** and its length.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_getprototype) | Obtains the prototype of an object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env,JSVM_Value typedarray,JSVM_TypedarrayType* type,size_t* length,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)](#oh_jsvm_gettypedarrayinfo) | Obtains the properties of a typed array. If any property is not required, its output parameter can be **NULL**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env,JSVM_Value dataview,size_t* bytelength,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)](#oh_jsvm_getdataviewinfo) | Obtains the proprieties of a **DataView**. If any property is not required, its output parameter can be **NULL**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env,JSVM_Value value,double* result)](#oh_jsvm_getdatevalue) | Obtains the C double-precision primitive equivalent of a given JavaScript date. If this API call is successfully, **JSVM_OK** is returned. If a **JSVM_Value** of a non-JavaScript date type is passed in, **JSVM_DATA_EXPECTED** is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_getvaluebool) | Obtains the C Boolean primitive equivalent of a given JavaScript Boolean value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env,JSVM_Value value,double* result)](#oh_jsvm_getvaluedouble) | Obtains the C double-precision primitive equivalent of a given JavaScript number.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value value,int64_t* result,bool* lossless)](#oh_jsvm_getvaluebigintint64) | Obtains the C int64_t primitive equivalent of a given JavaScript BigInt value. If necessary, it truncates the value and sets **lossless** to **false**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env,JSVM_Value value,uint64_t* result,bool* lossless)](#oh_jsvm_getvaluebigintuint64) | Obtains the C uint64_t primitive equivalent of a given JavaScript BigInt value. If necessary, it truncates the value and sets **lossless** to **false**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env,JSVM_Value value,int* signBit,size_t* wordCount,uint64_t* words)](#oh_jsvm_getvaluebigintwords) | Converts a BigInt value to the sign bit, 64-bit little-endian array, and number of elements in the array. Both **signBit** and **words** can be set to **NULL**. In this case, only **wordCount** is obtained.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env,JSVM_Value value,void** result)](#oh_jsvm_getvalueexternal) | Obtains the external data pointer previously passed to **OH_JSVM_CreateExternal()**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env,JSVM_Value value,int32_t* result)](#oh_jsvm_getvalueint32) | Obtains the C int32 primitive equivalent of a given JavaScript number.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env,JSVM_Value value,int64_t* result)](#oh_jsvm_getvalueint64) | Obtains the C int64 primitive equivalent of a given JavaScript number.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env,JSVM_Value value,char* buf,size_t bufsize,size_t* result)](#oh_jsvm_getvaluestringlatin1) | Obtains the ISO-8859-1-encoded string corresponding to the input value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env,JSVM_Value value,char* buf,size_t bufsize,size_t* result)](#oh_jsvm_getvaluestringutf8) | Obtains the UTF-8-encoded string corresponding to the input value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env,JSVM_Value value,char16_t* buf,size_t bufsize,size_t* result)](#oh_jsvm_getvaluestringutf16) | Obtains the UTF-16-encoded string corresponding to the input value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env,JSVM_Value value,uint32_t* result)](#oh_jsvm_getvalueuint32) | Obtains the C uint_32 primitive equivalent of a given JavaScript number.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env,bool value,JSVM_Value* result)](#oh_jsvm_getboolean) | Obtains a JavaScript singleton object that is used to represent the given Boolean value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getglobal) | Obtains the global object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getnull) | Obtains the null object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_getundefined) | Obtains the undefined object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetobool) | Implements the abstract operation **ToBoolean()**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetonumber) | Implements the abstract operation **ToNumber()**. If the input value is an object, the function may run JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetoobject) | Implements the abstract operation **ToObject()**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetostring) | Implements the abstract operation **ToString()**. If the input value is an object, the function may run JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env,JSVM_Value value,JSVM_ValueType* result)](#oh_jsvm_typeof) | Provides a behavior similar to calling the **typeof** operator on a defined object. The difference is that this function supports the detection of external values; it detects null as a separate type, while ECMAScript **typeof** is used to detect objects. If the value type is invalid, an error is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env,JSVM_Value object,JSVM_Value constructor,bool* result)](#oh_jsvm_instanceof) | Provides a behavior similar to calling the **instanceof** operator on an object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isarray) | Provides a behavior similar to calling **IsArray** on an object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isarraybuffer) | Checks whether the input object is an **ArrayBuffer**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env,JSVM_Value value,bool* isDate)](#oh_jsvm_isdate) | Checks whether the input object is a date.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_istypedarray) | Checks whether the input object is a typed array.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isdataview) | Checks whether the input object is **DataView**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env,JSVM_Value lhs,JSVM_Value rhs,bool* result)](#oh_jsvm_strictequals) | Provides a behavior similar to calling the strict equality algorithm.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env,JSVM_Value lhs,JSVM_Value rhs,bool* result)](#oh_jsvm_equals) | Provides a behavior similar to calling the loose equality algorithm. Regardless of the JavaScript value type, **true** is returned as long as the values are equal.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env,JSVM_Value arraybuffer)](#oh_jsvm_detacharraybuffer) | Provides a behavior similar to calling the **detach** operation of **ArrayBuffer**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isdetachedarraybuffer) | Provides a behavior similar to calling the **IsDetachedBuffer** operation of **ArrayBuffer**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_getpropertynames) | Obtains the names of enumerable properties of an object as an array of characters. The properties of the object whose key is a symbol are not included.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env,JSVM_Value object,JSVM_KeyCollectionMode keyMode,JSVM_KeyFilter keyFilter,JSVM_KeyConversion keyConversion,JSVM_Value* result)](#oh_jsvm_getallpropertynames) | Obtains all available property names of the object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,JSVM_Value value)](#oh_jsvm_setproperty) | Sets the **key** property for the input object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,JSVM_Value* result)](#oh_jsvm_getproperty) | Obtains the **key** property from the input object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)](#oh_jsvm_hasproperty) | Checks whether the input object has the **key** property.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)](#oh_jsvm_deleteproperty) | Deletes the **key** property from the object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)](#oh_jsvm_hasownproperty) | Checks whether the input object has the **key** property. The key must be a string or symbol. Otherwise, an error is thrown. The JSVM-API does not perform any conversion between data types.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,JSVM_Value value)](#oh_jsvm_setnamedproperty) | Sets a property with a specified name. This method is equivalent to calling **OH_JSVM_SetProperty** to set the **utf8Name** property.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,JSVM_Value* result)](#oh_jsvm_getnamedproperty) | Obtains the named property. This method is equivalent to calling **OH_JSVM_GetProperty** to obtain the **utf8Name** property.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,bool* result)](#oh_jsvm_hasnamedproperty) | Checks whether an object has the named property. This method is equivalent to calling **OH_JSVM_HasProperty** to check whether the object has the **utf8Name** property.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env,JSVM_Value object,uint32_t index,JSVM_Value value)](#oh_jsvm_setelement) | Sets an element for the input object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env,JSVM_Value object,uint32_t index,JSVM_Value* result)](#oh_jsvm_getelement) | Obtains the element at the requested index.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env,JSVM_Value object,uint32_t index,bool* result)](#oh_jsvm_haselement) | Checks whether an input object has an element at the specified index. If yes, the JSVM-API returns **true**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env,JSVM_Value object,uint32_t index,bool* result)](#oh_jsvm_deleteelement) | Deletes the element at the specified index from an object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env,JSVM_Value object,size_t propertyCount,const JSVM_PropertyDescriptor* properties)](#oh_jsvm_defineproperties) | Defines properties on a given object by using property descriptors. Through an array of property descriptors, this API sets the properties in the array in turn for the object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env,JSVM_Value object)](#oh_jsvm_objectfreeze) | Freezes a JavaScript object. Once a JavaScript object is frozen, new properties cannot be added to it, existing properties cannot be removed, the enumerability, configurability, or writability of existing properties cannot be changed, and the values of existing properties and object prototypes cannot be changed.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env,JSVM_Value object)](#oh_jsvm_objectseal) | Encapsulates a specified object, which prevents additions of properties and marks existing properties non-configurable.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env,JSVM_Value recv,JSVM_Value func,size_t argc,const JSVM_Value* argv,JSVM_Value* result)](#oh_jsvm_callfunction) | Supports calling JavaScript function objects from native code, which is the main mechanism for JavaScript to call native code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback cb,JSVM_Value* result)](#oh_jsvm_createfunction) | Supports creating function objects in native code, which is the main mechanism for JavaScript to call native code. After this call, the newly created function is no longer automatically visible in the script. Instead, you should explicitly set properties on any visible object in JavaScript to access the function from the script.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env,JSVM_CallbackInfo cbinfo,size_t* argc,JSVM_Value* argv,JSVM_Value* thisArg,void** data)](#oh_jsvm_getcbinfo) | Obtains detailed information about the callback, such as the parameter from the given callback information and the **this** pointer.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env,JSVM_CallbackInfo cbinfo,JSVM_Value* result)](#oh_jsvm_getnewtarget) | Obtains the new target called by the constructor. If the current callback is not called by a constructor, the result is **NULL**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env,JSVM_Value constructor,size_t argc,const JSVM_Value* argv,JSVM_Value* result)](#oh_jsvm_newinstance) | Instantiates a new JavaScript value by using the constructor represented by the given **JSVM_Value**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value* result)](#oh_jsvm_defineclass) | Defines a JavaScript class.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env,JSVM_Value jsObject,void* nativeObject,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Ref* result)](#oh_jsvm_wrap) | Wraps a native instance in a JavaScript object, which can be retrieved using **OH_JSVM_Unwrap()** later.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env,JSVM_Value jsObject,void** result)](#oh_jsvm_unwrap) | Unwraps a native instance in a JavaScript object. When the JavaScript code calls a method of a class or property accessor, the corresponding **JSVM_Callback** is called. If the callback is for an instance method or accessor, the **this** parameter of the callback is the wrapper object. Then you can obtain the C++ instance as the call target by calling **OH_JSVM_Unwrap()** of the wrapper object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env,JSVM_Value jsObject,void** result)](#oh_jsvm_removewrap) | Removes the wrap of the native instance, which is previously wrapped in **js_object** by **OH_JSVM_Wrap()**. If the **finalize** callback is associated with wrap, it will not be called when the JavaScript object is garbage-collected.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env,JSVM_Value value,const JSVM_TypeTag* typeTag)](#oh_jsvm_typetagobject) | Associates the value of the **typeTag** pointer with a JavaScript object or an external value. You can call **OH_JSVM_CheckObjectTypeTag()** to check the type of the tag attached to the object to ensure that the object type is correct. If the object already has an associated type tag, **JSVM_INVALID_ARG** is returned.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env,JSVM_Value value,const JSVM_TypeTag* typeTag,bool* result)](#oh_jsvm_checkobjecttypetag) | Checks the **typeTag** with the tag on a JavaScript object or external value. If they are the same tag, **result** is set to **true**. Otherwise, **result** is set to **false**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env,JSVM_Value jsObject,void* finalizeData,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Ref* result)](#oh_jsvm_addfinalizer) | Adds the **JSVM_Finalize** callback to a JavaScript object. This callback is called when the JavaScript object is garbage-collected. **OH_JSVM_AddFinalizer** can be called multiple times on a single JavaScript object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env,uint32_t* result)](#oh_jsvm_getversion) | Obtains the latest JSVM-API version supported by the JSVM runtime. New JSVM-API APIs will be added to support more features. With this API, the new features of a certain JSVM version can be used, or callbacks are provided if a feature is not supported.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)](#oh_jsvm_getvminfo) | Obtains the VM information.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env,int64_t changeInBytes,int64_t* result)](#oh_jsvm_adjustexternalmemory) | Notifies the underlying VM of the size of externally allocated memory that remains active due to the JavaScript object. Registering externally allocated memory triggers global garbage collection more frequently than in other ways.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env,JSVM_MemoryPressureLevel level)](#oh_jsvm_memorypressurenotification) | Notifies the VM of insufficient system memory and selectively triggers garbage collection.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env,JSVM_Deferred* deferred,JSVM_Value* promise)](#oh_jsvm_createpromise) | Creates a deferred object and a JavaScript promise.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env,JSVM_Deferred deferred,JSVM_Value resolution)](#oh_jsvm_resolvedeferred) | Resolves a JavaScript promise by using the associated deferred object. It can only be used to resolve the JavaScript promise of the corresponding available deferred object. This means that promise must be created using **OH_JSVM_CreatePromise()**, and the object returned from this call must be retained so that it can be passed to this API.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env,JSVM_Deferred deferred,JSVM_Value rejection)](#oh_jsvm_rejectdeferred) | Rejects a JavaScript promise by using the associated deferred object. It can only be used to reject the JavaScript promise of the corresponding available deferred object. This means that promise must be created using **OH_JSVM_CreatePromise()**, and the object returned from this call must be retained so that it can be passed to this API.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env,JSVM_Value value,bool* isPromise)](#oh_jsvm_ispromise) | Checks whether a promise object is native.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env,JSVM_Value promise,JSVM_Value onFulfilled,JSVM_Value onRejected,JSVM_Value* result)](#oh_jsvm_promiseregisterhandler) | Registers a handler for processing promise fulfillment and rejection.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env,JSVM_Value jsonString,JSVM_Value* result)](#oh_jsvm_jsonparse) | Parses a JSON string and returns the parsed value.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env,JSVM_Value jsonObject,JSVM_Value* result)](#oh_jsvm_jsonstringify) | Converts an object into a JSON string and returns the converted string.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm,size_t contextCount,const JSVM_Env* contexts,const char** blobData,size_t* blobSize)](#oh_jsvm_createsnapshot) | Creates a VM startup snapshot.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm,JSVM_HeapStatistics* result)](#oh_jsvm_getheapstatistics) | Obtains heap statistics of a VM.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler* result)](#oh_jsvm_startcpuprofiler) | Creates and starts a CPU profiler instance.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler profiler,JSVM_OutputStream stream,void* streamData)](#oh_jsvm_stopcpuprofiler) | Stops the CPU profiler and outputs the result to a stream.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm,JSVM_OutputStream stream,void* streamData)](#oh_jsvm_takeheapsnapshot) | Obtains a snapshot of the current heap and outputs it to a stream.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env,const char* host,uint16_t port)](#oh_jsvm_openinspector) | Opens an inspector instance on the specified host and port for debugging JS code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)](#oh_jsvm_closeinspector) | Closes all remaining inspector connections.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env,bool breakNextLine)](#oh_jsvm_waitfordebugger) | Waits for the host to set up a socket connection with an inspector. After the connection is set up, the application continues to run. **Runtime.runIfWaitingForDebugger** is sent.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_PropertyHandlerCfg propertyHandlerCfg,JSVM_Callback callAsFunctionCallback,JSVM_Value* result)](#oh_jsvm_defineclasswithpropertyhandler) | Defines a set of JavaScript class property handlers including **getter**, **setter**, **deleter**, and **enumerator** with the given class name, constructor, properties, and callback, which are called as callbacks.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)](#oh_jsvm_islocked) | Checks whether the current thread holds a lock of the specified environment. Only the thread that holds the lock can use the environment.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)](#oh_jsvm_acquirelock) | Obtains a lock. Only the thread that holds the lock can use the environment.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)](#oh_jsvm_releaselock) | Releases a lock. Only the thread that holds the lock can use the environment.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env,JSVM_Value value,bool* isUndefined)](#oh_jsvm_isundefined) | Checks whether the input value is **Undefined**. This API is equivalent to **value === undefined** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env,JSVM_Value value,bool* isNull)](#oh_jsvm_isnull) | Checks whether the input value is a **Null** object. This API is equivalent to **value === null** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env,JSVM_Value value,bool* isNullOrUndefined)](#oh_jsvm_isnullorundefined) | Checks whether the input value is **Null** or **Undefined**. This API is equivalent to **value == null** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env,JSVM_Value value,bool* isBoolean)](#oh_jsvm_isboolean) | Checks whether the input value is a Boolean value. This API is equivalent to **typeof value ==='boolean'** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env,JSVM_Value value,bool* isNumber)](#oh_jsvm_isnumber) | Checks whether the input value is a number. This API is equivalent to **typeof value === 'number'** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env,JSVM_Value value,bool* isString)](#oh_jsvm_isstring) | Checks whether the input value is a string. This API is equivalent to **typeof value === 'string'** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env,JSVM_Value value,bool* isSymbol)](#oh_jsvm_issymbol) | Checks whether the input value is a symbol. This API is equivalent to **typeof value === 'symbol'** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env,JSVM_Value value,bool* isFunction)](#oh_jsvm_isfunction) | Checks whether the input value is a function. This API is equivalent to **typeof value === 'function'** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env,JSVM_Value value,bool* isObject)](#oh_jsvm_isobject) | Checks whether the input value is an object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env,JSVM_Value value,bool* isBigInt)](#oh_jsvm_isbigint) | Checks whether the input value is a BigInt value. This API is equivalent to **typeof value === 'bigint'** in JavaScript code.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_createmap) | Creates a JavaScript value of the Map type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)](#oh_jsvm_ismap) | Checks whether the input value is of the Map type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)](#oh_jsvm_isconstructor) | Checks whether the input value is a constructor.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)](#oh_jsvm_createregexp) | Creates a regular expression object corresponding to the input JavaScript string. This API may throw an exception.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_objectgetprototypeof) | Obtains the prototype of a JavaScript object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value prototype)](#oh_jsvm_objectsetprototypeof) | Sets the prototype of a JavaScript object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createset) | Creates a JavaScript value of the Set type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env,JSVM_Value value,bool* isSet)](#oh_jsvm_isset) | Checks whether the specified object is of the Set type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_coercetobigint) | Implements the abstract operation **ToBigInt()**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isregexp) | Checks whether the input value is a JavaScript RegExp object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env,const char* funcName,size_t length,size_t argc,const JSVM_Value* argv,JSVM_Value script,JSVM_Value* result)](#oh_jsvm_createfunctionwithscript) | Creates a function with the given JavaScript as the function body.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm,bool* result)](#oh_jsvm_pumpmessageloop) | Starts the message loop in the VM. This message loop can be executed through the external event loop.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)](#oh_jsvm_performmicrotaskcheckpoint) | Checks whether there are microtasks waiting in the queue. If yes, execute them.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool* isCallable)](#oh_jsvm_iscallable) | Checks whether the input value is callable.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)](#oh_jsvm_retainscript) | Retains a **JSVM_Script** and extends its lifecycle beyond the current scope.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)](#oh_jsvm_releasescript) | Releases the script retained by **OH_JSVM_RetainScript**. The released script cannot be used again.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env,int pid,const char* name)](#oh_jsvm_openinspectorwithname) | Opens the **name** inspector and its corresponding Unix Domain port with the specified PID.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env,const uint8_t *wasmBytecode,size_t wasmBytecodeLength,const uint8_t *cacheData,size_t cacheDataLength,bool *cacheRejected,JSVM_Value *wasmModule)](#oh_jsvm_compilewasmmodule) | Compiles the WebAssembly bytecode to obtain a WebAssembly module. If the WebAssembly cache is provided, it will be deserialized first. If this API does not have the JIT permission, a log is printed to notify you.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env,JSVM_Value wasmModule,uint32_t functionIndex,JSVM_WasmOptLevel optLevel)](#oh_jsvm_compilewasmfunction) | Compiles a WebAssembly function with the specified index at a specified optimization level. If this API does not have the JIT permission, a log is printed to notify you.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_iswasmmoduleobject) | Checks whether the given **JSVM_Value** is a WebAssembly module.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env,JSVM_Value wasmModule,const uint8_t** data,size_t* length)](#oh_jsvm_createwasmcache) | Creates a WebAssembly cache. If this API does not have the JIT permission, a log is printed to notify you.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env,const uint8_t* cacheData,JSVM_CacheType cacheType)](#oh_jsvm_releasecache) | Releases the cache of a specified type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isbigintobject) | Checks whether the given **JSVM_Value** is a BigInt object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isbooleanobject) | Checks whether the given **JSVM_Value** is a Boolean object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isstringobject) | Checks whether the given **JSVM_Value** is a string object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_isnumberobject) | Checks whether the given **JSVM_Value** is a number object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env,JSVM_Value value,bool* result)](#oh_jsvm_issymbolobject) | Checks whether the given **JSVM_Value** is a symbol object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolasynciterator) | Obtains the **Symbol.AsyncIterator** capability from the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolhasinstance) | Obtains the **Symbol.HasInstance** capability from the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolisconcatspreadable) | Obtains the **Symbol.IsConcatSpreadable** capability from the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolmatch) | Obtains the **Symbol.Match** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolreplace) | Obtains the **Symbol.Replace** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolsearch) | Obtains the **Symbol.Search** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolsplit) | Obtains the **Symbol.Split** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymboltoprimitive) | Obtains the **Symbol.ToPrimitive** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymbolunscopables) | Obtains the **Symbol.Unscopables** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymboltostringtag) | Obtains the **Symbol.ToStringTag** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_getsymboliterator) | Obtains the **Symbol.Iterator** capability of the well-known symbol.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count,const JSVM_TraceCategory* categories,const char* tag,size_t eventsCount)](#oh_jsvm_tracestart) | Starts collecting information of the specified trace categories for all JSVM runtime instances (thread-unsafe).|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* streamData)](#oh_jsvm_tracestop) | Stops collecting information of a specified trace category for all JSVM runtime instances (thread-unsafe).|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTimeForGC triggerTime,JSVM_HandlerForGC handler,JSVM_GCType gcType,void* userData)](#oh_jsvm_addhandlerforgc) | Adds a handler for GC to the VM.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTimeForGC triggerTime,JSVM_HandlerForGC handler,void* userData)](#oh_jsvm_removehandlerforgc) | Removes the handler for GC from the VM.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm,JSVM_HandlerForOOMError handler)](#oh_jsvm_sethandlerforoomerror) | Sets a handler for OOM errors. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption debugOption, bool isEnabled)](#oh_jsvm_setdebugoption) | Enables or disables a specific debugging option for a JSVM environment.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm,JSVM_HandlerForFatalError handler)](#oh_jsvm_sethandlerforfatalerror) | Sets a handler for fatal errors. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_HandlerForPromiseReject handler)](#oh_jsvm_sethandlerforpromisereject) | Sets a handler for the PromiseReject error. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)](#oh_jsvm_defineclasswithoptions) | Defines a class with options. When a C++ class is encapsulated, the C++ constructor callback passed through the constructor should be a static method in the class. This method calls the actual class constructor, encapsulates a new C++ instance into a JavaScript object based on the input options, and returns the encapsulated object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env,char* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringlatin1) | Creates an external JavaScript string with an ISO-8859-1-encoded C string. If the creation fails, the original native string is copied.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | Creates an external JavaScript string with a UTF-16LE-encoded C string. If the creation fails, the original native string is copied.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env,JSVM_Value description,JSVM_Data* result)](#oh_jsvm_createprivate) | Creates a JavaScript private key object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value value)](#oh_jsvm_setprivate) | Sets the **private** property for an input object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value *result)](#oh_jsvm_getprivate) | Obtains the **private** property of an input object based on the private key.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key)](#oh_jsvm_deleteprivate) | Deletes the **private** property corresponding to the private key from the input object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createdatareference) | Creates a reference to a given **JSVM_Data** object. The initial reference count is the input value of **initialRefcount**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)](#oh_jsvm_getreferencedata) | Obtains the **JSVM_Data** (a JavaScript value associated with the JSVM reference) through the **result** parameter if the reference is still valid. Otherwise, the result is null.|
 
-## 函数说明
+## Function Description
 
 ### OH_JSVM_Init()
 
@@ -268,24 +268,24 @@
 JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)
 ```
 
-**描述**
+**Description**
 
-初始化一个JavaScript虚拟机。
+Initializes a JavaScript VM.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [const JSVM_InitOptions](capi-jsvm-jsvm-initoptions.md)* options | 用于初始化JavaScript虚拟机的选项。 |
+| [const JSVM_InitOptions](capi-jsvm-jsvm-initoptions.md)* options | Pointer to the options for initializing the JavaScript VM.|
 
-**返回：**
+**Returns**
 
-| 类型                                                          | 说明 |
+| Type                                                         | Description|
 |-------------------------------------------------------------| -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败，说明当前进程已完成JSVM初始化，无需重复执行。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the operation fails, indicating that JSVM initialization is complete and that repeated execution is not required.|
 
 ### OH_JSVM_CreateVM()
 
@@ -293,25 +293,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options,JSVM_VM* result)
 ```
 
-**描述**
+**Description**
 
-创建一个虚拟机实例。
+Creates a VM instance.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [const JSVM_CreateVMOptions](capi-jsvm-jsvm-createvmoptions.md)* options | 用于创建虚拟机实例的选项。 |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md)* result | 新的虚拟机实例。 |
+| [const JSVM_CreateVMOptions](capi-jsvm-jsvm-createvmoptions.md)* options | Pointer to the options for creating a VM instance.|
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md)* result | Pointer to the new VM instance.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_SetMicrotaskPolicy()
 
@@ -319,25 +319,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm,JSVM_MicrotaskPolicy policy)
 ```
 
-**描述**
+**Description**
 
-用于设置虚拟机实例的微任务执行策略。如果该方法未被调用，虚拟机实例的默认策略为 JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO。
+Sets the microtask execution policy for a VM instance. If this method is not called, the default policy **JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO** is used.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 用于设置微任务执行策略的虚拟机实例。 |
-| [JSVM_MicrotaskPolicy](capi-jsvm-types-h.md#jsvm_microtaskpolicy) policy | 执行微任务的策略。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | Target VM instance.|
+| [JSVM_MicrotaskPolicy](capi-jsvm-types-h.md#jsvm_microtaskpolicy) policy | Policy for executing microtasks.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  如果接口调用成功，返回 JSVM_OK。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns **JSVM_OK** if this API call is successful.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_DestroyVM()
 
@@ -345,24 +345,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm,JSVM_MicrotaskPoli
 JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)
 ```
 
-**描述**
+**Description**
 
-销毁一个虚拟机实例。
+Destroys a VM instance.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 待销毁的虚拟机实例。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM instance to be destroyed.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_CreateProxy()
 
@@ -370,27 +370,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env,JSVM_Value target,JSVM_Value handler,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-创建JavaScript Proxy，等价于在 JavaScript 中执行 new Proxy(target, handler)。
+Creates a JavaScript proxy. This API is equivalent to calling **new Proxy(target, handler)** in JS.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) target | 表示用于创建代理的 JavaScript 对象 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) handler | 表示定义了拦截什么操作及如何处理被拦截操作的 JavaScript 对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示创建的 JavaScript 代理。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) target | JavaScript object used to create a proxy.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) handler | Handler that defines the operations to be intercepted and how to handle intercepted operations.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JavaScript proxy created.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果 target 或 handler 非 JS 对象。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): object expected. This code is returned if the target or handler is not a JavaScript object.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_IsProxy()
 
@@ -398,26 +398,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env,JSVM_Value target,JSVM_
 JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)
 ```
 
-**描述**
+**Description**
 
-判断传入值value是否为 JavaScript Proxy。
+Checks whether the input value is a JavaScript proxy.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 需要检查的值。 |
-| bool* isProxy | 表示是否为 JavaScript Proxy，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Value to check.|
+| bool* isProxy | Pointer to the check result, indicating whether the value is a JavaScript Proxy. The value **true** indicates the value is a JavaScript Proxy, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_ProxyGetTarget()
 
@@ -425,26 +425,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isPr
 JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取 JavaScript Proxy 中的目标对象。
+Obtains the target object in the JavaScript Proxy.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 需要获取目标对象的代理。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代理的目标对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Proxy of the target object.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the target object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。<br>         [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status) 如果 value 非 Javascript Proxy。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status): invalid type. This code is returned if the value is not a JavaScript Proxy.|
 
 ### OH_JSVM_OpenVMScope()
 
@@ -452,25 +452,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm,JSVM_VMScope* result)
 ```
 
-**描述**
+**Description**
 
-为虚拟机实例打开一个新的虚拟机作用域。
+Opens a new VM scope for a VM instance.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 目标虚拟机实例。 |
-| [JSVM_VMScope](capi-jsvm-jsvm-vmscope--8h.md)* result | 新的虚拟机作用域。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | Target VM instance.|
+| [JSVM_VMScope](capi-jsvm-jsvm-vmscope--8h.md)* result | Pointer to the new VM scope.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CloseVMScope()
 
@@ -478,25 +478,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm,JSVM_VMScope* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm,JSVM_VMScope scope)
 ```
 
-**描述**
+**Description**
 
-关闭虚拟机实例的虚拟机作用域。
+Closes the VM scope of a VM instance.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 目标虚拟机实例。 |
-| [JSVM_VMScope](capi-jsvm-jsvm-vmscope--8h.md) scope | 将要关闭的虚拟机作用域。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | Target VM instance.|
+| [JSVM_VMScope](capi-jsvm-jsvm-vmscope--8h.md) scope | VM scope to be closed.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateEnv()
 
@@ -504,27 +504,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm,JSVM_VMScope scope)
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Env* result)
 ```
 
-**描述**
+**Description**
 
-基于新环境上下文的可选属性，创建一个新环境。
+Creates a new environment based on the optional properties of the new context.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 虚拟机实例，新环境将在该实例中创建。 |
-| size_t propertyCount | 属性数组中元素的个数。 |
-| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 属性描述符的数组。 |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md)* result | 创建的新环境。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM instance, in which the new environment will be created.|
+| size_t propertyCount | Number of elements in the property array.|
+| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Pointer to the array of property descriptors.|
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md)* result | Pointer to the new environment.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateEnvFromSnapshot()
 
@@ -532,26 +532,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm,size_t propertyCount,const 
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm,size_t index,JSVM_Env* result)
 ```
 
-**描述**
+**Description**
 
-基于虚拟机的起始快照，创建一个新的环境。
+Creates a new environment based on the startup snapshot of the VM.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 虚拟机实例，新环境将在该实例中创建。 |
-| size_t index | 环境在快照中的索引。 |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md)* result | 创建的新环境。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM instance, in which the new environment will be created.|
+| size_t index | Index of the environment in the snapshot.|
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md)* result | Pointer to the new environment.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_DestroyEnv()
 
@@ -559,24 +559,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm,size_t index,JS
 JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)
 ```
 
-**描述**
+**Description**
 
-销毁环境。
+Destroys the environment.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 待销毁的环境。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment to be destroyed.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_OpenEnvScope()
 
@@ -584,25 +584,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)
 JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env,JSVM_EnvScope* result)
 ```
 
-**描述**
+**Description**
 
-打开一个新的环境作用域。
+Opens a new environment scope.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 目标环境，JSVM-API接口将在该环境下调用。 |
-| [JSVM_EnvScope](capi-jsvm-jsvm-envscope--8h.md)* result | 新的环境作用域。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Target environment in which the JSVM-API will be called.|
+| [JSVM_EnvScope](capi-jsvm-jsvm-envscope--8h.md)* result | Pointer to the new environment scope.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CloseEnvScope()
 
@@ -610,25 +610,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env,JSVM_EnvScope* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env,JSVM_EnvScope scope)
 ```
 
-**描述**
+**Description**
 
-关闭环境作用域。
+Closes the environment scope.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 目标环境，JSVM-API接口将在该环境下调用。 |
-| [JSVM_EnvScope](capi-jsvm-jsvm-envscope--8h.md) scope | 将要关闭的环境作用域。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Target environment in which the JSVM-API will be called.|
+| [JSVM_EnvScope](capi-jsvm-jsvm-envscope--8h.md) scope | Environment scope to be closed.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetVM()
 
@@ -636,25 +636,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env,JSVM_EnvScope scope)
 JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env,JSVM_VM* result)
 ```
 
-**描述**
+**Description**
 
-检索给定环境的虚拟机实例。
+Obtains a VM instance.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 目标环境，JSVM-API接口将在该环境下调用。 |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md)* result | 给定环境的虚拟机实例。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Target environment in which the JSVM-API will be called.|
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md)* result | Pointer to the VM instance of the specified environment.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CompileScript()
 
@@ -662,30 +662,30 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env,JSVM_VM* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_Script* result)
 ```
 
-**描述**
+**Description**
 
-编译一串JavaScript代码，并返回编译后的脚本。
+Compiles a JavaScript code snippet and returns the compiled script.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 目标环境，JSVM-API接口将在该环境下调用。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | 包含要编译的脚本的JavaScript代码。 |
-| const uint8_t* cachedData | 可选。脚本的代码缓存数据。 |
-| size_t cacheDataLength | cachedData数组的长度。 |
-| bool eagerCompile | 是否立即编译脚本，true为是，false为否。 |
-| bool* cacheRejected | 代码缓存是否被编译拒绝，true为是，false为否。 |
-| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | 编译后的脚本。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Target environment in which the JSVM-API will be called.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | JavaScript code that includes the script to be compiled.|
+| const uint8_t* cachedData | (Optional) Pointer to the code cache data of the script.|
+| size_t cacheDataLength | Length of the **cachedData** array.|
+| bool eagerCompile | Whether to compile the script immediately. The value **true** indicates that the script should be compiled immediately, and **false** indicates the opposite.|
+| bool* cacheRejected | Pointer to the Boolean value, indicating whether the code cache is rejected. The value **true** indicates the code cache is rejected, and **false** indicates the opposite.|
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | Pointer to the compiled script.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status) 不能执行JS。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status): JS execution failed.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileScriptWithOrigin()
 
@@ -693,31 +693,31 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,JSVM_Value script,con
 JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_ScriptOrigin* origin,JSVM_Script* result)
 ```
 
-**描述**
+**Description**
 
-编译一串包含 sourcemap 信息的 JavaScript 代码，并返回编译后的脚本。
+Compiles a JavaScript code snippet that contains source map information and returns the compiled script.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 目标环境，JSVM-API接口将在该环境下调用。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | 包含要编译的脚本的JavaScript代码。 |
-| const uint8_t* cachedData | 可选。脚本的代码缓存数据。 |
-| size_t cacheDataLength | cachedData数组的长度。 |
-| bool eagerCompile | 是否立即编译脚本，true为是，false为否。 |
-| bool* cacheRejected | 代码缓存是否被编译拒绝，true为是，false为否。 |
-| [JSVM_ScriptOrigin](capi-jsvm-jsvm-scriptorigin.md)* origin | 源代码信息，包括 source map 的位置和源代码文件名等信息。 |
-| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | 编译后的脚本。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Target environment in which the JSVM-API will be called.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | JavaScript code that includes the script to be compiled.|
+| const uint8_t* cachedData | (Optional) Pointer to the code cache data of the script.|
+| size_t cacheDataLength | Length of the **cachedData** array.|
+| bool eagerCompile | Whether to compile the script immediately. The value **true** indicates that the script should be compiled immediately, and **false** indicates the opposite.|
+| bool* cacheRejected | Pointer to the Boolean value, indicating whether the code cache is rejected. The value **true** indicates the code cache is rejected, and **false** indicates the opposite.|
+| [JSVM_ScriptOrigin](capi-jsvm-jsvm-scriptorigin.md)* origin | Pointer to the source code information, including the source map location and source code file name.|
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | Pointer to the compiled script.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status) 不能执行JS。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status): JS execution failed.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileScriptWithOptions()
 
@@ -725,28 +725,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value 
 JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Script* result)
 ```
 
-**描述**
+**Description**
 
-编译一串JavaScript代码，并返回编译后的脚本。
+Compiles a JavaScript code snippet and returns the compiled script.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 目标环境，JSVM-API接口将在该环境下调用。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | 包含要编译的脚本的JavaScript代码。 |
-| size_t optionCount | 传入的 option 数组的长度。 |
-| JSVM_CompileOptions options[] | option 数组，存放所有的编译选项。 |
-| [JSVM_Script](capi-jsvm-jsvm-value--8h.md)* result | 编译后的脚本。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Target environment in which the JSVM-API will be called.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | JavaScript code that includes the script to be compiled.|
+| size_t optionCount | Length of the input options array.|
+| JSVM_CompileOptions options[] | Array of options, which stores all compilation options.|
+| [JSVM_Script](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the compiled script.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CreateCodeCache()
 
@@ -754,27 +754,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env,JSVM_Script script,const uint8_t** data,size_t* length)
 ```
 
-**描述**
+**Description**
 
-为编译后的脚本创建代码缓存。
+Creates a code cache for the compiled script.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 目标环境，JSVM-API接口将在该环境下调用。 |
-| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | 目标编译脚本。 |
-| const uint8_t** data | 代码缓存的数据。 |
-| size_t* length | 代码缓存数据的长度。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Target environment in which the JSVM-API will be called.|
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | Target script.|
+| const uint8_t** data | Double pointer to the code cache data.|
+| size_t* length | Pointer to the length of the code cache data.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.|
 
 ### OH_JSVM_RunScript()
 
@@ -782,26 +782,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env,JSVM_Script script,
 JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env,JSVM_Script script,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-执行一串JavaScript代码并返回其结果，其中包含以下注意事项：与eval不同的是，该函数不允许脚本访问当前词法作用域，因此也不允许访问模块作用域，这意味着require等伪全局变量将不可用。脚本可以访问全局作用域。脚本中的函数和var声明将被添加到全局对象。使用let和const的变量声明将全局可见，但不会被添加到全局对象。this的值在脚本内是global。如果没有 JIT 权限支持，执行含wasm的脚本会失败，在特定场景下存在性能差异，并打印一行日志提示开发者。
+Runs a JavaScript code snippet and returns its result, including the following precautions: Unlike eval, this function does not allow the script to access the current lexical scope, and therefore does not allow the script to access the module scope. This means that pseudo-global variables such as **require** will be unavailable. The script can access the global scope. The functions and variable declarations in the script will be added to the global object. Variable declarations using **let** and **const** are globally visible, but are not added to the global object. The value of **this** is **global** in the script. Without the JIT permission, the script containing WebAssembly fails to be executed. The performance varies in specific scenarios, and a log is printed to notify you.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | 包含要执行的脚本的JavaScript字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 执行脚本产生的值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | JavaScript string that includes the script to be executed.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the value generated after the script is executed.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_SetInstanceData()
 
@@ -809,27 +809,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env,JSVM_Script script,JSVM_V
 JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint)
 ```
 
-**描述**
+**Description**
 
-将data与当前运行的JSVM环境相关联。后续可以使用OH_JSVM_GetInstanceData()检索data。通过先前调用OH_JSVM_SetInstanceData()设置的任何与当前运行的JSVM环境相关联的现有数据都将被覆盖。如果先前提供了finalizeCb，则不会调用它。
+Sets instance data so that it is associated with the currently running JSVM environment. You can use **OH_JSVM_GetInstanceData()** to obtain data later. Any existing data set by a previous call to **OH_JSVM_SetInstanceData()** will be overwritten. If **finalizeCb** was previously provided, it will not be called.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                            | 描述 |
+| Name                                                           | Description|
 |----------------------------------------------------------------| -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                      | 调用JSVM-API的环境。 |
-| void* data                                                     | 可用于此实例的绑定的数据项。 |
-| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 销毁环境时调用的函数，该函数接收data以便释放它。 |
-| void* finalizeHint                                             | 在收集期间传递给最终回调的可选提示。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                      | Environment for calling the JSVM-API.|
+| void* data                                                     | Pointer to the data bound for this instance.|
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | Function for destroying the environment.|
+| void* finalizeHint                                             | Pointer to the optional hint passed to the **finalize** callback during garbage collection.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetInstanceData()
 
@@ -837,25 +837,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env,void* data,JSVM_Fin
 JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env,void** data)
 ```
 
-**描述**
+**Description**
 
-检索通过调用OH_JSVM_SetInstanceData()与当前运行JSVM环境产生关联的数据。如果未设置任何关联数据，该函数调用将成功，且data设置为NULL。
+Obtains instance data that has been set by **OH_JSVM_SetInstanceData()**. If no associated data is set, this function is called successfully and **data** is set to **NULL**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| void** data | 之前通过调用OH_JSVM_SetInstanceData()与当前运行的JSVM环境关联的数据项。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| void** data | Double pointer to the data that has been set by **OH_JSVM_SetInstanceData()**, associated with the current JSVM environment.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetLastErrorInfo()
 
@@ -863,25 +863,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env,void** data)
 JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env,const JSVM_ExtendedErrorInfo** result)
 ```
 
-**描述**
+**Description**
 
-检索JSVM_ExtendedErrorInfo结构，其中包含发生的最后一个错误的有关信息。返回的JSVM_ExtendedErrorInfo的内容仅在对同一env调用JSVM-API函数之前有效。这包括对OH_JSVM_IsExceptionPending的调用，因此可能经常需要复制信息以便以后使用。error_message中返回的指针指向一个静态定义的字符串，因此如果你在调用另一个JSVM-API函数之前将它从error_message字段（将被覆盖）中复制出来，则可以安全地使用该指针。
+Obtains the **JSVM_ExtendedErrorInfo** struct that contains the last error. The content of **JSVM_ExtendedErrorInfo** returned is valid only before the JSVM-API function is called for the same environment. This includes a call to **OH_JSVM_IsExceptionPending**, so you may need to copy information for later use. The pointer returned in **error_message** points to a statically defined string, so if you copy it from the **error_message** field (which will be overwritten) before calling another JSVM-API function, you can safely use the pointer.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [const JSVM_ExtendedErrorInfo](capi-jsvm-jsvm-extendederrorinfo.md)** result | 包含有关错误的更多信息的JSVM_ExtendedErrorInfo结构。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [const JSVM_ExtendedErrorInfo](capi-jsvm-jsvm-extendederrorinfo.md)** result | Double pointer to the **JSVM_ExtendedErrorInfo** struct that contains more information about the error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_Throw()
 
@@ -889,25 +889,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env,const JSVM_Extende
 JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env,JSVM_Value error)
 ```
 
-**描述**
+**Description**
 
-抛出提供的JavaScript值。
+Throws the provided JavaScript value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) error | 要抛出的JavaScript值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) error | JavaScript error to be thrown.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_ThrowError()
 
@@ -915,26 +915,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env,JSVM_Value error)
 JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env,const char* code,const char* msg)
 ```
 
-**描述**
+**Description**
 
-抛出带有所提供文本的JavaScript Error。
+Throws a JavaScript Error with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* code | 要在错误上设置的可选错误代码。 |
-| const char* msg | 表示与错误关联的文本的C字符串。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* code | Pointer to the optional error code to be set on the error.|
+| const char* msg | Pointer to the C string representing the text associated with the error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_ThrowTypeError()
 
@@ -942,26 +942,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env,const char* code,const c
 JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env,const char* code,const char* msg)
 ```
 
-**描述**
+**Description**
 
-抛出带有所提供文本的JavaScript TypeError。
+Throws a JavaScript TypeError with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* code | 要在错误上设置的可选错误代码。 |
-| const char* msg | 表示与错误关联的文本的C字符串。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* code | Pointer to the optional error code to be set on the error.|
+| const char* msg | Pointer to the C string representing the text associated with the error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_ThrowRangeError()
 
@@ -969,26 +969,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env,const char* code,con
 JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env,const char* code,const char* msg)
 ```
 
-**描述**
+**Description**
 
-抛出带有所提供文本的JavaScript RangeError。
+Throws a JavaScript RangeError with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* code | 要在错误上设置的可选错误代码。 |
-| const char* msg | 表示与错误关联的文本的C字符串。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* code | Pointer to the optional error code to be set on the error.|
+| const char* msg | Pointer to the C string representing the text associated with the error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_ThrowSyntaxError()
 
@@ -996,26 +996,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env,const char* code,co
 JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env,const char* code,const char* msg)
 ```
 
-**描述**
+**Description**
 
-抛出带有所提供文本的JavaScript SyntaxError。
+Throws a JavaScript SyntaxError with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* code | 要在错误上设置的可选错误代码。 |
-| const char* msg | 表示与错误关联的文本的C字符串。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* code | Pointer to the optional error code to be set on the error.|
+| const char* msg | Pointer to the C string representing the text associated with the error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsError()
 
@@ -1023,26 +1023,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env,const char* code,c
 JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-查询JSVM_Value以检查它是否表示错误对象。
+Checks whether the given **JSVM_Value** indicates an error.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* result | 如果JSVM_Value表示错误，则设置为true的布尔值，否则设置为false。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* result | Pointer to the check result. The value **true** means the **JSVM_Value** indicates an error, and **false** means the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateError()
 
@@ -1050,27 +1050,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env,JSVM_Value value,bool* resu
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回带有所提供文本的JavaScript Error。
+Creates a JavaScript Error with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | 可选的JSVM_Value，带有与错误关联的错误代码的字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | 引用JavaScript string用作Error的消息。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示创建的错误。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional **JSVM_Value**, which is a string with the associated error code.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | Message that references the JavaScript string as an error.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the creation error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_CreateTypeError()
 
@@ -1078,27 +1078,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env,JSVM_Value code,JSVM_Va
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回带有所提供文本的JavaScript TypeError。
+Creates a JavaScript TypeError with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | 可选的JSVM_Value，带有与错误关联的错误代码的字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | 引用JavaScript string用作Error的消息。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示创建的错误。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional **JSVM_Value**, which is a string with the associated error code.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | Message that references the JavaScript string as an error.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the creation error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_CreateRangeError()
 
@@ -1106,27 +1106,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env,JSVM_Value code,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回带有所提供文本的JavaScript RangeError。
+Creates a JavaScript RangeError with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | 可选的JSVM_Value，带有与错误关联的错误代码的字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | 引用JavaScript string用作Error的消息。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示创建的错误。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional **JSVM_Value**, which is a string with the associated error code.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | Message that references the JavaScript string as an error.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the creation error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_CreateSyntaxError()
 
@@ -1134,27 +1134,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env,JSVM_Value code,JS
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env,JSVM_Value code,JSVM_Value msg,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回带有所提供文本的JavaScript SyntaxError。
+Creates a JavaScript SyntaxError with the provided text.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | 可选的JSVM_Value，带有与错误关联的错误代码的字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | 引用JavaScript string用作Error的消息。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示创建的错误。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) code | Optional **JSVM_Value**, which is a string with the associated error code.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) msg | Message that references the JavaScript string as an error.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the creation error.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_GetAndClearLastException()
 
@@ -1162,25 +1162,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env,JSVM_Value code,J
 JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取并清除上一次异常。如果出现挂起，则返回JavaScript异常，否则返回NULL。
+Obtains and clears the last exception. If pending occurs, a JavaScript exception is returned. Otherwise, **NULL** is returned.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 如果出现挂起则返回异常，否则为NULL。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the exception. An exception is returned if pending occurs. Otherwise, **NULL** is returned.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsExceptionPending()
 
@@ -1188,25 +1188,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env,JSVM_Value
 JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env,bool* result)
 ```
 
-**描述**
+**Description**
 
-查询上一次异常是否由挂起导致的。如果由异常导致，则返回true，否则返回false。
+Checks whether the last exception is caused by pending. If yes, **true** is returned. Otherwise, **false** is returned.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| bool* result | 如果异常挂起，则设置为true的布尔值，否则为false。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| bool* result | Pointer to the exception. The value **true** indicates the last exception is caused by pending, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_OpenHandleScope()
 
@@ -1214,25 +1214,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env,bool* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env,JSVM_HandleScope* result)
 ```
 
-**描述**
+**Description**
 
-开辟了一个新的作用域。
+Opens a new handle scope.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope--8h.md)* result | 代表新作用域。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope--8h.md)* result | Pointer to the new handle scope.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CloseHandleScope()
 
@@ -1240,25 +1240,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env,JSVM_HandleScope* r
 JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env,JSVM_HandleScope scope)
 ```
 
-**描述**
+**Description**
 
-（必须）按照创建作用域的相反顺序关闭传入的作用域。
+(Mandatory) Closes the handle scope in the reverse order of opening it.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope--8h.md) scope | 表示要关闭的作用域。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_HandleScope](capi-jsvm-jsvm-handlescope--8h.md) scope | Handle scope to be closed.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status): handle scope mismatch.|
 
 ### OH_JSVM_OpenEscapableHandleScope()
 
@@ -1266,25 +1266,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env,JSVM_HandleScope s
 JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env,JSVM_EscapableHandleScope* result)
 ```
 
-**描述**
+**Description**
 
-打开一个可以将某对象从其中提到外部作用域的新作用域。
+Opens an escapable handle scope.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md)* result | 代表新作用域。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md)* result | Pointer to the new escapable handle scope.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CloseEscapableHandleScope()
 
@@ -1292,25 +1292,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env,JSVM_Escap
 JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env,JSVM_EscapableHandleScope scope)
 ```
 
-**描述**
+**Description**
 
-（必须）按照创建作用域的相反顺序关闭传入的作用域。即使存在挂起的JavaScript异常，也可以调用此JSVM_API。
+(Mandatory) Closes the escapable handle scope in the reverse order of opening it. This JSVM_API can be called even if there is a pending JavaScript exception.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md) scope | 表示要关闭的作用域。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md) scope | Escapable handle scope to be closed.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status): handle scope mismatch.|
 
 ### OH_JSVM_EscapeHandle()
 
@@ -1318,27 +1318,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env,JSVM_Esca
 JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env,JSVM_EscapableHandleScope scope,JSVM_Value escapee,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-提升JavaScript对象的句柄，使其在外部作用域的生命周期内有效。每个作用域只能调用一次。如果多次调用，将返回错误。
+Escapes a handle of a JavaScript object so that it is valid through the lifecycle of the outer scope. Each scope can be called only once. If it is called for multiple times, an error is returned.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md) scope | 表示当前的作用域。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) escapee | 表示要提升的JavaScript Object。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 被提升的Object在外部作用域中的句柄。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_EscapableHandleScope](capi-jsvm-jsvm-escapablehandlescope--8h.md) scope | Current scope.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) escapee | JavaScript object to be escaped.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the handle to be escaped.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_ESCAPE_CALLED_TWICE](capi-jsvm-types-h.md#jsvm_status) 表示scope对象已被关闭。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_ESCAPE_CALLED_TWICE](capi-jsvm-types-h.md#jsvm_status): escape called twice. This code is returned if the scope object is closed.|
 
 ### OH_JSVM_CreateReference()
 
@@ -1346,27 +1346,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env,JSVM_EscapableHandleSc
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env,JSVM_Value value,uint32_t initialRefcount,JSVM_Ref* result)
 ```
 
-**描述**
+**Description**
 
-对传入的值创建一个具有指定引用计数的新引用。
+Creates a reference with the specified reference count for the input value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 正在为其创建引用的JSVM_Value。 |
-| uint32_t initialRefcount | 新引用的初始引用计数。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | 指向新的引用。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JSVM value for which a reference is being created.|
+| uint32_t initialRefcount | Initial reference count of a new reference.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Pointer to a new reference.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_DeleteReference()
 
@@ -1374,25 +1374,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env,JSVM_Value value,ui
 JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env,JSVM_Ref ref)
 ```
 
-**描述**
+**Description**
 
-删除传入的引用。
+Deletes the input reference.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | 需删除的JSVM_Ref。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | Reference to be deleted.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_ReferenceRef()
 
@@ -1400,26 +1400,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env,JSVM_Ref ref)
 JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env,JSVM_Ref ref,uint32_t* result)
 ```
 
-**描述**
+**Description**
 
-增加传入引用的引用计数并返回生成的引用计数。
+Increases the reference count and returns the new reference count.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | 传入的引用，其引用计数将增加。 |
-| uint32_t* result | 新的引用计数。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | Input reference. Its reference count will increase.|
+| uint32_t* result | Pointer to the new reference count.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_ReferenceUnref()
 
@@ -1427,26 +1427,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env,JSVM_Ref ref,uint32_t*
 JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env,JSVM_Ref ref,uint32_t* result)
 ```
 
-**描述**
+**Description**
 
-递减传入引用的引用计数并返回生成的引用计数。
+Decreases the reference count and returns the new reference count.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | 将减少其引用计数的JSVM_Ref。 |
-| uint32_t* result | 新的引用计数。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | Input reference. Its reference count will decrease.|
+| uint32_t* result | Pointer to the new reference count.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.|
 
 ### OH_JSVM_GetReferenceValue()
 
@@ -1454,26 +1454,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env,JSVM_Ref ref,uint32_
 JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env,JSVM_Ref ref,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-如果仍然有效，此JSVM-API将返回JSVM_Value，表示与JSVM_Ref关联的JavaScript值。否则，结果将为NULL。
+Obtains the **JSVM_Value** returned by the JSVM-API, which is the JavaScript value associated with **JSVM_Ref**. If the value is invalid, **NULL** is returned.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | 请求相应值的JSVM_Ref。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | JSVM_Ref引用的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | JSVM reference for requesting the corresponding value.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** referenced by **JSVM_Ref**.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateArray()
 
@@ -1481,25 +1481,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env,JSVM_Ref ref,JSVM
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回对应于JavaScript Array类型的JSVM-API值。
+Creates an array. This API returns the JSVM-API value of the JavaScript Array type.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript Array的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JSVM value of the JavaScript Array type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateArrayWithLength()
 
@@ -1507,26 +1507,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env,JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env,size_t length,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回对应于JavaScript Array类型的JSVM-API值。Array的长度属性设置为传入的长度参数。但是，不保证底层缓冲区在创建数组时由VM预先分配。该行为留给底层VM实现。
+Creates an array with a specified length. This API returns the JSVM-API value of the JavaScript Array type. The **length** property of the array is set to the input **length** parameter. However, there is no guarantee that the underlying buffer is pre-allocated by the VM when the array is created. This behavior is implemented by the underlying VM.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| size_t length | 数组的初始长度。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript Array的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| size_t length | Initial length of the array.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JSVM value of the JavaScript Array type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateArraybuffer()
 
@@ -1534,27 +1534,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env,size_t length
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env,size_t byteLength,void** data,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回JavaScript ArrayBuffer类型对应的JSVM-API值。ArrayBuffer用于表示固定长度的二进制数据缓冲区。通常用作TypedArray对象的后备缓冲区。分配的ArrayBuffer有一个底层字节缓冲区，其大小由传入的length参数决定。底层缓冲区可选择返回给调用方，调用方可直接操作该缓冲区。此缓冲区只能直接从native代码写入。如果想从JavaScript写入该缓冲区，需创建TypedArray或DataView对象。
+Creates an array buffer. This API returns the JSVM-API value of the JavaScript ArrayBuffer type. ArrayBuffer is used to represent a fixed-length binary data buffer. It is usually used as the backup buffer of the **TypedArray** object. The allocated ArrayBuffer has an underlying byte buffer whose size is determined by the **length** parameter. The underlying buffer can be returned to and operated by the caller. This buffer can only be written directly from the native code. To write data from JavaScript to this buffer, you need to create a **TypedArray** or **DataView** object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| size_t byteLength | 要创建的数组缓冲区的字节长度。 |
-| void** data | 指向ArrayBuffer的底层字节缓冲区的指针。data可以选择性地通过传递NULL来忽略。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript ArrayBuffer的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| size_t byteLength | Length of the array buffer to be created, in bytes.|
+| void** data | Double pointer to the underlying byte buffer of the ArrayBuffer. **data** can be ignored by passing **NULL** to it.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JSVM value of the JavaScript ArrayBuffer.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_AllocateArrayBufferBackingStoreData()
 
@@ -1562,26 +1562,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env,size_t byteLength
 JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)
 ```
 
-**描述**
+**Description**
 
-申请一段 BackingStore 内存给 array buffer 使用。
+Allocates a segment of BackingStore memory to the array buffer.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| size_t byteLength | BackingStore 内存的大小。 |
-| [JSVM_InitializedFlag](capi-jsvm-types-h.md#jsvm_initializedflag) initialized | BackingStore 内存初始化的方式。 |
-| void **data | 用于接受申请 BackingStore 内存地址的指针。 |
+| size_t byteLength | Size of the BackingStore memory.|
+| [JSVM_InitializedFlag](capi-jsvm-types-h.md#jsvm_initializedflag) initialized | Mode of initializing the BackingStore memory.|
+| void **data | Double pointer to the address of allocated BackingStore memory.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示内存申请失败。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the memory application fails.|
 
 ### OH_JSVM_FreeArrayBufferBackingStoreData()
 
@@ -1589,24 +1589,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteL
 JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
 ```
 
-**描述**
+**Description**
 
-释放由 OH_JSVM_AllocateArrayBufferBackingStoreData 申请的 BackingStore 内存。
+Frees the BackingStore memory allocated by **OH_JSVM_AllocateArrayBufferBackingStoreData**.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| void *data| 申请得到的 BackingStore 内存。 |
+| void *data| Pointer to the allocated BackingStore memory.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.|
 
 ### OH_JSVM_CreateArrayBufferFromBackingStoreData()
 
@@ -1614,29 +1614,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)
 ```
 
-**描述**
+**Description**
 
-在申请得到的 BackingStore 内存上创建 array buffer。
+Creates an array buffer in the allocated BackingStore memory.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| void *data | 申请得到的 BackingStore 内存。 |
-| size_t backingStoreSize | BackingStore 内存的大小。 |
-| size_t offset | array buffer 在这段内存上的起始位置与内存头之间的相对偏移，单位是字节。 |
-| size_t arrayBufferSize | array buffer 的大小，单位是字节。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | 接收 array buffer 地址的指针。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| void *data | Pointer to the allocated BackingStore memory.|
+| size_t backingStoreSize | Size of the BackingStore memory.|
+| size_t offset | Relative offset between the start position of the array buffer in the memory and the memory header, in bytes.|
+| size_t arrayBufferSize | Size of the array buffer, in bytes.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | Pointer to the array buffer address.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>         1. offset + arrayBufferSize > backingStoreSize。<br>         2. backingStoreSize 或者 arrayBufferSize 为 0。<br>         3. data 或者 result 为空。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if one of the following exceptions occurs:<br>         1. The sum of **offset** and **arrayBufferSize** is larger than **backingStoreSize**.<br>         2. The value of **backingStoreSize** or **arrayBufferSize** is **0**.<br>         3. **data** or **result** is null.|
 
 ### OH_JSVM_CreateDate()
 
@@ -1644,26 +1644,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env e
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-分配一个JavaScript Date对象。此API不处理闰秒。这是因为ECMAScript遵循POSIX时间规范，对闰秒进行忽略。
+Creates a date. This API ignores leap seconds because ECMAScript complies with the POSIX time specifications.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| double time | 自1970年1月1日UTC以来的ECMAScript时间值（以毫秒为单位）。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript Date对象的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| double time | ECMAScript time since 00:00:00 UTC on January 1, 1970, in milliseconds.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript **Date** object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CreateExternal()
 
@@ -1671,28 +1671,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* 
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-分配一个带有外部数据的JavaScript值。这用于通过JavaScript代码传递外部数据。后续可以使用OH_JSVM_GetValueExternal由native代码检索。该API添加了一个JSVM_Finalize回调，当刚刚创建的JavaScript对象被垃圾回收时将调用该回调。创建的值不是一个对象，因此不支持附加属性。它被认为是一个独特的值类型：使用外部值调用OH_JSVM_Typeof()会生成JSVM_EXTERNAL。
+Creates a JavaScript value with external data. This is used to pass external data through JavaScript code. You can use **OH_JSVM_GetValueExternal** to retrieve the value from the native code. This API adds a **JSVM_Finalize** callback, which will be called when the newly created JavaScript object is garbage-collected. The created value is not an object, so it does not support additional properties. It is considered as a unique value type: Calling **OH_JSVM_Typeof()** with an external value generates **JSVM_EXTERNAL**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| void* data | 指向外部数据的原始指针。 |
-| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 收集外部值时调用的可选回调。JSVM_Finalize提供了更多详细信息。 |
-| void* finalizeHint | 在收集期间传递给最终回调的可选提示。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示外部值的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| void* data | Raw pointer to external data.|
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | Optional callback used to collect external values. **JSVM_Finalize** provides more details.|
+| void* finalizeHint | Pointer to the optional hint passed to the **finalize** callback during garbage collection.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of an external value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateObject()
 
@@ -1700,25 +1700,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Fina
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-分配一个默认的JavaScript对象。该函数功能等同于在JavaScript中执行new Object()。
+Creates a default JavaScript object. This function is equivalent to executing **new Object()** in JavaScript.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript对象的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateSymbol()
 
@@ -1726,26 +1726,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env,JSVM_Value description,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-用UTF8编码的C字符串创建JavaScript symbol值。
+Creates a JavaScript symbol value with a UTF-8-encoded C string.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) description | 可选的JSVM_Value，它指的是要设置为符号描述的JavaScript string。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript symbol的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) description | Optional **JSVM_Value**, which refers to the JavaScript string to be set to the symbol description.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_SymbolFor()
 
@@ -1753,27 +1753,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env,JSVM_Value description
 JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env,const char* utf8description,size_t length,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-在全局注册表中搜索具有给定描述的现有符号。如果该符号已经存在，它将被返回，否则将在注册表中创建一个新符号。
+Searches the global registry for an existing symbol with the given description. This API returns the symbol if it already exists; otherwise, a symbol is created in the registry.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* utf8description | UTF-8 C 字符串，表示用作符号描述的文本。 |
-| size_t length | 描述字符串的长度，以字节为单位。如果字符串以null结尾，则为JSVM_AUTO_LENGTH。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript 符号的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* utf8description | Pointer to the symbol description that is in a UTF-8-encoded C string.|
+| size_t length | Length of the description string, in bytes. If it is null-terminated, the value is **JSVM_AUTO_LENGTH**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateTypedarray()
 
@@ -1781,29 +1781,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env,const char* utf8descripti
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayType type,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-基于已有的ArrayBuffer对象，创建一个JavaScript TypedArray对象。TypedArray对象在底层数据缓冲区上提供了一个类似数组的视图，其中每个元素都具有相同的底层二进制标量数据类型。要求：length * 元素标量byte值 + byteOffset 不大于传入数组的ByteLength()，否则抛出范围错误（RangeError）。
+Creates a JavaScript **TypedArray** object based on an existing **ArrayBuffer** object. The **TypedArray** object provides an array-like view on the underlying data buffer, where each element has the same underlying binary scalar data type. The value of "**length** × element scalar bytes + **byteOffset**" must not be greater than the value of **ByteLength()** of the input array. Otherwise, a range error is thrown.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype) type | TypedArray中元素的标量数据类型。 |
-| size_t length | TypedArray中的元素个数。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer是类型化数组的基础。 |
-| size_t byteOffset | ArrayBuffer中开始投影TypedArray的字节偏移量。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript TypedArray的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype) type | Scalar data type of an element in **TypedArray**.|
+| size_t length | Number of elements in **TypedArray**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer, which is the basis of **TypedArray**.|
+| size_t byteOffset | Byte offset for the start position of mapping **TypedArray** in the ArrayBuffer.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript **TypedArray**.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CreateDataview()
 
@@ -1811,28 +1811,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env,JSVM_TypedarrayTyp
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_Value arraybuffer,size_t byteOffset,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-基于已有的ArrayBuffer对象，创建一个JavaScript DataView对象。DataView对象在底层数据缓冲区上提供了一个类似数组的视图，其中的元素可以具有不同的大小和类型。要求：二进制的length + byteOffset不大于传入数组的大小（byte数）。否则，抛出范围错误（RangeError）。
+Creates a JavaScript **DataView** object based on an existing **ArrayBuffer** object. The **DataView** object provides an array-like view on the underlying data buffer, where elements can have different sizes and types. The sum of the binary length and byte offset cannot be greater than the size (in bytes) of the input array. Otherwise, a range error is thrown.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| size_t length | DataView中的元素个数。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | 位于DataView底层的ArrayBuffer。 |
-| size_t byteOffset | ArrayBuffer中的字节偏移量，指示投影DataView的开始位置。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript DataView对象的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| size_t length | Number of elements in **DataView**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer at the bottom layer of the **DataView**.|
+| size_t byteOffset | Byte offset in the ArrayBuffer, indicating the start position of mapping a **DataView**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript **DataView** object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CreateInt32()
 
@@ -1840,26 +1840,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env,size_t length,JSVM_V
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env,int32_t value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将一个C int32_t类型值转换为JavaScript number类型值。
+Converts a value of the C int32_t type to a value of the JavaScript number type.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| int32_t value | 要在JavaScript中表示的整数值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript number类型的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| int32_t value | Integer value to be represented in JavaScript.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript number type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateUint32()
 
@@ -1867,26 +1867,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env,int32_t value,JSVM_Valu
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env,uint32_t value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将一个C uint32_t类型值转换为JavaScript number类型值。
+Converts a value of the C uint32_t type to a value of the JavaScript number type.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| uint32_t value | 要在JavaScript中表示的无符号整数值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript number类型的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| uint32_t value | Unsigned integer value to be represented in JavaScript.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript number type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateInt64()
 
@@ -1894,26 +1894,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env,uint32_t value,JSVM_Va
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env,int64_t value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将一个C int64_t类型值转换为JavaScript number类型值。
+Converts a value of the C int64_t type to a value of the JavaScript number type.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| int64_t value | 要在JavaScript中表示的整数值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript number类型的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| int64_t value | Integer value to be represented in JavaScript.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript number type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateDouble()
 
@@ -1921,26 +1921,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env,int64_t value,JSVM_Valu
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env,double value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将一个C double类型值转换为JavaScript number类型值。
+Converts a value of the C double type to a value of the JavaScript number type.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| double value | 要在JavaScript中表现的双精度值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript number类型的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| double value | Double-precision value to be represented in JavaScript.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript number type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateBigintInt64()
 
@@ -1948,26 +1948,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env,double value,JSVM_Valu
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env,int64_t value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将一个C int64_t类型值转换为JavaScript BigInt类型值。
+Converts a value of the C int64_t type to a value of the JavaScript BigInt type.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| int64_t value | 要在JavaScript中表现的整数值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript BigInt类型的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| int64_t value | Integer value to be represented in JavaScript.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript BigInt type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateBigintUint64()
 
@@ -1975,26 +1975,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env,int64_t value,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env,uint64_t value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将一个C uint64_t类型值转换为JavaScript BigInt类型值。
+Converts a value of the C uint64_t type to a value of the JavaScript BigInt type.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| uint64_t value | 要在JavaScript中表示的无符号整数值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript BigInt类型的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| uint64_t value | Unsigned integer value to be represented in JavaScript.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript BigInt type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateBigintWords()
 
@@ -2002,28 +2002,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env,uint64_t value,J
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env,int signBit,size_t wordCount,const uint64_t* words,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将一组64位无符号比特位转换为单个BigInt值。
+Converts a group of 64-bit unsigned bits to a single BigInt value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| int signBit | 确定生成的BigInt是正数还是负数。 |
-| size_t wordCount | words数组的长度。 |
-| const uint64_t* words | uint64_t little-endian 64位字数组。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript BigInt类型的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| int signBit | Whether the generated BigInt value is positive or negative.|
+| size_t wordCount | Length of the words array.|
+| const uint64_t* words | Pointer to the uint64_t little-endian words array.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript BigInt type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_CreateStringLatin1()
 
@@ -2031,27 +2031,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env,int signBit,size_
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env,const char* str,size_t length,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将ISO-8859-1编码的C字符串转换为JavaScript字符串值。复制原生字符串。
+Converts an ISO-8859-1-encoded C string to a JavaScript string. A native string is copied.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* str | 表示ISO-8859-1编码的字符串的字符缓冲区。 |
-| size_t length | 字符串的长度，以字节为单位。如果它以null结尾，则为JSVM_AUTO_LENGTH。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript字符串的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* str | Pointer to the buffer of an ISO-8859-1-encoded string.|
+| size_t length | Length of a string, in bytes. If it is null-terminated, the value is **JSVM_AUTO_LENGTH**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript string.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_CreateStringUtf16()
 
@@ -2059,27 +2059,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env,const char* str,
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env,const char16_t* str,size_t length,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将UTF16-LE编码的C字符串转换为JavaScript字符串值。复制原生字符串。
+Converts a UTF-16LE-encoded C string to a JavaScript string. A native string is copied.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char16_t* str | 表示UTF16-LE编码的字符串的字符缓冲区。 |
-| size_t length | 以两字节代码单元表示的字符串长度，如果它以null终止，则为JSVM_AUTO_LENGTH。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript string的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char16_t* str | Pointer to the buffer of a UTF-16LE-encoded string.|
+| size_t length | Length of a string in 2-byte code. If it is null-terminated, the value is **JSVM_AUTO_LENGTH**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript string.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_CreateStringUtf8()
 
@@ -2087,27 +2087,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env,const char16_t* s
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env,const char* str,size_t length,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-用UTF8编码的C字符串创建JavaScript字符串值。复制原生字符串。
+Creates a JavaScript string using a UTF-8-encoded C string. A native string is copied.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* str | 表示UTF8编码字符串的字符缓冲区。 |
-| size_t length | 字符串的长度，以字节为单位。如果字符串以null结尾，则为JSVM_AUTO_LENGTH。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript字符串的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* str | Pointer to the buffer of a UTF-8-encoded string.|
+| size_t length | Length of a string, in bytes. If it is null-terminated, the value is **JSVM_AUTO_LENGTH**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript string.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_GetArrayLength()
 
@@ -2115,26 +2115,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env,const char* str,si
 JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env,JSVM_Value value,uint32_t* result)
 ```
 
-**描述**
+**Description**
 
-返回数组的长度。
+Obtains the length of an array.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表查询长度的JavaScript Array。 |
-| uint32_t* result | uint32代表数组的长度。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript array whose length is to be queried.|
+| uint32_t* result | Pointer to the length of a uint32-encoded array.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_ARRAY_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是Array类型。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_ARRAY_EXPECTED](capi-jsvm-types-h.md#jsvm_status): array expected. This code is returned if the input parameter is not of the array type.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetArraybufferInfo()
 
@@ -2142,27 +2142,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env,JSVM_Value value,uin
 JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env,JSVM_Value arraybuffer,void** data,size_t* byteLength)
 ```
 
-**描述**
+**Description**
 
-用于检索ArrayBuffer的底层数据缓冲区及其长度。
+Obtains the underlying data buffer of the **ArrayBuffer** and its length.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | 代表被查询的ArrayBuffer。 |
-| void** data | ArrayBuffer的底层数据缓冲区。如果byte_length为0，则该值可能为NULL或任何其他指针值。 |
-| size_t* byteLength | 底层数据缓冲区的字节长度。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | ArrayBuffer to be queried.|
+| void** data | Double pointer to the underlying data buffer of the ArrayBuffer. If **byte_length** is **0**, this value may be **NULL** or any other pointer value.|
+| size_t* byteLength | Pointer to the length of the underlying data buffer, in bytes.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_GetPrototype()
 
@@ -2170,26 +2170,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env,JSVM_Value array
 JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env,JSVM_Value object,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回对象的原型。
+Obtains the prototype of an object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 表示待返回其原型的JavaScript object。这将返回Object.getPrototypeOf的等价值（与函数的prototype属性不同）。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示给定对象的原型。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | JavaScript object whose prototype is to be returned. This will return the equivalent value of **Object.getPrototypeOf** (different from the **prototype** property of the function).|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the prototype of a given object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetTypedarrayInfo()
 
@@ -2197,30 +2197,30 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env,JSVM_Value object,JSVM
 JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env,JSVM_Value typedarray,JSVM_TypedarrayType* type,size_t* length,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)
 ```
 
-**描述**
+**Description**
 
-返回类型化数组的各种属性。如果不需要该属性，则任何输出参数都可以是 NULL。
+Obtains the properties of a typed array. If any property is not required, its output parameter can be **NULL**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) typedarray | 表示要查询其属性的TypedArray。 |
-| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | TypedArray中元素的标量数据类型。 |
-| size_t* length | TypedArray中的元素数。 |
-| void** data | TypedArray底层的数据缓冲区由byte_offset值调整，使其指向TypedArray中的第一个元素。如果数组的长度是0，这可能是NULL或任何其他指针值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | 位于TypedArray下的ArrayBuffer。 |
-| size_t* byteOffset | 数组的第一个元素所在的基础原生数组中的字节偏移量。data 参数的值已经过调整，因此data指向数组中的第一个元素。因此，原生数组的第一个字节将位于data - byte_offset。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) typedarray | **TypedArray** whose properties are to be queried.|
+| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | Pointer to the scalar data type of an element in **TypedArray**.|
+| size_t* length | Pointer to the number of elements in **TypedArray**.|
+| void** data | Double pointer to the first element in **TypedArray**. The underlying data buffer of the **TypedArray** is adjusted by **byte_offset** so that it points to the first element. If the array length is **0**, **data** may be NULL or any other pointer value.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | Pointer to the **ArrayBuffer** under **TypedArray**.|
+| size_t* byteOffset | Pointer to the byte offset of the first **TypedArray** element in the native array. **data** points to the first element in the array after its value has been adjusted. Therefore, the first byte of the native array is located at (data - byte_offset).|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_GetDataviewInfo()
 
@@ -2228,29 +2228,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env,JSVM_Value typeda
 JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env,JSVM_Value dataview,size_t* bytelength,void** data,JSVM_Value* arraybuffer,size_t* byteOffset)
 ```
 
-**描述**
+**Description**
 
-返回DataView的各种属性。如果不需要某一属性，则任何出参都可以设置为NULL。
+Obtains the proprieties of a **DataView**. If any property is not required, its output parameter can be **NULL**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) dataview |  表示要查询其属性的DataView。 |
-| size_t* bytelength | DataView中的字节个数。 |
-| void** data | DataView下的数据缓冲区。如果bytelength是0则可能是NULL或任何其他指针值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | ArrayBuffer是DataView的基础。 |
-| size_t* byteOffset | 开始投影DataView的数据缓冲区中的字节偏移量。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) dataview |  **DataView** whose properties are to be queried.|
+| size_t* bytelength | Pointer to the number of bytes in **DataView**.|
+| void** data | Double pointer to the data buffer in **DataView**. If **bytelength** is **0**, this value may be **NULL** or any other pointer value.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | Pointer to the **ArrayBuffer**, which is the basis of **DataView**.|
+| size_t* byteOffset | Pointer to the byte offset for the start position of mapping **DataView** in the data buffer.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数非外部的JSVM_Value。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input argument is not an external **JSVM_Value**.|
 
 ### OH_JSVM_GetDateValue()
 
@@ -2258,26 +2258,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env,JSVM_Value dataview
 JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env,JSVM_Value value,double* result)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript Date时间值等价的C双精度基础类型值。如果调用成功，返回JSVM_OK。如果传入一个非JavaScript Date类型的JSVM_Value，返回JSVM_DATA_EXPECTED。
+Obtains the C double-precision primitive equivalent of a given JavaScript date. If this API call is successfully, **JSVM_OK** is returned. If a **JSVM_Value** of a non-JavaScript date type is passed in, **JSVM_DATA_EXPECTED** is returned.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表一个JavaScript Date。 |
-| double* result | 作为double的时间值表示为自1970年1月1日UTC午夜以来的毫秒数。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript date.|
+| double* result | Pointer to the time value of the double type, expressed as the number of milliseconds since 00:00:00 UTC on January 1, 1970.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_DATE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不是Date类型。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_DATE_EXPECTED](capi-jsvm-types-h.md#jsvm_status): date expected. This code is returned if the input argument is not of the date type.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetValueBool()
 
@@ -2285,26 +2285,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env,JSVM_Value value,doubl
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript Boolean等价的C布尔基础类型值。
+Obtains the C Boolean primitive equivalent of a given JavaScript Boolean value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表输入的JavaScript Boolean对象。 |
-| bool* result | 返回与给定JavaScript Boolean对象等价的bool值，value对象值为true则result为true，反之亦然。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Input JavaScript Boolean object.|
+| bool* result | Pointer to the Boolean value equivalent to the given JavaScript Boolean object. If the value of the **value** object is **true**, **true** is returned; otherwise, **false** is returned.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BOOLEAN_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是boolean类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BOOLEAN_EXPECTED](capi-jsvm-types-h.md#jsvm_status): Boolean expected. This code is returned if the input parameter is not of the Boolean type.|
 
 ### OH_JSVM_GetValueDouble()
 
@@ -2312,26 +2312,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env,JSVM_Value value,bool*
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env,JSVM_Value value,double* result)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript number等价的C双精度基础类型值。
+Obtains the C double-precision primitive equivalent of a given JavaScript number.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript number。 |
-| double* result | 给定的JavaScript number的C双精度基础类型等价值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript number.|
+| double* result | Pointer to the C double-precision primitive equivalent of a given JavaScript number.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status): number expected. This code is returned if the input parameter is not of the number type.|
 
 ### OH_JSVM_GetValueBigintInt64()
 
@@ -2339,27 +2339,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env,JSVM_Value value,dou
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value value,int64_t* result,bool* lossless)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript BigInt等价的C int64_t基础类型值。如果需要，它将截断该值，将lossless设置为false。
+Obtains the C int64_t primitive equivalent of a given JavaScript BigInt value. If necessary, it truncates the value and sets **lossless** to **false**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript BigInt。 |
-| int64_t* result | 给定的JavaScript BigInt的C int64_t基础类型等价值。 |
-| bool* lossless | 指示BigInt值是否已无损转换，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript BigInt value.|
+| int64_t* result | Pointer to the C int64_t primitive equivalent of the given JavaScript BigInt value.|
+| bool* lossless | Pointer to the Boolean value. The value **true** indicates the BigInt value is losslessly converted, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BigInt type.|
 
 ### OH_JSVM_GetValueBigintUint64()
 
@@ -2367,27 +2367,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env,JSVM_Value valu
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env,JSVM_Value value,uint64_t* result,bool* lossless)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript BigInt等价的C uint64_t基础类型值。如果需要，它将截断该值，将lossless设置为false。
+Obtains the C uint64_t primitive equivalent of a given JavaScript BigInt value. If necessary, it truncates the value and sets **lossless** to **false**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript BigInt。 |
-| uint64_t* result | 给定的JavaScript BigInt的C uint64_t基础类型等价值。 |
-| bool* lossless | 指示BigInt值是否已无损转换，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript BigInt value.|
+| uint64_t* result | Pointer to the C uint64_t primitive equivalent of the given JavaScript BigInt value.|
+| bool* lossless | Pointer to the Boolean value. The value **true** indicates the BigInt value is losslessly converted, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BigInt type.|
 
 ### OH_JSVM_GetValueBigintWords()
 
@@ -2395,28 +2395,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env,JSVM_Value val
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env,JSVM_Value value,int* signBit,size_t* wordCount,uint64_t* words)
 ```
 
-**描述**
+**Description**
 
-将单个BigInt值转换为符号位、64位小端数组和数组中的元素数。signBit和words参数可以都设置为NULL。这种情况下，只获取wordCount。
+Converts a BigInt value to the sign bit, 64-bit little-endian array, and number of elements in the array. Both **signBit** and **words** can be set to **NULL**. In this case, only **wordCount** is obtained.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript BigInt。 |
-| int* signBit | 表示JavaScript BigInt是正数还是负数的整数。 |
-| size_t* wordCount | 必须初始化为words数组的长度。返回后，将被设置为存储此BigInt所需的实际字数。 |
-| uint64_t* words | 指向预分配的64位字数组的指针。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript BigInt value.|
+| int* signBit | Pointer to the JavaScript BigInt value, indicating a positive or negative integer.|
+| size_t* wordCount | Pointer to the length of the words array. It will be set to the actual number of words required to store this BigInt.|
+| uint64_t* words | Pointer to the pre-allocated 64-bit words array.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BitInt类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BigInt type.|
 
 ### OH_JSVM_GetValueExternal()
 
@@ -2424,26 +2424,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env,JSVM_Value valu
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env,JSVM_Value value,void** result)
 ```
 
-**描述**
+**Description**
 
-检索之前传递给OH_JSVM_CreateExternal()的外部数据指针。
+Obtains the external data pointer previously passed to **OH_JSVM_CreateExternal()**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript外部值。 |
-| void** result | 指向被JavaScript外部值封装的数据的指针。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript external value.|
+| void** result | Double pointer to the data wrapped by the JavaScript external value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数非外部的JSVM_Value。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input argument is not an external **JSVM_Value**.|
 
 ### OH_JSVM_GetValueInt32()
 
@@ -2451,26 +2451,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env,JSVM_Value value,v
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env,JSVM_Value value,int32_t* result)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript number等价的C int32基础类型值。
+Obtains the C int32 primitive equivalent of a given JavaScript number.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript number。 |
-| int32_t* result | 给定的JavaScript number的C int32基础类型等价值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript number.|
+| int32_t* result | Pointer to the C int32 primitive equivalent of the given JavaScript number.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status): number expected. This code is returned if the input parameter is not of the number type.|
 
 ### OH_JSVM_GetValueInt64()
 
@@ -2478,26 +2478,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env,JSVM_Value value,int3
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env,JSVM_Value value,int64_t* result)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript number等价的C int64基础类型值。
+Obtains the C int64 primitive equivalent of a given JavaScript number.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript number。 |
-| int64_t* result | 给定的JavaScript number的C int64基础类型等价值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript number.|
+| int64_t* result | Pointer to the C int64 primitive equivalent of the given JavaScript number.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status): number expected. This code is returned if the input parameter is not of the number type.|
 
 ### OH_JSVM_GetValueStringLatin1()
 
@@ -2505,28 +2505,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env,JSVM_Value value,int6
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env,JSVM_Value value,char* buf,size_t bufsize,size_t* result)
 ```
 
-**描述**
+**Description**
 
-返回与传入值对应的ISO-8859-1编码字符串。
+Obtains the ISO-8859-1-encoded string corresponding to the input value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript number。 |
-| char* buf | 写入ISO-8859-1编码字符串的缓冲区。如果传入NULL，则将在result中返回字符串的长度（以字节为单位，不包括null结束符）。 |
-| size_t bufsize | 目的缓冲区大小。当大小不够时，返回的字符串将被截断并以null结尾。 |
-| size_t* result | 复制到缓冲区中的字节数，不包括空终止符。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript number.|
+| char* buf | Pointer to the buffer to which an ISO-8859-1 encoded string is written. If **NULL** is passed, the length of the string (in bytes, excluding the **null** terminator) is returned in **result**.|
+| size_t bufsize | Size of the destination buffer. If the size is insufficient, the returned string is truncated and terminated with **null**.|
+| size_t* result | Pointer to the number of bytes copied to the buffer, excluding the null terminator.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_GetValueStringUtf8()
 
@@ -2534,28 +2534,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env,JSVM_Value val
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env,JSVM_Value value,char* buf,size_t bufsize,size_t* result)
 ```
 
-**描述**
+**Description**
 
-返回与传入值对应的UTF8编码字符串。
+Obtains the UTF-8-encoded string corresponding to the input value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript字符串。 |
-| char* buf | 将UTF8编码的字符串写入的缓冲区。如果传入NULL，则在result中返回以字节为单位的字符串长度，不包括空终止符。 |
-| size_t bufsize | 目标缓冲区的大小。当此值不足时，返回的字符串将被截断并以null终止。 |
-| size_t* result | 复制到缓冲区的字节数，不包括null结束符。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript string.|
+| char* buf | Pointer to the buffer to which a UTF-8-encoded string is written. If **NULL** is passed, the length of the string in bytes is returned in **result**, excluding the null terminator.|
+| size_t bufsize | Size of the destination buffer. If the size is insufficient, the returned string is truncated and terminated with **null**.|
+| size_t* result | Pointer to the number of bytes copied to the buffer, excluding the null terminator.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_GetValueStringUtf16()
 
@@ -2563,28 +2563,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env,JSVM_Value value
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env,JSVM_Value value,char16_t* buf,size_t bufsize,size_t* result)
 ```
 
-**描述**
+**Description**
 
-查询与传入值对应的UTF16编码字符串。
+Obtains the UTF-16-encoded string corresponding to the input value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript字符串。 |
-| char16_t* buf | 将UTF16-LE编码字符串写入的缓冲区。如果传入NULL，则返回字符串的2字节代码单元长度，不包括空终止符。 |
-| size_t bufsize | 目标缓冲区的大小。当此值不足时，返回的字符串将被截断并以null终止。 |
-| size_t* result | 复制到缓冲区中的2字节代码单元数，不包括空终止符。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript string.|
+| char16_t* buf | Pointer to the buffer to which a UTF-16LE-encoded string is written. If **NULL** is passed, the length of the string in 2-byte code is returned, excluding the null terminator.|
+| size_t bufsize | Size of the destination buffer. If the size is insufficient, the returned string is truncated and terminated with **null**.|
+| size_t* result | Pointer to the number of the 2-byte code units copied to the buffer, excluding the null terminator.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.|
 
 ### OH_JSVM_GetValueUint32()
 
@@ -2592,26 +2592,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env,JSVM_Value valu
 JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env,JSVM_Value value,uint32_t* result)
 ```
 
-**描述**
+**Description**
 
-返回与给定的JavaScript number等价的C uint_32基础类型值。
+Obtains the C uint_32 primitive equivalent of a given JavaScript number.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 代表JavaScript number。 |
-| uint32_t* result | 将给定的JSVM_Value等效为uint32_t 的C基础类型。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript number.|
+| uint32_t* result | Pointer to the C uint32_t primitive equivalent of a given **JSVM_Value**.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status): number expected. This code is returned if the input parameter is not of the number type.|
 
 ### OH_JSVM_GetBoolean()
 
@@ -2619,26 +2619,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env,JSVM_Value value,uin
 JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env,bool value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回表示给定布尔值的JavaScript单例对象。
+Obtains a JavaScript singleton object that is used to represent the given Boolean value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| bool value | 要检索的布尔值，取值为true或false。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示待检索的JavaScript Boolean单例。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| bool value | Boolean value to be retrieved. The value can be **true** or **false**.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript Boolean singleton to be retrieved.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetGlobal()
 
@@ -2646,25 +2646,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env,bool value,JSVM_Value* r
 JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回global对象。
+Obtains the global object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript global对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript global object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetNull()
 
@@ -2672,25 +2672,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env,JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回null对象。
+Obtains the null object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript null对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript null object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetUndefined()
 
@@ -2698,25 +2698,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env,JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回Undefined对象。
+Obtains the undefined object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript undefined值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript undefined value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CoerceToBool()
 
@@ -2724,26 +2724,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env,JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-实现抽象操作ToBoolean()。
+Implements the abstract operation **ToBoolean()**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要强制转换的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表强制的JavaScript Boolean。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be forcibly converted.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript Boolean value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CoerceToNumber()
 
@@ -2751,26 +2751,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env,JSVM_Value value,JSVM_
 JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-实现抽象操作ToNumber()。如果传入的值是对象，则函数可能会运行JavaScript代码。
+Implements the abstract operation **ToNumber()**. If the input value is an object, the function may run JavaScript code.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要强制转换的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表强制的JavaScript number。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be forcibly converted.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript number.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成Number。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status): number expected. This code is returned if the input JavaScript value cannot be converted to a number.|
 
 ### OH_JSVM_CoerceToObject()
 
@@ -2778,26 +2778,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env,JSVM_Value value,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-实现抽象操作ToObject()。
+Implements the abstract operation **ToObject()**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要强制转换的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表强制的JavaScript object。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be forcibly converted.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成Object。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): object expected. This code is returned if the input JavaScript value cannot be converted to an object.|
 
 ### OH_JSVM_CoerceToString()
 
@@ -2805,26 +2805,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env,JSVM_Value value,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-实现抽象操作ToString()。如果传入的值是对象，则函数可能会运行JavaScript代码。
+Implements the abstract operation **ToString()**. If the input value is an object, the function may run JavaScript code.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要强制转换的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表强制的JavaScript string。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be forcibly converted.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript string.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成String。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input JavaScript value cannot be converted to a string.|
 
 ### OH_JSVM_Typeof()
 
@@ -2832,26 +2832,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env,JSVM_Value value,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env,JSVM_Value value,JSVM_ValueType* result)
 ```
 
-**描述**
+**Description**
 
-提供类似于在定义的对象上调用typeof运算符的行为。不同点在于，该函数支持检测外部值；它将null检测为单独的类型，而ECMAScript typeof将用于检测object。如果value的类型无效，则返回错误。
+Provides a behavior similar to calling the **typeof** operator on a defined object. The difference is that this function supports the detection of external values; it detects null as a separate type, while ECMAScript **typeof** is used to detect objects. If the value type is invalid, an error is returned.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要查询其类型的JavaScript值。 |
-| [JSVM_ValueType](capi-jsvm-types-h.md#jsvm_valuetype)* result | JavaScript值的类型。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value whose type is to be queried.|
+| [JSVM_ValueType](capi-jsvm-types-h.md#jsvm_valuetype)* result | Pointer to the type of the JavaScript value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_Instanceof()
 
@@ -2859,27 +2859,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env,JSVM_Value value,JSVM_ValueT
 JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env,JSVM_Value object,JSVM_Value constructor,bool* result)
 ```
 
-**描述**
+**Description**
 
-提供类似于在对象上调用instanceof运算符的行为。
+Provides a behavior similar to calling the **instanceof** operator on an object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 要检查的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) constructor | 要检查的构造函数的JavaScript函数对象。 |
-| bool* result | 如果object instanceof constructor为true，则设置为true的布尔值，反之亦然。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | JavaScript value to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) constructor | Constructor to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that **object instanceof constructor** is **true**, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_FUNCTION_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是Function类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_FUNCTION_EXPECTED](capi-jsvm-types-h.md#jsvm_status): function expected. This code is returned if the input parameter is not of the function type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_IsArray()
 
@@ -2887,26 +2887,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env,JSVM_Value object,JSVM_V
 JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-提供类似于在对象上调用IsArray的行为。
+Provides a behavior similar to calling **IsArray** on an object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JavaScript值。 |
-| bool* result | 表示给定的对象是否为数组，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given object is an array, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsArraybuffer()
 
@@ -2914,26 +2914,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env,JSVM_Value value,bool* resu
 JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-检查传入的对象是否为ArrayBuffer。
+Checks whether the input object is an **ArrayBuffer**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JavaScript值。 |
-| bool* result | 表示指定的对象是否为ArrayBuffer，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the specified object is an **ArrayBuffer**, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsDate()
 
@@ -2941,26 +2941,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env,JSVM_Value value,bool
 JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env,JSVM_Value value,bool* isDate)
 ```
 
-**描述**
+**Description**
 
-检查传入的Object是否为日期。
+Checks whether the input object is a date.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JavaScript值。 |
-| bool* isDate | 给定的JSVM_Value是否表示JavaScript Date对象，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* isDate | Pointer to the check result. The value **true** indicates that the given **JSVM_Value** is a JavaScript **Date** object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsTypedarray()
 
@@ -2968,26 +2968,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env,JSVM_Value value,bool* isDat
 JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-检查传入的Object是否为类型化数组。
+Checks whether the input object is a typed array.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JavaScript值。 |
-| bool* result | 给定的JSVM_Value是否代表TypedArray，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given **JSVM_Value** is a typed array, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsDataview()
 
@@ -2995,26 +2995,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env,JSVM_Value value,bool*
 JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-检查传入的对象是否是DataView。
+Checks whether the input object is **DataView**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JavaScript值。 |
-| bool* result | 给定的JSVM_Value是否代表DataView，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given **JSVM_Value** is a **DataView**, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_StrictEquals()
 
@@ -3022,27 +3022,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env,JSVM_Value value,bool* r
 JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env,JSVM_Value lhs,JSVM_Value rhs,bool* result)
 ```
 
-**描述**
+**Description**
 
-提供类似调用严格相等算法的行为。
+Provides a behavior similar to calling the strict equality algorithm (===).
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | 待检查的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | 要检查的JavaScript值。 |
-| bool* result | 表示两个JSVM_Value对象是否严格相等（===），true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | JavaScript value to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that two **JSVM_Value** objects are strictly equal, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_Equals()
 
@@ -3050,27 +3050,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env,JSVM_Value lhs,JSVM_Va
 JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env,JSVM_Value lhs,JSVM_Value rhs,bool* result)
 ```
 
-**描述**
+**Description**
 
-提供类似调用宽松相等算法的行为。无论JavaScript值类型如何，只要值相等，就返回true。
+Provides a behavior similar to calling the loose equality algorithm (==). Regardless of the JavaScript value type, **true** is returned as long as the values are equal.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | 待检查的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | 要检查的JavaScript值。 |
-| bool* result | 表示两个JSVM_Value对象是否宽松相等（==），true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | JavaScript value to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that two **JSVM_Value** objects are loosely equal, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_DetachArraybuffer()
 
@@ -3078,25 +3078,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env,JSVM_Value lhs,JSVM_Value rh
 JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env,JSVM_Value arraybuffer)
 ```
 
-**描述**
+**Description**
 
-提供类似于调用ArrayBuffer detach操作的行为。
+Provides a behavior similar to calling the **detach** operation of **ArrayBuffer**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | 待分离的JavaScript ArrayBuffer。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) arraybuffer | JavaScript **ArrayBuffer** to be detached.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         如果[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是可分析的ArrayBuffer。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status): ArrayBuffer expected. This code is returned if the input parameter is not an analyzable **ArrayBuffer**.|
 
 ### OH_JSVM_IsDetachedArraybuffer()
 
@@ -3104,26 +3104,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env,JSVM_Value arrayb
 JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-提供类似调用ArrayBuffer IsDetachedBuffer操作的行为。
+Provides a behavior similar to calling the **IsDetachedBuffer** operation of **ArrayBuffer**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JavaScript ArrayBuffer。 |
-| bool* result | 表示ArrayBuffer是否被分离，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript **ArrayBuffer** to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the **ArrayBuffer** is detached, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetPropertyNames()
 
@@ -3131,26 +3131,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env,JSVM_Value va
 JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env,JSVM_Value object,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-以字符数组的形式返回object的可枚举属性的名称。key为符号的object的属性将不会被包含在内。
+Obtains the names of enumerable properties of an object as an array of characters. The properties of the object whose key is a symbol are not included.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待进行属性检索的对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示一个JavaScript值的数组，这些值表示对象的属性名称。可以使用OH_JSVM_GetArrayLength以及OH_JSVM_GetElement对结果进行迭代。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object whose property is to be retrieved.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to an array of property names of the object. You can use **OH_JSVM_GetArrayLength** and **OH_JSVM_GetElement** to iterate the result.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_GetAllPropertyNames()
 
@@ -3158,29 +3158,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env,JSVM_Value object,
 JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env,JSVM_Value object,JSVM_KeyCollectionMode keyMode,JSVM_KeyFilter keyFilter,JSVM_KeyConversion keyConversion,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回包含object所有可用属性名称的数组。
+Obtains all available property names of the object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 从中检索属性的对象。 |
-| [JSVM_KeyCollectionMode](capi-jsvm-types-h.md#jsvm_keycollectionmode) keyMode | 是否也检索原型属性。 |
-| [JSVM_KeyFilter](capi-jsvm-types-h.md#jsvm_keyfilter) keyFilter | 要检索哪些属性（可枚举/可读/可写）。 |
-| [JSVM_KeyConversion](capi-jsvm-types-h.md#jsvm_keyconversion) keyConversion | 表示是否将编号的属性键转换为字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示JavaScript值的数组，这些值表示对象的属性名称。可以使用OH_JSVM_GetArrayLength和OH_JSVM_GetElement对结果进行迭代。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object from which the properties are retrieved.|
+| [JSVM_KeyCollectionMode](capi-jsvm-types-h.md#jsvm_keycollectionmode) keyMode | Key collection mode for retrieving the prototype properties.|
+| [JSVM_KeyFilter](capi-jsvm-types-h.md#jsvm_keyfilter) keyFilter | Key filter for properties to be retrieved (enumerable/readable/writable).|
+| [JSVM_KeyConversion](capi-jsvm-types-h.md#jsvm_keyconversion) keyConversion | Key conversion mode, which determines whether to convert a number to a string.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to an array of property names of the object. You can use **OH_JSVM_GetArrayLength** and **OH_JSVM_GetElement** to iterate the result.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_SetProperty()
 
@@ -3188,27 +3188,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env,JSVM_Value obje
 JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,JSVM_Value value)
 ```
 
-**描述**
+**Description**
 
-为传入的object设置名为key的属性。
+Sets the **key** property for the input object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 将进行属性设置的对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | 待设置的属性名。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object whose property is to be set.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | Name of the property to be set.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Property value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetProperty()
 
@@ -3216,27 +3216,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env,JSVM_Value object,JSVM_
 JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-从传入的object中获取名为key的属性。
+Obtains the **key** property from the input object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 从中检索属性的对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | 要检索的属性的名称。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object from which the property is retrieved.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | Name of the property to be retrieved.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the property value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_HasProperty()
 
@@ -3244,27 +3244,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env,JSVM_Value object,JSVM_
 JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)
 ```
 
-**描述**
+**Description**
 
-检查传入的Object是否具有命名为key的属性。
+Checks whether the input object has the **key** property.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待查询的对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | 要检查其存在的属性的名称。 |
-| bool* result | 该属性是否存在于对象上，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | Name of the property to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the input object has the **key** property, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_DeleteProperty()
 
@@ -3272,27 +3272,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env,JSVM_Value object,JSVM_
 JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)
 ```
 
-**描述**
+**Description**
 
-尝试从object中删除名为key的属性。
+Deletes the **key** property from the object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待查询的对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | 待删除的属性名。 |
-| bool* result | 表示属性删除是否成功，true为是，false为否。result可以选择性地通过传递NULL来忽略。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | Name of the property to be deleted.|
+| bool* result | Pointer to the operation result. The value **true** indicates that the property deletion is successful, and **false** indicates the opposite. **result** can be ignored by passing **NULL** to it.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_HasOwnProperty()
 
@@ -3300,27 +3300,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env,JSVM_Value object,JS
 JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env,JSVM_Value object,JSVM_Value key,bool* result)
 ```
 
-**描述**
+**Description**
 
-检查传入的Object是否具有名为key的属性。key必须是string或symbol，否则将抛出错误。JSVM-API不会执行任何数据类型之间的转换。
+Checks whether the input object has the **key** property. The key must be a string or symbol. Otherwise, an error is thrown. The JSVM-API does not perform any conversion between data types.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待查询的对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | 要检查的是否存在的属性名称。 |
-| bool* result | 表示对象是否存在该属性，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | Name of the property to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the input object has the **key** property, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_NAME_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示期望传入名字不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_NAME_EXPECTED](capi-jsvm-types-h.md#jsvm_status): name expected. This code is returned if the input name is invalid.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_SetNamedProperty()
 
@@ -3328,27 +3328,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env,JSVM_Value object,JS
 JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,JSVM_Value value)
 ```
 
-**描述**
+**Description**
 
-此方法等效于object调用OH_JSVM_SetProperty设置名为`utf8Name`的属性。
+Sets a property with a specified name. This method is equivalent to calling **OH_JSVM_SetProperty** to set the **utf8Name** property.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 要对其设置属性的对象。 |
-| const char* utf8name | 要设置的属性的名称。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object whose property is to be set.|
+| const char* utf8name | Pointer to the name of the property to be set.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Property value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetNamedProperty()
 
@@ -3356,27 +3356,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env,JSVM_Value object,
 JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-此方法等效于object调用OH_JSVM_GetProperty获取名为`utf8Name`的属性对象。
+Obtains the named property. This method is equivalent to calling **OH_JSVM_GetProperty** to obtain the **utf8Name** property.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 从中检索属性的对象。 |
-| const char* utf8name | 要获取的属性名。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object from which the property is retrieved.|
+| const char* utf8name | Pointer to the name of the property to be obtained.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the property value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_HasNamedProperty()
 
@@ -3384,27 +3384,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env,JSVM_Value object,
 JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env,JSVM_Value object,const char* utf8name,bool* result)
 ```
 
-**描述**
+**Description**
 
-此方法等效于object对象调用OH_JSVM_HasProperty查询其内部是否存在名为`utf8Name`的属性。
+Checks whether an object has the named property. This method is equivalent to calling **OH_JSVM_HasProperty** to check whether the object has the **utf8Name** property.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待查询的对象。 |
-| const char* utf8name | 待检查的属性名。 |
-| bool* result | 该属性是否存在于对象上，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
+| const char* utf8name | Pointer to the name of the property to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the input object has the **key** property, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_SetElement()
 
@@ -3412,27 +3412,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env,JSVM_Value object,
 JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env,JSVM_Value object,uint32_t index,JSVM_Value value)
 ```
 
-**描述**
+**Description**
 
-在传入的Object上设置一个元素。
+Sets an element for the input object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待进行属性设置的对象。 |
-| uint32_t index | 要设置的属性的索引。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object whose property is to be set.|
+| uint32_t index | Index of the property to be set.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Property value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetElement()
 
@@ -3440,27 +3440,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env,JSVM_Value object,uint32
 JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env,JSVM_Value object,uint32_t index,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取请求索引处的元素。
+Obtains the element at the requested index.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待进行属性检索的对象。 |
-| uint32_t index | 要获取的属性的索引。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object whose property is to be retrieved.|
+| uint32_t index | Index of the property to be obtained.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the property value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_HasElement()
 
@@ -3468,27 +3468,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env,JSVM_Value object,uint32
 JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env,JSVM_Value object,uint32_t index,bool* result)
 ```
 
-**描述**
+**Description**
 
-如果传入的Object在指定的索引处有一个元素，则此JSVM-API返回true。
+Checks whether an input object has an element at the specified index. If yes, the JSVM-API returns **true**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待查询的对象。 |
-| uint32_t index | 待确定是否存在元素的索引位置。 |
-| bool* result | 该属性是否存在于对象上，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
+| uint32_t index | Index to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the input object has the **key** property, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_DeleteElement()
 
@@ -3496,27 +3496,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env,JSVM_Value object,uint32
 JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env,JSVM_Value object,uint32_t index,bool* result)
 ```
 
-**描述**
+**Description**
 
-尝试从object中删除指定index处的元素。
+Deletes the element at the specified index from an object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待查询的对象。 |
-| uint32_t index | 要删除的属性的索引。 |
-| bool* result | 表示元素删除是否成功，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
+| uint32_t index | Index of the element to be deleted.|
+| bool* result | Pointer to the operation result. The value **true** indicates that the element deletion is successful, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_DefineProperties()
 
@@ -3524,27 +3524,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env,JSVM_Value object,uin
 JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env,JSVM_Value object,size_t propertyCount,const JSVM_PropertyDescriptor* properties)
 ```
 
-**描述**
+**Description**
 
-通过此方法可以在给定对象上高效定义多个属性，这些属性使用属性描述符进行定义。通过一个属性描述符的数组，此API将为对象依次设置数组中的属性。
+Defines properties on a given object by using property descriptors. Through an array of property descriptors, this API sets the properties in the array in turn for the object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待进行属性检索的对象。 |
-| size_t propertyCount | properties数组中的元素数。 |
-| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 属性描述符的数组。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object whose property is to be retrieved.|
+| size_t propertyCount | Pointer to the number of elements in the properties array.|
+| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Pointer to the array of property descriptors.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_ObjectFreeze()
 
@@ -3552,25 +3552,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env,JSVM_Value object,
 JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env,JSVM_Value object)
 ```
 
-**描述**
+**Description**
 
-冻结指定的对象，防止为其添加新的属性、删除现有属性、更改现有属性的可枚举性/可配置性/可写性、更改现有属性的值、改变对象原型等操作。
+Freezes a JavaScript object. Once a JavaScript object is frozen, new properties cannot be added to it, existing properties cannot be removed, the enumerability, configurability, or writability of existing properties cannot be changed, and the values of existing properties and object prototypes cannot be changed.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待冻结的对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be frozen.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_ObjectSeal()
 
@@ -3578,25 +3578,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env,JSVM_Value object)
 JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env,JSVM_Value object)
 ```
 
-**描述**
+**Description**
 
-封装指定的对象，防止为其添加新的属性并将所有现有属性标记为不可配置。
+Encapsulates a specified object, which prevents additions of properties and marks existing properties non-configurable.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 待封装的对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be encapsulated.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_CallFunction()
 
@@ -3604,29 +3604,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env,JSVM_Value object)
 JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env,JSVM_Value recv,JSVM_Value func,size_t argc,const JSVM_Value* argv,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-支持从native代码调用JavaScript函数对象，这是从native代码回调到JavaScript的主要机制。
+Supports calling JavaScript function objects from native code, which is the main mechanism for JavaScript to call native code.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) recv | 传递给被调用函数的this值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) func | 表示将调用的JavaScript函数。 |
-| size_t argc | argv数组中的元素个数。 |
-| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JSVM_values数组，表示将作为参数传递给函数的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示返回的JavaScript对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) recv | Value of **this** passed to the callee.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) func | JavaScript function to be called.|
+| size_t argc | Number of elements in the argv array.|
+| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | Pointer to the **JSVM_values** array, representing the JavaScript values to be passed to the function as arguments.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the returned JavaScript object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_CreateFunction()
 
@@ -3634,28 +3634,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env,JSVM_Value recv,JSVM_V
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback cb,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-支持在native代码中创建函数对象，这是从JavaScript调用native代码的主要机制。在此调用之后，新创建的函数在脚本中不再自动可见。相反，必须在JavaScript可见的任何对象上显示设置属性，才能从脚本访问该函数。
+Supports creating function objects in native code, which is the main mechanism for JavaScript to call native code. After this call, the newly created function is no longer automatically visible in the script. Instead, you should explicitly set properties on any visible object in JavaScript to access the function from the script.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                               | 描述 |
+| Name                                                              | Description|
 |-------------------------------------------------------------------| -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                         | 调用JSVM-API的环境。 |
-| const char* utf8name                                              | 编码为UTF8的函数的可选名称。这在JavaScript中是可见的，作为新函数对象的name属性。 |
-| size_t length                                                     | utf8name的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) cb          | 调用此函数对象时应调用的native函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示新创建函数的JavaScript函数对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                         | Environment for calling the JSVM-API.|
+| const char* utf8name                                              | Pointer to the optional UTF-8-encoded name of the function. This is visible in JavaScript as the **name** property of the new function object.|
+| size_t length                                                     | Length of **utf8name** (in bytes) or **JSVM_AUTO_LENGTH** (if null-terminated).|
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) cb          | Native function to be called when the function object is called. For details, see [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md).|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript function object of the newly created function.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetCbInfo()
 
@@ -3663,29 +3663,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env,const char* utf8name
 JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env,JSVM_CallbackInfo cbinfo,size_t* argc,JSVM_Value* argv,JSVM_Value* thisArg,void** data)
 ```
 
-**描述**
+**Description**
 
-此方法在回调函数中用于检索有关调用的详细信息，例如来自给定回调信息的参数和this指针。
+Obtains detailed information about the callback, such as the parameter from the given callback information and the **this** pointer.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo--8h.md) cbinfo | 传入回调函数的回调信息。 |
-| size_t* argc | 指定所提供的argv数组的长度并接收参数的实际数量，可以通过传递NULL来选择性地忽略。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JSVM_Value的C数组，用于存储复制的参数。如果参数数量超过提供的数量，则只复制请求数量的参数。如果提供的参数比声明的少，则argv的其余部分将由代表undefined的JSVM_Value值填充。可以通过传递NULL来忽略argv。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* thisArg | 接收调用的JavaScript this参数。thisArg可以通过传递NULL来进行忽略。 |
-| void** data | 接收回调的数据指针。data可以通过传递NULL来进行忽略。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo--8h.md) cbinfo | Callback information.|
+| size_t* argc | Pointer to the length of the provided **argv** array and actual number of input arguments. **argc** can be ignored by passing **NULL** to it.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | Pointer to the C array of **JSVM_Value**, which is used to store copied arguments. If the number of arguments exceeds the provided number, only a requested number of arguments are copied. If fewer arguments are provided than declared, the rest of **argv** is filled with undefined **JSVM_Value**s. **argv** can be ignored by passing **NULL** to it.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* thisArg | Pointer to the JavaScript **this** argument. **thisArg** can be ignored by passing **NULL** to it.|
+| void** data | Double pointer to the callback data. **data** can be ignored by passing **NULL** to it.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetNewTarget()
 
@@ -3693,26 +3693,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env,JSVM_CallbackInfo cbinfo,
 JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env,JSVM_CallbackInfo cbinfo,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-返回构造函数调用的new target。如果当前回调不是构造函数调用，结果为NULL。
+Obtains the new target called by the constructor. If the current callback is not called by a constructor, the result is **NULL**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo--8h.md) cbinfo | 传递给回调函数的回调信息。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 构造函数调用的new target。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_CallbackInfo](capi-jsvm-jsvm-callbackinfo--8h.md) cbinfo | Callback information.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the new target called by the constructor.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_NewInstance()
 
@@ -3720,28 +3720,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env,JSVM_CallbackInfo cbin
 JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env,JSVM_Value constructor,size_t argc,const JSVM_Value* argv,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-使用给定的JSVM_Value表示的构造函数来实例化新的JavaScript值。
+Instantiates a new JavaScript value by using the constructor represented by the given **JSVM_Value**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) constructor | 表示将作为构造函数调用的JavaScript函数。 |
-| size_t argc | argv数组中的元素个数。 |
-| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JavaScript值数组。其中JSVM_Value表示构造函数的参数。如果argc为零，则可以通过传入NULL来忽略此参数。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示返回的JavaScript对象，在本例中是构造的对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) constructor | JavaScript function that will be called as a constructor.|
+| size_t argc | Number of elements in the argv array.|
+| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | Pointer to the JavaScript value array. **JSVM_Value** indicates the parameter of the constructor. If **argc** is 0, **argc** can be ignored by passing **NULL** to it.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the returned JavaScript object, which is the constructed object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_DefineClass()
 
@@ -3749,30 +3749,30 @@ JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env,JSVM_Value constructor,
 JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-定义一个JavaScript类。
+Defines a JavaScript class.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* utf8name | JavaScript构造函数的名称，建议在包装C++类时使用C++类名。 |
-| size_t length | utf8name的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor | 用于创建类的构造函数的回调函数。包装C++类时，此方法必须是符合JSVM_Callback。callback签名的静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
-| size_t propertyCount | properties数组参数中的项数。 |
-| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 类的属性描述符，用于定义类的属性和方法。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示类的构造函数的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* utf8name | Pointer to the name of the JavaScript constructor. You are advised to use the C++ class name when wrapping a C++ class.|
+| size_t length | Length of **utf8name** (in bytes) or **JSVM_AUTO_LENGTH** (if null-terminated).|
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor | Callback of the constructor used to create class. When a C++ class is wrapped, this method must comply with **JSVM_Callback**. It is a static member of the callback signature. C++ class constructors cannot be used. For details, see [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md).|
+| size_t propertyCount | Number of properties in the array.|
+| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Pointer to the property descriptors, which are used to define the properties and methods of a class.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the constructor of a class.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_Wrap()
 
@@ -3780,29 +3780,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env,const char* utf8name,si
 JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env,JSVM_Value jsObject,void* nativeObject,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Ref* result)
 ```
 
-**描述**
+**Description**
 
-在JavaScript对象中封装native实例，该实例后续可以通过OH_JSVM_Unwrap()进行检索。
+Wraps a native instance in a JavaScript object, which can be retrieved using **OH_JSVM_Unwrap()** later.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | 将成为原生对象封装器的JavaScript对象。 |
-| void* nativeObject | 将封装在JavaScript对象中的native实例。 |
-| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 可选的原生回调，可用于在 JavaScript 对象被垃圾回收时释放native实例。 |
-| void* finalizeHint | 传递给完成回调的可选上下文提示。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | 对封装对象的可选引用。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | JavaScript object that will wrap a native object.|
+| void* nativeObject | Pointer to the native instance wrapped in a JavaScript object.|
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | Optional native callback, which can be used to release the native instance when the JavaScript object is garbage-collected.|
+| void* finalizeHint | Pointer to the optional context hint passed to the **finalize** callback.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Pointer to the optional reference to the wrapped object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_Unwrap()
 
@@ -3810,26 +3810,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env,JSVM_Value jsObject,void* nati
 JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env,JSVM_Value jsObject,void** result)
 ```
 
-**描述**
+**Description**
 
-当JavaScript代码调用类的方法或属性访问器时，对应的JSVM_Callback将被调用。如果回调是针对实例方法或访问器的，则回调的this参数是封装器对象；然后可以通过调用封装器对象的OH_JSVM_Unwrap()获得作为调用目标的C++实例。
+Unwraps a native instance in a JavaScript object. When the JavaScript code calls a method of a class or property accessor, the corresponding **JSVM_Callback** is called. If the callback is for an instance method or accessor, the **this** parameter of the callback is the wrapper object. Then you can obtain the C++ instance as the call target by calling **OH_JSVM_Unwrap()** of the wrapper object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | 与native实例关联的对象。 |
-| void** result | 指向封装的native实例的指针。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | Object associated with the native instance.|
+| void** result | Double pointer to the wrapped native instance.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_RemoveWrap()
 
@@ -3837,26 +3837,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env,JSVM_Value jsObject,void** r
 JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env,JSVM_Value jsObject,void** result)
 ```
 
-**描述**
+**Description**
 
-使用OH_JSVM_Wrap()检索先前封装在JavaScript对象——js_object中的native实例并移除封装。如果finalize回调与封装相关联，则当JavaScript对象被垃圾回收时将不再调用它。
+Removes the wrap of the native instance, which is previously wrapped in **js_object** by **OH_JSVM_Wrap()**. If the **finalize** callback is associated with wrap, it will not be called when the JavaScript object is garbage-collected.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | 与native实例关联的对象。 |
-| void** result | 指向封装的native实例的指针。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | Object associated with the native instance.|
+| void** result | Double pointer to the wrapped native instance.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_TypeTagObject()
 
@@ -3864,26 +3864,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env,JSVM_Value jsObject,void
 JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env,JSVM_Value value,const JSVM_TypeTag* typeTag)
 ```
 
-**描述**
+**Description**
 
-将typeTag指针的值与JavaScript对象或外部值相关联。可调用OH_JSVM_CheckObjectTypeTag()判断附加在对象上的标记类型，以确保对象的类型正确。如果对象已经有关联的类型标记，则返回JSVM_INVALID_ARG。
+Associates the value of the **typeTag** pointer with a JavaScript object or an external value. You can call **OH_JSVM_CheckObjectTypeTag()** to check the type of the tag attached to the object to ensure that the object type is correct. If the object already has an associated type tag, **JSVM_INVALID_ARG** is returned.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要标记的JavaScript对象或外部值。 |
-| [const JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)* typeTag | 要标记对象的标签。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript object or external value to be tagged.|
+| [const JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)* typeTag | Pointer to the type tag.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_CheckObjectTypeTag()
 
@@ -3891,27 +3891,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env,JSVM_Value value,cons
 JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env,JSVM_Value value,const JSVM_TypeTag* typeTag,bool* result)
 ```
 
-**描述**
+**Description**
 
-将类型标签typeTag与JavaScript对象或外部值上的标签作对比。如果找到相同标签，设置result为true，否则为false。
+Checks the **typeTag** with the tag on a JavaScript object or external value. If they are the same tag, **result** is set to **true**. Otherwise, **result** is set to **false**.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查类型标记的JavaScript对象或外部值。 |
-| [const JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)* typeTag | 用于比较在对象上找到的任何标签的标签。 |
-| bool* result | 表示指定的类型标记是否与对象上的类型标记匹配。如果找到相同标签，设置result为true，否则为false。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript object or external value to be checked.|
+| [const JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)* typeTag | Pointer to the type tag used to compare any tags found on an object.|
+| bool* result | Pointer to the check result, indicating whether the specified type tag matches that on the object. If they are the same tag, **result** is set to **true**. Otherwise, **result** is set to **false**.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_AddFinalizer()
 
@@ -3919,29 +3919,29 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env,JSVM_Value value
 JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env,JSVM_Value jsObject,void* finalizeData,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Ref* result)
 ```
 
-**描述**
+**Description**
 
-为JavaScript对象添加JSVM_Finalize回调，当JavaScript对象被垃圾回收时调用该回调函数。可以在单个JavaScript对象上多次调用OH_JSVM_AddFinalizer。
+Adds the **JSVM_Finalize** callback to a JavaScript object. This callback is called when the JavaScript object is garbage-collected. **OH_JSVM_AddFinalizer** can be called multiple times on a single JavaScript object.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | 关联native数据的JavaScript对象。 |
-| void* finalizeData | 要传递给finalizeCb的可选数据。 |
-| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | 当JavaScript对象被垃圾回收时，将用于释放native数据的原生回调。JSVM_Finalize提供了更多详细信息。 |
-| void* finalizeHint | 传递给finalize回调的可选上下文提示。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | 可选的对JavaScript对象的引用。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsObject | JavaScript object associated with native data.|
+| void* finalizeData | Pointer to the optional data to be passed to **finalizeCb**.|
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCb | Native callback used to release native data when a JavaScript object is garbage-collected. **JSVM_Finalize** provides more details.|
+| void* finalizeHint | Pointer to the optional context hint passed to the **finalize** callback.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Pointer to the optional reference to a JavaScript object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_GetVersion()
 
@@ -3949,25 +3949,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env,JSVM_Value jsObject,vo
 JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env,uint32_t* result)
 ```
 
-**描述**
+**Description**
 
-返回JSVM运行时支持的最高JSVM-API版本。后续将新增JSVM-API，以便支持更多的功能。引入该API的目的：在支持某功能的JSVM版本，可以使用新的功能；在不支持某功能的JSVM版本，可以提供回调行为。
+Obtains the latest JSVM-API version supported by the JSVM runtime. New JSVM-API APIs will be added to support more features. With this API, the new features of a certain JSVM version can be used, or callbacks are provided if a feature is not supported.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| uint32_t* result | 支持的最高版本的JSVM-API。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| uint32_t* result | Pointer to the JSVM-API of the latest version.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetVMInfo()
 
@@ -3975,24 +3975,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env,uint32_t* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)
 ```
 
-**描述**
+**Description**
 
-返回虚拟机的信息。
+Obtains the VM information.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VMInfo](capi-jsvm-jsvm-vminfo.md)* result | 虚拟机的信息。 |
+| [JSVM_VMInfo](capi-jsvm-jsvm-vminfo.md)* result | Pointer to the VM information.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_AdjustExternalMemory()
 
@@ -4000,26 +4000,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env,int64_t changeInBytes,int64_t* result)
 ```
 
-**描述**
+**Description**
 
-此函数将因JavaScript对象而保持活跃的外部分配的内存大小通知给底层虚拟机。注册外部分配的内存将比其他方式更频繁地触发全局垃圾回收。
+Notifies the underlying VM of the size of externally allocated memory that remains active due to the JavaScript object. Registering externally allocated memory triggers global garbage collection more frequently than in other ways.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| int64_t changeInBytes | 因JavaScript对象而保持活动状态的外部分配内存的变化。 |
-| int64_t* result | 调整值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| int64_t changeInBytes | Change in the size of externally allocated memory that remains active due to the JavaScript object.|
+| int64_t* result | Pointer to the adjusted value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_MemoryPressureNotification()
 
@@ -4027,25 +4027,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env,int64_t change
 JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env,JSVM_MemoryPressureLevel level)
 ```
 
-**描述**
+**Description**
 
-通知虚拟机系统内存不足并有选择地触发垃圾回收。
+Notifies the VM of insufficient system memory and selectively triggers garbage collection.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_MemoryPressureLevel](capi-jsvm-types-h.md#jsvm_memorypressurelevel) level | 要为当前虚拟机设置的内存压力等级。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_MemoryPressureLevel](capi-jsvm-types-h.md#jsvm_memorypressurelevel) level | Memory pressure level to be set for the current VM.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreatePromise()
 
@@ -4053,26 +4053,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env,JSVM_Mem
 JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env,JSVM_Deferred* deferred,JSVM_Value* promise)
 ```
 
-**描述**
+**Description**
 
-创建一个延迟对象和一个JavaScript promise。
+Creates a deferred object and a JavaScript promise.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md)* deferred | 一个新创建的延迟对象，后续可以传递给OH_JSVM_ResolveDeferred()或OH_JSVM_RejectDeferred()以解析resp。或拒绝相关的Promise。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* promise | 与延迟对象关联的JavaScript Promise。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md)* deferred | Pointer to the new deferred object, which can be passed to **OH_JSVM_ResolveDeferred()** or **OH_JSVM_RejectDeferred()** to resolve **resp** or reject the promise.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* promise | Pointer to the JavaScript promise associated with the deferred object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_ResolveDeferred()
 
@@ -4080,26 +4080,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env,JSVM_Deferred* deferr
 JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env,JSVM_Deferred deferred,JSVM_Value resolution)
 ```
 
-**描述**
+**Description**
 
-通过与之关联的延迟对象来解析JavaScript promise。它只能用于解析对应的可用的延迟对象的JavaScript Promise。这意味着Promise必须使用OH_JSVM_CreatePromise()创建，并且从该调用返回的对象必须保留，才能将其传递给此API。
+Resolves a JavaScript promise by using the associated deferred object. It can only be used to resolve the JavaScript promise of the corresponding available deferred object. This means that promise must be created using **OH_JSVM_CreatePromise()**, and the object returned from this call must be retained so that it can be passed to this API.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md) deferred | 要解析其关联promise的延迟对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) resolution | 用来解决Promise的值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md) deferred | Deferred object whose associated promise is to be parsed.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) resolution | Value used to resolve a promise.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_RejectDeferred()
 
@@ -4107,26 +4107,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env,JSVM_Deferred defer
 JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env,JSVM_Deferred deferred,JSVM_Value rejection)
 ```
 
-**描述**
+**Description**
 
-通过与之关联的延迟对象来拒绝JavaScript Promise。它只能用于拒绝对应的可用延迟对象的JavaScript Promise。这意味着Promise必须使用OH_JSVM_CreatePromise()创建，并且从该调用返回的对象必须保留，才能将其传递给此API。
+Rejects a JavaScript promise by using the associated deferred object. It can only be used to reject the JavaScript promise of the corresponding available deferred object. This means that promise must be created using **OH_JSVM_CreatePromise()**, and the object returned from this call must be retained so that it can be passed to this API.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md) deferred | 要解析其关联promise的延迟对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rejection | 用来拒绝Promise的值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Deferred](capi-jsvm-jsvm-deferred--8h.md) deferred | Deferred object whose associated promise is to be parsed.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rejection | Value used to reject a promise.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_IsPromise()
 
@@ -4134,26 +4134,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env,JSVM_Deferred deferr
 JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env,JSVM_Value value,bool* isPromise)
 ```
 
-**描述**
+**Description**
 
-查询Promise是否为原生Promise对象。
+Checks whether a promise object is native.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的值。 |
-| bool* isPromise | 表示是否为原生Promise对象（即底层引擎创建的promise对象）的标志，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Value to be checked.|
+| bool* isPromise | Pointer to the check result. The value **true** indicates that the promise is a native promise object (which is created by the underlying engine), and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_PromiseRegisterHandler()
 
@@ -4161,28 +4161,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env,JSVM_Value value,bool* is
 JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env,JSVM_Value promise,JSVM_Value onFulfilled,JSVM_Value onRejected,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-注册 处理Promise兑现/拒绝的 回调函数。
+Registers a handler for processing promise fulfillment and rejection.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) promise | 需要注册回调的 promise。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) onFulfilled | 该函数在 promise 兑现后调用。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) onRejected | 该函数在 promise 拒绝后调用。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，返回 promise 调用 then/catch 接口后生成的新的 promise。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) promise | Promise for which a handler needs to be registered.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) onFulfilled | Handler to be invoked after the promise is fulfilled.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) onRejected | Handler to be invoked after the promise is rejected.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the new promise generated after a promise calls the **then** or **catch** API.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 如果 env 或 promise 为空，或 onFulfilled 和 onRejected 同时为空。<br>         [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status) 如果 promise 非 JS 的 Promise 类型，或 onFulfilled、onRejected 非 JS 的 Function 类型。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 如果存在 JS 异常待处理。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 如果 API 执行错误。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **env** or **promise** is empty, or **onFulfilled** and **onRejected** are both empty.<br>         [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status): invalid type. This code is returned if the promise, **onFulfilled**, or **onRejected** is not of the JavaScript type.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if API execution error occurs.|
 
 ### OH_JSVM_JsonParse()
 
@@ -4190,26 +4190,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env,JSVM_Value p
 JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env,JSVM_Value jsonString,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-解析JSON字符串，并返回成功解析的值。
+Parses a JSON string and returns the parsed value.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsonString | 待解析的字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 成功解析的值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsonString | String to be parsed.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the value obtained by parsing.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_JsonStringify()
 
@@ -4217,26 +4217,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env,JSVM_Value jsonString,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env,JSVM_Value jsonObject,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-将对象字符串化，并返回成功转换后的字符串。
+Converts an object into a JSON string and returns the converted string.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsonObject | 待字符串化的对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 成功转换后返回的字符串。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) jsonObject | Object to be stringified.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the converted string.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CreateSnapshot()
 
@@ -4244,28 +4244,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env,JSVM_Value jsonObject
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm,size_t contextCount,const JSVM_Env* contexts,const char** blobData,size_t* blobSize)
 ```
 
-**描述**
+**Description**
 
-创建虚拟机的启动快照。
+Creates a VM startup snapshot.
 
-**起始版本：** 11
+**Since**: 11
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 目标环境，API接口将在该环境下调用。 |
-| size_t contextCount | 上下文个数。 |
-| [const JSVM_Env](capi-jsvm-jsvm-env--8h.md)* contexts | 要添加到快照的上下文数组。 |
-| const char** blobData | 快照数据。 |
-| size_t* blobSize | 快照数据的大小。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | Target environment in which the API will be called.|
+| size_t contextCount | Number of contexts.|
+| [const JSVM_Env](capi-jsvm-jsvm-env--8h.md)* contexts | Pointer to the array of contexts to be added to the snapshot.|
+| const char** blobData | Double pointer to the snapshot data.|
+| size_t* blobSize | Pointer to the size of snapshot data.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_GetHeapStatistics()
 
@@ -4273,25 +4273,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm,size_t contextCount,co
 JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm,JSVM_HeapStatistics* result)
 ```
 
-**描述**
+**Description**
 
-返回一组虚拟机堆的统计数据。
+Obtains heap statistics of a VM.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 返回堆统计信息的虚拟机。 |
-| [JSVM_HeapStatistics](capi-jsvm-jsvm-heapstatistics.md)* result | 堆统计数据。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM that returns heap statistics.|
+| [JSVM_HeapStatistics](capi-jsvm-jsvm-heapstatistics.md)* result | Pointer to the heap statistics.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_StartCpuProfiler()
 
@@ -4299,25 +4299,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm,JSVM_HeapStatistics
 JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler* result)
 ```
 
-**描述**
+**Description**
 
-创建并启动一个CPU profiler。
+Creates and starts a CPU profiler instance.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 启动CPU profiler的虚拟机。 |
-| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md)* result | 指向CPU profiler的指针。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM for starting the CPU profiler.|
+| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md)* result | Pointer to the CPU profiler.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_StopCpuProfiler()
 
@@ -4325,27 +4325,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler* re
 JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler profiler,JSVM_OutputStream stream,void* streamData)
 ```
 
-**描述**
+**Description**
 
-停止CPU profiler并将结果输出到流。
+Stops the CPU profiler and outputs the result to a stream.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                | 描述 |
+| Name                                                               | Description|
 |--------------------------------------------------------------------| -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                             | 启动CPU profiler的虚拟机。 |
-| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md) profiler     | 要停止的CPU profiler。 |
-| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 接收数据的输出流回调。 |
-| void* streamData                                                   | 传递给输出流回调的可选数据。例如，可以是一个文件流，用来将输出流回调中传递的采样数据写入文件。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                             | VM for starting the CPU profiler.|
+| [JSVM_CpuProfiler](capi-jsvm-jsvm-cpuprofiler--8h.md) profiler     | CPU profiler to be stopped.|
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | Callback for the output stream.|
+| void* streamData                                                   | Pointer to the optional data passed to the output stream. For example, it can be a file stream that writes the sample data passed in the output stream to a file.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_TakeHeapSnapshot()
 
@@ -4353,26 +4353,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm,JSVM_CpuProfiler prof
 JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm,JSVM_OutputStream stream,void* streamData)
 ```
 
-**描述**
+**Description**
 
-获取当前堆快照并将其输出到流。
+Obtains a snapshot of the current heap and outputs it to a stream.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 将被获取堆快照的虚拟机。 |
-| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 接收数据的输出流回调。 |
-| void* streamData | 传递给输出流回调的可选数据。例如，可以是一个文件流，用来将输出流回调中传递的采样数据写入文件。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM whose heap snapshot is to be obtained.|
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | Callback for the output stream.|
+| void* streamData | Pointer to the optional data passed to the output stream. For example, it can be a file stream that writes the sample data passed in the output stream to a file.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_OpenInspector()
 
@@ -4380,26 +4380,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm,JSVM_OutputStream st
 JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env,const char* host,uint16_t port)
 ```
 
-**描述**
+**Description**
 
-在指定的主机和端口上激活inspector，将用来调试JS代码。
+Opens an inspector instance on the specified host and port for debugging JS code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* host | 要监听inspector连接的主机IP地址。 |
-| uint16_t port | 要监听inspector连接的端口。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* host | Pointer to the IP address of the host for listening for the inspector connection.|
+| uint16_t port | Port for listening for the inspector connection.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_CloseInspector()
 
@@ -4407,24 +4407,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env,const char* host,uint
 JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)
 ```
 
-**描述**
+**Description**
 
-尝试关闭剩余的所有inspector连接。
+Closes all remaining inspector connections.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_WaitForDebugger()
 
@@ -4432,25 +4432,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)
 JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env,bool breakNextLine)
 ```
 
-**描述**
+**Description**
 
-等待主机与inspector建立socket连接，连接建立后程序将继续运行。发送Runtime.runIfWaitingForDebugger命令。
+Waits for the host to set up a socket connection with an inspector. After the connection is set up, the application continues to run. **Runtime.runIfWaitingForDebugger** is sent.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| bool breakNextLine | 是否在下一行JavaScript代码中断。breakNextLine为true将暂停运行下一行JS代码，开发者需要通过调试器的调试按钮控制JS继续执行；false则不会终端中断。|
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| bool breakNextLine | Whether to break in the next line of JavaScript code. If this parameter is set to **true**, the next line of JavaScript code is suspended. You need to use the debugger to control the execution of the JavaScript code. If this parameter is set to **false**, the next line of JavaScript code is not interrupted.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_DefineClassWithPropertyHandler()
 
@@ -4458,32 +4458,32 @@ JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env,bool breakNextLine)
 JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_PropertyHandlerCfg propertyHandlerCfg,JSVM_Callback callAsFunctionCallback,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-定义一个具有给定类名、构造函数、属性和回调处理程序的JavaScript类，属性操作包括getter、setter、deleter、enumerator等，并作为函数回调进行调用。
+Defines a set of JavaScript class property handlers including **getter**, **setter**, **deleter**, and **enumerator** with the given class name, constructor, properties, and callback, which are called as callbacks.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                               | 描述 |
+| Name                                                                              | Description|
 |-----------------------------------------------------------------------------------| -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                                         | 调用JSVM-API的环境。 |
-| const char* utf8name                                                              | JavaScript类构造函数的名称。 |
-| size_t length                                                                     | utf8name的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | 用于创建类的构造函数的回调函数。此方法必须是JSVM_Callback类型。constructor中callback回调需为静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
-| size_t propertyCount                                                              | properties数组参数中的项数。 |
-| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 描述静态数据和实例数据的属性描述符数组类上的属性、访问器和方法请参考JSVM_PropertyDescriptor。 |
-| [JSVM_PropertyHandlerCfg](capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md) propertyHandlerCfg                                    | 访问实例对象属性触发相应的回调函数。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) callAsFunctionCallback          | 将实例对象作为函数调用将触发此回调。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result                 | 表示JavaScript类的构造函数的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                                         | Environment for calling the JSVM-API.|
+| const char* utf8name                                                              | Pointer to the name of the JavaScript class constructor.|
+| size_t length                                                                     | Length of **utf8name** (in bytes) or **JSVM_AUTO_LENGTH** (if null-terminated).|
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | Callback of the constructor used to create class. This method must be of the **JSVM_Callback** type. The callback of the constructor must be a static member. C++ class constructors cannot be used. For details, see [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md).|
+| size_t propertyCount                                                              | Number of properties in the array.|
+| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Pointer to the property descriptors of static data and instance data. For details about the properties, accessors, and methods of a class, see **JSVM_PropertyDescriptor**.|
+| [JSVM_PropertyHandlerCfg](capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md) propertyHandlerCfg                                    | Callback to be invoked when an instance object property is accessed.|
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) callAsFunctionCallback          | Callback to be invoked when an instance object is called as a function.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result                 | Pointer to the **JSVM_Value** of the constructor of a JavaScript class.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
 ### OH_JSVM_IsLocked()
 
@@ -4491,25 +4491,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env,cons
 JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)
 ```
 
-**描述**
+**Description**
 
-判断当前线程是否持有指定环境的锁。只有持有锁的线程才能使用该环境。
+Checks whether the current thread holds a lock of the specified environment. Only the thread that holds the lock can use the environment.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该API的环境。 |
-| bool* isLocked | 输出参数，指示当前线程是否持有环境锁的标志。true为持有环境锁，false为不持有环境锁。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+| bool* isLocked | Pointer to the result indicating whether the current thread holds the environment lock. The value **true** indicates that the environment lock is held, and the value **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status)表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_AcquireLock()
 
@@ -4517,24 +4517,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)
 JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)
 ```
 
-**描述**
+**Description**
 
-获取指定环境的锁。只有持有锁的线程才能使用该环境。
+Obtains a lock. Only the thread that holds the lock can use the environment.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该API的环境。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status)表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_ReleaseLock()
 
@@ -4542,24 +4542,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)
 JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)
 ```
 
-**描述**
+**Description**
 
-释放指定环境的锁。只有持有锁的线程才能使用该环境。
+Releases a lock. Only the thread that holds the lock can use the environment.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该API的环境。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status)表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsUndefined()
 
@@ -4567,26 +4567,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)
 JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env,JSVM_Value value,bool* isUndefined)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Undefined。这相当于JS中的`value === undefined`。
+Checks whether the input value is **Undefined**. This API is equivalent to **value === undefined** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isUndefined | 表示给定的JSVM_Value是否为Undefined，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isUndefined | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is **Undefined**, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsNull()
 
@@ -4594,26 +4594,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env,JSVM_Value value,bool* 
 JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env,JSVM_Value value,bool* isNull)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Null对象。这相当于JS中的`value === null`。
+Checks whether the input value is a **Null** object. This API is equivalent to **value === null** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isNull | 表示给定的JSVM_Value是否为Null，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isNull | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is **Null**, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsNullOrUndefined()
 
@@ -4621,26 +4621,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env,JSVM_Value value,bool* isNul
 JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env,JSVM_Value value,bool* isNullOrUndefined)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Null或Undefined。这相当于JS中的`value == null`。
+Checks whether the input value is **Null** or **Undefined**. This API is equivalent to **value == null** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isNullOrUndefined | 表示给定的JSVM_Value是否为Null或Undefined，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isNullOrUndefined | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is **Null** or **Undefined**, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsBoolean()
 
@@ -4648,26 +4648,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env,JSVM_Value value,
 JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env,JSVM_Value value,bool* isBoolean)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Boolean。这相当于JS中的`typeof value === 'boolean'`。
+Checks whether the input value is a Boolean value. This API is equivalent to **typeof value ==='boolean'** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isBoolean | 表示给定的JSVM_Value是否为Boolean，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isBoolean | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is of the Boolean type, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsNumber()
 
@@ -4675,26 +4675,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env,JSVM_Value value,bool* is
 JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env,JSVM_Value value,bool* isNumber)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Number。这相当于JS中的`typeof value === 'number'`。
+Checks whether the input value is a number. This API is equivalent to **typeof value === 'number'** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isNumber | 表示给定的JSVM_Value是否为Number，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isNumber | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is a number, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsString()
 
@@ -4702,26 +4702,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env,JSVM_Value value,bool* isN
 JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env,JSVM_Value value,bool* isString)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为String。这相当于JS中的`typeof value === 'string'`。
+Checks whether the input value is a string. This API is equivalent to **typeof value === 'string'** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isString | 表示给定的JSVM_Value是否为String，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isString | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is a string, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsSymbol()
 
@@ -4729,26 +4729,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env,JSVM_Value value,bool* isS
 JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env,JSVM_Value value,bool* isSymbol)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Symbol。这相当于JS中的`typeof value === 'symbol'`。
+Checks whether the input value is a symbol. This API is equivalent to **typeof value === 'symbol'** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isSymbol | 表示给定的JSVM_Value是否为Symbol，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isSymbol | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is a symbol, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsFunction()
 
@@ -4756,26 +4756,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env,JSVM_Value value,bool* isS
 JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env,JSVM_Value value,bool* isFunction)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Function。这相当于JS中的`typeof value === 'function'`。
+Checks whether the input value is a function. This API is equivalent to **typeof value === 'function'** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isFunction | 表示给定的JSVM_Value是否为Function，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isFunction | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is a function, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsObject()
 
@@ -4783,26 +4783,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env,JSVM_Value value,bool* i
 JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env,JSVM_Value value,bool* isObject)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Object。
+Checks whether the input value is an object.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isObject | 表示给定的JSVM_Value是否为Object，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isObject | Pointer to the check result. The value **true** indicates that the given value is an object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsBigInt()
 
@@ -4810,26 +4810,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env,JSVM_Value value,bool* isO
 JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env,JSVM_Value value,bool* isBigInt)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为BigInt。这相当于JS中的`typeof value === 'bigint'`。
+Checks whether the input value is a BigInt value. This API is equivalent to **typeof value === 'bigint'** in JavaScript code.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isBigInt | 表示给定的JSVM_Value是否为BigInt，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isBigInt | Pointer to the check result. The value **true** indicates that the **JSVM_Value** is of the BigInt type, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateMap()
 
@@ -4837,25 +4837,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env,JSVM_Value value,bool* isB
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-此API返回与JavaScript Map类型对应的JavaScript值。
+Creates a JavaScript value of the Map type.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript Map的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of the JavaScript Map type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_IsMap()
 
@@ -4863,26 +4863,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为Map。
+Checks whether the input value is of the Map type.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isMap | 给定的值是否为Map，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isMap | Pointer to the check result. The value **true** indicates that the input value is of the Map type, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_IsConstructor()
 
@@ -4890,26 +4890,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)
 JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为构造函数。
+Checks whether the input value is a constructor.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* isConstructor | 给定的值是否为构造函数，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* isConstructor | Pointer to the check result. The value **true** indicates that the input value is a constructor, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_CreateRegExp()
 
@@ -4917,27 +4917,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-此API返回与输入的JavaScript字符串对应的正则表达式对象。接口可能会抛出异常。
+Creates a regular expression object corresponding to the input JavaScript string. This API may throw an exception.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要转换为正则表达式的JavaScript字符串。 |
-| [JSVM_RegExpFlags](capi-jsvm-types-h.md#jsvm_regexpflags) flags | 正则表达式标志位。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 代表JavaScript RegExp的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript string to be converted to a regular expression.|
+| [JSVM_RegExpFlags](capi-jsvm-types-h.md#jsvm_regexpflags) flags | Regular expression flags.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the **JSVM_Value** of JavaScript RegExp.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示API在运行时抛出异常。 |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception. This code is returned if an exception is thrown during API running.|
 
 ### OH_JSVM_ObjectGetPrototypeOf()
 
@@ -4945,26 +4945,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_
 JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取JavaScript object的原型。
+Obtains the prototype of a JavaScript object.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object |  表示待返回其原型的JavaScript object。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示给定对象的原型。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object |  JavaScript object whose prototype is to be returned.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the prototype of a given object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示API在运行时抛出异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception. This code is returned if an exception is thrown during API running.|
 
 ### OH_JSVM_ObjectSetPrototypeOf()
 
@@ -4972,26 +4972,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env,JSVM_Value obj
 JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value prototype)
 ```
 
-**描述**
+**Description**
 
-设置给定的JavaScript object的原型。
+Sets the prototype of a JavaScript object.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 表示需要设置原型的JavaScript object。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) prototype | 对象原型。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | JavaScript object whose prototype needs to be set.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) prototype | Object prototype.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示设置原型失败。如循环设置原型时，会触发该失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示API在运行时抛出异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the prototype fails to be set. For example, cyclically setting the prototype will trigger the failure.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception. This code is returned if an exception is thrown during API running.|
 
 ### OH_JSVM_CreateSet()
 
@@ -4999,25 +4999,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env,JSVM_Value obj
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-创建JavaScript Set对象。
+Creates a JavaScript value of the Set type.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示已经创建的JavaScript Set对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the created JavaScript value of the Set type.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_IsSet()
 
@@ -5025,26 +5025,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env,JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env,JSVM_Value value,bool* isSet)
 ```
 
-**描述**
+**Description**
 
-判断给定的对象是否是Set类型。
+Checks whether the specified object is of the Set type.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的对象。 |
-| bool* isSet | 给定的对象是否是Set类型，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Object to be checked.|
+| bool* isSet | Pointer to the check result. The value **true** indicates that the given object is of the Set type, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|
 
 ### OH_JSVM_CoerceToBigInt()
 
@@ -5052,26 +5052,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env,JSVM_Value value,bool* isSet)
 JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-实现抽象操作`ToBigInt()`。
+Implements the abstract operation **ToBigInt()**.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要进行强制转换的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示成功转换成BigInt后的JavaScript值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be forcibly converted.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the converted JavaScript value.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BitInt。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input JavaScript value cannot be converted to a BigInt value.|
 
 ### OH_JSVM_IsRegExp()
 
@@ -5079,26 +5079,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env,JSVM_Value value,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否为JavaScript RegExp对象。
+Checks whether the input value is a JavaScript RegExp object.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的JSVM_Value。 |
-| bool* result | 表示给定的JSVM_Value是否为JavaScript RegExp对象，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | **JSVM_Value** to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the input value is a JavaScript RegExp object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_CreateFunctionWithScript()
 
@@ -5106,30 +5106,30 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env,JSVM_Value value,bool* res
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env,const char* funcName,size_t length,size_t argc,const JSVM_Value* argv,JSVM_Value script,JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-创建一个以给定JavaScript为函数体的函数。
+Creates a function with the given JavaScript as the function body.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| const char* funcName | 包含函数名称的字符串。如果传入NULL，则创建一个匿名函数。 |
-| size_t length | funcName的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
-| size_t argc | argv数组中的元素个数。 |
-| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JSVM_values数组，表示将作为参数传递给函数的JavaScript值。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | 包含作为函数体的JavaScript字符串。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示新创建函数的JavaScript函数对象的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const char* funcName | Pointer to the string containing the function name. If **NULL** is passed to it, an anonymous function is created.|
+| size_t length | Length of **funcName** (in bytes) or **JSVM_AUTO_LENGTH** (if null-terminated).|
+| size_t argc | Number of elements in the argv array.|
+| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | Pointer to the **JSVM_values** array, representing the JavaScript values to be passed to the function as arguments.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | JavaScript string that is used as the function body.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the JavaScript function object of the newly created function.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示输入的JavaScript无法编译成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the input JavaScript cannot be compiled.|
 
 ### OH_JSVM_PumpMessageLoop()
 
@@ -5137,25 +5137,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env,const char
 JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm,bool* result)
 ```
 
-**描述**
+**Description**
 
-启动虚拟机内任务队列，这个任务队列可以通过外部事件循环执行。
+Starts the message loop in the VM. This message loop can be executed through the external event loop.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 启动任务队列的虚拟机实例。 |
-| bool* result | 表示任务队列是否成功启动，true为是，false为否。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM instance for starting a message loop.|
+| bool* result | Pointer to the operation result. The value **true** indicates that the message loop is started successfully, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回JSVM函数结果代码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_PerformMicrotaskCheckpoint()
 
@@ -5163,24 +5163,24 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm,bool* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)
 ```
 
-**描述**
+**Description**
 
-检查队列中是否有微任务等待，如果存在则执行它们。
+Checks whether there are microtasks waiting in the queue. If yes, execute them.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 要检查微任务的虚拟机实例。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM instance in which microtasks are to be checked.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回JSVM函数结果代码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_IsCallable()
 
@@ -5188,26 +5188,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)
 JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool* isCallable)
 ```
 
-**描述**
+**Description**
 
-此API检查传入的值是否可调用。
+Checks whether the input value is callable.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该API的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 要检查的JavaScript值。 |
-| bool* isCallable | 给定值是否可调用。true为可调用，false为不可调用。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* isCallable | Pointer to the result indicating whether the given value is callable. The value **true** indicates that the given value is callable, and the value **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回JSVM函数结果代码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status)表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_RetainScript()
 
@@ -5215,25 +5215,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool*
 JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)
 ```
 
-**描述**
+**Description**
 
-持久保存一个JSVM_Script并将其生命周期延长到当前作用域之外。
+Retains a **JSVM_Script** and extends its lifecycle beyond the current scope.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该API的环境。 |
-| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | 包含要持久化保存脚本的JavaScript字符串。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | JavaScript script to be retained.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示脚本为空或已被保存过。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the script is empty or has been retained.|
 
 ### OH_JSVM_ReleaseScript()
 
@@ -5241,25 +5241,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)
 JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)
 ```
 
-**描述**
+**Description**
 
-释放由 OH_JSVM_RetainScript 保留的脚本，释放后应避免对传入 script 的再次使用。
+Releases the script retained by **OH_JSVM_RetainScript**. The released script cannot be used again.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该API的环境。 |
-| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | 包含要释放的脚本的JavaScript字符串。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md) script | JavaScript string that includes the script to be released.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示脚本为空或未被保存过。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the script is empty or has not been retained.|
 
 ### OH_JSVM_OpenInspectorWithName()
 
@@ -5267,26 +5267,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)
 JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env,int pid,const char* name)
 ```
 
-**描述**
+**Description**
 
-打开一个名为 name 的 inspector，为其打开对应 pid 的 unix domain 端口。
+Opens the **name** inspector and its corresponding Unix Domain port with the specified PID.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用该API的环境。 |
-| int pid | 用于标识 inspector 连接的进程ID。 |
-| const char* name | inspector 的名字。 如果传入nullptr, 则默认名称为jsvm。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+| int pid | PID for identifying the inspector connection.|
+| const char* name | Pointer to the name of an inspector. If **nullptr** is passed in, the default name **jsvm** is used.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileWasmModule()
 
@@ -5294,30 +5294,30 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env,int pid,const
 JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env,const uint8_t *wasmBytecode,size_t wasmBytecodeLength,const uint8_t *cacheData,size_t cacheDataLength,bool *cacheRejected,JSVM_Value *wasmModule)
 ```
 
-**描述**
+**Description**
 
-将 WebAssembly 字节码编译得到一个 WebAssembly 模块。如果提供了 WebAssembly 缓存，则会先尝试对缓存进行反序列化。如果没有 JIT 权限支持，则打印一行日志提示开发者。
+Compiles the WebAssembly bytecode to obtain a WebAssembly module. If the WebAssembly cache is provided, it will be deserialized first. If this API does not have the JIT permission, a log is printed to notify you.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| const uint8_t *wasmBytecode | WebAssembly 字节码。 |
-| size_t wasmBytecodeLength | WebAssembly 字节码的长度，单位：字节。 |
-| const uint8_t *cacheData | 可选的 WebAssembly 缓存。 |
-| size_t cacheDataLength | 可选的 WebAssembly 缓存长度，单位：字节。 |
-| bool *cacheRejected | 输出参数，表示提供的 WebAssembly 缓存是否被引擎拒绝，true为是，false为否。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *wasmModule | 输出参数，表示生成的 WebAssembly 模块。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const uint8_t *wasmBytecode | Pointer to the WebAssembly bytecode.|
+| size_t wasmBytecodeLength | Length of the WebAssembly bytecode, in bytes.|
+| const uint8_t *cacheData | Pointer to the optional WebAssembly cache.|
+| size_t cacheDataLength | Optional WebAssembly cache length, in bytes.|
+| bool *cacheRejected | Pointer to the operation result. The value **true** indicates that the provided WebAssembly cache is rejected by the engine, and **false** indicates the opposite.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *wasmModule | Pointer to the generated WebAssembly module.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmBytecode 参数为空，或传入的数据长度参数无效。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmBytecode** parameter is empty, or the input data length parameter is invalid.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status): JIT mode expected.|
 
 ### OH_JSVM_CompileWasmFunction()
 
@@ -5325,27 +5325,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env,const uint8_t *wa
 JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env,JSVM_Value wasmModule,uint32_t functionIndex,JSVM_WasmOptLevel optLevel)
 ```
 
-**描述**
+**Description**
 
-对当前 WebAssembly 模块中指定索引的函数进行指定优化等级的编译优化。如果没有 JIT 权限支持，则打印一行日志提示开发者。
+Compiles a WebAssembly function with the specified index at a specified optimization level. If this API does not have the JIT permission, a log is printed to notify you.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) wasmModule | 待编译函数所在的 WebAssembly 模块。 |
-| uint32_t functionIndex | 待编译函数的索引，索引必须位于合法范围。 |
-| [JSVM_WasmOptLevel](capi-jsvm-types-h.md#jsvm_wasmoptlevel) optLevel | 优化等级，当前只支持高优化等级。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) wasmModule | WebAssembly module where the function to be compiled is located.|
+| uint32_t functionIndex | Index of the function to be compiled. The index must be within the valid range.|
+| [JSVM_WasmOptLevel](capi-jsvm-types-h.md#jsvm_wasmoptlevel) optLevel | Optimization level. Currently, only the high optimization level is supported.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmModule 参数为空，或 wasmModule 不是一个真正的 WebAssembly 模块。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示函数索引越界，或编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the **env** or **wasmModule** parameter is empty, or **wasmModule** is not a real WebAssembly module.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the function index is out of range or the compilation fails.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status): JIT mode expected.|
 
 ### OH_JSVM_IsWasmModuleObject()
 
@@ -5353,26 +5353,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env,JSVM_Value wasm
 JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-判断给定的 JSVM_Value 是否是一个 WebAssembly 模块。
+Checks whether the given **JSVM_Value** is a WebAssembly module.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的 JavaScript 值。 |
-| bool* result | 输出参数，表示给定的值是否是一个 WebAssembly 模块，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given value is a WebAssembly module, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_CreateWasmCache()
 
@@ -5380,27 +5380,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env,JSVM_Value value
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env,JSVM_Value wasmModule,const uint8_t** data,size_t* length)
 ```
 
-**描述**
+**Description**
 
-为给定的 WebAssembly 模块生成缓存。如果没有 JIT 权限支持，则打印一行日志提示开发者。
+Creates a WebAssembly cache. If this API does not have the JIT permission, a log is printed to notify you.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) wasmModule | 编译好的 WebAssembly 模块。 |
-| const uint8_t** data | 输出参数，表示生成的 WebAssembly 缓存。 |
-| size_t* length | 输出参数，表示生成的 WebAssembly 缓存的长度，单位：字节。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) wasmModule | Compiled WebAssembly module.|
+| const uint8_t** data | Double pointer to the generated WebAssembly cache.|
+| size_t* length | Pointer to the length of the generated WebAssembly cache, in bytes.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示缓存生成失败。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the cache fails to be generated.<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status): JIT mode expected.|
 
 ### OH_JSVM_ReleaseCache()
 
@@ -5408,26 +5408,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env,JSVM_Value wasmModu
 JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env,const uint8_t* cacheData,JSVM_CacheType cacheType)
 ```
 
-**描述**
+**Description**
 
-释放给定类型的缓存数据。
+Releases the cache of a specified type.
 
-**起始版本：** 12
+**Since**: 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| const uint8_t* cacheData | 待释放的缓存数据，重复释放是未定义行为。 |
-| [JSVM_CacheType](capi-jsvm-types-h.md#jsvm_cachetype) cacheType | 缓存的类型，缓存的生成和释放必须一一对应。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| const uint8_t* cacheData | Pointer to the cache data to be released. Repeated release is an undefined behavior.|
+| [JSVM_CacheType](capi-jsvm-types-h.md#jsvm_cachetype) cacheType | Cache type. A generated cache can be released accordingly.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数，或 cacheType 参数不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in or the **cacheType** argument is invalid.|
 
 ### OH_JSVM_IsBigIntObject()
 
@@ -5435,26 +5435,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env,const uint8_t* cacheDa
 JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-判断给定的 JSVM_Value 是否是一个 BigInt对象。
+Checks whether the given **JSVM_Value** is a BigInt object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的 JavaScript 值。 |
-| bool* result | 输出参数，表示给定的值是否是一个BigInt对象，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given value is a BigInt object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_IsBooleanObject()
 
@@ -5462,26 +5462,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env,JSVM_Value value,boo
 JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-判断给定的 JSVM_Value 是否是一个 Boolean对象。
+Checks whether the given **JSVM_Value** is a Boolean object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的 JavaScript 值。 |
-| bool* result | 输出参数，表示给定的值是否是一个Boolean对象，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given value is a Boolean object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_IsStringObject()
 
@@ -5489,26 +5489,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env,JSVM_Value value,bo
 JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-判断给定的 JSVM_Value 是否是一个 String对象。
+Checks whether the given **JSVM_Value** is a string object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的 JavaScript 值。 |
-| bool* result | 输出参数，表示给定的值是否是一个String对象，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given value is a string object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_IsNumberObject()
 
@@ -5516,26 +5516,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env,JSVM_Value value,boo
 JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-判断给定的 JSVM_Value 是否是一个 Number对象。
+Checks whether the given **JSVM_Value** is a number object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的 JavaScript 值。 |
-| bool* result | 输出参数，表示给定的值是否是一个Number对象，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given value is a number object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_IsSymbolObject()
 
@@ -5543,26 +5543,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env,JSVM_Value value,boo
 JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env,JSVM_Value value,bool* result)
 ```
 
-**描述**
+**Description**
 
-判断给定的 JSVM_Value 是否是一个 Symbol对象。
+Checks whether the given **JSVM_Value** is a symbol object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | 待检查的 JavaScript 值。 |
-| bool* result | 输出参数，表示给定的值是否是一个Symbol对象，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* result | Pointer to the check result. The value **true** indicates that the given value is a symbol object, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolAsyncIterator()
 
@@ -5570,25 +5570,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env,JSVM_Value value,boo
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.AsyncIterator能力。
+Obtains the **Symbol.AsyncIterator** capability from the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.AsyncIterator。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.AsyncIterator** of the well-known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolHasInstance()
 
@@ -5596,25 +5596,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value*
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.HasInstance能力。
+Obtains the **Symbol.HasInstance** capability from the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.HasInstance。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.HasInstance** of the well-Known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolIsConcatSpreadable()
 
@@ -5622,25 +5622,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* r
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.IsConcatSpreadable能力。
+Obtains the **Symbol.IsConcatSpreadable** capability from the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.IsConcatSpreadable。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.IsConcatSpreadable** of the well-Known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolMatch()
 
@@ -5648,25 +5648,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_V
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.Match能力。
+Obtains the **Symbol.Match** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.Match。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.Match** of the well-known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolReplace()
 
@@ -5674,25 +5674,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.Replace能力。
+Obtains the **Symbol.Replace** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.Replace。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.Replace** of the well-known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolSearch()
 
@@ -5700,25 +5700,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* resul
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.Search能力。
+Obtains the **Symbol.Search** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.Search。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.Search** of the well-known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolSplit()
 
@@ -5726,25 +5726,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.Split能力。
+Obtains the **Symbol.Split** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.Split。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.Split** of the well-known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolToPrimitive()
 
@@ -5752,25 +5752,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.ToPrimitive能力。
+Obtains the **Symbol.ToPrimitive** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.ToPrimitive。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.ToPrimitive** of the well-Known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolUnscopables()
 
@@ -5778,25 +5778,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* r
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.Unscopables能力。
+Obtains the **Symbol.Unscopables** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.Unscopables。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.Unscopables** of the well-Known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolToStringTag()
 
@@ -5804,25 +5804,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* r
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.ToStringTag能力。
+Obtains the **Symbol.ToStringTag** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.ToStringTag。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.ToStringTag** of the well-Known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_GetSymbolIterator()
 
@@ -5830,25 +5830,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* r
 JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-获取Well-Known symbol里的Symbol.Iterator能力。
+Obtains the **Symbol.Iterator** capability of the well-known symbol.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 输出参数，Well-Known symbol里的Symbol.Iterator。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to **Symbol.Iterator** of the well-known symbol.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if a null pointer argument is passed in.|
 
 ### OH_JSVM_TraceStart()
 
@@ -5856,27 +5856,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* resu
 JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count,const JSVM_TraceCategory* categories,const char* tag,size_t eventsCount)
 ```
 
-**描述**
+**Description**
 
-对所有 JSVM 运行时实例，开始采集指定 Trace 类别的信息（线程不安全）。
+Starts collecting information of the specified trace categories for all JSVM runtime instances (thread-unsafe).
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| size_t count | 进行 Trace 采集的分类数量。 |
-| [const JSVM_TraceCategory](capi-jsvm-types-h.md#jsvm_tracecategory)* categories | 进行 Trace 采集的具体分类数组。 |
-| const char* tag | 用户定义并赋予 Trace 数据的标签。 |
-| size_t eventsCount | 存储的 Trace 事件数量上限。 |
+| size_t count | Number of trace categories.|
+| [const JSVM_TraceCategory](capi-jsvm-types-h.md#jsvm_tracecategory)* categories | Pointer to the array of trace categories.|
+| const char* tag | Pointer to the tag defined and assigned to trace data.|
+| size_t eventsCount | Maximum number of trace events that can be stored.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。 。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) categories 或者 count 输入不合法。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.  <br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **categories** or **count** is invalid.|
 
 ### OH_JSVM_TraceStop()
 
@@ -5884,25 +5884,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count,const JSVM_TraceCategory
 JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* streamData)
 ```
 
-**描述**
+**Description**
 
-对所有 JSVM 运行时，停止采集指定 Trace 类别的信息（线程不安全）。
+Stops collecting information of a specified trace category for all JSVM runtime instances (thread-unsafe).
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | 输出流回调函数，实现接收 Trace 数据功能。 |
-| void* streamData | 的输出流指针，用于辅助输出流回调函数进行数据输出。 |
+| [JSVM_OutputStream](capi-jsvm-types-h.md#jsvm_outputstream) stream | Callback for the output stream, which is used to receive trace data.|
+| void* streamData | Pointer to the output stream, which is used by the output stream callback to output data.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。 。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) stream 或者 streamData 为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.  <br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **stream** or **streamData** is empty.|
 
 ### OH_JSVM_AddHandlerForGC()
 
@@ -5910,28 +5910,28 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* stream
 JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTimeForGC triggerTime,JSVM_HandlerForGC handler,JSVM_GCType gcType,void* userData)
 ```
 
-**描述**
+**Description**
 
-在VM中添加GC的回调函数。
+Adds a handler for GC to the VM.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                                 | 描述 |
+| Name                                                                                | Description|
 |-------------------------------------------------------------------------------------| -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                              | 调用JSVM-API的环境。 |
-| [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | 触发GC回调函数的时机。 |
-| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler                 | 当触发GC时，传入的回调函数会被调用。 |
-| [JSVM_GCType](capi-jsvm-types-h.md#jsvm_gctype) gcType                              | GC类型。 |
-| void* userData                                                                      | 原生指针数据。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                              | Environment for calling the JSVM-API.|
+| [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | Time when the GC callback is triggered.|
+| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler                 | Handler to be invoked when GC is triggered.|
+| [JSVM_GCType](capi-jsvm-types-h.md#jsvm_gctype) gcType                              | GC type.|
+| void* userData                                                                      | Pointer to the native user data.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的vm或者handler为空或者handler已经被添加过了。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** or **handler** is empty or the handler has been added.|
 
 ### OH_JSVM_RemoveHandlerForGC()
 
@@ -5939,27 +5939,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTimeFor
 JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTimeForGC triggerTime,JSVM_HandlerForGC handler,void* userData)
 ```
 
-**描述**
+**Description**
 
-在VM中移除GC的回调函数。
+Removes the handler for GC from the VM.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
-| [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | 触发GC回调函数的时机。 |
-| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler | 当触发GC时，传入的回调函数会被调用。 |
-| void* userData | 原生指针数据。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | Environment for calling the JSVM-API.|
+| [JSVM_CBTriggerTimeForGC](capi-jsvm-types-h.md#jsvm_cbtriggertimeforgc) triggerTime | Time when the GC callback is triggered.|
+| [JSVM_HandlerForGC](capi-jsvm-types-h.md#jsvm_handlerforgc) handler | Handler to be invoked when GC is triggered.|
+| void* userData | Pointer to the native user data.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的vm或者handler为空或者handler已经被删除过了或者<br> 这个handler从来没有被添加过。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** or **handler** is empty, the handler has been removed,<br> or the handler has never been added.|
 
 ### OH_JSVM_SetHandlerForOOMError()
 
@@ -5967,25 +5967,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm,JSVM_CBTriggerTime
 JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm,JSVM_HandlerForOOMError handler)
 ```
 
-**描述**
+**Description**
 
-为OOM错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。
+Sets a handler for OOM errors. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                             | 描述 |
+| Name                                                                            | Description|
 |---------------------------------------------------------------------------------| -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                          | 调用JSVM-API的环境。 |
-| [JSVM_HandlerForOOMError](capi-jsvm-types-h.md#jsvm_handlerforoomerror) handler | OOM错误的处理器。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                          | Environment for calling the JSVM-API.|
+| [JSVM_HandlerForOOMError](capi-jsvm-types-h.md#jsvm_handlerforoomerror) handler | Handler for OOM errors.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** is empty.|
 
 ### OH_JSVM_SetDebugOption()
 
@@ -5993,26 +5993,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm,JSVM_HandlerFor
 JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption debugOption, bool isEnabled)
 ```
 
-**描述**
+**Description**
 
-启用/禁用特定JSVM_Env的指定调试选项。
+Enables or disables a specific debugging option for a JSVM environment.
 
-**起始版本：** 20
+**Since**: 20
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_DebugOption](capi-jsvm-types-h.md#jsvm_debugoption) debugOption | 需要更改的调试选项。 |
-| bool isEnabled | 是否启用或禁用调试选项，true为是，false为否。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_DebugOption](capi-jsvm-types-h.md#jsvm_debugoption) debugOption | Debugging option.|
+| bool isEnabled | Whether to enable or disable the debugging option. The value **true** indicates yes, and **false** indicates the opposite.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 如果传入的env为空指针，返回此错误码。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input **env** is a null pointer.|
 
 ### OH_JSVM_SetHandlerForFatalError()
 
@@ -6020,25 +6020,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption de
 JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm,JSVM_HandlerForFatalError handler)
 ```
 
-**描述**
+**Description**
 
-为Fatal错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。
+Sets a handler for fatal errors. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                                 | 描述 |
+| Name                                                                                | Description|
 |-------------------------------------------------------------------------------------| -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                              | 调用JSVM-API的环境。 |
-| [JSVM_HandlerForFatalError](capi-jsvm-types-h.md#jsvm_handlerforfatalerror) handler | Fatal错误的处理器。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                              | Environment for calling the JSVM-API.|
+| [JSVM_HandlerForFatalError](capi-jsvm-types-h.md#jsvm_handlerforfatalerror) handler | Handler for fatal errors.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** is empty.|
 
 ### OH_JSVM_SetHandlerForPromiseReject()
 
@@ -6046,25 +6046,25 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm,JSVM_HandlerF
 JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_HandlerForPromiseReject handler)
 ```
 
-**描述**
+**Description**
 
-为PromiseReject错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。
+Sets a handler for the PromiseReject error. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                                       | 描述 |
+| Name                                                                                      | Description|
 |-------------------------------------------------------------------------------------------| -- |
-| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                                    | 调用JSVM-API的环境。 |
-| [JSVM_HandlerForPromiseReject](capi-jsvm-types-h.md#jsvm_handlerforpromisereject) handler | PromiseReject错误的处理器。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm                                                    | Environment for calling the JSVM-API.|
+| [JSVM_HandlerForPromiseReject](capi-jsvm-types-h.md#jsvm_handlerforpromisereject) handler | Handler for PromiseReject errors.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** is empty.|
 
 ### OH_JSVM_DefineClassWithOptions()
 
@@ -6072,33 +6072,33 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_Handl
 JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)
 ```
 
-**描述**
+**Description**
 
-在封装一个 C++ 类时，通过构造函数传递的 C++ 构造函数回调应该是类中的一个静态方法，该方法调用实际的类构造函数，然后根据传入的不同选项，将新的 C++ 实例封装在一个 JavaScript 对象中并返回封装对象。
+Defines a class with options. When a C++ class is encapsulated, the C++ constructor callback passed through the constructor should be a static method in the class. This method calls the actual class constructor, encapsulates a new C++ instance into a JavaScript object based on the input options, and returns the encapsulated object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                               | 描述 |
+| Name                                                                              | Description|
 |-----------------------------------------------------------------------------------| -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                                         | 调用JSVM-API的环境。 |
-| const char* utf8name                                                              | JavaScript构造函数的名称，建议在包装C++类时使用C++类名。 |
-| size_t length                                                                     | utf8name的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | 用于创建类的构造函数的回调函数。包装C++类时，此方法必须是符合JSVM_Callback。callback签名的静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
-| size_t propertyCount                                                              | properties数组参数中的项目数量。 |
-| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 类的属性描述符，用于定义类的属性和方法。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) parentClass             | 当前所定义的class的父类class。 |
-| size_t option_count                                                                | options数组参数中的项目数量。 |
-| [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md) options[]                                             | 传入的用于定义class的选项数组。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result                 | 表示类的构造函数的JSVM_Value。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                                         | Environment for calling the JSVM-API.|
+| const char* utf8name                                                              | Pointer to the name of the JavaScript constructor. You are advised to use the C++ class name when wrapping a C++ class.|
+| size_t length                                                                     | Length of **utf8name** (in bytes) or **JSVM_AUTO_LENGTH** (if null-terminated).|
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | Callback of the constructor used to create class. When a C++ class is wrapped, this method must comply with **JSVM_Callback**. It is a static member of the callback signature. C++ class constructors cannot be used. For details, see [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md).|
+| size_t propertyCount                                                              | Number of properties in the array.|
+| [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Pointer to the property descriptors, which are used to define the properties and methods of a class.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) parentClass             | Parent class of the defined class.|
+| size_t option_count                                                                | Number of options in the array.|
+| [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md) options[]                                             | Array of options used to define the class.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result                 | Pointer to the **JSVM_Value** of the constructor of a class.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的指针参数里面存在空指针。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示传入的utf8name \| constructor \| properties无效，导致执行失败。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input pointer contains a null pointer.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): The operation fails because the input **utf8name** \| **constructor** \| **properties** is invalid.|
 
 ### OH_JSVM_CreateExternalStringLatin1()
 
@@ -6106,30 +6106,30 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* 
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)
 ```
 
-**描述**
+**Description**
 
-此 API 使用 ISO-8859-1 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。
+Creates an external JavaScript string with an ISO-8859-1-encoded C string. If the creation fails, the original native string is copied.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| char* str | 指向 ISO-8859-1 编码字符串的指针。 |
-| size_t length | 字符串的字节长度，如果是空终止字符串可以直接传入 JSVM_AUTO_LENGTH。 |
-| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | 可选项，是当创建的字符串被 GC 回收时会触发的回调函数。更多细节详见 JSVM_Finalize 类型说明。 |
-| void* finalizeHint | 可选项，当字符串被回收时会传递给触发的 finalize callback。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 接收创建完成的 JavaScript 外部字符串，表示为 JSVM_Value 类型。 |
-| bool* copied | 指示外部字符串是否成功创建的标志，true表示创建外部字符串失败并返回一个原生 JS 字符串，false表示成功。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| char* str | Pointer to the ISO-8859-1-encoded string.|
+| size_t length | Length of the string. If the string is a null-terminated string, you can directly pass it in **JSVM_AUTO_LENGTH**.|
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | (Optional) Callback to be invoked when the created string is reclaimed by the GC. For details, see the description of **JSVM_Finalize**.|
+| void* finalizeHint | (Optional) Pointer to the finalize hint. This will be passed to the triggered **finalize** callback when a string is reclaimed.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the created JavaScript external string, which is of the **JSVM_Value** type.|
+| bool* copied | Pointer to the operation result. The value **true** indicates that the external string creation fails and a native JavaScript string is returned, and **false** indicates that the external string creation succeeds.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env, str 和 copied 中任一值为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if any value of **env**, **str**, or **copied** is empty.|
 
 ### OH_JSVM_CreateExternalStringUtf16()
 
@@ -6137,30 +6137,30 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* s
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)
 ```
 
-**描述**
+**Description**
 
-此 API 使用 UTF16-LE 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。
+Creates an external JavaScript string with a UTF-16LE-encoded C string. If the creation fails, the original native string is copied.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                                                  | 描述 |
+| Name                                                                 | Description|
 |----------------------------------------------------------------------| -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                            | 调用 JSVM-API 的环境。 |
-| char16_t* str                                                        | 指向 UTF16-LE 编码字符串的指针。 |
-| size_t length                                                        | 字符串的字节长度，如果是空终止字符串可以直接传入 JSVM_AUTO_LENGTH。 |
-| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | 可选项，是当创建的字符串被 GC 回收时会触发的回调函数。更多细节详见 JSVM_Finalize 类型说明。 |
-| void* finalizeHint                                                   | 可选项，当字符串被回收时会传递给触发的 finalize callback。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result    | 接收创建完成的 JavaScript 外部字符串，表示为 JSVM_Value 类型。 |
-| bool* copied                                                         | 指示外部字符串是否成功创建的标志，true表示创建外部字符串失败并返回一个原生 JS 字符串，false表示成功。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env                            | Environment for calling the JSVM-API.|
+| char16_t* str                                                        | Pointer to the UTF-16LE-encoded string.|
+| size_t length                                                        | Length of the string. If the string is a null-terminated string, you can directly pass it in **JSVM_AUTO_LENGTH**.|
+| [JSVM_Finalize](capi-jsvm-types-h.md#jsvm_finalize) finalizeCallback | (Optional) Callback to be invoked when the created string is reclaimed by the GC. For details, see the description of **JSVM_Finalize**.|
+| void* finalizeHint                                                   | (Optional) Pointer to the finalize hint. This will be passed to the triggered **finalize** callback when a string is reclaimed.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result    | Pointer to the created JavaScript external string, which is of the **JSVM_Value** type.|
+| bool* copied                                                         | Pointer to the operation result. The value **true** indicates that the external string creation fails and a native JavaScript string is returned, and **false** indicates that the external string creation succeeds.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env, str 和 copied 中任一值为空。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if any value of **env**, **str**, or **copied** is empty.|
 
 ### OH_JSVM_CreatePrivate()
 
@@ -6168,26 +6168,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t
 JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env,JSVM_Value description,JSVM_Data* result)
 ```
 
-**描述**
+**Description**
 
-创建一个 JavaScript private key 对象。
+Creates a JavaScript private key object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) description | 可选项，它指的是要作为 private key 描述的 JavaScript 字符串。 |
-| [JSVM_Data](capi-jsvm-jsvm-data--8h.md)* result | 接收创建成功的 JavaScript private key 对象的指针。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) description | (Optional) JavaScript description of the private key.|
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md)* result | Pointer to the created JavaScript private key object.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env 和 result 中任一值为空。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 description 不是字符串。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if either **env** or **result** is empty.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input description is not a string.|
 
 ### OH_JSVM_SetPrivate()
 
@@ -6195,27 +6195,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env,JSVM_Value descriptio
 JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value value)
 ```
 
-**描述**
+**Description**
 
-为传入的object设置一个 private 属性。
+Sets the **private** property for an input object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 将要进行 private 属性设置的对象。 |
-| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | private 属性的 private key 对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | private 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Target object.|
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | Private key object of the **private** property.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Value of the **private** property.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示设置 private 属性失败，同时没有异常产生。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if any input parameter is empty or the key is not a private key object.<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): object expected. This code is returned if the input object is not a real JavaScript object.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the **private** property fails to be set and no exception occurs.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_GetPrivate()
 
@@ -6223,27 +6223,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env,JSVM_Value object,JSVM_D
 JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value *result)
 ```
 
-**描述**
+**Description**
 
-从传入的object获取 private key 对应的 private 属性。
+Obtains the **private** property of an input object based on the private key.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 获取 private 属性的对象。 |
-| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | private 属性的 private key 对象。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | private 属性值。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Target object.|
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | Private key object of the **private** property.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | Value of the **private** property.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示获取 private 属性失败，同时没有异常产生。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if any input parameter is empty or the key is not a private key object.<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): object expected. This code is returned if the input object is not a real JavaScript object.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the **private** property fails to be obtained and no exception occurs.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_DeletePrivate()
 
@@ -6251,26 +6251,26 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env,JSVM_Value object,JSVM_D
 JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key)
 ```
 
-**描述**
+**Description**
 
-从传入的 object 上删除 private key 对应的 private 属性。
+Deletes the **private** property corresponding to the private key from the input object.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | 删除 private 属性的对象。 |
-| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | private 属性的 private key 对象。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Target object.|
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) key | Private key object of the **private** property.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示删除 private 属性失败，同时没有异常产生。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if any input parameter is empty or the key is not a private key object.<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): object expected. This code is returned if the input object is not a real JavaScript object.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the **private** property fails to be deleted and no exception occurs.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CreateDataReference()
 
@@ -6278,27 +6278,27 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSV
 JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,uint32_t initialRefcount,JSVM_Ref* result)
 ```
 
-**描述**
+**Description**
 
-创建一个对于给定 JSVM_Data 对象的引用，初始的引用计数为传入的 initialRefcount。
+Creates a reference to a given **JSVM_Data** object. The initial reference count is the input value of **initialRefcount**.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用 JSVM-API 的环境。 |
-| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) data | 将要创建引用的 JSVM_Data 对象。 |
-| uint32_t initialRefcount | 初始引用计数值。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | 接收新创建的对象引用，表示为 JSVM_Ref 类型。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md) data | Target **JSVM_Data** object.|
+| uint32_t initialRefcount | Initial reference count.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md)* result | Pointer to the created object reference.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
 
 ### OH_JSVM_GetReferenceData()
 
@@ -6306,25 +6306,23 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,
 JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)
 ```
 
-**描述**
+**Description**
 
-如果引用仍然有效，通过 result 参数返回对应的 JSVM_Data，表示与 JSVM_Ref 关联的 JavaScript 值。否则结果将为空。
+Obtains the **JSVM_Data** (a JavaScript value associated with the JSVM reference) through the **result** parameter if the reference is still valid. Otherwise, the result is null.
 
-**起始版本：** 18
+**Since**: 18
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
-| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | 请求相应值的JSVM_Ref。 |
-| [JSVM_Data](capi-jsvm-jsvm-data--8h.md)* result | JSVM_Ref 引用的 JSVM_Data。 |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
+| [JSVM_Ref](capi-jsvm-jsvm-ref--8h.md) ref | JSVM reference for requesting the corresponding value.|
+| [JSVM_Data](capi-jsvm-jsvm-data--8h.md)* result | Pointer to the **JSVM_Data** referenced by **JSVM_Ref**.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
-
-
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument.|

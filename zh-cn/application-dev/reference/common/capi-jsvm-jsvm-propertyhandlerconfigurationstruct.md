@@ -10,40 +10,40 @@
 typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
 ```
 
-## 概述
+## Overview
 
-当执行对象的getter、setter、deleter和enumerator操作时，该结构体中对应的函数回调将会触发。
+Defines a struct for triggering the corresponding callback when the getter, setter, deleter, or enumerator of an object is executed.
 
-**起始版本：** 12
+**Since**: 12
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称                               | 描述 |
+| Name                              | Description|
 |----------------------------------| -- |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) namedPropertyData | 命名属性回调使用的数据。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) indexedPropertyData   | 索引属性回调使用的数据。 |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) namedPropertyData | Data used for name property callback.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) indexedPropertyData   | Data used for index property callback.|
 
 
-### 成员函数
+### Member Functions
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| [JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertygettercallback) | 通过获取实例对象的命名属性而触发的回调函数。 |
-| [JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value property,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertysettercallback) | 通过设置实例对象的命名属性而触发的回调函数。 |
-| [JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertydeletercallback) | 通过删除实例对象的命名属性而触发的回调函数。 |
-| [JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertyenumeratorcallback) | 通过获取对象上的所有命名属性而触发的回调函数。 |
-| [JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertygettercallback) | 通过获取实例对象的索引属性而触发的回调函数。 |
-| [JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value property,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertysettercallback) | 通过设置实例对象的索引属性而触发的回调函数。 |
-| [JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertydeletercallback) | 通过删除实例对象的索引属性而触发的回调函数。 |
-| [JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertyenumeratorcallback) | 通过获取对象上的所有索引属性而触发的回调函数。 |
+| [JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertygettercallback) | Callback triggered by obtaining the name property of an instance object.|
+| [JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value property,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertysettercallback) | Callback triggered by setting the name property of an instance object.|
+| [JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertydeletercallback) | Callback triggered by deleting the name property of an instance object.|
+| [JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value namedPropertyData)](#genericnamedpropertyenumeratorcallback) | Callback triggered by obtaining all name properties of an object.|
+| [JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertygettercallback) | Callback triggered by obtaining the index property of an instance object.|
+| [JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value property,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertysettercallback) | Callback triggered by setting the index property of an instance object.|
+| [JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertydeletercallback) | Callback triggered by deleting the index property of an instance object.|
+| [JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertyenumeratorcallback) | Callback triggered by obtaining all index properties of an object.|
 
-## 成员函数说明
+## Member Function Description
 
 ### genericNamedPropertyGetterCallback()
 
@@ -51,9 +51,9 @@ typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
 JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过获取实例对象的命名属性而触发的回调函数。
+Callback triggered by obtaining the name property of an instance object.
 
 ### genericNamedPropertySetterCallback()
 
@@ -61,9 +61,9 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Va
 JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value property,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过设置实例对象的命名属性而触发的回调函数。
+Callback triggered by setting the name property of an instance object.
 
 ### genericNamedPropertyDeleterCallback()
 
@@ -71,9 +71,9 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Va
 JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过删除实例对象的命名属性而触发的回调函数。
+Callback triggered by deleting the name property of an instance object.
 
 ### genericNamedPropertyEnumeratorCallback()
 
@@ -81,9 +81,9 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_V
 JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过获取对象上的所有命名属性而触发的回调函数。
+Callback triggered by obtaining all name properties on an object.
 
 ### genericIndexedPropertyGetterCallback()
 
@@ -91,9 +91,9 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSV
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过获取实例对象的索引属性而触发的回调函数。
+Callback triggered by obtaining the index property of an instance object.
 
 ### genericIndexedPropertySetterCallback()
 
@@ -101,9 +101,9 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_
 JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value property,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过设置实例对象的索引属性而触发的回调函数。
+Callback triggered by setting the index property of an instance object.
 
 ### genericIndexedPropertyDeleterCallback()
 
@@ -111,9 +111,9 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过删除实例对象的索引属性而触发的回调函数。
+Callback triggered by deleting the index property of an instance object.
 
 ### genericIndexedPropertyEnumeratorCallback()
 
@@ -121,8 +121,6 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
-**描述**
+**Description**
 
-通过获取对象上的所有索引属性而触发的回调函数。
-
-
+Callback triggered by obtaining all index properties on an object.

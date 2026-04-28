@@ -10,12 +10,12 @@
 typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg
 ```
 
-## 概述
+## Overview
 
-包含属性监听回调的结构的指针类型。
+Defines the pointer type of the struct that contains the property handler.
 
-**起始版本：** 12
+**Since**: 12
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)

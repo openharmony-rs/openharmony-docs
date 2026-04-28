@@ -10,13 +10,12 @@
 typedef struct JSVM_CallbackInfo__* JSVM_CallbackInfo
 ```
 
-## 概述
+## Overview
 
-表示传递给回调函数的不透明数据类型。可用于获取调用该函数的上下文的附加信息。
+Defines an opaque data type passed to the callback. It can be used to obtain additional information about the context in which the function is called.
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
-
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)

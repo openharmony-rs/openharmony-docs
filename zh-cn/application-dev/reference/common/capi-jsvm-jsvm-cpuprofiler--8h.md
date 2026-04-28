@@ -10,13 +10,12 @@
 typedef struct JSVM_CpuProfiler__* JSVM_CpuProfiler
 ```
 
-## 概述
+## Overview
 
-表示一个JavaScript CPU时间性能分析器。
+Defines a JavaScript CPU profiler.
 
-**起始版本：** 12
+**Since**: 12
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
-
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
