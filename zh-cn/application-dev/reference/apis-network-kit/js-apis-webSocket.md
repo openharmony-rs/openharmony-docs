@@ -34,7 +34,7 @@ createWebSocket(): WebSocket
 
 创建一个WebSocket对象，里面包括建立连接、关闭连接、发送数据和订阅/取消订阅WebSocket连接的打开事件、接收到服务器消息事件、关闭事件和错误事件。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -71,7 +71,7 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -152,7 +152,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -267,7 +267,7 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -329,7 +329,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -426,7 +426,7 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -529,7 +529,7 @@ close(callback: AsyncCallback\<boolean\>): void
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -594,7 +594,7 @@ close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -672,7 +672,7 @@ close(options?: WebSocketCloseOptions): Promise\<boolean\>
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -747,7 +747,7 @@ on(type: 'open', callback: AsyncCallback\<Object\>): void
 
 订阅WebSocket的打开事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -782,7 +782,7 @@ onOpen(callback: Callback\<OpenResult\>): void
 
 订阅WebSocket的打开事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -815,7 +815,7 @@ off(type: 'open', callback?: AsyncCallback\<Object\>): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -857,7 +857,7 @@ offOpen(callback?: Callback\<OpenResult\>): void
 >
 > 可以指定传入offOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -892,7 +892,7 @@ on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > AsyncCallback中的数据可以是字符串（API version 6开始支持）或ArrayBuffer（API version 8开始支持）。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -927,7 +927,7 @@ onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > AsyncCallback中的数据可以是字符串或ArrayBuffer。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -963,7 +963,7 @@ off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -997,7 +997,7 @@ offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > 可以指定传入onMessage中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1029,7 +1029,7 @@ on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
 
 订阅WebSocket的关闭事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1060,7 +1060,7 @@ onWebSocketClose(callback: AsyncCallback\<CloseResult\>): void
 
 订阅WebSocket的关闭事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1094,7 +1094,7 @@ off(type: 'close', callback?: AsyncCallback\<CloseResult\>): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1126,7 +1126,7 @@ offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 >
 > 可以指定传入onWebSocketClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1161,7 +1161,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 关于[error](#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101。状态码表示协议从HTTP切换为WebSocket协议（触发open回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1192,7 +1192,7 @@ onWebSocketError(callback: ErrorCallback): void
 
 订阅WebSocket的Error事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1224,7 +1224,7 @@ off(type: 'error', callback?: ErrorCallback): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1256,7 +1256,7 @@ offWebSocketError(callback?: ErrorCallback): void
 >
 > 可以指定传入onWebSocketError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -2565,7 +2565,7 @@ localServer.offWebSocketServerError();
 
 | 名称 | 类型 |  只读  | 可选 | 说明                                                         |
 | ------ | ------ |------ | ---- | ------------------------------------------------------------ |
-| header | ArkTS-Dyn: Object<br>ArkTS-Sta: Record\<string, string> |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
+| header | ArkTS-Dyn: Object<br>ArkTS-Sta: Record\<string, string> |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
 | caPath<sup>11+</sup> | string |  否  |  是  | 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持格式为pem的文本证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
 | proxy<sup>12+</sup> | [ProxyConfiguration](#proxyconfiguration12) |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
@@ -2573,7 +2573,7 @@ localServer.offWebSocketServerError();
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 26.0.0 |
 | pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
 | pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
-| minSupportTlsProtocol | [TlsProtocol](#tlsprotocol26) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| minSupportTlsProtocol | [TlsProtocol](#tlsprotocol) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## ClientCert<sup>11+</sup>
 
@@ -2612,7 +2612,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 关闭WebSocket连接时，可选参数的类型和说明。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -2629,7 +2629,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 关闭WebSocket连接时，订阅close事件得到的关闭结果。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
