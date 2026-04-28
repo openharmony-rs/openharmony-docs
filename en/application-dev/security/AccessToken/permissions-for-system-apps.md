@@ -5476,7 +5476,7 @@ Allows a system application to access the runtime capability framework.
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: phones | tablets | TVs | wearables
 
 **Since**: 23
 
