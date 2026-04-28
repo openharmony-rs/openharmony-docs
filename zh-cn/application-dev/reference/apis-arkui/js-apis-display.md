@@ -101,9 +101,12 @@ import { display } from '@kit.ArkUI';
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | 表示双折轴设备折轴一和折轴二的折叠状态均为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
 
 >**说明：**<br>
-> 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。<br>
-> 具有两个折轴的产品包含上表除FOLD_STATUS_UNKNOWN以外的九种折叠状态。<br>
-> FOLD_STATUS_UNKNOWN是一种不可用的折叠状态。
+>
+>- 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。<br>
+>
+>- 具有两个折轴的产品包含上表除FOLD_STATUS_UNKNOWN以外的九种折叠状态。<br>
+>
+>- FOLD_STATUS_UNKNOWN是一种不可用的折叠状态。
 
 ## FoldDisplayMode<sup>10+</sup>
 
@@ -375,7 +378,7 @@ ArkTS-Sta: getDisplayByIdSync(displayId: long): Display
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | ArkTS-Dyn: number <br> ArkTS-Sta: long        | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
+| displayId     | ArkTS-Dyn: number <br> ArkTS-Sta: long        | 是   | 屏幕ID，应为非负整数。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
 
 **返回值：**
 
@@ -389,7 +392,7 @@ ArkTS-Sta: getDisplayByIdSync(displayId: long): Display
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 1400003 | This display manager service works abnormally. Possible causes: Display is null, display id corresponding display does not exist.|
 
 **示例：**
@@ -812,7 +815,7 @@ let callback: Callback<number> = (data: number) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
 
-display.on("add", callback);
+display.on('add', callback);
 ```
 
 ## display.onAdd<sup>23+</sup>
@@ -947,7 +950,7 @@ off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 ```ts
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
-display.off("remove");
+display.off('remove');
 
 let callback: Callback<number> = (data: number) => {
   console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`)
@@ -2012,14 +2015,12 @@ on(type: 'foldDisplayModeChange', callback: Callback&lt;FoldDisplayMode&gt;): vo
 
 **ArkTS-Dyn起始版本：** 10
 
-**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
-
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式发生变化。 |
-| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 是   | 回调函数。表示折叠设备屏幕显示模式。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式变化事件。 |
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 是   | 回调函数。返回折叠设备屏幕显示模式。 |
 
 **错误码：**
 
@@ -2110,14 +2111,12 @@ off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): 
 
 **ArkTS-Dyn起始版本：** 10
 
-**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
-
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式发生变化。 |
-| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 否   | 需要取消注册的回调函数。表示折叠设备屏幕显示模式。若无此参数，则取消注册屏幕显示模式变化监听的所有回调函数。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式变化事件。 |
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 否   | 需要取消注册的回调函数。若无此参数，则取消注册屏幕显示模式变化监听的所有回调函数。 |
 
 **错误码：**
 
