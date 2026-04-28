@@ -1,8 +1,8 @@
 # @ohos.enterprise.bluetoothManager（蓝牙管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -73,10 +73,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: bluetoothManager.BluetoothInfo = bluetoothManager.getBluetoothInfo(wantTemp);
-    console.info(`Succeeded in getting bluetooth info: ${JSON.stringify(result)}`);
+  let result: bluetoothManager.BluetoothInfo = bluetoothManager.getBluetoothInfo(wantTemp);
+  console.info(`Succeeded in getting bluetooth info: ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get bluetooth info. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get bluetooth info. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -132,10 +132,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.addAllowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in adding allowed bluetooth devices.`);
+  bluetoothManager.addAllowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in adding allowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to add allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to add allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -185,10 +185,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.removeAllowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in removing allowed bluetooth devices.`);
+  bluetoothManager.removeAllowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in removing allowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to remove allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -240,10 +240,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(wantTemp);
-    console.info(`Succeeded in getting allowed bluetooth devices. Result: ${JSON.stringify(result)}`);
+  let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(wantTemp);
+  console.info(`Succeeded in getting allowed bluetooth devices. Result: ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -298,10 +298,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.addDisallowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in adding disallowed bluetooth devices.`);
+  bluetoothManager.addDisallowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in adding disallowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to add disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to add disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -350,10 +350,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.removeDisallowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in removing disallowed bluetooth devices.`);
+  bluetoothManager.removeDisallowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in removing disallowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to remove disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -403,10 +403,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    let result: Array<string> = bluetoothManager.getDisallowedBluetoothDevices(wantTemp);
-    console.info(`Succeeded in getting disallowed bluetooth devices. Result: ${JSON.stringify(result)}`);
+  let result: Array<string> = bluetoothManager.getDisallowedBluetoothDevices(wantTemp);
+  console.info(`Succeeded in getting disallowed bluetooth devices. Result: ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -453,10 +453,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    bluetoothManager.turnOnBluetooth(wantTemp);
-    console.info(`Succeeded in turning on bluetooth.`);
+  bluetoothManager.turnOnBluetooth(wantTemp);
+  console.info(`Succeeded in turning on bluetooth.`);
 } catch(err) {
-    console.error(`Failed to turn on bluetooth. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to turn on bluetooth. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -503,10 +503,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    bluetoothManager.turnOffBluetooth(wantTemp);
-    console.info('Succeeded in turning off bluetooth.');
+  bluetoothManager.turnOffBluetooth(wantTemp);
+  console.info('Succeeded in turning off bluetooth.');
 } catch(err) {
-    console.error(`Failed to turn off bluetooth. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to turn off bluetooth. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -556,11 +556,11 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let accountId: number = 100;
 let protocols: Array<bluetoothManager.Protocol> = [bluetoothManager.Protocol.GATT, bluetoothManager.Protocol.SPP];
-try{
-    bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
-    console.info('Succeeded in adding disallowed bluetooth protocols policy.');
+try {
+  bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
+  console.info('Succeeded in adding disallowed bluetooth protocols policy.');
 } catch (err) {
-    console.error(`Failed to add disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to add disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -610,11 +610,11 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let accountId: number = 100;
 let protocols: Array<bluetoothManager.Protocol> = [bluetoothManager.Protocol.GATT, bluetoothManager.Protocol.SPP];
-try{
-    bluetoothManager.removeDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
-    console.info('Succeeded in removing disallowed bluetooth protocols policy.');
+try {
+  bluetoothManager.removeDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
+  console.info('Succeeded in removing disallowed bluetooth protocols policy.');
 } catch (err) {
-    console.error(`Failed to remove disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -666,11 +666,11 @@ let wantTemp: Want = {
 };
 // 需根据实际情况进行替换
 let accountId: number = 100;
-try{
-    let result: Array<bluetoothManager.Protocol> = bluetoothManager.getDisallowedBluetoothProtocols(wantTemp, accountId);
-    console.info(`Succeeded in getting disallowed bluetooth protocols. Result: ${JSON.stringify(result)}`);
+try {
+  let result: Array<bluetoothManager.Protocol> = bluetoothManager.getDisallowedBluetoothProtocols(wantTemp, accountId);
+  console.info(`Succeeded in getting disallowed bluetooth protocols. Result: ${JSON.stringify(result)}`);
 } catch (err) {
-    console.error(`Failed to get disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

@@ -3293,4 +3293,6 @@ struct TextExample {
 }
 ```
 
+该效果图会因设备尺寸差异有显示区别，仅供参考。
+
 ![textAreaOrphanCharOptimization](figures/textAreaOrphanCharOptimization.png)

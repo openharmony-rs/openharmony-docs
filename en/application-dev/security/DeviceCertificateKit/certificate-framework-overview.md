@@ -9,7 +9,7 @@
 
 The certificate framework shields the differences between third-party certificate algorithm libraries. It provides the capabilities of parsing and validating a certificate, certificate extensions, and a certificate revocation list (CRL), and validating a certificate chain.
 
-You can use the APIs provided by the certificate framework to easily complete your development.
+You can use the APIs provided by the certificate framework to achieve rapid development.
 
 > **NOTE**
 > The certificate framework provides the capabilities of processing certificates and CRL data, but does not provide the capabilities of generating or issuing certificates or CRLs. Certificates and CRLs are issued by a certificate authority (CA) rather than a single application.

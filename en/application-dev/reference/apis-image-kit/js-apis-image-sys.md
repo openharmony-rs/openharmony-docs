@@ -82,7 +82,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePictureTest(context: Context) {
@@ -109,7 +109,7 @@ async function CreatePictureTest(context: Context) {
   let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
   packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
   const path: string = context.filesDir + "/hdr-test.jpg";
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
   }).catch((error : BusinessError) => {
     console.error('Failed to pack the image. And the error is: ' + error);
@@ -117,7 +117,7 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-## ImageSource<sup>6+</sup>
+## ImageSource
 
 Provides APIs to obtain image information.
 
@@ -165,5 +165,62 @@ async function IsJpegProgressive(imageSource : image.ImageSource) {
     }).catch((error: BusinessError) => {
       console.error(`Failed to obtain the jpeg image isprogressive error.code is ${error.code}, message is ${error.message}`);
     })
+}
+```
+
+### modifyImageAllProperties<sup>24+</sup>
+
+modifyImageAllProperties(records: Record\<string, string\|null>): Promise\<void>
+
+Modifies image properties in batches. This API uses a promise to return the result.
+
+All Exif attributes except **JPEGInterchangeFormat**, **JPEGInterchangeFormatLength**, and **GIFLoopCount** can be modified.
+
+> **NOTE**
+>
+> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7) instance by passing a file descriptor or an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource) instance by passing a URI.
+> - This API applies only to images that are in JPEG, PNG, HEIF, or WEBP format and contain the Exif information.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Parameters**
+
+| Name | Type  | Mandatory| Description        |
+| ------- | ------ | ---- | ------------ |
+| records | Record\<string, string \| null>|Yes| Key-value pairs of image property names and property values.|
+
+**Returns**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
+
+| Error Code| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 202      | Non-system applications are not allowed to use system APIs.  |
+| 7700102  | Unsupported MIME type.                                       |
+| 7700202  | Unsupported metadata. For example, the property key is not supported, or the property value is invalid. |
+| 7700304  | Failed to write image properties to the file.                |
+
+**Example**
+
+```ts
+async function ModifyImageAllProperties(imageSource: image.ImageSource) {
+  try {
+    let record: Record<string, string | null> = {
+      "HwMnotePhysicalAperture": "13",
+    }
+    await imageSource.modifyImageAllProperties(record);
+  } catch (err) {
+    console.error('[modifyImageAllProperties]', `modify image property failed.err: ${err.code}, errorMessage: ${err.message}`);
+  }
 }
 ```

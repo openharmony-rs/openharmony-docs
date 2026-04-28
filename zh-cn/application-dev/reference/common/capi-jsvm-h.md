@@ -1,7 +1,7 @@
 # jsvm.h
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -88,6 +88,7 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | 申请一段 BackingStore 内存给 array buffer 使用。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | 释放由 OH_JSVM_AllocateArrayBufferBackingStoreData 申请的 BackingStore 内存。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | 在申请得到的 BackingStore 内存上创建 array buffer。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env,void* externalData,size_t byteLength,JSVM_FinalizeArrayBuffer finalizeCb,void* finalizeHint,bool* copied,JSVM_Value* result)](#oh_jsvm_createarraybufferfromexternalmemory) | 从外部内存创建ArrayBuffer对象（必须先定义JSVM_EXPERIMENTAL宏才能使用此接口）。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)](#oh_jsvm_createdate) | 分配一个JavaScript Date对象。此API不处理闰秒。这是因为ECMAScript遵循POSIX时间规范，对闰秒进行忽略。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)](#oh_jsvm_createexternal) | 分配一个带有外部数据的JavaScript值。这用于通过JavaScript代码传递外部数据。后续可以使用OH_JSVM_GetValueExternal由native代码检索。该API添加了一个JSVM_Finalize回调，当刚刚创建的JavaScript对象被垃圾回收时将调用该回调。创建的值不是一个对象，因此不支持附加属性。它被认为是一个独特的值类型：使用外部值调用OH_JSVM_Typeof()会生成JSVM_EXTERNAL。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createobject) | 分配一个默认的JavaScript对象。该函数功能等同于在JavaScript中执行new Object()。 |
@@ -1638,6 +1639,44 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env e
 | 类型 | 说明 |
 | -- | -- |
 | [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>         1. offset + arrayBufferSize > backingStoreSize。<br>         2. backingStoreSize 或者 arrayBufferSize 为 0。<br>         3. data 或者 result 为空。 |
+
+### OH_JSVM_CreateArrayBufferFromExternalMemory()
+
+```c
+#ifdef JSVM_EXPERIMENTAL
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result);
+#endif // JSVM_EXPERIMENTAL
+```
+
+**描述**
+
+> **注意**：
+>
+> 此接口是实验性接口，需定义`JSVM_EXPERIMENTAL`宏后方可使用。
+
+从外部内存创建ArrayBuffer对象。接口注意事项及使用示例请参考[使用JSVM-API接口从外部内存创建ArrayBuffer](../../napi/use-jsvm-about-external-arraybuffer.md)。
+
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
+| void *externalData | 外部内存指针。**必须8字节对齐**。 |
+| size_t byteLength | 外部内存的长度（字节）。不得超过引擎最大ArrayBuffer大小。 |
+| [JSVM_FinalizeArrayBuffer](capi-jsvm-types-h.md#jsvm_finalizearraybuffer) finalizeCb | 可选参数。当ArrayBuffer被GC回收时调用的callback。回调签名含`bool copied`参数，指示是否发生了拷贝。|
+| void* finalizeHint | 可选参数。传递给finalizeCb的自定义提示数据。 |
+| bool* copied | 可选输出参数。为true表示数据被拷贝，为false表示零拷贝   |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) *result | 输出参数。创建的ArrayBuffer对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) JSVM_CDECL | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>         1. 传入的result参数为NULL。<br>         2. byteLength>0但externalData为NULL。<br>         3. externalData未8字节对齐。<br>         4. byteLength超过引擎最大限制。<br>         5. byteLength==0但finalizeCb不为NULL。|
 
 ### OH_JSVM_CreateDate()
 
@@ -5318,7 +5357,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env,const uint8_t *wa
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmBytecode 参数为空，或传入的数据长度参数无效。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmBytecode 参数为空，或传入的数据长度参数无效。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
 
 ### OH_JSVM_CompileWasmFunction()
 
@@ -5346,7 +5385,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env,JSVM_Value wasm
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmModule 参数为空，或 wasmModule 不是一个真正的 WebAssembly 模块。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示函数索引越界，或编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmModule 参数为空，或 wasmModule 不是一个真正的 WebAssembly 模块。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示函数索引越界，或编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
 
 ### OH_JSVM_IsWasmModuleObject()
 
@@ -5401,7 +5440,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env,JSVM_Value wasmModu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示缓存生成失败。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示缓存生成失败。 |
 
 ### OH_JSVM_ReleaseCache()
 

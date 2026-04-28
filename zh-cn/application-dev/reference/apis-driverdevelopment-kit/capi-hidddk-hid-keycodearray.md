@@ -1,7 +1,7 @@
 # Hid_KeyCodeArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
@@ -26,7 +26,7 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 
 | 名称 | 描述 |
 | -- | -- |
-| Hid_KeyCode* hidKeyCode | 键值编码 |
+| [Hid_KeyCode](capi-hid-ddk-types-h.md#hid_keycode)* hidKeyCode | 键值编码 |
 | uint16_t length | 数组的有效长度 |
 
 

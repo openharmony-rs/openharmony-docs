@@ -57,7 +57,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 import { common } from '@kit.AbilityKit';
 
 try {
-  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     console.info(`openSubscriberSettings success`);
@@ -113,7 +113,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 import { common } from '@kit.AbilityKit';
 
 try {
-  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);

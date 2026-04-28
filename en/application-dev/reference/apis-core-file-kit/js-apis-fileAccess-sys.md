@@ -1,9 +1,9 @@
 # @ohos.file.fileAccess (User File Access and Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **fileAccess** module provides a framework for accessing and operating user files based on [extension](../../application-models/extensionability-overview.md). This module interacts with a variety of file management services, such as the storage management service, and provides a set of unified file access and management APIs for system applications. The storage management service manages both the directories of the built-in storage and resources on external devices, such as shared disks, USB flash drives, and SD cards.
@@ -41,7 +41,7 @@ Represents a URI used for observing the device online/offline status.
 
 getFileAccessAbilityInfo() : Promise&lt;Array&lt;Want&gt;&gt;
 
-Obtains information about all Wants with **extension** set to **fileAccess** in the system. A Want contains information for starting an ability. This API uses a promise to return the result.
+Obtains information about all Wants with **extension** set to **fileAccess** in the system. A Want contains information for starting an ability. This API returns the result asynchronously through a promise.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -96,7 +96,7 @@ Obtains information about all Wants with **extension** set to **fileAccess** in 
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| callback | AsyncCallback&lt;Array&lt;[Want](../apis-ability-kit/js-apis-app-ability-want.md)&gt;&gt; | Yes| Callback invoked to return the want information obtained.|
+| callback | AsyncCallback&lt;Array&lt;[Want](../apis-ability-kit/js-apis-app-ability-want.md)&gt;&gt; | Yes| Callback used to return the want information obtained.|
 
 **Error codes**
 
@@ -257,8 +257,8 @@ Provides APIs for managing file or directory attribute information.
 | relativePath<sup>10+</sup> | string | Yes| No| Relative path of the file or directory.|
 | fileName | string | No| No| Name of the file or directory.|
 | mode | number | No| No| Permissions on the file or directory.|
-| size | number | No| No|  Size of the file or directory.|
-| mtime | number | No| No|  Time when the file or directory was last modified.|
+| size | number | No| No|  Size of the file or folder, in bytes.|
+| mtime | number | No| No|  Time when the file or directory was last modified. The value is the number of milliseconds elapsed since the Epoch time (00:00:00 UTC on January 1, 1970).|
 | mimeType | string | No| No|  Multipurpose Internet Mail Extensions (MIME) type of the file or directory.|
 
 ### listFile
@@ -615,7 +615,7 @@ Provides a **FileAccessHelper** object.
 
 getRoots() : Promise&lt;RootIterator&gt;
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object.  
+Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API returns the result asynchronously through a promise.
 
 This API uses a promise to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
@@ -670,7 +670,7 @@ async function getRoots() {
 
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object.  
+Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses an asynchronous callback to return the result.
 
 This API uses an asynchronous callback to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
@@ -684,7 +684,7 @@ This API uses an asynchronous callback to return a **RootIterator** object. You 
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| callback | AsyncCallback&lt;[RootIterator](#rootiterator)&gt; | Yes| Callback invoked to return a **RootIterator** object.|
+| callback | AsyncCallback&lt;[RootIterator](#rootiterator)&gt; | Yes| Promise used to return a **RootIterator** object.|
 
 **Error codes**
 
@@ -726,7 +726,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 createFile(uri: string, displayName: string) : Promise&lt;string&gt;
 
-Creates a file in a directory. This API uses a promise to return the result.
+Creates a file in a directory. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -798,7 +798,7 @@ Creates a file in a directory. This API uses an asynchronous callback to return 
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the destination directory for the file to create.|
 | displayName | string | Yes| Name of the file to create. By default, the name of a local file must contain the file suffix.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the file created.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the file created.|
 
 **Error codes**
 
@@ -834,7 +834,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 mkDir(parentUri: string, displayName: string) : Promise&lt;string&gt;
 
-Creates a directory in a specified directory. This API uses a promise to return the result.
+Creates a folder in a specified directory. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -846,14 +846,14 @@ Creates a directory in a specified directory. This API uses a promise to return 
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| parentUri | string | Yes| URI of the destination directory for the directory to create.|
-| displayName | string | Yes| Name of the directory to create.|
+| parentUri | string | Yes| URI of the destination directory for the folder to create.|
+| displayName | string | Yes| Name of the folder to create.|
 
 **Return value**
 
 | Type| Description|
 | --- | -- |
-| Promise&lt;string&gt; | Promise used to return the URI of the directory created.|
+| Promise&lt;string&gt; | Callback used to return the URI of the folder created.|
 
 **Error codes**
 
@@ -892,7 +892,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 mkDir(parentUri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) : void
 
-Creates a directory in a specified directory. This API uses an asynchronous callback to return the result.
+Creates a folder in a specified directory. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -904,9 +904,9 @@ Creates a directory in a specified directory. This API uses an asynchronous call
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
-| parentUri | string | Yes| URI of the destination directory for the directory to create.|
-| displayName | string | Yes| Name of the directory to create.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the directory created.|
+| parentUri | string | Yes| URI of the destination directory for the folder to create.|
+| displayName | string | Yes| Name of the folder to create.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the folder created.|
 
 **Error codes**
 
@@ -942,7 +942,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 openFile(uri: string, flags: OPENFLAGS) : Promise&lt;number&gt;
 
-Opens a file. This API uses a promise to return the result.
+Opens a file. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -1042,7 +1042,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 delete(uri: string) : Promise&lt;number&gt;
 
-Deletes a file or directory. This API uses a promise to return the result.
+Deletes a file or directory. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -1107,7 +1107,7 @@ Deletes a file or directory. This API uses an asynchronous callback to return th
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the file or directory to delete.|
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback invoked to return the error code.|
+| callback | AsyncCallback&lt;number&gt; | Yes| Promise used to return the error code.|
 
 **Error codes**
 
@@ -1142,7 +1142,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
 
-Moves a file or directory. This API uses a promise to return the result. Currently, this API does not support move of files or directories across devices.
+Moves a file or folder. This API returns the result asynchronously through a promise. Currently, this API does not support moving files across devices.
 
 **System API**: This is a system API.
 
@@ -1155,13 +1155,13 @@ Moves a file or directory. This API uses a promise to return the result. Current
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | sourceFile | string | Yes| URI of the source file or directory to move.|
-| destFile | string | Yes| URI of the destination directory, to which the file or directory is moved.|
+| destFile | string | Yes| URI of the destination directory, to which the file is moved.|
 
 **Return value**
 
 | Type| Description|
 | ----- | ------ |
-| Promise&lt;string&gt; | Promise used to return the URI of the file or directory in the destination directory.|
+| Promise&lt;string&gt; | Callback used to return the URI of the file or folder in the destination directory.|
 
 **Error codes**
 
@@ -1195,7 +1195,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 move(sourceFile: string, destFile: string, callback: AsyncCallback&lt;string&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result. Currently, this API does not support move of files or directories across devices.
+Moves a file or folder. This API uses an asynchronous callback to return the result. Currently, this API does not support moving files or folders across devices.
 
 **System API**: This is a system API.
 
@@ -1208,8 +1208,8 @@ Moves a file or directory. This API uses an asynchronous callback to return the 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | sourceFile | string | Yes| URI of the source file or directory to move.|
-| destFile | string | Yes| URI of the destination directory, to which the file or directory is moved.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the file or directory in the destination directory.|
+| destFile | string | Yes| URI of the destination directory, to which the file or folder is moved.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the file or folder in the destination directory.|
 
 **Error codes**
 
@@ -1245,7 +1245,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 rename(uri: string, displayName: string) : Promise&lt;string&gt;
 
-Renames a file or directory. This API uses a promise to return the result.
+Renames a file or folder. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -1264,7 +1264,7 @@ Renames a file or directory. This API uses a promise to return the result.
 
 | Type| Description|
 | --- | -- |
-| Promise&lt;string&gt; | Promise used to return the URI of the renamed file or directory.|
+| Promise&lt;string&gt; | Callback used to return the URI of the renamed file or folder.|
 
 **Error codes**
 
@@ -1297,7 +1297,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 rename(uri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) : void
 
-Renames a file or directory. This API uses an asynchronous callback to return the result.
+Renames a file or folder. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1311,7 +1311,7 @@ Renames a file or directory. This API uses an asynchronous callback to return th
 | --- | --- | --- | -- |
 | uri | string | Yes| URI of the source file or directory to rename.|
 | displayName | string | Yes| New name of the file or directory, which can contain the file suffix.|
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback invoked to return the URI of the renamed file or directory.|
+| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the URI of the renamed file or folder.|
 
 **Error codes**
 
@@ -1346,7 +1346,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 access(sourceFileUri: string) : Promise&lt;boolean&gt;
 
-Checks whether a file or directory exists. This API uses a promise to return the result.
+Checks whether a file or directory exists. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -1453,7 +1453,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getFileInfoFromUri(uri: string) : Promise\<FileInfo>
 
-Obtains a **FileInfo** object based on a URI. This API uses a promise to return the result.
+Obtains a **FileInfo** object based on a URI. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -1544,7 +1544,7 @@ Obtains a **FileInfo** object based on a URI. This API uses an asynchronous call
 
 getFileInfoFromRelativePath(relativePath: string) : Promise\<FileInfo>
 
-Obtains a **FileInfo** object based on a relative path. This API uses a promise to return the result.
+Obtains a **FileInfo** object based on a relative path. This API returns the result asynchronously through a promise.
 
 **System API**: This is a system API.
 
@@ -1740,14 +1740,14 @@ Copies a file or directory. This API uses a promise to return the result.
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string  | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
+| destUri   | string  | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
 | force     | boolean | No  | Whether to forcibly overwrite the file with the same name. If **force** is **true**, the file with the same name will be overwritten. If **force** is **false** or not specified, the file with the same name will not be overwritten. The default value is **false**.|
 
 **Return value**
 
 | Type                                                   | Description                                                        |
 | :------------------------------------------------------ | :----------------------------------------------------------- |
-| Promise&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Promise used to return the result. If the file or directory is copied successfully, no information is returned. If the file copy fails, a **copyResult** array is returned.|
+| Promise&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Promise used to return the result. If the file or folder is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
 
 Example 1: Copy a file with **force** unspecified.
 
@@ -1832,8 +1832,8 @@ Copies a file or directory. This API uses an asynchronous callback to return the
 | Name   | Type                                            | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
-| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Callback invoked to return the result. If the file or directory is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
+| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
+| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Promise used to return the result. If the file or folder is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
 
 **Example**
 
@@ -1887,9 +1887,9 @@ Copies a file or directory. If a file with the same name already exists, you can
 | Name   | Type                                            | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
+| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
 | force     | boolean                                          | Yes  | Whether to forcibly overwrite the original file with the same name. If **force** is set to **true**, the original file is forcibly overwritten. If **force** is left empty or set to **false**, the original file is not overwritten.|
-| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Callback invoked to return the result. If the file or directory is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
+| callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | Yes  | Promise used to return the result. If the file or folder is copied successfully, no information is returned. If the copy fails, a **copyResult** array is returned.|
 
 **Example**
 
@@ -1945,7 +1945,7 @@ Copies a file with an alternative file name. This API uses a promise to return t
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string  | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
+| destUri   | string  | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
 | fileName  | string  | Yes  | File name to use if there is a file with the same name as the source file in the destination directory.|
 
 **Return value**
@@ -1998,7 +1998,7 @@ Copies a file with an alternative file name. This API uses an asynchronous callb
 | Name   | Type                                            | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
-| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or directory is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
+| destUri   | string                                           | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
 | fileName  | string                                           | Yes  | File name to use if there is a file with the same name as the source file in the destination directory.|
 | callback  | AsyncCallback&lt;string&gt; | Yes  | URI of the file generated.|
 
@@ -2359,11 +2359,11 @@ async function UnregisterObserver03() {
 
 moveItem(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array&lt;MoveResult&gt;&gt;
 
-Moves a file or directory. This API uses a promise to return the result.
+Moves a file or folder. This API returns the result asynchronously through a promise.
 
 You can forcibly overwrite the file with the same name in the destination directory.
 
-Currently, this API does not support move of files or directories across devices.
+Currently, this API does not support moving files or folders across devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2378,7 +2378,7 @@ Currently, this API does not support move of files or directories across devices
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | Yes  | URI of the source file or directory to move.                                   |
-| destUri   | string  | Yes  | URI of the destination directory, to which the file or directory is moved.                                           |
+| destUri   | string  | Yes  | URI of the destination directory, to which the file or folder is moved.                                           |
 | force     | boolean | No  | Whether to forcibly overwrite the file with the same name. The value **true** means to overwrite the file forcibly; the value **false** means the opposite. The default value is **false**.|
 
 **Return value**
@@ -2461,9 +2461,9 @@ async function moveItemFunc02() {
 
 moveItem(sourceUri: string, destUri: string, callback: AsyncCallback&lt;Array&lt;MoveResult&gt;&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result.
+Moves a file or folder. This API uses an asynchronous callback to return the result.
 
-Currently, this API does not support move of files or directories across devices.
+Currently, this API does not support moving files or folders across devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2478,7 +2478,7 @@ Currently, this API does not support move of files or directories across devices
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                                       | Yes  | URI of the source file or directory to move.                                   |
-| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or directory is moved.                                           |
+| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or folder is moved.                                           |
 | callback  | AsyncCallback&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | Yes  | Callback invoked to return the result. If the operation is successful, no information is returned. If the operation fails, a **MoveResult** array is returned.|
 
 **Example**
@@ -2520,11 +2520,11 @@ try {
 
 moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback&lt;Array&lt;MoveResult&gt;&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result.
+Moves a file or folder. This API uses an asynchronous callback to return the result.
 
 You can forcibly overwrite the file with the same name in the destination directory.
 
-Currently, this API does not support move of files or directories across devices.
+Currently, this API does not support moving files or folders across devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2539,7 +2539,7 @@ Currently, this API does not support move of files or directories across devices
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                                       | Yes  | URI of the source file or directory to move.                                   |
-| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or directory is moved.                                           |
+| destUri   | string                                                       | Yes  | URI of the destination directory, to which the file or folder is moved.                                           |
 | force     | boolean                                                      | Yes  | Whether to forcibly overwrite the file with the same name. The value **true** means to overwrite the file forcibly; the value **false** means the opposite. The default value is **false**.|
 | callback  | AsyncCallback&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | Yes  | Callback invoked to return the result. If the operation is successful, no information is returned. If the operation fails, a **MoveResult** array is returned.|
 
@@ -2582,11 +2582,11 @@ try {
 
 moveFile(sourceUri: string, destUri: string, fileName: string) : Promise&lt;string&gt;
 
-Moves a file, and renames it if a file with the same name already exists in the destination directory. This API uses a promise to return the result.
+Moves a file, and renames it if a file with the same name already exists in the destination directory. This API returns the result asynchronously through a promise.
 
 If a file with the same name exists (that is, a file moving conflict occurs), you can rename the file to be moved and save it to the destination directory.
 
-Currently, this API does not support move of files across devices.
+Currently, this API does not support moving files across devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2647,7 +2647,7 @@ Moves a file, and renames it if a file with the same name already exists in the 
 
 If a file with the same name exists (that is, a file moving conflict occurs), you can rename the file to be moved and save it to the destination directory.
 
-Currently, this API does not support move of files across devices.
+Currently, this API does not support moving files across devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2664,7 +2664,7 @@ Currently, this API does not support move of files across devices.
 | sourceFile | string                      | Yes  | URI of the source file to move.|
 | destFile   | string                      | Yes  | URI of the destination directory, to which the file is moved.    |
 | fileName   | string                      | Yes  | New name of the file.   |
-| callback   | AsyncCallback&lt;string&gt; | Yes  | Callback invoked to return the URI of the file in the destination directory.  |
+| callback   | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the URI of the file in the destination directory.  |
 
 **Error codes**
 

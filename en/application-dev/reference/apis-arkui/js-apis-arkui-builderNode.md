@@ -5215,6 +5215,253 @@ The **postInputEventWithStrategy** API is added since API version 24.
 This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the current touch point coordinates (x/y) through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, and calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained from FrameNode.[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12). It then updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). The component selects a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and posts the converted mouse event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
 
 ```ts
+
+import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
+
+// Define the class for passing parameters.
+class Params {
+  text: string = 'this is a text'
+  uiContext: UIContext | null = null
+}
+
+@Component
+struct node22 {
+  @State case1Index: number = 0;
+  private nodeController2: MyNodeController2 = new MyNodeController2();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController2)
+          .height(400)
+          .width(500)
+        Column()
+          .width(500)
+          .height(400)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController2.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Component
+struct node33 {
+  private nodeController3: MyNodeController3 = new MyNodeController3();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController3)
+          .height(200)
+          .width(500)
+        Column()
+          .width(500)
+          .height(200)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController3.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  Column(){
+    Button("Layer1")
+      .width('100%')
+      .height(100)
+    node22()
+
+  }
+  .width(500)
+  .height(600)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder2(params: Params) {
+  Column(){
+    Button("Layer2")
+      .width('100%')
+      .height(100)
+    node33()
+  }
+  .width(500)
+  .height(400)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder3(params: Params) {
+  Column(){
+    Button("Layer3")
+      .width('100%')
+      .height(50)
+      .gesture(
+        TapGesture()
+          .tag("TapGesture")
+          .onAction((event:GestureEvent) => {
+            params.uiContext?.showAlertDialog(
+              {
+                title: 'onTapGestureLayer3',
+                message: ''
+              }
+            );
+          })
+      )
+  }
+  .width(500)
+  .height(200)
+  .backgroundColor(Color.Gray)
+}
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController2 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder2);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController3 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder3);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  private nodeController: MyNodeController = new MyNodeController();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController)
+          .height(600)
+          .width(500)
+        Column()
+          .width(500)
+          .height(600)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+          .gesture(
+            TapGesture()
+              .tag("TapGesture")
+              .onAction((event:GestureEvent) => {
+                let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
+                promptAction.showToast({
+                  message: 'onTapGestureOut',
+                  duration: 10000
+                })
+              })
+          )
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+```
+
+### Example 17: Handling Touch Events with Competition Strategies in BuilderNode
+
+The **postInputEventWithStrategy** API is added since API version 24.
+
+This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, traverse the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**, **windowY**, **displayX**, and **displayY** of each touch point. Select a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and post the converted touch event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
+
+```ts
 import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
 
 // Define the class for passing parameters.
@@ -5340,7 +5587,7 @@ class MyNodeController extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // Read the x and y offsets of buildNode relative to its parent component and convert them to pixel coordinates.
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
@@ -5380,7 +5627,7 @@ class MyNodeController2 extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // Read the x and y offsets of buildNode relative to its parent component and convert them to pixel coordinates.
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
@@ -5420,7 +5667,7 @@ class MyNodeController3 extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // Read the x and y offsets of buildNode relative to its parent component and convert them to pixel coordinates.
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
@@ -5475,253 +5722,6 @@ struct MyComponent {
                 promptAction.showToast({
                   message: 'onTapGestureOut',
                   duration: 1000
-                })
-              })
-          )
-      }.offset({ top: 100 })
-    }
-  }
-}
-
-```
-
-
-### Example 17: Handling Touch Events with Competition Strategies in BuilderNode
-
-The **postInputEventWithStrategy** API is added since API version 24.
-
-This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, traverse the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**, **windowY**, **displayX**, and **displayY** of each touch point. Select a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and post the converted touch event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
-
-```ts
-import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
-
-// Define the class for passing parameters.
-class Params {
-  text: string = 'this is a text'
-  uiContext: UIContext | null = null
-}
-
-@Component
-struct node22 {
-  @State case1Index: number = 0;
-  private nodeController2: MyNodeController2 = new MyNodeController2();
-  build() {
-    Row(){
-      Stack() {
-        NodeContainer(this.nodeController2)
-          .height(400)
-          .width(500)
-        Column()
-          .width(500)
-          .height(400)
-          .backgroundColor(Color.Transparent)
-          .onMouse((event) => {
-            if (event != undefined) {
-              this.nodeController2.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
-            }
-          })
-      }.offset({ top: 100 })
-    }
-  }
-}
-
-@Component
-struct node33 {
-  private nodeController3: MyNodeController3 = new MyNodeController3();
-  build() {
-    Row(){
-      Stack() {
-        NodeContainer(this.nodeController3)
-          .height(200)
-          .width(500)
-        Column()
-          .width(500)
-          .height(200)
-          .backgroundColor(Color.Transparent)
-          .onMouse((event) => {
-            if (event != undefined) {
-              this.nodeController3.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
-            }
-          })
-      }.offset({ top: 100 })
-    }
-  }
-}
-
-@Builder
-function ButtonBuilder(params: Params) {
-  Column(){
-    Button("Layer1")
-      .width('100%')
-      .height(100)
-    node22()
-
-  }
-  .width(500)
-  .height(600)
-  .backgroundColor(Color.Gray)
-}
-
-@Builder
-function ButtonBuilder2(params: Params) {
-  Column(){
-    Button("Layer2")
-      .width('100%')
-      .height(100)
-    node33()
-  }
-  .width(500)
-  .height(400)
-  .backgroundColor(Color.Gray)
-}
-
-@Builder
-function ButtonBuilder3(params: Params) {
-  Column(){
-    Button("Layer3")
-      .width('100%')
-      .height(50)
-      .gesture(
-        TapGesture()
-          .tag("TapGesture")
-          .onAction((event:GestureEvent) => {
-            params.uiContext?.showAlertDialog(
-              {
-                title: 'onTapGestureLayer3',
-                message: ''
-              }
-            );
-          })
-      )
-  }
-  .width(500)
-  .height(200)
-  .backgroundColor(Color.Gray)
-}
-
-// Implement a custom UI controller by extending NodeController.
-class MyNodeController extends NodeController {
-  private rootNode: BuilderNode<[Params]> | null = null;
-  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
-    return this.rootNode.getFrameNode();
-  }
-
-  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
-    if (this.rootNode == null) {
-      return false;
-    }
-    // Read the x and y offsets of buildNode relative to its parent component and convert them to pixel coordinates.
-    let node: FrameNode | null = this.rootNode.getFrameNode();
-    let offsetX: number | null | undefined = node?.getPositionToParent().x;
-    let offsetY: number | null | undefined = node?.getPositionToParent().y;
-
-    let mouseEvent = event as MouseEvent;
-    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
-      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
-      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
-    }
-    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
-    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
-    return result;
-  }
-}
-
-class MyNodeController2 extends NodeController {
-  private rootNode: BuilderNode<[Params]> | null = null;
-  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder2);
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
-    return this.rootNode.getFrameNode();
-  }
-
-  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
-    if (this.rootNode == null) {
-      return false;
-    }
-    // Read the x and y offsets of buildNode relative to its parent component and convert them to pixel coordinates.
-    let node: FrameNode | null = this.rootNode.getFrameNode();
-    let offsetX: number | null | undefined = node?.getPositionToParent().x;
-    let offsetY: number | null | undefined = node?.getPositionToParent().y;
-
-    let mouseEvent = event as MouseEvent;
-    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
-      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
-      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
-    }
-    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
-    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
-    return result;
-  }
-}
-
-class MyNodeController3 extends NodeController {
-  private rootNode: BuilderNode<[Params]> | null = null;
-  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder3);
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
-    return this.rootNode.getFrameNode();
-  }
-
-  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
-    if (this.rootNode == null) {
-      return false;
-    }
-    // Read the x and y offsets of buildNode relative to its parent component and convert them to pixel coordinates.
-    let node: FrameNode | null = this.rootNode.getFrameNode();
-    let offsetX: number | null | undefined = node?.getPositionToParent().x;
-    let offsetY: number | null | undefined = node?.getPositionToParent().y;
-    let mouseEvent = event as MouseEvent;
-    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
-      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
-      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
-    }
-    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
-    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
-    return result;
-  }
-}
-
-@Entry
-@Component
-struct MyComponent {
-  private nodeController: MyNodeController = new MyNodeController();
-  build() {
-    Row(){
-      Stack() {
-        NodeContainer(this.nodeController)
-          .height(600)
-          .width(500)
-        Column()
-          .width(500)
-          .height(600)
-          .backgroundColor(Color.Transparent)
-          .onMouse((event) => {
-            if (event != undefined) {
-              this.nodeController.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
-            }
-          })
-          .gesture(
-            TapGesture()
-              .tag("TapGesture")
-              .onAction((event:GestureEvent) => {
-                let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
-                promptAction.showToast({
-                  message: 'onTapGestureOut',
-                  duration: 10000
                 })
               })
           )
@@ -5788,7 +5788,7 @@ class MyNodeController extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // Read the x and y offsets of buildNode relative to its parent component and convert them to pixel coordinates.
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
