@@ -43,6 +43,9 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
  >
  > - 应用最多可以添加5个水印。
  > - 此接口只能在prepared状态之前调用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
