@@ -143,11 +143,11 @@ toSendable(): SendableLayout {
 
 <!-- @[tranferabledObject_SendableLayout_toOrigin ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/generated/ets/sendableModel/SendableLayout.ets) -->
 
-```ts
+``` TypeScript
 @Sendable
 export class SendableLayout implements lang.ISendable {
-  type: string = '';
-  arr: collections.Array<number> = new collections.Array();
+  public type: string = '';
+  public arr: collections.Array<number> = new collections.Array();
 
   toOrigin(): Layout {
     const origin = new Layout();
@@ -155,7 +155,6 @@ export class SendableLayout implements lang.ISendable {
     origin.arr = new Array(...this.arr);
     return origin;
   }
-}
 ```
 
 这样，JSON路径就形成了完整闭环：
