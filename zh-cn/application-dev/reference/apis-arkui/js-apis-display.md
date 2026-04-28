@@ -204,8 +204,8 @@ import { display } from '@kit.ArkUI';
 
 | 名称   | 类型 |  只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| left   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左上角顶点相对所在逻辑屏幕左顶点的x轴坐标，单位为px，该参数为整数。 |
-| top    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左上角顶点相对所在逻辑屏幕左顶点的y轴坐标，单位为px，该参数为整数。 |
+| left   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左上角顶点相对所在屏幕左顶点的x轴坐标，单位为px，该参数为整数。 |
+| top    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的左上角顶点相对所在屏幕左顶点的y轴坐标，单位为px，该参数为整数。 |
 | width  | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的宽度，单位为px，该参数为整数。   |
 | height | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形区域的高度，单位为px，该参数为整数。   |
 
