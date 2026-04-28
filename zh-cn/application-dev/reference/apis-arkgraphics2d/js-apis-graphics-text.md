@@ -4046,6 +4046,113 @@ struct Index {
 }
 ```
 
+### forceReuseRasterResult
+
+forceReuseRasterResult(isForce: boolean): void
+
+设置是否强制复用光栅化结果。设置后，在下次调用{@link OH_Drawing_TypographyPaint}绘制时生效。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|  ---   | ---  | ---  | ---  |
+| isForce | boolean | 是 | 是否强制复用光栅化结果。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。 |
+ 
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text, drawing } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+ 
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+        
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
+            size: { height: 200, width: 200 } }
+          let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+          let canvas = new drawing.Canvas(pixelMap);
+
+          paragraph.forceReuseRasterResult(true);
+          paragraph.paint(canvas, 0, 0);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text, drawing } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
+            size: { height: 200, width: 200 } }
+          let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+          let canvas = new drawing.Canvas(pixelMap);
+
+          paragraph.forceReuseRasterResult(true);
+          paragraph.paint(canvas, 0, 0);
+        })
+    }
+  }
+}
+```
+
 ## LineTypeset<sup>18+</sup>
 
 保存着文本内容以及样式的载体，可以用于计算单行排版信息。
