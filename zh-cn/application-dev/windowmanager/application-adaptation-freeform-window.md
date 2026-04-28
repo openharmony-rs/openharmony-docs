@@ -421,7 +421,7 @@
           this.titleButtonRect = this.mainWindow.getTitleButtonRect();
           this.topAreaHeight = this.titleButtonRect.height;
           this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
-          console.log(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
+          console.info(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
         } catch (exception) {
           console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);
         }
@@ -479,10 +479,13 @@
     }
    ```
 示例代码效果图如下：
-图一表示未隐藏标题栏，应用最顶部的布局区域（粉色区域）只能在标题栏之下。
+
+下图表示不隐藏标题栏时，应用最顶部的布局区域（粉色区域）只能在标题栏之下。
+
 ![existTitleBar](figures/existTitleBar.png)
 
-图二表示隐藏标题栏，避让三键，推荐的应用最顶部的布局区域（粉色区域）。
+下图表示隐藏标题栏时，避让窗口三键后，应用最顶部可用于布局的区域（粉色区域）。
+
 ![notExistTitleBar](figures/notExistTitleBar.png)
 
 ## 自由窗口状态下窗口进入全屏显示
