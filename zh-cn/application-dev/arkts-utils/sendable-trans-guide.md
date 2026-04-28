@@ -80,42 +80,46 @@ export class Layout {
 - 手写JSON字符串。
 
   <!-- @[tranferabledObject_testJSON ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) -->
-
-```ts
-import { TJSON } from '@hadss/turbo-trans-json';
-import { Layout } from 'entry/ets/turbotrans_JSON/layout'
-import { ArkTSUtils } from '@kit.ArkTS';
-
-function testJSON1() {
-  let obj = new Layout();
-  obj.type = "Test";
-  obj.arr = [3, 4];
-  let str = JSON.stringify(obj);
-  let layoutNormal = TJSON.fromString<Layout>(str, Layout);
-  console.info("layout arr: " + layoutNormal.arr);
-
-  let layoutS = layoutNormal.toSendable();
-  if (ArkTSUtils.isSendable(layoutS)) {
-    console.info("expect layout from JSON string is Sendable");
+  
+  ``` TypeScript
+  import { TJSON } from '@hadss/turbo-trans-json';
+  import { Layout, LayoutS } from 'entry/ets/turbotrans_JSON/layout'
+  import { ArkTSUtils } from '@kit.ArkTS';
+  
+  export function testJSON1(): LayoutS {
+    let obj = new Layout();
+    obj.type = 'Test';
+    obj.arr = [3, 4];
+    let str = JSON.stringify(obj);
+    let layoutNormal = TJSON.fromString<Layout>(str, Layout);
+    console.info('111 layout arr: ' + layoutNormal.arr);
+    let layoutS = layoutNormal.toSendable() as LayoutS;
+    if (ArkTSUtils.isSendable(layoutS)) {
+      console.info('expect layout from JSON string is Sendable');
+    } else {
+      console.error('test occur error');
+    }
+    return layoutS;
   }
-}
-
-function testJSON2() {
-  let layoutStr = '{"type":"Text","arr":[3,4]}';
-  let layoutNormal = TJSON.fromString<Layout>(layoutStr, Layout);
-  console.info("layout arr: " + layoutNormal.arr);
-
-  let layoutS = layoutNormal.toSendable();
-  if (ArkTSUtils.isSendable(layoutS)) {
-    console.info("expect layout from simple string is Sendable");
+  
+  export function testJSON2(): LayoutS {
+    let layoutStr = '{"type":"Text","arr":[3,4],}';
+    let layoutNormal = TJSON.fromString<Layout>(layoutStr, Layout);
+    console.info('222 layout arr: ' + layoutNormal.arr);
+    let layoutS = layoutNormal.toSendable() as LayoutS;
+    if (ArkTSUtils.isSendable(layoutS)) {
+      console.info('expect layout from simple string is Sendable');
+    } else {
+      console.error('test occur error');
+    }
+    return layoutS;
   }
-}
-
-export function testJSON() {
-  testJSON1()
-  testJSON2()
-}
-```
+  
+  export function testJSON() {
+    testJSON1();
+    testJSON2();
+  }
+  ```
 
 #### 将普通对象转换为Sendable对象（toSendable）
 
