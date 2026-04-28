@@ -336,13 +336,10 @@ struct Index {
 
 <!-- @[tranferabledObject_makeObserved ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 runTests() {
-  taskpool.execute(observeProtobuf).then((res: test_pb) => {
-    this.pb = UIUtils.makeObserved(res)
-  })
   taskpool.execute(observeJSON1).then((res) => {
-    this.layout = UIUtils.makeObserved(res as LayoutS)
+    this.layout = UIUtils.makeObserved(res as LayoutS);
   })
 }
 ```
