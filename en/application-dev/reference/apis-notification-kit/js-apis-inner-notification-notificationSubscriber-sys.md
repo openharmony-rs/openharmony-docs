@@ -566,7 +566,7 @@ Callback function for notifications of system property value changes.
 
 | Name  | Type   | Read Only| Optional| Description            |
 | ------ | ------- | ---- | --- | ---------------- |
-| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | No| Yes| Notification information that carries the system property value.|
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | No| Yes| Returns notification information containing the system property value.|
 | onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | No| Yes| Returns the changes of the enabling state of the application's badge.|
 
 **Example**

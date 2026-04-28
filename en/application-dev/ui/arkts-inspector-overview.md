@@ -90,7 +90,7 @@ struct ComponentPage {
 
 ## Using Layout Callbacks
 
-The [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-arkui-inspector.md) module provides APIs for registering the component layout and drawing completion callbacks.
+ArkUI provides the ability to register callbacks for component layout and drawing completion notifications via [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-arkui-inspector.md).
 
 The following example demonstrates the basic usage of layout callbacks.
 

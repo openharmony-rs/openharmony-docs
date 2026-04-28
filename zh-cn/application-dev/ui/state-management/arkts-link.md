@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -349,7 +349,7 @@ struct ShufflingContainer {
 ### 数组类型的\@Link
 
 
-<!-- @[link_array_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithArrayTypes.ets) -->
+<!-- @[link_array_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithArrayTypes.ets) --> 
 
 ``` TypeScript
 @Component
@@ -366,6 +366,7 @@ struct ArrayTypesChild {
         .onClick(() => {
           this.items.push(this.items.length + 1);
         })
+      // 子组件的数组类型可以同步回父组件
       Button(`Button2: replace whole item`)
         .margin(12)
         .width(312)
@@ -416,7 +417,7 @@ struct ArrayTypes {
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[link_map_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesMapType.ets) -->
+<!-- @[link_map_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesMapType.ets) --> 
 
 ``` TypeScript
 @Component
@@ -430,6 +431,7 @@ struct MapSampleChild {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // 子组件的Map类型可以同步回父组件
       Button('child init map').onClick(() => {
         this.value = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
       })
@@ -475,7 +477,7 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[link_set_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesSetType.ets) -->
+<!-- @[link_set_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesSetType.ets) --> 
 
 ``` TypeScript
 @Component
@@ -488,6 +490,7 @@ struct SetSampleChild {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // 子组件的Set类型可以同步回父组件
       Button('init set').onClick(() => {
         this.message = new Set([0, 1, 2, 3, 4]);
       })
@@ -527,7 +530,7 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-<!-- @[link_data_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesDateType.ets) -->
+<!-- @[link_data_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesDateType.ets) --> 
 
 ``` TypeScript
 @Component
@@ -536,6 +539,7 @@ struct DateComponent {
 
   build() {
     Column() {
+      // 子组件的Date类型可以同步回父组件
       Button(`child increase the year by 1`)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
@@ -589,7 +593,7 @@ struct ParentComponent {
 
 以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步。但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
 
-<!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) -->
+<!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -601,6 +605,7 @@ struct ChangeVariables {
     Column() {
       Text(`sourceNumber of the parent component:` + this.sourceNumber)
       ChangeVariablesChild({ sourceNumber: this.sourceNumber })
+      // sourceNumber的修改不会影响到父组件中的变量改变
       Button('Change sourceNumber in Parent Component')
         .onClick(() => {
           this.sourceNumber++;
@@ -637,11 +642,12 @@ struct ChangeVariablesChild {
 
 `@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`UnionTypes`中的按钮可以改变`name`的属性或类型，`UnionChild`组件也会相应刷新。
 
-<!-- @[link_union_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingUnionTypes.ets) -->
+<!-- @[link_union_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingUnionTypes.ets) --> 
 
 ``` TypeScript
 @Component
 struct UnionChild {
+  // @Link支持联合类型
   @Link name: string | undefined;
 
   build() {

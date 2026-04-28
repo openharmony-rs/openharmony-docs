@@ -28,6 +28,8 @@
 
 Shape(value?: PixelMap)
 
+用于绘制Shape组件的构造函数。 
+
 从API version 9开始，该接口支持在ArkTS卡片中使用，卡片中不支持使用PixelMap对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。

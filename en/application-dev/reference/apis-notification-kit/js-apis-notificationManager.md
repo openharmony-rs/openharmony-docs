@@ -37,7 +37,7 @@ If the ID and label of the new notification are the same as that of the previous
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [HTTP Error Codes](../apis-network-kit/errorcode-net-http.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](errorcode-notification.md), and [HTTP Error Codes](../apis-network-kit/errorcode-net-http.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -108,7 +108,7 @@ If the ID and label of the new notification are the same as that of the previous
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [HTTP Error Codes](../apis-network-kit/errorcode-net-http.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](errorcode-notification.md), and [HTTP Error Codes](../apis-network-kit/errorcode-net-http.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -170,7 +170,7 @@ Cancels a notification with the specified ID and label. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -219,7 +219,7 @@ Cancels a notification with the specified ID and optional label. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -258,7 +258,7 @@ Cancels a notification with the specified ID. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -300,7 +300,7 @@ Cancels all notifications of this application. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -341,7 +341,7 @@ Cancels all notifications of this application. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -378,7 +378,7 @@ Adds a notification slot of a specified type. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -426,7 +426,7 @@ Adds a notification slot of a specified type. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -465,7 +465,7 @@ Obtains a notification slot of a specified type. This API uses an asynchronous c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -513,7 +513,7 @@ Obtains a notification slot of a specified type. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -551,7 +551,7 @@ Obtains all notification slots of this application. This API uses an asynchronou
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 
 | ID| Error Message                           |
@@ -593,7 +593,7 @@ Obtains all notification slots of this application. This API uses a promise to r
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -630,7 +630,7 @@ Removes a notification slot of a specified type for this application. This API u
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -652,7 +652,7 @@ let removeSlotCallback = (err: BusinessError): void => {
     console.info(`Succeeded in removing slot.`);
   }
 }
-let slotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
@@ -678,7 +678,7 @@ Removes a notification slot of a specified type for this application. This API u
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -716,7 +716,7 @@ Removes all notification slots for this application. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -756,7 +756,7 @@ Removes all notification slots for this application. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -792,7 +792,7 @@ Checks whether notification is enabled for the specified application. This API u
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
 
 | ID| Error Message                                 |
 | -------- | ---------------------------------------- |
@@ -835,7 +835,7 @@ Checks whether notification is enabled for the specified application. This API u
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md) and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md) and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
@@ -873,7 +873,7 @@ Checks whether notification is enabled for the specified application. This API r
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
@@ -884,7 +884,7 @@ For details about the error codes, see [Notification Error Codes](./errorcode-no
 **Example**
 
 ```ts
-let enabled = notificationManager.isNotificationEnabledSync();
+let enabled: boolean = notificationManager.isNotificationEnabledSync();
 console.info(`isNotificationEnabledSync success, data is : ${JSON.stringify(enabled)}`);
 ```
 
@@ -912,7 +912,7 @@ Sets the notification badge number. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -955,7 +955,7 @@ Sets the notification badge number. This API uses an asynchronous callback to re
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1011,7 +1011,7 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getBadgeNumber().then((badgeNumber) => {
+notificationManager.getBadgeNumber().then((badgeNumber: number) => {
   console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
@@ -1034,7 +1034,7 @@ Obtains the number of active notifications of this application. This API uses an
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1075,7 +1075,7 @@ Obtains the number of active notifications of this application. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1111,7 +1111,7 @@ Obtains the active notifications of this application. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1151,7 +1151,7 @@ Obtains the active notifications of this application. This API uses a promise to
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1188,7 +1188,7 @@ Cancels notifications under a notification group of this application. This API u
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1235,7 +1235,7 @@ Cancels notifications under a notification group of this application. This API u
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1274,7 +1274,7 @@ Checks whether a specified template is supported before using [NotificationTempl
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1321,7 +1321,7 @@ Checks whether a specified template is supported before using [NotificationTempl
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1367,7 +1367,7 @@ Requests notification to be enabled for this application. You can call this API 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1437,7 +1437,7 @@ Requests notification to be enabled for this application. You can call this API 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1495,7 +1495,7 @@ Requests notification to be enabled for this application. This API uses an async
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1541,7 +1541,7 @@ Requests notification to be enabled for this application. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1581,7 +1581,7 @@ Checks whether the device supports cross-device notifications. This API uses an 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1624,7 +1624,7 @@ Checks whether the device supports cross-device notifications. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1669,7 +1669,7 @@ Opens the notification settings page of the application, which is displayed in s
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1721,7 +1721,7 @@ Obtains the notification settings of an application. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |

@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -34,7 +34,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
 
 **Example**
 
@@ -129,7 +129,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component.                                  |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
 
 **Example**
 
@@ -226,7 +226,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdateByUniqueId'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | navigationUniqueId  | number | Yes  | Unique ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component, which can be obtained using [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                            |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                            |
 
 **Example**
 
@@ -334,7 +334,7 @@ Listens for the start and end of scroll events of all scrollable components. Sup
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.  |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | Yes  | Callback used to return the information about the scroll event.  |
 
 **Example**
 
@@ -426,7 +426,7 @@ Unregisters the listener for the start and end of scroll events of all scrollabl
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.  |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.  |
 
 **Example**
 
@@ -447,8 +447,8 @@ Listens for the start and end of scroll events of a specific scrollable componen
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.                |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the information about the scroll event.                |
 
 **Example**
 
@@ -469,8 +469,8 @@ Unregisters the listener for the start and end of scroll events of a specific sc
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
 
 **Example**
 
@@ -491,7 +491,7 @@ Listens for page state changes in the [Router](arkts-apis-uicontext-router.md).
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates page state changes in the [Router](arkts-apis-uicontext-router.md).|
-| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | Yes  | Callback used to return the result. It returns the current page state using a [RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) object.                |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | Yes  | Callback used to return the current page state using a [RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) object.                |
 
 **Example**
 
@@ -580,7 +580,7 @@ Listens for screen pixel density changes.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'densityUpdate'** indicates the pixel density changes of the screen.|
-| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | Yes  | Callback used to return the result. It returns the updated screen pixel density using a [DensityInfo](./js-apis-arkui-observer.md#densityinfo12) object.                |
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | Yes  | Callback used to return the updated screen pixel density using a [DensityInfo](./js-apis-arkui-observer.md#densityinfo12) object.                |
 
 **Example**
 
@@ -805,7 +805,7 @@ Listens for [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationSwitch'**, which indicates [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch events.|
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the result. It returns the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
 
 **Example**
 
@@ -906,7 +906,7 @@ Listens for [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationSwitch'**, which indicates [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch events.|
 | observerOptions | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12)        | Yes  | Observer configuration options.  |
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the result. It returns the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
 
 **Example**
 
@@ -1804,7 +1804,7 @@ For details, see [on('textChange')](#ontextchange22).
 
 on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
 
-Registers the partial listener for text input field changes events.
+Listens on the text input component with the specified ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1816,7 +1816,7 @@ Registers the partial listener for text input field changes events.
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
 | identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.                            |
-| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the result. Returns the text change information.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the text change information.|
 
 **Example**
 
@@ -2779,7 +2779,7 @@ See the example for the [onSwiperContentUpdate](#onswipercontentupdate22-1) API.
 
 onRouterPageSizeChange(callback: Callback\<observer.RouterPageInfo\>): void
 
-Registers a callback function. This callback function is triggered when the size of the visible router page changes. This API uses an asynchronous callback to return the result.
+Registers a callback that is triggered when the size of the visible router page changes. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -2789,7 +2789,7 @@ Registers a callback function. This callback function is triggered when the size
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>  | Yes  | Callback used to return the result. Callback for returning the information about the router page. |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>  | Yes  | Callback used to return the information about the router page. |
 
 **Example**
 
@@ -2815,7 +2815,7 @@ struct QueryRouterPageSize {
   build() {
     Column() {
       Button('querySize').onClick(() => {
-        // You can also proactively obtain the page size information.
+        // You can also proactively obtain the page size.
         let info = this.queryRouterPageInfo();
         console.info(`testTag pageSize: ${info && info.size ? JSON.stringify(info.size) : "NA"}`)
       })
@@ -2830,7 +2830,7 @@ struct QueryRouterPageSize {
 
 offRouterPageSizeChange(callback?: Callback\<observer.RouterPageInfo\>): void
 
-Removes the callback registered using the onRouterPageSizeChange API. This API uses an asynchronous callback to return the result.
+Removes the listener callback registered using the **onRouterPageSizeChange** API. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -2844,13 +2844,13 @@ Removes the callback registered using the onRouterPageSizeChange API. This API u
 
 **Example**
 
-Refer to the example of the onRouterPageSizeChange API.
+See the example for the [onRouterPageSizeChange](#onrouterpagesizechange23) API.
 
 ## onNavDestinationSizeChange<sup>23+</sup>
 
 onNavDestinationSizeChange(callback: Callback\<observer.NavDestinationInfo\>): void
 
-Registers a callback that is triggered when the size of the visible NavDestination changes. This API uses an asynchronous callback to return the result.
+Registers a callback that is triggered when the size of the visible navigation destination changes. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -2860,7 +2860,7 @@ Registers a callback that is triggered when the size of the visible NavDestinati
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | Yes  | Callback used to return the result. Returns the information about the NavDestination. |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | Yes  | Callback used to return navigation destination information. |
 
 **Example**
 
@@ -2874,7 +2874,7 @@ struct PageOneContent {
   }
 
   aboutToAppear(): void {
-    // You can obtain the size of the NavDestination page by registering a listener.
+    // You can obtain the size of the navigation destination page by registering a listener.
     this.getUIContext().getUIObserver().onNavDestinationSizeChange(this.destSizeCallback);
   }
 
@@ -2885,7 +2885,7 @@ struct PageOneContent {
   build() {
     Column() {
       Button('queryDestSize').onClick(() => {
-        // You can also proactively obtain the size of the NavDestination page.
+        // You can also proactively obtain the size of the navigation destination page.
         let info = this.queryNavDestinationInfo();
         console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
       })
@@ -2934,7 +2934,7 @@ struct QueryNavDestinationSize {
 
 offNavDestinationSizeChange(callback?: Callback\<observer.NavDestinationInfo\>): void
 
-Removes the listener callback function registered using the onNavDestinationSizeChange API. This API uses an asynchronous callback to return the result.
+Removes the listener callback registered using the **onNavDestinationSizeChange** API. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -2944,17 +2944,17 @@ Removes the listener callback function registered using the onNavDestinationSize
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Callback function to be removed. If no parameter is passed, all callback functions are removed.|
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Callback to be removed. If no parameter is passed, all callbacks are removed.|
 
 **Example**
 
-Refer to the example of the [onNavDestinationSizeChange](#onnavdestinationsizechange23) API.
+See the example for the [onNavDestinationSizeChange](#onnavdestinationsizechange23) API.
 
 ## onNavDestinationSizeChangeByUniqueId<sup>23+</sup>
 
 onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
 
-Registers a callback function for listening to the size change of a visible NavDestination that belongs to a specified Navigation. This API uses an asynchronous callback to return the result.
+Registers a callback for listening to the size change of a visible **NavDestination** component that belongs to a specified **Navigation** component. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -2964,8 +2964,8 @@ Registers a callback function for listening to the size change of a visible NavD
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| navigationUniqueId | number | Yes| Unique ID of the Navigation to which the NavDestination to be listened belongs, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | Yes  | Callback used to return the result. NavDestinationInfo, which contains the NavDestination information. |
+| navigationUniqueId | number | Yes| Unique ID of the **Navigation** component to which the **NavDestination** component to be listened belongs, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).|
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | Yes  | Callback used to return navigation destination information. |
 
 **Example**
 
@@ -2984,7 +2984,7 @@ struct PageOneContent {
     let navInfo = this.queryNavigationInfo();
     if (navInfo && navInfo.uniqueId) {
       this.navUniqueId = navInfo.uniqueId;
-      // Register a listener to obtain the size of the NavDestination page.
+      // You can obtain the size of the navigation destination page by registering a listener.
       this.getUIContext().getUIObserver().onNavDestinationSizeChangeByUniqueId(this.navUniqueId, this.destSizeCallback);
     }
   }
@@ -2996,7 +2996,7 @@ struct PageOneContent {
   build() {
     Column() {
       Button('queryDestSize').onClick(() => {
-        // Or proactively obtain the size of the NavDestination page.
+        // You can also proactively obtain the size of the navigation destination page.
         let info = this.queryNavDestinationInfo();
         console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
       })
@@ -3045,7 +3045,7 @@ struct QueryNavDestinationSize {
 
 offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
 
-Removes the listener callback registered through the onNavDestinationSizeChangeByUniqueId API. This API uses an asynchronous callback to return the result.
+Removes the listener callback registered using the **onNavDestinationSizeChangeByUniqueId** API. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -3055,9 +3055,9 @@ Removes the listener callback registered through the onNavDestinationSizeChangeB
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| navigationUniqueId | number | Yes| Unique ID of the navigation to which the NavDestination to be listened on belongs. You can obtain the value by calling [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Callback to be removed. If no parameter is passed, all callbacks with the same navigationUniqueId are removed.|
+| navigationUniqueId | number | Yes| Unique ID of the **Navigation** component to which the **NavDestination** component to be listened belongs, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).|
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Callback to be removed. If no parameter is passed, all callbacks with the same **navigationUniqueId** setting are removed.|
 
 **Example**
 
-Refer to the example of the [onNavDestinationSizeChangeByUniqueId](#onnavdestinationsizechangebyuniqueid23) API.
+See the example for the [onNavDestinationSizeChangeByUniqueId](#onnavdestinationsizechangebyuniqueid23) API.

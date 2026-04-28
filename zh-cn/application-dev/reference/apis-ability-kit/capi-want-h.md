@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -100,7 +100,7 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 销毁want成功。<br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - element参数无效。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 销毁want成功。<br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want参数无效。 |
 
 ### OH_AbilityBase_SetWantElement()
 

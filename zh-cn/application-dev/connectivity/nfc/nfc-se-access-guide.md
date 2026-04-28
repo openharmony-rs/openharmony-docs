@@ -16,16 +16,16 @@
 ## 接口说明
 安全单元完整的API说明以及示例代码请参考：[安全单元接口](../../reference/apis-connectivity-kit/js-apis-secureElement.md)。
 
-实现安全单元的访问，可能使用到下面的接口。
+实现安全单元的访问，需要使用到下面的接口。
 
-| 接口名                             | 功能描述                                                                       |
-| ---------------------------------- | ------------------------------------------------------------------------------ |
-| createService(): Promise\<SEService>                    | 建立一个可用于连接到系统中所有可用SE的新连接。                                                               |
-| getReaders(): Reader[]                      | 返回可用SE Reader的数组，包含该设备上支持的所有的安全单元。                                                                |
-| openSession(): Session                 | 在SE Reader实例上创建连接会话，返回Session实例。                                                                |
-| openLogicalChannel(aid: number[]): Promise\<Channel>                  | 打开逻辑通道，返回逻辑Channel实例对象。                                                                |
-| transmit(command: number[]): Promise\<number[]> | 向SE发送APDU数据                                                                |
-| close(): void | 关闭Channel。                                                            |
+| 接口名                             | 支持版本    | 功能描述                                                                       |
+| ---------------------------------- | ----- | ------------------------------------------------------------------------- |
+| createService(): Promise\<SEService>      |   从API version 12开始支持   | 建立一个可用于连接到系统中所有可用SE的新连接。             |
+| getReaders(): Reader[]           | 从API version 10开始支持   | 返回可用SE Reader的数组，包含该设备上支持的所有的安全单元。                  |
+| openSession(): Session         | 从API version 10开始支持  | 在SE Reader实例上创建连接会话，返回Session实例。                                  |
+| openLogicalChannel(aid: number[]): Promise\<Channel>       |  从API version 10开始支持  | 打开逻辑通道，返回逻辑Channel实例对象。              |
+| transmit(command: number[]): Promise\<number[]>   | 从API version 10开始支持   | 向SE发送APDU数据                                   |
+| close(): void    |   从API version 10开始支持  | 关闭Channel。                                                            |
 
 
 ## 主要场景开发步骤

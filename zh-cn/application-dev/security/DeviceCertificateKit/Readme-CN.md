@@ -2,9 +2,9 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @zxz--3--; @chaceli-->
-<!--Designer: @lanming--; @chande-->
-<!--Tester: @PAFT--; @zhangzhi1995-->
+<!--Owner: @zxz--3; @chaceli-->
+<!--Designer: @lanming; @chande-->
+<!--Tester: @PAFT; @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
 - [Device Certificate Kit简介](device-certificate-kit-intro.md)

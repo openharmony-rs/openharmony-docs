@@ -202,6 +202,7 @@ struct LineWidthExample {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 8%; 8%; 59%-->
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string&nbsp;\|&nbsp;number<sup>10+</sup>&nbsp;\|&nbsp;[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md)  | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效，保持设置前效果。 |
@@ -292,6 +293,7 @@ struct LineCapExample {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 8%; 8%; 64%-->
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | [CanvasLineJoin](#canvaslinejoin类型说明) | 否 | 否 | <br/>可选值为：<br/>-&nbsp;'round'：在线段相连处绘制一个扇形，扇形的圆角半径是线段的宽度。<br/>-&nbsp;'bevel'：在线段相连处使用三角形为底填充，&nbsp;每个部分矩形拐角独立。<br/>-&nbsp;'miter'：在相连部分的外边缘处进行延伸，使其相交于一点，形成一个菱形区域，该属性可以通过设置miterLimit属性展现效果。<br/>默认值：'miter' |
@@ -550,6 +552,7 @@ struct TextBaseline {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | number | 否 | 否 | 范围为[0.0, 1.0]，0.0为完全透明，1.0为完全不透明。若给定值小于0.0，则取值0.0；若给定值大于1.0，则取值1.0.<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制。API version 18及以后，设置NaN或Infinity时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br/>默认值：1.0 |
@@ -1302,6 +1305,7 @@ struct DirectionDemo {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string | 否 | 否 | <br/>支持的滤镜效果如下：<br/>- 'none': 无滤镜效果。<br/>- 'blur(\<length>)'：给图像设置高斯模糊，取值范围≥0，支持单位px、vp、rem，默认值：blur(0px)。<br/>- 'brightness([\<number>\|\<percentage>])'：给图片应用一种线性乘法，使其看起来更亮或更暗，支持数字和百分比参数，取值范围≥0，默认值：brightness(1)。<br/>- 'contrast([\<number>\|\<percentage>])'：调整图像的对比度，支持数字和百分比参数，取值范围≥0，默认值：contrast(1)。<br/>- 'grayscale([\<number>\|\<percentage>])'：将图像转换为灰度图像，支持数字和百分比参数，取值范围[0, 1]，默认值：grayscale(0)。<br/>- 'hue-rotate(\<angle>)'：给图像应用色相旋转，取值范围0deg-360deg，默认值：hue-rotate(0deg)。<br/>- 'invert([\<number>\|\<percentage>])'：反转输入图像，支持数字和百分比参数，取值范围[0, 1]，默认值：invert(0)。<br/>- 'opacity([\<number>\|\<percentage>])'：调整图像的透明程度，支持数字和百分比参数，取值范围[0, 1]，默认值：opacity(1)。<br/>- 'saturate([\<number>\|\<percentage>])'：转换图像饱和度，支持数字和百分比参数，取值范围≥0，默认值：saturate(1)。<br/>- 'sepia([\<number>\|\<percentage>])'：将图像转换为深褐色，支持数字和百分比参数，取值范围[0, 1]，默认值：sepia(0)。<br/> |
@@ -1379,6 +1383,7 @@ struct FilterDemo {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 10%; 10%; 55%-->
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否 | 当使用LengthMetrics时：<br/>字间距按照指定的单位设置；<br/>不支持FP、PERCENT和LPX（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入。<br/>当使用string时：<br/>不支持设置百分比（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入；<br/>若letterSpacing的赋值未指定单位（例如：letterSpacing='10'），且未指定LengthMetricsUnit时，默认单位设置为vp；<br/>指定LengthMetricsUnit为px时，默认单位设置为px；<br/>当letterSpacing的赋值指定单位时（例如：letterSpacing='10vp'），字间距按照指定的单位设置。<br/>默认值：0（输入无效值时，字间距设为默认值）<br/>注：推荐使用LengthMetrics，性能更好。 |
@@ -1433,6 +1438,7 @@ fillRect(x: number, y: number, w: number, h: number): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名     | 类型     | 必填 | 说明            |
 | ------ | ------ | ---- | ------------- |
 | x      | number | 是  | 指定矩形左上角点的x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
@@ -1483,6 +1489,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名   | 类型     | 必填   | 说明           |
 | ---- | ------ | ----  | ------------ |
 | x    | number | 是     | 指定矩形的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
@@ -1533,6 +1540,7 @@ clearRect(x: number, y: number, w: number, h: number): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名   | 类型     | 必填  | 说明  |
 | ---- | ------ | ---- | ------------- |
 | x    | number | 是 | 指定矩形上的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
@@ -1585,6 +1593,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名       | 类型     | 必填   | 说明 |
 | -------- | ------ | ---- | --------------- |
 | text     | string | 是    | 需要绘制的文本内容。<br>异常值undefined或null按无效值处理，不进行绘制。 |
@@ -1636,6 +1645,7 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名       | 类型     | 必填 | 说明     |
 | -------- | ------ | ---- | --------------- |
 | text     | string | 是    | 需要绘制的文本内容。<br>异常值undefined或null按无效值处理，不进行绘制。 |
@@ -4889,6 +4899,7 @@ type ImageSmoothingQuality = "high" | "low" | "medium"
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 10%; 10%; 10%; 45%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
 | width                    | number | 是 | 否 | 只读属性，文本方块的宽度。 |

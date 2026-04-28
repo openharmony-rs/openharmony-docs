@@ -1,7 +1,7 @@
 # @ohos.inputMethodList (Input Method List)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -10,7 +10,7 @@ The **inputMethodList** module is oriented to system applications and input meth
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -77,10 +77,10 @@ struct SettingsItem {
   @State defaultPattern: number = 1;
   private oneHandAction: PatternOptions = {
     defaultSelected: this.defaultPattern,
-    patterns: [
+    patterns: [ // Icons in patterns can be used only after the corresponding icon resources have been added to the resource directory of the project.
       {
-        icon: $r('app.media.hand_icon'),
-        selectedIcon: $r('app.media.hand_icon_selected')
+        icon: $r('app.media.hand_icon'), // Icon resource for the input method mode option, for example, the icon for the one-handed mode.
+        selectedIcon: $r('app.media.hand_icon_selected') // Icon resource for the input method mode option in the selected state, for example, the icon for the one-handed mode in the selected state.
       },
       {
         icon: $r('app.media.hand_icon1'),
@@ -118,4 +118,5 @@ struct SettingsItem {
 ```
 
 Effect
+
 ![Effect](./figures/effect.png)

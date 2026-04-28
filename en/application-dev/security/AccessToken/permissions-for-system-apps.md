@@ -5456,7 +5456,7 @@ Allows a system application to access the security fence capability.
 **Since**: 23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
- 	 
+
 Allows a system application to use the running capability framework.
 
 **Permission level**: system_basic
@@ -5465,12 +5465,12 @@ Allows a system application to use the running capability framework.
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: phones | tablets | TVs | wearables
 
 **Since**: 23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
- 	
+
 Allows a system application to start the preview panel for adding application widgets to the home screen.
 
 With this permission, the system application can help users add the widgets to distribute to the home screen.
@@ -5528,29 +5528,43 @@ Allows an application to query whether the page is in the standby state and acce
 **Since**: 23
 
  ## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
- 	 
+
 Allows an application to manage local education space accounts.
- 	 
+
 **Permission level**: system_basic
- 	 
+
 **Authorization mode**: system_grant
- 	 
+
 **Enable via ACL**: true
- 	 
+
 **Supported devices**: tablets
- 	 
+
 **Since**: 23
- 	 
+
 ## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
- 	 
+
 Allows an application to query the properties of local education space accounts.
- 	 
+
 **Permission level**: system_basic
- 	 
+
 **Authorization mode**: system_grant
- 	 
+
 **Enable via ACL**: true
- 	 
+
 **Supported devices**: tablets
- 	 
+
 **Since**: 23
+
+## ohos.permission.RESTORE_END_NOTIFICATION
+
+Allows a system application to subscribe to the restore end event of the backup framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**since**: 23

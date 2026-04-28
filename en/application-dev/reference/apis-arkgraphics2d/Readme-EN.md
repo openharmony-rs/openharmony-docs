@@ -36,7 +36,7 @@
     - [Class (SamplingOptions)](arkts-apis-graphics-drawing-SamplingOptions.md)
     - [Class (ShaderEffect)](arkts-apis-graphics-drawing-ShaderEffect.md)
     - [Class (ShadowLayer)](arkts-apis-graphics-drawing-ShadowLayer.md)
-    - [Class (TextBold)](arkts-apis-graphics-drawing-TextBlob.md)
+    - [Class (TextBlob)](arkts-apis-graphics-drawing-TextBlob.md)
     - [Class (Tool)](arkts-apis-graphics-drawing-Tool.md)
     - [Class (Typeface)](arkts-apis-graphics-drawing-Typeface.md)
     - [Class (TypefaceArguments)](arkts-apis-graphics-drawing-TypefaceArguments.md)
@@ -221,4 +221,3 @@
 - Error Codes<!--arkgraphics-arkts-errcode-->
   - [colorSpaceManager Error Codes](errorcode-colorspace-manager.md)
   - [Drawing and Display Error Codes](errorcode-drawing.md)
-<!--no_check-->

@@ -17,6 +17,8 @@
 > - FrameNodes cannot be dragged.
 >
 > - FrameNode objects do not support JSON serialization.
+>
+> - When the API of the [FrameNode](#framenode-1) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 
 ## Modules to Import
 
@@ -72,6 +74,7 @@ Describes the binding state of interaction events on components. When querying r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 26%; 10%; 8%; 8%; 48%-->
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | baseEventRegistered  | boolean |  No  | No  | Whether the event is bound declaratively.<br>**true** means that the event is bound declaratively, and **false** means the opposite.|
@@ -1784,6 +1787,8 @@ Adds component content. The current node must be modifiable, which means the ret
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
@@ -2052,6 +2057,8 @@ Sets the cross-language access options for this FrameNode. This API allows you t
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                         |
 | -------- | -------------------------------- |
 | 100022   | The FrameNode cannot be set whether to support cross-language common attribute setting. |
@@ -2188,6 +2195,7 @@ Creates a property animation for the FrameNode.
 
 **Parameters**
 
+<!--Table: 12%; 20%; 8%; 60%-->
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | property  | [AnimationPropertyType](./arkui-ts/ts-appendix-enums.md#animationpropertytype20) | Yes  | Animation property type.|
@@ -2197,6 +2205,7 @@ Creates a property animation for the FrameNode.
 
 **Return value**
 
+<!--Table: 10%; 90%-->
 | Type              | Description              |
 | ------------------ | ------------------ |
 | boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>&nbsp;4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
@@ -2419,8 +2428,7 @@ Removes a previously-adopted affiliated node.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | Yes  | Affiliated node to remove
-.|
+| child | [FrameNode](#framenode-1) | Yes  | Node to remove.|
 
 **Error codes**
 

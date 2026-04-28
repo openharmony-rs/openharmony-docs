@@ -10,7 +10,8 @@ PhotoViewPicker provides APIs for the user to select images and videos. Before u
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - To start **PhotoViewPicker** again, you need to destroy the previous **PhotoViewPicker** instance through **NavDestination** or the process.
 
 ## Modules to Import
 

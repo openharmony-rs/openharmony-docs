@@ -62,9 +62,9 @@ The capabilities of the **EnterpriseAdminExtensionAbility** component vary depen
 
 > **NOTE**
 >
-> - BDA and other [administrators](./mdm-kit-term.md#administrator) cannot coexist.
+> 1. BDA and other [administrators](./mdm-kit-term.md#administrator) cannot coexist.
 >
-> - The total number of SDAs and DAs cannot exceed 10.
+> 2. The total number of SDAs and DAs cannot exceed 10.
 
 ## Authorization Principles of Management APIs
 

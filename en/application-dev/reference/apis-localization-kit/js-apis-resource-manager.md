@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 The **resourceManager** module provides the resource management functionality. It allows an application to obtain the best matched application resources or system resources based on the specified [configuration](#configuration). For details about the matching rules, see [Matching Resources](../../quick-start/resource-categories-and-access.md#matching-resources).
 
@@ -391,7 +391,7 @@ Provides APIs for accessing application resources and system resources.
 >
 > - Resource files are defined in the **resources** directory of the project. You can obtain resource values such as strings, string arrays, and colors based on the specified **resName**, **resId**, or **Resource** object. **resName** indicates the resource name, **resId** indicates the resource ID, which can be obtained through `$r(*resource-address*).id`, for example, `$r('app.string.test').id`.
 >
-> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For more information, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
+> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For more information, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
 >
 > - In API version 22 and earlier versions, an exception is thrown due to an invalid ID when the intermediate-code HAR or bytecode HAR accesses resources through resource ID-related APIs. From API version 23, the intermediate-code HAR or bytecode HAR can properly access resources through resource ID-related APIs. For details, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
 >
@@ -8178,3 +8178,4 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
     ]
   }
   ```
+<!--no_check-->

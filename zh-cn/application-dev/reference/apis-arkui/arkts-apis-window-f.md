@@ -182,7 +182,7 @@ findWindow(name: string): Window
 
 | 类型 | 说明 |
 | ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回对象为空。 |
+| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回1300002错误码。 |
 
 **错误码：**
 
@@ -230,7 +230,7 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Top window or main window is null or destroyed.  |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.  |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -309,7 +309,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Top window or main window is null or destroyed.   |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.  |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -615,7 +615,7 @@ struct Index {
 
 getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?: number): Promise&lt;Array&lt;Window&gt;&gt;
 
-查询本应用指定坐标下的可见窗口数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
+查询本应用指定坐标下的可见窗口（可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)接口监听）数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -766,6 +766,7 @@ try {
       console.info(`abilityName:${windowInfo.abilityName}`);
       console.info(`bundleName:${windowInfo.bundleName}`);
       console.info(`isFocused:${windowInfo.isFocused}`);
+      console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
     })
   }).catch((err: BusinessError) => {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
@@ -1129,7 +1130,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，参数id传入null或undefined时，可能会导致callback无法得到执行，建议使用[createWindow()](#windowcreatewindow9)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

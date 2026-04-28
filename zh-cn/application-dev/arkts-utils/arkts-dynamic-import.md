@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @ctw-ian-->
+<!--Owner: @jokerxd-liu; @zmw1-->
+<!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @jinqiuheng-->
 
@@ -741,7 +741,7 @@ The name of an indirect dependency cannot be the same as the module name.
   "har2": "file:../har2",
   "har3": "file:../har3"
 }
-// HAP's build-profiles.json5
+// HAP's build-profile.json5
 "buildOption": {
   "arkOptions": {
     "runtimeOnly": {

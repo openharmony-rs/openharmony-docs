@@ -6560,7 +6560,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 setFavorite(favoriteState: boolean): void
 
-Favorites or unfavorites this file.
+Favorites or unfavorites this file asset.
 
 **System API**: This is a system API.
 
@@ -6929,6 +6929,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
 ### setEffectMode<sup>12+</sup>
 
 setEffectMode(mode: MovingPhotoEffectMode): void
@@ -10990,7 +10991,7 @@ Unregisters a callback to monitor changes in the progress of a batch download fo
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callback are unregistered.|
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callbacks are unregistered.|
 
 
 **Error codes**
@@ -12632,3 +12633,4 @@ Enumerates the risk types of images.
 | APPROVED |  1 |  Approved images. |
 | SUSPICIOUS |  2 |  Suspicious images. |
 | REJECTED |  3 |  Rejected images. |
+

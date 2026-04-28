@@ -648,6 +648,7 @@ Defines the VPN configuration.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
+<!--Table: 19%; 20%; 8%; 8%; 45%-->
 | Name            | Type                                     | Read-only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs. Before API version 23, a maximum of 64 IP addresses are supported. Starting from API version 23, a maximum of 2000 IP addresses are supported.                                 |

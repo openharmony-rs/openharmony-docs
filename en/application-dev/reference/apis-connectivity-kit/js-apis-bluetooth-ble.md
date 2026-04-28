@@ -5511,7 +5511,7 @@ Enumerates the types of the physical channel of the BLE device.
 
 ## CodedPhyMode<sup>23+</sup>
 
-Enumerates the coding modes for the physical channel whose type is **BLEPHYCODED**.
+Enumerates the coding modes for the physical channel whose type is **BLE_PHY_CODED**.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

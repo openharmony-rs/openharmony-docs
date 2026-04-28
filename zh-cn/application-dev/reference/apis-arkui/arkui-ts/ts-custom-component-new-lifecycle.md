@@ -151,6 +151,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
+    // CustomComponentLifecycle.getCurrentState用于获得自定义组件当前的生命周期状态
     hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', UIUtils.getLifecycle(this).getCurrentState());
   }
   build() {
@@ -243,7 +244,7 @@ aboutToDisappear函数在自定义组件被销毁之前执行。不建议在abou
 
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造函数。当params存在时，表示V1组件的复用回调。
+当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造参数。当params存在时，表示V1组件的复用回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -388,6 +389,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
+    // CustomComponentLifecycleState.BUILT代表自定义组件为已展开状态
     hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', CustomComponentLifecycleState.BUILT);
   }
   build() {
@@ -451,6 +453,7 @@ struct Child {
   @State switch: boolean = true;
   @ComponentInit
   myInit() {
+    // 自定义组件创建完毕后，触发myInit方法
     hilog.info(0x0000, 'testTag', 'Child myInit');
   }
   @ComponentAppear
