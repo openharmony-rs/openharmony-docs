@@ -24,7 +24,7 @@
 
 应用灰度采集功能对发生故障的感知主要依赖HiAppevent的事件订阅机制。
 
-在向HiAppevent进行故障订阅（即调用[addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwater)接口）时，使用的Watcher名称为HiRetrievalWatcher，请勿在自定义的功能中使用此名称订阅事件，以避免出现冲突。
+在向HiAppevent进行故障订阅（即调用[addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)接口）时，使用的Watcher名称为HiRetrievalWatcher，请勿在自定义的功能中使用此名称订阅事件，以避免出现冲突。
 
 ### 故障日志采集
 
