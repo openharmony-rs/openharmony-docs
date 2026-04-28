@@ -15,6 +15,8 @@
 
 **库：** libvulkan.so
 
+**系统能力：** SystemCapability.Graphic.Vulkan 
+
 **起始版本：** 10
 
 **相关模块：** [Vulkan](capi-vulkan.md)
@@ -44,6 +46,13 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | 图像使用标志位。 |
+
+### 类型别名
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| VkSurfaceCreateFlagsOHOS | VkFlags | 用于Vulkan Surface创建时使用到的VkFlags类型位掩码。<br>**起始版本：** 10 |
+| VkSwapchainImageUsageFlagsOHOS | VkFlags | 交换链图像的使用标志。<br>**起始版本：** 10 |
 
 ### 宏定义
 
