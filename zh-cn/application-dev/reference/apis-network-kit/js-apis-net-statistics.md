@@ -485,6 +485,10 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 获取指定应用实时下行流量，使用 callback 异步回调。
 
+**需要权限：**
+
+- API 26.0.0+: ohos.permission.GET_NETWORK_STATS
+
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
