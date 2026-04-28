@@ -61,8 +61,8 @@ TextPicker(options?: TextPickerOptions)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | range | string[]&nbsp;\|&nbsp;string[][]<sup>10+</sup> \| [Resource](ts-types.md#resource)&nbsp;\|<br/>[TextPickerRangeContent](#textpickerrangecontent10对象说明)[]<sup>10+</sup>&nbsp;\|&nbsp;[TextCascadePickerRangeContent](#textcascadepickerrangecontent10对象说明)[]<sup>10+</sup> | 否 | 否 | 选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。<br/>**说明**：<br/>1. 单列数据选择器使用string[]，[Resource](ts-types.md#resource)，[TextPickerRangeContent](#textpickerrangecontent10对象说明)[]类型。<br/>2. 多列非联动数据选择器使用string[][]类型。 <br/>3. 多列联动数据选择器使用[TextCascadePickerRangeContent](#textcascadepickerrangecontent10对象说明)[]类型。<br/>4. Resource类型只支持[strarray.json](../../../quick-start/resource-categories-and-access.md#资源组目录)。<br>5. range的类型及列数不可以动态修改。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| selected | ArkTS-Dyn: number&nbsp;\|&nbsp;number[]<sup>10+</sup> <br> ArkTS-Sta: int&nbsp;\|&nbsp;int[]<sup>10+</sup>&nbsp;\|&nbsp;Bindable\<int>&nbsp;\|&nbsp;Bindable\<int[]> | 否 | 是 | 设置选中项在数据选择列表中的索引值，索引从0开始。<br/>默认值：0 <br/>**说明**：<br/>1. 单列数据选择器使用ArkTS-Dyn: number，ArkTS-Sta: int类型。<br/>2. 多列数据选择器使用ArkTS-Dyn: number[]，ArkTS-Sta: int[]类型。<br />3. 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| value | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)[] <br> ArkTS-Sta: BindableResourceStr&nbsp;\|&nbsp;BindableResourceStrArray | 否 | 是 | 设置选中项的值，优先级低于selected。<br/>默认值：数据选择列表中第一个元素的值。<br/> **说明**：<br/>1. 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>2. 从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>3. 只有显示文本列表时该值有效。显示图片或图文混排的列表时，该值无效。<br/>4. 单列数据选择器使用[ResourceStr](ts-types.md#resourcestr)类型。<br/>5. 多列数据选择器使用[ResourceStr](ts-types.md#resourcestr)[]类型。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selected | ArkTS-Dyn: number&nbsp;\|&nbsp;number[]<sup>10+</sup> <br> ArkTS-Sta: int&nbsp;\|&nbsp;int[]&nbsp;\|&nbsp;[Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<int>&nbsp;\|&nbsp;[Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<int[]> | 否 | 是 | 设置选中项在数据选择列表中的索引值，索引从0开始。<br/>默认值：0 <br/>**说明**：<br/>1. 单列数据选择器使用ArkTS-Dyn: number，ArkTS-Sta: int类型。<br/>2. 多列数据选择器使用ArkTS-Dyn: number[]，ArkTS-Sta: int[]类型。<br />3. ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>4. ArkTS-Sta：从API version 23开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| value | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)[] <br> ArkTS-Sta: [BindableResourceStr](../../../ui/state-management/arkts-two-way-sync-static.md)&nbsp;\|&nbsp;[BindableResourceStrArray](../../../ui/state-management/arkts-two-way-sync-static.md) | 否 | 是 | 设置选中项的值，优先级低于selected。<br/>默认值：数据选择列表中第一个元素的值。<br/> **说明**：<br/>1. ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>2. ArkTS-Sta：从API version 23开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。<br/>3. ArkTS-Dyn：从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>4. 只有显示文本列表时该值有效。显示图片或图文混排的列表时，该值无效。<br/>5. 单列数据选择器使用[ResourceStr](ts-types.md#resourcestr)类型。<br/>6. 多列数据选择器使用[ResourceStr](ts-types.md#resourcestr)[]类型。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | columnWidths<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)[] | 否 | 是 | 设置每一列的列宽。<br/>默认值：每一列的列宽相等，为组件宽度除以列数。<br/>**说明**：<br/>1. 当文本长度大于列宽时，文本被截断。<br/>2. 当设置为异常值时，使用默认值。<br/>3. 支持设置为Undefined和Null，不支持Undefined[]和Null[]。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## TextPickerRangeContent<sup>10+</sup>对象说明
@@ -163,7 +163,7 @@ defaultPickerItemHeight(height: Optional\<number | string>)
 
 | 参数名 | 类型                       | 必填 | 说明                   |
 | ------ | -------------------------- | ---- | ---------------------- |
-| height  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;string> | 是   | 选择项的高度。<br />取值范围：<br />number类型：[0, +∞)，单位为vp。<br />string类型：仅支持number类型取值的字符串形式，例如"56"。<br />默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />1. 设置该参数后，选中项与非选中项的高度均为所设置的值。<br/>2. 当height的值为undefined时，维持上次取值。 |
+| height  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;string> | 是   | 选择项的高度。<br />取值范围：<br />number类型：[0, +∞)，单位为vp。<br />string类型：仅支持number类型取值的字符串形式，例如"56"。<br />默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />1. 设置该参数后，选中项与非选中项的高度均为所设置的值。<br/>2. 当height的值为undefined时，维持上次取值；若从未设置过有效值，使用默认值。 |
 
 ### defaultPickerItemHeight<sup>23+</sup>
 
@@ -183,7 +183,7 @@ defaultPickerItemHeight(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                   |
 | ------ | -------------------------- | ---- | ---------------------- |
-| value  | double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | Picker各选择项的高度。double类型取值范围：[0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。<br />默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />设置该参数后，选中项与非选中项的高度均为所设置的值。<br/>当value的值为undefined时，维持上次取值。 |
+| value  | double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | Picker各选择项的高度。double类型取值范围：[0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。<br />默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />设置该参数后，选中项与非选中项的高度均为所设置的值。<br/>当value的值为undefined时，维持上次取值；若从未设置过有效值，使用默认值。 |
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -241,7 +241,7 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 disappearTextStyle(style: Optional\<PickerTextStyle | TextPickerTextStyle>)
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[disappearTextStyle](#disappeartextstyle18)<sup>18+</sup>相比，style参数新增了对[TextPickerTextStyle](#textpickertextstyle15类型说明)类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[disappearTextStyle<sup>18+</sup>](#disappeartextstyle18)相比，style参数新增了对[TextPickerTextStyle](#textpickertextstyle15类型说明)类型的支持。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -263,7 +263,7 @@ disappearTextStyle(style: Optional\<PickerTextStyle | TextPickerTextStyle>)
 
 disappearTextStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
-设置过渡项（以选中项为基准向上或向下的第二项）的文本样式。
+设置过渡项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,7 +277,7 @@ disappearTextStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 过渡项的文本颜色、字号、字体粗细。<br/>当value的值为undefined时，过渡项的文本颜色、字号、字体粗细为默认值。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}|
+| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 过渡项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br/>当value的值为undefined时，过渡项的文本样式为默认值。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}|
 
 >  **说明：**
 >
@@ -339,7 +339,7 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 textStyle(style: Optional\<PickerTextStyle | TextPickerTextStyle>)
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[textStyle](#textstyle18)<sup>18+</sup>相比，style参数新增了对[TextPickerTextStyle](#textpickertextstyle15类型说明)类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[textStyle<sup>18+</sup>](#textstyle18)相比，style参数新增了对[TextPickerTextStyle](#textpickertextstyle15类型说明)类型的支持。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -361,7 +361,7 @@ textStyle(style: Optional\<PickerTextStyle | TextPickerTextStyle>)
 
 textStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
-设置一般项（以选中项为基准向上或向下的第一项）的文本样式。
+设置一般项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -375,7 +375,7 @@ textStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 一般项的文本颜色、字号、字体粗细。<br/>当value的值为undefined时，一般项的文本颜色、字号、字体粗细为默认值。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 一般项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br/>当value的值为undefined时，一般项的文本样式为默认值。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 >  **说明：**
 >
@@ -433,7 +433,7 @@ selectedTextStyle(style: Optional\<PickerTextStyle>)
 
 selectedTextStyle(style: Optional\<PickerTextStyle | TextPickerTextStyle>)
 
-设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[selectedTextStyle](#selectedtextstyle18)<sup>18+</sup>相比，style参数新增了对[TextPickerTextStyle](#textpickertextstyle15类型说明)类型的支持。
+设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[selectedTextStyle<sup>18+</sup>](#selectedtextstyle18)相比，style参数新增了对[TextPickerTextStyle](#textpickertextstyle15类型说明)类型的支持。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -457,7 +457,7 @@ selectedTextStyle(style: Optional\<PickerTextStyle | TextPickerTextStyle>)
 
 selectedTextStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
-设置选中项的文本颜色、字号、字体粗细。Wearable设备不支持设置该属性。
+设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。Wearable设备不支持设置该属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -471,7 +471,7 @@ selectedTextStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 选中项的文本颜色、字号、字体粗细。<br/>当value的值为undefined时，选中项的文本颜色、字号、字体粗细为默认值。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br/>当value的值为undefined时，选中项的文本样式为默认值。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
 
 ### selectedIndex<sup>10+</sup>
 
@@ -535,7 +535,7 @@ selectedIndex(value: int | int[] | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | int&nbsp;\|&nbsp;int[]&nbsp;\|&nbsp;undefined | 是   | 默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>当value的值为undefined时，默认值与[TextPickerOptions](#textpickeroptions对象说明)中的selected值保持一致。如果[TextPickerOptions](#textpickeroptions对象说明)中的selected值为undefined，则默认值为0。|
+| value  | int&nbsp;\|&nbsp;int[]&nbsp;\|&nbsp;undefined | 是   | 默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>当value的值为undefined时，默认值与[TextPickerOptions](#textpickeroptions对象说明)中的selected值保持一致。如果[TextPickerOptions](#textpickeroptions对象说明)中的selected值为undefined，则默认值为0。<br/>当value的值为负数或者超过数据选择列表的最大索引值时，使用默认值。<br/> |
 
 ### canLoop<sup>10+</sup>
 
@@ -599,7 +599,7 @@ canLoop(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;undefined | 是   | 是否可循环滚动。<br/>true：可循环，false：不可循环。<br/>默认值：true |
+| value  | boolean&nbsp;\|&nbsp;undefined | 是   | 是否可循环滚动。<br/>true：可循环，false：不可循环。<br/>默认值：true<br/>当value的值为undefined时，使用默认值。 |
 
 ### divider<sup>12+</sup>
 
@@ -669,7 +669,7 @@ divider(value: DividerOptions | null | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                                  |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| value | [DividerOptions](#divideroptions12对象说明) \| null&nbsp;\|&nbsp;undefined | 是   | 1.设置[DividerOptions](#divideroptions12对象说明)，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '2px', <br/>startMargin: 0, <br/>endMargin: 0, <br/>color: '#33000000'<br/>}<br/>2.设置为null不显示分割线。 |
+| value | [DividerOptions](#divideroptions12对象说明) \| null&nbsp;\|&nbsp;undefined | 是   | 1.设置[DividerOptions](#divideroptions12对象说明)，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '2px', <br/>startMargin: 0, <br/>endMargin: 0, <br/>color: '#33000000'<br/>}<br/>2.设置为null不显示分割线。<br/>3.当value的值为undefined时，使用默认值。 |
 
 ### gradientHeight<sup>12+</sup>
 
@@ -737,9 +737,7 @@ gradientHeight(value: Dimension | undefined)
 
 ### disableTextStyleAnimation<sup>15+</sup>
 
-ArkTS-Dyn: disableTextStyleAnimation(disabled: boolean)
-
-ArkTS-Sta: disableTextStyleAnimation(disabled: boolean | undefined)
+disableTextStyleAnimation(disabled: boolean)
 
 设置滑动过程中是否有文本样式变化动效。设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle](#defaulttextstyle15)属性设置样式。如未设置[defaultTextStyle](#defaulttextstyle15)，则显示为[Text](ts-basic-components-text.md)组件默认样式。
 
@@ -747,7 +745,29 @@ ArkTS-Sta: disableTextStyleAnimation(disabled: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[disableTextStyleAnimation](#disabletextstyleanimation23)。
+
 **ArkTS-Dyn起始版本：** 15
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| disabled  | boolean | 是   | 是否关闭滑动过程中文本样式变化的动效。<br/>- true：关闭文本样式变化动效。<br/>- false：不关闭文本样式变化动效。<br/>默认值：false<br />**说明：**<br/>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle](#defaulttextstyle15)属性设置的样式。如未设置[defaultTextStyle](#defaulttextstyle15)，则显示为[Text](ts-basic-components-text.md)组件默认样式。|
+
+### disableTextStyleAnimation<sup>23+</sup>
+
+disableTextStyleAnimation(disabled: boolean | undefined)
+
+设置滑动过程中是否有文本样式变化动效。设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle](#defaulttextstyle23)属性设置样式。如未设置[defaultTextStyle](#defaulttextstyle23)，则显示为[Text](ts-basic-components-text.md)组件默认样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[disableTextStyleAnimation](#disabletextstyleanimation15)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -755,13 +775,11 @@ ArkTS-Sta: disableTextStyleAnimation(disabled: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| disabled  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否关闭滑动过程中文本样式变化的动效。<br/>- true：关闭文本样式变化动效。<br/>- false：不关闭文本样式变化动效。<br/>默认值：false<br />**说明：**<br/>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle](#defaulttextstyle15)属性设置的样式。如未设置[defaultTextStyle](#defaulttextstyle15)，则显示为[Text](ts-basic-components-text.md)组件默认样式。|
+| disabled  | boolean \| undefined | 是   | 是否关闭滑动过程中文本样式变化的动效。<br/>- true：关闭文本样式变化动效。<br/>- false：不关闭文本样式变化动效。<br/>默认值：false<br />**说明：**<br/>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle](#defaulttextstyle23)属性设置的样式。如未设置[defaultTextStyle](#defaulttextstyle23)，则显示为[Text](ts-basic-components-text.md)组件默认样式。<br/>当disabled的值为undefined时，使用默认值。|
 
 ### defaultTextStyle<sup>15+</sup>
 
-ArkTS-Dyn: defaultTextStyle(style: TextPickerTextStyle)
-
-ArkTS-Sta: defaultTextStyle(style: TextPickerTextStyle | undefined)
+defaultTextStyle(style: TextPickerTextStyle)
 
 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。仅当[disableTextStyleAnimation](#disabletextstyleanimation15)为true时生效。
 
@@ -769,7 +787,29 @@ ArkTS-Sta: defaultTextStyle(style: TextPickerTextStyle | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[defaultTextStyle](#defaulttextstyle23)。
+
 **ArkTS-Dyn起始版本：** 15
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| style  | [TextPickerTextStyle](#textpickertextstyle15类型说明) | 是   | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br/>默认值：与[Text](ts-basic-components-text.md)组件默认值相同。 |
+
+### defaultTextStyle<sup>23+</sup>
+
+defaultTextStyle(style: TextPickerTextStyle | undefined)
+
+设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。仅当[disableTextStyleAnimation](#disabletextstyleanimation23)为true时生效。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[defaultTextStyle](#defaulttextstyle15)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -777,7 +817,27 @@ ArkTS-Sta: defaultTextStyle(style: TextPickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | ArkTS-Dyn: [TextPickerTextStyle](#textpickertextstyle15类型说明)<br/>ArkTS-Sta: [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br/>默认值：与[Text](ts-basic-components-text.md)组件默认值相同。 |
+| style  | [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br/>默认值：与[Text](ts-basic-components-text.md)组件默认值相同。<br/>当style的值为undefined时，使用默认值。 |
+
+### enableHapticFeedback<sup>18+</sup>
+
+enableHapticFeedback(enable: Optional\<boolean>)
+
+设置是否开启触控反馈。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[enableHapticFeedback](#enablehapticfeedback23)。
+
+**ArkTS-Dyn起始版本：** 18
+
+| 参数名 | 类型                                          | 必填  | 说明                                                                                  |
+| ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。<br/>当enable的值为undefined时，使用默认值。 |
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
@@ -789,25 +849,23 @@ ArkTS-Sta: defaultTextStyle(style: TextPickerTextStyle | undefined)
 ]
 ```
 
-### enableHapticFeedback<sup>18+</sup>
+### enableHapticFeedback<sup>23+</sup>
 
-ArkTS-Dyn: enableHapticFeedback(enable: Optional\<boolean>)
-
-ArkTS-Sta: enableHapticFeedback(enable: boolean | undefined)
+enableHapticFeedback(enable: boolean | undefined)
 
 设置是否开启触控反馈。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[enableHapticFeedback](#enablehapticfeedback18)。
 
 **ArkTS-Sta起始版本：** 23
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
+| enable  | boolean&nbsp;\|&nbsp;undefined | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。<br/>当enable的值为undefined时，使用默认值。 |
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
@@ -821,9 +879,7 @@ ArkTS-Sta: enableHapticFeedback(enable: boolean | undefined)
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
-ArkTS-Dyn: digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
-
-ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
+digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 设置表冠灵敏度。
 
@@ -831,7 +887,33 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[digitalCrownSensitivity](#digitalcrownsensitivity23)。
+
 **ArkTS-Dyn起始版本：** 18
+
+**参数：**
+
+| 参数名   | 类型                                     | 必填   | 说明                      |
+| ----- | ---------------------------------------- | ---- | ------------------------- |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。<br/>当sensitivity的值为undefined时，使用默认值。                     |
+
+>  **说明：**
+>
+>  用于圆形屏幕的穿戴设备。组件响应[表冠事件](ts-universal-events-crown.md)，需要先获取焦点。
+
+### digitalCrownSensitivity<sup>23+</sup>
+
+digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
+
+设置表冠灵敏度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[digitalCrownSensitivity](#digitalcrownsensitivity18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -839,7 +921,7 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)><br/>ArkTS-Sta: [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。                     |
+| sensitivity | [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。<br/>当sensitivity的值为undefined时，使用默认值。 |
 
 >  **说明：**
 >
@@ -847,9 +929,7 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 ### selectedBackgroundStyle<sup>20+</sup>
 
-ArkTS-Dyn: selectedBackgroundStyle(style: Optional\<PickerBackgroundStyle>)
-
-ArkTS-Sta: selectedBackgroundStyle(style: PickerBackgroundStyle | undefined)
+selectedBackgroundStyle(style: Optional\<PickerBackgroundStyle>)
 
 设置选中项的背景样式。
 
@@ -857,7 +937,29 @@ ArkTS-Sta: selectedBackgroundStyle(style: PickerBackgroundStyle | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedBackgroundStyle](#selectedbackgroundstyle23)。
+
 **ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型               | 必填   | 说明      |
+| ----- | ---------- | ---- | ----------------------- |
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerBackgroundStyle](#pickerbackgroundstyle20)> | 是    | 选中项背景的颜色和边框圆角半径，多列模式时会同时设置所有列的选中项背景的颜色和圆角半径。<br/>当style的值为undefined时，选中项背景的颜色和边框圆角半径为默认值。<br/>默认值：<br/>{ <br/>color: $r('sys.color.comp_background_tertiary'),<br/>borderRadius: $r('sys.float.corner_radius_level12')<br/>}|
+
+### selectedBackgroundStyle<sup>23+</sup>
+
+selectedBackgroundStyle(style: PickerBackgroundStyle | undefined)
+
+设置选中项的背景样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[selectedBackgroundStyle](#selectedbackgroundstyle20)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -865,7 +967,7 @@ ArkTS-Sta: selectedBackgroundStyle(style: PickerBackgroundStyle | undefined)
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| style | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerBackgroundStyle](#pickerbackgroundstyle20)><br/>ArkTS-Sta: [PickerBackgroundStyle](#pickerbackgroundstyle20) \| undefined | 是    | 选中项背景的颜色和边框圆角半径，多列模式时会同时设置所有列的选中项背景的颜色和圆角半径。<br/>当style的值为undefined时，选中项背景的颜色和边框圆角半径为默认值。<br/>默认值：<br/>{ <br/>color: $r('sys.color.comp_background_tertiary'),<br/>borderRadius: $r('sys.float.corner_radius_level12')<br/>}|
+| style | [PickerBackgroundStyle](#pickerbackgroundstyle20) \| undefined | 是    | 选中项背景的颜色和边框圆角半径，多列模式时会同时设置所有列的选中项背景的颜色和圆角半径。<br/>当style的值为undefined时，选中项背景的颜色和边框圆角半径为默认值。<br/>默认值：<br/>{ <br/>color: $r('sys.color.comp_background_tertiary'),<br/>borderRadius: $r('sys.float.corner_radius_level12')<br/>} |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -1040,9 +1142,7 @@ onScrollStop(callback: TextPickerScrollStopCallback | undefined)
 
 ### onEnterSelectedArea<sup>18+</sup>
 
-ArkTS-Dyn: onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback)
-
-ArkTS-Sta: onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback | undefined)
+onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback)
 
 滑动TextPicker过程中，选项进入分割线区域内（当前列的滑动距离超过选中项高度的一半）时，触发该回调。
 
@@ -1058,7 +1158,37 @@ ArkTS-Sta: onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback | u
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onEnterSelectedArea](#onenterselectedarea23)。
+
 **ArkTS-Dyn起始版本：** 18
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                       |
+| -------- | -------------------------- | ---- | ------------------------------------------ |
+| callback | [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18) | 是   | 滑动TextPicker过程中，选项进入分割线区域时触发的回调。 |
+
+### onEnterSelectedArea<sup>23+</sup>
+
+onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback | undefined)
+
+滑动TextPicker过程中，选项进入分割线区域内（当前列的滑动距离超过选中项高度的一半）时，触发该回调。
+
+>  **说明：**
+>
+> - 与[onChange](#onchange23)事件的差别在于，该事件的触发时机早于[onChange](#onchange23)事件。
+>
+> - 在多列联动场景中，不建议使用该回调，由于该回调标识的是滑动过程中选项进入分割线区域内的节点，而跟随变化的选项并不涉及滑动，因此，回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onEnterSelectedArea](#onenterselectedarea18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1066,7 +1196,7 @@ ArkTS-Sta: onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback | u
 
 | 参数名   | 类型                       | 必填 | 说明                                       |
 | -------- | -------------------------- | ---- | ------------------------------------------ |
-| callback | ArkTS-Dyn: [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18)<br/>ArkTS-Sta: [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18)&nbsp;\|&nbsp;undefined | 是   | 滑动TextPicker过程中，选项进入分割线区域时触发的回调。 |
+| callback | [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18)&nbsp;\|&nbsp;undefined | 是   | 滑动TextPicker过程中，选项进入分割线区域时触发的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onAccept<sup>(deprecated) </sup>
 
