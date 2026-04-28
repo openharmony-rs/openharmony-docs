@@ -1,8 +1,8 @@
 # 通知错误码
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -519,4 +519,24 @@ The "Awareness & suggestions" switch of the location-based service is off.
 **处理步骤**
 
 打开如下位置开关，设置->隐私和安全->位置->最底部“系统服务”->感知与提醒。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600028 通知不支持设置稍后提醒
+
+**错误信息**
+
+This notification is not supported.
+
+**错误描述**
+
+当前被设置稍后提醒的通知不支持该功能。
+
+**可能原因**
+
+三方实况、系统实况以及无法删除的通知不支持设置稍后提醒。
+
+**处理步骤**
+
+检查当前被设置稍后提醒的通知是否为三方实况、系统实况及无法删除的通知。
 <!--DelEnd-->

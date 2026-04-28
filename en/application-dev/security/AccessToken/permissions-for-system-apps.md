@@ -5465,7 +5465,7 @@ Allows a system application to use the running capability framework.
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: phones | tablets | TVs | wearables
 
 **Valid since**: 23
 
@@ -5699,7 +5699,7 @@ With this permission, the application can always use sensors.
 
 **Since**: 24
 
-## ohos.permission.MODIFY_AGENT_CARD
+### ohos.permission.MODIFY_AGENT_CARD
 
 Allows a system application to update and delete AgentCard.
 
@@ -5723,7 +5723,7 @@ Allows a system application to launch another application to a specified page st
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | Tablet
+**Supported devices**: phones | tablets
 
 **Valid since**: 26.0.0
 
@@ -5737,7 +5737,21 @@ Allows an application to obtain and set the car scenario mode.
 
 **Enable via ACL**: true
 
-**Device**: cars
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+Allows an application to subscribe to the notification service.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 26.0.0
 
@@ -5765,7 +5779,7 @@ Allows an application and a service to access the device-side model deployment m
 
 **Enable via ACL**: true
 
-**Supported devices**: General
+**Supported devices**: general devices
 
 **Since**: 24
 
@@ -5807,7 +5821,7 @@ Allows a system application to use the unified management capabilities of the di
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | Tablet
+**Supported devices**: phones | tablets
 
 **Since**: 26.0.0
 

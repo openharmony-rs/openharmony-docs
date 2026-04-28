@@ -92,7 +92,7 @@ struct Index {
 
 **变更发生版本**
 
-从OpenHarmony SDK 7.0.0.18开始。
+从OpenHarmony SDK 7.0.0.20开始。
 
 **变更的接口/组件**
 

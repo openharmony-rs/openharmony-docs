@@ -1,7 +1,7 @@
 # hid_ddk_api.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
@@ -248,7 +248,7 @@ Writes a report to an HID device.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | uint8_t *data | Data to be written.|
-| uint32_t length | Length of the data to be written. The maximum value is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
+| uint32_t length | Length of data to be written. The maximum value is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 | uint32_t *bytesWritten | Number of written bytes.|
 
 **Returns**

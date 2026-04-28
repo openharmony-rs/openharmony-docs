@@ -157,44 +157,44 @@ zh-cn/application-dev/application-test/uitest-guidelines.md @inter515 @Brilliant
 zh-cn/application-dev/application-test/unittest-guidelines.md @inter515 @Brilliantry_Rui
 zh-cn/application-dev/application-test/wukong-guidelines.md @qkfg @Brilliantry_Rui
 zh-cn/application-dev/arkts-utils/arkoptions-guide.md @jokerxd-liu @huyunhui1 @liyancheng @jinqiuheng
-zh-cn/application-dev/arkts-utils/arkts-async-lock-introduction.md @lijiamin2025 @weng-changcheng @ge-yafang
+zh-cn/application-dev/arkts-utils/arkts-async-lock-introduction.md @dwhuawei @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/arkts-bytecode-file-format.md @jokerxd-liu @zmw1 @huyunhui1 @oatuwwutao @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-bytecode-function-name.md @jokerxd-liu @zmw1 @huyunhui1 @oatuwwutao @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-bytecode-fundamentals.md @jokerxd-liu @zmw1 @huyunhui1 @oatuwwutao @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-bytecode-overview.md @jokerxd-liu @zmw1 @huyunhui1 @oatuwwutao @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-collections-introduction.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/arkts-condition-variable-introduction.md @lijiamin2025 @weng-changcheng @ge-yafang
+zh-cn/application-dev/arkts-utils/arkts-condition-variable-introduction.md @dwhuawei @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/arkts-cross-language-interaction.md @xliu-huanwei @shilei123 @huanghello @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-dynamic-import.md @jokerxd-liu @zmw1 @huyunhui1 @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-import-native-module.md @yao_dashuai @jinqiuheng
-zh-cn/application-dev/arkts-utils/arkts-json.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
+zh-cn/application-dev/arkts-utils/arkts-json.md @wang_zhaoyong @Malzahar @ge-yafang
 zh-cn/application-dev/arkts-utils/arkts-lazy-import.md @DaiHuina1997 @yao_dashuai @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-module-side-effects.md @wangchen965 @yao_dashuai @jinqiuheng
-zh-cn/application-dev/arkts-utils/arkts-overview.md @fanglou @qyhuo32 @ge-yafang
+zh-cn/application-dev/arkts-utils/arkts-overview.md @wang_zhaoyong @Malzahar @ge-yafang
 zh-cn/application-dev/arkts-utils/arkts-runtime-faq.md @DaiHuina1997 @yao_dashuai @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-runtime-overview.md @guobingbing3 @xwcai98 @jinqiuheng
 zh-cn/application-dev/arkts-utils/arkts-sendable-module.md @lijiamin2025 @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/arkts-sendable.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/arkts-utils-overview.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
+zh-cn/application-dev/arkts-utils/arkts-utils-overview.md @wang_zhaoyong @Malzahar @ge-yafang
 zh-cn/application-dev/arkts-utils/arraybuffer-object.md @wang_zhaoyong @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/ason-parsing-generation.md @lijiamin2025 @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/async-concurrency-overview.md @wang_zhaoyong @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/batch-database-operations-guide.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/buffer.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-guide.md @oatuwwutao @Graceunderpressure @hufeng20 @jinqiuheng
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-overview.md @oatuwwutao @Graceunderpressure @hufeng20 @jinqiuheng
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-practice.md @oatuwwutao @hufeng20 @jinqiuheng
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-questions.md @oatuwwutao @hufeng20 @jinqiuheng
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation.md @oatuwwutao @Graceunderpressure @hufeng20 @jinqiuheng
-zh-cn/application-dev/arkts-utils/commonlibrary-faq.md @lijiamin2025 @weng-changcheng @ge-yafang
+zh-cn/application-dev/arkts-utils/buffer.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-guide.md @oatuwwutao @Graceunderpressure @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-overview.md @oatuwwutao @Graceunderpressure @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-practice.md @oatuwwutao @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-questions.md @oatuwwutao @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation.md @oatuwwutao @Graceunderpressure @jinqiuheng
+zh-cn/application-dev/arkts-utils/commonlibrary-faq.md @wang_zhaoyong @Malzahar @ge-yafang
 zh-cn/application-dev/arkts-utils/compilation-tool-chain-overview.md @chenmudan @hufeng20 @ctw-ian @jinqiuheng
-zh-cn/application-dev/arkts-utils/concurrency-faq.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/concurrency-overview.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/concurrent-loading-modules-guide.md @lijiamin2025 @weng-changcheng @ge-yafang
+zh-cn/application-dev/arkts-utils/concurrency-faq.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/concurrency-overview.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/concurrent-loading-modules-guide.md @wang_zhaoyong @huanghello @ge-yafang
 zh-cn/application-dev/arkts-utils/container-object.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/container-overview.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
+zh-cn/application-dev/arkts-utils/container-overview.md @wang_zhaoyong @huanghello @ge-yafang
 zh-cn/application-dev/arkts-utils/cpu-intensive-task-development.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/customize-bytecode-during-compilation.md @oatuwwutao @hufeng20 @jinqiuheng
+zh-cn/application-dev/arkts-utils/customize-bytecode-during-compilation.md @oatuwwutao @jinqiuheng
 zh-cn/application-dev/arkts-utils/es2abc-faq.md @huyunhui1 @oh-rgx1 @zmw1 @jokerxd-liu @jinqiuheng
 zh-cn/application-dev/arkts-utils/gc-introduction.md @dwhuawei @yingguofeng @jinqiuheng
 zh-cn/application-dev/arkts-utils/global-configuration-guide.md @lijiamin2025 @weng-changcheng @ge-yafang
@@ -226,29 +226,29 @@ zh-cn/application-dev/arkts-utils/sendable-guide.md @lijiamin2025 @weng-changche
 zh-cn/application-dev/arkts-utils/sendablelrucache-recent-list.md @lijiamin2025 @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/serializable-overview.md @wang_zhaoyong @weng-changcheng @ge-yafang
 zh-cn/application-dev/arkts-utils/shared-arraybuffer-object.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/source-obfuscation-guide.md @zju-wyx @xiao-peiyang @dengxinyu @jinqiuheng
-zh-cn/application-dev/arkts-utils/source-obfuscation-overview.md @zju-wyx @xiao-peiyang @dengxinyu @jinqiuheng
-zh-cn/application-dev/arkts-utils/source-obfuscation-practice.md @zju-wyx @xiao-peiyang @dengxinyu @jinqiuheng
-zh-cn/application-dev/arkts-utils/source-obfuscation-questions.md @zju-wyx @xiao-peiyang @dengxinyu @jinqiuheng
-zh-cn/application-dev/arkts-utils/source-obfuscation.md @zju-wyx @xiao-peiyang @dengxinyu @jinqiuheng
-zh-cn/application-dev/arkts-utils/sync-task-development.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/taskpool-async-task-guide.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/taskpool-communicates-with-mainthread.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/taskpool-introduction.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/taskpool-vs-worker.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/taskpool-waterflow.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/time-consuming-task-overview.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/tool-disassembler.md @oatuwwutao @luobohua @hufeng20 @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-guide.md @oatuwwutao @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-overview.md @oatuwwutao @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-practice.md @oatuwwutao @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-questions.md @oatuwwutao @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation.md @oatuwwutao @jinqiuheng
+zh-cn/application-dev/arkts-utils/sync-task-development.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/taskpool-async-task-guide.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/taskpool-communicates-with-mainthread.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/taskpool-introduction.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/taskpool-vs-worker.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/taskpool-waterflow.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/time-consuming-task-overview.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/tool-disassembler.md @oatuwwutao @jinqiuheng
 zh-cn/application-dev/arkts-utils/transferabled-object.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/worker-and-taskpool.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/worker-communicates-with-mainthread.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/worker-introduction.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/worker-invoke-mainthread-interface.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/worker-postMessage-sendable.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/arkts-utils/xml-conversion.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/arkts-utils/xml-generation.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/arkts-utils/xml-overview.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/arkts-utils/xml-parsing.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
+zh-cn/application-dev/arkts-utils/worker-and-taskpool.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/worker-communicates-with-mainthread.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/worker-introduction.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/worker-invoke-mainthread-interface.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/worker-postMessage-sendable.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/arkts-utils/xml-conversion.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/arkts-utils/xml-generation.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/arkts-utils/xml-overview.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/arkts-utils/xml-parsing.md @wang_zhaoyong @Malzahar @ge-yafang
 zh-cn/application-dev/basic-services/basic-services-kit-overview.md @fang-jinxu @lingminghw
 zh-cn/application-dev/basic-services/Readme-CN.md @fang-jinxu @lingminghw
 zh-cn/application-dev/basic-services/account/account-overview-sys.md @steven-q @JiDong-CS1 @zengyawen
@@ -338,6 +338,13 @@ zh-cn/application-dev/connectivity/wlan/wlan-overview.md @qq_43802146 @zhang_yix
 zh-cn/application-dev/contacts/contacts-addcontactviaui.md @librahCode @yanghaoqian @zhang_yixin13
 zh-cn/application-dev/contacts/contacts-intro.md @librahCode @yanghaoqian @zhang_yixin13
 zh-cn/application-dev/contacts/Readme-CN.md @librahCode @yanghaoqian @zhang_yixin13
+zh-cn/application-dev/content-embed/client-server-interaction-process.md @wanxiaoguo @zhuwei @wei-guoning @jinqiuheng
+zh-cn/application-dev/content-embed/content-embed-client-guidelines.md @weiguoning @zhuwei @jinqiuheng
+zh-cn/application-dev/content-embed/content-embed-faq.md @weiguoning @zhuwei @jinqiuheng
+zh-cn/application-dev/content-embed/content-embed-kit-overview.md @weiguoning @zhuwei @jinqiuheng
+zh-cn/application-dev/content-embed/content-embed-kit-terminology.md @weiguoning @zhuwei @jinqiuheng
+zh-cn/application-dev/content-embed/content-embed-server-guidelines.md @weiguoning @zhuwei @jinqiuheng
+zh-cn/application-dev/content-embed/Readme-CN.md @weiguoning @zhuwei @jinqiuheng
 zh-cn/application-dev/database/access-control-by-device-and-data-level.md @baijidong @widecode @htt1997 @ge-yafang
 zh-cn/application-dev/database/aip-data-intelligence-embedding.md @my-2024 @cuile44 @pancodax @fysun17 @AnruiWang @xd_94 @ge-yafang
 zh-cn/application-dev/database/app-data-persistence-overview.md @baijidong @ding_dong_dong @cuile44 @widecode @htt1997 @ge-yafang
@@ -378,17 +385,17 @@ zh-cn/application-dev/database/uniform-data-structure.md @jcwen @junathuawei1 @z
 zh-cn/application-dev/database/uniform-data-type-descriptors-c.md @jcwen @junathuawei1 @zph000 @ge-yafang
 zh-cn/application-dev/database/uniform-data-type-descriptors.md @jcwen @junathuawei1 @zph000 @ge-yafang
 zh-cn/application-dev/database/uniform-data-type-list.md @jcwen @junathuawei1 @zph000 @ge-yafang
-zh-cn/application-dev/device/driver/driverdevelopment-overview.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/driverextensionability.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/environmental-preparation.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/externaldevice-faqs.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/externaldevice-guidelines.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/hid-ddk-guidelines.md @lixinsheng2 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/driverdevelopment-overview.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/driverextensionability.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/environmental-preparation.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/externaldevice-faqs.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/externaldevice-guidelines.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/hid-ddk-guidelines.md @zgene94 @w00373942 @hu-zhiqiong
 zh-cn/application-dev/device/driver/Readme-CN.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/scsi-peripheral-ddk-guidelines.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/terms.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/usb-ddk-guidelines.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/device/driver/usb-serial-ddk-guidelines.md @lixinsheng2 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/scsi-peripheral-ddk-guidelines.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/terms.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/usb-ddk-guidelines.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/device/driver/usb-serial-ddk-guidelines.md @zgene94 @w00373942 @hu-zhiqiong
 zh-cn/application-dev/device/input/input-overview.md @zhaoxueyuan @hanruofei @zhang_yixin13
 zh-cn/application-dev/device/input/inputconsumer-guidelines-sys.md @zhaoxueyuan @hanruofei @zhang_yixin13
 zh-cn/application-dev/device/input/inputdevice-guidelines.md @zhaoxueyuan @hanruofei @zhang_yixin13
@@ -408,14 +415,14 @@ zh-cn/application-dev/device/location/location-guidelines.md @xxthadsl @liu-binj
 zh-cn/application-dev/device/location/location-kit-intro.md @xxthadsl @liu-binjun @RayShih
 zh-cn/application-dev/device/location/location-permission-guidelines.md @xxthadsl @liu-binjun @RayShih
 zh-cn/application-dev/device/location/Readme-CN.md @xxthadsl @liu-binjun @RayShih
-zh-cn/application-dev/device/sensor/Readme-CN.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/device/sensor/sensor-guidelines-capi.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/device/sensor/sensor-guidelines.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/device/sensor/sensor-overview.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/device/sensor/sensorservice-kit-intro.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/device/sensor/vibrator-guidelines-capi.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/device/sensor/vibrator-guidelines.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/device/sensor/vibrator-overview.md @dilligencer @butterls @hu-zhiqiong
+zh-cn/application-dev/device/sensor/Readme-CN.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/device/sensor/sensor-guidelines-capi.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/device/sensor/sensor-guidelines.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/device/sensor/sensor-overview.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/device/sensor/sensorservice-kit-intro.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/device/sensor/vibrator-guidelines-capi.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/device/sensor/vibrator-guidelines.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/device/sensor/vibrator-overview.md @dilligencer @andeszhang @hu-zhiqiong
 zh-cn/application-dev/device/stationary/deviceStatus-guidelines.md @dilligencer @zou_ye @hu-zhiqiong
 zh-cn/application-dev/device/stationary/metadataBinding-guidelines.md @dilligencer @zou_ye @hu-zhiqiong
 zh-cn/application-dev/device/stationary/motion-guidelines.md @dilligencer @zou_ye @hu-zhiqiong
@@ -433,18 +440,18 @@ zh-cn/application-dev/dfx/apprecovery-guidelines.md @rr_cn @peterhuangyu @jinqiu
 zh-cn/application-dev/dfx/apptask-timeout-guidelines.md @rr_cn @peterhuangyu @jinqiuheng
 zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory91 @jinqiuheng
 zh-cn/application-dev/dfx/errormanager-guidelines.md @rr_cn @peterhuangyu @jinqiuheng
-zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @junjie_shi @jinqiuheng
+zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @jiangwenhao @jinqiuheng
 zh-cn/application-dev/dfx/fault-detection-overview.md @mzyan @liyueric @jinqiuheng
 zh-cn/application-dev/dfx/fault-log-extension-app-events-arkts.md @chenshi51 @Maplestory91 @jinqiuheng
 zh-cn/application-dev/dfx/hdc.md @kunsilva @mgce1 @MontSaintMichel @jinqiuheng
-zh-cn/application-dev/dfx/hiappevent-event-reporting.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/dfx/hiappevent-faq.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/dfx/hiappevent-intro.md @liujiaxing2024 @junjie_shi @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-event-reporting.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-faq.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-intro.md @liujiaxing2024 @jiangwenhao @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events-arkts.md @mlkgeek @StevenLai1994 @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events-ndk.md @mlkgeek @StevenLai1994 @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events.md @mlkgeek @StevenLai1994 @jinqiuheng
-zh-cn/application-dev/dfx/hiappevent-watcher-app-events-arkts.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/dfx/hiappevent-watcher-app-events-ndk.md @liujiaxing2024 @junjie_shi @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-app-events-arkts.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-app-events-ndk.md @liujiaxing2024 @jiangwenhao @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events-arkts.md @xuxinao @peterhuangyu @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events-ndk.md @xuxinao @peterhuangyu @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events.md @xuxinao @peterhuangyu @jinqiuheng
@@ -511,9 +518,9 @@ zh-cn/application-dev/faqs/faqs-ability-access-control.md @xia-bubai @linshuqing
 zh-cn/application-dev/faqs/faqs-ability.md @ccllee1 @huipeizi
 zh-cn/application-dev/faqs/faqs-arkts-module.md @shilei123 @yao_dashuai @huipeizi
 zh-cn/application-dev/faqs/faqs-arkts-utils.md @wang_zhaoyong @weng-changcheng @ge-yafang
-zh-cn/application-dev/faqs/faqs-arkui-animation-interactive-event.md @yihao-lin @mayaolll @yangfan229 @piggyguy @jiangdayuan @HelloCrease
+zh-cn/application-dev/faqs/faqs-arkui-animation-interactive-event.md @yihao-lin @mayaolll @hehongyang3 @piggyguy @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/faqs/faqs-arkui-arkts.md @zzq212050299 @zhangboren @maorh @s10021109 @keerecles @zhang_yixin13
-zh-cn/application-dev/faqs/faqs-arkui-component.md @piggyguy @jiyujia926 @yangfan229 @s10021109 @HelloCrease
+zh-cn/application-dev/faqs/faqs-arkui-component.md @piggyguy @jiyujia926 @hehongyang3 @s10021109 @Brilliantry_Rui
 zh-cn/application-dev/faqs/faqs-arkui-js.md @xiangyuan6 @yihao-lin @piggyguy @HelloCrease
 zh-cn/application-dev/faqs/faqs-arkui-layout.md @fenglinbailu @yylong @zcdqs @lanshouren @HelloCrease
 zh-cn/application-dev/faqs/faqs-arkui-route-nav.md @mayaolll @jiangdayuan @HelloCrease
@@ -550,17 +557,17 @@ zh-cn/application-dev/ffrt/ffrt-development-guideline.md @chuchihtung @yanleo @g
 zh-cn/application-dev/ffrt/ffrt-overview.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
 zh-cn/application-dev/ffrt/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
 zh-cn/application-dev/file-management/app-file-access.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
-zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
-zh-cn/application-dev/file-management/app-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-sys.md @lvzhenjie @chenxi0605 @jinqiuheng
 zh-cn/application-dev/file-management/app-file-overview.md @wangfenging @liveery @zl_startup @jinqiuheng
-zh-cn/application-dev/file-management/app-fs-space-statistics.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/file-management/app-fs-space-statistics.md @Dyylll @hwzhangchuang @yangwei_814916 @jinqiuheng
 zh-cn/application-dev/file-management/app-sandbox-directory.md @wangfenging @liveery @zl_startup @jinqiuheng
 zh-cn/application-dev/file-management/core-file-kit-intro.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/file-management/distributed-fs-overview.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/file-management/file-access-across-devices.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/file-management/file-copy-across-devices.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/file-management/distributed-fs-overview.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/file-management/file-access-across-devices.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/file-management/file-copy-across-devices.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/file-management/file-persistPermission.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @jinqiuheng
 zh-cn/application-dev/file-management/manage-external-storage-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
 zh-cn/application-dev/file-management/native-environment-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
@@ -569,13 +576,13 @@ zh-cn/application-dev/file-management/native-fileshare-guidelines.md @lvzhenjie 
 zh-cn/application-dev/file-management/native-fileuri-guidelines.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
 zh-cn/application-dev/file-management/Readme-CN.md @wangke25 @bubble_mao @gzhuangzhuang @gsl_1234 @jinqiuheng
 zh-cn/application-dev/file-management/request-dir-permission.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/file-management/save-user-file.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/file-management/select-user-file.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/file-management/save-user-file.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/file-management/select-user-file.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/file-management/send-file-to-app-sandbox-sys.md @wangfenging @liveery @zl_startup @jinqiuheng
 zh-cn/application-dev/file-management/set-security-label.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/file-management/share-app-file-configuration.md @renzehua @huangjieliang @zhanganxiang @zengyawen
 zh-cn/application-dev/file-management/share-app-file.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @jinqiuheng
-zh-cn/application-dev/file-management/user-file-overview.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/file-management/user-file-overview.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/file-management/user-file-uri-intro.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @jinqiuheng
 zh-cn/application-dev/form/arkts-form-overview.md @cx983299475 @xueyulong @HelloShuo
 zh-cn/application-dev/form/arkts-ui-liveform-funinteraction-development.md @cx983299475 @xueyulong @HelloShuo
@@ -716,13 +723,13 @@ zh-cn/application-dev/ipc/ipc-rpc-development-guideline.md @xdx19211 @luodonghui
 zh-cn/application-dev/ipc/ipc-rpc-overview.md @xdx19211 @luodonghui0157 @zhaopeng_gitee @zhang_yixin13
 zh-cn/application-dev/ipc/Readme-CN.md 无
 zh-cn/application-dev/ipc/subscribe-remote-state.md @xdx19211 @luodonghui0157 @zhaopeng_gitee @zhang_yixin13
-zh-cn/application-dev/mdm/mdm-kit-admin.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/mdm/mdm-kit-application-model.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/mdm/mdm-kit-guide.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/mdm/mdm-kit-intro.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/mdm/mdm-kit-multi-mdm.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/mdm/mdm-kit-term.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/mdm/Readme-CN.md @huanleima @hp_guo @zhang_yixin13
+zh-cn/application-dev/mdm/mdm-kit-admin.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/mdm/mdm-kit-application-model.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/mdm/mdm-kit-guide.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/mdm/mdm-kit-intro.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/mdm/mdm-kit-multi-mdm.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/mdm/mdm-kit-term.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/mdm/Readme-CN.md @huanleima @weizai16 @hp_guo @zhang_yixin13
 zh-cn/application-dev/mechanicManager/camera-tracking-guide.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/mechanicManager/mechanic-kit-intro.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/mechanicManager/Readme-CN.md @hobbycao @saga2025 @hu-zhiqiong
@@ -757,6 +764,7 @@ zh-cn/application-dev/media/audio/audio-suite.md @songshenke @caixuejiang @hao-l
 zh-cn/application-dev/media/audio/audio-workgroup.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/distributed-audio-playback-sys.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/mic-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/midi-overview.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/power-saving-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/public-audio-spatialization-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/Readme-CN.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -767,6 +775,7 @@ zh-cn/application-dev/media/audio/using-audiorenderer-for-playback.md @songshenk
 zh-cn/application-dev/media/audio/using-ohaudio-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-ohaudio-for-recording.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-ohaudio-for-session.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/using-ohmidi.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-opensl-es-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-opensl-es-for-recording.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-right-streamusage-and-sourcetype.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -893,8 +902,8 @@ zh-cn/application-dev/media/image/image-faqs/heif-adapter-faq.md @aulight02 @Xia
 zh-cn/application-dev/media/image/image-faqs/image-common-mistakes.md @aulight02 @XiaoYao555 @ww_Machine_cc
 zh-cn/application-dev/media/image/image-faqs/image-error-faq.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-faqs/image-rotate-faq.md @aulight02 @XiaoYao555 @w_Machine_cc
-zh-cn/application-dev/media/media/avimagegenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/media/media/avmetadataextractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/media/media/avimagegenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/media/media/avmetadataextractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/media/media/avscreencapture-c-basic-process.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/avscreencapture-c-custom-scenarios.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/avscreencapture-faqs.md @zzs_911 @stupig001 @w_Machine_cc
@@ -909,8 +918,8 @@ zh-cn/application-dev/media/media/using-avrecorder-for-recording.md @shiwei75 @H
 zh-cn/application-dev/media/media/using-avscreencapture-ArkTs.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/using-avscreencapture-for-file.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/using-avtranscoder-for-transcodering.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/media/media/using-ndk-avimagegenerator-for-video.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/media/media/using-ndk-avmetadataextractor-for-media.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/media/media/using-ndk-avimagegenerator-for-video.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/media/media/using-ndk-avmetadataextractor-for-media.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avplayer-for-playback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avplayer-for-video-playback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avrecorder-for-audio-recording.md @shiwei75 @HmQQQ @w_Machine_cc
@@ -983,6 +992,7 @@ zh-cn/application-dev/napi/use-jsvm-about-class.md @yuanxiaogou @knightaoko @fan
 zh-cn/application-dev/napi/use-jsvm-about-code-cache.md @yuanxiaogou @knightaoko @fang-jinxu
 zh-cn/application-dev/napi/use-jsvm-about-date.md @yuanxiaogou @knightaoko @fang-jinxu
 zh-cn/application-dev/napi/use-jsvm-about-debug-option.md @yuanxiaogou @knightaoko @fang-jinxu
+zh-cn/application-dev/napi/use-jsvm-about-external-arraybuffer.md @yuanxiaogou @string_sz @knightaoko @fang-jinxu
 zh-cn/application-dev/napi/use-jsvm-about-external-string.md @yuanxiaogou @knightaoko @fang-jinxu
 zh-cn/application-dev/napi/use-jsvm-about-JSON.md @yuanxiaogou @knightaoko @fang-jinxu
 zh-cn/application-dev/napi/use-jsvm-about-object.md @yuanxiaogou @knightaoko @fang-jinxu
@@ -1050,6 +1060,7 @@ zh-cn/application-dev/napi/use-napi-process.md @xliu-huanwei @shilei123 @huanghe
 zh-cn/application-dev/napi/use-napi-thread-safety.md @xliu-huanwei @shilei123 @huanghello @fang-jinxu
 zh-cn/application-dev/napi/use-sendable-napi.md @xliu-huanwei @shilei123 @huanghello @fang-jinxu
 zh-cn/application-dev/network/http-request.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/network/native-httpinterceptor-guidelines.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/network/native-netmanager-guidelines.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/network/native-websocket-guidelines.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/network/net-connection-manager.md @wmyao_mm @guo-min_net @zhang_yixin13
@@ -1189,11 +1200,11 @@ zh-cn/application-dev/quick-start/application-package-install-uninstall.md @wang
 zh-cn/application-dev/quick-start/application-package-overview.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/application-package-structure-fa.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/application-package-structure-stage.md @wanghang904 @hanfeng6 @Brilliantry_Rui
-zh-cn/application-dev/quick-start/arkts-coding-style-guide.md @yyytiancai @qyhuo32 @zhang_yixin13
-zh-cn/application-dev/quick-start/arkts-get-started.md @liwentao_uiw @qyhuo32 @zhang_yixin13
-zh-cn/application-dev/quick-start/arkts-high-performance-programming.md @zhanyi819 @qyhuo32 @zhang_yixin13
-zh-cn/application-dev/quick-start/arkts-migration-background.md @Fouckttt1 @qyhuo32 @zhang_yixin13
-zh-cn/application-dev/quick-start/arkts-more-cases.md @anxuesm @qyhuo32 @zhang_yixin13
+zh-cn/application-dev/quick-start/arkts-coding-style-guide.md @oatuwwutao @cy917474985 @zhang_yixin13
+zh-cn/application-dev/quick-start/arkts-get-started.md @oatuwwutao @cy917474985 @zhang_yixin13
+zh-cn/application-dev/quick-start/arkts-high-performance-programming.md @oatuwwutao @cy917474985 @zhang_yixin13
+zh-cn/application-dev/quick-start/arkts-migration-background.md @oatuwwutao @cy917474985 @zhang_yixin13
+zh-cn/application-dev/quick-start/arkts-more-cases.md @oatuwwutao @cy917474985 @zhang_yixin13
 zh-cn/application-dev/quick-start/common-problem-of-application.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/deviceconfig-structure.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/getting-started-with-arkts-for-java-programmers.md @fanglou @qyhuo32 @zhang_yixin13
@@ -1206,7 +1217,7 @@ zh-cn/application-dev/quick-start/hsp-to-har.md @wanghang904 @hanfeng6 @Brillian
 zh-cn/application-dev/quick-start/in-app-hsp.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/install-and-update-consistency-verification.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/integrated-hsp.md @wanghang904 @hanfeng6 @Brilliantry_Rui
-zh-cn/application-dev/quick-start/introduction-to-arkts.md @LeechyLiang @qyhuo32 @zhang_yixin13
+zh-cn/application-dev/quick-start/introduction-to-arkts.md @oatuwwutao @cy917474985 @zhang_yixin13
 zh-cn/application-dev/quick-start/layered-image.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/module-configuration-file.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/quick-start/module-structure.md @wanghang904 @hanfeng6 @Brilliantry_Rui
@@ -1215,7 +1226,7 @@ zh-cn/application-dev/quick-start/Readme-CN.md @wanghang904 @hanfeng6 @Brilliant
 zh-cn/application-dev/quick-start/resource-categories-and-access.md @liule_123 @buda_wy @ningningW
 zh-cn/application-dev/quick-start/start-overview.md 无
 zh-cn/application-dev/quick-start/start-with-ets-stage.md @ge-yafang
-zh-cn/application-dev/quick-start/typescript-to-arkts-migration-guide.md @husenlin @qyhuo32 @zhang_yixin13
+zh-cn/application-dev/quick-start/typescript-to-arkts-migration-guide.md @oatuwwutao @cy917474985 @zhang_yixin13
 zh-cn/application-dev/quick-start/typical-scenario-configuration.md @wanghang904 @hanfeng6 @Brilliantry_Rui
 zh-cn/application-dev/reference/development-intro-api.md @RayShih
 zh-cn/application-dev/reference/errorcode-sdk-compile.md @fang-jinxu @majiajun518
@@ -1360,6 +1371,7 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstan
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md @linjunjie6 @li-weifeng2024 @huipeizi
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentConstant-sys.md @yangxuguang-huawei @ccllee1 @huipeizi
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentConstant.md @yangxuguang-huawei @ccllee1 @huipeizi
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility-sys.md @SKY2001 @ccllee1 @huipeizi
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md @SKY2001 @ccllee1 @huipeizi
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md @littlejerry1 @ccllee1 @huipeizi
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md @yzkp @huipeizi
@@ -1831,7 +1843,7 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effectkit.md @hanamaru @
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-external-window-h.md @Flix-fangyang @BruceXu @ding-panyun @conan13234 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-graphic-error-code-h.md @Flix-fangyang @BruceXu @ding-panyun @conan13234 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-native-buffer-h.md @Flix-fangyang @BruceXu @ding-panyun @conan13234 @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-native-color-space-manager-h.md @xubo233 @dizuo1 @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-native-color-space-manager-h.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-native-display-soloist-h.md @hudi33 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-native-fence-h.md @Flix-fangyang @BruceXu @ding-panyun @conan13234 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-native-image-h.md @Flix-fangyang @BruceXu @ding-panyun @conan13234 @ge-yafang
@@ -1871,14 +1883,14 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-oh-nativeimage-oh-onfram
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-oh-nativeimage.md @Felix-fangyang @BruceXu @dingpy @conan13234 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/errorcode-colorspace-manager.md 无
 zh-cn/application-dev/reference/apis-arkgraphics2d/errorcode-drawing.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-colorSpaceManager.md @xubo85 @comicchang @wang-luyu4 @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-colorSpaceManager.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit-sys.md @hanamaru @gaoweihua @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit.md @hanamaru @gaoweihua @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-common2D.md @hangmengxin @wangyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md @hudi33 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-text.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-hdrCapability.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md @xubo85 @comicchang @wang-luyu4 @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect-sys.md @hanamaru @gaoweihua @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect.md @hanamaru @gaoweihua @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/Readme-CN.md @hangmengxin @oh_wangxk @gmiao522 @wangyanglan @liumingxiang @ge-yafang
@@ -1906,46 +1918,46 @@ zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Uint32Ar
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Uint8Array.md @lijiamin2025 @weng-changcheng @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md @lijiamin2025 @weng-changcheng @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-collections.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils-ASON.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils-f.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils-locks.md @lijiamin2025 @weng-changcheng @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils-ASON.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils-f.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils-locks.md @dwhuawei @weng-changcheng @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md @lijiamin2025 @weng-changcheng @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/arkts-apis-arkts-utils.md @lijiamin2025 @weng-changcheng @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/errorcode-es2abc.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @jinqiuheng
 zh-cn/application-dev/reference/apis-arkts/errorcode-ets-loader.md @aftott @hufeng20 @jinqiuheng
 zh-cn/application-dev/reference/apis-arkts/errorcode-source-obfuscation.md @zju-wyx @xiao-peiyang @dengxinyu @jinqiuheng
 zh-cn/application-dev/reference/apis-arkts/errorcode-tsc.md @zju-wyx @xiao-peiyang @liyancheng @jinqiuheng
-zh-cn/application-dev/reference/apis-arkts/errorcode-utils.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-arkts-decimal.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-arkts-lang.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-arraylist.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-buffer.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-convertxml.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-deque.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-fastbuffer.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-hashmap.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-hashset.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-json.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightmap.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightset.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-linkedlist.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-list.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-plainarray.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-process.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-queue.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-stack.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-stream.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-taskpool.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-treemap.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-treeset.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-uri.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-url.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-util.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-vector.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-worker-sys.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-worker.md @lijiamin2025 @weng-changcheng @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/js-apis-xml.md @xliu-huanwei @shilei123 @huanghello @yuanyao14 @ge-yafang
-zh-cn/application-dev/reference/apis-arkts/Readme-CN.md @lijiamin2025 @xliu-huanwei @weng-changcheng @yuanyao14 @jinqiuheng
+zh-cn/application-dev/reference/apis-arkts/errorcode-utils.md @wang_zhaoyong @huanghello @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-arkts-decimal.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-arkts-lang.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-arraylist.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-buffer.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-convertxml.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-deque.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-fastbuffer.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-hashmap.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-hashset.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-json.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightmap.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightset.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-linkedlist.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-list.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-plainarray.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-process.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-queue.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-stack.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-stream.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-taskpool.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-treemap.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-treeset.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-uri.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-url.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-util.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-vector.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-worker-sys.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-worker.md @wang_zhaoyong @huanghello @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/js-apis-xml.md @wang_zhaoyong @Malzahar @ge-yafang
+zh-cn/application-dev/reference/apis-arkts/Readme-CN.md @wang_zhaoyong @weng-changcheng @Malzahar @jinqiuheng
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-atomicservicebar.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-componentutils.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2157,6 +2169,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-imag
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md @carnivore233 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md @carnivore233 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-lineheightstyle.md @carnivore233 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-linespacingstyle.md @carnivore233 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-paragraphstyle.md @carnivore233 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-shadowoptions.md @carnivore233 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-spanstyle.md @carnivore233 @Brilliantry_Rui
@@ -2202,8 +2215,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-richeditor.md @xiangyuan6 @kangshihui @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md @shengu_lancer @yylong @fangyuhao @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md @xiangyuan6 @kangshihui @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-textarea.md @xiangyuan6 @kangshihui @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-textinput.md @xiangyuan6 @kangshihui @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-textinputcategory.md @xiangyuan6 @kangshihui @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-xcomponent.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-napi-h.md @piggyguy @wangyang2022 @Brilliantry_Rui
@@ -2302,13 +2314,13 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-NodeContent.md @wangyan
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-nodeController.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-observer.md @piggyguy @lushi871202 @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md @lushi871202 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Prefetcher.md @maorh @lixingchi1 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Prefetcher.md @maorh @keerecles @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-renderNode.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-resource.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-shape.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-theme.md @lushi871202 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-UIContext-sys.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension-sys.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension-sys.md @chbchb12 @stupidb @ge-yafang
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension.md @chbchb12 @stupidb @ge-yafang
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-xcomponentNode.md @zjsxstar @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-curve.md @CCFFWW @Brilliantry_Rui
@@ -2489,7 +2501,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Exceptio
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Filter.md @fengluochenai @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FoldSplitContainer.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-formmenu.md @cx983299475 @xueyulong @HelloShuo
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md @autojuan @hu-zhiqiong
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-GridObjectSortComponent.md @fengluochenai @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-InnerFullScreenLaunchComponent-sys.md @qq_36417014 @autojuan @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNavigation.md @mayaolll @jiangdayuan @Brilliantry_Rui
@@ -2522,7 +2534,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-allow-force-dark.md @lush
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-animatable-extend.md @hehongyang3 @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-animatorproperty.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums-sys.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md @piggyguy @jiyujia926 @yangfan229 @s10021109 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md @piggyguy @jiyujia926 @hehongyang3 @s10021109 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md @shengu_lancer @yylong @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-blank.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md @liyi0309 @Brilliantry_Rui
@@ -2614,6 +2626,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-column-sys.md @
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-column.md @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-columnsplit.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-counter.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-distortioncomponent-sys.md @hehongyang3 @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md 无
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-embedded-component.md @dutie123 @Brilliantry_Rui
@@ -2657,7 +2670,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-waterflow.md @f
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-with-theme.md @lushi871202 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-layout.md @song-song-song @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md @seaside_wu1 @huyisuo @zhangboren @zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md @seaside_wu1 @xin11112 @zhangboren @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md @seaside_wu1 @xin11112 @chenbenzhi @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md @liwenzhen3 @s10021109 @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md @zjsxstar @sunbees @Brilliantry_Rui
@@ -2699,7 +2712,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-picker-common.md @luoying
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-pixel-units.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md @maorh @keerecles @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md @maorh @keerecles @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md @liubihao @keerecles @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md @maorh @keerecles @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md @harylee @linshuqing @hehehe-li @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-savebutton-sys.md @harylee @linshuqing @hehehe-li @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md @harylee @linshuqing @hehehe-li @zengyawen
@@ -2723,7 +2736,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-uigestureevent.md @yihao-
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-accessibility-event.md @zhanghangkai10241 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-accessibility-hover-event.md @zhanghangkai10241 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md @zhanghangkai10241 @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md @yihao-lin @piggyguy @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-border-image.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
@@ -2734,7 +2747,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-clic
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-content-modifier.md @liyi0309 @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-cursor.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-custom-property.md @wangyang2022 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-custom-property.md @wangyang2022 @jiyujia926 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md @yylong @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md @wangyang2022 @Brilliantry_Rui
@@ -2789,7 +2802,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md @huyisuo @zhangboren @zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md @xin11112 @zhangboren @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-size-change-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-entry.md @jiyujia926 @s10021109 @zhang_yixin13
@@ -2946,20 +2959,20 @@ zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md
 zh-cn/application-dev/reference/apis-arkweb/capi-web.md @aohui @zourongchun @yaomingliu @zhufenghao @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/Readme-CN.md @yp99ustc @kurli1 @HelloShuo
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-api-h.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-type-h.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assetapi.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-attr.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-blob.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-result.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-resultset.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-syncresult.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-value.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/errorcode-asset.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset-sys.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/Readme-CN.md @JeremyXu @skye_you @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-api-h.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-type-h.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assetapi.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-attr.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-blob.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-result.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-resultset.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-syncresult.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-value.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/errorcode-asset.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset-sys.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/Readme-CN.md @yhf @wkr321_ent @zengyawen
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -2995,6 +3008,8 @@ zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiocapturer-h.md @s
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiorenderer-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiostream-base-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiostreambuilder-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-native-midi-base-h.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-native-midi-h.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiocapturerstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiodevicedescriptor.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -3026,6 +3041,14 @@ zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuiteen
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuitepipelinestruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-equalizerfrequencybandgains.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi-oh-midiclientstruct.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi-oh-midideviceinformation.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi-oh-mididevicestruct.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi-oh-midievent.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi-oh-midiportinformation.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohmidi.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/errorcode-audio-ringtone-sys.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/errorcode-audio.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/js-apis-audio-sys.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -3519,14 +3542,14 @@ zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-environment-h.md @wan
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-share-h.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-uri-h.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-fileio-h.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/errorcode-filemanagement.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility-sys.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md @lvzhenjie @chenxi0605 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-document.md 无
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backup-sys.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync-sys.md @Hermits @reminder2352 @oh_create_jiawei @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync.md @Hermits @reminder2352 @oh_create_jiawei @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager-sys.md @Hermits @reminder2352 @oh_create_jiawei @jinqiuheng
@@ -3536,18 +3559,18 @@ zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment.md @
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fs.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-hash.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-keymanager-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-recent-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-keymanager-sys.md @gzhuangzhuang @renguang1116 @wang_zhangjun @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-recent-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-securityLabel.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-statvfs.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-trash-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileExtensionInfo-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics-sys.md @gzhuangzhuang @renguang1116 @wang_zhangjun @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics.md @gzhuangzhuang @renguang1116 @wang_zhangjun @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-trash-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md @ning-jingyou @renguang1116 @wang_zhangjun @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileExtensionInfo-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileio.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare-sys.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @jinqiuheng
@@ -3555,58 +3578,58 @@ zh-cn/application-dev/reference/apis-core-file-kit/js-apis-statfs.md @wangke25 @
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-system-file.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-userFileManager-sys.md @yixiaoff @liweilu1 @zengyawen
 zh-cn/application-dev/reference/apis-core-file-kit/Readme-CN.md @wangke25 @bubble_mao @gzhuangzhuang @gsl_1234 @jinqiuheng
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-architecture-kit-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-common-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-mac-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoarchitecturekit.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymcipherapi-oh-cryptoasymcipher.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymcipherapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoasymkeygeneratorwithspec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptokeypair.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkey.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkeyencodingparams.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptopubkey.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptocommonapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptodigestapi-oh-cryptodigest.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptodigestapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokdfapi-oh-cryptokdf.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokdfapi-oh-cryptokdfparams.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokdfapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokeyagreementapi-oh-cryptokeyagreement.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokeyagreementapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptomacapi-oh-cryptomac.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptomacapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptorandapi-oh-cryptorand.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptorandapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptosign.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoverify.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymcipherapi-oh-cryptosymcipher.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymcipherapi-oh-cryptosymcipherparams.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymcipherapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymkeyapi-oh-cryptosymkey.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymkeyapi.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/js-apis-system-cipher.md @zxz @lanming @zengyawen
-zh-cn/application-dev/reference/apis-crypto-architecture-kit/Readme-CN.md @zxz @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-architecture-kit-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-common-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-mac-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoarchitecturekit.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymcipherapi-oh-cryptoasymcipher.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymcipherapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoasymkeygeneratorwithspec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptokeypair.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkey.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkeyencodingparams.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptopubkey.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptocommonapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptodigestapi-oh-cryptodigest.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptodigestapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokdfapi-oh-cryptokdf.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokdfapi-oh-cryptokdfparams.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokdfapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokeyagreementapi-oh-cryptokeyagreement.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptokeyagreementapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptomacapi-oh-cryptomac.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptomacapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptorandapi-oh-cryptorand.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptorandapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptosign.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoverify.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosignatureapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymcipherapi-oh-cryptosymcipher.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymcipherapi-oh-cryptosymcipherparams.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymcipherapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymkeyapi-oh-cryptosymkey.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/capi-cryptosymkeyapi.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/js-apis-system-cipher.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/reference/apis-crypto-architecture-kit/Readme-CN.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/reference/apis-data-protection-kit/capi-dlp-permission-api-h.md @winnieHuYu @lucky-jinduo @zengyawen
 zh-cn/application-dev/reference/apis-data-protection-kit/capi-dlppermissionapi.md @winnieHuYu @lucky-jinduo @zengyawen
 zh-cn/application-dev/reference/apis-data-protection-kit/errorcode-dlp.md @winnieHuYu @lucky-jinduo @zengyawen
@@ -3623,10 +3646,10 @@ zh-cn/application-dev/reference/apis-device-certificate-kit/capi-certmanagertype
 zh-cn/application-dev/reference/apis-device-certificate-kit/capi-certmanagertype.md @wxb_code @chande @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/capi-cm-native-api-h.md @wxb_code @chande @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/capi-cm-native-type-h.md @wxb_code @chande @zengyawen
-zh-cn/application-dev/reference/apis-device-certificate-kit/errorcode-cert.md @zxz @lanming @zengyawen
+zh-cn/application-dev/reference/apis-device-certificate-kit/errorcode-cert.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/errorcode-certManager.md @chaceli @chande @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/errorcode-certManagerDialog.md @chaceli @chande @zengyawen
-zh-cn/application-dev/reference/apis-device-certificate-kit/js-apis-cert.md @zxz @lanming @zengyawen
+zh-cn/application-dev/reference/apis-device-certificate-kit/js-apis-cert.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/js-apis-certManager-sys.md @chaceli @chande @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/js-apis-certManager.md @chaceli @chande @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/js-apis-certManagerDialog.md @chaceli @chande @zengyawen
@@ -3649,66 +3672,66 @@ zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-distributedH
 zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-link-enhance.md @wangJE @lee_jet520 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-proxyChannelManager.md @huangkai71 @lee_jet520 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-distributedservice-kit/Readme-CN.md @hobbycao @huangkai71 @gsxiaowen @lee_jet520 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-baseddk-ddk-ashmem.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-baseddk.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-ddk-api-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-ddk-types-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hid-ddk-api-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-absaxesarray.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-device.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-devicehandle.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-emititem.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-eventproperties.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-eventtypearray.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-keycodearray.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-msceventarray.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-rawdevinfo.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-relaxesarray.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsi-peripheral-api-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsi-peripheral-types-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-capacityinfo.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-device.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-devicememmap.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-iorequest.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-request.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-response.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-verifyrequest.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk-usbserial-devicehandle.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk-usbserial-params.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-ddk-api-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-ddk-types-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-serial-api-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-serial-types-h.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usb-devicearray.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usb-nonroothubarray.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbconfigdescriptor.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbcontrolrequestsetup.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkconfigdescriptor.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkendpointdescriptor.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkinterface.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkinterfacedescriptor.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicedescriptor.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicememmap.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbendpointdescriptor.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbinterfacedescriptor.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbrequestpipe.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/errorcode-deviceManager.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-inner-application-driverExtensionContext.md @lixinsheng2 @w00373942 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-driverdevelopment-kit/Readme-CN.md @lixinsheng2 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-baseddk-ddk-ashmem.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-baseddk.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-ddk-api-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-ddk-types-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hid-ddk-api-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-absaxesarray.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-device.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-devicehandle.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-emititem.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-eventproperties.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-eventtypearray.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-keycodearray.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-msceventarray.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-rawdevinfo.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk-hid-relaxesarray.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-hidddk.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsi-peripheral-api-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsi-peripheral-types-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-capacityinfo.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-device.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-devicememmap.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-iorequest.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-request.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-response.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk-scsiperipheral-verifyrequest.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-scsiperipheralddk.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk-usbserial-devicehandle.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk-usbserial-params.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-serialddk.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-ddk-api-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-ddk-types-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-serial-api-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usb-serial-types-h.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usb-devicearray.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usb-nonroothubarray.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbconfigdescriptor.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbcontrolrequestsetup.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkconfigdescriptor.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkendpointdescriptor.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkinterface.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbddkinterfacedescriptor.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicedescriptor.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicememmap.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbendpointdescriptor.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbinterfacedescriptor.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk-usbrequestpipe.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/capi-usbddk.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/errorcode-deviceManager.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/js-apis-inner-application-driverExtensionContext.md @zgene94 @w00373942 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-driverdevelopment-kit/Readme-CN.md @zgene94 @w00373942 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-drm-kit/arkts-apis-drm-e.md 无
 zh-cn/application-dev/reference/apis-drm-kit/arkts-apis-drm-f.md @qin_wei_jie @chris2981 @w_Machine_cc
 zh-cn/application-dev/reference/apis-drm-kit/arkts-apis-drm-i.md @qin_wei_jie @chris2981 @w_Machine_cc
@@ -3801,6 +3824,7 @@ zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-c.md @aulight02 
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-e.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-ExifMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-f.md @aulight02 @XiaoYao555 @w_Machine_cc
+zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-GifMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-HeifsMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-i.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-Image.md @aulight02 @XiaoYao555 @w_Machine_cc
@@ -3808,11 +3832,14 @@ zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-ImageCreator.md 
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-ImagePacker.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-ImageReceiver.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-ImageSource.md @aulight02 @XiaoYao555 @w_Machine_cc
+zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-JfifMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-MakerNoteHuaweiMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-Metadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-Picture.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md @yaozhupeng @w_Machine_cc
+zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PngMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-t.md @aulight02 @XiaoYao555 @w_Machine_cc
+zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-TiffMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-WebPMetadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/reference/apis-image-kit/capi-image-common-h.md @aulight02 @XiaoYao555 @w_Machine_cc
@@ -4060,51 +4087,51 @@ zh-cn/application-dev/reference/apis-location-kit/js-apis-geoLocationManager-sys
 zh-cn/application-dev/reference/apis-location-kit/js-apis-geoLocationManager.md @liu-binjun @RayShih
 zh-cn/application-dev/reference/apis-location-kit/js-apis-system-location.md @liu-binjun @RayShih
 zh-cn/application-dev/reference/apis-location-kit/Readme-CN.md @liu-binjun @RayShih
-zh-cn/application-dev/reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-application-EnterpriseAdminExtensionContext.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-accountManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-accountManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-adminManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-browser-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-browser.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bundleManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-common.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceControl-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceControl.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceInfo-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceInfo.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceSettings-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-locationManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-networkManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-networkManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-restrictions-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-restrictions.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-securityManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-securityManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-systemManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-telephonyManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-usbManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-usbManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-wifiManager-sys.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md @huanleima @hp_guo @zhang_yixin13
-zh-cn/application-dev/reference/apis-mdm-kit/Readme-CN.md @huanleima @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-application-EnterpriseAdminExtensionContext.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-accountManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-accountManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-adminManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-browser-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-browser.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bundleManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-common.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceControl-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceControl.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceInfo-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceInfo.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceSettings-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-locationManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-networkManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-networkManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-restrictions-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-restrictions.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-securityManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-securityManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-systemManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-telephonyManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-usbManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-usbManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-wifiManager-sys.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md @huanleima @weizai16 @hp_guo @zhang_yixin13
+zh-cn/application-dev/reference/apis-mdm-kit/Readme-CN.md @huanleima @weizai16 @hp_guo @zhang_yixin13
 zh-cn/application-dev/reference/apis-mechanic-kit/errorcode-mechanic.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-mechanic-kit/js-apis-mechanicManager.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-mechanic-kit/Readme-CN.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AudioPlayer.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AudioRecorder.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVPlayer.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVRecorder.md @shiwei75 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md @zzs_911 @stupig001 @w_Machine_cc
@@ -4117,11 +4144,11 @@ zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-MediaSourceLoadi
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-t.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-VideoPlayer.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-base-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator-oh-avimagegenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-base-h.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-base-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator-oh-avimagegenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-base-h.md @xushubo @chennotfound @chris2981 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-h.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avhttpheader.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avmediasource.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
@@ -4129,13 +4156,13 @@ zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avmediasou
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avmediasourceloadingrequest.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmediabase.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-base-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetakeys-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-base-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md @xushubo @chennotfound @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetakeys-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avplayer-avplayercallback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avplayer-base-h.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avplayer-drm-mediakeysysteminfo.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
@@ -4291,6 +4318,8 @@ zh-cn/application-dev/reference/apis-multimodalawareness-kit/Readme-CN.md @dilli
 zh-cn/application-dev/reference/apis-network-kit/capi-net-connection-h.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-net-connection-type-h.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-net-http-h.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/reference/apis-network-kit/capi-net-http-interceptor-h.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/reference/apis-network-kit/capi-net-http-interceptor-type-h.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-net-http-type-h.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-net-ssl-c-h.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-net-ssl-c-type-h.md @wmyao_mm @guo-min_net @zhang_yixin13
@@ -4316,6 +4345,10 @@ zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-eventshandle
 zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-headerentry.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-headers.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-headervalue.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-interceptor-headers.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-interceptor-request.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-interceptor-response.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-interceptor.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-performancetiming.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-proxy.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-network-kit/capi-netstack-http-request.md @wmyao_mm @guo-min_net @zhang_yixin13
@@ -4421,17 +4454,17 @@ zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationSubscr
 zh-cn/application-dev/reference/apis-notification-kit/js-apis-notificationSubscriberExtensionContext.md @cheerful_ricky @dongqingran @fang-jinxu
 zh-cn/application-dev/reference/apis-notification-kit/js-apis-system-notification.md @michael_woo888 @dongqingran @wulong158 @fang-jinxu
 zh-cn/application-dev/reference/apis-notification-kit/Readme-CN.md @cheerful_ricky @dongqingran @fang-jinxu
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-cfg-h.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-event-h.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-h.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventgroup.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventinfo.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-config.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-processor.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-watcher.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-param-h.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-paramlistnode8h.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent.md @liujiaxing2024 @junjie_shi @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-cfg-h.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-event-h.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-h.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventgroup.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventinfo.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-config.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-processor.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-watcher.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-param-h.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-paramlistnode8h.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent.md @liujiaxing2024 @jiangwenhao @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-h.md @rr_cn @peterhuangyu @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-detectionparam.md @rr_cn @peterhuangyu @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-settimerparam.md @rr_cn @peterhuangyu @jinqiuheng
@@ -4448,7 +4481,9 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hideb
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-stackframe.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-systemmeminfo.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-threadcpuusage.md @leiguangyu @mgce1 @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-oh-hidebug-profilingresult.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-oh-hidebug-requesttraceconfig.md @leiguangyu @mgce1 @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-oh-hidebug-resprofilerconfig.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-type-h.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hilog.md @liuyifeifei @buzhenwang @shenchenkai @jinqiuheng
@@ -4457,19 +4492,19 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace.md @q
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-log-h.md @liuyifeifei @buzhenwang @shenchenkai @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md @qq_437963121 @kutcherzhou1 @MontSaintMichel @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory91 @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @junjie_shi @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @jiangwenhao @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisysevent-sys.md @lyj_love_code @tangyyan @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hicollie.md @rr_cn @peterhuangyu @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-cpuusage.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md @lyj_love_code @tangyyan @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @lu-tao @martin-duan @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @Lutao98 @martin_duan @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @kutcherzhou1 @MontSaintMichel @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory91 @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu-tao @martin-duan @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @Lutao98 @martin_duan @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @leiguangyu @mgce1 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hilog.md @liuyifeifei @buzhenwang @shenchenkai @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiretrieval.md @lyj_love_code @jiangwenhao @jinqiuheng
@@ -4478,31 +4513,31 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracecha
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracemeter.md @qq_437963121 @kutcherzhou1 @MontSaintMichel @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md @hello_harmony @StevenLai1994 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionContext.md @hello_harmony @StevenLai1994 @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md @liujiaxing2024 @junjie_shi @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md @lu_tao @martin_duan @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md @liujiaxing2024 @jiangwenhao @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md @Lutao98 @martin_duan @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-loglibrary-sys.md @BruceZong @tangyyan @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/Readme-CN.md @mzyan @liyueric @jinqiuheng
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-oh-sensor-h.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-oh-sensor-type-h.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-event.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-info.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriber.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionattribute.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionid.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-h.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-type-h.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-vibrator-attribute.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-vibrator-filedescription.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-sensor.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-vibrator.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor-sys.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-sensor.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-vibrate.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-vibrator.md @dilligencer @butterls @hu-zhiqiong
-zh-cn/application-dev/reference/apis-sensor-service-kit/Readme-CN.md @dilligencer @butterls @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-oh-sensor-h.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-oh-sensor-type-h.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-event.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-info.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriber.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionattribute.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionid.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-sensor.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-h.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-type-h.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-vibrator-attribute.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator-vibrator-filedescription.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/capi-vibrator.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-sensor.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/errorcode-vibrator.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor-sys.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-sensor.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-sensor.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-system-vibrate.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/js-apis-vibrator.md @dilligencer @andeszhang @hu-zhiqiong
+zh-cn/application-dev/reference/apis-sensor-service-kit/Readme-CN.md @dilligencer @andeszhang @hu-zhiqiong
 zh-cn/application-dev/reference/apis-telephony-kit/capi-telephony-data-h.md @k_lee9575 @guo-min_net @zhang_yixin13
 zh-cn/application-dev/reference/apis-telephony-kit/capi-telephony-radio-h.md @Terence_Super @zhang_yixin13
 zh-cn/application-dev/reference/apis-telephony-kit/capi-telephony-radio-type-h.md @Terence_Super @zhang_yixin13
@@ -4684,180 +4719,182 @@ zh-cn/application-dev/security/AccessToken/request-user-authorization.md @xia-bu
 zh-cn/application-dev/security/AccessToken/restricted-permissions.md @xia-bubai @linshuqing @hehehe-li @zengyawen
 zh-cn/application-dev/security/AccessToken/savebutton.md @harylee @linshuqing @hehehe-li @zengyawen
 zh-cn/application-dev/security/AccessToken/security-component-overview.md @harylee @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-as-user-sys.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-add.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-add.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-remove.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-update.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-group-access-control.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-query-auth.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-query.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-remove.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-sync.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-update.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-add.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-group-access-control.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-query.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-remove.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-sync.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-update.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-scenario1.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-scenario2.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-store-kit-overview.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/Readme-CN.md @JeremyXu @skye_you @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-3des-sym-encrypt-decrypt-ecb-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-3des-sym-encrypt-decrypt-ecb.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-cbc-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-cbc.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ccm-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ccm-new.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ccm.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ecb-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ecb.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-xts.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-architecture-kit-intro.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-poly1305-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-poly1305.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-cmac-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-cmac.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-hmac-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-hmac.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-mac-overview.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-asym-key-pair-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-asym-key-pair.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-sym-key-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-sym-key.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-point-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-point.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-pubkey-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-pubkey.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-string-data-to-asym-key-pair-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-string-data-to-asym-key-pair.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-des-sym-encrypt-decrypt-ecb-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-des-sym-encrypt-decrypt-ecb.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-ecc-sig-verify-onlySign-onlyVerify.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-ecdsa-sign-sig-verify-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-ecdsa-sign-sig-verify.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encrypt-decrypt-by-segment.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encrypt-decrypt-using-ecies-native.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encrypt-decrypt-using-ecies.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-from-key-spec-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-from-key-spec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-randomly-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-randomly.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-md5-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-md5.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-sha3-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-sha3.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number-hardware-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number-hardware.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-sym-key-randomly-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-sym-key-randomly.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-overview.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-dh-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-dh.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-ecdh-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-ecdh.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-x25519-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-x25519.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-overview.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-hkdf-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-hkdf.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-pbkdf2-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-pbkdf2.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-generation-conversion-overview.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-prikey-to-get-pubkey-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-prikey-to-get-pubkey.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rc2-sym-encrypt-decrypt-cbc.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rc4-sym-encrypt-decrypt.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-encoded-decoded-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-encoded-decoded.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-pkcs1-sig-verify-onlySign-onlyVerify.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-pss-sig-verify-onlySign-onlyVerify.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pss-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pss.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-recover-pkcs1-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-recover-pkcs1.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-data-format-conversion-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-data-format-conversion.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-sig-verify-pkcs1-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-sig-verify-pkcs1.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-cbc-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-cbc.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-ecb-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-ecb.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-by-segment-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-ndk.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/CryptoArchitectureKit/Readme-CN.md @zxz @lanming @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-as-user-sys.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-add.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-add.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-remove.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-update.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-group-access-control.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-query-auth.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-query.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-remove.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-sync.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-update.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-add.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-group-access-control.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-query.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-remove.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-sync.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-update.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-scenario1.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-scenario2.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-store-kit-overview.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/Readme-CN.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-3des-sym-encrypt-decrypt-ecb-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-3des-sym-encrypt-decrypt-ecb.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-cbc-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-cbc.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ccm-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ccm-new.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ccm.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ecb-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-ecb.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-xts.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-wrap-encrypt-decrypt.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-architecture-kit-intro.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-poly1305-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-poly1305.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-cmac-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-cmac.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-hmac-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-hmac.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-compute-mac-overview.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-asym-key-pair-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-asym-key-pair.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-sym-key-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-binary-data-to-sym-key.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-point-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-point.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-pubkey-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-compressed-or-uncompressed-ECC-pubkey.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-string-data-to-asym-key-pair-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-convert-string-data-to-asym-key-pair.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-des-sym-encrypt-decrypt-ecb-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-des-sym-encrypt-decrypt-ecb.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-ecc-sig-verify-onlySign-onlyVerify.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-ecdsa-sign-sig-verify-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-ecdsa-sign-sig-verify.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encrypt-decrypt-by-segment.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encrypt-decrypt-using-ecies-native.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encrypt-decrypt-using-ecies.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-from-key-spec-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-from-key-spec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-randomly-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-asym-key-pair-randomly.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-md5-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-md5.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-sha3-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-sha3.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number-hardware-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number-hardware.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-sym-key-randomly-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-sym-key-randomly.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-overview.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-dh-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-dh.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-ecdh-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-ecdh.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-x25519-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-x25519.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-overview.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-hkdf-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-hkdf.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-pbkdf2-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-pbkdf2.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-scrypt.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-derivation-using-x963kdf.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-generation-conversion-overview.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-prikey-to-get-pubkey-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-prikey-to-get-pubkey.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rc2-sym-encrypt-decrypt-cbc.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rc4-sym-encrypt-decrypt.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-encoded-decoded-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-encoded-decoded.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-pkcs1-sig-verify-onlySign-onlyVerify.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-pss-sig-verify-onlySign-onlyVerify.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pss-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pss.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-recover-pkcs1-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-recover-pkcs1.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-asym-encrypt-decrypt.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-ciphertext-conversion.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-data-format-conversion-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-data-format-conversion.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-sig-verify-pkcs1-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-sig-verify-pkcs1.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-cbc-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-cbc.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-ecb-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-ecb.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-by-segment-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-ndk.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/Readme-CN.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DataProtectionKit/dlp-guidelines-ndk.md @winnieHuYu @lucky-jinduo @zengyawen
 zh-cn/application-dev/security/DataProtectionKit/dlp-guidelines.md @winnieHuYu @lucky-jinduo @zengyawen
 zh-cn/application-dev/security/DataProtectionKit/dlp-overview.md @winnieHuYu @lucky-jinduo @zengyawen
 zh-cn/application-dev/security/DataProtectionKit/Readme-CN.md @winnieHuYu @lucky-jinduo @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/allow-download-Intermediate-Cert.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/certificate-framework-overview.md @zxz @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/allow-download-Intermediate-Cert.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/certificate-framework-overview.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/DeviceCertificateKit/certManager-ca-certs-guidelines.md @chaceli @chande @zengyawen
 zh-cn/application-dev/security/DeviceCertificateKit/certManager-overview.md @chaceli @chande @zengyawen
 zh-cn/application-dev/security/DeviceCertificateKit/certManager-private-credential-guidelines.md @chaceli @chande @zengyawen
 zh-cn/application-dev/security/DeviceCertificateKit/certManagerDialog-guidelines.md @chaceli @chande @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-cms-decapsulation-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-cms-enveloped-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-cms-sign-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-cms-verify-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-get-cert-crl-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-parse-pkcs12.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-parse-verify-cert-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-parse-verify-certextension-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-parse-verify-crl-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-trustanchor-from-p12.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-verify-cerchainvalidator-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-verify-cerchainvalidator-revocation-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/create-verify-certchain-object.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/device-certificate-kit-intro.md @zxz @lanming @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/Readme-CN.md @zxz @chaceli @lanming @chande @zengyawen
-zh-cn/application-dev/security/DeviceCertificateKit/verify-certchain-by-systemca.md @zxz @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-cms-decapsulation-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-cms-enveloped-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-cms-sign-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-cms-verify-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-get-cert-crl-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-parse-pkcs12.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-parse-verify-cert-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-parse-verify-certextension-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-parse-verify-crl-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-trustanchor-from-p12.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-verify-cerchainvalidator-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-verify-cerchainvalidator-revocation-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/create-verify-certchain-object.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/device-certificate-kit-intro.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/Readme-CN.md @zxz--3 @chaceli @lanming @chande @zengyawen
+zh-cn/application-dev/security/DeviceCertificateKit/verify-certchain-by-systemca.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/HapSignTool/remote-signer-plugin-guide.md @scuteehuangjun @liuchibin @zengyawen
 zh-cn/application-dev/security/SecurityPrivacyCenter/auto-menu-guidelines.md 无
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-as-user-sys.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-check-key-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-check-key-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-clear-pin-auth-state-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-concepts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-delete-key-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-delete-key-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
@@ -4868,6 +4905,11 @@ zh-cn/application-dev/security/UniversalKeystoreKit/huks-export-key-arkts.md @wu
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-export-key-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-ability-support-dev.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-ability-support-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-get-resource-id-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-key-export-arkts.md @wutitian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-key-generation-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-key-generation-import-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-key-import-arkts.md @wutitian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-external-hardware-key-management-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
@@ -4905,6 +4947,7 @@ zh-cn/application-dev/security/UniversalKeystoreKit/huks-list-aliases-ndk.md @wu
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-obtain-key-properties-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-obtain-key-properties-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-offline-anon-attestation-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-open-close-resource-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-open-close-resource-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-provider-management-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
@@ -5163,7 +5206,7 @@ zh-cn/application-dev/ui/ndk-waterflow.md @fangyuhao @zcdqs @Brilliantry_Rui
 zh-cn/application-dev/ui/Readme-CN.md @tsj_20201 @Brilliantry_Rui
 zh-cn/application-dev/ui/theme_skinning.md @lushi871202 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-dark-light-color-adaptation.md @lushi871202 @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-ide-previewer.md @huyisuo @zhangboren @zhang_yixin13
+zh-cn/application-dev/ui/ui-ide-previewer.md @xin11112 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/ui-inspector-profiler.md @lushi871202 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-animate-attribute-style.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-animate-background-position-style.md @CCFFWW @Brilliantry_Rui
@@ -5216,19 +5259,19 @@ zh-cn/application-dev/ui/ui-js-custom-components.md @seaside_wu1 @shiyu_huang @z
 zh-cn/application-dev/ui/ui-js-overview.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-performance-overview.md @wild-mucor @ge-yafang
 zh-cn/application-dev/ui/rendering-control/arkts-lazyforeach-repeat-migration-guide.md @maorh @keerecles @zhang_yixin13
-zh-cn/application-dev/ui/rendering-control/arkts-new-rendering-control-repeat.md @liubihao @keerecles @zhang_yixin13
+zh-cn/application-dev/ui/rendering-control/arkts-new-rendering-control-repeat.md @maorh @keerecles @zhang_yixin13
 zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-contentslot.md @sd-wu @sunbees @zhang_yixin13
 zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-foreach.md @maorh @keerecles @zhang_yixin13
 zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-ifelse.md @maorh @keerecles @zhang_yixin13
 zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-lazyforeach.md @maorh @keerecles @zhang_yixin13
-zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-overview.md @liubihao @lixingchi1 @zhang_yixin13
-zh-cn/application-dev/ui/state-management/arkts-animatable-extend.md @CCFFWW @yangfan229 @zhang_yixin13
+zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-overview.md @maorh @keerecles @zhang_yixin13
+zh-cn/application-dev/ui/state-management/arkts-animatable-extend.md @hehongyang3 @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-application-state-management-overview.md @jiyujia926 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-appstorage.md @jiyujia926 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-basic-syntax-overview.md @jiyujia926 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-builder.md @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-builderparam.md @zhangboren @zhang_yixin13
-zh-cn/application-dev/ui/state-management/arkts-create-custom-components.md @jiyujia926 @huyisuo @zhangboren @zhang_yixin13
+zh-cn/application-dev/ui/state-management/arkts-create-custom-components.md @jiyujia926 @xin11112 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-custom-components-access-restrictions.md @BlYynNe @lixingchi1 @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-custom-components-freeze.md @liwenzhen3 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-custom-components-freezeV2.md @liwenzhen3 @zhangboren @zhang_yixin13
@@ -5267,12 +5310,12 @@ zh-cn/application-dev/ui/state-management/arkts-new-type.md @jiyujia926 @zhangbo
 zh-cn/application-dev/ui/state-management/arkts-observed-and-objectlink.md @liwenzhen3 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-other-state-mgmt-functions-overview.md @jiyujia926 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-page-custom-components-layout.md @song-song-song @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/ui/state-management/arkts-page-custom-components-lifecycle.md @jiyujia926 @huyisuo @zhangboren @zhang_yixin13
+zh-cn/application-dev/ui/state-management/arkts-page-custom-components-lifecycle.md @jiyujia926 @xin11112 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-persiststorage.md @jiyujia926 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-prop.md @jiyujia926 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-provide-and-consume.md @liwenzhen3 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-require.md @VictorS67 @lixingchi1 @zhang_yixin13
-zh-cn/application-dev/ui/state-management/arkts-reusable.md @liyujie43 @lizhan @zhang_yixin13
+zh-cn/application-dev/ui/state-management/arkts-reusable.md @maorh @keerecles @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-state-management-faq-application-and-others.md @zany_pink @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-state-management-faq-inner-class.md @zany_pink @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/arkts-state-management-faq-inner-component.md @zany_pink @zhangboren @zhang_yixin13
@@ -5370,6 +5413,8 @@ zh-cn/application-dev/windowmanager/Readme-CN.md @waterwin @nyankomiya @ge-yafan
 zh-cn/application-dev/windowmanager/system-window-stage-sys.md @waterwin @nyankomiya @ge-yafang
 zh-cn/application-dev/windowmanager/window-config-m.md @waterwin @nyankomiya @ge-yafang
 zh-cn/application-dev/windowmanager/window-faqs.md @JUGaaab @ki_ja @ge-yafang
+zh-cn/application-dev/windowmanager/window-focus-guide.md @waterwin @nyankomiya @ge-yafang
 zh-cn/application-dev/windowmanager/window-overview.md @Pakoo007 @ki_ja @ge-yafang
 zh-cn/application-dev/windowmanager/window-rotation.md @waterwin @nyankomiya @ge-yafang
 zh-cn/application-dev/windowmanager/window-terminology.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/windowmanager/window-zorder-guide.md @waterwin @nyankomiya @ge-yafang
