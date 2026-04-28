@@ -827,7 +827,7 @@ struct Index {
   @State customTheme: CustomTheme = new CustomThemeImpl(new CustomThemeColors());
   dialogController: CustomDialogController = new CustomDialogController({
     builder: LoadingDialog({
-      content: 'text',
+      content: '文本文本文本文本文本...',
       theme: this.customTheme,
     })
   });
@@ -879,7 +879,7 @@ struct Index {
   } as CustomColors);
   dialogController: CustomDialogController = new CustomDialogController({
     builder: LoadingDialog({
-      content: 'text',
+      content: '文本文本文本文本文本...',
       theme: this.customTheme,
     })
   });
