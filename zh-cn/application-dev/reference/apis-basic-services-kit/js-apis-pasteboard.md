@@ -2860,7 +2860,6 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-
 | shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。|
 
 **错误码：**
