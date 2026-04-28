@@ -452,6 +452,8 @@ createKVManager(config: KVManagerConfig): KVManager
 
 Stage模型下的示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -469,6 +471,41 @@ export default class EntryAbility extends UIAbility {
     }
     try {
       kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+      console.info("Succeeded in creating KVManager");
+    } catch (e) {
+      let error = e as BusinessError;
+      console.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+    }
+    if (kvManager !== undefined) {
+      // 进行后续创建数据库等相关操作
+      // ...
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { AppStorage } from '@ohos.arkui.stateManagement'
+import common from "@ohos.app.ability.common";
+import { BusinessError } from "@ohos.base"
+import distributedKVStore from '@ohos.data.distributedKVStore';
+
+let context: common.UIAbilityContext;
+let kvManager: distributedKVStore.KVManager | null = null;
+let appId: string = 'com.example.datamanagertest';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info("MyAbilityStage onCreate");
+    context  = AppStorage.get<common.UIAbilityContext>("abilityContextMainAbility2") as common.UIAbilityContext;
+    const config: distributedKVStore.KVManagerConfig = {
+      bundleName: "test",
+      context: context
+    }
+    try {
+      kvManager = distributedKVStore.createKVManager(config);
       console.info("Succeeded in creating KVManager");
     } catch (e) {
       let error = e as BusinessError;
@@ -597,7 +634,7 @@ try {
     kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
     securityLevel: distributedKVStore.SecurityLevel.S3
   };
-  kvManager.getKVStore('storeId', options, (err?: BusinessError, store?: distributedKVStore.SingleKVStore) => {
+  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err?: BusinessError, store?: distributedKVStore.SingleKVStore) => {
     if (err) {
       console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
       return;
