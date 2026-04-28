@@ -27,7 +27,7 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
     ```json5
     {
       "module": {
-        //...
+        // ...
         "querySchemes": [
           "app1Scheme"
         ]
@@ -59,10 +59,10 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
 ```json5
 {
   "module": {
-    //...
+    // ...
     "abilities": [
       {
-        //...
+        // ...
         "skills": [
           {
             // actions不能为空，actions为空会造成目标方匹配失败
