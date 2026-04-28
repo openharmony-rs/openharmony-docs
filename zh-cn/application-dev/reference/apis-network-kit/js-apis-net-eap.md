@@ -3,7 +3,7 @@
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
-<!--Designer: @gcw 3Lx1FoMT-->
+<!--Designer: @gcw_3Lx1FoMT-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
