@@ -211,9 +211,8 @@ import { BusinessError } from "@ohos.base"
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let kvStore: distributedKVStore.SingleKVStore;
   let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
-  let bucket2: ValuesBucket = {"key":"age", "value": 20};
+  let bucket2: ValuesBucket = {"key":"age", "value": Number(20)};
   let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
   let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
   kvStore.putValuesBuckets(people, (err: BusinessError | null) => {
@@ -280,9 +279,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let kvStore: distributedKVStore.SingleKVStore;
   let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
-  let bucket2: ValuesBucket = {"key":"age", "value": 20};
+  let bucket2: ValuesBucket = {"key":"age", "value": Number(20)};
   let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
   let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
   kvStore.putValuesBuckets(people).then(() => {
@@ -379,7 +377,6 @@ import { BusinessError } from "@ohos.base"
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let kvStore: distributedKVStore.SingleKVStore;
   let arr = ["name"];
   predicates.inKeys(arr);
   kvStore.put("name", "bob", (err:BusinessError | null) => {
@@ -488,7 +485,6 @@ import { BusinessError } from "@ohos.base"
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let kvStore: distributedKVStore.SingleKVStore;
   let arr = ["name"];
   predicates.inKeys(arr);
   kvStore.put("name", "bob").then(() => {
@@ -588,7 +584,6 @@ import { BusinessError } from "@ohos.base"
 
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
-  let kvStore: distributedKVStore.SingleKVStore;
   let predicates = new dataSharePredicates.DataSharePredicates();
   predicates.prefixKey("batch_test_string_key");
   kvStore.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
@@ -809,7 +804,6 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let kvStore: distributedKVStore.SingleKVStore;
   predicates.prefixKey("batch_test_string_key");
   kvStore.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
     if (err != undefined) {
@@ -1022,7 +1016,6 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let kvStore: distributedKVStore.DeviceKVStore;
   predicates.prefixKey("batch_test_string_key");
   kvStore.getResultSet('localDeviceId', predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
     if (err != undefined) {
