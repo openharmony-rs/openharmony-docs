@@ -2573,7 +2573,7 @@ localServer.offWebSocketServerError();
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 26.0.0 |
 | pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
 | pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
-| minSupportTlsProtocol<sup>26+</sup> | [TlsProtocol](#tlsprotocol26) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。|
+| minSupportTlsProtocol | [TlsProtocol](#tlsprotocol26) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## ClientCert<sup>11+</sup>
 
@@ -2781,11 +2781,15 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 | clientConnection | [WebSocketConnection](#websocketconnection19) | 否 | 否 | 客户端信息，包括客户端的ip地址和端口号port。             |
 | closeReason | [CloseResult](#closeresult10) | 否 | 否 | 关闭WebSocket连接时，订阅close事件得到的关闭结果。 |
 
-## TlsProtocol<sup>26+</sup>
+## TlsProtocol
 
 TLS协议类型。
 
 **系统能力：** SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
