@@ -31,7 +31,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-	events: ['event']
+  events: ['event']
 };
 // 创建订阅者
 subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
