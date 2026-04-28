@@ -11316,7 +11316,7 @@ async function doTestCreatePkcs12() {
 }
 ```
 
-## cert.createPkcs12<sup>21+</sup>
+## cert.createPkcs12Sync<sup>21+</sup>
 
 createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
