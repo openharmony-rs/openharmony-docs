@@ -857,7 +857,7 @@ offOpen(callback?: Callback\<OpenResult\>): void
 >
 > 可以指定传入offOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -927,7 +927,7 @@ onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > AsyncCallback中的数据可以是字符串或ArrayBuffer。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -997,7 +997,7 @@ offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > 可以指定传入onMessage中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1060,7 +1060,7 @@ onWebSocketClose(callback: AsyncCallback\<CloseResult\>): void
 
 订阅WebSocket的关闭事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1126,7 +1126,7 @@ offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 >
 > 可以指定传入onWebSocketClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1192,7 +1192,7 @@ onWebSocketError(callback: ErrorCallback): void
 
 订阅WebSocket的Error事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1250,13 +1250,13 @@ ws.off('error');
 
 offWebSocketError(callback?: ErrorCallback): void
 
-取消订阅WebSocket的Error事件。
+取消订阅WebSocket的Error事件。使用callback异步回调。
 
 > **说明：**
 >
 > 可以指定传入onWebSocketError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTs-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1366,7 +1366,7 @@ ws.off('dataEnd');
 
 offDataEnd(callback?: Callback\<void\>): void
 
-取消订阅WebSocket的数据接收结束事件。
+取消订阅WebSocket的数据接收结束事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -1485,7 +1485,7 @@ ws.off('headerReceive');
 
 offHeaderReceive(callback?: Callback\<ResponseHeaders\>): void
 
-取消订阅HTTP响应头事件。
+取消订阅HTTP响应头事件。使用callback异步回调。
 
 > **说明：**
 >
