@@ -420,7 +420,7 @@ struct ThreeColumns {
 
 ### 示例3（展示FoldSplitContainer折叠态、悬停态、展开态下的配置行为）
 
-该示例通过ExpandedRegionLayoutOptions，对折叠屏折叠态、悬停态、展开态布局信息进行配置。示例代码中MajorRegion，MinorRegion，ExtraRegion分别对应组件划分出来的主要区域，次要区域和扩展区域。这些区域使用Region为封装的区域组件Region实现， 其中RadioOptions为封装的切换单选框组件，SwitchOption为封装的切换开关组件。
+该示例通过[ExpandedRegionLayoutOptions](#expandedregionlayoutoptions)、[HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions)和[FoldedRegionLayoutOptions](#foldedregionlayoutoptions)分别配置折叠屏的展开态、悬停态和折叠态布局信息。示例代码中MajorRegion、MinorRegion和ExtraRegion分别对应组件划分出来的主要区域、次要区域和扩展区域。这些区域使用封装的区域组件Region实现，其中RadioOptions为封装的切换单选框组件，SwitchOption为封装的切换开关组件。
 
 ArkTS-Dyn示例：
 
