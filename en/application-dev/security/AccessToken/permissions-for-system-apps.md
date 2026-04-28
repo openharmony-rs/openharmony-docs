@@ -2200,7 +2200,7 @@ Allows a system application to execute intent calls.
 
 ## ohos.permission.EXECUTE_DISTRIBUTED_INTENT
 
-Allows a system application to execute distributed intent calls.
+Allows a system application to execute distributed intents.
 
 **Permission level**: system_basic
 
