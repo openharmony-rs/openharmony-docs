@@ -329,7 +329,7 @@ ArkTS-Sta: hideToolBar(value: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 |说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>参数非法或为undefined时，按默认值处理。 |
 
 ### hideToolBar<sup>13+</sup>
 
@@ -351,8 +351,8 @@ ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
-| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐工具栏。<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
+| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>参数非法或为undefined时，按默认值处理。 |
+| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐工具栏。<br>默认值：false<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>参数非法或为undefined时，按默认值处理。 |
 
 ### hideTitleBar
 
@@ -374,7 +374,7 @@ ArkTS-Sta: hideTitleBar(value: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br>默认值：false<br/>true：隐藏标题栏；false：显示标题栏。<br/>参数非法或为undefined时，按默认值处理。 |
 
 ### hideTitleBar<sup>13+</sup>
 
@@ -396,8 +396,8 @@ ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
-| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐标题栏。<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
+| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br>默认值：false<br/>true：隐藏标题栏；false：显示标题栏。<br/>参数非法或为undefined时，按默认值处理。 |
+| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐标题栏。<br>默认值：false<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>参数非法或为undefined时，按默认值处理。 |
 
 ### hideBackButton
 
@@ -419,7 +419,7 @@ ArkTS-Sta: hideBackButton(value: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏中的返回键。<br/>true：隐藏返回键；false：显示返回键。<br/>传入参数非法时，按false处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏中的返回键。<br/>默认值：false<br/>true：隐藏返回键；false：显示返回键。<br/>参数非法或为undefined时，按默认值处理。 |
 
 ### navBarWidth<sup>9+</sup>
 
@@ -487,7 +487,7 @@ ArkTS-Sta: mode(value: NavigationMode | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [NavigationMode](#navigationmode9枚举说明)<br/>ArkTS-Sta: [NavigationMode](#navigationmode9枚举说明) \| undefined | 是   | 导航页的显示模式。<br/>默认值：NavigationMode.Auto<br/>自适应：基于组件宽度自适应单栏和双栏。 |
+| value  | ArkTS-Dyn: [NavigationMode](#navigationmode9枚举说明)<br/>ArkTS-Sta: [NavigationMode](#navigationmode9枚举说明) \| undefined | 是   | 导航页的显示模式。<br/>取值为undefined时，按默认值处理。<br/>默认值：NavigationMode.Auto<br/>自适应：基于组件宽度自适应单栏和双栏。 |
 
 ### backButtonIcon<sup>9+</sup>
 
@@ -591,7 +591,7 @@ ArkTS-Sta: hideNavBar(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| value  |ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined| 是   | 是否隐藏导航页。<br/>true：隐藏导航页；false：显示导航页。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。|
+| value  |ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined| 是   | 是否隐藏导航页。<br/>true：隐藏导航页；false：显示导航页。<br/>参数非法或为undefined时，按默认值处理。<br/>默认值：false|
 
 ### navDestination<sup>10+</sup>
 
@@ -645,7 +645,7 @@ ArkTS-Sta: navBarWidthRange(value: [Dimension, Dimension] | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value | ArkTS-Dyn: [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)]<br/>ArkTS-Sta: [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] \| undefined | 是   | 导航页最小和最大宽度。设置异常值时按默认值处理。 |
+| value | ArkTS-Dyn: [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)]<br/>ArkTS-Sta: [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] \| undefined | 是   | 导航页最小和最大宽度。<br/>参数非法或为undefined时，按默认值处理。 |
 
 ### minContentWidth<sup>10+</sup>
 
@@ -762,7 +762,7 @@ ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| recoverable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | Navigation是否可恢复，默认为不可恢复。<br/>true：路由栈可恢复；false：路由栈不可恢复。<br/>传入参数非法时，按false处理。|
+| recoverable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | Navigation是否可恢复，默认为不可恢复。<br/>true：路由栈可恢复；false：路由栈不可恢复。<br/>参数非法或为undefined时，按默认值处理。|
 
 ### enableDragBar<sup>14+</sup>
 
@@ -784,7 +784,7 @@ ArkTS-Sta: enableDragBar(isEnabled: boolean | undefined)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| isEnabled  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启拖拽条，默认为无拖拽条样式。<br/>true：有拖拽条样式；false：无拖拽条样式。<br/>传入参数非法时，按false处理。|
+| isEnabled  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启拖拽条，默认为无拖拽条样式。<br/>true：有拖拽条样式；false：无拖拽条样式。<br/>参数非法或为undefined时，按默认值处理。|
 
 ### enableModeChangeAnimation<sup>15+</sup>
 
@@ -806,7 +806,7 @@ ArkTS-Sta: enableModeChangeAnimation(isEnabled: boolean | undefined)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| isEnabled  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined  | 是   | 是否开启单双栏切换动效。<br/>true：开启单双栏切换动效；false：关闭单双栏切换动效。<br/>传入参数非法时，按true处理。|
+| isEnabled  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined  | 是   | 是否开启单双栏切换动效。<br/>默认值：true<br/>true：开启单双栏切换动效；false：关闭单双栏切换动效。<br/>参数非法或为undefined时，按默认值处理。|
 
 ### enableToolBarAdaptation<sup>19+</sup>
 
@@ -828,7 +828,7 @@ ArkTS-Sta: enableToolBarAdaptation(enable: boolean | undefined)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   |是否启用Navigation和NavDestination的工具栏自适应能力。<br/>默认值：true<br/>true：启用Navigation和NavDestination的工具栏自适应能力。<br/>false：不启用Navigation和NavDestination的工具栏自适应能力。 |
+| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   |是否启用Navigation和NavDestination的工具栏自适应能力。<br/>默认值：true<br/>true：启用Navigation和NavDestination的工具栏自适应能力。<br/>false：不启用Navigation和NavDestination的工具栏自适应能力。<br/>参数非法或为undefined时，按默认值处理。 |
 
 ### splitPlaceholder<sup>20+</sup>
 

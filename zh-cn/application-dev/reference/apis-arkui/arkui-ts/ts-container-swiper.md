@@ -471,7 +471,7 @@ ArkTS-Sta: cachedCount(count: int | undefined, isShown: boolean | undefined)
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | count  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 预加载子组件个数。<br/>默认值：1<br/>取值范围：[0, +∞)，设置小于0的值时，按照默认值处理。<br/>取值为undefined时，按默认值处理。 |
-| isShown  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 预加载范围内的节点是否进行绘制，不下渲染树。<br/>true：预加载范围内的节点进行绘制；false：预加载范围内的节点不进行绘制。<br/>传入非法值时，按false处理。 |
+| isShown  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 预加载范围内的节点是否进行绘制，不下渲染树。<br/>true：预加载范围内的节点进行绘制；false：预加载范围内的节点不进行绘制。<br/>传入非法值以及undefined时，按false处理。 |
 
 ### cachedCount<sup>24+</sup>
 
@@ -669,7 +669,7 @@ displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy | undefined, 
 | 参数名                     | 类型                                                                                                                 | 必填 | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                      | int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined | 是   | 视窗内显示的子元素个数。<br/> 默认值：1<br/>取值范围：(0, +∞)，设置小于等于0的值时，按照1处理。<br/>取值为undefined时，按默认值处理。|
-| swipeByGroup | boolean \| undefined                     | 否   | 是否按组进行翻页。<br/>true：在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；false：为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
+| swipeByGroup | boolean \| undefined                     | 否   | 是否按组进行翻页。<br/>true：在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；false：为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false<br/>取值为undefined时，按默认值处理。 |
 
 > **说明：**
 >
@@ -839,7 +839,7 @@ ArkTS-Sta: pageFlipMode(mode: PageFlipMode | undefined)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | ArkTS-Dyn: Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)><br/>ArkTS-Sta: [PageFlipMode](ts-appendix-enums.md#pageflipmode15) \| undefined | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
+| mode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)><br/>ArkTS-Sta: [PageFlipMode](ts-appendix-enums.md#pageflipmode15) \| undefined | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
@@ -1106,7 +1106,7 @@ ArkTS-Sta: preloadItems(indices: Array\<int> | undefined): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices |ArkTS-Dyn: Optional\<Array\<number>><br/>ArkTS-Sta: Array\<int> \| undefined| 是 | 需预加载的子节点的下标数组。<br/>取值为undefined时，默认全部加载。|
+| indices |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>><br/>ArkTS-Sta: Array\<int> \| undefined| 是 | 需预加载的子节点的下标数组。<br/>取值为undefined时，默认全部加载。|
 
 **返回值：**
 
