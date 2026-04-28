@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -23,7 +23,7 @@
    <!-- @[encodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPixelMap.ets) -->   
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
@@ -102,8 +102,8 @@
        const imagePackerApi = image.createImagePacker();
        let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
        const path : string = context.cacheDir + '/pixel_map.jpg';
-       let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
        try {
+         let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
          await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the pixelMap to file. And the error is: ' + error);
@@ -119,8 +119,8 @@
        const imagePackerApi = image.createImagePacker();
        let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
        const filePath : string = context.cacheDir + '/image_source.jpg';
-       let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
        try {
+         let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
          await imagePackerApi.packToFile(imageSource, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the imageSource to file. And the error is: ' + error);

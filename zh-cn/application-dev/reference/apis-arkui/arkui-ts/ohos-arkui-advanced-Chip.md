@@ -62,6 +62,8 @@ ChipOptions定义Chip的样式及具体式样参数。
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标属性的无障碍朗读功能属性。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否  | 是  | Chip背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | 否  | 是  | Chip激活时的背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_emphasize')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| activatedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | borderRadius    | [Dimension](ts-types.md#dimension10)                         | 否  | 是  | Chip背景圆角半径大小，不支持百分比。<br/>默认值：$r('sys.float.ohos_id_corner_radius_button')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onClose         | ()=>void                                                     | 否  | 是  | 默认关闭图标点击事件。<br>值为undefined时，关闭图标点击事件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -489,7 +491,7 @@ struct Index {
           console.info('chip on clicked');
         }
       })
- 	  // 点击“改变激活状态”，用于控制操作块的激活与关闭。
+ 	    // 点击“改变激活状态”，用于控制操作块的激活与关闭。
       Button('改变激活状态')
         .onClick(() => {
           this.isActivated = !this.isActivated;
@@ -929,3 +931,59 @@ struct ChipAccessibilityExample {
   }
 }
 ```
+
+### 示例10（设置系统材质样式）
+
+该示例通过配置backgroundSystemMaterial和activatedBackgroundSystemMaterial实现系统材质样式。
+
+从API版本26.0.0开始，[ChipOptions](#chipoptions)新增backgroundSystemMaterial和activatedBackgroundSystemMaterial属性。
+
+```ts
+import { Chip, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ChipMaterialExample {
+  @State isActivated: boolean = false;
+
+  build() {
+    Column({ space: 10 }) {
+      Chip({
+        label: { text: '操作块' },
+        activated: this.isActivated,
+        // 设置普通状态下的背景颜色为透明，否则会和系统材质冲突
+        backgroundColor: Color.Transparent,
+        // 设置普通状态下的系统材质样式
+        backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.REGULAR
+        }),
+        // 设置激活状态下的背景颜色为透明，否则会和系统材质冲突
+        activatedBackgroundColor: Color.Transparent,
+        // 设置激活状态下的系统材质样式
+        activatedBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.THICK
+        })
+      })
+
+      Button('改变激活状态')
+        .onClick(() => {
+          // 切换Chip的激活状态，演示不同材质效果
+          this.isActivated = !this.isActivated;
+        })
+    }
+    .linearGradient({
+      angle: 135, // 渐变角度，135度是从左上到右下
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置 (0.0表示起点)
+        ['#FECFEF', 0.5], // 中间颜色及位置
+        ['#A18CD1', 1.0]  // 结束颜色及位置 (1.0表示终点)
+      ]
+    })
+    .padding(12)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![](figures/zh-cn_chip_material.png)

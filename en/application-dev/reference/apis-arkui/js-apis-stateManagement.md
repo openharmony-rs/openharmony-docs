@@ -1087,7 +1087,7 @@ Creates a mutable two-way data binding instance, which is used to construct the 
 
 | Type| Description                                            |
 | ---- | ------------------------------------------------ |
-| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
+| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
 
 **Example**
 
@@ -1513,7 +1513,7 @@ Defines a synchronous callback.
 
 ## MonitorOptions<sup>20+</sup>
 
-Defines the optional parameter of [addMonitor](#addmonitor20), which is used to configure the callback type.
+Defines the optional parameters for [addMonitor](#addmonitor20), which are used to configure the callback type and whether to enable the wildcard capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1522,6 +1522,7 @@ Defines the optional parameter of [addMonitor](#addmonitor20), which is used to 
 | Parameter| Type| Read-Only| Optional| Description    |
 | ------ | ---- | ---- | ---- | ------------ |
 |isSynchronous|boolean|No|Yes|Whether the current callback is a synchronous callback. **true**: The current callback is a synchronous callback. **false** (default value): The current callback is an asynchronous callback.|
+|enableWildcard|boolean|No|Yes|Whether to enable the wildcard capability for this **addMonitor**. **true** to enable the wildcard capability, and **false** means the opposite. The default value is **false**. If the wildcard capability is disabled but the path contains wildcards, the path is considered invalid.<br>**Since**: 26.0.0|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void

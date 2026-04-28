@@ -495,7 +495,7 @@ getAudioTime(callback: AsyncCallback<number\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
-  console.info(`Current timestamp: ${timestamp}`);
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 });
 ```
 
@@ -511,17 +511,17 @@ getAudioTime(): Promise<number\>
 
 | 类型             | 说明                          |
 | :--------------- | :---------------------------- |
-| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始），单位为纳秒。 |
+| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始）。<br>单位为纳秒。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioCapturer.getAudioTime().then((audioTime: number) => {
-  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTime : Success ${audioTime}`);
+audioCapturer.getAudioTime().then((timestamp: number) => {
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: AudioCapturer Created : ERROR : ${err}`);
+  console.error(`Failed to get audio time. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -545,11 +545,11 @@ getAudioTimeSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let audioTime: number = audioCapturer.getAudioTimeSync();
-  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : Success ${audioTime}`);
+  let timestamp: number = audioCapturer.getAudioTimeSync();
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : ERROR : ${error}`);
+  console.error(`Failed to get audio time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -637,7 +637,7 @@ getBufferSize(callback: AsyncCallback<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                 |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。 |
+| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
 **示例：**
 
@@ -665,7 +665,7 @@ getBufferSize(): Promise<number\>
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| Promise<number\> | Promise对象，返回缓冲区大小。 |
+| Promise<number\> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
@@ -691,7 +691,7 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| number | 返回缓冲区大小。 |
+| number | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 
@@ -1224,6 +1224,8 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 
 回调函数仅用来读取音频数据，请勿在回调函数中调用AudioCapturer相关接口。
 
+为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -1414,6 +1416,54 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
+## setMuteHint<sup>24</sup>
+
+setMuteHint(mute: boolean): Promise&lt;void&gt;
+
+应用将当前录音流的自身静音状态传递给系统音频模块。<!--RP1-->该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。<!--RP1End-->使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口用于向系统音频模块上报应用自身的静音状态，不会改变录音流的实际静音状态。
+> - 该接口仅在录音流处于运行态时允许调用，否则返回错误码6800103。
+> - 同一录音流同时设置流级静音提示接口（本接口）和会话级静音提示接口[AudioSessionManager.setCapturerMuteHint](arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24)时，流级[setMuteHint](#setmutehint24)优先级更高，数值以流级设置值为准。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名     | 类型             | 必填   | 说明                                                      |
+| ---------- |---------------- | ------ |---------------------------------------------------------|
+| mute | boolean  | 是  | 应用自身给系统音频模块上报的静音状态。true表示应用将当前流静音，false表示取消静音。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800103 | Operation not permitted at current state, stream is not running. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.setMuteHint(true).then(() => {
+  console.info('setMuteHint Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setMuteHint Fail: ${err}`);
+});
+```
+
 ## read<sup>(deprecated)</sup>
 
 read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\>): void
@@ -1491,4 +1541,44 @@ audioCapturer.getBufferSize().then((bufferSize: number) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
 });
+```
+
+## setIndependentAudioSessionStrategy<sup>24+</sup>
+
+setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+设置独立的音频会话策略和行为参数。
+
+> **说明：**
+>
+> 当音频采集器在运行状态时调用此接口后，必须重新调用接口[start](./arkts-apis-audio-AudioCapturer.md#start8)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名       | 类型    | 必填 | 说明                                      |
+| ------------ | -------| ---- |------------------------------------------ |
+| strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | 是   | 音频会话策略。 |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at current state. |
+
+**示例：**
+
+```ts
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioCapturer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```

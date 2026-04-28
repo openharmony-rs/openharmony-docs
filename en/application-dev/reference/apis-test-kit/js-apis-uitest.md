@@ -28,7 +28,7 @@ This module provides the following functions:
 ## Modules to Import
 
 ```ts
-import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -70,6 +70,7 @@ Provides the coordinates of a point.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type  | Read-Only|  Optional| Description       |
 | ---- | ------ | ---- | ---- |-----------|
 | x    | number |  No  | No  | Horizontal coordinate of a coordinate point. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -82,6 +83,7 @@ Provides bounds information of a component.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name  | Type  | Read-Only| Optional| Description                     |
 | ------ | ------ | ---- | ---- | ------------------------- |
 | left   | number |  No  | No|X coordinate of the upper left corner of the component border. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -126,6 +128,7 @@ Provides the flag attributes of this window.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name                | Type   | Read-Only| Optional| Description                                                                                    |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
 | bundleName           | string  | No | Yes | Bundle name of the application to which the window belongs. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
@@ -232,6 +235,7 @@ Provides information about the UI event.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 25%; 25%; 10%; 10%; 30%-->
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | bundleName | string | Yes  | No  | Bundle name of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
@@ -271,6 +275,37 @@ Describes the text input mode.
 | paste | boolean | No | Yes | Whether to copy and paste text. The value **true** means to copy and paste text, and **false** means to type text. Default value: **false**<br> **Note**: If the input text contains Chinese characters, special characters, or the text length exceeds 200 characters, the text is copied and pasted regardless of the value of this parameter.|
 | addition       | boolean | No | Yes | Whether to input text in addition mode. The value **true** means to input text in addition mode, and **false** means the opposite. Default value: **false**|
 
+
+## KeyOptions
+
+Describes key options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| key1 | number | No | Yes | First key value injected during the operation. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). If this parameter is not set, no key event is injected.|
+| key2 | number | No | Yes | Second key value injected during the operation. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). If this parameter is not set, no key event is injected.<br> Note: If only **key2** is set, the 17000007 parameter verification failure error will be thrown.|
+
+## TouchOptions
+
+Describes common touch options.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+| Name| Type| Read-Only| Optional| Description|
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| speed | number | No | Yes | Operation speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number beyond the value range or is **null**/**undefined**, the default value **600** is used. If the value is a negative number, the error code 17000007 is thrown.|
+| duration | number | No | Yes | Operation duration, in ms. The value is an integer greater than or equal to 1500. The default value is **1500**. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used.|
+| pressure | number | No | Yes | Pressure value of the touch. The value ranges from 0 to 1. The default value is **0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, the 17000007 error code is thrown.|
 
 ## On<sup>9+</sup>
 
@@ -1051,7 +1086,7 @@ Obtains the component object on the specified display.
 
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ |----|---------------------------------------|
-| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.<!--RP2--><!--RP2End--> |
+| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. You can use [getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9) to obtain all current **display** objects and use them to obtain the corresponding display IDs.<!--RP2--><!--RP2End--> |
 
 **Return value**
 
@@ -1148,7 +1183,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1186,7 +1221,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1224,7 +1259,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1262,7 +1297,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1304,7 +1339,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1342,7 +1377,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1380,7 +1415,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1418,7 +1453,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1456,7 +1491,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1469,9 +1504,9 @@ async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   if (await button.isClickable()) {
-    console.info('This button can be Clicked');
+    console.info('This button can be clicked');
   } else {
-    console.info('This button can not be Clicked');
+    console.info('This button can not be clicked');
   }
 }
 ```
@@ -1498,7 +1533,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1511,9 +1546,9 @@ async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   if (await button.isLongClickable()) {
-    console.info('This button can longClick');
+    console.info('This button supports long click');
   } else {
-    console.info('This button can not longClick');
+    console.info('This button can not support long click');
   }
 }
 ```
@@ -1540,7 +1575,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1582,7 +1617,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1624,7 +1659,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1667,7 +1702,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1709,7 +1744,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1751,7 +1786,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1799,7 +1834,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -1845,7 +1880,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
@@ -1884,7 +1919,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1928,7 +1963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -1975,7 +2010,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2020,7 +2055,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
@@ -2065,7 +2100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
@@ -2112,7 +2147,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2158,7 +2193,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2203,7 +2238,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2242,7 +2277,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000004 | The window or component is invisible or destroyed.                  |
 
 **Example**
@@ -2279,7 +2314,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -2316,7 +2351,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -2354,7 +2389,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -2374,7 +2409,7 @@ async function demo() {
 
 The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 
-All APIs provided by this class, except **Driver.create()**, use a promise to return the result and must be invoked using **await**.
+All methods provided by this class, except Driver.create() and Driver.createUIEventObserver(), are asynchronous methods using the Promise mode and must be invoked in await mode.
 
 ### create<sup>9+</sup>
 
@@ -2439,7 +2474,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2482,7 +2517,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2525,7 +2560,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2568,7 +2603,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2612,7 +2647,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2655,7 +2690,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | Assertion failed.   |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2693,7 +2728,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -2721,7 +2756,7 @@ Presses the Back button on the specified screen. This API uses a promise to retu
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. |
 
 **Return value**
 
@@ -2735,7 +2770,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -2764,7 +2799,7 @@ Triggers a key event by passing the key value. This API uses a promise to return
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| keyCode | number | Yes  | Key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
 
 **Return value**
 
@@ -2778,7 +2813,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2808,8 +2843,8 @@ Triggers a key event by passing the key value on the specified screen. This API 
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
-| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported. |
+| keyCode | number | Yes  | Key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| displayId | number | Yes  | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported. |
 
 **Return value**
 
@@ -2823,7 +2858,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2853,9 +2888,9 @@ Triggers a combination key event based on the specified key values. This API use
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | Yes  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key1   | number | Yes  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key2   | number | No  | Third key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key0   | number | Yes  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key1   | number | Yes  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key2   | number | No  | Third key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -2869,7 +2904,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2898,9 +2933,9 @@ Triggers a combination key event based on the specified key values on the specif
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | Yes  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key1   | number | Yes  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
-| key2   | number | No  | Third key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key0   | number | Yes  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key1   | number | Yes  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).           |
+| key2   | number | No  | Third key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 | displayId | number | No | Display ID. The value is an integer greater than or equal to 0. The default value is the default display ID of the device.|
 
 **Return value**
@@ -2915,7 +2950,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2959,7 +2994,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3002,7 +3037,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3014,6 +3049,56 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.clickAt({ x: 100, y: 100, displayId: 0 });
+}
+```
+
+### clickAt
+
+clickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+Clicks the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | Yes  | Point object, which is used to transfer the target point information.|
+| options      | [TouchOptions](#touchoptions) | No  | Touch options. Only the **pressure** property in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    pressure: 0.5
+  };
+  // Clicks the target coordinate point and specifies the touch pressure.
+  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -3046,7 +3131,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3089,7 +3174,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3133,7 +3218,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3177,7 +3262,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3189,6 +3274,57 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, 1500);
+}
+```
+
+### longClickAt
+
+longClickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+Long-clicks the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory|Description                                           |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | Yes  | Point object, which is used to transfer the target point information.|
+| options      | [TouchOptions](#touchoptions) | No  | Touch options. Only the **duration** and **pressure** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    duration: 2000, // The click duration is 2000 ms.
+    pressure: 0.8 // Touch pressure value.
+  };
+  // Long-click the target coordinate point, and specify the touch duration and pressure.
+  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -3224,7 +3360,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3254,7 +3390,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
@@ -3269,7 +3405,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3281,6 +3417,58 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
+}
+```
+
+### swipeBetween
+
+swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+Swipes from the start coordinate point to the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                  |
+| ------ | ------ | ---- |------------------------------------------------------|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| options  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **speed** and **pressure** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,   // Swipe speed: 800 px/s
+    pressure: 0.5  // Touch pressure value.
+  };
+  // Swipes from the start coordinate point to the target coordinate point, and specifies the swipe speed and touch pressure.
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -3318,7 +3506,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3350,7 +3538,7 @@ Drags from the start point to the target point. You can specify the drag speed a
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
@@ -3366,7 +3554,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3378,6 +3566,61 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
+}
+```
+
+### dragBetween
+
+dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+Drags from the start coordinate point to the target coordinate point. Touch options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                    |
+| ------ | ------ | ---- |--------------------------------------------------------|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
+| options  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **pressure**, **speed**, and **duration** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let options: TouchOptions = {
+    speed: 800,     // Drag speed: 800 px/s
+    duration: 2000, // Click duration before dragging: 2000 ms.
+    pressure: 0.5   // Touch pressure value.
+  };
+  // Drag from the start coordinate point to the target coordinate point, and specify the drag speed, click duration, and touch pressure.
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -3409,7 +3652,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3439,7 +3682,7 @@ Captures the specified screen and saves it as a PNG image to the given save path
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | Yes  | File save path. The path must be the [sandbox path](../../file-management/app-sandbox-directory.md) of the current application.|
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3453,7 +3696,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3465,6 +3708,53 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png', 0);
+}
+```
+
+### dumpLayout
+
+dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
+
+Dumps the current layout information and saves it as a JSON file. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                      |
+| -------- | ------ | ---- | ------------------------------------------ |
+| savePath | string | Yes  | Path for saving the JSON file. The path must be the sandbox directory of the current application.|
+| displayId     | number | No | Display ID. The default value is the display ID of the main screen.|
+
+**Return value**
+
+| Type             | Description                                       |
+| ----------------- |-------------------------------------------|
+| Promise\<boolean> | Promise used to return whether the layout information is successfully dumped and stored in the file storage. The value **true** indicates that the screen capture operation is successful, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                              |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Obtain the current layout information and save it as a JSON file.
+  await driver.dumpLayout('/data/storage/el2/base/cache/layout.json', 0);
 }
 ```
 
@@ -3498,7 +3788,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3535,7 +3825,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3563,7 +3853,7 @@ Obtains the display rotation of the specified device. This API uses a promise to
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3577,7 +3867,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3622,7 +3912,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3659,7 +3949,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3687,7 +3977,7 @@ Obtains the size of the specified display on the current device. This API uses a
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.              |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.              |
 
 **Return value**
 
@@ -3701,7 +3991,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3738,7 +4028,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3766,7 +4056,7 @@ Obtains the density of the specified display of the current device. This API use
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3780,7 +4070,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3817,7 +4107,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3855,7 +4145,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3885,7 +4175,7 @@ Injects an operation of returning to the home screen on the specified display. T
 
 | Name  | Type  | Mandatory| Description                                      |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -3899,7 +4189,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3943,7 +4233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3989,7 +4279,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4033,7 +4323,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4088,7 +4378,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4119,7 +4409,7 @@ Simulates a fling operation on a specified display with the specified direction 
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
 | speed     | number                        | Yes  | Fling speed, in px/s. The value ranges from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
-| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
+| displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> Note: If the input **displayId** does not exist, the exception 17000007 is reported.                 |
 
 **Return value**
 
@@ -4133,7 +4423,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4177,7 +4467,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4213,8 +4503,8 @@ Injects a mouse click action at the specified coordinates, with the optional key
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the mouse click.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4228,7 +4518,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4260,8 +4550,8 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 | p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                           |
 | down   | boolean          | Yes  | Whether the mouse wheel scrolls downward. The value **true** indicates the mouse wheel scrolls downward, and **false** indicates the mouse wheel scrolls upward.|
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
-| key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
-| key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                             |
+| key1   | number           | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                             |
+| key2   | number           | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                             |
 
 **Return value**
 
@@ -4275,7 +4565,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4318,7 +4608,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4355,7 +4645,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -4386,8 +4676,8 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 | p      | [Point](#point9) | Yes  | Coordinates of the mouse click.                                            |
 | down   | boolean          | Yes  | Whether the mouse wheel scrolls downward. The value **true** indicates the mouse wheel scrolls downward, and **false** indicates the mouse wheel scrolls upward. |
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.         |
-| key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
-| key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
+| key1   | number           | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                              |
+| key2   | number           | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.                              |
 | speed  | number           | No  | Scrolling speed of the mouse wheel, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
@@ -4402,7 +4692,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4433,8 +4723,8 @@ Injects a double-click action at the specified coordinates, with the optional ke
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the double-click.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4448,7 +4738,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4479,8 +4769,8 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | Yes  | Coordinates of the long-click of the mouse device.              |
 | btnId  | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1   | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2   | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1   | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2   | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 
 **Return value**
 
@@ -4494,7 +4784,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4525,8 +4815,8 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | Yes  | Coordinates of the long-click of the mouse device.              |
 | btnId    | [MouseButton](#mousebutton10) | Yes  | Mouse button pressed.              |
-| key1     | number                        | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
-| key2     | number                        | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.|
+| key1     | number                        | No  | First key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
+| key2     | number                        | No  | Second key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is **0**.|
 | duration | number | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -4541,7 +4831,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4586,7 +4876,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4633,7 +4923,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4681,7 +4971,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4693,6 +4983,65 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
+}
+```
+
+### mouseDrag
+
+mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
+
+Drags from the start coordinate point to the end coordinate point by holding down the left mouse button. Touch options and key options can be specified. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior difference**: This API takes effect only on phones, tablets, PCs/2-in-1 devices, and TVs.
+
+**Parameters**
+
+| Name | Type            | Mandatory| Description                                                    |
+| --------- | ---------------- | ---- |--------------------------------------------------------|
+| from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
+| to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
+| touchOptions  | [TouchOptions](#touchoptions) | No  | Touch options. Only the **speed** and **duration** properties in **TouchOptions** can be set. If other properties are set, the 17000007 parameter verification failure error is thrown. The default values are inherited from the default values of the properties in [TouchOptions](#touchoptions).|
+| keyOptions  | [KeyOptions](#keyoptions) | No  | Key options. This parameter is used to specify the keys to be clicked during the dragging. The default values are inherited from the default values of the properties in [KeyOptions](#keyoptions).|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// xxx.test.ets
+import { Driver, TouchOptions, KeyOptions } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let touchOptions: TouchOptions = {
+    speed: 800,     // Drag speed: 800 px/s
+    duration: 2000  // Click duration before dragging: 2000 ms.
+  };
+  let keyOptions: KeyOptions = {
+    key1: 2072,  // Ctrl key
+    key2: 2019   // C key
+  };
+  // Drag the mouse and press Ctrl+C.
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
 
@@ -4725,7 +5074,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4772,7 +5121,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not support, function can not work correctly due to limited device capabilities.|
 
@@ -4830,7 +5179,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.        |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -4879,7 +5228,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.        |
 | 17000007 | Parameter verification failed.     |
 
@@ -4923,7 +5272,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4967,7 +5316,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5011,7 +5360,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5057,7 +5406,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5103,7 +5452,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5153,7 +5502,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 | 801 | Capability not support, function can not work correctly due to limited device capabilities. |
 
@@ -5207,7 +5556,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.             |
 | 17000007 |  Parameter verification failed. |
 
@@ -5260,7 +5609,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.             |
 | 17000007 |  Parameter verification failed. |
 
@@ -5300,7 +5649,7 @@ Long-clicks at the specified coordinates and checks whether the target component
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | point  | [Point](#point9) | Yes  | Coordinates of the long-clicked point.|
-| duration   | number     | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+| duration   | number     | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is **1500**.|
 
 **Return value**
 
@@ -5314,7 +5663,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -5345,7 +5694,7 @@ Drags from the start point to the end point and checks whether the target compon
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
@@ -5361,7 +5710,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -5392,7 +5741,7 @@ Swipes from the start point to the end point and checks whether the target compo
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
-| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> Note: The target point and the start point must be on the same screen. Otherwise, the 17000007 exception is thrown.                      |
 | speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
@@ -5407,7 +5756,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -5543,7 +5892,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5581,7 +5930,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5619,7 +5968,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5657,7 +6006,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 
 **Example**
@@ -5695,7 +6044,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5735,7 +6084,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5773,7 +6122,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5820,7 +6169,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
@@ -5868,14 +6217,12 @@ Resizes a window based on the specified width, height, and direction. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
-| ID| Error Message                              |
-| -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.                   |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 17000005 | This operation is not supported.         |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-
-**Example**
+| 17000005 | This operation is not supported.                             |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ```ts
 // xxx.test.ets
@@ -5912,7 +6259,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 | 17000005 | This operation is not supported.         |
 
@@ -5953,7 +6300,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
@@ -5994,7 +6341,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
@@ -6035,7 +6382,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
@@ -6076,7 +6423,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
@@ -6115,7 +6462,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 
 **Example**
@@ -6153,7 +6500,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -6360,9 +6707,9 @@ async function demo() {
     console.info(UIElementInfo.windowId?.toString());
     console.info(UIElementInfo.componentId);
     console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.top.toString());
+    console.info(UIElementInfo.componentRect?.right.toString());
+    console.info(UIElementInfo.componentRect?.bottom.toString());
   };
   observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
 }
@@ -7412,7 +7759,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
 | 401      | if the input parameters are invalid.             |
-| 17000002 | if the async function was not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | if the assertion failed.                         |
 
 **Example**
@@ -7473,7 +7820,7 @@ Triggers the key of this **UiDriver** object that matches the given key code. Th
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | Yes  | Key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
+| keyCode | number | Yes  | Key value. For details about the value range, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode).|
 
 **Return value**
 

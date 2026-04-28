@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
@@ -42,7 +42,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。
 - 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；
-- 触发同步时，非充电场景下，若电量低于10%，则不允许同步，start接口返回对应错误。
+- 触发同步时，非充电场景下，若电量低于10%，则不允许同步
 - 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -129,7 +129,7 @@ constructor()
 let fileSync = new cloudSync.FileSync()
 ```
 
-### on<sup>12+</sup>
+### on('progress')<sup>12+</sup>
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
@@ -142,7 +142,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 同步过程事件回调。|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 回调函数。同步过程事件。|
 
 **错误码：**
 
@@ -158,13 +158,13 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 ```ts
 let fileSync = new cloudSync.FileSync();
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
 ```
 
-### off<sup>12+</sup>
+### off('progress')<sup>12+</sup>
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
@@ -177,7 +177,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 同步过程事件回调， 默认值为null。 |
+| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 回调函数。同步过程事件， 默认值为null。 |
 
 **错误码：**
 
@@ -194,7 +194,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -214,7 +214,7 @@ start(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -236,7 +236,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -260,7 +260,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
@@ -304,7 +304,7 @@ stop(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止端云同步的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -343,7 +343,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 
@@ -382,7 +382,7 @@ getLastSyncTime(): Promise&lt;number&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;number&gt; | 使用Promise形式返回上次同步时间。 |
+| Promise&lt;number&gt; | Promise对象，返回上次同步时间。 |
 
 **错误码：**
 
@@ -402,7 +402,7 @@ let fileSync = new cloudSync.FileSync();
 
 fileSync.getLastSyncTime().then((timeStamp: number) => {
   let date = new Date(timeStamp);
-  console.info("get last sync time successfully:"+ date);
+  console.info("get last sync time successfully: "+ date);
 }).catch((err: BusinessError) => {
   console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -413,7 +413,7 @@ fileSync.getLastSyncTime().then((timeStamp: number) => {
 
 getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
-异步方法获取上次同步时间。使用callback异步回调。
+获取上次同步时间。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -421,7 +421,7 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 异步获取上次同步时间的回调。|
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。异步获取上次同步时间。|
 
 **错误码：**
 
@@ -444,7 +444,7 @@ fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
     console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
   } else {
     let date = new Date(timeStamp);
-    console.info("get last sync time successfully:"+ date);
+    console.info("get last sync time successfully: "+ date);
   }
 });
 ```
@@ -477,7 +477,7 @@ constructor()
 let fileCache = new cloudSync.CloudFileCache();
 ```
 
-### on<sup>11+</sup>
+### on('progress')<sup>11+</sup>
 
 on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
@@ -490,7 +490,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 订阅的事件类型，取值为'progress'（下载过程事件）。|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 是   | 云文件下载过程事件回调。 |
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 是   | 回调函数。云文件下载过程事件。 |
 
 **错误码：**
 
@@ -508,7 +508,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let fileCache = new cloudSync.CloudFileCache();
 let callback = (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 };
 
 try {
@@ -519,7 +519,7 @@ try {
 }
 ```
 
-### on<sup>20+</sup>
+### on('batchDownload')<sup>20+</sup>
 
 on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): void
 
@@ -532,7 +532,7 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 | 参数名   | 类型                                                              | 必填 | 说明                                                          |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
 | event    | string                                                            | 是   | 订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。 |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 是   | 云文件批量缓存过程的事件回调。                                |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 是   | 回调函数。云文件批量缓存过程事件。                                |
 
 **错误码：**
 
@@ -566,7 +566,7 @@ try {
 }
 ```
 
-### off<sup>11+</sup>
+### off('progress')<sup>11+</sup>
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
@@ -579,7 +579,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 否   | 云文件下载过程事件回调。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 否   | 回调函数。云文件下载过程事件。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
 
 **错误码：**
 
@@ -598,7 +598,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileCache = new cloudSync.CloudFileCache();
 
 let callback = (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 }
 
 try {
@@ -610,11 +610,11 @@ try {
 }
 ```
 
-### off<sup>20+</sup>
+### off('batchDownload')<sup>20+</sup>
 
 off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
-云盘文件缓存对象移除由[on](#on20)接口添加的云文件批量缓存过程事件的监听。
+云盘文件缓存对象移除由[on](#onbatchdownload20)接口添加的云文件批量缓存过程事件的监听。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -623,7 +623,7 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 | 参数名   | 类型                                                              | 必填 | 说明                                                                                                    |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | event    | string                                                            | 是   | 取消订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。                                       |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 否   | 云文件批量缓存过程事件的回调。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 否   | 回调函数。云文件批量缓存过程事件。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
 
 **错误码：**
 
@@ -641,7 +641,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let fileCache = new cloudSync.CloudFileCache();
 let callback = (pg: cloudSync.MultiDownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 }
 
 try {
@@ -671,7 +671,7 @@ start(uri: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回启动云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -697,7 +697,7 @@ let uri = fileUri.getUriFromPath(path);
 
 try {
   fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state:" + pg.state);
+    console.info("download state: " + pg.state);
   });
 } catch (e) {
   const error = e as BusinessError;
@@ -724,7 +724,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
@@ -800,7 +800,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileCache = new cloudSync.CloudFileCache();
 try {
   fileCache.on('batchDownload', (pg: cloudSync.MultiDownloadProgress) => {
-    console.info(`batch download state：${pg.state}`);
+    console.info(`batch download state: ${pg.state}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -836,7 +836,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -881,7 +881,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 
@@ -934,7 +934,7 @@ stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1186,7 +1186,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
 
-订阅监听指定文件的变化通知。
+订阅监听指定文件的变化通知。callback返回更改的数据。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1196,7 +1196,7 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
 | recursion | boolean | 是   | true为监听该URI以及子文件和子目录，false为仅监听该URI文件。|
-| callback | Callback&lt;[ChangeData](#changedata12)&gt; | 是   | 返回更改的数据。 |
+| callback | Callback&lt;[ChangeData](#changedata12)&gt; | 是   | 回调函数，返回更改的数据。 |
 
 **错误码：**
 
@@ -1219,9 +1219,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    // file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    // file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1264,9 +1264,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    // file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    // file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1310,7 +1310,7 @@ cloudSync.unregisterChange(uri);
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | 否   | 否   | 文件内容修改时间。 |
+| editedTime | number | 否   | 否   | 文件内容修改的时间戳，单位：ms。 |
 | fileSize | number | 否   | 否   | 文件大小，单位：Byte。 |
 | versionId | string | 否   | 否   | 文件版本号。 |
 | originalFileName | string | 否   | 否   | 当前版本对应的文件名。 |
@@ -1342,7 +1342,7 @@ cloudSync.unregisterChange(uri);
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | 否   | 否   | 所选版本云文件的下载状态。 |
-| progress | number | 否   | 否   | 下载进度。 |
+| progress | number | 否   | 否   | 下载进度，单位：百分比。 |
 | errType | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 若出现下载失败，失败的错误类型。 |
 
 ## FileVersion<sup>20+</sup>
@@ -1436,7 +1436,7 @@ fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync
 
 downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt;): Promise&lt;string&gt;
 
-根据版本号获取指定文件的某一版本的文件内容。用户通过版本号指定云上某一版本，将其下载到本地临时存储路径，临时文件由应用自行决定是否替换原始文件，也可以选择保留或直接删除。使用Promise异步回调。
+根据版本号获取指定文件的某一版本的文件内容。用户通过版本号指定云上某一版本，将其下载到本地临时存储路径，临时文件由应用自行决定是否替换原始文件，也可以选择保留或直接删除。callback返回文件下载进度，Promise返回历史版本临时文件的URI。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1446,7 +1446,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   |  文件的URI。 |
 | versionId | string | 是 | 文件某一版本的版本号，格式以接口[gethistoryversionlist](#gethistoryversionlist20)返回为准。 |
-| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | 是 | 下载进度的回调。 |
+| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | 是 | 回调函数，返回下载进度。 |
 
 **返回值：**
 
@@ -1568,7 +1568,7 @@ fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: stri
 fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
   console.info("replace file with history version success.");
 }).catch((err: BusinessError) => {
-  console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
+  console.error("replace file with history version failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 

@@ -12,6 +12,7 @@
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 14开始支持。
+> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)。
 
 ## 导入模块
 
@@ -106,7 +107,6 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 class MyPage {
@@ -121,11 +121,9 @@ class MyPage {
       sessionType: 'video',
     };
 
-    this.avCastPicker.select(avCastPickerOptions).then(() => {
-      console.info('select successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
-    });
+this.avCastPicker.select(avCastPickerOptions).then(() => {
+  console.info('Succeeded in selecting.');
+});
   }
 }
 ```
@@ -155,7 +153,7 @@ import { avSession } from '@kit.AVSessionKit';
 async function avCastPicker(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
   avCastPicker.resetCommunicationDevice().then(() => {
-    console.info('resetCommunicationDevice successfully');
+    console.info('Succeeded in resetting communication device.');
   });
 }
 ```

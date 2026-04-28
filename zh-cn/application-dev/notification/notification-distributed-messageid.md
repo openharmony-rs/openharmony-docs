@@ -1,9 +1,8 @@
 # 清除跨设备场景下的重复通知
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -21,8 +20,8 @@
 
 ## 约束条件
 
-- [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)字段的唯一性需由开发者保证，同一条通知在各个设备形态上需保证字段相同。
-- [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)字段仅在发布通知的24小时内有效，超过24小时或者设备重启时该字段会失效。
+- `appMessageId`的唯一性需由开发者保证，同一条通知在各个设备形态上需保证该字段相同。
+- 该字段仅在发布通知的24小时内有效，超过24小时或者设备重启时都会失效。
 
 ## 接口说明
 

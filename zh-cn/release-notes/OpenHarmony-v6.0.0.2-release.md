@@ -204,3 +204,15 @@ API接口无变化。
 | ISSUE | 问题描述 | 影响 | 计划解决日期 |
 | -------- | -------- | -------- | -------- |
 |   NA  |   NA    |   NA   |     NA       |
+
+## 其他说明
+三方库third_party_tex-hyphen中的部分语种的断句资源文件涉及GPL/LGPL开源协议，在应用中使用此类资源文件会存在应用源码被动开源的风险。因此建议在产品实际使用中删除如下资源文件：
+
+- hyph-cs.tex [捷克语(Czech)]
+- hyph-id.tex [印度尼西亚语(Indonesian)]
+- hyph-lv.tex [拉脱维亚语(Latvian)]
+- hyph-mk.tex [马其顿语(Macedonian)]
+- hyph-sk.tex [斯洛伐克语(Slovak)]
+- hyph-sr-cyrl.tex [塞尔维亚语(Serbian Cyrillic)]
+
+删除资源文件后，应用在处理上述语种的文本排版时，会因为缺少对应的“.tex”断句规则文件导致无法提供连字符“-”自动断词功能。如需继续支持此类语种断词功能，建议寻找基于MIT、Apache 2.0或BSD等宽松协议的第三方断句算法库。

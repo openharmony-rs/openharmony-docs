@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -24,9 +24,9 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
    <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
    
    ``` TypeScript
-   import image from '@ohos.multimedia.image'
+   import { image } from '@kit.ImageKit'
    import { camera } from '@kit.CameraKit';
-   import { BusinessError } from '@ohos.base'
+   import { BusinessError } from '@kit.BasicServicesKit'
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
    
@@ -131,9 +131,13 @@ let pixelMap = await image.createPixelMap(dstArr.buffer, {
 <!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
 
 ``` TypeScript
-// 创建pixelMap，width宽传行距stride的值。
+// 创建pixelMap，width传入行距（stride）的值。
 let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
   size:{height: height, width: stride}, srcPixelFormat: 8});
 // 裁剪多余的像素。
-pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
+try {
+  pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
+} catch (err) {
+  hilog.error(0x00000, TAG, `adjust bufferSize failed: ${err}!`);
+}
 ```

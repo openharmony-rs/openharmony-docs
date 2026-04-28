@@ -1005,29 +1005,29 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts 
-import { dataSharePredicates } from '@kit.ArkData';	 
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
-  try {	 
-    // Obtain the sandbox URIs of the images or videos to be saved to the media library. 
-    let srcFileUris: Array<string> = [	 
-      'file://fileUriDemo1' // The URI here is an example only. 
-    ];	 
-    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [	 
-      {	 
-        title: 'test2', // Optional. 
-        fileNameExtension: 'jpg',	 
-        photoType: photoAccessHelper.PhotoType.IMAGE	 
-      }	 
-    ];	 
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);	 
-    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);	 
-  } catch (err) {	 
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);	 
-  }	 
-} 
+  try {
+    // Obtain the sandbox URIs of the images or videos to be saved to the media library.
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // The URI here is an example only.
+    ];
+    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
+      {
+        title: 'test2', // Optional.
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
+      }
+    ];
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
+  } catch (err) {
+    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
 ```
 
 ## showSingleAssetCreationDialogEx<sup>23+</sup>
@@ -1071,29 +1071,29 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 | 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
- 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).	 
 
-```ts	 
-import { dataSharePredicates } from '@kit.ArkData';	 
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {	 
-  console.info('ShowSingleAssetCreationDialogExDemo.');	 
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
 
-  try {	 
-    // Obtain the sandbox URIs of the images or videos to be saved to the media library. 
-    let srcFileUri: string = 'file://fileUriDemo1'; // The URI here is an example only. 
-    let photoCreationConfig: photoAccessHelper.CreationSetting = {	 
-      title: 'test2', // Optional. 
-      fileNameExtension: 'jpg',	 
-      photoType: photoAccessHelper.PhotoType.IMAGE	 
-    }	 
-    let isImageFullyDisplayed: boolean = true	 
-    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed); 
-    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri); 
-  } catch (err) { 
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message); 
-  } 
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowSingleAssetCreationDialogExDemo.');
+
+  try {
+    // Obtain the sandbox URIs of the images or videos to be saved to the media library.
+    let srcFileUri: string = 'file://fileUriDemo1'; // The URI here is an example only.
+    let photoCreationConfig: photoAccessHelper.CreationSetting = {
+      title: 'test2', // Optional.
+      fileNameExtension: 'jpg',
+      photoType: photoAccessHelper.PhotoType.IMAGE
+    }
+    let isImageFullyDisplayed: boolean = true
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
+  } catch (err) {
+    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
 }
 ```
 
@@ -1266,7 +1266,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ```
 
 ## requestPhotoUrisReadPermissionEx<sup>23+</sup>
- 	 
+
 requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
 
 Grants the read permission for unauthorized URIs. This API uses a promise to return the authorization result.
@@ -2124,7 +2124,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
-Unregisters the listener for a single album. Note the following:
+Unregisters a listener for a single album. Note the following:
 
 1. If no parameter is specified, all listeners for the single albums are unregistered.
 
@@ -2205,4 +2205,214 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('offSinglePhotoAlbumChangeDemo failed, errCode is', error);
   }
 }
+```
+
+## setAssetCompatibleCapability<sup>24+</sup>
+
+setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<void>
+
+Sets the asset compatibility capability. The system performs compatibility processing on special assets (such as high-resolution assets). If you want to obtain the original assets, you need to register the compatibility capability with the system.
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | Yes  | Asset compatibility capability.|
+
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 23800151 | The scenario parameter verification fails, Invalid tokenId.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
+        supportedHighResolution : true,
+    };
+    await phAccessHelper.setAssetCompatibleCapability(capability);
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err', error);
+  }
+}
+```
+
+## checkPhotoUrisReadPermission
+
+checkPhotoUrisReadPermission(uris: string[]): Promise&lt;Map&lt;string, MediaAssetPermissionState&gt;&gt;
+
+Checks whether the application has the read permission on the asset corresponding to the specified URI and whether the asset exists. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| uris | string[] | Yes  | Array of URIs to be checked. A maximum of 500 URIs can be checked at a time.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Map&lt;string, [MediaAssetPermissionState](arkts-apis-photoAccessHelper-e.md#mediaassetpermissionstate)&gt;&gt; | Promise used to return the key-value pair set of URIs and **MediaAssetPermissionState**.|
+
+**Error codes**
+
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The length of the input parameter queue is greater than 500. 2. The input parameter is null or undefined.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('checkPhotoUrisReadPermissionDemo');
+
+  try {
+    let uris: string[] = [
+      'file://fileUriDemo1', // The URI here is an example only.
+      'file://fileUriDemo2'
+    ];
+    let permissionMap: Map<string, photoAccessHelper.MediaAssetPermissionState> =
+      await phAccessHelper.checkPhotoUrisReadPermission(uris);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`checkPhotoUrisReadPermission failed, error: ${error.code}, ${error.message}`);
+  }
+}
+```
+## onMediaLibraryAvailability
+
+onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): void
+
+Registers the media library availability status and returns the current availability status and unavailability cause of the media library. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description     |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[MediaLibraryAvailability](arkts-apis-photoAccessHelper-i.md#medialibraryavailability)&gt; | Yes  | Callback used to return the availability information of the media library.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The input parameter is null or undefined. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+private handleMediaLibraryChange?: (
+  changeData: photoAccessHelper.MedialibraryAvailability
+) => void;
+
+onMedialibraryAvailability = async () => {
+  try {
+    this.handleMediaLibraryChange = (
+      changeData: photoAccessHelper.MedialibraryAvailability
+    ) => {
+      const availabilityStatus = changeData.availabilityStatus;
+      const unavailabilityReason = changeData.unavailabilityReason;
+      console.info(`Media library status changed: status=${availabilityStatus}, reason=${unavailabilityReason}`);
+    };
+    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
+    console.info('Media library listener registered successfully.');
+  } catch (err) {
+    console.error(`onMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  }
+};
+```
+
+## offMediaLibraryAvailability
+
+offMediaLibraryAvailability(callback?: Callback&lt;MediaLibraryAvailability&gt;): void
+
+Unregisters the media library availability status.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description     |
+|-----------|-------------------------|-----------|-----------------|
+| callback | Callback&lt;[MediaLibraryAvailability](arkts-apis-photoAccessHelper-i.md#medialibraryavailability)&gt; | No  | Callback used to return the callback listener specified by [onMediaLibraryAvailability](#onmedialibraryavailability). If this parameter is left empty, all listeners for media library availability changes are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+private handleMediaLibraryChange?: (
+  changeData: photoAccessHelper.MedialibraryAvailability
+) => void;
+
+offMedialibraryAvailability1 = async () => {
+  try {
+    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
+    await this.helper.offMedialibraryAvailability(this.handleMediaLibraryChange);
+    console.info('Media library listener unregistered successfully.');
+  } catch (err) {
+    console.error(`offMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  }
+};
 ```

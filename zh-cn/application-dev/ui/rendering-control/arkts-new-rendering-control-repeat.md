@@ -1,9 +1,9 @@
 # Repeat：可复用的循环渲染
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
 > **说明：**
@@ -510,8 +510,8 @@ struct RepeatLazyLoadingSync {
 
 > **说明：** 
 >
-> - 此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件`cachedCount > 0`，否则将会导致渲染异常。
-> - 若与Swiper-Loop模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
+> - 此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount) > 0，否则将会导致渲染异常。
+> - 若与[Swiper-Loop](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#loop)模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
 > - 开发者需要关注内存消耗情况，避免因数据持续加载而导致内存过量消耗。
 
 <!-- @[repeat_lazy_loading_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading3.ets) -->
@@ -702,7 +702,7 @@ struct PreInsertDemo {
 
 ### animateTo动效
 
-从API版本26.0.0开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
+从API version 24开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
 
 Repeat子组件过渡动画的判定规则如下：
 1. 子组件从外部进入显示区域和预加载区域时，将被判定为插入组件。
@@ -716,6 +716,98 @@ Repeat子组件过渡动画的判定规则如下：
 > - 仅支持与List配合使用，与其他容器组件配合使用时的动画效果为未定义行为。
 > - 仅支持显示区域内子组件的动画效果，显示区域外子组件的动画效果为未定义行为。
 > - 过渡动画具体设置方式和动画效果请参考[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口。
+
+**示例代码**
+
+<!-- @[repeat_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatAnimation.ets) -->
+
+``` TypeScript
+
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: ItemInfo[] = [];
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.dataArray.push(new ItemInfo(`Item ${i}`, `#FFFFFF`));
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Row({ space: 5 }) {
+        Button('Add')
+          .onClick(() => {
+            // 为插入子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, new ItemInfo(`New item ${this.count++}`, `#FFFFFF`))
+            })
+          })
+        Button('Delete')
+          .onClick(() => {
+            // 为删除子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 1)
+            })
+          })
+        Button('Exchange')
+          .onClick(() => {
+            // 为交换子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              let temp = this.dataArray[1];
+              this.dataArray[1] = this.dataArray[0]
+              this.dataArray[0] = temp;
+            })
+          })
+        Button('Update')
+          .onClick(() => {
+            // 为更新子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray[0].info = 'Item updated';
+              this.dataArray[0].color = '#86C5E3';
+            })
+          })
+      }
+      List({ space: 5 }) {
+        Repeat(this.dataArray)
+          .each((repeatItem) => {
+            ListItem() {
+              Text(repeatItem.item.info)
+            }
+            .backgroundColor(repeatItem.item.color)
+            .width(150)
+            .height(50)
+            .border({ width: 1 })
+            // 设置子组件插入和删除时的过渡效果
+            .transition(TransitionEffect.translate({ x: 300 }))
+          })
+          .key((item: ItemInfo, index: number) => item.key)
+          .virtualScroll()
+      }
+      .alignListItem(ListItemAlign.Center)
+    }
+    .width('100%')
+  }
+}
+
+@ObservedV2
+class ItemInfo {
+  @Trace public info: string;
+  @Trace public color: string;
+  public key: string;
+  constructor(info: string, color: string) {
+    this.info = info;
+    this.color = color;
+    this.key = info;
+  }
+}
+```
+
+运行效果：
+
+![Repeat-animation](figures/repeat-animation.gif)
 
 ## 常见使用场景
 

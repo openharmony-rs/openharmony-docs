@@ -899,6 +899,55 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
 ```
 
+
+## setCapturerMuteHint<sup>24</sup>
+
+setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
+
+应用将当前音频会话内录音流的自身静音状态传递给系统音频模块。<!--RP1-->该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。<!--RP1End-->使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口用于向系统音频模块上报当前音频会话内录音流的静音状态，不会改变录音流的实际静音状态。
+> - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码6800103。
+> - 若某条录音流同时调用了流级接口[AudioCapturer.setMuteHint](arkts-apis-audio-AudioCapturer.md#setmutehint24)和本接口，流级接口设置优先级更高，以流级接口设置值为准。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| mute   | boolean           | 是   | 应用自身给系统音频模块上报的静音状态。true表示应用将当前流静音，false表示取消静音。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800103 | Operation not permitted at current state, there is no audio capturer running. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setCapturerMuteHint(true).then(() => {
+  console.info('Successfully set capturer mute hint.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## isOtherMediaPlaying<sup>23+</sup>
 
 isOtherMediaPlaying(): boolean
@@ -919,4 +968,40 @@ isOtherMediaPlaying(): boolean
 
 ```ts
 let isExistence = audioSessionManager.isOtherMediaPlaying();
+```
+
+## setAudioSessionBehavior<sup>24+</sup>
+
+setAudioSessionBehavior(behavior: number): void
+
+设置音频会话行为参数，支持多种标志位的组合使用。
+
+> **说明：**
+>
+> 当音频会话在激活状态时调用此接口后，必须重新调用接口[activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted in the current state. |
+
+**示例：**
+
+```ts
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioSessionManager.setAudioSessionBehavior(behavior);
 ```

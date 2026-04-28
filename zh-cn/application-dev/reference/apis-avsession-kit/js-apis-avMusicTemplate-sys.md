@@ -180,7 +180,7 @@ export class ControllerManager {
     }
     try {
       this.controller = avMusicTemplate.createAVMusicTemplateController(sessionId);
-      console.info(TAG, `createController success, bundleName: ${this.currentBundleName}`);
+      console.info('Succeeded in creating controller.');
     } catch (e) {
       console.error(TAG, `createController: errCode: ${e?.code}`);
     }

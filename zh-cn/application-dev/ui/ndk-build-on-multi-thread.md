@@ -111,6 +111,7 @@
 
 ### 组件属性读写
 
+<!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
 | int32_t(\* [setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute, const [ArkUI_AttributeItem](../reference/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md) \*item) | 设置node节点的属性。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
@@ -120,6 +121,7 @@
 
 ### 组件事件注册解注册
 
+<!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
 | int32_t(\* [registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) eventType, int32_t targetId, void \*userData) | 向node节点注册事件。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
@@ -133,6 +135,7 @@
 
 ### 组件树操作
 
+<!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
 | int32_t(\* [addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child) | 将child节点挂载到parent节点的子节点列表中。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
@@ -151,6 +154,7 @@
 
 ### 组件自定义数据读写
 
+<!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
 | int32_t(\* [setUserData](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setuserdata) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void \*userData) | 在node节点上保存自定义数据。 | 支持 | 在非UI线程调用函数操作Attached节点时，接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |
@@ -158,6 +162,7 @@
 
 ### 全局事件注册解注册
 
+<!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
 | void(\* [registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver) )(void(\*eventReceiver)([ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | 注册节点事件回调统一入口函数。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口不生效。 |
@@ -167,6 +172,7 @@
 
 ### 组件测算布局
 
+<!--Table: 25%; 35%; 15%; 25%-->
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
 | int32_t(\* [setMeasuredSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setmeasuredsize) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t width, int32_t height) | 在测算回调函数中设置组件测算完成后的宽和高。 | 不支持 | 只支持UI线程调用，在非UI线程调用接口返回错误码[ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)。 |

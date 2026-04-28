@@ -40,8 +40,8 @@ Defines **options** used in the APIs.
 
 | Name| Type                               | Read-Only| Optional| Description        |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
-| properties | Array\<[HuksParam](#huksparam)> | No  | Yes  | Properties used to hold the **HuksParam** array. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| inData     | Uint8Array        | No  | Yes  | Input data. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
+| properties | Array\<[HuksParam](#huksparam)> | No  | Yes  | Properties used to store the **HuksParam** array. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| inData     | Uint8Array        | No  | Yes  | Input data. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
 
 ## HuksSessionHandle<sup>9+</sup>
 
@@ -52,7 +52,7 @@ Defines the struct for a HUKS handle.
 | Name| Type                               | Read-Only| Optional| Description        |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | handle    | number     | No  | No  | Handle of the unsigned integer type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                      |
-| challenge | Uint8Array | No  | Yes  | Challenge obtained after the [initSession](#huksinitsession9) operation. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| challenge | Uint8Array | No  | Yes  | Challenge obtained after the [initSession](#huksinitsession9) operation. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## HuksReturnResult<sup>9+</sup>
 
@@ -62,13 +62,13 @@ Represents the result returned.
 
 | Name| Type                               | Read-Only| Optional| Description        |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
-| outData    | Uint8Array                      | No  | Yes  | Output data.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| properties | Array\<[HuksParam](#huksparam)> | No  | Yes  | Property information.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| certChains | Array\<string>                  | No  | Yes  | Certificate chain information.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| outData    | Uint8Array                      | No  | Yes  | Output data. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| properties | Array\<[HuksParam](#huksparam)> | No  | Yes  | Property information. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| certChains | Array\<string>                  | No  | Yes  | Certificate chain information. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## HuksListAliasesReturnResult<sup>12+</sup>
 
-Represents the result returned.
+Defines the returned key alias array.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
@@ -82,7 +82,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 
 Generates a key. This API uses an asynchronous callback to return the result.
 
-Because the key is always protected in a trusted environment (such as a TEE), this API does not return the key content. It returns only the information indicating whether the API is successfully called.
+Based on the principle that the key cannot be transferred out of [Trusted Execution Environment (TEE)](../../security/UniversalKeystoreKit/huks-concepts.md#tee), the key material content is not returned through this API and is only used to indicate whether the call is successful.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -147,7 +147,7 @@ let properties: Array<huks.HuksParam> = [
 let options: huks.HuksOptions = {
   properties: properties
 };
-huks.generateKeyItem(keyAlias, options, (error, data) => {
+huks.generateKeyItem(keyAlias, options, (error) => {
   if (error) {
     console.error(`callback: generateKeyItem failed`);
   } else {
@@ -249,7 +249,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 
 Generates a key. This API uses a promise to return the result.
 
-Because the key is always protected in a trusted environment (such as a TEE), this API does not return the key content. It returns only the information indicating whether the API is successfully called.
+Based on the principle that the key cannot be transferred out of [Trusted Execution Environment (TEE)](../../security/UniversalKeystoreKit/huks-concepts.md#tee), the key material content is not returned through this API and is only used to indicate whether the call is successful.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -368,7 +368,7 @@ let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
   properties: []
 };
-huks.deleteKeyItem(keyAlias, emptyOptions, (error, data) => {
+huks.deleteKeyItem(keyAlias, emptyOptions, (error) => {
   if (error) {
     console.error(`callback: deleteKeyItem failed`);
   } else {
@@ -502,7 +502,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 huks.deleteKeyItem(keyAlias, emptyOptions)
-  .then((data) => {
+  .then(() => {
     console.info(`promise: deleteKeyItem key success`);
   });
 ```
@@ -591,7 +591,7 @@ let options: huks.HuksOptions = {
   properties: properties,
   inData: plainTextSize32
 };
-huks.importKeyItem(keyAlias, options, (error, data) => {
+huks.importKeyItem(keyAlias, options, (error) => {
   if (error) {
     console.error(`callback: importKeyItem failed`);
   } else {
@@ -689,7 +689,7 @@ let huksOptions: huks.HuksOptions = {
 };
 /* Step 2: Import the key. */
 huks.importKeyItem(keyAlias, huksOptions)
-  .then((data) => {
+  .then(() => {
     console.info(`promise: importKeyItem success`);
   });
 ```
@@ -812,12 +812,12 @@ async function generateKeyThenAttestKey() {
   let attestOptions: huks.HuksOptions = {
     properties: attestProperties
   };
-  huks.generateKeyItem(aliasString, generateOptions, (error, data) => {
+  huks.generateKeyItem(aliasString, generateOptions, (error) => {
     if (error) {
       console.error(`callback: generateKeyItem failed`);
     } else {
       console.info(`callback: generateKeyItem success`);
-      huks.attestKeyItem(aliasString, attestOptions, (error, data) => {
+      huks.attestKeyItem(aliasString, attestOptions, (error) => {
         if (error) {
           console.error(`callback: attestKeyItem failed`);
         } else {
@@ -856,7 +856,7 @@ Attests a key. This API uses a promise to return the result.
 
 | Type                                          | Description                                         |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise used to return the result. When the call is successful, the **certChains** member of **HuksReturnResult** is not empty, and the obtained certificate chain is returned.|
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. When the call is successful, the **certChains** member of **HuksReturnResult** is the obtained certificate chain.|
 
 **Error codes**
 
@@ -930,7 +930,7 @@ async function generateKey(alias: string) {
     properties: properties
   };
   await huks.generateKeyItem(alias, options)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: generateKeyItem success`);
     });
 }
@@ -961,7 +961,7 @@ async function attestKey() {
   };
   await generateKey(aliasString);
   await huks.attestKeyItem(aliasString, options)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: attestKeyItem success`);
     });
 }
@@ -1082,12 +1082,12 @@ async function generateKeyThenAttestKey(): Promise<void> {
   let anonAttestOptions: huks.HuksOptions = {
     properties: anonAttestProperties
   };
-  huks.generateKeyItem(aliasString, generateOptions, (error, data) => {
+  huks.generateKeyItem(aliasString, generateOptions, (error) => {
     if (error) {
       console.error(`callback: generateKeyItem failed`);
     } else {
       console.info(`callback: generateKeyItem success`);
-      huks.anonAttestKeyItem(aliasString, anonAttestOptions, (error, data) => {
+      huks.anonAttestKeyItem(aliasString, anonAttestOptions, (error) => {
         if (error) {
           console.error(`callback: anonAttestKeyItem failed`);
         } else {
@@ -1124,7 +1124,7 @@ This operation requires Internet access and takes time. If error code 12000012 i
 
 | Type                                          | Description                                         |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise used to return the result. When the call is successful, the **certChains** member of **HuksReturnResult** is not empty, and the obtained certificate chain is returned.|
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. When the call is successful, the **certChains** member of **HuksReturnResult** is the obtained certificate chain.|
 
 **Error codes**
 
@@ -1227,6 +1227,123 @@ async function anonAttestKey(): Promise<void> {
 
   await generateKey(aliasString);
   await huks.anonAttestKeyItem(aliasString, options);
+}
+```
+
+## huks.anonAttestKeyItemOffline
+
+anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
+
+Obtains an anonymous key certificate in offline mode. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Offline key attestation depends on the network. You need to periodically connect to the network to use this API to update the offline certificate. Offline anonymous key attestation is recommended.
+> - Offline anonymous key attestation requires that the local time be accurate. Otherwise, the peer end may fail to verify the certificate expiration.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Security.Huks.Extension
+
+**Parameters**
+
+| Name  | Type                       | Mandatory| Description                                |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| keyAlias | string                      | Yes  | Alias of the key. The certificate to be obtained stores the key.|
+| params | [HuksParam[]](#huksparam) | Yes  | Parameters and data required for obtaining the certificate.  |
+
+**Return value**
+
+| Type                                          | Description                                         |
+| ---------------------------------------------- | --------------------------------------------- |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. When the call is successful, the **certChains** member of **HuksReturnResult** is the obtained certificate chain.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HUKS Error Codes](errorcode-huks.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | api is not supported. |
+| 12000001 | algorithm mode is not supported. |
+| 12000002 | The algorithm parameter is missing. |
+| 12000003 | The algorithm parameter is invalid. |
+| 12000004 | operating file failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist. |
+| 12000012 | Device environment or input parameter abnormal. |
+| 12000014 | memory is insufficient. |
+| 12000018 | group id specified by the access group tag is invalid. |
+| 12000024 | The operation times out. This may be caused by network jitter. |
+| 12000027 | The network is unavailable. Check network connections. |
+
+**Example**
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
+}
+
+let challenge = stringToUint8Array('challenge_data');
+let keyAliasString = "key anon local attest";
+
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItem(alias, options);
+}
+
+async function anonAttestKeyOffline() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOffline(aliasString, properties);
 }
 ```
 
@@ -1495,7 +1612,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /* The key data imported may be different from the sample code given below. The data structure is described in the preceding comments. */
 async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
   await huks.importWrappedKeyItem(alias, wrappingAlias, options)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: importWrappedKeyItem success`);
     });
 }
@@ -1579,7 +1696,7 @@ Exports a key. This API uses a promise to return the result.
 
 | Type                                          | Description                                                        |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise used to return the result. If the operation is successful, **outData** in **HuksReturnResult** is the public key exported.|
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. If the operation is successful, **outData** in **HuksReturnResult** is the exported public key.|
 
 **Error codes**
 
@@ -1623,6 +1740,8 @@ Wraps a key. This API uses a promise to return the result.
 
 <!--Del-->This feature is not supported currently.<!--DelEnd-->
 
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Parameters**
@@ -1636,7 +1755,7 @@ Wraps a key. This API uses a promise to return the result.
 
 | Type                                          | Description                                                        |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise used to return the result. If the operation is successful, **outData** in **HuksReturnResult** is the ciphertext of the key exported.|
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. If the operation is successful, **outData** in **HuksReturnResult** is the exported key ciphertext.|
 
 **Error codes**
 
@@ -1662,6 +1781,8 @@ Unwraps a key. This API uses a promise to return the result.
 
 <!--Del-->This feature is not supported currently.<!--DelEnd-->
 
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Parameters**
@@ -1676,7 +1797,7 @@ Unwraps a key. This API uses a promise to return the result.
 
 | Type                                          | Description                                                        |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise used to return the result.|
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result.|
 
 **Error codes**
 
@@ -1772,7 +1893,7 @@ Obtains key properties. This API uses a promise to return the result.
 
 | Type                                           | Description                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[HuksReturnResult](#huksreturnresult9)> | Promise that returns **HuksReturnResult**.|
+| Promise\<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. If the operation is successful, **properties** of **HuksReturnResult** is the obtained key property information.|
 
 **Error codes**
 
@@ -2000,7 +2121,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
-huks.isKeyItemExist(keyAlias, emptyOptions).then((data) => {
+huks.isKeyItemExist(keyAlias, emptyOptions).then(() => {
   console.info(`keyAlias:${keyAlias} is existed!`);
 });
 ```
@@ -2191,7 +2312,7 @@ Initializes a session for a key operation. This API uses a promise to return the
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksSessionHandle](#hukssessionhandle9)> | Promise that returns the **HuksSessionHandle**. The handle of **HuksSessionHandle** is the handle generated by **initSession**.|
+| Promise\<[HuksSessionHandle](#hukssessionhandle9)> | Promise that returns **HuksSessionHandle**. The handle of **HuksSessionHandle** is the handle generated by **initSession**.|
 
 **Error codes**
 
@@ -2330,7 +2451,7 @@ Updates the key operation. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise used to return the result. The result of the **updateSession** operation is added to the callback.|
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. If the operation is successful and the AES, DES, 3DES, or SM4 key is used for encryption or decryption, **outData** in **HuksReturnResult** returns the ciphertext or decrypted plaintext. Otherwise, **outData** is empty.|
 
 **Error codes**
 
@@ -2473,7 +2594,7 @@ Finishes the key operation. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksReturnResult](#huksreturnresult9)> | Promise that returns **HuksReturnResult**.|
+| Promise\<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the operation result. If the operation is successful, **outData** of **HuksReturnResult** returns the corresponding data.|
 
 **Error codes**
 
@@ -2579,7 +2700,7 @@ async function huksAbort() {
     value: huks.HuksCipherMode.HUKS_MODE_ECB,
   }];
 
-  huks.generateKeyItem(keyAlias, options, (error, data) => {
+  huks.generateKeyItem(keyAlias, options, (error) => {
     if (error) {
       console.error(`callback: generateKeyItem failed`);
     } else {
@@ -2590,7 +2711,7 @@ async function huksAbort() {
         } else {
           console.info(`callback: initSession success, data = ${JSON.stringify(data)}`);
           handle = data.handle;
-          huks.abortSession(handle, options, (error, data) => {
+          huks.abortSession(handle, options, (error) => {
             if (error) {
               console.error(`callback: abortSession failed`);
             } else {
@@ -2956,26 +3077,8 @@ import { huks } from '@kit.UniversalKeystoreKit';
  *
  * The following uses a 2048-bit RSA key as an example. The promise-based APIs are used.
  */
-
-function stringToUint8Array(str: string) {
-  let arr: number[] = [];
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  let tmpUint8Array = new Uint8Array(arr);
-  return tmpUint8Array;
-}
-
 let keyAlias = "HuksDemoRSA";
-let properties: Array<huks.HuksParam> = [];
-let options: huks.HuksOptions = {
-  properties: properties,
-  inData: new Uint8Array(0)
-};
-let handle: number = 0;
-
-async function generateKey() {
-  properties = [{
+let genProperties: Array<huks.HuksParam> = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
   }, {
@@ -2993,10 +3096,16 @@ async function generateKey() {
   }, {
     tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
     value: huks.HuksCipherMode.HUKS_MODE_ECB,
-  }];
+}];
+let options: huks.HuksOptions = {
+  properties: genProperties,
+  inData: new Uint8Array(0)
+};
+let handle: number = 0;
 
+async function generateKey() {
   await huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: generateKeyItem success`);
     });
 }
@@ -3010,28 +3119,10 @@ async function huksInit() {
     });
 }
 
-async function huksUpdate() {
-  console.info('enter huksUpdate');
-  options.inData = stringToUint8Array("huksHmacTest");
-  await huks.updateSession(handle, options)
-    .then((data) => {
-      console.info(`promise: updateSession success, data = ${JSON.stringify(data)}`);
-    });
-}
-
-async function huksFinish() {
-  console.info('enter huksFinish');
-  options.inData = new Uint8Array(0);
-  await huks.finishSession(handle, options)
-    .then((data) => {
-      console.info(`promise: finishSession success, data = ${JSON.stringify(data)}`);
-    });
-}
-
 async function huksAbort() {
   console.info('enter huksAbort');
   await huks.abortSession(handle, options)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: abortSession success`);
     });
 }
@@ -3064,7 +3155,7 @@ Lists key aliases. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise<[HuksListAliasesReturnResult](#hukslistaliasesreturnresult12)> | Promise used to return the result. The result of the **listAliases** operation is added to the callback.|
+| Promise<[HuksListAliasesReturnResult](#hukslistaliasesreturnresult12)> | Promise that returns the operation result. If the operation is successful, **keyAliases** of **HuksListAliasesReturnResult** is the obtained key aliases.|
 
 **Error codes**
 
@@ -3268,9 +3359,9 @@ Enumerates the key algorithms.
 | HUKS_ALG_SM2<sup>9+</sup> | 150  | SM2.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
 | HUKS_ALG_SM3<sup>9+</sup> | 151  | SM3.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
 | HUKS_ALG_SM4<sup>9+</sup> | 152  | SM4.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
-| HUKS_ALG_DES<sup>12+</sup> | 160  | DES (supported<!--RP4--> for lightweight devices<!--RP4End--> since API version 12; supported<!--RP5--> for standard devices<!--RP5End--> since API version 18).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
-| HUKS_ALG_3DES<sup>12+</sup> | 161  | 3DES (supported<!--RP4--> for lightweight devices<!--RP4End--> since API version 12; supported<!--RP5--> for standard devices<!--RP5End--> since API version 18).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
-| HUKS_ALG_CMAC<sup>12+</sup> | 162  | CMAC (supported<!--RP4--> for lightweight devices<!--RP4End--> since API version 12; supported<!--RP5--> for standard devices<!--RP5End--> since API version 18).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_ALG_DES<sup>12+</sup> | 160  | DES (supported for <!--RP4-->lightweight devices<!--RP4End--> since API version 12; supported for <!--RP5-->standard devices<!--RP5End--> since API version 18).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_ALG_3DES<sup>12+</sup> | 161  | 3DES (supported for <!--RP4-->lightweight devices<!--RP4End--> since API version 12; supported for <!--RP5-->standard devices<!--RP5End--> since API version 18).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_ALG_CMAC<sup>12+</sup> | 162  | CMAC (supported for <!--RP4-->lightweight devices<!--RP4End--> since API version 12; supported for <!--RP5-->standard devices<!--RP5End--> since API version 18).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
 
 ## HuksKeyGenerateType
 
@@ -3398,7 +3489,7 @@ Enumerates the user authentication types.
 | **HUKS_USER_AUTH_TYPE_FINGERPRINT**.| 1 << 0 | Fingerprint authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | HUKS_USER_AUTH_TYPE_FACE        | 1 << 1 | Facial authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | HUKS_USER_AUTH_TYPE_PIN         | 1 << 2  | PIN authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| HUKS_USER_AUTH_TYPE_TUI_PIN<sup>20+</sup>         | 1 << 5  | TUI PIN authentication. <!--Del-->(not supported currently)<!--DelEnd--> |
+| HUKS_USER_AUTH_TYPE_TUI_PIN<sup>20+</sup>         | 1 << 5  | TUI PIN authentication. <!--Del-->(Currently not supported.)<!--DelEnd--><br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## HuksUserAuthMode<sup>12+</sup>
 
@@ -3498,6 +3589,23 @@ Enumerates the key encryption types (exporting or importing keys).
 | ------------------------------ | ---- | ------------------------------------------------------------ |
 | HUKS_KEY_WRAP_TYPE_HUK_BASED | 2    | Hardware unique key encryption type. <!--Del-->(not supported currently)<!--DelEnd--> |
 
+## HuksKeySecurityLevel
+
+Enumerates the key security levels.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Security.Huks.Core
+
+| Name                          | Value  | Description                                                        |
+| ------------------------------ | ---- | ------------------------------------------------------------ |
+| HUKS_KEY_SECURITY_LEVEL_TEE | 0    | The key is generated and used in the trusted execution environment.|
+| HUKS_KEY_SECURITY_LEVEL_SE | 1    | The key is generated and used in the secure environment.|
+
 ## HuksTagType
 
 Enumerates the tag data types.
@@ -3518,8 +3626,6 @@ Enumerates the tag data types.
 ## HuksTag
 
 Enumerates the tags used to invoke parameters.
-
-**System capability**: SystemCapability.Security.Huks.Core
 
 | Name                                                       | Value                                      | Description                                                        |
 | ----------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------ |
@@ -3559,7 +3665,7 @@ Enumerates the tags used to invoke parameters.
 | HUKS_TAG_ALL_USERS                                          | HuksTagType.HUKS_TAG_TYPE_BOOL \| 301    | Reserved.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_USER_ID                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 302    | ID of the user to which the key belongs.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_NO_AUTH_REQUIRED                                   | HuksTagType.HUKS_TAG_TYPE_BOOL \| 303    | Reserved.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_TAG_USER_AUTH_TYPE                                     | HuksTagType.HUKS_TAG_TYPE_UINT \| 304    | User authentication type. For details, see [HuksUserAuthType](#huksuserauthtype9). This parameter must be set together with [HuksAuthAccessType](#huksauthaccesstype9). You can set a maximum of two user authentication types at a time. For example, if **HuksAuthAccessType** is **HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL**, you can set two of **HUKS_USER_AUTH_TYPE_FACE**, **HUKS_USER_AUTH_TYPE_FINGERPRINT**, and **HUKS_USER_AUTH_TYPE_FACE \**| **HUKS_USER_AUTH_TYPE_FINGERPRINT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_USER_AUTH_TYPE                                     | HuksTagType.HUKS_TAG_TYPE_UINT \| 304    | User authentication type. For details, see [HuksUserAuthType](#huksuserauthtype9). This parameter must be set together with [HuksAuthAccessType](#huksauthaccesstype9). You can set a maximum of two user authentication types at a time. For example, if **HuksAuthAccessType** is **HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL**, you can set two of **HUKS_USER_AUTH_TYPE_FACE**, **HUKS_USER_AUTH_TYPE_FINGERPRINT**, and **HUKS_USER_AUTH_TYPE_FACE \| HUKS_USER_AUTH_TYPE_FINGERPRINT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_AUTH_TIMEOUT                                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 305    | One-time validity period of the authentication token, in seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_AUTH_TOKEN                                         | HuksTagType.HUKS_TAG_TYPE_BYTES \| 306   | Authentication token.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_AUTH_ACCESS_TYPE<sup>9+</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 307    | Access control type. For details, see [HuksAuthAccessType](#huksauthaccesstype9). This parameter must be set together with [HuksUserAuthType](#huksuserauthtype9).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
@@ -3588,6 +3694,8 @@ Enumerates the tags used to invoke parameters.
 | HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | Length of the specified AEAD tag, in bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_KEY_CLASS<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 522   | Key source.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_ACCESS_GROUP<sup>23+</sup>                     | HuksTagType.HUKS_TAG_TYPE_BYTES \| 523   | Information about the specified group.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br> **System capability**: SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_KEY_SECURITY_LEVEL                                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 526   | Security level of the key.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_TAG_AAD<sup>24+</sup>                                  | HuksTagType.HUKS_TAG_TYPE_BYTES \| 527   | Additional verification data indicating the GCM or CCM mode.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model restriction**: This API can be used only in the stage model.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | Whether to use the alias passed in during key generation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | Key storage mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_IS_ALLOWED_WRAP                                    | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1003   | Reserved.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -3732,7 +3840,7 @@ Generates a key. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**.|
 
 **Example**
 
@@ -3823,7 +3931,7 @@ Deletes a key. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**.|
 
 **Example**
 
@@ -3934,7 +4042,7 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**.|
 
 **Example**
 
@@ -4041,7 +4149,7 @@ Exports a key. This API uses a promise to return the result.
 
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**. **outData** of **HuksResult** returns the public key exported from HUKS.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**. **outData** of **HuksResult** returns the public key exported from HUKS.|
 
 **Example**
 
@@ -4113,7 +4221,7 @@ Obtains key properties. This API uses a promise to return the result.
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
 
 **Example**
 
@@ -4247,7 +4355,7 @@ Initializes a session for a key operation. This API uses a promise to return the
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksHandle](#hukshandledeprecated)> | Promise that returns the **HuksResult**. The handle of the **HuksHandle** returns the handle generated by the initialization operation.|
+| Promise\<[HuksHandle](#hukshandledeprecated)> | Promise that returns **HuksResult**. The handle of the **HuksHandle** returns the handle generated by the initialization operation.|
 
 ## huks.update<sup>(deprecated)</sup>
 
@@ -4298,7 +4406,7 @@ Updates the key operation data by segment. This API uses a promise to return the
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**.|
 
 ## huks.finish<sup>(deprecated)</sup>
 
@@ -4347,7 +4455,7 @@ Finishes the key operation. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**.|
 
 ## huks.abort<sup>(deprecated)</sup>
 
@@ -4483,7 +4591,7 @@ Aborts a key operation. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns **HuksResult**.|
 
 **Example**
 

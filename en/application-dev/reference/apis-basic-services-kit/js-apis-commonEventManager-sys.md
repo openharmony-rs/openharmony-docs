@@ -35,7 +35,7 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -89,7 +89,7 @@ Publishes a common event to a specified user and specifies the information to be
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -151,7 +151,7 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 
 **Required permissions**: ohos.permission.COMMONEVENT_STICKY
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -197,7 +197,7 @@ Removes a sticky common event. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.COMMONEVENT_STICKY
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -246,7 +246,7 @@ Enables or disables static subscription for an application. This API uses an asy
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -290,7 +290,7 @@ Enables or disables static subscription for an application. This API uses a prom
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 

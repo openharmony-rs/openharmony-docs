@@ -1,8 +1,8 @@
 # @arkts.math.Decimal (高精度数学库Decimal)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -83,8 +83,6 @@ type Modulo = Rounding | 9
 
 用于设置Decimal的配置属性，可使用[Decimal.set](#set)方法进行配置。
 
-### 属性
-
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
@@ -99,7 +97,7 @@ type Modulo = Rounding | 9
 | maxE      | number                 | 否   | 是   | 正指数极限，若Decimal的指数值大于该值，会溢出至无穷大，取值范围为[0, 9e15]，默认值为9e15。 |
 | crypto    | boolean                | 否   | 是   | 确定是否使用加密安全伪随机数生成的值，true表示使用加密安全伪随机数，false表示不使用，默认值为false。该能力不支持使用，报错的错误码为：10200061。  |
 | modulo    | [Modulo](#modulo)      | 否   | 是   | 模计算时使用的舍入模式，取值范围为0到9的整数，默认值为1。    |
-| defaults  | boolean                | 否   | 是   | 表示未指定的属性是否被设置为默认值，true表示使用默认值，false表示不使用默认值，默认值为true。 |
+| defaults  | boolean                | 否   | 是   | 表示未指定的属性是否被设置为默认值，true表示使用默认值，false表示不使用默认值，默认值为false。 |
 
 ## Decimal
 

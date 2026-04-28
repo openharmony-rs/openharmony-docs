@@ -2,13 +2,13 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
-Defines the structs for the vibrator attribute and vibrator file description and provides the enums for error codes and vibration scenarios.
+Declares the APIs for starting or stopping vibration.
 
 **Reference file**: <sensors/vibrator_type.h>
 

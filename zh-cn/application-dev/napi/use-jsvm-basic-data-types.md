@@ -1,7 +1,7 @@
 # 使用JSVM-API接口创建和获取数值
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -84,7 +84,7 @@ const char* srcCallNative = R"JS(getValueUint32(123))JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM GetValueUint32 success: 123
 ```
 
@@ -138,7 +138,7 @@ const char* srcCallNative = R"JS(getValueInt32(-123))JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM GetValueInt32 success: -123
 ```
 
@@ -189,7 +189,7 @@ const char* srcCallNative = R"JS(getValueInt64(-123))JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM GetValueInt64 success: -123
 ```
 
@@ -238,7 +238,7 @@ const char* srcCallNative = R"JS(getDouble(-110.0456))JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM GetDouble success: -110.045600
 ```
 
@@ -288,7 +288,7 @@ const char* srcCallNative = R"JS(createInt32())JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM CreateInt32 success: -20
 ```
 
@@ -342,7 +342,7 @@ const char* srcCallNative = R"JS(createUInt32())JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM CreateUInt32 success: 26
 ```
 
@@ -392,7 +392,7 @@ const char* srcCallNative = R"JS(createInt64())JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM CreateInt64 success: 2147483648
 ```
 
@@ -442,6 +442,6 @@ const char* srcCallNative = R"JS(createDouble())JS";
 
 预期的输出结果：
 
-```
+```txt
 JSVM CreateDouble success: 1.234000
 ```

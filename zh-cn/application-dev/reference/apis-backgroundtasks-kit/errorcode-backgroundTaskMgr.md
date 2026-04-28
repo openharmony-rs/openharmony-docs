@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -78,7 +78,7 @@ System service operation failed.
 
 **错误描述**
 
-调用长时任务相关接口时，客户端进程请求系统服务进程，获取系统服务操作失败。
+调用长时任务相关接口时，客户端进程请求系统服务进程，请求系统服务操作失败。
 
 **可能原因**
 
@@ -188,8 +188,8 @@ Caller information verification failed for a transient task.
 
 **可能原因**
 
-1. 获取调用方的uid或pid错误。
-2. 获取调用方的bundleName错误。
+1. 获取调用方的uid或pid错误，导致校验失败。
+2. 获取调用方的bundleName错误，导致校验失败。
 3. 取消短时任务时传入的requestId无效，在申请短时任务的列表中找不到对应的requestId。
 
 **处理步骤**
@@ -250,7 +250,7 @@ System service operation failed.
 
 **错误描述**
 
-调用短时任务相关接口时，客户端进程请求系统服务进程，获取系统服务操作失败。
+调用短时任务相关接口时，客户端进程请求系统服务进程，请求系统服务操作失败。
 
 **可能原因**
 
@@ -309,7 +309,7 @@ System service operation failed.
 
 **错误描述**
 
-调用能效资源相关接口时，客户端进程请求能效资源系统服务进程，获取系统服务操作失败。
+调用能效资源相关接口时，客户端进程请求能效资源系统服务进程，请求系统服务操作失败。
 
 **可能原因**
 

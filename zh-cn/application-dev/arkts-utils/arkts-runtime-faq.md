@@ -4,7 +4,7 @@
 <!--Owner: @DaiHuina1997-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 正则运算与预期输出结果不一致场景
 
@@ -390,28 +390,31 @@ let res = arr3.map(x => x).flat();
 
 在Proxy对象的handler函数中，对于数字类型的key，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
 
-```ts
+<!-- @[testThree_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->
+
+``` JavaScript
+// TestArray.js
 {
-  let handler:ESObject = {
-    get(target: ESObject, key: ESObject): ESObject {
-      console.info("get", key, typeof key);
+  let handler = {
+    get(target, key) {
+      console.info('get', key, typeof key);
       return Reflect.get(target, key);
     },
-    set(target: ESObject, key: ESObject, value: ESObject): ESObject {
-      console.info("set", key, typeof key);
+    set(target, key, value) {
+      console.info('set', key, typeof key);
       return Reflect.set(target, key, value);
     },
-    deleteProperty(target: ESObject, key: ESObject):ESObject {
-      console.info("delete", key, typeof key);
+    deleteProperty(target, key) {
+      console.info('delete', key, typeof key);
       return Reflect.deleteProperty(target, key);
     },
-    has(target: ESObject, key: ESObject):ESObject {
-      console.info("has", key, typeof key);
+    has(target, key) {
+      console.info('has', key, typeof key);
       return Reflect.has(target, key);
     }
   }
-  let obj: ESObject = {};
-  let px: ESObject = new Proxy(obj, handler);
+  let obj = {};
+  let px = new Proxy(obj, handler);
   px[1];
   // 实际输出：get 1 number
   px[2] = 2;
@@ -421,45 +424,46 @@ let res = arr3.map(x => x).flat();
   delete px[2];
   // 实际输出：delete 2 number
 }
-
 ```
 规避方案：若业务逻辑依赖于key必须为string类型，可在handler函数内部对数字类型的key进行显式转换。示例如下：
 
-```ts
-{
-  let handler:ESObject = {
-    get(target:ESObject,key:ESObject):ESObject {
-      if (typeof key === "number") {
-        key = String(key);
-      }
-      console.info("get",key,typeof key);
-      return Reflect.get(target,key);
+<!-- @[testThree_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->
 
-    },
-    set(target:ESObject,key:ESObject,value:ESObject):ESObject {
-      if (typeof key === "number") {
+``` JavaScript
+// TestArray.js
+{
+  let handler = {
+    get(target, key) {
+      if (typeof key === 'number') {
         key = String(key);
       }
-      console.info("set",key,typeof key);
-      return Reflect.set(target,key,value);
+      console.info('get', key, typeof key);
+      return Reflect.get(target, key);
     },
-    deleteProperty(target:ESObject,key:ESObject):ESObject {
-      if (typeof key === "number") {
+    set(target, key, value) {
+      if (typeof key === 'number') {
         key = String(key);
       }
-      console.info("delete",key,typeof key);
-      return Reflect.deleteProperty(target,key);
+      console.info('set', key, typeof key);
+      return Reflect.set(target, key, value);
     },
-    has(target:ESObject,key:ESObject) {
-      if (typeof key === "number") {
+    deleteProperty(target, key) {
+      if (typeof key === 'number') {
         key = String(key);
       }
-      console.info("has",key,typeof key);
-      return Reflect.has(target,key);
+      console.info('delete', key, typeof key);
+      return Reflect.deleteProperty(target, key);
+    },
+    has(target, key) {
+      if (typeof key === 'number') {
+        key = String(key);
+      }
+      console.info('has', key, typeof key);
+      return Reflect.has(target, key);
     }
   }
-  let obj:ESObject = {};
-  let px:ESObject = new Proxy(obj,handler);
+  let obj = {};
+  let px = new Proxy(obj, handler);
   px[1];
   // 实际输出：get 1 string
   px[2] = 2;

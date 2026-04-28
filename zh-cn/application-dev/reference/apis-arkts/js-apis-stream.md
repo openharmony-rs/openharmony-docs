@@ -1,8 +1,8 @@
 # @ohos.util.stream (数据流基类stream)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -78,7 +78,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入。 |
+| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入以避免内存溢出。 |
 
 **错误码：**
 
@@ -485,7 +485,7 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunks    | string[] \|  Uint8Array[] | 是 | 被批量写出的数据数组。 |
+| chunks    | string[] \|  Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
 
 **错误码：**
@@ -1473,7 +1473,7 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunks    | string[] \| Uint8Array[] | 是 | 被批量写出的数据数组。 |
+| chunks    | string[] \| Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
 
 **错误码：**

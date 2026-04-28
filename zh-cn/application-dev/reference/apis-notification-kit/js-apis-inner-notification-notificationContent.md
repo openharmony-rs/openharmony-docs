@@ -1,8 +1,8 @@
 # NotificationContent
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -118,7 +118,7 @@
 | 名称            | 类型                                          | 只读 | 可选 | 说明                            |
 | --------------- | -------------------------------------------- | --- | --- | -------------------------------- |
 | title           | string                                       | 否  | 是  | 胶囊标题。大小不超过200字节，超出部分会被截断。                        |
-| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否  | 是  | 胶囊图片。                        |
+| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否  | 是  | 胶囊图片。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。                        |
 | backgroundColor | string                                       | 否  | 是  | 背景颜色。                        |
 
 
@@ -131,7 +131,7 @@
 | 名称  | 类型                                                   | 只读 | 可选 | 说明             |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
 | names | Array\<string\>                                       | 否  |  是 | 按钮名称（最多支持3个）。   |
-| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | 否  |  是 | 按钮图片（最多支持3个）。   |
+| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | 否  |  是 | 按钮图片（最多支持3个）。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。   |
 | iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | 否  |  是 | 按钮资源（最多支持3个）。   |
 
 ## NotificationTime<sup>11+</sup>
