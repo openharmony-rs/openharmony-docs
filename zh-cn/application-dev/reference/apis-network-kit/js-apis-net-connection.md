@@ -778,7 +778,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 ArkTS-Dyn示例：
 ```ts
-
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4374,7 +4373,6 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4396,7 +4394,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4474,7 +4471,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 
@@ -4547,7 +4543,7 @@ TCP状态。
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24<ins></ins>
+**ArkTS-Sta起始版本：** 24
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
