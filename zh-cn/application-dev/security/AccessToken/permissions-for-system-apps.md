@@ -5465,7 +5465,7 @@
 
 **ACL使能**：true
 
-**支持设备**： General
+**支持设备**： Phone | Tablet | TV | Wearable
 
 **起始版本**：23
 
