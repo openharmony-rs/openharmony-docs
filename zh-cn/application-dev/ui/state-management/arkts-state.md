@@ -66,9 +66,10 @@
 - 当装饰的数据类型为class或Object时，可以观察到自身的赋值和属性赋值的变化，即Object.keys(observedObject)返回的所有属性。示例如下：
   
   声明Person和Model类。
-  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) --> 
   
   ``` TypeScript
+  // 声明Person类
   class Person {
     public value: string;
   
@@ -77,6 +78,7 @@
     }
   }
   
+  // 声明Model类
   class Model {
     public value: string;
     public name: Person;
@@ -152,7 +154,7 @@
 
 3. 父组件传入undefined时，\@State装饰的变量仍使用本地默认值进行初始化。
    
-   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) -->
+   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) --> 
    
    ``` TypeScript
    @Entry
@@ -172,6 +174,7 @@
    
    @Component
    struct Child {
+     // 子组件count本地默认值为0；父组件传入undefined时，框架会保留该本地默认值
      @State count: number | undefined = 0;
    
      build() {

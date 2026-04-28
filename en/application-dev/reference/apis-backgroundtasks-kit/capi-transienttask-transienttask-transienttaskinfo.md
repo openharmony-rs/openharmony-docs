@@ -13,7 +13,7 @@ typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTask
 
 ## Overview
 
-A struct that describes all transient task information.
+A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day.
 
 **Since**: 20
 

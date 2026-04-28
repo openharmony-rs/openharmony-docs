@@ -669,7 +669,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListModel.ets
 
-  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->  
+  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->   
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -695,6 +695,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
         let result = textDecoder.decodeToString(getJson, { stream: false });
         this.things = JSON.parse(result);
       } catch (error) {
+        // 任务加载失败，输出error信息，便于排查失败原因
         hilog.error(DOMAIN, TAG, 'Failed to load tasks. Cause: %{public}s', JSON.stringify(error.message));
       }
     }
@@ -920,7 +921,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListViewModel.ets
 
-  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) --> 
+  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) -->  
   
   ``` TypeScript
   import ThingViewModel from './ThingViewModel';
@@ -947,6 +948,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     chooseAll(): void {
+      // 遍历所有待办事项，设置其完成状态
       for (let thing of this.things) {
         thing.isFinish = this.isChosen;
       }

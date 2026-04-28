@@ -694,6 +694,31 @@ NODE_SCROLL_ENABLE_SCROLL_WITH_MOUSE = 1002027
 | ------------- | ------------------------------------------------------------ |
 | .value[0].i32 | 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。 |
 
+## NODE_SCROLL_AUTO_ADJUST_MARGIN
+
+```c
+NODE_SCROLL_AUTO_ADJUST_MARGIN = 1002028
+```
+
+设置滚动条是否自动调整边距以避让组件NODE_PADDING、NODE_SCROLL_CONTENT_START_OFFSET或NODE_SCROLL_CONTENT_END_OFFSET的区域，支持属性设置，属性重置和属性获取接口。<br>
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。默认值：0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。 |
+
+
 ## NODE_LIST_DIRECTION
 
 ```c

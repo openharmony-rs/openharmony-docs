@@ -37,7 +37,7 @@ Checks whether this session supports a preconfigured resolution.
 
 | Name           | Type                                 | Mandatory | Description             |
 |----------------|-------------------------------------|-----|-----------------|
-| preconfigType  | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12)   | Yes  | Resolution type.     |
+| preconfigType | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12) | Yes| Resolution type.|
 | preconfigRatio | [PreconfigRatio](arkts-apis-camera-e.md#preconfigratio12) | No  | Aspect ratio. The default value is 16:9.|
 
 **Return value**
@@ -320,7 +320,7 @@ Subscribes to automatic camera switch status change events. This API uses an asy
 | Name    | Type                                                                  | Mandatory| Description                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------ |
 | type     | string                                                               | Yes  | Event type. The value is fixed at **'autoDeviceSwitchStatusChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)\> | Yes  | Callback function, which is used to obtain the status of automatic camera switch. |
+| callback | AsyncCallback\<[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)\> | Yes  | Callback used to obtain the status of automatic camera switch. |
 
 **Example**
 
@@ -615,7 +615,7 @@ Subscribes to sensitivity (ISO) state change events and obtains the latest ISO v
 
 | Name    | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback function, which is used to obtain the current ISO value of the camera.|
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback used to obtain the current ISO value of the camera.|
 
 
 **Example**

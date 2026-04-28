@@ -182,7 +182,7 @@ findWindow(name: string): Window
 
 | 类型 | 说明 |
 | ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回对象为空。 |
+| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回1300002错误码。 |
 
 **错误码：**
 
@@ -824,6 +824,9 @@ try {
       console.info(`abilityName:${windowInfo.abilityName}`);
       console.info(`bundleName:${windowInfo.bundleName}`);
       console.info(`isFocused:${windowInfo.isFocused}`);
+      console.info(`displayId:${windowInfo.displayId}`);
+      console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
+      console.info(`globalRect:${JSON.stringify(windowInfo.globalRect)}`);
     })
   }).catch((err: BusinessError) => {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));

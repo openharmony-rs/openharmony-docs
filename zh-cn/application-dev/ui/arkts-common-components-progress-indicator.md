@@ -111,7 +111,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
     ```
 
 
-  ![progress_captule](figures/progress_captule.png)
+  ![progress_capsule](figures/progress_capsule.png)
 
 ## 场景示例
 

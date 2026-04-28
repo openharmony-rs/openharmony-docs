@@ -145,6 +145,8 @@ try {
 
 ## Updater
 
+Defines a tool class for updating the system online.
+
 ### checkNewVersion
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
@@ -1892,6 +1894,8 @@ try {
 
 ## Restorer
 
+Defines a tool class for restoring factory settings.
+
 ### factoryReset
 
 factoryReset(callback: AsyncCallback\<void>): void
@@ -2139,6 +2143,8 @@ try {
 ```
 
 ## LocalUpdater
+
+Defines a tool class for updating the local firmware.
 
 ### verifyUpgradePackage
 

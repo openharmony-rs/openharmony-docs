@@ -4962,7 +4962,7 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | 是   | 预获取请求的信息。                                                      |
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。 <br>传入undefined或null会抛出异常错误码401。         |
 | cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。<br>传入undefined或null会抛出异常错误码401。 |
-| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。    <br>传入undefined或null会抛出异常错误码401。     |
+| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300s。 <br>单位：s。    <br>传入undefined或null会抛出异常错误码401。     |
 
 **错误码：**
 
@@ -8508,7 +8508,7 @@ struct Example{
 
 setUrlTrustList(urlTrustList: string): void
 
-设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+设置Web的URL白名单，只有白名单内的URL才能允许加载/跳转，否则将拦截并弹出告警页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9933,7 +9933,7 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 > - 持久缓存容量：默认大小为30MB（约30页），可以通过接口[setBlanklessLoadingCacheCapacity](#setblanklessloadingcachecapacity20)设置缓存容量，具体见该接口说明。超过容量时根据LRU（Least Recently Used，淘汰不常用缓存的策略）机制更新缓存。自动清理超过7天的持久缓存数据，缓存清除后第三次加载页面开始有优化效果。
 > - 如果发现快照相似度（即[BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20)中的similarity）极低，请确认key值是否传递正确。
 > - 调用本接口后，将启用页面加载快照检测及生成过渡帧计算，会产生一定的资源开销。
-> - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加约12*w*h B，页面打开后内存回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w*h/10 B，缓存位于应用缓存的位置。
+> - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加约12 * w * h B，页面打开后内存回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w * h / 10 B，缓存位于应用缓存的位置。
 > - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -10876,13 +10876,13 @@ stopMicrophone(): void
 
 static setUserAgentClientHintsEnabled(enabled: boolean): void
 
-设置是否开启UserAgent Client Hints功能。
+设置是否开启User-Agent Client Hints功能。
 
 > **说明：**
 >
 > User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
 >
-> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+> 不使用该方法时，默认不开启User-Agent Client Hints功能。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -10890,7 +10890,7 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+| enabled | boolean | 是   | 是否开启User-Agent Client Hints功能。<br/>true表示开启，false表示不开启。 |
 
 **示例：**
 
@@ -10981,7 +10981,7 @@ struct WebComponent {
 
 static getUserAgentClientHintsEnabled(): boolean
 
-查询UserAgent Client Hints功能当前是否开启。
+查询User-Agent Client Hints功能当前是否开启。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -10989,7 +10989,7 @@ static getUserAgentClientHintsEnabled(): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
+| boolean | 返回User-Agent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
 
 **示例：**
 
@@ -11052,7 +11052,7 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
 
-设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+设置Web的URL白名单，只有白名单内的URL才能允许加载/跳转，否则将拦截并弹出告警页。扩展了对Opaque Origin URL以及通配符规则的控制能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

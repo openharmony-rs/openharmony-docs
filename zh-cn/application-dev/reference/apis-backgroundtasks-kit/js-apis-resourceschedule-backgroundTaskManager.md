@@ -1650,7 +1650,7 @@ export default class EntryAbility extends UIAbility {
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**说明：** 主类型与子类型必须匹配。     |
 | backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。 <br/>**说明：** 主类型与子类型必须匹配。|
-| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
+| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
 | continuousTaskId | number   | 否    | 是    | 长时任务ID，默认值为-1。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
 
@@ -1705,7 +1705,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会弹出用户授权弹框，建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

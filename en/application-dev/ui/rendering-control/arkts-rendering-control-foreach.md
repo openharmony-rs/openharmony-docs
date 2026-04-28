@@ -18,7 +18,7 @@ For details about API parameters, see [ForEach](../../reference/apis-arkui/arkui
 
 During **ForEach** rendering, the system generates a unique and persistent key for each array element to identify the corresponding component. When the key changes, the ArkUI framework considers that the array element has been replaced or modified and creates a component based on the new key.
 
-**ForEach** provides a parameter named **keyGenerator**, which is a function that allows you to customize key generation rules. If no **keyGenerator** function is defined, the ArkUI framework uses the default key generation format **(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }**.
+**ForEach** provides a parameter named **keyGenerator**, which is a function that allows you to customize key generation rules. If no **keyGenerator** function is defined, the ArkUI framework uses the default key generation function **(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }**.
 
 The ArkUI framework follows specific rules for key generation in **ForEach**, which are primarily related to the **itemGenerator** function and the second parameter **index** of the **keyGenerator** function. The specific key generation rule judgment logic is shown in the following figure.
 
