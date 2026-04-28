@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 如何排查功能异常
 
@@ -314,6 +314,8 @@ addNum
 <!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets) -->
 
 ``` TypeScript
+// 混淆前 
+// hsp模块
 export function addNum(a: number, b: number) {
   return a + b;
 }

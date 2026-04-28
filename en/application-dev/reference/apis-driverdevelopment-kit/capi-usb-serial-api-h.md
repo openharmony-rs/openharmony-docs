@@ -1,7 +1,7 @@
 # usb_serial_api.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -188,7 +188,7 @@ Writes the data in the buffer to the USB serial port device.
 | Name| Description|
 | -- | -- |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
-| uint8_t *buff | Buffer to which the data of the USB serial port device is written.|
+| uint8_t *buff | Buffer whose data is written to the USB serial port device.|
 | uint32_t bufferSize | Buffer size.|
 | uint32_t *bytesWritten | Number of bytes that are actually written.|
 

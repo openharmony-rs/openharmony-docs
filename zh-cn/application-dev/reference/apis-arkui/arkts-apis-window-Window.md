@@ -38,7 +38,7 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -169,7 +169,7 @@ showWindow(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -300,7 +300,7 @@ showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -389,7 +389,7 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -448,7 +448,7 @@ destroyWindow(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1136,7 +1136,7 @@ ArkTS-Sta: clientToGlobalDisplay(winX: int, winY: int): Position
 
 将相对于当前窗口左上角的坐标转换为相对于主屏幕左上角的全局坐标。
 
-不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的悬浮窗场景。
+不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1199,7 +1199,7 @@ ArkTS-Sta: globalDisplayToClient(globalDisplayX: int, globalDisplayY: int): Posi
 
 将相对于主屏幕左上角的全局坐标转换为相对于当前窗口左上角的坐标。
 
-不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的悬浮窗场景。
+不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1211,8 +1211,8 @@ ArkTS-Sta: globalDisplayToClient(globalDisplayX: int, globalDisplayY: int): Posi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| globalDisplayX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应该为整数，非整数输入将向下取整。 |
-| globalDisplayY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应该为整数，非整数输入将向下取整。 |
+| globalDisplayX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前主屏幕左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应该为整数，非整数输入将向下取整。 |
+| globalDisplayY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前主屏幕左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应该为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -2638,6 +2638,8 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
@@ -2698,6 +2700,8 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 **ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -4015,7 +4019,7 @@ getUIContext(): UIContext
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -4117,7 +4121,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -4186,7 +4190,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -4263,7 +4267,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -4335,7 +4339,7 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -4409,7 +4413,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -4506,7 +4510,7 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -4584,7 +4588,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -4663,7 +4667,7 @@ isWindowShowing(): boolean
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -12871,7 +12875,7 @@ restore(): Promise&lt;void&gt;
 
 主窗口为最小化状态且UIAbility生命周期为onForeground时，将主窗口从最小化状态，恢复到前台显示，并恢复到进入最小化状态之前的大小和位置。主窗口为前台状态时，仅抬升主窗口层级。使用Promise异步回调。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -14685,13 +14689,13 @@ try {
 
 createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;Window&gt;
 
-创建主窗口、子窗口或悬浮窗下的子窗口，使用Promise异步回调。
+创建主窗口、子窗口或全局悬浮窗下的子窗口，使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -14752,7 +14756,7 @@ ArkTS-Dyn: setParentWindow(windowId: number): Promise&lt;void&gt;
 
 ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 
-更改子窗口的父窗口，该父窗口仅支持同进程下的主窗口、子窗口或悬浮窗，使用Promise异步回调。
+更改子窗口的父窗口，该父窗口仅支持同进程下的主窗口、子窗口或全局悬浮窗，使用Promise异步回调。
 
 如果该子窗口处于获焦状态，且新的父窗口处于前台，则会抬升父窗口的层级。
 
@@ -14766,7 +14770,7 @@ ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -14852,7 +14856,7 @@ getParentWindow(): Window
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 19
 

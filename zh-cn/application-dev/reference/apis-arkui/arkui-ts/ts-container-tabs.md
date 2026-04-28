@@ -337,7 +337,7 @@ ArkTS-Sta: animationCurve(curve: Curve | ICurve | undefined)
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名 | 类型                                                         | 必填 | 说明                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
-| curve  | ArkTS-Dyn: [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) <br/>ArkTS-Sta: [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) \| undefined | 是   | Tabs翻页的动画曲线。<br/>默认值：<br/>滑动TabContent翻页时，默认值为interpolatingSpring(-1, 1, 228, 30)。<br/>点击TabBar页签和调用TabsController的changeIndex接口翻页时，默认值为cubicBezierCurve(0.2, 0.0, 0.1, 1.0)。<br/>设置自定义动画曲线时，滑动翻页和点击页签、调用changeIndex翻页都使用设置的动画曲线。<br/>取值为undefined时，按默认值处理。 |
+| curve  | ArkTS-Dyn: [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) <br/>ArkTS-Sta: [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) \| undefined | 是   | Tabs翻页的动画曲线。<br/>默认值：<br/>滑动[TabContent](ts-container-tabcontent.md)翻页时，默认值为interpolatingSpring(-1, 1, 228, 30)。<br/>点击TabBar页签和调用[TabsController](#tabscontroller)的[changeIndex](#changeindex)接口翻页时，默认值为cubicBezierCurve(0.2, 0.0, 0.1, 1.0)。<br/>设置自定义动画曲线时，滑动翻页和点击页签、调用changeIndex翻页都使用设置的动画曲线。<br/>取值为undefined时，按默认值处理。 |
 
 ### animationDuration
 
@@ -364,7 +364,7 @@ animationCurve不设置时，由于滑动TabContent翻页动画曲线interpolati
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br > ArkTS-Sta: int \| undefined | 是   | Tabs翻页的动画时长。<br/>默认值：<br/>API version 10及以前，不设置该属性或设置为null时，默认值为0，即Tabs翻页无动画。设置为小于0或undefined时，默认值为300。<br/>API version 11及以后，不设置该属性或设置为异常值，且设置TabBar为BottomTabBarStyle样式时，默认值为0。设置TabBar为其他样式时，默认值为300。<br/>单位：ms<br/>取值范围：[0, +∞)<br/>取值为undefined或非法值时，按默认值处理。 |
+| value  | ArkTS-Dyn: number <br > ArkTS-Sta: int \| undefined | 是   | Tabs翻页的动画时长。<br/>默认值：<br/>API version 10及以前，不设置该属性或设置为null时，默认值为0，即Tabs翻页无动画。设置为小于0或undefined时，默认值为300。<br/>API version 11及以后，不设置该属性或设置为异常值，且设置[TabBar](./ts-container-tabcontent.md#tabbar)为[BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9)样式时，默认值为0。设置TabBar为其他样式时，默认值为300。<br/>单位：ms<br/>取值范围：[0, +∞)<br/>取值为undefined或非法值时，按默认值处理。 |
 
 ### animationMode<sup>12+</sup>
 
@@ -372,7 +372,7 @@ ArkTS-Dyn: animationMode(mode: Optional\<AnimationMode\>)
 
 ArkTS-Sta: animationMode(mode: AnimationMode | undefined)
 
-设置点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。
+设置点击[TabBar](ts-container-tabcontent.md#tabbar)页签或调用TabsController的[changeIndex](#changeindex)接口时切换TabContent的动画形式。
 
 >  **说明：**
 >
@@ -391,7 +391,7 @@ ArkTS-Sta: animationMode(mode: AnimationMode | undefined)
 <!--Table: 10%; 25%; 10%; 55%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| mode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationMode](#animationmode12枚举说明)\><br > ArkTS-Sta: [AnimationMode](#animationmode12枚举说明) \| undefined | 是   | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。<br/>取值为undefined时，按默认值处理。|
+| mode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationMode](#animationmode12枚举说明)\><br > ArkTS-Sta: [AnimationMode](#animationmode12枚举说明) \| undefined | 是   | 点击[TabBar](ts-container-tabcontent.md#tabbar)页签或调用[TabsController](#tabscontroller)的[changeIndex](#changeindex)接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。<br/>取值为undefined时，按默认值处理。|
 
 ### barPosition<sup>9+</sup>
 
@@ -1262,7 +1262,7 @@ ArkTS-Sta: type TabsCustomContentTransitionCallback = (from: int, to: int) => Ta
 
 | 类型                                                         | 说明                     |
 | ------------------------------------------------------------ | ------------------------ |
-| [TabContentAnimatedTransition](#tabcontentanimatedtransition11)&nbsp;\|&nbsp;undefined | 自定义切换动画相关信息。 |
+| [TabContentAnimatedTransition](#tabcontentanimatedtransition11)&nbsp;\|&nbsp;undefined | 自定义切换动画相关信息。<br/>返回undefined时，本次不使用自定义过渡，沿用系统默认Tabs切换动画。 |
 
 ## OnTabsContentWillChangeCallback<sup>18+</sup>
 

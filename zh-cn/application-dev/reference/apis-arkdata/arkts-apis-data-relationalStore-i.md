@@ -102,6 +102,10 @@
 | asyncDownloadAsset<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库在端云同步时，同步或异步下载资产。true表示优先下载完所有数据后，使用异步任务下载资产；false表示同步下载资产；默认值为false。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 | enableCloud<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库是否允许端云同步。true表示允许端云同步；false表示不允许端云同步。默认值为true。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 | tableType<sup>23+</sup> |  [DistributedTableType](arkts-apis-data-relationalStore-e.md#distributedtabletype23)  | 否 | 是 | 分布式表类型。DEVICE_COLLABORATION表示设备协作表；SINGLE_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE_COLLABORATION；端云数据同步时，默认值为SINGLE_VERSION，不支持DEVICE_COLLABORATION。<br> **ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23 |
+| assetConflictPolicy | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy) | 否 | 是 | 资产冲突策略。默认值为CONFLICT_POLICY_DEFAULT。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| assetTempPath | string | 否 | 是 | 资产临时路径。仅当assetConflictPolicy值为CONFLICT_POLICY_TEMP_PATH时生效，需指定为[distributedfiles](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)下的临时路径，格式示例：tmp/，若未填写或路径不合规，将抛出 401 错误码。默认值为空。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| assetDownloadOnDemand | boolean | 否 | 是 | 是否按需下载资产。true表示仅下行数据到本地，当需要下载资产时，调用[cloudSync](arkts-apis-data-relationalStore-RdbStore.md#cloudsync)接口触发资产下载；false表示数据与资产都下行到本地。默认值为false。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| autoSyncSwitch | boolean | 否 | 是 | 是否启用自动同步开关。true表示启用自动同步，false表示不启用。默认值为true。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## Statistic<sup>10+</sup>
 
@@ -150,6 +154,25 @@
 | schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | 否   |   否   | 表示端云同步过程。                                           |
 | code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | 否   |   否   | 表示端云同步过程的状态。                                     |
 | details  | Record<string, [TableDetails](#tabledetails10)> | 否   |   否   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
+| message | string | 否 | 是   | 同步状态的详细消息。通过message信息查看详细的失败原因。默认值为空。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## CloudSyncConfig
+
+云同步配置信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明                                        |
+|------|------|------|------|-------------------------------------------|
+| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 否 | 否 | 数据库同步模式。                                  |
+| enablePredicate | boolean | 否 | 是 | 是否启用表级同步开关。true表示启用表级同步，false表示不启用。默认值为false。 |
+| predicate | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 否 | 是 | 表级同步谓词。仅当enablePredicate为true时，此参数有效。      |
 
 ## SqlExecutionInfo<sup>12+</sup>
 

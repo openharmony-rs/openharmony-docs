@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
@@ -357,6 +357,33 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp<br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
+
+### scrollBarWidth
+
+ArkTS-Dyn: scrollBarWidth(value: number | string | Resource)
+
+ArkTS-Sta: scrollBarWidth(value: Resource | undefined)
+
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Grid组件主轴方向的高度，则滚动条的宽度会变为4vp。支持Resource资源类型。
+
+未通过该接口设置时，设置滚动条的宽度为4vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                       | 必填 | 说明                                      |
+| ------ | -------------------------- | ---- | ----------------------------------------- |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: [Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按4vp处理。 |
+
 
 ### cachedCount
 

@@ -63,9 +63,13 @@ import { request } from '@kit.BasicServicesKit';
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| disable<sup>20+</sup> | boolean | 否 | 是 | 是否关闭通知栏显示。true表示关闭通知栏显示，false表示不关闭通知栏显示。<br/>默认为false。<br/>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本：**  20 <br/>**ArkTS-Sta起始版本：**  23 |
+| disable<sup>20+</sup> | boolean | 否 | 是 | 是否关闭通知栏显示。true表示关闭通知栏显示，false表示不关闭通知栏显示。<br/>默认为false。<br/>**系统接口**：此接口为系统接口。 |
 
 ## request.agent.query<sup>10+</sup>
 
@@ -78,6 +82,10 @@ query(id: string, callback: AsyncCallback&lt;TaskInfo&gt;): void
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -124,6 +132,10 @@ query(id: string): Promise&lt;TaskInfo&gt;
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

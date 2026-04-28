@@ -19,7 +19,7 @@
 | TreeSet | 存储一系列值的集合。值唯一，允许用户自定义排序方法，但不建议放入null值。适用于按序存储集合的场景。 |
 | LightWeightMap | 存储具有关联关系的键值对集合。键唯一，底层采用轻量级结构，空间占用小。推荐用于存取键值对数据且内存不充足时。 |
 | LightWeightSet | 存储一系列值的集合。值唯一，底层采用轻量级结构，空间占用小。适用于不重复的集合或去重某个集合。 |
-| PlainArray | 存储具有关联关系的键值对集合。键唯一，底层与LightWeightMap一样采用轻量级结构，键固定为number类型。适用于存储键为number类型键值对的场景。 |
+| PlainArray | 存储具有关联关系的键值对集合。键唯一，底层与LightWeightMap一样采用轻量级结构。**ArkTS-Dyn**下键固定为number类型，**ArkTS-Sta**下键固定为int类型。适用于存储数字键键值对的场景。 |
 
 ## HashMap
 
@@ -43,7 +43,7 @@ HashMap支持增、删、改、查操作，常用API如下：
 | 访问元素 | values() | 返回一个迭代器对象，包含map中的所有value值。 |
 | 访问元素 | entries() | 返回一个迭代器对象，包含map中的所有键值对。 |
 | 访问元素 | forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | 遍历访问整个map的元素。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | 创建迭代器以访问数据。 |
+| 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;[K,V]&gt; | 创建迭代器以访问数据。 |
 | 修改元素 | replace(key: K, newValue: V) | 修改指定key对应的value值。 |
 | 修改元素 | forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | 遍历并修改整个map的元素。 |
 | 删除元素 | remove(key: K) | 删除map中匹配到的键值对。 |
@@ -67,7 +67,7 @@ HashSet支持增、删、改、查操作，常用API如下：
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value。 |
 | 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: HashSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;T&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: HashSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(value: T) | 删除指定的元素。 |
 | 删除元素 | clear() | 清空整个set。 |
@@ -94,7 +94,7 @@ TreeMap支持增、删、改、查操作，常用 API 如下：
 | 访问元素 | values() | 返回一个迭代器对象，包含map中的所有value值。 |
 | 访问元素 | entries() | 返回一个迭代器对象，包含map中的所有键值对。 |
 | 访问元素 | forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) | 遍历访问整个map的元素。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;[K,V]&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | replace(key: K, newValue: V) | 修改指定key对应的value值。 |
 | 修改元素 | forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) | 通过遍历对map中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(key: K) | 删除map中匹配到的键值对。 |
@@ -122,7 +122,7 @@ TreeSet支持增、删、改、查操作，常用API如下：
 | 访问元素 | getFirstValue() | 获取set中排在首位的value值。 |
 | 访问元素 | getLastValue() | 获取set中排在末位的value值。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;T&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(value: T) | 删除指定的元素。 |
 | 删除元素 | clear() | 清空整个set。 |
@@ -148,14 +148,14 @@ LightWeightMap支持增、删、改、查操作，常用API如下：
 | 访问元素 | keys() | 返回一个迭代器对象，包含map中的所有key值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含map中的所有value值。 |
 | 访问元素 | entries() | 返回一个迭代器对象，包含map中的所有键值对。 |
-| 访问元素 | getKeyAt(index: number) | 获取指定index对应的key值。 |
-| 访问元素 | getValueAt(index: number) | 获取指定index对应的value值。 |
+| 访问元素 | ArkTS-Dyn: getKeyAt(index: number) <br/> ArkTS-Sta: getKeyAt(index: int) | 获取指定index对应的key值。 |
+| 访问元素 | ArkTS-Dyn: getValueAt(index: number) <br/> ArkTS-Sta: getValueAt(index: int) | 获取指定index对应的value值。 |
 | 访问元素 | forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object) | 遍历访问整个map的元素。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | 创建迭代器以进行数据访问。 |
-| 修改元素 | setValueAt(index: number, newValue: V) | 修改指定index对应的value值。 |
+| 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;[K,V]&gt; | 创建迭代器以进行数据访问。 |
+| 修改元素 | ArkTS-Dyn: setValueAt(index: number, newValue: V) <br/> ArkTS-Sta: setValueAt(index: int, newValue: V) | 修改指定index对应的value值。 |
 | 修改元素 | forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object) | 通过遍历对map中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(key: K) | 删除map中指定key匹配到的键值对。 |
-| 删除元素 | removeAt(index: number) | 删除map中指定index对应的键值对。 |
+| 删除元素 | ArkTS-Dyn: removeAt(index: number) <br/> ArkTS-Sta: removeAt(index: int) | 删除map中指定index对应的键值对。 |
 | 删除元素 | clear() | 清空整个map。 |
 
 ## LightWeightSet
@@ -176,43 +176,43 @@ LightWeightSet支持增、删、改、查操作。常用API如下：
 | --------- | ------- | ------- |
 | 增加元素 | add(obj: T) | 增加一个值。 |
 | 访问元素 | getIndexOf(key: T) | 获取对应的index值。 |
-| 访问元素 | getValueAt(index: number) | 获取指定index对应的value值。 |
+| 访问元素 | ArkTS-Dyn: getValueAt(index: number) <br/> ArkTS-Sta: getValueAt(index: int) | 获取指定index对应的value值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value值。 |
 | 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
+| 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;T&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
 | 删除元素 | remove(key: K) | 删除指定的元素。 |
-| 删除元素 | removeAt(index: number) | 删除set中指定index对应的值。 |
+| 删除元素 | ArkTS-Dyn: removeAt(index: number) <br/> ArkTS-Sta: removeAt(index: int) | 删除set中指定index对应的值。 |
 | 删除元素 | clear() | 清空整个set。 |
 
 ## PlainArray
 
-[PlainArray](../reference/apis-arkts/js-apis-plainarray.md)可用来存储具有关联关系的键值对集合，存储元素中key是唯一的，并且对于PlainArray来说，其key的类型为number类型。每个key会对应一个value值，类型依据泛型的定义，PlainArray采用轻量级的结构，集合中的key值的查找依赖于二分查找算法，然后映射到其他数组中的value值。
+[PlainArray](../reference/apis-arkts/js-apis-plainarray.md)可用来存储具有关联关系的键值对集合，存储元素中key是唯一的，并且对于PlainArray，ArkTS-Dyn下key的类型为number类型，ArkTS-Sta下key的类型为int类型。每个key会对应一个value值，类型依据泛型的定义，PlainArray采用轻量级的结构，集合中的key值的查找依赖于二分查找算法，然后映射到其他数组中的value值。
 
 初始默认容量为16，每次扩容为原始容量的2倍。
 
-PlainArray和[LightWeightMap](../reference/apis-arkts/js-apis-lightweightmap.md)都用于存储键值对，且采用轻量级结构。不过，PlainArray的键值类型仅限于number。
+PlainArray和[LightWeightMap](../reference/apis-arkts/js-apis-lightweightmap.md)都用于存储键值对，且采用轻量级结构。不过，PlainArray的键值类型在ArkTS-Dyn下仅限于number，在ArkTS-Sta下仅限于int。
 
-当需要存储键为number类型的键值对时，可以使用PlainArray。
+当需要存储数字类型键的键值对时，可以使用PlainArray。
 
 PlainArray支持增、删、改、查操作。常用API如下：
 
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
-| 增加元素 | add(key: number,value: T) | 增加一个键值对。 |
-| 访问元素 | get(key: number) | 获取key对应的value值。 |
-| 访问元素 | getIndexOfKey(key: number) | 获取PlainArray中指定key的index。 |
+| 增加元素 | ArkTS-Dyn: add(key: number,value: T) <br/> ArkTS-Sta: add(key: int, value: T) | 增加一个键值对。 |
+| 访问元素 | ArkTS-Dyn: get(key: number) <br/> ArkTS-Sta: get(key: int) | 获取key对应的value值。 |
+| 访问元素 | ArkTS-Dyn: getIndexOfKey(key: number) <br/> ArkTS-Sta: getIndexOfKey(key: int) | 获取PlainArray中指定key的index。 |
 | 访问元素 | getIndexOfValue(value: T) | 获取PlainArray中指定value出现的第一个的index。 |
-| 访问元素 | getKeyAt(index: number) | 获取指定index对应的key值。 |
-| 访问元素 | getValueAt(index: number) | 获取指定index对应的value值。 |
+| 访问元素 | ArkTS-Dyn: getKeyAt(index: number) <br/> ArkTS-Sta: getKeyAt(index: int) | 获取指定index对应的key值。 |
+| 访问元素 | ArkTS-Dyn: getValueAt(index: number) <br/> ArkTS-Sta: getValueAt(index: int) | 获取指定index对应的value值。 |
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray\<T>) => void, thisArg?: Object) | 遍历访问整个PlainArray的元素。 |
-| 访问元素 | \[Symbol.iterator]():IterableIterator&lt;[number, T]&gt; | 创建迭代器以进行数据访问。 |
-| 修改元素 | setValueAt(index:number, value: T) | 修改指定index对应的value值。 |
+| 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;[number, T]&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;[int, T]&gt; | 创建迭代器以进行数据访问。 |
+| 修改元素 | ArkTS-Dyn: setValueAt(index:number, value: T) <br/> ArkTS-Sta: setValueAt(index:int, value: T) | 修改指定index对应的value值。 |
 | 修改元素 | forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray\<T>) => void, thisArg?: Object) | 通过遍历对PlainArray中的元素进行操作，可能包括但不限于修改元素。 |
-| 删除元素 | remove(key: number) | 删除PlainArray中指定key匹配到的键值对。 |
-| 删除元素 | removeAt(index: number) | 删除PlainArray中指定index对应的键值对。 |
-| 删除元素 | removeRangeFrom(index: number, size: number) | 删除PlainArray中指定范围内的元素。 |
+| 删除元素 | ArkTS-Dyn: remove(key: number) <br/> ArkTS-Sta: remove(key: int) | 删除PlainArray中指定key匹配到的键值对。 |
+| 删除元素 | ArkTS-Dyn: removeAt(index: number) <br/> ArkTS-Sta: removeAt(index: int) | 删除PlainArray中指定index对应的键值对。 |
+| 删除元素 | ArkTS-Dyn: removeRangeFrom(index: number, size: number) <br/> ArkTS-Sta: removeRangeFrom(index: int, size: int) | 删除PlainArray中指定范围内的元素。 |
 | 删除元素 | clear() | 清空整个PlainArray。 |
 
 ## 非线性容器的使用
