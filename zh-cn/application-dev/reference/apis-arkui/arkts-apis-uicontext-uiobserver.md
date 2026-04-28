@@ -112,7 +112,7 @@ onNavDestinationUpdate(callback: Callback\<observer.NavDestinationInfo>): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -508,7 +508,7 @@ onNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback: Callback\<ob
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1615,7 +1615,7 @@ onNavDestinationSwitch(callback: Callback<observer.NavDestinationSwitchInfo>): v
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationSwitch')<sup>12+</sup>](#onnavdestinationswitch12)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1662,7 +1662,7 @@ offNavDestinationSwitch(callback?: Callback<observer.NavDestinationSwitchInfo>):
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationSwitch')<sup>12+</sup>](#offnavdestinationswitch12)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1769,7 +1769,7 @@ onNavDestinationSwitch(observerOptions: observer.NavDestinationSwitchObserverOpt
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationSwitch')<sup>12+</sup>](#onnavdestinationswitch12-1)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1818,7 +1818,7 @@ offNavDestinationSwitch(observerOptions: observer.NavDestinationSwitchObserverOp
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationSwitch')<sup>12+</sup>](#offnavdestinationswitch12-1)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2093,7 +2093,7 @@ on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): voi
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabContentUpdate<sup>23+</sup>](#ontabcontentupdate23)。
 
-**ArkTS-Sta起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -2194,7 +2194,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): v
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[offTabContentUpdate<sup>23+</sup>](#offtabcontentupdate23)。
 
-**ArkTS-Sta起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -2241,7 +2241,7 @@ on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callba
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabContentUpdate<sup>23+</sup>](#ontabcontentupdate23-1)。
 
-**ArkTS-Sta起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -2344,7 +2344,7 @@ off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Call
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[offTabContentUpdate<sup>23+</sup>](#offtabcontentupdate23-1)。
 
-**ArkTS-Sta起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -2393,7 +2393,7 @@ on(type: 'tabChange', callback: Callback\<observer.TabContentInfo\>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabChange<sup>23+</sup>](#ontabchange23)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2517,7 +2517,7 @@ off(type: 'tabChange', callback?: Callback\<observer.TabContentInfo\>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[on('tabChange')<sup>22+</sup>](#ontabchange22)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2564,7 +2564,7 @@ on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback\<obse
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabChange<sup>23+</sup>](#ontabchange23-1)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2687,7 +2687,7 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabChange<sup>23+</sup>](#ontabchange23-1)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -3729,7 +3729,7 @@ offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate22)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate23)接口示例。
 
 ## onSwiperContentUpdate<sup>23+</sup>
 
@@ -3820,7 +3820,7 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<Sw
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate22-1)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate23-1)接口示例。
 
 ## onRouterPageSizeChange<sup>23+</sup>
 

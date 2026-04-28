@@ -760,8 +760,6 @@ ArcSwiper自定义切换动画相关信息。
 
 ArcSwiper自定义切换动画相关信息。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -770,8 +768,8 @@ ArcSwiper自定义切换动画相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | int | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
-| transition | Callback\<[ArcSwiperContentTransitionProxy](#arcswipercontenttransitionproxy24)> | 否 | 否 | 自定义切换动画具体内容。 |
+| timeout<sup>24+</sup> | int | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
+| transition<sup>24+</sup> | Callback\<[ArcSwiperContentTransitionProxy](#arcswipercontenttransitionproxy24)> | 否 | 否 | 自定义切换动画具体内容。 |
 
 ## ArcSwiperContentTransitionProxy<sup>24+</sup>
 
@@ -785,9 +783,9 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 
 ### 属性
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -795,12 +793,12 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| selectedIndex | int | 否 | 否 | 当前选中页面的索引。 |
-| index | int | 否 | 否 | 视窗内页面的索引。 |
-| position | double | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
-| mainAxisLength |  double | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
+| selectedIndex<sup>24+</sup> | int | 否 | 否 | 当前选中页面的索引。 |
+| index<sup>24+</sup> | int | 否 | 否 | 视窗内页面的索引。 |
+| position<sup>24+</sup> | double | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
+| mainAxisLength<sup>24+</sup> |  double | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
 
-### finishTransition
+### finishTransition<sup>24+</sup>
 
 finishTransition(): void
 
@@ -809,6 +807,8 @@ finishTransition(): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
