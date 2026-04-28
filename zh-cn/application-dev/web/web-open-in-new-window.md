@@ -98,6 +98,7 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
+
 <!-- @[receive_a_web_component_new_window_event_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/OpenPageNewWin.ets) -->
 
 ``` TypeScript

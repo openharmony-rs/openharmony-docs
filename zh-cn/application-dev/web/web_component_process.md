@@ -151,6 +151,7 @@ ArkTS-Dyn示例：
     ```
 
 ArkTS-Sta示例：
+
 <!-- @[terminateRenderProcess_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
 
 ``` TypeScript
@@ -179,6 +180,7 @@ struct WebComponent {
 
 3. 可通过[onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9)来监听渲染进程的退出事件，从而获知退出的具体原因（如内存OOM、crash或正常退出等）。由于多个Web组件可能共用同一个渲染进程，因此，每当渲染进程退出时，每个受此影响的Web组件均会触发相应的回调。
 ArkTS-Dyn示例：
+
     <!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
     
     ``` TypeScript
@@ -279,6 +281,7 @@ ArkTS-Dyn示例：
     }
     ```
 ArkTS-Sta示例：
+
 5. [Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)创建参数涵盖了多进程模型的运用。其中，sharedRenderProcessToken标识了当前Web组件所指定的共享渲染进程的token。在多渲染进程模式下，拥有相同token的Web组件将优先尝试重用与该token绑定的渲染进程。token与渲染进程的绑定关系，在渲染进程的初始化阶段形成。一旦渲染进程不再关联任何Web组件，它与token的绑定关系将被解除。
 
 ArkTS-Dyn示例：

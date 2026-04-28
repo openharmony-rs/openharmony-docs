@@ -189,6 +189,7 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 ```
 
 ArkTS-Sta示例：
+
 <!-- @[soft_keyboard_entryability_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
 
 ``` TypeScript
@@ -253,6 +254,7 @@ struct KeyboardAvoidExample {
 ```
 
 ArkTS-Sta示例：
+
 <!-- @[soft_keyboard_index_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -301,7 +303,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 ArkTS-Dyn示例：
 
-<!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+ <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -327,26 +329,30 @@ struct KeyboardAvoidExample {
 ```
 
 ArkTS-Sta示例：
-<!-- @[use_expand_safe_area_to_enable_immersive_effect_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
+
+<!-- @[soft_keyboard_setmode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
 
 ``` TypeScript
-// xxx.ets
+// Index.ets
 'use static'
-import { webview } from '@ohos.web.webview';
-import { SafeAreaType, SafeAreaEdge } from '@ohos.arkui.component';
+import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
+import webview from '@ohos.web.webview';
 
 @Entry
 @Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+struct KeyboardAvoidExample {
+  controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .width('100%').height('100%')
-        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }
+      Row().height('50%').width('100%').backgroundColor(Color.Gray)
+      Web({ src: $rawfile('index.html'),controller: this.controller})
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
+      Text('I can see the bottom of the page')    
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Pink)
+        .layoutWeight(1)
+    }.width('100%').height('100%')
   }
 }
 ```
@@ -382,8 +388,6 @@ struct WebComponent {
   }
 }
 ```
-
-ArkTS-Sta示例：
 
 
 与其他Web组件行为的交互场景：
@@ -436,7 +440,7 @@ ArkTS-Dyn示例:
        */
       @Builder
       customKeyboardBuilder() {
-		  // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
+          // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
         Row() {
           Text("完成")
             .fontSize(20)
@@ -551,7 +555,7 @@ ArkTS-Sta示例：
      */
     @Builder
     customKeyboardBuilder() {
-		  // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
+          // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
         Row() {
           Text('完成')
             .fontSize(20)
