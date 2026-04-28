@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
