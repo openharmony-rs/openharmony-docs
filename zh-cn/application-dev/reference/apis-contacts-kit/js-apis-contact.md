@@ -3,7 +3,7 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @yanghaoqian-->
+<!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 本模块提供联系人管理能力，包括添加联系人、删除联系人、更新联系人等。
@@ -46,7 +46,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait.|
 
 **示例：**
 
@@ -155,7 +155,7 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
 
 **示例：**
 
@@ -437,7 +437,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawid.  |
 
 **示例：**
 
@@ -546,7 +546,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawid. |
 
 **示例：**
 
@@ -663,7 +663,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawid. |
 
 **示例：**
 
@@ -2546,7 +2546,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.  |
 
 **示例：**
 
@@ -2633,7 +2633,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
 
@@ -2729,7 +2729,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
 
@@ -2821,7 +2821,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
 
@@ -2927,7 +2927,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+| 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
 
