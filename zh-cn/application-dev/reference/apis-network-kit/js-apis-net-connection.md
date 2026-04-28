@@ -4337,6 +4337,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.error(`get ERROR msg: ${JSON.stringify(err)}`)
   });
 });
+```
 
 ### getAddressByName
 
