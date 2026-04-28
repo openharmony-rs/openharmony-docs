@@ -5838,3 +5838,17 @@
 **支持设备**：Phone
 
 **起始版本**：26.0.0
+
+## ohos.permission.GET_TICKET_INFO
+
+允许系统服务为敏感消息生成完整性保护凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
