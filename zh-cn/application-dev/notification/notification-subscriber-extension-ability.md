@@ -1,7 +1,7 @@
 #  NotificationSubscriberExtensionAbility (开发概述)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -21,7 +21,7 @@
 - **传输方式**：支持低功耗蓝牙（Bluetooth Low Energy）和传统蓝牙两种同步方式
 
 ## 约束条件
-1. 本示例仅支持标准系统上运行，支持设备：手机和平板。
+1. 本示例仅支持标准系统上运行，支持设备：Phone和Tablet。
 2. 本示例为Stage模型，支持API22及以上版本SDK。
 3. 本示例需要使用DevEco Studio 6.0.2 Release及以上版本才可编译运行。
 4. 三方穿戴应用需申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，权限为system_basic级别。
