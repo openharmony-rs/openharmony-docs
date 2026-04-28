@@ -14,7 +14,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { systemLoad } from '@kit.BasicServicesKit';
 ```
 
