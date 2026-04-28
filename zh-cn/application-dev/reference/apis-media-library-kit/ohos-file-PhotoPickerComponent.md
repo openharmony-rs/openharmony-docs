@@ -20,7 +20,7 @@
 ## 导入模块
 
 ```ts
-// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
+// 在API version 23之前的版本中，需要使用'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
 import {
   PhotoPickerComponent, PickerController, PickerOptions,
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
@@ -106,7 +106,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
-
+| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -212,6 +212,159 @@ type ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => v
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | itemInfo    | [ItemInfo](#iteminfo) | 是    | 被点击的宫格类型。包括缩略图宫格和相机宫格。 |
 | clickType  | [ClickType](#clicktype) | 是 | 点击操作的类型。 |
+
+**示例：**
+
+```ts
+import {
+    ClickResult,
+    ClickType,
+    DataType,
+    ItemInfo,
+    ItemClickedNotifyCallback,
+    PhotoPickerComponent,
+    PickerController,
+    PickerOptions,
+} from '@kit.MediaLibraryKit';
+import { router } from '@kit.ArkUI';
+
+
+const DOMAIN = 0x0000;
+const TAG: string = 'clickedNotifyDemo';
+
+interface Checks {
+    isOnClicked: boolean;
+    isOnClickedNotify: boolean;
+}
+
+export interface ClickResultEx {
+    uri: string,
+    isSelected: boolean,
+}
+
+@Entry
+@Component
+struct PickerPage {
+@State pickerController: PickerController = new PickerController();
+private pickerOptions: PickerOptions = new PickerOptions();
+@State currentUri: string = '';
+@State currentState: number = 0;
+@State clickedUris: Map<string, ClickResultEx> = new Map();
+private isOnClicked: boolean = false;
+private isOnClickedNotify: boolean = false;
+
+    onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
+        return true;
+    };
+    // 当一个宫格被点击时，代码会验证该宫格对应URI是否有效，如无效，则忽略。
+    // 然后，会检查clickedUris中否已存在该URI的记录。如没有，则创建一条记录并将isSelected属性设置为true。
+    // 如果记录存在，则将该记录的isSelected属性更新为true。
+    // 数据保存完成后点击“setClickResult”按钮，会调用addData(SET_ITEM_CLICK_RESULT)将对应宫格设置为选中状态。
+    onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
+        if (!itemInfo.uri) {
+            return;
+        }
+
+        let clickResult = this.clickedUris.get(itemInfo.uri);
+        if (!clickResult) {
+            clickResult = {
+                uri: itemInfo.uri,
+                isSelected: true,
+            };
+        } else {
+            clickResult.isSelected = true;
+        }
+        this.clickedUris.set(itemInfo.uri, clickResult);
+    };
+
+    aboutToAppear(): void {
+        let params = router.getParams() as Checks;
+
+        this.pickerOptions.isSlidingSelectionSupported = true;
+        this.pickerOptions.isSearchSupported = false;
+        this.isOnClicked = params.isOnClicked;
+        // 从index.ets页面获取参数。
+        this.isOnClickedNotify = params.isOnClickedNotify;
+        this.pickerOptions.maxPhotoSelectNumber = 500;
+    }
+
+    // 从this.clickedUris获取这些URI，后续在调用pickerController.addData()设置宫格item选中时使用。
+    getClickedUris(): ClickResult[] {
+        let uris: ClickResultEx[] = [];
+        this.clickedUris.forEach((uri, index) => {
+            uris.push(uri)
+        })
+        return uris;
+    }
+
+    build() {
+        Column() {
+            Row() {
+                // 照片选择器组件调用。
+                PhotoPickerComponent({
+                    pickerOptions: this.pickerOptions,
+                    pickerController: this.pickerController,
+                    onItemClicked: this.isOnClicked ? this.onClicked : undefined,
+                    onItemClickedNotify: this.isOnClickedNotify ? this.onClickedNotify : undefined,
+                    onSelect: (uri: string) => {},
+                    onDeselect: (uri: string) => {}
+                })
+            }.height('50%')
+
+            Row() {
+                Column() {
+                    Text('Selected assets')
+                    ForEach(this.getClickedUris(), (uri: ClickResult) => {
+                        Row() {
+                            // 能够移除选择或添加选择。
+                            Checkbox({ name: "OnClick" })
+                                .select(uri.isSelected)
+                                .onChange((checked: boolean) => {
+                                    let clickResult = this.clickedUris.get(uri.uri);
+                                    if (!clickResult) {
+                                        clickResult = {
+                                            uri: uri.uri,
+                                            isSelected: checked
+                                        };
+                                    } else {
+                                        clickResult.isSelected = checked;
+                                    }
+                                    if (uri.uri !== 'abnormal') {
+                                        this.clickedUris.set(uri.uri, clickResult);
+                                    }
+                                }).margin({ right: 5 })
+                            Text(uri.uri.slice(-30)).margin({right: 5}).width(150)
+                            // 从this.clickeduris中移除选择项。
+                            Button('Delete').onClick(() => {
+                                this.clickedUris.delete(uri.uri);
+                            })
+                            // 此处代码为异常场景样例，当传入异常URI时，picker宫格选中不生效。
+                            Button('Abnormal').onClick(() => {
+                                let clickResult = this.clickedUris.get(uri.uri);
+                                if (clickResult) {
+                                    let oldClickUri = clickResult.uri;
+                                    clickResult.uri = 'abnormal'
+                                    this.clickedUris.set(oldClickUri, clickResult)
+                                }
+                            })
+                        }.width('100%')
+                    })
+                }
+            }.height('20%')
+
+            Row() {
+                // 发送URI(SET_ITEM_CLICK_RESULT)。
+                Button('Set ClickResult')
+                    .onClick(() => {
+                        this.pickerController.addData(DataType.SET_ITEM_CLICK_RESULT, this.getClickedUris())
+                    })
+            }.height('10%')
+        }
+    .height('100%')
+            .width('100%')
+    }
+}
+```
 
 ## ScrollStopAtEndCallback<sup>23+</sup>
 
@@ -675,8 +828,9 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| backgroundOpacity<sup>24+</sup>         | number                         | 否   | 是 | 支持配置picker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 
- ## PickerError<sup>23+</sup>
+## PickerError<sup>23+</sup>
 
 使用PhotoPickerComponent组件发生错误时返回的错误的接口名称、错误码和错误描述。
 
@@ -886,7 +1040,7 @@ Picker的颜色模式。
 
 ```ts
 // xxx.ets
-// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
+// 在API version 23之前的版本中，需要使用'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
 import {
   PhotoPickerComponent,
   PickerController,
