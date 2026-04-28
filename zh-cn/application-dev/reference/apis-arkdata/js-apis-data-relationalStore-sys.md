@@ -39,7 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
+| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，默认为自动清理；false表示不自动清理，若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -1542,7 +1542,15 @@ ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&g
 
 ```ts
 try {
-  await rdbStore!.cleanDeviceDirtyData('test_table', 100);
+  await store!.cleanDeviceDirtyData('test_table', 100);
+  console.info('Succeeded in cleaning device dirty data.');
+} catch (err) {
+  console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+};
+
+// 全量清理
+try {
+  await store!.cleanDeviceDirtyData('test_table');
   console.info('Succeeded in cleaning device dirty data.');
 } catch (err) {
   console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
