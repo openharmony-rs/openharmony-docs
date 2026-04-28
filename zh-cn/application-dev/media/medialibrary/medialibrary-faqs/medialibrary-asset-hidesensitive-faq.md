@@ -1,25 +1,61 @@
 # 如何获取媒体图片中的地理位置信息
 ## 问题现象
 ```ts
-async GetImageLatitude(context : Context) {
-  let srcUri = '';
-  try {
-	  let fetchResult = await photoAccessHelper.getAssets(fetchOptions);
-      if (fetchResult !== undefined) {
-      	let asset = await fetchResult.getFirstObject();
-        srcUri = assets.uri;
-      }
-  } catch (err) {
-  	console.error('getAssets failed, error:${err.code}, ${err.message}')
-  }
-  
-  let file = fs.openSync(srcUri, fs.OpenMode.READ_ONLY);
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
-  const imageSourceObj = image.createImageSource(file.fd);
-  console.info("getImagePropertySync");
-  // 获取地理位置信息为空
-  let latitude = imageSourceObj.getImagePropertySync(image.PropertyKey.GPS_LATITUDE);
-  console.info("latitude : " + latitude);
+@Entry({ routeName : 'Scene1' })
+@Component
+export struct Scene1 {
+
+  @State srcUri: string = '';
+  @State result: string = '';
+
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+
+        Button('example')
+          .width('80%')
+          .height(50)
+          .fontSize(16)
+          .onClick(async () => {
+            let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+            this.result = await example(phAccessHelper, context);
+          })
+
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('Get from Media Library')
+  }
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context): Promise<string> {
+  try {
+	let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOption);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let file: fs.File = fs.openSync(photoAsset.uri, fs.OpenMode.READ_ONLY);
+    const imageSourceObj = image.createImageSource(file.fd);
+    console.info("getImagePropertySync");
+     // 获取地理位置信息为空
+    let latitude = imageSourceObj.getImagePropertySync(image.PropertyKey.GPS_LATITUDE);
+    return latitude;
+  } catch (err) {
+    console.error(`request moving photo failed with error: ${err.code}, ${err.message}`);
+    return `request moving photo failed with error: ${err.code}, ${err.message}`;
+  }
 }
 ```
 使用只读模式打开图片后，解析图片无法获取图片中的地理位置信息。
