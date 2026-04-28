@@ -45,6 +45,8 @@
 
    在InputMethodService.ets文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
+   ArkTS-Dyn示例：
+   
    <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
    
    ``` TypeScript
@@ -72,12 +74,34 @@
      }
    }
    ```
+   
+   ArkTS-Sta示例：
+   
+   ``` TypeScript
+   import { Want } from '@kit.AbilityKit';
+   import keyboardController from './model/KeyboardController';
+   import { InputMethodExtensionAbility } from '@kit.IMEKit';
+   
+   const TAG: string = 'InputMethodService->';
+   
+   export default class InputMethodService extends InputMethodExtensionAbility {
+       onCreate(want: Want): void {
+           keyboardController.onCreate(this.context); // 初始化窗口并注册对输入法框架的事件监听
+       }
+       
+       onDestroy(): void {
+           keyboardController.onDestroy(); // 销毁窗口并去注册事件监听
+       }
+   }
+   ```
 
 
 2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
+   ArkTS-Dyn示例：
+   
    <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
@@ -244,95 +268,94 @@
      }
    ```
    
- 
-   <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+      <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
-   ``` TypeScript
-   private registerListener(): void {
-     this.inputHandle.addLog('registerListener');
-     try {
-       display.on('change', () => {
-         this.inputHandle.addLog('screenChangeEvent');
-         this.resizePanel();
-       });
-     } catch (err) {
-       let error = err as BusinessError;
-       Log.showError(TAG, `display on change catch error: ${error.code} ${error.message}`);
-     }
-     inputMethodAbility.on('inputStart',
-       (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
-         this.inputHandle.addLog('keyboard inputStart');
-         this.inputHandle.onInputStart(kbController, textInputClient);
-       })
+      ``` TypeScript
+         
+         private registerListener(): void {
+           this.inputHandle.addLog('registerListener');
+           try {
+             display.on('change', () => {
+               this.inputHandle.addLog('screenChangeEvent');
+               this.resizePanel();
+             });
+           } catch (err) {
+             let error = err as BusinessError;
+             Log.showError(TAG, `display on change catch error: ${error.code} ${error.message}`);
+           }
+           inputMethodAbility.on('inputStart',
+             (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
+               this.inputHandle.addLog('keyboard inputStart');
+               this.inputHandle.onInputStart(kbController, textInputClient);
+             })
+         
+           // 设置监听子类型事件，改变输入法应用界面
+           inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+             if (inputMethodSubtype.id === 'InputMethodExtAbility') {
+               AppStorage.setOrCreate('subtypeChange', 0);
+             }
+             if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
+               AppStorage.setOrCreate('subtypeChange', 1);
+             }
+           });
+         
+           inputMethodAbility.on('inputStop', () => {
+             this.inputHandle.addLog('keyboard inputStop');
+             this.onDestroy();
+             if (this.mContext) {
+               this.mContext.destroy();
+             }
+           });
+         
+           this.inputHandle.addLog('pre on privateCommand');
+           try {
+             inputMethodAbility.on('privateCommand', (record: Record<string, inputMethodEngine.CommandDataType>) => {
+               this.inputHandle.addLog(`keyboard privateCommand : ${record}`);
+               Object.keys(record).forEach((key: string) => {
+                 this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
+               })
+             });
+           } catch (err) {
+             let error = err as BusinessError;
+             this.inputHandle.addLog(`on privateCommand sendPrivateCommand catch error: ${error.code} ${error.message}`);
+           }
+         
+           this.mKeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+         
+           this.mKeyboardDelegate.on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
+             if (this.isKeyboardShow) {
+               this.inputHandle.hideKeyboardSelf();
+             }
+             this.inputHandle.addLog(`keyDown: code = ${keyEvent.keyCode}`);
+             let result = this.onKeyDown(keyEvent);
+             this.inputHandle.addLog(`keyDown: result = ${result}`);
+             return result;
+           });
+         
+           this.mKeyboardDelegate.on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
+             this.inputHandle.addLog(`keyUp: code = ${keyEvent.keyCode}`);
+             let result = this.onKeyUp(keyEvent);
+             this.inputHandle.addLog(`keyUp: result = ${result}`);
+             return result;
+           });
+           this.mKeyboardDelegate.on('cursorContextChange', (x: number, y: number, height: number) => {
+             let cursorInfo: CursorInfo = { x: x, y: y, height: height };
+             this.inputHandle.setCursorInfo(cursorInfo);
+           });
+           if (isDebug) {
+             this.mKeyboardDelegate.on('selectionChange',
+               (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
+                 this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' +
+                   newEnd + ')');
+               });
+             this.mKeyboardDelegate.on('textChange', (text: string) => {
+               this.inputHandle.setTextInfo('textInfo: ' + text);
+             });
+           }
+      }
+      ```
    
-     // 设置监听子类型事件，改变输入法应用界面
-     inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-       if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-         AppStorage.setOrCreate('subtypeChange', 0);
-       }
-       if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-         AppStorage.setOrCreate('subtypeChange', 1);
-       }
-     });
-   
-     inputMethodAbility.on('inputStop', () => {
-       this.inputHandle.addLog('keyboard inputStop');
-       this.onDestroy();
-       if (this.mContext) {
-         this.mContext.destroy();
-       }
-     });
-   
-     this.inputHandle.addLog('pre on privateCommand');
-     try {
-       inputMethodAbility.on('privateCommand', (record: Record<string, inputMethodEngine.CommandDataType>) => {
-         this.inputHandle.addLog(`keyboard privateCommand : ${record}`);
-         Object.keys(record).forEach((key: string) => {
-           this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
-         })
-       });
-     } catch (err) {
-       let error = err as BusinessError;
-       this.inputHandle.addLog(`on privateCommand sendPrivateCommand catch error: ${error.code} ${error.message}`);
-     }
-   
-     this.mKeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
-   
-     this.mKeyboardDelegate.on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
-       if (this.isKeyboardShow) {
-         this.inputHandle.hideKeyboardSelf();
-       }
-       this.inputHandle.addLog(`keyDown: code = ${keyEvent.keyCode}`);
-       let result = this.onKeyDown(keyEvent);
-       this.inputHandle.addLog(`keyDown: result = ${result}`);
-       return result;
-     });
-   
-     this.mKeyboardDelegate.on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
-       this.inputHandle.addLog(`keyUp: code = ${keyEvent.keyCode}`);
-       let result = this.onKeyUp(keyEvent);
-       this.inputHandle.addLog(`keyUp: result = ${result}`);
-       return result;
-     });
-     this.mKeyboardDelegate.on('cursorContextChange', (x: number, y: number, height: number) => {
-       let cursorInfo: CursorInfo = { x: x, y: y, height: height };
-       this.inputHandle.setCursorInfo(cursorInfo);
-     });
-     if (isDebug) {
-       this.mKeyboardDelegate.on('selectionChange',
-         (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
-           this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' +
-             newEnd + ')');
-         });
-       this.mKeyboardDelegate.on('textChange', (text: string) => {
-         this.inputHandle.setTextInfo('textInfo: ' + text);
-       });
-     }
-   }
-   ```
- 
-
-   <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+      <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
      public isShiftKeyHold(): boolean {
@@ -476,16 +499,158 @@
    
    export const keyboardController: KeyboardController = new KeyboardController();
    ```
-
-
- 
-3. KeyboardKeyData.ets文件。
-
-   定义软键盘的按键显示内容。
-
-
-   <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
    
+     ArkTS-Sta示例：
+   
+      ``` TypeScript
+      import { display, window } from '@kit.ArkUI';
+      import { inputMethodEngine, InputMethodExtensionContext } from '@kit.IMEKit';
+      import hilog from '@ohos.hilog'
+      import { Want } from '@kit.AbilityKit';
+      import { BusinessError } from '@ohos.base';
+   
+      // 调用输入法框架的getInputMethodAbility方法获取实例，并由此实例调用输入法框架功能接口
+      const inputMethodAbility: inputMethodEngine.InputMethodAbility | null = inputMethodEngine.getInputMethodAbility();
+   
+      export class KeyboardController {
+        private mContext: InputMethodExtensionContext | undefined = undefined; // 保存InputMethodExtensionAbility中的context属性
+        private panel: inputMethodEngine.Panel | undefined = undefined;
+        private textInputClient: inputMethodEngine.InputClient | undefined = undefined;
+        private keyboardController: inputMethodEngine.KeyboardController | undefined = undefined;
+   
+        constructor() {
+        }
+   
+        public onCreate(context: InputMethodExtensionContext): void
+        {
+          this.mContext = context;
+          this.initWindow(); // 初始化窗口
+          this.registerListener(); // 注册对输入法框架的事件监听
+        }
+   
+        public onDestroy(): void // 应用生命周期销毁
+        {
+          this.unRegisterListener(); // 去注册事件监听
+          if(this.panel) { // 销毁窗口
+            inputMethodAbility?.destroyPanel(this.panel!);
+          }
+          if(this.mContext) {
+            this.mContext?.destroy();
+          }
+        }
+   
+        public insertText(text: string): void {
+          if(this.textInputClient) {
+            this.textInputClient?.insertText(text);
+          }
+        }
+   
+        public deleteForward(length: int): void {
+          if(this.textInputClient) {
+            this.textInputClient?.deleteForward(length);
+          }
+        }
+   
+        public startAbility(): void {
+          const targetWant: Want = {
+            bundleName: "com.huawei.hmos.settings",
+            abilityName: "com.huawei.hmos.settings.MainAbility"
+          };
+   
+          this.mContext!.startAbility(targetWant).then(() => { hilog.info(0x0000, 'testTag', 'startAbility success') })
+            .catch((err) => {
+              let error :BusinessError = err as BusinessError;
+              hilog.error(0x0000, 'testTag', 'StartAbility failed. Code: %{public}d, Message: %{public}s', error.code, error.message);
+            });
+        }
+   
+        private initWindow(): void // 初始化窗口
+        {
+          if(this.mContext === undefined) {
+            return;
+          }
+          let dis = display.getDefaultDisplaySync();
+          let dWidth = dis.width as int;
+          let dHeight = dis.height;
+          let keyHeightRate = 0.47;
+          let keyHeight = dHeight * keyHeightRate as int;
+          let nonBarPosition = dHeight - keyHeight as int;
+          let panelInfo: inputMethodEngine.PanelInfo = {
+            type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+            flag: inputMethodEngine.PanelFlag.FLG_FIXED
+          };
+          inputMethodAbility?.createPanel(this.mContext!, panelInfo).then((inputPanel: inputMethodEngine.Panel) => {
+            this.panel = inputPanel;
+            if(this.panel) {
+              this.panel?.resize(dWidth, keyHeight)!;
+              this.panel?.moveTo(0, nonBarPosition)!;
+              this.panel?.setUiContent('entryinputmethodextability/pages/Index')!;
+            }
+          });
+        }
+   
+        private registerListener(): void
+        {
+          // 注册对输入法框架服务的监听
+          this.registerInputListener();
+          // 注册隐藏键盘事件监听等
+        }
+       
+       // 注册对输入法框架服务的开启及停止事件监听
+        private registerInputListener(): void {
+          inputMethodAbility?.onInputStart((kbController, textInputClient) => {
+                // 此为输入法客户端实例，由此调用输入法框架提供给输入法应用的功能接口
+                this.textInputClient = textInputClient;
+                this.keyboardController = kbController;
+            })
+            inputMethodAbility?.onInputStop(() => {
+                //this.onDestroy(); // 销毁KeyboardController
+            });
+        }
+   
+        private unRegisterListener(): void
+        {
+          inputMethodAbility?.offInputStart();
+          inputMethodAbility?.offInputStop(() => {});
+        }
+   
+        public adjustPanelRect():void{
+          let landscapeRect: window.Rect = {
+            left: 100,
+            top: 100,
+            width: 400,
+            height: 400
+          };
+   
+          let portraitRect: window.Rect = {
+            left: 200,
+            top: 200,
+            width: 300,
+            height: 300
+          };
+   
+          // 目标面板状态类型
+          let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+          // 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度
+          let panelRect: inputMethodEngine.PanelRect = {
+            landscapeRect: landscapeRect,
+            portraitRect: portraitRect
+          };
+          this.panel?.adjustPanelRect(panelFlag, panelRect);
+        }
+      }
+   
+      const keyboardController = new KeyboardController();
+   
+      export default keyboardController;
+      ```
+   
+3. KeyboardKeyData.ets文件。 定义软键盘的按键显示内容。
+
+   ArkTS-Dyn示例：
+
+    <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+
    ``` TypeScript
    export interface keySourceListType {
      title: string,
@@ -654,9 +819,8 @@
      }
    ]
    ```
-
-
-   <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+   
+      <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
    
    ``` TypeScript
    export let numberSourceListData: sourceListType[] = [
@@ -828,15 +992,57 @@
      }
    ]
    ```
- 
-4. Index.ets文件。
+   
+   ArkTS-Sta示例：
+   
+   ```typescript
+   export interface sourceListType {
+     content: string,
+   }
+   
+   export let numberSourceListData: sourceListType[] = [
+     {
+       content: '1'
+     },
+     {
+       content: '2'
+     },
+     {
+       content: '3'
+     },
+     {
+       content: '4'
+     },
+     {
+       content: '5'
+     },
+     {
+       content: '6'
+     },
+     {
+       content: '7'
+     },
+     {
+       content: '8'
+     },
+     {
+       content: '9'
+     },
+     {
+       content: '0'
+     }
+   ]
+   ```
 
-   主要描绘了具体按键功能。如按下数字键，就会将数字内容在输入框中打印出来，按下删除键，就会将内容删除。
+
+4. Index.ets文件。主要描绘了具体按键功能。如按下数字键，就会将数字内容在输入框中打印出来，按下删除键，就会将内容删除。
 
    <!--Del-->同时在resources/base/profile/main_pages.json文件的src字段中添加此文件路径。<!--DelEnd-->
 
+   ArkTS-Dyn示例：
+
    <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
-   
+
    ``` TypeScript
    import { deviceInfo } from '@kit.BasicServicesKit';
    import Log from '../../model/Log';
@@ -870,14 +1076,11 @@
      private panel: inputMethodEngine.Panel | undefined;
      @StorageLink('subtypeChange') subtypeChange: number = 0;
    
-   
      aboutToAppear(): void {
        // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
        inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-         console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
          if (attr.immersiveMode == 1) {
            this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
-           console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
          }
        })
      }
@@ -900,8 +1103,6 @@
      change(): void {
        AppStorage.set('inputStyle', StyleConfiguration.getInputStyle(this.isLandscape, this.isRkDevice, DEVICE_TYPE));
      }
-   
-   
    
      build() {
        Stack() {
@@ -941,7 +1142,125 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   ``` TypeScript
+   import { Entry, Text, TextAttribute, Column, Component, Button, ClickEvent, ForEach, Flex, FlexDirection, ItemAlign, FlexAlign, Padding, Stack, Alignment,Builder } from '@ohos.arkui.component';
+   import { numberSourceListData, sourceListType } from './KeyboardKeyData';
+   import keyboardController from '../model/KeyboardController';
+   import { State } from '@kit.ArkUI';
+   import router from '@ohos.router';
+   
+   @Component
+   struct keyItem {
+     private keyValue: sourceListType = numberSourceListData[0];
+     @State keyBgc: string = "#fff";
+     @State keyFontColor: string = "#000";
+   
+     build() {
+       Flex({ direction: FlexDirection.Column,
+         alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+         Text(this.keyValue.content).fontSize(20).fontColor(this.keyFontColor)
+       }
+       .backgroundColor(this.keyBgc)
+       .borderRadius(6)
+       .width("8%")
+       .height("65%")
+       .onClick(() => {
+         keyboardController.insertText(this.keyValue.content);
+       })
+     }
+   }
+   
+   // 删除组件
+   @Component
+   export struct deleteItem {
+     @State keyBgc: string = "#fff";
+     @State keyFontColor: string = "#000";
+   
+     build() {
+       Column() {
+         Flex({ direction: FlexDirection.Column,
+           alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+           Text("删除").fontSize(20).fontColor(this.keyFontColor)
+         }
+         Button('startAbility').onClick((event: ClickEvent) => {
+           keyboardController.startAbility();
+         })
+         Button('adjustPanelRect').onClick((event: ClickEvent) => {
+           keyboardController.adjustPanelRect();
+         })
+       }
+       .backgroundColor(this.keyBgc)
+       .width("13%")
+       .borderRadius(6)
+       .onClick(() => {
+         keyboardController.deleteForward(1);
+       })
+     }
+   }
+   
+   // 数字键盘
+   @Component
+   struct numberMenu {
+     private numberList: sourceListType[] = numberSourceListData;
+   
+     build() {
+       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceEvenly }) {
+         Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+           ForEach(this.numberList, (item: sourceListType) => { // 数字键盘第一行
+             keyItem({ keyValue: item })
+           }, (item: sourceListType) => item.content);
+         }
+         .padding({ top: "2%" } as Padding )
+         .width("96%")
+         .height("25%")
+   
+         Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+           deleteItem()
+         }
+         .width("96%")
+         .height("25%")
+       }
+   
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     private numberList: sourceListType[] = numberSourceListData
+   
+     build() {
+       Stack() {
+         Flex({
+           direction: FlexDirection.Column,
+           alignItems: ItemAlign.Center,
+           justifyContent: FlexAlign.End
+         }) {
+           Flex({
+             direction: FlexDirection.Column,
+             alignItems: ItemAlign.Center,
+             justifyContent: FlexAlign.SpaceBetween
+           }) {
+             numberMenu({
+               numberList: this.numberList
+             })
+           }
+           .align(Alignment.End)
+           .width("100%")
+           .height("75%")
+         }
+         .height("100%").align(Alignment.End).backgroundColor("#cdd0d7")
+       }
+       .position({ x: 0, y: 0 }).zIndex(99999)
+     }
+   }
+   ```
+
 5. main_pages.json文件。对应ets/InputMethodExtensionAbility/pages/路径下键盘的绘制页面。
+
+   ArkTS-Dyn示例：
 
    ``` JSON
    {
@@ -951,12 +1270,24 @@
    }
    ```
 
-6. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
+   ArkTS-Sta示例：
 
+   ``` JSON
+   {
+     "src": [
+         "pages/Index",
+         "entryinputmethodextability/pages/Index"
+     ]
+   }
+   ```
+
+6. 在工程module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
+
+   ArkTS-Dyn示例：
 
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
-   
-   ``` JSON5
+
+   ``` JSON
    "extensionAbilities": [
      {
        "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ets",
@@ -975,6 +1306,20 @@
    ],
    ```
 
+   ArkTS-Sta示例：
+
+   ``` JSON
+   "extensionAbilities": [
+     {
+       "srcEntry": "./ets/entryinputmethodextability/InputMethodExtAbility.ets",
+       "name": "EntryInputMethodExtAbility",
+       "label": "inputMethod",
+       "description": "inputMethod",
+       "type": "inputMethod",
+       "exported": false
+     }
+   ],
+   ```
 
 
 
