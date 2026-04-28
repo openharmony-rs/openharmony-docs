@@ -206,7 +206,8 @@ function sendMessageToNative() {
     └
    ```
 3. 在MyWebNativeMessageExtAbility.ets文件中，增加导入[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)的依赖包，自定义类继承WebNativeMessagingExtensionAbility组件并实现生命周期回调。
-   ```ts
+    ArkTS-Dyn示例：
+  ``` TypeScript
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import {buffer, util} from '@kit.ArkTS';
@@ -263,6 +264,67 @@ function sendMessageToNative() {
      }
    };
    ```
+   ArkTS-Sta示例：
+  
+    ``` TypeScript
+    import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
+    import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@ohos.base'
+    import {buffer, util} from '@kit.ArkTS';
+    import fs from '@ohos.file.fs';
+
+    const TAG: string = '[MyWebNativeMessageExtAbility]';
+    const DOMAIN_NUMBER = 0xFF00;
+
+    export default class MyWebNativeMessageExtAbility extends WebNativeMessagingExtensionAbility {
+      // 读取扩展发来的消息，并回复
+      async ReadAsync(fdRead:int, fdWrite:int) : Promise<void> {
+        try {
+          // read
+          let arrayBuffer = new ArrayBuffer(1024);
+          let readLen = await fs.read(fdRead, arrayBuffer);
+          if (readLen <= 4) {
+            hilog.error(DOMAIN_NUMBER, TAG, 'read pipe length failed');
+            return;
+          }
+          hilog.info(DOMAIN_NUMBER, TAG, 'read pipe %{public}s', buffer.from(arrayBuffer, 4, (readLen - 4) as int).toString());
+
+          // write
+          let strResponse : string = "pong";
+          const encoder = new util.TextEncoder("utf-8");
+          const strBytes = encoder.encodeInto(strResponse);
+          let bufferLen = strBytes.length;
+          const lenBytes = new Uint8Array(4);
+          lenBytes[0] = (bufferLen >> 0) & 0xFF;
+          lenBytes[1] = (bufferLen >> 8) & 0xFF;
+          lenBytes[2] = (bufferLen >> 16) & 0xFF;
+          lenBytes[3] = (bufferLen >> 24) & 0xFF;
+          const writeBuffer = new Uint8Array(4 + bufferLen);
+          writeBuffer.set(lenBytes, 4);
+          writeBuffer.set(strBytes, 4);
+          let writeLen = await fs.write(fdWrite, writeBuffer.buffer);
+          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
+        } catch (err: BusinessError) {
+          hilog.error(DOMAIN_NUMBER, TAG, 'fs io failed, error code: ' + err.code + " message: " + err.code);
+        }
+      }
+
+      onConnectNative(info: ConnectionInfo): void {
+        hilog.info(DOMAIN_NUMBER, TAG,
+          `onConnectNative, connectionId ${info.connectionId} caller bundle: ${info.bundleName}, extension origin: ${info.extensionOrigin}, pipe Read: ${info.fdRead}, pipe write ${info.fdWrite}  `);
+        this.ReadAsync(info.fdRead, info.fdWrite)
+      }
+
+      onDisconnectNative(info: ConnectionInfo): void {
+        hilog.info(DOMAIN_NUMBER, TAG, `onDisconnectNative, connectionId: ${info.connectionId}`);
+      }
+
+      onDestroy(): void {
+        hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
+      }
+    };
+    ```
 4. 在工程Module的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册WebNativeMessagingExtensionAbility组件。设置type标签为“webNativeMessaging”，srcEntry标签指向组件代码路径。
 
    ```json5
@@ -313,7 +375,8 @@ function sendMessageToNative() {
 浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING。
 
 1. 当接收到创建NativeMessaging连接时，先通过[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
-   ```ts
+    ArkTS-Dyn示例：
+    ``` TypeScript
    import { dataShare } from '@kit.ArkData';
 
    interface ExtensionConfig {
@@ -366,8 +429,74 @@ function sendMessageToNative() {
      }
    }
    ```
+
+   ArkTS-Sta示例：
+    ``` TypeScript
+    import dataShare from '@ohos.data.dataShare';
+
+    class ExtensionConfig {
+      abilityName:string = '';
+      allowed_origins:string[] = new Array<string>();
+    }
+
+    async function getManifestData(bundleName:string, connectExtensionOrigin:string) {
+      try {
+        // 调用dataShare接口获取extension配置
+        const dsProxyHelper = await dataShare.createDataProxyHandle();
+        const urisToGet = [`datashareproxy://${bundleName}/browserNativeMessagingHosts`];
+        const config : dataShare.DataProxyConfig = {
+          type: dataShare.DataProxyType.SHARED_CONFIG,
+        };
+        const results = await dsProxyHelper.get(urisToGet, config);
+        let foundValid = false;
+        for (let i = 0; i < results.length; i++) {
+          try {
+            const result = results[i];
+            const json = result.value;
+            if (typeof json !== "string") {
+              continue;
+            }
+            let jsonStr:string = json as string;
+            let parameters : Record<string, Any> = {
+              "abilityName":"",
+              'allowed_origins': new Array<string>(),
+            }
+            let info:ExtensionConfig = new ExtensionConfig();
+            info.abilityName = parameters['abilityName'] as string;
+            info.allowed_origins = parameters['allowed_origins'] as string[];
+            Object.assign(parameters, jsonStr);
+            // let info:ExtensionConfig = JSON.parse(jsonStr,  new ExtensionConfig());
+            if (info.abilityName) {
+              console.info('Native message json info is ok');
+              if (!Array.isArray(info.allowed_origins)) {
+                info.allowed_origins = [info.allowed_origins[0]];
+              }
+              if (!info.allowed_origins.includes(connectExtensionOrigin)) {
+                console.error('Origin not allowed, continue searching');
+                continue;
+              }
+              foundValid = true;
+              break;
+            }
+          } catch (error) {
+            console.error('NativeMessage JSON parse error:', error);
+          }
+        }
+        if (!foundValid) {
+          console.error('NativeMessage JSON no valid manifest found');
+        } else {
+          console.info('NativeMessage allowed_origins match ok');
+        }
+      } catch (error) {
+        console.error('Error getting config:', error);
+      }
+    }
+    ```
+
 2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessaging连接，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
-   ```ts
+
+    ArkTS-Dyn示例：
+    ``` TypeScript
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
@@ -406,9 +535,54 @@ function sendMessageToNative() {
      }
    }
    ```
+   ArkTS-Sta示例：
+    ``` TypeScript
+    import UIAbility from '@ohos.app.ability.UIAbility';
+    import Want from '@ohos.app.ability.Want';
+    import common from '@ohos.app.ability.common';
+    import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
+
+    class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
+      onConnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
+        // connected
+        console.error(`onConnect id ${connection.connectionId} is connected`);
+      }
+      onDisconnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
+        // disconnect
+        console.error(`onDisconnect id ${connection.connectionId} is connected`);
+      }
+      onFailed(code:webNativeMessagingExtensionManager.NmErrorCode, errMsg:string) {
+        console.error(`onFailed error code is ${code}, errMsg is ${errMsg}`);
+      }
+    }
+
+    function connectNative(abilityContext: common.UIAbilityContext, bundleName: string, abilityName: string,
+      connectExtensionOrigin: string, readPipe: number, writePipe: number) : void {
+      try {
+
+        let parameters = new Record<string, Object>();
+        parameters.set("ohos.arkweb.messageReadPipe", readPipe)
+        parameters.set("ohos.arkweb.messageWritePipe", writePipe)
+        parameters.set("ohos.arkweb.extensionOrigin", connectExtensionOrigin)
+        let wantInfo:Want = {
+          bundleName: bundleName,
+          abilityName: abilityName,
+          parameters: parameters,
+        };
+
+        let options : ConnectionCallback = new ConnectionCallback;
+        let connectId = webNativeMessagingExtensionManager.connectNative(abilityContext, wantInfo, options);
+        console.info(`innerWebNativeMessageManager  connectionId : ${connectId}` );
+      } catch (error) {
+        console.info(`inner callback error Message: ${JSON.stringify(error)}`);
+      }
+    }
+    ```
 
 3. 需要销毁NativeMessaging连接时，调用[webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative)。
-   ```ts
+
+    ArkTS-Dyn示例：
+    ``` TypeScript
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
    function disconnectNative(connectId: number) : void {
@@ -416,3 +590,12 @@ function sendMessageToNative() {
      webNativeMessagingExtensionManager.disconnectNative(connectId);
    }
    ```
+    ArkTS-Sta示例：
+    ``` TypeScript
+    import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
+
+    function disconnencNative(connectId: int) : void {
+      console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
+      webNativeMessagingExtensionManager.disconnectNative(connectId);
+    }
+    ```
