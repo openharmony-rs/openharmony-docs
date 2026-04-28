@@ -301,8 +301,7 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 
 <!--Del-->
 ### 获取活跃输出设备信息（仅对系统应用开放）
-
-使用[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getactiveoutputdevicedescriptors26)方法，可以获取当前音频设备场景下的活跃输出设备描述符。
+使用[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/js-apis-audio-sys.md#getactiveoutputdevicedescriptors26)方法，可以获取当前音频设备场景下的活跃输出设备描述符。
 
 > **说明：**
 >
