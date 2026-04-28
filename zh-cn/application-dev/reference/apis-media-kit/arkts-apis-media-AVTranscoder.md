@@ -83,7 +83,7 @@ async function test() {
   
   // 配置水印参数。
   let watermarkConfig: media.WatermarkConfiguration = {
-      // 根据实际需求配置水印参数，单位像素。
+      // 根据实际需求配置水印参数，单位为像素（px）。
       top : 40,
       left : 40,
       width: 200,
