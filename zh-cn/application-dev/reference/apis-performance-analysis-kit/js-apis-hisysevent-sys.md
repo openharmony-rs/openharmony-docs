@@ -93,7 +93,7 @@ write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-ArkTS-Dyn实例：
+ArkTS-Dyn示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -120,7 +120,7 @@ try {
 }
 ```
 
-ArkTS-Sta实例：
+ArkTS-Sta示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -189,7 +189,7 @@ write(info: SysEventInfo): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn实例：
+ArkTS-Dyn示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -222,7 +222,7 @@ try {
 }
 ```
 
-ArkTS-Sta实例：
+ArkTS-Sta示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -503,7 +503,7 @@ query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 
 **示例：**
 
-ArkTs-Dyn示例：
+ArkTS-Dyn示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -550,7 +550,7 @@ try {
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
