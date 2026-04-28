@@ -52,6 +52,7 @@ HiDebug模块代码结构体定义。
 | [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | 栈帧类型的枚举值定义。 |
 | [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | 维测信息数据类型的枚举。 |
 | [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | 定义资源采集类型的枚举。 |
+| [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | 内存监听回调的类型。开发者根据回调类型处理相关逻辑。 |
 
 ### 宏定义
 
@@ -218,6 +219,24 @@ enum OH_HiDebug_ResourceType
 | OH_RES_TYPE_NATIVE | Native 内存<br>**起始版本：** 24 |
 | OH_RES_TYPE_GPU | GPU 内存<br>**起始版本：** 24 |
 | OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24 |
+
+### OH_HiDebug_MemListenerType
+
+```c
+enum OH_HiDebug_MemListenerType
+```
+
+**描述**
+
+内存监听回调的类型。开发者根据回调类型处理相关逻辑。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_HIDEBUG_DO_NOTHING = 0 | 无特定操作，仅通知回调。<br>**起始版本：** 26.0.0 |
+| OH_HIDEBUG_RUNNING_GC = 1 | 垃圾回收（GC）操作。<br>**起始版本：** 26.0.0 |
+| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | 导出内存快照。<br>**起始版本：** 26.0.0 |
 
 ## 宏定义说明
 
@@ -643,21 +662,3 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilingResult\* result | 资源采集回调函数的参数。 |
-
-### OH_HiDebug_MemListenerType
-
-```c
-enum OH_HiDebug_MemListenerType
-```
-
-**描述**
-
-为内存监听回调定义一个枚举
-
-**起始版本：** 26.0.0
-
-| 枚举项 | 描述 |
-| -- | -- |
-| OH_HIDEBUG_DO_NOTHING = 0 | 默认值，不需要处理 |
-| OH_HIDEBUG_RUNNING_GC = 1 | gc操作 |
-| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | 导出内存快照 |
