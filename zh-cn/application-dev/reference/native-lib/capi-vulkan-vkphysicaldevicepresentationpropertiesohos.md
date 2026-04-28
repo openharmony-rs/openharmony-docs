@@ -28,5 +28,5 @@ typedef struct VkPhysicalDevicePresentationPropertiesOHOS {...} VkPhysicalDevice
 | 名称 | 描述 |
 | -- | -- |
 | VkStructureType sType | 结构体类型。 |
-| const void* pNext    | 下一级结构体指针，pNext为空或者下一级结构体指针。 |
+| void* pNext    | 下一级结构体指针，pNext为空或者下一级结构体指针。 |
 | VkBool32 sharedImage | 共享图像标志。 |
