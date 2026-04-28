@@ -34,16 +34,16 @@ MultiNavigation({navDestination: NavDestinationBuildFunction, multiStack: MultiN
 
 MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左侧主页点击时，会触发详情页的加载并同时清除右侧所有其他详情页，确保右侧仅展示最新加载的详情页。然而，若在右侧的详情页上再次执行详情页加载操作，系统将不会执行清栈动作。效果可参见[主页跳转详情页效果演示](#示例)。
 
-**装饰器类型：**@Component
+**装饰器类型：** [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 |   名称   |          类型          | 必填 | 装饰器类型 | 说明 |
-|:---------:|:----------------------:|------ |:------:|-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | @State | 设置路由栈。 |
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | @BuilderParam | 设置加载目标页面的路由规则。 |
+|---------|----------------------|------ |------|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | [@State](../../../ui/state-management/arkts-state.md) | 设置路由栈。 |
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 设置加载目标页面的路由规则。 |
 | onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | - | 设置MultiNavigation模式变更时的回调。 |
 | onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | - | 设置主页处于栈顶时的回调。 |
 

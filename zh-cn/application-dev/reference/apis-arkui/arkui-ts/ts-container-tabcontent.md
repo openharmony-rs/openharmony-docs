@@ -335,7 +335,7 @@ padding(value: Padding | Dimension): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br />默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp} |
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br/>异常值时取默认值。<br />默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp} |
 
 **返回值：**
 
@@ -357,7 +357,7 @@ padding(padding: LocalizedPadding): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br />默认值：{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8),<br/>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 是   | 子页签的内边距属性。<br/>异常值时取默认值。<br/>取值范围：[0, +∞]<br/>异常值时取默认值。<br />默认值：{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8),<br/>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
 
 **返回值：**
 
