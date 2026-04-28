@@ -31,7 +31,7 @@ function getMediaTypeByMimeType(mimeType: string): string {
 
 ## 通过URI判断连拍图资源
 
-连拍照片的URI中包含特定标识，开发者可以通过检查URI中的关键字来判断是否为连拍图资源：
+未重命名连拍照片的URI中包含特定标识，开发者可以通过检查URI中的关键字来判断是否为连拍图资源：
 
 - URI同时包含`burst`和`cover`时，表示该资源为连拍封面。
 - URI仅包含`burst`时，表示该资源为连拍照片（非封面）。
