@@ -276,32 +276,34 @@ export function testProtobuf() {
 
 <!-- @[tranferabledObject_Text ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
+  @Local message: string = 'Hello World';
   @Local layout: LayoutS = new LayoutS();
-  @Local pb: test_pb = test_pb.create();
 
   build() {
     Column() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .margin({ top: 20 })
+
       Button('运行TaskPool测试')
+        .width('80%')
+        .height(50)
+        .margin({ top: 20, bottom: 20 })
         .onClick(() => {
           this.runTests();
         })
+        .id('button')
 
       Scroll() {
         Column() {
-          Text(`TestProtobuf: ${this.pb.value_string}`)
-            .fontSize(14)
-            .textAlign(TextAlign.Start)
-            .backgroundColor(Color.White)
-            .padding(10)
-            .borderRadius(8)
-            .margin({ bottom: 10 })
-            .width('100%')
 
-          Text(this.layout.type)
+          Text(`TestJSON: ${this.layout.type}`)
             .fontSize(14)
             .textAlign(TextAlign.Start)
             .backgroundColor(Color.White)
@@ -318,7 +320,11 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+    .padding(20)
+    .backgroundColor('#F5F5F5')
   }
+
+// ...
 }
 ```
 
