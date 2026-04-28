@@ -1,4 +1,4 @@
-# JSVM_CpuProfiler__*
+# JSVM_DeserializeResult
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
@@ -7,14 +7,14 @@
 <!--Adviser: @fang-jinxu-->
 
 ```c
-typedef struct JSVM_CpuProfiler__* JSVM_CpuProfiler
+typedef struct JSVM_DeserializeResult__* JSVM_DeserializeResult;
 ```
 
 ## Overview
 
-Defines a JavaScript CPU profiler.
+Defines a struct for the background deserialization result transferred together with **JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT**.
 
-**Since**: 12
+**Since**: 24
 
 **Related module**: [JSVM](capi-jsvm.md)
 
