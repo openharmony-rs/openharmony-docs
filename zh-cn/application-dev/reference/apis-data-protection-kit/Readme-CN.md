@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @邱荣锋-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
