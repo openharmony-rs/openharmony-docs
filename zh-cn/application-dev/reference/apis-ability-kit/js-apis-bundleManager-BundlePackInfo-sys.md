@@ -143,7 +143,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                 |
 | ----------- | ------ | ---- | ---- | -------------------- |
 | releaseType | string | 是   | 否   | 版本的名称。         |
-| compatible  | number | 是   | 否   | 版本的最小兼容版本号。 |
+| compatible  | number | 是   | 否   | 最小兼容版本号。 |
 | target      | number | 是   | 否   | 目标版本号。         |
 
 ## Version
