@@ -43,7 +43,7 @@
    在工程中，自定义Layout模型如下（位置：`entry/src/main/ets/turbotrans_JSON/layout.ets`）：
 
    <!-- @[tranferabledObject_Layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) -->
-
+   
    ``` TypeScript
    import { Serializable, SerialName } from '@hadss/turbo-trans-core';
    // ...
@@ -76,7 +76,7 @@
    - 手写JSON字符串。
 
    <!-- @[tranferabledObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) -->
-  
+   
    ``` TypeScript
    import { TJSON } from '@hadss/turbo-trans-json';
    import { Layout, LayoutS } from 'entry/ets/turbotrans_JSON/layout'
@@ -122,7 +122,7 @@
    当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象（位置：`entry/src/generated/ets/turbotrans_JSON/layout.ets`）。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。
 
    <!-- @[tranferabledObject_SendableLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/generated/ets/turbotrans_JSON/layout.ets) -->
-
+   
    ``` TypeScript
    toSendable(): SendableLayout {
      const sendable = new SendableLayout();
@@ -138,7 +138,7 @@
    同时，生成的Sendable类型（位置：`entry/src/generated/ets/sendableModel/SendableLayout.ets`）通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原出普通对象。
 
    <!-- @[tranferabledObject_SendableLayout_toOrigin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/generated/ets/sendableModel/SendableLayout.ets) -->
-
+   
    ``` TypeScript
    @Sendable
    export class SendableLayout implements lang.ISendable {
