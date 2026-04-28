@@ -325,10 +325,6 @@ schema.skip = 0;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称     | 类型    | 只读 | 可选 | 说明                                                         |
 | -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。<br/>模型约束：此接口仅可在Stage模型下使用。 <br/> **ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
