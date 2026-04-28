@@ -104,6 +104,7 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 **示例：**
 
 通过addColorStop设置指定色域的渐变断点值，包括偏移和颜色。设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
+
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';

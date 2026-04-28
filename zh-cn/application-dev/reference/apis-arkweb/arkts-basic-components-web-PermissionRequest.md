@@ -10,6 +10,8 @@ Web组件返回授权或拒绝权限功能的对象。示例代码参考[onPermi
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -24,6 +26,10 @@ PermissionRequest的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## deny<sup>9+</sup>
 
 deny(): void
@@ -32,6 +38,10 @@ deny(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## getOrigin<sup>9+</sup>
 
 getOrigin(): string
@@ -39,6 +49,10 @@ getOrigin(): string
 获取网页来源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -54,6 +68,10 @@ getAccessibleResource(): Array\<string\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型              | 说明            |
@@ -64,9 +82,13 @@ getAccessibleResource(): Array\<string\>
 
 grant(resources: Array\<string\>): void
 
-对网页访问的给定权限进行授权。
+对网页所请求的权限进行授权。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

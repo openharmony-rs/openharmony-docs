@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -30,6 +30,7 @@
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) | OH_ImageSource_Info | OH_ImageSource_Info是native层封装的ImageSource信息结构体，OH_ImageSource_Info结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。 |
 | [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) | OH_DecodingOptionsForPicture | Picture解码参数结构体。通过[OH_DecodingOptionsForPicture_Create](#oh_decodingoptionsforpicture_create)获取。 |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) | OH_DecodingOptions | OH_DecodingOptions是native层封装的解码选项参数结构体，用于设置解码选项参数，在创建Pixelmap时作为入参传入，详细信息见[OH_ImageSourceNative_CreatePixelmap](#oh_imagesourcenative_createpixelmap)。 |
+| [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) | OH_ImageRawData | 定义图像中的原始数据。通过[OH_ImageSourceNative_CreateImageRawData](capi-image-source-native-h.md#oh_imagesourcenative_createimagerawdata)获取。|
 
 ### 枚举
 
@@ -47,7 +48,7 @@
 | [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | 获取图片的宽。对于没有width标签的SVG图片，返回默认值0。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | 获取图片的高。对于没有height标签的SVG图片，返回默认值0。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | 获取图片是否为高动态范围的信息。 |
-| [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
+| [Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimetype)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
 | [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。 |
 | [Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)](#oh_decodingoptions_create) | 创建OH_DecodingOptions指针。 |
 | [Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)](#oh_decodingoptions_getpixelformat) | 获取pixel格式。 |
@@ -105,6 +106,10 @@
 | [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)](#oh_decodingoptionsforpicture_getdesiredauxiliarypictures) | 获取解码时设置的期望辅助图（期望解码出的picture包含的辅助图）。 |
 | [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)](#oh_decodingoptionsforpicture_setdesiredauxiliarypictures) | 设置解码选项中的期望辅助图。 |
 | [Image_ErrorCode OH_DecodingOptionsForPicture_Release(OH_DecodingOptionsForPicture *options)](#oh_decodingoptionsforpicture_release) | 释放OH_DecodingOptionsForPicture指针。 |
+| [Image_ErrorCode OH_ImageSourceNative_CreateImageRawData(const OH_ImageSourceNative *source, OH_ImageRawData **rawData)](#oh_imagesourcenative_createimagerawdata) | 从图像中获取rawData对象。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetBufferFromRawData(const OH_ImageRawData *rawData, uint8_t **data, size_t *length)](#oh_imagesourcenative_getbufferfromrawdata) | 从rawData对象获取二进制数据。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetBitsPerPixelFromRawData(const OH_ImageRawData *rawData, uint8_t *bitsPerPixel)](#oh_imagesourcenative_getbitsperpixelfromrawdata) | 获取缓冲区数据中每个像素实际占用的位数。 |
+| [Image_ErrorCode OH_ImageSourceNative_DestroyImageRawData(OH_ImageRawData *rawData)](#oh_imagesourcenative_destroyimagerawdata) | 销毁rawData对象。 |
 
 ## 枚举类型说明
 
@@ -267,10 +272,10 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_BAD_PARAMETER：参数校验错误。 |
 
-### OH_ImageSourceInfo_GetMimetype()
+### OH_ImageSourceInfo_GetMimeType()
 
 ```c
-Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)
+Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimetype)
 ```
 
 **描述**
@@ -1867,5 +1872,105 @@ Image_ErrorCode OH_DecodingOptionsForPicture_Release(OH_DecodingOptionsForPictur
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_BAD_PARAMETER：参数错误。 |
+
+### OH_ImageSourceNative_CreateImageRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_CreateImageRawData(const OH_ImageSourceNative *source, OH_ImageRawData **rawData)
+```
+
+**描述**
+
+从图像中获取rawData对象。rawData对象通常占用大量内存，因为它包含来自相机的原始数据。<br>        当不再使用rawData对象时，请及时调用[OH_ImageSourceNative_DestroyImageRawData](capi-image-source-native-h.md#oh_imagesourcenative_destroyimagerawdata)方法销毁，以释放内存资源。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
+| [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) **rawData | 解码后获得的rawData对象的双指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_SOURCE：源错误。<br>         IMAGE_SOURCE_INVALID_PARAMETER：rawData对象无效。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持的MIME类型。 |
+
+### OH_ImageSourceNative_GetBufferFromRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetBufferFromRawData(const OH_ImageRawData *rawData, uint8_t **data, size_t *length)
+```
+
+**描述**
+
+从rawData对象获取二进制数据。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) *rawData | 指向rawData对象的指针。 |
+| uint8_t **data | 指向二进制缓冲区数据的指针。 |
+| size_t *length | 指向所获取数据长度的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_SOURCE_INVALID_PARAMETER：rawData对象无效。 |
+
+### OH_ImageSourceNative_GetBitsPerPixelFromRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetBitsPerPixelFromRawData(const OH_ImageRawData *rawData, uint8_t *bitsPerPixel)
+```
+
+**描述**
+
+获取缓冲区数据中每个像素实际占用的位数。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) *rawData | 指向rawData对象的指针。 |
+| uint8_t *bitsPerPixel | 指向所获取的每像素位数的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_SOURCE_INVALID_PARAMETER：rawData对象无效。 |
+
+### OH_ImageSourceNative_DestroyImageRawData()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_DestroyImageRawData(OH_ImageRawData *rawData)
+```
+
+**描述**
+
+销毁rawData对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) *rawData | 指向rawData对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_SOURCE_INVALID_PARAMETER：rawData对象无效。 |
 
 

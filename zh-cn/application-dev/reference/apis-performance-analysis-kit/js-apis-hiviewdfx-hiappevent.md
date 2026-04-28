@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -31,7 +31,7 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 
 添加事件观察者。可通过事件观察者的回调函数监听事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -180,7 +180,7 @@ removeWatcher(watcher: Watcher): void
 
 移除事件观察者。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -221,7 +221,7 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 
 事件自定义参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件领域和事件名称关联系统事件和应用事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -282,7 +282,7 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 - APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -325,7 +325,7 @@ let params: Record<string, hiAppEvent.ParamType> = {
 hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
   hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
 }).catch((err: BusinessError) => {
-hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -338,7 +338,7 @@ configEventPolicy(policy: EventPolicy): Promise&lt;void&gt;
 
 在同一生命周期中，可以通过配置策略设置系统事件相关的策略参数。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -383,7 +383,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -403,7 +403,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 提供设置[Watcher](#watcher)的onTrigger回调触发条件的参数选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -418,7 +418,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 提供设置[Watcher](#watcher)的订阅过滤条件的参数选项。用于在事件观察者中设置事件过滤条件，确保只有满足过滤条件的事件才会被监听处理。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -443,7 +443,7 @@ constructor(watcherName: string)
 
 类构造函数，用于创建订阅数据持有者实例。先通过[addWatcher](#hiappeventaddwatcher)添加事件观察者，再通过观察者名称关联到应用内已添加的观察者对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -464,7 +464,7 @@ hiAppEvent.addWatcher({
       domain: hiAppEvent.domain.OS,
     }
   ],
-  });
+});
 
 // 创建订阅数据持有者实例，holder1持有的数据为上述addWatcher中添加的观察者“Watcher1”监听到的事件
 let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
@@ -476,7 +476,7 @@ setSize(size: number): void
 
 设置每次取出的事件包的数据大小阈值。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -510,7 +510,7 @@ setRow(size: number): void
 
 设置每次取出的事件包的数据条数，优先级高于setSize，和setSize同时调用时仅setRow生效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -548,7 +548,7 @@ takeNext(): AppEventPackage
 
 当setRow和setSize同时调用时仅setRow生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -572,7 +572,7 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 提供事件信息的参数选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -592,18 +592,18 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 | 名称      | 类型     | 只读 | 可选 | 说明                           |
 | --------- | -------- | ---- | ---- | ------------------------------ |
-| packageId | number   | 否 | 否   | 事件包ID，从0开始自动递增。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。    |
-| row       | number   | 否 | 否   | 事件包的事件数量。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。             |
-| size      | number   | 否 | 否   | 事件包的事件大小，单位为byte。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 |
-| data      | string[] | 否 | 否   | 事件包的事件信息。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。             |
-| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | 否 | 否   | 事件对象集合。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| packageId | number   | 否 | 否   | 事件包ID，从0开始自动递增。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。    |
+| row       | number   | 否 | 否   | 事件包的事件数量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。             |
+| size      | number   | 否 | 否   | 事件包的事件大小，单位为byte。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 |
+| data      | string[] | 否 | 否   | 事件包的事件信息。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。             |
+| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | 否 | 否   | 事件对象集合。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
 
 
 ## AppEventGroup<sup>11+</sup>
 
 提供订阅返回的事件组的参数定义。可用于获取事件组的详细信息，事件组常在[Watcher](#watcher)的onReceive回调中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -619,7 +619,7 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行订阅。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -684,7 +684,7 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行处理。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -754,7 +754,7 @@ addProcessor(processor: Processor): number
 
 该接口为同步接口，包含耗时操作。为了确保性能，建议使用[addProcessorFromConfig](#hiappeventaddprocessorfromconfig20)异步接口或者交由子线程执行。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -784,13 +784,13 @@ addProcessor(processor: Processor): number
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
 }
 ```
 
@@ -804,7 +804,7 @@ addProcessorFromConfig(processorName: string, configName?: string): Promise&lt;n
 添加数据处理者配置信息，通过配置文件配置处理者接收的事件名等信息，事件发生后处理者可以接收事件，使用Promise异步回调。
 <!--RP1End-->
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -849,7 +849,7 @@ removeProcessor(id: number): void
 
 移除上报事件的数据处理者。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -873,14 +873,14 @@ removeProcessor(id: number): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    // 根据添加数据处理者返回的标识id移除特定数据处理者
-    hiAppEvent.removeProcessor(id);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  // 根据添加数据处理者返回的标识id移除特定数据处理者
+  hiAppEvent.removeProcessor(id);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
 
@@ -891,7 +891,7 @@ setUserId(name: string, value: string): void
 
 设置用户ID值。用于在配置[Processor](#processor11)数据处理者时进行关联。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -929,7 +929,7 @@ getUserId(name: string): string
 
 获取通过setUserId接口设置的value值。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -974,7 +974,7 @@ setUserProperty(name: string, value: string): void
 
 设置用户属性值。用于在配置[Processor](#processor11)数据处理者时进行关联。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1012,7 +1012,7 @@ getUserProperty(name: string): string
 
 获取通过setUserProperty接口设置的value值。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1057,7 +1057,7 @@ clearData(): void
 
 应用事件打点数据清理方法，将当前应用存储在本地的打点数据进行清除。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1074,7 +1074,7 @@ configure(config: ConfigOption): void
 
 应用事件打点配置方法，支持配置打点开关和目录存储配额大小。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1114,7 +1114,7 @@ hiAppEvent.configure(config2);
 
 提供对应用事件打点功能的配置选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1132,19 +1132,19 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
 
 提供主线程超时事件配置策略的定义。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1159,17 +1159,17 @@ hiAppEvent.configure(config2);
 | autoStopSampling | boolean | 否 | 是 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
 
 ## CpuUsageHighPolicy<sup>22+</sup>
- 
+
 提供CPU高负载事件配置策略的定义。
- 
+
 > **注意：**
-> 
+>
 > 该接口被调用后，会将设置值持久化。后续重复调用该接口时，若不设置对应参数，则取上一次系统取用的值。
- 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
- 
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
- 
+
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
 | foregroundLoadThreshold    | number | 否 | 是   | 应用前台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：30。若设置值在阈值范围外，系统将取用默认值30。<br>**说明**：建议取值小于30。 |
@@ -1182,7 +1182,7 @@ hiAppEvent.configure(config2);
 
 提供崩溃事件配置策略的定义。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1194,7 +1194,7 @@ hiAppEvent.configure(config2);
 
 提供应用冻屏事件配置策略的定义。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1206,7 +1206,7 @@ hiAppEvent.configure(config2);
 
 提供资源泄漏事件配置策略的定义。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1218,7 +1218,7 @@ hiAppEvent.configure(config2);
 
 提供地址越界事件配置策略的定义。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1234,27 +1234,27 @@ hiAppEvent.configure(config2);
 
 | 名称                | 类型                     | 只读 | 可选 | 说明                                                                                                        |
 | ------------------- | ----------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------- |
-| name                | string                  | 否 | 否   | 数据处理者的名称。名称只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                           |
-| debugMode           | boolean                 | 否 | 是   | 是否开启debug模式，默认值为false。配置值为true表示开启debug模式，false表示不开启debug模式。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                    |
-| routeInfo           | string                  | 否 | 是   | 服务器位置信息，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                   |
-| appId               | string                  | 否 | 是   | 应用id，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 |
-| onStartReport       | boolean                 | 否 | 是   | 数据处理者在启动时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                   |
-| onBackgroundReport  | boolean                 | 否 | 是   | 当应用程序进入后台时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                 |
-| periodReport        | number                  | 否 | 是   | 事件定时上报时间周期，单位为秒。传入数值必须大于或等于0，小于0时会被置为默认值0，不进行定时上报。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                |
-| batchReport         | number                  | 否 | 是   | 事件上报阈值，当事件条数达到阈值时上报事件。传入数值必须大于0且小于1000，不在数值范围内会被置为默认值0，不进行上报。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                         |
-| userIds             | string[]                | 否 | 是   | 数据处理者可以上报的用户ID的name数组。name对应[setUserId](#hiappeventsetuserid11)接口的name参数。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。    |
-| userProperties      | string[]                | 否 | 是   | 数据处理者可以上报的用户属性的name数组。name对应[setUserProperty](#hiappeventsetuserproperty11)接口的name参数。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。   |
-| eventConfigs        | [AppEventReportConfig](#appeventreportconfig11)[]  | 否 | 是   | 数据处理者可以上报的事件描述配置数组。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                 |
-| configId<sup>12+</sup> | number | 否 | 是 | 数据处理者配置id。传入数值必须大于或等于0，小于0时会被置为默认值0。传入的值大于0时，与数据处理者的名称name共同唯一标识数据处理者。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| customConfigs<sup>12+</sup> | Record\<string, string> | 否 | 是 | 自定义扩展参数。传入参数名和参数值不符合规格会默认不配置扩展参数，其规格定义如下：<br>- 参数名为string类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>- 参数值为string类型，参数值长度需在1024个字符以内。<br>- 参数个数需在32个以内。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| configName<sup>20+</sup>    | string                  | 否 | 是   | <!--RP4-->数据处理者的配置名称，支持从配置文件中加载对应配置，默认为空。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。<!--RP4End-->|
+| name                | string                  | 否 | 否   | 数据处理者的名称。名称只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                           |
+| debugMode           | boolean                 | 否 | 是   | 是否开启debug模式，默认值为false。配置值为true表示开启debug模式，false表示不开启debug模式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                                    |
+| routeInfo           | string                  | 否 | 是   | 服务器位置信息，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                   |
+| appId               | string                  | 否 | 是   | 应用id，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 |
+| onStartReport       | boolean                 | 否 | 是   | 数据处理者在启动时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                                   |
+| onBackgroundReport  | boolean                 | 否 | 是   | 当应用程序进入后台时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                                 |
+| periodReport        | number                  | 否 | 是   | 事件定时上报时间周期，单位为秒。传入数值必须大于或等于0，小于0时会被置为默认值0，不进行定时上报。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                                                |
+| batchReport         | number                  | 否 | 是   | 事件上报阈值，当事件条数达到阈值时上报事件。传入数值必须大于0且小于1000，不在数值范围内会被置为默认值0，不进行上报。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                         |
+| userIds             | string[]                | 否 | 是   | 数据处理者可以上报的用户ID的name数组。name对应[setUserId](#hiappeventsetuserid11)接口的name参数。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。    |
+| userProperties      | string[]                | 否 | 是   | 数据处理者可以上报的用户属性的name数组。name对应[setUserProperty](#hiappeventsetuserproperty11)接口的name参数。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。   |
+| eventConfigs        | [AppEventReportConfig](#appeventreportconfig11)[]  | 否 | 是   | 数据处理者可以上报的事件描述配置数组。默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                 |
+| configId<sup>12+</sup> | number | 否 | 是 | 数据处理者配置id。传入数值必须大于或等于0，小于0时会被置为默认值0。传入的值大于0时，与数据处理者的名称name共同唯一标识数据处理者。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| customConfigs<sup>12+</sup> | Record\<string, string> | 否 | 是 | 自定义扩展参数。传入参数名和参数值不符合规格会默认不配置扩展参数，其规格定义如下：<br>- 参数名为string类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>- 参数值为string类型，参数值长度需在1024个字符以内。<br>- 参数个数需在32个以内。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| configName<sup>20+</sup>    | string                  | 否 | 是   | <!--RP4-->数据处理者的配置名称，支持从配置文件中加载对应配置，默认为空。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该参数支持在原子化服务中使用。<!--RP4End-->|
 
 
 ## AppEventReportConfig<sup>11+</sup>
 
 数据处理者可以上报事件的描述配置。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1271,7 +1271,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 事件自定义参数值的类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1287,7 +1287,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 事件类型枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1303,7 +1303,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 提供领域名称常量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1322,28 +1322,28 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 | 名称                      | 类型   | 只读   | 说明                 |
 | ------------------------- | ------ | ------ | -------------------- |
-| USER_LOGIN                | string | 是 | 用户登录事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。       |
-| USER_LOGOUT               | string | 是 | 用户登出事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。       |
-| DISTRIBUTED_SERVICE_START | string | 是 | 分布式服务启动事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 |
-| APP_CRASH<sup>11+</sup>   | string | 是 | 应用崩溃事件。系统事件名称常量。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。       |
-| APP_FREEZE<sup>11+</sup>  | string | 是 | 应用冻屏事件。系统事件名称常量。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。       |
-| APP_LAUNCH<sup>12+</sup>  | string | 是 | 应用启动耗时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。   |
-| SCROLL_JANK<sup>12+</sup> | string | 是 | 应用滑动丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。   |
-| CPU_USAGE_HIGH<sup>12+</sup> | string | 是 | 应用CPU高负载事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| BATTERY_USAGE<sup>12+</sup> | string | 是 | 应用24h功耗器件分解统计事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| RESOURCE_OVERLIMIT<sup>12+</sup> | string | 是 | 应用资源泄漏事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。 |
-| APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
-| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
-| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该参数支持在原子化服务中使用。 |
+| USER_LOGIN                | string | 是 | 用户登录事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。       |
+| USER_LOGOUT               | string | 是 | 用户登出事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。       |
+| DISTRIBUTED_SERVICE_START | string | 是 | 分布式服务启动事件。预留的应用事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 |
+| APP_CRASH<sup>11+</sup>   | string | 是 | 应用崩溃事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。       |
+| APP_FREEZE<sup>11+</sup>  | string | 是 | 应用冻屏事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。       |
+| APP_LAUNCH<sup>12+</sup>  | string | 是 | 应用启动耗时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。   |
+| SCROLL_JANK<sup>12+</sup> | string | 是 | 应用滑动丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。   |
+| CPU_USAGE_HIGH<sup>12+</sup> | string | 是 | 应用CPU高负载事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| BATTERY_USAGE<sup>12+</sup> | string | 是 | 应用24h功耗器件分解统计事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| RESOURCE_OVERLIMIT<sup>12+</sup> | string | 是 | 应用资源泄漏事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该参数支持在原子化服务中使用。 |
+| APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该参数支持在原子化服务中使用。 |
+| APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。 |
+| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。 |
+| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该参数支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
 
 提供参数名称常量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 

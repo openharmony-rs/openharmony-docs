@@ -10,26 +10,35 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
 
 ## onAlert
 
-onAlert(callback: Callback\<OnAlertEvent, boolean\>)
+ArkTS-Dyn: onAlert(callback: Callback\<OnAlertEvent, boolean\>)
+
+ArkTS-Sta: onAlert(callback: Callback\<OnAlertEvent, boolean\> | undefined)
 
 网页触发alert()告警弹窗时触发回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                   | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnAlertEvent](./arkts-basic-components-web-i.md#onalertevent12), boolean\>                | 是    | 网页触发alert()告警弹窗时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
+| callback     | ArkTS-Dyn: Callback\<[OnAlertEvent](./arkts-basic-components-web-i.md#onalertevent12), boolean\>  <br/>ArkTS-Sta: Callback\<[OnAlertEvent](./arkts-basic-components-web-i.md#onalertevent12), boolean\> \|  undefined| 是    | 网页触发alert()告警弹窗时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -68,6 +77,49 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Web, Column, Component, Entry, OnAlertEvent, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onAlert((event: OnAlertEvent): boolean => {
+            if (event) {
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+
+              this.uiContext.showAlertDialog({
+                title: 'onAlert',
+                message: event.message,
+                confirm: {
+                  value: 'ok',
+                  action: () => {
+                    event.result.handleConfirm();
+                  }
+                },
+                cancel: () => {
+                  event.result.handleCancel();
+                }
+              } as AlertDialogParamWithConfirm);
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!--index.html-->
@@ -90,7 +142,9 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 ## onBeforeUnload
 
-onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
+ArkTS-Dyn: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
+
+ArkTS-Sta: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\> | undefined)
 
 即将完成页面刷新或关闭当前页面时触发此回调。
 
@@ -100,14 +154,19 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                  | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnBeforeUnloadEvent](./arkts-basic-components-web-i.md#onbeforeunloadevent12), boolean\>                | 是    | 即将完成页面刷新或关闭当前页面时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终是否离开当前页面。当回调返回false时，函数中绘制的自定义弹窗无效。 |
+| callback     | ArkTS-Dyn: Callback\<[OnBeforeUnloadEvent](./arkts-basic-components-web-i.md#onbeforeunloadevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnBeforeUnloadEvent](./arkts-basic-components-web-i.md#onbeforeunloadevent12), boolean\> \|  undefined| 是    | 即将完成页面刷新或关闭当前页面时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终是否离开当前页面。当回调返回false时，函数中绘制的自定义弹窗无效。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -153,6 +212,55 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnBeforeUnloadEvent, $rawfile } from '@kit.ArkUI';
+  import { UIContext, AlertDialogParamWithButtons } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onBeforeUnload((event: OnBeforeUnloadEvent): boolean => {
+            if (event) {
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.isReload:" + event?.isReload ?? 'false');
+              this.uiContext.showAlertDialog({
+                title: 'onBeforeUnload',
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.result.handleCancel();
+                  }
+                },
+                secondaryButton: {
+                  value: 'ok',
+                  action: () => {
+                    event.result.handleConfirm();
+                  }
+                },
+                cancel: () => {
+                  event.result.handleCancel();
+                }
+              } as AlertDialogParamWithButtons);
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!--index.html-->
@@ -175,20 +283,27 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 ## onConfirm
 
-onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
+ArkTS-Dyn: onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
+
+ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined)
 
 网页调用confirm()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                  | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnConfirmEvent](./arkts-basic-components-web-i.md#onconfirmevent12), boolean\>                | 是    | 网页调用confirm()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
+| callback     | ArkTS-Dyn: Callback\<[OnConfirmEvent](./arkts-basic-components-web-i.md#onconfirmevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnConfirmEvent](./arkts-basic-components-web-i.md#onconfirmevent12), boolean\> \|  undefined| 是    | 网页调用confirm()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
 
 **示例：**
 
+ ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -233,6 +348,55 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Web, Column, Component, Entry, OnConfirmEvent, AlertDialogParamWithButtons } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined)
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onConfirm((event: OnConfirmEvent): boolean => {
+            if (event) {
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+
+              this.uiContext.showAlertDialog({
+                title: 'onConfirm',
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.result.handleCancel();
+                  }
+                },
+                secondaryButton: {
+                  value: 'ok',
+                  action: () => {
+                    event.result.handleConfirm();
+                  }
+                },
+                cancel: () => {
+                  event.result.handleCancel();
+                }
+              } as AlertDialogParamWithButtons)
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!--index.html-->
@@ -264,20 +428,27 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 ## onPrompt<sup>9+</sup>
 
-onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
+ArkTS-Dyn: onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
+
+ArkTS-Sta: onPrompt(callback: Callback\<OnPromptEvent, boolean\> | undefined)
 
 网页调用prompt()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                  | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnPromptEvent](./arkts-basic-components-web-i.md#onpromptevent12), boolean\>                | 是    | 网页调用prompt()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认、取消和输入），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终处理结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
+| callback     | ArkTS-Dyn: Callback\<[OnPromptEvent](./arkts-basic-components-web-i.md#onpromptevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnPromptEvent](./arkts-basic-components-web-i.md#onpromptevent12), boolean\> \|  undefined| 是    | 网页调用prompt()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认、取消和输入），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终处理结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { CustomContentDialog } from '@kit.ArkUI';
@@ -356,6 +527,89 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Web, State, Column, Component, Entry, WebKeyboardAvoidMode, CustomDialogController, Builder} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { JsResult, Text, TextInput, ButtonStyleMode } from '@kit.ArkUI';
+  import { CustomContentDialog } from '@ohos.arkui.advanced.Dialog';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    @State message: string = 'Hello World';
+    @State title: string = 'Hello World';
+    @State result: JsResult | null = null;
+    promptResult: string = '';
+    webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+    dialogController: CustomDialogController = new CustomDialogController({
+      builder: CustomContentDialog({
+        primaryTitle: this.title,
+        contentBuilder: () => {
+          this.buildContent();
+        },
+        buttons: [
+          {
+            value: '取消',
+            buttonStyle: ButtonStyleMode.TEXTUAL,
+            action: () => {
+              console.info('Callback when the button is clicked');
+              this.result?.handleCancel()
+            }
+          },
+          {
+            value: '确认',
+            buttonStyle: ButtonStyleMode.TEXTUAL,
+            action: () => {
+              this.result?.handlePromptConfirm(this.promptResult);
+            }
+          }
+        ],
+      }),
+      onWillDismiss: () => {
+        this.result?.handleCancel();
+        this.dialogController.close();
+      }
+    });
+
+    // 自定义弹出框的内容区。
+    @Builder
+    buildContent(): void {
+      Column() {
+        Text(this.message)
+        TextInput()
+          .onChange((value) => {
+            this.promptResult = value;
+          })
+          .defaultFocus(true)
+      }
+      .width('100%')
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+          .onPrompt((event) => {
+            if (event) {
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.value:" + event.value);
+              this.title = "来自" + event.url + "的消息";
+              this.message = event.message;
+              this.promptResult = event.value;
+              this.result = event.result;
+              this.dialogController.open();
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!--index.html-->
@@ -383,20 +637,27 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 ## onConsole
 
-onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
+ArkTS-Dyn: onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
+
+ArkTS-Sta: onConsole(callback: Callback\<OnConsoleEvent, boolean\> | undefined)
 
 通知宿主应用JavaScript console消息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明      |
 | ------- | --------------------------------- | ---- | --------- |
-| callback | Callback\<[OnConsoleEvent](./arkts-basic-components-web-i.md#onconsoleevent12), boolean\> | 是    | 网页收到JavaScript控制台消息时触发。<br>返回值boolean。当返回true时，该条消息将不会再打印至hilog日志，返回false时仍会打印至hilog日志。 |
+| callback |ArkTS-Dyn: Callback\<[OnConsoleEvent](./arkts-basic-components-web-i.md#onconsoleevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnConsoleEvent](./arkts-basic-components-web-i.md#onconsoleevent12), boolean\> \|  undefined| 是    | 网页收到JavaScript控制台消息时触发。<br>返回值boolean。当返回true时，该条消息将不会再打印至hilog日志，返回false时仍会打印至hilog日志。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -419,7 +680,39 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
               console.info('getSourceId:' + event.message.getSourceId());
               console.info('getLineNumber:' + event.message.getLineNumber());
               console.info('getMessageLevel:' + event.message.getMessageLevel());
-              console.info('getSource:' + event.message.getSource());
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Button('onconsole message')
+          .onClick(() => {
+            this.controller.runJavaScript('myFunction()');
+          })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onConsole((event) => {
+            if (event) {
+              console.info('getMessage:' + event.message.getMessage());
+              console.info('getSourceId:' + event.message.getSourceId());
+              console.info('getLineNumber:' + event.message.getLineNumber());
+              console.info('getMessageLevel:' + event.message.getMessageLevel());
             }
             return false;
           })
@@ -445,20 +738,28 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
 
 ## onDownloadStart
 
-onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
+ArkTS-Dyn: onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
+
+ArkTS-Sta: onDownloadStart(callback: Callback\<OnDownloadStartEvent\> | undefined)
 
 通知主应用开始下载一个文件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+
 **参数：**
 
 | 参数名                | 类型   | 必填   | 说明                                |
 | ------------------ | ------ | ---- | ----------------------------------- |
-| callback           | Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> | 是    | 开始下载时触发。  |
+| callback           | ArkTS-Dyn: Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\><br/>ArkTS-Sta: Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> \|  undefined | 是    | 开始下载时触发。  |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -485,22 +786,58 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onDownloadStart((event) => {
+            if (event) {
+              console.info('url:' + event.url)
+              console.info('userAgent:' + event.userAgent)
+              console.info('contentDisposition:' + event.contentDisposition)
+              console.info('contentLength:' + event.contentLength)
+              console.info('mimetype:' + event.mimetype)
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onErrorReceive
 
-onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
+ArkTS-Dyn: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
+
+ArkTS-Sta: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\> | undefined)
 
 网页加载遇到错误时触发该回调。主资源与子资源出错都会回调该接口，可以通过[isMainFrame](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)来判断是否是主资源报错。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                     | 必填   | 说明            |
 | ------- | ---------------------------------------- | ---- | --------------- |
-| callback | Callback\<[OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12)\> | 是    | 网页收到 Web 资源加载错误时触发。      |
+| callback | ArkTS-Dyn: Callback\<[OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12)\> <br/>ArkTS-Sta: Callback\<[OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12)\> \|  undefined| 是    | 网页收到 Web 资源加载错误时触发。      |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -534,22 +871,64 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onErrorReceive((event) => {
+            if (event) {
+              console.info('getErrorInfo:' + event.error.getErrorInfo());
+              console.info('getErrorCode:' + event.error.getErrorCode());
+              console.info('url:' + event.request.getRequestUrl());
+              console.info('isMainFrame:' + event.request.isMainFrame());
+              console.info('isRedirect:' + event.request.isRedirect());
+              console.info('isRequestGesture:' + event.request.isRequestGesture());
+              console.info('getRequestHeader_headerKey:' + event.request.getRequestHeader().toString());
+              let result = event.request.getRequestHeader();
+              console.info('The request header result size is ' + result.length);
+              for (let i of result) {
+                console.info('The request header key is : ' + i.headerKey + ', value is : ' + i.headerValue);
+              }
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onHttpErrorReceive
 
-onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\>)
+ArkTS-Dyn: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\>)
+
+ArkTS-Sta: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\> | undefined)
 
 网页加载资源遇到的HTTP错误（响应码>=400）时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                     | 必填   | 说明       |
 | -------- | ---------------------------------------- | ---- | ---------- |
-| callback  | Callback\<[OnHttpErrorReceiveEvent](./arkts-basic-components-web-i.md#onhttperrorreceiveevent12)\> | 是    | 网页收到加载资源返回HTTP错误码时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnHttpErrorReceiveEvent](./arkts-basic-components-web-i.md#onhttperrorreceiveevent12)\><br/>ArkTS-Sta: Callback\<[OnHttpErrorReceiveEvent](./arkts-basic-components-web-i.md#onhttperrorreceiveevent12)\> \|  undefined | 是    | 网页收到加载资源返回HTTP错误码时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -590,22 +969,72 @@ onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnHttpErrorReceiveEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onHttpErrorReceive((event: OnHttpErrorReceiveEvent): void  => {
+            if (event) {
+              console.info('url:' + event.request.getRequestUrl());
+              console.info('isMainFrame:' + event.request.isMainFrame());
+              console.info('isRedirect:' + event.request.isRedirect());
+              console.info('isRequestGesture:' + event.request.isRequestGesture());
+              console.info('getResponseData:' + event.response.getResponseData());
+              console.info('getResponseEncoding:' + event.response.getResponseEncoding());
+              console.info('getResponseMimeType:' + event.response.getResponseMimeType());
+              console.info('getResponseCode:' + event.response.getResponseCode());
+              console.info('getReasonMessage:' + event.response.getReasonMessage());
+              let result = event.request.getRequestHeader();
+              console.info('The request header result size is ' + result.length);
+              for (let i of result) {
+                console.info('The request header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
+              }
+              let resph = event.response.getResponseHeader();
+              console.info('The response header result size is ' + resph.length);
+              for (let i of resph) {
+                console.info('The response header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
+              }
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onPageBegin
 
-onPageBegin(callback: Callback\<OnPageBeginEvent\>)
+ArkTS-Dyn: onPageBegin(callback: Callback\<OnPageBeginEvent\>)
+
+ArkTS-Sta: onPageBegin(callback: Callback\<OnPageBeginEvent\> | undefined)
 
 网页开始加载时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\> | 是    | 网页加载开始时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\>  <br/> ArkTS-Sta: Callback\<[OnPageBeginEvent](./arkts-basic-components-web-i.md#onpagebeginevent12)\> \|  undefined | 是    | 网页加载开始时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -628,22 +1057,53 @@ onPageBegin(callback: Callback\<OnPageBeginEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { Web, Column, Component, Entry, OnPageBeginEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onPageBegin((event: OnPageBeginEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onPageEnd
 
-onPageEnd(callback: Callback\<OnPageEndEvent\>)
+ArkTS-Dyn: onPageEnd(callback: Callback\<OnPageEndEvent\>)
+
+ArkTS-Sta: onPageEnd(callback: Callback\<OnPageEndEvent\> | undefined)
 
 网页加载完成时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\> | 是    | 网页加载结束时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\> <br/>ArkTS-Sta: Callback\<[OnPageEndEvent](./arkts-basic-components-web-i.md#onpageendevent12)\>  \|  undefined | 是    | 网页加载结束时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -666,9 +1126,35 @@ onPageEnd(callback: Callback\<OnPageEndEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { Web, Column, Component, Entry, OnPageEndEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onPageEnd((event: OnPageEndEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onLoadStarted<sup>20+</sup>
 
-onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
+ArkTS-Dyn: onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
+
+ArkTS-Sta: onLoadStarted(callback: Callback\<OnLoadStartedEvent\> | undefined)
 
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
@@ -678,14 +1164,19 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> | 是    | 网页加载开始时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> <br/>ArkTS-Sta: Callback\<[OnLoadStartedEvent](./arkts-basic-components-web-i.md#onloadstartedevent20)\> \| undefined | 是    | 网页加载开始时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -708,9 +1199,35 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { Web, Column, Component, Entry, OnLoadStartedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onLoadStarted((event: OnLoadStartedEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onLoadFinished<sup>20+</sup>
 
-onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
+ArkTS-Dyn: onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
+
+ArkTS-Sta: onLoadFinished(callback: Callback\<OnLoadFinishedEvent\> | undefined)
 
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
 
@@ -722,14 +1239,19 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明      |
 | ---- | ------ | ---- | --------- |
-| callback  | Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> | 是    | 网页加载结束时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> <br/>ArkTS-Sta: Callback\<[OnLoadFinishedEvent](./arkts-basic-components-web-i.md#onloadfinishedevent20)\> \|  undefined | 是    | 网页加载结束时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -752,22 +1274,53 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { Web, Column, Component, Entry, OnLoadFinishedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onLoadFinished((event: OnLoadFinishedEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onProgressChange
 
-onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
+ArkTS-Dyn: onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
+
+ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefined)
 
 网页加载进度变化时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型   | 必填   | 说明                  |
 | ----------- | ------ | ---- | --------------------- |
-| callback | Callback\<[OnProgressChangeEvent](./arkts-basic-components-web-i.md#onprogresschangeevent12)\> | 是    | 页面加载进度变化时触发的回调。 |
+| callback | ArkTS-Dyn: Callback\<[OnProgressChangeEvent](./arkts-basic-components-web-i.md#onprogresschangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnProgressChangeEvent](./arkts-basic-components-web-i.md#onprogresschangeevent12)\> \|  undefined| 是    | 页面加载进度变化时触发的回调。 |
 
 **示例：**
 
+ ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -789,22 +1342,53 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Column, Component, Web, OnProgressChangeEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onProgressChange((event: OnProgressChangeEvent): void => {
+            if (event) {
+              console.info('newProgress:' + event.newProgress);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onTitleReceive
 
-onTitleReceive(callback: Callback\<OnTitleReceiveEvent\>)
+ArkTS-Dyn: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\>)
+
+ArkTS-Sta: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\> | undefined)
 
 当页面文档标题`<title>`元素发生变更时，触发回调。若当前页面未显示设置标题，ArkWeb将在加载完成前基于页面的URL生成标题并返回给应用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明          |
 | ----- | ------ | ---- | ------------- |
-| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | 是    | 页面文档标题发生变更时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> <br/>ArkTS-Sta: Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> \|  undefined| 是    | 页面文档标题发生变更时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -828,22 +1412,55 @@ onTitleReceive(callback: Callback\<OnTitleReceiveEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnTitleReceiveEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onTitleReceive((event: OnTitleReceiveEvent): void => {
+            if (event) {
+              console.info('title:' + event.title);
+              console.info('isRealTitle:' + event.isRealTitle);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onRefreshAccessedHistory
 
-onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\>)
+ArkTS-Dyn: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\>)
+
+ArkTS-Sta: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\> | undefined)
 
 导航完成时触发该回调，用于应用更新其访问的历史链接。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型    | 必填   | 说明                                     |
 | ----------- | ------- | ---- | ---------------------------------------- |
-| callback         | Callback\<[OnRefreshAccessedHistoryEvent](./arkts-basic-components-web-i.md#onrefreshaccessedhistoryevent12)\>  | 是    | 在导航完成时触发。                |
+| callback         | ArkTS-Dyn: Callback\<[OnRefreshAccessedHistoryEvent](./arkts-basic-components-web-i.md#onrefreshaccessedhistoryevent12)\> <br/>ArkTS-Sta: Callback\<[OnRefreshAccessedHistoryEvent](./arkts-basic-components-web-i.md#onrefreshaccessedhistoryevent12)\> \|  undefined| 是    | 在导航完成时触发。                |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -859,7 +1476,31 @@ onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\>)
           .onRefreshAccessedHistory((event) => {
             if (event) {
               console.info('url:' + event.url + ' isReload:' + event.isRefreshed);
-              console.info('isMainFrame:' + event.isMainFrame);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnRefreshAccessedHistoryEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onRefreshAccessedHistory((event: OnRefreshAccessedHistoryEvent): void => {
+            if (event) {
+              console.info('url:' + event.url + ' isReload:' + event.isRefreshed);
             }
           })
       }
@@ -869,7 +1510,9 @@ onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\>)
 
 ## onRenderExited<sup>9+</sup>
 
-onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
+ArkTS-Dyn: onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
+
+ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined)
 
 应用渲染进程异常退出时触发该回调。
 
@@ -881,14 +1524,19 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名              | 类型                                     | 必填   | 说明             |
 | ---------------- | ---------------------------------------- | ---- | ---------------- |
-| callback | Callback\<[OnRenderExitedEvent](./arkts-basic-components-web-i.md#onrenderexitedevent12)\> | 是    | 渲染过程退出时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnRenderExitedEvent](./arkts-basic-components-web-i.md#onrenderexitedevent12)\> <br/>ArkTS-Sta: Callback\<[OnRenderExitedEvent](./arkts-basic-components-web-i.md#onrenderexitedevent12)\> \|  undefined| 是    | 渲染过程退出时触发。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -910,9 +1558,37 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
     }
   }
   ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column, RenderExitReason, OnRenderExitedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined)
+
+    build() {
+      Column() {
+        Web({ src: 'chrome://crash/', controller: this.controller })
+          .onRenderExited((event: OnRenderExitedEvent): void => {
+            if (event) {
+              console.info('reason:' + event.renderExitReason);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderProcessNotResponding<sup>12+</sup>
 
-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
+ArkTS-Dyn: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
+
+ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback | undefined)
 
 渲染进程无响应时触发该回调函数。如果Web组件无法处理输入事件，或者无法在合理的时间范围内导航到新的URL，则认为网页进程无响应，并将触发该回调。
 
@@ -922,14 +1598,19 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填   | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [OnRenderProcessNotRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessnotrespondingcallback12) | 是    | 渲染进程无响应时触发的回调。 |
+| callback | ArkTS-Dyn: [OnRenderProcessNotRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessnotrespondingcallback12) <br/>ArkTS-Sta: [OnRenderProcessNotRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessnotrespondingcallback12) \|  undefined| 是    | 渲染进程无响应时触发的回调。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -951,22 +1632,53 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Column, Component, Web, RenderProcessNotRespondingData } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onRenderProcessNotResponding((data: RenderProcessNotRespondingData): void => {
+            console.info("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
+              ", [process]=" + data.pid + ", [reason]=" + data.reason);
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderProcessResponding<sup>12+</sup>
 
-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
+ArkTS-Dyn: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
+
+ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback | undefined)
 
 渲染进程由无响应状态变回正常运行状态时触发该回调函数，该回调表明该网页并非真正卡死。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填   | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [OnRenderProcessRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessrespondingcallback12) | 是    | 渲染进程由无响应状态变回正常运行状态时触发的回调。 |
+| callback | ArkTS-Dyn: [OnRenderProcessRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessrespondingcallback12)<br/>ArkTS-Sta: [OnRenderProcessRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessrespondingcallback12) \|  undefined | 是    | 渲染进程由无响应状态变回正常运行状态时触发的回调。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -987,19 +1699,48 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onRenderProcessResponding((): void => {
+            console.info("onRenderProcessResponding again");
+          })
+      }
+    }
+  }
+  ```
+
 ## onShowFileSelector<sup>9+</sup>
 
-onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
+ArkTS-Dyn: onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
+
+ArkTS-Sta: onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\> | undefined)
 
 调用此函数以处理具有“文件”输入类型的HTML表单。如果不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。如果返回true，应用可以自定义“选择文件”的响应行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型                                     | 必填   | 说明              |
 | ------------ | ---------------------------------------- | ---- | ----------------- |
-| callback       | Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> | 是    | 用于通知Web组件文件选择的结果。<br>返回值boolean。当返回值为true时，用户可以调用系统提供的弹窗能力。当返回值为false时，函数中绘制的自定义弹窗无效。 |
+| callback       | ArkTS-Dyn: Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\><br/>ArkTS-Sta: Callback\<[OnShowFileSelectorEvent](./arkts-basic-components-web-i.md#onshowfileselectorevent12), boolean\> \| undefined | 是    | 用于通知Web组件文件选择的结果。<br>返回值boolean。当返回值为true时，用户可以调用系统提供的弹窗能力。当返回值为false时，函数中绘制的自定义弹窗无效。 |
 
 **示例：**
 
@@ -1081,6 +1822,7 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
 3. 拉起相机选择器。
 
+   ArkTS-Dyn示例：
    ```ts
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
@@ -1129,6 +1871,60 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
    }
    ```
 
+   ArkTS-Sta示例：
+   ```ts
+   'use static'
+
+   // xxx.ets
+   import { Entry, Column, Component } from '@ohos.arkui.component'
+   import { $rawfile, Callback, Web } from '@ohos.arkui.component'
+   import { UIContext } from '@ohos.arkui.UIContext'
+   import { webview } from '@kit.ArkWeb';
+   import { cameraPicker, camera } from '@kit.CameraKit';
+   import { BusinessError } from '@ohos.base';
+   import { common } from '@kit.AbilityKit';
+
+   async function openCamera(callback: Callback<string>, uiContext: UIContext) {
+     let mContext = uiContext.getHostContext() as common.Context;
+     try {
+       let pickerProfile: cameraPicker.PickerProfile = {
+         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
+       };
+       let pickerResult: cameraPicker.PickerResult = await cameraPicker.pick(mContext,
+         [cameraPicker.PickerMediaType.PHOTO, cameraPicker.PickerMediaType.VIDEO], pickerProfile);
+       callback(pickerResult.resultUri);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`the pick call failed. error code: ${err.code}`);
+     }
+   }
+
+   @Entry
+   @Component
+   struct Index {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+     build() {
+       Column() {
+         Web({ src: $rawfile('index.html'), controller: this.controller })
+           .onShowFileSelector((event) => {
+             openCamera((result) => {
+               if (event) {
+                 console.info('Title is ' + event.fileSelector.getTitle());
+                 console.info('Mode is ' + event.fileSelector.getMode());
+                 console.info('Accept types are ' + event.fileSelector.getAcceptType());
+                 console.info('Capture is ' + event.fileSelector.isCapture());
+                 console.info('Mime types are ' + event.fileSelector.getMimeTypes());
+                 event.result.handleFileList([result]);
+               }
+             }, this.getUIContext())
+             return true;
+           })
+       }
+     }
+   }
+   ```
+
    加载的html文件。
    ```html
    <!DOCTYPE html>
@@ -1146,20 +1942,27 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
 ## onResourceLoad<sup>9+</sup>
 
-onResourceLoad(callback: Callback\<OnResourceLoadEvent\>)
+ArkTS-Dyn: onResourceLoad(callback: Callback\<OnResourceLoadEvent\>)
+
+ArkTS-Sta: onResourceLoad(callback: Callback\<OnResourceLoadEvent\> | undefined)
 
 通知Web组件所加载的资源文件url信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnResourceLoadEvent](./arkts-basic-components-web-i.md#onresourceloadevent12)\> | 是 | 加载url时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnResourceLoadEvent](./arkts-basic-components-web-i.md#onresourceloadevent12)\> <br/>ArkTS-Sta: Callback\<[OnResourceLoadEvent](./arkts-basic-components-web-i.md#onresourceloadevent12)\> \|  undefined| 是 | 加载url时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1180,22 +1983,52 @@ onResourceLoad(callback: Callback\<OnResourceLoadEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnResourceLoadEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+           .onResourceLoad((event: OnResourceLoadEvent): void => {
+            console.info('onResourceLoad: ' + event.url);
+          })
+      }
+    }
+  }
+  ```
+
 ## onScaleChange<sup>9+</sup>
 
-onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
+ArkTS-Dyn: onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
+
+ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined)
 
 当页面显示比例发生变化时，触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> | 是 | 当页面显示比例发生变化时，触发该回调。 |
+| callback | ArkTS-Dyn: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> \|  undefined| 是 | 当页面显示比例发生变化时，触发该回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1215,23 +2048,52 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
     }
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, OnScaleChangeEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onScaleChange((event: OnScaleChangeEvent) => {
+            console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          })
+      }
+    }
+  }
+  ```
 
 ## onInterceptRequest<sup>9+</sup>
 
-onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
+ArkTS-Dyn: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
+
+ArkTS-Sta: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse | null> | undefined)
 
 当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。`onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。此类场景需改用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)实现，依据具体业务需求进行判断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> | 是 | 当Web组件加载url之前触发。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
+| callback | ArkTS-Dyn: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> <br/>ArkTS-Sta: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md) \| null> \|  undefined| 是 | 当Web组件加载url之前触发。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1292,22 +2154,100 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, WebResourceResponse, Header, Promise, Function } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  heads: Header[] = [
+    {
+      headerKey: "Connection",
+      headerValue: "keep-alive"
+    },
+    {
+      headerKey: "Cache-Control",
+      headerValue: "no-cache"
+    }
+  ] as Header[]
+  webData: string = "<!DOCTYPE html>\n" +
+    "<html>\n" +
+    "<head>\n" +
+    "<title>intercept test</title>\n" +
+    "</head>\n" +
+    "<body>\n" +
+    "<h1>intercept test</h1>\n" +
+    "</body>\n" +
+    "</html>";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onInterceptRequest((event) => {
+          if (event) {
+            console.info('url:' + event.request.getRequestUrl());
+          }
+          let head1: Header = {
+            headerKey: "Connection",
+            headerValue: "keep-alive"
+          }
+          let head2: Header = {
+            headerKey: "Cache-Control",
+            headerValue: "no-cache"
+          }
+          // 将新元素追加到数组的末尾，并返回数组的新长度。
+          let length = this.heads.push(head1);
+          length = this.heads.push(head2);
+          console.info('The response header result length is :' + length);
+          const promise = new Promise<string>((resolve: Function, reject: Function) => {
+            this.responseWeb.setResponseHeader(this.heads);
+            this.responseWeb.setResponseData(this.webData);
+            this.responseWeb.setResponseEncoding('utf-8');
+            this.responseWeb.setResponseMimeType('text/html');
+            this.responseWeb.setResponseCode(200);
+            this.responseWeb.setReasonMessage('OK');
+            console.info('The 111response header result length is :' + length);
+          }) as Promise<String>
+          promise.then(() => {
+            console.info("prepare response ready");
+            this.responseWeb.setResponseIsReady(true);
+          })
+          this.responseWeb.setResponseIsReady(false);
+          return null;
+        })
+    }
+  }
+}
+```
+
 ## onHttpAuthRequest<sup>9+</sup>
 
-onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
+ArkTS-Dyn: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
+
+ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\> | undefined)
 
 通知收到http auth认证请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示http auth认证成功，返回false表示http auth认证失败。   |
+| callback | ArkTS-Dyn: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> \|  undefined| 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示http auth认证成功，返回false表示http auth认证失败。   |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1359,9 +2299,66 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, State, AppStorage, UIContext, AlertDialogParamWithButtons, OnHttpAuthRequestEvent } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+  httpAuth: boolean = false;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onHttpAuthRequest((event: OnHttpAuthRequestEvent):boolean => {
+          if (event) {
+            this.uiContext.showAlertDialog({
+              title: 'onHttpAuthRequest',
+              message: 'text',
+              primaryButton: {
+                value: 'cancel',
+                action: () => {
+                  event.handler.cancel();
+                }
+              },
+              secondaryButton: {
+                value: 'ok',
+                action: () => {
+                  this.httpAuth = event.handler.isHttpAuthInfoSaved();
+                  if (this.httpAuth == false) {
+                    webview.WebDataBase.saveHttpAuthCredentials(
+                      event.host,
+                      event.realm,
+                      "2222",
+                      "2222"
+                    )
+                    event.handler.cancel();
+                  }
+                }
+              },
+              cancel: () => {
+                event.handler.cancel();
+              }
+            } as AlertDialogParamWithButtons);
+          }
+          return true;
+        })
+    }
+  }
+}
+```
+
 ## onSslErrorEventReceive<sup>9+</sup>
 
-onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
+ArkTS-Dyn: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
+
+ArkTS-Sta: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\> | undefined)
 
 通知用户加载资源时发生SSL错误，只支持主资源。
 
@@ -1376,14 +2373,19 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnSslErrorEventReceiveEvent](./arkts-basic-components-web-i.md#onsslerroreventreceiveevent12)\> | 是 | 当网页收到SSL错误时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnSslErrorEventReceiveEvent](./arkts-basic-components-web-i.md#onsslerroreventreceiveevent12)\><br/>ArkTS-Sta: Callback\<[OnSslErrorEventReceiveEvent](./arkts-basic-components-web-i.md#onsslerroreventreceiveevent12)\> \|  undefined | 是 | 当网页收到SSL错误时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1466,9 +2468,95 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnSslErrorEventReceiveEvent } from '@kit.ArkUI';
+import { cert } from '@kit.DeviceCertificateKit';
+
+function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
+  if (!(certChainData instanceof Array)) {
+    console.error('failed, cert chain data type is not array');
+    return;
+  }
+
+  for (let i = 0; i < certChainData.length; i++) {
+    let encodeBlobData: cert.EncodingBlob = {
+      data: certChainData[i] as Uint8Array,
+      encodingFormat: cert.EncodingFormat.FORMAT_DER
+    } as cert.EncodingBlob
+    cert.createX509Cert(encodeBlobData, (error, x509Cert) => {
+      if (error) {
+        console.error('Index : ' + i + ',createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      } else {
+        console.info('createX509Cert success');
+        console.info(ParseX509CertInfo(x509Cert as cert.X509Cert));
+      }
+    });
+  }
+  return;
+}
+
+function Uint8ArrayToString(dataArray: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i]);
+  }
+  return dataString;
+}
+
+function ParseX509CertInfo(x509Cert: cert.X509Cert) {
+  let res: string = 'getCertificate success, '
+    + 'issuer name = '
+    + Uint8ArrayToString(x509Cert.getIssuerName().data) + ', subject name = '
+    + Uint8ArrayToString(x509Cert.getSubjectName().data) + ', valid start = '
+    + x509Cert.getNotBeforeTime()
+    + ', valid end = ' + x509Cert.getNotAfterTime();
+  return res;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Web({ src: 'https://example.com/', controller: this.controller })
+        .onSslErrorEventReceive((event: OnSslErrorEventReceiveEvent):void => {
+          LogCertInfo(event.certChainData as Array<Uint8Array>);
+          this.uiContext.showAlertDialog({
+            title: 'onSslErrorEventReceive',
+            message: 'text',
+            primaryButton: {
+              value: 'confirm',
+              action: () => {
+                event.handler.handleConfirm();
+              }
+            },
+            secondaryButton: {
+              value: 'cancel',
+              action: () => {
+                event.handler.handleCancel();
+              }
+            },
+            cancel: () => {
+              event.handler.handleCancel();
+            }
+          } as AlertDialogParamWithButtons);
+        })
+    }
+  }
+}
+```
+
 ## onSslErrorEvent<sup>12+</sup>
 
-onSslErrorEvent(callback: OnSslErrorEventCallback)
+ArkTS-Dyn: onSslErrorEvent(callback: OnSslErrorEventCallback)
+
+ArkTS-Sta: onSslErrorEvent(callback: OnSslErrorEventCallback | undefined)
 
 通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用[isMainFrame](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)字段进行区分。
 
@@ -1479,14 +2567,19 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12) | 是 | 通知用户加载资源时发生SSL错误。 |
+| callback | ArkTS-Dyn: [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12) <br/>ArkTS-Sta: [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12) \|  undefined| 是 | 通知用户加载资源时发生SSL错误。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1576,9 +2669,103 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, SslErrorEvent } from '@kit.ArkUI';
+import { cert } from '@kit.DeviceCertificateKit';
+
+function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
+  if (!(certChainData instanceof Array)) {
+    console.error('failed, cert chain data type is not array');
+    return;
+  }
+
+  for (let i = 0; i < certChainData.length; i++) {
+    let encodeBlobData: cert.EncodingBlob = {
+      data: certChainData[i] as Uint8Array,
+      encodingFormat: cert.EncodingFormat.FORMAT_DER
+    }
+    cert.createX509Cert(encodeBlobData, (error, x509Cert) => {
+      if (error) {
+        console.error('Index : ' + i + ',createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      } else {
+        console.info('createX509Cert success');
+        console.info(ParseX509CertInfo(x509Cert as cert.X509Cert));
+      }
+    });
+  }
+  return;
+}
+
+function Uint8ArrayToString(dataArray: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i]);
+  }
+  return dataString;
+}
+
+function ParseX509CertInfo(x509Cert: cert.X509Cert) {
+  let res: string = 'getCertificate success, '
+    + 'issuer name = '
+    + Uint8ArrayToString(x509Cert.getIssuerName().data) + ', subject name = '
+    + Uint8ArrayToString(x509Cert.getSubjectName().data) + ', valid start = '
+    + x509Cert.getNotBeforeTime()
+    + ', valid end = ' + x509Cert.getNotAfterTime();
+  return res;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onSslErrorEvent((event: SslErrorEvent) => {
+          console.info("onSslErrorEvent url: " + event.url);
+          console.info("onSslErrorEvent error: " + event.error);
+          console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
+          console.info("onSslErrorEvent referrer: " + event.referrer);
+          console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+          console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
+          LogCertInfo(event.certChainData  as Array<Uint8Array>);
+          this.uiContext.showAlertDialog({
+            title: 'onSslErrorEvent',
+            message: 'text',
+            primaryButton: {
+              value: 'confirm',
+              action: () => {
+                event.handler.handleConfirm();
+              }
+            },
+            secondaryButton: {
+              value: 'cancel',
+              action: () => {
+                // true表示停止加载页面，停留在当前页面，使用false表示继续加载页面，并展示错误页面
+                event.handler.handleCancel(true);
+              }
+            },
+            cancel: () => {
+              event.handler.handleCancel();
+            }
+          } as AlertDialogParamWithButtons)
+        })
+    }
+  }
+}
+```
+
 ## onClientAuthenticationRequest<sup>9+</sup>
 
-onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
+ArkTS-Dyn: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
+
+ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\> | undefined)
 
 通知用户收到SSL客户端证书请求事件。
 
@@ -1590,22 +2777,26 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnClientAuthenticationEvent](./arkts-basic-components-web-i.md#onclientauthenticationevent12)\> | 是 | 当需要用户提供的SSL客户端证书时触发的回调。  |
+| callback  | ArkTS-Dyn: Callback\<[OnClientAuthenticationEvent](./arkts-basic-components-web-i.md#onclientauthenticationevent12)\> <br/>ArkTS-Sta: Callback\<[OnClientAuthenticationEvent](./arkts-basic-components-web-i.md#onclientauthenticationevent12)\> \|  undefined| 是 | 当需要用户提供的SSL客户端证书时触发的回调。  |
 
-  **示例：**
+**示例：**
 
 安装私有凭证以实现双向认证。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 import { certificateManager } from '@kit.DeviceCertificateKit';
-import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1679,6 +2870,8 @@ struct Index {
 对接证书管理，实现双向认证功能。
   
 1. 构造 `GlobalContext` 单例对象。
+
+    ArkTS-Dyn示例：
     ```ts
     // GlobalContext.ets
     export class GlobalContext {
@@ -1704,6 +2897,7 @@ struct Index {
     ```
 
 2. 构造 `CertManagerService` 对象以对接证书管理。
+
     <!--code_no_check-->
     ```ts
     // CertMgrService.ets
@@ -1762,6 +2956,7 @@ struct Index {
     }
     ```
 3. 将当前Ability的上下文存储到GlobalContext中。
+
     <!--code_no_check-->
     ```ts
     // EntryAbility.ets
@@ -1817,11 +3012,11 @@ struct Index {
     }
     ```
 4. 实现双向认证功能。
+
     <!--code_no_check-->
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
-    import { promptAction } from '@kit.ArkUI';
 
     @Entry
     @Component
@@ -1985,20 +3180,27 @@ struct Index {
 
 ## onPermissionRequest<sup>9+</sup>
 
-onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
+ArkTS-Dyn: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
+
+ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | undefined)
 
 通知收到获取权限请求，需配置"ohos.permission.CAMERA"、"ohos.permission.MICROPHONE"权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\> | 是 | 通知收到获取权限请求触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\><br/>ArkTS-Sta: Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\> \|  undefined | 是 | 通知收到获取权限请求触发。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2056,6 +3258,69 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { UIContext } from "@kit.ArkUI";
+import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { PermissionRequestResult, common } from '@kit.AbilityKit';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  aboutToAppear(): void {
+    let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'],
+      (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (data) {
+          console.info('data:' + JSON.stringify(data));
+          console.info('data permissions:' + data.permissions);
+          console.info('data authResults:' + data.authResults);
+        }
+      })
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+          if (event) {
+            const dialogOptions: AlertDialogParamWithButtons = {
+              title: 'title',
+              message: 'text',
+              primaryButton: {
+                value: 'deny',
+                action: () => {
+                  event.request.deny();
+                },
+              } as AlertDialogButtonBaseOptions,
+              secondaryButton: {
+                value: 'onConfirm',
+                action: () => {
+                  event.request.grant(event.request.getAccessibleResource());
+                },
+              } as AlertDialogButtonBaseOptions,
+              cancel: () => {
+                event.request.deny();
+              }
+            };
+            this.uiContext.showAlertDialog(dialogOptions);
+          }
+        })
+    }
+  }
+}
+```
+
   加载的html文件。
  ```html
   <!-- index.html -->
@@ -2065,7 +3330,7 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
     <meta charset="UTF-8">
   </head>
   <body>
-  <video id="video" width="500px" height="500px" autoplay></video>
+  <video id="video" width="500px" height="500px" autoplay="autoplay"></video>
   <canvas id="canvas" width="500px" height="500px"></canvas>
   <br>
   <input type="button" title="HTML5摄像头" value="开启摄像头" onclick="getMedia()"/>
@@ -2095,20 +3360,27 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
 ## onContextMenuShow<sup>9+</sup>
 
-onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+ArkTS-Dyn: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
+
+ArkTS-Sta: onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\> | undefined)
 
 长按特定元素（例如图片，链接）或鼠标右键，跳出菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> | 是 | 调用时触发的回调，以允许自定义显示上下文菜单。<br>返回值boolean。返回true表示触发自定义菜单，返回false表示触发的自定义菜单无效。     |
+| callback  | ArkTS-Dyn: Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnContextMenuShowEvent](./arkts-basic-components-web-i.md#oncontextmenushowevent12), boolean\> \| undefined | 是 | 调用时触发的回调，以允许自定义显示上下文菜单。<br>返回值boolean。返回true表示触发自定义菜单，返回false表示触发的自定义菜单无效。     |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2269,6 +3541,147 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+
+  // xxx.ets
+  import { Entry, Column, Component } from '@ohos.arkui.component'
+  import { State } from '@ohos.arkui.stateManagement'
+  import { $rawfile, Web, Builder, Menu, MenuItem, Placement, WebContextMenuResult } from '@ohos.arkui.component'
+  import { MenuItemOptions, CustomPopupOptions, PopupStateChangeParam } from '@ohos.arkui.component'
+  import { UIContext } from '@ohos.arkui.UIContext'
+  import { webview } from '@kit.ArkWeb';
+  import pasteboard from '@ohos.pasteboard';
+
+  const TAG = 'ContextMenu';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private result: WebContextMenuResult | undefined = undefined;
+    @State linkUrl: string = '';
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State showMenu: boolean = false;
+    uiContext: UIContext = this.getUIContext();
+
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuBuilder() {
+      // 以垂直列表形式显示的菜单。
+      Menu() {
+        // 展示菜单Menu中具体的item菜单项。
+        MenuItem({
+          content: '复制图片',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyImage();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '保存图片',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.saveImage();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '剪切',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.cut();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '复制',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copy();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '粘贴',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.paste();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '复制链接',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            let pasteData = pasteboard.createData('text/plain', this.linkUrl);
+            pasteboard.getSystemPasteboard().setData(pasteData, (error) => {
+              if (error) {
+                return;
+              }
+            })
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '全选',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.selectAll();
+            this.showMenu = false;
+          })
+      }
+      .width(150)
+      .height(450)
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              console.info(TAG + "x coord = " + event.param.x());
+              console.info(TAG + "link url = " + event.param.getLinkUrl());
+              this.linkUrl = event.param.getLinkUrl();
+            }
+            console.info(TAG, `x: ${this.offsetX}, y: ${this.offsetY}`);
+            this.showMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(this.uiContext!.px2vp(event?.param.y() ?? 0) - 0, 0);
+            return true;
+          })
+          .bindPopup(this.showMenu,
+            {
+              builder: this.MenuBuilder,
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              offset: { x: this.offsetX, y: this.offsetY },
+              mask: false,
+              onStateChange: (e: PopupStateChangeParam) => {
+                if (!e.isVisible) {
+                  this.showMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            } as CustomPopupOptions)
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!-- index.html -->
@@ -2286,20 +3699,27 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
 ## onContextMenuHide<sup>11+</sup>
 
-onContextMenuHide(callback: OnContextMenuHideCallback)
+ArkTS-Dyn: onContextMenuHide(callback: OnContextMenuHideCallback)
+
+ArkTS-Sta: onContextMenuHide(callback: OnContextMenuHideCallback | undefined)
 
 长按特定元素（例如图片，链接）或鼠标右键，隐藏菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11) | 是 | 菜单相关回调。     |
+| callback  | ArkTS-Dyn: [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11)<br/>ArkTS-Sta: [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11) \|  undefined | 是 | 菜单相关回调。     |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2320,9 +3740,34 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onContextMenuHide((): void => {
+            console.info("onContextMenuHide callback");
+          })
+      }
+    }
+  }
+  ```
+
 ## onScroll<sup>9+</sup>
 
-onScroll(callback: Callback\<OnScrollEvent\>)
+ArkTS-Dyn: onScroll(callback: Callback\<OnScrollEvent\>)
+
+ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined)
 
 通知网页全局滚动位置。
 
@@ -2336,14 +3781,19 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当页面滑动到指定位置时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> \|  undefined| 是 | 当页面滑动到指定位置时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2364,23 +3814,53 @@ onScroll(callback: Callback\<OnScrollEvent\>)
     }
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, OnScrollEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onScroll((event: OnScrollEvent) => {
+            console.info("x = " + event.xOffset);
+            console.info("y = " + event.yOffset);
+          })
+      }
+    }
+  }
+  ```
 
 ## onGeolocationShow
 
-onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
+ArkTS-Dyn: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
+
+ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined)
 
 通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | 是 | 回调函数，请求显示地理位置权限时触发，返回地理位置信息请求对象。     |
+| callback      | ArkTS-Dyn: Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\> <br/>ArkTS-Sta: Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\> \| undefined | 是 | 回调函数，请求显示地理位置权限时触发，返回地理位置信息请求对象。     |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2439,6 +3919,50 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
     }
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnGeolocationShowEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .geolocationAccess(true)
+          .onGeolocationShow((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.geolocation.invoke(event.origin, false, true);
+                  }
+                },
+                secondaryButton: {
+                  value: 'ok',
+                  action: () => {
+                    event.geolocation.invoke(event.origin, true, true);
+                  }
+                },
+                cancel: () => {
+                  event.geolocation.invoke(event.origin, false, true);
+                }
+              } as AlertDialogParamWithButtons)
+            }
+          })
+      }
+    }
+  }
+  ```
 
   加载的html文件。
   ```html
@@ -2465,20 +3989,27 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 ## onGeolocationHide
 
-onGeolocationHide(callback: () => void)
+ArkTS-Dyn: onGeolocationHide(callback: () => void)
+
+ArkTS-Sta: onGeolocationHide(callback: (() => void) | undefined)
 
 通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 地理位置信息获取请求已被取消的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2499,23 +4030,53 @@ onGeolocationHide(callback: () => void)
     }
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .geolocationAccess(true)
+          .onGeolocationHide(() => {
+            console.info("onGeolocationHide...");
+          })
+      }
+    }
+  }
+  ```
 
 ## onFullScreenEnter<sup>9+</sup>
 
-onFullScreenEnter(callback: OnFullScreenEnterCallback)
+ArkTS-Dyn: onFullScreenEnter(callback: OnFullScreenEnterCallback)
+
+ArkTS-Sta: onFullScreenEnter(callback: OnFullScreenEnterCallback | undefined)
 
 通知开发者Web组件进入全屏模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12) | 是 | Web组件进入全屏时的回调信息。 |
+| callback |ArkTS-Dyn: [OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12)<br/>ArkTS-Sta: [OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12) \|  undefined | 是 | Web组件进入全屏时的回调信息。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2540,21 +4101,56 @@ onFullScreenEnter(callback: OnFullScreenEnterCallback)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, FullScreenEnterEvent, FullScreenExitHandler } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    handler: FullScreenExitHandler | null = null;
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFullScreenEnter((event: FullScreenEnterEvent): void => {
+            console.info("onFullScreenEnter videoWidth: " + event.videoWidth +
+              ", videoHeight: " + event.videoHeight);
+            // 应用可以通过 this.handler.exitFullScreen() 主动退出全屏。
+            this.handler = event.handler;
+          })
+      }
+    }
+  }
+  ```
+
 ## onFullScreenExit<sup>9+</sup>
 
-onFullScreenExit(callback: () => void)
+ArkTS-Dyn: onFullScreenExit(callback: () => void)
+
+ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined)
 
 通知开发者Web组件退出全屏模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 退出全屏模式时的回调函数。 |
+| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined| 是 | 退出全屏模式时的回调函数。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -2583,9 +4179,42 @@ onFullScreenExit(callback: () => void)
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, FullScreenEnterEvent, FullScreenExitHandler } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private handler: FullScreenExitHandler = new FullScreenExitHandler();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFullScreenExit((): void => {
+            console.info("onFullScreenExit...")
+            if (this.handler) {
+              this.handler.exitFullScreen();
+            }
+          })
+          .onFullScreenEnter((event: FullScreenEnterEvent): void => {
+            this.handler = event.handler;
+          })
+      }
+    }
+  }
+  ```
+
 ## onWindowNew<sup>9+</sup>
 
-onWindowNew(callback: Callback\<OnWindowNewEvent\>)
+ArkTS-Dyn: onWindowNew(callback: Callback\<OnWindowNewEvent\>)
+
+ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined)
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
 
@@ -2599,14 +4228,19 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | Callback\<[OnWindowNewEvent](./arkts-basic-components-web-i.md#onwindownewevent12)\>           | 是 | 网页要求用户创建窗口时触发的回调。    |
+| callback       | ArkTS-Dyn: Callback\<[OnWindowNewEvent](./arkts-basic-components-web-i.md#onwindownewevent12)\> <br/>ArkTS-Sta: Callback\<[OnWindowNewEvent](./arkts-basic-components-web-i.md#onwindownewevent12)\> \|  undefined| 是 | 网页要求用户创建窗口时触发的回调。    |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2642,7 +4276,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
       Column() {
         Web({ src: $rawfile("window.html"), controller: this.controller })
           .javaScriptAccess(true)
-          // 需要使能multiWindowAccess
+          // 需要使能multiWindowAccess。
           .multiWindowAccess(true)
           .allowWindowOpenMethod(true)
           .onWindowNew((event) => {
@@ -2654,6 +4288,66 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
               builder: NewWebViewComp({ webviewController1: popController })
             })
             this.dialogController.open();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Component, Entry, Web, Column, CustomDialogController, CustomDialog } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+    controller?: CustomDialogController;
+    webviewController1: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: "www.example.com", controller: this.webviewController1 })
+          .javaScriptAccess(true)
+          .multiWindowAccess(false)
+          .onWindowExit(() => {
+            console.info("NewWebViewComp onWindowExit");
+            if (this.controller) {
+              this.controller?.close();
+            }
+          })
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    dialogController: CustomDialogController | null = null;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("window.html"), controller: this.controller })
+          .javaScriptAccess(true)
+          // 需要使能multiWindowAccess。
+          .multiWindowAccess(true)
+          .allowWindowOpenMethod(true)
+          .onWindowNew((event) => {
+            if (this.dialogController) {
+              this.dialogController?.close();
+            }
+            let popController: webview.WebviewController = new webview.WebviewController(undefined);
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController })
+            })
+            this.dialogController?.open();
             // 将新窗口对应WebviewController返回给Web内核。
             // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
             // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
@@ -2686,7 +4380,9 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 ## onWindowNewExt<sup>23+</sup>
 
-onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
+ArkTS-Dyn: onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
+
+ArkTS-Sta: onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\> | undefined)
 
 在启用[multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9)的情况下，通知用户新建窗口请求。
 
@@ -2702,14 +4398,19 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\>           | 是 | 网页要求用户创建窗口时触发的回调。    |
+| callback       | ArkTS-Dyn: Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\> <br/>ArkTS-Sta: Callback\<[OnWindowNewExtEvent](./arkts-basic-components-web-i.md#onwindownewextevent23)\> \| undefined | 是 | 网页要求用户创建窗口时触发的回调。    |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2771,6 +4472,73 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+
+  // xxx.ets
+  import { $rawfile, Component, Entry, Web, Column, CustomDialogController, CustomDialog, OnWindowNewExtEvent } from "@ohos.arkui.component";
+  import webview  from '@ohos.web.webview';
+
+  @CustomDialog
+  struct NewWebViewComp {
+    controller?: CustomDialogController;
+    webviewController1: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: "www.example.com", controller: this.webviewController1 })
+          .javaScriptAccess(true)
+          .multiWindowAccess(true)
+          .allowWindowOpenMethod(true)
+          .onWindowExit(() => {
+            console.info("NewWebViewComp onWindowExit");
+            if (this.controller) {
+              this.controller?.close();
+            }
+          })
+      }
+    }
+  }
+
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    dialogController: CustomDialogController | null = null;
+
+    build() {
+      Column() {
+        Web({ src: "resource://rawfile/window.html", controller: this.controller })
+          .javaScriptAccess(true)
+          .multiWindowAccess(true)
+          .allowWindowOpenMethod(true)
+          .onWindowNewExt((event:OnWindowNewExtEvent):void => {
+            //以event.navigationPolicy请求的方式打开新窗口
+            console.info("navigationAction: ", event.navigationPolicy)
+            //以event.windowFeatures中的大小及位置信息创建新窗口
+            console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
+
+            if (this.dialogController) {
+              this.dialogController?.close();
+            }
+
+            let popController: webview.WebviewController = new webview.WebviewController(undefined);
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController })
+            })
+            this.dialogController?.open();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
+          })
+      }
+    }
+  }
+  ```
+
   ```html
   <!-- window.html页面代码 -->
     <!DOCTYPE html>
@@ -2793,7 +4561,9 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
 
 ## onActivateContent<sup>20+</sup>
 
-onActivateContent(callback: Callback\<void>)
+ArkTS-Dyn: onActivateContent(callback: Callback\<void>)
+
+ArkTS-Sta: onActivateContent(callback: VoidCallback | undefined)
 
 当Web页面触发window.open(url, name)时，会根据name查找是否存在已绑定的Web实例。若存在，该实例将收到此回调以通知应用需将其展示至前端；若不存在，则通过[onWindowNew](#onwindownew9)通知应用创建新Web实例。
 
@@ -2804,14 +4574,19 @@ onActivateContent(callback: Callback\<void>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名        | 类型             | 必填 | 说明                              |
 | ------------- | ---------------- | ---- | --------------------------------- |
-| callback | Callback\<void> | 是   | 再次在原页面触发window.open后，在已打开的新页面触发该回调。 |
+| callback | ArkTS-Dyn: Callback\<void> <br/>ArkTS-Sta: VoidCallback \| undefined | 是   | 再次在原页面触发window.open后，在已打开的新页面触发该回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2833,7 +4608,7 @@ onActivateContent(callback: Callback\<void>)
             }
           })
           .onActivateContent(() => {
-            // 该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
+            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web。
             console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
@@ -2851,7 +4626,7 @@ onActivateContent(callback: Callback\<void>)
         Web({ src: $rawfile("window.html"), controller: this.controller })
           .javaScriptAccess(true)
           .allowWindowOpenMethod(true)
-          // 需要使能multiWindowAccess
+          // 需要使能multiWindowAccess。
           .multiWindowAccess(true)
           .onWindowNew((event) => {
             if (this.dialogController) {
@@ -2863,6 +4638,68 @@ onActivateContent(callback: Callback\<void>)
               isModal: false
             })
             this.dialogController.open();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+            event.handler.setWebController(popController);
+          })
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Component, Entry, Web, Column, CustomDialogController, CustomDialog } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+  @CustomDialog
+  struct NewWebViewComp {
+    controller?: CustomDialogController;
+    webviewController1: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: "https://www.example.com", controller: this.webviewController1 })
+          .javaScriptAccess(true)
+          .multiWindowAccess(false)
+          .onWindowExit(() => {
+            if (this.controller) {
+              this.controller?.close();
+            }
+          })
+          .onActivateContent(() => {
+            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web。
+            console.info("NewWebViewComp onActivateContent")
+          })
+      }.height("50%")
+    }
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    dialogController: CustomDialogController | null = null;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("window.html"), controller: this.controller })
+          .javaScriptAccess(true)
+          .allowWindowOpenMethod(true)
+          // 需要使能multiWindowAccess。
+          .multiWindowAccess(true)
+          .onWindowNew((event) => {
+            if (this.dialogController) {
+              this.dialogController?.close()
+            }
+            let popController: webview.WebviewController = new webview.WebviewController(undefined);
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController }),
+              isModal: false
+            })
+            this.dialogController?.open();
             // 将新窗口对应WebviewController返回给Web内核。
             // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
             event.handler.setWebController(popController);
@@ -2895,20 +4732,27 @@ onActivateContent(callback: Callback\<void>)
 
 ## onWindowExit<sup>9+</sup>
 
-onWindowExit(callback: () => void)
+ArkTS-Dyn: onWindowExit(callback: () => void)
+
+ArkTS-Sta: onWindowExit(callback: (() => void) | undefined)
 
 通知用户窗口关闭请求。和[onWindowNew](#onwindownew9)一样，从安全角度讲，应用应该确保用户可以知道他们交互的页面已关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 窗口请求关闭的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined| 是 | 窗口请求关闭的回调函数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2929,22 +4773,52 @@ onWindowExit(callback: () => void)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onWindowExit(() => {
+            console.info("onWindowExit...");
+          })
+      }
+    }
+  }
+  ```
+
 ## onSearchResultReceive<sup>9+</sup>
 
-onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\>)
+ArkTS-Dyn: onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\>)
+
+ArkTS-Sta: onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\> | undefined)
 
 回调通知调用方网页页内查找的结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnSearchResultReceiveEvent](./arkts-basic-components-web-i.md#onsearchresultreceiveevent12)\>  | 是 | 通知调用方网页页内查找的结果。         |
+| callback | ArkTS-Dyn: Callback\<[OnSearchResultReceiveEvent](./arkts-basic-components-web-i.md#onsearchresultreceiveevent12)\> <br/>ArkTS-Sta: Callback\<[OnSearchResultReceiveEvent](./arkts-basic-components-web-i.md#onsearchresultreceiveevent12)\> \|  undefined| 是 | 通知调用方网页页内查找的结果。         |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2968,22 +4842,55 @@ onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnSearchResultReceiveEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSearchResultReceive((ret: OnSearchResultReceiveEvent): void => {
+            if (ret) {
+              console.info("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
+                "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onDataResubmitted<sup>9+</sup>
 
-onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
+ArkTS-Dyn: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
+
+ArkTS-Sta: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\> | undefined)
 
 设置网页表单可以重新提交时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnDataResubmittedEvent](./arkts-basic-components-web-i.md#ondataresubmittedevent12)\> | 是 | 网页表单可以重新提交时触发。 |
+| callback |ArkTS-Dyn: Callback\<[OnDataResubmittedEvent](./arkts-basic-components-web-i.md#ondataresubmittedevent12)\> <br/>ArkTS-Sta: Callback\<[OnDataResubmittedEvent](./arkts-basic-components-web-i.md#ondataresubmittedevent12)\> \|  undefined| 是 | 网页表单可以重新提交时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2993,6 +4900,40 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        // 在网页中点击提交之后，点击refresh按钮可以重新提交时的触发函数。
+        Button('refresh')
+          .onClick(() => {
+            try {
+              this.controller.refresh();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onDataResubmitted((event) => {
+            console.info('onDataResubmitted');
+            event.handler.resend();
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -3034,20 +4975,27 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
 ## onPageVisible<sup>9+</sup>
 
-onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
+ArkTS-Dyn: onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
+
+ArkTS-Sta: onPageVisible(callback: Callback\<OnPageVisibleEvent\> | undefined)
 
 设置旧页面不再呈现，新页面即将可见时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnPageVisibleEvent](./arkts-basic-components-web-i.md#onpagevisibleevent12)\> | 是 | 旧页面不再呈现，新页面即将可见时触发的回调函数。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageVisibleEvent](./arkts-basic-components-web-i.md#onpagevisibleevent12)\> <br/>ArkTS-Sta: Callback\<[OnPageVisibleEvent](./arkts-basic-components-web-i.md#onpagevisibleevent12)\> \|  undefined| 是 | 旧页面不再呈现，新页面即将可见时触发的回调函数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3068,22 +5016,51 @@ onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onPageVisible((event) => {
+            console.info('onPageVisible url:' + event.url);
+          })
+      }
+    }
+  }
+  ```
+
 ## onInterceptKeyEvent<sup>9+</sup>
 
-onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
+ArkTS-Dyn: onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
+
+ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefined)
 
 设置键盘事件的回调函数，该回调在被Webview使用前触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean | 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入Webview内核。 |
+| callback | ArkTS-Dyn: (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean <br/>ArkTS-Sta: ((event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean) \|  undefined | 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入Webview内核。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3108,22 +5085,56 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, KeyEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onInterceptKeyEvent((event: KeyEvent): boolean => {
+            if (event.keyCode == 2017 || event.keyCode == 2018) {
+              console.info(`onInterceptKeyEvent get event.keyCode ${event.keyCode}`);
+              return true;
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
+
 ## onTouchIconUrlReceived<sup>9+</sup>
 
-onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\>)
+ArkTS-Dyn: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\>)
+
+ArkTS-Sta: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\> | undefined)
 
 设置接收到apple-touch-icon url地址时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\>  | 是 | 接收到的apple-touch-icon url地址时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\> <br/>ArkTS-Sta: Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\> \|  undefined| 是 | 接收到的apple-touch-icon url地址时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3144,22 +5155,52 @@ onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnTouchIconUrlReceivedEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.baidu.com', controller: this.controller })
+          .onTouchIconUrlReceived((event: OnTouchIconUrlReceivedEvent): void => {
+            console.info('onTouchIconUrlReceived:' + JSON.stringify(event));
+          })
+      }
+    }
+  }
+  ```
+
 ## onFaviconReceived<sup>9+</sup>
 
-onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
+ArkTS-Dyn: onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
+
+ArkTS-Sta: onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\> | undefined)
 
 设置应用为当前页面接收到新的favicon时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnFaviconReceivedEvent](./arkts-basic-components-web-i.md#onfaviconreceivedevent12)\> | 是 | 当前页面接收到新的favicon时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnFaviconReceivedEvent](./arkts-basic-components-web-i.md#onfaviconreceivedevent12)\> <br/>ArkTS-Sta: Callback\<[OnFaviconReceivedEvent](./arkts-basic-components-web-i.md#onfaviconreceivedevent12)\> \|  undefined| 是 | 当前页面接收到新的favicon时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3183,21 +5224,55 @@ onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { image } from '@kit.ImageKit';
+  import { Web, Column, Component, Entry, OnFaviconReceivedEvent, State } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State icon: image.PixelMap | undefined = undefined;
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFaviconReceived((event) => {
+            console.info('onFaviconReceived');
+            this.icon = event.favicon;
+          })
+      }
+    }
+  }
+  ```
+
 ## onAudioStateChanged<sup>10+</sup>
 
-onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
+ArkTS-Dyn: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
+
+ArkTS-Sta: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\> | undefined)
 
 设置网页上的音频播放状态发生改变时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnAudioStateChangedEvent](./arkts-basic-components-web-i.md#onaudiostatechangedevent12)\> | 是 | 网页上的音频播放状态发生改变时触发。 |
+| callback |ArkTS-Dyn: Callback\<[OnAudioStateChangedEvent](./arkts-basic-components-web-i.md#onaudiostatechangedevent12)\> <br/>ArkTS-Sta: Callback\<[OnAudioStateChangedEvent](./arkts-basic-components-web-i.md#onaudiostatechangedevent12)\> \|  undefined| 是 | 网页上的音频播放状态发生改变时触发。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -3221,22 +5296,55 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  'use static'
+  import { State, Web, Column, Component, Entry, OnAudioStateChangedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct AudioPlayer {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State playing: boolean = false;
+
+    build() {
+      Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+          .onAudioStateChanged((event: OnAudioStateChangedEvent): void => {
+            this.playing = event.playing;
+            console.info('onAudioStateChanged playing: ' + this.playing);
+          })
+      }
+    }
+  }
+  ```
+
 ## onFirstContentfulPaint<sup>10+</sup>
 
- onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
+ ArkTS-Dyn: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
+
+ ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined)
 
 设置网页首次内容绘制回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制回调函数。       |
+| callback    | ArkTS-Dyn: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\><br/>ArkTS-Sta: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> \|  undefined | 是 | 网页首次内容绘制回调函数。          |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3261,22 +5369,56 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column,OnFirstContentfulPaintEvent} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onFirstContentfulPaint((event:OnFirstContentfulPaintEvent):void => {
+          if (event) {
+            console.info("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+            event.navigationStartTick + ", [firstContentfulPaintMs]:" +
+            event.firstContentfulPaintMs);
+          }
+        })
+      }
+    }
+  }
+  ```
+
 ## onFirstMeaningfulPaint<sup>12+</sup>
 
-onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
+ArkTS-Dyn: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
+
+ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined)
 
 设置网页绘制页面主要内容回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | 是 | 网页绘制页面主要内容度量信息的回调。 |
+| callback | ArkTS-Dyn: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) <br/>ArkTS-Sta: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) \|  undefined| 是 | 网页绘制页面主要内容度量信息的回调。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3298,22 +5440,55 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column,FirstMeaningfulPaint} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onFirstMeaningfulPaint((event:FirstMeaningfulPaint):void => {
+          if(event) {
+            console.info("onFirstMeaningfulPaint: [navigationStartTime]= " + event.navigationStartTime +
+              ", [firstMeaningfulPaintTime]=" + event.firstMeaningfulPaintTime);
+            }
+          })
+        }
+      }
+  }
+  ```
+
 ## onLargestContentfulPaint<sup>12+</sup>
 
-onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
+ArkTS-Dyn: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
+
+ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined)
 
 设置网页绘制页面最大内容回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | 是 | 网页绘制页面最大内容度量信息的回调。 |
+| callback | ArkTS-Dyn: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) <br/>ArkTS-Sta: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) \|  undefined| 是 | 网页绘制页面最大内容度量信息的回调。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3339,22 +5514,63 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column,LargestContentfulPaint} from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onLargestContentfulPaint((event:LargestContentfulPaint):void => {
+          if(event) {
+            console.info("onLargestContentfulPaint: [navigationStartTime]= " + event.navigationStartTime +
+              ", [largestImagePaintTime]=" + event.largestImagePaintTime +
+              ", [largestTextPaintTime]=" + event.largestTextPaintTime +
+              ", [largestImageLoadStartTime]=" + event.largestImageLoadStartTime +
+              ", [largestImageLoadEndTime]=" + event.largestImageLoadEndTime +
+              ", [imageBPP]=" + event.imageBPP);
+          }
+        })
+      }
+    }
+  }
+  ```
+
 ## onLoadIntercept<sup>10+</sup>
 
-onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
+ArkTS-Dyn: onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
+
+ArkTS-Sta: onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\> | undefined)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
+> **说明：**
+>
+> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest9)或者通过WebSchemeHandler的[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)中获取。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | 是 | 导航触发时的回调包括iframe导航，在回调中可以选择允许或者取消此次导航。<br>返回值为boolean类型。返回true表示取消此次导航，false表示允许此次导航。<br>返回undefined或null时为false。 |
+| callback | ArkTS-Dyn: Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> \|  undefined | 是 | 导航触发时的回调包括iframe导航，在回调中可以选择允许或者取消此次导航。<br>返回值为boolean类型。返回true表示取消此次导航，false表示允许此次导航。<br>返回undefined或null时为false。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3379,22 +5595,57 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { Web, Column, Component, Entry, OnLoadInterceptEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onLoadIntercept((event: OnLoadInterceptEvent): boolean => {
+            if (event) {
+              console.info('url:' + event.data.getRequestUrl());
+              console.info('isMainFrame:' + event.data.isMainFrame());
+              console.info('isRedirect:' + event.data.isRedirect());
+              console.info('isRequestGesture:' + event.data.isRequestGesture());
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
 ## onRequestSelected
 
-onRequestSelected(callback: () => void)
+ArkTS-Dyn: onRequestSelected(callback: () => void)
+
+ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined)
 
 当Web组件获取焦点时触发回调。如果组件在未获焦状态下加载网页并成功获取焦点，将触发两次回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 当网页获取焦点时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3414,21 +5665,53 @@ onRequestSelected(callback: () => void)
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onRequestSelected(() => {
+            console.info('onRequestSelected');
+          })
+      }
+    }
+  }
+  ```
+
 ## onScreenCaptureRequest<sup>10+</sup>
 
-onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
+ArkTS-Dyn: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
+
+ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\> | undefined)
 
 通知收到屏幕捕获请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> | 是 | 通知收到屏幕捕获请求。 |
+| callback |ArkTS-Dyn:  Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> <br/>ArkTS-Sta:  Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> \|  undefined| 是 | 通知收到屏幕捕获请求。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -3471,22 +5754,77 @@ onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, OnScreenCaptureRequestEvent, WebCaptureMode } from '@kit.ArkUI';
+  import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from "@kit.ArkUI";
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onScreenCaptureRequest((event: OnScreenCaptureRequestEvent) => {
+            if (event) {
+              const dialogOptions: AlertDialogParamWithButtons = {
+                title: 'title: ' + event.handler.getOrigin(),
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.handler.deny();
+                  },
+                } as AlertDialogButtonBaseOptions,
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN });
+                  },
+                } as AlertDialogButtonBaseOptions,
+                cancel: () => {
+                  event.handler.deny();
+                }
+              };
+              this.uiContext.showAlertDialog(dialogOptions);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onOverScroll<sup>10+</sup>
 
-onOverScroll(callback: Callback\<OnOverScrollEvent\>)
+ArkTS-Dyn: onOverScroll(callback: Callback\<OnOverScrollEvent\>)
+
+ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined)
 
 该接口在网页过度滚动时触发，用于通知网页过度滚动的偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnOverScrollEvent](./arkts-basic-components-web-i.md#onoverscrollevent12)\> | 是 | 网页过度滚动时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnOverScrollEvent](./arkts-basic-components-web-i.md#onoverscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnOverScrollEvent](./arkts-basic-components-web-i.md#onoverscrollevent12)\> \|  undefined| 是 | 网页过度滚动时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3507,10 +5845,35 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
     }
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, OnOverScrollEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onOverScroll((event: OnOverScrollEvent) => {
+            console.info("x = " + event.xOffset);
+            console.info("y = " + event.yOffset);
+          })
+      }
+    }
+  }
+  ```
 
 ## onControllerAttached<sup>10+</sup>
 
-onControllerAttached(callback: () => void)
+ArkTS-Dyn: onControllerAttached(callback: () => void)
+
+ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined)
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
 
@@ -3520,15 +5883,21 @@ onControllerAttached(callback: () => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
 
 **示例：**
 
 在该回调中使用loadUrl加载网页
+
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3549,7 +5918,32 @@ onControllerAttached(callback: () => void)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: '', controller: this.controller })
+          .onControllerAttached(() => {
+            this.controller.loadUrl($rawfile("index.html"));
+          })
+      }
+    }
+  }
+  ```
+
 在该回调中使用getWebId
+
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3577,6 +5971,38 @@ onControllerAttached(callback: () => void)
     }
   }
   ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onControllerAttached(() => {
+            try {
+              let id = this.controller.getWebId();
+              console.info("id: " + id);
+            } catch (error) {
+              let code = (error as BusinessError).code;
+              let message = (error as BusinessError).message;
+              console.error(`ErrorCode: ${code},  Message: ${message}`);
+            }
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!-- index.html -->
@@ -3590,20 +6016,27 @@ onControllerAttached(callback: () => void)
 
 ## onNavigationEntryCommitted<sup>11+</sup>
 
-onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11))
+ArkTS-Dyn: onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11))
+
+ArkTS-Sta: onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11) | undefined)
 
 当网页跳转提交时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11) | 是 | 网页跳转提交时触发的回调。 |
+| callback       | ArkTS-Dyn: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11) <br/>ArkTS-Sta: [OnNavigationEntryCommittedCallback](./arkts-basic-components-web-t.md#onnavigationentrycommittedcallback11) \|  undefined| 是 | 网页跳转提交时触发的回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3628,9 +6061,38 @@ onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallback](./arkt
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onNavigationEntryCommitted((details) => {
+            console.info("onNavigationEntryCommitted: [isMainFrame]= " + details.isMainFrame +
+              ", [isSameDocument]=" + details.isSameDocument +
+              ", [didReplaceEntry]=" + details.didReplaceEntry +
+              ", [navigationType]=" + details.navigationType +
+              ", [url]=" + details.url);
+          })
+      }
+    }
+  }
+  ```
+
 ## onSafeBrowsingCheckResult<sup>11+</sup>
 
-onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
+ArkTS-Dyn: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
+
+ArkTS-Sta: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback | undefined)
 
 收到网站安全风险检查结果时触发的回调。
 
@@ -3641,14 +6103,19 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+| callback  | ArkTS-Dyn: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) <br/>ArkTS-Sta: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) \|  undefined| 是 | 收到网站安全风险检查结果时触发的回调。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3661,18 +6128,41 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
-          .onSafeBrowsingCheckResult((callback) => {
-            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
-            console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
+          .onSafeBrowsingCheckResult((threatType: ThreatType) => {
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + threatType);
           })
       }
     }
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'http://example.com', controller: this.controller })
+        .onSafeBrowsingCheckResult((threatType: ThreatType) => {
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + threatType);
+        })
+    }
+  }
+}
+```
+
 ## onSafeBrowsingCheckFinish<sup>21+</sup>
 
-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+ArkTS-Dyn: onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+
+ArkTS-Sta: onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback | undefined)
 
 网站安全风险检查结束时触发的回调。
 
@@ -3683,29 +6173,57 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+| callback  | ArkTS-Dyn: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) <br/>ArkTS-Sta: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11)  \|  undefined| 是 | 收到网站安全风险检查结果时触发的回调。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
-          .onSafeBrowsingCheckFinish((callback) => {
-            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
-            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
+          .onSafeBrowsingCheckFinish((threatType: ThreatType) => {
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + threatType);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+  
+    build() {
+      Column() {
+        // 使用时需要將"https://www.example.com"替换成真实要访问的网站地址。
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSafeBrowsingCheckFinish((threatType: ThreatType) => {
+              console.info("onSafeBrowsingCheckFinish: [threatType]= " + threatType);
           })
       }
     }
@@ -3714,20 +6232,27 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 ## onNativeEmbedLifecycleChange<sup>11+</sup>
 
-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
+ArkTS-Dyn: onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
+
+ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined)
 
 当同层标签生命周期变化时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void | 是 | 同层标签生命周期变化时触发该回调。|
+| callback       | ArkTS-Dyn: (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void <br/>ArkTS-Sta: ((event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void) \|  undefined| 是 | 同层标签生命周期变化时触发该回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 
@@ -3781,6 +6306,62 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+'use static'
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    // API12新增：开启同层渲染BFCache开关
+    let features = new webview.BackForwardCacheSupportedFeatures();
+    features.nativeEmbed = true;
+    features.mediaTakeOver = true;
+    webview.WebviewController.enableBackForwardCache(features);
+    webview.WebviewController.initializeWebEngine();
+  }
+
+  onDestroy(): Promise<void>|undefined {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    return undefined;
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err?.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
+```
+
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3869,6 +6450,97 @@ export default class EntryAbility extends UIAbility {
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile,State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    @State embedStatus: string = '';
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 默认行为：点击按钮跳转页面，关闭index页面，使同层标签销毁。
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮跳转页面，关闭index页面，使同层标签进入BFCache。
+        Button('Destroy')
+          .onClick(() => {
+            try {
+              this.controller.loadUrl("www.example.com");
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮返回页面，使同层标签离开BFCache。
+        Button('backward')
+          .onClick(() => {
+            try {
+              this.controller.backward();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮前进页面，使同层标签进入BFCache。
+        Button('forward')
+          .onClick(() => {
+            try {
+              this.controller.forward();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+
+        // API12新增同层标签进入离开BFCache状态：非http与https协议加载的网页，Web内核不支持进入BFCache;
+        // 因此如果要测试ENTER_BFCACHE/LEAVE_BFCACHE状态，需要将index.html放到Web服务器上，使用http或者https协议加载，如：
+        // Web({ src: "http://xxxx/index.html", controller: this.controller })
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedLifecycleChange((event:NativeEmbedDataInfo):void => {
+            // 当加载页面中有同层标签会触发Create。
+            if (event.status == NativeEmbedStatus.CREATE) {
+              this.embedStatus = 'Create';
+            }
+            // 当页面中同层标签移动或者缩放时会触发Update。
+            if (event.status == NativeEmbedStatus.UPDATE) {
+              this.embedStatus = 'Update';
+            }
+            // 退出页面时会触发Destroy。
+            if (event.status == NativeEmbedStatus.DESTROY) {
+              this.embedStatus = 'Destroy';
+            }
+            // 同层标签所在的页面进入BFCache时，会触发Enter BFCache。
+            if (event.status == NativeEmbedStatus.ENTER_BFCACHE) {
+              this.embedStatus = 'Enter BFCache';
+            }
+            // 同层标签所在的页面离开BFCache时，会触发Leave BFCache。
+            if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
+              this.embedStatus = 'Leave BFCache';
+            }
+            console.info("status = " + this.embedStatus);
+            console.info("surfaceId = " + event.surfaceId);
+            console.info("embedId = " + event.embedId);
+            if (event.info) {
+              console.info("id = " + event.info?.id);
+              console.info("type = " + event.info?.type);
+              console.info("src = " + event.info?.src);
+              console.info("width = " + event.info?.width);
+              console.info("height = " + event.info?.height);
+              console.info("url = " + event.info?.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件
   ```html
   <!--index.html-->
@@ -3890,20 +6562,27 @@ export default class EntryAbility extends UIAbility {
 
 ## onNativeEmbedGestureEvent<sup>11+</sup>
 
-onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
+ArkTS-Dyn: onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
+
+ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined)
 
 当手指触摸到同层标签时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void | 是 | 手指触摸到同层标签时触发该回调。 |
+| callback       | ArkTS-Dyn: (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void <br/>ArkTS-Sta: ((event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void) \|  undefined| 是 | 手指触摸到同层标签时触发该回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4029,6 +6708,139 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { NodeController, FrameNode, UIContext, TouchEvent, Component, Prop, State, Color, Column, Builder } from "@kit.ArkUI";
+import {  Entry, Button, Stack, NodeContainer, Web, $rawfile, NativeEmbedStatus, TouchType, wrapBuilder, NativeEmbedTouchInfo } from "@kit.ArkUI";
+import { NodeRenderType, RenderOptions, BuilderNode } from 'arkui.BuilderNode';
+
+export class Params {
+  text: string = '';
+  width: double = 1;
+  height: double = 1;
+}
+
+export class NodeControllerParams {
+  surfaceId: string = '';
+  renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  width: double = 0;
+  height: double = 0;
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<Params> | undefined | null = null;
+  private surfaceId_: string = "";
+  private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  private width_: double = 0;
+  private height_: double = 0;
+
+  setRenderOption(params: NodeControllerParams) {
+    this.surfaceId_ = params.surfaceId;
+    this.renderType_ = params.renderType;
+    this.width_ = params.width;
+    this.height_ = params.height;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ } );
+    this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ } as Params);
+    return this.rootNode?.getFrameNode() ?? null;
+  }
+
+  postInputEvent(event: TouchEvent): boolean {
+    return this.rootNode?.postInputEvent(event) ?? false;
+  }
+}
+
+@Component
+struct ButtonComponent {
+  @Prop params: Params = {} as Params;
+  @State bkColor: Color = Color.Red;
+
+  build() {
+    Column() {
+      Button(this.params.text)
+        .height(50)
+        .width(200)
+        .border({ width: 2, color: Color.Red })
+        .backgroundColor(this.bkColor)
+
+    }
+    .width(this.params.width)
+    .height(this.params.height)
+    .backgroundColor(Color.Green)
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  ButtonComponent({ params: params })
+}
+
+@Entry
+@Component
+struct WebComponent {
+  @State eventType: string = '';
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private nodeController: MyNodeController = new MyNodeController();
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Stack() {
+        NodeContainer(this.nodeController)
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedLifecycleChange((embed) => {
+            if (embed.status == NativeEmbedStatus.CREATE) {
+              this.nodeController.setRenderOption({
+                surfaceId: embed.surfaceId as string,
+                renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                height: this.uiContext!.px2vp(embed.info?.height ?? 0)
+              });
+              this.nodeController.rebuild();
+            }
+          })
+          .onNativeEmbedGestureEvent((event: NativeEmbedTouchInfo) => {
+            if (event && event.touchEvent) {
+              if (event.touchEvent?.type == TouchType.Down) {
+                this.eventType = 'Down'
+              }
+              if (event.touchEvent?.type == TouchType.Up) {
+                this.eventType = 'Up'
+              }
+              if (event.touchEvent?.type == TouchType.Move) {
+                this.eventType = 'Move'
+              }
+              if (event.touchEvent?.type == TouchType.Cancel) {
+                this.eventType = 'Cancel'
+              }
+              let touchEvent = event.touchEvent as TouchEvent;
+              let ret = this.nodeController.postInputEvent(touchEvent)
+              if (event.result) {
+                event.result?.setGestureEventResult(ret, true);
+              }
+              console.info("embedId = " + event.embedId);
+              console.info("touchType = " + this.eventType);
+              console.info("x = " + event.touchEvent?.touches[0].x);
+              console.info("y = " + event.touchEvent?.touches[0].y);
+              console.info("Component globalPos:(" + event.touchEvent?.target.area.globalPosition.x + "," +
+              event.touchEvent?.target.area.globalPosition.y + ")");
+              console.info("width = " + event.touchEvent?.target.area.width);
+              console.info("height = " + event.touchEvent?.target.area.height);
+            }
+          })
+      }
+    }
+  }
+}
+```
+
 加载的html文件
   ```html
   <!--index.html-->
@@ -4050,7 +6862,9 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 
 ## onIntelligentTrackingPreventionResult<sup>12+</sup>
 
-onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
+ArkTS-Dyn: onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
+
+ArkTS-Sta: onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback | undefined)
 
 智能防跟踪功能使能时，当追踪者cookie被拦截时触发该回调。
 
@@ -4060,14 +6874,19 @@ onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionC
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback    | [OnIntelligentTrackingPreventionCallback](./arkts-basic-components-web-t.md#onintelligenttrackingpreventioncallback12) | 是 | 智能防跟踪功能使能时，当追踪者cookie被拦截时触发的回调。 |
+| callback    | ArkTS-Dyn: [OnIntelligentTrackingPreventionCallback](./arkts-basic-components-web-t.md#onintelligenttrackingpreventioncallback12) <br/>ArkTS-Sta: [OnIntelligentTrackingPreventionCallback](./arkts-basic-components-web-t.md#onintelligenttrackingpreventioncallback12) \|  undefined| 是 | 智能防跟踪功能使能时，当追踪者cookie被拦截时触发的回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4080,7 +6899,42 @@ onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionC
 
     build() {
       Column() {
-        // 需要打开智能防跟踪功能，才会触发onIntelligentTrackingPreventionResult回调
+        // 需要打开智能防跟踪功能，才会触发onIntelligentTrackingPreventionResult回调。
+        Button('enableIntelligentTrackingPrevention')
+          .onClick(() => {
+            try {
+              this.controller.enableIntelligentTrackingPrevention(true);
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onIntelligentTrackingPreventionResult((details) => {
+            console.info("onIntelligentTrackingPreventionResult: [websiteHost]= " + details.host +
+              ", [trackerHost]=" + details.trackerHost);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 需要打开智能防跟踪功能，才会触发onIntelligentTrackingPreventionResult回调。
         Button('enableIntelligentTrackingPrevention')
           .onClick(() => {
             try {
@@ -4101,7 +6955,9 @@ onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionC
 
 ## onOverrideUrlLoading<sup>12+</sup>
 
-onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
+ArkTS-Dyn: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
+
+ArkTS-Sta: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback | undefined)
 
 当URL将要加载到当前Web中时触发该回调，让宿主应用程序有机会获得控制权，判断是否阻止Web加载URL。
 
@@ -4113,14 +6969,19 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL。  |
+| callback       | ArkTS-Dyn: [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) <br/>ArkTS-Sta: [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) \|  undefined| 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL。  |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4134,6 +6995,31 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
       Column() {
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onOverrideUrlLoading((webResourceRequest: WebResourceRequest) => {
+            if (webResourceRequest && webResourceRequest.getRequestUrl() == "about:blank") {
+              return true;
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, WebResourceRequest, $rawfile } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onOverrideUrlLoading((webResourceRequest: WebResourceRequest): boolean => {
             if (webResourceRequest && webResourceRequest.getRequestUrl() == "about:blank") {
               return true;
             }
@@ -4161,20 +7047,27 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
 ## onViewportFitChanged<sup>12+</sup>
 
-onViewportFitChanged(callback: OnViewportFitChangedCallback)
+ArkTS-Dyn: onViewportFitChanged(callback: OnViewportFitChangedCallback)
+
+ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined)
 
 网页meta中viewport-fit配置项更改时触发该回调，应用可在此回调中自适应布局视口。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnViewportFitChangedCallback](./arkts-basic-components-web-t.md#onviewportfitchangedcallback12) | 是 | 网页meta中viewport-fit配置项更改时触发的回调。 |
+| callback | ArkTS-Dyn: [OnViewportFitChangedCallback](./arkts-basic-components-web-t.md#onviewportfitchangedcallback12) <br/>ArkTS-Sta: [OnViewportFitChangedCallback](./arkts-basic-components-web-t.md#onviewportfitchangedcallback12) \|  undefined| 是 | 网页meta中viewport-fit配置项更改时触发的回调。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4203,6 +7096,36 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Entry, Component, Web, Column, ViewportFit } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onViewportFitChanged((data:ViewportFit):void => {
+          console.info("data:",data)
+          if (data === ViewportFit.COVER) {
+            // index.html网页支持沉浸式布局，可调用expandSafeArea调整web控件布局视口覆盖避让区域(状态栏或导航条)。
+          } else if (data === ViewportFit.CONTAINS) {
+            // index.html网页不支持沉浸式布局，可调用expandSafeArea调整web控件布局视口为安全区域。
+          } else {
+            // 默认值，可不作处理。
+          }
+        })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!-- index.html -->
@@ -4219,20 +7142,27 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 ## onInterceptKeyboardAttach<sup>12+</sup>
 
-onInterceptKeyboardAttach(callback: WebKeyboardCallback)
+ArkTS-Dyn: onInterceptKeyboardAttach(callback: WebKeyboardCallback)
+
+ArkTS-Sta: onInterceptKeyboardAttach(callback: WebKeyboardCallback | undefined)
 
 网页中可编辑元素（如input标签）拉起软键盘之前会回调该接口，应用可以使用该接口拦截系统软键盘的弹出，配置应用定制的软键盘（应用根据该接口可以决定使用系统默认软键盘/定制enter键的系统软键盘/全部由应用自定义的软键盘）。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [WebKeyboardCallback](./arkts-basic-components-web-t.md#webkeyboardcallback12) | 是 | 拦截网页拉起软键盘回调。 |
+| callback | ArkTS-Dyn: [WebKeyboardCallback](./arkts-basic-components-web-t.md#webkeyboardcallback12) <br/>ArkTS-Sta: [WebKeyboardCallback](./arkts-basic-components-web-t.md#webkeyboardcallback12) \|  undefined| 是 | 拦截网页拉起软键盘回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4254,7 +7184,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
       ])
 
       /**
-       * 自定义键盘组件Builder
+       * 自定义键盘组件Builder。
        */
       @Builder
       customKeyboardBuilder() {
@@ -4295,7 +7225,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
         .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
-          // option初始化，默认使用系统默认键盘
+          // option初始化，默认使用系统默认键盘。
           let option: WebKeyboardOptions = {
             useSystemKeyboard: true,
           };
@@ -4303,10 +7233,10 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
             return option;
           }
 
-          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为
+          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为。
           this.webKeyboardController = KeyboardCallbackInfo.controller
           let attributes: Record<string, string> = KeyboardCallbackInfo.attributes
-          // 遍历attributes
+          // 遍历attributes。
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
             console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
@@ -4314,10 +7244,10 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
           if (attributes) {
             if (attributes['data-keyboard'] == 'customKeyboard') {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘。
               console.info('WebCustomKeyboard use custom keyboard')
               option.useSystemKeyboard = false;
-              // 设置自定义键盘builder
+              // 设置自定义键盘builder。
               option.customKeyboard = () => {
                 this.customKeyboardBuilder()
               }
@@ -4325,9 +7255,120 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
             }
 
             if (attributes['keyboard-return'] != undefined) {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型。
               option.useSystemKeyboard = true;
               let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return'])
+              if (enterKeyType != undefined) {
+                option.enterKeyType = enterKeyType
+              }
+              return option;
+            }
+          }
+
+          return option;
+        })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { WebKeyboardOptions, WebKeyboardCallbackInfo, WebKeyboardController, $rawfile, Web, Column, Margin, Button, Color, Text, Row, Builder, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { inputMethodEngine } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    webKeyboardController: WebKeyboardController = new WebKeyboardController();
+    inputAttributeMap: Map<string, int> = new Map<string, int>([
+        ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
+        ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
+        ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
+        ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
+        ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
+        ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
+        ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
+      ])
+
+    /**
+     * 自定义键盘组件Builder。
+     */
+    @Builder
+    customKeyboardBuilder() {
+      // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
+      Row() {
+        Text("完成")
+          .fontSize(20)
+          .fontColor(Color.Blue)
+          .onClick(() => {
+            this.webKeyboardController.close();
+          })
+        // 插入字符。
+        Button("insertText").onClick(() => {
+          this.webKeyboardController.insertText('insert ');
+        }).margin({
+          bottom: 200,
+        } as Margin)
+        // 从后往前删除length参数指定长度的字符。
+        Button("deleteForward").onClick(() => {
+          this.webKeyboardController.deleteForward(1);
+        }).margin({
+          bottom: 200,
+        } as Margin)
+        // 从前往后删除length参数指定长度的字符。
+        Button("deleteBackward").onClick(() => {
+          this.webKeyboardController.deleteBackward(1);
+        }).margin({
+          left: -220,
+        } as Margin)
+        // 插入功能按键。
+        Button("sendFunctionKey").onClick(() => {
+          this.webKeyboardController.sendFunctionKey(6);
+        })
+      }
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
+          // option初始化，默认使用系统默认键盘。
+          let option: WebKeyboardOptions = {
+            useSystemKeyboard: true,
+          };
+          if (!KeyboardCallbackInfo) {
+            return option;
+          }
+
+          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为。
+          this.webKeyboardController = KeyboardCallbackInfo.controller
+          let attributes: Record<string, string> = KeyboardCallbackInfo.attributes
+          // 遍历attributes。
+          let attributeKeys = Object.keys(attributes)
+          for (let i = 0; i < attributeKeys.length; i++) {
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+          }
+
+          if (attributes) {
+            if (attributes['data-keyboard'] == 'customKeyboard') {
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘。
+              console.info('WebCustomKeyboard use custom keyboard')
+              option.useSystemKeyboard = false;
+              // 设置自定义键盘builder。
+              option.customKeyboard = () => {
+                this.customKeyboardBuilder()
+              }
+              return option;
+            }
+
+            if (attributes['keyboard-return'] != undefined) {
+              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型。
+              option.useSystemKeyboard = true;
+              let enterKeyType: int | undefined = this.inputAttributeMap.get(attributes['keyboard-return'] as string)
               if (enterKeyType != undefined) {
                 option.enterKeyType = enterKeyType
               }
@@ -4397,20 +7438,27 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 ## onNativeEmbedVisibilityChange<sup>12+</sup>
 
-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
+ArkTS-Dyn: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
+
+ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined)
 
 当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) | 是 | 同层标签可见性变化时触发该回调。 |
+| callback       | ArkTS-Dyn: [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) <br/>ArkTS-Sta: [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) \|  undefined| 是 | 同层标签可见性变化时触发该回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4519,6 +7567,118 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { $rawfile, State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
+import { NodeController, UIContext, FrameNode, TouchEvent, Prop, Color, Builder, wrapBuilder, Stack, NodeContainer } from '@kit.ArkUI';
+import { NodeRenderType, RenderOptions, BuilderNode } from 'arkui.BuilderNode';
+
+export class Params {
+  text: string = '';
+  width: double = 1;
+  height: double = 1;
+}
+
+export class NodeControllerParams {
+  surfaceId: string = '';
+  renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  width: double = 0;
+  height: double = 0;
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<Params> | undefined | null = null;
+  private surfaceId_: string = "";
+  private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  private width_: double = 0;
+  private height_: double = 0;
+
+  setRenderOption(params: NodeControllerParams) {
+    this.surfaceId_ = params.surfaceId;
+    this.renderType_ = params.renderType;
+    this.width_ = params.width;
+    this.height_ = params.height;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ } );
+    this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ } as Params);
+    return this.rootNode?.getFrameNode() ?? null;
+  }
+
+  postInputEvent(event: TouchEvent): boolean {
+    return this.rootNode?.postInputEvent(event) ?? false;
+  }
+}
+
+@Component
+struct ButtonComponent {
+  @Prop params: Params = {} as Params;
+  @State bkColor: Color = Color.Red;
+
+  build() {
+    Column() {
+      Button(this.params.text)
+        .height(50)
+        .width(200)
+        .border({ width: 2, color: Color.Red })
+        .backgroundColor(this.bkColor)
+
+    }
+    .width(this.params.width)
+    .height(this.params.height)
+    .backgroundColor(Color.Green)
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  ButtonComponent({ params: params })
+}
+
+@Entry
+@Component
+struct WebComponent {
+  @State embedVisibility: string = '';
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private nodeController: MyNodeController = new MyNodeController();
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Stack() {
+        NodeContainer(this.nodeController)
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedLifecycleChange((embed) => {
+            if (embed.status == NativeEmbedStatus.CREATE) {
+              this.nodeController.setRenderOption({
+                surfaceId: embed.surfaceId as string,
+                renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                height: this.uiContext!.px2vp(embed.info?.height ?? 0)
+              });
+              this.nodeController.rebuild();
+            }
+          })
+          .onNativeEmbedVisibilityChange((embed) => {
+            if (embed.visibility) {
+              this.embedVisibility = 'Visible';
+            } else {
+              this.embedVisibility = 'Hidden';
+            }
+            console.info("embedId = " + embed.embedId);
+            console.info("visibility = " + embed.visibility);
+          })
+      }
+    }
+  }
+}
+```
+
   加载的html文件
   ```html
   <!-- index.html -->
@@ -4540,7 +7700,9 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 
 ## onNativeEmbedMouseEvent<sup>20+</sup>
 
-onNativeEmbedMouseEvent(callback: MouseInfoCallback)
+ArkTS-Dyn: onNativeEmbedMouseEvent(callback: MouseInfoCallback)
+
+ArkTS-Sta: onNativeEmbedMouseEvent(callback: MouseInfoCallback | undefined)
 
 在同层标签上执行以下行为时触发该回调：
 
@@ -4550,13 +7712,19 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [MouseInfoCallback](./arkts-basic-components-web-t.md#mouseinfocallback20) | 是 | 当鼠标/触摸板点击到同层标签时触发该回调。 |
+| callback       | ArkTS-Dyn: [MouseInfoCallback](./arkts-basic-components-web-t.md#mouseinfocallback20) <br/>ArkTS-Sta: [MouseInfoCallback](./arkts-basic-components-web-t.md#mouseinfocallback20) \|  undefined | 是 | 当鼠标/触摸板点击到同层标签时触发该回调。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -4665,10 +7833,122 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
     }
   }
   ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@ohos.arkui.component';
+  import webview from '@ohos.web.webview';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { NodeController, FrameNode, UIContext, TouchEvent, MouseEvent, Prop, Color, Button, Stack, NodeContainer, NativeEmbedStatus, wrapBuilder } from '@kit.ArkUI';
+  import { BuilderNode, NodeRenderType } from '@ohos.arkui.node';
+
+  export class Params {
+    text: string = '';
+    width: double = 1;
+    height: double = 1;
+  }
+
+  export class NodeControllerParams {
+    surfaceId: string = '';
+    renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    width: double = 0;
+    height: double = 0;
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<Params> | null = null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: double = 0;
+    private height_: double = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+      this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ });
+      return this.rootNode?.getFrameNode() ?? null;
+    }
+
+    postInputEvent(event: MouseEvent): boolean {
+      return this.rootNode?.postInputEvent(event) ?? false;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @Prop params: Params = {} as Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: 'resource://rawfile/index.html', controller: this.controller })
+            .enableNativeEmbedMode(true)
+            .onNativeEmbedLifecycleChange((embed) => {
+              if (embed.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: embed.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                  height: this.uiContext!.px2vp(embed.info?.height ?? 0),
+                });
+                this.nodeController.rebuild();
+              }
+            })
+            .onNativeEmbedMouseEvent((event) => {
+              if (event && event.mouseEvent) {
+                const mouseEvent = event.mouseEvent as MouseEvent;
+                let ret = this.nodeController.postInputEvent(mouseEvent)
+                if (event.result) {
+                  event.result?.setMouseEventResult(ret, true);
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  ```
+
 加载的html文件
   ```html
-  <!--index.html-->
-  <!DOCTYPE html>
+  <!-- index.html -->
+  <!Document>
   <html>
   <head>
       <title>同层渲染测试</title>
@@ -4686,20 +7966,27 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 
 ## onNativeEmbedObjectParamChange<sup>21+</sup>
 
-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
+ArkTS-Dyn: onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
+
+ArkTS-Sta: onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback | undefined)
 
 当同层渲染object标签内嵌param元素变化时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) | 是 | 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。 |
+| callback       | ArkTS-Dyn: [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) <br/>ArkTS-Sta: [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) \|  undefined | 是 | 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4808,6 +8095,120 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+  import { Entry, Column, Component, Web } from '@ohos.arkui.component'
+  import webview from '@ohos.web.webview';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { NodeController, FrameNode, UIContext, TouchEvent, MouseEvent, Prop, Color, Button, Stack, NodeContainer, NativeEmbedStatus, wrapBuilder } from '@kit.ArkUI';
+  import { BuilderNode, NodeRenderType } from '@ohos.arkui.node';
+
+
+  export class Params {
+
+    text: string = '';
+    width: double = 1;
+    height: double = 1;
+  }
+
+  export class NodeControllerParams {
+    surfaceId: string = '';
+    renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    width: double = 0;
+    height: double = 0;
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<Params>  | null = null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: double = 0;
+    private height_: double = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ } );
+      this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ } as Params);
+      return this.rootNode?.getFrameNode() ?? null;
+    }
+
+    postInputEvent(event: TouchEvent): boolean {
+      return this.rootNode?.postInputEvent(event) ?? false;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @Prop params: Params = {} as Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: 'resource://rawfile/index.html', controller: this.controller })
+            .enableNativeEmbedMode(true)
+            .registerNativeEmbedRule("object", "native")
+            .onNativeEmbedLifecycleChange((embed) => {
+              if (embed.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: embed.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                  height: this.uiContext!.px2vp(embed.info?.height ?? 0)
+                });
+                this.nodeController.rebuild();
+              }
+            })
+            .onNativeEmbedObjectParamChange((event) => {
+              console.info("embed id: " + event.embedId);
+              let paramItems = event.paramItems;
+              if (paramItems) {
+                for (let i = 0; i < paramItems.length; ++i) {
+                  console.info("param info: " + JSON.stringify(paramItems[i]));
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  ```
+
 加载的html文件。
   ```html
   <!--index.html-->
@@ -4831,7 +8232,9 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 
 ## onOverrideErrorPage<sup>20+</sup>
 
-onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
+ArkTS-Dyn: onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
+
+ArkTS-Sta: onOverrideErrorPage(callback: OnOverrideErrorPageCallback | undefined)
 
 网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
 
@@ -4843,14 +8246,19 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                     | 必填   | 说明            |
 | ------- | ---------------------------------------- | ---- | --------------- |
-| callback | [OnOverrideErrorPageCallback](./arkts-basic-components-web-t.md#onoverrideerrorpagecallback20) | 是    | 网页加载遇到错误时触发。      |
+| callback | ArkTS-Dyn: [OnOverrideErrorPageCallback](./arkts-basic-components-web-t.md#onoverrideerrorpagecallback20) <br/>ArkTS-Sta: [OnOverrideErrorPageCallback](./arkts-basic-components-web-t.md#onoverrideerrorpagecallback20) \|  undefined | 是    | 网页加载遇到错误时触发。      |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4878,6 +8286,34 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Column, Component, Web } from '@kit.ArkUI';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    build() {
+      Column() {
+        Web({ src: "www.error-test.com", controller: this.controller })
+          .onControllerAttached(() => {
+            this.controller.setErrorPageEnabled(true);
+            if (!this.controller.getErrorPageEnabled()) {
+              this.controller.setErrorPageEnabled(true);
+            }
+          })
+          .onOverrideErrorPage(event => {
+            let htmlStr = "<html><h1>error occur : ";
+            htmlStr += event.error.getErrorCode();
+            htmlStr += "</h1></html>";
+            return htmlStr;
+          })
+      }
+    }
+  }
+  ```
 ## onSslErrorReceive<sup>(deprecated)</sup>
 
 onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void)
@@ -4889,6 +8325,10 @@ onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => vo
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[onSslErrorEventReceive<sup>9+</sup>](#onsslerroreventreceive9)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4905,6 +8345,10 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[onShowFileSelector<sup>9+</sup>](#onshowfileselector9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4924,6 +8368,10 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
 > **说明：**
 >
 > API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4960,19 +8408,27 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
 
 ## onPdfLoadEvent<sup>20+</sup>
 
-onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\>)
+ArkTS-Dyn: onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\>)
+
+ArkTS-Sta: onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\> | undefined)
 
 通知用户PDF页面加载状态，包括成功或失败。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名     | 类型                              | 必填   | 说明      |
-| ------- | --------------------------------- | ---- | --------- |
-| callback | Callback\<[OnPdfLoadEvent](./arkts-basic-components-web-i.md#onpdfloadevent20)\> | 是    | 当PDF加载成功或失败时，会触发回调，通知用户PDF页面加载状态。 |
+| 参数名   | 类型                                                                                                                                              | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | ArkTS-Dyn: Callback\<[OnPdfLoadEvent](./arkts-basic-components-web-i.md#onpdfloadevent20)\><br />ArkTS-Sta: Callback\<[OnPdfLoadEvent](./arkts-basic-components-web-i.md#onpdfloadevent20)\> \| undefined | 是   | 当PDF加载成功或失败时，会触发回调，通知用户PDF页面加载状态。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -4995,21 +8451,56 @@ onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\>)
   }
   ```
 
-## onPdfScrollAtBottom<sup>20+</sup>
+ArkTS-Sta示例：
 
-onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
+```ts
+  // xxx.ets
+  'use static'
+
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Text, Column, Component, Web} from '@ohos.arkui.component'
+  import { OnPdfLoadEvent } from '@ohos.arkui.component'
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 使用时需将'https://www.example.com/xxx.pdf'替换为真实可访问的地址
+        Web({ src: 'https://www.example.com/xxx.pdf', controller: this.controller })
+          .onPdfLoadEvent((event: OnPdfLoadEvent) => {
+            console.info(`Load event callback called. url: ${event.url}, result: ${event.result}.`)
+          })
+      }
+    }
+  }
+```
+
+## onPdfScrollAtBottom <sup>20+</sup>
+
+ArkTS-Dyn: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
+
+ArkTS-Sta: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\> | undefined)
 
 通知用户PDF页面已滚动到底。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名     | 类型                              | 必填   | 说明      |
-| ------- | --------------------------------- | ---- | --------- |
-| callback | Callback\<[OnPdfScrollEvent](./arkts-basic-components-web-i.md#onpdfscrollevent20)\> | 是    | 当PDF滚动到垂直方向底部时，会触发回调，通知用户PDF页面已滚动到底。 |
+| 参数名   | 类型                                                                                                           | 必填 | 说明                                                               |
+| -------- | -------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------ |
+| callback | ArkTS-Dyn: Callback\<[OnPdfScrollEvent](./arkts-basic-components-web-i.md#onpdfscrollevent20)\><br />ArkTS-Sta: Callback\<[OnPdfScrollEvent](./arkts-basic-components-web-i.md#onpdfscrollevent20)\> \| undefined | 是   | 当PDF滚动到垂直方向底部时，会触发回调，通知用户PDF页面已滚动到底。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -5032,9 +8523,38 @@ onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+
+```ts
+  // xxx.ets
+  'use static'
+
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Text, Column, Component, Web} from '@ohos.arkui.component'
+  import { OnPdfScrollEvent } from '@ohos.arkui.component'
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column(undefined) {
+        // 使用时需将'https://www.example.com/xxx.pdf'替换为真实可访问的地址
+        Web({ src: 'https://www.example.com/xxx.pdf', controller: this.controller })
+          .onPdfScrollAtBottom((event: OnPdfScrollEvent) => {
+            console.info(`Scroll at bottom callback called. url: ${event.url}.`)
+          })
+      }
+    }
+  }
+```
+
 ## onDetectedBlankScreen<sup>22+</sup>
 
-onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
+ArkTS-Dyn: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
+
+ArkTS-Sta: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback | undefined)
 
 Web组件检测到白屏时触发此回调。
 
@@ -5044,14 +8564,19 @@ Web组件检测到白屏时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | Web组件检测到白屏时的回调函数。 |
+| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | Web组件检测到白屏时的回调函数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // onDetectedBlankScreen.ets
   import { webview } from '@kit.ArkWeb';
@@ -5079,9 +8604,44 @@ Web组件检测到白屏时触发此回调。
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // onDetectedBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Text, Column, Component, Web, BlankScreenDetectionEventInfo,BlankScreenDetectionMethod } from '@ohos.arkui.component'
+  import { State } from '@ohos.arkui.stateManagement'
+  import web_webview from '@ohos.web.webview';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: web_webview.WebviewController = new web_webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+
+        Web({ src: "https://www.example.com/", controller: this.controller })
+          .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo | undefined) =>{
+            if (event) {
+              console.info(`Found blank screen on ${event.url}.`);
+              console.info(`Found blank screen reason is ${event.blankScreenReason}.`);
+              console.info(`Found blank screen blankScreenDetails is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+            }
+          })
+          .blankScreenDetectionConfig({
+            enable:true,
+            detectionTiming:[2,4,6,8],
+            detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN],
+            contentfulNodesCountThreshold:17
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderExited<sup>(deprecated)</sup>
 
-onRenderExited(callback: (event?: { detail: object }) => boolean)
+onRenderExited(callback: (event?: { detail: object }) => boolean)  
 
 应用渲染进程因错误或崩溃退出时触发回调。
 
@@ -5095,7 +8655,11 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[onRenderExited<sup>9+</sup>](#onrenderexited9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -5105,7 +8669,9 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 
 ## onCameraCaptureStateChange<sup>23+</sup>
 
-onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
+ArkTS-Dyn: onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
+
+ArkTS-Sta: onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback | undefined)
 
 通知用户当前网页的摄像头状态，摄像头有三个状态，无状态（None），捕获中（Active），暂停中（Paused）。使用callback异步回调。
 
@@ -5121,14 +8687,18 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 23
 
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+| callback  | ArkTS-Dyn: [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) <br/>ArkTS-Sta: [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) \|  undefined | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -5207,6 +8777,95 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from "@kit.ArkUI";
+  import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { PermissionRequestResult, common, abilityAccessCtrl } from '@kit.AbilityKit';
+  import { CameraCaptureStateChangeInfo } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
+        (err: BusinessError | null, data?: PermissionRequestResult) => {
+          if (data) {
+            console.info('data:' + JSON.stringify(data));
+            console.info('data permissions:' + data.permissions);
+            console.info('data authResults:' + data.authResults);
+          }
+        })
+    }
+
+    build() {
+      Column() {
+        Button("startCamera").onClick(() => {
+          try {
+            this.controller.startCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopCamera").onClick(() => {
+          try {
+            this.controller.stopCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("closeCamera").onClick(() => {
+          try {
+            this.controller.closeCamera();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+            if (event) {
+              const dialogOptions: AlertDialogParamWithButtons = {
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  },
+                } as AlertDialogButtonBaseOptions,
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  },
+                } as AlertDialogButtonBaseOptions,
+                cancel: () => {
+                  event.request.deny();
+                }
+              };
+              this.uiContext.showAlertDialog(dialogOptions);
+            }
+          })
+          .onCameraCaptureStateChange((event: CameraCaptureStateChangeInfo | undefined): void => {
+            if (event) {
+              console.info("CameraCapture from ", event.originalState, " to ", event.newState);
+            }
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件
   ```html
   <!-- index.html -->
@@ -5242,7 +8901,9 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 ## onMicrophoneCaptureStateChange<sup>23+</sup>
 
-onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
+ArkTS-Dyn: onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
+
+ArkTS-Sta: onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback | undefined)
 
 通知用户当前网页中麦克风状态，麦克风有三个状态，未工作（None），捕获中（Active），暂停中（Paused）。使用callback异步回调。
 
@@ -5264,14 +8925,19 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+| callback  | ArkTS-Dyn: [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) <br/>ArkTS-Sta: [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) \|  undefined | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -5342,9 +9008,98 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
               })
             }
           })
-          .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
-            console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+          .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateInfo) => {
+            console.info("Microphone from ", event.originalState, " to ", event.newState);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from "@kit.ArkUI";
+  import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { PermissionRequestResult, common, abilityAccessCtrl } from '@kit.AbilityKit';
+  import { MicrophoneCaptureStateChangeInfo } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.MICROPHONE'],
+        (err: BusinessError | null, data?: PermissionRequestResult) => {
+          if (data) {
+            console.info('data:' + JSON.stringify(data));
+            console.info('data permissions:' + data.permissions);
+            console.info('data authResults:' + data.authResults);
+          }
         })
+    }
+
+    build() {
+      Column() {
+        Button("resumeMicrophone").onClick(() => {
+          try {
+            this.controller.resumeMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("pauseMicrophone").onClick(() => {
+          try {
+            this.controller.pauseMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Button("stopMicrophone").onClick(() => {
+          try {
+            this.controller.stopMicrophone();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+            if (event) {
+              const dialogOptions: AlertDialogParamWithButtons = {
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  },
+                } as AlertDialogButtonBaseOptions,
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  },
+                } as AlertDialogButtonBaseOptions,
+                cancel: () => {
+                  event.request.deny();
+                }
+              };
+              this.uiContext.showAlertDialog(dialogOptions);
+            }
+          })
+          .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo | undefined): void => {
+            if (event) {
+              console.info("Microphone from ", event.originalState, " to ", event.newState);
+            }
+          })
       }
     }
   }    
@@ -5385,7 +9140,9 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 ## onTextSelectionChange<sup>23+</sup>
 
-onTextSelectionChange(callback: TextSelectionChangeCallback)
+ArkTS-Dyn: onTextSelectionChange(callback: TextSelectionChangeCallback)
+
+ArkTS-Sta: onTextSelectionChange(callback: TextSelectionChangeCallback | undefined)
 
 设置Web组件选区文本改变时的回调函数，使用callback异步回调。
 
@@ -5399,14 +9156,19 @@ onTextSelectionChange(callback: TextSelectionChangeCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填   | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) | 是    | 回调函数，所选区域文本内容改变时触发。 |
+| callback | ArkTS-Dyn: [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23)<br/>ArkTS-Sta: [TextSelectionChangeCallback](./arkts-basic-components-web-t.md#textselectionchangecallback23) \|  undefined | 是    | 回调函数，所选区域文本内容改变时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // onTextSelectionChange.ets
   import { webview } from '@kit.ArkWeb';
@@ -5426,6 +9188,29 @@ onTextSelectionChange(callback: TextSelectionChangeCallback)
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // onTextSelectionChange.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, $rawfile} from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onTextSelectionChange((selectionText: string) => {
+            console.info(`Selected text is ${selectionText}.`);
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件
   ```html
   <!-- index.html -->
@@ -5442,9 +9227,11 @@ onTextSelectionChange(callback: TextSelectionChangeCallback)
 
 ## onFirstScreenPaint<sup>23+</sup>
 
-onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
+ArkTS-Dyn: onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 
-网页首屏渲染结束时触发此回调，使用callback异步回调。<br>
+ArkTS-Sta: onFirstScreenPaint(callback: OnFirstScreenPaintCallback | undefined)
+
+网页首屏渲染结束时触发此回调，使用callback异步回调。
 
 > **说明：**
 >
@@ -5458,14 +9245,19 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) | 是    | 回调函数，设置Web组件的检测到首屏渲染。 |
+| callback | ArkTS-Dyn: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) <br/>ArkTS-Sta: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) \|  undefined | 是    | 回调函数，设置Web组件的检测到首屏渲染。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // onFirstScreenPaint.ets
   import { webview } from '@kit.ArkWeb';
@@ -5487,3 +9279,113 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // onFirstScreenPaint.ets
+  import { Column, Component, Entry, Web, FirstScreenPaint } from '@ohos.arkui.component'
+  import hilog from '@ohos.hilog'
+  import web_webview from '@ohos.web.webview';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: web_webview.WebviewController = new web_webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'https://www.example.com/', controller: this.controller })
+          .width('100%')
+          .height('50%')
+          .onFirstScreenPaint((event:FirstScreenPaint | undefined)=> {
+            if (event) {
+              console.info(`Found first screen paint on ${event.url}.`);
+              console.info(`The navigation start time is ${event.navigationStartTime}.`);
+              console.info(`The first screen paint time is ${event.firstScreenPaintTime}.`);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+## onInputmethodAttached
+
+ArkTS-Dyn: onInputmethodAttached(callback: OnInputmethodAttachedCallback)
+
+ArkTS-Sta: onInputmethodAttached(callback: OnInputmethodAttachedCallback | undefined)
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | ArkTS-Dyn: [OnInputmethodAttachedCallback](./arkts-basic-components-web-t.md#oninputmethodattachedcallback)<br/>ArkTS-Sta: [OnInputmethodAttachedCallback](./arkts-basic-components-web-t.md#oninputmethodattachedcallback)\| undefined | 是    | 回调函数，设置Web组件检测到输入法绑定成功时的回调。 |
+
+**示例：**
+  ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb'
+  import { inputMethod } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("test.html"), controller: this.controller }).onInputmethodAttached(() => {
+          inputMethod.getController().showTextInput();
+        })
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Column, Component, Entry, Web, $rawfile } from '@ohos.arkui.component';
+  import { webview } from '@kit.ArkWeb';
+  import { inputMethod } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebPagestatic {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("test.html"), controller: this.controller })
+          .onInputmethodAttached(() => {
+            inputMethod.getController().showTextInput();
+          })
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><title>示例页面</title></head>
+  <body>
+    <div>
+      <label for="main-input">输入框</label>
+      <input type="text" id="main-input" name="keyword" placeholder="请输入关键词..." autofocus>
+    </div>
+  </body>
+</html>
+```

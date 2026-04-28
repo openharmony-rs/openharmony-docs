@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIExtensionContext是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)，提供[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的相关配置信息以及操作[UIAbility](js-apis-app-ability-uiAbility.md)的方法，如启动[UIAbility](js-apis-app-ability-uiAbility.md)等。
 
@@ -635,6 +635,8 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1398,6 +1400,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 >
 
+**需要权限**：ohos.permission.START_INVISIBLE_ABILITY
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -1527,7 +1531,7 @@ struct Page_UIServiceExtensionAbility {
         context.disconnectUIServiceExtensionAbility(this.uiServiceProxy).then(() => {
           console.info(`disconnectUIServiceExtensionAbility success.`);
         }).catch((error: BusinessError) => {
-          console.info(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+          console.error(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
         })
       })
     }

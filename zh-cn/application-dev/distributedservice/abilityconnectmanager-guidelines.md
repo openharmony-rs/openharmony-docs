@@ -120,11 +120,9 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-
 **发现设备**
 
 设备A上的应用，需要发现并选择设备B的networkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[分布式设备管理开发指南](devicemanager-guidelines.md)进行开发。
-
 
 **应用间创建会话并进行连接**
 
@@ -262,7 +260,10 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **注册事件监听**
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
+
 <!--RP1-->
+**ArkTS-Dyn示例：**
+
 <!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -290,6 +291,51 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   }
 ```
 
+**ArkTS-Sta示例：**
+
+  <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { AppStorage } from '@kit.ArkUI';
+
+  function registerSessionEvent(sessionId: int): void {
+    hilog.info(0x0000, 'testTag', 'registerSessionEvent called');
+    abilityConnectionManager.onConnect(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
+      hilog.info(0x0000, 'testTag', 'onConnect called');
+      AppStorage.setOrCreate('receiveMessage', 'connect success');
+      hilog.info(0x0000, 'testTag', 'Session connected');
+    });
+
+    abilityConnectionManager.onDisconnect(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
+      hilog.info(0x0000, 'testTag', 'onDisconnect called');
+      abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
+      try {
+        AppStorage.setOrCreate('isConnected', false);
+        AppStorage.setOrCreate('receiveMessage', 'session disconnect');
+      } catch (err) {
+        hilog.error(0x0000, 'testTag', 'Error in onDisconnect');
+      }
+      hilog.info(0x0000, 'testTag', 'Session disconnected');
+    });
+
+    abilityConnectionManager.onReceiveMessage(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
+      hilog.info(0x0000, 'testTag', 'onReceiveMessage called');
+      const msg = callbackInfo.msg !== undefined && callbackInfo.msg !== null ? callbackInfo.msg : '';
+      try {
+        AppStorage.setOrCreate('receiveMessage', msg);
+      } catch (err) {
+        hilog.error(0x0000, 'testTag', 'Error in onReceiveMessage');
+      }
+      hilog.info(0x0000, 'testTag', 'Received message: ' + msg);
+    });
+
+    abilityConnectionManager.onReceiveData(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
+      hilog.info(0x0000, 'testTag', 'Received data');
+    });
+  }
+  ```
+
 
 <!--RP1End-->  
 <!--Del-->
@@ -309,6 +355,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
     hilog.error(0x0000, 'testTag', "connect failed");
   })
   ```
+
 **2.发送字节流数据**
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据。
@@ -317,7 +364,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
-  
+
   let textEncoder = util.TextEncoder.create("utf-8");
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 

@@ -10,11 +10,13 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 > **说明：**
 >
-> 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如getParent、setInterception、pushDestination等)，可能会发生无法预期的问题。
+> - 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
+> - 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](ts-basic-components-navigation.md#getparent11)、[setInterception](ts-basic-components-navigation.md#setinterception12)、[pushDestination](ts-basic-components-navigation.md#pushdestination11)等)，可能会发生无法预期的问题。
+>
+> - MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
 ## 导入模块
 
@@ -28,28 +30,34 @@ import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 
 ## MultiNavigation
 
-MultiNavigation({navDestination: NavDestinationBuildFunction, multiStack: MultiNavPathStack, onNavigationModeChange?: OnNavigationModeChangeCallback, onHomeShowOnTop?: OnHomeShowOnTopCallback})
+ArkTS-Dyn: MultiNavigation({navDestination: NavDestinationBuildFunction, multiStack: MultiNavPathStack, onNavigationModeChange?: OnNavigationModeChangeCallback, onHomeShowOnTop?: OnHomeShowOnTopCallback})
+
+ArkTS-Sta: MultiNavigation({navDestination: PageMapBuilder | undefined, multiStack: MultiNavPathStack, onNavigationModeChange?: OnNavigationModeChangeCallback, onHomeShowOnTop?: OnHomeShowOnTopCallback})
 
 创建并初始化MultiNavigation组件。
 
 MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左侧主页点击时，会触发详情页的加载并同时清除右侧所有其他详情页，确保右侧仅展示最新加载的详情页。然而，若在右侧的详情页上再次执行详情页加载操作，系统将不会执行清栈动作。效果可参见[主页跳转详情页效果演示](#示例)。
 
-**装饰器类型：**@Component
+**装饰器类型：** [@Component](./ts-custom-component-decorator-component.md#component)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 |   名称   |          类型          | 必填 | 装饰器类型 | 说明 |
-|:---------:|:----------------------:|------ |:------:|-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | @State | 设置路由栈。 |
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | @BuilderParam | 设置加载目标页面的路由规则。 |
+|---------|----------------------|------ |------|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | [@State](ts-state-management-state.md) | 设置路由栈。 |
+| navDestination |ArkTS-Dyn: [NavDestinationBuildFunction](#navdestinationbuildfunction) <br/>ArkTS-Sta: [PageMapBuilder](ts-types.md#pagemapbuilder23) \| undefined | 是 | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 设置加载目标页面的路由规则。<br/>取值为undefined时，不会加载。 |
 | onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | - | 设置MultiNavigation模式变更时的回调。 |
 | onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | - | 设置主页处于栈顶时的回调。 |
 
 ## MultiNavPathStack
 
-当前，MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用NavDestination的onReady等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
+当前，MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用[NavDestination](ts-basic-components-navdestination.md)的[onReady](ts-basic-components-navdestination.md#onready11)等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
 
 ### constructor
 
@@ -58,6 +66,10 @@ constructor()
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 ### pushPath
 
@@ -69,10 +81,14 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |                             类型                             | 必填 | 说明                                       |
-| :------: | :----------------------------------------------------------: | :--: | ----------------------------------------- |
+| ------| ---------------------------------------------------------- | -- | ----------------------------------------- |
 |   info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  是  | NavDestination页面的信息。                |
 | animated |                           boolean                            |  否  | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。          |
 |  policy  |               [SplitPolicy](#splitpolicy枚举说明)                |  否  | 当前入栈页面的策略。默认值：DETAIL_PAGE |
@@ -87,10 +103,14 @@ pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |                             类型                             | 必填 | 说明                                       |
-| :-----: | :----------------------------------------------------------: | :--: | ------------------------------------------ |
+| ----- | ---------------------------------------------------------- | -- | ------------------------------------------ |
 |  info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  是  | NavDestination页面的信息。                 |
 | options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) |  否  | 页面栈操作选项。仅支持其中的animated字段。 |
 | policy  |               [SplitPolicy](#splitpolicy枚举说明)                |  否  | 当前入栈页面的策略。默认值：DETAIL_PAGE    |
@@ -105,10 +125,14 @@ pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型              | 必填 | 说明           |
-|:---------------------:|:------------:|:------:| --------------------- |
+|---------------------|------------|------| --------------------- |
 |         name          |    string    |   是    | NavDestination页面名称。   |
 |         param         |   Object    |   是    | NavDestination页面详细参数。 |
 |       animated        |   boolean    |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
@@ -124,15 +148,45 @@ pushPathByName(name: string, param: Object, onPop?: base.Callback\<PopInfo>, ani
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[pushPathByName<sup>23+</sup>](#pushpathbyname23)。
+
+**ArkTS-Dyn起始版本：** 14
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-|:---------:|:-------------------------------------------------------------:|:------:|------|
+|---------|-------------------------------------------------------------|------|------|
 |   name    |                            string                             |   是    | NavDestination页面名称。   |
 |   param   |                            Object                             |   是    | NavDestination页面详细参数。 |
 |   onPop   | base.[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[PopInfo](ts-basic-components-navigation.md#popinfo11)>  |   否    | Callback回调，用于页面出栈时触发该回调处理返回结果。 |
 | animated  |                            boolean                            |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 |  policy   |                          [SplitPolicy](#splitpolicy枚举说明)                          |   否    | 当前入栈页面的策略。默认值：DETAIL_PAGE       |
+
+### pushPathByName<sup>23+</sup>
+
+pushPathByName(name: string, param: Object, onPop?: Callback\<PopInfo>, animated?: boolean, policy?: SplitPolicy): void
+
+将name指定的NavDestination页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[pushPathByName](#pushpathbyname)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+|  参数名   |             类型                | 必填 | 说明           |
+|---------|-------------------------------------------------------------|------|------|
+|   name    |                            string                             |   是    | NavDestination页面名称。   |
+|   param   |                            Object                             |   是    | NavDestination页面详细参数。 |
+|   onPop   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[PopInfo](ts-basic-components-navigation.md#popinfo11)>  |   否    | Callback回调，用于页面出栈时触发该回调处理返回结果。 |
+| animated  |                            boolean                            |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
+|  policy   |                          [SplitPolicy](#splitpolicy枚举说明)                          |`   否    | 当前入栈页面的策略。默认值：DETAIL_PAGE       |
 
 ### replacePath
 
@@ -144,10 +198,14 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-| :------: | :----------------------------------------------------------: | :--: | -------------------------------- |
+| ------ | ---------------------------------------------------------- | -- | -------------------------------- |
 |   info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  是  | NavDestination页面的信息。       |
 | animated |                           boolean                            |  否  | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
@@ -161,10 +219,14 @@ replacePath(info: NavPathInfo, options?: NavigationOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-| :-----: | :----------------------------------------------------------: | :--: | ------------------------------------------ |
+| ----- | ---------------------------------------------------------- | -- | ------------------------------------------ |
 |  info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  是  | NavDestination页面的信息。                 |
 | options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) |  否  | 页面栈操作选项。仅支持其中的animated字段。 |
 
@@ -178,17 +240,23 @@ replacePathByName(name: string, param: Object, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-|:--------:|:---------:|:------:|----------------------|
+|--------|---------|------|----------------------|
 |   name   |  string   |   是    | NavDestination页面名称。  |
 |  param   |  Object   |   是    | NavDestination页面详细参数。 |
 | animated |  boolean  |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。   |
 
 ### removeByIndexes
 
-removeByIndexes(indexes: Array<number\>): number
+ArkTS-Dyn: removeByIndexes(indexes: Array<number\>): number
+
+ArkTS-Sta: removeByIndexes(indexes: Array<int\>): int
 
 将页面栈内索引值在indexes中的NavDestination页面删除。
 
@@ -196,21 +264,27 @@ removeByIndexes(indexes: Array<number\>): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:--------:|:---------------:|:------:| --------------------- |
-| indexes  | Array<number\>  |   是    | 待删除NavDestination页面的索引值数组。<br/>number类型的取值范围：[0, +∞) |
+|  参数名   | 类型                         | 必填 | 说明           |
+|--------|------------------------------------|------| ---------------------|
+| indexes | ArkTS-Dyn: Array<number\><br/>ArkTS-Sta: Array<int\>  |   是  | 待删除NavDestination页面的索引值数组。<br/>number/int类型的取值范围：[0, +∞)|
 
 **返回值：**
 
 |      类型       | 说明                       |
-|:-------------:| ------------------------ |
-|    number     | 返回删除的NavDestination页面数量。 |
+|-------------| ------------------------ |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 返回删除的NavDestination页面数量。 |
 
 ### removeByName
 
-removeByName(name: string): number
+ArkTS-Dyn: removeByName(name: string): number
+
+ArkTS-Sta: removeByName(name: string): int
 
 将页面栈内指定name的NavDestination页面删除。
 
@@ -218,17 +292,21 @@ removeByName(name: string): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:-------:| ------- | ---- | --------------------- |
+|  参数名   | 类型   | 必填 | 说明           |
+|-------| ------- | ---- | --------------------- |
 |  name   | string  | 是    | 待删除NavDestination页面的名字。 |
 
 **返回值：**
 
 |      类型       | 说明                       |
-|:-------------:| ------------------------ |
-|    number     | 返回删除的NavDestination页面数量。 |
+|-------------| ------------------------ |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 返回删除的NavDestination页面数量。 |
 
 ### pop
 
@@ -244,17 +322,23 @@ pop(animated?: boolean): NavPathInfo | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[pop](#pop23)。
+
+**ArkTS-Dyn起始版本：** 14
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-|:-----------:|:--------:|:------:| -------------------- |
+|-----------|--------|------| -------------------- |
 |  animated   | boolean  |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 **返回值：**
 
 | 类型          | 说明                       |
 | ----------- | ------------------------ |
-| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。 |
+| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。无页面信息时返回undefined。 |
 
 ### pop
 
@@ -270,10 +354,16 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[pop](#pop23)。
+
+**ArkTS-Dyn起始版本：** 14
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-|:---------:|:-------------------------------:|:------:| -------------------- |
+|---------|-------------------------------|------| -------------------- |
 |  result   |             Object              |   否    | 页面自定义处理结果。 |
 | animated  |             boolean             |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
@@ -281,11 +371,44 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 
 | 类型          | 说明                       |
 | ----------- | ------------------------ |
-| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。 |
+| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。无页面信息时返回undefined。 |
+
+### pop<sup>23+</sup>
+
+pop(result?: Object, animated?: boolean): NavPathInfo | undefined
+
+弹出路由栈栈顶元素，并触发onPop回调传入页面处理结果。
+
+> **说明：**
+>
+> 当调用[keepBottomPage](#keepbottompage)接口并设置为true时，会保留栈底页面。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[pop](#pop)和[pop](#pop-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+|  参数名   |             类型                | 必填 | 说明           |
+|---------|-------------------------------|------| -------------------- |
+|  result   |             Object              |   否       | 页面自定义处理结果。 |
+| animated  |             boolean             |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
+
+**返回值：**
+
+| 类型          | 说明                       |
+| ----------- | ------------------------ |
+| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | 返回栈顶NavDestination页面的信息。无页面信息时返回undefined。 |
 
 ### popToName
 
-popToName(name: string, animated?: boolean): number
+ArkTS-Dyn: popToName(name: string, animated?: boolean): number
+
+ArkTS-Sta: popToName(name: string, animated?: boolean): int
 
 回退路由栈到由栈底开始第一个名为name的NavDestination页面。
 
@@ -293,10 +416,14 @@ popToName(name: string, animated?: boolean): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:----------:|:--------:|:------:| ------------------- |
+|  参数名   | 类型   | 必填 | 说明           |
+|----------|--------|------| ------------------- |
 |    name    |  string  |   是    | NavDestination页面名称。 |
 |  animated  | boolean  |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
@@ -304,11 +431,13 @@ popToName(name: string, animated?: boolean): number
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。<br/>取值范围：[-1, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。<br/>取值范围：[-1, +∞) |
 
 ### popToName
 
-popToName(name: string, result: Object, animated?: boolean): number
+ArkTS-Dyn: popToName(name: string, result: Object, animated?: boolean): number
+
+ArkTS-Sta: popToName(name: string, result: Object, animated?: boolean): int
 
 回退路由栈到由栈底开始第一个名为name的NavDestination页面，并触发onPop回调传入页面处理结果。
 
@@ -316,10 +445,14 @@ popToName(name: string, result: Object, animated?: boolean): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:---------:|:--------:|:------:| ------------------- |
+|  参数名   | 类型   | 必填 | 说明           |
+|---------|--------|------| ------------------- |
 |   name    |  string  |   是    | NavDestination页面名称。 |
 |  result   |  Object  |   是    | 页面自定义处理结果。 |
 | animated  | boolean  |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
@@ -328,11 +461,13 @@ popToName(name: string, result: Object, animated?: boolean): number
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。<br/>取值范围：[-1, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
 
 ### popToIndex
 
-popToIndex(index: number, animated?: boolean): void
+ArkTS-Dyn: popToIndex(index: number, animated?: boolean): void
+
+ArkTS-Sta: popToIndex(index: int, animated?: boolean): void
 
 回退路由栈到index指定的NavDestination页面。
 
@@ -340,16 +475,22 @@ popToIndex(index: number, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:------------:|:--------:|:------:| ---------------------- |
-|    index     |  number  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
+|  参数名   | 类型   | 必填 | 说明           |
+|------------|--------|------| ---------------------- |
+|    index     | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
 |   animated   | boolean  |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ### popToIndex
 
-popToIndex(index: number, result: Object, animated?: boolean): void
+ArkTS-Dyn: popToIndex(index: number, result: Object, animated?: boolean): void
+
+ArkTS-Sta: popToIndex(index: int, result: Object, animated?: boolean): void
 
 回退路由栈到index指定的NavDestination页面，并触发onPop回调传入页面处理结果。
 
@@ -357,17 +498,23 @@ popToIndex(index: number, result: Object, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
+|  参数名   | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | ---------------------- |
-| index | number | 是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞)  |
+| index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞)  |
 | result | Object | 是 | 页面自定义处理结果。 |
 | animated | boolean | 否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ### moveToTop
 
-moveToTop(name: string, animated?: boolean): number
+ArkTS-Dyn: moveToTop(name: string, animated?: boolean): number
+
+ArkTS-Sta: moveToTop(name: string, animated?: boolean): int
 
 将由栈底开始第一个名为name的NavDestination页面移到栈顶。
 
@@ -389,22 +536,28 @@ moveToTop(name: string, animated?: boolean): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:---------:|:--------:|:------:| ------------------- |
+|  参数名   | 类型   | 必填 | 说明           |
+|---------|--------|------| ------------------- |
 |   name    |  string  |   是    | NavDestination页面名称。 |
 | animated  | boolean  |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 **返回值：**
 
 |    类型    |                                      说明                                      |
-|:--------:|:----------------------------------------------------------------------------:|
-|  number  | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。  |
+|--------|----------------------------------------------------------------------------|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。  |
 
 ### moveIndexToTop
 
-moveIndexToTop(index: number, animated?: boolean): void
+ArkTS-Dyn: moveIndexToTop(index: number, animated?: boolean): void
+
+ArkTS-Sta: moveIndexToTop(index: int, animated?: boolean): void
 
 将指定index的NavDestination页面移到栈顶。
 
@@ -426,11 +579,15 @@ moveIndexToTop(index: number, animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:---------:|:-------:|:------:| ------------------- |
-|   index    | number  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
+|  参数名   | 类型   | 必填 | 说明           |
+|---------|-------|------| ------------------- |
+|   index    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
 | animated  | boolean |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ### clear
@@ -447,10 +604,14 @@ clear(animated?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-|:---------:|:--------:|:------:| ---------------------- |
+|---------|--------|------| ---------------------- |
 | animated  | boolean  |   否    | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
 ### getAllPathName
@@ -463,15 +624,21 @@ getAllPathName(): Array<string\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 |        类型        | 说明                         |
-|:----------------:| -------------------------- |
+|----------------| -------------------------- |
 |  Array<string\>  | 返回栈中所有NavDestination页面的名称。 |
 
 ### getParamByIndex
 
-getParamByIndex(index: number): Object | undefined
+ArkTS-Dyn: getParamByIndex(index: number): Object | undefined
+
+ArkTS-Sta: getParamByIndex(index: int): Object | undefined
 
 获取index指定的NavDestination页面的参数信息。
 
@@ -479,21 +646,27 @@ getParamByIndex(index: number): Object | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:-------:|:--------:|:------:| ---------------------- |
-|  index  |  number  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
+|  参数名   | 类型   | 必填 | 说明           |
+|-------|--------|------| ---------------------- |
+|  index  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |   是    | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型        | 说明                         |
 | --------- | -------------------------- |
-| Object&nbsp;\|&nbsp;undefined | Object：返回对应NavDestination页面的参数信息。<br/>undefined: 传入index无效时返回undefined。  |
+| Object \| undefined  | 返回对应NavDestination页面的参数信息。传入index无效时返回undefined。 |
 
 ### getParamByName
 
-getParamByName(name: string): Array<Object\>
+ArkTS-Dyn: getParamByName(name: string): Array<Object\>
+
+ArkTS-Sta: getParamByName(name: string): Array<Object | null | undefined>
 
 获取全部名为name的NavDestination页面的参数信息。
 
@@ -501,21 +674,27 @@ getParamByName(name: string): Array<Object\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-|:------:|:--------:|:------:| ------------------- |
+|------|--------|------| ------------------- |
 |  name  |  string  |   是    | NavDestination页面名称。 |
 
 **返回值：**
 
 | 类型              | 说明                                |
 | --------------- | --------------------------------- |
-| Array<Object\> | 返回全部名为name的NavDestination页面的参数信息。 |
+| ArkTS-Dyn: Array<Object\><br/>ArkTS-Sta: Array<Object \| null \| undefined\> | 返回全部名为name的NavDestination页面的参数信息。传入的name无效时返回undefined。 |
 
 ### getIndexByName
 
-getIndexByName(name: string): Array<number\>
+ArkTS-Dyn: getIndexByName(name: string): Array<number\>
+
+ArkTS-Sta: getIndexByName(name: string): Array<int\>
 
 获取全部名为name的NavDestination页面的位置索引。
 
@@ -523,21 +702,27 @@ getIndexByName(name: string): Array<number\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:------:|:--------:|:------:| ------------------- |
+|  参数名   | 类型   | 必填 | 说明           |
+|------|--------|------| ------------------- |
 |  name  |  string  |   是    | NavDestination页面名称。 |
 
 **返回值：**
 
 | 类型             | 说明                                |
 | -------------- | --------------------------------- |
-| Array<number\> | 返回全部名为name的NavDestination页面的位置索引。<br/>number类型的取值范围：[0, +∞) |
+| ArkTS-Dyn: Array<number\><br/>ArkTS-Sta: Array<int\> | 返回全部名为name的NavDestination页面的位置索引。<br/>number/int类型的取值范围：[0, +∞) |
 
 ### size
 
-size(): number
+ArkTS-Dyn: size(): number
+
+ArkTS-Sta: size(): int
 
 获取栈大小。
 
@@ -545,11 +730,15 @@ size(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明     |
 | ------ | ------ |
-| number | 返回栈大小。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回栈大小。<br/>取值范围：[0, +∞) |
 
 ### disableAnimation
 
@@ -560,6 +749,10 @@ disableAnimation(disable: boolean): void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -577,21 +770,27 @@ switchFullScreenState(isFullScreen?: boolean): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-| :----------: | :-----: | :--: | ----------------------------------------------------- |
+| ---------- | ----- | -- | ----------------------------------------------------- |
 | isFullScreen | boolean |  否  | 是否切换为全屏。默认值为false。true表示全屏模式，false表示分栏模式。 |
 
 **返回值：**
 
 |    类型    |     说明     |
-|:--------:|:----------:|
+|--------|----------|
 | boolean  |  切换成功或失败。<br/>true：切换成功。<br/>false：切换失败。  |
 
 ### setHomeWidthRange
 
-setHomeWidthRange(minPercent: number, maxPercent: number): void
+ArkTS-Dyn: setHomeWidthRange(minPercent: number, maxPercent: number): void
+
+ArkTS-Sta: setHomeWidthRange(minPercent: double, maxPercent: double): void
 
 设置主页宽度可拖动范围。应用不设置的情况下宽度为50%，且不可拖动。
 
@@ -599,12 +798,16 @@ setHomeWidthRange(minPercent: number, maxPercent: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-|  参数名   |             类型                | 必填 | 说明           |
-|:-------------:|:--------:|:-----:|-------------------|
-| minPercent  | number  |   是   | 最小主页宽度百分比。<br/>取值范围：[0, 100] |
-| maxPercent  | number  |   是   | 最大主页宽度百分比。<br/>取值范围：[0, 100] |
+|  参数名   | 类型   | 必填 | 说明           |
+|-------------|--------|-----|---|
+| minPercent  | ArkTS-Dyn: number<br/>ArkTS-Sta: double  |   是   | 最小主页宽度百分比。 |
+| maxPercent  | ArkTS-Dyn: number<br/>ArkTS-Sta: double  |   是   | 最大主页宽度百分比。 |
 
 ### keepBottomPage
 
@@ -615,16 +818,20 @@ keepBottomPage(keepBottom: boolean): void
 > **说明：**
 >
 > MultiNavigation将主页也当作了NavDestination页面入栈，所以调用pop或clear接口时会将栈底页面也出栈。
-> 应用调用此接口并设置为TRUE时，MultiNavigation会在调用pop和clear接口时保留栈底页面。
+> 应用调用此接口并设置为true时，MultiNavigation会在调用pop和clear接口时保留栈底页面。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |             类型                | 必填 | 说明           |
-|:-------------:|:--------:|:-----:|--------------------|
+|-------------|--------|-----|--------------------|
 | keepBottom  | boolean  |   是   | 是否保留栈底页面。<br/>默认值：false<br/>true：保留栈底页面。<br/>false：不保留栈底页面。 |
 
 ### setPlaceholderPage
@@ -637,17 +844,21 @@ setPlaceholderPage(info: NavPathInfo): void
 >
 > 占位页面为特殊页面类型，当应用设置后，在一些大屏设备上会和主页默认形成左右分栏的效果，即左边主页，右边占位页。
 > 
-> 当应用可绘制区域小于600VP、折叠屏由展开态切换为折叠态及平板横屏转竖屏等场景时，会自动将占位页出栈，只显示主页；
-> 而当应用可绘制区域大于等于600VP、折叠屏由折叠态切换为展开态及平板竖屏转横屏等场景时，会自动补充占位页，形成分栏。
+> 当应用可绘制区域小于600vp、折叠屏由展开态切换为折叠态及平板横屏转竖屏等场景时，会自动将占位页出栈，只显示主页；
+> 而当应用可绘制区域大于等于600vp、折叠屏由折叠态切换为展开态及平板竖屏转横屏等场景时，会自动补充占位页，形成分栏。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |  参数名   |        类型        | 必填 | 说明         |
-|:-------------:|:--------:|:-----:|----------|
+|-------------|--------|-----|----------|
 | info  | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10)  |   是   | 占位页页面信息。 |
 
 ## SplitPolicy枚举说明
@@ -658,8 +869,12 @@ setPlaceholderPage(info: NavPathInfo): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 |       名称        |  值 |  说明           |
-| :---------------: | :-: | :-------------: |
+| --------------- | - | ------------- |
 |     HOME_PAGE     |  0  | 主页页面类型。全屏模式显示。  |
 |    DETAIL_PAGE    |  1  | 详情页页面类型。分栏模式显示。 |
 |     FULL_PAGE     |  2  | 全屏页页面类型。全屏模式显示。 |
@@ -674,7 +889,11 @@ MultiNavigation用以加载NavDestination的方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
+**参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------------- | ------ |------ |------ |
@@ -691,7 +910,11 @@ type OnNavigationModeChangeCallback = (mode: NavigationMode) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                           |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -707,7 +930,11 @@ type OnHomeShowOnTopCallback = (name: string) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ---- | ------ | ---- | -------------------------- |

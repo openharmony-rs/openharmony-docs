@@ -473,6 +473,91 @@ observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
 });
 ```
 
+## observer.oncallStateChange<sup>23+</sup>
+
+oncallStateChange(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallStateInfo\>): void
+
+订阅通话状态变化事件，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
+| options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。                                  |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 以callback形式异步返回结果。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
+    console.info("on callStateChange, data:" + JSON.stringify(data));
+});
+```
+
+## observer.oncallStateChange<sup>23+</sup>
+
+oncallStateChange(options: ObserverOptions, callback: Callback\<CallStateInfo\>): void
+
+订阅通话状态变化事件，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。                                  |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 以callback形式异步返回结果。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
+    console.info("on callStateChange, data:" + JSON.stringify(data));
+});
+```
+
 
 ## observer.off('callStateChange')
 
@@ -517,6 +602,52 @@ observer.off('callStateChange', callback);
 observer.off('callStateChange');
 ```
 
+## observer.offcallStateChange<sup>23+</sup>
+
+offcallStateChange(callback?: Callback\<CallStateInfo\>): void
+
+取消订阅通话状态变化事件，使用callback方式作为异步方法。
+
+> **说明：**
+>
+> 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 否   | 以callback形式异步返回结果，参考call的[CallState](js-apis-call.md#callstate)。<br />number：电话号码。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
+    console.info("on callStateChange, data:" + JSON.stringify(data));
+}
+observer.oncallStateChange(callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.offcallStateChange(callback);
+observer.offcallStateChange();
+```
+
 
 ## observer.on('callStateChangeEx')<sup>21+</sup>
 
@@ -524,7 +655,13 @@ on(type: 'callStateChangeEx', callback: Callback\<TelCallState\>, options?: Obse
 
 订阅通话状态变化拓展事件，使用callback方式作为异步方法。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[oncallstatechangeex](#observeroncallstatechangeex23)。
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 
@@ -561,6 +698,51 @@ observer.on('callStateChangeEx', callback, options);
 observer.on('callStateChangeEx', callback);
 ```
 
+## observer.onCallStateChangeEx<sup>23+</sup>
+
+onCallStateChangeEx(callback: Callback\<TelCallState\>, options?: ObserverOptions): void
+
+订阅通话状态变化拓展事件，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                           | 必填 | 说明                                                        |
+| -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到TelCallState。<br/> |
+| options  | [ObserverOptions](#observeroptions11)                              | 否 | 电话相关事件订阅参数可选项。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+
+observer.onCallStateChangeEx(callback, options);
+observer.onCallStateChangeEx(callback);
+```
 
 ## observer.off('callStateChangeEx')<sup>21+</sup>
 
@@ -573,6 +755,14 @@ off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offcallstatechangeex](#observeroffcallstatechangeex23)。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 
@@ -603,6 +793,49 @@ observer.on('callStateChangeEx', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 observer.off('callStateChangeEx', callback);
 observer.off('callStateChangeEx');
+```
+
+## observer.offCallStateChangeEx<sup>23+</sup>
+
+offCallStateChangeEx(callback?: Callback\<TelCallState\>): void
+
+取消订阅通话状态变化拓展事件，使用callback方式作为异步方法。
+
+> **说明：**
+>
+> 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | 否   | 以callback形式异步返回结果，参考call的[TelCallState](js-apis-call.md#telcallstate21)。<br /> |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+observer.oncallStateChangeEx(callback);
+observer.offcallStateChangeEx(callback);
+observer.offcallStateChangeEx();
 ```
 
 
@@ -1147,6 +1380,10 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 
 **需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
 
+**ArkTS-Dyn起始版本**： 23
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 |     参数名            |         类型      | 必填 | 说明                                    |
@@ -1169,7 +1406,7 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 **示例：**
 
 ```ts
-import { call，observer } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
 let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
@@ -1191,6 +1428,10 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+**ArkTS-Dyn起始版本**： 23
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 

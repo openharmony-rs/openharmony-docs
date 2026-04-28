@@ -45,6 +45,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 30%; 10%; 60%-->
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|-----|
 | FORM             | 0   | [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展能力，提供卡片开发能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -81,6 +82,8 @@ import { bundleManager } from '@kit.AbilityKit';
 | NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)：提供通知订阅的相关功能。|
 | CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。|
 | PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT<sup>24+</sup> | 37 | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。 |
 <!--RP2--><!--RP2End-->
 
@@ -143,10 +146,9 @@ import { bundleManager } from '@kit.AbilityKit';
 
 标识该Ability的显示模式。仅适用于FA模型的[PageAbility](../../application-models/pageability-overview.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                               |值 |说明 |
 |:----------------------------------|---|---|
 | UNSPECIFIED                        |0 |表示未定义方向模式，由系统判定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -159,7 +161,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | AUTO_ROTATION_LANDSCAPE            |7 |表示传感器在旋转到横向时，页面会自动旋转。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | AUTO_ROTATION_PORTRAIT             |8 |表示传感器在旋转到竖向时，页面会自动旋转。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | AUTO_ROTATION_RESTRICTED           |9 |表示受开关控制的自动旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表述受开关控制的自动横向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表示受开关控制的自动横向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | AUTO_ROTATION_PORTRAIT_RESTRICTED  |11|表示受开关控制的自动竖向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | LOCKED                             |12|表示锁定模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | AUTO_ROTATION_UNSPECIFIED<sup>12+</sup> |13|受开关控制和由系统判定的自动旋转模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -302,7 +304,7 @@ getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>):
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -358,7 +360,7 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 | moduleName   | string                        | 是   | 表示Module名称。                                     |
 | abilityName  | string                        | 是   | 表示UIAbility组件的名称。                                    |
 | metadataName | string                        | 是   | 表示UIAbility组件的[元信息名称](../../quick-start/module-configuration-file.md#metadata标签)，即module.json5配置文件中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。                                  |
-| callback     | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<string>；否则为错误对象。 |
+| callback     | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
@@ -577,7 +579,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 | moduleName           | string                        | 是   | 表示Module名称。                                   |
 | extensionAbilityName | string                        | 是   | 表示ExtensionAbility组件的名称。                         |
 | metadataName         | string                        | 是   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。                                 |
-| callback             | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<string>；否则为错误对象。 |
+| callback             | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
@@ -913,7 +915,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
 | userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的bundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1000,7 +1002,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1261,7 +1263,7 @@ getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | uid      | number                 | 是   | 表示应用程序的UID。                                            |
-| callback | AsyncCallback\<string> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleName；否则为错误对象。 |
+| callback | AsyncCallback\<string> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
 
 **错误码：**
 
@@ -1548,20 +1550,21 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_WITH_APPLICATION;
 let uri = "https://www.example.com";
 
 try {
   bundleManager.getAbilityInfo(uri, abilityFlags).then((data) => {
-    console.info('getAbilityInfo successfully. Data: ' + JSON.stringify(data));
+    hilog.info(0x0000, 'testTag', 'getAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
     let message = (err as BusinessError).message;
-    console.error('getAbilityInfo failed. Cause: ' + message);
+    hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
-  console.error('getAbilityInfo failed. Cause: ' + message);
+  hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1579,15 +1582,16 @@ cleanBundleCacheFilesForSelf(): Promise\<void>
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 bundleManager.cleanBundleCacheFilesForSelf().then(() => {
-  console.info('cleanBundleCacheFilesForSelf complete.');
+  hilog.info(0x0000, 'testTag', 'cleanBundleCacheFilesForSelf complete.');
 });
 ```
 
@@ -1749,7 +1753,7 @@ getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
 | 错误码ID |    错误信息                   |
 |----------|-------------------------|
 | 201 | Permission denied. |
-| 17700001 | The specified bundleName is not found. |
+| 17700001 | The specified bundle is not found. |
 | 17700061 | The specified app index is invalid. |
 
 **示例：**
@@ -1757,17 +1761,77 @@ getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
-    console.info('getApplicationLabel succeed:' + data);
+    hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
   }).catch((err: BusinessError) => {
-    console.error('getApplicationLabel failed: error code is ' + err.code + ' and error msg is ' + err.message);
+    hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
   });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error('getApplicationLabel failed: error code is ' + code + ' and error msg is ' + message);
+  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
+}
+```
+
+## bundleManager.getInstalledBundleList
+
+ArkTS-Dyn: getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
+
+ArkTS-Sta: getInstalledBundleList(bundleFlags: int): Promise<Array\<BundleInfo>>
+
+根据给定的bundleFlags获取系统中所有的BundleInfo。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                             |
+| ----------- | ------ | ---- | -------------------------------------------------- |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。                |
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)>> | Promise对象，返回当前已安装应用的信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | ---------------------------------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+
+try {
+  bundleManager.getInstalledBundleList(bundleFlags).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getInstalledBundleList successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', message);
 }
 ```
 

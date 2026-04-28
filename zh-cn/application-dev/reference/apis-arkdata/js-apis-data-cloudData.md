@@ -13,6 +13,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,6 +29,10 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
 | NETWORK | 0 | 通过网络同步策略。 |
@@ -37,17 +43,62 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
 | WIFI | 1 | WIFI网络策略。 |
 | CELLULAR | 2 | 蜂窝网络策略。   |
 
+## AutoSyncTriggerMode
+
+自动同步触发模式枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| ACCOUNT_LOGIN | 0 | 账号登录触发模式。 |
+| CLOUD_SWITCH_ON | 1 | 同步开关触发模式。 |
+| NETWORK_RECOVER | 2 | 网络恢复后的触发模式。 |
+| CLOUD_DATA_CHANGE | 3 | 云端数据变更触发模式。 |
+| USER_CHANGE | 4 | 用户变更触发模式。 |
+
+## AutoSyncTriggerInfo
+
+自动同步触发信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|------|------|------|------|------|
+| mode | [AutoSyncTriggerMode](#autosynctriggermode) | 否 | 否 | 自动同步触发模式。 |
+
 ## cloudData.setCloudStrategy
+
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
 设置应用自身的云同步策略，使用Promise异步回调。
  
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -71,7 +122,7 @@ setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&g
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.|
 
-**样例：**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -79,9 +130,96 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 仅WIFI同步
 cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
     console.info('Succeeded in setting the cloud strategy');
-}).catch((err: BusinessError) => {
+}).catch((err) => {
     console.error(`Failed to set cloud strategy. Code: ${err.code}, message: ${err.message}`);
 });
 
+```
+
+## cloudData.onAutoSyncTrigger
+
+onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
+
+在已打开端云同步，并且应用关闭自动同步条件下，注册自动同步触发事件通知，自动同步进行时调用回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 是 | 自动同步触发的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 801      | Capability not supported. |
+
+**示例：**
+
+```ts
+import { cloudData } from '@kit.ArkData';
+
+function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
+  console.info(`Auto sync triggered, mode: ${info.mode}`);
+}
+
+cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
+```
+
+## cloudData.offAutoSyncTrigger
+
+offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
+
+取消订阅自动同步触发事件通知。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 自动同步触发的回调函数。如果不传参数，则取消所有已注册的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 801      | Capability not supported. |
+
+**示例：**
+
+```ts
+import { cloudData } from '@kit.ArkData';
+
+function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
+  console.info(`Auto sync triggered, mode: ${info.mode}`);
+}
+
+// 订阅
+cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
+
+// 取消指定订阅
+cloudData.offAutoSyncTrigger(autoSyncTriggerObserver);
+
+// 取消所有订阅
+cloudData.offAutoSyncTrigger();
 ```
 <!--no_check-->

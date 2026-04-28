@@ -15,9 +15,10 @@
 Web组件的文本选中菜单是一种通过自定义元素实现的上下文交互组件，当用户选中文本时会动态显示，提供复制、分享、标注等语义化操作，具备标准化功能与良好可扩展性，是移动端文本操作的核心功能之一。文本选中菜单在用户长按选中文本或编辑状态下长按出现单手柄时弹出，菜单项横向排列。系统提供默认的菜单实现。应用可通过[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口对文本选中菜单进行自定义操作。
 1. 通过onCreateMenu方法自定义菜单项，通过操作Array<[TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12对象说明)>数组可对显示菜单项进行增减操作，在[TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12对象说明)中定义菜单项名称、图标、ID等内容。
 2. 通过onMenuItemClick方法处理菜单项点击事件，当返回false时会执行系统默认逻辑。
-3. 创建一个[EditMenuOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions)对象，包含onCreateMenu和onMenuItemClick两个方法，通过Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)方法与Web组件绑定。
+3. 创建一个[EditMenuOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions)对象，包含onCreateMenu和onMenuItemClick两个方法，通过Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口与Web组件绑定。
 
-<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) -->
+ArkTS-Dyn示例：
+<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -29,7 +30,7 @@ struct WebComponent {
 
   onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
     let items = menuItems.filter((menuItem) => {
-      // 过滤用户需要的系统按键
+      // 过滤用户需要的系统菜单项
       return (
         menuItem.id.equals(TextMenuItemId.CUT) ||
         menuItem.id.equals(TextMenuItemId.COPY) ||
@@ -91,6 +92,84 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) -->
+
+``` TypeScript
+'use static'
+
+import { Entry, Column, Component } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { $rawfile, $r, Web, EditMenuOptions, TextMenuItem, TextMenuItemId, TextRange } from '@ohos.arkui.component';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
+    let items = menuItems.filter((menuItem) => {
+      // 过滤用户需要的系统按键
+      return (
+        menuItem.id.equals(TextMenuItemId.CUT) ||
+          menuItem.id.equals(TextMenuItemId.COPY) ||
+          menuItem.id.equals(TextMenuItemId.PASTE)
+      );
+    });
+    let customItem1: TextMenuItem = {
+      content: 'customItem1',
+      id: TextMenuItemId.of('customItem1'),
+      icon: $r('app.media.startIcon')
+    };
+    let customItem2: TextMenuItem = {
+      content: $r('app.string.EntryAbility_label'),
+      id: TextMenuItemId.of('customItem2'),
+      icon: $r('app.media.startIcon')
+    };
+    items.push(customItem1); // 在选项列表后添加新选项
+    items.unshift(customItem2); // 在选项列表前添加选项
+    items.push(customItem1);
+    items.push(customItem1);
+    items.push(customItem1);
+    items.push(customItem1);
+    items.push(customItem1);
+    return items;
+  }
+
+  onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
+    if (menuItem.id.equals(TextMenuItemId.CUT)) {
+      // 用户自定义行为
+      console.info('intercept id：CUT');
+      return true; // 返回true不执行系统回调
+    } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
+      // 用户自定义行为
+      console.info('Do not intercept id：COPY');
+      return false; // 返回false执行系统回调
+    } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
+      // 用户自定义行为
+      console.info('intercept id：customItem1');
+      return true; // 用户自定义菜单选项返回true时点击后不关闭菜单，返回false时关闭菜单
+    } else if (menuItem.id.equals(TextMenuItemId.of('customItem2'))) {
+      // 用户自定义行为
+      console.info('intercept id：customItem2');
+      return true;
+    }
+    return false; // 返回默认值false
+  }
+
+  @State editMenuOptions: EditMenuOptions =
+    { onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick } as EditMenuOptions;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .editMenuOptions(this.editMenuOptions)
+    }
+  }
+}
+```
+
 <!---->
   
   ```html
@@ -108,13 +187,14 @@ struct WebComponent {
   ```
   ![editMenuOption](./figures/editMenuOption.gif)
 ## 上下文菜单
-上下文菜单是用户通过特定操作（如右键点击或长按富文本）触发的快捷菜单，用于提供与当前操作对象或界面元素相关的功能选项。菜单项纵向排列。系统未提供默认实现，若应用未实现，则不显示上下文菜单。应用需要创建一个[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件并与Web绑定，在菜单弹出时可通过Web组件的[onContextMenuShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontextmenushow9)回调接口获取上下文菜单的详细信息，包括点击位置的HTML元素信息及点击位置信息。
+上下文菜单是用户通过特定操作（如右键点击或长按富文本）触发的快捷菜单，用于提供与当前操作对象或界面元素相关的功能选项。菜单项纵向排列。系统未提供默认实现，若应用未实现，则不显示上下文菜单。应用需要创建一个[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件并与Web组件绑定，在菜单弹出时可通过Web组件的[onContextMenuShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontextmenushow9)回调接口获取上下文菜单的详细信息，包括点击位置的HTML元素信息及点击位置信息。
 
 1. [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件作为弹出的菜单，包含所有菜单项行为与样式。
 2. 使用bindPopup方法将Menu组件与Web组件绑定。当上下文菜单弹出时，将显示创建的Menu组件。
 3. 在onContextMenuShow回调中获取上下文菜单事件信息[onContextMenuShowEvent](../reference/apis-arkweb/arkts-basic-components-web-i.md#oncontextmenushowevent12)。其中param为[WebContextMenuParam](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)类型，包含点击位置对应HTML元素信息和位置信息，result为[WebContextMenuResult](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)类型，提供常见的菜单能力。
 
-<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) -->
+ArkTS-Dyn示例：
+<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -139,7 +219,7 @@ struct WebComponent {
   MenuBuilder() {
     // 以垂直列表形式显示的菜单。
     Menu() {
-      // 展示菜单Menu中具体的item菜单项。
+      // 展示菜单Menu中具体的菜单项。
       MenuItem({
         content: 'Copy Image',
       })
@@ -240,10 +320,143 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) -->
+
+``` TypeScript
+'use static'
+
+// xxx.ets
+import { Entry, Column, Component } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { $rawfile, Web, Builder, Menu, MenuItem, Placement, WebContextMenuResult } from '@ohos.arkui.component';
+import { CustomPopupOptions, PopupStateChangeParam } from '@ohos.arkui.component';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { webview } from '@kit.ArkWeb';
+import pasteboard from '@ohos.pasteboard';
+
+const TAG = 'ContextMenu';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private result: WebContextMenuResult | undefined = undefined;
+  @State linkUrl: string = '';
+  @State offsetX: number = 0;
+  @State offsetY: number = 0;
+  @State showMenu: boolean = false;
+  uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  // 构建自定义菜单及触发功能接口
+  MenuBuilder() {
+    // 以垂直列表形式显示的菜单。
+    Menu() {
+      MenuItem({
+        content: 'Copy Image',
+      })
+        .width(100)
+        .height(50)
+        .onClick(() => {
+          this.result?.copyImage();
+          this.showMenu = false;
+        })
+      MenuItem({
+        content: 'Cut',
+      })
+        .width(100)
+        .height(50)
+        .onClick(() => {
+          this.result?.cut();
+          this.showMenu = false;
+        })
+      MenuItem({
+        content: 'Copy',
+      })
+        .width(100)
+        .height(50)
+        .onClick(() => {
+          this.result?.copy();
+          this.showMenu = false;
+        })
+      MenuItem({
+        content: 'Paste',
+      })
+        .width(100)
+        .height(50)
+        .onClick(() => {
+          this.result?.paste();
+          this.showMenu = false;
+        })
+      MenuItem({
+        content: 'Copy link',
+      })
+        .width(100)
+        .height(50)
+        .onClick(() => {
+          let pasteData = pasteboard.createData('text/plain', this.linkUrl);
+          pasteboard.getSystemPasteboard().setData(pasteData, (error) => {
+            if (error) {
+              return;
+            }
+          })
+          this.showMenu = false;
+        })
+      MenuItem({
+        content: '全选',
+      })
+        .width(100)
+        .height(50)
+        .onClick(() => {
+          this.result?.selectAll();
+          this.showMenu = false;
+        })
+    }
+    .width(150)
+    .height(300)
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index1.html'), controller: this.controller })
+      // 触发自定义弹窗
+        .onContextMenuShow((event) => {
+          if (event) {
+            this.result = event.result;
+            console.info('x coord = ' + event.param.x());
+            console.info('link url = ' + event.param.getLinkUrl());
+            this.linkUrl = event.param.getLinkUrl();
+          }
+          console.info(TAG, `x: ${this.offsetX}, y: ${this.offsetY}`);
+          this.showMenu = true;
+          this.offsetX = 0;
+          this.offsetY = Math.max(this.uiContext!.px2vp(event?.param.y() ?? 0) - 0, 0);
+          return true;
+        })
+        .bindPopup(this.showMenu,
+          {
+            builder: this.MenuBuilder,
+            enableArrow: false,
+            placement: Placement.LeftTop,
+            offset: { x: this.offsetX, y: this.offsetY },
+            mask: false,
+            onStateChange: (e: PopupStateChangeParam) => {
+              if (!e.isVisible) {
+                this.showMenu = false;
+                this.result!.closeContextMenu();
+              }
+            }
+          } as CustomPopupOptions)
+    }
+  }
+}
+```
+
 <!---->
 
 ```html
-<!-- index.html -->
+<!-- index1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -263,6 +476,7 @@ struct WebComponent {
 1. 创建[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件作为菜单弹窗。
 2. 通过Web组件的[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)方法绑定MenuBuilder菜单弹窗。将[WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13)设置为WebElementType.IMAGE，[responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13)设置为WebResponseType.LONG_PRESS，表示长按图片时弹出菜单。在[options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13)中定义菜单显示回调onAppear、菜单消失回调onDisappear、预览窗口preview和菜单类型menuType。
 
+ArkTS-Dyn示例：
 <!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
 
 ``` TypeScript
@@ -346,10 +560,105 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
+
+``` TypeScript
+'use static'
+
+import webview from '@ohos.web.webview';
+import { Entry, Column, Component, Web, Image, Resource, Menu, ImageFit,
+  WebContextMenuResult, UIContext, WebOptions, MenuItem, $rawfile, WebResponseType, WebElementType, SelectionMenuOptionsExt, MenuType } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+interface PreviewBuilderParam {
+  previewImage: Resource | string | undefined;
+  width: number;
+  height: number;
+}
+
+@Builder function previewBuilderGlobal($$: PreviewBuilderParam) {
+  Column() {
+    Image($$.previewImage)
+      .objectFit(ImageFit.Fill)
+      .autoResize(true)
+  }.width($$.width).height($$.height)
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  private result: WebContextMenuResult | undefined = undefined;
+  @State previewImage: Resource | string | undefined = undefined;
+  @State previewWidth: number = 0;
+  @State previewHeight: number = 0;
+  uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  PreviewBuilder() {
+    previewBuilderGlobal({
+      previewImage: this.previewImage,
+      width: this.previewWidth,
+      height: this.previewHeight
+    } as PreviewBuilderParam)
+  }
+
+  @Builder
+  MenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Copy' })
+        .onClick(() => {
+          this.result?.copyImage();
+          this.result?.closeContextMenu();
+        })
+      MenuItem({ content: 'Select All' })
+        .onClick(() => {
+          this.result?.selectAll();
+          this.result?.closeContextMenu();
+        })
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index2.html'), controller: this.controller } as WebOptions)
+        .bindSelectionMenu(WebElementType.IMAGE, this.MenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {
+              this.result?.closeContextMenu();
+            },
+            preview: this.PreviewBuilder,
+            menuType: MenuType.PREVIEW_MENU
+          } as SelectionMenuOptionsExt)
+        .onContextMenuShow((event) => {
+          if (event) {
+            this.result = event.result;
+            if (event.param.getLinkUrl()) {
+              return false;
+            }
+            this.previewWidth = this.uiContext!.px2vp(event.param.getPreviewWidth());
+            this.previewHeight = this.uiContext!.px2vp(event.param.getPreviewHeight());
+            if (event.param.getSourceUrl().indexOf('resource://rawfile/') == 0) {
+              this.previewImage = $rawfile(event.param.getSourceUrl().substr(19));
+            } else {
+              this.previewImage = event.param.getSourceUrl();
+            }
+            return true;
+          }
+          return false;
+        })
+    }
+  }
+}
+```
+
 <!---->
 
 ```html
-<!--index.html-->
+<!--index2.html-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -368,6 +677,7 @@ struct WebComponent {
 
 以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容（需要注意PreviewBuilder中的Web组件不会接收事件），使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度。
 
+ArkTS-Dyn示例：
 <!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
 
 ``` TypeScript
@@ -541,10 +851,192 @@ struct SelectionMenuLongPress {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
+
+``` TypeScript
+'use static'
+
+import webview from '@ohos.web.webview';
+import { Entry, Text, Column, Component, Web, Image, Resource, Menu, ImageFit, Stack,
+  WebContextMenuResult, Progress, UIContext, TextOverflow, MenuItem, TextAlign, CopyOptions,
+  Alignment, SelectionMenuOptionsExt, ProgressType, HitTestMode, LinearStyleOptions, ProgressOptions,
+  $rawfile, WebResponseType, WebElementType, MenuType, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import pasteboard from '@ohos.pasteboard';
+
+interface PreviewBuilderParam {
+  width: number;
+  height: number;
+  url: string | Resource;
+}
+
+interface PreviewBuilderParamForImage {
+  previewImage: Resource | string | undefined;
+  width: number;
+  height: number;
+}
+
+
+@Builder function previewBuilderGlobalForImage($$: PreviewBuilderParamForImage) {
+  Column() {
+    Image($$.previewImage)
+      .objectFit(ImageFit.Fill)
+      .autoResize(true)
+  }.width($$.width).height($$.height)
+}
+
+@Entry
+@Component
+struct SelectionMenuLongPress {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  previewController: webview.WebviewController = new webview.WebviewController(undefined);
+
+  private result: WebContextMenuResult | undefined = undefined;
+  @State previewImage: Resource | string | undefined = undefined;
+  @State previewWidth: number = 1;
+  @State previewHeight: number = 1;
+  @State previewWidthImage: number = 1;
+  @State previewHeightImage: number = 1;
+  @State linkURL: string = '';
+  @State progressValue: number = 0;
+  @State progressVisible: boolean = true;
+  uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  LinkPreviewWrapper() {
+    Column() {
+      Stack() {
+        Text(this.linkURL) // 可选择是否展示url
+          .padding(5)
+          .width('100%')
+          .textAlign(TextAlign.Start)
+          .backgroundColor(Color.White)
+          .copyOption(CopyOptions.LocalDevice)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+        Progress({ value: this.progressValue, total: 100, type: ProgressType.Linear } as ProgressOptions) // 展示进度条
+          .style({ strokeWidth: 3, enableSmoothEffect: true } as LinearStyleOptions)
+          .backgroundColor(Color.White)
+          .opacity(this.progressVisible ? 1 : 0)
+          .backgroundColor(Color.White)
+      }.alignContent(Alignment.Bottom)
+      Web({ src: this.linkURL, controller: this.previewController })
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .onPageBegin(() => {
+          this.progressValue = 0;
+          this.progressVisible = true;
+        })
+        .onProgressChange((event) => {
+          this.progressValue = event.newProgress;
+        })
+        .onPageEnd(() => {
+          this.progressVisible = false;
+        })
+        .hitTestBehavior(HitTestMode.None) // 使预览Web不响应手势
+    }.width(500).height(400) // 设置预览宽高
+  }
+
+  @Builder
+  ImagePreviewWrapper() {
+    previewBuilderGlobalForImage({
+      previewImage: this.previewImage,
+      width: this.previewWidthImage,
+      height: this.previewHeightImage,
+    })
+  }
+
+  @Builder
+  LinkMenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Copy link', })
+        .onClick(() => {
+          const pasteboardData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, this.linkURL);
+          const systemPasteboard = pasteboard.getSystemPasteboard();
+          systemPasteboard.setData(pasteboardData);
+        })
+      MenuItem({ content: 'Open the link' })
+        .onClick(() => {
+          this.controller.loadUrl(this.linkURL);
+        })
+    }
+  }
+  @Builder
+  ImageMenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Copy Image' })
+        .onClick(() => {
+          this.result?.copyImage();
+          this.result?.closeContextMenu();
+        })
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index3.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .bindSelectionMenu(WebElementType.LINK, this.LinkMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {
+              this.result?.closeContextMenu();
+            },
+            preview: this.LinkPreviewWrapper,
+            menuType: MenuType.PREVIEW_MENU,
+          } as SelectionMenuOptionsExt)
+        .bindSelectionMenu(WebElementType.IMAGE, this.ImageMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {
+              this.result?.closeContextMenu();
+            },
+            preview: this.ImagePreviewWrapper,
+            menuType: MenuType.PREVIEW_MENU,
+          } as SelectionMenuOptionsExt)
+        .zoomAccess(true)
+        .onContextMenuShow((event) => {
+          if (event) {
+            this.result = event.result;
+            this.previewWidthImage = this.uiContext!.px2vp(event.param.getPreviewWidth());
+            this.previewHeightImage = this.uiContext!.px2vp(event.param.getPreviewHeight());
+            if (event.param.getSourceUrl().indexOf('resource://rawfile/') == 0) {
+              this.previewImage = $rawfile(event.param.getSourceUrl().substring(19));
+            } else {
+              this.previewImage = event.param.getSourceUrl();
+            }
+            this.linkURL = event.param.getLinkUrl();
+            return true;
+          }
+          return false;
+        })
+    }
+  }
+
+  onBackPress(): boolean {
+    if (this.controller.accessStep(-1)) {
+      this.controller.backward();
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+```
+
 <!---->
 
 html示例
 ```html
+<!--index3.html-->
 <html lang="zh-CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -572,6 +1064,7 @@ html示例
 2. 在onContextMenuShow中获取图片url，通过copyLocalPicToDir或copyUrlPicToDir将图片保存至应用沙箱。
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
 
+ArkTS-Dyn示例：
 <!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
 
 ``` TypeScript
@@ -697,6 +1190,147 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
+
+``` TypeScript
+'use static'
+
+import webview from '@ohos.web.webview';
+import { Entry, Column, Component, ClickEvent, Web, Context, Row, ResponseType, FlexAlign, SaveButton, Padding,
+  SaveButtonOnClickResult, SaveButtonOptions, SaveIconStyle, SaveDescription, ButtonType, $rawfile, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@ohos.base';
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs, ReadOptions, WriteOptions } from '@kit.CoreFileKit';
+import { http } from '@kit.NetworkKit';
+import photoAccessHelper from '@ohos.file.photoAccessHelper';
+import systemDateTime from '@ohos.systemDateTime';
+
+@Entry
+@Component
+struct WebComponent {
+  saveButtonOptions: SaveButtonOptions = {
+    icon: SaveIconStyle.FULL_FILLED,
+    text: SaveDescription.SAVE_IMAGE,
+    buttonType: ButtonType.Capsule
+  }
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State showMenu: boolean = false;
+  @State imgUrl: string = '';
+  context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  async saveImage(): Promise<void> {
+    try {
+      let context = this.context;
+      let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+      let uri = '';
+      if (this.imgUrl?.includes('rawfile')) {
+        let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
+        uri = await this.copyLocalPicToDir(rawFileName, 'copyFile.png');
+      } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
+        uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
+      }
+      if (uri) {
+        let assetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context, 'file://' + uri);
+        if (assetChangeRequest != null && phAccessHelper != null) {
+          await phAccessHelper.applyChanges(assetChangeRequest);
+        }
+      }
+    } catch (err) {
+      console.error(`create asset failed with error: ${err.code}, ${err.message}`);
+    }
+  }
+
+  async copyLocalPicToDir(rawfilePath: string, newFileName: string): Promise<string> {
+    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
+    let dstPath = this.context.cacheDir + '/' + newFileName;
+    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let bufsize: number = 4096;
+    let buf = new ArrayBuffer(bufsize);
+    let off: number = 0;
+    let len: number = 0;
+    let readLen: number = 0;
+    let srcFd: int = Number(srcFileDes.fd) as int;
+    let srcOffset: number = srcFileDes.offset;
+    let srcLength: number = srcFileDes.length;
+    while (true) {
+      let readOptions: ReadOptions = { offset: srcOffset + off as long, length: bufsize as long};
+      len = fs.readSync(srcFd, buf, readOptions);
+      if (len <= 0) {
+        break;
+      }
+      readLen += len;
+      let writeOptions: WriteOptions = { offset: off as long, length: len as long};
+      fs.writeSync(dest.fd, buf, writeOptions);
+      off += len;
+      if ((srcLength - readLen) < bufsize) {
+        bufsize = srcLength - readLen;
+      }
+      if (bufsize <= 0) {
+        break;
+      }
+    }
+    fs.close(dest.fd);
+    return dstPath;
+  }
+
+  async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
+    let filePath = '';
+    let httpRequest = http.createHttp();
+    let data: http.HttpResponse = await (httpRequest.request(picUrl));
+    if (data?.responseCode == http.ResponseCode.OK) {
+      let dstPath = this.context.cacheDir + '/' + newFileName;
+      let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+      fs.writeSync(dest.fd, data.result as ArrayBuffer);
+      fs.close(dest.fd);
+      filePath = dest.path;
+    }
+    return filePath;
+  }
+
+  @Builder
+  MenuBuilder() {
+    Column() {
+      Row() {
+        SaveButton(this.saveButtonOptions)
+          .onClick((event: ClickEvent, result: SaveButtonOnClickResult, error?: BusinessError<void>) => {
+            if (result == SaveButtonOnClickResult.SUCCESS) {
+              this.saveImage();
+            } else {
+              console.error(`SaveButtonOnClickResult create asset failed`);
+            }
+            this.showMenu = false;
+          })
+      }
+      .margin({ top: 20, bottom: 20 } as Padding)
+      .justifyContent(FlexAlign.Center)
+    }
+    .width('80')
+    .backgroundColor(Color.White)
+    .borderRadius(10)
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index4.html'), controller: this.controller })
+        .onContextMenuShow((event) => {
+          if (event) {
+            let hitValue = this.controller.getLastHitTest();
+            this.imgUrl = hitValue.extra;
+          }
+          this.showMenu = true;
+          return true;
+        })
+        .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+        .fileAccess(true)
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
+
 <!---->
 
   ```html
@@ -723,8 +1357,9 @@ struct WebComponent {
 ## Web菜单获取选中文本
 Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口中没有提供获取选中文本的方式。开发者可通过[javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)获取到JavaScript的选中文本，实现自定义菜单的逻辑。
 1. 创建SelectClass类，通过[javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)将SelectClass对象注册到Web组件中。
-2. 在Html侧注册选区变更监听器，在选区变更时通过SelectClass对象将选区设置到ArkTS侧。
+2. 在HTML侧注册选区变更监听器，在选区变更时通过SelectClass对象将选区设置到ArkTS侧。
 
+ArkTS-Dyn示例：
 <!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
 
 ``` TypeScript
@@ -771,9 +1406,62 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
+
+``` TypeScript
+'use static'
+
+import { Entry, Column, Component } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { $rawfile, Web, Text, JavaScriptProxy } from '@ohos.arkui.component';
+import { webview } from '@kit.ArkWeb';
+let selectText = '';
+
+class SelectClass {
+  constructor() {
+  }
+
+  setSelectText(param: String) {
+    selectText = param.toString();
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  webController: webview.WebviewController = new webview.WebviewController(undefined);
+  @State selectObj: SelectClass = new SelectClass();
+  @State textStr: string = '';
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index5.html'), controller: this.webController })
+        .javaScriptProxy({
+          jsObject: this.selectObj,
+          name: 'selectObjName',
+          methodList: ['setSelectText'],
+          controller: this.webController
+        } as JavaScriptProxy)
+        .height('40%')
+      Text('Click here to get the selected text.')
+        .fontSize(20)
+        .onClick(() => {
+          this.textStr = selectText;
+        })
+        .height('10%')
+      Text('Selected text is ' + this.textStr)
+        .fontSize(20)
+        .height('10%')
+    }
+  }
+}
+```
+
 <!---->
 
   ```html
+  <!--index5.html-->
   <!DOCTYPE html>
   <html>
   <head>
@@ -825,7 +1513,8 @@ struct WebComponent {
 ### 如何禁用长按选择时弹出菜单
 可通过[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口将系统默认菜单全部过滤，此时无菜单项，则不会显示菜单。
 
-<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) -->
+ArkTS-Dyn示例：
+<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -837,7 +1526,7 @@ struct WebComponent {
 
   onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
     let items = menuItems.filter((menuItem) => {
-      // 过滤用户需要的系统按键
+      // 过滤用户需要的系统菜单项
       return false;
     });
     return items;
@@ -858,10 +1547,44 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) -->
+
+``` TypeScript
+'use static'
+
+import { Entry, Column, Component } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { $rawfile, Web, EditMenuOptions, TextRange, TextMenuItem } from '@ohos.arkui.component';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  @State editMenuOptions: EditMenuOptions = {
+    onCreateMenu: (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      return menuItems.filter(() => false);
+    },
+    onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange): boolean => {
+      return false;
+    }
+  } as EditMenuOptions;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index7.html'), controller: this.controller })
+        .editMenuOptions(this.editMenuOptions)
+    }
+  }
+}
+```
+
 <!---->
 
   ```html
-  <!--index.html-->
+  <!--index7.html-->
   <!DOCTYPE html>
   <html>
     <head>
@@ -876,13 +1599,14 @@ struct WebComponent {
 ![emptyEditMenuOption](./figures/emptyEditMenuOption.gif)
 
 ### 出现选区时手柄菜单不显示
-可排查是否通过JS的[selection-api](https://www.w3.org/TR/selection-api/)对选区进行了操作，目前通过这种方式改变选区会导致手柄菜单不显示。
+可排查是否通过JavaScript的[selection-api](https://www.w3.org/TR/selection-api/)对选区进行了操作，目前通过这种方式改变选区会导致文本选中菜单不显示。
 
 ### 如何修改文本选中菜单的样式
-从API version 21开始，应用可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)接口，实现自定义文本菜单。
+从API version 21开始，应用可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)接口，实现自定义文本选中菜单。
 
 **示例代码**
 
+ArkTS-Dyn示例：
 <!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) --> 
 
 ``` TypeScript
@@ -954,6 +1678,93 @@ struct WebComponent {
     }
   }
   onBackPress(): boolean | void {
+    if (this.controller.accessStep(-1)) {
+      this.controller.backward();
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+
+``` TypeScript
+'use static'
+
+import webview from '@ohos.web.webview';
+import { Entry, Column, Component, Web, Menu, MenuItem, $rawfile, WebResponseType, WebElementType, MenuType, Color } from '@ohos.arkui.component';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  clearSelection() {
+    try {
+      this.controller.runJavaScript(
+        'clearSelection()',
+        (error, result) => {
+          if (error) {
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+            return;
+          }
+          if (result) {
+            console.info(`The clearSelection() return value is: ${result}`);
+          }
+        });
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  @Builder
+  TextMenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Copy' })
+        .onClick(() => {
+          try {
+            this.controller.runJavaScript(
+              'copySelectedText()',
+              (error, result) => {
+                if (error) {
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                if (result) {
+                  console.info(`The copySelectedText() return value is: ${result}`);
+                }
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+          }
+          this.clearSelection();
+        })
+        .backgroundColor(Color.Pink)
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('bindSelectionMenuText.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .zoomAccess(true)
+        .bindSelectionMenu(WebElementType.TEXT, this.TextMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {},
+            menuType: MenuType.SELECTION_MENU,
+          })
+    }
+  }
+  onBackPress(): boolean {
     if (this.controller.accessStep(-1)) {
       this.controller.backward();
       return true;

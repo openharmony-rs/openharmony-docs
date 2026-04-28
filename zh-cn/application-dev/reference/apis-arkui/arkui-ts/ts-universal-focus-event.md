@@ -10,19 +10,23 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 不支持嵌套滚动组件场景按键走焦。
 >
 > - 存在默认交互逻辑的组件例如[Button](ts-basic-components-button.md)、[TextInput](ts-basic-components-textinput.md)等，默认即为可获焦，[Text](ts-basic-components-text.md)、[Image](ts-basic-components-image.md)等组件默认状态为不可获焦，不可获焦状态下，无法触发焦点事件，需要设置[focusable](ts-universal-attributes-focus.md#focusable)属性为true才可触发。
->  
+>
 > - 对于有获焦能力的容器组件，例如[Stack](ts-container-stack.md)、[Row](ts-container-row.md)等，若不存在可获焦子组件，该容器组件不可获焦。为其配置onClick或是单指单击的Tap手势，且不显式配置focusable属性，该组件会隐式地成为可获焦组件。
-> 
+>
 > - 焦点开发及组件获焦能力参考[支持焦点处理](../../../ui/arkts-common-events-focus-event.md)。
 
 ## onFocus
 
-onFocus(event: () => void): T
+ArkTS-Dyn: onFocus(event: () => void): T
+
+ArkTS-Sta: onFocus(event: (() => void) | undefined): this
 
 当前组件获取焦点时触发的回调。
 
@@ -30,21 +34,27 @@ onFocus(event: () => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | () => void |  是   | onFocus的回调函数，表示组件已获焦。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onFocus的回调函数，表示组件已获焦。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onBlur
 
-onBlur(event:()&nbsp;=&gt;&nbsp;void): T
+ArkTS-Dyn: onBlur(event: () => void): T
+
+ArkTS-Sta: onBlur(event: (() => void) | undefined): this
 
 当前组件失去焦点时触发的回调。
 
@@ -52,17 +62,21 @@ onBlur(event:()&nbsp;=&gt;&nbsp;void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | () => void |  是   | onBlur的回调函数，表示组件已失焦。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onBlur的回调函数，表示组件已失焦。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 

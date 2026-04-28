@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 全局快捷键订阅模块，用于处理组合按键的订阅，本模块也支持音量键拦截监听能力。
 
@@ -167,8 +167,6 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 取消订阅应用快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
-
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **参数：** 
 

@@ -10,8 +10,13 @@
 
 >  **说明：**
 >
->  - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件仅可在Stage模型下使用。
+>
+> - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
 
 
 ## 导入模块
@@ -50,6 +55,10 @@ ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**  参数内容为设置弧形索引条索引项字符串数组、初始选中项索引位置。
 
 | 参数名     | 类型     | 必填     | 说明     |
@@ -65,81 +74,101 @@ ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 
 color(color: Optional&lt;ColorMetrics&gt;)
 
-设置普通状态下索引项文字颜色。
+设置普通状态下索引项文字颜色。未通过该接口设置时，默认0xFFFFFF，显示为白色。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 文字颜色。<br/>取值为undefined时，普通状态下索引项文字颜色为0xFFFFFF，显示为白色。 |
 
 ### selectedColor
 
 selectedColor(color: Optional&lt;ColorMetrics&gt;)
 
-设置选中项文字颜色。
+设置选中项文字颜色。未通过该接口设置时，默认0xFFFFFF，显示为白色。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项文字颜色。<br/>取值为undefined时，选中项文字颜色为0xFFFFFF，显示为白色。 |
 
 ### popupColor
 
 popupColor(color: Optional&lt;ColorMetrics&gt;)
 
-设置提示弹窗文字颜色。
+设置提示弹窗文字颜色。未通过该接口设置时，默认0xFFFFFF，显示为白色。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗文字颜色。<br/>取值为undefined时，提示弹窗文字颜色为0xFFFFFF，显示为白色。 |
 
 ### selectedBackgroundColor
 
 selectedBackgroundColor(color: Optional&lt;ColorMetrics&gt;)
 
-设置选中项背景颜色。
+设置选中项背景颜色。未通过该接口设置时，默认0x1F71FF，显示为蓝色。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 选中项背景颜色。<br/>取值为undefined时，选中项背景颜色为0x1F71FF，显示为蓝色。 |
 
 ### popupBackground
 
 popupBackground(color: Optional&lt;ColorMetrics&gt;)
 
-设置提示弹窗背景色。
+设置提示弹窗背景色。未通过该接口设置时，默认0xD8404040，显示为灰色。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 提示弹窗背景色。<br/>取值为undefined时，提示弹窗背景色为0xD8404040，显示为灰色。 |
 
 >  **说明：**
 >
@@ -149,119 +178,149 @@ popupBackground(color: Optional&lt;ColorMetrics&gt;)
 
 usePopup(enabled: Optional&lt;boolean&gt;)
 
-设置是否使用提示弹窗。
+设置是否使用提示弹窗。未通过该接口设置时，默认为false，不使用提示弹窗。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------- | ---- | -------------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否使用提示弹窗。<br/>true表示使用提示弹窗；false表示不使用提示弹窗。<br/>默认值：false |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否使用提示弹窗。<br/>true表示使用提示弹窗；false表示不使用提示弹窗。<br/>取值为undefined时，不使用提示弹窗。 |
 
 ### selectedFont
 
 selectedFont(font: Optional&lt;Font&gt;)
 
-设置选中项文字尺寸、粗细、字体族、倾斜等样式。
+设置选中项文字尺寸、粗细、字体族、倾斜等样式。未通过该接口设置时，默认样式为{size: '13.0fp', style: FontStyle.Normal, weight:500, family: 'HarmonyOS Sans' }。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型                                     | 必填 | 说明                                                         |
 | ------ | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 选中项文字样式。<br/>取值为undefined时，选中项文字尺寸、粗细、字体族、倾斜等样式为：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### popupFont
 
 popupFont(font: Optional&lt;Font&gt;)
 
-设置提示弹窗字体样式。
+设置提示弹窗字体样式。未通过该接口设置时，默认样式为{size: '13.0fp', style: FontStyle.Normal, weight:500, family: 'HarmonyOS Sans'}。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 提示弹窗字体样式。<br/>取值为undefined时，弹窗字体样式为：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### font
 
 font(font: Optional&lt;Font&gt;)
 
-设置字母索引条默认字体样式。
+设置字母索引条默认字体样式。未通过该接口设置时，默认样式为{size: '13.0fp', style: FontStyle.Normal, weight:500, family: 'HarmonyOS Sans'}。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 字母索引条默认字体样式。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | 是   | 字母索引条默认字体样式。<br/>取值为undefined时，字母索引条默认字体样式为：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### itemSize
 
 itemSize(size: Optional&lt;LengthMetrics&gt;)
 
-设置字母索引条字母区域大小。
+设置字母索引条字母区域大小。未通过该接口设置时，默认字母索引条区域大小为24.0vp。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 字母索引条字母区域大小，字母区域为圆形，即圆形直径。不支持设置为百分比。<br/>取值为undefined时，字母索引条字母区域大小为24.0。 <br/>单位：vp |
 
 ### selected
 
-selected(index: Optional&lt;number&gt;)
+ArkTS-Dyn: selected(index: Optional&lt;number&gt;)
 
-设置选中项索引值。
+ArkTS-Sta: selected(index: Optional&lt;int&gt; | Bindable&lt;int&gt;)
+
+设置选中项索引值。未通过该接口设置时，选中项索引值默认为0。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | Optional&lt;number&gt; | 是   | 选中项索引值。 <br/>默认值：0 <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| index  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;number&gt;</br>ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;int&gt; \| Bindable&lt;int&gt; | 是   | 选中项索引值。<br/>取值为undefined时，选中项索引值为0。 |
 
 ### autoCollapse
 
 autoCollapse(enable: Optional&lt;boolean&gt;)
 
-设置是否使用自适应折叠模式。
+设置是否使用自适应折叠模式。未通过该接口设置时，默认使用自适应折叠模式。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否使用自适应折叠模式。<br/>默认值：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否使用自适应折叠模式。<br/>true表示使用自适应折叠模式；false表示不使用自适应折叠模式。<br/>取值为undefined时，使用自适应折叠模式。 |
 
 ### popupBackgroundBlurStyle
 
 popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
-设置提示弹窗的背景模糊材质。未通过该接口设置时，默认为关闭模糊，对应取值为BlurStyle中的NONE。
+设置提示弹窗的背景模糊材质。未通过该接口设置时，默认取值为BlurStyle.NONE，表示无模糊。
 
 > **说明：**
 >
@@ -271,11 +330,15 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。<br/>取值为undefined时，提示弹窗的背景模糊材质为BlurStyle.NONE，无模糊效果。 |
 
 ## 事件
 
@@ -291,11 +354,15 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数类型。 |
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | 是   | 回调函数类型。<br>取值为undefined时，无回调。 |
 
 
 ## ArcAlphabetIndexerInitInfo对象说明
@@ -306,14 +373,20 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
 | arrayValue | string[] | 否 | 否 | 字母索引字符串数组，不可设置为空。 |
-| selected   | number              | 否 | 否 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| selected   | ArkTS-Dyn: number</br>ArkTS-Sta: int \| Bindable&lt;int&gt;        | 否 | 否 | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
 
 ## OnSelectCallback
 
-type OnSelectCallback =  (index: number) => void
+ArkTS-Dyn: type OnSelectCallback = (index: number) => void
+
+ArkTS-Sta: type OnSelectCallback = (index: int) => void
 
 定义[onSelect](#onselect)中使用的回调类型。
 
@@ -321,11 +394,15 @@ type OnSelectCallback =  (index: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| index  | number | 是 | 选中项序号。 |
+| index  | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是 | 选中项序号。 |
 
 
 ## 示例

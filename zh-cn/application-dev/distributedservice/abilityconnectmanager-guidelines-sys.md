@@ -270,6 +270,11 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **注册事件监听**
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
+
+**ArkTS-Dyn示例：**
+
+使用动态on()方法进行事件监听：
+
 <!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -297,6 +302,57 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   }
 ```
 
+**ArkTS-Sta示例：**
+
+使用静态on方法进行事件监听，提供更好的类型检查和IDE支持：
+
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { util } from '@kit.ArkTS';
+
+function registerSessionEvent(sessionId: number): void {
+  // 注册连接事件监听
+  abilityConnectionManager.onConnect(sessionId, (callbackInfo) => {
+    AppStorage.setOrCreate<boolean>('isConnected', true);
+    AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+  });
+
+  // 注册断连事件监听
+  abilityConnectionManager.onDisconnect(sessionId, (callbackInfo) => {
+    abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
+    AppStorage.setOrCreate<boolean>('isConnected', false);
+    AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+  });
+
+  // 注册接收消息事件监听
+  abilityConnectionManager.onReceiveMessage(sessionId, (callbackInfo) => {
+    AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+    if (callbackInfo.msg === 'startStream') {
+      hilog.info(0x0000, 'testTag', 'startStream');
+    }
+  });
+
+  // 注册接收数据事件监听
+  abilityConnectionManager.onReceiveData(sessionId, (callbackInfo) => {
+    const decoder = util.TextDecoder.create('utf-8');
+    const str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
+    AppStorage.setOrCreate<string>('receiveMessage', str);
+  });
+
+  // 注册接收图片事件监听（仅系统应用）
+  abilityConnectionManager.onReceiveImage(sessionId, (callbackInfo) => {
+    hilog.info(0x0000, 'testTag', 'Received image');
+    // 处理接收到的图片
+  });
+
+  // 注册协同事件监听（仅系统应用）
+  abilityConnectionManager.onCollaborateEvent(sessionId, (callbackInfo) => {
+    hilog.info(0x0000, 'testTag', `Collaborate event: ${callbackInfo.eventMsg}`);
+  });
+}
+```
+
 
 **发送数据**
 **1.发送消息**
@@ -322,7 +378,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
-  
+
   let textEncoder = util.TextEncoder.create("utf-8");
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
@@ -342,7 +398,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -355,7 +411,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);

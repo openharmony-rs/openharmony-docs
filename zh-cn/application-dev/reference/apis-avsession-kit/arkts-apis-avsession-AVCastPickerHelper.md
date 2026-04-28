@@ -10,8 +10,10 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 14开始支持。
+> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)。
 
 ## 导入模块
 
@@ -25,9 +27,13 @@ constructor(context: Context)
 
 创建AVCastPickerHelper对象，获取context参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -78,9 +84,13 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 通过选择模式拉起AVCastPicker界面，用户可以选择投播设备。接口采用Promise异步返回形式，传入可选参数AVCastPickerOptions对象，无返回值。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -96,7 +106,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md).
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -106,7 +116,6 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 class MyPage {
@@ -121,11 +130,9 @@ class MyPage {
       sessionType: 'video',
     };
 
-    this.avCastPicker.select(avCastPickerOptions).then(() => {
-      console.info('Succeeded in selecting.');
-    }).catch((err: BusinessError) => {
-      console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
-    });
+this.avCastPicker.select(avCastPickerOptions).then(() => {
+  console.info('Succeeded in selecting.');
+});
   }
 }
 ```
@@ -136,9 +143,13 @@ resetCommunicationDevice(): Promise\<void>
 
 将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -164,19 +175,23 @@ async function avCastPicker(context: common.Context) {
 
 on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 
-设置半模态窗口变化的监听事件。
+注册半模态窗口变化的监听事件。使用callback异步回调。
 
-每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPickerStateChange](#onpickerstatechange23)。
+
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
-| type     | string    | 是   | 事件回调类型，支持事件`'pickerStateChange'`：当半模态窗口变化时，触发该事件。 |
+| type     | string    | 是   | 事件回调类型，支持事件`pickerStateChange`：当半模态窗口变化时，触发该事件。 |
 | callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)>       | 是   | 回调函数，参数state是变化后的半模态窗口状态。|
 
 **错误码：**
@@ -189,7 +204,6 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 | 6600101  | Session service exception. |
 
 **示例：**
-
 ```ts
 import { common } from '@kit.AbilityKit';
 import { AVCastPickerState } from '@kit.AVSessionKit';
@@ -203,22 +217,106 @@ async function onPickerStateChange(context: common.Context) {
 }
 ```
 
+## resetCommunicationDevice<sup>21+</sup>
+
+resetCommunicationDevice(): Promise\<void>
+
+将通话设备恢复为默认设置。使用Promise异步回调。
+
+例如，在语音通话场景中，音频输出将自动恢复至听筒。
+
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
+  });
+}
+```
+## onPickerStateChange<sup>23+</sup>
+
+onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
+
+设置半模态窗口变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('pickerStateChange')](#onpickerstatechange14)。
+
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型       | 必填 | 说明      |
+| --------| -----------|-----|------------|
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)>       | 是   | 回调函数，参数state是变化后的半模态窗口状态。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 6600101  | Session service exception.|
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AVCastPickerState } from '@kit.AVSessionKit';
+
+async function onPickerStateChange(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.onPickerStateChange((state: AVCastPickerState) => {
+    console.info(`picker state change : ${state}`);
+  });
+}
+```
+
 ## off('pickerStateChange')<sup>14+</sup>
 
 off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
-取消半模态窗口变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销半模态窗口变化的监听事件，关闭后，不再进行该事件回调。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPickerStateChange](#offpickerstatechange23)。
+
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**参数：**
+**ArkTS-Dyn起始版本：** 14
 
+**参数：**
 | 参数名   | 类型                                               | 必填 | 说明                                                    |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------ |
-| type     | string                                           | 是   | 取消对应的监听事件，支持事件`'pickerStateChange'`。         |
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | 否   | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                           |
+| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`pickerStateChange`。          |
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | 否   | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -233,10 +331,48 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { avSession } from '@kit.AVSessionKit';
 
 async function onPickerStateChange(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
   avCastPicker.off('pickerStateChange');
+}
+```
+
+## offPickerStateChange<sup>23+</sup>
+
+offPickerStateChange(callback?: Callback<AVCastPickerState\>) : void
+
+注销半模态窗口变化的监听事件，关闭后，不再进行该事件回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('pickerStateChange')](#offpickerstatechange14)。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | 否   | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+async function onPickerStateChange(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.offPickerStateChange();
 }
 ```

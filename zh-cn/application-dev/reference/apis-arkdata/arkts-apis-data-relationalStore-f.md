@@ -8,7 +8,8 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -31,9 +32,13 @@ getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback&lt;Rd
 | 非加密 | 加密                          | 将数据库以加密方式打开。   |
 | 加密 | 非加密                          | 将数据库以非加密方式打开。   |
 
-getRdbStore目前不支持多线程并发操作。
+getRdbStore支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -82,7 +87,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.getRdbStore(context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
+relationalStore.getRdbStore(context, STORE_CONFIG, (err, rdbStore) => {
   if (err) {
     console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -109,7 +114,7 @@ class EntryAbility extends UIAbility {
       securityLevel: relationalStore.SecurityLevel.S3
     };
 
-    relationalStore.getRdbStore(this.context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
+    relationalStore.getRdbStore(this.context, STORE_CONFIG, (err, rdbStore) => {
       if (err) {
         console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -137,9 +142,13 @@ getRdbStore(context: Context, config: StoreConfig): Promise&lt;RdbStore&gt;
 | 非加密 | 加密                          | 将数据库以加密方式打开。   |
 | 加密 | 非加密                          | 将数据库以非加密方式打开。   |
 
-getRdbStore目前不支持多线程并发操作。
+getRdbStore支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -196,8 +205,9 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
   store = rdbStore;
   console.info('Get RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -220,8 +230,9 @@ class EntryAbility extends UIAbility {
     relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
       store = rdbStore;
       console.info('Get RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -242,9 +253,13 @@ getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
 | 非加密 | 加密                          | 将数据库以加密方式打开。   |
 | 加密 | 非加密                          | 将数据库以非加密方式打开。   |
 
-getRdbStoreSync目前不支持多线程并发操作。
+getRdbStoreSync支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -318,6 +333,10 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
@@ -347,7 +366,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 
-relationalStore.deleteRdbStore(context, "RdbTest.db", (err: BusinessError) => {
+relationalStore.deleteRdbStore(context, "RdbTest.db", (err) => {
   if (err) {
     console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -367,7 +386,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err: BusinessError) => {
+    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err) => {
       if (err) {
         console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -376,6 +395,89 @@ class EntryAbility extends UIAbility {
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
     });
+  }
+}
+```
+
+## relationalStore.getRdbStoreSync<sup>24+</sup>
+
+getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
+
+创建或打开已有的关系型数据库。开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。这是一个同步方法，会阻塞线程直到获取到RdbStore。
+
+对应沙箱路径下无数据库文件时，将创建数据库文件，文件创建位置详见[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)。对应路径下已有数据库文件时，将打开已有数据库文件。
+
+开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。如果有修改参数，则会报错误码。
+
+| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| ------- | -------------------------------- | ---- |
+| 非加密 | 加密                          | 将数据库以加密方式打开。   |
+| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+
+getRdbStoreSync支持多线程并发操作。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                             | 必填 | 说明                                                         |
+| ------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
+
+**返回值**：
+
+| 类型                                      | 说明                              |
+| ----------------------------------------- | --------------------------------- |
+| [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) | 返回RdbStore对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid args. |
+| 14800010  | Invalid database path. |
+| 14800011  | The current operation failed because the database is corrupted.  |
+| 14801001  | The operation is supported in the stage model only.                               |
+| 14801002  | Invalid data group ID.                             |
+| 14800017  | Config changed. |
+| 14800020  | The secret key is corrupted or lost.   |
+| 14800021  | SQLite: Generic error. |
+| 14800027  | SQLite: Attempt to write a readonly database. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800029  | SQLite: The database is full. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let store: relationalStore.RdbStore | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S1
+    };
+
+    try {
+      store = relationalStore.getRdbStoreSync(this.context, STORE_CONFIG);
+      console.info('Get RdbStore successfully.');
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
   }
 }
 ```
@@ -391,6 +493,10 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -430,8 +536,9 @@ relationalStore.deleteRdbStore(context, "RdbTest.db").then(() => {
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -448,8 +555,9 @@ class EntryAbility extends UIAbility {
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -466,6 +574,10 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -503,7 +615,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.deleteRdbStore(context, STORE_CONFIG, (err: BusinessError) => {
+relationalStore.deleteRdbStore(context, STORE_CONFIG, (err) => {
   if (err) {
     console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -527,7 +639,7 @@ class EntryAbility extends UIAbility {
       name: "RdbTest.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
-    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err: BusinessError) => {
+    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err) => {
       if (err) {
         console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -551,6 +663,10 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -598,8 +714,9 @@ relationalStore.deleteRdbStore(context, STORE_CONFIG).then(() => {
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -620,8 +737,9 @@ class EntryAbility extends UIAbility {
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -633,6 +751,10 @@ isVectorSupported(): boolean
 判断系统是否提供向量数据库能力。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -650,7 +772,7 @@ import { relationalStore } from '@kit.ArkData';
 
 let store: relationalStore.RdbStore | undefined = undefined;
 export default class EntryAbility extends UIAbility {
-  async onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     let supported = relationalStore.isVectorSupported();
     if (supported) {
       // 支持向量数据库
@@ -662,10 +784,14 @@ export default class EntryAbility extends UIAbility {
       };
       try {
         const context = this.context.getApplicationContext().createAreaModeContext(contextConstant.AreaMode.EL3);
-        const rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-        console.info('Get RdbStore successfully.');
-        store = rdbStore;
-        // 成功获取到 rdbStore 后执行后续操作
+        relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+          store = rdbStore;
+          console.info('Get RdbStore successfully.');
+          // 成功获取到 rdbStore 后执行后续操作
+        }).catch((err: Error) => {
+          let businessError = err as BusinessError;
+          console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
+        });
       } catch (error) {
         const err = error as BusinessError;
         console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
@@ -686,6 +812,10 @@ isTokenizerSupported(tokenizer: Tokenizer): boolean
 如果当前平台支持传入的分词器时，此接口返回值为true；反之，返回值为false。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -724,6 +854,10 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
@@ -749,12 +883,28 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
   sex: "man",
   desc: "asserter"
+};
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
+  "USER",
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  'name': "Logitech",
+  'age': 18 as long,
+  'sex': "man",
+  'desc': "asserter"
 };
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
   "USER",
@@ -770,6 +920,10 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 获取用于更新数据的SQL语句，此为同步接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -796,12 +950,29 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
   sex: "man",
   desc: "asserter"
+};
+const predicates = new relationalStore.RdbPredicates("users");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(
+  predicates,
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  'name': "Logitech",
+  'age': 18 as long,
+  'sex': "man",
+  'desc': "asserter"
 };
 const predicates = new relationalStore.RdbPredicates("users");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(
@@ -818,6 +989,10 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 获取用于删除数据的SQL语句，此为同步接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -842,10 +1017,19 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.equalTo("tableName", "a");
 predicates.notEqualTo("age", 18);
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.equalTo("tableName", "a");
+predicates.notEqualTo("age", 18 as long);
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
 ```
 
@@ -856,6 +1040,10 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 获取用于查询数据的SQL语句，此为同步接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -881,9 +1069,18 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.notEqualTo("age", 18);
+predicates.equalTo("name", "zhangsan");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.notEqualTo("age", 18 as long);
 predicates.equalTo("name", "zhangsan");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
 ```

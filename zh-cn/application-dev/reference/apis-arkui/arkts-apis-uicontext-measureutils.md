@@ -24,7 +24,9 @@
 
 ## measureText<sup>12+</sup>
 
-measureText(options: MeasureOptions): number
+ArkTS-Dyn: measureText(options: MeasureOptions): number
+
+ArkTS-Sta: measureText(options: MeasureOptions): double
 
 计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
 
@@ -36,6 +38,10 @@ measureText(options: MeasureOptions): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |
@@ -46,7 +52,7 @@ measureText(options: MeasureOptions): number
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| number        | 文本宽度。<br/>**说明:**<br/>浮点数会向上取整。<br/>单位：px |
+| ArkTS-Dyn: number <br>ArkTS-Sta: double        | 文本宽度。<br/>**说明:**<br/>浮点数会向上取整。<br/>单位：px |
 
 
 **示例：** 
@@ -251,6 +257,10 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<P
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -267,6 +277,8 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<P
 **示例：** 
 
 通过MeasureUtils的getParagraphs方法测算文本，当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
+
+ArkTS-Dyn示例：
 
 ``` typescript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -469,3 +481,68 @@ struct Index {
 }
 ```
 ![](figures/styledString_15.png)
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry, Component,Text, Column, Button, FontWeight, LengthMetrics, MutableStyledString, TextStyle, TextController, StyleOptions, State, StyledStringKey
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GetParagraphsDemo {
+  @State testStr: string = "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.";
+
+  testStyledString: MutableStyledString = new MutableStyledString(this.testStr, [{
+    start: 0,
+    length: 3,
+    styledKey: StyledStringKey.FONT,
+    styledValue: { fontSize: 20 } as TextStyle
+  } as StyleOptions]);
+
+  @State paragraphInfo: string = "";
+  textController: TextController = new TextController();
+
+  getParagraphsInfo(constraintWidth: LengthMetrics) {
+    const paragraphs = this.getUIContext().getMeasureUtils().getParagraphs(this.testStyledString, { constraintWidth });
+
+    let info = `总段落数：${paragraphs.length}\n`;
+    paragraphs.forEach((para, index) => {
+      info += `第${index+1}段行数：${para.getLineCount()}\n`;
+    });
+    this.paragraphInfo = info;
+
+    this.textController.setStyledString(this.testStyledString);
+  }
+
+  build() {
+    Column() {
+      Button('点击获取 Paragraphs 信息')
+        .onClick(() => this.getParagraphsInfo(LengthMetrics.px(500)))
+        .margin(10)
+
+      Text('Paragraphs 信息：')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+
+      Text(this.paragraphInfo)
+        .fontSize(14)
+        .margin(5)
+        .width('100%')
+
+      Text('实际文本排版：')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+
+      Text(undefined, { controller: this.textController })
+        .width('500px')
+        .fontSize(20)
+    }
+    .width('100%')
+    .padding(20)
+  }
+}
+```
+
+![image](figures/getParagraphsInfo_static.gif)

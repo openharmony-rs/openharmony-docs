@@ -4,7 +4,7 @@
 <!--Owner: @wanghang-->
 <!--Designer: @hanfeng6; @lihaitao-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--ability-arkts-->
   - Stage模型能力的接口<!--stage-model-->
@@ -53,6 +53,7 @@
     - [@ohos.app.appstartup.startupManager (启动框架管理能力)](js-apis-app-appstartup-startupManager.md)
     - [@ohos.app.appstartup.StartupTask (启动框架任务)](js-apis-app-appstartup-startupTask.md)
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](js-apis-app-ability-autoStartupManager.md)
+    - [@ohos.app.agent.AgentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](js-apis-app-agent-agentExtensionAbility.md)
     - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
@@ -62,6 +63,7 @@
     - [@ohos.app.ability.autoFillManager (autoFillManager)(系统接口)](js-apis-app-ability-autoFillManager-sys.md)
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)(系统接口)](js-apis-app-ability-autoStartupManager-sys.md)
     - [@ohos.app.ability.common (Ability公共模块)(系统接口)](js-apis-app-ability-common-sys.md)
+     - [@ohos.app.ability.contextConstant (Context相关常量)(系统接口)](js-apis-app-ability-contextConstant-sys.md)
     - [@ohos.app.ability.dialogSession (dialogSession)(系统接口)](js-apis-app-ability-dialogSession-sys.md)
     - [@ohos.app.ability.insightIntent (意图框架基础定义)(系统接口)](js-apis-app-ability-insightIntent-sys.md)
     - [@ohos.app.ability.insightIntentDriver (执行意图调用)(系统接口)](js-apis-app-ability-insightIntentDriver-sys.md)
@@ -106,6 +108,7 @@
     - [@ohos.app.ability.dataUriUtils (DataUriUtils模块)](js-apis-app-ability-dataUriUtils.md)
     - [@ohos.app.ability.dialogRequest (dialogRequest模块)](js-apis-app-ability-dialogRequest.md)
     - [@ohos.app.ability.errorManager (错误管理模块)](js-apis-app-ability-errorManager.md)
+    - [@ohos.app.ability.hyperSnapManager (应用快照管理)](js-apis-app-ability-hyperSnapManager.md)
     - [@ohos.app.ability.kioskManager (Kiosk管理模块)](js-apis-app-ability-kioskManager.md)
     - [@ohos.app.ability.Want (Want)](js-apis-app-ability-want.md)
     - [@ohos.app.ability.wantAgent (WantAgent模块)](js-apis-app-ability-wantAgent.md)
@@ -115,7 +118,9 @@
     - [@ohos.ability.screenLockFileManager (锁屏敏感数据管理)(系统接口)](js-apis-screenLockFileManager-sys.md)
     - [@ohos.app.ability.abilityManager (AbilityManager)(系统接口)](js-apis-app-ability-abilityManager-sys.md)
     - [@ohos.app.ability.appManager (appManager)(系统接口)](js-apis-app-ability-appManager-sys.md)
+    - [@ohos.app.agent.agentExtensionAbility (智能体扩展组件)(系统接口)](js-apis-app-agent-agentExtensionAbility-sys.md)
     - [@ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)](js-apis-app-agent-agentManager-sys.md)
+    - [@ohos.app.agent.AgentConstant (Agent常量)(系统接口)](js-apis-app-agent-agentConstant-sys.md)
     - [@ohos.app.ability.kioskManager (Kiosk管理模块)(系统接口)](js-apis-app-ability-kioskManager-sys.md)
     - [@ohos.app.ability.missionManager (missionManager)(系统接口)](js-apis-app-ability-missionManager-sys.md)
     - [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](js-apis-app-ability-quickFixManager-sys.md)
@@ -277,7 +282,6 @@
     - [@system.package (应用管理)](js-apis-system-package.md)
     - ability<!--ability-deprecated-->
       - [want](js-apis-inner-ability-want.md)
-    - continuation<!--ability--continuation-->
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)
@@ -316,6 +320,7 @@
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
     - [context.h](capi-abilityruntime-context-h.md)
     - [extension_ability.h](capi-extension-ability-h.md)
+    - [modular_object_extension_manager.h](capi-modular-object-extension-manager-h.md)
   - 结构体<!--ability-struct-->
     - [AbilityBase_Element](capi-abilitybase-element.md)
     - [AbilityBase_Want](capi-abilitybase-want.md)
@@ -334,6 +339,8 @@
     - [AbilityRuntime_Context*](capi-abilityruntime-abilityruntime-context8h.md)
     - [AbilityRuntime_ExtensionInstance](capi-abilityruntime-extensioninstance.md)
     - [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md)
+    - [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)
+    - [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md)
 - 错误码<!--ability-arkts-errcode-->
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)

@@ -32,6 +32,8 @@
 
 首先，开发者需要创建一个[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)作为导航根容器，并创建一个[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)对象作为构造入参传给Navigation组件，以实现二者的绑定，后续的路由操作均基于该NavPathStack展开。
 
+ArkTS-Dyn示例：
+
 <!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
 
 ``` TypeScript
@@ -49,9 +51,29 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Navigation, NavPathStack } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  // 创建一个导航控制器对象并传入Navigation
+  pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pageStack) {
+    }
+    .title('Main')
+  }
+}
+```
+
 ### 构建子页面
 
 为每个[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)声明对外的实例化方法，如代码中的`PageOneBuilder`，执行该方法会创建一个`PageOne`的自定义组件，该组件就是一个Navigation的子页面。
+
+ArkTS-Dyn示例：
 
 <!-- @[NavDestinationPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
 
@@ -73,6 +95,39 @@ export struct PageOne {
       // ...
     }.title(`${this.name}`)
     // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  State
+  Builder,
+  Component,
+  NavPathStack,
+  NavDestination,
+  NavDestinationContext,
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Builder
+export function PageOneBuilder(name: string, param: string) {
+  PageOne({ name: name, value: param });
+}
+
+let pathInfos: NavPathStack = new NavPathStack();
+
+@Component
+export struct PageOne {
+  name: String = '';
+  @State value: String = '';
+
+  build() {
+    NavDestination() {
+      // ...
+    }.title(`${this.name}`)
   }
 }
 ```
@@ -241,26 +296,26 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
 NavPathStack可以通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口实现页面返回，参考示例如下。
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // 返回到上一页
    this.pathStack.pop();
    ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // 返回到上一个pageOne页面
    this.pathStack.popToName('temp4-pageOne');
    ```
 
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) --> 
-   
+
    ``` TypeScript
    // 返回到索引为0的页面
    this.pathStack.popToIndex(0);
    ```
    <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 返回到根首页（清除栈中所有页面）
    this.pageStack.clear();
@@ -271,7 +326,7 @@ NavPathStack可以通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-componen
 NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11)、[replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)、[replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)）实现页面替换，参考示例如下。
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 将栈顶页面替换为pageTwo
    this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
@@ -279,7 +334,7 @@ NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis
    ```
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    const DOMAIN = 0x0000;
    // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
@@ -297,19 +352,19 @@ NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis
 NavPathStack可以通过Remove相关接口（如[removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11)、[removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11)、[removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)）实现删除路由栈中特定页面的功能，参考示例如下。
 
    <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 删除栈中name为pageTwo的所有页面
    this.pageStack.removeByName('pageTwo');
    ```
    <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 删除指定索引的页面
    this.pageStack.removeByIndexes([1]);
    ```
    <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 删除指定id的页面
    this.pageStack.removeByNavDestinationId('1');
@@ -320,13 +375,13 @@ NavPathStack可以通过Remove相关接口（如[removeByName](../reference/apis
 NavPathStack可以通过Move相关接口（如[moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10)、[moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)）实现移动路由栈中特定页面到栈顶的功能，参考示例如下。
 
    <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 移动栈中name为pageTwo的页面到栈顶
    this.pageStack.moveToTop('pageTwo');
    ```
    <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 移动栈中索引为1的页面到栈顶
    this.pageStack.moveIndexToTop(1);
@@ -348,7 +403,7 @@ NavPathStack可以通过Move相关接口（如[moveToTop](../reference/apis-arku
 NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调，可以获取此页面对应的参数。
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Page01 {
@@ -370,7 +425,7 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
-   
+
    ``` TypeScript
    class NavParam {
      desc: string = 'navigation-param'
@@ -399,7 +454,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
 其他业务场景，可以通过主动调用NavPathStack的获取接口（如[getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10)、[getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10)、[getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10)、[getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)）获取指定页面的参数。
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 获取栈中所有页面name集合
    this.pageStack.getAllPathName();
@@ -424,7 +479,7 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 以willShow为例，在回调中通过修改路由栈实现路由拦截重定向。
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
+
    ``` TypeScript
    const DOMAIN = 0x0000;
    this.pageStack.setInterception({
@@ -455,6 +510,8 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 2. 在Navigation中增加List组件，来定义导航主页中不同的一级界面。
 
 3. 在List内的组件添加onClick方法，并在其中使用导航控制器NavPathStack的pushPathByName方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
+
+ArkTS-Dyn示例：
 
 <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
 
@@ -544,6 +601,107 @@ struct NavigationDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  NavPathStack,
+  Navigation,
+  Column,
+  TextInput,
+  Margin,
+  ForEach,
+  ListItem,
+  Row,
+  Text,
+  Blank,
+  NavigationMode,
+  List,
+  Color,
+  FontWeight,
+  FlexAlign,
+  HorizontalAlign,
+  Axis,
+  EdgeEffect,
+  StickyStyle,
+  ClickEvent,
+  VerticalAlign,
+  Padding,
+  ShadowOptions,
+  PopInfo,
+  Provide 
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationDemo {
+  @Provide({ alias: 'pathInfos' }) pathInfos: NavPathStack = new NavPathStack();
+  private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
+
+  build() {
+    Column() {
+      Navigation(this.pathInfos) {
+        TextInput({ placeholder: '输入关键字搜索' })
+          .width('90%')
+          .height(40)
+          .margin({
+            bottom: 10
+          } as Margin)
+        // 通过List定义导航的一级界面
+        List({ space: 12, initialIndex: 0 }) {
+          ForEach(this.listArray, (item: string, index: number) => {
+            ListItem() {
+              Row() {
+                Row() {
+                  Text(`${item.slice(0, 1)}`)
+                    .fontColor(Color.White).fontSize(14).fontWeight(FontWeight.Bold)
+                }
+                .width(30)
+                .height(30)
+                .backgroundColor('#a8a8a8')
+                .margin({ right: 20 } as Margin)
+                .borderRadius(20)
+                .justifyContent(FlexAlign.Center)
+
+                Column() {
+                  Text(item).fontSize(16).margin({ bottom: 5 } as Margin)
+                }.alignItems(HorizontalAlign.Start)
+
+                Blank()
+                Row()
+                  .width(12)
+                  .height(12)
+                  .margin({ right: 15 } as Margin)
+                  .border({ width: { top: 2, right: 2 }, color: 0xcccccc })
+                  .rotate({ angle: 45 })
+              }
+              .borderRadius(15)
+              .shadow({ radius: 100, color: '#ededed' } as ShadowOptions)
+              .width('90%')
+              .alignItems(VerticalAlign.Center)
+              .padding({ left: 15, top: 15, bottom: 15 } as Padding)
+              .backgroundColor(Color.White)
+            }.width('100%').onClick((e: ClickEvent) => {
+              this.pathInfos.pushPathByName(`${item}`, {} as Object, (info: PopInfo)=>{}, true); // 将name指定的NaviDestination页面信息入栈,传递的参数为param
+            })
+          }, (item: string, index: number): string => item)
+        }
+        .listDirection(Axis.Vertical)
+        .edgeEffect(EdgeEffect.Spring)
+        .sticky(StickyStyle.Header)
+        .chainAnimation(false)
+        .width('100%')
+      }
+      .width('100%')
+      .mode(NavigationMode.Auto)
+      .title('设置') // 设置标题文字
+    }.size({ width: '100%', height: '100%' }).backgroundColor(0xf4f4f5)
+  }
+}
+```
+
 ### 创建导航子页
 导航子页1实现步骤为：
 
@@ -552,6 +710,8 @@ struct NavigationDemo {
 2. 创建导航控制器NavPathStack并在onReady时进行初始化，获取当前所在的导航控制器，以此来实现不同页面之间的跳转。
 
 3. 在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的pop方法，使组件可以在点击之后弹出路由栈栈顶元素实现页面的返回。
+
+ArkTS-Dyn示例：
 
 <!-- @[NavigationExampleOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->  
 
@@ -610,6 +770,71 @@ export struct PageOne {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Builder,
+  Component,
+  NavPathStack,
+  NavDestination,
+  Column,
+  Text,
+  Button,
+  NavDestinationContext,
+  TextAlign,
+  Padding,
+  Margin,
+  ClickEvent,
+  Callback,
+  State
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+//PageOne.ets
+@Builder
+export function PageOneBuilder(name: string, param: string) {
+  PageOne({ name: name, value: param });
+}
+
+let pathInfos: NavPathStack = new NavPathStack();
+
+@Component
+export struct PageOne {
+  name: String = '';
+  @State value: String = '';
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(`${this.name}设置页面`)
+          .width('100%')
+          .fontSize(20)
+          .fontColor(0x333333)
+          .textAlign(TextAlign.Center)
+          .padding({ top: 30 } as Padding)
+        Text(`${JSON.stringify(this.value)}`)
+          .width('100%')
+          .fontSize(18)
+          .fontColor(0x666666)
+          .textAlign(TextAlign.Center)
+          .padding({ top: 45 } as Padding)
+        Button('返回')
+          .width('50%')
+          .height(40)
+          .margin({ top: 50 } as Margin)
+          .onClick((e: ClickEvent) => {
+            // 弹出路由栈栈顶元素，返回上个页面
+            pathInfos.pop();
+          })
+      }.size({ width: '100%', height: '100%' })
+    }.title(`${this.name}`)
+    .onReady((context: NavDestinationContext) => {
+      hilog.info(0x0000, 'testTag', 'enter onReady' + JSON.stringify(context));
+    } as Callback<NavDestinationContext>)
+  }
+}
+```
+
 导航子页2实现步骤为：
 
 1. 使用NavDestination，来创建导航子页PageTwo。
@@ -617,6 +842,8 @@ export struct PageOne {
 2. 创建导航控制器NavPathStack并在onReady时进行初始化，获取当前所在的导航控制器，以此来实现不同页面之间的跳转。
 
 3. 在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的pushPathByName方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
+
+ArkTS-Dyn示例：
 
 <!-- @[NavigationExampleTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleTwo.ets) -->
 
@@ -701,64 +928,156 @@ export struct PageTwo {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Builder,
+  Component,
+  NavPathStack,
+  NavDestination,
+  Column,
+  List,
+  ForEach,
+  Row,
+  ListItem,
+  Text,
+  Button,
+  NavDestinationContext,
+  Margin,
+  Color,
+  FontWeight,
+  FlexAlign,
+  HorizontalAlign,
+  Blank,
+  EdgeEffect,
+  StickyStyle,
+  Padding,
+  VerticalAlign,
+  Axis,
+  ClickEvent,
+  Callback,
+  PopInfo
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Builder
+export function PageTwoBuilder(name: string) {
+  PageTwo({ name: name });
+}
+
+@Component
+export struct PageTwo {
+  pathInfos: NavPathStack = new NavPathStack();
+  name: String = '';
+  private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
+
+  build() {
+    NavDestination() {
+      Column() {
+        List({ space: 2, initialIndex: 0 }) {
+          ForEach(this.listArray, (item: string) => {
+            ListItem() {
+              Row() {
+                Row() {
+                  Text(`${item.slice(0, 1)}`).fontColor(Color.White).fontSize(14).fontWeight(FontWeight.Bold)
+                }
+                .width(30)
+                .height(30)
+                .backgroundColor('#a8a8a8')
+                .margin({ right: 20 } as Margin)
+                .borderRadius(20)
+                .justifyContent(FlexAlign.Center)
+
+                Column() {
+                  Text(item).fontSize(16).margin({ bottom: 5 } as Margin)
+                }.alignItems(HorizontalAlign.Start)
+
+                Blank()
+                Row()
+                  .width(12)
+                  .height(12)
+                  .margin({ right: 15 } as Margin)
+                  .border({ width: { top: 2, right: 2 }, color: 0xcccccc })
+                  .rotate({ angle: 45 })
+              }
+              .borderRadius(15)
+              .width('90%')
+              .alignItems(VerticalAlign.Center)
+              .padding({ left: 15, top: 15, bottom: 15 } as Padding)
+              .backgroundColor(Color.White)
+            }.width('100%').onClick((e: ClickEvent) => {
+              this.pathInfos.pushPathByName(`${item}`, {} as Object, (info: PopInfo)=>{}, true);
+            })
+          }, (item: string): string => item)
+        }.listDirection(Axis.Vertical).edgeEffect(EdgeEffect.Spring).sticky(StickyStyle.Header).width('100%')
+      }.size({ width: '100%', height: '100%' })
+    }.title(`${this.name}`)
+    .onReady((context: NavDestinationContext) => {
+      hilog.info(0x0000, 'testTag', 'enter onReady' + JSON.stringify(context));
+    } as Callback<NavDestinationContext>)
+  }
+}
+```
+
 ### 创建路由表
 
 实现步骤为：
 
-1. 工程配置文件[module.json5](../quick-start/module-configuration-file.md)中配置`{"routerMap": "$profile:router_map"}`。
+1. router_map.json中配置全局路由表，导航控制器NavPathStack可根据路由表中的name将对应页面信息入栈。
 
-2. router_map.json中配置全局路由表，导航控制器NavPathStack可根据路由表中的name将对应页面信息入栈。
+   ``` json
+   {
+     "routerMap" : [
+       {
+         "name" : "WLAN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Bluetooth",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Personal Hotspot",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Connect & Share",
+         "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
+         "buildFunction" : "PageTwoBuilder"
+       },
+       {
+         "name" : "Projection",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Print",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "VPN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Private DNS",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "NFC",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       }
+     ]
+   }
+   ```
 
-``` json
-{
-  "routerMap" : [
-    {
-      "name" : "WLAN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Bluetooth",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Personal Hotspot",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Connect & Share",
-      "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
-      "buildFunction" : "PageTwoBuilder"
-    },
-    {
-      "name" : "Projection",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Print",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "VPN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Private DNS",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "NFC",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    }
-  ]
-}
-```
+2. 工程配置文件[module.json5](../quick-start/module-configuration-file.md)中配置`{"routerMap": "$profile:router_map"}`。
 
 ![zh-cn_image_0000001588458252](figures/arkts-navigation-transition_1.gif)

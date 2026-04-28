@@ -1,8 +1,8 @@
 # PersistenceV2: 持久化存储UI状态
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -10,7 +10,7 @@
 
 PersistenceV2是应用程序中的可选单例对象。此对象的作用是持久化存储UI相关的数据，以确保这些属性在应用程序重新启动时的值与应用程序关闭时的值相同。
 
-PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
+PersistenceV2提供状态变量持久化能力，开发者可以通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect)或者[globalConnect](../../reference/apis-arkui/js-apis-stateManagement.md#globalconnect23)绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
 
 在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)。
 
@@ -848,28 +848,28 @@ struct Page1 {
       // remove接口
       Text('Remove key SampleGlobalConnect: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p失去联系，之后即使reconnect，p也无法存储
           PersistenceV2.remove(SampleGlobalConnect);
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global1: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p1失去联系，之后即使reconnect，p1也无法存储
           PersistenceV2.remove('global1');
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p2失去联系，之后即使reconnect，p2也无法存储
           PersistenceV2.remove('global2');
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global3: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p3失去联系，之后即使reconnect，p3也无法存储
           PersistenceV2.remove('global3');
           this.refresh += 1;
         })
@@ -878,7 +878,7 @@ struct Page1 {
       // 重新连接也无法和之前的状态变量建立联系，因此无法保存数据
       Text('ReConnect key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 此时会重新存储一个key为global2的变量，但该变量与p2无关
           PersistenceV2.globalConnect(this.options);
           this.refresh += 1;
         })

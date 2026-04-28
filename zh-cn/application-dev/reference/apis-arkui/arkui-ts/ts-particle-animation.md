@@ -13,6 +13,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - Particle在息屏之后再次打开或者切换后台再次唤起，粒子动画会自动暂停。
@@ -101,6 +103,10 @@ rippleFields(fields: Array&lt;RippleFieldOptions&gt;\|undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                         |
@@ -115,6 +121,10 @@ velocityFields(fields: Array&lt;VelocityFieldOptions&gt;\|undefined)
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -213,7 +223,7 @@ interface EmitterOptions<PARTICLE extends ParticleType> {
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | ------- | ------- | -------- | -------- |
-| radius      | [VP](ts-types.md#vp10)| 否 | 否    | 粒子半径。 |
+| radius      | [VP](ts-types.md#vp10)| 否 | 否    | 粒子半径。<br/>默认值：0，小于0时取默认值0。 |
 
 ## ImageParticleParameters
 
@@ -226,7 +236,7 @@ interface EmitterOptions<PARTICLE extends ParticleType> {
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | ------- | ------- | -------- | -------- |
 | src      | [ResourceStr](ts-types.md#resourcestr) | 否 | 否    | 图片路径，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>暂不支持svg图片类型。<br>src未发生变化时，会优先使用缓存的资源，无法动态切换资源。如需动态切换资源建议切换为不同的src。 |
-| size     | [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)> | 否 | 否    | 图像尺寸。 |
+| size     | [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)> | 否 | 否    | 图像尺寸。<br/>默认值：[0, 0] |
 | objectFit| [ImageFit](ts-appendix-enums.md#imagefit)| 否 | 是   | 图片显示模式。 |
 
 ## ParticleColorPropertyOptions
@@ -278,6 +288,7 @@ interface ParticlePropertyOptions<TYPE, UPDATER extends ParticleUpdater> {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; auto; 10%; auto-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
 | range | [ParticleTuple](#particletuple18)<[TYPE](#particleupdater), [TYPE](#particleupdater)> | 否 | 否 | 粒子初始属性值区间，粒子发射器生成粒子的属性值在range区间随机取值。<br/>**说明**<br/>各项属性的非法输入取默认值，当最大值小于最小值的时候取默认区间。TYPE为number。<br/>不同属性的默认值不同：<br>1、opacity属性：range:[1.0,1.0]，取值范围为[0, 1]，默认值为1.0。<br/>2、scale属性：range:[1.0,1.0]，取值范围为[0, 10000]，默认值为1.0。<br/>3、acceleration加速度speed属性：range:[0.0,0.0]，取值范围为[0, 10000]，默认值为0.0。<br/>4、acceleration加速度angle属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。<br/>5、spin属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。|
@@ -316,7 +327,7 @@ interface ParticlePropertyAnimation<T> {
 }
 ```
 
-设置粒子属性声明周期。
+设置粒子属性生命周期。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -667,6 +678,10 @@ type Vector2T\<T> = Vector2T\<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 22
+
 | 类型                         | 说明                                |
 | ---------------------------- | ----------------------------------- |
 | [Vector2T\<T>](../js-apis-arkui-graphics.md#vector2tt12) | 用于表示T类型的包含x和y两个值的向量。x表示向量x轴方向的值。y表示向量y轴方向的值。<br/>单位：vp |
@@ -682,11 +697,15 @@ type Vector2T\<T> = Vector2T\<T>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |
 | shape      | [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是  | 粒子场的区域形状。<br/>默认值：DisturbanceFieldShape.RECT  |
-| position      | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是 | 粒子场的区域中心位置。坐标单位为vp。<br/>默认值：{x:0, y:0}  |
-| size  | [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt; | 否 | 是  | 粒子场的区域大小。值的单位为vp。<br/>默认值：{width:0, height:0}<br/>取值范围：<br/>width：[0, +∞)<br/>height：[0, +∞)<br/>当size的width（或height）设置为负值时取width（或height）的默认值。  |
+| position      | ArkTS-Dyn: [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt;<br/>ArkTS-Sta: [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是 | 粒子场的区域中心位置。坐标单位为vp。<br/>默认值：{x:0, y:0}  |
+| size  | ArkTS-Dyn: [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt;<br/>ArkTS-Sta: [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt; | 否 | 是  | 粒子场的区域大小。值的单位为vp。<br/>默认值：{width:0, height:0}<br/>取值范围：<br/>width：[0, +∞)<br/>height：[0, +∞)<br/>当size的width（或height）设置为负值时取width（或height）的默认值。  |
 
 ## RippleFieldOptions<sup>22+</sup>
 
@@ -698,13 +717,17 @@ type Vector2T\<T> = Vector2T\<T>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |
-| amplitude      | number | 否 | 是  | 描述粒子波动场波的幅值。幅值越大，波动场的力越大。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
-| wavelength      | number | 否 | 是 | 描述粒子波动场的波长，即一个波周期的变化距离。波长越大，则随距离的变化，波的变化越慢，波动越不明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
-| waveSpeed  | number | 否 | 是  | 描述粒子波动场的波速。波速越大，则随时间的变化，波的变化越快，波动越明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
-| attenuation  | number | 否 | 是  | 描述粒子波动场波的衰减系数。衰减系数越大，则随时间的变化，波的衰减越快。<br/>取值范围：[0, 1]<br/>默认值：0.0<br/>设置的数值不在范围内时取默认值。  |
-| center  | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是  | 粒子波动场产生力的中心位置。组件的左上角为坐标原点。坐标单位为vp。<br/>默认值：{x:0, y:0} |
+| amplitude      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 描述粒子波动场波的幅值。幅值越大，波动场的力越大。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
+| wavelength      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 描述粒子波动场的波长，即一个波周期的变化距离。波长越大，则随距离的变化，波的变化越慢，波动越不明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
+| waveSpeed  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 描述粒子波动场的波速。波速越大，则随时间的变化，波的变化越快，波动越明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
+| attenuation  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 描述粒子波动场波的衰减系数。衰减系数越大，则随时间的变化，波的衰减越快。<br/>取值范围：[0, 1]<br/>默认值：0.0<br/>设置的数值不在范围内时取默认值。  |
+| center  | ArkTS-Dyn: [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt;<br/>ArkTS-Sta: [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是  | 粒子波动场产生力的中心位置。组件的左上角为坐标原点。坐标单位为vp。<br/>默认值：{x:0, y:0} |
 | region  | [FieldRegion](ts-particle-animation.md#fieldregion22) | 否 | 是  | 粒子波动场影响的区域信息，其中区域信息包括区域形状、区域大小以及区域中心位置。<br/>默认值：{shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}}  |
 
 ## VelocityFieldOptions<sup>22+</sup>
@@ -715,9 +738,15 @@ type Vector2T\<T> = Vector2T\<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |
-| velocity      | [Vector2T](#vector2tt22)\<number> | 否 | 是  | 粒子速度场的各方向速度值。粒子只有在速度场作用范围内时获得该速度，离开速度场范围后不受该速度场影响，不获得该额外的速度。<br/>默认值：{x:0, y:0}  |
+| velocity      | ArkTS-Dyn: [Vector2T](#vector2tt22)\<number><br/>ArkTS-Sta: [Vector2T](../js-apis-arkui-graphics.md#vector2tt12)\<double> | 否 | 是  | 粒子速度场的各方向速度值。粒子只有在速度场作用范围内时获得该速度，离开速度场范围后不受该速度场影响，不获得该额外的速度。<br/>默认值：{x:0, y:0}  |
 | region  | [FieldRegion](ts-particle-animation.md#fieldregion22) | 否 | 是  | 粒子速度场影响的区域信息，其中区域信息包括区域形状、区域大小以及区域中心位置。<br/>默认值：{shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}}  |
 
 ## 示例
@@ -1646,6 +1675,9 @@ struct ParticleExample6 {
 
 ### 示例7（设置波动场和速度场）
 从API version 22开始，支持设置粒子波动场和速度场。该示例演示如何通过rippleFields接口设置粒子波动场，产生类似波纹扩散的效果。通过velocityFields接口设置粒子速度场，使粒子在原有速度的基础上叠加速度场指定的速度。
+
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -1764,6 +1796,139 @@ struct ParticleExample {
             }
           ])
       }.width("100%").height(300).align(Alignment.Center)
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, Stack, FontWeight, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import { EmitterParticleOptions, Particles, ParticleType ,Particle, ParticleEmitterShape, ParticleUpdater, Curve, Padding, Alignment, RippleFieldOptions, DisturbanceFieldShape, FieldRegion, Vector2T, ColumnOptions } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct ParticleExample {
+  @State count: int = 1000;
+  @State particle: EmitterParticleOptions = {
+    type: ParticleType.POINT, // 粒子类型
+    config: {
+      radius: 1 // 圆点半径
+    },
+    count: this.count, // 粒子总数
+    lifetime: 9000, // 粒子生命周期，单位ms
+    lifetimeRange: 100 // 粒子生命周期取值范围，单位ms
+  } as EmitterParticleOptions
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('波动场')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Stack() {
+        Text()
+          .width(300).height(300).backgroundColor(Color.Black)
+        Particle({
+          particles: [
+            {
+              emitter: {
+                particle: this.particle,
+                emitRate: 10000, // 每秒发射粒子数
+                position: [0, 0],
+                shape: ParticleEmitterShape.RECTANGLE // 发射器形状
+              },
+              color: {
+                range: [Color.White, Color.White], // 初始颜色范围
+              },
+              scale: {
+                range: [0.2, 1.5], // 初始大小范围
+              },
+              opacity: {
+                range: [0.2, 0.8], // 初始透明度范围
+              }
+            }
+          ]
+        } as Particles).width(300).height(300)
+          .rippleFields([
+            {
+              amplitude: 120, // 波动场幅值
+              wavelength: 500, // 波动场的波长
+              waveSpeed: 220, // 波动场的波速
+              center: { x: 150, y: 150 }, // 波动场的力的中心
+              attenuation: 0, // 波动场随时间的衰减系数
+              region: {
+                // 波动场的影响区域
+                shape: DisturbanceFieldShape.RECT, // 波动场影响区域的形状
+                position: { x: 150, y: 150 }, // 波动场影响区域的区域中心
+                size: { width: 300, height: 300 } // 波动场影响区域的大小
+              }
+            } as RippleFieldOptions
+          ])
+      }
+      .width('100%').height(300).align(Alignment.Center)
+
+      Text('速度场')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Stack() {
+        Text()
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Black)
+        Particle({
+          particles: [
+            {
+              emitter: {
+                particle: {
+                  type: ParticleType.POINT, // 粒子类型
+                  config: {
+                    radius: 2 // 圆点半径
+                  },
+                  count: 1000, // 粒子总数
+                  lifetime: 1000, // 粒子生命周期，单位ms
+                  lifetimeRange: 0 // 粒子生命周期取值范围，单位ms
+                },
+                emitRate: 120, // 每秒发射粒子数
+                position: [0, 0],
+                size: [300, 300],
+                shape: ParticleEmitterShape.RECTANGLE // 发射器形状
+              },
+              color: {
+                range: [Color.White, Color.White], // 初始颜色范围
+              },
+              opacity: {
+                range: [1.0, 1.0],
+                updater: {
+                  type: ParticleUpdater.CURVE, // 透明度按曲线变化
+                  config: [
+                    {
+                      from: 1.0,
+                      to: 0.0,
+                      startMillis: 0,
+                      endMillis: 1000,
+                      curve: Curve.EaseIn
+                    }
+                  ]
+                }
+              },
+            }
+          ]
+        } as Particles).width(300).height(300)
+          .margin({ top: 30 } as Padding)
+          .velocityFields([
+            {
+              velocity: { x: 100, y: 0 } as Vector2T<double>, // 速度场的速度值
+              region: {
+                // 速度场的影响区域
+                shape: DisturbanceFieldShape.RECT, // 速度场影响区域的形状
+                position: { x: 150, y: 150 }, // 速度场影响区域的区域中心
+                size: { width: 200, height: 200 } // 速度场影响区域的大小
+              } as FieldRegion
+            }
+          ])
+      }.width('100%').height(300).align(Alignment.Center)
     }
   }
 }

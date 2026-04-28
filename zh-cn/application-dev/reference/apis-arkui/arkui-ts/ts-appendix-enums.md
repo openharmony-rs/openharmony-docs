@@ -2,14 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @piggyguy; @jiyujia926; @hehongyang3-->
+<!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
->本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## AccessibilityHoverType<sup>12+</sup>
 
@@ -387,6 +389,25 @@
 | Rtl  | 1 |元素从右到左布局。   |
 | Auto | 2 |使用系统默认布局方向。 |
 
+## RawInputEventType
+
+原始输入事件类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称   | 值  | 说明       |
+| ------ | --- | ---------- |
+| TOUCH  | 0   | 触摸事件。 |
+| MOUSE  | 1   | 鼠标事件。 |
+
 ## DividerMode<sup>19+</sup>枚举说明
 
 分割线模式。
@@ -523,14 +544,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称           | 说明                                       |
-| ------------ | ---------------------------------------- |
-| Start        | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
-| Center       | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
-| End          | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
-| SpaceBetween | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
-| SpaceAround  | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
-| SpaceEvenly  | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
+| 名称           | 值 | 说明                                       |
+| ------------ | ------ | ---------------------------------------- |
+| Start        | 0 | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
+| Center       | 1 | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
+| End          | 2 | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
+| SpaceBetween | 3 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
+| SpaceAround  | 4 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
+| SpaceEvenly  | 5 | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
 
 ## FlexDirection
 
@@ -542,12 +563,12 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称            | 说明               |
-| ------------- | ---------------- |
-| Row           | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 与Row方向相反方向进行布局。  |
-| Column        | 主轴与列方向一致作为布局模式。  |
-| ColumnReverse | 与Column相反方向进行布局。 |
+| 名称            | 值 | 说明               |
+| ------------- | ------ | ---------------- |
+| Row           | 0 | 主轴与行方向一致作为布局模式。  |
+| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
+| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
 
@@ -559,11 +580,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                          |
-| ----------- | --------------------------- |
-| NoWrap      | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
-| Wrap        | Flex容器的元素以多行/列排布，子项允许超出容器。   |
-| WrapReverse | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
+| 名称          | 值 | 说明                          |
+| ----------- | ------ | --------------------------- |
+| NoWrap      | 0 | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
+| Wrap        | 1 | Flex容器的元素以多行/列排布，子项允许超出容器。   |
+| WrapReverse | 2 | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
 
 ## FontStyle
 
@@ -685,11 +706,11 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Start  | 按照语言方向起始端对齐。 |
-| Center | 居中对齐，默认对齐方式。 |
-| End    | 按照语言方向末端对齐。  |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Start  | 0 | 按照语言方向起始端对齐。 |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| End    | 2 | 按照语言方向末端对齐。  |
 
 ## HoverEffect<sup>8+</sup>
 
@@ -776,14 +797,14 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明                                       |
-| -------- | ---------------------------------------- |
-| Auto     | 使用Flex容器中的默认配置。                           |
-| Start    | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
-| Center   | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
-| End      | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
-| Stretch  | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
-| Baseline | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| 名称       | 值 | 说明                                       |
+| -------- | ------ | ---------------------------------------- |
+| Auto     | 0 | 使用Flex容器中的默认配置。                           |
+| Start    | 1 | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
+| Center   | 2 | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
+| End      | 3 | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
+| Stretch  | 4 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
+| Baseline | 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
 
 ## ImageRepeat
 
@@ -828,6 +849,55 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | BOTTOM   | 3 | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | BASELINE | 4 | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | FOLLOW_PARAGRAPH<sup>20+</sup>  | 5 |对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## InputEventInterceptAction
+
+输入事件拦截动作枚举。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| CONTINUE | 0 | 允许事件继续传递到UI框架。 |
+| BLOCK | 1 | 阻止事件传递到UI框架。 |
+
+## InputEventSubTypeMask
+
+输入事件子类型掩码枚举，用于标识不同类型的输入事件子类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| LEFT_MOUSE_DOWN | 1 << 0 | 鼠标左键按下。 |
+| LEFT_MOUSE_UP | 1 << 1 | 鼠标左键抬起。 |
+| RIGHT_MOUSE_DOWN | 1 << 2 | 鼠标右键按下。 |
+| RIGHT_MOUSE_UP | 1 << 3 | 鼠标右键抬起。 |
+| MIDDLE_MOUSE_DOWN | 1 << 4 | 鼠标中键按下。 |
+| MIDDLE_MOUSE_UP | 1 << 5 | 鼠标中键抬起。 |
+| LEFT_MOUSE_DRAGGING | 1 << 6 | 鼠标左键按下并移动。 |
+| RIGHT_MOUSE_DRAGGING | 1 << 7 | 鼠标右键按下并移动。 |
+| MIDDLE_MOUSE_DRAGGING | 1 << 8 | 鼠标中键按下并移动。 |
+| TOUCH_DOWN | 1 << 9 | 触控按下。 |
+| TOUCH_UP | 1 << 10 | 触控抬起。 |
+| KEY_DOWN | 1 << 11 | 物理键盘按下。 |
+| KEY_UP | 1 << 12 | 物理键盘抬起。 |
 
 ## InteractionHand<sup>15+</sup>
 
@@ -998,6 +1068,28 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | DEFAULT | 0 | 跑马灯组件属性更新后， 从开始位置， 运行跑马灯效果。     |
 | PRESERVE_POSITION  | 1 | 跑马灯组件属性更新后， 保持当前位置， 运行跑马灯效果。 |
 
+## GestureCollectIntervention
+
+定义手势和事件收集的干预操作类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| CONTINUE        | 0 | 继续正常的手势和事件收集流程。不进行任何干预。 |
+| DISCARD_LOWER         | 1 | 丢弃所有待收集的低优先级手势和事件。丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。仅保留当前节点和更高优先级节点中已收集的手势。 |
+| DISCARD_HIGHER       | 2 | 丢弃已经收集到的高优先级手势和事件。会丢弃已收集的右侧兄弟节点和当前节点上的手势。将继续处理低优先级手势的收集流程（左侧兄弟节点和祖先节点）。 |
+| DISCARD_SELF      | 3 | 丢弃当前节点自身的手势和事件。当前节点的手势和事件将从手势树中排除。兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。 |
+| DISCARD_LOWER_PRIORITY_SIBLINGS     | 4 | 丢弃左侧兄弟节点中待收集的手势和事件。当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。将继续处理父节点以及祖先节点的收集流程。   |
+
 ## NestedScrollMode<sup>10+</sup>
 
 定义嵌套滚动组件中的嵌套模式。
@@ -1149,7 +1241,7 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)和[WaterFlow](./ts-container-waterflow.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
@@ -1203,6 +1295,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值                          | 说明                                                                              |
 | --------------------------- | -- | ---------------------------------------------------------------------------------- |
@@ -1480,11 +1576,11 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Top    | 顶部对齐。        |
-| Center | 居中对齐，默认对齐方式。 |
-| Bottom | 底部对齐。        |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Top    | 0 | 顶部对齐。        |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| Bottom | 2 | 底部对齐。        |
 
 ## Visibility
 

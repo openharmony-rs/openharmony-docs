@@ -5,7 +5,7 @@
 <!--Owner: @zhu-feimo; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 dialogSession模块用于支持系统应用弹框功能。
 

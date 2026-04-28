@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -58,7 +58,7 @@
 
 - 开发者应关注性能，属性值更新函数会延迟组件的重新渲染（具体请见上面的行为表现），因此，回调函数应仅执行快速运算；
 
-- 不建议在\@Watch函数中调用async await，因为\@Watch设计的用途是为了快速的计算，异步行为可能会导致重新渲染速度的性能问题。
+- 不建议在\@Watch函数中调用[async await](../../arkts-utils/async-concurrency-overview.md)，因为\@Watch设计的用途是为了快速的计算，异步行为可能会导致重新渲染速度的性能问题。
 
 - \@Watch参数为必选，且参数类型必须是string，否则编译期会报错。不建议开发者传入undefined，传入后编译不会报错，相当于传入“undefined”。
 

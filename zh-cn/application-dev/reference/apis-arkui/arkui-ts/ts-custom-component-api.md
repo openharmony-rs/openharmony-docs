@@ -1,8 +1,8 @@
 # 自定义组件内置方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,8 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
+> - 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## getUIContext
 
@@ -22,6 +23,10 @@ getUIContext(): UIContext
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -61,7 +66,9 @@ struct MyComponent {
 
 ## getUniqueId<sup>12+</sup>
 
-getUniqueId(): number
+ArkTS-Dyn: getUniqueId(): number
+
+ArkTS-Sta: getUniqueId(): int
 
 获取当前组件的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
@@ -69,11 +76,15 @@ getUniqueId(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| number | 返回当前Component的UniqueId。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回当前Component的UniqueId。 |
 
 **示例：**
 
@@ -95,11 +106,15 @@ struct MyComponent {
 
 queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
-查询自定义组件所属的NavDestination信息，仅当自定义组件在NavDestination的内部时才生效。
+查询自定义组件所属的[NavDestination](ts-basic-components-navdestination.md)信息，仅当自定义组件在NavDestination的内部时才生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -140,7 +155,9 @@ struct MyComponent {
 
 ## queryNavDestinationInfo<sup>18+</sup>
 
-queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
+ArkTS-Dyn: queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
+
+ArkTS-Sta: queryNavDestinationInfo(isInner: boolean | undefined): NavDestinationInfo | undefined
 
 查询当前自定义组件距离最近的NavDestination信息（要求该NavDestination是Navigation的导航页或子页），isInner为true表示向内查找，false表示向外查找。
 
@@ -148,11 +165,15 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
+| isInner  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
 
 **返回值：**
 
@@ -270,24 +291,31 @@ type NavDestinationInfo = NavDestinationInfo
 
 NavDestinationInfo实例对象。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明       |
 | ------ | ---------- |
 | [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | 返回NavDestinationInfo实例对象。 |
 
-
 ## queryNavigationInfo<sup>12+</sup>
 
 queryNavigationInfo(): NavigationInfo | undefined
 
-查询自定义组件所属的Navigation信息。
+查询自定义组件所属的[Navigation](ts-basic-components-navigation.md)信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -345,6 +373,10 @@ NavigationInfo实例对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明       |
 | ------ | ---------- |
 | [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | 返回NavigationInfo实例对象。 |
@@ -358,6 +390,10 @@ queryRouterPageInfo(): RouterPageInfo | undefined;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -389,9 +425,13 @@ type RouterPageInfo = RouterPageInfo
 
 RouterPageInfo实例对象。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明       |
 | ------ | ---------- |
@@ -406,6 +446,10 @@ getDialogController(): PromptActionDialogController | undefined
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -488,6 +532,10 @@ type PromptActionDialogController = promptAction.DialogController
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明                         |
 | ------------------------------------------------------------ | ---------------------------- |

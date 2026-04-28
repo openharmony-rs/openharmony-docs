@@ -2,7 +2,7 @@
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @liwenzhen3--> 
-<!--Designer: @s10021109--> 
+<!--Designer: @zhangboren--> 
 <!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
 
@@ -17,7 +17,7 @@
 
 ## 限制条件
 
-1. V1装饰器不能和[@ObservedV2](./arkts-new-observedV2-and-trace.md)一起使用。因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
+1. V1装饰器不能和[@ObservedV2](./arkts-new-observedV2-and-trace.md)一起使用。因为\@ObservedV2/[@Trace](./arkts-new-observedV2-and-trace.md)有自己独立的观察能力，不仅可以在[@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
 
 2. V2->V1，V1不支持用装饰器接收\@ObservedV2装饰的class，否则编译报错。
 
@@ -28,7 +28,7 @@
 
 ### makeV1Observed
 
-[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)将不可观察的对象包装成状态管理V1可观察的对象，能力等同于\@Observed，其返回值可初始化\@ObjectLink。
+[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)将不可观察的对象包装成状态管理V1可观察的对象，能力等同于[@Observed](./arkts-observed-and-objectlink.md)，其返回值可初始化[@ObjectLink](./arkts-observed-and-objectlink.md)。
 
 > **说明：**
 > 

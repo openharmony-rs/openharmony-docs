@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -26,7 +26,7 @@ addAsUser(userId: number, attributes: AssetMap): Promise\<void>
 
 在指定用户空间中新增一条关键资产。使用Promise异步回调。
 
-设置[IS_PERSISTENT](js-apis-asset.md#tag)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限。
+设置[Tag.IS_PERSISTENT](js-apis-asset.md#tag)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -49,7 +49,7 @@ addAsUser(userId: number, attributes: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -119,7 +119,7 @@ removeAsUser(userId: number, query: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -184,7 +184,7 @@ updateAsUser(userId: number, query: AssetMap, attributesToUpdate: AssetMap): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -252,7 +252,7 @@ preQueryAsUser(userId: number, query: AssetMap): Promise\<Uint8Array>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -319,7 +319,7 @@ queryAsUser(userId: number, query: AssetMap): Promise\<Array\<AssetMap>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -391,7 +391,7 @@ postQueryAsUser(userId: number, handle: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |

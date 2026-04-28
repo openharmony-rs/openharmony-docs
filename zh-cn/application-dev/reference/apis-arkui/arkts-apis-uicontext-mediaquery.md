@@ -26,6 +26,10 @@ matchMediaSync(condition: string): mediaQuery.MediaQueryListener
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                       |
@@ -40,4 +44,22 @@ matchMediaSync(condition: string): mediaQuery.MediaQueryListener
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+<!--code_no_check-->
+```ts
+import { MediaQuery } from '@kit.ArkUI';
+
+let mediaquery: MediaQuery = uiContext.getMediaQuery();
+let listener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+```
+
 完整示例请参考[mediaquery示例](js-apis-mediaquery.md#示例)。
+
+ArkTS-Sta示例：
+
+```ts
+import mediaquery from '@ohos.mediaquery';
+
+let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+```

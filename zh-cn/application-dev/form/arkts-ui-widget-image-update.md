@@ -219,6 +219,6 @@
 
 > **说明：**
 >
-> - Image组件通过入参(memory://fileName)中的(memory://)标识来进行远端内存图片显示，其中fileName需要和EntryFormAbility传递对象('formImages': {key: fd})中的key相对应。
+> - Image组件入参格式为`memory://fileName`时表示进行远端内存图片显示，`fileName`来自EntryFormAbility传递对象('formImages': {key: fd})中的key。
 >
 > - Image组件通过传入的参数是否有变化来决定是否刷新图片，因此EntryFormAbility每次传递过来的imgName都需要不同，连续传递两个相同的imgName时，图片不会刷新。

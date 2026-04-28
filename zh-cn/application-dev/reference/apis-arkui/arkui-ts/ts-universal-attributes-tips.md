@@ -10,12 +10,17 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 19开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - 目前支持通过外接鼠标、手写笔以及触控板触发。
 
 ## bindTips
-bindTips(message: TipsMessageType, options?: TipsOptions): T
+
+ArkTS-Dyn: bindTips(message: TipsMessageType, options?: TipsOptions): T
+
+ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions): this
 
 为组件绑定Tips悬浮气泡。
 
@@ -27,18 +32,22 @@ bindTips(message: TipsMessageType, options?: TipsOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| message|  [TipsMessageType](#tipsmessagetype)                                                     | 是   | 弹窗信息内容。 |
+| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 弹窗信息内容。设置为undefined时，默认不显示信息内容。 |
 | options  | [TipsOptions](#tipsoptions类型说明) | 否   | 配置悬浮气泡的参数。<br/>默认值：<br/>{<br/>appearingTime: 700,<br/>disappearingTime: 300,<br/>appearingTimeWithContinuousOperation: 300,<br/>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br/>arrowPointPosition: ArrowPointPosition.CENTER,<br/>arrowWidth: 16,arrowHeight: 8,<br/>showAtAnchor: TipsAnchorType.TARGET<br/>} |
 
-**返回值：** 
+**返回值：**
 
 |类型|说明|
 |---|---|
-|T|返回当前组件。|
+|ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
 ## TipsOptions类型说明
 
@@ -47,16 +56,16 @@ bindTips(message: TipsMessageType, options?: TipsOptions): T
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                                  | 类型                                                         | 只读 | 可选 | 说明                                                      |
-| ------------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| appearingTime         |           number   | 否    | 是  |设置悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：700<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| disappearingTime                 |   number   | 否   | 是  | 设置悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| appearingTimeWithContinuousOperation    |     number   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| disappearingTimeWithContinuousOperation |     number   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：0<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| enableArrow        | boolean                                                      | 否   | 是  | 设置是否显示气泡箭头。<br/>默认值：true<br/>true：显示箭头；false：不显示箭头。<br/>**说明：** <br/>当页面可用空间无法让气泡完全避让时，气泡会覆盖到组件上并且不显示气泡箭头。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否   | 是  | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有 ”Start“、”Center“、”End“三个位置点可选。所有位置点均位于父组件区域范围内，不会超出父组件的边界范围，也不会覆盖圆角范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| arrowWidth           | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头宽度。若所设置的宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| arrowHeight          | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头高度。<br/>默认值：8<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | 否   | 是  | 设置Tips跟随类型。<br/>默认值：TipsAnchorType.TARGET<br/>**说明：**<br />Tips的跟随类型为TipsAnchorType.CURSOR时，Tips不显示箭头。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
+| ------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| appearingTime         |           ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否    | 是  |设置悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：700<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| disappearingTime                 |   ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 设置悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
+| appearingTimeWithContinuousOperation    |     ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
+| disappearingTimeWithContinuousOperation |     ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：0<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
+| enableArrow        | boolean                                                      | 否   | 是  | 设置是否显示气泡箭头。<br/>默认值：true<br/>true：显示箭头；false：不显示箭头。<br/>**说明：** <br/>当页面可用空间无法让气泡完全避让时，气泡会覆盖到组件上并且不显示气泡箭头。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否   | 是  | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有 "Start"、"Center"、"End"三个位置点可选。所有位置点均位于父组件区域范围内，不会超出父组件的边界范围，也不会覆盖圆角范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| arrowWidth           | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头宽度。若所设置的宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| arrowHeight          | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头高度。<br/>默认值：8<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | 否   | 是  | 设置Tips跟随类型。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>默认值：TipsAnchorType.TARGET<br/>**说明：**<br />Tips的跟随类型为TipsAnchorType.CURSOR时，Tips不显示箭头。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23  |
 
 ## TipsMessageType
 
@@ -68,6 +77,10 @@ type TipsMessageType = ResourceStr | StyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                       | 说明                                           |
 | ---------------------------------------------------------- | ---------------------------------------------- |
 | [ResourceStr](ts-types.md#resourcestr)                     | 字符串类型，用于描述字符串入参可以使用的类型。 |
@@ -77,7 +90,9 @@ type TipsMessageType = ResourceStr | StyledString
 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 ### 示例1（悬浮气泡的显示和消失）
 
-此示例为bindTips通过绑定Button产生悬浮气泡。
+此示例为[bindTips](#bindtips)通过绑定[Button](./ts-basic-components-button.md)，在悬停态时产生悬浮气泡。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -100,10 +115,39 @@ struct TipsExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+
+import { Entry, Component, Flex, FlexDirection, Button,
+  Position, Padding } from '@ohos.arkui.component';
+@Entry
+@Component
+struct TipsExample {
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 250 } as Position)
+    }.width('100%').padding({ top: 5 } as Padding)
+  }
+}
+```
+
 ![](figures/tips01.gif)
 ### 示例2（多个悬浮气泡的显示和消失）
 
-此示例展示了如何使用bindTips配置多个悬浮气泡依次显示和消失。
+此示例展示了如何使用[bindTips](#bindtips)配置多个悬浮气泡依次显示和消失。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -135,6 +179,45 @@ struct TipsExample {
 
 
     }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+
+import { Entry, Component, Flex, FlexDirection, Button,
+  Position, Padding } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct TipsExample {
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 250 } as Position)
+
+      Button('Hover Tips')
+        .bindTips("Tips", {
+          appearingTime: 700,
+          disappearingTime: 300,
+          appearingTimeWithContinuousOperation: 300,
+          disappearingTimeWithContinuousOperation: 0,
+          enableArrow: true,
+        })
+        .position({ x: 100, y: 350 } as Position)
+
+    }.width('100%').padding({ top: 5 } as Padding)
   }
 }
 ```

@@ -8,7 +8,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## UICommonEvent
 用于设置基础事件回调。方法入参为undefined的时候，重置对应的事件回调。
@@ -21,6 +23,10 @@ setOnClick(callback: Callback\<ClickEvent> | undefined): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -38,6 +44,10 @@ setOnTouch(callback: Callback\<TouchEvent> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -47,7 +57,9 @@ setOnTouch(callback: Callback\<TouchEvent> | undefined): void
 
 ### setOnAppear
 
-setOnAppear(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnAppear(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnAppear(callback: VoidCallback | undefined): void
 
 设置[onAppear](./ts-universal-events-show-hide.md#onappear)挂载显示事件的回调。
 
@@ -55,16 +67,22 @@ setOnAppear(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | 是   | 挂载显示事件的回调函数。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> \| undefined <br />ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 挂载显示事件的回调函数。 |
 
 
 ### setOnDisappear
 
-setOnDisappear(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnDisappear(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnDisappear(callback: VoidCallback | undefined): void
 
 设置[onDisAppear](./ts-universal-events-show-hide.md#ondisappear)卸载消失事件的回调。
 
@@ -72,11 +90,15 @@ setOnDisappear(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | 是   | 卸载消失事件的回调。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> \| undefined <br />ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 卸载消失事件的回调。 |
 
 ### setOnKeyEvent
 
@@ -88,6 +110,10 @@ setOnKeyEvent(callback: Callback\<KeyEvent> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -96,7 +122,9 @@ setOnKeyEvent(callback: Callback\<KeyEvent> | undefined): void
 
 ### setOnFocus
 
-setOnFocus(callback:  Callback\<void> | undefined): void
+ArkTS-Dyn: setOnFocus(callback:  Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnFocus(callback: VoidCallback | undefined): void
 
 设置[onFocus](./ts-universal-focus-event.md#onfocus)获焦事件的回调。
 
@@ -104,15 +132,21 @@ setOnFocus(callback:  Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | 是   | 获焦事件的回调。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> \| undefined<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 获焦事件的回调。 |
 
 ### setOnBlur
 
-setOnBlur(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnBlur(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnBlur(callback: VoidCallback | undefined): void
 
 设置[onBlur](./ts-universal-focus-event.md#onblur)失焦事件的回调。
 
@@ -120,11 +154,15 @@ setOnBlur(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | 是   | 失焦事件的回调。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> \| undefined <br />ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 失焦事件的回调。 |
 
 ### setOnHover
 
@@ -135,6 +173,10 @@ setOnHover(callback: HoverCallback | undefined): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -152,6 +194,10 @@ setOnMouse(callback: Callback\<MouseEvent> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -168,6 +214,10 @@ setOnSizeChange(callback: SizeChangeCallback | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -183,6 +233,10 @@ setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: Visib
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -206,6 +260,10 @@ hover事件的回调类型。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

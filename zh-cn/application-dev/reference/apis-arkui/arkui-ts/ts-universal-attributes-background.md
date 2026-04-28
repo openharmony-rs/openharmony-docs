@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## background<sup>10+</sup>
 
@@ -27,6 +29,12 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[background<sup>24+</sup>](#background24)。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
@@ -49,6 +57,33 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 > - 同时设置background，backgroundColor，backgroundImage时，三者将按以下规则叠加显示：
 >   - 若background为ResourceColor类型，或设置ignoresLayoutSafeAreaEdges属性，则background位于最底层。
 >   - 其他情况下，background位于最上层。
+> - 在background设置content参数为CustomBuilder类型时，background不会跟随CustomBuilder内容更新而变化。
+
+## background<sup>24+</sup>
+
+background(content: CustomBuilder | ResourceColor | undefined, options?: BackgroundOptions): this
+
+设置组件背景。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[background<sup>10+</sup>](#background10)。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名  | 类型                                                 | 必填 | 说明                                                         |
+| ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) \| [ResourceColor](ts-types.md#resourcecolor) \| undefined        | 是   | 自定义背景。                                                 |
+| options | [BackgroundOptions](#backgroundoptions20对象说明) | 否   | 设置自定义背景选项。|
+
+>  **说明：**
+>
+> - 自定义背景渲染会有一定延迟，不能响应事件，不能进行动态更新。该属性不支持嵌套使用，不支持预览器预览。
+> - 同时设置了background，backgroundColor，backgroundImage时，三者叠加显示，background在最上层。
 
 ## BackgroundOptions<sup>20+</sup>对象说明
 
@@ -56,10 +91,10 @@ background配置选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型   | 只读 | 可选 | 说明                                                         |
-| ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| align<sup>10+</sup>          | [Alignment](ts-appendix-enums.md#alignment) | 否   | 是   | 自定义背景与组件的对齐方式。该属性仅对CustomBuilder类型的背景生效。如果设置了ignoresLayoutSafeAreaEdges，则背景的布局区域为包含了扩展安全区的范围。<br/>默认值：Alignment.Center<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ignoresLayoutSafeAreaEdges | Array<[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | 否   |  是   |配置背景要扩展到的安全区，包括：状态栏，导航栏和[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)。<br/> 默认值：<br/>- CustomBuilder背景：[]，不扩展。<br/>- ResourceColor背景：[LayoutSafeAreaEdge.ALL]，扩展至所有方向。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------ | ---- | ---- | ------- |
+| align<sup>10+</sup>          | [Alignment](ts-appendix-enums.md#alignment) | 否 | 是   | 自定义背景与组件的对齐方式。该属性仅对CustomBuilder类型的背景生效。如果设置了ignoresLayoutSafeAreaEdges，则背景的布局区域为包含了扩展安全区的范围。<br/>默认值：Alignment.Center<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| ignoresLayoutSafeAreaEdges | Array<[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | 否 | 是   | 配置背景要扩展到的安全区，包括：状态栏，导航栏和[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)。<br/> 默认值：<br/>- CustomBuilder背景：[]，不扩展。<br/>- ResourceColor背景：[LayoutSafeAreaEdge.ALL]，扩展至所有方向。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
 
 > **说明：**
 >
@@ -153,6 +188,12 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, repeat?: ImageRepeat): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundImage<sup>23+</sup>](#backgroundimage23-2)。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：** 
 
 | 参数名 | 类型                                            | 必填 | 说明                                                         |
@@ -182,6 +223,12 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundImage<sup>23+</sup>](#backgroundimage23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 <!--Table: 10%; auto; 10%; auto-->
@@ -196,9 +243,71 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## backgroundImage<sup>23+</sup>
+
+backgroundImage(src: ResourceStr | PixelMap | undefined, options: BackgroundImageOptions): this
+
+设置组件的背景图片。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundImage<sup>18+</sup>](#backgroundimage18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                            | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined          | 是   | 图片地址，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg、gif和webp等类型的动图。 |
+| options | [BackgroundImageOptions](ts-universal-attributes-image-effect.md#backgroundimageoptions18) | 是   | 设置背景图选项。 |
+
+## backgroundImage<sup>23+</sup>
+
+backgroundImage(src: ResourceStr | PixelMap | undefined)
+
+设置组件的背景图片。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                            | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined         | 是   | 图片地址，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg和gif类型的图片。 |
+
+## backgroundImage<sup>23+</sup>
+
+backgroundImage(src: ResourceStr | PixelMap | undefined, repeat: ImageRepeat)
+
+设置组件的背景图片。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundImage](#backgroundimage)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                            | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined        | 是   | 图片地址，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg和gif类型的图片。 |
+| repeat | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | 是   | 设置背景图片的重复样式，默认不重复。当设置的背景图片为透明底色图片，且同时设置了backgroundColor时，二者叠加显示，背景颜色在最底部。|
+
 ## backgroundImageSize
 
-backgroundImageSize(value: SizeOptions | ImageSize): T
+ArkTS-Dyn: backgroundImageSize(value: SizeOptions | ImageSize): T
+
+ArkTS-Sta: backgroundImageSize(value: SizeOptions | ImageSize | undefined): this
 
 设置组件背景图片的宽度和高度。当未设置backgroundImageSize时，默认组件背景图片宽高效果为[ImageSize.Auto](ts-appendix-enums.md#imagesize)。
 
@@ -208,21 +317,27 @@ backgroundImageSize(value: SizeOptions | ImageSize): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SizeOptions](ts-types.md#sizeoptions)&nbsp;\|&nbsp;[ImageSize](ts-appendix-enums.md#imagesize) | 是   | 设置背景图像的高度和宽度。默认保持原图的比例不变。<br/>width和height取值范围： [0, +∞)<br/>ImageSize用于控制图片缩放显示模式，如保持比例、填充边界等。<br/>**说明：** <br/>width和height均设置为小于或等于0的值时，按值为0显示。当width和height中只有一个值未设置或者设置为小于等于0的值时，另一个会根据图片原始宽高比进行调整。 |
+| value  | ArkTS-Dyn: [SizeOptions](ts-types.md#sizeoptions)&nbsp;\|&nbsp;[ImageSize](ts-appendix-enums.md#imagesize) <br/>ArkTS-Sta: [SizeOptions](ts-types.md#sizeoptions)&nbsp;\|&nbsp;[ImageSize](ts-appendix-enums.md#imagesize) \|&nbsp;undefined | 是   | 设置背景图像的高度和宽度。默认保持原图的比例不变。<br/>width和height取值范围： [0, +∞)<br/>ImageSize用于控制图片缩放显示模式，如保持比例、填充边界等。<br/>**说明：** <br/>width和height均设置为小于或等于0的值时，按值为0显示。当width和height中只有一个值未设置或者设置为小于等于0的值时，另一个会根据图片原始宽高比进行调整。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## backgroundImagePosition
 
-backgroundImagePosition(value: Position | Alignment): T
+ArkTS-Dyn: backgroundImagePosition(value: Position | Alignment): T
+
+ArkTS-Sta: backgroundImagePosition(value: Position | Alignment | undefined): this
 
 设置背景图的位置。当未设置backgroundImagePosition时，组件默认背景图位置为当前组件左上角。
 
@@ -232,17 +347,21 @@ backgroundImagePosition(value: Position | Alignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position)&nbsp;\|&nbsp;[Alignment](ts-appendix-enums.md#alignment) | 是   | 设置背景图在组件中显示位置，即相对于组件左上角的坐标。<br/> x和y值设置百分比时，偏移量是相对组件自身宽高计算的。 |
+| value  | ArkTS-Dyn: [Position](ts-types.md#position)&nbsp;\|&nbsp;[Alignment](ts-appendix-enums.md#alignment)<br> ArkTS-Sta: [Position](ts-types.md#position)&nbsp;\|&nbsp;[Alignment](ts-appendix-enums.md#alignment) \| undefined | 是   | 设置背景图在组件中显示位置，即相对于组件左上角的坐标。<br/> x和y值设置百分比时，偏移量是相对组件自身宽高计算的。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## BlurStyle<sup>9+</sup>
 
@@ -250,21 +369,21 @@ backgroundImagePosition(value: Position | Alignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                   | 值 | 说明        |
-| -------------------- | ------- | --------- |
-| Thin                 | - | 轻薄材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| Regular              | - | 普通厚度材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Thick                | - | 厚材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。    |
-| BACKGROUND_THIN<sup>10+</sup>       | 3 | 近距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BACKGROUND_REGULAR<sup>10+</sup>    | 4 | 中距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BACKGROUND_THICK<sup>10+</sup>      | 5 | 远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BACKGROUND_ULTRA_THICK<sup>10+</sup> | 6 | 超远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| NONE<sup>10+</sup> | 7 | 关闭模糊。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| COMPONENT_ULTRA_THIN<sup>11+</sup> | 8 | 组件超轻薄材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COMPONENT_THIN<sup>11+</sup> | 9 | 组件轻薄材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COMPONENT_REGULAR<sup>11+</sup> | 10 | 组件普通材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COMPONENT_THICK<sup>11+</sup> | 11 | 组件厚材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COMPONENT_ULTRA_THICK<sup>11+</sup> | 12 | 组件超厚材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称        | 值       | 说明        |
+| ------- | --------- | --------- |
+| Thin                 | 0 | 轻薄材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23  |
+| Regular              | 1 | 普通厚度材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23 |
+| Thick                | 2 | 厚材质模糊。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23  |
+| BACKGROUND_THIN<sup>10+</sup>       | 3 | 近距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23   |
+| BACKGROUND_REGULAR<sup>10+</sup>    | 4 | 中距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23  |
+| BACKGROUND_THICK<sup>10+</sup>      | 5 | 远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23  |
+| BACKGROUND_ULTRA_THICK<sup>10+</sup> | 6 | 超远距景深模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23  |
+| NONE<sup>10+</sup> | 7 | 关闭模糊。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| COMPONENT_ULTRA_THIN<sup>11+</sup> | 8 | 组件超轻薄材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| COMPONENT_THIN<sup>11+</sup> | 9 | 组件轻薄材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| COMPONENT_REGULAR<sup>11+</sup> | 10 | 组件普通材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| COMPONENT_THICK<sup>11+</sup> | 11 | 组件厚材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| COMPONENT_ULTRA_THICK<sup>11+</sup> | 12 | 组件超厚材质模糊。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
 
 ## SystemAdaptiveOptions<sup>19+</sup>
 
@@ -276,9 +395,13 @@ backgroundImagePosition(value: Position | Alignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 <!--Table: auto; auto; 10%; 10%; auto-->
-| 名称        |   类型   |   只读  |  可选  | 说明                        |
-| ----        |  ----   |   ---- |  ---- | --------------------------  |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----  |  ----   |   ---- | ---- | --------------------------  |
 | disableSystemAdaptation   |  boolean   |   否   |  是  |  系统自适应调节参数，推荐不携带该参数。该参数只影响低算力设备，低算力设备的定义由设备厂商决定。在低芯片算力的设备上，会根据算力和负载等条件，自动决策是否使用低算力的近似效果替代原有效果，比如模糊效果会结合接口中携带的模糊相关参数值及其他低算力处理逻辑，进行自适应效果降级处理。如果想关闭该功能，可以将该标志置为true。<br/>默认值：false |
 
 ## backgroundBlurStyle<sup>9+</sup>
@@ -293,12 +416,18 @@ backgroundBlurStyle(value: BlurStyle, options?: BackgroundBlurStyleOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundBlurStyle<sup>23+</sup>](#backgroundblurstyle23)。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                 | [BlurStyle](#blurstyle9)                                     | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。 |
-| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。 <br/>该参数在ArkTS卡片中，暂不支持使用。                                              |
+| options<sup>10+</sup> | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。用于配置模糊激活策略和不生效时的背景色。不传入时使用默认激活策略[BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE。<br/>该参数在ArkTS卡片中，暂不支持使用。                                              |
 
 **返回值：**
 
@@ -318,12 +447,18 @@ backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOp
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundBlurStyle<sup>23+</sup>](#backgroundblurstyle23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style                 | Optional\<[BlurStyle](#blurstyle9)>                          | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。<br/>当style的值为undefined时，恢复为默认关闭模糊的背景。 |
-| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
+| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。用于配置模糊激活策略和不生效时的背景色。不传入时使用默认激活策略[BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
 
 **返回值：**
 
@@ -347,11 +482,17 @@ backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOp
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundBlurStyle<sup>23+</sup>](#backgroundblurstyle23)。
+
+**ArkTS-Dyn起始版本：** 19
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style                 | Optional\<[BlurStyle](#blurstyle9)>                          | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。<br/>当style的值为undefined时，恢复为默认关闭模糊的背景。 |
+| style                 | Optional\<[BlurStyle](#blurstyle9)> | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。<br/>当style的值为undefined时，恢复为默认关闭模糊的背景。 |
 | options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
@@ -360,6 +501,38 @@ backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOp
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
+
+>  **说明：**
+>
+>  当通过backgroundBlurStyle中的inactiveColor指定背景色时，不建议再通过[backgroundColor](#backgroundcolor)设置背景色。
+
+## backgroundBlurStyle<sup>23+</sup>
+
+backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): this
+
+为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle9)，[backgroundBlurStyle<sup>18+</sup>](#backgroundblurstyle18)和[backgroundBlurStyle<sup>19+</sup>](#backgroundblurstyle19)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名                | 类型                                                         | 必填 | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| style                 | [BlurStyle](#blurstyle9) \| undefined                          | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。<br/>当style的值为undefined时，恢复为默认关闭模糊的背景。 |
+| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
+| sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 >  **说明：**
 >
@@ -377,12 +550,18 @@ backdropBlur(value: number, options?: BlurOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backdropBlur<sup>23+</sup>](#backdropblur23)。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                 | number                                                       | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。 |
-| options<sup>11+</sup> | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶梯参数。                                                 |
+| value                 | number                                                       | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, +∞)<br/>默认值：0 |
+| options<sup>11+</sup> | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0]  |
 
 **返回值：**
 
@@ -402,12 +581,18 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backdropBlur<sup>23+</sup>](#backdropblur23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| radius                | Optional\<number>                                            | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当radius的值为undefined时，恢复为默认无模糊的背景。 |
-| options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶梯参数。                                                 |
+| radius                | Optional\<number>                                            | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。当radius的值为undefined时，恢复为默认无模糊的背景。<br/>取值范围：[0, +∞)<br/>默认值：0<br/> |
+| options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0] |
 
 **返回值：**
 
@@ -431,12 +616,18 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions, sysOptions?: Syst
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backdropBlur<sup>23+</sup>](#backdropblur23)。
+
+**ArkTS-Dyn起始版本：** 19
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| radius                | Optional\<number>                                            | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当radius的值为undefined时，恢复为默认无模糊的背景。 |
-| options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶梯参数。                                                 |
+| radius                | Optional\<number> | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当radius的值为undefined时，恢复为默认无模糊的背景。 |
+| options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0] |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
 **返回值：**
@@ -444,6 +635,38 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions, sysOptions?: Syst
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
+
+>  **说明：**
+>
+>  backgroundBlurStyle、blur和backdropBlur为实时接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。最佳实践请参考[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
+
+## backdropBlur<sup>23+</sup>
+
+backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): this
+
+为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backdropBlur](#backdropblur)，[backdropBlur<sup>18+</sup>](#backdropblur18)和[backdropBlur<sup>19+</sup>](#backdropblur19)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名                | 类型                                                         | 必填 | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| radius                | double \| undefined                                            | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当radius的值为undefined时，恢复为默认无模糊的背景。 |
+| options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0] |
+| sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 >  **说明：**
 >
@@ -458,6 +681,12 @@ backgroundEffect(options: BackgroundEffectOptions): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundEffect<sup>23+</sup>](#backgroundeffect23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -480,6 +709,12 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>): T
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundEffect<sup>23+</sup>](#backgroundeffect23)。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：** 
 
@@ -507,6 +742,12 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundEffect<sup>23+</sup>](#backgroundeffect23)。
+
+**ArkTS-Dyn起始版本：** 19
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
@@ -520,6 +761,37 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## backgroundEffect<sup>23+</sup> 
+
+backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: SystemAdaptiveOptions): this
+
+设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。
+
+> **说明：**
+>
+> backgroundEffect接口为实时接口，每帧对模糊等效果执行实时渲染，性能负载较大。当组件背景模糊效果无需变动时，推荐采用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)实现模糊效果。最佳实践请参考：[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundEffect<sup>11+</sup>](#backgroundeffect11)，[backgroundEffect<sup>18+</sup>](#backgroundeffect18)和[backgroundEffect<sup>19+</sup>](#backgroundeffect19)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options | [BackgroundEffectOptions](#backgroundeffectoptions11) \| undefined | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。<br/>当options的值为undefined时，恢复为无效果的背景。 |
+| sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
+
 ## BackgroundEffectOptions<sup>11+</sup>
 
 背景效果参数。
@@ -527,16 +799,16 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: auto; auto; 10%; 10%; auto-->
-| 名称        |   类型         |   只读  |  可选  |  说明                        |
-| ----         |  ----         |   ---- |  ---- | --------------------------  |
-| radius       | number        |   否   |   否   |   模糊半径，取值范围：[0, +∞)，默认为0。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| saturation   | number        |   否   |   是   |  饱和度，取值范围：[0, +∞)，默认为1。推荐取值范围：[0, 50]。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
-| brightness   | number        |   否   |   是   |  亮度，取值范围：[0, +∞)，默认为1。推荐取值范围：[0, 2]。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| color        | [ResourceColor](ts-types.md#resourcecolor)         |   否   |  是   |   颜色，默认透明色。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor枚举说明) |   否  |  是  | 背景模糊效果使用的取色模式，默认为DEFAULT。使用AVERAGE时color必须带有透明度，取色模式才生效。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| blurOptions  | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) |   否   |  是   |   灰阶模糊参数，默认为[0,0]。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| policy<sup>14+</sup>    | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | 否  |  是  | 模糊激活策略。<br/> 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE <br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  | 否   |  是  | 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----         |  ----  | ---- |   ---- | --------------------------  |
+| radius       | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined      |   否 | 否   |   模糊半径，取值范围：[0, +∞)，默认为0。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| saturation   | ArkTS-Dyn: number<br/>ArkTS-Sta: double      |  否 | 是  |   饱和度，取值范围：[0, +∞)，默认为1。推荐取值范围：[0, 50]。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23    |
+| brightness   | ArkTS-Dyn: number<br/>ArkTS-Sta: double       |  否 | 是  |   亮度，取值范围：[0, +∞)，默认为1。推荐取值范围：[0, 2]。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| color        | [ResourceColor](ts-types.md#resourcecolor)         |  否 | 是  |   颜色，默认透明色。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor枚举说明) |  否 | 是 | 背景模糊效果使用的取色模式，默认为DEFAULT。使用AVERAGE时color必须带有透明度，取色模式才生效。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23  |
+| blurOptions  | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) |  否 | 是  |   灰阶模糊参数，默认为[0,0]。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23 |
+| policy<sup>14+</sup>    | [BlurStyleActivePolicy](#blurstyleactivepolicy14) |否 | 是   | 模糊激活策略。<br/> 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE <br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 14<br/> **ArkTS-Sta起始版本：** 23|
+| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  |否 | 是   | 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 14<br/> **ArkTS-Sta起始版本：** 23 |
 
 ## backgroundImageResizable<sup>12+</sup>
 
@@ -552,6 +824,12 @@ backgroundImageResizable(value: ResizableOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundImageResizable<sup>23+</sup>](#backgroundimageresizable23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
@@ -564,6 +842,36 @@ backgroundImageResizable(value: ResizableOptions): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## backgroundImageResizable<sup>23+</sup>
+
+backgroundImageResizable(value: ResizableOptions | undefined): this
+
+设置背景图在拉伸时可调整大小的图像选项。
+
+设置合法的ResizableOptions时，[backgroundImage](#backgroundimage)属性中的repeat参数设置不生效。
+
+当设置top+bottom大于原图的高或者left+right大于原图的宽时，ResizableOptions属性设置不生效。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundImageResizable<sup>12+</sup>](#backgroundimageresizable12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| value  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) \|&nbsp;undefined | 是   | 图像拉伸时可调整大小的图像选项。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
+
 ## BackgroundBlurStyleOptions<sup>10+</sup>对象说明
 
 继承自[BlurStyleOptions](ts-universal-attributes-foreground-blur-style.md#blurstyleoptions)。
@@ -573,10 +881,10 @@ backgroundImageResizable(value: ResizableOptions): T
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
-| 名称 | 类型                                                         | 只读 | 可选 | 说明                                                 |
-| ------ | ------------------------------------------------------------ | ---- | ---- |---------------------------------------------------- |
-| policy<sup>14+</sup>  | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | 否 | 是   | 模糊激活策略。<br/> 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是    | 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------- | ---- | ---- | ------- |
+| policy<sup>14+</sup>  | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | 否 | 是 | 模糊激活策略。<br/> 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/> **ArkTS-Sta起始版本：** 23 |
+| inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/> **ArkTS-Sta起始版本：** 23 |
 
 ## BlurStyleActivePolicy<sup>14+</sup>
 
@@ -585,6 +893,10 @@ backgroundImageResizable(value: ResizableOptions): T
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值|说明                            |
 | ------ | ----------------------------- |----------------------------- |
@@ -601,6 +913,12 @@ backgroundBrightness(params: BackgroundBrightnessOptions): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundBrightness<sup>23+</sup>](#backgroundbrightness23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -624,6 +942,12 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundBrightness<sup>23+</sup>](#backgroundbrightness23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
@@ -636,6 +960,32 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## backgroundBrightness<sup>23+</sup> 
+
+backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
+
+设置组件背景提亮效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundBrightness<sup>11+</sup>](#backgroundbrightness12)和[backgroundBrightness<sup>18+</sup>](#backgroundbrightness18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明) | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。<br/>当options的值为undefined时，恢复为无提亮效果的背景。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
+
 ## BackgroundBrightnessOptions<sup>12+</sup>对象说明
 
 背景亮度选项。
@@ -644,10 +994,14 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型   | 只读  |  可选 | 说明                                                         |
-| ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| rate          | number | 否   |  否   | 亮度变化速率。亮度变化速率越大，提亮程度下降速度越快。若rate为0，则lightUpDegree将不生效，即不会产生任何提亮效果。<br/>默认值：0.0 <br/>取值范围：(0.0, +∞) |
-| lightUpDegree | number | 否   |  否   | 提亮程度。提亮程度越大，亮度提升程度越大。<br/> 默认值：0.0 <br/>取值范围：[-1.0, 1.0] |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------ | ---- | ---- | ----- |
+| rate          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 亮度变化速率。亮度变化速率越大，提亮程度下降速度越快。若rate为0，则lightUpDegree将不生效，即不会产生任何提亮效果。<br/>默认值：0.0 <br/>取值范围：(0.0, +∞) |
+| lightUpDegree | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 提亮程度。提亮程度越大，亮度提升程度越大。<br/> 默认值：0.0 <br/>取值范围：[-1.0, 1.0] |
 
 >  **说明：**
 >
@@ -987,7 +1341,7 @@ struct Index {
 
 ### 示例7（模糊效果对比）
 
-该示例对比了backgroundEffect、backDropBlur和backgroundBlurStyle三种不同的模糊效果。
+该示例对比了[backgroundEffect<sup>11+</sup>](#backgroundeffect11)、[backdropBlur](#backdropblur)和[backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle9)三种不同的模糊效果。
 
 ```ts
 // xxx.ets

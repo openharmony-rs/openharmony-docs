@@ -1,9 +1,9 @@
 # @ohos.file.trash (回收站)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供可以查询、还原或彻底删除最近删除（回收站）里的文件/文件夹的能力。当前仅支持本地文件目录。
@@ -12,6 +12,7 @@
 
 >**说明：**
 >
+> - 本模块仅支持ArkTS-Dyn。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 > - 当前只支持文件管理器调用。

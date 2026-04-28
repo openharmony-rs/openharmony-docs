@@ -40,7 +40,9 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 获取屏幕全屏截图，可以通过设置不同的屏幕id号截取不同屏幕的截图。
 
-**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+**需要权限：**
+- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE or ohos.permission.CUSTOM_SCREEN_RECORDING
+- API版本14-21：ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **起始版本：** 14
 

@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 本模块提供SendableResource资源相关信息，包括应用包名、应用模块名、资源类型等。
 
@@ -21,7 +21,7 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 ## SendableResource
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 

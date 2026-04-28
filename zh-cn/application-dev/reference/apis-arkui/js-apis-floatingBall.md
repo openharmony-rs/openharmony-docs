@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-该模块提供闪控球的基础功能，包括判断设备是否支持闪控球功能，以及创建闪控球控制器来启动、更新或停止闪控球。适用于比价、搜题或抢单等场景，以小窗模式呈现内容。闪控球以悬浮小组件形式显示在其他应用之上，即时呈现应用的关键信息。
+该模块提供闪控球的基础功能，包括判断设备是否支持闪控球功能，以及创建闪控球控制器来启动、更新或停止闪控球。适用于跨应用的题目搜索、账单记录、商品比价、抢单、翻译场景，以及金融类应用的实时盯盘场景，以小窗模式呈现内容。闪控球以悬浮小组件形式显示在其他应用之上，即时呈现应用的关键信息。
 
 > **说明：**
 >
@@ -49,7 +49,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Tablet设备的非电脑模式、Phone设备下可正常调用，在其他设备、Tablet设备的电脑模式下调用返回801错误码。
 
 **参数：**
 
@@ -495,7 +495,7 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
-| 1300026 | Failed to restore the main window. Possiable causes: </br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.</br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
+| 1300026 | Failed to restore the main window. Possible causes: </br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.</br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
 
 **示例：**
 
@@ -578,6 +578,7 @@ floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
 | content | string | 否 | 是 | 闪控球内容，大小不超过64字节。不传入时默认为空字符串，不显示闪控球内容。 |
 | backgroundColor | string | 否 | 是 | 闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时闪控球跟随系统深浅色模式的默认背景色。 |
 | icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 是 | 闪控球图标，图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取）。建议图标像素宽高为128px*128px。实际显示效果依赖于设备能力和闪控球UI样式。 |
+| textUpdateAnimationType | [FloatingBallTextUpdateAnimationType](#floatingballtextupdateanimationtype) | 否 | 是 | 闪控球文本更新时的动画类型。默认为FloatingBallTextUpdateAnimationType.ANIMATION_NONE。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FloatingBallState
 
@@ -612,3 +613,20 @@ floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | windowId | number | 是 | 否 | 闪控球窗口ID。 |
+
+## FloatingBallTextUpdateAnimationType
+
+闪控球文本更新动画类型的枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+|------------|------------|------------|
+| ANIMATION_NONE | 0 | 无动画。 |
+| ANIMATION_OPACITY | 1 | 淡入淡出动画。 |

@@ -45,6 +45,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
 
 1. 应用侧代码中，Web组件配置[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口，可通过[PermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md)的[getAccessibleResource](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md#getaccessibleresource9)接口获取请求权限的资源类型，当资源类型为TYPE_SENSOR时，进行传感器授权处理。
 
+   ArkTS-Dyn示例：
    ```ts
    import { UIContext } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
@@ -102,6 +103,77 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
                    event.request.deny();
                  }
                })
+             }
+           })
+       }
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[web_sensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/WebSensor/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
+   // xxx.ets
+   'use static'
+   import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   import { UIContext } from "@kit.ArkUI";
+   import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { PermissionRequestResult, common, abilityAccessCtrl } from '@kit.AbilityKit';
+
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
+     uiContext: UIContext = this.getUIContext();
+
+     aboutToAppear() {
+       // 配置Web开启调试模式
+       webview.WebviewController.setWebDebuggingAccess(true);
+       // 访问控制管理, 获取访问控制模块对象。
+       let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+       try {
+         atManager.requestPermissionsFromUser(context, ['ohos.permission.ACCELEROMETER', 'ohos.permission.GYROSCOPE']
+           , (err: BusinessError | null, data?: PermissionRequestResult) => {
+           if (data) {
+             console.info('data:' + JSON.stringify(data));
+             console.info('data permissions:' + data.permissions);
+             console.info('data authResults:' + data.authResults);
+           }
+         })
+       } catch (error) {
+         console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+       }
+     }
+
+     build() {
+       Column() {
+         Web({ src: $rawfile('index.html'), controller: this.controller })
+           .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+             if (event) {
+               const dialogOptions: AlertDialogParamWithButtons = {
+                 title: 'title',
+                 message: 'text',
+                 primaryButton: {
+                   value: 'deny',
+                   action: () => {
+                     event.request.deny();
+                   },
+                 } as AlertDialogButtonBaseOptions,
+                 secondaryButton: {
+                   value: 'onConfirm',
+                   action: () => {
+                     event.request.grant(event.request.getAccessibleResource());
+                   },
+                 } as AlertDialogButtonBaseOptions,
+                 cancel: () => {
+                   event.request.deny();
+                 }
+               };
+               this.uiContext.showAlertDialog(dialogOptions);
              }
            })
        }

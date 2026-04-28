@@ -3107,6 +3107,65 @@ getOsAccountName(): Promise&lt;string&gt;
   }
   ```
 
+ ### getOsAccountNameByLocalId
+ 
+ ArkTS-Dyn: getOsAccountNameByLocalId(localId: number): Promise&lt;string&gt;
+
+ ArkTS-Sta: getOsAccountNameByLocalId(localId: int): Promise&lt;string&gt;
+ 
+ 根据系统账号的本地ID获取系统账号的名称。使用Promise异步回调。
+ 
+ **模型约束**：此接口仅可在Stage模型下使用。
+ 
+ **需要权限**： ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+ 
+ **系统能力**： SystemCapability.Account.OsAccount
+
+ **ArkTS-Dyn起始版本**：26.0.0
+ 
+ **ArkTS-Sta起始版本**：26.0.0
+ 
+ **参数**：
+ 
+ | 参数名   | 类型   | 必填 | 说明                     |
+ | -------- | ------ | ---- | ----------------------- |
+ | localId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 目标系统账号的本地ID。 |
+ 
+ **返回值：**
+ 
+ | 类型                | 说明                     |
+ | ------------------- | ----------------------- |
+ | Promise&lt;string&gt; | Promise对象，返回目标系统账号的名称。 |
+ 
+ **错误码：**
+ 
+ 以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+ 
+ | 错误码ID | 错误信息                     |
+ | -------- | --------------------------- |
+ | 201 | Permission denied. |
+ | 12300001 | The system service works abnormally. |
+ | 12300003 | Account not found. |
+ | 12300008 | Restricted Account. |
+ 
+ **示例：**
+ 
+ ```ts
+ import { BusinessError } from '@kit.BasicServicesKit';
+ 
+ let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+ try {
+   accountManager.getOsAccountNameByLocalId(100).then((name: string) => {
+     console.info('getOsAccountNameByLocalId, name: ' + name);
+   }).catch((err: BusinessError) => {
+     console.error('getOsAccountNameByLocalId err: ' + err);
+   });
+ } catch (e) {
+   const err = e as BusinessError;
+   console.error(`getOsAccountNameByLocalId exception: code is ${err.code}, message is ${err.message}`);
+ }
+ ```
+
 ### getForegroundOsAccountLocalId<sup>15+</sup>
 
 getForegroundOsAccountLocalId(): Promise&lt;number&gt;
@@ -3295,6 +3354,7 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 | domain      | string | 否 | 否  | 域名。     |
 | accountName | string | 否 | 否  | 域账号名。 |
 | serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。 |
+| additionalInfo | ArkTS-Dyn: Record<string, Object><br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 域账号附加信息。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DomainServerConfig<sup>18+</sup>
 

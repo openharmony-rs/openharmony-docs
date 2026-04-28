@@ -73,7 +73,7 @@ ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -92,7 +92,7 @@ try {
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -155,7 +155,7 @@ ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -173,7 +173,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -336,7 +336,7 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -353,7 +353,7 @@ try {
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 impoer { BusinessError } from '@ohos.base';
 
@@ -476,13 +476,13 @@ updateNtpTime(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   systemDateTime.updateNtpTime().then(() => {
-    console.info(`Succeeded in update ntp time.`);
+    console.info(`Succeeded in updating ntp time.`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
   });
@@ -491,7 +491,7 @@ try {
   console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@ohos.base';
 
@@ -539,7 +539,7 @@ ArkTS-Sta: getNtpTime(): long
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -550,7 +550,7 @@ try {
   console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@ohos.base';
 
@@ -608,6 +608,7 @@ setAutoTimeStatus(status: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -623,8 +624,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
-
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

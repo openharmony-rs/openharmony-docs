@@ -88,7 +88,7 @@ try {
 
 getAllAppPrivateCertificates(): Promise\<CMResult>
 
-表示获取所有私有凭据列表，使用Promise方式异步返回结果。
+表示获取所有私有凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -139,7 +139,7 @@ try {
 
 getAllSystemAppCertificates(): Promise\<CMResult>
 
-表示获取所有系统凭据列表，使用Promise方式异步返回结果。
+表示获取所有系统凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -283,7 +283,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   certificateManager.getSystemTrustedCertificateList().then((cmResult: certificateManager.CMResult) => {
-    if (cmResult === undefined) { // 系统信任CA证书个数为为0时，返回cmResult为undefined。
+    if (cmResult === undefined) { // 系统信任CA证书个数为0时，返回cmResult为undefined。
       console.info('The count of system trusted certificates is 0.');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting system trusted certificates is undefined.');

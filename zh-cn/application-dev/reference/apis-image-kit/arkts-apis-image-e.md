@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -31,6 +31,7 @@
 | RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位。 |
 | YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
 | YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
+| ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。所有像素紧密排列，不进行对齐。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
 | ASTC_4x4<sup>18+</sup> | 102 | 存储格式为ASTC 4x4格式，内存使用量仅为RGBA_8888的1/4。该格式仅用于直接显示场景，不支持像素访问或后期处理编辑，不支持仿射变换级联使用。  |
 
 ## AlphaType<sup>9+</sup>
@@ -82,6 +83,9 @@
 | HEIFS_METADATA<sup>23+</sup> | 15    | HEIF序列图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DNG_METADATA<sup>24+</sup> | 16    | DNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | WEBP_METADATA<sup>24+</sup> | 17    | WebP图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| PNG_METADATA | 19    | PNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| JFIF_METADATA | 20    | JFIF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| TIFF_METADATA | 21    | TIFF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -113,8 +117,8 @@
 | ----------------- | ----------------------- | ----------------------- | ----------------------- |
 | NEW_SUBFILE_TYPE<sup>12+</sup>           | "NewSubfileType"            | 在Exif中，"NewSubfileType"字段用于标识子文件的数据类型，如全分辨率图像、缩略图或多帧图像的一部分。其值是位掩码，0代表全分辨率图像，1代表缩略图，2代表多帧图像的一部分。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Primary image');`<br />**读取结果示例：** "0" |
 | SUBFILE_TYPE<sup>12+</sup>               | "SubfileType"               | 此标签指示此子文件中的数据类型。标签已弃用，请使用NewSubfileType替代。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Full-resolution image data');`<br />**读取结果示例：** "1" |
-| IMAGE_WIDTH                               | "ImageWidth"                | 图片宽度。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
-| IMAGE_LENGTH                              | "ImageLength"               | 图片长度。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
+| IMAGE_WIDTH                               | "ImageWidth"                | 图片宽度。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
+| IMAGE_LENGTH                              | "ImageLength"               | 图片长度。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
 | BITS_PER_SAMPLE                           | "BitsPerSample"             | 像素各分量的位数，如RGB，3分量，格式是8,8,8。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 三个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'8 8 8');`<br />或`imageSource.modifyImageProperty(key,'8,8,8');`<br />**读取结果示例：** "8,8,8" |
 | COMPRESSION<sup>12+</sup>                | "Compression"               | 图像压缩方案。<br/> 1："Uncompressed"。<br/> 2："CCITT RLE"。<br/> 3："T4/Group 3 Fax"。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br/>**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Uncompressed');`<br />**读取结果示例：** "Uncompressed" |
 | PHOTOMETRIC_INTERPRETATION<sup>12+</sup> | "PhotometricInterpretation" | 像素构成，例如RGB或YCbCr。<br/> 0："Reversed mono"。<br/> 1："Normal mono"。<br/> 2："RGB"。<br/> 3："Palette"。<br/> 5："CMYK"。<br/> 6："YCbCr"。<br/> 8："CieLAB"。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br/>**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Normal mono');`<br />**读取结果示例：** "Normal mono" |
@@ -144,7 +148,7 @@
 | YCBCR_POSITIONING<sup>12+</sup>          | "YCbCrPositioning"          | 色度分量相对于亮度分量的位置。<br/>1："Centered"，中心对齐（Centered），Cb/Cr分量的采样点相对于亮度像素点是居中对齐（常见）。<br/>2："Co-sited"，左上对齐（Co-sited）Cb/Cr分量和 Y 分量的采样点对齐在左上角。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。 <br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Centered');`<br />**读取结果示例：** "Centered" |
 | REFERENCE_BLACK_WHITE<sup>12+</sup>      | "ReferenceBlackWhite"       | 参考黑点值和白点值。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />**读取结果示例：** "1,255, 0,255, 0,255" |
 | COPYRIGHT<sup>12+</sup>                  | "Copyright"                 | 图像的版权信息。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'desc');`<br />**读取结果示例：** "desc (Photographer) - [None] (Editor)" |
-| EXPOSURE_TIME<sup>9+</sup>                | "ExposureTime"              | 曝光时间，例如1/33 sec。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "1/33 sec." |
+| EXPOSURE_TIME<sup>9+</sup>                | "ExposureTime"              | 曝光时间。单位为秒（s）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "1/33 sec." |
 | F_NUMBER<sup>9+</sup>                     | "FNumber"                   | 光圈值，例如f/1.8。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "f/1.0" |
 | EXPOSURE_PROGRAM<sup>12+</sup>           | "ExposureProgram"           | 拍照时相机用来设置曝光的程序的类别。<br />0："Not defined"。<br />1："Manual"。  <br />2："Normal program"。<br/>3："Aperture priority"。<br />4："Shutter priority"。<br />5："Creative program (biased toward depth of field)"。<br/>6："Creative program (biased toward fast shutter speed)"。<br/>7："Portrait mode (for closeup photos with the background out of focus)"。<br/>8："Landscape mode (for landscape photos with the background in focus)"。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Not defined');`<br />**读取结果示例：** "Not defined" |
 | SPECTRAL_SENSITIVITY<sup>12+</sup>       | "SpectralSensitivity"       | 表示所用相机的每个通道的光谱灵敏度。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'SpectralSensitivity');`<br />**读取结果示例：** "SpectralSensitivity" |
@@ -206,7 +210,7 @@
 | METERING_MODE<sup>10+</sup>               | "MeteringMode"              | 测光模式。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Average');`<br />**读取结果示例：** "Average" |
 | LIGHT_SOURCE<sup>10+</sup>                | "LightSource"               | 光源。例如Fluorescent。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Daylight');`<br />**读取结果示例：** "Daylight" |
 | FLASH<sup>10+</sup>                      | "Flash"                     | 闪光灯，记录闪光灯状态。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0x00');`<br />或`imageSource.modifyImageProperty(key,'Flash did not fire');`<br />**读取结果示例：** "Flash did not fire" |
-| FOCAL_LENGTH<sup>10+</sup>               | "FocalLength"               | 焦距。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />或`imageSource.modifyImageProperty(key,'50/1');`<br />**读取结果示例：** "50.0 mm" |
+| FOCAL_LENGTH<sup>10+</sup>               | "FocalLength"               | 焦距。单位为毫米（mm）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />或`imageSource.modifyImageProperty(key,'50/1');`<br />**读取结果示例：** "50.0 mm" |
 | SUBJECT_AREA<sup>12+</sup>               | "SubjectArea"          | 该标签指示整个场景中主要主体的位置和区域。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 两个非负有理数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50 50');`<br />或`imageSource.modifyImageProperty(key,'50,50');`<br />**读取结果示例：** "(x,y) = (50,50)" |
 | MAKER_NOTE<sup>12+</sup>                 | "MakerNote"                 | Exif/DCF制造商使用的标签，用于记录任何所需信息。<br/>在API version 12-19，该字段为只读；从API version 20开始，该字段可读写。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Maker Note');`<br />**读取结果示例：** "Maker Note" |
 | USER_COMMENT<sup>10+</sup>               | "UserComment"               | 用户注释。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'User Comment');`<br />**读取结果示例：** "User Comment" |
@@ -215,8 +219,8 @@
 | SUBSEC_TIME_DIGITIZED<sup>12+</sup>      | "SubsecTimeDigitized"       | 用于为DateTimeDigitized标签记录秒的分数的标签。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'62900');`<br />**读取结果示例：** "62900" |
 | FLASHPIX_VERSION<sup>12+</sup>           | "FlashpixVersion"           | 该标签表示FPXR文件支持的Flashpix格式版本，增强了设备兼容性。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 版本号格式“1.0”。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1.0');`<br />**读取结果示例：** "FlashPix Version 1.0" |
 | COLOR_SPACE<sup>12+</sup>                | "ColorSpace"                | 色彩空间信息标签，通常记录为色彩空间指定符。<br/>1："sRGB"，sRG标准色彩空间（常见默认值）。<br/>2："Adobe RGB"，exif中未定义，但大量相机使用。<br/>0xffff："Uncalibrated"，表示未校准，颜色空间不明确。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'sRGB');`<br />**读取结果示例：** "sRGB" |
-| PIXEL_X_DIMENSION<sup>10+</sup>          | "PixelXDimension"           | 像素X尺寸。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
-| PIXEL_Y_DIMENSION<sup>10+</sup>           | "PixelYDimension"           | 像素Y尺寸。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
+| PIXEL_X_DIMENSION<sup>10+</sup>          | "PixelXDimension"           | 像素X尺寸。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
+| PIXEL_Y_DIMENSION<sup>10+</sup>           | "PixelYDimension"           | 像素Y尺寸。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
 | RELATED_SOUND_FILE<sup>12+</sup>         | "RelatedSoundFile"          | 与图像数据相关的音频文件的名称。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Related Sound File');`<br />**读取结果示例：** "Related Sound File" |
 | FLASH_ENERGY<sup>12+</sup>               | "FlashEnergy"               | 图像捕获时的闪光能量，以BCPS表示。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'5.0');`<br />或`imageSource.modifyImageProperty(key,'5/1');`<br />**读取结果示例：** "5" |
 | SPATIAL_FREQUENCY_RESPONSE<sup>12+</sup> | "SpatialFrequencyResponse"  | 相机或输入设备的空间频率表。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Spatial Frequency Response');`<br />**读取结果示例：** "Spatial Frequency Response" |
@@ -233,7 +237,7 @@
 | EXPOSURE_MODE<sup>12+</sup>              | "ExposureMode"         | 拍摄时设置的曝光模式。<br/>0："Auto exposure"，自动曝光（Auto）。<br/>1："Manual exposure"，手动曝光（Manual）。<br/>2："Auto bracket"，自动曝光优先（Auto bracket）。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Auto exposure');`<br />**读取结果示例：** "Auto exposure" |
 | WHITE_BALANCE<sup>10+</sup>              | "WhiteBalance"         | 白平衡。<br/>0："Auto white balance"，自动白平衡。<br/>1："Manual white balance"，手动白平衡。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Auto white balance');`<br />**读取结果示例：** "Auto white balance" |
 | DIGITAL_ZOOM_RATIO<sup>12+</sup>         | "DigitalZoomRatio"     | 捕获时的数字变焦比率。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "0.5" |
-| FOCAL_LENGTH_IN_35_MM_FILM<sup>10+</sup> | "FocalLengthIn35mmFilm" | 焦距35毫米胶片。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />**读取结果示例：** "50" |
+| FOCAL_LENGTH_IN_35_MM_FILM<sup>10+</sup> | "FocalLengthIn35mmFilm" | 换算成35mm等效焦距。单位为毫米（mm）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />**读取结果示例：** "50" |
 | SCENE_CAPTURE_TYPE<sup>12+</sup>         | "SceneCaptureType"     | 捕获的场景类型。<br/>0："Standard"，标准。<br/>1："Landscape"，风景。<br/>2："Portrait"，人像。<br/>3："Night scene"，夜景。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：**  修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Standard');`<br />**读取结果示例：** "Standard" |
 | GAIN_CONTROL<sup>12+</sup>               | "GainControl"          | 整体图像增益调整的程度。<br/>0："Normal"，无增益控制。<br />1："Low gain up"，低增益提升。<br />2："High gain up"，高增益提升。<br/>3："Low gain down"， 低增益降低。<br />4："High gain down"，高增益降低。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：**  修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Normal');`<br />**读取结果示例：** "Normal" |
 | CONTRAST<sup>12+</sup>                   | "Contrast"             | 相机应用的对比度处理方向。<br/>0："Normal"，正常对比度。<br/>1："Soft"，软对比度。<br/>2："Hard"，硬对比度。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Normal');`<br />**读取结果示例：** "Normal" |
@@ -253,7 +257,7 @@
 | SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE<sup>12+</sup> | "SourceExposureTimesOfCompositeImage" | 合成图像的源图像曝光时间。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Source Exposure Times Of CompositeImage');`<br />**读取结果示例：** "Source Exposure Times Of CompositeImage" |
 | GAMMA<sup>12+</sup>                      | "Gamma"                | 表示系数伽马的值。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**<br />`imageSource.modifyImageProperty(key,'1');`<br />**读取结果示例：** "1" |
 | DNG_VERSION<sup>12+</sup>                | "DNGVersion"                | DNG版本标签编码了符合DNG规范的四级版本号。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 四个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**<br />`imageSource.modifyImageProperty(key,'1 1 1 1');`<br />或`imageSource.modifyImageProperty(key,'1,1,1,1');`<br />**读取结果示例：** "1,1,1,1" |
-| DEFAULT_CROP_SIZE<sup>12+</sup>          | "DefaultCropSize"           | DefaultCropSize指定了原始坐标中的最终图像大小，考虑了额外的边缘像素。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 两个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'400 400');`<br />或`imageSource.modifyImageProperty(key,'400,400');`<br />**读取结果示例：** "400,400" |
+| DEFAULT_CROP_SIZE<sup>12+</sup>          | "DefaultCropSize"           | DefaultCropSize指定了原始坐标中的最终图像大小，考虑了额外的边缘像素。单位为像素（px）。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 两个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'400 400');`<br />或`imageSource.modifyImageProperty(key,'400,400');`<br />**读取结果示例：** "400,400" |
 | GIF_LOOP_COUNT<sup>12+</sup>             | "GIFLoopCount"              | GIF图片循环次数。0表示无限循环，其他值表示循环次数。<br />**读写能力：** 只读。<br> | _ |
 | IS_XMAGE_SUPPORTED<sup>12+</sup> | "HwMnoteIsXmageSupported" | 是否支持XMAGE。<br />**读写能力：** 可读写。<br> | _ |
 | XMAGE_MODE<sup>12+</sup> | "HwMnoteXmageMode" | XMAGE水印模式。<br />**读写能力：** 可读写。<br> | _ |
@@ -289,7 +293,7 @@
 | FRONT_CAMERA<sup>12+</sup> | "HwMnoteFrontCamera" | 是否是前置相机自拍。<br />**读写能力：** 只读。<br> | _ |
 | ROLL_ANGLE<sup>11+</sup> | "HwMnoteRollAngle" | 滚动角度。<br />**读写能力：** 只读。<br> | _ |
 | PITCH_ANGLE<sup>11+</sup> | "HwMnotePitchAngle" | 俯仰角度。<br />**读写能力：** 只读。<br> | _ |
-| PHYSICAL_APERTURE<sup>10+</sup> | "HwMnotePhysicalAperture" | 物理孔径，光圈大小。<br />**读写能力：** 只读。<br> | _ |
+| PHYSICAL_APERTURE<sup>10+</sup> | "HwMnotePhysicalAperture" | 物理孔径，光圈大小。单位为毫米（mm）。<br />**读写能力：** 只读。<br> | _ |
 | FOCUS_MODE<sup>11+</sup> | "HwMnoteFocusMode" | 对焦模式。<br />**读写能力：** 只读。<br> | _ |
 
 ## FragmentMapPropertyKey<sup>13+</sup>
@@ -302,8 +306,8 @@
 | ------------- | --------------------- | ----------------------------------- |
 | X_IN_ORIGINAL | "XInOriginal"         | 水印裁剪图左上角在原始图中的X坐标。 |
 | Y_IN_ORIGINAL | "YInOriginal"         | 水印裁剪图左上角在原始图中的Y坐标。 |
-| WIDTH         | "FragmentImageWidth"  | 水印裁剪图的宽。                    |
-| HEIGHT        | "FragmentImageHeight" | 水印裁剪图的高。                    |
+| WIDTH         | "FragmentImageWidth"  | 水印裁剪图的宽。单位为像素（px）。                    |
+| HEIGHT        | "FragmentImageHeight" | 水印裁剪图的高。单位为像素（px）。                    |
 
 ## GifPropertyKey<sup>20+</sup>
 
@@ -313,8 +317,13 @@
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| GIF_DELAY_TIME    | "GifDelayTime"    | GIF图片的每帧播放时长（单位为毫秒）。 |
-| GIF_DISPOSAL_TYPE | "GifDisposalType" | GIF图片每帧的帧过渡模式。 |
+| GIF_DELAY_TIME    | 'GifDelayTime'    | GIF图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。 |
+| GIF_DISPOSAL_TYPE | 'GifDisposalType' | GIF图片的每帧处置方式。<br>- 0表示未指定。<br>- 1表示不处置。<br>- 2表示还原为背景色。<br>- 3表示还原为前一帧。<br>该值为正整数。 |
+| GIF_HAS_GLOBAL_COLOR_MAP | 'GifHasGlobalColorMap' | GIF图像是否包含全局调色板。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_CANVAS_WIDTH | 'GifCanvasWidth' | GIF图像的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_CANVAS_HEIGHT | 'GifCanvasHeight' | GIF图像的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_LOOP_COUNT | 'GifLoopCount' | GIF图片循环次数。<br>取值为0或正整数。0表示无限循环，其他值表示实际循环次数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_UNCLAMPED_DELAY_TIME | 'GifUnclampedDelayTime' | GIF图片未钳制的帧延迟时间。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## HeifsPropertyKey<sup>23+</sup>
 
@@ -327,6 +336,9 @@
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
 | HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒。 |
+| HEIFS_UNCLAMPED_DELAY_TIME | 'HeifsUnclampedDelayTime' | HEIF序列图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0 |
+| HEIFS_CANVAS_HEIGHT | 'HeifsCanvasHeight' | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
+| HEIFS_CANVAS_WIDTH | 'HeifsCanvasWidth' | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
 
 ## WebPPropertyKey<sup>24+</sup>
 
@@ -447,6 +459,101 @@
 | NEW_RAW_IMAGE_DIGEST | 'NewRawImageDigest' | 修改后原始图像数据的新MD5摘要。 |
 | RAW_TO_PREVIEW_GAIN | 'RawToPreviewGain' | 主RAW图与预览图之间的增益比。 |
 | DEFAULT_USER_CROP | 'DefaultUserCrop' | 默认用户裁剪区域。 |
+
+## PngPropertyKey
+
+枚举，PNG图片信息。
+
+> **说明：**
+>
+> - 格式示例中的key为：image.PngPropertyKey.XXX（XXX为枚举的名称，如：image.PngPropertyKey.X_PIXELS_PER_METER）。
+> - 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| X_PIXELS_PER_METER | 'PngXPixelsPerMeter' | PNG图像X方向每米像素数。 |
+| MODIFICATION_TIME | 'PngModificationTime' | PNG图像的最后一次修改的时间。 |
+| SOFTWARE | 'PngSoftware' | 用于生成PNG图像的软件名称和版本。 |
+| COPYRIGHT | 'PngCopyright' | PNG图像的版权信息。 |
+| CREATION_TIME | 'PngCreationTime' | PNG图像的创建时间。 |
+| SRGB_INTENT | 'PngSRGBIntent' | PNG图像的sRGB（standard Red Green Blue，标准红绿蓝）渲染意图。<br>- 0表示感知意图。<br>- 1表示相对比色意图。<br>- 2表示饱和度意图。<br>- 3绝对色度意图。 |
+| AUTHOR | 'PngAuthor' | PNG图像的作者。 |
+| INTERLACE_TYPE | 'PngInterlaceType' | PNG图像的交错模式。<br>- 0表示无交错模式（图像按照从上到下、从左到右的顺序加载）。<br>- 1表示交错模式（通过多次扫描逐步显示图像，图像在加载过程中逐渐清晰）。 |
+| WARNING | 'PngWarning' | PNG图像的警告信息。 |
+| Y_PIXELS_PER_METER | 'PngYPixelsPerMeter' | PNG图像Y方向每米像素数。 |
+| GAMMA | 'PngGamma' | PNG图像的系数伽马的值。 |
+| CHROMATICITIES | 'PngChromaticities' | PNG图像的原色与白点色度坐标cHRM（primary chromaticities and white point）。该信息可用于与设备无关的色彩校正。 |
+| DESCRIPTION | 'PngDescription' | PNG图像的描述。 |
+| TITLE | 'PngTitle' | PNG图像的标题。 |
+| COMMENT | 'PngComment' | PNG图像的注释。 |
+| DISCLAIMER | 'PngDisclaimer' | PNG图像的免责声明。 |
+
+## JfifPropertyKey
+
+枚举，JFIF图片信息。
+
+> **说明：**
+>
+> - 格式示例中的key为：image.JfifPropertyKey.XXX（XXX为枚举的名称，如：image.JfifPropertyKey.DENSITY_UNIT）。
+> - 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| DENSITY_UNIT | 'JfifDensityUnit' | 用于定义JfifXDensity（水平像素密度）和JfifYDensity（垂直像素密度）的物理度量单位。<br>- 0表示无单位（仅像素宽高比）。<br>- 1表示每英寸像素数（DPI）。<br>- 2表示每厘米像素数（DPC）。<br>该值为正整数。 |
+| X_DENSITY | 'JfifXDensity' | JFIF图像X方向密度。 |
+| Y_DENSITY | 'JfifYDensity' | JFIF图像Y方向密度。 |
+| VERSION | 'JfifVersion' | JFIF图像版本。 |
+| IS_PROGRESSIVE | 'JfifIsProgressive' | 图像是否采用渐进式编码，即图像在加载过程中按多次扫描逐步提升清晰度。true表示采用，false表示不采用。 |
+
+## TiffPropertyKey
+
+枚举，TIFF图片信息。
+
+> **说明：**
+>
+> - 格式示例中的key为：image.TiffPropertyKey.XXX（XXX为枚举的名称，如：image.TiffPropertyKey.DOCUMENT_NAME）。
+> - 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| DOCUMENT_NAME | 'TiffDocumentName' | 文档或图像的名称。 |
+| PHOTOMETRIC_INTERPRETATION | 'TiffPhotometricInterpretation' | 定义像素颜色的解释方式（如RGB、灰度）。 |
+| ORIENTATION | 'TiffOrientation' | 图像方向。<br/>- 1表示"Top-left"，图像未旋转。<br/>- 2表示"Top-right"，镜像水平翻转。<br/>- 3表示"Bottom-right"，图像旋转180°。<br/>- 4表示"Bottom-left"，镜像垂直翻转。<br/>- 5表示"Left-top"，镜像水平翻转后再顺时针旋转270°。<br/>- 6表示"Right-top"，顺时针旋转90°。<br/>- 7表示"Right-bottom"，镜像水平翻转后再顺时针旋转90°。<br/>- 8表示"Left-bottom"，顺时针旋转270°。<br/>若读到未定义值，会返回 `Unknown Value x`，其中 `x` 表示该标签的原始取值。 |
+| RESOLUTION_UNIT | 'TiffResolutionUnit' | XResolution（水平分辨率）和YResolution（垂直分辨率）的单位，取值为英寸（Inch）或厘米（Centimeter）。 |
+| COPYRIGHT | 'TiffCopyright' | 图像的版权信息。 |
+| DATE_TIME | 'TiffDateTime' | 与图像关联的日期和时间（通常为最后修改时间）。 |
+| IMAGE_DESCRIPTION | 'TiffImageDescription' | 图像信息描述。 |
+| Y_RESOLUTION | 'TiffYResolution' | 垂直方向分辨率（每分辨率单位的像素数）。 |
+| X_RESOLUTION | 'TiffXResolution' | 水平方向分辨率（每分辨率单位的像素数）。 |
+| WHITE_POINT | 'TiffWhitePoint' | 用于指定图像的白点（white point）色度坐标，即图像颜色空间中被认为是“白色”的参考点。 |
+| TILE_LENGTH | 'TiffTileLength' | 每个图像分块的高度。单位为像素（px）。 |
+| TRANSFER_FUNCTION | 'TiffTransferFunction' | 图像的传递函数，通常用于颜色校正。 |
+| TILE_WIDTH | 'TiffTileWidth' | 每个图像分块的宽度。单位为像素（px）。 |
+| MAKE | 'TiffMake' | 拍摄设备制造商。 |
+| MODEL | 'TiffModel' | 拍摄设备型号名称或编号。 |
+| HOST_COMPUTER | 'TiffHostComputer' | 用于图像处理的主机或系统。 |
+| COMPRESSION | 'TiffCompression' | TIFF图像数据所用的压缩方案。<br>- 1表示无压缩。<br>- 5表示LZW（基于字典的无损压缩算法）。<br>- 7表示JPEG基线。<br>- 8表示Deflate（基于LZ77+Huffman的无损压缩算法） |
+| SOFTWARE | 'TiffSoftware' | 用于生成图像的软件名称和版本。 |
+| PRIMARY_CHROMATICITIES | 'TiffPrimaryChromaticities' | 图像中RGB三原色的色度坐标。 |
+| ARTIST | 'TiffArtist' | 创建图像的用户名称。 |
 
 ## ImageFormat<sup>9+</sup>
 

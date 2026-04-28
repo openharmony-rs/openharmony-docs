@@ -10,9 +10,11 @@
 
 > **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br />
-> 摄像头挖孔区域不属于避让区，页面默认不避让挖孔。<br />
-> 从API version 12开始，可在module.json5中添加以下配置项，摄像头挖孔区域会视为避让区，实现页面默认避让挖孔：<br />
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br />
+> - 摄像头挖孔区域不属于避让区，页面默认不避让挖孔。<br />
+> - 从API version 12开始，可在module.json5中添加以下配置项，摄像头挖孔区域会视为避让区，实现页面默认避让挖孔：<br />
   "metadata": [<br />
     &nbsp;&nbsp;{<br />
     &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br />
@@ -23,7 +25,9 @@
 
 ## expandSafeArea
 
-expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): T
+ArkTS-Dyn: expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): T
+
+ArkTS-Sta: expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): this
 
 控制组件扩展其安全区域。
 
@@ -55,6 +59,10 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
@@ -66,7 +74,7 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## SafeAreaType
 
@@ -139,7 +147,9 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 ## ignoreLayoutSafeArea<sup>20+</sup>
 
-ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;): T
+ArkTS-Dyn: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;): T
+
+ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefined, edges?: Array&lt;LayoutSafeAreaEdge&gt; | undefined): this
 
 扩展组件布局时的安全区。
 
@@ -147,18 +157,22 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[LayoutSafeAreaType](#layoutsafeareatype12)> | 否   | 扩展布局安全区域的类型。<br />默认值：[LayoutSafeAreaType.SYSTEM]，扩展至所有安全区域，比如：状态栏，导航栏和组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）。<br />非法值：按默认值处理。 |
-| edges  | Array <[LayoutSafeAreaEdge](#layoutsafeareaedge12)> | 否   | 扩展布局安全区的边缘，并且支持镜像能力。<br />默认值：[LayoutSafeAreaEdge.ALL]，扩展组件所有边缘。<br />非法值：按默认值处理。|
+| types  | ArkTS-Dyn: Array <[LayoutSafeAreaType](#layoutsafeareatype12)><br />ArkTS-Sta: Array <[LayoutSafeAreaType](#layoutsafeareatype12)> \| undefined | 否   | 扩展布局安全区域的类型。<br />默认值：[LayoutSafeAreaType.SYSTEM]，扩展至所有安全区域，比如：状态栏，导航栏和组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）。<br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| edges  | ArkTS-Dyn: Array <[LayoutSafeAreaEdge](#layoutsafeareaedge12)><br />ArkTS-Sta: Array <[LayoutSafeAreaEdge](#layoutsafeareaedge12)> \| undefined | 否   | 扩展布局安全区的边缘，并且支持镜像能力。<br />默认值：[LayoutSafeAreaEdge.ALL]，扩展组件所有边缘。<br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 >  **说明：**
 >
@@ -232,6 +246,8 @@ struct SafeAreaExample1 {
 
 该示例展示了同时设置固定宽高和expandSafeArea属性的效果。
 
+**ArkTS-Dyn示例：**
+
 ```ts
 // xxx.ets
 @Entry
@@ -256,7 +272,36 @@ struct SafeAreaExample2 {
 }
 ```
 
-如下图：Column组件扩展至了顶部状态栏[SafeAreaEdge.TOP]，未扩展至底部导航条[SafeAreaEdge.BOTTOM]，扩展后的组件高度维持设置值不变。
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Row, Column, TextInput, TextInputController, SafeAreaType, SafeAreaEdge, ImageSize, Color, Position, $r } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SafeAreaExample2 {
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderFont({ size: 14, weight: 400 })
+        .width(320).height(40).offset({y: 120} as Position)
+        .fontSize(14).fontColor(Color.Black)
+        .backgroundColor(Color.White)
+    }
+    .height('780')
+    .width('100%')
+    .backgroundColor('rgb(179,217,235)')
+    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+  }
+}
+```
+
+如下图：Column组件扩展至了顶部状态栏SafeAreaEdge.TOP，未扩展至底部导航条SafeAreaEdge.BOTTOM，扩展后的组件高度与设置的高度一致。
 
 ![expandSafeArea2](figures/expandSafeArea2.png)
 

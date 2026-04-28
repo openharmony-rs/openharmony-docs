@@ -39,7 +39,7 @@
 
 1. 创建ComponentContent。
    
-   ComponentContent用于定义自定义弹出框的内容。其中，wrapBuilder(buildText)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
+   ComponentContent用于定义自定义弹出框的内容。其中，[wrapBuilder(buildText)](../ui/state-management/arkts-wrapBuilder.md)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
    
    <!-- @[open_dialog_and_update_create_componentContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
    
@@ -89,7 +89,7 @@
 
 ## 更新自定义弹出框的内容
 
-ComponentContent与[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)有相同的使用限制，不支持自定义组件使用[@Reusable](state-management/arkts-reusable.md)、[@Link](state-management/arkts-link.md)、[@Provide](state-management/arkts-provide-and-consume.md)、[@Consume](state-management/arkts-provide-and-consume.md)等装饰器，来同步弹出框弹出的页面与ComponentContent中自定义组件的状态。因此，若需要更新弹出框中自定义组件的内容可以通过ComponentContent提供的update方法来实现。
+ComponentContent与[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)有相同的使用限制，不支持自定义组件使用[@Reusable](state-management/arkts-reusable.md)、[@Link](state-management/arkts-link.md)、[@Provide](state-management/arkts-provide-and-consume.md)、[@Consume](state-management/arkts-provide-and-consume.md)等装饰器，来同步弹出框弹出的页面与ComponentContent中自定义组件的状态。因此，若需要更新弹出框中自定义组件的内容可以通过ComponentContent提供的[update](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)方法来实现。
 
 ```ts
 this.contentNode.update(new Params('update'))
@@ -97,7 +97,7 @@ this.contentNode.update(new Params('update'))
 
 ## 更新自定义弹出框的属性
 
-通过updateCustomDialog可以动态更新弹出框的属性。目前支持更新弹出框的对齐方式、基于对齐方式的偏移量、是否点击蒙层自动关闭以及蒙层颜色，对应的属性分别为[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)中的alignment、offset、autoCancel和maskColor。
+通过[updateCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatecustomdialog12)可以动态更新弹出框的属性。目前支持更新弹出框的对齐方式、基于对齐方式的偏移量、是否点击蒙层自动关闭以及蒙层颜色，对应的属性分别为[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)中的alignment、offset、autoCancel和maskColor。
 
 更新属性时，未设置的属性会恢复为默认值。例如，初始设置{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }，更新时设置{ alignment: DialogAlignment.Bottom }，则初始设置的offset: { dx: 0, dy: 50 }不会保留，会恢复为默认值。
 
