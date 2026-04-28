@@ -2200,7 +2200,7 @@
 
 ## ohos.permission.EXECUTE_DISTRIBUTED_INTENT
 
-允许系统应用执行分布式意图调用。
+允许系统应用执行分布式意图。
 
 **权限级别**：system_basic
 
