@@ -1034,7 +1034,7 @@ The target token ID is invalid.
 2. 确保callerTokenId与targetTokenId不是同一应用。
 <!--DelEnd-->
 
-## 16000100 监听Ability生命周期变化的AbilityMonitor方法执行失败
+## 16000100 监听Ability生命周期变化的AbilityMonitor或InteropAbilityMonitor方法执行失败
 
 **错误信息**
 
@@ -1066,9 +1066,13 @@ The target token ID is invalid.
 
  - Calling WaitAbilityStageMonitor failed.
 
+ - Calling AddInteropAbilityMonitorSync failed.
+
+ - Calling RemoveInteropAbilityMonitorSync failed.
+
 **错误描述**
 
-当监听指定Ability的生命周期变化的AbilityMonitor方法执行失败时，返回该错误码。
+当监听指定Ability的生命周期变化的AbilityMonitor或InteropAbilityMonitor方法执行失败时，返回该错误码。
 
 **可能原因**
 
