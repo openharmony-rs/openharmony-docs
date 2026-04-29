@@ -18,6 +18,9 @@
   - [窗口焦点](window-focus-guide.md)
   - [窗口层级](window-zorder-guide.md)
 - [窗口元数据配置](window-config-m.md)
+- 自由窗口<!--freeform-window-->
+  - [自由窗口简介](freeform-window-overview.md)
+  - [应用适配自由窗口](application-adaptation-freeform-window.md)
 - [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
 <!--RP1-->
 <!--RP1End-->
