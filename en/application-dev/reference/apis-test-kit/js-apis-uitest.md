@@ -70,6 +70,7 @@ Provides the coordinates of a point.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type  | Read-Only|  Optional| Description       |
 | ---- | ------ | ---- | ---- |-----------|
 | x    | number |  No  | No  | Horizontal coordinate of a coordinate point. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -82,6 +83,7 @@ Provides bounds information of a component.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name  | Type  | Read-Only| Optional| Description                     |
 | ------ | ------ | ---- | ---- | ------------------------- |
 | left   | number |  No  | No|X coordinate of the upper left corner of the component border. The value is an integer greater than 0.<br> **Note**: Since API version 20, this attribute is no longer read-only.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -126,6 +128,7 @@ Provides the flag attributes of this window.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | Name                | Type   | Read-Only| Optional| Description                                                                                    |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
 | bundleName           | string  | No | Yes | Bundle name of the application to which the window belongs. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
@@ -232,6 +235,7 @@ Provides information about the UI event.
 
 **System capability**: SystemCapability.Test.UiTest
 
+<!--Table: 25%; 25%; 10%; 10%; 30%-->
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | bundleName | string | Yes  | No  | Bundle name of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |

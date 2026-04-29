@@ -518,7 +518,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>If the parameter type is number, the unit is vp.<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
 
 ### contentEndOffset<sup>11+</sup>
 
@@ -554,7 +554,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>If the parameter type is number, the unit is vp.<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
 
 ### childrenMainSize<sup>12+</sup>
 

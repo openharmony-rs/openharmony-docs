@@ -10,34 +10,32 @@
 typedef struct {...} JSVM_HeapStatistics
 ```
 
-## 概述
+## Overview
 
-用于保存有关JavaScript堆内存使用情况的统计信息。
+Stores statistics about JavaScript heap memory usage.
 
-**起始版本：** 12
+**Since**: 12
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| size_t totalHeapSize | 总堆大小，单位KB。 |
-| size_t totalHeapSizeExecutable | 可执行堆的总大小，单位KB。 |
-| size_t totalPhysicalSize | 总的物理内存大小，单位KB。 |
-| size_t totalAvailableSize | 总的可用内存大小，单位KB。 |
-| size_t usedHeapSize | 已使用的堆大小，单位KB。 |
-| size_t heapSizeLimit | 堆大小限制，单位KB。 |
-| size_t mallocedMemory | 已分配内存的大小，单位KB。 |
-| size_t externalMemory | 外部内存大小，单位KB。 |
-| size_t peakMallocedMemory | 最大可分配内存的大小，单位KB。 |
-| size_t numberOfNativeContexts | 表示当前活跃的native上下文的数量，该数值一直增加可能指示存在内存泄漏。 |
-| size_t numberOfDetachedContexts | 表示已经脱离的上下文数量。 |
-| size_t totalGlobalHandlesSize | 全局Handle的总大小，单位KB。 |
-| size_t usedGlobalHandlesSize | 已经使用的全局Handle的大小，单位KB。 |
-
-
+| size_t totalHeapSize | Total heap size, in KB.|
+| size_t totalHeapSizeExecutable | Total size of the executable heap, in KB.|
+| size_t totalPhysicalSize | Total physical memory size, in KB.|
+| size_t totalAvailableSize | Total available memory size, in KB.|
+| size_t usedHeapSize | Used heap size, in KB.|
+| size_t heapSizeLimit | Heap size limit, in KB.|
+| size_t mallocedMemory | Allocated memory size, in KB.|
+| size_t externalMemory | External memory size, in KB.|
+| size_t peakMallocedMemory | Maximum size of the memory that can be allocated, in KB.|
+| size_t numberOfNativeContexts | Number of active native contexts. If the value keeps increasing, memory leaks may occur.|
+| size_t numberOfDetachedContexts | Number of detached contexts.|
+| size_t totalGlobalHandlesSize | Total size of global handles, in KB.|
+| size_t usedGlobalHandlesSize | Size of the used global handles, in KB.|

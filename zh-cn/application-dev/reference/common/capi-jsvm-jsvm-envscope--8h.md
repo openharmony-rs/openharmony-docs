@@ -10,13 +10,12 @@
 typedef struct JSVM_EnvScope__* JSVM_EnvScope
 ```
 
-## 概述
+## Overview
 
-表示用于控制附加到当前虚拟机实例的环境。只有当线程通过OH_JSVM_OpenEnvScope进入该环境的JSVM_EnvScope后，该环境才对线程的虚拟机实例可用。
+Defines the environment scope of the current VM instance. The environment is available to the VM instance of the thread only after the thread enters **JSVM_EnvScope** of the environment through **OH_JSVM_OpenEnvScope**.
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
-
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)

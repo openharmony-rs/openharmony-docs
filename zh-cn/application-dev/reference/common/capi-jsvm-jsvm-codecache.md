@@ -10,21 +10,21 @@
 typedef struct {...} JSVM_CodeCache
 ```
 
-## 概述
+## Overview
 
-表示当id为JSVM_COMPILE_CODE_CACHE时，content的类型。
+Defines a struct that represents the code cache when **id** is **JSVM_COMPILE_CODE_CACHE**.
 
-**起始版本：** 12
+**Since**: 12
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称              | 描述          |
+| Name             | Description         |
 |------------------|---------------|
-| uint8_t* cache   | 缓存地址。     |
-| size_t length    | 缓存大小。     |
+| uint8_t* cache   | Cache address.    |
+| size_t length    | Cache size.    |

@@ -10,28 +10,26 @@
 typedef struct {...} JSVM_CreateVMOptions
 ```
 
-## 概述
+## Overview
 
-创建JavaScript虚拟机的选项。
+Defines options for creating a JavaScript VM.
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| size_t maxOldGenerationSize | 老年代内存大小上限。 |
-| size_t maxYoungGenerationSize | 年轻代内存大小上限。 |
-| size_t initialOldGenerationSize | 老年代内存大小初始值。 |
-| size_t initialYoungGenerationSize | 年轻代内存大小初始值。 |
-| const char* snapshotBlobData | 启动快照数据。 |
-| size_t snapshotBlobSize | 启动快照数据的大小。 |
-| bool isForSnapshotting | 虚拟机是否用于创建快照，为true，则虚拟机用于创建快照，为false，则虚拟机不用于创建快照。 |
-
-
+| size_t maxOldGenerationSize | Maximum size of the old-generation memory.|
+| size_t maxYoungGenerationSize | Maximum size of the young-generation memory.|
+| size_t initialOldGenerationSize | Initial size of the old-generation memory.|
+| size_t initialYoungGenerationSize | Initial size of the young-generation memory.|
+| const char* snapshotBlobData | Startup snapshot data.|
+| size_t snapshotBlobSize | Size of the startup snapshot data.|
+| bool isForSnapshotting | Whether the VM is used for snapshotting. If the value is **true**, VM is used for snapshotting. If the value is **false**, VM is not used for snapshotting.|
