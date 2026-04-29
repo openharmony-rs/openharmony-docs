@@ -501,7 +501,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoncooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -556,7 +556,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoffcooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
