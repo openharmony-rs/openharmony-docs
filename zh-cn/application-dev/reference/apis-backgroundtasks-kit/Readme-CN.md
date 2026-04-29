@@ -5,7 +5,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--background-tasks-arkts-->
   - [@ohos.reminderAgentManager (后台代理提醒)](js-apis-reminderAgentManager.md)
