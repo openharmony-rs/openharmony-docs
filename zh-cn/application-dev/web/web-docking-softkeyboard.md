@@ -193,6 +193,7 @@ ArkTS-Sta示例：
 <!-- @[soft_keyboard_entryability_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
 
 ``` TypeScript
+'use static'
 import { KeyboardAvoidMode } from '@ohos.arkui.UIContext';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

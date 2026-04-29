@@ -274,6 +274,7 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_extension_ability_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
    
    ``` TypeScript
+   'use static'
    import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
    import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -450,6 +451,7 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_get_manifest_data_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
+   'use static'
    import dataShare from '@ohos.data.dataShare';
    
    class ExtensionConfig {
@@ -564,6 +566,7 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_connect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
+   'use static'
    import UIAbility from '@ohos.app.ability.UIAbility';
    import Want from '@ohos.app.ability.Want';
    import common from '@ohos.app.ability.common';
@@ -628,6 +631,7 @@ function sendMessageToNative() {
    <!-- @[web_native_messaging_disconnect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
+   'use static'
    import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
    
    function disconnencNative(connectId: int) : void {
