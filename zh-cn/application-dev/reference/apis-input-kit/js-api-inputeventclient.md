@@ -163,7 +163,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 3800001  | Input service exception.  |
-| 4300001  | 按键已被按下且不是最近按下的按键。  |
+| 4300001  | 按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个。  |
 
 **示例：**
 
