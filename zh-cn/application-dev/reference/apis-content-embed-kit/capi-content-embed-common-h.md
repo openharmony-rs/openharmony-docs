@@ -53,6 +53,7 @@ enum ContentEmbed_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | CE_ERR_OK = 0 | 操作成功。<br>**起始版本：** 24 |
+| CE_PERMISSION_DENIED = 201 | 权限校验失败。<br>**起始版本：** 24 |
 | CE_ERR_PARAM_INVALID = 401 | 参数不合法。<br>**起始版本：** 24 |
 | CE_ERR_DEVICE_NOT_SUPPORTED = 801 | 当前设备不支持此功能。<br>**起始版本：** 24 |
 | CE_ERR_NULL_POINTER = 35300001 | 返回空指针，可能是内存分配失败或内部错误。<br>**起始版本：** 24 |
