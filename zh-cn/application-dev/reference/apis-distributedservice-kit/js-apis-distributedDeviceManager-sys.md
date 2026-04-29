@@ -196,13 +196,13 @@ replyUiAction(action: number, actionResult: string): void
 
   try {
     /*
-      action = 0 - 允许授权
-      action = 1 - 取消授权
-      action = 2 - 授权框用户操作超时
-      action = 3 - 取消pin码框展示
-      action = 4 - 取消pin码输入框展示
-      action = 5 - pin码输入框确定操作
-    */
+     * action = 0 - 允许授权
+     * action = 1 - 取消授权
+     * action = 2 - 授权框用户操作超时
+     * action = 3 - 取消pin码框展示
+     * action = 4 - 取消pin码输入框展示
+     * action = 5 - pin码输入框确定操作
+     */
     let operation = 0;
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.replyUiAction(operation, 'extra');
