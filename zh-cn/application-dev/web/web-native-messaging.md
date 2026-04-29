@@ -517,7 +517,6 @@ async function getManifestData(bundleName:string, connectExtensionOrigin:string)
 
 ```
 
-
 2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessaging连接，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
 
 ArkTS-Dyn示例：
