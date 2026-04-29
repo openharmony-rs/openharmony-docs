@@ -29,7 +29,7 @@
 
 典型全屏应用窗口包括系统界面元素和应用界面。其中系统界面元素包含状态栏和导航区域（根据用户设置可表现为导航条或三键导航），通常在[沉浸式布局](#沉浸式布局)下称为避让区，避让区之外的区域称为安全区。
 
-![zh-cn_image_0000002525256976](figures/zh-cn_image_0000002525256976.png)
+![zh-cn_image_0000002525256976](figures/zh-cn_image_0000002563117344.png)
 
 ### 沉浸式布局
 
@@ -159,13 +159,13 @@ interface Rect {
 
 在避让区域的计算中，将窗口按照对角线分为四个三角形区域，当对应系统界面元素的位置（矩形中心点）落于某个方向上的三角形区域时，提供的避让区域将在对应的Rect中。如下图所示整个矩形为窗口区域，以窗口左上角为原点，水平向右为X轴正方向，垂直向下为Y轴正方向，窗口矩形的两条对角线将整个矩形划分为四个方向上的Rect区域，用以表示避让区域相对窗口的几何位置。
 
-![zh-cn_image_0000002536554368](figures/zh-cn_image_0000002536554368.png)
+![zh-cn_image_0000002536554368](figures/1323.png)
 
 其中每个Rect为(X, Y, Width, Height)构成的四元组，表示以**窗口左上角为原点**的唯一矩形区域。
 
 如下图，挖孔区域表示为 **[topRect, (x1, y1, w1, h1)]** ，底部导航区域表示为 **[bottomRect, (0, H-h2, W, h2)]** 。
 
-![zh-cn_image_0000002540642732](figures/zh-cn_image_0000002540642732.png)
+![zh-cn_image_0000002540642732](figures/1411.png)
 
 
 ## 隐藏系统界面元素实现沉浸式效果
@@ -176,7 +176,7 @@ interface Rect {
 > 
 > [setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)、[setWindowSystemBarEnable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowsystembarenable9)等控制系统界面元素显示的接口仅非[自由窗口](window-terminology.md#自由窗口)状态下的主窗口支持调用，在辅助窗口中调用或[自由窗口](window-terminology.md#自由窗口)状态下调用不生效。在主窗口非全屏/最大化模式时调用不会立即生效，应用非全屏/最大化模式后配置生效。
 
-![zh-cn_image_0000002558654273](figures/zh-cn_image_0000002558654273.png)
+![zh-cn_image_0000002558654273](/Users/tom/Downloads/0000000000011111111.20250619224857.50105899849936210400468230179086.png)
 
 1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。  
 
@@ -393,5 +393,3 @@ interface Rect {
 5. 根据实际的UI界面显示或相关UI元素背景颜色等，还可以按需设置状态栏的文字颜色、背景色或设置导航区域的显示或隐藏，以使UI界面效果呈现和谐。状态栏和导航区域默认是透明的，透传的是应用界面的背景色。  
 
    此例中UI颜色主要有两种，比较简单，故未对状态栏文字颜色、背景色进行设置，未对导航区域进行隐藏。
-
-![zh-cn_image_0000002525416952](figures/zh-cn_image_0000002525416952.jpg)
