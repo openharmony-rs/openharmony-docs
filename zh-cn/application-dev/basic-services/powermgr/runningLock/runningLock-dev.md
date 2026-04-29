@@ -66,11 +66,19 @@
 
 2. 导入模块。
 
+   ArkTS-Dyn示例：
    ``` TypeScript
    // 导入runningLock、commonEventManager模块
    import { runningLock } from '@kit.BasicServicesKit';
    import { commonEventManager } from '@kit.BasicServicesKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+   ArkTS-Sta示例：
+   ``` TypeScript
+   // 导入runningLock、commonEventManager模块
+   import runningLock from '@ohos.runningLock';
+   import commonEventManager from '@ohos.commonEventManager';
+   import { BusinessError } from '@ohos.base';
    ```
 
 3. 开发公共事件工具类以及运行锁工具类。
