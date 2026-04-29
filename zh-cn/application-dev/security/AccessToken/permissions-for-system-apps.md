@@ -5797,6 +5797,48 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.REVOKE_FILE_ACCESS_PERSIST
+
+允许应用撤销指定应用的持久化文件授权。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_SHARED_FILE
+
+允许应用获取和访问应用捐献目录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.GET_FILE_ACCESS_PERSIST
+
+允许应用获取指定应用的持久化文件授权记录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ACCESS_SUPPORT_HELP
 
 允许系统应用拉起智能客服页面。
