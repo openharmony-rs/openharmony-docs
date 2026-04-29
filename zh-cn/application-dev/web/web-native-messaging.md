@@ -289,7 +289,7 @@ function sendMessageToNative() {
      // 读取扩展发来的消息，并回复
      async ReadAsync(fdRead:int, fdWrite:int) : Promise<void> {
        try {
-         // read
+         // 读
          let arrayBuffer = new ArrayBuffer(1024);
          let readLen = await fileIo.read(fdRead, arrayBuffer);
          if (readLen <= 4) {
@@ -298,7 +298,7 @@ function sendMessageToNative() {
          }
          hilog.info(DOMAIN_NUMBER, TAG, 'read pipe %{public}s', buffer.from(arrayBuffer, 4, (readLen - 4) as int).toString());
    
-         // write
+         // 写
          let strResponse : string = "pong";
          const encoder = new util.TextEncoder("utf-8");
          const strBytes = encoder.encodeInto(strResponse);
