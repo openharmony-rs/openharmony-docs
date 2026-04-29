@@ -280,7 +280,7 @@ function sendMessageToNative() {
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { BusinessError } from '@ohos.base'
    import {buffer, util} from '@kit.ArkTS';
-   import fs from '@ohos.file.fs';
+   import fileIo from '@ohos.file.fs';
    
    const TAG: string = '[MyWebNativeMessageExtAbility]';
    const DOMAIN_NUMBER = 0xFF00;
@@ -291,7 +291,7 @@ function sendMessageToNative() {
        try {
          // read
          let arrayBuffer = new ArrayBuffer(1024);
-         let readLen = await fs.read(fdRead, arrayBuffer);
+         let readLen = await fileIo.read(fdRead, arrayBuffer);
          if (readLen <= 4) {
            hilog.error(DOMAIN_NUMBER, TAG, 'read pipe length failed');
            return;
@@ -311,10 +311,10 @@ function sendMessageToNative() {
          const writeBuffer = new Uint8Array(4 + bufferLen);
          writeBuffer.set(lenBytes, 4);
          writeBuffer.set(strBytes, 4);
-         let writeLen = await fs.write(fdWrite, writeBuffer.buffer);
+         let writeLen = await fileIo.write(fdWrite, writeBuffer.buffer);
          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
        } catch (err: BusinessError) {
-         hilog.error(DOMAIN_NUMBER, TAG, 'fs io failed, error code: ' + err.code + " message: " + err.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo io failed, error code: ' + err.code + " message: " + err.code);
        }
      }
    
