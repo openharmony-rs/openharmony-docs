@@ -1,11 +1,10 @@
 # 系统参数错误码
- <!--Kit: Basic Services Kit-->	 
- <!--Subsystem: Startup-->	 
- <!--Owner: @chenjinxiang3-->	 
- <!--Designer: @chenjinxiang3-->	 
- <!--Tester: @liuhaonan2-->	 
- <!--Adviser: @fang-jinxu-->
- 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @chenjinxiang3-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
