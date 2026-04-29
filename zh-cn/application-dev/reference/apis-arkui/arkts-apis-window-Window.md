@@ -7571,7 +7571,7 @@ export default class EntryAbility extends UIAbility {
       };
       mainWindow.maximizeWithOptions(maximizeOptions)
         .then(() => {
-          console.info('Succeeded in maximizing the window.');
+          console.info('Window maximized successfully.');
         })
         .catch((err: BusinessError) => {
           console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
