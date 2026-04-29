@@ -37,7 +37,7 @@ import { media } from '@kit.MediaKit';
 
 addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
 
- 为转码添加视频水印。使用Promise异步回调。
+ 为视频转码添加水印。使用Promise异步回调。
  
  > **说明：**
  >
@@ -64,7 +64,6 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
 | Promise\<number\> | Promise对象，返回水印ID。 |
 
 **错误码：**
-
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
