@@ -147,7 +147,7 @@ static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
 > **注意：**
 >
 > - 如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在枚举结果中。
->- 当应用获取蓝牙权限后，需重新枚举MIDI设备以获取已连接的蓝牙MIDI设备。
+> - 当应用获取蓝牙权限后，需重新枚举MIDI设备以获取已连接的蓝牙MIDI设备。
 
 通过[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取设备数量，再通过[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口获取设备详细信息。
 
