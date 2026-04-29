@@ -8576,10 +8576,14 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRanderNodeDisposed.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets",
 				"functions":[
 					{
 						"end_line":93,
-						"name":"check_rander_node_disposed",
+						"name":"check_render_node_disposed",
 						"start_line":16
 					}
 				]
