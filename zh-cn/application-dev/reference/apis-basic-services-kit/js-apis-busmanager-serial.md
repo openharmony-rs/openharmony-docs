@@ -603,7 +603,7 @@ port.sendBrk().then(() => {
 | dataBits | [DataBits](#databits)    | 否   | 是   | 数据位。默认值：EIGHT。                                                |
 | stopBits | [StopBits](#stopbits)    | 否   | 是   | 停止位。默认值：ONE。                                                  |
 | parity   | [Parity](#parity)        | 否   | 是   | 校验位。默认值：NONE。                                                 |
-| rtscts   | boolean                  | 否   | 是   | 是否启用RTS/CTS硬件自动流控。默认值：false。                                   |
-| xon      | boolean                  | 否   | 是   | 是否启用XON控制发送流。默认值：false。                                  |
-| xoff     | boolean                  | 否   | 是   | 是否启用XOFF控制接收流。默认值：false。                                 |
-| xany     | boolean                  | 否   | 是   | 是否启用XANY控制流。默认值：false。                                     |
+| rtscts   | boolean                  | 否   | 是   | 是否启用RTS/CTS硬件自动流控。默认值：false。true表示启用，false表示未启用。                                   |
+| xon      | boolean                  | 否   | 是   | 是否启用XON控制发送流。默认值：false。true表示启用，false表示未启用。                                  |
+| xoff     | boolean                  | 否   | 是   | 是否启用XOFF控制接收流。默认值：false。true表示启用，false表示未启用。                                 |
+| xany     | boolean                  | 否   | 是   | 是否启用XANY控制流。默认值：false。true表示启用，false表示未启用。                                     |

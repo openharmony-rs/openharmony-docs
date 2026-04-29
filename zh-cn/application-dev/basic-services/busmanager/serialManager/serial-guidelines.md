@@ -91,7 +91,7 @@
 
 | 接口名 | 描述 |
 |--------|------|
-| [getSerialPortList](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialgetserialportlist)(): Promise&lt;[SerialPort](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialport)[]&gt; | 获取可用串口设备列表。 |
+| [SerialPort.getSerialPortList](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialgetserialportlist)(): Promise&lt;[SerialPort](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialport)[]&gt; | 查询串口设备列表，返回[SerialPort](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialport)对象数组。使用Promise异步回调。 |
 | [SerialPort.open](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#open)(config?: [SerialConfigs](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialconfigs)): Promise&lt;void&gt; | 打开串口设备，可指定配置参数。 |
 | [SerialPort.write](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#write)(data: Uint8Array, timeout?: number): Promise&lt;number&gt; | 向串口设备写入数据。 |
 | [SerialPort.onDataRead](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#ondataread)(callback: Callback&lt;Uint8Array&gt;): void | 注册串口数据接收回调。 |
@@ -142,7 +142,7 @@
      }
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to get serial port list: ' + JSON.stringify(e));
+     console.error(`Failed to get serial port list: ${JSON.stringify(e)}`)
    }
    ```
 
@@ -156,7 +156,7 @@
    console.info('Open serial port success');
    } catch (error) {
    let e = error as BusinessError;
-   console.error('Failed to open serial port: ' + JSON.stringify(e));
+   console.error(`Failed to open serial port: ${JSON.stringify(e)}`)
    return;
    }
 
@@ -172,7 +172,7 @@
      console.info('Open serial port with config success');
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to open serial port: ' + JSON.stringify(e));
+     console.error(`Failed to open serial port: ${JSON.stringify(e)}`);
    }
    ```
 
@@ -182,7 +182,8 @@
    // 注册数据接收回调，当串口收到数据时会触发该回调
    port.onDataRead((data: Uint8Array) => {
      console.info('Received data length: ' + data.length);
-     console.info('Received data: ' + Array.from(data).map(b => b.toString(16).padStart(2, '0')).join(' '));
+     console.info('Received data: ' + ${Array.from(data).map(b => b.toString(16).padStart(2, '0')).join(' ')});
+
    });
    ```
 
@@ -196,7 +197,7 @@
      console.info('Write success, length: ' + writeLen);
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to write data: ' + JSON.stringify(e));
+     console.error(`Failed to write data: ${JSON.stringify(e)}`);
    }
    ```
 
@@ -209,7 +210,7 @@
      console.info('Flush success');
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to flush: ' + JSON.stringify(e));
+     console.error(`Failed to flush: ${JSON.stringify(e)}`);
    }
 
    // 等待所有已写入数据发送完成
@@ -218,7 +219,7 @@
      console.info('Drain success');
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to drain: ' + JSON.stringify(e));
+     console.error(`Failed to drain: ${JSON.stringify(e)}`);
    }
    ```
 
@@ -231,7 +232,7 @@
      console.info('Set RTS success');
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to set RTS: ' + JSON.stringify(e));
+     console.error(`Failed to set RTS: ${JSON.stringify(e)}`);
    }
 
    // 获取CTS信号状态
@@ -240,7 +241,7 @@
      console.info('CTS signal status: ' + cts);
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to get CTS: ' + JSON.stringify(e));
+     console.error(`Failed to set CTS: ${JSON.stringify(e)}`);
    }
 
    // 发送break信号
@@ -249,7 +250,7 @@
      console.info('Send break signal success');
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to send break: ' + JSON.stringify(e));
+     console.error(`Failed to send break: ${JSON.stringify(e)}`);
    }
    ```
 
@@ -265,7 +266,7 @@
      console.info('Close serial port success');
    } catch (error) {
      let e = error as BusinessError;
-     console.error('Failed to close serial port: ' + JSON.stringify(e));
+     console.error(`Failed to close serial port: ${JSON.stringify(e)}`);
    }
    ```
 
