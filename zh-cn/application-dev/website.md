@@ -4775,11 +4775,14 @@
         - C API<!--kernel-c-->
           - 模块<!--kernel-moudle-->
             - [QoS](reference/apis-kernel-enhance-kit/capi-qos.md)
+            - [Memory](reference/apis-kernel-enhance-kit/capi-memory.md)
           - 头文件<!--kernel-headerfile-->
             - [qos.h](reference/apis-kernel-enhance-kit/capi-qos-h.md)
+            - [purgeable_memory.h](reference/apis-kernel-enhance-kit/capi-purgeable-memory-h.md)
           - 结构体<!--kernel-struct-->
             - [OH_QoS_GewuCreateSessionResult](reference/apis-kernel-enhance-kit/capi-qos-oh-qos-gewucreatesessionresult.md)
             - [OH_QoS_GewuSubmitRequestResult](reference/apis-kernel-enhance-kit/capi-qos-oh-qos-gewusubmitrequestresult.md)  
+            - [PurgMem*](reference/apis-kernel-enhance-kit/capi-memory-purgmem.md)
     - 硬件<!--system-hardware-api-->
       - Driver Development Kit（驱动开发服务）<!--driver-development-api-->
         - ArkTS API<!--driver-development-arkts-->
@@ -5952,11 +5955,9 @@
     - C API<!--common-basic-c-->
       - 模块<!--common-basic-module-->
         - [Init](reference/common/init.md)
-        - [Memory](reference/common/capi-memory.md)
         - [JSVM](reference/common/capi-jsvm.md)
       - 头文件<!--common-basic-headerfile-->
         - [syscap_ndk.h](reference/common/syscap__ndk_8h.md)
-        - [purgeable_memory.h](reference/common/capi-purgeable-memory-h.md)
         - [jsvm.h](reference/common/capi-jsvm-h.md)
         - [jsvm_types.h](reference/common/capi-jsvm-types-h.md)
       - 结构体<!--common-basic-struct-->
@@ -5990,7 +5991,6 @@
         - [JSVM_CallbackStruct*](reference/common/capi-jsvm-jsvm-callbackstruct8h.md)
         - [JSVM_PropertyHandlerConfigurationStruct*](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
         - [JSVM_CompileProfile](reference/common/capi-jsvm-jsvm-compileprofile.md)
-        - [PurgMem*](reference/common/capi-memory-purgmem.md)
   - 标准库<!--standard-library-->
     - [libc标准库](reference/native-lib/musl.md)
     - [c++标准库](reference/native-lib/cpp.md)
