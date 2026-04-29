@@ -97,7 +97,7 @@
 
 ## 沉浸式布局
 
-沉浸式布局是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
+[沉浸式布局](immersive-window-feature.md)是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
 
 非[自由窗口](#自由窗口)可以通过调用[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)进入沉浸式布局。
 
