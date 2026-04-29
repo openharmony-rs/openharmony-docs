@@ -219,11 +219,8 @@ let keyOptions: inputConsumer.KeyOptions = {
   finalKeyDownDuration: 0,
   triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
 };
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
-  console.info(`KeyOptions: ${JSON.stringify(keyOptions)}`);
-  if (keyEvent) {
-    console.info(`KeyEvent: keyCode=${keyEvent.key.keyCode}, action=${keyEvent.action}`);
-  }
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
+  console.info(`keyOptions: ${keyOptions} keyEvents: ${keyEvents}`);
 }
 try {
   inputConsumer.onKey(keyOptions, callback);
@@ -242,7 +239,7 @@ let keyOptions: inputConsumer.KeyOptions = {
   finalKeyDownDuration: 0,
   triggerType: inputConsumer.KeyCommandTriggerType.REPEAT_PRESSED
 };
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
   console.info(`Repeat key event`);
 }
 try {
@@ -264,7 +261,7 @@ let keyOptions: inputConsumer.KeyOptions = {
   finalKeyDownDuration: 0,
   triggerType: inputConsumer.KeyCommandTriggerType.ALL_RELEASED
 };
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
   console.info(`All released event`);
 }
 try {
@@ -307,7 +304,7 @@ import { inputConsumer } from '@kit.InputKit';
 
 let leftCtrlKey = 2072;
 let cKey = 2049;
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
   console.info(`KeyEvent received`);
 }
 let keyOptions: inputConsumer.KeyOptions = {
@@ -485,7 +482,7 @@ struct Index {
 | isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
 | finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
-| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。默认值为0，表示使用isFinalKeyDown和isRepeat的传统模式。设置为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)时，启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。<br>**起始版本：** 26.0.0|
+| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。取值为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。<br>**起始版本：** 26.0.0|
 
 ## shieldMode<sup>11+</sup>
 
