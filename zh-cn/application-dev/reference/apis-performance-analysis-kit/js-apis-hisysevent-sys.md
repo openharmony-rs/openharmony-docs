@@ -463,7 +463,7 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | onQuery | (infos: [SysEventInfo](#syseventinfo)[]) => void | 否 | 否 | 返回查询到的系统事件的回调方法。 |
-| onComplete | ArkTS-Dyn: (reason: number, total: number) => void。<br> ArkTS-Sta: (reason: int, total: int) => void | 否 | 否 | 查询结果统计的回调方法。 |
+| onComplete | ArkTS-Dyn: (reason: number, total: number) => void<br> ArkTS-Sta: (reason: int, total: int) => void | 否 | 否 | 查询结果统计的回调方法。 |
 
 ## hiSysEvent.query
 
@@ -896,6 +896,10 @@ unsubscribe(): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
