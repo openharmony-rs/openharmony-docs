@@ -37,12 +37,13 @@ import { media } from '@kit.MediaKit';
 
 addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
 
- 为视频添加水印。使用Promise异步回调。
+ 为转码添加视频水印。使用Promise异步回调。
  
  > **说明：**
  >
  > - 应用最多可以添加5个水印。
  > - 此接口只能在prepared状态之前调用。
+ 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -60,11 +61,10 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
 
 | 类型        | 说明                   |
 | ----------- | ---------------------- |
-| Promise\<int\> | Promise对象，返回水印ID。 |
+| Promise\<number\> | Promise对象，返回水印ID。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
