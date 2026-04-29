@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 [FA模型](ability-terminology.md#fa模型)和[Stage模型](ability-terminology.md#stage模型)由于线程模型和进程模型的差异，部分接口仅在FA模型下才能使用，针对这部分接口在SDK的接口中有FAModelOnly的标记，用于提醒开发者这部分接口仅能在FA模型下使用。因此在切换到Stage模型时，需要将应用中用到的FAModelOnly接口替换成Stage模型下对应的接口。下面是startAbility的接口切换示例，全量接口列表请查看后续章节：

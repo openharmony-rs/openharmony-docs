@@ -56,7 +56,7 @@ struct HoverExample {
           .position({ x: 40, y: 120 })
           .hoverEffect(HoverEffect.Scale)
           .onHover((isHover?: boolean) => {
-            console.info('Scale isHover: ' + isHover as string)
+            console.info(`Scale isHover: ${isHover}`)
             this.isHoverVal = isHover as boolean
           })
 
@@ -68,7 +68,7 @@ struct HoverExample {
           .hoverEffect(HoverEffect.Highlight)
           .position({ x: 40, y: 420 })
           .onHover((isHover?: boolean) => {
-            console.info('Highlight isHover: ' + isHover as string)
+            console.info(`Highlight isHover: ${isHover}`)
             this.isHoverVal = isHover as boolean
           })
       }

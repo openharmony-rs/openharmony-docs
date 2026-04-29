@@ -131,7 +131,7 @@ Sets the path drawing commands.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| PathShape | **PathShape** object.|
+| [PathShape](#pathshape) | **PathShape** object.|
 
 ## RectShape
 
@@ -185,7 +185,7 @@ Sets the radius width of the rectangle border corners.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| RectShape | **RectShape** object.|
+| [RectShape](#rectshape) | **RectShape** object.|
 
 ### radiusHeight
 
@@ -209,7 +209,7 @@ Sets the radius height of the rectangle border corners.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| RectShape | **RectShape** object.|
+| [RectShape](#rectshape) | **RectShape** object.|
 
 ### radius
 
@@ -233,7 +233,7 @@ Sets the radius of the rectangle border corners.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| RectShape | **RectShape** object.|
+| [RectShape](#rectshape) | **RectShape** object.|
 
 
 ## ShapeSize

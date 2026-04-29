@@ -1073,20 +1073,6 @@ With this permission, the application can provide embedded content editing servi
 
 **Since**: 24
 
-## ohos.permission.ALLOW_ACCESSORY_ACCESS
-
-Allow an application to use the accessory connection service for pairing and auto-wake functions.
-
-<!--RP70--><!--RP70End-->
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
-
-**Since**: 24
-
 ## ohos.permission.CHECK_CALL_LOG
 
 Allow the application to query whether there are matching call records in the system within a specified time based on specific conditions (phone number, call duration).

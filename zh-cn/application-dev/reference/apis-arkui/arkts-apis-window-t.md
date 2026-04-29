@@ -95,3 +95,20 @@ type RotationChangeCallback<T, U> = (info: T) => U
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
 | U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值。 |
+
+## WindowEventListener<sup>24+</sup>
+
+type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
+
+窗口生命周期事件通知的回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ------------------ |
+| windowId | number  | 是  | 触发生命周期变更的窗口ID。|
+| event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | 是 | 窗口生命周期回调的事件类型。|

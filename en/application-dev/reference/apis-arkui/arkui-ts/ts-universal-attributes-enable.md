@@ -1,7 +1,7 @@
 # Enable/Disable Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -47,7 +47,6 @@ This example demonstrates how to use **enabled** to set whether a button respond
 @Entry
 @Component
 struct EnabledExample {
-
   build() {
     Flex({ justifyContent: FlexAlign.SpaceAround }) {
       // The button does not respond to clicks.
@@ -60,4 +59,4 @@ struct EnabledExample {
 }
 ```
 
-![en-us_image_0000001212218428](figures/en-us_image_0000001212218428.gif)
+![en-us_image_0000001219982713](figures/en-us_image_0000001219982713.gif)

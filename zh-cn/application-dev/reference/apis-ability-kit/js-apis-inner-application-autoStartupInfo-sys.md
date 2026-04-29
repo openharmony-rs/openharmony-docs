@@ -4,7 +4,7 @@
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 定义开机自启动应用组件信息。
 
 > **说明：**
