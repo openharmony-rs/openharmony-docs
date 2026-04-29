@@ -248,7 +248,7 @@ struct WebComponent {
             headerKey: "Cache-Control",
             headerValue: "no-cache"
           }
-          // 将新元素追加到数组的末尾，并返回数组的新长度。
+          // 将新元素追加到数组的末尾，并返回数组的新长度
           let length = this.heads.push(head1);
           length = this.heads.push(head2);
           console.info('The response header result length is :' + length);

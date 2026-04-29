@@ -38,7 +38,7 @@ ArkTS-Dyn示例：
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
-// 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+// 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp
 @CustomDialog
 struct NewWebViewComp {
   controller?: CustomDialogController;
