@@ -29,6 +29,8 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **返回值：**
 
 | 类型                   | 说明       |
@@ -41,9 +43,9 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 801  | 能力不支持。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 801  | Capability not supported.  |
+| 3800001  | Input service exception.  |
 
 **示例：**
 
@@ -79,6 +81,8 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **返回值：**
 
 | 类型                   | 说明       |
@@ -91,9 +95,9 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 801  | 能力不支持。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 801  | Capability not supported.  |
+| 3800001  | Input service exception.  |
 
 **示例：**
 
@@ -137,6 +141,8 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
@@ -155,8 +161,8 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300001  | 按键已被按下且不是最近按下的按键。  |
 
 **示例：**
@@ -194,6 +200,8 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
@@ -212,8 +220,8 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300001  | 按键未被按下。  |
 
 **示例：**
@@ -261,13 +269,15 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
-| displayId | int | 是   | 目标显示器ID。|
-| displayX | int | 是   | 目标位置相对于显示器左边缘的X坐标,单位:px。|
-| displayY | int | 是   | 目标位置相对于显示器上边缘的Y坐标,单位:px。|
+| displayId | number | 是   | 目标显示器ID。|
+| displayX | number | 是   | 目标位置相对于显示器左边缘的X坐标,单位:px。|
+| displayY | number | 是   | 目标位置相对于显示器上边缘的Y坐标,单位:px。|
 
 **返回值：**
 
@@ -281,8 +291,8 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300002  | 显示器不存在。  |
 
 **示例：**
@@ -320,6 +330,8 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
@@ -338,8 +350,8 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300001  | 鼠标按键已被按下。  |
 
 **示例：**
@@ -377,6 +389,8 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
@@ -395,8 +409,8 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300001  | 鼠标按键未被按下。  |
 
 **示例：**
@@ -435,12 +449,14 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
 | axis | [Axis](js-apis-mouseevent.md#axis) | 是   | 轴类型。|
-| value | int | 是   | 轴值。|
+| value | number | 是   | 轴值。|
 
 **返回值：**
 
@@ -454,8 +470,8 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300001  | 轴事件正在进行中。  |
 
 **示例：**
@@ -493,12 +509,14 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
 | axis | [Axis](js-apis-mouseevent.md#axis) | 是   | 轴类型。|
-| value | int | 是   | 轴值。|
+| value | number | 是   | 轴值。|
 
 **返回值：**
 
@@ -512,8 +530,8 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300001  | 轴事件未在进行中。  |
 
 **示例：**
@@ -552,6 +570,8 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
@@ -570,8 +590,8 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | 权限校验失败。  |
-| 3800001  | 输入服务异常。  |
+| 201  | Permission denied.  |
+| 3800001  | Input service exception.  |
 | 4300001  | 轴事件未在进行中。  |
 
 **示例：**
