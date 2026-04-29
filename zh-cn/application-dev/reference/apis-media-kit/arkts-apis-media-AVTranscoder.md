@@ -55,7 +55,7 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
 | 参数名    | 类型                                    | 必填 | 说明                       |
 | --------- | --------------------------------------- | ---- | -------------------------- |
 | watermark | [image.PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 水印图像。                 |
-| configs   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfig) | 是   | 水印配置参数。             |
+| configs   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 水印配置参数。             |
 
 **返回值：**
 
