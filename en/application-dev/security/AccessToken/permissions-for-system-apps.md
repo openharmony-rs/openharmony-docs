@@ -5905,6 +5905,6 @@ Allows a system application to generate integrity protection credentials for sen
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+**Supported devices**: general devices
 
 **Since**: 26.0.0
