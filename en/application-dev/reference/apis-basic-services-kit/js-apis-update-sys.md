@@ -836,7 +836,7 @@ Downloads the new version. This API uses an asynchronous callback to return the 
 | ----------------- | --------------------------------------- | ---- | ---------------------------------- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.                            |
 | downloadOptions   | [DownloadOptions](#downloadoptions)     | Yes   | Download options.                              |
-| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the download is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the download is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -969,7 +969,7 @@ Resumes download of the new version. This API uses an asynchronous callback to r
 | --------------------- | ---------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo     | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.                              |
 | resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | Yes   | Options for resuming download.                              |
-| callback              | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the download is resumed successfully, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback              | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the download is resumed successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1100,7 +1100,7 @@ Pauses download of the new version. This API uses an asynchronous callback to re
 | -------------------- | ---------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo    | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.                              |
 | pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | Yes   | Options for pausing download.                              |
-| callback             | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the download is paused successfully, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback             | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the download is paused successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1231,7 +1231,7 @@ Updates the version. This API uses an asynchronous callback to return the result
 | ----------------- | --------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.                              |
 | upgradeOptions    | [UpgradeOptions](#upgradeoptions)       | Yes   | Update options.                                |
-| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the update is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the update is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1362,7 +1362,7 @@ Clears errors. If an exception occurs during version download or installation, t
 | ----------------- | --------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.                              |
 | clearOptions      | [ClearOptions](#clearoptions)           | Yes   | Clear options.                                |
-| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If errors are cleared successfully, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If errors are cleared successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1423,7 +1423,7 @@ Clears errors. If an exception occurs during version download or installation, t
 | Name              | Type                                     | Mandatory  | Description    |
 | ----------------- | --------------------------------------- | ---- | ------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.|
-| clearOptions      | [ClearOptions](#clearoptions)           | Yes   | Update options.  |
+| clearOptions      | [ClearOptions](#clearoptions)           | Yes   | Clear options.  |
 
 **Return value**
 
@@ -1594,7 +1594,7 @@ Sets the update policy. This API uses an asynchronous callback to return the res
 | Name     | Type                             | Mandatory  | Description           |
 | -------- | ------------------------------- | ---- | ------------- |
 | policy   | [UpgradePolicy](#upgradepolicy) | Yes   | Update policy.         |
-| callback | AsyncCallback\<void>            | Yes   | Callback used to return the setting result.|
+| callback | AsyncCallback\<void>            | Yes   | Callback used to return result. If the update policy is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1712,7 +1712,7 @@ Terminates the update. This API uses an asynchronous callback to return the resu
 
 | Name     | Type                  | Mandatory  | Description                                    |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the update cache is cleared successfully, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the update cache is cleared successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1953,7 +1953,7 @@ Clears the user data partition. This API uses a promise to return the result.
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise that returns no value. If the operation fails, a callback is returned. If the operation is successful, no callback is returned.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -2164,7 +2164,7 @@ Verifies the update package. This API uses an asynchronous callback to return th
 | ----------- | --------------------------- | ---- | ---------------- |
 | upgradeFile | [UpgradeFile](#upgradefile) | Yes   | Update file.            |
 | certsFile   | string                      | Yes   | Path of the certificate file.          |
-| callback    | AsyncCallback\<void>        | Yes   | Callback used to return the update package verification result.|
+| callback    | AsyncCallback\<void>        | Yes   | Callback used to return the result. If the verification is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2218,7 +2218,7 @@ Verifies the update package. This API uses a promise to return the result.
 
 | Type            | Description                    |
 | -------------- | ---------------------- |
-| Promise\<void> | Promise used to return update package verification result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -2254,7 +2254,8 @@ try {
 ```
 
 ### applyNewVersion
-applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
+
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void>): void
 
 Installs the update package. This API uses an asynchronous callback to return the result.
 
@@ -2269,7 +2270,7 @@ Installs the update package. This API uses an asynchronous callback to return th
 | Name        | Type                                | Mandatory  | Description                                     |
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
 | upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | Update file.                                   |
-| callback    | AsyncCallback\<void>               | Yes   | Callback used to return the result. If the update package is installed successfully, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback    | AsyncCallback\<void>               | Yes   | Callback used to return the result. If the update package is installed successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2302,7 +2303,7 @@ try {
 
 ### applyNewVersion
 
-applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<void>
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>): Promise\<void>
 
 Installs the update package. This API uses a promise to return the result.
 
