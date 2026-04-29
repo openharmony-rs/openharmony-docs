@@ -1,8 +1,8 @@
 # 使用AVRecorder录制音频(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -40,27 +40,27 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 
 
 在 CMake 脚本中链接动态库。
-```
+```C++
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
 使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
-```
+```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
 
 并在 CMake 脚本中链接如下动态库。
-```
+```C++
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
 开发者使用系统日志能力时，需引入如下头文件。
-```
+```C++
 #include <hilog/log.h>
 ```
 
 并需要在 CMake 脚本中链接如下动态库。
-```
+```C++
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
