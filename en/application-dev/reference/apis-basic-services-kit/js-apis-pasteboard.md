@@ -2838,6 +2838,7 @@ For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteb
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API, since 12 - 13. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12900006 | Settings already exist. |
 
@@ -2870,6 +2871,7 @@ For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteb
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API, since 12 - 13. |
 
 **Example**
 
