@@ -1400,8 +1400,6 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 >
 
-**需要权限**：ohos.permission.START_INVISIBLE_ABILITY
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
