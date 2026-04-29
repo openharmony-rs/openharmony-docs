@@ -28,7 +28,7 @@
 <!--DelEnd-->
 - [atm工具](atm-tool.md)
 - [network-cfg工具](network-cfg.md)
-- [hilog](../dfx/hilog.md)<!--RP4--><!--RP4End-->
+- [hilog](../dfx/hilog.md)<!--RP2--><!--RP2End-->
 - hidumper<!--hidumper-tool-->
   - [hidumper](../dfx/hidumper.md)
   - [PrivacyManagerService](../dfx/hidumper-PrivacyManagerService.md)
@@ -36,10 +36,8 @@
 - [hiperf](../dfx/hiperf.md)
 - [hiprofiler](../dfx/hiprofiler.md)
 - [uinput](../dfx/uinput.md)
-  <!--Del-->
-  - [hisysevent（仅对系统应用开放）](../dfx/hisysevent-sys.md)
-  <!--DelEnd-->
 <!--Del-->
+- [hisysevent（仅对系统应用开放）](../dfx/hisysevent-sys.md)
 - [acm工具](acm-tool.md)
 <!--DelEnd-->
 - 命令行工具<!--command-line-utilities-->
