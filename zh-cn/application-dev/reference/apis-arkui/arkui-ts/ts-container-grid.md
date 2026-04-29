@@ -2601,12 +2601,22 @@ enum SlideActionType {
   END
 }
 // 热区
-const HOT_AREA_LENGTH =
-  Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
+let HOT_AREA_LENGTH: number;
+try {
+  HOT_AREA_LENGTH =
+    Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.info('Failed to get default display for HOT_AREA_LENGTH:', error);
+}
 // 滚动曲线: 贝塞尔曲线
 const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
 // 滚动速度: 最大速度
-const AUTO_SPEED_MAX: number = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
+let AUTO_SPEED_MAX: number;
+try {
+  AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.info('Failed to get default display for AUTO_SPEED_MAX:', error);
+}
 @Entry
 @Component
 struct GridExample {
