@@ -960,7 +960,7 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
     }
     ```
 
-2. 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。例如[并发哈希表](../reference/native-lib/arkts1.2-concurrenthashmap.md)、[并发集合](../reference/native-lib/arkts1.2-concurrentset.md)、[异步锁](../reference/native-lib/arkts1.2-asynclock.md)和[阻塞队列](../reference/native-lib/arkts1.2-blockingqueue.md)等。如下示例展示了使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全。
+2. 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。例如[并发哈希表](../reference/native-lib/arkts-sta-concurrenthashmap.md)、[并发集合](../reference/native-lib/arkts-sta-concurrentset.md)、[异步锁](../reference/native-lib/arkts-sta-asynclock.md)和[并发队列](../reference/native-lib/arkts-sta-concurrentqueue.md)等。如下示例展示了使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全。
 
     ```ts
     // ArkTS-Sta示例
