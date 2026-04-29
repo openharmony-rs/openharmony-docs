@@ -652,6 +652,8 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
+**示例：**
+
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -709,6 +711,8 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+
+**示例：**
 
 ```ts
 import { window } from '@kit.ArkUI';
