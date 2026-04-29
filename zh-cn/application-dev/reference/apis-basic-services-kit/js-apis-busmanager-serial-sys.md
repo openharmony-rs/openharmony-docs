@@ -25,11 +25,11 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口，仅允许特定的串口授权弹窗应用调用。
 
 **系统能力：**  SystemCapability.BusManager.Serial
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -66,6 +66,6 @@ let deviceId: string = '/dev/ttyUSB0';
 serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.info('addPortAuthorization success');
 }).catch((error: Error) => {
-  console.error('addPortAuthorization error: ' + JSON.stringify(error));
+  console.error(`addPortAuthorization error: ${JSON.stringify(error)}`);
 });
 ```

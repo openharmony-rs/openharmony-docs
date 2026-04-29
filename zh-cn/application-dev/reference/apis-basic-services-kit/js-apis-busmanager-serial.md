@@ -25,9 +25,9 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **返回值：**
 
@@ -51,13 +51,13 @@ import { serial } from "@kit.BasicServicesKit";
 
 // 获取串口设备列表
 serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
-  console.info('getSerialPortList success, length: ' + portList.length);
+  console.info(`getSerialPortList success, length: ${portList.length}`);
   if (portList.length > 0) {
     let portInfo: serial.SerialPortInfo = portList[0].portInfo;
-    console.info('portName: ' + portInfo.portName);
+    console.info(`portName: ${portInfo.portName}`);
   }
 }).catch((error: Error) => {
-  console.error('getSerialPortList error: ' + JSON.stringify(error));
+  console.error(`getSerialPortList error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -67,9 +67,9 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 ### 属性
 
@@ -134,7 +134,7 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   await port.open(config);
   console.info('open success');
 }).catch((error: Error) => {
-  console.error('error: ' + JSON.stringify(error));
+  console.error(`error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -146,9 +146,9 @@ close(): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **返回值：**
 
@@ -174,7 +174,7 @@ import { serial } from "@kit.BasicServicesKit";
 port.close().then(() => {
   console.info('close success');
 }).catch((error: Error) => {
-  console.error('close error: ' + JSON.stringify(error));
+  console.error(`close error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -186,9 +186,9 @@ write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **参数：**
 
@@ -226,7 +226,7 @@ let writeData: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').b
 port.write(writeData, 2000).then((size: number) => {
   console.info('write success, size: ' + size);
 }).catch((error: Error) => {
-  console.error('write error: ' + JSON.stringify(error));
+  console.error(`write error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -238,9 +238,9 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **参数：**
 
@@ -265,7 +265,7 @@ import { serial } from "@kit.BasicServicesKit";
 
 // 监听串口数据接收
 port.onDataRead((data: Uint8Array) => {
-  console.info('onDataRead, length: ' + data.length);
+  console.info(`onDataRead, length: ${data.length}`);
 });
 ```
 
@@ -277,9 +277,9 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **参数：**
 
@@ -306,7 +306,7 @@ port.offDataRead();
 
 // 取消指定的监听回调
 let callback = (data: Uint8Array) => {
-  console.info('received data length: ' + data.length);
+  console.info(`received data length: ${data.length}`);
 };
 port.offDataRead(callback);
 ```
@@ -319,9 +319,9 @@ flush(): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **返回值：**
 
@@ -348,7 +348,7 @@ import { serial } from "@kit.BasicServicesKit";
 port.flush().then(() => {
   console.info('flush success');
 }).catch((error: Error) => {
-  console.error('flush error: ' + JSON.stringify(error));
+  console.error(`flush error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -360,9 +360,9 @@ drain(): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **返回值：**
 
@@ -389,7 +389,7 @@ import { serial } from "@kit.BasicServicesKit";
 port.drain().then(() => {
   console.info('drain success');
 }).catch((error: Error) => {
-  console.error('drain error: ' + JSON.stringify(error));
+  console.error(`drain error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -401,9 +401,9 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **参数：**
 
@@ -436,7 +436,7 @@ import { serial } from "@kit.BasicServicesKit";
 port.setRts(true).then(() => {
   console.info('setRts success');
 }).catch((error: Error) => {
-  console.error('setRts error: ' + JSON.stringify(error));
+  console.error(`setRts error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -448,9 +448,9 @@ getCts(): Promise&lt;boolean&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **返回值：**
 
@@ -477,7 +477,7 @@ import { serial } from "@kit.BasicServicesKit";
 port.getCts().then((cts: boolean) => {
   console.info('getCts success, cts: ' + cts);
 }).catch((error: Error) => {
-  console.error('getCts error: ' + JSON.stringify(error));
+  console.error(`getCts error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -489,9 +489,9 @@ sendBrk(): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **返回值：**
 
@@ -518,7 +518,7 @@ import { serial } from "@kit.BasicServicesKit";
 port.sendBrk().then(() => {
   console.info('sendBrk success');
 }).catch((error: Error) => {
-  console.error('sendBrk error: ' + JSON.stringify(error));
+  console.error(`sendBrk error: ${JSON.stringify(error)}`);
 });
 ```
 
@@ -528,9 +528,9 @@ port.sendBrk().then(() => {
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 | 名称          | 类型     | 只读 | 可选 | 说明                        |
 | ------------- | -------- | ---- | ---- | --------------------------- |
@@ -545,9 +545,9 @@ port.sendBrk().then(() => {
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 | 名称   | 值 | 说明              |
 | ------ | -- | ----------------- |
@@ -562,9 +562,9 @@ port.sendBrk().then(() => {
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 | 名称 | 值 | 说明              |
 | ---- | -- | ----------------- |
@@ -578,8 +578,6 @@ port.sendBrk().then(() => {
 **起始版本：** 26.0.0
 
 **系统能力：**  SystemCapability.BusManager.Serial
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称  | 值       | 说明                    |
 | ----- | -------- | ----------------------- |
@@ -595,9 +593,9 @@ port.sendBrk().then(() => {
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.BusManager.Serial
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
 
 | 名称     | 类型                     | 只读 | 可选 | 说明                                                                  |
 | -------- | ------------------------ | ---- | ---- | --------------------------------------------------------------------- |
