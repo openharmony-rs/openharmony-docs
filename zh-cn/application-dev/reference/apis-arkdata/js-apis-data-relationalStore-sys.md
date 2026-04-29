@@ -1498,7 +1498,7 @@ ArkTS-Dyn: cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void
 
 ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&gt;
 
-本端手动清理对端删除后同步过来的数据。使用Promise异步回调。
+本端清理对端删除后同步过来的数据。使用Promise异步回调。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
