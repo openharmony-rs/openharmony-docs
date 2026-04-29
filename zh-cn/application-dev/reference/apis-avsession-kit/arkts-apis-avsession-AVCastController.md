@@ -3168,7 +3168,7 @@ avCastController.off('castControlParsingError');
 
 offCastControlParsingError(callback?: ErrorCallback): void
 
-注销监听投播解析的错误事件。使用callback异步回调。
+注销投播解析的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3317,7 +3317,7 @@ avCastController.off('castControlDecodingError');
 
 offCastControlDecodingError(callback?: ErrorCallback): void
 
-注销监听投播解码的错误事件。使用callback异步回调。
+注销投播解码的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3580,7 +3580,7 @@ avCastController.onCastControlDrmError((error: BusinessError) => {
 
 off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
-注销监听投播drm的错误事件。使用callback异步回调。
+注销投播DRM的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3617,7 +3617,7 @@ avCastController.off('castControlDrmError');
 
 offCastControlDrmError(callback?: ErrorCallback): void
 
-注销监听投播drm的错误事件。使用callback异步回调。
+注销投播DRM的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
