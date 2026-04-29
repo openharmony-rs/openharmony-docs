@@ -280,7 +280,7 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t *fence | 用于同步的显示相关参数信息。 |
-| int64_t *timestamp | 视频帧的时间戳，单位为纳秒（ns）。 |
+| int64_t *timestamp | 视频帧的时间戳。单位为纳秒（ns）。 |
 | [struct OH_Rect](capi-avscreencapture-oh-rect.md) *region | 视频显示相关的坐标信息。 |
 
 **返回：**

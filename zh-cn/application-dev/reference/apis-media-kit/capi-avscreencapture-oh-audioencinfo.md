@@ -26,7 +26,7 @@ typedef struct OH_AudioEncInfo {...} OH_AudioEncInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t audioBitrate | 音频编码比特率，单位为比特每秒（bit/s）。 |
+| int32_t audioBitrate | 音频编码比特率。单位为比特每秒（bit/s）。 |
 | [OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat) audioCodecformat | 音频编码格式。 |
 
 
