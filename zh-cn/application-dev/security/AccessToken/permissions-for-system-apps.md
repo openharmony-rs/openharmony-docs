@@ -5894,3 +5894,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：24
+
+## ohos.permission.GET_TICKET_INFO
+
+允许系统应用为敏感消息生成完整性保护凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0

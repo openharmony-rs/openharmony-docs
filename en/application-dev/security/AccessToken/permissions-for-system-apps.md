@@ -5894,3 +5894,17 @@ Allows an application to use the device interconnectivity capability.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 24
+
+## ohos.permission.GET_TICKET_INFO
+
+Allows a system application to generate integrity protection credentials for sensitive messages.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
