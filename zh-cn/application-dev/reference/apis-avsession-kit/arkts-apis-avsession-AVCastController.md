@@ -1453,7 +1453,9 @@ avCastController.onPlayNext(() => {
 
 off(type: 'playNext'): void
 
-注销播放下一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销播放下一首资源事件监听。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1596,7 +1598,9 @@ avCastController.onPlayPrevious(() => {
 
 off(type: 'playPrevious'): void
 
-注销设置播放上一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销设置播放上一首资源事件监听。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
