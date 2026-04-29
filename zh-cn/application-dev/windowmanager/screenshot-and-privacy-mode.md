@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin qianjiaxing@huawei.com-->
-<!--Designer: @nyankomiya wanghaofan@huawei.com-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
