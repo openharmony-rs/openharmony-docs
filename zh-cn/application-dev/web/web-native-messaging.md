@@ -198,14 +198,14 @@ function sendMessageToNative() {
 
 2. 在MyWebNativeMessageExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyWebNativeMessageExtAbility.ets。
 
-    其目录结构如下所示：
+   其目录结构如下所示：
 
-```yml
+   ```yml
     ├── ets
     │ ├── MyWebNativeMessageExtAbility
     │ │   ├── MyWebNativeMessageExtAbility.ets
     └
-```
+   ```
 3. 在MyWebNativeMessageExtAbility.ets文件中，增加导入[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)的依赖包，自定义类继承WebNativeMessagingExtensionAbility组件并实现生命周期回调。
 
    ArkTS-Dyn示例：
@@ -330,8 +330,7 @@ function sendMessageToNative() {
      onDestroy(): void {
        hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
      }
-   };
-   
+   };   
    ```
 
 4. 在工程Module的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册WebNativeMessagingExtensionAbility组件。设置type标签为“webNativeMessaging”，srcEntry标签指向组件代码路径。
