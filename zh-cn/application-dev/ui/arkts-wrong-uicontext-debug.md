@@ -80,10 +80,12 @@
 
 ### 完整消息示例
 
-被缓存的已销毁的示例详细信息按照如下格式进行输出，包括实例ID、创建时间、销毁时间、窗口ID、窗口名称字段：
+被缓存的已销毁的实例详细信息按照如下格式进行输出，包括实例ID、创建时间、销毁时间、窗口ID、窗口名称字段：
 
 `UI execution context not found.InstanceId: 100001,`
+
 `Reason to get the instance: The instance is determined by the caller,`
+
 `DestroyedUIContextCacheInfo: instanceInfo: [instanceId:100001, createTime:2026-04-14 10:30:00.123, destroyTime:2026-04-14 10:35:22.456], windowInfo: [windowId: 1001, windowName: EntryAbility]`
 
 消息中各字段含义如下：
