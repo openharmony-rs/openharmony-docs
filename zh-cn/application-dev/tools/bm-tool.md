@@ -1186,7 +1186,7 @@ error: install failed due to insufficient disk memory.
 
 **处理步骤**
 
-查看设备存储空间并清理，保证满足安装所需空间，再重试安装应用。
+查看应用安装的设备存储空间并清理，保证满足安装所需空间，再重试安装应用。模拟器上存储空间清理之后仍然失败，请尝试创建新的模拟器设备，并设置更大的存储空间，详情请参考[创建新的模拟器](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-emulator-create#section1764055173710)。
 <!--RP4-->
 ```bash
 # 查看磁盘空间使用情况
