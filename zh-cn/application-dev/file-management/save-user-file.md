@@ -21,7 +21,7 @@
 
 ```ts
 if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
-      console.error('This api is not supported on this device');
+      console.error('This API is not supported on this device');
       return;
 }
 ```
