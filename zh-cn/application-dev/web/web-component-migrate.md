@@ -75,7 +75,7 @@ export default class Entry3Ability extends UIAbility {
         hilog.info(0x0000, 'testTag', 'loadContent ok');
       });
     } catch (e) {
-      hilog.info(0x0000, 'testTag', 'loadContent catch error：-----------' + e.message);
+      hilog.info(0x0000, 'testTag', 'loadContent catch error:-----------' + e.message);
     }
   }
 }
@@ -206,9 +206,7 @@ import {
   Column,
   Web,
   Builder,
-  wrapBuilder,
-ArkTS-Dyn示例：
-
+  wrapBuilder
 } from '@kit.ArkUI';
 import webview from '@ohos.web.webview';
 import hilog from '@ohos.hilog'
