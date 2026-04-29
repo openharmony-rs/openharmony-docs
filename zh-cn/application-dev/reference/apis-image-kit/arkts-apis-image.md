@@ -38,6 +38,8 @@
 
 - [PngMetadata](arkts-apis-image-PngMetadata.md)类，以Key-Value的形式存储图像的PNG图像元数据。PNG图像元数据的Key可参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
 
+- [AvisMetadata](arkts-apis-image-AvisMetadata.md)类，以Key-Value的形式存储图像的AVIS图像元数据。AVIS图像元数据的Key可参考[AvisPropertyKey](arkts-apis-image-e.md#avispropertykey)。
+
 - [ImageReceiver](arkts-apis-image-ImageReceiver.md)类，作为图片的消费者，用于从Surface中接收、读取图片。
 
 - [ImageCreator](arkts-apis-image-ImageCreator.md)类，作为图片的生产者，用于将图片写入到Surface中。

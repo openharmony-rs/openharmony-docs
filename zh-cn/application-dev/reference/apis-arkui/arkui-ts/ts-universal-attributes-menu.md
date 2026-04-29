@@ -91,7 +91,7 @@ ArkTS-Sta: bindMenu(isShow: boolean \| Bindable\<boolean\> \| undefined, content
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isShow  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable\<boolean\> \| undefined                                                      | 是   | 支持开发者通过状态变量控制显隐。菜单必须等待页面全部构建才能展示，因此不能在页面构建中设置为true，否则会导致显示位置及形状错误，该参数从API version 18开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
+| isShow  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable\<boolean\> \| undefined                                                      | 是   | 支持开发者通过状态变量控制显隐。菜单必须等待页面全部构建才能展示，因此不能在页面构建中设置为true，否则会导致显示位置及形状错误，该参数从API version 18开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false <br/>设置undefined时与默认值保持一致。|
 | content | ArkTS-Dyn: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array\<[MenuElement](#menuelement)\>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置菜单项图标和文本的数组，或者自定义组件。设置undefined时，与上一次弹出内容保持一致。                 |
 | options | [MenuOptions](#menuoptions10)                                | 否   | 配置弹出菜单的参数。                                         |
 
@@ -127,8 +127,8 @@ ArkTS-Sta: bindContextMenu(content: CustomBuilder \| undefined, responseType: Re
 
 | 参数名       | 类型                                               | 必填 | 说明                             |
 | ------------ | -------------------------------------------------- | ---- | -------------------------------- |
-| content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined        | 是   | 自定义菜单内容构造器。           |
-| responseType | ArkTS-Dyn: [ResponseType](ts-appendix-enums.md#responsetype8)<br/>ArkTS-Sta: [ResponseType](ts-appendix-enums.md#responsetype8) \| undefined | 是   | 菜单弹出条件，长按或者右键点击。不支持鼠标长按。 |
+| content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined        | 是   | 自定义菜单内容构造器。设置undefined时，与上一次弹出内容保持一致。           |
+| responseType | ArkTS-Dyn: [ResponseType](ts-appendix-enums.md#responsetype8)<br/>ArkTS-Sta: [ResponseType](ts-appendix-enums.md#responsetype8) \| undefined | 是   | 菜单弹出条件，长按或者右键点击。不支持鼠标长按。设置undefined时，[responseType](ts-appendix-enums.md#responsetype8)值为ResponseType.LongPress。 |
 | options      | [ContextMenuOptions](#contextmenuoptions10)        | 否   | 配置弹出菜单的参数。             |
 
 **返回值：**
@@ -167,8 +167,8 @@ ArkTS-Sta: bindContextMenu(isShown: boolean \| Bindable\<boolean\> \| undefined,
 
 | 参数名       | 类型                                               | 必填 | 说明                                         |
 | ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| isShown | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable\<boolean\> \| undefined | 是   | 支持开发者通过状态变量控制显隐。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数从API version 18开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
-| content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined        | 是   | 自定义菜单内容构造器。 |
+| isShown | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable\<boolean\> \| undefined | 是   | 支持开发者通过状态变量控制显隐。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数从API version 18开始支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false <br/>设置undefined时与默认值保持一致。 |
+| content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined        | 是   | 自定义菜单内容构造器。<br/>设置undefined时，与上一次弹出内容保持一致。 |
 | options      | [ContextMenuOptions](#contextmenuoptions10)                      | 否   | 配置弹出菜单的参数。                         |
 
 **返回值：**

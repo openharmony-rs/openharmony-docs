@@ -160,7 +160,7 @@ sideBarWidth(value: number)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值为undefined时，按照默认值处理。 |
+| value  | number | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 10以下版本的默认值为200vp，API version 10及以上版本的默认值为240vp。<br/>取值为undefined时，按照默认值处理。 |
 
 ### sideBarWidth<sup>9+</sup>
 
@@ -184,7 +184,7 @@ sideBarWidth(value: Length)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10的默认值为240vp。<br/>取值为undefined时，按照默认值处理。 |
+| value  | [Length](ts-types.md#length) | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10及以上版本的默认值为240vp。<br/>取值为undefined时，按照默认值处理。 |
 
 ### sideBarWidth<sup>23+</sup>
 

@@ -102,6 +102,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * 应用侧ets代码。
 
+  ArkTS-Dyn示例：
   <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
 
   ``` TypeScript
@@ -113,6 +114,29 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
     @State videoSrc: Resource = $rawfile('PictureInPicture.html');
     controller: webview.WebviewController = new webview.WebviewController();
   
+    build() {
+      Column() {
+        Web({src: this.videoSrc, controller: this.controller})
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
+
+  ``` TypeScript
+  'use static'
+
+  import { $rawfile, State, Web, Resource, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct Index {
+    @State videoSrc: Resource = $rawfile('PictureInPicture.html');
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
     build() {
       Column() {
         Web({src: this.videoSrc, controller: this.controller})

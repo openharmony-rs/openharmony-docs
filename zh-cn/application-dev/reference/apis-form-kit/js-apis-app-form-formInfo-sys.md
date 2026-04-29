@@ -53,7 +53,7 @@ import { formInfo } from '@kit.FormKit';
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | 模板卡片数据。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | 模板卡片显示名称。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述　　。 <br>**系统接口：** 此接口为系统接口。  |
-| FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26 <br/>**ArkTS-Sta起始版本：** 26  |
+| FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
 | FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | 卡片字重缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
 
 ## FormUsageState<sup>11+</sup>
@@ -231,6 +231,7 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | 否 | 否  | 场景动效 extensionAbility 名称，如卡片提供方LiveFormExtensionAbility名称。                                     |
 | disabledDesktopBehaviors | string | 否 | 是  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，不同行为通过 \| 拼接，例如SWIPE_DESKTOP\|PULL_DOWN_SEARCH。缺省表示不禁用任何行为。 |
+| triggerTypes    | Array&lt;[SceneAnimationTriggerType](#sceneanimationtriggertype)&gt;      | 否    | 是     | 场景动效卡片触发类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
@@ -392,3 +393,21 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
     return true;
   };
 ```
+
+## SceneAnimationTriggerType
+
+场景动效卡片触发类型枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称        |  值   | 说明         |
+| ----------- | ---- | ------------ |
+| SHAKE | 1   | 摇一摇。 |

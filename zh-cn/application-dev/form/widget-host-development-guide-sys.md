@@ -60,7 +60,7 @@
 formHost提供一系列的卡片使用方接口，来操作卡片的更新、删除等行为，具体的API介绍详见[@ohos.app.form.formHost (formHost)(系统接口)](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md)。
 
 ## 卡片使用方示例
-<!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { HashMap, HashSet } from '@kit.ArkTS';
@@ -115,7 +115,7 @@ struct formHostSample {
     descriptionId: 0,
     type: formInfo.FormType.eTS,
     jsComponentName: '',
-    // ...
+    colorMode: -1,
     isDefault: false,
     updateEnabled: false,
     formVisibleNotify: true,
@@ -291,7 +291,7 @@ struct formHostSample {
           .enabled(this.showFormPicker)
           .onClick(() => {
             hilog.info(DOMAIN_NUMBER, TAG, 'TextPickerDialog: show()');
-            TextPickerDialog.show({
+            this.getUIContext().showTextPickerDialog({
               range: this.formInfoRecord,
               selected: this.pickDialogIndex,
               canLoop: false,
@@ -352,7 +352,7 @@ struct formHostSample {
           .borderRadius(10)
           .borderWidth(1)
           .onAcquired((form: FormCallbackInfo) => {
-            hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${JSON.stringify(form)}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${form.id}`);
             this.selectFormId = form.id.toString();
             this.formIds.add(this.selectFormId);
           })
@@ -360,7 +360,7 @@ struct formHostSample {
             hilog.info(DOMAIN_NUMBER, TAG, `onRouter`);
           })
           .onError((error) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error.errcode}, message: ${error.msg}`);
             this.showForm = false;
           })
           .onUninstall((info: FormCallbackInfo) => {

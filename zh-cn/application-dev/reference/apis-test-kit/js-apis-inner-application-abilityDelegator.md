@@ -1698,3 +1698,145 @@ let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.setMockList(mockList);
 ```
+
+### addInteropAbilityMonitorSync
+
+addInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
+
+同步添加InteropAbilityMonitor实例。不支持多线程并发调用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| monitor | [InteropAbilityMonitor](../apis-ability-kit/js-apis-inner-application-interopAbilityMonitor.md) | 是   | [InteropAbilityMonitor](../apis-ability-kit/js-apis-inner-application-interopAbilityMonitor.md)实例。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000100 | Calling AddInteropAbilityMonitorSync failed. |
+
+**示例：**
+
+> **说明：**
+>
+> 需要先启动[单元测试框架](../../application-test/unittest-guidelines.md)。
+
+**ArkTS-Dyn：**
+```ts
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+function onAbilityCreateCallback(data: object) {
+  console.info(`onAbilityCreateCallback success`);
+}
+
+let monitor: abilityDelegatorRegistry.InteropAbilityMonitor = {
+  abilityName: 'abilityname',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.addInteropAbilityMonitorSync(monitor);
+```
+
+**ArkTS-Sta：**
+```ts
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+function onAbilityCreateCallback(data: Any) {
+  console.info(`onAbilityCreateCallback success`);
+}
+
+let monitor: abilityDelegatorRegistry.InteropAbilityMonitor = {
+  abilityName: 'abilityname',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.addInteropAbilityMonitorSync(monitor);
+```
+
+### removeInteropAbilityMonitorSync
+
+removeInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
+
+同步删除已经添加的InteropAbilityMonitor实例。不支持多线程并发调用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| monitor  | [InteropAbilityMonitor](../apis-ability-kit/js-apis-inner-application-interopAbilityMonitor.md) | 是   | [InteropAbilityMonitor](../apis-ability-kit/js-apis-inner-application-interopAbilityMonitor.md)实例。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000100 | Calling RemoveInteropAbilityMonitorSync failed. |
+
+**示例：**
+
+> **说明：** 
+>
+> 需要先启动[单元测试框架](../../application-test/unittest-guidelines.md)。
+
+**ArkTS-Dyn:**
+```ts
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let monitor: abilityDelegatorRegistry.InteropAbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+function onAbilityCreateCallback(data: object) {
+  console.info('onAbilityCreateCallback');
+}
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.removeInteropAbilityMonitorSync(monitor);
+```
+
+**ArkTS-Sta:**
+```ts
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let monitor: abilityDelegatorRegistry.InteropAbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+function onAbilityCreateCallback(data: Any) {
+  console.info('onAbilityCreateCallback');
+}
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.removeInteropAbilityMonitorSync(monitor);
+```

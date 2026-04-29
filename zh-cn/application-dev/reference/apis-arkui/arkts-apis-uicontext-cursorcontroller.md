@@ -143,8 +143,8 @@ ArkTS-Sta: setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): v
 
 | 参数名    | 类型                              | 必填   | 说明                                     |
 | ------- | ------------------------------- | ---- | -------------------------------------- |
-| value   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义鼠标光标样式的像素图。                             |
-| focusX  | ArkTS-Dyn: number</br>ArkTS-Sta: int  | 否    | 自定义光标的焦点X坐标。焦点指的是鼠标实际点击的位置。<br/>默认值：0<br/>单位：px<br/>取值范围：[0, +∞)              |
+| value   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义鼠标光标样式的像素图。最大尺寸为256*256px，超过该尺寸时设置自定义鼠标光标样式不生效。                             |
+| focusX  | ArkTS-Dyn: number</br>ArkTS-Sta: int  | 否    | 自定义光标的焦点X坐标。焦点指的是鼠标实际点击的位置，焦点设置为(0, 0)时表示图片左上角为实际点击位置。<br/>默认值：0<br/>单位：px<br/>取值范围：[0, +∞)              |
 | focusY  | ArkTS-Dyn: number</br>ArkTS-Sta: int  | 否    | 自定义光标的焦点Y坐标。<br/>默认值：0<br/>单位：px<br/>取值范围：[0, +∞)                                         |
 
 **示例：**

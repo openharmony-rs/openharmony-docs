@@ -40,7 +40,7 @@ getMainWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -141,7 +141,7 @@ getMainWindow(): Promise&lt;Window&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -239,7 +239,7 @@ getMainWindowSync(): Window
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -610,7 +610,7 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -667,7 +667,7 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -724,7 +724,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -823,7 +823,7 @@ loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -925,7 +925,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1017,7 +1017,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1162,7 +1162,7 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1298,7 +1298,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 

@@ -286,6 +286,8 @@ import { window } from '@kit.ArkUI';
 | currentLayoutMode             | string               | 否   | 是   | 子窗当前布局模式，用于控制应用定制的UI效果。若不传，则默认为空字符串。|
 | parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | 否   | 是   | 父窗大小变化的回调。绑定后立即回调一次，后续父窗大小变化时通知。默认不传，无法收到父窗大小变化通知。|
 | parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | 否   | 是   | 父窗模式变化的回调。绑定后立即回调一次，后续父窗模式变化时通知。默认不传，无法收到父窗大小变化通知。|
+| isIntersectedWidthLimit | boolean | 否 | 是 | 子窗与绑定主窗的宽度是否互相限制。<br>true表示子窗与绑定主窗的宽度不能超过两个窗口宽度限制的交集；若两者宽度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的宽度受全部窗口宽度限制的交集约束。<br>false表示子窗与绑定主窗的宽度不会互相限制。<br>默认为false。 |
+| isIntersectedHeightLimit | boolean | 否 | 是 | 子窗与绑定主窗的高度是否互相限制。<br>true表示子窗与绑定主窗的高度不能超过两个窗口高度限制的交集；若两者高度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的高度受全部窗口高度限制的交集约束。<br>false表示子窗与绑定主窗的高度不会互相限制。<br>默认为false。 |
 
 ## WindowLayoutMode<sup>(deprecated)</sup>
 
@@ -2819,6 +2821,8 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+
 > **说明：**
 >
 > - 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。
@@ -2896,7 +2900,9 @@ export default class EntryAbility extends UIAbility {
           },
           parentWindowStatusChangeCallback:(type: window.WindowStatusType) => {
             console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
-          }
+          },
+          isIntersectedWidthLimit: true,
+          isIntersectedHeightLimit: true
         }
         subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
           console.info("Succeeded in attaching to the main window");
@@ -2916,6 +2922,8 @@ export default class EntryAbility extends UIAbility {
 detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
+
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
 
 > **说明：**
 >
@@ -3904,6 +3912,8 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -4235,6 +4245,8 @@ ArkTS-Sta: raiseAboveTarget(windowId: int, callback: AsyncCallback&lt;void&gt;):
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -4356,6 +4368,8 @@ ArkTS-Sta: raiseAboveTarget(windowId: int): Promise&lt;void&gt;
 将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
+
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4779,6 +4793,8 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 通常来说，点击一个子窗口，会将该子窗口显示到最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上方，而是保持不变。
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
+
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5554,7 +5570,9 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
+设置标题栏上的最大化、最小化、分屏按钮是否可见。
+
+仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口，其他窗口调用时将返回1300004错误码。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
