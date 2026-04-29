@@ -499,6 +499,7 @@
     - [FullScreenLaunchComponent](arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md)
     - [GridObjectSortComponent](arkui-ts/ohos-arkui-advanced-GridObjectSortComponent.md)
     - [Popup](arkui-ts/ohos-arkui-advanced-Popup.md)
+    - [PopupV2](arkui-ts/ohos-arkui-advanced-PopupV2.md)
     - [ProgressButton](arkui-ts/ohos-arkui-advanced-ProgressButton.md)
     - [ProgressButtonV2](arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md)
     - [SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)

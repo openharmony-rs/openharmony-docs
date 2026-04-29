@@ -5755,6 +5755,46 @@ try {
 }
 ```
 
+### rekey
+
+rekey(): Promise&lt;void&gt;
+
+更新数据库的加密密钥，使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100003     | Database corrupted. |
+| 15100005     | Database or result set already closed. |
+| 15100006     | Failed to update the key. |
+
+**示例：**
+
+```ts
+try {
+  kvStore.rekey().then(() => {
+    console.info('Success');
+  })
+} catch (err) {
+  console.error(`Failed to rekey. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## DeviceKVStore
 
 设备协同数据库，继承自SingleKVStore，提供查询数据和端端同步数据的方法，可以使用SingleKVStore的方法例如：put、putBatch等。

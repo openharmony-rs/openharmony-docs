@@ -1,9 +1,10 @@
 # Content Embed Kit术语
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
-<!--Tester: @zhaotianyu-->
+<!--Owner: @qq_41146650-->
+<!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
+<!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 本文介绍Content Embed Kit相关术语。
