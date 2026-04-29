@@ -2940,6 +2940,9 @@ export default class ServiceExtension extends ServiceExtensionAbility {
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };
+    // 账号ID说明：
+    // 1. 示例固定值 100
+    // 2. 可通过系统账号管理接口getForegroundOsAccountLocalId(displayId: number) 获取指定逻辑屏上运行的前台系统账号ID
     let accountId = 100;
 
     try {
