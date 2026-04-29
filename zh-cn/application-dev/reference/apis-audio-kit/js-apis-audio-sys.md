@@ -3270,7 +3270,7 @@ getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 
 获取当前音频设备场景下的活跃输出设备描述符，使用Promise异步回调。活跃策略与系统的音频设备策略相关。
 
-**启始版本：** 26.0.0
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用
 
