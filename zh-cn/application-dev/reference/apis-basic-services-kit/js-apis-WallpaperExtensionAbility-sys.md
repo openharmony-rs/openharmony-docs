@@ -5,7 +5,7 @@
 <!--Owner: @gcw_jQMboB9m-->
 <!--Designer: @gcw_jQMboB9m-->
 <!--Tester: @murphy84-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 WallpaperExtensionAbility为壁纸扩展模块，提供应用生命周期回调和监听壁纸变化的能力。
 

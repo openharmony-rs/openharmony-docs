@@ -5,7 +5,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，提供智能体扩展能力。本模块提供了[LOW_CODE](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类型的Agent被调用时的回调接口，用于执行初始化操作（如从云端下载资源、加载配置等）。
 

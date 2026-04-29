@@ -645,7 +645,9 @@ Tid:18257, Name:crasher_cpp                 <- 故障线程号，线程名
 
 ### 应用通过HiAppEvent设置崩溃日志配置参数场景日志规格
 
-系统提供了通用的崩溃日志生成功能，但一些应用对崩溃日志打印内容有个性化的需求，因此从**API version 20**开始HiAppEvent的[setEventConfig](hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)接口支持设置崩溃日志配置参数。以下是一份DevEco Studio归档在FaultLog的32位系统崩溃日志的核心内容：
+系统提供了通用的崩溃日志生成功能，但部分应用有自定义日志内容的需求。因此从**API version 20**开始，可通过设置[setEventConfig](hiappevent-watcher-crash-events.md#seteventconfig接口说明)接口配置自定义日志内容。
+
+以下是一份DevEco Studio归档在FaultLog的32位系统崩溃日志的核心内容：
 
 <!--RP5-->
 ```text

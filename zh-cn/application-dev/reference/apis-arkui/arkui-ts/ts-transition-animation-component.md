@@ -485,7 +485,7 @@ move(edge: TransitionEdge): TransitionEffect
 
 asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect\<"asymmetric">
 
-设置非对称的转场效果。
+设置非对称的转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体效果可参考[示例2](#示例2使用不同接口实现图片出现消失)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

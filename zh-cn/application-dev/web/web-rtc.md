@@ -55,6 +55,8 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 在下面的示例中，单击前端界面中的开启摄像头按钮再单击onConfirm，打开摄像头和麦克风。
 
 - 应用侧代码。
+
+ArkTS-Dyn示例：
   <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -107,6 +109,72 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
                   event.request.deny();
                 }
               })
+            }
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebRTC/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  'use static'
+
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from "@kit.ArkUI";
+  import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { PermissionRequestResult, common } from '@kit.AbilityKit';
+  import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    aboutToAppear(): void {
+      let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+      atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'],
+        (err: BusinessError | null, data?: PermissionRequestResult) => {
+          if (data) {
+            console.info('data:' + JSON.stringify(data));
+            console.info('data permissions:' + data.permissions);
+            console.info('data authResults:' + data.authResults);
+          }
+        })
+    }
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+            if (event) {
+              const dialogOptions: AlertDialogParamWithButtons = {
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.request.deny();
+                  },
+                } as AlertDialogButtonBaseOptions,
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.request.grant(event.request.getAccessibleResource());
+                  },
+                } as AlertDialogButtonBaseOptions,
+                cancel: () => {
+                  event.request.deny();
+                }
+              };
+              this.uiContext.showAlertDialog(dialogOptions);
             }
           })
       }

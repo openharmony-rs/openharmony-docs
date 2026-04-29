@@ -10,6 +10,9 @@
  本模块提供系统相关的或者增强的国际化能力，包括区域管理、电话号码处理、日历等，相关接口为ECMA 402标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化支持能力。
 
 >  **说明：**
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
@@ -38,6 +41,10 @@ static setSystemLanguage(language: string): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -82,6 +89,10 @@ static setSystemRegion(region: string): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -128,7 +139,11 @@ static setSystemLocale(locale: string): void
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -172,6 +187,10 @@ static set24HourClock(option: boolean): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型      | 必填   | 说明                                       |
@@ -204,7 +223,9 @@ static set24HourClock(option: boolean): void
 
 ### addPreferredLanguage<sup>9+</sup>
 
-static addPreferredLanguage(language: string, index?: number): void
+ArkTS-Dyn: static addPreferredLanguage(language: string, index?: number): void
+
+ArkTS-Sta: static addPreferredLanguage(language: string, index?: int): void
 
 在系统偏好语言列表的指定位置添加偏好语言。
 
@@ -214,12 +235,16 @@ static addPreferredLanguage(language: string, index?: number): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明         |
 | -------- | ------ | ---- | ---------- |
 | language | string | 是    | 待添加的偏好语言，要求是[合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。  |
-| index    | number | 否    | 偏好语言的添加位置。默认值：系统偏好语言列表长度。 |
+| index    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 偏好语言的添加位置。默认值：系统偏好语言列表长度。 |
 
 **错误码：**
 
@@ -249,7 +274,9 @@ static addPreferredLanguage(language: string, index?: number): void
 
 ### removePreferredLanguage<sup>9+</sup>
 
-static removePreferredLanguage(index: number): void
+ArkTS-Dyn: static removePreferredLanguage(index: number): void
+
+ArkTS-Sta: static removePreferredLanguage(index: int): void
 
 从系统偏好语言列表中移除指定位置的偏好语言。
 
@@ -259,11 +286,15 @@ static removePreferredLanguage(index: number): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明                    |
 | ----- | ------ | ---- | --------------------- |
-| index | number | 是    | 待删除偏好语言在系统偏好语言列表中的位置。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 待删除偏好语言在系统偏好语言列表中的位置。 |
 
 **错误码：**
 
@@ -281,7 +312,7 @@ static removePreferredLanguage(index: number): void
   import { i18n } from '@kit.LocalizationKit';
 
   // 删除系统偏好语言列表中的第一个偏好语言
-  let index: number = 0;
+  let index = 0;
   try {
     i18n.System.removePreferredLanguage(index);
   } catch(error) {
@@ -301,6 +332,10 @@ static setUsingLocalDigit(flag: boolean): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -343,6 +378,10 @@ static setTemperatureType(type: TemperatureType): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -389,6 +428,10 @@ static setFirstDayOfWeek(type: WeekDay): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -432,6 +475,10 @@ static getSystemCollations(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -468,6 +515,10 @@ static getUsingCollation(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -508,6 +559,10 @@ static setSystemCollation(identifier: string): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -546,6 +601,10 @@ static getSystemNumberingSystems(): Map&lt;string, string&gt;
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -586,6 +645,10 @@ static setSystemNumberingSystem(identifier: string):void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -625,6 +688,10 @@ static getSystemNumberPatterns(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -661,6 +728,10 @@ static getUsingNumberPattern(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -701,6 +772,10 @@ static setSystemNumberPattern(pattern: string): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -740,6 +815,10 @@ static getSystemMeasurements(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -776,6 +855,10 @@ static getUsingMeasurement(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -816,6 +899,10 @@ static setSystemMeasurement(identifier: string): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -855,6 +942,10 @@ static getSystemNumericalDatePatterns(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -891,6 +982,10 @@ static getUsingNumericalDatePattern(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -930,6 +1025,10 @@ static setSystemNumericalDatePattern(identifier: string): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -974,6 +1073,10 @@ constructor()
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
   ```ts
   import { i18n } from '@kit.LocalizationKit';
@@ -991,6 +1094,10 @@ getLanguageInfoArray(languages: Array&lt;string&gt;, options?: SortOptions): Arr
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1044,6 +1151,10 @@ getRegionInfoArray(regions: Array&lt;string&gt;, options?: SortOptions): Array&l
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名  |      类型      | 必填 |     说明      |
@@ -1095,6 +1206,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 |       类型        |         说明          |
@@ -1134,6 +1249,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型            | 只读 | 可选   |  说明                                   |
 | --------------- | --------------- | ------ | ------ | --------------------------------------- |
 | id              | string          |   否   |   否   | 语言代码或国家地区代码，如"zh"、"CN"。    |
@@ -1148,6 +1267,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
@@ -1167,6 +1290,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                   | 值  | 说明   |
 | ---------------------- | ---- | ---- |
 | SUGGESTION_TYPE_NONE   | 0x00 | 非推荐语言或国家地区。 |
@@ -1181,6 +1308,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型            |  只读 |  可选 |   说明                                 |
 | --------------- | --------------- | ---- | ---- | --------------------------------------- |
