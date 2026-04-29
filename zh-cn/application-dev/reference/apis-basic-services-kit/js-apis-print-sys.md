@@ -9,7 +9,7 @@
 
 该模块为基本打印的操作API，提供调用基础打印功能的接口。
 
-> **说明：**  
+> **说明：**
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[@ohos.print (打印)](js-apis-print.md)。
 
@@ -1274,9 +1274,9 @@ let printerInfo : print.PrinterInfo = {
 };
 print.updatePrinters([printerInfo], (err: BusinessError) => {
     if (err) {
-        console.error('updataPrinters failed, because : ' + JSON.stringify(err));
+        console.error('updatePrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('updataPrinters success');
+        console.info('updatePrinters success');
     }
 })
 ```
@@ -1470,7 +1470,7 @@ let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
 let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
 print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
     if (err) {
-        console.error('updataPrintJobState failed, because : ' + JSON.stringify(err));
+        console.error('updatePrintJobState failed, because : ' + JSON.stringify(err));
     } else {
         console.info('updatePrintJobState success');
     }
