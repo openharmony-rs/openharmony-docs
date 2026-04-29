@@ -91,8 +91,6 @@ onAccelerometerChange(callback: Callback&lt;AccelerometerResponse&gt;, options?:
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Sta起始版本：** 23
@@ -831,8 +829,6 @@ onGyroscopeChange(callback: Callback&lt;GyroscopeResponse&gt;, options?: Options
 **相关接口**：该接口对应的接口ArkTS-Dyn是[on(GYROSCOPE)](#sensorongyroscope9)
 
 **需要权限**：ohos.permission.GYROSCOPE
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -1704,8 +1700,6 @@ onOrientationChange(callback: Callback&lt;OrientationResponse&gt;, options?: Opt
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的接口ArkTS-Dyn是[on(ORIENTATION)](#sensoronorientation9)
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor 
 
@@ -4699,8 +4693,6 @@ offAccelerometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Sta起始版本：** 23
@@ -6188,8 +6180,6 @@ offGyroscopeChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Gyr
 **相关接口**：该接口对应的接口ArkTS-Dyn是[off(GYROSCOPE)](#sensoroffgyroscope19)
 
 **需要权限**：ohos.permission.GYROSCOPE
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7958,8 +7948,6 @@ offOrientationChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;O
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的接口ArkTS-Dyn是[off(ORIENTATION)](#sensorofforientation19)
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
