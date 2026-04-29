@@ -86,6 +86,7 @@
 | PNG_METADATA | 19    | PNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | JFIF_METADATA | 20    | JFIF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | TIFF_METADATA | 21    | TIFF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| AVIS_METADATA | 23    | AVIS图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -359,10 +360,11 @@
 ## DngPropertyKey<sup>24+</sup>
 
 枚举，DNG图片信息。
-- 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。
-- 格式示例中的key为：image.DngPropertyKey.XXX（XXX为枚举的名称，如：image.DngPropertyKey.DNG_BACKWARD_VERSION）。
-- 格式示例仅用于读取结果的格式。具体接口使用方法请参考：[readImageMetadata](arkts-apis-image-ImageSource.md#readimagemetadata23)。
-- 返回字段类型具体参考[DngMetadata](arkts-apis-image-i.md#dngmetadata24)。
+
+> **说明：**
+>
+> - 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。
+> - 返回字段类型具体参考[DngMetadata](arkts-apis-image-i.md#dngmetadata24)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -466,8 +468,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.PngPropertyKey.XXX（XXX为枚举的名称，如：image.PngPropertyKey.X_PIXELS_PER_METER）。
-> - 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
+> 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -500,8 +501,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.JfifPropertyKey.XXX（XXX为枚举的名称，如：image.JfifPropertyKey.DENSITY_UNIT）。
-> - 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
+> 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -523,8 +523,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.TiffPropertyKey.XXX（XXX为枚举的名称，如：image.TiffPropertyKey.DOCUMENT_NAME）。
-> - 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
+> 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -554,6 +553,24 @@
 | SOFTWARE | 'TiffSoftware' | 用于生成图像的软件名称和版本。 |
 | PRIMARY_CHROMATICITIES | 'TiffPrimaryChromaticities' | 图像中RGB三原色的色度坐标。 |
 | ARTIST | 'TiffArtist' | 创建图像的用户名称。 |
+
+## AvisPropertyKey
+
+枚举，AVIS图片信息。
+
+> **说明：**
+>
+> 返回字段类型具体参考[AvisMetadata](arkts-apis-image-AvisMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 值                | 说明                   |
+| ----------------- | ----------------- | --------------------- |
+| DELAY_TIME    | 'AvisDelayTime'    | AVIS图片的每帧播放时长。<br>单位为毫秒（ms）。 |
 
 ## ImageFormat<sup>9+</sup>
 
