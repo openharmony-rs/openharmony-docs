@@ -488,7 +488,7 @@ struct Index {
         .onClick(async () => {
           try {
             let mouseController = await inputEventClient.createMouseController();
-            await mouseController.beginAxis(Axis.VERTICAL_SCROLL, 10);
+            await mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
             console.log('轴事件开始成功');
           } catch (error) {
             console.error(`轴事件开始失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -548,8 +548,8 @@ struct Index {
         .onClick(async () => {
           try {
             let mouseController = await inputEventClient.createMouseController();
-            await mouseController.beginAxis(Axis.VERTICAL_SCROLL, 10);
-            await mouseController.updateAxis(Axis.VERTICAL_SCROLL, 20);
+            await mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
+            await mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
             console.log('轴事件更新成功');
           } catch (error) {
             console.error(`轴事件更新失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -608,9 +608,9 @@ struct Index {
         .onClick(async () => {
           try {
             let mouseController = await inputEventClient.createMouseController();
-            await mouseController.beginAxis(Axis.VERTICAL_SCROLL, 10);
-            await mouseController.updateAxis(Axis.VERTICAL_SCROLL, 20);
-            await mouseController.endAxis(Axis.VERTICAL_SCROLL);
+            await mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
+            await mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
+            await mouseController.endAxis(Axis.SCROLL_VERTICAL);
             console.log('轴事件结束成功');
           } catch (error) {
             console.error(`轴事件结束失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
