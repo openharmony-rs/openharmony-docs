@@ -2409,3 +2409,98 @@ try {
   console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## applicationManager.getApplicationWindowStates
+
+getApplicationWindowStates(admin: Want, bundleName: string, appIndex: number): Array\<WindowStateInfo\>;
+
+查询应用窗口状态信息。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleName | string                                                  | 是   | 应用包名。                                                   |
+| appIndex  | number                                                  | 是   | 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)等接口来获取。                                                   |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[WindowStateInfo](#windowstateinfo)&gt; | 返回应用窗口状态信息的数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let bundleName: string = 'com.example.myapplication';
+  let appIndex: number = 0;
+  let result: Array<applicationManager.WindowStateInfo> = applicationManager.getApplicationWindowStates(wantTemp, bundleName, appIndex);
+  console.info(`Succeeded in getting application window states, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get application window states. Code: ${err.code}, message: ${err.message}`);
+}
+```
+## WindowStateInfo
+
+窗口状态信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| windowId | number | 是 | 否 | 窗口ID。 |
+| state | [WindowState](#windowstate) | 是 | 否 | 窗口状态。|
+| isOnDock | boolean | 是 | 否 | 表示窗口是否在dock栏上。PC/2in1设备和pc模式在dock栏上返回true，其它设备返回false。 |
+| name | string | 是 | 否 | 窗口名称。|
+
+## WindowState
+
+窗口状态。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DISCONNECT | 0 | 未连接。 |
+| CONNECT | 1 | 已连接。 |
+| FOREGROUND | 2 | 前台。 |
+| ACTIVE | 3 | 焦点。 |
+| INACTIVE | 4 | 无焦点。 |
+| BACKGROUND | 5 | 后台。 |
