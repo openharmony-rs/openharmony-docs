@@ -187,3 +187,6 @@
   - [设备证明错误码](errorcode-deviceAttest.md)
   - [智能语音错误码](errorcode-intelligentVoice.md)
   <!--DelEnd-->
+  <!--Del-->
+  - [deviceInfo错误码](errorcode-device-info.md)
+  <!--DelEnd-->
