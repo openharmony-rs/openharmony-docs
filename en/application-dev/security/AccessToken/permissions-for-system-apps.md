@@ -5743,7 +5743,7 @@ Allows an application to obtain and set the car scenario mode.
 
 ## ohos.permission.vehicle.AUTO_UPDATER
 
-Allows a application to send update instructions to the head unit.
+Allows an application to send update instructions to the head unit.
 
 **Permission level**: system_basic
 
