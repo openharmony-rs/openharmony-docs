@@ -5880,3 +5880,17 @@
 **支持设备**：Phone
 
 **起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
+
+允许应用使用跨设备互通能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
+**起始版本**：24

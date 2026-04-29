@@ -5880,3 +5880,17 @@ Allows an application to enable the outdoor exploration service to provide the a
 **Supported devices**: phones
 
 **Since**: 26.0.0
+
+## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
+
+Allows an application to use the device interconnectivity capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 24
