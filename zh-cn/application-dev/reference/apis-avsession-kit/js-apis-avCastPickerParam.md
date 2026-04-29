@@ -1,6 +1,6 @@
 # @ohos.multimedia.avCastPickerParam (投播组件参数)
 <!--Kit: AVSession Kit-->
-<!--Subsystem:Multimedia-->
+<!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester:@chenmingxi1_huawei-->
