@@ -69,7 +69,7 @@ struct Index {
 MouseController接口提供了模拟鼠标操作的功能,包括光标移动、按键按下和轴事件(如滚动)。
 
 ```js
-import { inputEventClient, Button, Axis } from '@kit.InputKit';
+import { inputEventClient, Button, Axis as MouseAxis } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -90,10 +90,10 @@ struct Index {
             await mouseController.releaseButton(Button.LEFT);
 
             // 模拟垂直滚动
-            await mouseController.beginAxis(Axis.VERTICAL_SCROLL, 10);
-            await mouseController.updateAxis(Axis.VERTICAL_SCROLL, 20);
-            await mouseController.updateAxis(Axis.VERTICAL_SCROLL, 30);
-            await mouseController.endAxis(Axis.VERTICAL_SCROLL);
+            await mouseController.beginAxis(MouseAxis.SCROLL_VERTICAL, 10);
+            await mouseController.updateAxis(MouseAxis.SCROLL_VERTICAL, 20);
+            await mouseController.updateAxis(MouseAxis.SCROLL_VERTICAL, 30);
+            await mouseController.endAxis(MouseAxis.SCROLL_VERTICAL);
 
             console.log('鼠标操作完成');
           } catch (error) {
