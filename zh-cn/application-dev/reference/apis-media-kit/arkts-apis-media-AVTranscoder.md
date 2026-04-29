@@ -61,7 +61,7 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
 
 | 类型        | 说明                   |
 | ----------- | ---------------------- |
-| Promise\<number\> | Promise对象，返回水印ID。 |
+| Promise\<number\> | Promise对象，返回添加的水印ID。 |
 
 **错误码：**
 
