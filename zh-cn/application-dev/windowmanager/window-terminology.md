@@ -28,14 +28,14 @@
 
   辅助窗口由应用自行管理创建和销毁，不会在“任务管理界面”中以一个独立的任务卡片显示，可以用于显示应用的辅助内容，例如弹窗等。
 
-  辅助窗口包括子窗口、全局悬浮窗、模态窗口、画中画和闪控球。
+  辅助窗口包括子窗口、全局悬浮窗、模态窗口、画中画和闪控球。其中子窗口分为独立子窗、非独立子窗。
 
-  子窗口分为一级子窗和多级子窗
-
-  - 一级子窗：子窗口、全局悬浮窗、模态窗口创建的子窗。
-  - 多级子窗：子窗口的子窗。
-
-
+  - 独立子窗：
+  
+    从API version 26.0.0开始，支持在创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。独立子窗在[自由窗口](#自由窗口)状态下，不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
+  - 非独立子窗：
+  
+    默认创建的子窗均为非独立子窗。创建子窗时[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened默认为false，此时创建的子窗为非独立子窗。
 ## 悬浮窗
 
 悬浮窗分为智慧多窗悬浮窗和全局悬浮窗。
@@ -53,7 +53,7 @@
   应用在创建全局悬浮窗前，需要申请对应的权限。
   
   <!--RP1-->
-  相关参考：[设置全局悬浮窗](application-window-stage.md#设置全局悬浮窗)。<!--RP1End-->
+  相关参考：[设置全局悬浮窗](application-window-stage.md#设置全局悬浮窗受限开放)。<!--RP1End-->
 
 ## 自由窗口
 

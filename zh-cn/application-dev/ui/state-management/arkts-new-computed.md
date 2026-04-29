@@ -262,9 +262,9 @@ get varName(): T {
 
    点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
-
-   ```ts
+   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) --> 
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
@@ -294,6 +294,7 @@ get varName(): T {
        Column() {
          Text(this.name1.fullName)
          Text(this.name1.fullName)
+         // 点击Button改变lastName，触发fullName重新计算，且只被计算一次
          Button('changed lastName').onClick(() => {
            this.name1.lastName += 'a';
          })
@@ -366,7 +367,7 @@ get varName(): T {
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->
+  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) --> 
   
   ``` TypeScript
   @ObservedV2
@@ -402,6 +403,7 @@ get varName(): T {
         ForEach(this.shoppingBasket, (item: Article) => {
           Row() {
             Text(`unitPrice: ${item.unitPrice}`)
+            // 点击Button减少quantity，触发total和qualifiesForDiscount重新计算
             Button('-')
               .onClick(() => {
                 if (item.quantity > 0) {
@@ -409,6 +411,7 @@ get varName(): T {
                 }
               })
             Text(`quantity: ${item.quantity}`)
+            // 点击Button增加quantity，触发total和qualifiesForDiscount重新计算
             Button('+')
               .onClick(() => {
                 item.quantity++;

@@ -64,7 +64,7 @@ getAccessibleResource(): Array\<string\>
 
 grant(resources: Array\<string\>): void
 
-对网页访问的给定权限进行授权。
+对网页所请求的权限进行授权。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

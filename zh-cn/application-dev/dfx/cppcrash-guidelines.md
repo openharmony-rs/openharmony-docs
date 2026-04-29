@@ -577,7 +577,33 @@ cpsr:608f0010
 
 ### 异步线程栈跟踪故障场景日志规格
 
-当异步线程发生崩溃后，把提交该异步任务的线程栈也打印出来，帮助定位由于异步任务提交者造成的崩溃问题。崩溃线程的调用栈和其提交线程的调用栈通过SubmitterStacktrace字符串分隔。以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
+当异步线程发生崩溃后，把提交该异步任务的线程栈也打印出来，帮助定位由于异步任务提交者造成的崩溃问题。崩溃线程的调用栈和其提交线程的调用栈通过SubmitterStacktrace字符串分隔。
+
+**异步线程栈生成原理**
+
+原理示意图如下：
+
+![工作机制说明](figures/submitter_stacktrace.png)
+
+1. 提交线程搜集自身的调用栈信息，保存至进程特定区域内存的异步栈表中。
+
+2. 记录保存后，异步栈表返回唯一标识stackId。
+
+3. 提交线程提交异步任务，并传递标识stackId。
+
+4. 执行线程在执行任务前保存stackId至线程局部存储区中。
+
+5. 执行线程开始执行异步任务。
+
+6. 执行线程在执行异步任务过程中发生崩溃，产生崩溃信号。
+
+7. 信号处理函数通过GetStackId函数获取保存在线程局部存储区中的stackId。
+
+8. 信号处理函数将stackId传递给回栈进程processdump。
+
+9. processdump跨进程读取异步栈表，根据stackId值查询获取提交线程的调用栈信息，填充至故障日志对应的SubmitterStacktrace字段。
+
+以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
 
 > **注意：**
 >
@@ -619,7 +645,9 @@ Tid:18257, Name:crasher_cpp                 <- 故障线程号，线程名
 
 ### 应用通过HiAppEvent设置崩溃日志配置参数场景日志规格
 
-系统提供了通用的崩溃日志生成功能，但一些应用对崩溃日志打印内容有个性化的需求，因此从**API version 20**开始HiAppEvent的[setEventConfig](hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)接口支持设置崩溃日志配置参数。以下是一份DevEco Studio归档在FaultLog的32位系统崩溃日志的核心内容：
+系统提供了通用的崩溃日志生成功能，但部分应用有自定义日志内容的需求。因此从**API version 20**开始，可通过设置[setEventConfig](hiappevent-watcher-crash-events.md#seteventconfig接口说明)接口配置自定义日志内容。
+
+以下是一份DevEco Studio归档在FaultLog的系统崩溃日志的核心内容：
 
 <!--RP5-->
 ```text

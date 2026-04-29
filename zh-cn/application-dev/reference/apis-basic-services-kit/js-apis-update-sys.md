@@ -145,6 +145,8 @@ try {
 
 ## Updater
 
+提供系统在线更新功能的工具类。
+
 ### checkNewVersion
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
@@ -1892,6 +1894,8 @@ try {
 
 ## Restorer
 
+提供设备恢复出厂设置功能的工具类。
+
 ### factoryReset
 
 factoryReset(callback: AsyncCallback\<void>): void
@@ -2139,6 +2143,8 @@ try {
 ```
 
 ## LocalUpdater
+
+提供本地固件更新功能的工具类。
 
 ### verifyUpgradePackage
 

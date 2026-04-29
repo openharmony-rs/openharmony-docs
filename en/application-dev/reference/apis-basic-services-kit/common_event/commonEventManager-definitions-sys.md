@@ -97,7 +97,7 @@ This common event is sent when the shortcut is changed (for example, when [short
 
 ### COMMON_EVENT_KIOSK_MODE_ON<sup>20+</sup>
 
-Indicates that the kiosk mode is enabled. When this mode is on, the common event service is triggered to publish this system common event.
+Indicates that the kiosk mode is enabled. When this mode is on, the common event service is triggered to publish this system common event.  
 
 **System API**: This is a system API.
 
@@ -136,7 +136,7 @@ Indicates that when the application is launched for the first time after install
 **Value**: usual.event.APP_FIRST_LAUNCH
 
 
-## Background Tasks Kit
+## Background Tasks Kit 
 
 ### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+</sup>
 
@@ -240,7 +240,7 @@ The system API related to this common event is **removeOsAccount**. For details,
 
 ### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
 
-Indicates that the domain account status changes.
+Indicates that domain account status changes.
 
 When a domain user account is authenticated, deleted, or has the token updated, the common event service is triggered to publish this event carrying the system account ID, domain name, and account status.
 
@@ -407,6 +407,20 @@ When the sync root update is complete, the common event service is triggered to 
 **Value**: usual.event.CLOUD_DISK_STATE_CHANGED
 
 
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
+
+Represents the common event indicating the restore is complete for an application.
+
+When a data migration application starts the backup and restore framework to perform a restoration task, this common event is sent when the restore is complete.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.RESTORE_END_NOTIFICATION (for system applications only)
+
+**Value**: usual.event.RESTORE_END
+
 ## Media Kit
 
 ### COMMON_EVENT_SCREEN_SHARE
@@ -423,6 +437,22 @@ This is a protected common event and can be sent only by the system.
 
 **Value**: usual.event.SCREEN_SHARE
 
+
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+Indicates the common event that the VPN connection status has changed.
+
+This common event is sent when a VPN connection is established or disconnected.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: usual.event.VPN_CONNECTION_STATUS_CHANGED
 
 ## Telephony Kit
 
@@ -563,7 +593,7 @@ When the roaming status of the default primary SIM card changes, the common even
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
-Indicates that the default primary SIM card for the voice service has been updated.
+Indicates that the default primary SIM card for the voice service has been updated. 
 
 When the default primary SIM card for the voice service is updated, the common event service is triggered to publish this event.
 
@@ -728,4 +758,3 @@ When the device receives a WAP push message, the common event service is trigger
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
 **Value**: usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED
-<!--no_check-->
