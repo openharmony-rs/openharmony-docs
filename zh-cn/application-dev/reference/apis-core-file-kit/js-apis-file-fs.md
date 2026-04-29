@@ -8676,8 +8676,6 @@ fileIo.closeSync(file);
 
 文件映射对象，在调用FileMapping的方法前，需要先通过[mmap()](#fileiommap)或方法[mmapSync()](#fileiommapsync)构建一个FileMapping实例。
 
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
@@ -8690,11 +8688,13 @@ ArkTS-Sta: setPosition(position: int): void
 
 设置文件映射区的当前位置。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8726,11 +8726,13 @@ ArkTS-Sta: getPosition(): int
 
 获取文件映射区的当前位置。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -8762,11 +8764,13 @@ ArkTS-Sta: capacity(): int
 
 获取文件映射区的容量。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -8798,11 +8802,13 @@ ArkTS-Sta: setLimit(limit: int): void
 
 设置文件映射区可读写区域的上界。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8834,11 +8840,13 @@ ArkTS-Sta: getLimit(): int
 
 获取文件映射区可读写区域的上界。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -8907,11 +8915,13 @@ ArkTS-Sta: remaining(): int
 
 获取从当前位置（position）到可读写区域的上界（limit）之间的剩余字节数。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -8946,11 +8956,13 @@ ArkTS-Sta: read(buffer: ArrayBuffer, length?: int): int
 
 从当前位置读取数据，并将位置后移实际读取的字节数。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8992,11 +9004,13 @@ ArkTS-Sta: read(position: int, buffer: ArrayBuffer, length?: int): int
 
 从指定位置读取数据，当前位置不会发生移动。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -9039,11 +9053,13 @@ ArkTS-Sta: write(data: ArrayBuffer, length?: int): int
 
 从当前位置写入数据，并将位置后移实际写入的字节数。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -9086,11 +9102,13 @@ ArkTS-Sta: write(position: int, data: ArrayBuffer, length?: int): int
 
 从指定位置写入数据，当前位置不会发生移动。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -9136,11 +9154,13 @@ msync(): Promise&lt;void&gt;
 >
 > 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -9211,11 +9231,13 @@ ArkTS-Sta: msync(position: int, length: int): Promise&lt;void&gt;
 >
 > 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -9291,11 +9313,13 @@ msyncSync(): void
 >
 > 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **错误码：**
 
@@ -9332,11 +9356,13 @@ ArkTS-Sta: msyncSync(position: int, length: int): void
 >
 > 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -9374,11 +9400,13 @@ unmap(): Promise&lt;void&gt;
 
 释放文件映射区，使用Promise异步回调。调用后，position、limit和capacity均被重置为0，FileMapping对象不可再进行任何操作。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -9439,11 +9467,13 @@ unmapSync(): void
 
 以同步方法释放文件映射区。调用后，position、limit和capacity均被重置为0，FileMapping对象不可再进行任何操作。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **错误码：**
 
@@ -10197,11 +10227,13 @@ open接口flags参数常量。文件打开标签。
 
 文件内存映射模式类型的枚举。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ---- |
