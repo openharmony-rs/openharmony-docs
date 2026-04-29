@@ -19,7 +19,8 @@
 **示例：**
 
 <!-- @[PickerMediaLibrary_getMediaTypeByMimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
-```ts
+
+``` TypeScript
 function getMediaTypeByMimeType(mimeType: string): string {
   if (mimeType.startsWith('video/')) {
     return 'video';
