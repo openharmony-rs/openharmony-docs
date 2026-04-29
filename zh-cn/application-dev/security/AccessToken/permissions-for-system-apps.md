@@ -5841,7 +5841,7 @@
 
 ## ohos.permission.GET_TICKET_INFO
 
-允许系统服务为敏感消息生成完整性保护凭据。
+允许系统应用为敏感消息生成完整性保护凭据。
 
 **权限级别**：system_basic
 
