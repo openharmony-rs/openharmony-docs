@@ -9,10 +9,7 @@
 
 本模块主要提供串口通信管理功能，包括获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理、权限授权等。
 
-> **说明：**
->
-> 本模块首批接口从API version 26.0.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)。
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -25,6 +22,8 @@ import { serial } from "@kit.BasicServicesKit";
 addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
 添加应用程序访问串口的权限。仅用于弹出串口授权弹窗的系统应用。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口，仅允许特定的串口授权弹窗应用调用。
 
@@ -43,7 +42,7 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
