@@ -41,11 +41,12 @@ function getMediaTypeByMimeType(mimeType: string): string {
 **示例：**
 
 <!-- @[PickerMediaLibrary_getBurstTypeByUri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
-```ts
+
+``` TypeScript
 function getBurstTypeByUri(uri: string): string {
   const hasBurst = uri.includes('burst');
   const hasCover = uri.includes('cover');
-  
+        
   if (hasBurst && hasCover) {
     return '连拍封面';
   } else if (hasBurst) {
