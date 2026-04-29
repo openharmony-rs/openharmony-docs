@@ -301,8 +301,8 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | rules | [WatchRule](#watchrule)[] | 否 | 否 | 订阅对象数组，每个订阅者对象包含多个订阅规则。 |
-| onEvent | function | 否 | 否 | 订阅事件的回调方法(info: [SysEventInfo](#syseventinfo)) => void。 |
-| onServiceDied | function | 否 | 否 | 系统事件服务关闭的回调方法() => void。 |
+| onEvent | (info: [SysEventInfo](#syseventinfo)) => void | 否 | 否 | 订阅事件的回调方法。 |
+| onServiceDied | () => void | 否 | 否 | 系统事件服务关闭的回调方法。 |
 
 ## hiSysEvent.addWatcher
 
@@ -462,8 +462,8 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| onQuery | function | 否 | 否 | 返回查询到的系统事件的回调方法(infos: [SysEventInfo](#syseventinfo)[]) => void。 |
-| onComplete | function | 否 | 否 | ArkTS-Dyn: 查询结果统计的回调方法(reason: number, total: number) => void。<br> ArkTS-Sta: 查询结果统计的回调方法(reason: int, total: int) => void。 |
+| onQuery | (infos: [SysEventInfo](#syseventinfo)[]) => void | 否 | 否 | 返回查询到的系统事件的回调方法。 |
+| onComplete | ArkTS-Dyn: (reason: number, total: number) => void。<br> ArkTS-Sta: (reason: int, total: int) => void | 否 | 否 | 查询结果统计的回调方法。 |
 
 ## hiSysEvent.query
 
