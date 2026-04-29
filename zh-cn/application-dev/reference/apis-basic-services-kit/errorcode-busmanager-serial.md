@@ -1,4 +1,4 @@
-# @ohos.busManager.serial 错误码
+# @ohos.busManager.serial错误码
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: BusManager-->
