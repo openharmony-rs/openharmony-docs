@@ -3357,6 +3357,8 @@ try {
 
 ArkTS-Sta示例：
 
+**示例：**
+
 ```ts
 let wakeUp: boolean = true;
 try {
