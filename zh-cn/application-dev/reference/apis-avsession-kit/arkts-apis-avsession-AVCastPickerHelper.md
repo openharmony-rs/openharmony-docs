@@ -106,7 +106,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -261,8 +261,6 @@ onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('pickerStateChange')](#onpickerstatechange14)。
-
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
