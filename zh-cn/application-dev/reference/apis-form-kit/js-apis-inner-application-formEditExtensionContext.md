@@ -13,6 +13,8 @@ FormEditExtensionContext是[FormEditExtensionAbility](./js-apis-app-form-formEdi
 > 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 ```ts
@@ -30,6 +32,10 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -55,6 +61,8 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
 | 16500100 | Failed to obtain the configuration information.                        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit';
@@ -84,6 +92,39 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
+export default class ExampleFormEditAbility extends FormEditExtensionAbility {
+  abilityName: string = 'FormEditSecPageAbility'
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    try {
+      this.context.startSecondPage({
+        bundleName: 'com.example.formEditDemo',
+        parameters: {
+          "secPageAbilityName": this.abilityName
+        } as Record<string, RecordData>
+
+      }).then(data => {
+        console.info(TAG, `startSecondPage result resultCode: ${data.resultCode}`)
+      });
+    } catch (error) {
+      console.error(TAG, `startSecondPage failed: code: ${error.code} message: ${error.message}`)
+      return
+    }
+  }
+}
+```
+
 ### startUIAbility<sup>23+<sup>
 
 startUIAbility(want: Want): Promise&lt;void&gt;
@@ -93,6 +134,10 @@ startUIAbility(want: Want): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -120,6 +165,8 @@ startUIAbility(want: Want): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit'
 import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
@@ -138,6 +185,39 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
       });
     } catch (e) {
       console.error(TAG, `startUIAbility failed, code: ${e.code}, message: ${e.message}`);
+      return
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
+export default class ExampleFormEditAbility extends FormEditExtensionAbility {
+  abilityName: string = 'FormEditSecPageAbility'
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    try {
+      this.context.startSecondPage({
+        bundleName: 'com.example.formEditDemo',
+        parameters: {
+          "secPageAbilityName": this.abilityName
+        } as Record<string, RecordData>
+
+      }).then(data => {
+        console.info(TAG, `startSecondPage result resultCode: ${data.resultCode}`)
+      });
+    } catch (error) {
+      console.error(TAG, `startSecondPage failed: code: ${error.code} message: ${error.message}`)
       return
     }
   }
