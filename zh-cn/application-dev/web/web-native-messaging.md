@@ -146,7 +146,7 @@ function sendMessageToNative() {
 **实现配置background.js**
 
 1. 使用chrome.runtime.connectNative连接
-   ``` ts
+```typescript
    var port = null;
    // 监听来自main.js的信息
    chrome.runtime.onMessage.addListener(
@@ -173,10 +173,10 @@ function sendMessageToNative() {
    function onDisconnected() {
      port = null;
    }
-   ```
+```
 
 2. 使用chrome.runtime.sendNativeMessage连接
-   ``` ts
+```typescript
    function sendNativeMessage() {
      var bundleName = "com.example.app"; // 插件对应应用的bundleName
      var nativeMessage = "ping"; // 插件要发给应用的内容
@@ -189,7 +189,7 @@ function sendMessageToNative() {
        }
      )
    }
-   ```
+```
 
 ### 实现一个WebNativeMessagingExtensionAbility（应用开发者）
 在DevEco Studio工程中手动新建一个WebNativeMessagingExtensionAbility组件，具体步骤如下：
@@ -199,17 +199,18 @@ function sendMessageToNative() {
 
     其目录结构如下所示：
 
-   ```yml
+```yml
     ├── ets
     │ ├── MyWebNativeMessageExtAbility
     │ │   ├── MyWebNativeMessageExtAbility.ets
     └
-   ```
+```
 3. 在MyWebNativeMessageExtAbility.ets文件中，增加导入[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)的依赖包，自定义类继承WebNativeMessagingExtensionAbility组件并实现生命周期回调。
+
     ArkTS-Dyn示例：
     <!-- @[web_native_messaging_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
 
-  ``` TypeScript
+```typescript
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import {buffer, util} from '@kit.ArkTS';
@@ -265,11 +266,11 @@ function sendMessageToNative() {
        hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
      }
    };
-   ```
+```
     ArkTS-Sta示例：
    <!-- @[web_native_messaging_extension_ability_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
 
-``` TypeScript
+```typescript
     import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
     import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -327,10 +328,10 @@ function sendMessageToNative() {
         hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
       }
     };
-    ```
+```
 4. 在工程Module的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册WebNativeMessagingExtensionAbility组件。设置type标签为“webNativeMessaging”，srcEntry标签指向组件代码路径。
 
-   ```json5
+```json5
    {
      "module": {
        // ...
@@ -345,19 +346,19 @@ function sendMessageToNative() {
        ]
      }
    }
-   ```
+```
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置crossAppSharedConfig，定义共享配置项，共享配置文件需放置在工程resources/base/profile目录下，并通过$资源访问方式引用。
-   ```json
+```json
    {
      "module": {
        "crossAppSharedConfig": "$profile:shared_config"
      }
    }
-   ```
+```
 
 6. 在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)。
 
-   ```json5
+```json5
    {
      "crossAppSharedConfig": [
        // ...
@@ -373,7 +374,7 @@ function sendMessageToNative() {
        }
      ]
    }
-   ```
+```
 ### 实现拉起WebNativeMessagingExtensionAbility（浏览器开发者）
 浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING。
 
@@ -382,8 +383,8 @@ function sendMessageToNative() {
 ArkTS-Dyn示例：
 
     <!-- @[web_native_messaging_get_manifest_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
-    
-``` TypeScript
+
+```typescript
    import { dataShare } from '@kit.ArkData';
 
    interface ExtensionConfig {
@@ -435,13 +436,13 @@ ArkTS-Dyn示例：
        console.error('Error getting config:', error);
      }
    }
-   ```
+```
 
    ArkTS-Sta示例：
 
     <!-- @[web_native_messaging_get_manifest_data_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
-    
-``` TypeScript
+
+```typescript
     import dataShare from '@ohos.data.dataShare';
 
     class ExtensionConfig {
@@ -501,15 +502,15 @@ ArkTS-Dyn示例：
         console.error('Error getting config:', error);
       }
     }
-    ```
+```
 
 2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessaging连接，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
 
     ArkTS-Dyn示例：
 
     <!-- @[web_native_messaging_connect_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
-    
-``` TypeScript
+
+```typescript
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
@@ -547,12 +548,12 @@ ArkTS-Dyn示例：
        console.info(`inner callback error Message: ${JSON.stringify(error)}`);
      }
    }
-   ```
+```
    ArkTS-Sta示例：
 
     <!-- @[web_native_messaging_connect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
-    
-``` TypeScript
+
+```typescript
     import UIAbility from '@ohos.app.ability.UIAbility';
     import Want from '@ohos.app.ability.Want';
     import common from '@ohos.app.ability.common';
@@ -593,31 +594,31 @@ ArkTS-Dyn示例：
         console.info(`inner callback error Message: ${JSON.stringify(error)}`);
       }
     }
-    ```
+```
 
 3. 需要销毁NativeMessaging连接时，调用[webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative)。
 
     ArkTS-Dyn示例：
 
     <!-- @[web_native_messaging_disconnect_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
-    
-``` TypeScript
+
+```typescript
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
    function disconnectNative(connectId: number) : void {
      console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
      webNativeMessagingExtensionManager.disconnectNative(connectId);
    }
-   ```
+```
     ArkTS-Sta示例：
 
     <!-- @[web_native_messaging_disconnect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
-    
-``` TypeScript
+
+```typescript
     import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
 
     function disconnencNative(connectId: int) : void {
       console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
       webNativeMessagingExtensionManager.disconnectNative(connectId);
     }
-    ```
+```
