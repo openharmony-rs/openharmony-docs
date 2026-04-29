@@ -648,7 +648,6 @@
 3. KeyboardKeyData.ets文件。 定义软键盘的按键显示内容。
 
    ArkTS-Dyn示例：
-
     <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
 
    ``` TypeScript
@@ -995,7 +994,7 @@
    
    ArkTS-Sta示例：
    
-   ```typescript
+   ``` TypeScript
    export interface sourceListType {
      content: string,
    }
@@ -1281,10 +1280,9 @@
    }
    ```
 
-6. 在工程module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
+6. 在工程module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为"inputMethod"，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
    ArkTS-Dyn示例：
-
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
 
    ``` JSON
