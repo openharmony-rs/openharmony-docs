@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块提供热管理相关的接口，包括热档位查询及注册回调等功能。
 
