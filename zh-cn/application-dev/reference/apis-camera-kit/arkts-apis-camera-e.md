@@ -156,12 +156,12 @@
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。        |
-| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。      |
-| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。            |
-| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。      |
-| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。      |
-| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。            |
+| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。        |
+| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。            |
+| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。            |
 | CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  DNG（数字负片）格式的图片。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
 | CAMERA_FORMAT_DNG_XDRAW | 5     | 增强型DNG格式的图片。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。     |
 
