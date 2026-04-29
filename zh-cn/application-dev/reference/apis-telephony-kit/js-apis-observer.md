@@ -56,9 +56,9 @@ type DataConnectState = data.DataConnectState
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -90,9 +90,9 @@ type DataFlowType = data.DataFlowType
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -573,9 +573,9 @@ on\(type: 'cellularDataConnectionStateChange', callback: Callback\<DataConnectio
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -613,9 +613,9 @@ on\(type: 'cellularDataConnectionStateChange', options: ObserverOptions, callbac
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -661,9 +661,9 @@ off\(type: 'cellularDataConnectionStateChange',  callback?: Callback\<DataConnec
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -705,9 +705,9 @@ on\(type: 'cellularDataFlowChange', callback: Callback\<DataFlowType\>\): void
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -747,9 +747,9 @@ on\(type: 'cellularDataFlowChange', options: ObserverOptions,  callback: Callbac
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -797,9 +797,9 @@ off\(type: 'cellularDataFlowChange', callback?: Callback\<DataFlowType\>\): void
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1116,14 +1116,14 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
-|     名称            |                 类型                                            | 必填 | 说明         |
-| ------------------- | ---------------------------------------------------------------| ---- | ------------ |
-| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | 是   | 数据连接状态。 |
-| network             | [RatType](js-apis-radio.md#radiotechnology)                    | 是   | 网络类型。     |
+|     名称            |                 类型                                            | 只读  |  可选  | 说明         |
+| ------------------- | ----------------------------------------------------|-----------| ---- | ------------ |
+| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | 否   | 否|数据连接状态。 |
+| network             | [RatType](js-apis-radio.md#radiotechnology)                    | 否   | 否|网络类型。     |
 
 
 ## ObserverOptions<sup>11+</sup>
