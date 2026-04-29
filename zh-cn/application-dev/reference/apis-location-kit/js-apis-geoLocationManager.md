@@ -3196,9 +3196,9 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
     let rssiThreshold: number = -70;
     let needStartScan: boolean = true;
     geoLocationManager.findMatchingWlan(wlanBssidArray, rssiThreshold, needStartScan).then((res) => {
-      console.info("WLAN BSSID Matched Result:" + JSON.stringify(res));
+      console.info("WLAN BSSID Matched Result: " + JSON.stringify(res));
     })
   } catch (error) {
-    console.error("findMatchingWlan: errCode" + error.code + ", errMessage" + error.message);
+    console.error("findMatchingWlan: errCode " + error.code + ", errMessage " + error.message);
   }
   ```
