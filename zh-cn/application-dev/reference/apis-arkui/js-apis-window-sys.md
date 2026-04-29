@@ -2442,6 +2442,8 @@ setSnapshotSkip(isSkip: boolean): void
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
+**示例：**
+
 ```ts
 let isSkip: boolean = true;
 try {
