@@ -40,7 +40,7 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名    | 类型      | 必填  | 说明    |
 | -------- | ------------------------- | ---- | --------------------------- |
 | enable   | boolean                   | 是   | 键鼠穿越使能状态。 |
-| callback | AsyncCallback&lt;void&gt;  | 是  | 回调函数，异步返回键鼠穿越开启、关闭结果。   |
+| callback | AsyncCallback&lt;void&gt;  | 是  | 回调函数。当开启键鼠穿越成功时，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -159,7 +159,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCal
 | --------             | ---------------------------- | ----  | ----------------------------   |
 | sinkDeviceDescriptor | string                       |  是   | 键鼠穿越目标设备描述符。             |
 | srcInputDeviceId     | number                       |  是   | 键鼠穿越待穿越外设标识符。           |
-| callback             | AsyncCallback\<void>         |  是    | 回调函数，异步返回键鼠穿越启动、停止状态。|
+| callback             | AsyncCallback\<void>         |  是    | 回调函数。当启动键鼠穿越成功时，err为undefined，否则为错误对象。|
 
 **错误码**：
 
@@ -286,7 +286,7 @@ stop(callback: AsyncCallback\<void>): void
 
 | 参数名                | 类型                          | 必填  | 说明                            |
 | --------             | ---------------------------- | ----  | ----------------------------   |
-| callback             | AsyncCallback\<void>         |  是   | 回调函数，异步返回停止键鼠穿越结果。        |
+| callback             | AsyncCallback\<void>         |  是   | 回调函数。当停止键鼠穿越成功时，err为undefined，否则为错误对象。        |
 
 **错误码**：
 
@@ -389,7 +389,7 @@ getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>):
 | 参数名                | 类型                          | 必填   | 说明                            |
 | --------             | ---------                    | ----  | ----------------------------    |
 | deviceDescriptor     | string                       |  是    | 键鼠穿越目标设备描述符。             |
-| callback             | AsyncCallback<{ state: boolean }> |  是    | 回调函数，异步返回键鼠穿越开关状态。        |
+| callback             | AsyncCallback<{ state: boolean }> |  是    | 回调函数。当获取键鼠穿越开关状态成功时，err为undefined，data为键鼠穿越开关状态（true表示打开，false表示关闭）；否则为错误对象。        |
 
 **错误码**：
 
@@ -501,7 +501,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoncooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -510,7 +510,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
 | type                 | string                                                          |  是  | 注册类型，取值”cooperation“。         |
-| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数，异步返回键鼠穿越事件。    |
+| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数。当接收键鼠穿越事件成功时，err为undefined，data为键鼠穿越事件信息；否则为错误对象。    |
 
 **错误码**：
 
@@ -556,7 +556,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoffcooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -565,7 +565,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 | 参数名                | 类型                                                              | 必填    | 说明                           |
 | --------             | ----------------------------                                     | ----   | ----------------------------   |
 | type                 | string                                                           |  是    | 注册类型，取值“cooperation”。         |
-| callback             | AsyncCallback\<void> |  否  | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+| callback             | AsyncCallback\<void> |  否  | 回调函数。当取消注册成功时，err为undefined，否则为错误对象。若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码**：
 
