@@ -52,43 +52,43 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
 ArkTS-Dyn示例：
 
-    <!-- @[setRenderProcessMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
+<!-- @[setRenderProcessMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
 
-```typescript
-    import { webview } from '@kit.ArkWeb';
-    import { BusinessError } from '@kit.BasicServicesKit';
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-      build() {
-        Column() {
-          Button('getRenderProcessMode')
-            .onClick(() => {
-              let mode = webview.WebviewController.getRenderProcessMode();
-              console.info('getRenderProcessMode: ' + mode);
-            })
-          Button('setRenderProcessMode')
-            .onClick(() => {
-              try {
-                webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE);
-              } catch (error) {
-                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as     BusinessError).message}`);
-              }
-            })
-          Web({ src: 'www.example.com', controller: this.controller })
-        }
-      }
+  build() {
+    Column() {
+      Button('getRenderProcessMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getRenderProcessMode();
+          console.info('getRenderProcessMode: ' + mode);
+        })
+      Button('setRenderProcessMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as     BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
+  }
+}
 ```
 
 ArkTS-Sta示例：
 
 <!-- @[setRenderProcessMode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
 
-```typescript
+```TypeScript
 // xxx.ets
 'use static'
 import { Button, Column, Entry, Component, Web } from '@ohos.arkui.component';
@@ -121,40 +121,38 @@ struct WebComponent {
 }
 ```
 
-
-
 2. 可通过[terminateRenderProcess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#terminaterenderprocess12)来主动关闭渲染进程。若渲染进程尚未启动或已销毁，此操作将不会产生任何影响。此外，销毁渲染进程将同时影响所有与之关联的其他实例。
 
 ArkTS-Dyn示例：
 
-    <!-- @[terminateRenderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
+<!-- @[terminateRenderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
 
-```typescript
-    import { webview } from '@kit.ArkWeb';
+```TypeScript
+import { webview } from '@kit.ArkWeb';
 
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-      build() {
-        Column() {
-          Button('terminateRenderProcess')
-            .onClick(() => {
-              let result = this.controller.terminateRenderProcess();
-              console.info('terminateRenderProcess result: ' + result);
-            })
-          Web({ src: 'www.example.com', controller: this.controller })
-        }
-      }
+  build() {
+    Column() {
+      Button('terminateRenderProcess')
+        .onClick(() => {
+          let result = this.controller.terminateRenderProcess();
+          console.info('terminateRenderProcess result: ' + result);
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
+  }
+}
 ```
 
 ArkTS-Sta示例：
 
 <!-- @[terminateRenderProcess_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
 
-```typescript
+```TypeScript
 // xxx.ets
 'use static'
 import { Button, Column, Entry, Component, Web } from '@ohos.arkui.component';
@@ -182,27 +180,27 @@ struct WebComponent {
 
 ArkTS-Dyn示例：
 
-    <!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
+<!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
 
-```typescript
-    import { webview } from '@kit.ArkWeb';
+```TypeScript
+import { webview } from '@kit.ArkWeb';
 
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-      build() {
-        Column() {
-          Web({ src: 'chrome://crash/', controller: this.controller })
-            .onRenderExited((event) => {
-              if (event) {
-                console.info('reason:' + event.renderExitReason);
-              }
-            })
-        }
-      }
+  build() {
+    Column() {
+      Web({ src: 'chrome://crash/', controller: this.controller })
+        .onRenderExited((event) => {
+          if (event) {
+            console.info('reason:' + event.renderExitReason);
+          }
+        })
     }
+  }
+}
 ```
 
 4. 可通过[onRenderProcessNotResponding](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderprocessnotresponding12)、[onRenderProcessResponding](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderprocessresponding12)来监听渲染进程的无响应状态。
@@ -211,33 +209,33 @@ ArkTS-Dyn示例：
 
 ArkTS-Dyn示例：
 
-    <!-- @[onRenderProcessNotResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
+<!-- @[onRenderProcessNotResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
 
-```typescript
-    import { webview } from '@kit.ArkWeb';
+```TypeScript
+import { webview } from '@kit.ArkWeb';
 
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-      build() {
-        Column() {
-          Web({ src: 'www.example.com', controller: this.controller })
-            .onRenderProcessNotResponding((data) => {
-              console.info('onRenderProcessNotResponding: [jsStack]= ' + data.jsStack +
-                ', [process]=' + data.pid + ', [reason]=' + data.reason);
-            })
-        }
-      }
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onRenderProcessNotResponding((data) => {
+          console.info('onRenderProcessNotResponding: [jsStack]= ' + data.jsStack +
+            ', [process]=' + data.pid + ', [reason]=' + data.reason);
+        })
     }
+  }
+}
 ```
 
 ArkTS-Sta示例：
 
 <!-- @[onRenderProcessNotResponding_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
 
-```typescript
+```TypeScript
 // xxx.ets
 'use static'
 import { Column, Entry, Component, Web } from '@ohos.arkui.component';
@@ -261,25 +259,25 @@ struct WebComponent {
 ```
 ArkTS-Dyn示例：
 
-    <!-- @[onRenderProcessResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
+<!-- @[onRenderProcessResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
 
-```typescript
-    import { webview } from '@kit.ArkWeb';
+```TypeScript
+import { webview } from '@kit.ArkWeb';
 
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-      build() {
-        Column() {
-          Web({ src: 'www.example.com', controller: this.controller })
-            .onRenderProcessResponding(() => {
-              console.info('onRenderProcessResponding again');
-            })
-        }
-      }
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onRenderProcessResponding(() => {
+          console.info('onRenderProcessResponding again');
+        })
     }
+  }
+}
 ```
 ArkTS-Sta示例：
 
@@ -287,31 +285,31 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn示例：
 
-    <!-- @[WebComponentCreat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/WebComponentCreat.ets) -->
+<!-- @[WebComponentCreat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/WebComponentCreat.ets) -->
 
-```typescript
-    import { webview } from '@kit.ArkWeb';
+```TypeScript
+import { webview } from '@kit.ArkWeb';
 
-    @Entry
-    @Component
-    struct WebComponent {
-      controller1: webview.WebviewController = new webview.WebviewController();
-      controller2: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller1: webview.WebviewController = new webview.WebviewController();
+  controller2: webview.WebviewController = new webview.WebviewController();
 
-      build() {
-        Column() {
-          Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: '111' })
-          Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: '111' })
-        }
-      }
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: '111' })
+      Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: '111' })
     }
+  }
+}
 ```
 
 ArkTS-Sta示例：
 
 <!-- @[onRenderProcessResponding_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
 
-```typescript
+```TypeScript
 // xxx.ets
 'use static'
 import { Column, Entry, Component, Web } from '@ohos.arkui.component';
