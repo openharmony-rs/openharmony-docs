@@ -3,7 +3,7 @@
 ## cl.ability.1 废弃ActionExtensionAbility
 **访问级别**
 
-公开
+公开接口
 
 **变更原因**
 
