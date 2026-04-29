@@ -1,8 +1,8 @@
 # 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @libing23232323-->
-<!--Designer: @libing23232323-->
+<!--Owner: @weixin_41848015-->
+<!--Designer: @weixin_41848015-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
