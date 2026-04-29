@@ -46,6 +46,8 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
 1. 应用侧代码中，Web组件配置[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口，可通过[PermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md)的[getAccessibleResource](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md#getaccessibleresource9)接口获取请求权限的资源类型，当资源类型为TYPE_SENSOR时，进行传感器授权处理。
 
    ArkTS-Dyn示例：
+   <!-- @[the_type_of_resource_for_which_permission_is_requested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UseMotionDirSensor.ets) -->
+
    ```ts
    import { UIContext } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
@@ -111,7 +113,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
    ```
 
    ArkTS-Sta示例：
-   <!-- @[web_sensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/WebSensor/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_sensor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebSensor/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
    // xxx.ets

@@ -65,6 +65,8 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 - 应用代码。
 
 ArkTS-Dyn示例：
+   <!-- @[a_pop_up_window_is_used_to_notify_the_app_side_location_permission_request_message](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ManageLocPerms.ets) -->
+
   ```ts
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -140,7 +142,7 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
-   <!-- @[apply_geolocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/ApplyGeolocation.ets) -->
+   <!-- @[apply_geolocation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/ApplyGeolocation.ets) -->
 
    ```ts
    // xxx.ets
@@ -227,6 +229,8 @@ ArkTS-Sta示例：
 
 
 ArkTS-Dyn示例：
+<!-- @[setting_the_web_component_in_privacy_mode_allows_specifying_the_geolocation_of_the_source_used](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/AllowGeolocation.ets) -->
+
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -282,7 +286,7 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[geolocation_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/GeolocationPermissions.ets) -->
+<!-- @[geolocation_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/GeolocationPermissions.ets) -->
 
 ```ts
 // xxx.ets
