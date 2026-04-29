@@ -507,7 +507,7 @@ divider(options: DividerOptions | null | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                                  |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| options  | [DividerOptions](ts-basic-components-textpicker.md#divideroptions12对象说明) \| null \| undefined | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null时，不显示分割线。<br/>3.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
+| options  | [DividerOptions](ts-basic-components-textpicker.md#divideroptions12对象说明) \| null \| undefined | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null时，不显示分割线。<br/>3.取值为undefined时，按默认值处理。 <br/> 4.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br/>5.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
 
 ### dividerStyle<sup>19+</sup>
 
@@ -1024,7 +1024,7 @@ optionFontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 下拉菜单项的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary') |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 下拉菜单项的文本颜色。取值为undefined时，按默认值处理。<br/>默认值：$r('sys.color.ohos_id_color_text_primary') |
 
 ### optionFontColor<sup>18+</sup>
 
@@ -1589,7 +1589,7 @@ avoidance(mode: AvoidanceMode | undefined)
 
 | 参数名    | 类型                                      | 必填 | 说明                                                         |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode       | [AvoidanceMode](#avoidancemode19枚举说明) \| undefined | 是   | 设置下拉菜单的避让模式。<br/>默认值：AvoidanceMode.COVER_TARGET |
+| mode       | [AvoidanceMode](#avoidancemode19枚举说明) \| undefined | 是   | 设置下拉菜单的避让模式。取值为undefined时，按默认值处理。<br/>默认值：AvoidanceMode.COVER_TARGET |
 
 ### menuOutline<sup>20+</sup>
 
@@ -1611,7 +1611,7 @@ ArkTS-Sta: menuOutline(outline: MenuOutlineOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| outline  | ArkTS-Dyn: [MenuOutlineOptions](#menuoutlineoptions20对象说明)<br/>ArkTS-Sta: [MenuOutlineOptions](#menuoutlineoptions20对象说明) \| undefined | 是   | 下拉菜单框的外描边样式。 |
+| outline  | ArkTS-Dyn: [MenuOutlineOptions](#menuoutlineoptions20对象说明)<br/>ArkTS-Sta: [MenuOutlineOptions](#menuoutlineoptions20对象说明) \| undefined | 是   | 下拉菜单框的外描边样式。取值为undefined时，按各属性的默认值处理。 |
 
 ### showDefaultSelectedIcon<sup>20+</sup>
 
@@ -1635,7 +1635,7 @@ ArkTS-Sta: showDefaultSelectedIcon(show: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是   | 是否显示默认选定的图标。<br>默认值为false，true代表显示默认选择的图标，false代表不显示默认选择的图标。<br>当show为true，并且通过selectedOptionBgColor设置选中项的背景色时，同时显示所设置的选中项的背景色和默认选定的图标；当show为true，但未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。false代表不显示默认选定的图标，通过突出显示背景色来表示选中。 |
+| show  | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是   | 是否显示默认选定的图标。取值为undefined时，按默认值处理。<br>默认值为false，true代表显示默认选择的图标，false代表不显示默认选择的图标。<br>当show为true，并且通过selectedOptionBgColor设置选中项的背景色时，同时显示所设置的选中项的背景色和默认选定的图标；当show为true，但未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。false代表不显示默认选定的图标，通过突出显示背景色来表示选中。 |
 
 ### textModifier<sup>20+</sup>
 
@@ -1681,7 +1681,7 @@ textModifier(modifier: TextModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制按钮文本样式的方法。|
+| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制按钮文本样式的方法。取值为undefined时，则不使用文本修改器。|
 
 ### arrowModifier<sup>20+</sup>
 
@@ -1727,7 +1727,7 @@ arrowModifier(modifier: SymbolGlyphModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。 |
+| modifier  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。取值为undefined时，则不使用箭头修改器。 |
 
 ### optionTextModifier<sup>20+</sup>
 
@@ -1777,7 +1777,7 @@ optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-mo
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。|
+| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。取值为undefined时，则不使用此选项修改器。|
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
@@ -1827,7 +1827,7 @@ selectedOptionTextModifier(modifier: TextModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 |
+| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。取值为undefined时，则不使用选中项文本修改器。 |
 
 ### showInSubWindow<sup>20+</sup>
 
@@ -1851,7 +1851,7 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br>ArkTS-Sta: boolean \| undefined | 是   | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中。<br>false代表下拉菜单不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。 |
+| showInSubWindow  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br>ArkTS-Sta: boolean \| undefined | 是   | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中。<br>false代表下拉菜单不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。取值为undefined时，按默认值处理。 |
 
 ### keyboardAvoidMode<sup>23+</sup>
 
@@ -2026,6 +2026,8 @@ onSelect(callback: (index: number, value: string) => void)
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
+
+callback回调参数说明：
 
 | 参数名 | 类型   | 必填 | 说明                          |
 | ------ | ------ | ---- | ----------------------------- |

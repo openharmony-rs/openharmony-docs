@@ -103,7 +103,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 组件打开状态的背景颜色。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_emphasize')`混合`$r('sys.float.ohos_id_alpha_highlight_bg')`的透明度。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 组件打开状态的背景颜色。取值为undefined时，按默认值处理。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_emphasize')`混合`$r('sys.float.ohos_id_alpha_highlight_bg')`的透明度。 |
 
 ### switchPointColor
 
@@ -127,7 +127,7 @@ ArkTS-Sta: switchPointColor(color: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                       |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary') |
+| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | Switch类型的圆形滑块颜色。取值为undefined时，按默认值处理。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary') |
 
 ### switchStyle<sup>12+</sup>
 
@@ -149,7 +149,7 @@ ArkTS-Sta: switchStyle(value: SwitchStyle | undefined)
 
 | 参数名 | 类型                                  | 必填 | 说明             |
 | ------ | ------------------------------------- | ---- | ---------------- |
-| value  | ArkTS-Dyn: [SwitchStyle](#switchstyle12对象说明)<br/>ArkTS-Sta: [SwitchStyle](#switchstyle12对象说明) \| undefined | 是   | Switch样式风格。 |
+| value  | ArkTS-Dyn: [SwitchStyle](#switchstyle12对象说明)<br/>ArkTS-Sta: [SwitchStyle](#switchstyle12对象说明) \| undefined | 是   | Switch样式风格。取值为undefined时，按各属性的默认值处理。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -171,7 +171,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration\> | un
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration\>](#toggleconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration\>](#toggleconfiguration12对象说明) \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12对象说明)\><br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12对象说明)\> \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。取值为undefined时，则不使用contentModifier。 |
 
 ## SwitchStyle<sup>12+</sup>对象说明
 
@@ -218,7 +218,7 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| callback  | ArkTS-Dyn: (isOn: boolean) => void<br/>ArkTS-Sta: undefined | 是   | 为true时，代表状态从关切换为开。false时，代表状态从开切换为关。 |
+| callback  | ArkTS-Dyn: (isOn: boolean) => void<br/>ArkTS-Sta: undefined | 是   | 为true时，代表状态从关切换为开。false时，代表状态从开切换为关。为undefined时，则不使用事件。 |
 
 ## ToggleConfiguration<sup>12+</sup>对象说明
 

@@ -24,6 +24,8 @@
 
 MenuItem(value?: MenuItemOptions | CustomBuilder)
 
+构造菜单选项。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -77,7 +79,7 @@ ArkTS-Sta: selected(value: boolean | undefined | Bindable\<boolean\>)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined \| Bindable\<boolean\> | 是   | 菜单项是否选中。<br/>true：菜单项被选中；false：菜单项不被选中。<br />默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined \| Bindable\<boolean\> | 是   | 菜单项是否选中。取值为undefined时，按默认值处理。<br/>true：菜单项被选中；false：菜单项不被选中。<br />默认值：false |
 
 ### selectIcon
 
@@ -99,7 +101,7 @@ ArkTS-Sta: selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier | undef
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)<sup>12+</sup> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | 菜单项被选中时，是否显示被选中的图标。<br/>true：显示默认的对勾图标；false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)<sup>12+</sup> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | 菜单项被选中时，是否显示被选中的图标。取值为undefined时，按默认值处理。<br/>true：显示默认的对勾图标；false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。<br/>默认值：false |
 
 ### contentFont<sup>10+</sup>
 
@@ -121,7 +123,7 @@ ArkTS-Sta: contentFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                         |
 | ------ | ------------------------ | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined  | 是   | 菜单项中内容信息的字体样式。 |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined  | 是   | 菜单项中内容信息的字体样式。取值为undefined时，按各属性的默认值处理。 |
 
 ### contentFontColor<sup>10+</sup>
 
@@ -143,7 +145,7 @@ ArkTS-Sta: contentFontColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 菜单项中内容信息的字体颜色。<br />默认值：'#E5000000' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 菜单项中内容信息的字体颜色。取值为undefined时，按默认值处理。<br />默认值：'#E5000000' |
 
 ### labelFont<sup>10+</sup>
 
@@ -165,7 +167,7 @@ ArkTS-Sta: labelFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                         |
 | ------ | ------------------------ | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 菜单项中标签信息的字体样式。 |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 菜单项中标签信息的字体样式。取值为undefined时，按各属性的默认值处理。 |
 
 ### labelFontColor<sup>10+</sup>
 
@@ -187,7 +189,7 @@ ArkTS-Sta: labelFontColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 菜单项中标签信息的字体颜色。<br />默认值：'#99000000' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 菜单项中标签信息的字体颜色。取值为undefined时，按默认值处理。<br />默认值：'#99000000' |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -205,7 +207,7 @@ attributeModifier(modifier: AttributeModifier\<MenuItemAttribute\> | AttributeMo
 
 | 参数名    | 类型                                                                                              | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[CommonMethod](./ts-component-general-attributes.md)\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[CommonMethod](./ts-component-general-attributes.md)\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。取值为undefined时，则不使用属性修改器。 |
 
 ## 事件
 

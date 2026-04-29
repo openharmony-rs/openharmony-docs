@@ -287,7 +287,7 @@ onChange(callback: (isChecked: boolean) => void)
 
 | 参数名    | 类型    | 必填 | 说明                             |
 | --------- | ------- | ---- | -------------------------------- |
-| isChecked | boolean | 是   | 单选框选中状态改变时触发该回调。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| callback | boolean | 是   | 单选框选中状态改变时触发该回调。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
 ### onChange<sup>18+</sup>
 
