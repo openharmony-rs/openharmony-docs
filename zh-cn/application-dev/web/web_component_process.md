@@ -54,7 +54,7 @@ ArkTS-Dyn示例：
 
 <!-- @[setRenderProcessMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
 
-```TypeScript
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -88,7 +88,7 @@ ArkTS-Sta示例：
 
 <!-- @[setRenderProcessMode_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
 
-```TypeScript
+``` TypeScript
 // xxx.ets
 'use static'
 import { Button, Column, Entry, Component, Web } from '@ohos.arkui.component';
@@ -127,7 +127,7 @@ ArkTS-Dyn示例：
 
 <!-- @[terminateRenderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
 
-```TypeScript
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -152,7 +152,7 @@ ArkTS-Sta示例：
 
 <!-- @[terminateRenderProcess_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
 
-```TypeScript
+``` TypeScript
 // xxx.ets
 'use static'
 import { Button, Column, Entry, Component, Web } from '@ohos.arkui.component';
@@ -182,7 +182,7 @@ ArkTS-Dyn示例：
 
 <!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
 
-```TypeScript
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -211,7 +211,7 @@ ArkTS-Dyn示例：
 
 <!-- @[onRenderProcessNotResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
 
-```TypeScript
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -235,7 +235,7 @@ ArkTS-Sta示例：
 
 <!-- @[onRenderProcessNotResponding_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
 
-```TypeScript
+``` TypeScript
 // xxx.ets
 'use static'
 import { Column, Entry, Component, Web } from '@ohos.arkui.component';
@@ -261,7 +261,7 @@ ArkTS-Dyn示例：
 
 <!-- @[onRenderProcessResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
 
-```TypeScript
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -287,7 +287,7 @@ ArkTS-Dyn示例：
 
 <!-- @[WebComponentCreat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/WebComponentCreat.ets) -->
 
-```TypeScript
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -309,8 +309,7 @@ ArkTS-Sta示例：
 
 <!-- @[onRenderProcessResponding_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
 
-```TypeScript
-// xxx.ets
+``` TypeScript
 'use static'
 import { Column, Entry, Component, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
