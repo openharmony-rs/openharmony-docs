@@ -5838,3 +5838,17 @@ Allows an application to enable the outdoor exploration service to provide the a
 **Supported devices**: phones
 
 **Since**: 26.0.0
+
+## ohos.permission.GET_TICKET_INFO
+
+Allows a system application to generate integrity protection credentials for sensitive messages.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
