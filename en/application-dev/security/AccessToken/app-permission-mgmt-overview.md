@@ -73,7 +73,7 @@ The relationship between a permission group and its permissions is not fixed. Fo
 
 - APL
 
-  Both the applications and permissions are assigned with different APLs to prevent abuse of permissions.
+  To prevent applications from excessively requesting and abusing permissions, the system configures different permission scopes based on the APLs.
 
   The APL defines the priority of an application's permission request. Applications at different APLs can request different permissions.
 
@@ -94,7 +94,7 @@ The relationship between a permission group and its permissions is not fixed. Fo
   | APL| Description| Available To|
   | -------- | -------- | -------- |
   | normal | Allows an application to access common system resources beyond the default rules, such as configuring Wi-Fi and invoking the camera to take photos.<br>Access to these resources (including data and functions) has minor risks on user privacy and other applications.| Applications with the normal or higher APL.|
-  | system_basic | Allows an application to access resources related to basic OS services (basic functions provided or preset by the system), such as system settings and identity authentication.<br>Access to these resources imposes low risks to user privacy and other applications.| - Applications with the system_basic or system_core APL.<br>- [Restricted permissions](restricted-permissions.md), which are some system_basic permissions that can be granted to normal applications via ACL.|
+  | system_basic | Allows an application to access resources related to basic OS services (basic functions provided or preset by the system), such as system settings and identity authentication.<br>Access to these resources imposes high risks to user privacy and other applications.| - Applications with the system_basic or system_core APL.<br>- [Restricted permissions](restricted-permissions.md), which are some system_basic permissions that can be granted to normal applications via ACL.|
   | system_core | Allows an application to access OS core resources, These resources are underlying core services of the system. If these resources are corrupted, the OS cannot run properly.| - Applications with the system_core APL.<br>- System applications only.|
 
 - ACL
