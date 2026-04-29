@@ -32,7 +32,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
@@ -45,7 +45,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称         | 类型  | 只读 | 可选             |  说明    |
 | ----------- | ---- | -- | --- |--------------- | 
@@ -59,7 +59,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读| 可选              |  说明    |
 | -------------- | ---- | --------| ------- | --------|
@@ -74,7 +74,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读   |可选              |  说明    |
 | -------------- | ---- | ---| --------------- | --------|
@@ -113,7 +113,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | -------| -------- | --------|
@@ -129,7 +129,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读  |可选              |  说明    |
 | -------------- | ---- | ------| --------- | --------|
@@ -147,12 +147,27 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | ------ | --------- | --------|
 |  wiseDeviceId       | string  | 否 | 否   |  已注册设备标识。          |
 |  onlineStatus    | number  | 否 | 否   |  设备在线状态，包括<br />- 0：表示设备处于离线状态。<br />- 1：表示设备处于在线状态。      |
+
+## DeviceIdentification<sup>24+</sup>
+
+用于分布式设备识别的结构体。
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**： 此接口为系统接口。
+
+| 名称       | 类型  | 只读 | 可选              | 说明          |
+|----------| ---- | ------ | --------- |-------------|
+| deviceId | string  | 否 | 否   | 应用获取的匿名化设备ID。 |
+| udid     | string  | 否 | 否   | 设备唯一标识。     |
 
 ## DeviceManager
 
@@ -168,7 +183,7 @@ replyUiAction(action: number, actionResult: string): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -195,14 +210,14 @@ replyUiAction(action: number, actionResult: string): void
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    /*
-      action = 0 - 允许授权
-      action = 1 - 取消授权
-      action = 2 - 授权框用户操作超时
-      action = 3 - 取消pin码框展示
-      action = 4 - 取消pin码输入框展示
-      action = 5 - pin码输入框确定操作
-    */
+    /**
+     * action = 0 - 允许授权
+     * action = 1 - 取消授权
+     * action = 2 - 授权框用户操作超时
+     * action = 3 - 取消pin码框展示
+     * action = 4 - 取消pin码输入框展示
+     * action = 5 - pin码输入框确定操作
+     */
     let operation = 0;
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.replyUiAction(operation, 'extra');
@@ -222,7 +237,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -280,7 +295,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -325,7 +340,7 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -373,7 +388,7 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -429,7 +444,7 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -484,7 +499,7 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -550,7 +565,7 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -605,7 +620,7 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -663,7 +678,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -713,43 +728,6 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
   }
   ```
 
-### restoreLocalDeivceName<sup>18+</sup>
-
-restoreLocalDeivceName(): void
-
-系统重置还原网络设置时，还原本机设备名。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 11600102 | Failed to obtain the service.                                 |
-
-**示例：**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.restoreLocalDeivceName();
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
 ### getDeviceNetworkIdList<sup>18+</sup>
 
 getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt;string&gt;&gt;
@@ -760,7 +738,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -806,5 +784,148 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+### getIdentificationByDeviceIds<sup>24+</sup>
+
+getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIdentification&gt;;
+
+根据设备ID查询设备标识。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM，ohos.permission.DISTRIBUTED_DATASYNC，ohos.permission.sec.ACCESS_UDID
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**： 此接口为系统接口。
+
+**参数：**
+
+  | 参数名       | 类型                  | 必填  | 说明               |
+  | ------------- |---------------------| ---- |------------------|
+  |   deviceIds      | Array&lt;string&gt; |  是   | 应用程序可以获取的设备ID列表。 |
+
+**返回值：**
+
+  | 类型                                                           | 说明            |
+  |--------------------------------------------------------------| --------------- |
+  | Array&lt;[DeviceIdentification](#deviceidentification24)&gt; |  DeviceIdentification列表。|
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID    | 错误信息                                                                                                              |
+|----------|-------------------------------------------------------------------------------------------------------------------|
+| 201      | User permission verify failed.            |
+| 202      | The caller is not a system application.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
+| 11600101 | Failed to execute the function.                                                                        |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
+  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  getDeviceUdids(deviceIds: Array<string>): void {
+    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
+    try {
+      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+      console.info("Successfully retrieved UDID list");
+    } catch (error) {
+      console.error('Get device UDID failed:', error);
+      this.idsLists = [];
+    } finally {
+      if (deviceManager) {
+        try {
+          distributedDeviceManager.releaseDeviceManager(deviceManager);
+          console.info("deviceManager released successfully");
+        } catch (releaseError) {
+          console.error('Release device manager failed:', releaseError);
+        }
+      }
+    }
+  }
+  ```
+
+### restoreLocalDeviceName<sup>24+</sup>
+
+restoreLocalDeviceName(): void
+
+系统重置还原网络设置时，还原本机设备名。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**： 此接口为系统接口。
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeviceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+
+### restoreLocalDeivceName<sup>(deprecated)</sup>
+
+restoreLocalDeivceName(): void
+
+系统重置还原网络设置时，还原本机设备名。
+
+> **说明：**
+>
+> 从API version 18开始支持，从API version 24开始废弃，建议使用[restoreLocalDeviceName](#restorelocaldevicename24)替代。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**系统接口**： 此接口为系统接口。
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeivceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
   }
   ```
