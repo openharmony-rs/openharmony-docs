@@ -3679,30 +3679,30 @@ TCP状态。
 | password<sup>12+</sup>  | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
 
 ## Socks5DnsStrategy
- 	 
+
 SOCKS5代理的DNS查询策略配置信息
- 	 
+
 **起始版本**：26.0.0
- 	 
+
 **模型约束**：此接口仅可在Stage模型下使用。
- 	 
+
 **系统能力**：SystemCapability.Communication.NetManager.Core
- 	 
+
 | 名称             | 值   | 说明                     |
 | --------------- | ------ | ------------------------ |
 | SYSTEM_MODE     | 0 | 使用SOCKS5代理时，DNS解析由系统执行。|
 | PROXY_MODE      | 1 | 使用SOCKS5代理时，DNS解析由代理服务器执行。|
- 	 
+
 ## Socks5Proxy
- 	 
+
 SOCKS5代理配置信息
- 	 
+
 **起始版本**：26.0.0
- 	 
+
 **模型约束**：此接口仅可在Stage模型下使用。
- 	 
+
 **系统能力**：SystemCapability.Communication.NetStack
- 	 
+
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | host  | string | 否  | 否 |代理服务器主机名。<br>**说明:** 当该项为空时，视为未配置SOCKS5代理。|
