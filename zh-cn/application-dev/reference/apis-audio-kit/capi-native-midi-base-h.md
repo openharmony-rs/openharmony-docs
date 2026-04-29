@@ -10,7 +10,7 @@
 
 声明MIDI模块的基础数据结构。定义MIDI接口的基础类型、枚举、结构体和回调函数。
 
-**引用文件：** <midi/native_midi_base.h>
+**引用文件：** <ohmidi/native_midi_base.h>
 
 **库：** libohmidi.so
 
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_MIDIEvent](capi-ohmidi-oh-midievent.md) | OH_MIDIEvent | MIDI事件结构体（通用）。适用于原始字节流（MIDI 1.0）和UMP（Universal MIDI Packet）两种数据格式。 |
+| [OH_MIDIEvent](capi-ohmidi-oh-midievent.md) | OH_MIDIEvent | MIDI事件结构体（通用）。事件数据以Universal MIDI Packets（UMP）格式传输。原始字节流（MIDI 1.0）数据需要先转换为UMP格式后再填充此结构体。|
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) | OH_MIDIDeviceInformation | 设备信息结构体。储存设备ID等相关信息。 |
 | [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md) | OH_MIDIPortInformation | 端口信息结构体。用于枚举端口，包含可显示的端口名称。 |
 | [OH_MIDIPortDescriptor](capi-ohmidi-oh-midiportdescriptor.md) | OH_MIDIPortDescriptor | 端口描述符结构体，用于打开端口时指定端口索引和协议行为。 |
