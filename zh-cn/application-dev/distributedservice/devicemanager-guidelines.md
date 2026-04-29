@@ -127,7 +127,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
-   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    async createDeviceManager(): Promise<void> {
@@ -362,138 +362,6 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
      } catch(err) {
        let e: BusinessError = err as BusinessError;
        logger.error('[DeviceManager.RemoteDeviceModel] deviceStateChange failed err: ' + e.toString());
-     }
-   }
-   ```
-
-## 本机设备名称管理开发指导
-
-### 场景概述
-
-系统应用可以在获取分布式设备管理相关权限后，查询、修改和还原本机设备名称。其中，查询接口为公开接口，修改和还原接口为系统接口。
-
-> **说明：**
->
-> - 本章节仅适用于Stage模型下的系统应用。
-> - 调用系统接口前，除分布式数据同步权限外，还需在应用中声明`ohos.permission.ACCESS_SERVICE_DM`权限。
-
-### 接口说明
-
-getLocalDeviceName(): string;
-
-查询本机设备名称。详细信息参见：[getLocalDeviceName](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getlocaldevicename)。
-
-setLocalDeviceName(deviceName: string): Promise&lt;int&gt;;
-
-修改本机设备名称。详细信息参见：[setLocalDeviceName](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager-sys.md#setlocaldevicename18)。
-
-restoreLocalDeviceName(): void;
-
-还原本机设备名称。详细信息参见：[restoreLocalDeviceName](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager-sys.md#restorelocaldevicename24)。
-
-### 开发步骤
-
-1. 申请分布式数据同步权限，并为系统应用配置`ohos.permission.ACCESS_SERVICE_DM`。
-
-2. 导入distributedDeviceManager模块和BusinessError模块。
-
-   ```ts
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-
-3. 创建设备管理实例，查询、修改并在需要时还原本机设备名称。
-
-   ``` TypeScript
-   async function manageLocalDeviceName(): Promise<void> {
-     let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-     try {
-       deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-       let currentDeviceName: string = deviceManager.getLocalDeviceName();
-       console.info('currentDeviceName: ' + currentDeviceName);
-       await deviceManager.setLocalDeviceName('MyLocalDevice');
-       console.info('setLocalDeviceName finished');
-       deviceManager.restoreLocalDeviceName();
-       console.info('restoreLocalDeviceName finished');
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       console.error('manageLocalDeviceName errCode:' + error.code + ',errMessage:' + error.message);
-     } finally {
-       if (deviceManager != null) {
-         distributedDeviceManager.releaseDeviceManager(deviceManager);
-       }
-     }
-   }
-   ```
-
-## 设备标识查询及远端设备名称设置开发指导
-
-### 场景概述
-
-系统应用可以先通过公开接口获取可信设备列表，再通过系统接口查询设备唯一标识，并为指定远端设备设置自定义名称。
-
-> **说明：**
->
-> - 本章节仅适用于Stage模型下的系统应用。
-> - 调用系统接口前，除分布式数据同步权限外，还需在应用中声明`ohos.permission.ACCESS_SERVICE_DM`和`ohos.permission.sec.ACCESS_UDID`权限。
-> - [getIdentificationByDeviceIds](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager-sys.md#getidentificationbydeviceids24)的`deviceIds`参数最大列表长度为50。
-
-### 接口说明
-
-getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
-
-获取可信设备列表。详细信息参见：[getAvailableDeviceListSync](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)。
-
-getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIdentification&gt;;
-
-根据设备ID查询设备标识。详细信息参见：[getIdentificationByDeviceIds](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager-sys.md#getidentificationbydeviceids24)。
-
-setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;int&gt;;
-
-设置远端设备名称。详细信息参见：[setRemoteDeviceName](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager-sys.md#setremotedevicename18)。
-
-### 开发步骤
-
-1. 申请分布式数据同步权限，并为系统应用配置`ohos.permission.ACCESS_SERVICE_DM`和`ohos.permission.sec.ACCESS_UDID`。
-
-2. 导入distributedDeviceManager模块和BusinessError模块。
-
-   ```ts
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-
-3. 创建设备管理实例，先查询可信设备列表，再根据设备ID查询设备唯一标识，最后设置远端设备名称。
-
-   ``` TypeScript
-   async function updateRemoteDeviceName(): Promise<void> {
-     let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-     try {
-       deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-       let trustedDevices: Array<distributedDeviceManager.DeviceBasicInfo> =
-         deviceManager.getAvailableDeviceListSync();
-       if (trustedDevices.length === 0) {
-         console.info('no trusted device found');
-         return;
-       }
-
-       let deviceIds: Array<string> = trustedDevices.slice(0, 50).map((item) => item.deviceId);
-       let identifications: Array<distributedDeviceManager.DeviceIdentification> =
-         deviceManager.getIdentificationByDeviceIds(deviceIds);
-       if (identifications.length === 0) {
-         console.info('no device identification found');
-         return;
-       }
-
-       await deviceManager.setRemoteDeviceName(identifications[0].udid, 'RemoteDevice');
-       console.info('setRemoteDeviceName finished');
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       console.error('updateRemoteDeviceName errCode:' + error.code + ',errMessage:' + error.message);
-     } finally {
-       if (deviceManager != null) {
-         distributedDeviceManager.releaseDeviceManager(deviceManager);
-       }
      }
    }
    ```
