@@ -375,7 +375,7 @@ onChange(callback: Callback\<Date> | undefined)
 该示例通过calendarPicker实现了日历选择器组件，提供下拉日历弹窗。
 
 ```ts
-// xxx.ets
+// CalendarPickerExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerExample {
@@ -394,7 +394,7 @@ struct CalendarPickerExample {
       }.alignItems(HorizontalAlign.End).width('100%')
 
       Text('日历日期选择器').fontSize(30)
-    }.width('100%').margin({ top: 350 })
+    }.width('100%').margin({ top: 450 })
   }
 }
 ```
@@ -408,7 +408,7 @@ struct CalendarPickerExample {
 从API version 18开始，[CalendarOptions](#calendaroptions对象说明)中新增了start、end属性。
 
 ```ts
-// xxx.ets
+// CalendarPickerExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerExample {
@@ -427,7 +427,7 @@ struct CalendarPickerExample {
             console.info(`CalendarPicker onChange: ${value.toString()}`);
           })
       }.alignItems(HorizontalAlign.End).width('100%')
-    }.width('100%').margin({ top: 350 })
+    }.width('100%').margin({ top: 450 })
   }
 }
 ```
@@ -441,7 +441,7 @@ struct CalendarPickerExample {
 从API version 19开始，新增了[markToday](#marktoday19)接口，[CalendarOptions](#calendaroptions对象说明)中新增了disabledDateRange属性。
 
 ```ts
-// xxx.ets
+// CalendarPickerExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerExample {
@@ -467,3 +467,54 @@ struct CalendarPickerExample {
 ```
 
 ![CalendarPicker](figures/calendar_picker_mark_disabled.gif)
+
+### 示例4（使用AttributeModifier设置属性）
+
+该示例通过AttributeModifier设置日历选择器的文本样式。
+
+从API version 23开始，新增了[attributeModifier](#attributemodifier23)属性修改器接口。
+
+ArkTS-Sta示例：
+
+```ts
+// CalendarPickerExampleSta.ets
+
+import {
+  AttributeModifier,
+  CalendarPicker,
+  CalendarPickerAttribute,
+  Color,
+  Column,
+  Component,
+  Entry,
+  FontWeight,
+  HorizontalAlign
+} from '@kit.ArkUI';
+
+class MyCalendarPickerModifier implements AttributeModifier<CalendarPickerAttribute>{
+  applyNormalAttribute(instance: CalendarPickerAttribute): void {
+    instance.textStyle({ color: Color.Blue, font: { size: 40, weight: FontWeight.Bold } })
+  }
+}
+
+@Entry
+@Component
+struct CalendarPickerExample {
+  private calendarPickerModifier: MyCalendarPickerModifier = new MyCalendarPickerModifier();
+
+  build() {
+    Column() {
+      CalendarPicker({
+        selected: new Date('2026-04-01')
+      })
+        .margin(20)
+        .attributeModifier(this.calendarPickerModifier)
+        .onChange((value) => {
+          console.info(`CalendarPicker onChange: ${value.toString()}`);
+        })
+    }.alignItems(HorizontalAlign.Center).width('100%')
+  }
+}
+```
+
+![CalendarPicker](figures/CalendarPickerDemo4.png)

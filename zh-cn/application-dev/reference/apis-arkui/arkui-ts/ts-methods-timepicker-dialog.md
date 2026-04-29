@@ -104,6 +104,7 @@ static show(options?: TimePickerDialogOptions)
 该示例通过useMilitaryTime、dateTimeOptions、format设置时间格式。
 
 ```ts
+// TimePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TimePickerDialogExample {
@@ -173,8 +174,10 @@ struct TimePickerDialogExample {
 
 该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
+ArkTS-Dyn示例：
+
 ```ts
-// xxx.ets
+// TimePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TimePickerDialogExample {
@@ -213,6 +216,77 @@ struct TimePickerDialogExample {
               backgroundColor: '#50182431',
               borderRadius: 10
             },
+            onAccept: (value: TimePickerResult) => {
+              if (value.hour != undefined && value.minute != undefined) {
+                this.selectTime.setHours(value.hour, value.minute);
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
+              }
+            }
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// TimePickerDialogExampleSta.ets
+
+import {
+  Button,
+  ButtonRole,
+  ButtonStyleMode,
+  ButtonType,
+  Color,
+  Column,
+  Component,
+  Entry,
+  FontStyle,
+  FontWeight,
+  PickerDialogButtonStyle,
+  TimePickerResult
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TimePickerDialogExample {
+  private selectTime: Date = new Date('2025-12-09T11:20:00');
+
+  build() {
+    Column() {
+      Button('TimePickerDialog 12小时制')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showTimePickerDialog({
+            disappearTextStyle: { color: '#297bec', font: { size: 15, weight: FontWeight.Lighter } },
+            textStyle: { color: Color.Black, font: { size: 20, weight: FontWeight.Normal } },
+            selectedTextStyle: { color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } },
+            acceptButtonStyle: {
+              type: ButtonType.Normal,
+              style: ButtonStyleMode.NORMAL,
+              role: ButtonRole.NORMAL,
+              fontColor: 'rgb(81, 81, 216)',
+              fontSize: '26fp',
+              fontWeight: FontWeight.Bolder,
+              fontStyle: FontStyle.Normal,
+              fontFamily: 'sans-serif',
+              backgroundColor: '#A6ACAF',
+              borderRadius: 20
+            } as PickerDialogButtonStyle,
+            cancelButtonStyle: {
+              type: ButtonType.Normal,
+              style: ButtonStyleMode.NORMAL,
+              role: ButtonRole.NORMAL,
+              fontColor: Color.Blue,
+              fontSize: '16fp',
+              fontWeight: FontWeight.Normal,
+              fontStyle: FontStyle.Italic,
+              fontFamily: 'sans-serif',
+              backgroundColor: '#50182431',
+              borderRadius: 10
+            } as PickerDialogButtonStyle,
             onAccept: (value: TimePickerResult) => {
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);

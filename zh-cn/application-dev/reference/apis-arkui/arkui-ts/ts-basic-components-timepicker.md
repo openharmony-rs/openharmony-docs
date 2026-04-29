@@ -810,7 +810,7 @@ type OnTimePickerChangeCallback = (value: TimePickerResult) => void
 该示例通过配置[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)和[selectedTextStyle](#selectedtextstyle10)实现文本选择器中的文本样式。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -840,7 +840,7 @@ struct TimePickerExample {
 该示例通过配置useMilitaryTime实现12小时制、24小时制的切换。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -880,7 +880,7 @@ struct TimePickerExample {
 该示例使用format和dateTimeOptions设置TimePicker时间格式。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -911,7 +911,7 @@ struct TimePickerExample {
 该示例通过配置[loop](#loop11)设置TimePicker是否循环滚动。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -952,7 +952,7 @@ struct TimePickerExample {
 该示例设置TimePicker的起始时间。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -983,7 +983,7 @@ struct TimePickerExample {
 该示例设置TimePicker的结束时间。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -1015,7 +1015,7 @@ struct TimePickerExample {
 该示例通过配置[enableCascade](#enablecascade18)、[loop](#loop11)实现12小时制时上午下午跟随时间联动。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -1040,3 +1040,50 @@ struct TimePickerExample {
 ```
 
 ![timePicker](figures/TimePickerDemo7.gif)
+
+
+### 示例8（使用$$双向绑定）
+
+该示例通过$$双向绑定TimePicker组件的[selected](#timepickeroptions对象说明)属性。
+
+从API version 23开始，selected参数支持Bindable\<Date>类型。
+
+ArkTS-Sta示例：
+
+```ts
+// TimePickerExampleSta.ets
+
+import {
+  $$,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  Text,
+  TimePicker,
+  TimePickerFormat,
+  TimePickerResult
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct TimePickerExample {
+  @State selectedTime: Date = new Date('2026-04-01T09:10:10');
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Text(`TimePicker $$selected: ${this.selectedTime}`)
+
+      TimePicker({
+        selected: $$(this.selectedTime),
+        format: TimePickerFormat.HOUR_MINUTE_SECOND
+      })
+        .onChange((value: TimePickerResult) => {
+          console.info(`TimePicker onChange: ${value.hour} : ${value.minute} : ${value.second}`);
+        })
+    }
+  }
+}
+```
+![datePicker](figures/TimePickerDemo8.png)
