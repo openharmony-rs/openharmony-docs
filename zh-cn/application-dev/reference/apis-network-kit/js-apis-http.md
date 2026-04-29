@@ -958,7 +958,9 @@ requestSync(url: string, options?: HttpRequestOptions): HttpResponse
  >(3) 若URL包含中文或其他语言，需先调用encodeURL(URL)编码，再发起请求。<br>
  >(4) 此接口为同步接口，会阻塞当前线程直到返回HTTP请求响应结果或错误码。
  
- **起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1074,7 +1076,9 @@ enableAutoCookie(enable: boolean): void
 > (2) 当配置由false切换为true后，会在后续调用request接口发起请求时生效，并自动共享Cookie。<br>
 > (3) 当配置由true切换为false时，会清空当前实例内保存的Cookie共享状态。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1932,48 +1936,46 @@ HTTP 请求方法。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值   | 说明                                                         |
 | ----------------- | ---- | ------------------------------------------------------------ |
-| OK                | 200  | 请求成功。用于GET与POST请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
-| CREATED           | 201  | 已创建。请求成功并已创建新资源。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                           |
-| ACCEPTED          | 202  | 已接受。请求已被接受，但未处理完成。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                         |
-| NOT_AUTHORITATIVE | 203  | 非授权信息。请求成功。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                       |
-| NO_CONTENT        | 204  | 无内容。服务器成功处理，但未返回内容。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                       |
-| RESET             | 205  | 重置内容。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                   |
-| PARTIAL           | 206  | 部分内容。服务器成功处理了部分GET请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| MULT_CHOICE       | 300  | 多种选择。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                   |
-| MOVED_PERM        | 301  | 永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| MOVED_TEMP        | 302  | 临时移动。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                   |
-| SEE_OTHER         | 303  | 查看其它地址。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                               |
-| NOT_MODIFIED      | 304  | 未修改。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
-| USE_PROXY         | 305  | 使用代理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                   |
-| BAD_REQUEST       | 400  | 客户端请求的语法错误，服务器无法理解。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                       |
-| UNAUTHORIZED      | 401  | 请求需要用户的身份认证。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                     |
-| PAYMENT_REQUIRED  | 402  | 保留字段，将来使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                             |
-| FORBIDDEN         | 403  | 服务器理解请求客户端的请求，但是拒绝执行此请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
-| NOT_FOUND         | 404  | 服务器无法根据客户端的请求找到资源(网页)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
-| BAD_METHOD        | 405  | 客户端请求中的方法被禁止。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                   |
-| NOT_ACCEPTABLE    | 406  | 服务器无法根据客户端请求的内容特性完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
-| PROXY_AUTH        | 407  | 请求需要代理的身份认证。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                     |
-| CLIENT_TIMEOUT    | 408  | 请求超时。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                         |
-| CONFLICT          | 409  | 服务器完成客户端的PUT请求时可能返回此代码，服务器处理请求时发生了冲突。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GONE              | 410  | 客户端请求的资源已经不存在。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
-| LENGTH_REQUIRED   | 411  | 服务器无法处理客户端发送的不带Content-Length的请求信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
-| PRECON_FAILED     | 412  | 客户端请求信息的先决条件错误。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
-| ENTITY_TOO_LARGE  | 413  | 由于请求的实体过大，服务器无法处理，因此拒绝请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |
-| REQ_TOO_LONG      | 414  | 请求的URI过长(URI通常为网址)，服务器无法处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
-| UNSUPPORTED_TYPE  | 415  | 服务器无法处理请求的格式。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                   |
-| RANGE_NOT_SATISFIABLE<sup>12+</sup> | 416  | 请求范围不符合要求。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                  |
-| INTERNAL_ERROR    | 500  | 服务器内部错误，无法完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
-| NOT_IMPLEMENTED   | 501  | 服务器不支持请求的功能，无法完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                       |
-| BAD_GATEWAY       | 502  | 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| UNAVAILABLE       | 503  | 由于超载或系统维护，服务器暂时无法处理客户端的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| GATEWAY_TIMEOUT   | 504  | 充当网关或代理的服务器，未及时从远端服务器获取请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| VERSION           | 505  | 服务器不支持客户端请求中使用的HTTP协议版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
+| OK                | 200  | 请求成功。用于GET与POST请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| CREATED           | 201  | 已创建。请求成功并已创建新资源。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| ACCEPTED          | 202  | 已接受。请求已被接受，但未处理完成。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| NOT_AUTHORITATIVE | 203  | 非授权信息。请求成功。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| NO_CONTENT        | 204  | 无内容。服务器成功处理，但未返回内容。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| RESET             | 205  | 重置内容。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| PARTIAL           | 206  | 部分内容。服务器成功处理了部分GET请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| MULT_CHOICE       | 300  | 多种选择。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| MOVED_PERM        | 301  | 永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| MOVED_TEMP        | 302  | 临时移动。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| SEE_OTHER         | 303  | 查看其它地址。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| NOT_MODIFIED      | 304  | 未修改。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| USE_PROXY         | 305  | 使用代理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| BAD_REQUEST       | 400  | 客户端请求的语法错误，服务器无法理解。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| UNAUTHORIZED      | 401  | 请求需要用户的身份认证。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| PAYMENT_REQUIRED  | 402  | 保留字段，将来使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| FORBIDDEN         | 403  | 服务器理解请求客户端的请求，但是拒绝执行此请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| NOT_FOUND         | 404  | 服务器无法根据客户端的请求找到资源(网页)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| BAD_METHOD        | 405  | 客户端请求中的方法被禁止。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| NOT_ACCEPTABLE    | 406  | 服务器无法根据客户端请求的内容特性完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| PROXY_AUTH        | 407  | 请求需要代理的身份认证。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| CLIENT_TIMEOUT    | 408  | 请求超时。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| CONFLICT          | 409  | 服务器完成客户端的PUT请求时可能返回此代码，服务器处理请求时发生了冲突。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| GONE              | 410  | 客户端请求的资源已经不存在。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| LENGTH_REQUIRED   | 411  | 服务器无法处理客户端发送的不带Content-Length的请求信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| PRECON_FAILED     | 412  | 客户端请求信息的先决条件错误。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| ENTITY_TOO_LARGE  | 413  | 由于请求的实体过大，服务器无法处理，因此拒绝请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| REQ_TOO_LONG      | 414  | 请求的URI过长(URI通常为网址)，服务器无法处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| UNSUPPORTED_TYPE  | 415  | 服务器无法处理请求的格式。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| RANGE_NOT_SATISFIABLE<sup>12+</sup> | 416  | 请求范围不符合要求。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 26.0.0 |
+| INTERNAL_ERROR    | 500  | 服务器内部错误，无法完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| NOT_IMPLEMENTED   | 501  | 服务器不支持请求的功能，无法完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| BAD_GATEWAY       | 502  | 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| UNAVAILABLE       | 503  | 由于超载或系统维护，服务器暂时无法处理客户端的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| GATEWAY_TIMEOUT   | 504  | 充当网关或代理的服务器，未及时从远端服务器获取请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| VERSION           | 505  | 服务器不支持客户端请求中使用的HTTP协议版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
 
 ## HttpResponse
 
@@ -1981,14 +1983,14 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称   | 类型                                           | 只读 | 可选 |说明                    |
-| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| result               | string \| Object \| ArrayBuffer | 否   | 否   | HTTP请求根据响应头中content-type类型返回对应的响应格式内容，若HttpRequestOptions无expectDataType字段，按如下规则返回：<br />- application/json：返回JSON格式的字符串。<br />- application/octet-stream：ArrayBuffer。<br />- image：ArrayBuffer。<br />- 其他：string。<br /> 若HttpRequestOption有expectDataType字段，开发者需传入与服务器返回类型相同的数据类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| resultType<sup>9+</sup> | [HttpDataType](#httpdatatype9)             | 否   | 否   | 返回值类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                           |
-| responseCode         | [ResponseCode](#responsecode) \| number      | 否   | 否   | 回调函数执行成功时，此字段为[ResponseCode](#responsecode)。若执行失败，错误码将会从AsyncCallback中的err字段返回。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| header               | Object                                       | 否   | 否  | 发起HTTP请求返回来的响应头。当前返回的是JSON格式字符串，如需具体字段内容，需开发者自行解析。常见字段及解析方式如下：<br/>- content-type：header['content-type']。<br />- status-line：header['status-line']。<br />- date：header.date/header['date']。<br />- server：header.server/header['server']。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| cookies<sup>8+</sup> | string                                       | 否   | 否   | 服务器返回的原始cookies。开发者可自行处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。               |
-| performanceTiming<sup>11+</sup> | [PerformanceTiming](#performancetiming11) | 否   | 否 | HTTP请求的各个阶段的耗时。|
+| 名称                 | 类型                                         | 只读 | 可选 | 说明                                                          |
+| -------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| result               | ArkTS-Dyn: string \| Object \| ArrayBuffer<br />ArkTS-Sta: string \| RecordData \| ArrayBuffer | 否 | 否 | HTTP请求根据响应头中content-type类型返回对应的响应格式内容，若HttpRequestOptions无expectDataType字段，按如下规则返回：<br />- application/json：返回JSON格式的字符串。<br />- application/octet-stream：ArrayBuffer。<br />- image：ArrayBuffer。<br />- 其他：string。<br /> 若HttpRequestOption有expectDataType字段，开发者需传入与服务器返回类型相同的数据类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| resultType<sup>9+</sup> | [HttpDataType](#httpdatatype9)             | 否 | 否   | 返回值类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23 |
+| responseCode         | ArkTS-Dyn: [ResponseCode](#responsecode) \| number<br />ArkTS-Sta: [ResponseCode](#responsecode) \| int | 否 | 否  | 回调函数执行成功时，此字段为[ResponseCode](#responsecode)。若执行失败，错误码将会从AsyncCallback中的err字段返回。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| header               | ArkTS-Dyn: Object<br />ArkTS-Sta: Record<string, string> | 否 | 否   | 发起HTTP请求返回来的响应头。当前返回的是JSON格式字符串，如需具体字段内容，需开发者自行解析。常见字段及解析方式如下：<br/>- content-type：header['content-type']。<br />- status-line：header['status-line']。<br />- date：header.date/header['date']。<br />- server：header.server/header['server']。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
+| cookies<sup>8+</sup> | string                                       | 否 | 否   | 服务器返回的原始cookies。开发者可自行处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| performanceTiming<sup>11+</sup> | [PerformanceTiming](#performancetiming11) | 否 | 否 | HTTP请求的各个阶段的耗时。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23 |
 | connectionExtraInfo<sup>24+</sup> | [ConnectionExtraInfo](#connectionextrainfo24) | 否 | 是 | HTTP请求交互的详细信息。 |
 
 ## ClientCert<sup>11+</sup>
@@ -1997,12 +1999,16 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称   | 类型                                           | 只读 | 可选 |说明                    |
-| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| certPath | string | 否   | 否 | 证书路径。 |
-| certType | [CertType](#certtype11) | 否   | 是 | 证书类型，默认是PEM。 |
-| keyPath | string | 否   | 否 | 证书密钥的路径。 |
-| keyPassword | string | 否   | 是  | 证书密钥的密码。默认值为空字符串。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称          | 类型                      | 只读  | 可选  | 说明                |
+| ----------- | ----------------------- | --- | --- | ----------------- |
+| certPath    | string                  | 否   | 否   | 证书路径。             |
+| certType    | [CertType](#certtype11) | 否   | 是   | 证书类型，默认是PEM。      |
+| keyPath     | string                  | 否   | 否   | 证书密钥的路径。          |
+| keyPassword | string                  | 否   | 是   | 证书密钥的密码。默认值为空字符串。 |
 
 ## PerformanceTiming<sup>11+</sup>
 
@@ -2010,24 +2016,32 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称   | 类型                                           | 只读 | 可选 |说明                    |
-| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| dnsTiming  | number | 否   | 否   | 从[request](#request)请求到DNS解析完成耗时。 |
-| tcpTiming  | number | 否   | 否   | 从[request](#request)请求到TCP连接完成耗时。 |
-| tlsTiming  | number | 否   | 否   | 从[request](#request)请求到TLS连接完成耗时。 |
-| firstSendTiming  | number | 否   | 否   | 从[request](#request)请求到开始发送第一个字节的耗时。 |
-| firstReceiveTiming  | number | 否   | 否   | 从[request](#request)请求到接收第一个字节的耗时。 |
-| totalFinishTiming  | number | 否   | 否  | 从[request](#request)请求到完成请求的耗时。 |
-| redirectTiming  | number | 否   | 否  | 从[request](#request)请求到完成所有重定向步骤的耗时。 |
-| responseHeaderTiming  | number | 否   | 否   | 从[request](#request)请求到header解析完成的耗时。 |
-| responseBodyTiming  | number | 否   | 否   | 从[request](#request)请求到body解析完成的耗时。 |
-| totalTiming  | number | 否   | 否   | 从[request](#request)请求回调到应用程序的耗时。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 类型   | 只读  | 可选   | 说明                   |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| dnsTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  | 从[request](#request)请求到DNS解析完成耗时。 |
+| tcpTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到TCP连接完成耗时。 |
+| tlsTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到TLS连接完成耗时。 |
+| firstSendTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到开始发送第一个字节的耗时。 |
+| firstReceiveTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到接收第一个字节的耗时。 |
+| totalFinishTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到完成请求的耗时。 |
+| redirectTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到完成所有重定向步骤的耗时。 |
+| responseHeaderTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到header解析完成的耗时。 |
+| responseBodyTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到body解析完成的耗时。 |
+| totalTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求回调到应用程序的耗时。 |
 
 ## ConnectionExtraInfo<sup>24+</sup>
 
 HTTP请求交互的详细信息。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2053,10 +2067,15 @@ HTTP请求交互的详细信息。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称   | 类型                                           | 只读 | 可选 |说明                    |
-| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-|  receiveSize        | number | 否   | 否  | 已接收的数据量（单位：字节）。   |
-| totalSize| number | 否   | 否 | 总共要接收的数据量（单位：字节）。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+
+| 名称          | 类型                               | 只读  | 可选  | 说明                |
+| ----------- | -------------------------------- | --- | --- | ----------------- |
+| receiveSize | number | 否   | 否   | 已接收的数据量（单位：字节）。   |
+| totalSize   | number | 否   | 否   | 总共要接收的数据量（单位：字节）。 |
 
 ## DataSendProgressInfo<sup>11+</sup>
 
@@ -2065,6 +2084,8 @@ HTTP请求交互的详细信息。
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 ### 属性
 
@@ -2079,17 +2100,19 @@ HTTP请求交互的详细信息。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称   | 类型                                           | 只读 | 可选 |说明                    |
-| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| name        | string | 否 | 否 | 数据名称。                                                                      |
-| contentType | string | 否 | 否 | 数据类型，如'text/plain'，'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4'等。 |
-| remoteFileName | string | 否 | 是 | 上传到服务器保存为文件的名称。<br>**说明**：指定该字段后，请求头中会添加filename字段，表示上传到服务器文件的名称。<br>（1）当上传数据为文件时，若通过data字段指定文件内容，通常需要设置remoteFileName字段，用以指定上传到服务器文件的名称（实际结果与服务器具体行为有关）；若通过filePath字段指定文件路径，请求头中会自动添加filename字段，其默认值为filePath中的文件名称，如需特殊指定，也可通过本字段对filename重新设置。<br>（2）当上传数据为二进制格式时，则必须设置remoteFileName字段。                                                 |
-| data | string \| Object \| ArrayBuffer | 否 | 是 | 表单数据内容。                                               |
-| filePath | string | 否 | 是 | 此参数将文件路径指向的文件内容设置为表单数据，如果未指定data内容，则必须设置filePath。<br>**说明**：需传入文件管理模块支持的格式，可以通过文件管理的[access](../apis-core-file-kit/js-apis-file-fs.md#fileioaccess)接口，验证文件是否存在且可访问。|
+| 名称             | 类型                                                                                         | 只读  | 可选  | 说明                                                                                          |
+| -------------- | ------------------------------------------------------------------------------------------ | --- | --- | ------------------------------------------------------------------------------------------- |
+| name           | string                                                                                     | 否   | 否   | 数据名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                       |
+| contentType    | string                                                                                     | 否   | 否   | 数据类型，如'text/plain'，'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4'等。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                  |
+| remoteFileName | string                                                                                     | 否   | 是   | 上传到服务器保存为文件的名称。<br>**说明**：指定该字段后，请求头中会添加filename字段，表示上传到服务器文件的名称。<br>（1）当上传数据为文件时，若通过data字段指定文件内容，通常需要设置remoteFileName字段，用以指定上传到服务器文件的名称（实际结果与服务器具体行为有关）；若通过filePath字段指定文件路径，请求头中会自动添加filename字段，其默认值为filePath中的文件名称，如需特殊指定，也可通过本字段对filename重新设置。<br>（2）当上传数据为二进制格式时，则必须设置remoteFileName字段。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                             |
+| data           | ArkTS-Dyn: string \| Object \| ArrayBuffer<br>ArkTS-Sta:string \| RecordData\| ArrayBuffer | 否   | 是   | 表单数据内容。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                     |
+| filePath       | string                                                                                     | 否   | 是   | 此参数将文件路径指向的文件内容设置为表单数据，如果未指定data内容，则必须设置filePath。<br>**说明**：需传入文件管理模块支持的格式，可以通过文件管理的[access](../apis-core-file-kit/js-apis-file-fs.md#fileioaccess)接口，验证文件是否存在且可访问。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23 |
 
 ## http.createHttpResponseCache<sup>9+</sup>
 
-createHttpResponseCache(cacheSize?: number): HttpResponseCache
+ArkTS-Dyn: createHttpResponseCache(cacheSize?: number): HttpResponseCache
+
+ArkTS-Sta: createHttpResponseCache(cacheSize?: int): HttpResponseCache
 
 创建一个HttpResponseCache对象，可用于存储HTTP请求的响应数据。对象中可调用[flush](#flush9)与[delete](#delete9)方法，cacheSize指定缓存大小。
 
@@ -2097,24 +2120,40 @@ createHttpResponseCache(cacheSize?: number): HttpResponseCache
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  9
+
+**ArkTS-Sta起始版本：**  23
+
 **参数：**
 
-| 参数名   | 类型                                    | 必填 | 说明       |
-| -------- | --------------------------------------- | ---- | ---------- |
-| cacheSize | number | 否 | 缓存大小。最大为10\*1024\*1024（10MB），默认最大。 |
+| 参数名       | 类型                                  | 必填  | 说明                                 |
+| --------- | ----------------------------------- | --- | ---------------------------------- |
+| cacheSize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 缓存大小。最大为10\*1024\*1024（10MB），默认最大。 |
 
 **返回值：**
 
-| 类型        | 说明                                                         |
-| :---------- | :----------------------------------------------------------- |
-| [HttpResponseCache](#httpresponsecache9) | 返回一个存储HTTP访问请求响应的对象。 |
+| 类型                                                                                                         | 说明                   |
+|:---------------------------------------------------------------------------------------------------------- |:-------------------- |
+| ArkTS-Dyn: [HttpResponseCache](#httpresponsecache9)<br>ArkTS-Sta: [HttpResponseCache](#httpresponsecache9) | 返回一个存储HTTP访问请求响应的对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { http } from '@kit.NetworkKit';
 
 let httpResponseCache = http.createHttpResponseCache();
+```
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import http from '@ohos.net.http';
+
+let httpResponseCache: http.HttpResponseCache = http.createHttpResponseCache();
 ```
 
 ## HttpResponseCache<sup>9+</sup>
@@ -2159,13 +2198,19 @@ let httpResponseCache = http.createHttpResponseCache();
 
 ### flush<sup>9+</sup>
 
-flush(callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: flush(callback: AsyncCallback\<void\>): void
+
+ArkTS-Sta: flush(callback: AsyncCallback\<void\>): void
 
 将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用callback方式作为异步方法。缓存数据包括：响应头(header)、响应体(result)、cookies、请求时间(requestTime)和响应时间(responseTime)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  9
+
+**ArkTS-Sta起始版本：**  23
 
 **参数：**
 
@@ -2174,6 +2219,8 @@ flush(callback: AsyncCallback\<void\>): void
 | callback | AsyncCallback\<void\> | 是   | 回调函数。返回写入结果。当写入成功时，err为undefined，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { http } from '@kit.NetworkKit';
@@ -2198,15 +2245,48 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
 });
 ```
 
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpResponseCache = http.createHttpResponseCache();
+let httpRequest = http.createHttp();
+httpRequest.request("EXAMPLE_URL", (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+  if (err?.code != 0) {
+    console.error(`error: ${JSON.stringify(err)}`);
+    // 当该请求使用完毕时，开发者务必调用destroy方法释放资源，避免出现内存泄漏。
+    httpRequest.destroy();
+  } else {
+    httpResponseCache.flush((err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
+        console.error('flush fail');
+      }
+      console.info('flush success');
+    });
+    httpRequest.destroy();
+  }
+});
+```
+
 ### flush<sup>9+</sup>
 
-flush(): Promise\<void\>
+ArkTS-Dyn: flush(): Promise\<void\>
+
+ArkTS-Sta: flush(): Promise\<void\>
 
 将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用Promise方式作为异步方法。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  11
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **返回值：**
 
@@ -2215,6 +2295,8 @@ flush(): Promise\<void\>
 | Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { http } from '@kit.NetworkKit';
@@ -2235,6 +2317,29 @@ promise.then((data: http.HttpResponse) => {
 });
 ```
 
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+let httpResponseCache = http.createHttpResponseCache();
+let promise = httpRequest.request("EXAMPLE_URL");
+
+promise.then((data: http.HttpResponse) => {
+  httpResponseCache.flush().then(() => {
+    console.error('flush success');
+  }).catch((err: Error) => {
+    console.error('flush fail');
+  });
+}).catch((err: Error) => {
+  console.error(`error: ${JSON.stringify(err)}`);
+});
+```
+
 ### delete<sup>9+</sup>
 
 delete(callback: AsyncCallback\<void\>): void
@@ -2245,6 +2350,10 @@ delete(callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                    | 必填 | 说明       |
@@ -2252,6 +2361,8 @@ delete(callback: AsyncCallback\<void\>): void
 | callback | AsyncCallback\<void\> | 是   | 回调函数。当删除成功时，err为undefined，否则为错误对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { http } from '@kit.NetworkKit';
@@ -2277,6 +2388,32 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+httpRequest.request("EXAMPLE_URL").then(data => {
+  const httpResponseCache = http.createHttpResponseCache();
+  httpResponseCache.delete((err: BusinessError | null) => {
+    try {
+      if (err?.code) {
+        console.error('fail: ' + err);
+      } else {
+        console.info('success');
+      }
+    } catch (err) {
+      console.error('error: ' + err);
+    }
+  });
+  httpRequest.destroy();
+}).catch((error: BusinessError) => {
+  console.error("errcode" + JSON.stringify(error));
+});
+```
+
 ### delete<sup>9+</sup>
 
 delete(): Promise\<void\>
@@ -2286,6 +2423,10 @@ delete(): Promise\<void\>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2321,6 +2462,10 @@ HTTP的数据类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明     |
 | ------------------  | -- | ----------- |
 | STRING              | 0 | 字符串类型。 |
@@ -2335,9 +2480,9 @@ HTTP协议版本。
 
 | 名称  |   值   | 说明                                                                   |
 | :-------- | :----------- |:---------------------------------------------------------------------|
-| HTTP1_1   |   0   | 协议HTTP1.1。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| HTTP2     |   1   | 协议HTTP2。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
-| HTTP3<sup>11+</sup> |  2  | 协议HTTP3，若系统或服务器不支持，则使用低版本的HTTP协议请求。<br />**注意：** 仅对HTTPS的URL生效，HTTP则会请求失败。 |
+| HTTP1_1   |   0   | 协议HTTP1.1。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23 |
+| HTTP2     |   1   | 协议HTTP2。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23 |
+| HTTP3<sup>11+</sup> |  2  | 协议HTTP3，若系统或服务器不支持，则使用低版本的HTTP协议请求。<br />**注意：** 仅对HTTPS的URL生效，HTTP则会请求失败。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23 |
 
 ## CertType<sup>11+</sup>
 
@@ -2345,6 +2490,8 @@ HTTP协议版本。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  11
+**ArkTS-Sta起始版本：**  23
 | 名称 |   值   | 说明       |
 | --- | ------ | ---------- |
 | PEM | PEM | 证书类型PEM。 |
@@ -2356,6 +2503,10 @@ HTTP协议版本。
 由应用配置的证书。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  12
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
@@ -2372,6 +2523,10 @@ type HttpProxy = connection.HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  10
+
+**ArkTS-Sta起始版本：**  23
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | connection.HttpProxy | 网络代理配置信息。     |
@@ -2382,7 +2537,9 @@ type QueryParamValue = string \| number \| boolean \| null \| undefined
 
 QueryParamObject中允许使用的单个参数值类型。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2417,6 +2574,10 @@ type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  15
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 |       名称       |     值     |            说明             |
 | ---------------- | --------------- | --------------------------- |
 | DEFAULT | CURL_IPRESOLVE_WHATEVER | 设置此选项后，系统将自行选择目标域名的IPv4地址或IPv6地址。     |
@@ -2431,6 +2592,10 @@ type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
+
 |  名称  |  类型  |  只读  | 可选  |说明     |
 | ------------------  |---- |-- | -- |----------- |
 | username       | string | 否 |否 |用于身份验证的用户名。默认值为' '。 |
@@ -2443,6 +2608,10 @@ HTTP服务器身份验证。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
 
 |  名称               |  类型                                            | 只读    |    可选     |说明     |
 | ------------------  |-------------------------------------------------|-------- |------------ |---------------|
@@ -2458,6 +2627,10 @@ TLS加密版本及套件配置。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 |  名称               |  类型                            | 只读    |    可选     |说明     |
 | ------------------  |---------------------------------|-------- |-------- |---------------|
 | tlsVersionMin       | [TlsVersion](#tlsversion18)     | 否      |否       | TLS最低版本号。     |
@@ -2471,6 +2644,10 @@ TLS加密版本及套件配置。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
 
 | 名称        | 值 | 说明         |
 |:----------|:--|:-----------|
@@ -2489,6 +2666,10 @@ TLS配置。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 类型                         | 说明                                                                                 |
 |-------------------------------|------------------------------------------------------------------------------------|
 | 'system'  | 表示使用系统的TLS版本，是未进行TLS设置的默认值，值固定为'system'字符串。 |
@@ -2504,6 +2685,10 @@ type RemoteValidation = 'system' | 'skip'
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
+
 | 类型                         | 说明                                                                                 |
 |-------------------------------|------------------------------------------------------------------------------------|
 | 'system'  | 表示使用系统CA验证远端服务器身份，值固定为'system'字符串，是未配置时的默认值。 |
@@ -2518,6 +2703,10 @@ type AuthenticationType = 'basic' | 'ntlm' | 'digest'
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
 
 |类型                          | 说明                                                                                                 |
 |-------------------------------|----------------------------------------------------------------------------------------------------|
@@ -2535,6 +2724,10 @@ type CipherSuite = TlsV13CipherSuite
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
+
 |       类型       | 说明                                                                |
 | ---------------- |-------------------------------------------------------------------|
 | TlsV13CipherSuite | 表示值的类型为[TlsV13CipherSuite](#tlsv13ciphersuite18)。                 |
@@ -2548,6 +2741,10 @@ TLS1.3的加密套件声明函数，支持TLS1.3版本，兼容TLS1.2版本。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
 
 |       类型       | 说明                                                                |
 | ---------------- |-------------------------------------------------------------------|
@@ -2564,6 +2761,10 @@ TLS1.2的加密套件声明函数，支持TLS1.2版本，兼容TLS1.1版本。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
+
 |       类型       | 说明                                                                |
 | ---------------- |-------------------------------------------------------------------|
 | TlsV11CipherSuite | 表示值的类型为[TlsV11CipherSuite](#tlsv11ciphersuite18)。                 |
@@ -2579,6 +2780,10 @@ TLS1.1的加密套件声明函数，与TLS1.0的加密套件相同。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
+
 |       类型       | 说明                                                |
 | ---------------- |---------------------------------------------------|
 | TlsV10CipherSuite | 表示值的类型为[TlsV10CipherSuite](#tlsv10ciphersuite18)。 |
@@ -2593,6 +2798,10 @@ TLS1.0的加密套件声明函数。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
+
 |       类型       | 说明                                                                |
 | ---------------- |-------------------------------------------------------------------|
 | TlsV10SpecificCipherSuite | 表示值的类型为[TlsV10SpecificCipherSuite](#tlsv10specificciphersuite18)。 |
@@ -2606,6 +2815,10 @@ TLS1.3及以上版本支持的加密套件。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
 
 |       类型       | 说明   |
 | ---------------- |------|
@@ -2625,6 +2838,10 @@ TLS1.2及以上版本支持的加密套件。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
 
 |       类型       | 说明   |
 | ---------------- |------|
@@ -2649,6 +2866,10 @@ TLS1.0及以上版本支持的加密套件。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  18
+
+**ArkTS-Sta起始版本：**  23
+
 |       类型       | 说明   |
 | ---------------- |------|
 | 'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA' | 表示值的类型为字符串，可取'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA'。 |
@@ -2669,6 +2890,10 @@ type SslType = 'TLS' | 'TLCP'
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
 | 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
@@ -2681,6 +2906,10 @@ HTTP拦截器的类型枚举。
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 | 名称   | 值 |说明                                   |
 | ------ | --|-------------------------------------- |
@@ -2697,6 +2926,10 @@ HTTP请求上下文数据。该对象实例在拦截器的[interceptorHandle](#i
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 ### 属性
 
@@ -2716,6 +2949,10 @@ type ChainContinue = boolean
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 | 类型   | 说明                                    |
 | ------ | -------------------------------------- |
 | boolean | true表示继续处理拦截器链，false表示终止并返回HTTP响应。                   |
@@ -2727,6 +2964,10 @@ HTTP拦截器接口。用户可以实现此接口来定义拦截处理函数。
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 ### 属性
 
@@ -2744,6 +2985,10 @@ interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Pro
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **参数：**
 
@@ -2786,6 +3031,10 @@ HTTP拦截器链。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 **示例：**
 
 ```ts
@@ -2807,6 +3056,10 @@ addChain(chain: HttpInterceptor[]): boolean
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **参数：**
 
@@ -2884,6 +3137,10 @@ getChain(): HttpInterceptor[]
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 **返回值：**
 
 | 类型   | 说明                                     |
@@ -2941,6 +3198,10 @@ apply(httpRequest: HttpRequest): boolean
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **参数：**
 
@@ -3041,6 +3302,9 @@ HTTP请求指定特定网络的类型枚举。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  23
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
