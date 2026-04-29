@@ -58,7 +58,7 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
     | destinationLatitude  | number                 | 是   | 地点纬度。                                             |
     | destinationLongitude | number                 | 是   | 地点经度。                                             |
     | zoom                 | number                 | 否   | 地图缩放级别，取值为大于0的整数。                       |
-    | destinationPoiIds    | Record<number, string> | 否   | 终点POI ID列表，当前仅支持传入花瓣地图、高德地图、百度地图的POI ID。|
+    | destinationPoiIds    | Record<number, string> | 否   | 地点POI ID列表，当前仅支持传入花瓣地图、高德地图、百度地图的POI ID。|
 
 ## 拉起方开发步骤
 
@@ -232,7 +232,7 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
         | destinationLatitude  | number                 | 是   | 地点纬度。                                             |
         | destinationLongitude | number                 | 是   | 地点经度。                                             |
         | zoom                 | number                 | 否   | 地图缩放级别，取值为大于0的整数。                       |
-        | destinationPoiIds    | Record<number, string> | 否   | 终点POI ID列表，当前仅支持传入花瓣地图、高德地图、百度地图的POI ID。|
+        | destinationPoiIds    | Record<number, string> | 否   | 地点POI ID列表，当前仅支持传入花瓣地图、高德地图、百度地图的POI ID。|
 
 
     应用可根据[linkFeature](../quick-start/module-configuration-file.md#skills标签)中定义的特性功能，比如路线规划、导航、位置搜索和地点详情，结合接收到的uri和参数开发不同的样式页面。
