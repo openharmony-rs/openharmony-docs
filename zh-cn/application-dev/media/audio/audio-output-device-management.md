@@ -301,11 +301,12 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 
 <!--Del-->
 ### 获取活跃输出设备信息（仅对系统应用开放）
+
 使用[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/js-apis-audio-sys.md#getactiveoutputdevicedescriptors26)方法，可以获取当前音频设备场景下的活跃输出设备描述符。
 
 > **说明：**
 >
-> 获取活跃的输出设备接口。活跃策略与系统的音频设备策略保持一致。
+> 获取活跃的输出设备接口，活跃策略与系统的音频设备策略保持一致。
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。

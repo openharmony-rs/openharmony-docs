@@ -3264,15 +3264,19 @@ async function getExcludedDevices(){
 }
 ```
 
-## getActiveOutputDeviceDescriptors<sup>26+</sup>
+## getActiveOutputDeviceDescriptors
 
 getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 
 获取当前音频设备场景下的活跃输出设备描述符，使用Promise异步回调。活跃策略与系统的音频设备策略相关。
 
+**启始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **返回值：**
 | 类型                                                         | 说明                      |
@@ -3280,7 +3284,7 @@ getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 | Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise对象，返回活跃输出设备描述符列表。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
