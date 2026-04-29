@@ -394,7 +394,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, //可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false //可选，默认不使用网络代理，自API 10开始支持该属性。
 };
 
 httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
@@ -436,7 +436,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, //可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false //可选，默认不使用网络代理，自API 10开始支持该属性。
 };
 
 httpRequest.request("EXAMPLE_URL", options, (err: BusinessError | null, data: http.HttpResponse) => {
@@ -781,7 +781,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, //可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false //可选，默认不使用网络代理，自API 10开始支持该属性。
 };
 httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , data: number) => {
   if (!err) {
@@ -811,7 +811,7 @@ let options: http.HttpRequestOptions = {
   readTimeout: 60000, // 可选，默认为60000ms。
   connectTimeout: 60000, // 可选，默认为60000ms。
   usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-  usingProxy: false, //可选，默认不使用网络代理，自API 10开始支持该属性。
+  usingProxy: false //可选，默认不使用网络代理，自API 10开始支持该属性。
 };
 httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> | null, data: Int | undefined) => {
   if (err?.code != 0) {
