@@ -19,7 +19,7 @@ API 10
 
 **变更发生版本**
 
-从OpenHarmony SDK 7.0.0.26开始。
+从OpenHarmony SDK 7.0.0.23开始。
 
 **变更的接口/组件**
 
