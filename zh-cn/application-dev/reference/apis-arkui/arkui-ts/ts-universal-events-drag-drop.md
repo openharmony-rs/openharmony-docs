@@ -61,7 +61,7 @@ ArkTS-Sta: onDragStart(event: ((event: DragEvent, extraParams?: string) => Custo
 
 | 参数名      | 类型                            | 必填 | 说明               |
 | ----------- | ------------------------------- | ---- | ------------------ |
-| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo)<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo))&nbsp;\|&nbsp;undefined | 是   | 回调函数。<br/> **说明：**<br/> event参数为拖拽事件的信息。<br/> extraParams参数为拖拽事件的额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo)<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo))&nbsp;\|&nbsp;undefined | 是   | 回调函数。<br/> **说明：**<br/> event参数为拖拽事件的信息。<br/> extraParams参数为拖拽事件的额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。<br/>传入undefined时无效果。|
 
 **返回值：**
 
@@ -89,7 +89,7 @@ ArkTS-Sta: onDragEnter(event: ((event: DragEvent, extraParams?: string) => void)
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
@@ -117,7 +117,7 @@ ArkTS-Sta: onDragMove(event: ((event: DragEvent, extraParams?: string) => void) 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
@@ -145,7 +145,7 @@ ArkTS-Sta: onDragLeave(event: ((event: DragEvent, extraParams?: string) => void)
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
@@ -173,7 +173,7 @@ ArkTS-Sta: onDrop(event: ((event: DragEvent, extraParams?: string) => void) | un
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
@@ -201,7 +201,7 @@ ArkTS-Sta: onDrop(eventCallback: OnDragEventCallback | undefined, dropOptions: D
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| eventCallback  | ArkTS-Dyn: [OnDragEventCallback](#ondrageventcallback15) <br/>ArkTS-Sta: [OnDragEventCallback](#ondrageventcallback15) \|&nbsp;undefined | 是   | 回调函数。|
+| eventCallback  | ArkTS-Dyn: [OnDragEventCallback](#ondrageventcallback15) <br/>ArkTS-Sta: [OnDragEventCallback](#ondrageventcallback15) \|&nbsp;undefined | 是   | 回调函数。<br/>传入undefined时无效果。|
 | dropOptions  | [DropOptions](#dropoptions15)   | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | 落入过程的参数。 |
 
 **返回值：**
@@ -230,7 +230,7 @@ ArkTS-Sta: onDragEnd(event: ((event: DragEvent, extraParams?: string) => void) |
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
@@ -262,7 +262,7 @@ ArkTS-Sta: onPreDrag(callback: Callback\<PreDragStatus> | undefined): this
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| callback    | ArkTS-Dyn: Callback<[PreDragStatus](#predragstatus12枚举说明)><br/> ArkTS-Sta: Callback<[PreDragStatus](#predragstatus12枚举说明)> \| undefined     | 是   | 回调函数。|
+| callback    | ArkTS-Dyn: Callback<[PreDragStatus](#predragstatus12枚举说明)><br/> ArkTS-Sta: Callback<[PreDragStatus](#predragstatus12枚举说明)> \| undefined     | 是   | 回调函数。<br/>传入undefined时无效果。|
 
 **返回值：**
 
@@ -292,7 +292,7 @@ ArkTS-Sta: onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null
 
 | 参数名        | 类型                                      | 必填 | 说明                                           |
 | :------------ | ----------------------------------------- | ---- | ---------------------------------------------- |
-| callback          | ArkTS-Dyn: Callback\<[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)\> \| null<br/>ArkTS-Sta: Callback\<[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)\> \| null \| undefined    | 是   | 悬停检测回调函数，为null时禁用悬停检测。 |
+| callback          | ArkTS-Dyn: Callback\<[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)\> \| null<br/>ArkTS-Sta: Callback\<[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)\> \| null \| undefined    | 是   | 悬停检测回调函数，为null时禁用悬停检测。<br/>传入undefined时无效果。 |
 | configuration | [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | 悬停检测配置信息，为undefined时取[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20)默认值。  |
 
 **返回值：**
