@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin qianjiaxing@huawei.com-->
-<!--Designer: @nyankomiya wanghaofan@huawei.com-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -176,7 +176,7 @@ interface Rect {
 > 
 > [setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)、[setWindowSystemBarEnable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowsystembarenable9)等控制系统界面元素显示的接口仅非[自由窗口](window-terminology.md#自由窗口)状态下的主窗口支持调用，在辅助窗口中调用或[自由窗口](window-terminology.md#自由窗口)状态下调用不生效。在主窗口非全屏/最大化模式时调用不会立即生效，应用非全屏/最大化模式后配置生效。
 
-![zh-cn_image_0000002558654273](/Users/tom/Downloads/0000000000011111111.20250619224857.50105899849936210400468230179086.png)
+![zh-cn_image_0000002558654273](figures/0000000000011111111.20250619224857.50105899849936210400468230179086.png)
 
 1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。  
 
@@ -197,7 +197,7 @@ interface Rect {
          try {
            // 获取应用主窗口
            const mainWindow: window.Window = windowStage.getMainWindowSync(); 
-           //设置窗口进入沉浸式布局
+           // 设置窗口进入沉浸式布局
            await mainWindow.setWindowLayoutFullScreen(true);
          } catch (e) {
            console.error(`Failed to set window layout fullscreen`);
@@ -337,7 +337,7 @@ interface Rect {
 
    ```ts
    // Index.ets
-   //顶部避让区
+   // 顶部避让区
    Row() {
      Text('Top Container')
        .fontSize(40)
@@ -351,7 +351,7 @@ interface Rect {
      left: this.getUIContext().px2vp(this.leftAvoidWidth),
      right: this.getUIContext().px2vp(this.rightAvoidWidth)
    })
-   //底部避让区
+   // 底部避让区
      Row() {
        Text('Bottom Container')
          .fontSize(40)
