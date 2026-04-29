@@ -492,7 +492,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const float speed | 播放速率的值。当前版本有效范围为[0.1，4.0]。 |
+| const float speed | 播放速率的值。当前版本有效范围为[0.25，4.0]。 |
 
 **返回：**
 
