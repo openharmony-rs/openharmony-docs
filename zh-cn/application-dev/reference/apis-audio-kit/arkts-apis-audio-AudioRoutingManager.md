@@ -153,7 +153,7 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo\>): v
 
 监听麦克风堵塞状态变化事件。使用callback异步回调。
 
-使用此功能前，请查询设备是否支持检测。应用在使用麦克风录音时，若麦克风堵塞状态发生变化，将触发该事件。目前此检测功能仅支持麦克风位于本地设备上。
+使用此功能前，请使用[isMicBlockDetectionSupported](#ismicblockdetectionsupported13)查询设备是否支持检测。应用在使用麦克风录音时，若麦克风堵塞状态发生变化，将触发该事件。目前此检测功能仅支持麦克风位于本地设备上。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 

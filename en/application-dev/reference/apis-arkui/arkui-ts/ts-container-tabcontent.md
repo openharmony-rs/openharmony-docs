@@ -124,8 +124,8 @@ Defines the options for configuring images and text content on the tabs.
 
 | Name| Type        | Read-Only| Optional| Description|
 | -------- | -------- | --- | ----- | -------- |
-| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Image for the tab.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Text for the tab.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Image for the tab. If this parameter is not set, no image is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Text for the tab. If this parameter is not set, no text is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -243,7 +243,7 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [IndicatorStyle](#indicatorstyle10)\| [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
+| value | [IndicatorStyle](#indicatorstyle10) | [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
 
 > **NOTE**
 > - **IndicatorStyle**: a solid line. By default, the animation transition effect is displayed when a tab is switched.
@@ -335,7 +335,7 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding of the subtab.<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding of the subtab.<br>Value range: [0, +∞]<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**|
 
 **Return value**
 
@@ -357,7 +357,7 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>Value range: [0, +∞]<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
 
 **Return value**
 
@@ -533,7 +533,7 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab.<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab.<br>Value range: [0, +∞]<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**|
 
 **Return value**
 
@@ -696,7 +696,7 @@ Enumerates the layout modes of the images and texts on the bottom tabs.
 
 | Name        | Value| Description                                    |
 | ----------  | - | ---------------------------------------- |
-| AUTO        | 0 | When the tab width is greater than 104 vp, the tab content is arranged from left to right. Otherwise, the tab content is arranged from top to bottom. This parameter is valid only when the tab bar is in vertical mode or fixed horizontal mode.|
+| AUTO        | 0 | When the tab width is greater than 104 vp, the tab content is arranged from left to right. Otherwise,the tab content is arranged from top to bottom. This parameter is valid only when the tab bar is in vertical mode or fixed horizontal mode.|
 | VERTICAL    | 1 | The tab content is arranged from top to bottom.|
 | HORIZONTAL  | 2 | The tab content is arranged from left to right.|
 
@@ -1610,7 +1610,7 @@ how to change the icon color of bottom tabs using **unselectedColor** and **sele
 struct TabBarStyleExample {
   build() {
     Column({ space: 5 }) {
-      Text ('Subtab style')
+      Text('Subtab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {

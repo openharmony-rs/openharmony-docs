@@ -1045,6 +1045,7 @@ let htmlRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.
 pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
+
 ### addRecord<sup>9+</sup>
 
 addRecord(mimeType: string, value: ValueType): void
@@ -1635,6 +1636,7 @@ hasMimeType(mimeType: string): boolean
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
 ```
+
 ### removeRecordAt<sup>(deprecated)</sup>
 
 removeRecordAt(index: number): boolean
@@ -1958,7 +1960,7 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
@@ -2001,7 +2003,7 @@ getData(): Promise&lt;PasteData&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 
 **示例：**
 
@@ -2563,7 +2565,7 @@ getDataSync(): PasteData
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 
 **示例：**
 

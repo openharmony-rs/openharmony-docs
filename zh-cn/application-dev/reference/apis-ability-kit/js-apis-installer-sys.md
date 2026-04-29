@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 在设备上安装、升级和卸载应用。
 
@@ -1780,6 +1780,65 @@ try {
 } catch (error) {
     let message = (error as BusinessError).message;
     console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+## BundleInstaller.uninstallNewPreinstalledApps<sup>24+</sup>
+
+uninstallNewPreinstalledApps(bundleNames: Array\<string\>): Promise\<void\>
+
+批量卸载新增的预置应用。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.UNINSTALL_BUNDLE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名        | 类型                           | 必填 | 说明                       |
+| ------------  | ----------------------------- | ---- | ------------------------- |
+| bundleNames   | Array\<string\>               | 是   | 待卸载的应用的包名列表。          |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+```ts
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleNames = ['com.example.application', 'com.example.demo'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstallNewPreinstalledApps(bundleNames)
+            .then(() => {
+                console.info('uninstallNewPreinstalledApps successfully.');
+        }).catch((error: BusinessError) => {
+            console.error('uninstallNewPreinstalledApps failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('uninstallNewPreinstalledApps failed. Cause: ' + message);
 }
 ```
 

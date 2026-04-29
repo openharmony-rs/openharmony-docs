@@ -5,7 +5,7 @@
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIAbilityContext是需要保存状态的[UIAbility](js-apis-app-ability-uiAbility.md)所对应的context，继承自[Context](js-apis-inner-application-context.md)，提供UIAbility的相关配置信息以及操作UIAbility和ServiceExtensionAbility的方法，如启动UIAbility，停止当前UIAbilityContext所属的UIAbility，启动、停止、连接、断开连接ServiceExtensionAbility等。
 
@@ -996,6 +996,8 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 
 **示例：**

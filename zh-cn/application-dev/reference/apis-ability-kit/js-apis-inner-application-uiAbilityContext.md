@@ -5,7 +5,7 @@
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIAbilityContext是[UIAbility](./js-apis-app-ability-uiAbility.md)组件的上下文，继承自[Context](./js-apis-inner-application-context.md)。各类Context之间的关联与差异详见[应用上下文Context](../../application-models/application-context-stage.md)。
 
@@ -962,6 +962,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |

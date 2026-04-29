@@ -83,6 +83,7 @@
     - [使用RC2对称密钥（CBC模式）加解密(ArkTS)](crypto-rc2-sym-encrypt-decrypt-cbc.md)
     - [使用RC4对称密钥加解密(ArkTS)](crypto-rc4-sym-encrypt-decrypt.md)
     - [使用ECIES混合加解密(ArkTS)](crypto-encrypt-decrypt-using-ecies.md)
+    - [使用ECIES混合加解密(C/C++)](crypto-encrypt-decrypt-using-ecies-native.md)
 - 签名验签<!--crypto-sign-sig-verify-->
   - [签名验签介绍及算法规格](crypto-sign-sig-verify-overview.md)
   - 签名验签开发指导<!--crypto-sign-sig-verify-dev-->
@@ -143,4 +144,4 @@
   - [使用X963KDF进行密钥派生(ArkTS)](crypto-key-derivation-using-x963kdf.md)
   - [使用X963KDF进行密钥派生(C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)<!--RP1--><!--RP1End-->
 - Crypto Architecture Kit常见问题<!--crypto-faqs-->
-  - [AES解密失败返回17630001](crypto-aes-decryption-error-faq.md)
+  - [AES解密失败返回错误码17630001](crypto-aes-decryption-error-faq.md)

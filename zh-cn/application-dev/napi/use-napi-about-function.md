@@ -31,16 +31,21 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 cpp部分代码
 
-```cpp
+<!-- @[napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
+
+``` C++
 #include "napi/native_api.h"
+
+// napi_get_cb_info
 // 获取ArkTS侧入参的参数信息
 static napi_value GetCbArgs(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     return args[0];
 }
+
 // 获取ArkTS侧入参的参数个数
 static napi_value GetCbArgQuantity(napi_env env, napi_callback_info info)
 {
@@ -50,6 +55,7 @@ static napi_value GetCbArgQuantity(napi_env env, napi_callback_info info)
     napi_create_int32(env, argc, &result);
     return result;
 }
+
 // 获取ArkTS侧this参数
 static napi_value GetCbContext(napi_env env, napi_callback_info info)
 {
@@ -58,22 +64,25 @@ static napi_value GetCbContext(napi_env env, napi_callback_info info)
     return thisArg;
 }
 ```
-<!-- @[napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
-export const getCbArgs: <T>(arg: T) => T;
+<!-- @[napi_get_cb_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const getCbArgs: <T>(arg: T) => T; // napi_get_cb_info
+
 // getCbArgQuantity的入参由用户自定义，在此用例中，我们用两个入参，一个是string，一个是number
 export const getCbArgQuantity: (str: string, num: number) => number;
+
 export const getCbContext: () => Object;
 ```
-<!-- @[napi_get_cb_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS 侧示例代码
 
-```ts
+<!-- @[ark_napi_get_cb_info_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
@@ -84,33 +93,49 @@ function summation(arr: Array<number>) {
   }
   return sum;
 }
+
 const str = 'message';
 const arr = [0, 1, 2, 3, 4, 5];
 const num = 526;
+
 class Student {
   name: string;
   age: number;
   score: number;
+
   constructor(name: string, age: number, score: number) {
     this.name = name;
     this.age = age;
     this.score = score;
   }
 }
+```
+
+<!-- @[ark_napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// napi_get_cb_info
 let student = new Student('Alice', 18, 100);
 // 获取参数
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get string arg:%{public}s', testNapi.getCbArgs(str));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get array arg:%{public}s ', testNapi.getCbArgs(arr).toString());
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get num arg:%{public}d ', testNapi.getCbArgs(num));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get undefined arg:%{public}s ', testNapi.getCbArgs(undefined));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get object arg:%{public}s ', JSON.stringify(testNapi.getCbArgs(student)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get function arg:%{public}d ', testNapi.getCbArgs(summation(arr)));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get string arg:%{public}s',
+  testNapi.getCbArgs(str));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get array arg:%{public}s ',
+  testNapi.getCbArgs(arr).toString());
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get num arg:%{public}d ',
+  testNapi.getCbArgs(num));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get undefined arg:%{public}s ',
+  testNapi.getCbArgs(undefined));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get object arg:%{public}s ',
+  JSON.stringify(testNapi.getCbArgs(student)));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get function arg:%{public}d ',
+  testNapi.getCbArgs(summation(arr)));
 // 获取参数个数
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get arg quantity:%{public}d ', testNapi.getCbArgQuantity(str, num));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get arg quantity:%{public}d ',
+  testNapi.getCbArgQuantity(str, num));
 // 获取上下文
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{public}s ', testNapi.getCbContext().toString());
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{public}s ',
+  testNapi.getCbContext().toString());
 ```
-<!-- @[ark_napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
 ## napi_call_function
 
@@ -120,9 +145,10 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
+``` C++
+// napi_call_function
 static napi_value CallFunction(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -153,36 +179,43 @@ static napi_value ObjCallFunction(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
-export const callFunction: (func: Function) => number;
+<!-- @[napi_call_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const callFunction: (func: Function) => number; // napi_call_function
+
 export const objCallFunction: (obj: Object, func: Function) => number;
 ```
-<!-- @[napi_call_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS 侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_call_function_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
 function returnNumber() {
   return 10;
 }
+
 class Person {
   age(): number {
     return 11;
   }
 }
-const person = new Person();
-hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d', testNapi.callFunction(returnNumber));
-hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d', testNapi.objCallFunction(person,person.age));
 ```
-<!-- @[ark_napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
+
+<!-- @[ark_napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// napi_call_function
+const person = new Person();
+hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
+  testNapi.callFunction(returnNumber));
+hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
+  testNapi.objCallFunction(person, person.age));
+```
 
 ## napi_create_function
 
@@ -190,9 +223,10 @@ hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d', testNapi
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
+``` C++
+// napi_create_function
 static napi_value CalculateArea(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传递的两个参数
@@ -207,35 +241,25 @@ static napi_value CalculateArea(napi_env env, napi_callback_info info)
     napi_create_double(env, width * height, &area);
     return area;
 }
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
-    napi_value fn = nullptr;
-    napi_create_function(env, nullptr, 0, CalculateArea, nullptr, &fn);
-    napi_set_named_property(env, exports, "calculateArea", fn);
-    return exports;
-}
-EXTERN_C_END
 ```
-<!-- @[napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
-export const calculateArea: (width: number, height: number) => number;
+<!-- @[napi_create_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const calculateArea: (width: number, height: number) => number; // napi_create_function
 ```
-<!-- @[napi_create_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS 侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
 
-hilog.info(0x0000, 'testTag', 'Test Node-API create_function:%{public}d ', testNapi.calculateArea(1.2, 4));
+``` TypeScript
+// napi_create_function
+hilog.info(0x0000, 'testTag', 'Test Node-API create_function:%{public}d ',
+  testNapi.calculateArea(1.2, 4));
 ```
-<!-- @[ark_napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

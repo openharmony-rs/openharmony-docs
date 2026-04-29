@@ -13,6 +13,8 @@ The swipe refresher is a component used to obtain and load content, typically wi
 >
 > - This component and its child components are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - This component can be used only in the stage model.
+>
 > - If the **SwipeRefresher** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SwipeRefresher** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SwipeRefresher** component.
 
 
@@ -31,7 +33,7 @@ Not supported
 
 SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 
-Implements the pull-down refresh function. When a user pulls down the page, it triggers a content loading operation, fetching new content from the data source and dynamically displaying it on the page.
+Implements the pull-down refresh feature. When a user pulls down the page, it triggers a content loading operation, fetching new content from the data source and dynamically displaying it on the page.
 
 **Decorator**: @Component
 
@@ -44,7 +46,7 @@ Implements the pull-down refresh function. When a user pulls down the page, it t
 | Name| Type| Mandatory| Decorator| Description                                                                |
 | -------- | -------- | -------- | -------- |--------------------------------------------------------------------|
 | content | [ResourceStr](ts-types.md#resourcestr) | No| @Prop | Text displayed when the content is loaded.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated. The Resource type is supported since API version 20.  |
-| isLoading | boolean | Yes| \@Prop | Whether content is being loaded.<br> **true**: Content is being loaded.<br> **false**: Content is not being loaded.|
+| isLoading | boolean | Yes| \@Prop | Whether content is being loaded.<br> **true**: yes<br>**false**: no|
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
@@ -76,4 +78,4 @@ struct Index {
 }
 ```
 
-![Snipaste_2023-07-24_11-35-40](figures/Snipaste_2023-07-24_11-35-40.gif)
+

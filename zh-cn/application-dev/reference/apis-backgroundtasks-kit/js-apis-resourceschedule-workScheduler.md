@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 

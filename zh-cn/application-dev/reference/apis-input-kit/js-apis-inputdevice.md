@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供输入设备管理能力，包括监听输入设备的连接和断开状态，查询设备名称等输入设备信息。
 
@@ -34,7 +34,7 @@ getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 | 参数名     | 类型                                     | 必填 | 说明                                     |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
+| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为所有输入设备的ID列表（ID是输入设备的唯一标识）；否则为错误对象。 |
 
 **错误码**：
 
@@ -129,7 +129,7 @@ getDeviceInfo(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;):
 | 参数名     | 类型                                                     | 必填 | 说明                                    |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
 | deviceId | number                                                   | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                  |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为输入设备信息（包括输入设备ID、名称、支持的输入能力等）；否则为错误对象。 |
 
 **错误码**：
 
@@ -448,7 +448,7 @@ getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 | 参数名     | 类型                                     | 必填 | 说明                                     |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
+| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为所有输入设备的ID列表；否则为错误对象。 |
 
 **示例**：
 
@@ -535,7 +535,7 @@ getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): voi
 | 参数名     | 类型                                                     | 必填 | 说明                             |
 | -------- | -------------------------------------------------------- | ---- | -------------------------------- |
 | deviceId | number                                                   | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                     |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为输入设备信息；否则为错误对象。 |
 
 **示例**：
 
@@ -627,7 +627,7 @@ supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallbac
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number                                    | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 | keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt;  | 是   | 需要查询的键值，最多支持5个按键查询。                |
-| callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | 是   | 回调函数，返回查询结果。                           |
+| callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | 是   | 回调函数。当查询成功时，err为undefined，data为按键支持查询结果（数组元素与keys参数一一对应，true表示支持，false表示不支持）；否则为错误对象。                           |
 
 **错误码**：
 
@@ -789,7 +789,7 @@ getKeyboardType(deviceId: number, callback: AsyncCallback&lt;KeyboardType&gt;): 
 | 参数名     | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | deviceId | number                                              | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| callback | AsyncCallback&lt;[KeyboardType](#keyboardtype9)&gt; | 是   | 回调函数，返回查询结果。                                 |
+| callback | AsyncCallback&lt;[KeyboardType](#keyboardtype9)&gt; | 是   | 回调函数。当查询成功时，err为undefined，data为输入设备的键盘类型；否则为错误对象。|
 
 **错误码**：
 
@@ -848,7 +848,7 @@ getKeyboardType(deviceId: number): Promise&lt;KeyboardType&gt;
 
 | 类型                                          | 说明                            |
 | --------------------------------------------- | ------------------------------- |
-| Promise&lt;[KeyboardType](#keyboardtype9)&gt; | Promise对象，返回查询结果。 |
+| Promise&lt;[KeyboardType](#keyboardtype9)&gt; | Promise对象，异步返回输入设备的键盘类型。 |
 
 **错误码**：
 

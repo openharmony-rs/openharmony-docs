@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用信息的查询能力，支持应用包信息[BundleInfo](js-apis-bundleManager-bundleInfo.md)、应用程序信息[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)、UIAbility组件信息[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、ExtensionAbility组件信息[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询。
 
@@ -45,6 +45,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 30%; 10%; 60%-->
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|-----|
 | FORM             | 0   | [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展能力，提供卡片开发能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -81,6 +82,8 @@ import { bundleManager } from '@kit.AbilityKit';
 | NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)：提供通知订阅的相关功能。|
 | CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。|
 | PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT<sup>24+</sup> | 37 | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。 |
 <!--RP2--><!--RP2End-->
 
@@ -145,6 +148,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                               |值 |说明 |
 |:----------------------------------|---|---|
 | UNSPECIFIED                        |0 |表示未定义方向模式，由系统判定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -1769,6 +1773,61 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
+}
+```
+
+## bundleManager.getInstalledBundleList
+
+getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
+
+根据给定的bundleFlags获取系统中所有的BundleInfo。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                             |
+| ----------- | ------ | ---- | -------------------------------------------------- |
+| bundleFlags | number | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。                |
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)>> | Promise对象，返回当前已安装应用的信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | ---------------------------------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+
+try {
+  bundleManager.getInstalledBundleList(bundleFlags).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getInstalledBundleList successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', message);
 }
 ```
 

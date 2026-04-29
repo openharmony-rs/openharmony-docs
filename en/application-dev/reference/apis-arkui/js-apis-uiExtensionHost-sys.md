@@ -316,7 +316,7 @@ Creates a subwindow for this **UIExtensionHostWindowProxy** instance. This API u
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API returns error code 801 when called.
+**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
 
 **Parameters**
 
@@ -340,6 +340,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | 401 | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
 
@@ -400,7 +401,7 @@ Creates a subwindow under this **UIExtensionHostWindowProxy** instance. By setti
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API returns error code 801 when called.
+**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
 
 **Parameters**
 
@@ -424,6 +425,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
 

@@ -1,9 +1,8 @@
 # 系统定义的公共事件(系统接口)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -407,6 +406,20 @@
 **取值：** "usual.event.CLOUD_DISK_STATE_CHANGED"
 
 
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
+
+表示某个应用结束恢复的公共事件。
+
+当数据迁移相关应用拉起备份恢复框架进行恢复任务，某个应用恢复结束后会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.RESTORE_END_NOTIFICATION（该权限仅系统应用可申请）
+
+**取值：** "usual.event.RESTORE_END"
+
 ## Media Kit
 
 ### COMMON_EVENT_SCREEN_SHARE
@@ -423,6 +436,22 @@
 
 **取值：** "usual.event.SCREEN_SHARE"
 
+
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+表示VPN连接状态的公共事件。
+
+当VPN连接或者断开时会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
 
 ## Telephony Kit
 

@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。开发指导请参考[长时任务开发指南](../../task-management/continuous-task.md)、[短时任务开发指南](../../task-management/transient-task.md)。
 
@@ -1442,6 +1442,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 30%; 10%; 60%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
@@ -1484,6 +1485,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL             | 1    | 用户取消。                  |
@@ -1589,6 +1591,11 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_SUSPEND_USED_ILLEGALLY              | 11    | 使用非法类型的长时任务，如申请AUDIO_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。预留接口，暂未启用。        |
 | SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING         | 12    | 系统高负载暂停长时任务。预留接口，暂未启用。        |
 | SYSTEM_SUSPEND_VOIP_NOT_USED               | 13   | 申请VOIP类型长时任务，但是未检测到音频流或者录音流。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST    | 14   | 申请BLUETOOTH_INTERACTION类型长时任务，但是一段时间没有蓝牙数据流。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_POSITION_NOT_MOVED          | 15   | 申请LOCATION类型长时任务，但是一段时间内设备处于绝对静止状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE         | 16   | 申请AUDIO_PLAYBACK类型长时任务，但是一段时间内处于整机静音状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_NEARLINK_NOT_USED         | 17   | 申请星闪类型长时任务，但是一段时间没有星闪配对连接。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST           | 18   | 申请星闪类型长时任务，但是一段时间没有星闪数据流。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | 申请特殊类型长时任务，但是用户未授权。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ContinuousTaskActiveInfo<sup>20+</sup>
@@ -1607,6 +1614,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 25%; 15%; 8%; 8%; 44%-->
 | 名称          | 类型       | 只读   | 可选   | 说明                    |
 |-------------|----------| ---- | ---- |-----------------------|
 | abilityName | string   | 否    | 否    | UIAbility名称。          |
@@ -1639,11 +1647,12 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**说明：** 主类型与子类型必须匹配。     |
 | backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。 <br/>**说明：** 主类型与子类型必须匹配。|
-| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
+| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
 | continuousTaskId | number   | 否    | 是    | 长时任务ID，默认值为-1。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
 
@@ -1698,7 +1707,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会弹出用户授权弹框，建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1816,6 +1825,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
 | MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** <br/>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。                 |
@@ -1828,6 +1838,7 @@ export default class EntryAbility extends UIAbility {
 | MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 |
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。            |
 | MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>使用场景举例：应用在后台导出媒体文件、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 从API version 24开始，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)的应用开放。API version 23及之前版本，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放，已经申请该权限的应用在API version 24之后不受影响。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
+| MODE_NEARLINK | 14 | 星闪业务。<br/>使用场景举例：通过星闪传输文件时退后台。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1835,6 +1846,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。       |
@@ -1861,8 +1873,9 @@ export default class EntryAbility extends UIAbility {
 | MODE_MULTI_DEVICE_CONNECTION      | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup><br/>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  <br/>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup> |
+| MODE_AV_PLAYBACK_AND_RECORD  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<br/>SUBMODE_AVSESSION_AUDIO_PLAYBACK<br/>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<br/>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<br/>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION  |
+| MODE_SPECIAL_SCENARIO_PROCESSING  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION  <br/>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION |
+| MODE_NEARLINK                   | SUBMODE_NORMAL_NOTIFICATION         |
 
 ## UserAuthResult<sup>22+</sup>
 
@@ -1870,6 +1883,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 30%; 10%; 60%-->
 | 名称           | 值 | 说明     |
 | ------------ |---|--------|
 | NOT_SUPPORTED | 0 | 不支持。例如：申请的长时任务主类型非MODE_SPECIAL_SCENARIO_PROCESSING时，不支持申请用户授权是否能在后台长时间运行。 |

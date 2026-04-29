@@ -1,8 +1,8 @@
 # @ohos.util (util工具函数)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -360,7 +360,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-将generateRandomUUID生成的string类型UUID转换为generateRandomBinaryUUID生成的UUID，符合RFC 4122版本规范。
+将generateRandomUUID生成的string类型UUID转换为[util.generateRandomBinaryUUID](#utilgeneraterandombinaryuuid9)生成的UUID，符合RFC 4122版本规范。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -644,6 +644,9 @@ EventHandler和libuv的异步事件循环机制在执行异步任务时，任务
 
 ``` C++
 // napi_init.cpp C++侧示例代码
+#include "napi/native_api.h"
+#include "uv.h"
+
 static napi_value CreateObject(napi_env env, napi_callback_info info)
 {
     uv_loop_s* loop = nullptr;
@@ -673,6 +676,12 @@ static napi_value CreateObject(napi_env env, napi_callback_info info)
 }
 ```
 
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libuv.so
+```
+
 ``` TypeScript
 // index.d.ts 接口声明
 export const createObject: () => void;
@@ -694,6 +703,20 @@ try {
 }
 ```
 
+**可能出现的问题：**
+
+如果之前内存泄漏的对象被继续使用，使用enableLocalHandleDetection接口后，系统会回收内存泄漏对象。继续使用该对象会导致内存泄漏问题转变为稳定性问题。
+
+``` C++
+napi_value global_js_object;
+napi_value dangerous_function(napi_env env, napi_callback_info info) {
+    napi_value js_obj;
+    napi_create_object(env, &js_obj);
+    global_js_object = js_obj; // 直接存储到全局变量，开启LocalHandle内存泄漏兜底机制后被释放
+    return nullptr;
+}
+```
+
 ### onVMHeapMemoryPressure<sup>24+</sup>
 
 static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
@@ -701,6 +724,8 @@ static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold:
 注册一个回调函数，在虚拟机主线程完成垃圾回收后，如果堆内存超过预警阈值则触发回调执行。
 
 虚拟机是通过统计存活对象大小来判断是否达到内存预警阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -742,6 +767,8 @@ static offVMHeapMemoryPressure(): void
 
 取消已注册的内存预警回调函数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例：**
@@ -755,6 +782,8 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 ## HeapMemoryThreshold<sup>24+</sup>
 
 堆内存预警阈值配置，用于指定触发回调的堆内存预警阈值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -814,7 +843,7 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| stream | boolean | 否 | 是 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
+| stream | boolean | 否 | 是 | 在随后的[decodeWithStream](#decodewithstreamdeprecated)调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
 
 ## Aspect<sup>11+</sup>
 

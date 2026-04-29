@@ -1,10 +1,10 @@
 # @ohos.bundleState (设备使用信息统计)(系统接口)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供设备使用信息统计能力。
 

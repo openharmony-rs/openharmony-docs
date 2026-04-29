@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供输入设备管理能力，包括查询输入设备信息，设置/获取键盘按键重复时延，设置输入设备的开关状态等。
 
@@ -37,7 +37,7 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | delay    | number                    | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复延迟时间成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -151,7 +151,7 @@ getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback   | AsyncCallback&lt;number&gt;                    | 是    | 回调函数，返回键盘按键重复延迟时间。 |
+| callback   | AsyncCallback&lt;number&gt;                    | 是    | 回调函数。当获取成功时，err为undefined，data为键盘按键重复延迟时间；否则为错误对象。 |
 
 **错误码**：
 
@@ -260,7 +260,7 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | rate    | number                    | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复速率成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -374,7 +374,7 @@ getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，返回键盘按键的重复速率。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取成功时，err为undefined，data为键盘按键的重复速率；否则为错误对象。 |
 
 **错误码**：
 

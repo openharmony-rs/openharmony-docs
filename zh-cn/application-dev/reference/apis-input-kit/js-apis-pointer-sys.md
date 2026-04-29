@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 鼠标光标管理模块，用于查询和设置鼠标光标相关属性。
 
@@ -36,7 +36,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | speed    | number                    | 是    | 鼠标移动速度，范围1-20，默认为10。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标移动速度成功时，err为undefined，否则为错误对象。|
 
 **错误码：**
 
@@ -201,7 +201,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，异步返回鼠标移动速度。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度；否则为错误对象。 |
 
 **错误码**：
 
@@ -359,7 +359,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state    | boolean                    | 是    | 鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标悬停滚动开关状态成功时，err为undefined，否则为错误对象。|
 
 **错误码**：
 
@@ -473,7 +473,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，当获取鼠标悬停滚动开关状态成功，err为undefined，true代表开关开启，false代表开关关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -582,7 +582,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 | 参数名    | 类型                      | 必填  | 说明                                    |
 | -------- | ------------------------- | ----  | ------------------------------------- |
 | primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | 是    | 鼠标主键类型。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标主键成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -696,7 +696,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | 是    | 回调函数，异步返回鼠标主键。 |
+| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | 是    | 回调函数，当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
 
 **错误码**：
 
@@ -805,7 +805,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | rows     | number                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -919,7 +919,7 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，异步返回鼠标滚动行数。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
 
 **错误码**：
 
@@ -1028,7 +1028,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    | 滚轴开关开启的状态，true代表开启，false代表关闭，默认为开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴开关成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1142,7 +1142,7 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴能力开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认为开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -1251,7 +1251,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    | state为触控板滚轴的方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴方向成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1365,7 +1365,7 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数，当获取触控板滚轴方向成功，err为undefined，state是true与手指滑动的方向一致，false与手指滑动的方向相反，默认为true；否则为错误对象。 |
 
 **错误码**：
 
@@ -1470,7 +1470,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    |触控板轻触功能开关开启状态。 true代表轻触开启，false代表轻触关闭，默认开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板轻触功能开关成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1584,7 +1584,7 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，异步返回触控板轻触功能开启状态， true代表开启，false代表关闭，默认开启。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板轻触功能开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -1693,7 +1693,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1807,7 +1807,7 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<number> | 是    | 回调函数，异步返回触控板光标移动速度。 |
+| callback | AsyncCallback\<number> | 是    | 回调函数，当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
 
 **错误码**：
 
@@ -1916,7 +1916,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    |触控板双指捏合功能开关开启状态。 true代表开启，false代表关闭，默认开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双指捏合功能开关成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2030,7 +2030,7 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数，当获取触控板双指捏合功能开启状态成功，err为undefined，state是true代表功能开启，false代表功能关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -2139,7 +2139,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | state | boolean | 是    |触控板多指滑动开关开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。   |
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板多指滑动功能开关成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2253,7 +2253,7 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数，当获取触控板多指滑动功能开启状态成功，err为undefined，state是true代表多指滑动开启，false代表多指滑动关闭，默认开启；否则为错误对象。 |
 
 **错误码**：
 
@@ -2358,7 +2358,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | type| [RightClickType](js-apis-pointer.md#rightclicktype10)| 是    |type代表触控板右键菜单类型。<br>- TOUCHPAD_RIGHT_BUTTON：按压触控板右键区域。<br>- TOUCHPAD_LEFT_BUTTON：按压触控板左键区域。<br>- TOUCHPAD_TWO_FINGER_TAP：双指轻击或双指按压触控板。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板右键区域。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板左键区域。<br>默认值为TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON。|
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板右键菜单类型成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2472,7 +2472,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | 是    | 回调函数，异步返回触控板右键菜单类型。 |
+| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | 是    | 回调函数，当获取触控板右键菜单类型成功，err为undefined，对象是触控板右键菜单类型；否则为错误对象。 |
 
 **错误码**：
 
@@ -2740,7 +2740,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，异步返回鼠标光标大小。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小；否则为错误对象。 |
 
 **错误码**：
 
@@ -3073,7 +3073,7 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，异步返回鼠标光标颜色。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标颜色成功，err为undefined，number是获取的鼠标光标颜色；否则为错误对象。 |
 
 **错误码**：
 
@@ -3231,7 +3231,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
 | isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
-| callback | AsyncCallback\<void> | 是    | 回调函数。|
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双击拖拽开关状态成功时，err为undefined，否则为错误对象。|
 
 **错误码**：
 
@@ -3345,7 +3345,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数，异步返回触控板双击拖拽开关的开启状态。返回true代表开启，返回false代表关闭。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板双击拖拽开关的开启状态成功，err为undefined，返回true代表开启，返回false代表关闭；否则为错误对象。 |
 
 **错误码**：
 

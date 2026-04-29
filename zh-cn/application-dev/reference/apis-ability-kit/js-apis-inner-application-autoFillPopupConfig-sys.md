@@ -5,7 +5,7 @@
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 自动填充气泡弹窗的尺寸和位置信息。
 
@@ -42,8 +42,8 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称 | 类型   | 只读 | 可选 | 说明            |
 | ------ | ------ | ---- | ---- | --------------- |
-| width  | number | 否   | 否   | 气泡弹窗的宽。 |
-| height | number | 否   | 否   | 气泡弹窗的高。 |
+| width  | number | 否   | 否   | 气泡弹窗的宽，单位是px。 |
+| height | number | 否   | 否   | 气泡弹窗的高，单位是px。 |
 
 ## PopupPlacement
 

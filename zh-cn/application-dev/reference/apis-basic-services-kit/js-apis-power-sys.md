@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块主要提供重启、关机、查询屏幕状态等接口。
 
@@ -554,7 +554,7 @@ getPowerConfig(sceneName: string): string
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 4900400 | Invalid parameter. Possible causes: 1. The length of sceneName parameter exceeds 128 bytes. |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes. |
 | 4900501 | Failed to read the power configuration value. |
 
 **示例：**
@@ -589,7 +589,7 @@ setPowerConfig(sceneName: string, value: string): void
 | 参数名    | 类型     | 必填   | 说明    |
 | ------ | ------ | ---- | ----- |
 | sceneName | string | 是    | 场景名称。最大长度128字节。 |
-| value | string | 是    | 配置节点值。最大长度4096字节。 |
+| value | string | 是    | 配置节点值。最大长度128字节。 |
 
 **错误码：**
 
@@ -600,7 +600,7 @@ setPowerConfig(sceneName: string, value: string): void
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 4900400 | Invalid parameter. Possible causes: 1. The length of sceneName parameter exceeds 128 bytes; 2. The length of value parameter exceeds 4096 bytes. |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName or value parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes; <br>3. The length of value parameter exceeds 128 bytes. |
 | 4900601 | Failed to write the power configuration value. |
 
 **示例：**

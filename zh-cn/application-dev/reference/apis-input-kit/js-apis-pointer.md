@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供鼠标光标管理能力，包括查询、设置鼠标光标属性。
 
@@ -32,7 +32,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | visible  | boolean                   | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标光标显示状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -188,7 +188,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名       | 类型                           | 必填   | 说明             |
 | -------- | ---------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，返回鼠标光标状态，true为显示，false为隐藏。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当获取鼠标光标显示状态成功时，err为undefined，data为鼠标光标状态（true为显示，false为隐藏）；否则为错误对象。 |
 
 **错误码**：
 
@@ -321,7 +321,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
 | windowId | number                                   | 是    | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
-| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
+| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。 |
 
 **错误码**：
 
@@ -504,7 +504,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
 | windowId     | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
-| callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
+| callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。当设置鼠标样式类型成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 

@@ -4,7 +4,7 @@
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ServiceExtensionContext模块是ServiceExtensionAbility的上下文环境，继承自ExtensionContext。
 
@@ -1578,6 +1578,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1670,6 +1672,8 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 
 **示例：**

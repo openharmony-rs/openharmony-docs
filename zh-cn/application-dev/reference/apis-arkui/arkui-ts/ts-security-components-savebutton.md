@@ -71,11 +71,11 @@ SaveButton(options: SaveButtonOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| icon | [SaveIconStyle](#saveiconstyle枚举说明) | 否 | 是 | 设置保存控件的图标风格。<br/>不传入该参数表示没有图标。 |
-| text | [SaveDescription](#savedescription枚举说明) | 否 | 是 | 设置保存控件的文本描述。<br/>不传入该参数表示没有文字描述。 |
-| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype枚举说明) | 否 | 是 | 设置保存控件的背景样式。<br/>不传入该参数，系统默认提供Capsule类型按钮。 |
+| icon | [SaveIconStyle](#saveiconstyle) | 否 | 是 | 设置保存控件的图标风格。<br/>不传入该参数表示没有图标。 |
+| text | [SaveDescription](#savedescription) | 否 | 是 | 设置保存控件的文本描述。<br/>不传入该参数表示没有文字描述。 |
+| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置保存控件的背景样式。<br/>不传入该参数，系统默认提供Capsule类型按钮。 |
 
-## SaveIconStyle枚举说明
+## SaveIconStyle
 
 保存控件的图标风格。
 
@@ -88,7 +88,7 @@ SaveButton(options: SaveButtonOptions)
 | FULL_FILLED | 0 | 保存控件展示填充样式图标。 |
 | LINES | 1 | 保存控件展示线条样式图标。 |
 
-## SaveDescription枚举说明
+## SaveDescription
 
 保存控件的文本描述。
 
@@ -110,7 +110,7 @@ SaveButton(options: SaveButtonOptions)
 | RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
-## SaveButtonOnClickResult枚举说明
+## SaveButtonOnClickResult
 
 保存控件点击后的授权结果。
 
@@ -137,7 +137,7 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
 | event | [ClickEvent](ts-universal-events-click.md#clickevent) |是 |见ClickEvent对象说明。|
-| result | [SaveButtonOnClickResult](#savebuttononclickresult枚举说明)| 是 | 授权的结果。|
+| result | [SaveButtonOnClickResult](#savebuttononclickresult)| 是 | 授权的结果。|
 | error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。<br>错误码0表示点击保存控件授权成功或用户取消授权。<br>错误码1表示系统内部错误，包括但不限于：<br>1. ipc通信失败。<br>2. 安全控件弹窗失败。<br>错误码2表示属性设置错误，包括但不限于：<br>1. 字体或图标设置过小。<br>2. 字体或图标与背托颜色相近。<br>3. 字体或图标颜色过于透明。<br>4. padding为负值。<br>5. 按钮被其他组件或窗口遮挡。<br>6. 文本超出背托范围。<br>7. 按钮超出窗口或屏幕。<br>8. 按钮整体尺寸过大。<br>9. 按钮文本被截断，显示不全。<br>10. 相关属性设置影响安全控件显示。|
 
 ## SaveButtonAttribute
@@ -161,7 +161,7 @@ setIcon(icon: Resource)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| icon | [Resource](ts-types.md#resource) |是 |自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。|
+| icon | [Resource](ts-types.md#resource) |是 |自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。 <br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。|
 
 ### setText<sup>20+</sup>
 
@@ -249,6 +249,76 @@ userCancelEvent(enabled: boolean)
 |------------|------|-------|---------|
 | enabled | boolean | 是 | 表示是否接收保存控件的用户取消授权事件，true表示接收保存控件的用户取消授权事件，false表示不接收保存控件的用户取消授权事件。<br/>默认值：false。<br/> |
 
+### symbolIconColor
+
+symbolIconColor(color: Array&lt;ResourceColor&gt;)
+
+设置安全控件Symbol图标颜色。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[渲染策略](#symbolrenderingstrategy)下默认值不同。 |
+
+### symbolFontWeight
+
+symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
+
+设置安全控件Symbol图标粗细。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                |
+| ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
+| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
+
+### symbolRenderingStrategy
+
+symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
+
+设置安全控件Symbol图标渲染策略。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| strategy  | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 是   | 安全控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 |
+
+不同渲染策略效果可参考以下示意图。
+
+![renderingStrategy](figures/renderingStrategy.png)
+
 ## 属性
 
 不支持通用属性，仅继承[安全控件通用属性](ts-securitycomponent-attributes.md)。
@@ -271,7 +341,7 @@ onClick(event: SaveButtonCallback)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| event | [SaveButtonCallback](#savebuttoncallback18) |是 |见SaveButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [SaveButtonOnClickResult](#savebuttononclickresult枚举说明)) => void。<br>从API18开始，变更为SaveButtonCallback。|
+| event | [SaveButtonCallback](#savebuttoncallback18) |是 |见SaveButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [SaveButtonOnClickResult](#savebuttononclickresult)) => void。<br>从API18开始，变更为SaveButtonCallback。|
 
 ## 示例1
 
@@ -423,3 +493,66 @@ struct SetIcon {
 }
 ```
 ![custom_savebutton](figures/custom_savebutton.png)
+
+## 示例3
+
+应用需要申请权限：ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        // 设置保存控件的图标为Symbol。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+
+        // 设置保存控件的Symbol颜色为绿色和白色，渲染策略为单色。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green, Color.White])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.SINGLE)
+
+        // 设置保存控件的Symbol颜色为绿色和白色，渲染策略为多色。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green, Color.White])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+
+        // 设置保存控件的Symbol颜色为绿色，渲染策略为多色。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+
+        // 设置保存控件的Symbol颜色为绿色和白色，渲染策略为分层。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green, Color.White])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+
+        // 设置保存控件的Symbol粗细为Lighter。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+          .symbolFontWeight(FontWeight.Lighter)
+
+        // 设置保存控件的Symbol粗细为Bolder。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+          .symbolFontWeight(FontWeight.Bolder)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![save_button_symbol_dynamic](figures/save_button_symbol_dynamic.jpeg)

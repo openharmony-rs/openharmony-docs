@@ -4,7 +4,7 @@
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供[应用启动框架](../../application-models/app-startup.md)管理启动任务的能力，只能在主线程调用。
 
@@ -30,6 +30,8 @@ run(startupTasks: Array\<string\>, config?: StartupConfig): Promise\<void\>
 > **说明：**
 >
 > 本接口不支持执行feature类型HAP中的启动任务，如需要使用相关能力请调用[startupManager.run](#startupmanagerrun20)接口。
+>
+> 本接口只支持[应用级so](../../application-models/ability-terminology.md#应用级so)文件加载，不支持[系统级so](../../application-models/ability-terminology.md#系统级so)文件加载。
 
 **系统能力**：SystemCapability.Ability.AppStartup
 

@@ -34,6 +34,6 @@ Enumerates the notification flag states.
 
 | Name          | Value | Description                              |
 | -------------- | --- | --------------------------------- |
-| TYPE_NONE      | 0   | The default flag is used. The effect is the same as that of **TYPE_OPEN**.         |
+| TYPE_NONE      | 0   | Default flag, which has the same effect as **TYPE_OPEN**.         |
 | TYPE_OPEN      | 1   | The notification flag is enabled.                    |
 | TYPE_CLOSE     | 2   | The notification flag is disabled.                    |
