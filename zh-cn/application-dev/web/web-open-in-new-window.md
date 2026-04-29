@@ -87,9 +87,9 @@ struct WebComponent {
             isModal: false
           })
           this.dialogController.open();
-          // 将新窗口对应WebviewController返回给Web内核。
-          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-          // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+          // 将新窗口对应WebviewController返回给Web内核
+          // 若不调用event.handler.setWebController接口，会造成render进程阻塞
+          // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口
           event.handler.setWebController(popController);
         })
     }
@@ -118,7 +118,7 @@ import { State } from '@ohos.arkui.stateManagement';
 import { BusinessError } from '@ohos.base';
 import webview from '@ohos.web.webview';
 
-// 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+// 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp
 @CustomDialog
 struct NewWebViewComp {
   controller?: CustomDialogController;
@@ -167,9 +167,9 @@ struct WebComponent {
             isModal: false
           })
           this.dialogController?.open()
-          // 将新窗口对应WebviewController返回给Web内核。
-          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-          // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+          // 将新窗口对应WebviewController返回给Web内核
+          // 若不调用event.handler.setWebController接口，会造成render进程阻塞
+          // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口
           event.handler.setWebController(popController);
         })
     }

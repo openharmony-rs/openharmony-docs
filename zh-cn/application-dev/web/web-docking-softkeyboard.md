@@ -556,7 +556,7 @@ ArkTS-Sta示例：
      */
     @Builder
     customKeyboardBuilder() {
-          // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
+          // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作
         Row() {
           Text('完成')
             .fontSize(20)
