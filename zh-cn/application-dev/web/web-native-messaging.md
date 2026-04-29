@@ -207,6 +207,8 @@ function sendMessageToNative() {
    ```
 3. 在MyWebNativeMessageExtAbility.ets文件中，增加导入[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)的依赖包，自定义类继承WebNativeMessagingExtensionAbility组件并实现生命周期回调。
     ArkTS-Dyn示例：
+    <!-- @[web_native_messaging_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
+
   ``` TypeScript
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -264,7 +266,8 @@ function sendMessageToNative() {
      }
    };
    ```
-   ArkTS-Sta示例：
+    ArkTS-Sta示例：
+   <!-- @[web_native_messaging_extension_ability_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
 
 ``` TypeScript
     import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
@@ -377,6 +380,9 @@ function sendMessageToNative() {
 1. 当接收到创建NativeMessaging连接时，先通过[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
 
 ArkTS-Dyn示例：
+
+    <!-- @[web_native_messaging_get_manifest_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+    
 ``` TypeScript
    import { dataShare } from '@kit.ArkData';
 
@@ -432,6 +438,9 @@ ArkTS-Dyn示例：
    ```
 
    ArkTS-Sta示例：
+
+    <!-- @[web_native_messaging_get_manifest_data_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+    
 ``` TypeScript
     import dataShare from '@ohos.data.dataShare';
 
@@ -497,6 +506,9 @@ ArkTS-Dyn示例：
 2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessaging连接，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
 
     ArkTS-Dyn示例：
+
+    <!-- @[web_native_messaging_connect_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+    
 ``` TypeScript
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
@@ -537,6 +549,9 @@ ArkTS-Dyn示例：
    }
    ```
    ArkTS-Sta示例：
+
+    <!-- @[web_native_messaging_connect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+    
 ``` TypeScript
     import UIAbility from '@ohos.app.ability.UIAbility';
     import Want from '@ohos.app.ability.Want';
@@ -583,6 +598,9 @@ ArkTS-Dyn示例：
 3. 需要销毁NativeMessaging连接时，调用[webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative)。
 
     ArkTS-Dyn示例：
+
+    <!-- @[web_native_messaging_disconnect_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+    
 ``` TypeScript
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
@@ -592,6 +610,9 @@ ArkTS-Dyn示例：
    }
    ```
     ArkTS-Sta示例：
+
+    <!-- @[web_native_messaging_disconnect_native_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebExtension/extensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+    
 ``` TypeScript
     import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
 
