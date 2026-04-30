@@ -1017,8 +1017,8 @@ getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTran
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| CallTransferType   | type               | 是   | 指示要获取哪种类型的呼叫转移。  |
-| string | number              | 是   | 指示用于获取呼叫转移状态的号码。 |
+| type   | CallTransferType               | 是   | 指示要获取哪种类型的呼叫转移。  |
+| number | string              | 是   | 指示用于获取呼叫转移状态的号码。 |
 
 **返回值：**
 
@@ -1051,10 +1051,10 @@ let number: string = "138xxxxxxxx";
 
 call.getCallTransferInfo(type, number)
     .then((data: call.CallTransferResult) => {
-        console.info('getCallTransferInfo success, data->${JSON.stringify(data)}');
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
     })
     .catch((err:BusinessError) => {
-        console.error('getCallTransferInfo fail, err->${JSON.stringify(err)}');
+        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
     });
 ```
 
