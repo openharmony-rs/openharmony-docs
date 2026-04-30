@@ -187,14 +187,14 @@ Enables listening for holding hand status changes.
 
 **System capability**: SystemCapability.MultimodalAwareness.Motion
 
-**Parameter**
+**Parameters**
 
 | Name  | Type                                             | Mandatory| Description                                  |
 | -------- | ------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                            | Yes  | Event type. The value **holdingHandChanged** indicates the holding hand status change event.|
 | callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | Yes  | Callback used to return the holding hand status.        |
 
-**Error Code**
+**Error codes**
 
 For details about the error codes, see [Motion Awareness Error Codes](errorcode-motion.md) and [Universal Error Codes](../errorcode-universal.md).
 
@@ -233,14 +233,14 @@ Disables listening for holding hand status changes.
 
 **System capability**: SystemCapability.MultimodalAwareness.Motion
 
-**Parameter**
+**Parameters**
 
 | Name  | Type                                             | Mandatory| Description                                          |
 | -------- | ------------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                            | Yes  | Event type. The value **holdingHandChanged** indicates the holding hand status change event.        |
 | callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | No  | Callback to unregister. If this parameter is not passed, all callbacks for the holding hand status change event will be unregistered.|
 
-**Error Code**
+**Error codes**
 
 For details about the error codes, see [Motion Awareness Error Codes](errorcode-motion.md) and [Universal Error Codes](../errorcode-universal.md).
 

@@ -278,7 +278,7 @@ According to the preceding configuration, the obfuscation effect of `exampleName
    let params = obj1['ohos.want.action.home'];
    ```
 
-   Therefore, after `-enable-string-property-obfuscation` is enabled, if you want to retain the propertie of SDK API string constants used in the code, for example, **obj['ohos.want.action.home']**, you can use the [-keep-property-name](#-keep-property-name) option.
+   Therefore, after `-enable-string-property-obfuscation` is enabled, if you want to retain the properties of SDK API string constants used in the code, for example, **obj['ohos.want.action.home']**, you can use the [-keep-property-name](#-keep-property-name) option.
 
 ### -enable-toplevel-obfuscation
 

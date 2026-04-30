@@ -5,7 +5,7 @@
 <!--Owner: @yangzhongkai-->
 <!--Designer: @yangzhongkai-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanceHandle

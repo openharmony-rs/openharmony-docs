@@ -149,7 +149,7 @@ Launches the call screen and displays the dialed number. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -198,7 +198,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -219,6 +219,60 @@ call.makeCall("138xxxxxxxx").then(() => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+
+## call.makeCall<sup>24+</sup>
+
+makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
+
+Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Applications.Contacts
+
+**Parameters**
+
+| Name     | Type  | Mandatory| Description      |
+| ----------- | ------ | ---- | ---------- |
+| phoneNumber | string | Yes  | Phone number.|
+| options | [MakeCallOptions](#makecalloptions24) | No  | Call options.|
+
+**Return value**
+
+| Type               | Description                             |
+| ------------------- | --------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+// Set whether to return to the current application after the call ends.
+let makeOptions: call.MakeCallOptions = {
+  isHideDialScreen: true
+}
+
+call.makeCall("138xxxxxxxx", makeOptions).then(() => {
+    console.info(`makeCall success`);
+}).catch((err: BusinessError) => {
+    console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
 
 ## call.makeCall<sup>12+</sup>
 
@@ -245,7 +299,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -461,7 +515,7 @@ Checks whether the called number is an emergency number. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -504,7 +558,7 @@ Checks whether the called number is an emergency number based on the phone numbe
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -553,7 +607,7 @@ Checks whether the called number is an emergency number based on the phone numbe
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -595,7 +649,7 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -639,7 +693,7 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -692,7 +746,7 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -737,7 +791,7 @@ The phone number must match the specified country code. For example, for a China
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -789,7 +843,7 @@ All country codes are supported.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
@@ -832,12 +886,11 @@ Answers a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -879,12 +932,11 @@ Ends a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -927,12 +979,11 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -977,6 +1028,17 @@ Enumerates call states.
 | CALL_STATE_RINGING | 1    | The call is in the ringing or waiting state.                                    |
 | CALL_STATE_OFFHOOK | 2    | At least one call is in dialing, active, or on hold, and no new incoming call is ringing or waiting.|
 | CALL_STATE_ANSWERED<sup>11+</sup> | 3    | The incoming call is answered.|
+
+
+## MakeCallOptions<sup>24+</sup>
+
+Provides an option for determining whether a call is a video call.
+
+**System capability**: SystemCapability.Applications.Contacts
+
+|        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
+| ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
+| isHideDialScreen               | boolean                            | No  | Yes  | Whether to hide the dial screen. **true**: yes; **false**: no.  |
 
 
 ## TelCallState<sup>21+</sup>

@@ -41,6 +41,12 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+>**说明：** 
+>
+> - 分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
+>
+> - @Prop装饰的属性为可选参数，仅当与@Require装饰器联合使用时，才必须在构造时传入对应参数。
+
 | 名称            | 类型                                      | 必填 | 装饰器类型  | 说明                                                         |
 | --------------- | --------------------------------------------- | ---- | ----------- | ------------------------------------------------------------ |
 | options         | [SegmentButtonOptions](#segmentbuttonoptions) | 是   | @ObjectLink | 分段按钮选项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -48,10 +54,6 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | onItemClicked<sup>13+</sup> | Callback\<number\> | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | @Prop | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | enableStateAnimation<sup>24+</sup>       | boolean   | 否 | @Prop| 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
- 
->**说明：** 
->
->分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
 
 ## SegmentButtonOptions
 

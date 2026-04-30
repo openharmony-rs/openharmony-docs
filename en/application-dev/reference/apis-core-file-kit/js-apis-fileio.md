@@ -47,7 +47,7 @@ Obtains file information. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.stat](js-apis-file-fs.md#stat) instead.
+> This API is deprecated since API version 9. Use [fileIo.stat](js-apis-file-fs.md#fileiostat) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -84,7 +84,7 @@ Obtains file information. This API uses an asynchronous callback to return the r
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.stat](js-apis-file-fs.md#fsstat-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.stat](js-apis-file-fs.md#fileiostat-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -113,7 +113,7 @@ Obtains file information. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.statSync](js-apis-file-fs.md#fsstatsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.statSync](js-apis-file-fs.md#fileiostatsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -146,7 +146,7 @@ Opens a directory. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -183,7 +183,7 @@ Opens a file directory. This API uses an asynchronous callback to return the res
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -213,7 +213,7 @@ Opens a directory. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFileSync](js-apis-file-fs.md#fslistfilesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -227,7 +227,7 @@ Opens a directory. This API returns the result synchronously.
 
   | Type         | Description      |
   | ----------- | -------- |
-  | [Dir](#dir) | The **Dir** object opened.|
+  | [Dir](#dir) | **Dir** object opened.|
 
 **Example**
 
@@ -246,7 +246,7 @@ Checks whether this process can access a file. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.access](js-apis-file-fs.md#fsaccess) instead.
+> This API is deprecated since API version 9. Use [fileIo.access](js-apis-file-fs.md#fileioaccess) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -284,7 +284,7 @@ Checks whether this process can access a file. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.access](js-apis-file-fs.md#fsaccess-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.access](js-apis-file-fs.md#fileioaccess-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -315,7 +315,7 @@ Checks whether this process can access a file. This API returns the result synch
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.accessSync](js-apis-file-fs.md#fsaccesssync) instead.
+> This API is deprecated since API version 9. Use [fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -348,7 +348,7 @@ Closes a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.close](js-apis-file-fs.md#fsclose) instead.
+> This API is deprecated since API version 9. Use [fileIo.close](js-apis-file-fs.md#fileioclose) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -386,7 +386,7 @@ Closes a file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.close](js-apis-file-fs.md#fsclose-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.close](js-apis-file-fs.md#fileioclose-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -417,7 +417,7 @@ Closes a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.closeSync](js-apis-file-fs.md#fsclosesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -444,7 +444,7 @@ Copies a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.copyFile](js-apis-file-fs.md#fscopyfile) instead.
+> This API is deprecated since API version 9. Use [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -484,7 +484,7 @@ Copies a file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.copyFile](js-apis-file-fs.md#fscopyfile-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -517,7 +517,7 @@ Copies a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.copyFileSync](js-apis-file-fs.md#fscopyfilesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.copyFileSync](js-apis-file-fs.md#fileiocopyfilesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -546,7 +546,7 @@ Creates a directory. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.mkdir](js-apis-file-fs.md#fsmkdir) instead.
+> This API is deprecated since API version 9. Use [fileIo.mkdir](js-apis-file-fs.md#fileiomkdir) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -584,7 +584,7 @@ Creates a directory. This API uses an asynchronous callback to return the result
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.mkdir](js-apis-file-fs.md#fsmkdir-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.mkdir](js-apis-file-fs.md#fileiomkdir-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -615,7 +615,7 @@ Creates a directory. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.mkdirSync](js-apis-file-fs.md#fsmkdirsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.mkdirSync](js-apis-file-fs.md#fileiomkdirsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -642,7 +642,7 @@ Opens a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.open](js-apis-file-fs.md#fsopen) instead.
+> This API is deprecated since API version 9. Use [fileIo.open](js-apis-file-fs.md#fileioopen) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -681,7 +681,7 @@ Opens a file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.open](js-apis-file-fs.md#fsopen-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.open](js-apis-file-fs.md#fileioopen-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -692,7 +692,7 @@ Opens a file. This API uses an asynchronous callback to return the result.
 | path     | string                          | Yes  | Application sandbox path of the file.                                  |
 | flags    | number                          | No  | Option for opening the file. You must specify one of the following options. By default, the file is opened in read-only mode.<br>- **0o0**: Open the file in read-only mode.<br>- **0o1**: Open the file in write-only mode.<br>- **0o2**: Open the file in read/write mode.<br>In addition, you can specify the following options, separated using a bitwise OR operator (&#124;). By default, no additional option is specified.<br>- **0o100**: If the file does not exist, create it. If you use this option, you must also specify **mode**.<br>- **0o200**: If **0o100** is added and the file already exists, throw an exception.<br>- **0o1000**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **0o2000**: Open the file in append mode. New data will be appended to the file (added to the end of the file).<br>- **0o4000**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the open file and in subsequent I/Os.<br>- **0o200000**: If **path** does not point to a directory, throw an exception.<br>- **0o400000**: If **path** points to a symbolic link, throw an exception.<br>- **0o4010000**: Open the file in synchronous I/O mode.|
 | mode     | number                          | No  | Permissions on the file. You can specify multiple permissions, separated using a bitwise OR operator (&#124;). The default value is **0o660**.<br>- **0o660**: The owner and user group have the read and write permissions.<br>- **0o700**: The owner has the read, write, and execute permissions.<br>- **0o400**: The owner has the read permission.<br>- **0o200**: The owner has the write permission.<br>- **0o100**: The owner has the execute permission.<br>- **0o070**: The user group has the read, write, and execute permissions.<br>- **0o040**: The user group has the read permission.<br>- **0o020**: The user group has the write permission.<br>- **0o010**: The user group has the execute permission.<br>- **0o007**: Other users have the read, write, and execute permissions.<br>- **0o004**: Other users have the read permission.<br>- **0o002**: Other users have the write permission.<br>- **0o001**: Other users have the execute permission.|
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback invoked when the file is opened asynchronously.                                    |
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback invoked when the file is opened asynchronously, which is used to return the file descriptor.                                    |
 
 **Example**
 
@@ -713,7 +713,7 @@ Opens a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.openSync](js-apis-file-fs.md#fsopensync) instead.
+> This API is deprecated since API version 9. Use [fileIo.openSync](js-apis-file-fs.md#fileioopensync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -740,7 +740,7 @@ Reads data from a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.read](js-apis-file-fs.md#fsread) instead.
+> This API is deprecated since API version 9. Use [fileIo.read](js-apis-file-fs.md#fileioread) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -750,7 +750,7 @@ Reads data from a file. This API uses a promise to return the result.
 | ------- | ----------- | ---- | ------------------------------------------------------------ |
 | fd      | number      | Yes  | File descriptor of the file to read.                                    |
 | buffer  | ArrayBuffer | Yes  | Buffer used to store the file data read.                          |
-| options | Object      | No  | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size|
+| options | Object      | No  | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer relative to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position, in bytes.<br>Constraints: offset + length <= Buffer size|
 
 **Return value**
 
@@ -767,7 +767,7 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.read](js-apis-file-fs.md#fsread-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.read](js-apis-file-fs.md#fileioread-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -777,7 +777,7 @@ Reads data from a file. This API uses an asynchronous callback to return the res
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                                   | Yes   | File descriptor of the file to read.                            |
   | buffer   | ArrayBuffer                              | Yes   | Buffer used to store the file data read.                       |
-  | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): byte offset from the start of the buffer where the read data is stored. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position in the file to read from, in bytes. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | Yes   | Callback invoked when the data is read asynchronously.                            |
 
 
@@ -789,7 +789,7 @@ Reads data from a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.readSync](js-apis-file-fs.md#fsreadsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.readSync](js-apis-file-fs.md#fileioreadsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -799,13 +799,13 @@ Reads data from a file. This API returns the result synchronously.
   | ------- | ----------- | ---- | ---------------------------------------- |
   | fd      | number      | Yes   | File descriptor of the file to read.                            |
   | buffer  | ArrayBuffer | Yes   | Buffer used to store the file data read.                       |
-  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer relative to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position, in bytes.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data read.|
+  | number | Length of the data read, in bytes.|
 
 **Example**
 
@@ -825,7 +825,7 @@ Removes a directory. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.rmdir](js-apis-file-fs.md#fsrmdir) instead.
+> This API is deprecated since API version 9. Use [fileIo.rmdir](js-apis-file-fs.md#fileiormdir) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -862,7 +862,7 @@ Removes a directory. This API uses an asynchronous callback to return the result
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.rmdir](js-apis-file-fs.md#fsrmdir-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.rmdir](js-apis-file-fs.md#fileiormdir-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -893,7 +893,7 @@ Removes a directory. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.rmdirSync](js-apis-file-fs.md#fsrmdirsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.rmdirSync](js-apis-file-fs.md#fileiormdirsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -919,7 +919,7 @@ Removes a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.unlink](js-apis-file-fs.md#fsunlink) instead.
+> This API is deprecated since API version 9. Use [fileIo.unlink](js-apis-file-fs.md#fileiounlink) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -956,7 +956,7 @@ Removes a file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.unlink](js-apis-file-fs.md#fsunlink-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.unlink](js-apis-file-fs.md#fileiounlink-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -986,7 +986,7 @@ Removes a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.unlinkSync](js-apis-file-fs.md#fsunlinksync) instead.
+> This API is deprecated since API version 9. Use [fileIo.unlinkSync](js-apis-file-fs.md#fileiounlinksync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1012,7 +1012,7 @@ Writes data into a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.write](js-apis-file-fs.md#fswrite) instead.
+> This API is deprecated since API version 9. Use [fileIo.write](js-apis-file-fs.md#fileiowrite) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1022,13 +1022,13 @@ Writes data into a file. This API uses a promise to return the result.
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | Yes   | File descriptor of the file to write.                            |
   | buffer  | ArrayBuffer\|string | Yes   | Data to write. It can be a string or data from a buffer.                    |
-  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): position of the data to write in reference to the start address of the data. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data in the file. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
+  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): offset of the write position relative to the start address of the data, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data into the file, in bytes. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
 
 **Return value**
 
   | Type                   | Description      |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise that returns the length of the data written.|
+  | Promise&lt;number&gt; | Promise that returns the length of the data written, in bytes.|
 
 **Example**
 
@@ -1052,7 +1052,7 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.write](js-apis-file-fs.md#fswrite-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.write](js-apis-file-fs.md#fileiowrite-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1062,8 +1062,8 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
   | -------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                          | Yes   | File descriptor of the file to write.                            |
   | buffer   | ArrayBuffer\|string | Yes   | Data to write. It can be a string or data from a buffer.                    |
-  | options  | Object                          | No   | The options are as follows:<br>- **offset** (number): position of the data to write in reference to the start address of the data. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data in the file. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
-  | callback | AsyncCallback&lt;number&gt;     | Yes   | Callback invoked when the data is written asynchronously.                      |
+  | options  | Object                          | No   | The options are as follows:<br>- **offset** (number): offset of the write position relative to the start address of the data, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data into the file, in bytes. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
+  | callback | AsyncCallback&lt;number&gt;     | Yes   | Callback invoked when the data is written asynchronously. return the length of the data written, in bytes.                      |
 
 **Example**
 
@@ -1087,7 +1087,7 @@ Writes data to a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.writeSync](js-apis-file-fs.md#fswritesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.writeSync](js-apis-file-fs.md#fileiowritesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1097,13 +1097,13 @@ Writes data to a file. This API returns the result synchronously.
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | Yes   | File descriptor of the file to write.                            |
   | buffer  | ArrayBuffer\|string | Yes   | Data to write. It can be a string or data from a buffer.                    |
-  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): position of the data to write in reference to the start address of the data. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data in the file. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
+  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): offset of the write position relative to the start address of the data, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data into the file, in bytes. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
 
 **Return value**
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data written in the file.|
+  | number | Length of the data written in the file, in bytes.|
 
 **Example**
 
@@ -1289,7 +1289,7 @@ Obtains file status based on the file descriptor. This API uses a promise to ret
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.stat](js-apis-file-fs.md#fsstat) instead.
+> This API is deprecated since API version 9. Use [fileIo.stat](js-apis-file-fs.md#fileiostat) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1327,7 +1327,7 @@ Obtains file status based on the file descriptor. This API uses an asynchronous 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.stat](js-apis-file-fs.md#fsstat-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.stat](js-apis-file-fs.md#fileiostat-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1358,7 +1358,7 @@ Obtains file status based on the file descriptor. This API returns the result sy
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.statSync](js-apis-file-fs.md#fsstatsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.statSync](js-apis-file-fs.md#fileiostatsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1391,7 +1391,7 @@ Truncates a file based on the file descriptor. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.truncate](js-apis-file-fs.md#fstruncate) instead.
+> This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1400,7 +1400,7 @@ Truncates a file based on the file descriptor. This API uses a promise to return
   | Name | Type    | Mandatory  | Description              |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | Yes   | File descriptor of the file to truncate.    |
-  | len  | number | No   | File length, in bytes, after truncation.|
+  | len  | number | No   | File length after truncation, in bytes. The default value is **0**.|
 
 **Return value**
 
@@ -1430,7 +1430,7 @@ Truncates a file based on the file descriptor. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.truncate](js-apis-file-fs.md#fstruncate-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1439,7 +1439,7 @@ Truncates a file based on the file descriptor. This API uses an asynchronous cal
   | Name     | Type                       | Mandatory  | Description              |
   | -------- | ------------------------- | ---- | ---------------- |
   | fd       | number                    | Yes   | File descriptor of the file to truncate.    |
-  | len      | number                    | No   | File length, in bytes, after truncation.|
+  | len      | number                    | No   | File length after truncation, in bytes. The default value is **0**.|
   | callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value. |
 
 **Example**
@@ -1463,7 +1463,7 @@ Truncates a file based on the file descriptor. This API returns the result synch
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.truncateSync](js-apis-file-fs.md#fstruncatesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.truncateSync](js-apis-file-fs.md#fileiotruncatesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1472,7 +1472,7 @@ Truncates a file based on the file descriptor. This API returns the result synch
   | Name | Type    | Mandatory  | Description              |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | Yes   | File descriptor of the file to truncate.    |
-  | len  | number | No   | File length, in bytes, after truncation.|
+  | len  | number | No   | File length after truncation, in bytes. The default value is **0**.|
 
 **Example**
 
@@ -1492,7 +1492,7 @@ Truncates a file based on the file path. This API uses a promise to return the r
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.truncate](js-apis-file-fs.md#fstruncate) instead.
+> This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1501,7 +1501,7 @@ Truncates a file based on the file path. This API uses a promise to return the r
 | Name| Type  | Mandatory| Description                            |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | Yes  | Application sandbox path of the file to truncate.      |
-| len    | number | No  | File length, in bytes, after truncation.|
+| len    | number | No  | File length after truncation, in bytes. The default value is **0**.|
 
 **Return value**
 
@@ -1531,7 +1531,7 @@ Truncates a file based on the file path. This API uses an asynchronous callback 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.truncate](js-apis-file-fs.md#fstruncate-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.truncate](js-apis-file-fs.md#fileiotruncate-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1540,7 +1540,7 @@ Truncates a file based on the file path. This API uses an asynchronous callback 
 | Name  | Type                     | Mandatory| Description                            |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | path     | string                    | Yes  | Application sandbox path of the file to truncate.      |
-| len      | number                    | No  | File length, in bytes, after truncation.|
+| len      | number                    | No  | File length after truncation, in bytes. The default value is **0**.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.  |
 
 **Example**
@@ -1563,7 +1563,7 @@ Truncates a file based on the file path. This API returns the result synchronous
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.truncateSync](js-apis-file-fs.md#fstruncatesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.truncateSync](js-apis-file-fs.md#fileiotruncatesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1572,7 +1572,7 @@ Truncates a file based on the file path. This API returns the result synchronous
 | Name| Type  | Mandatory| Description                            |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | Yes  | Application sandbox path of the file to truncate.      |
-| len    | number | No  | File length, in bytes, after truncation.|
+| len    | number | No  | File length after truncation, in bytes. The default value is **0**.|
 
 **Example**
 
@@ -1591,7 +1591,7 @@ Reads the text content of a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.readText](js-apis-file-fs.md#fsreadtext) instead.
+> This API is deprecated since API version 9. Use [fileIo.readText](js-apis-file-fs.md#fileioreadtext) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1600,7 +1600,7 @@ Reads the text content of a file. This API uses a promise to return the result.
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | Yes  | Application sandbox path of the file to read.                                  |
-| options  | Object | No  | The options are as follows:<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type.<br>The default value is **'utf-8'**, which is the only value supported.|
+| options  | Object | No  | The options are as follows:<br>- **position** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type.<br>The default value is **'utf-8'**, which is the only value supported.|
 
 **Return value**
 
@@ -1629,7 +1629,7 @@ Reads the text content of a file. This API uses an asynchronous callback to retu
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.readText](js-apis-file-fs.md#fsreadtext-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.readText](js-apis-file-fs.md#fileioreadtext-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1638,7 +1638,7 @@ Reads the text content of a file. This API uses an asynchronous callback to retu
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | filePath | string                      | Yes  | Application sandbox path of the file to read.                                  |
-| options  | Object                      | No  | The options are as follows:<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **encoding**: format of the data to be encoded. The default value is **'utf-8'**, which is the only value supported.|
+| options  | Object                      | No  | The options are as follows:<br>- **position** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **encoding**: format of the data to be encoded. The default value is **'utf-8'**, which is the only value supported.|
 | callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the file content read.                        |
 
 **Example**
@@ -1668,7 +1668,7 @@ Reads the text content of a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.readTextSync](js-apis-file-fs.md#fsreadtextsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.readTextSync](js-apis-file-fs.md#fileioreadtextsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1677,7 +1677,7 @@ Reads the text content of a file. This API returns the result synchronously.
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | Yes  | Application sandbox path of the file to read.                                  |
-| options  | Object | No  | The options are as follows:<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type.<br>The default value is **'utf-8'**, which is the only value supported.|
+| options  | Object | No  | The options are as follows:<br>- **position** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type.<br>The default value is **'utf-8'**, which is the only value supported.|
 
 **Return value**
 
@@ -1709,7 +1709,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.lstat](js-apis-file-fs.md#fslstat) instead.
+> This API is deprecated since API version 9. Use [fileIo.lstat](js-apis-file-fs.md#fileiolstat) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1746,7 +1746,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.lstat](js-apis-file-fs.md#fslstat-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.lstat](js-apis-file-fs.md#fileiolstat-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1776,7 +1776,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.lstatSync](js-apis-file-fs.md#fslstatsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.lstatSync](js-apis-file-fs.md#fileiolstatsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1808,7 +1808,7 @@ Renames a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.rename](js-apis-file-fs.md#fsrename) instead.
+> This API is deprecated since API version 9. Use [fileIo.rename](js-apis-file-fs.md#fileiorename) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1847,7 +1847,7 @@ Renames a file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.rename](js-apis-file-fs.md#fsrename-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.rename](js-apis-file-fs.md#fileiorename-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1877,7 +1877,7 @@ Renames a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.renameSync](js-apis-file-fs.md#fsrenamesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.renameSync](js-apis-file-fs.md#fileiorenamesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1905,7 +1905,7 @@ Synchronizes a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fsync](js-apis-file-fs.md#fsfsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.fsync](js-apis-file-fs.md#fileiofsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1943,7 +1943,7 @@ Synchronizes a file. This API uses an asynchronous callback to return the result
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fsync](js-apis-file-fs.md#fsfsync-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.fsync](js-apis-file-fs.md#fileiofsync-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1974,7 +1974,7 @@ Synchronizes a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fsyncSync](js-apis-file-fs.md#fsfsyncsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.fsyncSync](js-apis-file-fs.md#fileiofsyncsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2001,7 +2001,7 @@ Synchronizes the data of a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fdatasync](js-apis-file-fs.md#fsfdatasync) instead.
+> This API is deprecated since API version 9. Use [fileIo.fdatasync](js-apis-file-fs.md#fileiofdatasync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2039,7 +2039,7 @@ Synchronizes the data of a file. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fdatasync](js-apis-file-fs.md#fsfdatasync-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.fdatasync](js-apis-file-fs.md#fileiofdatasync-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2070,7 +2070,7 @@ Synchronizes the data of a file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fdatasyncSync](js-apis-file-fs.md#fsfdatasyncsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.fdatasyncSync](js-apis-file-fs.md#fileiofdatasyncsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2097,7 +2097,7 @@ Creates a symbolic link based on the file path. This API uses a promise to retur
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.symlink](js-apis-file-fs.md#fssymlink) instead.
+> This API is deprecated since API version 9. Use [fileIo.symlink](js-apis-file-fs.md#fileiosymlink) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2136,7 +2136,7 @@ Creates a symbolic link based on the file path. This API uses an asynchronous ca
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.symlink](js-apis-file-fs.md#fssymlink-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.symlink](js-apis-file-fs.md#fileiosymlink-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2168,7 +2168,7 @@ Creates a symbolic link based on the file path. This API returns the result sync
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.symlinkSync](js-apis-file-fs.md#fssymlinksync) instead.
+> This API is deprecated since API version 9. Use [fileIo.symlinkSync](js-apis-file-fs.md#fileiosymlinksync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2297,7 +2297,7 @@ Creates a temporary directory. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.mkdtemp](js-apis-file-fs.md#fsmkdtemp) instead.
+> This API is deprecated since API version 9. Use [fileIo.mkdtemp](js-apis-file-fs.md#fileiomkdtemp) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2333,7 +2333,7 @@ Creates a temporary directory. This API uses an asynchronous callback to return 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.mkdtemp](js-apis-file-fs.md#fsmkdtemp-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.mkdtemp](js-apis-file-fs.md#fileiomkdtemp-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2362,7 +2362,7 @@ Creates a temporary directory. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.mkdtempSync](js-apis-file-fs.md#fsmkdtempsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.mkdtempSync](js-apis-file-fs.md#fileiomkdtempsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2495,7 +2495,7 @@ Creates a stream based on the file path. This API uses a promise to return the r
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.createStream](js-apis-file-fs.md#fscreatestream) instead.
+> This API is deprecated since API version 9. Use [fileIo.createStream](js-apis-file-fs.md#fileiocreatestream) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2510,7 +2510,7 @@ Creates a stream based on the file path. This API uses a promise to return the r
 
   | Type                               | Description       |
   | --------------------------------- | --------- |
-  | Promise&lt;[Stream](#stream)&gt; | Promise that returns the stream opened.|
+  | Promise&lt;[Stream](#stream)&gt; | Promise that returns the file stream.|
 
 **Example**
 
@@ -2533,7 +2533,7 @@ Creates a stream based on the file path. This API uses an asynchronous callback 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.createStream](js-apis-file-fs.md#fscreatestream-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.createStream](js-apis-file-fs.md#fileiocreatestream-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2564,7 +2564,7 @@ Creates a stream based on the file path. This API returns the result synchronous
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.createStreamSync](js-apis-file-fs.md#fscreatestreamsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.createStreamSync](js-apis-file-fs.md#fileiocreatestreamsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2579,7 +2579,7 @@ Creates a stream based on the file path. This API returns the result synchronous
 
   | Type               | Description       |
   | ------------------ | --------- |
-  | [Stream](#stream) | Stream opened.|
+  | [Stream](#stream) | File stream.|
 
 **Example**
 
@@ -2597,7 +2597,7 @@ Opens a stream based on the file descriptor. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fdopenStream](js-apis-file-fs.md#fsfdopenstream) instead.
+> This API is deprecated since API version 9. Use [fileIo.fdopenStream](js-apis-file-fs.md#fileiofdopenstream) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2612,7 +2612,7 @@ Opens a stream based on the file descriptor. This API uses a promise to return t
 
   | Type                              | Description       |
   | --------------------------------- | --------- |
-  | Promise&lt;[Stream](#stream)&gt; | Promise that returns the stream opened.|
+  | Promise&lt;[Stream](#stream)&gt; | Promise that returns the file stream.|
 
 **Example**
 
@@ -2636,7 +2636,7 @@ Opens a stream based on the file descriptor. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fdopenStream](js-apis-file-fs.md#fsfdopenstream-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.fdopenStream](js-apis-file-fs.md#fileiofdopenstream-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2668,7 +2668,7 @@ Opens a stream based on the file descriptor. This API returns the result synchro
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.fdopenStreamSync](js-apis-file-fs.md#fsfdopenstreamsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.fdopenStreamSync](js-apis-file-fs.md#fileiofdopenstreamsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2683,7 +2683,7 @@ Opens a stream based on the file descriptor. This API returns the result synchro
 
   | Type               | Description       |
   | ------------------ | --------- |
-  | [Stream](#stream) | Stream opened.|
+  | [Stream](#stream) | File stream.|
 
 **Example**
 
@@ -2949,8 +2949,8 @@ Obtains the file read result. This class applies only to the **read()** method.
 
 | Name       | Type      | Read-Only  | Writable  | Description               |
 | --------- | ---------- | ---- | ---- | ----------------- |
-| bytesRead | number     | Yes   | Yes   | Length of the data read.          |
-| offset    | number     | Yes   | Yes   | Position of the buffer to which the data to be read in reference to the start address of the buffer.|
+| bytesRead | number     | Yes   | Yes   | Length of the data read, in bytes.          |
+| offset    | number     | Yes   | Yes   | Position of the buffer to which the data will be read relative to the start address of the buffer, in bytes.|
 | buffer    | ArrayBuffer | Yes   | Yes   | Buffer for storing the data read.      |
 
 
@@ -2960,7 +2960,7 @@ Provides detailed file information. Before calling a method of the **Stat** clas
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.stat](js-apis-file-fs.md#stat) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat](js-apis-file-fs.md#stat) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2990,7 +2990,7 @@ Checks whether this file is a block special file. A block special file supports 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stat.isBlockDevice](js-apis-file-fs.md#isblockdevice) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat.isBlockDevice](js-apis-file-fs.md#isblockdevice) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3016,7 +3016,7 @@ Checks whether this file is a character special file. A character special file s
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stat.isCharacterDevice](js-apis-file-fs.md#ischaracterdevice) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat.isCharacterDevice](js-apis-file-fs.md#ischaracterdevice) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3042,7 +3042,7 @@ Checks whether this file is a directory.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stat.isDirectory](js-apis-file-fs.md#isdirectory) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat.isDirectory](js-apis-file-fs.md#isdirectory) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3068,7 +3068,7 @@ Checks whether this file is a named pipe (or FIFO). Named pipes are used for int
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stat.isFIFO](js-apis-file-fs.md#isfifo) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat.isFIFO](js-apis-file-fs.md#isfifo) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3094,7 +3094,7 @@ Checks whether this file is a regular file.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stat.isFile](js-apis-file-fs.md#isfile) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat.isFile](js-apis-file-fs.md#isfile) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3120,7 +3120,7 @@ Checks whether this file is a socket.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stat.isSocket](js-apis-file-fs.md#issocket) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat.isSocket](js-apis-file-fs.md#issocket) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3146,7 +3146,7 @@ Checks whether this file is a symbolic link.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stat.isSymbolicLink](js-apis-file-fs.md#issymboliclink) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stat.isSymbolicLink](js-apis-file-fs.md#issymboliclink) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3234,7 +3234,7 @@ Provides a stream for file operations. Before calling any API of the **Stream** 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream](js-apis-file-fs.md#stream) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream](js-apis-file-fs.md#stream) instead.
 
 ### close<sup>7+</sup>
 
@@ -3244,7 +3244,7 @@ Closes the file stream. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.close](js-apis-file-fs.md#close) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.close](js-apis-file-fs.md#close) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3276,7 +3276,7 @@ Closes the file stream. This API uses an asynchronous callback to return the res
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.close](js-apis-file-fs.md#close-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.close](js-apis-file-fs.md#close-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3306,7 +3306,7 @@ Closes the file stream. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.closeSync](js-apis-file-fs.md#closesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.closeSync](js-apis-file-fs.md#closesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3327,7 +3327,7 @@ Flushes the file stream. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.flush](js-apis-file-fs.md#flush) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.flush](js-apis-file-fs.md#flush) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3359,7 +3359,7 @@ Flushes the file stream. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.flush](js-apis-file-fs.md#flush-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.flush](js-apis-file-fs.md#flush-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3389,7 +3389,7 @@ Flushes the file stream. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.flushSync](js-apis-file-fs.md#flushsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.flushSync](js-apis-file-fs.md#flushsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3410,7 +3410,7 @@ Writes data to a stream file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.write](js-apis-file-fs.md#write) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.write](js-apis-file-fs.md#write) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3419,13 +3419,13 @@ Writes data to a stream file. This API uses a promise to return the result.
   | Name    | Type                             | Mandatory  | Description                                      |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer\|string | Yes   | Data to write. It can be a string or data from a buffer.                    |
-  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): position of the data to write in reference to the start address of the data. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data in the file. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size |
+  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): offset of the write position relative to the start address of the data, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data into the file, in bytes. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
   | Type                   | Description      |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise that returns the length of the data written.|
+  | Promise&lt;number&gt; | Promise that returns the length of the data written, in bytes.|
 
 **Example**
 
@@ -3459,7 +3459,7 @@ Writes data to a stream file. This API uses an asynchronous callback to return t
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.write](js-apis-file-fs.md#write-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.write](js-apis-file-fs.md#write-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3468,8 +3468,8 @@ Writes data to a stream file. This API uses an asynchronous callback to return t
   | Name  | Type                           | Mandatory| Description                                                        |
   | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
   | buffer   | ArrayBuffer\|string | Yes  | Data to write. It can be a string or data from a buffer.                    |
-  | options  | Object                          | No  | The options are as follows:<br>- **offset** (number): position of the data to write in reference to the start address of the data. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data in the file. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
-  | callback | AsyncCallback&lt;number&gt;     | Yes  | Callback invoked when the data is written asynchronously.                              |
+  | options  | Object                          | No  | The options are as follows:<br>- **offset** (number): offset of the write position relative to the start address of the data, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data into the file, in bytes. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size|
+  | callback | AsyncCallback&lt;number&gt;     | Yes  | Callback invoked when the data is written asynchronously, which is used to return the length of the data written, in bytes.                              |
 
 **Example**
 
@@ -3504,7 +3504,7 @@ Writes data to a stream file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.writeSync](js-apis-file-fs.md#writesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.writeSync](js-apis-file-fs.md#writesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3513,13 +3513,13 @@ Writes data to a stream file. This API returns the result synchronously.
   | Name    | Type                             | Mandatory  | Description                                      |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer\|string | Yes   | Data to write. It can be a string or data from a buffer.                    |
-  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): position of the data to write in reference to the start address of the data. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data in the file. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size |
+  | options | Object                          | No   | The options are as follows:<br>- **offset** (number): offset of the write position relative to the start address of the data, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to write. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): start position to write the data into the file, in bytes. This parameter is optional. By default, data is written from the current position.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data written in the file.|
+  | number | Length of the data written in the file, in bytes.|
 
 **Example**
 
@@ -3548,7 +3548,7 @@ Reads data from a stream file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.read](js-apis-file-fs.md#read) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.read](js-apis-file-fs.md#read) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3557,7 +3557,7 @@ Reads data from a stream file. This API uses a promise to return the result.
   | Name    | Type         | Mandatory  | Description                                      |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | Yes   | Buffer used to store the file read.                             |
-  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer relative to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position, in bytes.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
@@ -3600,7 +3600,7 @@ Reads data from a stream file. This API uses an asynchronous callback to return 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.read](js-apis-file-fs.md#read-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.read](js-apis-file-fs.md#read-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3609,7 +3609,7 @@ Reads data from a stream file. This API uses an asynchronous callback to return 
   | Name     | Type                                      | Mandatory  | Description                                      |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | Yes   | Buffer used to store the file read.                             |
-  | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer relative to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | Yes   | Callback invoked when data is read asynchronously from the stream file.                        |
 
 **Example**
@@ -3647,7 +3647,7 @@ Reads data from a stream file. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.Stream.readSync](js-apis-file-fs.md#readsync) instead.
+> This API is deprecated since API version 9. Use [fileIo.Stream.readSync](js-apis-file-fs.md#readsync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3656,13 +3656,13 @@ Reads data from a stream file. This API returns the result synchronously.
   | Name    | Type         | Mandatory  | Description                                      |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | Yes   | Buffer used to store the file read.                             |
-  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer relative to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data read.|
+  | number | Length of the data read, in bytes.|
 
 **Example**
 
@@ -3689,7 +3689,7 @@ Manages directories. Before calling a method of the **Dir** class, use the **ope
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
 ### read
 
@@ -3699,7 +3699,7 @@ Reads the next directory entry. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3729,7 +3729,7 @@ Reads the next directory entry. This API uses an asynchronous callback to return
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3760,7 +3760,7 @@ Reads the next directory entry. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFileSync](js-apis-file-fs.md#fslistfilesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3785,7 +3785,7 @@ Closes a directory. This API uses a promise to return the result. After a direct
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3807,7 +3807,7 @@ Closes a directory. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile-1) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3829,7 +3829,7 @@ Closes a directory. After a directory is closed, the file descriptor in **Dir** 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFileSync](js-apis-file-fs.md#fslistfilesync) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3846,7 +3846,7 @@ Provides information about files and directories. Before calling an API of the *
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [fs.listFile](js-apis-file-fs.md#fslistfile) instead.
+> This API is deprecated since API version 9. Use [fileIo.listFile](js-apis-file-fs.md#fileiolistfile) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -4038,3 +4038,4 @@ Checks whether this directory entry is a symbolic link.
   let dir = fileio.opendirSync(pathDir);
   let isSymbolicLink = dir.readSync().isSymbolicLink();
   ```
+<!--no_check-->

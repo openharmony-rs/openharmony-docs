@@ -1,9 +1,9 @@
 # @ohos.file.storageStatistics (Application Storage Statistics) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **storageStatistics** module provides APIs for obtaining storage space information, including the space of built-in and plug-in memory cards, space occupied by different types of data, and space of application data.
@@ -554,7 +554,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
-Obtains the storage statistics of the specified user, in bytes. This API uses a promise to return the result.
+Obtains the storage statistics (in bytes) of the specified user. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
@@ -902,5 +902,49 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.info("listUserdataDirInfo successfully.");
   }).catch((err: BusinessError) => {
     console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+  
+## storageStatistics.getSystemDataSize<sup>24+</sup>
+
+getSystemDataSize(): Promise&lt;number&gt;
+
+Obtains the total system data size. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.STORAGE_MANAGER
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type                  | Description   |
+| --------------------- | :---- |
+|  Promise&lt;number&gt; | Promise used to return the total system data size, in bytes.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600018 | Failed to query the system data size. |
+
+**Example**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  storageStatistics.getSystemDataSize().then((systemDataSize: number) => {
+    console.info("getSystemDataSize successfully: " + JSON.stringify(systemDataSize));
+  }).catch((err: BusinessError) => {
+    console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```

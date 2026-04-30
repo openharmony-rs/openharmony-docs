@@ -2,21 +2,21 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **wifiManager** module provides Wi-Fi management capabilities for enterprise devices, including obtaining the Wi-Fi status.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
-> - The global restriction policies are provided by **restrictions**. To disable Wi-Fi globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
+> The global restriction policies are provided by **restrictions**. To disable Wi-Fi globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -140,7 +140,7 @@ try {
 }
 ```
 
-Scenario 2: multiple Wi-Fi networks with the same name but different BSSIDs
+***Multiple Wi-Fi networks with the same name but different BSSIDs***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -802,18 +802,124 @@ try {
 }
 ```
 
+## wifiManager.turnOnWifi<sup>20+</sup>
+
+turnOnWifi(admin: Want, isForce: boolean): void
+
+Enables Wi-Fi.
+
+In the following scenario, attempting to enable Wi-Fi using this API will fail, and a message indicating that the system function is disabled will be returned:
+
+​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable Wi-Fi.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Conflict rule**: If any MDM app disables Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), Wi-Fi cannot be enabled through this API.
+
+**Parameters**
+
+| Name | Type                                                   | Mandatory| Description                                                        |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
+| isForce | boolean                                                 | Yes  | Whether to forcibly enable Wi-Fi.<br>The value **true** means to forcibly enable Wi-Fi. Once enabled, it cannot be disabled manually. You must call [turnOffWifi](#wifimanagerturnoffwifi20) instead. The value **false** means the opposite and the Wi-Fi can be disabled manually.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { wifiManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  wifiManager.turnOnWifi(wantTemp, true);
+  console.info(`Succeeded in turning on Wi-Fi.`);
+} catch (err) {
+  console.error(`Failed to turn on Wi-Fi. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## wifiManager.turnOffWifi<sup>20+</sup>
+
+turnOffWifi(admin: Want): void
+
+Disables Wi-Fi.
+
+In the following scenario, attempting to disable Wi-Fi using this API will fail, and a message indicating that the system function is disabled will be returned:
+
+​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable Wi-Fi.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Conflict rule**: If any MDM app disables Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), Wi-Fi cannot be disabled through this API.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { wifiManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  wifiManager.turnOffWifi(wantTemp);
+  console.info(`Succeeded in turning off Wi-Fi.`);
+} catch (err) {
+  console.error(`Failed to turn off Wi-Fi. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## WifiAccessInfo<sup>19+</sup>
 
 Represents Wi-Fi access information containing Service Set Identifier (SSID) and Basic Service Set Identifier (BSSID).
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name         | Type                            | Read-Only| Optional| Description                                                       |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | No  | No| Name of the Wi-Fi hotspot. The encoding format is UTF-8 and the maximum length is 32 bytes (three bytes for each Chinese character and one byte for each English character).          |
-| bssid         | string                           | No  | Yes| MAC address of the Wi-Fi hotspot, for example, **00:11:22:33:44:55**.<br>This property is optional when the [addDisallowedWifiList](#wifimanageradddisallowedwifilist19) and [removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19) APIs are called. The default value is an empty string.<br>This property is optional (available since API version 21) when the [addAllowedWifiList](#wifimanageraddallowedwifilist19) and [removeAllowedWifiList](#wifimanagerremoveallowedwifilist19) APIs are called. The default value is an empty string. However, this property is mandatory in API version 20 and earlier versions.           |
+| bssid         | string                           | No  | Yes| MAC address of the Wi-Fi hotspot, for example, **00:11:22:33:44:55**. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.<br>This property is optional when the [addDisallowedWifiList](#wifimanageradddisallowedwifilist19) and [removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19) APIs are called. The default value is an empty string.<br>This property is optional (available since API version 21) when the [addAllowedWifiList](#wifimanageraddallowedwifilist19) and [removeAllowedWifiList](#wifimanagerremoveallowedwifilist19) APIs are called. The default value is an empty string. However, this property is mandatory in API version 20 and earlier versions.           |
 
 ## WifiProfile
 
@@ -826,7 +932,7 @@ Represents the Wi-Fi configuration information.
 | Name         | Type                             | Read-Only| Optional| Description                                                       |
 | ------------- | ----------------------------------| ---- | ----| ------------------------------------------------------- |
 | ssid          | string                                | No  | No| Name of the Wi-Fi hotspot, in UTF-8 format.                              |
-| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot.                                         |
+| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.                                         |
 | preSharedKey  | string                                | No  | No| Pre-shared key.                                               |
 | isHiddenSsid  | boolean                               | No  | Yes| Whether the network is hidden. The value **true** indicates that the network is hidden; the value **false** indicates the opposite.|
 | securityType  | [WifiSecurityType](#wifisecuritytype) | No  | No| Security type.                                                |
@@ -920,6 +1026,10 @@ Represents EAP profile (configuration) information.
 
 Enumerates the EAP authentication methods.
 
+> **NOTE**
+>
+> Currently, only the EAP_PEAP and EAP_TLS authentication methods are supported.
+
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 
@@ -954,110 +1064,3 @@ Enumerates the Phase 2 authentication methods.
 | PHASE2_SIM       | 5    | SIM.      |
 | PHASE2_AKA       | 6    | AKA.      |
 | PHASE2_AKA_PRIME | 7    | AKA Prime.|
-
-## wifiManager.turnOnWifi<sup>20+</sup>
-
-turnOnWifi(admin: Want, isForce: boolean): void
-
-Enables Wi-Fi.
-
-Wi-Fi cannot be enabled using this API in the following scenario:
-
-​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
-
-**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Conflict rule**: If any MDM app disables Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), Wi-Fi cannot be enabled through this API.
-
-**Parameters**
-
-| Name | Type                                                   | Mandatory| Description                                                        |
-| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| isForce | boolean                                                 | Yes  | Whether to forcibly enable Wi-Fi.<br>The value **true** means to forcibly Wi-Fi. Once enabled, it cannot be disabled manually. You must call [turnOffWifi](#wifimanagerturnoffwifi20) instead. The value **false** means the opposite and the Wi-Fi can be disabled manually.|
-
-**Error codes**
-
-For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 203      | This function is prohibited by enterprise management policies. |
-
-**Example**
-
-```ts
-import { Want } from '@kit.AbilityKit';
-import { wifiManager } from '@kit.MDMKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  wifiManager.turnOnWifi(wantTemp, true);
-  console.info(`Succeeded in turning on Wi-Fi.`);
-} catch (err) {
-  console.error(`Failed to turn on Wi-Fi. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## wifiManager.turnOffWifi<sup>20+</sup>
-
-turnOffWifi(admin: Want): void
-
-Disables Wi-Fi.
-
-Wi-Fi cannot be disabled using this API in the following scenario:
-
-​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
-
-**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Conflict rule**: If any MDM app disables Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), Wi-Fi cannot be disabled through this API.
-
-**Parameters**
-
-| Name| Type                                                   | Mandatory| Description                  |
-| ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-
-**Error codes**
-
-For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 203      | This function is prohibited by enterprise management policies. |
-
-**Example**
-
-```ts
-import { Want } from '@kit.AbilityKit';
-import { wifiManager } from '@kit.MDMKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  wifiManager.turnOffWifi(wantTemp);
-  console.info(`Succeeded in turning off Wi-Fi.`);
-} catch (err) {
-  console.error(`Failed to turn off Wi-Fi. Code: ${err.code}, message: ${err.message}`);
-}
-```
