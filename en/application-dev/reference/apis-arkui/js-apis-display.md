@@ -916,7 +916,7 @@ Subscribes to folding angle change events of the foldable device. Note that ther
 | Name  | Type                                     | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | Yes| Event type. The value is fixed at **'foldAngleChange'**, indicating the event of the folding angle change of the foldable device.|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | Yes| Callback used to returns the folding angle of the foldable device screen, ranging from 0 to 180 degrees. For dual-fold axis devices, the array contains two angles. The first value represents the folding angle of the first fold axis, while the second value represents the folding angle of the second fold axis.|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | Yes| Callback used to return the folding angle of the foldable device screen, ranging from 0 to 180 degrees. For dual-fold axis devices, the array contains two angles. The first value represents the folding angle of the first fold axis, while the second value represents the folding angle of the second fold axis.|
 
 **Error codes**
 
@@ -953,7 +953,7 @@ Unsubscribes from folding angle change events of the foldable device.
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                    | Yes | Event type. The value is fixed at **'foldAngleChange'**, indicating the event of the folding angle change of the foldable device.|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | No | Callback used to returns the folding angle of the foldable device screen, ranging from 0 to 180 degrees. If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | No | Callback used to return the folding angle of the foldable device screen, ranging from 0 to 180 degrees. If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
