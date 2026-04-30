@@ -162,7 +162,7 @@ Internal error. Failed to save contact portrait.
 
 **可能原因**
 
-头像文件异常，系统内部处理异常。
+头像文件异常、系统内部处理异常。
 
 **处理步骤**
 
@@ -206,7 +206,7 @@ Internal error. Invalid contact rawId.
 
 **错误描述**
 
-内部关联联系人rawid无效。
+内部关联联系人rawId无效。
 
 **可能原因**
 
