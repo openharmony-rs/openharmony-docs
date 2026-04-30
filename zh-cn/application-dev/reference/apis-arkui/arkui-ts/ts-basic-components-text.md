@@ -188,6 +188,12 @@ bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](ts-universal-
 
 自定义菜单超长时，建议内部嵌套使用[Scroll](./ts-container-scroll.md)组件，避免键盘被遮挡。
 
+从API版本26.0.0开始，文本组件调用该接口时，options中的menuType属性传入MenuType.PREVIEW_MENU，设置图片预览菜单的能力生效。
+
+如果要使用图片预览菜单，需要同时把spanType设置为TextSpanType.IMAGE，responseType设置为TextResponseType.LONG_PRESS，options中的menuType设置为MenuType.PREVIEW_MENU才会生效。
+
+当[copyOption](#copyoption9)为CopyOptions.None时，设置图片预览菜单将不会生效。
+
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -3650,3 +3656,95 @@ struct TextExample {
 ```
 
 ![textFontVariations](figures/FontVariations.gif)
+
+### 示例30（设置图片预览菜单）
+
+该示例通过[bindSelectionMenu](#bindselectionmenu11)接口实现了文本设置图片预览菜单的功能。
+
+从API版本26.0.0开始，文本组件调用该接口时，options中的menuType属性传入MenuType.PREVIEW_MENU，设置图片预览菜单的能力生效。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @Builder
+  panel() {
+    Column() {
+      Text('abc').backgroundColor('#F0F0F0')
+    }.width(256)
+  }
+
+  build() {
+    Column() {
+      Column() {
+        Text() {
+          Span('Hello')
+            .fontSize(50)
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+          ImageSpan($r('app.media.startIcon'))
+            .width(30).height(30)
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+          Span('World')
+        }
+        .textVerticalAlign(TextVerticalAlign.CENTER)
+        .borderWidth(1)
+        .copyOption(CopyOptions.InApp)
+        .bindSelectionMenu(TextSpanType.IMAGE, this.panel, TextResponseType.LONG_PRESS, {
+          menuType : MenuType.PREVIEW_MENU,
+          previewMenuOptions : {
+            hapticFeedbackMode : HapticFeedbackMode.ENABLED
+          }
+        })
+      }.width('100%').backgroundColor(Color.White)
+    }.height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, $r, MenuType, ImageSpan, Span, ImageSpanAlignment, TextVerticalAlign,
+  CopyOptions, TextSpanType, TextResponseType, PreviewMenuOptions, HapticFeedbackMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample {
+  @Builder
+  panel() {
+    Column() {
+      Text('abc').backgroundColor('#F0F0F0')
+    }.width(256)
+  }
+
+  build() {
+    Column() {
+      Column() {
+        Text() {
+          Span('Hello')
+            .fontSize(50)
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+          ImageSpan($r('app.media.startIcon'))
+            .width(30).height(30)
+            .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)// 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+          Span('World')
+        }
+        .textVerticalAlign(TextVerticalAlign.CENTER)
+        .borderWidth(1)
+        .copyOption(CopyOptions.InApp)
+        .bindSelectionMenu(TextSpanType.IMAGE, this.panel, TextResponseType.LONG_PRESS, {
+          menuType : MenuType.PREVIEW_MENU,
+          previewMenuOptions : {
+            hapticFeedbackMode : HapticFeedbackMode.ENABLED
+          } as PreviewMenuOptions
+        })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+![bindSelectionMenu](figures/bindSelectionMenu.gif)
