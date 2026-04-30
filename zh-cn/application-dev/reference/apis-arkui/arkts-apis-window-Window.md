@@ -18520,7 +18520,7 @@ promise.then((data) => {
 
 ## getAvoidArea<sup>(deprecated)</sup>
 
-getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), callback: AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt;): void
+getAvoidArea(type: AvoidAreaType, callback: AsyncCallback&lt;AvoidArea&gt;): void
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 
@@ -18568,7 +18568,7 @@ windowClass.getAvoidArea(type, (err: BusinessError, data) => {
 
 ## getAvoidArea<sup>(deprecated)</sup>
 
-getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)): Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt;
+getAvoidArea(type: AvoidAreaType): Promise&lt;AvoidArea&gt;
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 
