@@ -1180,7 +1180,7 @@ call.getCallTransferInfo(type, number)
 | ------------------------ | ---------------------------------- | ---- | ---------------- |
 | status                   | [TransferStatus](#transferstatus8) |  是  | 转移状态。         |
 | number                   | string                             |  是  | 号码。             |
-| startHour<sup>9+</sup>   | number                             |  是  | 开始时间的小时数。 |
-| startMinute<sup>9+</sup> | number                             |  是  | 开始时间的分钟数。 |
-| endHour<sup>9+</sup>     | number                             |  是  | 结束时间的小时数。 |
-| endMinute<sup>9+</sup>   | number                             |  是  | 结束时间的分钟数。 |
+| startHour   | number                             |  是  | 开始时间的小时数。 |
+| startMinute | number                             |  是  | 开始时间的分钟数。 |
+| endHour     | number                             |  是  | 结束时间的小时数。 |
+| endMinute   | number                             |  是  | 结束时间的分钟数。 |
