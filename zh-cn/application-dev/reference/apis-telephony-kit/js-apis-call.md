@@ -1003,6 +1003,61 @@ call.rejectCall((err: BusinessError) => {
 });
 ```
 
+## call.getCallTransferInfo<sup>7+</sup>
+
+getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
+
+获取带有电话号码的呼叫转移信息。使用Promise异步回调。
+
+**需要权限**：ohos.permission.GET_CALL_TRANSFER_INFO
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| CallTransferType   | type               | 是   | 指示要获取哪种类型的呼叫转移。  |
+| string | number              | 是   | 指示用于获取呼叫转移状态的号码。 |
+
+**返回值：**
+
+| 类型                | 说明                        |
+| ------------------- | --------------------------- |
+| Promise&lt;CallTransferResult&gt; | 以Promise形式异步返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 801      | Capability not supported.                    |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8401002  | Invalid input call number.                   |
+| 8401003  | Operation too frequent.                      |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServiceKit';
+
+let type: call.CallTransferType = call.CallTransferType.TRANSFER_TYPE_UNCONDITIONAL;
+let numbder: string = "138xxxxxxxx";
+
+call.getCallTransferInfo(type, number)
+    .then((data: call.CallTransferResult) => {
+        console.info('getCallTransferInfo success, data->${JSON.stringify(data)}');
+    })
+    .catch((err:BusinessError) => {
+        console.error('getCallTransferInfo fail, err->${JSON.stringify(err)}');
+    });
+```
+
 
 ## DialOptions
 
