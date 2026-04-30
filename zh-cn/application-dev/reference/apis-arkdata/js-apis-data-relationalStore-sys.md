@@ -39,6 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，默认为自动清理；false表示不自动清理，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -1509,6 +1510,71 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
 }
 ```
 
+## cleanDeviceDirtyData
+
+ArkTS-Dyn: cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&gt;
+
+本端清理对端删除后同步过来的数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                               |
+| -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
+| table     | string           | 是   | 表示需要清理数据库表的名称。数据库表名只能由字母、数字和下划线组成，不能包含其他字符，长度为[1, 256]。           |
+| cursor    | ArkTS-Dyn: number  <br> ArkTS-Sta: long           | 否   | 表示数据游标，不大于此游标的脏数据将被清理。整数类型，取值应大于0。当传入小于等于0的值时，会抛出异常，异常信息为无效的参数。当此参数不填时，清理当前表的所有脏数据。 |
+
+**返回值：**
+
+| 类型     | 说明                                              |
+| -------- | ------------------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**     |
+|-----------|---------------|
+| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800015  | The database does not respond. |
+| 14800021  | SQLite: Generic error. |
+| 14800024  | SQLite: The database file is locked. |
+| 14800043  | DB is not support this scenario. Possible causes: 1. DB type is not support; 2. Table type is not support; 3. This is a readonly db. |
+
+**示例：**
+
+```ts
+try {
+  await store!.cleanDeviceDirtyData('test_table', 100);
+  console.info('Succeeded in cleaning device dirty data.');
+} catch (err) {
+  console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+};
+
+// 全量清理
+try {
+  await store!.cleanDeviceDirtyData('test_table');
+  console.info('Succeeded in cleaning device dirty data.');
+} catch (err) {
+  console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+};
+```
+
 ## ResultSet
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -1660,14 +1726,12 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
-
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
-| ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
-| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
+| ORIGIN      | '#_origin'     | 用于查找或更新时指定数据来源的字段名。   <br/>**ArkTS-Dyn起始版本：** 24<br/> **ArkTS-Sta起始版本：** 24|
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。<br/>**ArkTS-Dyn起始版本：** 24<br/> **ArkTS-Sta起始版本：** 24|
+| CURSOR_FIELD      | '#_cursor'     | 用于cursor查找的字段名。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0|
+| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段。true表示对端删除的数据，同步到本端。false表示对端写入或更新的数据，同步到本端；或者本端写入或更新的数据。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## DistributedInfo<sup>24+</sup>
 
