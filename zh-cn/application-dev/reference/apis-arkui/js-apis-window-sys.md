@@ -3357,8 +3357,6 @@ try {
 
 ArkTS-Sta示例：
 
-**示例：**
-
 ```ts
 let wakeUp: boolean = true;
 try {
@@ -3395,6 +3393,8 @@ setSnapshotSkip(isSkip: boolean): void
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
+
+**示例：**
 
 ```ts
 let isSkip: boolean = true;
