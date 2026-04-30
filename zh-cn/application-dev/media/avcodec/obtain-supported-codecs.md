@@ -53,7 +53,7 @@
    // 获取指定硬件的视频AVC编码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
-   若获取能力实例成功，继续向下执行。实例无显性释放接口，使用完毕后系统会自动回收。
+   若获取能力实例成功，继续向下执行。实例无显式释放接口，使用完毕后系统会自动回收。
    
 4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
 
