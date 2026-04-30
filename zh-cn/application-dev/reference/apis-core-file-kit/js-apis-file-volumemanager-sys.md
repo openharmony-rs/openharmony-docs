@@ -668,7 +668,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
-异步修改指定卷设备描述，使用Promise异步回调。
+修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -742,7 +742,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步修改指定卷设备描述，使用callback异步回调。
+修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
