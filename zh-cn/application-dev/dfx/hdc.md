@@ -593,7 +593,7 @@ hdc shell [-b bundlename] [command]
 
 | 参数 | 说明 |
 | -------- | -------- |
-| -b bundlename | 3.1.0e版本新增参数。指定可调试应用包名。<br/>- 指定command参数时：在该可调试应用数据目录内以非交互式模式执行命令。[命令行方式访问应用沙箱](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。<br/>自3.2.0e版本起，参数新增以下特性：<br>- 缺省command参数时，支持进入可调试应用数据目录的交互式shell会话，默认工作目录即为该目录根路径。<br/>- 缺省[-b bundlename]参数时，默认执行路径为系统根目录。 |
+| -b bundlename | 3.1.0e版本新增参数。指定可调试应用包名。<br/>- 指定command参数时：在该可调试应用数据目录内以非交互式模式执行命令。[命令行方式访问应用沙箱](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。<br/>自3.2.0e版本起，参数新增以下特性：<br>- 缺省command参数时，支持进入可调试应用数据目录的交互式shell会话，默认工作目录即为可调试应用数据目录根路径。<br/>- 缺省[-b bundlename]参数时，默认执行路径为系统根目录。 |
 | command | 需要在设备上执行的单次命令，不同类型或版本的系统支持的command命令有所差异，可以通过hdc shell ls /system/bin查阅支持的命令列表。当前大多数命令都是由[toybox](../tools/toybox.md)提供，可通过 hdc shell toybox --help 获取命令帮助。<br/>缺省该参数，hdc将会启动一个交互式的shell会话，开发者可以在命令提示符下输入命令，比如 ls、cd、pwd 等。 |
 
 > **说明：**
