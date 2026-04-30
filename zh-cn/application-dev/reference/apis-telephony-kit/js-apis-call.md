@@ -1011,8 +1011,6 @@ getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTran
 
 **起始版本**: 26.0.0
 
-**模型约束**: 该接口可在FA模型和Stage模型下使用。
-
 **需要权限**：ohos.permission.GET_CALL_TRANSFER_INFO
 
 **系统能力**：SystemCapability.Telephony.CallManager
