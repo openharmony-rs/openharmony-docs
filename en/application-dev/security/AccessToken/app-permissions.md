@@ -21,7 +21,7 @@ The system provides the following permissions:
 
 - [Restricted permissions](restricted-permissions.md)
 
-   Restricted permissions are system_basic permission that can be granted to normal applications.
+   Restricted permissions are system_basic permissions that can be granted to normal applications.
 
 - [Permissions for enterprise applications](permissions-for-enterprise-apps.md)
 
