@@ -12,7 +12,7 @@
 
 ### 语法
 
-如果是拓展Text组件样式，用户声明Function-with-Reciever函数的第一个入参需要名称为this，类型是TextAttribute。
+如果是拓展[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件样式，用户声明Function-with-Reciever函数的第一个入参需要名称为this，类型是[TextAttribute](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#属性)。
 
 ```ts
 function functionName(this: TextAttribute, ...): TextAttribute { ... }
@@ -168,7 +168,7 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
 ## 使用场景
 
-以下示例声明了3个Text组件，每个Text组件均设置了fontStyle、fontWeight和backgroundColor样式。
+以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontstyle)、[fontWeight](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontweight23)和[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor20)样式。
 
 
 ```ts
