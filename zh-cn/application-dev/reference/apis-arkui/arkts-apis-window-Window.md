@@ -8126,9 +8126,9 @@ try {
 }
 ```
 
-## setWindowMask<sup>26+</sup>
+## setWindowMaskWithAlpha
 
-setWindowMask(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Promise&lt;void&gt;
+setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Promise&lt;void&gt;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
@@ -8139,6 +8139,10 @@ setWindowMask(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Pr
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。窗口被销毁场景下错误码返回401。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -8152,7 +8156,7 @@ setWindowMask(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Pr
 
 | 类型                                         | 说明                                |
 | :------------------------------------------- | :---------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8160,11 +8164,11 @@ setWindowMask(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Pr
 
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
+| 1300016  | Parameter error. Possible cause: 1. The maskWidth is not equal to the window width or the maskHeight is not equal to the window height. 2. The length of windowMask is not equal to maskWidth multiplied by maskHeight. |
 
 **示例：**
 
@@ -8179,7 +8183,7 @@ try {
       windowMask[i * maskWidth + j] = (i + j) > (maskWidth + maskHeight) / 2 ? 255 : 0;
     }
   }
-  windowClass.setWindowMask(windowMask, maskWidth, maskHeight).then(() => {
+  windowClass.setWindowMaskWithAlpha(windowMask, maskWidth, maskHeight).then(() => {
     console.info('Succeeded in setting the window mask.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
