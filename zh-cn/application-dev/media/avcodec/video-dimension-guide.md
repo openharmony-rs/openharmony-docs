@@ -114,7 +114,7 @@ sliceHeight = height + padding_height        （垂直方向）
 
 **解码器侧内存布局**
 
-解码器输出Buffer的内存布局类似，但使用不同的键名来标识有效区域：
+解码器输出Buffer的内存布局类似，但使用不同的键名来标识有效区域。
 
 **图2** 解码器输出Buffer的内存布局示意图
 ![decoder stride](figures/copy-by-line-decoder.png)
@@ -137,7 +137,7 @@ sliceHeight = height + padding_height        （垂直方向）
 **图3** 含crop信息时解码器侧内存布局示意图
 ![crop](figures/crop_display.png)
 
-解码器特有的4个裁剪参数定义了**有效显示区域**的矩形范围：
+解码器特有的4个裁剪参数定义了**有效显示区域**的矩形范围。
 
 | 参数 | 键名 | 说明 |
 |------|--------|--------|
