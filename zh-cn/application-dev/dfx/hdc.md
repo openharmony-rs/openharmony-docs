@@ -600,7 +600,7 @@ hdc shell [-b bundlename] [command]
 >
 > 使用参数[-b bundlename]指定包名，该包名对应的已安装应用必须满足以下条件：使用调试证书签名，并且已在设备上启动。有关如何申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 >
-> 若在执行`hdc shell -b bundlename`且缺省command参数时，进入的交互式shell会话默认工作目录仍为系统根目录（而非可调试应用数据目录），通常说明设备系统版本较低或版本不匹配，不支持该能力（可通过`hdc shell hdcd -v`查询设备系统版本号）。如果系统版本号小于3.2.0e，请升级设备系统版本，并参考[hdc版本配套表](#hdc版本配套表)确认版本配套关系。
+> 当设备系统版本及hdc版本低于3.2.0e时，缺省command参数进入的交互式shell会话默认工作目录仍为系统根目录。建议升级设备系统版本并参考[hdc版本配套表](#hdc版本配套表)确认版本兼容性，可通过hdc shell hdcd -v命令查询设备系统版本号。
 
 **返回信息**：
 
