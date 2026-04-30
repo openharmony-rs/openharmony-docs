@@ -50,13 +50,23 @@ Connects to a remote ServiceExtensionAbility.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode/errorcode-universal.md) and [Ability Error Codes](../errorcode/errorcode-ability.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
 | ID| Error Message                                                                                                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                             |
-| 16000011 | The context does not exist.                                                                                                                                                  |
-| 16000050 | Internal error.                                                                                                                                                              |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
 
 **Example**
 
@@ -104,13 +114,13 @@ Disconnects from a remote ServiceExtensionAbility. This API uses a promise to re
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode/errorcode-universal.md) and [Ability Error Codes](../errorcode/errorcode-ability.md).
+For details about the error codes, see [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
 | ID| Error Message                                                                                                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                             |
-| 16000011 | The context does not exist.                                                                                                                                                  |
-| 16000050 | Internal error.                                                                                                                                                              |
+| 16000003 | The connection id does not exist. |
+| 16000011 | The ability has been destroyed. The context is no longer valid, meaning the context does not exist. |
+| 16000050 | Internal error. |                                                                                                                                                      |
 
 **Example**
 
