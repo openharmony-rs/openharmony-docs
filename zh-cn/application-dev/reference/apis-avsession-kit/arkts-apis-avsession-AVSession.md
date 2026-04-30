@@ -499,6 +499,8 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 设置一个WantAgent用于拉起会话的Ability。使用Promise异步回调。
 
+通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)接口传入的context所属的UIAbility界面。
+
 **原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -574,6 +576,8 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 设置一个WantAgent用于拉起会话的Ability。使用callback异步回调。
+
+通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)接口传入的context所属的UIAbility界面。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
