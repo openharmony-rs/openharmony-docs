@@ -202,7 +202,7 @@ Internal error. The query resultSet is empty.
 
 **错误信息**
 
-Internal error. Invalid contact rawid.
+Internal error. Invalid contact rawId.
 
 **错误描述**
 
