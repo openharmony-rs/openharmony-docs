@@ -140,7 +140,13 @@ ArkTS-Sta示例：
 
 mount(volumeId: string): Promise&lt;void&gt;
 
-异步挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用Promise异步回调。
+
+当前仅支持以下文件系统的卷设备挂载：
+
+vfat、exfat及ntfs。
+
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -212,7 +218,13 @@ mount(volumeId: string): Promise&lt;void&gt;
 
 mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
-异步挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用callback异步回调。
+
+当前仅支持以下文件系统的卷设备挂载：
+
+vfat、exfat及ntfs。
+
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -275,7 +287,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 unmount(volumeId: string): Promise&lt;void&gt;
 
-异步卸载指定卷设备，使用Promise异步回调。
+卸载指定卷设备，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -347,7 +359,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
 
 unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步卸载指定卷设备，使用callback异步回调。
+卸载指定卷设备，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -410,7 +422,7 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
 getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
-异步通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。
+通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -479,7 +491,7 @@ ArkTS-Sta示例：
 
 getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
-异步通过卷设备uuid获得指定卷设备信息，使用callback异步回调。
+通过卷设备uuid获得指定卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -539,7 +551,7 @@ ArkTS-Sta示例：
 
 getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
-异步通过卷设备id获得指定卷设备信息，使用Promise异步回调。
+通过卷设备id获得指定卷设备信息，使用Promise异步回调
 
 **系统接口**：此接口为系统接口。
 
@@ -608,7 +620,7 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
 getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
-异步通过指定卷设备id获得卷设备信息，使用callback异步回调。
+通过指定卷设备id获得卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -807,7 +819,7 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 
 format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
-对指定卷设备进行格式化，使用callback异步回调。
+对指定卷设备进行格式化，使用Promise异步回调。
 
 当前仅支持以下文件系统类型的格式化：
 
