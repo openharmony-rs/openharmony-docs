@@ -22,7 +22,7 @@
 | ------ | ---- | ---- |
 | 不新建容器直接变化原容器 | 不发生路由跳转，需要在一个组件中实现展开及关闭两种状态的布局，展开后组件层级不变。| 适用于转场开销小的简单场景，如点开页面无需加载大量数据及组件。 |
 | 新建容器并跨容器迁移组件 | 通过使用[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md#nodecontroller-1)，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
-| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用geometryTransition接口绑定同一id，同时将转场逻辑置于animateTo动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
+| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)接口绑定同一id，同时将转场逻辑置于[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
 
 ## 不新建容器并直接变化原容器
 
