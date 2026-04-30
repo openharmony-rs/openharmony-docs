@@ -2361,8 +2361,10 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+'use static'
+
+import { common, Want, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base'
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
@@ -2387,7 +2389,7 @@ export default class EntryAbility extends UIAbility {
           // 执行正常业务
           console.info('requestModalUIExtensionWithAccount succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>) => {
           // 处理业务逻辑错误
           console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
         });

@@ -2973,8 +2973,10 @@ export default class ServiceExtension extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
-import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+'use static'
+
+import { common, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base'
 
 export default class ServiceExtension extends ServiceExtensionAbility {
   onCreate(want: Want) {
@@ -2999,7 +3001,7 @@ export default class ServiceExtension extends ServiceExtensionAbility {
           // 执行正常业务
           console.info('requestModalUIExtensionWithAccount succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>) => {
           // 处理业务逻辑错误
           console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
         });
