@@ -1841,7 +1841,7 @@ SOCKS5代理配置信息。
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
-| connection.Socks5Proxy | SOCKS5代理配置信息。     |
+| [connection.Socks5Proxy](js-apis-net-connection.md#socks5proxy) | SOCKS5代理配置信息。     |
 
 ## QueryParamValue
 
