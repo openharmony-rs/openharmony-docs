@@ -3268,17 +3268,18 @@ async function getExcludedDevices(){
 
 getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 
-获取当前音频设备场景下的活跃输出设备描述符，使用Promise异步回调。活跃策略与系统的音频设备策略相关。
+获取当前音频设备场景下的活跃输出设备描述符，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 **系统接口：** 此接口为系统接口。
 
 **返回值：**
+
 | 类型                                                         | 说明                      |
 | ------------------------------------------------------------ | ------------------------- |
 | Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise对象，返回活跃输出设备描述符列表。 |
@@ -3292,6 +3293,7 @@ getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 | 202 | Not system application. |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
