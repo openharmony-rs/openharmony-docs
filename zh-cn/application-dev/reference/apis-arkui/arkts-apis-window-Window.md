@@ -568,7 +568,7 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 | -- | ----- | -- | --------------------------------------------- |
 | x | number | 是 | 窗口在x轴方向移动的值，值为正表示右移，单位为px，该参数应该为整数，非整数输入将向下取整。 |
 | y | number | 是 | 窗口在y轴方向移动的值，值为正表示下移，单位为px，该参数应该为整数，非整数输入将向下取整。 |
-| moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，未设置将默认保持为当前屏幕。 |
+|  moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，仅支持主屏和扩展屏，未设置将默认保持为当前屏幕。 |
 
 **返回值：**
 
@@ -695,7 +695,7 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 | -- | ----- | -- | --------------------------------------------- |
 | x | number | 是 | 表示以目标屏幕左上角为起点，窗口在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
 | y | number | 是 | 表示以目标屏幕左上角为起点，窗口在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
-| moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，未设置将默认保持为当前屏幕。 |
+|  moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，仅支持主屏和扩展屏，未设置将默认保持为当前屏幕。 |
 
 **返回值：**
 
