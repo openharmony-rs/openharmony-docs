@@ -11,7 +11,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,6 +23,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 ## CmKeyPurpose
 
 表示密钥使用目的的枚举，用于签名、验签。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -38,18 +43,22 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CM_DIGEST_NONE | 0      | 不需要摘要算法，选用此项时，需要业务传入已经计算过摘要的数据进行签名、验签。 |
-| CM_DIGEST_MD5 | 1      | MD5摘要算法。 |
-| CM_DIGEST_SHA1 | 2      | SHA1摘要算法。 |
-| CM_DIGEST_SHA224 | 3      | SHA224摘要算法。 |
-| CM_DIGEST_SHA256 | 4      | SHA256摘要算法。 |
-| CM_DIGEST_SHA384 | 5      | SHA384摘要算法。 |
-| CM_DIGEST_SHA512 | 6      | SHA512摘要算法。 |
-| CM_DIGEST_SM3<sup>18+</sup> | 7 | SM3摘要算法。 |
+| CM_DIGEST_NONE | 0      | 不需要摘要算法，选用此项时，需要业务传入已经计算过摘要的数据进行签名、验签。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_MD5 | 1      | MD5摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA1 | 2      | SHA1摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA224 | 3      | SHA224摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA256 | 4      | SHA256摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA384 | 5      | SHA384摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA512 | 6      | SHA512摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SM3<sup>18+</sup> | 7 | SM3摘要算法。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CmKeyPadding
 
 表示签名、验签使用的填充方式的枚举。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -63,6 +72,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 表示签名、验签操作使用的参数集合，包括密钥使用目的、填充方式和摘要算法。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
@@ -75,6 +88,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 ## CertInfo
 
 表示证书详细信息。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -95,6 +112,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 表示证书简要信息。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
@@ -112,17 +133,21 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type          | string         | 否  | 否  | 表示凭据的类型，最大长度为8字节。 |
-| alias          | string   | 否  | 否  | 表示凭据的别名，最大长度为128字节。 |
-| keyUri          | string     | 否  | 否  | 表示凭据的唯一标识符，最大长度为256字节。 |
-| certNum          | number         | 否  | 否  | 表示凭据中包含的证书个数。 |
-| keyNum          | number   | 否  | 否  | 表示凭据中包含的密钥个数。 |
-| credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。 |
-| certPurpose<sup>22+</sup>          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。 |
+| type          | string         | 否  | 否  | 表示凭据的类型，最大长度为8字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| alias          | string   | 否  | 否  | 表示凭据的别名，最大长度为128字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| keyUri          | string     | 否  | 否  | 表示凭据的唯一标识符，最大长度为256字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| certNum          | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 否  | 否  | 表示凭据中包含的证书个数。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| keyNum          | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否  | 否  | 表示凭据中包含的密钥个数。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| certPurpose<sup>22+</sup>          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CredentialAbstract
 
 表示凭据的简要信息。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -140,19 +165,23 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| certList          | Array<[CertAbstract](#certabstract)> | 否  | 是   | 表示证书简要信息的列表。 |
-| certInfo          | [CertInfo](#certinfo) | 否  | 是   | 表示证书详情。 |
-| credentialList          | Array<[CredentialAbstract](#credentialabstract)> | 否  | 是   | 表示凭据简要信息的列表。 |
-| credential         | [Credential](#credential) | 否  | 是   | 表示凭据详情。 |
-| appUidList        | Array\<string>     | 否  | 是   | 表示授权应用列表。 |
-| uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。 |
-| outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
-| credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
-| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br>**起始版本：** 26.0.0 |
+| certList          | Array<[CertAbstract](#certabstract)> | 否  | 是   | 表示证书简要信息的列表。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| certInfo          | [CertInfo](#certinfo) | 否  | 是   | 表示证书详情。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credentialList          | Array<[CredentialAbstract](#credentialabstract)> | 否  | 是   | 表示凭据简要信息的列表。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credential         | [Credential](#credential) | 否  | 是   | 表示凭据详情。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| appUidList        | Array\<string>     | 否  | 是   | 表示授权应用列表。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| outData         | Uint8Array    | 否  | 是   | 表示签名结果。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## CMHandle
 
 表示签名、验签的初始化操作句柄。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -164,9 +193,11 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 表示证书二进制数据。
 
-**系统能力：** SystemCapability.Security.CertificateManager
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
@@ -182,21 +213,25 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CM_ERROR_NO_PERMISSION   | 201      | 表示应用程序无权限调用接口。 |
-| CM_ERROR_INVALID_PARAMS   | 401      | 表示输入参数无效。 |
-| CM_ERROR_GENERIC  | 17500001      | 表示调用接口时发生内部错误。 |
-| CM_ERROR_NO_FOUND  | 17500002      | 表示证书或凭据不存在。 |
-| CM_ERROR_INCORRECT_FORMAT  | 17500003      | 表示输入证书或凭据的数据格式无效。 |
-| CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | 表示证书或凭据数量达到上限。 |
-| CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。 |
-| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。 |
-| CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。   |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。   |
-| CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。   |
+| CM_ERROR_NO_PERMISSION   | 201      | 表示应用程序无权限调用接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_INVALID_PARAMS   | 401      | 表示输入参数无效。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_GENERIC  | 17500001      | 表示调用接口时发生内部错误。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_NO_FOUND  | 17500002      | 表示证书或凭据不存在。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_INCORRECT_FORMAT  | 17500003      | 表示输入证书或凭据的数据格式无效。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | 表示证书或凭据数量达到上限。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertType<sup>18+</sup>
 
 表示证书类型。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -209,6 +244,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 表示证书的位置。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称       | 值 |  说明      |
@@ -219,6 +258,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 ## CertAlgorithm<sup>20+</sup>
 
 表示证书的算法类型。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -235,13 +278,17 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称        | 类型                                | 只读 | 可选 | 说明                                          |
 |-----------|-----------------------------------| ---- | ------------------------------------------------------------ |---------------------------------------------|
-| certType  | [CertType](#certtype18)           | 否  | 否  | 表示证书的类型。                                    |
-| certScope | [CertScope](#certscope18)         | 否   | 是  | 表示证书的存储位置。当证书类型为CA_CERT_USER时，此项为必选项。       |
-| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。 |
+| certType  | [CertType](#certtype18)           | 否  | 否  | 表示证书的类型。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| certScope | [CertScope](#certscope18)         | 否   | 是  | 表示证书的存储位置。当证书类型为CA_CERT_USER时，此项为必选项。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
 
 ## AuthStorageLevel<sup>18+</sup>
 
 表示凭据的存储级别。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -254,6 +301,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 ## CertificatePurpose<sup>22+</sup>
 
 表示凭据用途的枚举。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -268,6 +319,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 提供USB凭据属性信息。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称           | 类型  | 只读 | 可选 | 说明  |
@@ -278,9 +333,11 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 表示证书文件格式。
 
-**系统能力：** SystemCapability.Security.CertificateManager
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称       | 值 | 说明      |
 | ---------- | ------ | --------- |
@@ -292,6 +349,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
 
 表示安装私有凭据，使用Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -332,7 +393,7 @@ try {
     if (err != null) {
       console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
     } else {
-      let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+      let uri: string = cmResult?.uri ?? '';
       console.info('Succeeded in installing private certificate.');
     }
   });
@@ -346,6 +407,10 @@ try {
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise\<CMResult>
 
 表示安装私有凭据。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -390,9 +455,10 @@ let keystore: Uint8Array = new Uint8Array([
 let keystorePwd: string = "123456";
 try {
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
-    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    let uri: string = cmResult?.uri ?? '';
     console.info('Succeeded in installing private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -405,6 +471,10 @@ try {
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel): Promise\<CMResult>
 
 表示安装私有凭据并指定凭据的存储级别。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -452,9 +522,10 @@ try {
   /* 安装凭据在首次解锁设备后可以使用。 */
   let level = certificateManager.AuthStorageLevel.EL2;
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
-    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    let uri: string = cmResult.uri ?? '';
     console.info('Succeeded in installing private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -467,6 +538,10 @@ try {
 getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 
 表示获取私有凭据的详细信息，使用Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -503,7 +578,7 @@ try {
       if (cmResult?.credential == undefined) {
         console.info('The result of getting private certificate is undefined.');
       } else {
-        let list = cmResult.credential;
+        let list = cmResult?.credential;
         console.info('Succeeded in getting private certificate.');
       }
     }
@@ -518,6 +593,10 @@ try {
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
 表示获取私有凭据详情。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -560,7 +639,8 @@ try {
       let list = cmResult.credential;
       console.info('Succeeded in getting private certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -573,6 +653,10 @@ try {
 uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): void
 
 表示卸载指定的私有凭据，使用Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -620,6 +704,10 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
 表示卸载指定的私有凭据。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -656,7 +744,8 @@ let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯
 try {
   certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
     console.info('Succeeded in uninstalling private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -670,11 +759,13 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
 安装用户CA证书。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -709,22 +800,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
 try {
-    let certBlob: certificateManager.CertBlob = {
-        certData: certData,
-        certFormat: certificateManager.CertFileFormat.PEM_DER,
-        certScope: certificateManager.CertScope.CURRENT_USER
-    };
-    certificateManager.installUserTrustedCertificate(certBlob).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in installing user trusted certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  let certBlob: certificateManager.CertBlob = {
+    certData: certData,
+    certFormat: certificateManager.CertFileFormat.PEM_DER,
+    certScope: certificateManager.CertScope.CURRENT_USER
+  };
+  certificateManager.installUserTrustedCertificate(certBlob).then((cmResult) => {
+    let uri: string = cmResult.uri ?? '';
+    console.info('Succeeded in installing user trusted certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -733,6 +825,10 @@ try {
 installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMResult
 
 表示安装用户CA证书。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
@@ -767,22 +863,22 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 **示例**：
 
 ```ts
-import {certificateManager} from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
 try {
-    let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
-    let certUri = result.uri;
-    if (certUri === undefined) {
-        console.error("The result of install user trusted certificate is undefined.");
-    } else {
-        console.info("Succeeded to install user trusted certificate.");
-    }
+  let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
+  let certUri = result.uri;
+  if (certUri === undefined) {
+    console.error("The result of install user trusted certificate is undefined.");
+  } else {
+    console.info("Succeeded to install user trusted certificate.");
+  }
 } catch (error) {
-    console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -791,6 +887,10 @@ try {
 uninstallUserTrustedCertificateSync(certUri: string) : void
 
 表示删除用户CA证书。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
@@ -816,13 +916,13 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 **示例**：
 
 ```ts
-import {certificateManager} from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
 
 let certUri: string = "test"; /* 业务删除证书，需要使用证书的标识符，此处省略 */
 try {
-    certificateManager.uninstallUserTrustedCertificateSync(certUri);
+  certificateManager.uninstallUserTrustedCertificateSync(certUri);
 } catch (error) {
-    console.error(`Failed to uninstall user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to uninstall user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -831,6 +931,10 @@ try {
 init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>): void
 
 表示使用凭据进行签名、验签的初始化操作，使用Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -885,6 +989,10 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
 表示使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -928,7 +1036,8 @@ const req: certificateManager.CMSignatureSpec = {
 try {
   certificateManager.init(uri, req).then((handle) => {
     console.info('Succeeded in initiating.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -941,6 +1050,10 @@ try {
 update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): void
 
 表示签名、验签的数据更新操作，使用Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -994,6 +1107,10 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
 表示签名、验签的数据更新操作。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -1036,7 +1153,8 @@ let srcData: Uint8Array = new Uint8Array([
 try {
   certificateManager.update(cmHandle, srcData).then((result) => {
     console.info('Succeeded in updating.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1049,6 +1167,10 @@ try {
 finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
 表示完成签名的操作，Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1085,7 +1207,7 @@ try {
       console.error(`Failed to finish. Code: ${err.code}, message: ${err.message}`);
     } else {
       if (cmResult?.outData != undefined) {
-        let signRes: Uint8Array = cmResult.outData;
+        let signRes = cmResult?.outData;
         console.info('Succeeded in finishing.');
       } else {
         console.info('The result of finishing is undefined.');
@@ -1102,6 +1224,10 @@ try {
 finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
 表示完成验签的操作，使用Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1155,6 +1281,10 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
 表示完成签名、验签的操作。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -1195,12 +1325,13 @@ try {
   /* 签名的finish操作 */
   certificateManager.finish(cmHandle).then((cmResult) => {
     if (cmResult?.outData != undefined) {
-      let signRes1: Uint8Array = cmResult.outData;
+      let signRes1 = cmResult?.outData;
       console.info('Succeeded in finishing signature.');
     } else {
       console.info('The result of signature is undefined.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to finish signature. Code: ${err.code}, message: ${err.message}`);
   })
 
@@ -1211,7 +1342,8 @@ try {
   /* 验签的finish操作 */
   certificateManager.finish(cmHandle, signRes).then((cmResult) => {
     console.info('Succeeded in finishing verification.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to finish verification. Code: ${err.code}, message: ${err.message}`);
   })
 } catch(error) {
@@ -1224,6 +1356,10 @@ try {
 abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
 表示中止签名、验签的操作，使用Callback回调异步返回结果。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1273,6 +1409,10 @@ abort(handle: Uint8Array): Promise\<void>
 
 表示中止签名、验签的操作。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -1311,7 +1451,8 @@ let cmHandle: Uint8Array = new Uint8Array([
 try {
   certificateManager.abort(cmHandle).then((result) => {
     console.info('Succeeded in aborting.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1324,6 +1465,10 @@ try {
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
 表示获取用户公共凭据的详细信息。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1367,7 +1512,8 @@ try {
       let cred = cmResult.credential;
       console.info('Succeeded in getting Public certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get Public certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1380,6 +1526,10 @@ try {
 isAuthorizedApp(keyUri: string): Promise\<boolean>
 
 表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1420,7 +1570,8 @@ try {
     } else {
       console.info('The application is not authorized by the user.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to check if the application is authorized. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1433,6 +1584,10 @@ try {
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
 表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1468,7 +1623,8 @@ try {
       let list = cmResult.certList;
       console.info('Succeeded in getting all user trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1481,6 +1637,10 @@ try {
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
 表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1526,7 +1686,8 @@ try {
       let list = cmResult.certList;
       console.info('Succeeded in getting current user trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1539,6 +1700,10 @@ try {
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
 表示获取用户根CA证书的详细信息。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1581,7 +1746,8 @@ try {
       let cert = cmResult.certInfo;
       console.info('Succeeded in getting user trusted certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get user trusted certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1593,6 +1759,10 @@ try {
 getPrivateCertificates(): Promise\<CMResult>
 
 表示获取应用安装的凭据列表。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1628,7 +1798,8 @@ try {
       let list = cmResult.credentialList;
       console.info('Succeeded in getting all private certificates installed by the application.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all private certificates installed by the application. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1640,6 +1811,10 @@ try {
 getCertificateStorePath(property: CertStoreProperty): string;
 
 表示获取证书的存储路径。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -1710,6 +1885,10 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
 表示获取USB凭据详细信息。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -1749,13 +1928,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* USB凭据的唯一标识符，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
-  }
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+}
 try {
   certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
-      let list = cmResult.credentialDetailList;
-      console.info('Succeeded in getting detail of USB key certificate.');
-  }).catch((err: BusinessError) => {
+    let list = cmResult.credentialDetailList;
+    console.info('Succeeded in getting detail of USB key certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1769,11 +1949,13 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 获取USB凭据证书列表。使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
-
-**起始版本：** 26.0.0
 
 **设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
 
@@ -1810,17 +1992,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let ukeyProvider: string = 'testProvider'; /* USB凭据提供商，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
 }
 try {
-    certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult: certificateManager.CMResult) => {
-        let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
-        console.info('Succeeded in getting USB key certificate list.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult) => {
+    let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
+    console.info('Succeeded in getting USB key certificate list.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1830,7 +2013,9 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 
 导入证书到USB Key。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1882,7 +2067,8 @@ let ukeyInfo: certificateManager.UkeyInfo = {
 try {
   certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
     console.info('Succeeded in importing USB key certificate.');
-  }).catch((err: BusinessError): void => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
