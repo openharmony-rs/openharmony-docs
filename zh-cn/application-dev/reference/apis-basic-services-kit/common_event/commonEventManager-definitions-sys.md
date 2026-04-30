@@ -308,6 +308,8 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **取值：** "usual.event.SCREEN_LOCK_EXITING"
 
 
