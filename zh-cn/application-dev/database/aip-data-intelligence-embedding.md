@@ -49,12 +49,12 @@
 | getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | 获取文本嵌入模型。 | 
 | loadModel(): Promise&lt;void&gt; | 加载文本嵌入模型。 | 
 | splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | 获取文本的分块。 | 
-| ArkTS-Dyn：getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta：getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt; | 获取给定文本的嵌入向量。 | 
-| ArkTS-Dyn：getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;<br>ArkTS-Sta：getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt; | 获取给定批次文本的嵌入向量。 |
+| ArkTS-Dyn: getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt; | 获取给定文本的嵌入向量。 | 
+| ArkTS-Dyn: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;<br>ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt; | 获取给定批次文本的嵌入向量。 |
 | releaseModel(): Promise&lt;void&gt; | 释放文本嵌入模型。 | 
 | getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | 获取图像嵌入模型。 | 
 | loadModel(): Promise&lt;void&gt; | 加载图像嵌入模型。 | 
-| ArkTS-Dyn：getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta：getEmbedding(image: Image): Promise&lt;Array&lt;double&gt;&gt; | 获取给定图像的嵌入向量。 | 
+| ArkTS-Dyn: getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double&gt;&gt; | 获取给定图像的嵌入向量。 | 
 | releaseModel(): Promise&lt;void&gt; | 释放图像嵌入模型。 | 
 
 ## 文本向量化开发步骤

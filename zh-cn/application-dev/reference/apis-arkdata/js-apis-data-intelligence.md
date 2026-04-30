@@ -447,9 +447,9 @@ textEmbedding?.releaseModel()
 
 ### getEmbedding
 
-ArkTS-Dyn：getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn: getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
-ArkTS-Sta：getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
+ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 获取给定文本的嵌入向量。使用Promise异步回调。
 
@@ -473,7 +473,7 @@ ArkTS-Sta：getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn：Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta：Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -519,9 +519,9 @@ textEmbedding?.getEmbedding(text)
 
 ### getEmbedding
 
-ArkTS-Dyn：getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
+ArkTS-Dyn: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
 
-ArkTS-Sta：getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt;
+ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt;
 
 获取给定批次文本的嵌入向量。使用Promise异步回调。
 
@@ -545,7 +545,7 @@ ArkTS-Sta：getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;A
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn：Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;<br>ArkTS-Sta：Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -713,9 +713,9 @@ imageEmbedding?.releaseModel()
 
 ### getEmbedding
 
-ArkTS-Dyn：getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn: getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
-ArkTS-Sta：getEmbedding(image: Image): Promise&lt;Array&lt;double&gt;&gt;
+ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double&gt;&gt;
 
 获取给定图像的嵌入向量。使用Promise异步回调。
 
@@ -739,7 +739,7 @@ ArkTS-Sta：getEmbedding(image: Image): Promise&lt;Array&lt;double&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn：Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta：Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
