@@ -195,6 +195,6 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
-| HOVER_FOCUS                |  1 | 表示当前为点击聚焦。         |
-| SWIPE_FOCUS                |  2 | 表示当前为滑动聚焦。         |
-| SCROLL_FOCUS               |  3 | 表示当前为滚动聚焦。         |
+| HOVER_FOCUS                |  1 | 表示当前聚焦的场景为点击聚焦。         |
+| SWIPE_FOCUS                |  2 | 表示当前聚焦的场景为滑动聚焦。         |
+| SCROLL_FOCUS               |  3 | 表示当前聚焦的场景为滚动聚焦。         |
