@@ -3594,7 +3594,7 @@ currentAVSession.on('setSpeed', (speed: number) => {
 
 ## onSetSpeed<sup>23+</sup>
 
-onSetSpeed(callback: Callback\<double>): void;
+onSetSpeed(callback: Callback\<double>): void
 
 注册播放速率的事件监听。使用callback异步回调。
 
