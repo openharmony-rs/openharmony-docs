@@ -929,6 +929,25 @@ type ResponsiveFillType = PresetFillType
 | minCount | number | 否   | 否 | 最小缓存数，当实际缓存数小于最小缓存数时，在滚动动画帧间空闲时隙加载缓存。<br/> 取值范围：[0, +∞)，小于0时按1处理。|
 | maxCount   | number | 否   | 否 | 最大缓存数，当实际缓存数大于最大缓存数时，缓存内容会回收或释放，当UI空闲时（无动画或用户操作），会加载缓存到最大缓存数。<br/> 取值范围：[minCount, +∞)，小于minCount时按minCount处理。 |
 
+## Coordinate2D
+
+描述一个二维坐标系。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
+| ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | x轴坐标，单位vp。 |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | y轴坐标，单位vp。 |
+
 ## AccessibilityActionOptions<sup>23+</sup>对象说明
 
 设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。仅[Slider](ts-basic-components-slider.md)组件支持使用。在其他组件使用该接口时，编译环节可正常通过，但接口功能不生效。

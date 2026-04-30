@@ -184,7 +184,7 @@ ArkTS-Sta: onTouchTestDone(callback: TouchTestDoneCallback | undefined): this;
 
 type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<GestureRecognizer\>) => void
 
-动态指定手势识别器是否参与手势处理的回调事件类型。
+动态指定手势识别器是否参与手势处理的回调事件类型，回调内参数的生命周期跟随回调本身，参数内的方法仅支持在回调内同步使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

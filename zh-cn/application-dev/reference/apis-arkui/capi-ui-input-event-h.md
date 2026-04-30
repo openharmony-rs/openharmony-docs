@@ -71,6 +71,10 @@
 | [float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getxbyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前组件左上角的X坐标。对于鼠标和轴事件，当给定的索引大于0时，返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gety) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getybyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前组件左上角的Y坐标。对于鼠标和轴事件，当给定的索引大于0时，返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| float [OH_ArkUI_PointerEvent_GetCurrentLocalX](#oh_arkui_pointerevent_getcurrentlocalx) (const ArkUI_UIInputEvent* event) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | 
+| float [OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex](#oh_arkui_pointerevent_getcurrentlocalxbyindex) (const ArkUI_UIInputEvent* event, uint32_t pointerIndex) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的X坐标。所有类型事件，若传入的索引值小于0时为非法值。对于鼠标和轴事件，当索引值非0时为非法值。对于触摸事件，根据给定的索引获取特定接触点相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | 
+| float [OH_ArkUI_PointerEvent_GetCurrentLocalY](#oh_arkui_pointerevent_getcurrentlocaly) (const ArkUI_UIInputEvent* event) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | 
+| float [OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex](#oh_arkui_pointerevent_getcurrentlocalybyindex) (const ArkUI_UIInputEvent* event, uint32_t pointerIndex) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的Y坐标。所有类型事件，若传入的索引值小于0时为非法值。对于鼠标和轴事件，当索引值非0时为非法值。对于触摸事件，根据给定的索引获取特定接触点相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | 
 | [float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getwindowxbyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前应用窗口左上角的X坐标。对于鼠标和轴事件，当给定的索引大于0时，总是返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getwindowy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前应用窗口左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -859,6 +863,112 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 | 类型 | 说明 |
 | -- | -- |
 | float | 返回指向性输入事件事件中特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalX()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalX (const ArkUI_UIInputEvent* event)
+```
+**描述：**
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的X坐标。
+
+**起始版本：** 26.0.0
+
+**参数:**
+
+| 名称 | 描述 | 
+| -------- | -------- |
+| event | 表示指向当前UI输入事件的指针。  | 
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex (const ArkUI_UIInputEvent* event, uint32_t pointerIndex )
+```
+**描述：**
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的X坐标。
+
+所有类型事件，若传入的索引值小于0时为非法值。
+
+对于鼠标和轴事件，当索引值非0时为非法值。
+
+对于触摸事件，根据给定的索引获取特定接触点相对于当前组件左上角的X坐标。
+
+**起始版本：** 26.0.0
+
+**参数:**
+
+| 名称 | 描述 | 
+| -------- | -------- |
+| event | 表示指向当前UI输入事件的指针。  | 
+| pointerIndex | 表示多点触控数据列表中目标触控点的索引。  | 
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回特定接触点相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalY()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalY (const ArkUI_UIInputEvent* event)
+```
+**描述：**
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的Y坐标。
+
+**起始版本：** 26.0.0
+
+**参数:**
+
+| 名称 | 描述 | 
+| -------- | -------- |
+| event | 表示指向当前UI输入事件的指针。  | 
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex (const ArkUI_UIInputEvent* event, uint32_t pointerIndex )
+```
+**描述：**
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的Y坐标。
+
+所有类型事件，若传入的索引值小于0时为非法值。
+
+对于鼠标和轴事件，当索引值非0时为非法值。
+
+对于触摸事件，根据给定的索引获取特定接触点相对于当前组件左上角的Y坐标。
+
+**起始版本：** 26.0.0
+
+**参数:**
+
+| 名称 | 描述 | 
+| -------- | -------- |
+| event | 表示指向当前UI输入事件的指针。  | 
+| pointerIndex | 表示多点触控数据列表中目标触控点的索引。  | 
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回特定接触点相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
