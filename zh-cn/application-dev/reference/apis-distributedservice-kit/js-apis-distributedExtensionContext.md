@@ -1,7 +1,10 @@
 # @ohos.application.DistributedExtensionContext (协同Extension上下文)
-
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @hu-zhiqiong-->
 
 DistributedExtensionContext模块是DistributedExtensionAbility的上下文环境，继承自ExtensionContext。
 
