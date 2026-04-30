@@ -54,7 +54,7 @@
 
 - 使用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
-  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) --> 
+  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->  
   
   ``` TypeScript
   @Component
@@ -82,6 +82,7 @@
   
     build() {
       Column() {
+        // 使用父组件自定义构建函数初始化子组件@BuilderParam装饰的方法
         Child({ customBuilderParam: this.componentBuilder })
       }
     }
@@ -468,7 +469,7 @@ struct ChildPage_BuilderParam {
 ```
 
 
-<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) -->
+<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -482,6 +483,7 @@ struct HelloWorldPage {
   @State pathStack: NavPathStack = new NavPathStack();
 
   build() {
+    // 用于跳转的子页面
     NavDestination() {
       Column() {
         Text(this.message)
@@ -852,7 +854,7 @@ struct ChildPage {
 
 【正例】
 
-<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) -->
+<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -865,6 +867,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // childBuilder被@Require装饰，必须从外部初始化
       ChildPage({ childBuilder: globalBuilder })
     }
   }
@@ -923,7 +926,7 @@ struct ChildPage {
 
 【正例】
 
-<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) -->
+<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -936,6 +939,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // 正确写法
       ChildPage({ childBuilder: globalBuilder })
     }
   }

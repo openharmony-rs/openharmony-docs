@@ -1,7 +1,7 @@
 # native_color_space_manager.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
+<!--Owner: @xiaojianfeng_jeffery-->
 <!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->

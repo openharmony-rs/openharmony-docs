@@ -1,8 +1,8 @@
 # @ohos.notificationManager (NotificationManager模块)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -1563,7 +1563,7 @@ let requestEnableNotificationCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("requestEnableNotification success");
+    console.info(`requestEnableNotification success`);
   }
 };
 notificationManager.requestEnableNotification(requestEnableNotificationCallback);
@@ -1605,7 +1605,7 @@ requestEnableNotification(): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.requestEnableNotification().then(() => {
-  console.info("requestEnableNotification success");
+  console.info(`requestEnableNotification success`);
 }).catch((err: BusinessError) => {
   console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
 });

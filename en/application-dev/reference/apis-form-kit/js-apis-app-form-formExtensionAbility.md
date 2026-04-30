@@ -10,16 +10,16 @@ The **FormExtensionAbility** module provides lifecycle callbacks invoked when a 
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The formExtensionAbility is cleared after 10 seconds of inactivity.
+> The formExtensionAbility is cleared after 10 seconds of inactivity.
 >
-> - The following modules cannot be referenced in the FormExtensionAbility, as doing so may cause the program to exit abnormally:
->   - @ohos.ability.particleAbility (ParticleAbility)
->   - @ohos.multimedia.audio (Audio Management)
->   - @ohos.multimedia.camera (Camera Management)
->   - @ohos.multimedia.media (Media)
->   - @ohos.resourceschedule.backgroundTaskManager (Background Task Management)
+> The following modules cannot be referenced in the FormExtensionAbility, as doing so may cause the program to exit abnormally:
+> - @ohos.ability.particleAbility (ParticleAbility)
+> - @ohos.multimedia.audio (Audio Management)
+> - @ohos.multimedia.camera (Camera Management)
+> - @ohos.multimedia.media (Media)
+> - @ohos.resourceschedule.backgroundTaskManager (Background Task Management)
 
 
 ## Modules to Import
@@ -168,8 +168,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onChangeFormVisibility(newStatus: Record\<string, number>): void
 
-Called to notify the widget provider that the widget visibility status is being changed.
-This API is valid only for system applications when **formVisibleNotify** is set to **true**.
+Called to notify the widget provider that the widget visibility status is being changed. This API is valid only for system applications when **formVisibleNotify** is set to **true**.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -179,7 +178,7 @@ This API is valid only for system applications when **formVisibleNotify** is set
 
 | Name | Type  | Mandatory| Description                  |
 | ------- | ------ | ---- | ---------------------- |
-| newStatus  | Record\<string, number> | Yes  | ID and visibility status of the widget to be changed.|
+| newStatus  | Record\<string, number> | Yes  | ID and visibility status of the widget to be changed.<br>**Note**: The value of the **number** parameter is an integer within the range of [0, 2]. The value **0** indicates an unknown type, the value **1** indicates the visible state, and the value **2** indicates the invisible state.|
 
 **Example**
 

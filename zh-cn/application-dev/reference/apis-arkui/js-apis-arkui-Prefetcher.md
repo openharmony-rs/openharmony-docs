@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
-<!--Designer: @lixingchi1-->
-<!--Tester: @TerryTsao-->
+<!--Designer: @keerecles-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 配合LazyForEach，为List、Grid、WaterFlow和Swiper等容器组件滑动浏览时提供内容预加载能力，提升用户浏览体验。

@@ -1,8 +1,8 @@
 # @ohos.util.json (JSON解析与生成)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -93,7 +93,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object \| null | 返回ArkTS对象或null。当入参是null时，返回null。|
+| Object \| null | 返回ArkTS对象或null。当入参字符串为'null'时，返回null。|
 
 **错误码：**
 
@@ -197,7 +197,7 @@ console.info(rstStrSpace);
   "name": "John",
   "age": 30
 }
-*/
+ */
 
 let rstStrStar = JSON.stringify(person, ["name", "age"], '  &&');
 console.info(rstStrStar);
@@ -207,7 +207,7 @@ console.info(rstStrStar);
   &&"name": "John",
   &&"age": 30
 }
-*/
+ */
 
 let bigIntObj = BigInt(112233445566778899n);
 console.info(JSON.stringify(bigIntObj));
@@ -276,7 +276,7 @@ console.info(JSON.stringify(inputObj, replacer, '  '));
   "age": 30,
   "city": "CHONGQING"
 }
-*/
+ */
 ```
 
 ## JSON.has

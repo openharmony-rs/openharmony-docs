@@ -2,9 +2,9 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @zxz--3--; @chaceli-->
-<!--Designer: @lanming--; @chande-->
-<!--Tester: @PAFT--; @zhangzhi1995-->
+<!--Owner: @zxz--3; @chaceli-->
+<!--Designer: @lanming; @chande-->
+<!--Tester: @PAFT; @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
 - [Device Certificate Kit简介](device-certificate-kit-intro.md)
@@ -25,6 +25,7 @@
   - [证书PKCS12的创建和解析](create-parse-pkcs12.md)
   - [证书链在线校验证书吊销状态](create-verify-cerchainvalidator-revocation-object.md)
   - [证书链校验时下载缺失的中间CA证书](allow-download-Intermediate-Cert.md)
+  - [构建并校验证书链](build-and-verify-cert-chain.md)
 - 证书管理<!--certmanager-->
   - [证书管理概述](certManager-overview.md)
   - [应用证书凭据开发指导](certManager-private-credential-guidelines.md)

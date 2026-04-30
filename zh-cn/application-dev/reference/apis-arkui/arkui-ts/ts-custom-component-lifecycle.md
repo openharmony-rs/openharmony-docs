@@ -1,7 +1,7 @@
 # 自定义组件的生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @huyisuo-->
+<!--Owner: @seaside_wu1; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -116,16 +116,19 @@ struct IndexComponent {
   @State textColor: Color = Color.Black;
 
   onPageShow() {
+    // onPageShow触发时将textColor置为Blue
     this.textColor = Color.Blue;
     console.info('IndexComponent onPageShow');
   }
 
   onPageHide() {
+    // onPageHide触发时将textColor置为Transparent
     this.textColor = Color.Transparent;
     console.info('IndexComponent onPageHide');
   }
 
   onBackPress() {
+    // 点击返回键触发onBackPress，将textColor置为Red
     this.textColor = Color.Red;
     console.info('IndexComponent onBackPress');
   }
@@ -191,6 +194,7 @@ struct Index {
             params: new routerParam('push pageOne Standard')
           }, router.RouterMode.Standard);
         })
+      // Single模式下若PageOne已在栈中，会复用并触发PageOne.onNewParam
       Button('push pageOne Single')
         .margin(10)
         .onClick(() => {
@@ -232,6 +236,7 @@ struct PageOne {
             params: new routerParam('push Index Standard')
           }, router.RouterMode.Standard);
         })
+      // Single模式下若Index已在栈中，会复用并触发Index.onNewParam
       Button('push Index Single')
         .margin(10)
         .onClick(() => {
@@ -285,6 +290,7 @@ struct Index {
 
   build() {
     Column() {
+      // 点击Button切换switch，控制Child从组件树移除或重新加入
       Button('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -650,6 +656,7 @@ struct WidgetCard {
 
   onFormRecycle(): string {
     let formId: string = "1859635745"
+    // 卡片回收时触发回调
     console.info("card is recycled, formID: " + formId);
     return formId;
   }
@@ -720,6 +727,7 @@ struct WidgetCard {
   }
 
   onFormRecover(statusData: string): void {
+    // 在卡片恢复时触发回调
     console.info("card has been restored, formID: " + statusData);
   }
 

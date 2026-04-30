@@ -3,7 +3,7 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @yanghaoqian-->
+<!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 本模块提供联系人管理能力，包括添加联系人、删除联系人、更新联系人等。
@@ -1440,6 +1440,14 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
 
@@ -4427,6 +4435,8 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 
 **需要权限**：ohos.permission.CHECK_CALL_LOG
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -4435,8 +4445,8 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码。                                           |
-| minDuration      | number                      | 是   | 最短通话时长，单位为秒，取值范围大于0。        |
-| withinTime       | number | 是   | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒。最多可设置6小时，超过6小时的默认以6小时查询。               |
+| minDuration      | number                      | 是   | 最短通话时长，单位为秒(s)，取值范围大于0。        |
+| withinTime       | number | 是   | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒(s)。查询时间范围大于0且不超过6小时，超过6小时的以6小时查询。               |
 
 **返回值：**
 
@@ -4467,7 +4477,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-const phoneNumber = '13812345678';
+const phoneNumber = '138xxxxxxxx';
 const minDuration = 60;
 const withinTime = 2 * 60 *60;
 
@@ -4487,6 +4497,8 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 
 **需要权限**：ohos.permission.CHECK_CALL_LOG
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -4495,7 +4507,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码。                                           |
-| minDuration      | number                      | 是   | 最短通话时长，单位为秒，取值范围大于0。       |
+| minDuration      | number                      | 是   | 最短通话时长，单位为秒(s)，取值范围大于0。       |
 
 **返回值：**
 
@@ -4526,7 +4538,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-const phoneNumber = '13812345678';
+const phoneNumber = '138xxxxxxxx';
 const minDuration = 60;
 // 调用接口查询，默认查询6小时以内的通话记录
 contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:boolean) => {
@@ -4545,7 +4557,8 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 | isMultiSelect<sup>10+</sup>         | boolean | 否   | 是   | 是否为多选，true:多选，false:单选。默认值为false。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。     |
 | maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人数量上限。默认值为10000，超出上限则以默认值筛选。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
 | isDisplayedByName<sup>15+</sup>         | boolean | 否   | 是   | 是否按联系人姓名维度展示，true:按联系人姓名维度展示，false:按联系人号码维度展示，默认值为false。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
-| filter<sup>15+</sup>         | [ContactSelectionFilter](#contactselectionfilter15) | 否   | 是   | 联系人查询过滤器。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
+| filter<sup>15+</sup>         | [ContactSelectionFilter](#contactselectionfilter15) | 否   | 是   | 联系人查询过滤器。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
+| isAutoDismissOnNavigation        | boolean | 否   | 是   | 拉起picker的页面发生路由切换时是否允许自动关闭picker，true:允许自动关闭picker，false:不允许自动关闭picker，默认值为false。**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
 
 ## ContactSelectionFilter<sup>15+</sup>
 
@@ -4559,33 +4572,6 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | filterClause        | [FilterClause](#filterclause15) |  否  |  否   |  过滤条件。     |
 | filterType        | [FilterType](#filtertype15) |  否  |  否    | 过滤类型。     |
-
-**示例：**
-使用contactSelectionFilter对联系人进行组合过滤，并通过 Promise 方式获取查询结果。
-
->**说明：**
->
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
-
-```js
-import { common } from '@kit.AbilityKit';
-import { contact } from '@kit.ContactsKit';
-
-// 请在组件内获取context。
-const ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
-const filter = {
-  filterType: 1,
-  filterClause: {
-    id: [{ filterCondition: contact.FilterCondition.EQUAL_TO, value: '1' }],
-    name: [{ filterCondition: contact.FilterCondition.CONTAINS, value: '张' }],
-    dataItem: [{ filterCondition: contact.FilterCondition.IN, value: ['a@x.com', 'b@y.com'] }]
-  }
-};
-contact.getContactList({ uiContext: ctx, selectionFilter: filter})
-  .then(r =>console.info(`返回 ${r.contacts?.length ?? 0} 条`))
-  .catch(e => console.error(`查询错误 ${e.code}: ${e.message}`));
-
-```
 
 ## FilterType<sup>15+</sup>
 

@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -200,7 +200,7 @@ Sets the image cache capacity of an OH_ImageReceiverOptions object.
 | Name| Description|
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| Pointer to an OH_ImageReceiverOptions object.|
-| int32_t capacity | Capacity.|
+| int32_t capacity | Image cache capacity.|
 
 **Returns**
 

@@ -173,9 +173,9 @@ With this permission, an application can call APIs provided by the system layer 
 
 **Enable via ACL**: false
 
- **Supported devices**: phones | TVs | tablets
+**Supported devices**: phones | TVs | tablets
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.ENFORCE_USER_IDM
 

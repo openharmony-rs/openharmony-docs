@@ -237,7 +237,7 @@ Represents the information presented on the user authentication page.
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | title                | string                              |  No |  No | Title of the user authentication page, which cannot be empty or exceed 500 characters. You are advised to set it to the authentication purpose, such as payment or application login.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | navigationButtonText | string                              |  No |  Yes | Text on the navigation button. It cannot exceed 60 characters. It is supported in single fingerprint or facial authentication before API version 18. Since API version 18, it is also supported in combined facial and fingerprint authentication. By default, the custom navigation button is not displayed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| uiContext<sup>18+</sup>            | Context               |  No |  Yes | Whether to display the authentication dialog box as a modal application pop-up. This mode is applicable only to 2-in-1 devices. If this mode is not used or other types of devices are used, the authentication dialog box is displayed as a modal system pop-up. By default, the authentication dialog box is displayed as a modal system pop-up.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
+| uiContext<sup>18+</sup>            | Context               |  No |  Yes | Whether to display the authentication dialog box as an application modal dialog. This mode is applicable only to 2-in-1 devices. If this mode is not used or other types of devices are used, the authentication dialog box is displayed as a system modal dialog. By default, the authentication dialog box is displayed as a system modal dialog.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## UserAuthResult<sup>10+</sup>
 
@@ -521,7 +521,7 @@ Subscribes to the user authentication result. This API is used to obtain the fin
 
 > **NOTE**<br>
 >
-> On PCs/2-in-1 devices, if an application initiates authentication in a modal application pop-up (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#onauthtip20) API.
+> On PCs/2-in-1 devices, if an application initiates authentication in an application modal dialog (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#onauthtip20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -545,7 +545,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example 1**
 
-Perform user identity authentication in a modal system pop-up.
+Perform user identity authentication in a system modal dialog.
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -594,7 +594,7 @@ try {
 
 **Example 2**
 
-Perform user identity authentication in a modal application pop-up.
+Perform user identity authentication in an application modal dialog.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -883,7 +883,7 @@ Subscribes to authentication tip information. This API is used to obtain the com
 
 > **NOTE**<br>
 >
-> On PCs/2-in-1 devices, if an application initiates authentication in a modal application pop-up (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#onauthtip20) API.
+> On PCs/2-in-1 devices, if an application initiates authentication in an application modal dialog (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#onauthtip20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

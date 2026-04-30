@@ -1,4 +1,4 @@
-# DLP Service Overview
+# About This Kit
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
@@ -57,4 +57,7 @@ The DLP solution consists of the following components:
 11. The DLP permission manager application invokes the DLP permission management service to install a DLP sandbox application for the application and perform access control based on the authorization.
 
 12. The DLP permission manager application uses a link mechanism to map the plaintext and ciphertext. Based on the open-source Filesystem in Userspace (FUSE), the link mechanism creates a virtual link file (which is mapped to the DLP file) and shares the link file to the application. The application can access and edit the plaintext file, and the operations are synchronized to the DLP file in real time.
+
 13. When the DLP permission manager application is ready, it starts the sandbox application and transfers the file descriptor to the link file. The sandbox application starts, and the application process opens the link file.
+
+<!--RP1--><!--RP1End-->

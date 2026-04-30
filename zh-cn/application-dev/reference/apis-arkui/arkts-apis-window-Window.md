@@ -803,7 +803,7 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 
 将相对于当前窗口左上角的坐标转换为相对于主屏幕左上角的全局坐标。
 
-不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的悬浮窗场景。
+不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -848,7 +848,7 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 
 将相对于主屏幕左上角的全局坐标转换为相对于当前窗口左上角的坐标。
 
-不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的悬浮窗场景。
+不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -856,8 +856,8 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| globalDisplayX | number | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
-| globalDisplayY | number | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
+| globalDisplayX | number | 是 | 表示以当前主屏幕左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
+| globalDisplayY | number | 是 | 表示以当前主屏幕左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -1227,7 +1227,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### setWindowContainerModalColor
+## setWindowContainerModalColor
 
 setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
@@ -1532,7 +1532,7 @@ export default class EntryAbility extends UIAbility {
 
 isSystemAvoidAreaEnabled(): boolean
 
-获取悬浮窗、模态窗或WindowType为系统类型的窗口是否可以获取窗口内容的避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
+获取全局悬浮窗、模态窗或WindowType为系统类型的窗口是否可以获取窗口内容的避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1851,6 +1851,8 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
@@ -1895,6 +1897,8 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -4399,7 +4403,7 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
 - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
-- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4489,7 +4493,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
 - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
-- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6126,7 +6130,9 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下生效，在其他设备中返回801错误码。
+**设备行为差异：**
+- 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -7778,7 +7784,7 @@ struct Float {
           return;
         }
         windowClass = data;
-        console.info(`succedded in creating the window. Data: ${JSON.stringify(data)}`);
+        console.info(`succeeded in creating the window. Data: ${JSON.stringify(data)}`);
         windowClass.resize(500, 1600).then(() => {
           console.info('Succeeded in changing the window size.');
         }).catch((err: BusinessError) => {
@@ -8182,6 +8188,65 @@ try {
 }
 ```
 
+## setTouchableAreas
+
+setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
+
+设置当前窗口的可触摸区域，使用Promise异步回调。
+
+默认情况下，整个窗口区域都是可触摸的；可触摸区域外的触摸事件将被透传至下层。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+**参数：**
+
+| 参数名       | 类型                          | 必填 | 说明                           |
+| :----------- | :---------------------------- | :--- | :----------------------------- |
+| rects | Array&lt;[Rect](arkts-apis-window-i.md#rect7)&gt; | 是   | 窗口可触摸区域。可触摸区域最大个数不能超过10个，否则抛错误码1300016，且范围不能超出窗口区域。 |
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                               |
+| 1300002  | This window state is abnormal.    |
+| 1300003  | This window manager service works abnormally.                                                                      |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const touchableRects: Array<window.Rect> = [
+  { left: 100, top: 100, width: 200, height: 200 },
+  { left: 0, top: 50, width: 150, height: 200 }
+];
+try {
+  windowClass.setTouchableAreas(touchableRects).then(() => {
+    console.info('Succeeded in setting the touchable areas.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the touchable areas. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## keepKeyboardOnFocus<sup>11+</sup>
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
@@ -8421,7 +8486,7 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 子窗口调用该接口时，设置子窗口模态属性是否启用。启用子窗口模态属性后，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态属性被禁用。
 
-子窗口之外的窗口调用该接口时，会报错。
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8500,7 +8565,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal12)。
 
-子窗口之外的窗口调用该接口时，会报错。
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8902,7 +8967,11 @@ try {
 
 createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;Window&gt;
 
-创建主窗口、子窗口或悬浮窗下的子窗口，使用Promise异步回调。
+创建子窗口，使用Promise异步回调。
+
+- 可以在主窗口下创建子窗口（包括[独立子窗](../../windowmanager/window-terminology.md#应用窗口)、非独立子窗）。
+- 可以在子窗口下创建子窗口（只能创建非独立子窗，否则返回1300004错误码）。
+- 可以在全局悬浮窗下创建子窗口（只能创建非独立子窗，否则返回1300004错误码）。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8963,11 +9032,13 @@ try {
 
 setParentWindow(windowId: number): Promise&lt;void&gt;
 
-更改子窗口的父窗口，该父窗口仅支持同进程下的主窗口、子窗口或悬浮窗，使用Promise异步回调。
+更改子窗口的父窗口，该父窗口仅支持同进程下的主窗口、子窗口或全局悬浮窗，使用Promise异步回调。
 
 如果该子窗口处于获焦状态，且新的父窗口处于前台，则会抬升父窗口的层级。
 
 如果该子窗口处于获焦状态，且新的父窗口的子窗口存在层级更高的模态子窗口，则焦点会转移给该模态子窗口。
+
+针对[独立子窗](../../windowmanager/window-terminology.md#应用窗口)，仅支持迁移至主窗口下，否则返回1300009错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9073,7 +9144,9 @@ try {
 
 setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVisible: boolean, isCloseButtonVisible?: boolean): void
 
-设置主窗标题栏上的最大化、最小化、关闭按钮是否可见。
+设置标题栏上的最大化、最小化、关闭按钮是否可见。
+
+仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)，其他窗口调用时将返回1300004错误码。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -9240,6 +9313,8 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **返回值：**
@@ -9298,6 +9373,8 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 通常来说，点击一个子窗口，会将该子窗口显示抬升到应用内同一个父窗口下同类型子窗口的最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口进行抬升，而是保持不变。
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
+
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10198,7 +10275,7 @@ try {
 
 setWindowShadowRadius(radius: number): void
 
-设置子窗或悬浮窗窗口边缘阴影的模糊半径。
+设置子窗或全局悬浮窗窗口边缘阴影的模糊半径。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10241,7 +10318,7 @@ try {
 
 setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
-设置子窗或悬浮窗的圆角半径值，使用Promise异步回调。
+设置子窗或全局悬浮窗的圆角半径值，使用Promise异步回调。
 
 圆角半径值过大将会导致三键（最大化、最小化、关闭按钮）位置被裁切，且会导致热区不易识别，请根据窗口大小设置合适的圆角半径值。
 
@@ -10303,7 +10380,7 @@ try {
 
 getWindowCornerRadius(): number
 
-该接口用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
+该接口用于获取子窗或全局悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
@@ -10504,7 +10581,7 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置子窗或模态窗口（即WindowType为TYPE_DIALOG的窗口）的布局信息（position和size）是否跟随主窗，使用Promise异步回调。
 
-1、只支持主窗的一级子窗或模态窗口使用该接口。
+1、只支持主窗的一级子窗或模态窗口使用该接口。其中非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
 
 2、当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
 
@@ -10593,6 +10670,8 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 3. 当子窗调用该接口后，再调用[moveWindowTo()](#movewindowto9)、[maximize()](#maximize12)修改窗口位置或大小的接口将不生效。
 
 该接口调用生效后，[setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled17)接口调用不生效。
+
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10825,6 +10904,8 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 通过该接口改变子窗口的显示层级时，不会发生焦点切换。推荐使用[shiftAppWindowFocus()](arkts-apis-window-f.md#windowshiftappwindowfocus11)进行焦点切换。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -10894,6 +10975,8 @@ export default class EntryAbility extends UIAbility {
 getSubWindowZLevel(): number
 
 获取当前子窗口层级级别。不支持主窗、系统窗调用。
+
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错，返回默认值0。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

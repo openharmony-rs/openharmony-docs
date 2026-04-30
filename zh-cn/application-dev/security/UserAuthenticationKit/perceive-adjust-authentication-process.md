@@ -59,11 +59,11 @@ perceiveAndAdjustAuthentication() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // 订阅认证过程中的提示信息。
     userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
       try {
-        Logger.info('userAuthInstance callback');
+        Logger.info('userAuthInstance callback.');
         this.result[ResultIndex.PERCEIVE_ADJUST] = (`${authTipInfo.tipType}`);
         // 认证完成后取消订阅
         userAuthInstance.off('result');
@@ -77,10 +77,10 @@ perceiveAndAdjustAuthentication() {
     // ...
       // 取消订阅认证过程中的提示信息。
       userAuthInstance.off('authTip');
-      Logger.info('off authTip successfully');
+      Logger.info('off authTip successfully.');
       // 取消认证
       userAuthInstance.cancel();
-      Logger.info('auth cancel successfully');
+      Logger.info('auth cancel successfully.');
       // ...
   } catch (error) {
     const err: BusinessError = error as BusinessError;

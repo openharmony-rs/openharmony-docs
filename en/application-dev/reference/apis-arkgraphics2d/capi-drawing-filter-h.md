@@ -98,7 +98,7 @@ Sets an **OH_Drawing_MaskFilter** object for an **OH_Drawing_Filter** object.<br
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md)* filter | Pointer to an [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) object.|
-| [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* maskFilter | Pointer to an [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md) object. If NULL is passed in, the mask filter effect of the object will be cleared.|
+| [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* maskFilter | Pointer to an [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md) object. If NULL is passed in, the mask filter effect of the object will be cleared.|
 
 ### OH_Drawing_FilterSetColorFilter()
 

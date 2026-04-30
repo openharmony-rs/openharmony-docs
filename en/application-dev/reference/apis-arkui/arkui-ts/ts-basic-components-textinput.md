@@ -448,7 +448,7 @@ showError(value?: ResourceStr | undefined)
 
 Sets the error message displayed when an error occurs.
 
-If the data type is **ResourceStr** and the input content does not comply with specifications, the error message is displayed. If the error message does not fit in one line, an ellipsis (…) is displayed to represent clipped text. If the data type is **undefined**, no error message is displayed. For details, see [Example 2](#example-2-setting-underlines).
+If the data type is **ResourceStr** and the input content does not comply with specifications, the error message is displayed. If the error message does not fit in one line, an ellipsis is displayed to represent clipped text. If the data type is **undefined**, no error message is displayed. For details, see [Example 2](#example-2-setting-underlines).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

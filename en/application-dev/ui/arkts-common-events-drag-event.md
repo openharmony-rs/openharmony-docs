@@ -166,8 +166,9 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   
    const DOMAIN = 0x0000;
-   const TAG = 'DefaultDragError: '
+   const TAG = 'DefaultDragError: ';
    ```
 
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
@@ -185,7 +186,6 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    }
    
    // ...
-   
    // Use the createFromBuilder API of componentSnapshot to capture a snapshot of a custom builder.
    private getComponentSnapshot(): void {
      this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
@@ -292,8 +292,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
        callback(event);
        return true;
      } catch (e) {
-       hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-       (e as BusinessError).message);
+       hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
        return false;
      }
    }
@@ -332,6 +331,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
 const TAG = 'DefaultDragError: ';
 
@@ -368,8 +368,7 @@ export struct DefaultDrag {
       callback(event);
       return true;
     } catch (e) {
-      hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-      (e as BusinessError).message);
+      hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
       return false;
     }
   }
@@ -382,7 +381,6 @@ export struct DefaultDrag {
       this.getDataFromUdmfRetry(event, callback);
     }, 1500);
   }
-
 
   // Use the createFromBuilder API of componentSnapshot to capture a snapshot of a custom builder.
   private getComponentSnapshot(): void {
@@ -397,7 +395,6 @@ export struct DefaultDrag {
         this.pixmap = pixmap;
       });
   }
-
 
   build() {
     // ...
@@ -493,6 +490,7 @@ export struct DefaultDrag {
         }
         .height('100%')
       }
+      
       // ...
 }
 ```
@@ -1252,7 +1250,7 @@ Applications receive state updates through callbacks, enabling dynamic UI adjust
 
 You can customize spring loading detection parameters to dynamically determine whether to continue triggering.
 
-1. Trigger parameter customization
+1. Trigger parameter customization.
 
   The [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) API includes an optional **configuration** parameter, which allows you to customize settings such as detection duration, trigger intervals, and number of triggers. This enables personalized definition of spring loading trigger conditions. In most cases, however, the system's default configuration is sufficient, and no modifications are required.
   

@@ -103,7 +103,13 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
 mount(volumeId: string): Promise&lt;void&gt;
 
-挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用Promise异步回调。
+
+当前仅支持以下文件系统的卷设备挂载：
+
+vfat、exfat及ntfs。
+
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -155,7 +161,13 @@ mount(volumeId: string): Promise&lt;void&gt;
 
 mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
-挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用callback异步回调。
+
+当前仅支持以下文件系统的卷设备挂载：
+
+vfat、exfat及ntfs。
+
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -578,7 +590,15 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 
 format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
-对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
+对指定卷设备进行格式化，使用Promise异步回调。
+
+当前仅支持以下文件系统类型的格式化：
+
+vfat和exfat。
+
+从API版本26.0.0开始支持ext4文件系统的格式化。
+
+只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **系统接口**：此接口为系统接口。
 
@@ -631,7 +651,15 @@ format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
 format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): void
 
-对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
+对指定卷设备进行格式化，使用callback异步回调。
+
+当前仅支持以下文件系统类型的格式化：
+
+vfat和exfat。
+
+从API版本26.0.0开始支持ext4文件系统的格式化。
+
+只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **系统接口**：此接口为系统接口。
 

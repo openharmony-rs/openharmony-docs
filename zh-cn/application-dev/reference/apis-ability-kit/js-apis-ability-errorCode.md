@@ -5,7 +5,7 @@
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ErrorCode定义启动Ability时返回的错误码，包括无效的参数、权限拒绝等。
 

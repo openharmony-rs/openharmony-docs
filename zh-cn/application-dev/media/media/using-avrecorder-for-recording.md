@@ -1,8 +1,8 @@
 # 使用AVRecorder录制音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -229,7 +229,7 @@ async function audioRecording(context: common.Context): Promise<void> {
     let err = error as BusinessError;
     console.error(`Failed to open file, error code: ${err.code}, message: ${err.message}`);
   }
-  if (audioFile !== undefined) {
+  if (audioFile) {
     avConfig.url = 'fd://' + audioFile.fd; // 更新url。
   }
   
@@ -302,7 +302,7 @@ async function audioRecording(context: common.Context): Promise<void> {
 
   // 关闭录制文件fd。
   try {
-    if (audioFile !== undefined) {
+    if (audioFile) {
       await fileIo.close(audioFile.fd);
     }
   } catch (error) {

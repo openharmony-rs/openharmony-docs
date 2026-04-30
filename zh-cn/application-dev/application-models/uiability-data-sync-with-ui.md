@@ -5,7 +5,7 @@
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 基于当前的应用模型，可以通过以下几种方式来实现[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件与UI之间的数据同步。

@@ -1060,7 +1060,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
 - TaskListModel：任务的集合，提供从本地加载任务数据的功能。
 
-  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->     
+  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->      
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -1070,6 +1070,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
   const DOMAIN = 0x0000;
   
+  // Model层：TaskListModel负责加载任务列表
   export default class TaskListModel {
     public tasks: TaskModel[] = [];
   

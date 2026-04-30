@@ -1,7 +1,7 @@
 # UsbDdk
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
@@ -13,6 +13,7 @@
 **系统能力：** SystemCapability.Driver.USB.Extension
 
 **起始版本：** 10
+
 ## 文件汇总
 
 | 名称 | 描述 |

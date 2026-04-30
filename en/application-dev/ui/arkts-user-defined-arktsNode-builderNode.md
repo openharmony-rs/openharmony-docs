@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
@@ -55,7 +55,7 @@ Use the **build** API of **BuilderNode** to create a component tree. The tree is
 >
 > In scenarios where @Builder is nested within another @Builder in the **build** method, ensure that the parameters of the nested @Builder match the input parameters provided to the **build** method.
 > 
-> For scenarios where @Builder is nested within another @Builder, if the parameter types do not match, you must include the [BuilderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) field as a parameter for the [build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build12) method.
+> For scenarios where @Builder is nested within another @Builder, if the parameter types do not match, you must include the [BuildOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) field as a parameter for the [build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build12) method.
 > 
 > To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected. Once a BuilderNode object is collected by the virtual machine, its FrameNode and RenderNode objects will also be dereferenced from the backend nodes. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 
@@ -322,7 +322,7 @@ A **BuilderNode** object is mapped to a backend entity node, and its memory rele
 >
 > Calling **dispose** on a **BuilderNode** object breaks its reference to the backend entity node, and also simultaneously severs the references of its contained FrameNode and RenderNode to their respective entity nodes.
 >
-> If the frontend object BuilderNode cannot be released, memory leaks may occur. To avoid this, be sure to call **dispose** on the BuilderNode when you no longer need it. This reduces the complexity of reference relationships and lowers the risk of memory leaks.
+> If the frontend object **BuilderNode** cannot be released, memory leaks may occur. To avoid this, be sure to call **dispose** on the BuilderNode when you no longer need it. This reduces the complexity of reference relationships and lowers the risk of memory leaks.
 
 ## Injecting a Touch Event
 
@@ -1237,12 +1237,12 @@ The implementation of **PageTwo** is as follows:
 
 In versions earlier than API version 16, you need to manually remove the BuilderNode from the cache, [AppStorage](../ui/state-management/arkts-appstorage.md) in this example, when the page is destroyed.
 
-Since API version 16, the BuilderNode automatically refreshes its content when reused in a new page. This means you no longer need to remove the BuilderNode from the cache when the page is destroyed.
+Since API version 16, the **BuilderNode** automatically refreshes its content when reused in a new page. This means you no longer need to remove the **BuilderNode** from the cache when the page is destroyed.
 
-  <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) -->
+  <!-- @[Main_RouterPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage1.ets) -->
   
   ``` TypeScript
-  // ets/pages/RouterPage3.ets
+  // ets/pages/RouterPage1.ets
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import 'ets/pages/RouterPage2';
   
@@ -1313,8 +1313,6 @@ Since API version 16, the BuilderNode automatically refreshes its content when r
             .onClick(() => {
               // Change the state variable in AppStorage to trigger re-creation of the Text node.
               AppStorage.setOrCreate<boolean>('isShowText', false);
-              // Remove the BuilderNode from AppStorage.
-              AppStorage.delete('textNode');
   
               this.getUIContext().getRouter().replaceNamedRoute({ name: 'pageTwo' });
             })
@@ -1592,7 +1590,7 @@ Starting from API version 20, in state management V1, if a BuilderNode is config
   
     build() {
       Column() {
-        Button('update builderNode') // Clicking the button updates builderNode.
+        Button('update builderNode') // Clicking the button updates BuilderNode.
           .onClick(() => {
             textNodeController.update();
           })
@@ -2039,7 +2037,7 @@ struct MyNavigationTestStack {
 
   build() {
     Column() {
-      Button('update builderNode') // Clicking the button updates builderNode.
+      Button('update builderNode') // Clicking the button updates BuilderNode.
         .onClick(() => {
           textNodeController.update();
         })
@@ -2464,7 +2462,7 @@ For details, see [Example 5: Configuring the BuilderNode for Cross-Boundary @Pro
 
 ## Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication (State Management V2)
 
-Since API version 22, the BuilderNode supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-provider-and-consumer.md) and [@Provider](./state-management/arkts-new-provider-and-consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
+Since API version 23, the **BuilderNode** supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-provider-and-consumer.md) and [@Provider](./state-management/arkts-new-provider-and-consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
     
 For details, see [Example 6: Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-6-configuring-the-buildernode-for-cross-boundary-provider-consumer-communication).
 

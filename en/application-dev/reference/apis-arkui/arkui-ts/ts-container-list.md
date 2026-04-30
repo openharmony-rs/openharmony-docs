@@ -518,7 +518,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>If the parameter type is number, the unit is vp.<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
 
 ### contentEndOffset<sup>11+</sup>
 
@@ -554,7 +554,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>If the parameter type is number, the unit is vp.<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
 
 ### childrenMainSize<sup>12+</sup>
 
@@ -705,6 +705,26 @@ Defines whether the **List** component supports the generation of empty branch n
 | ------ | ------ | ---- | -------------------------------------------------- |
 | supported  | boolean \| undefined | Yes  | Whether the current **List** component supports the use of the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) rendering syntax in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to generate an empty branch node that contains no child component.<br>**true**: yes; **false**: no<br>If the value is **undefined**, it is processed as **false**.|
 
+### backPressBehavior
+
+backPressBehavior(behavior: ListBackPressBehavior | undefined)
+
+Sets the system back button behavior of the **List** component.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                              |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| behavior  | [ListBackPressBehavior](#listbackpressbehavior) \| undefined | Yes  | System back button behavior of the **List** component. Currently, you can use the [ListBackPressBehavior](#listbackpressbehavior) parameter to configure whether to collapse the expanded swipe-out component of a **ListItem** when the system back button takes effect.<br>If this parameter is set to **undefined**, the default behavior is restored. That is, when the system back button takes effect, the expanded swipe-out component of the **ListItem** is collapsed.|
+
 ## ListItemAlign<sup>9+</sup>
 
 Sets the alignment mode of child components in the cross-axis direction of the list.
@@ -761,6 +781,22 @@ Enumerates the speeds of the snap animation for list scrolling.
 | ------ | ------ | ---------------------------------------- |
 | NORMAL   | 0 | Default snap animation speed for the list, typically used when list items are large and scrolling moves one item per swipe.           |
 | SLOW  | 1 | Slower snap animation speed, typically used when list items are small and scrolling moves multiple items per swipe.|
+
+## ListBackPressBehavior
+
+Defines the system back button behavior of the **List** component.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name            | Type   | Read-Only| Optional| Description |
+| ---------------- | ------- | -- | -- | ------------------------------------------------------------------------------------------- |
+| closeSwipeAction | boolean | No| Yes| Whether to collapse the swipe-out component of the **ListItem** when the system back button takes effect.<br>**true**: yes; **false**: no.<br>Default value: **true**|
 
 ## CloseSwipeActionOptions<sup>11+</sup>
 

@@ -345,7 +345,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise\<CMResult>
 
-表示安装私有凭据，使用Promise方式异步返回结果。
+表示安装私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -517,7 +517,7 @@ try {
 
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取私有凭据详情，使用Promise方式异步返回结果。
+表示获取私有凭据详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -618,7 +618,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-表示卸载指定的私有凭据，使用Promise方式异步返回结果。
+表示卸载指定的私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -883,7 +883,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
-表示使用凭据进行签名、验签的初始化操作，使用Promise方式异步返回结果。
+表示使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -992,7 +992,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
-表示签名、验签的数据更新操作，使用Promise方式异步返回结果。
+表示签名、验签的数据更新操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1153,7 +1153,7 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-表示完成签名、验签的操作，使用Promise方式异步返回结果。
+表示完成签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1271,7 +1271,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-表示中止签名、验签的操作，使用Promise方式异步返回结果。
+表示中止签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1323,7 +1323,7 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取用户公共凭据的详细信息，使用Promise方式异步返回结果。
+表示获取用户公共凭据的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1379,7 +1379,7 @@ try {
 
 isAuthorizedApp(keyUri: string): Promise\<boolean>
 
-表示当前应用是否由指定的用户凭据授权，使用Promise方式异步返回结果。
+表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1432,7 +1432,7 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-表示获取当前用户和设备公共位置的所有用户根CA证书列表，使用Promise方式异步返回结果。
+表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1480,7 +1480,7 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-表示根据证书的位置获取用户根CA证书列表，使用Promise方式异步返回结果。
+表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1538,7 +1538,7 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-表示获取用户根CA证书的详细信息，使用Promise方式异步返回结果。
+表示获取用户根CA证书的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1592,7 +1592,7 @@ try {
 
 getPrivateCertificates(): Promise\<CMResult>
 
-表示获取应用安装的凭据列表，使用Promise方式异步返回结果。
+表示获取应用安装的凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1821,5 +1821,71 @@ try {
     })
 } catch (error: BusinessError) {
     console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManager.importUkeyCertificate
+
+importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Promise\<void>
+
+导入证书到USB Key。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| keyUri | string | 是 | 表示USB key证书的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。<br>证书数据格式遵循SKF规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN或PURPOSE_ENCRYPT。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500002 | Indicates that the certificate does not exist. |
+| 17500010 | Indicates that access USB key service failed. |
+| 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
+
+**示例**：
+
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
+let keyUri: string = 'test'; /* USB key证书的uri，可通过getUkeyCertificateList获取 */
+let certData: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+]);
+let ukeyInfo: certificateManager.UkeyInfo = {
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+};
+try {
+  certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
+    console.info('Succeeded in importing USB key certificate.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```

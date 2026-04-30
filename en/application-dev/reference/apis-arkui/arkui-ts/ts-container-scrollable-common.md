@@ -323,6 +323,34 @@ Sets the margin of the scrollbar. The margin is calculated from the offset dista
 | --- | -------------- |
 | T | Current scrollable component.|
 
+### autoAdjustScrollBarMargin
+
+autoAdjustScrollBarMargin(enable: boolean | undefined): T
+
+Sets whether to automatically adjust the margin of the scrollbar. By default, the margin is not automatically adjusted.
+
+When the automatic margin adjustment feature is enabled, the scrolling direction of the scrollbar avoids the [padding](ts-universal-attributes-size.md#padding), [safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14) and [contentStartOffset](#contentstartoffset22)/[contentEndOffset](#contentendoffset22) areas of the component. If the [scrollBarMargin](#scrollbarmargin20) attribute is set, this feature does not take effect. If the sum of the horizontal [padding](ts-universal-attributes-size.md#padding), [safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14), [contentStartOffset](#contentstartoffset22) and [contentEndOffset](#contentendoffset22) values is greater than the width of the component, or the sum of the vertical values is greater than the height of the component, the scrollbar is not displayed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                 |
+| ------ | ------- | ---- | ------------------------------------- |
+| enable  | boolean&nbsp;\|&nbsp;undefined  | Yes  | Whether to automatically adjust the margin.<br>**true**: yes.<br>**false**: no.<br>**undefined**: no.|
+
+**Return value**
+
+| Type| Description          |
+| --- | -------------- |
+| T | Current component.|
+
 ### digitalCrownSensitivity<sup>18+</sup>
 
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
@@ -394,6 +422,34 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 | Type| Description          |
 | --- | -------------- |
 | T | Current scrollable component.|
+
+
+### enableScrollWithMouse
+
+enableScrollWithMouse(enabled: boolean | undefined): T
+
+Sets whether to support scrolling by dragging with the left mouse button pressed. If this API is not called, scrolling by dragging with the left mouse button pressed is not supported by default.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                         |
+| ------ | ------ | ---- | --------------------------------------------- |
+| enabled  | boolean \| undefined | Yes  | Whether to support scrolling by dragging with the left mouse button pressed.<br>**true**: yes.<br>**false**: no.<br>**undefined**: no.|
+
+**Return value**
+
+| Type| Description          |
+| --- | -------------- |
+| T | Current component.|
 
 ## Events
 

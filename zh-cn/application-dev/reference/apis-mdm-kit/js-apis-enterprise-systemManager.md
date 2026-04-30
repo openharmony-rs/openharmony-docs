@@ -26,7 +26,7 @@ import { systemManager } from '@kit.MDMKit';
 
 setNTPServer(admin: Want, server: string): void
 
-设置NTP时间服务器。
+设置NTP(Network Time Protocol)时间服务器。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -453,10 +453,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.UpdateResult) => {
-    console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Get update result failed. Code is ${error.code},message is ${error.message}`);
-  });
+  console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get update result failed. Code is ${error.code},message is ${error.message}`);
+});
 ```
 ## systemManager.getUpdateAuthData<sup>19+</sup>
 
@@ -505,10 +505,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
-    console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Get update auth data failed. Code is ${error.code},message is ${error.message}`);
-  });
+  console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get update auth data failed. Code is ${error.code},message is ${error.message}`);
+});
 ```
 
 ## systemManager.addDisallowedNearLinkProtocols<sup>20+</sup>
@@ -1484,8 +1484,8 @@ try {
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- |------------- |
 | versionName       | string | 否   | 否 |待更新的系统版本名称。   |
-| firstReceivedTime | number | 否   | 否 |第一次收到系统更新包的时间。 |
-| packageType       | string | 否   | 否 |待更新的系统更新包类型。  |
+| firstReceivedTime | number | 否   | 否 |第一次收到系统更新包的时间（单位：秒）。 |
+| packageType       | string | 否   | 否 |待更新的系统更新包类型，类型分为normal和patch类型。  |
 
 ## OtaUpdatePolicy
 

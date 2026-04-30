@@ -5,7 +5,7 @@
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本章节主要介绍如何通过应用链接跳转的方式拉起指定应用。
 

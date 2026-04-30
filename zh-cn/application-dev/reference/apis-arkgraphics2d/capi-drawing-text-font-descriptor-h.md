@@ -21,6 +21,12 @@
 
 ## 汇总
 
+### 结构体
+
+| 名称 | typedef关键字 | 描述 |
+| --- | --- | --- |
+| [OH_Drawing_FontVariationInstanceCoordinate](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md) | OH_Drawing_FontVariationInstanceCoordinate | 可变字体属性键值对。 |
+
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |

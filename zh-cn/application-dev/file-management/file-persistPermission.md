@@ -190,3 +190,32 @@ export async function activatePermissionExample() {
 > 4. 持久化权限接口可以使用canIUse接口进行校验能力是否可用，且需要申请对应的权限。
 
 **备注**：C/C++持久化授权激活接口说明及开发指南具体参考：[OH_FileShare_ActivatePermission持久化授权激活接口](native-fileshare-guidelines.md)。
+
+## 持久化权限保留配置
+
+从API version 24开始，系统新增支持持久化权限保留能力。应用卸载时根据ohos.fileshare.supportPreservePersistentPermission标签保留持久化。再次安装时恢复上次已保留的持久化权限。
+
+### 配置方式
+
+开发者可在应用模块级配置文件[src/main/module.json5](../quick-start/module-configuration-file.md)的module标签中metadata里配置ohos.fileshare.supportPreservePersistentPermission标签，以启用持久化权限保留能力。
+
+**metadata标签配置示例**
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "metadata": [
+      {
+        "name": "ohos.fileshare.supportPreservePersistentPermission"
+      }
+    ],
+    // ...
+  }
+}
+```
+**ohos.fileshare.supportPreservePersistentPermission标签说明**
+
+| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+| -------- | -------- | -------- | -------- |
+| name | 标识元信息名称，固定值为ohos.fileshare.supportPreservePersistentPermission。 | 字符串 | 该标签不可缺省。 |

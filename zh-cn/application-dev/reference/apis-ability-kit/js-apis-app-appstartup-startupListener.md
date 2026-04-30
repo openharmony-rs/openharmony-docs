@@ -4,7 +4,7 @@
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 本模块提供[应用启动框架](../../application-models/app-startup.md)任务监听器的定义。
