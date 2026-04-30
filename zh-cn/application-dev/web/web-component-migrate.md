@@ -51,17 +51,10 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 'use static'
-import UIAbility from '@ohos.app.ability.UIAbility';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import Want from '@ohos.app.ability.Want';
-import window from '@ohos.window';
-import { BusinessError } from '@ohos.base'
-import hilog from '@ohos.hilog'
+// 主窗口Ability
+import { createNWeb, defaultUrl } from '../pages/common';
 
-export default class Entry3Ability extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', 'EntryAbility onCreate');
-  }
+// ...
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', 'EntryAbility onWindowStageCreate');
@@ -72,14 +65,18 @@ export default class Entry3Ability extends UIAbility {
           hilog.info(0x0000, 'testTag', 'loadContent error');
           return;
         }
-        hilog.info(0x0000, 'testTag', 'loadContent ok');
-      });
-    } catch (e) {
-      hilog.info(0x0000, 'testTag', 'loadContent catch error:-----------' + e.message);
-    }
-  }
-}
+        // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建，应用仅创建一个Web组件
+        createNWeb(defaultUrl, windowStage.getMainWindowSync().getUIContext());
+        hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+       });
+     } catch (e) {
+       hilog.info(0x0000, 'testTag', 'loadContent catch error：-----------' + e.message);
+     }
+   }
+ 
+// ...
 ```
+
 ArkTS-Dyn示例：
 
 <!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->
@@ -348,6 +345,48 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+
+<!-- @[web_module_dynamic_attach_detach_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+'use static'
+// Index.ets
+import { createNWeb, MyNodeController, defaultUrl, getBuilderNode, getWebviewController } from './Common'
+import webview from '@ohos.web.webview';
+import { Button, Column, ColumnOptions, Entry, Component, NodeContainer } from '@ohos.arkui.component'
+import { typeNode, NodeController, FrameNode, ComponentContent } from '@ohos.arkui.node';
+
+@Entry
+@Component
+struct Index {
+  private nodeController : MyNodeController =
+    new MyNodeController(getBuilderNode(defaultUrl), getWebviewController(defaultUrl));
+
+  build() {
+    Column() {
+      Button("Attach Webview")
+        .onClick(() => {
+          // 注意不要将同一个节点同时挂载在不同的页面上！
+          this.nodeController.attachWeb();
+          this.nodeController.rebuild();
+        })
+      Button("Detach Webview")
+        .onClick(() => {
+          this.nodeController.detachWeb();
+          this.nodeController.rebuild();
+        })
+      // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
+      // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
+      NodeContainer(this.nodeController as MyNodeController)
+        .height('80%')
+        .width('80%')
+    }
+    .width('100%')
+  }
+}
+```
+
 
 ArkTS-Sta示例：
 
@@ -468,44 +507,3 @@ export const getWebviewController = (url : string) : webview.WebviewController |
 }
 ```
 
-ArkTS-Sta示例：
-
-<!-- @[web_module_dynamic_attach_detach_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-'use static'
-// Index.ets
-import { createNWeb, MyNodeController, defaultUrl, getBuilderNode, getWebviewController } from './Common'
-import webview from '@ohos.web.webview';
-import { Button, Column, ColumnOptions, Entry, Component, NodeContainer } from '@ohos.arkui.component'
-import { typeNode, NodeController, FrameNode, ComponentContent } from '@ohos.arkui.node';
-
-@Entry
-@Component
-struct Index {
-  private nodeController : MyNodeController =
-    new MyNodeController(getBuilderNode(defaultUrl), getWebviewController(defaultUrl));
-
-  build() {
-    Column() {
-      Button("Attach Webview")
-        .onClick(() => {
-          // 注意不要将同一个节点同时挂载在不同的页面上！
-          this.nodeController.attachWeb();
-          this.nodeController.rebuild();
-        })
-      Button("Detach Webview")
-        .onClick(() => {
-          this.nodeController.detachWeb();
-          this.nodeController.rebuild();
-        })
-      // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
-      // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
-      NodeContainer(this.nodeController as MyNodeController)
-        .height('80%')
-        .width('80%')
-    }
-    .width('100%')
-  }
-}
-```
