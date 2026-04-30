@@ -7,7 +7,7 @@
 
 **变更原因**
 
-ActionExtensionAbility设计用于系统分享操作区，系统分享操作区仅支持系统提供能力接入，三方开发者实现ActionExtensionAbility也无法接入操作区。
+ActionExtensionAbility用于系统分享操作区，系统分享操作区仅支持系统提供能力接入，三方开发者实现ActionExtensionAbility也无法接入操作区。
 
 **变更影响**
 
@@ -29,4 +29,4 @@ API 10
 
 **适配指导**
 
-如上所述。
+不涉及
