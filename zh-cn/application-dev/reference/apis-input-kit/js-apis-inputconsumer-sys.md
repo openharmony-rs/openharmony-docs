@@ -74,12 +74,13 @@ struct Index {
             finalKeyDownDuration: 0
           };
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
           }
           try {
+            // 订阅按键事件
             inputConsumer.on("key", keyOptions, callback);
           } catch (error) {
-            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to subscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -129,15 +130,17 @@ struct Index {
           let tabKey = 2049;
           // 取消订阅单个回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
           }
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
+            // 订阅按键事件
             inputConsumer.on("key", keyOption, callback);
+            // 取消订阅按键事件
             inputConsumer.off("key", keyOption, callback);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -158,15 +161,17 @@ struct Index {
           let tabKey = 2049;
           // 取消订阅所有回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
           }
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
+            // 订阅按键事件
             inputConsumer.on("key", keyOption, callback);
+            // 取消订阅按键事件
             inputConsumer.off("key", keyOption);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -404,10 +409,11 @@ struct Index {
         .onClick(() => {
           let FACTORY_MODE = 0;
           try {
+            // 设置屏蔽状态
             inputConsumer.setShieldStatus(FACTORY_MODE,true);
-            console.info(`set shield status success`);
+            console.info(`Succeeded in setting shield status.`);
           } catch (error) {
-            console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -462,9 +468,9 @@ struct Index {
           try {
             let FACTORY_MODE = 0;
             let shieldstatusResult:Boolean =  inputConsumer.getShieldStatus(FACTORY_MODE);
-            console.info(` get shield status result:${JSON.stringify(shieldstatusResult)}`);
+            console.info(`Succeeded in getting shield status, result:${JSON.stringify(shieldstatusResult)}.`);
           } catch (error) {
-            console.error(`Failed to get shield status, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
