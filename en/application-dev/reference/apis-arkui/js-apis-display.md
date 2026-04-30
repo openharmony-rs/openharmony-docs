@@ -1147,7 +1147,7 @@ Unsubscribes from display mode change events of the foldable device.
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | Yes  | Event type. The value is fixed at **'foldDisplayModeChange'**, indicating the event of the screen display mode change of the foldable device.|
-| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | No  | Callback used to If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | No  | Callback to unregister. If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
