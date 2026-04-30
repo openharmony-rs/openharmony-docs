@@ -241,7 +241,6 @@ picHeight = cropBottom - cropTop + 1
 
 ### 编码器参数关系图
 
-**图4** 编码器参数关系示意图
 ```txt
 Configure 阶段（开发者设置）：
   OH_MD_KEY_WIDTH                -> 编码目标宽度
@@ -258,7 +257,6 @@ Configure 阶段（开发者设置）：
 
 ### 解码器参数关系图
 
-**图5** 解码器参数关系示意图
 ```txt
 Configure 配置参数：
   OH_MD_KEY_WIDTH                -> 配置宽度（解码器缓冲区分配依据）
