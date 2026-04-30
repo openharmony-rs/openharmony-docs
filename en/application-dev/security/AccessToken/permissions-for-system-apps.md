@@ -5881,6 +5881,34 @@ Allows an application to enable the outdoor exploration service to provide the a
 
 **Since**: 26.0.0
 
+## ohos.permission.QUERY_TOOL_PERMISSIONS
+
+Allows a system application to query the permissions required for running a CLI or skill.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+Allows a system application to set and query the permissions required for running a specified CLI or skill.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
 ## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
 
 Allows an application to use the device interconnectivity capability.
