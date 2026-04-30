@@ -12646,7 +12646,9 @@ maximizeWithOptions(maximizeOptions?: MaximizeOptions): Promise&lt;void&gt;
 >
 > - 不传入maximizeOptions参数时，各字段取默认值，行为等同于调用[maximize()](#maximize12)并使用默认值。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -12678,13 +12680,9 @@ maximizeWithOptions(maximizeOptions?: MaximizeOptions): Promise&lt;void&gt;
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplayPresentation parameter only supports main windows. |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
-> **说明：**
->
-> - acrossDisplayPresentation仅主窗口可设置，非主窗口调用时返回错误码1300004。仅在具备折叠功能的2in1设备可正常调用，在其他设备上调用不生效。
->
-> - snapshotAnimationConfig中duration和delay均为0时，表示取消截图动画。
-
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -12711,7 +12709,7 @@ export default class EntryAbility extends UIAbility {
       };
       mainWindow.maximizeWithOptions(maximizeOptions)
         .then(() => {
-          console.info('Succeeded in maximizing the window.');
+          console.info('Window maximized successfully.');
         })
         .catch((err: BusinessError) => {
           console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
@@ -12719,6 +12717,41 @@ export default class EntryAbility extends UIAbility {
     });
   }
 };
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      let maximizeOptions: window.MaximizeOptions = {
+        maximizePresentation: window.MaximizePresentation.ENTER_IMMERSIVE,
+        acrossDisplayPresentation: window.AcrossDisplayPresentation.FOLLOW_ACROSS_DISPLAY_SETTING,
+        snapshotAnimationConfig: {
+          duration: 200,
+          delay: 30
+        }
+      };
+      mainWindow.maximizeWithOptions(maximizeOptions)
+        .then(() => {
+          console.info('Window maximized successfully.');
+        })
+        .catch((err: Error) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+    });
+  }
+}
 ```
 
 ## setResizeByDragEnabled<sup>14+</sup>
@@ -12960,7 +12993,9 @@ recover(snapshotAnimationConfig: WindowSnapshotAnimationConfig): Promise&lt;void
 
 将主窗口从全屏、最大化或者分屏模式下还原为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING），并恢复到进入该模式之前的大小和位置，已经是自由悬浮窗口模式时不可再还原，支持配置截图动画参数。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -12977,7 +13012,7 @@ recover(snapshotAnimationConfig: WindowSnapshotAnimationConfig): Promise&lt;void
 **返回值：**
 
 | 类型                | 说明                      |
-| ------------------- | ---------------- --------- |
+| ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
@@ -12993,6 +13028,8 @@ recover(snapshotAnimationConfig: WindowSnapshotAnimationConfig): Promise&lt;void
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -13022,6 +13059,41 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to recover the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      if (!windowClass) {
+        console.error('Failed to get main window.');
+        return;
+      }
+      let snapshotAnimationConfig: window.WindowSnapshotAnimationConfig = {
+        duration: 200,
+        delay: 30
+      };
+      let promise = windowClass.recover(snapshotAnimationConfig);
+      promise.then(() => {
+        console.info('Succeeded in recovering the window.');
+      }).catch((err: Error) => {
+        console.error(`Failed to recover the window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to recover the window. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }

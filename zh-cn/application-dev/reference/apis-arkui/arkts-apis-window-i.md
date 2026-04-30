@@ -484,9 +484,11 @@
 
 ## WindowSnapshotAnimationConfig
 
-窗口截图动画配置，仅支持在调用[maximizeWithOptions()](arkts-apis-window-Window.md#maximizeWithOptions)或[recover()](arkts-apis-window-Window.md#recover)接口时配置。
+窗口截图动画配置，仅支持在调用[maximizeWithOptions()](arkts-apis-window-Window.md#maximizewithoptions)或[recover()](arkts-apis-window-Window.md#recover)接口时配置。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -494,14 +496,16 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| duration |  number  |  否  |  是  | 截图淡出动画执行时长，单位为ms。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画执行时长默认值为400，其他场景默认值为250。取值范围为[0, 400]，超出取值返回会报错。|
-| delay |  number  |  否  |  是  | 截图淡出动画延迟时长，单位为ms。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画延迟时长默认值为350，其他场景默认值为50。取值范围为[0, 350]，超出取值返回会报错。|
+| duration |  ArkTS-Dyn: number<br>ArkTS-Sta: int  |  否  |  是  | 截图淡出动画执行时长，单位为ms。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画执行时长默认值为400，其他场景默认值为250。取值范围为[0, 400]，超出取值返回会报错。|
+| delay |  ArkTS-Dyn: number<br>ArkTS-Sta: int  |  否  |  是  | 截图淡出动画延迟时长，单位为ms。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画延迟时长默认值为350，其他场景默认值为50。取值范围为[0, 350]，超出取值返回会报错。|
 
 ## MaximizeOptions
 
 最大化配置选项。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
