@@ -16116,7 +16116,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4Ro
 ### OH_ArkUI_Matrix4TranslationOptions_Create()
 
 ```c
-ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create();
+ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()
 ```
 
 **描述：**
@@ -16202,7 +16202,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4Trans
 ### OH_ArkUI_Matrix4TranslationOptions_SetY()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y);
+ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)
 ```
 
 **描述：**
