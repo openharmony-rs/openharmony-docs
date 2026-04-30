@@ -331,10 +331,6 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 ### loadModel
 
 loadModel(): Promise&lt;void&gt;
@@ -451,7 +447,9 @@ textEmbedding?.releaseModel()
 
 ### getEmbedding
 
-getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn：getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta：getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 获取给定文本的嵌入向量。使用Promise异步回调。
 
@@ -475,7 +473,7 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn：Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta：Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -511,7 +509,7 @@ ArkTS-Sta示例：
 textEmbedding?.loadModel();
 let text = 'text';
 textEmbedding?.getEmbedding(text)
-  .then((data: Array<number>) => {
+  .then((data: Array<double>) => {
     console.info("Succeeded in getting Embedding");
   })
   .catch((err) => {
@@ -521,7 +519,9 @@ textEmbedding?.getEmbedding(text)
 
 ### getEmbedding
 
-getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
+ArkTS-Dyn：getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
+
+ArkTS-Sta：getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt;
 
 获取给定批次文本的嵌入向量。使用Promise异步回调。
 
@@ -545,7 +545,7 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn：Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;<br>ArkTS-Sta：Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -581,7 +581,7 @@ ArkTS-Sta示例：
 textEmbedding?.loadModel();
 let batchTexts = ['text1', 'text2'];
 textEmbedding?.getEmbedding(batchTexts)
-  .then((data: Array<Array<number>>) => {
+  .then((data: Array<Array<double>>) => {
     console.info("Succeeded in getting Embedding");
   })
   .catch((err) => {
@@ -596,10 +596,6 @@ textEmbedding?.getEmbedding(batchTexts)
 下列接口都需先使用[intelligence.getImageEmbeddingModel](#intelligencegetimageembeddingmodel)获取到ImageEmbedding实例，再通过此实例调用对应接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 ### loadModel
 
@@ -717,7 +713,9 @@ imageEmbedding?.releaseModel()
 
 ### getEmbedding
 
-getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn：getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta：getEmbedding(image: Image): Promise&lt;Array&lt;double&gt;&gt;
 
 获取给定图像的嵌入向量。使用Promise异步回调。
 
@@ -741,7 +739,7 @@ getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn：Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta：Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -777,7 +775,7 @@ ArkTS-Sta示例：
 imageEmbedding?.loadModel();
 let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
 imageEmbedding?.getEmbedding(image)
-  .then((data: Array<number>) => {
+  .then((data: Array<double>) => {
     console.info("Succeeded in getting Embedding");
   })
   .catch((err) => {
