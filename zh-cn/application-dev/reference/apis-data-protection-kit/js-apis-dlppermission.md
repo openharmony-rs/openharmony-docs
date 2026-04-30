@@ -1816,7 +1816,7 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 >**说明：**
 >
 > - 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件。
-> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则关闭所有标签的所有企业DLP文件。
+> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则关闭所有企业DLP文件。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
