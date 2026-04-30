@@ -24,9 +24,18 @@ System abnormality.
 **可能原因**
 
 该错误码表示无障碍系统服务工作异常，可能原因如下：
-1. 无障碍服务没有正常启动。
-2. 系统内部IPC异常。
-3. 无障碍服务内部功能异常。
+1. 内部操作失败（Internal operation failed）。
+2. 获取必要的服务或客户端对象失败（空指针）（Failed to get required service or client object (null pointer)）。
+3. IPC通信失败（IPC communication failed）。
+4. 获取无障碍服务代理失败（Failed to obtain accessibility service proxy）。
+5. 等待异步操作结果超时（Waiting for asynchronous operation result timed out）。
+6. 监听器或观察者已注册（The listener or observer is already registered）。
+7. 监听器或观察者未注册（The listener or observer is not registered）。
+8. 客户端未连接（Client is not connected）。
+9. 目标应用连接无障碍服务失败（The target application failed to connect to accessibility service）。
+10. 从ACE接收的元素信息无效（The element information received from ACE is invalid）。
+11. 在ACE中执行操作失败（Failed to perform action in ACE）。
+12. 注入手势事件失败（Failed to inject gesture event）。
 
 **处理步骤**
 
