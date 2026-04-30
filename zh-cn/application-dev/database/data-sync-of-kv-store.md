@@ -235,6 +235,8 @@
 
 5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。
 
+**ArkTS-Dyn示例：**
+
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
@@ -255,6 +257,27 @@
    })
    ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/KvStoreStaticSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+
+```ts
+  public On: () => void = (() => {
+    Logger.info('On start');
+    if (kvStore === undefined) {
+      Logger.info('On: kvStore not initialized');
+      return;
+    }
+    try {
+      kvStore!.onDataChange(distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL, (data: distributedKVStore.ChangeNotification): void => {
+        console.info(`dataChange callback call data: ${data}`);
+      });
+    } catch (e) {
+      let error = e as BusinessError;
+      Logger.error(`An unexpected error occurred. code:${error.code},message:${error.message}`);
+    }
+  });
+```
 6. 调用put()方法将数据写入分布式数据库。
 
    1. 构造需要写入分布式数据库的Key（键）和Value（值）。
