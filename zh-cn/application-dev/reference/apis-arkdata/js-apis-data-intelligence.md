@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 考虑到数据向量化处理的计算量和资源占用较大，当前仅支持在2in1设备上使用。
@@ -31,6 +33,10 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -56,6 +62,8 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -76,6 +84,26 @@ intelligence.getTextEmbeddingModel(textConfig)
   })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let textConfig: intelligence.ModelConfig = {
+  version: intelligence.ModelVersion.BASIC_MODEL,
+  isNpuAvailable: false,
+  cachePath: "/data"
+}
+let textEmbedding: intelligence.TextEmbedding | null = null;
+
+intelligence.getTextEmbeddingModel(textConfig)
+  .then((data: intelligence.TextEmbedding) => {
+    console.info("Succeeded in getting TextModel");
+    textEmbedding = data;
+  })
+  .catch((err) => {
+    console.error("Failed to get TextModel and code is " + err.code);
+  })
+```
+
 ## intelligence.getImageEmbeddingModel
 
 getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
@@ -85,6 +113,10 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -110,6 +142,8 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -130,6 +164,26 @@ intelligence.getImageEmbeddingModel(imageConfig)
   })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let imageConfig: intelligence.ModelConfig = {
+  version: intelligence.ModelVersion.BASIC_MODEL,
+  isNpuAvailable: false,
+  cachePath: "/data"
+}
+let imageEmbedding: intelligence.ImageEmbedding | null = null;
+
+intelligence.getImageEmbeddingModel(imageConfig)
+  .then((data: intelligence.ImageEmbedding) => {
+    console.info("Succeeded in getting ImageModel");
+    imageEmbedding = data;
+  })
+  .catch((err) => {
+    console.error("Failed to get ImageModel and code is " + err.code);
+  })
+```
+
 ## intelligence.splitText
 
 splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
@@ -139,6 +193,10 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -165,6 +223,8 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -183,11 +243,33 @@ intelligence.splitText(splitText, splitConfig)
   })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let splitConfig: intelligence.SplitConfig = {
+  size: 10,
+  overlapRatio: 0.1
+}
+let splitText = 'text';
+
+intelligence.splitText(splitText, splitConfig)
+  .then((data: Array<string>) => {
+    console.info("Succeeded in splitting Text");
+  })
+  .catch((err) => {
+    console.error("Failed to split Text and code is " + err.code);
+  })
+```
+
 ## ModelConfig
 
 管理嵌入模型的配置信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型              | 只读 | 可选| 说明                                                         |
 | ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
@@ -201,6 +283,10 @@ intelligence.splitText(splitText, splitConfig)
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值                   | 说明                   |
 | ---------- | ---------- | ---------------------- |
 | BASIC_MODEL     | 0     | 基本嵌入模型版本。   |
@@ -213,6 +299,10 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                         | 说明                  |
 | ---------------------------- | --------------------- |
 | string | 图片的URI地址。长度上限为512个字符。 |
@@ -222,6 +312,10 @@ type Image = string
 管理文本分块的配置信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | --------------------- | ---- | ----| ------------------------------------------------------------ |
@@ -237,6 +331,10 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 ### loadModel
 
 loadModel(): Promise&lt;void&gt;
@@ -246,6 +344,10 @@ loadModel(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -264,6 +366,8 @@ loadModel(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -272,6 +376,18 @@ textEmbedding.loadModel()
     console.info("Succeeded in loading Model");
   })
   .catch((err: BusinessError) => {
+    console.error("Failed to load Model and code is " + err.code);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+textEmbedding?.loadModel()
+  .then(() => {
+    console.info("Succeeded in loading Model");
+  })
+  .catch((err) => {
     console.error("Failed to load Model and code is " + err.code);
   })
 ```
@@ -286,6 +402,10 @@ releaseModel(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                          | 说明                                 |
@@ -303,6 +423,8 @@ releaseModel(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -311,6 +433,18 @@ textEmbedding.releaseModel()
     console.info("Succeeded in releasing Model");
   })
   .catch((err: BusinessError) => {
+    console.error("Failed to release Model and code is " + err.code);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+textEmbedding?.releaseModel()
+  .then(() => {
+    console.info("Succeeded in releasing Model");
+  })
+  .catch((err) => {
     console.error("Failed to release Model and code is " + err.code);
   })
 ```
@@ -326,6 +460,10 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -351,6 +489,8 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -361,6 +501,20 @@ textEmbedding.getEmbedding(text)
     console.info("Succeeded in getting Embedding");
   })
   .catch((err: BusinessError) => {
+    console.error("Failed to get Embedding and code is " + err.code);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+textEmbedding?.loadModel();
+let text = 'text';
+textEmbedding?.getEmbedding(text)
+  .then((data: Array<number>) => {
+    console.info("Succeeded in getting Embedding");
+  })
+  .catch((err) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
 ```
@@ -376,6 +530,10 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -401,6 +559,8 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -415,6 +575,20 @@ textEmbedding.getEmbedding(batchTexts)
   })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+textEmbedding?.loadModel();
+let batchTexts = ['text1', 'text2'];
+textEmbedding?.getEmbedding(batchTexts)
+  .then((data: Array<Array<number>>) => {
+    console.info("Succeeded in getting Embedding");
+  })
+  .catch((err) => {
+    console.error("Failed to get Embedding and code is " + err.code);
+  })
+```
+
 ## ImageEmbedding
 
 描述多模态嵌入模型的图像嵌入函数。
@@ -422,6 +596,10 @@ textEmbedding.getEmbedding(batchTexts)
 下列接口都需先使用[intelligence.getImageEmbeddingModel](#intelligencegetimageembeddingmodel)获取到ImageEmbedding实例，再通过此实例调用对应接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 ### loadModel
 
@@ -432,6 +610,10 @@ loadModel(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -450,6 +632,8 @@ loadModel(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -458,6 +642,18 @@ imageEmbedding.loadModel()
     console.info("Succeeded in loading Model");
   })
   .catch((err: BusinessError) => {
+    console.error("Failed to load Model and code is " + err.code);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+imageEmbedding?.loadModel()
+  .then(() => {
+    console.info("Succeeded in loading Model");
+  })
+  .catch((err) => {
     console.error("Failed to load Model and code is " + err.code);
   })
 ```
@@ -472,6 +668,10 @@ releaseModel(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                          | 说明                                 |
@@ -489,6 +689,8 @@ releaseModel(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -497,6 +699,18 @@ imageEmbedding.releaseModel()
     console.info("Succeeded in releasing Model");
   })
   .catch((err: BusinessError) => {
+    console.error("Failed to release Model and code is " + err.code);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+imageEmbedding?.releaseModel()
+  .then(() => {
+    console.info("Succeeded in releasing Model");
+  })
+  .catch((err) => {
     console.error("Failed to release Model and code is " + err.code);
   })
 ```
@@ -512,6 +726,10 @@ getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -537,6 +755,8 @@ getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -547,6 +767,20 @@ imageEmbedding.getEmbedding(image)
     console.info("Succeeded in getting Embedding");
   })
   .catch((err: BusinessError) => {
+    console.error("Failed to get Embedding and code is " + err.code);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+imageEmbedding?.loadModel();
+let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+imageEmbedding?.getEmbedding(image)
+  .then((data: Array<number>) => {
+    console.info("Succeeded in getting Embedding");
+  })
+  .catch((err) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
 ```
