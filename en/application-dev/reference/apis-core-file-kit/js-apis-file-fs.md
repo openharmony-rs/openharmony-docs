@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-The **fs** module provides APIs for file operations, including accessing and managing files and directories, obtaining file information statistics, and reading and writing data using a stream.
+This module provides APIs for file operations, including accessing and managing files and directories, obtaining file information statistics, and reading and writing data using a stream.
 
 > **NOTE**
 >
