@@ -5771,7 +5771,7 @@ Allows an application to deliver, control, and query tasks through the asset cac
 
 ## ohos.permission.MANAGE_AOD
 
-Allow an application to trigger the Always-On Display (AOD) mode or exit it, and manage the AOD status.
+Allows an application to trigger the Always On Display (AOD) mode or exit it, and manage the AOD status.
 
 **Permission level**: system_core
 
