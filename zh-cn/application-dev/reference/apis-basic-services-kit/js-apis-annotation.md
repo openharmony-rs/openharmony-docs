@@ -130,7 +130,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   }
 
   @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
-  async function savePhotoToGallerySuppressCompility(context: common.UIAbilityContext) {
+  async function savePhotoToGallerySuppressCompatibility(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
     @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]}) // 如果同时存在两种屏蔽内容，仅生效最近的抑制类型。（兼容性告警被抑制，权限告警仍然存在）
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，兼容性告警被抑制，权限告警仍然存在。
