@@ -280,7 +280,7 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t *fence | 用于同步的显示相关参数信息。 |
-| int64_t *timestamp | 视频帧的时间戳。 |
+| int64_t *timestamp | 视频帧的时间戳。单位为纳秒（ns）。 |
 | [struct OH_Rect](capi-avscreencapture-oh-rect.md) *region | 视频显示相关的坐标信息。 |
 
 **返回：**
@@ -711,8 +711,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t width | 录屏屏幕的宽度。 |
-| int32_t height | 录屏屏幕的高度。 |
+| int32_t width | 录屏屏幕的宽度。单位为像素（px）。 |
+| int32_t height | 录屏屏幕的高度。单位为像素（px）。|
 
 **返回：**
 
@@ -767,7 +767,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t frameRate | 录屏的最大帧率。 |
+| int32_t frameRate | 录屏的最大帧率。单位为帧率（FPS）。 |
 
 **返回：**
 
