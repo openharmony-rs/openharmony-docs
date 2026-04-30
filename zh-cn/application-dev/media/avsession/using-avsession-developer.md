@@ -1,4 +1,4 @@
-# 媒体会话提供方
+# 媒体会话提供方(ArkTS)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
