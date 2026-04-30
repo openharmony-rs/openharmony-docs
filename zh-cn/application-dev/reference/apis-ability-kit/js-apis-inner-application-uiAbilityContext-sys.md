@@ -2311,7 +2311,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId：number): Promis
 | ------- | -------------------------------- |
 | 201 | The application does not have permission to call the interface. |
 | 202 | The application is not system-app, can not use system-api. |
-| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Sending restart message to system service failed;3.System service failed to communicate with dependency module;4.The logical screen corresponding to the specified accountId is not in the foreground.|
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground.|
 
 **示例：**
 
