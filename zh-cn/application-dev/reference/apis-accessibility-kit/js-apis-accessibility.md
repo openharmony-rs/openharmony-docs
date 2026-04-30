@@ -576,7 +576,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
 | 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
 | 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**起始版本：** 26.0.0 |
-| 'focusInvisible' | 表示焦点不可见的事件，值固定为'focusInvisible'字符串。<Br>**起始版本：** 26.0.0 |
+| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<Br>**起始版本：** 26.0.0 |
 
 ## TextMoveUnit
 
