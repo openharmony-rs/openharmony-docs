@@ -50,7 +50,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode/errorcode-universal.md)和[Ability错误码](../errorcode/errorcode-ability.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode/errorcode-universal.md)和[Ability错误码](../apis-ability-kit/errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -114,7 +114,7 @@ disconnectServiceExtensionAbility(connection: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Ability错误码](../errorcode/errorcode-ability.md)。
+以下错误码的详细介绍请参见[Ability错误码](../apis-ability-kit/errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
