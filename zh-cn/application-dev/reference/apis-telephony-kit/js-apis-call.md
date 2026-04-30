@@ -1003,7 +1003,7 @@ call.rejectCall((err: BusinessError) => {
 });
 ```
 
-## call.getCallTransferInfo<sup>7+</sup>
+## call.getCallTransferInfo<sup>26+</sup>
 
 getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
 
