@@ -501,7 +501,7 @@ try {
 
 uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
-卸载用户的户公共凭据，仅证书管理应用调用。使用Promise异步回调。
+卸载用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
