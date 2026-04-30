@@ -1047,7 +1047,7 @@ import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServiceKit';
 
 let type: call.CallTransferType = call.CallTransferType.TRANSFER_TYPE_UNCONDITIONAL;
-let numbder: string = "138xxxxxxxx";
+let number: string = "138xxxxxxxx";
 
 call.getCallTransferInfo(type, number)
     .then((data: call.CallTransferResult) => {
