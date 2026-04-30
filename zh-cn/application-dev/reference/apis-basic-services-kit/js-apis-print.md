@@ -1820,6 +1820,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | printerMake | string | 否 | 是 | 表示打印机型号。 |
 | preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。 |
 | alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。 |
+| selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | 否 | 是 | 表示添加打印机时选择的驱动的信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时使用的协议。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 | options | string | 否 | 是 | 表示打印机详细信息。 |
 
 ## PrinterCapabilities<sup>14+</sup>
