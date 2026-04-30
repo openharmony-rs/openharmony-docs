@@ -2289,15 +2289,11 @@ Unsupport interactive shell command option.
 
 **可能原因**
 
-1. 命令hdc shell [-b bundlename] [command]指定的command参数不可为空。
-
-2. 若需使用`hdc shell -b bundlename`缺省command进入交互式shell会话，仅在3.2.0e及以上版本支持该能力；SDK或设备系统版本低于3.2.0e（或版本不匹配）时不支持。
+命令hdc shell [-b bundlename] [command]指定的command参数不可为空。
 
 **处理步骤**
 
-1. 确认command参数不为空值，详细使用方法请参考[执行交互命令](#执行交互命令)。
-
-2. 若需缺省command进入交互式shell会话，请升级SDK和设备系统版本到3.2.0e及以上，并参考[hdc版本配套表](#hdc版本配套表)确认版本配套关系。
+确认command参数不为空值，详细使用方法请参考[执行交互命令](#执行交互命令)。
 
 ### E003003 交互命令参数不支持
 
