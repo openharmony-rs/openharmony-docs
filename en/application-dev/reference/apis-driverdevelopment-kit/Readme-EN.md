@@ -1,7 +1,7 @@
 # Driver Development Kit
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @zgene94-->
+<!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -69,6 +69,7 @@
     - [UsbRequestPipe](capi-usbddk-usbrequestpipe.md)
     - [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md)
     - [Usb_DeviceArray](capi-usbddk-usb-devicearray.md)
+    - [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md)
     - [UsbSerial_Params](capi-serialddk-usbserial-params.md)
     - [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md)
 - Error Codes<!--driver-development-errcode-->

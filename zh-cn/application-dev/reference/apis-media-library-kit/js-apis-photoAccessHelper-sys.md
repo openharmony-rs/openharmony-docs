@@ -12905,7 +12905,7 @@ async function example(context: Context) {
 
 ## AlbumAttribute
 
-枚举，设置相册的属性类型。
+枚举，相册的属性类型。
 
 **起始版本：** 26.0.0
 
@@ -12915,7 +12915,8 @@ async function example(context: Context) {
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| NICK_NAME_ATTR | 'nickname' | 设置相册昵称。<br>**系统接口**：此接口为系统接口。 |
+| NICK_NAME_ATTR | 'nickname' | 相册昵称。<br>**系统接口**：此接口为系统接口。 |
+| IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumOperationType
 
