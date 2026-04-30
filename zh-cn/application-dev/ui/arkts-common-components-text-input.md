@@ -81,7 +81,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
 TextInput、TextArea和Search都支持设置输入框类型，通过type属性进行设置，但是各组件的枚举值略有不同。下面以单行输入框为例进行说明。
 
-TextInput有以下类型可选择：Normal基本输入模式、Password密码输入模式、Email邮箱地址输入模式、Number纯数字输入模式、PhoneNumber电话号码输入模式、USER_NAME用户名输入模式、NEW_PASSWORD新密码输入模式、NUMBER_PASSWORD纯数字密码输入模式、<!--Del-->SCREEN_LOCK_PASSWORD锁屏应用密码输入模式、<!--DelEnd-->NUMBER_DECIMAL带小数点的数字输入模式、带URL的输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
+TextInput有以下类型可选择：Normal（基本）、Password（密码）、Email（邮箱地址）、Number（纯数字）、PhoneNumber（电话号码）、USER_NAME（用户名）、NEW_PASSWORD（新密码）、NUMBER_PASSWORD（纯数字密码）、<!--Del-->SCREEN_LOCK_PASSWORD（锁屏应用密码）、<!--DelEnd-->NUMBER_DECIMAL（带小数点的数字）以及带URL的输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
 
 ### 基本输入模式（默认类型）
 
