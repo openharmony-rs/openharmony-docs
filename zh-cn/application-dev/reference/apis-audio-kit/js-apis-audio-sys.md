@@ -3268,7 +3268,7 @@ async function getExcludedDevices(){
 
 getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 
-获取当前音频设备场景下的活跃输出设备描述符，使用Promise异步回调。
+获取当前音频设备场景下的活跃输出设备描述符。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
