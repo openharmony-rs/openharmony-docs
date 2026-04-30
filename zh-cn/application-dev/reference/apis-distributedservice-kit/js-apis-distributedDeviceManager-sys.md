@@ -32,7 +32,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
@@ -45,7 +45,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称         | 类型  | 只读 | 可选             |  说明    |
 | ----------- | ---- | -- | --- |--------------- | 
@@ -59,7 +59,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读| 可选              |  说明    |
 | -------------- | ---- | --------| ------- | --------|
@@ -74,7 +74,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读   |可选              |  说明    |
 | -------------- | ---- | ---| --------------- | --------|
@@ -113,7 +113,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | -------| -------- | --------|
@@ -129,7 +129,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读  |可选              |  说明    |
 | -------------- | ---- | ------| --------- | --------|
@@ -147,7 +147,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | ------ | --------- | --------|
@@ -168,7 +168,7 @@ replyUiAction(action: number, actionResult: string): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -196,13 +196,13 @@ replyUiAction(action: number, actionResult: string): void
 
   try {
     /*
-      action = 0 - 允许授权
-      action = 1 - 取消授权
-      action = 2 - 授权框用户操作超时
-      action = 3 - 取消pin码框展示
-      action = 4 - 取消pin码输入框展示
-      action = 5 - pin码输入框确定操作
-    */
+     * action = 0 - 允许授权
+     * action = 1 - 取消授权
+     * action = 2 - 授权框用户操作超时
+     * action = 3 - 取消pin码框展示
+     * action = 4 - 取消pin码输入框展示
+     * action = 5 - pin码输入框确定操作
+     */
     let operation = 0;
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.replyUiAction(operation, 'extra');
@@ -222,7 +222,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -280,7 +280,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -325,7 +325,7 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -373,7 +373,7 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -429,7 +429,7 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -484,7 +484,7 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -550,7 +550,7 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -605,7 +605,7 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -663,7 +663,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -723,7 +723,7 @@ restoreLocalDeivceName(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **错误码：**
 
@@ -760,7 +760,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
