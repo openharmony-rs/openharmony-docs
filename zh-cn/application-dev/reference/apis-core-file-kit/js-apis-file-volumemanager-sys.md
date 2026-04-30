@@ -24,7 +24,7 @@ import { volumeManager } from '@kit.CoreFileKit';
 
 getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 
-异步获取当前外置存储中所有卷设备信息，使用Promise异步回调。
+获取当前外置存储中所有卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -84,7 +84,7 @@ ArkTS-Sta示例：
 
 getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
-异步获取当前外置存储中所有卷设备信息，使用callback异步回调。
+获取当前外置存储中所有卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -224,7 +224,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 vfat、exfat及ntfs。
 
-从API版本26.0.0开始支持ext4。
+从API版本26.0.0开始支持ext4
 
 **系统接口**：此接口为系统接口。
 
