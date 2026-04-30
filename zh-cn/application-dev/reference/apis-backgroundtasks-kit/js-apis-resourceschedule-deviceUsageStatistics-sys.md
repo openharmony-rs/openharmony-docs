@@ -970,6 +970,7 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTaskskit';
 
 usageStatistics.queryBundleEvents(0, 20000000000000, 100).then((res: Array<usageStatistics.BundleEvents>) => {
   console.info('BUNDLE_ACTIVE queryBundleEvents promise success.');
@@ -1134,6 +1135,7 @@ queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTaskskit';
 
 usageStatistics.queryCurrentBundleEvents(0, 20000000000000, 100).then((res: Array<usageStatistics.BundleEvents>) => {
   console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise success.');
