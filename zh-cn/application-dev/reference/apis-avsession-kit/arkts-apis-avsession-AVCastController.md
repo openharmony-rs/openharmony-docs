@@ -220,7 +220,7 @@ ArkTS-Dyn: getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
 ArkTS-Sta: getSupportedPlaySpeeds(): Promise\<Array\<double>>
 
-获取当前的远端设备所支持倍速播放列表。使用Promise异步回调。
+获取当前的远端设备所支持倍速播放列表，仅支持使用cast+协议连接的设备。使用Promise异步回调。
 
 **原子化服务API(仅ArkTS-Dyn)：** 从API version 19开始，该接口支持在原子化服务中使用。
 
