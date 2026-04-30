@@ -36,6 +36,8 @@ import { uniformDataStruct } from '@kit.ArkData';
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 let plainTextDetails : Record<string, string> = {
@@ -174,6 +176,8 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -282,6 +286,8 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -343,6 +349,8 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -380,7 +388,11 @@ let fileUri: uniformDataStruct.FileUri = {
   uniformDataType: 'general.file-uri',
   oriUri: 'www.xx.com',
   fileType: 'general.image',
-  details: fileUriDetails
+  details: fileUriDetails,
+  // 从API 26.0.0版本开始，支持uri授权策略
+  uriAuthorizationPolicies : [
+    unifiedDataChannel.UriPermission.WRITE
+  ]
 }
 console.info('fileUri.uniformDataType: ' + fileUri.uniformDataType);
 // 当使用FileUri类型的标准化数据结构构造record时，推荐入参中的type值设为uniformTypeDescriptor.UniformDataType.FILE_URI
@@ -404,6 +416,8 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';

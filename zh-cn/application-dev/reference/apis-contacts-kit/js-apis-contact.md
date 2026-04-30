@@ -3,7 +3,7 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @yanghaoqian-->
+<!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 本模块提供联系人管理能力，包括添加联系人、删除联系人、更新联系人等。
@@ -1440,6 +1440,14 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
 

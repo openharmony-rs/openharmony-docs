@@ -6,6 +6,10 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
+> **说明：**
+>
+> - JSON扩展库仅适用于ArkTS-Dyn。
+
 ## 场景介绍
 
 该库扩展了原生JSON功能，提供了额外的错误处理、循环引用检测、BigInt处理以及对不同输入类型的严格检查。代码中底层依赖于原生JSON.parse和JSON.stringify，但在此基础上加入了多种自定义逻辑并提供额外的has和remove接口，具体可见[@arkts.json](../reference/apis-arkts/js-apis-json.md)。

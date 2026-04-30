@@ -51,9 +51,9 @@ DatePicker(options?: DatePickerOptions)
 
 | 名称     | 类型 | 只读 | 可选 |说明                                                         |
 | -------- | ---- | ---- | ---- | ------------------------------------------------------------ |
-| start<sup>11+</sup>    | ArkTS-Dyn: Date<br/>ArkTS-Sta: Date | 否   | 是   | 指定选择器的起始日期。<!--RP1--><!--RP1End--><br/>默认值：Date('1970-1-1')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
-| end<sup>11+</sup>      | ArkTS-Dyn: Date<br/>ArkTS-Sta: Date | 否   | 是   | 指定选择器的结束日期。<!--RP2--><!--RP2End--><br/>默认值：Date('2100-12-31')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23        |
-| selected<sup>11+</sup> | ArkTS-Dyn: Date<br/>ArkTS-Sta: Date \| Bindable\<Date> | 否   | 是   | 设置选中项的日期。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| start<sup>11+</sup>    | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) | 否   | 是   | 指定选择器的起始日期。<!--RP1--><!--RP1End--><br/>默认值：Date('1970-1-1')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
+| end<sup>11+</sup>      | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) | 否   | 是   | 指定选择器的结束日期。<!--RP2--><!--RP2End--><br/>默认值：Date('2100-12-31')<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23        |
+| selected<sup>11+</sup> | ArkTS-Dyn: [Date](ts-basic-components-timepicker.md#date对象说明)<br/>ArkTS-Sta: [Date](ts-basic-components-timepicker.md#date对象说明) \| [Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<[Date](ts-basic-components-timepicker.md#date对象说明)> | 否   | 是   | 设置选中项的日期。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('1900-01-31'), Date('2100-12-31')]<br/>ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>ArkTS-Sta：从API version 23开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | mode<sup>18+</sup> | [DatePickerMode](#datepickermode18枚举说明) | 否   | 是   | 设置日期展示模式。<br/>默认值：DatePickerMode.DATE，显示年、月、日三列。<br/>在[DatePickerDialog](ts-methods-datepicker-dialog.md)中，当[DatePickerDialogOptions](ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 >  **说明：**
@@ -176,7 +176,7 @@ lunar(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value | boolean \| undefined | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br/>当isLunar的值为undefined时，使用默认值。 |
+| value | boolean \| undefined | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br/>当value的值为undefined时，使用默认值。 |
  
 ### disappearTextStyle<sup>10+</sup>
 
@@ -240,7 +240,7 @@ disappearTextStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当value的值为undefined时，使用默认值。 |
 
 >  **说明：**
 >
@@ -308,7 +308,7 @@ textStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当value的值为undefined时，使用默认值。 |
 
 >  **说明：**
 >
@@ -376,11 +376,11 @@ selectedTextStyle(value: PickerTextStyle | undefined)
 
 ### enableHapticFeedback<sup>18+</sup>
 
-ArkTS-Dyn: enableHapticFeedback(enable: Optional\<boolean>)
-
-ArkTS-Sta: enableHapticFeedback(enable:  boolean | undefined)
+enableHapticFeedback(enable: Optional\<boolean>)
 
 设置是否开启触控反馈。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -388,13 +388,39 @@ ArkTS-Sta: enableHapticFeedback(enable:  boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
+**参数：**
+
+| 参数名 | 类型                                          | 必填  | 说明                                                                                  |
+| ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 <br/>当enable的值为undefined时，使用默认值。|
+
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE"
+   }
+]
+```
+
+### enableHapticFeedback<sup>23+</sup>
+
+enableHapticFeedback(enable: boolean | undefined)
+
+设置是否开启触控反馈。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 <br/>当enable的值为undefined时，使用默认值。|
+| enable  | boolean \| undefined | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 <br/>当enable的值为undefined时，使用默认值。|
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
@@ -408,11 +434,15 @@ ArkTS-Sta: enableHapticFeedback(enable:  boolean | undefined)
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
-ArkTS-Dyn: digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
-
-ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
+digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 设置表冠灵敏度。
+
+>  **说明：**
+>
+>  用于穿戴设备圆形屏幕使用。组件响应[表冠事件](ts-universal-events-crown.md)，需要先获取焦点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -420,25 +450,41 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
+**参数：**
+
+| 参数名   | 类型                                     | 必填   | 说明                      |
+| ----- | ---------------------------------------- | ---- | ------------------------- |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。<br/>当sensitivity的值为undefined时，使用默认值。 |
+
+### digitalCrownSensitivity<sup>23+</sup>
+
+digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
+
+设置表冠灵敏度。
+
+>  **说明：**
+>
+>  用于穿戴设备圆形屏幕使用。组件响应[表冠事件](ts-universal-events-crown.md)，需要先获取焦点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> <br/>ArkTS-Sta: [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
-
->  **说明：**
->
->  用于穿戴设备圆形屏幕使用。组件响应[表冠事件](ts-universal-events-crown.md)，需要先获取焦点。
+| sensitivity | [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是    | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。<br/>当sensitivity的值为undefined时，使用默认值。 |
 
 ### canLoop<sup>20+</sup>
 
-ArkTS-Dyn: canLoop(isLoop: Optional\<boolean>)
-
-ArkTS-Sta: canLoop(isLoop: boolean | undefined)
+canLoop(isLoop: Optional\<boolean>)
 
 设置是否可循环滚动。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -446,13 +492,29 @@ ArkTS-Sta: canLoop(isLoop: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动，年份随着月份的循环滚动进行联动加减，月份随着日的循环滚动进行联动加减。<br/>- false：不可循环滚动，年、月、日到达本列的顶部或底部时，无法再进行滚动，年、月、日之间也无法再联动加减。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。 |
+
+### canLoop<sup>23+</sup>
+
+canLoop(isLoop: boolean | undefined)
+
+设置是否可循环滚动。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> <br/>ArkTS-Sta: boolean \| undefined| 是   | 是否可循环滚动。<br/>- true：可循环滚动，年份随着月份的循环滚动进行联动加减，月份随着日的循环滚动进行联动加减。<br/>- false：不可循环滚动，年、月、日到达本列的顶部或底部时，无法再进行滚动，年、月、日之间也无法再联动加减。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。 |
+| isLoop  | boolean \| undefined | 是   | 是否可循环滚动。<br/>- true：可循环滚动，年份随着月份的循环滚动进行联动加减，月份随着日的循环滚动进行联动加减。<br/>- false：不可循环滚动，年、月、日到达本列的顶部或底部时，无法再进行滚动，年、月、日之间也无法再联动加减。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -482,10 +544,10 @@ attributeModifier(modifier: AttributeModifier\<DatePickerAttribute> | AttributeM
 
 **ArkTS-Dyn起始版本：** 10
 
-| 参数名   | 类型                                     | 必填   | 说明                      |
-| ----- | ---------------------------------------- | ---- | ------------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否    | 文本颜色。                     |
-| font  | [Font](ts-types.md#font)                 | 否    | 文本样式。 |
+| 名称   | 类型                                     | 只读 | 可选 | 说明                      |
+| ----- | ---------------------------------------- | ---- | ---- | ------------------------- |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本颜色。                     |
+| font  | [Font](ts-types.md#font)                 | 否 | 是 | 文本样式。 |
 
 ## 事件
 
@@ -569,11 +631,13 @@ onDateChange(callback: Callback\<Date> | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 |
+| callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。<br/>当callback的值为undefined时，不使用回调函数。 |
  
 ## DatePickerResult对象说明
 
 日期选择器返回的时间格式。
+
+从API version 8开始支持，从API version 10开始废弃，建议使用[Date](#ondatechange10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -597,11 +661,11 @@ onDateChange(callback: Callback\<Date> | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称   | 类型                                     | 必填   | 说明                      |
-| ----- | ---------------------------------------- | ---- | ------------------------- |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否    | 开关开启时的背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary_actived') |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否    | 开关关闭时的边框颜色。<br/>默认值：$r('sys.color.ohos_id_color_switch_outline_off') |
-| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否    | 开关内部图标颜色。<br/>默认值：Color.White |
+| 名称   | 类型                                     | 只读 | 可选 | 说明                      |
+| ----- | ---------------------------------------- | ---- | ---- | ------------------------- |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 开关开启时的背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary_actived') |
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 开关关闭时的边框颜色。<br/>默认值：$r('sys.color.ohos_id_color_switch_outline_off') |
+| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 开关内部图标颜色。<br/>默认值：Color.White |
 
 ## 示例
 

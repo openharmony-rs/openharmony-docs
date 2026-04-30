@@ -59,10 +59,10 @@ updateRect(x: number, y: number, width: number, height: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| x | number | 是 | surface相对于Web组件的x坐标信息。 |
-| y | number | 是 | surface相对于Web组件的y坐标信息。 |
-| width | number | 是 | surface的宽度。<br>单位：像素。 |
-| height | number | 是 | surface的高度。<br>单位：像素。 |
+| x | number | 是 | surface相对于Web组件的x坐标信息。<br>单位：px。 |
+| y | number | 是 | surface相对于Web组件的y坐标信息。<br>单位：px。 |
+| width | number | 是 | surface的宽度。<br>单位：px。 |
+| height | number | 是 | surface的高度。<br>单位：px。 |
 
 **示例：**
 

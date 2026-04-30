@@ -1034,7 +1034,7 @@ The target token ID is invalid.
 2. 确保callerTokenId与targetTokenId不是同一应用。
 <!--DelEnd-->
 
-## 16000100 监听Ability生命周期变化的AbilityMonitor方法执行失败
+## 16000100 监听Ability生命周期变化的AbilityMonitor或InteropAbilityMonitor方法执行失败
 
 **错误信息**
 
@@ -1066,9 +1066,13 @@ The target token ID is invalid.
 
  - Calling WaitAbilityStageMonitor failed.
 
+ - Calling AddInteropAbilityMonitorSync failed.
+
+ - Calling RemoveInteropAbilityMonitorSync failed.
+
 **错误描述**
 
-当监听指定Ability的生命周期变化的AbilityMonitor方法执行失败时，返回该错误码。
+当监听指定Ability的生命周期变化的AbilityMonitor或InteropAbilityMonitor方法执行失败时，返回该错误码。
 
 **可能原因**
 
@@ -1350,6 +1354,44 @@ The UIAbility is prohibited from launching itself via App Linking.
 
 - 如果允许使用App Linking拉起当前UIAbility，开发者需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)将[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的allowSelfRedirect字段设置为true。
 - 如果不允许使用App Linking拉起当前UIAbility，开发者需要通过catch捕获该错误码并进行处理。
+
+<!--Del-->
+## 16000137 跨设备执行意图连接失败
+
+**错误信息**
+
+Cross-device execution failed due to a connection error.
+
+**错误描述**
+
+跨设备执行意图时，设备连接失败。
+
+**可能原因**
+
+入参[ExecuteParam](../apis-ability-kit/js-apis-app-ability-insightIntentDriver-sys.md#executeparam)中的deviceId不为空且无效。
+
+**处理步骤**
+
+检查deviceId是否有效。
+
+## 16000138 跨设备执行意图设备断连
+
+**错误信息**
+
+Device disconnected during cross-device intent execution.
+
+**错误描述**
+
+跨设备执行意图时，设备断开连接。
+
+**可能原因**
+
+设备距离过远、设备异常或设备主动退出账号，导致设备连接断开。
+
+**处理步骤**
+
+检查设备状态是否正常，并重新连接。
+<!--DelEnd-->
 
 ## 16000150 发送请求失败
 

@@ -4,7 +4,7 @@
 <!--Owner: @RainyDay_005; @huangsiping3-->
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 升级范围：升级整个系统，包括内置资源和预置应用，不包括三方应用。
 

@@ -1135,7 +1135,7 @@ struct Index {
           ToolBarV2({
             toolBarModifier: this.toolBarModifier,
             dividerModifier: this.dividerModifier,
-            activatedIndex: 0,
+            activatedIndex: 2,
             toolBarList: this.toolbarList,
           })
             .height(52)
@@ -1258,7 +1258,7 @@ struct Index {
           ToolBarV2({
             toolBarModifier: this.toolBarModifier,
             dividerModifier: this.dividerModifier,
-            activatedIndex: 0,
+            activatedIndex: 2,
             toolBarList: this.toolbarList,
           })
             .height(52)

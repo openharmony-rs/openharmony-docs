@@ -47,6 +47,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | offset              | string | 否   | 是|设置光标的偏移量，如：'1'。    |
 | spanId              | string | 否   |是 |对超链接文本进行点击操作时文本编号。                |
 | scrollType          | string | 否   | 是|组件滚动类型，包括'fullScreen'（全屏）和'halfScreen'（半屏）。 |
+| injectActionType    | [InjectActionType](./js-apis-accessibility-sys.md#injectactiontype) | 否   | 是|设置注入的动作。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | customAction          | string | 否   | 是|自定义操作。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | accessibilityFocusScene          | [AccessibilityFocusScene](./js-apis-accessibility-sys.md#accessibilityfocusscene) | 否   | 是|设置无障碍聚焦的场景。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 

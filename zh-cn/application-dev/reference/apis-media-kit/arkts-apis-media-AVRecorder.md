@@ -1,8 +1,8 @@
 # Interface (AVRecorder)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -186,6 +186,93 @@ avRecorder.prepare(avRecorderConfig).then(() => {
   let error: BusinessError = err as BusinessError;
   console.error(`Failed to prepare and error is: Code: ${error.code}, message: ${error.message}`);
 });
+```
+
+## addWatermark
+
+ArkTS-Dyn: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
+
+ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<int>
+
+在录制视频过程中添加自定义水印图像。使用Promise异步回调。
+
+> **说明：**
+>
+> - 应用最多可添加5个水印。
+>
+> - 需在[prepare](#prepare9)接口调用前调用addWatermark接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明                       |
+| ------ | -------------------------------------- | ---- | -------------------------- |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像。 |
+| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| ArkTS-Dyn: Promise\<number>  <br/> ArkTS-Sta: Promise\<int>  | Promise对象，返回所添加水印的编号。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise.  |
+| 5400103  | IO error. Return by promise.    |
+| 5400105  | Service died. Return by promise. |
+| 5400108  | The parameter check failed, parameter value out of range.     |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import image from '@ohos.multimedia.image';
+import media from '@ohos.multimedia.media';
+
+let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avRecorder.addWatermark(watermark, watermarkConfig).then((num: number) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import image from '@ohos.multimedia.image';
+import media from '@ohos.multimedia.media';
+
+let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avRecorder.addWatermark(watermark, watermarkConfig).then((num: int) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: Error) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
 ```
 
 ## getInputSurface<sup>9+</sup>

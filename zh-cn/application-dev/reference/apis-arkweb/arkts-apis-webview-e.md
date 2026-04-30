@@ -449,8 +449,9 @@ Web页面场景下，全局滚动条模式。
 
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
-| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条。 |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条，可以拖拽。 |
 | FORCE_DISPLAY_SCROLLBAR    | 1 | 常驻滚动条。 |
+| OVERLAY_VISUAL_SCROLLBAR    | 2 | 非常驻滚动条，不可以拖拽。<br/>**起始版本：** 26.0.0 |
 
 ## WebBlanklessErrorCode<sup>20+</sup>
 

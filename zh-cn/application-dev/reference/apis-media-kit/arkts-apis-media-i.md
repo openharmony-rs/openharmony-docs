@@ -143,6 +143,25 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | [key: string]| Object | 否  | 是  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
 
+## WatermarkConfiguration
+
+视频录制添加水印的配置参数。水印位置以视频左上角为原点计算。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称      | 类型   | 只读 | 可选 | 说明             |
+| --------- | ------ | ---- | ---- | ---------------- |
+| top  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 水印相对于视频顶部位置的偏移量。取值为整数，单位为像素（px）。 |
+| left | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 水印相对于视频左侧位置的偏移量。取值为整数，单位为像素（px）。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 水印图片的宽度。取值为正整数，取值范围为[1, 4096]，单位为像素（px）。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 水印图片的高度。取值为正整数，取值范围为[1, 4096]，单位为像素（px）。 |
+
 ## AVRecorderConfig<sup>9+</sup>
 
 表示音视频录制的参数设置。
@@ -171,18 +190,18 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称             | 类型                                         | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| audioBitrate     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 音频编码比特率，选择音频录制时必填。<br>支持范围：<br>- AAC编码格式支持比特率范围[32000, 500000]。<br>- G711-mulaw编码格式支持比特率大小：64000。<br>- MP3编码格式支持范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]。<br>当使用MP3编码格式时，采样率和比特率的映射关系： <br>- 采样率使用16K以下时，对应比特率范围为[8000 - 64000]。<br>- 采样率使用16K~32K时对应的比特率范围为[8000, 160000]。<br>- 采样率使用32K以上时对应的比特率范围为[32000, 320000]。<br>- AMR_NB编码格式支持比特率范围[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]。<br>- AMR_WB编码格式支持比特率范围[6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850]。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| audioChannels    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 音频采集声道数，选择音频录制时必填。<br>- AAC编码格式支持范围[1, 2]。<br>- G711-mulaw编码格式支持大小：1。<br>- MP3编码格式支持范围[1, 2]。<br>- AMR-NB和AMR-WB编码格式支持大小：1。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23       |
+| audioBitrate     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 音频编码比特率，选择音频录制时必填。单位为比特/秒（bit/s）。<br>取值范围：<br>- AAC编码格式支持比特率范围[32000, 500000]。<br>- G711-mulaw编码格式支持比特率大小：64000。<br>- MP3编码格式取值范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]。<br>当使用MP3编码格式时，采样率和比特率的映射关系： <br>- 采样率使用16K以下时，对应比特率范围为[8000 - 64000]。<br>- 采样率使用16K~32K时对应的比特率范围为[8000, 160000]。<br>- 采样率使用32K以上时对应的比特率范围为[32000, 320000]。<br>- AMR_NB编码格式支持比特率范围[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]。<br>- AMR_WB编码格式支持比特率范围[6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850]。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| audioChannels    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 音频采集声道数，选择音频录制时必填。<br>- AAC编码格式取值范围[1, 2]。<br>- G711-mulaw编码格式支持大小：1。<br>- MP3编码格式取值范围[1, 2]。<br>- AMR-NB和AMR-WB编码格式支持大小：1。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23       |
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 音频编码格式，选择音频录制时必填。<br>当前支持AUDIO_AAC、AUDIO_MP3、AUDIO_G711MU、AUDIO_AMR_NB和AUDIO_AMR_WB。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23     |
 | aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | 否   | 是   | 音频编码扩展格式，默认为AAC_LC格式。<br>当前支持类型：AAC_LC、AAC_HE和AAC_HE_V2。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23     |
-| audioSampleRate  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 音频采样率，选择音频录制时必填。<br>支持范围：<br>- AAC编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]。<br>- G711-mulaw编码支持采样率大小：8000。<br>- MP3编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]。<br>- AMR_NB编码支持采样率大小：8000。<br>- AMR_WB编码支持采样率大小：16000。<br>可变比特率模式，码率仅作参考。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| audioSampleRate  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 音频采样率，选择音频录制时必填。单位为赫兹（Hz）。<br>取值范围：<br>- AAC编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]。<br>- G711-mulaw编码支持采样率大小：8000。<br>- MP3编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]。<br>- AMR_NB编码支持采样率大小：8000。<br>- AMR_WB编码支持采样率大小：16000。<br>可变比特率模式，码率仅作参考。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 否   | 文件的容器格式，必要参数。当前支持MP4、M4A、MP3、WAV、AMR、AAC封装格式，当前AAC音频封装默认为ADTS帧头格式。不支持在MP4封装格式下使用AUDIO_MP3编码格式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
-| videoBitrate     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频编码比特率，选择视频录制时必填，支持范围[10000, 100000000]。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23  |
+| videoBitrate     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频编码比特率，选择视频录制时必填。取值范围[10000, 100000000]，单位为比特/秒（bit/s）。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23  |
 | videoCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 视频编码格式，选择视频录制时必填。当前支持VIDEO_AVC和VIDEO_HEVC。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
-| videoFrameWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频帧的宽，选择视频录制时必填，支持范围[176, 4096]。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23         |
-| videoFrameHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频帧的高，选择视频录制时必填，支持范围[144, 4096]。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23         |
-| videoFrameRate   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频帧率，选择视频录制时必填，推荐范围[1, 60]。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23             |
-| isHdr<sup>11+</sup>            | boolean                        | 否   | 是   | HDR编码，选择视频录制时选填，isHdr默认为false，对应编码格式没有要求，isHdr为true时，对应的编码格式必须为video/hevc。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| videoFrameWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频帧的宽，选择视频录制时必填。取值范围[176, 4096]，单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23         |
+| videoFrameHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频帧的高，选择视频录制时必填。取值范围[144, 4096]，单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23         |
+| videoFrameRate   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                       | 否   | 是   | 视频帧率，选择视频录制时必填。推荐范围[1, 60]，单位为帧/秒（fps）。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23             |
+| isHdr<sup>11+</sup>            | boolean                        | 否   | 是   | HDR编码，选择视频录制时选填。isHdr默认为false，对应编码格式没有要求，isHdr为true时，对应的编码格式必须为video/hevc。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
 | enableTemporalScale<sup>12+</sup>            | boolean                        | 否   | 是   | 视频录制是否支持时域分层编码功能，选择视频录制时选填，enableTemporalScale默认为false。设置为true时，编码输出的码流中部分帧可以支持跳过不编码。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | enableBFrame<sup>20+</sup>            | boolean                        | 否   | 是   | 视频录制是否启用B帧编码。true表示启用B帧编码（仅在视频编码格式为H.265且设备硬件支持的情况下生效），false表示不启用B帧编码。<br>该参数为视频录制场景下的可选项，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
 

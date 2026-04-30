@@ -90,6 +90,7 @@
 | [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | 拍照画质优先策略枚举。 |
 | [OH_Camera_OISMode](#oh_camera_oismode) | OH_Camera_OISMode | 光学防抖（Optical Image Stabilization）模式枚举。 |
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | 光学防抖（OIS）轴枚举。 |
+| [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
 
 ### 函数
 
@@ -712,6 +713,23 @@ enum OH_Camera_OISAxes
 | -- | -- |
 | OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。 |
 | OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
+
+### OH_Camera_ExposureState
+
+```c
+enum OH_Camera_ExposureState
+```
+
+**描述**
+
+枚举相机曝光状态。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | 表示曝光处于扫描状态。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 表示曝光已经收敛。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
