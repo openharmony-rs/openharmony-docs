@@ -5769,6 +5769,20 @@ Allows an application to deliver, control, and query tasks through the asset cac
 
 **Since**: 24
 
+## ohos.permission.MANAGE_AOD
+
+Allows an application to trigger the Always On Display (AOD) mode or exit it, and manage the AOD status.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 Allows an application and a service to access the device-side model deployment management.
