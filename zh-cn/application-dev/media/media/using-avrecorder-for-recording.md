@@ -1,8 +1,8 @@
 # 使用AVRecorder录制音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -95,7 +95,7 @@
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import fileIo from '@ohos.file.fs';
+   import { fileIo } from '@kit.CoreFileKit';
 
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
@@ -178,7 +178,7 @@
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import fileIo from '@ohos.file.fs';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function audioRecording(context: common.Context): Promise<void> {
   // 创建avRecorder对象。
