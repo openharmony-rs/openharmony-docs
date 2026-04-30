@@ -2796,9 +2796,9 @@ onPlay(callback: Callback\<CommandInfo>): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('play')](#onplay10)。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Dyn起始版本：** 22
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 23
 
@@ -4558,7 +4558,7 @@ off(type: 'playPrevious', callback?: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayPrevious](#offplayprevious23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayPrevious](#offplayprevious22)。
 
 **原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5176,7 +5176,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | --------- |
