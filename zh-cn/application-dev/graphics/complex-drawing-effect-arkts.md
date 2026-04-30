@@ -54,7 +54,7 @@
      canvas.attachBrush(brushCircle);
      canvas.drawCircle(500, 500, 200);
      const brush = new drawing.Brush();
-     //  设置混合模式
+     // 设置混合模式
      brush.setBlendMode(drawing.BlendMode.SRC_IN);
      canvas.saveLayer(null, brush);
 
