@@ -2890,7 +2890,6 @@ ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int):
 
 在获焦应用拉起UIExtensionAbility之前，必须确保该应用已完成页面初始化，否则将导致拉起失败。应用可通过监听页面加载状态判断拉起UIExtensionAbility的时机。
 
-
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
