@@ -2883,6 +2883,7 @@ export default class EntryServiceExtAbility extends ServiceExtensionAbility {
 ## ServiceExtensionContext.requestModalUIExtensionWithAccount
 
 ArkTS-Dyn: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise\<void>
+
 ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<void>
 
 请求为指定用户在指定获焦应用上拉起对应类型的UIExtensionAbility。获焦应用通过want.parameters中的bundleName指定，若未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility。拉起的UIExtensionAbility由Want中的bundleName、abilityName和moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置其类型。此操作仅支持在主线程调用，并以Promise形式提供异步回调。
