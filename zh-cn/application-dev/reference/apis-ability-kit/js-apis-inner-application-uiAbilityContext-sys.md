@@ -2270,7 +2270,8 @@ export default class EntryAbility extends UIAbility {
 
 ### requestModalUIExtensionWithAccount
 
-requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<void>
+ArkTS-Dyn: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise\<void>
+ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<void>
 
 请求为指定用户在指定前台应用上拉起对应类型的UIExtensionAbility。前台应用通过want.parameters中的bundleName指定，若未指定前台应用、bundleName指定的应用未在前台或指定的前台应用的bundleName不正确，则在系统界面上直接拉起UIExtensionAbility。拉起的UIExtensionAbility由want中的bundleName、abilityName和moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置其类型。此操作仅支持在主线程调用，并以Promise形式提供异步回调。
 
@@ -2282,9 +2283,9 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<v
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**ArkTs-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTs-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2295,7 +2296,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<v
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID，可以通过[getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23)接口获取。 |
+| accountId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23)接口获取。 |
 
 **返回值：**
 
@@ -2313,7 +2314,50 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<v
 | 202 | The application is not system-app, can not use system-api. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground.|
 
-**示例：**
+ArkTS-Dyn示例：
+
+```ts
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'com.example.myapplication.UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    // 账号ID说明：
+    // 1. 示例固定值 100
+    // 2. 可通过系统账号管理接口getForegroundOsAccountLocalId(displayId: number) 获取指定逻辑屏上运行的前台系统账号ID
+    let accountId = 100;
+
+    try {
+      this.context.requestModalUIExtensionWithAccount(want, accountId)
+        .then(() => {
+          // 执行正常业务
+          console.info('requestModalUIExtensionWithAccount succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtensionWithAccount failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
