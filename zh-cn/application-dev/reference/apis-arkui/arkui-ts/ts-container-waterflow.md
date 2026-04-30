@@ -1230,7 +1230,9 @@ struct WaterFlowDemo {
             console.info('update:' + result);
           })
           .margin({ top: 10, left: 20 })
+      }.margin({ bottom: 20 })
 
+      Row() {
         Button('delete')
           .height('5%')
           .onClick(() => {
@@ -1266,7 +1268,7 @@ struct WaterFlowDemo {
             console.info('count:' + this.sections.length());
           })
           .margin({ top: 10, left: 20 })
-      }.margin({ bottom: 20 })
+      }
 
       WaterFlow({ scroller: this.scroller, sections: this.sections }) {
         LazyForEach(this.dataSource, (item: number) => {
