@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
- <!--Adviser: @zhang_yixin13-->
+<!--Adviser: @zhang_yixin13-->
 
 - [Input Kit简介](input-overview.md)
 - [输入设备开发指导](inputdevice-guidelines.md)
