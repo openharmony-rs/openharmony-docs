@@ -1017,14 +1017,14 @@ getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTran
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type   | CallTransferType               | 是   | 指示要获取哪种类型的呼叫转移。  |
+| type   | [[CallTransferType](js-apis-call-sys.md#calltransfertype8)               | 是   | 指示要获取哪种类型的呼叫转移。  |
 | number | string              | 是   | 指示用于获取呼叫转移状态的号码。 |
 
 **返回值：**
 
 | 类型                | 说明                        |
 | ------------------- | --------------------------- |
-| Promise&lt;CallTransferResult&gt; | 以Promise形式异步返回结果。 |
+| Promise&lt;[CallTransferResult](js-apis-call-sys.md#calltransferresult8)&gt; | Promise对象，返回呼叫转移结果。 |
 
 **错误码：**
 
