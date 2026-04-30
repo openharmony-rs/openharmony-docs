@@ -91,8 +91,6 @@ onAccelerometerChange(callback: Callback&lt;AccelerometerResponse&gt;, options?:
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Sensors.Sensor
 
 **ArkTS-Sta起始版本：** 23
@@ -774,7 +772,7 @@ on(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, option
 
 **需要权限**：ohos.permission.GYROSCOPE
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -831,8 +829,6 @@ onGyroscopeChange(callback: Callback&lt;GyroscopeResponse&gt;, options?: Options
 **相关接口**：该接口对应的接口ArkTS-Dyn是[on(GYROSCOPE)](#sensorongyroscope9)
 
 **需要权限**：ohos.permission.GYROSCOPE
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -1646,7 +1642,7 @@ on(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, op
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[onOrientationChange](#sensoronorientationchange23)
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor 
 
@@ -1704,8 +1700,6 @@ onOrientationChange(callback: Callback&lt;OrientationResponse&gt;, options?: Opt
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的接口ArkTS-Dyn是[on(ORIENTATION)](#sensoronorientation9)
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor 
 
@@ -4542,7 +4536,7 @@ off(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&g
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -4604,7 +4598,7 @@ off(type: SensorId.ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: 
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -4698,8 +4692,6 @@ offAccelerometerChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt
 **相关接口**：该接口对应的接口ArkTS-Dyn是[off(ACCELEROMETER)](#sensoroffaccelerometer19)
 
 **需要权限**：ohos.permission.ACCELEROMETER
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -6032,7 +6024,7 @@ off(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): voi
 
 **需要权限**：ohos.permission.GYROSCOPE
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -6094,7 +6086,7 @@ off(type: SensorId.GYROSCOPE, sensorInfoParam?: SensorInfoParam, callback?: Call
 
 **需要权限**：ohos.permission.GYROSCOPE
 
-**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -6188,8 +6180,6 @@ offGyroscopeChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;Gyr
 **相关接口**：该接口对应的接口ArkTS-Dyn是[off(GYROSCOPE)](#sensoroffgyroscope19)
 
 **需要权限**：ohos.permission.GYROSCOPE
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7958,8 +7948,6 @@ offOrientationChange(sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;O
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的接口ArkTS-Dyn是[off(ORIENTATION)](#sensorofforientation19)
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11502,7 +11490,7 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
-**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -11536,7 +11524,7 @@ try {
 
 传感器数据的精度。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11555,7 +11543,7 @@ try {
 
 传感器数据的时间戳。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11600,7 +11588,7 @@ try {
 
 加速度传感器数据，继承于[Response](#response)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11691,7 +11679,7 @@ try {
 
 方向传感器数据，继承于[Response](#response)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11730,7 +11718,7 @@ try {
 
 陀螺仪传感器数据，继承于[Response](#response)。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11988,7 +11976,7 @@ try {
 
 设置传感器上报频率。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -12007,7 +11995,7 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 传感器上报频率模式。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
