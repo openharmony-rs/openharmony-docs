@@ -10,7 +10,7 @@
 
 ## 前提条件
 - 用户已通过手机中的穿戴应用程序与穿戴设备配对。
-- 用户已在手机的穿戴应用中，通过[openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口拉起的半模态弹窗中，开启了“允许获取本机通知”与“已获取的本机通知”的开关。
+- 用户已在手机的穿戴应用中，通过[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult)接口拉起的半模态弹窗中，开启了“允许获取本机通知”与“已获取的本机通知”的开关。
 - 支持[HFP](../connectivity/terminology.md#hfp)连接的设备，需保证HFP连接一直处于连接状态。
 
 ## 应用场景
