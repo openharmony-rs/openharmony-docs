@@ -88,7 +88,7 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |
   'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |
   'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |
-  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'executeCustomAction'
+  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'
 
 应用所支持的目标动作，需要配置参数的目标动作已在描述中标明。
 
@@ -123,6 +123,7 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'notificationCenter'      | 表示打开通知栏操作。   |
 | 'controlCenter'       | 表示打开控制中心操作。   |
 | 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。   |
+| 'injectAction'    | 表示注入动作，需配置参数injectActionType。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<Br>**起始版本：** 26.0.0   |
 
 ## Capability
