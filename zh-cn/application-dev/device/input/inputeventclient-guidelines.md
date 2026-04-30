@@ -5,17 +5,11 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @@zhang_yixin13-->
 
 ## 场景介绍
 
 输入事件模拟提供键盘和鼠标操作模拟功能。使用场景例如：自动化测试、远程控制、辅助功能等需要程序化控制输入设备的场景。
-
-## 导入模块
-
-```js
-import { inputEventClient } from '@kit.InputKit';
-```
 
 ## 接口说明
 
@@ -26,9 +20,9 @@ import { inputEventClient } from '@kit.InputKit';
 | createKeyboardController(): Promise&lt;KeyboardController&gt; |创建键盘控制器,用于模拟按键操作。|
 | createMouseController(): Promise&lt;MouseController&gt; |创建鼠标控制器,用于模拟鼠标操作。|
 
-## 使用KeyboardController
+## 使用KeyboardController模拟按键操作
 
-KeyboardController接口提供了一种简化的方式来模拟按键操作。它自动管理按键状态,并确保按键按下和释放事件的正确顺序。
+KeyboardController接口提供了一种简化的方式来模拟按键操作。它自动管理按键状态，确保按键按下和释放事件的正确顺序。
 
 ```js
 import { inputEventClient, KeyCode } from '@kit.InputKit';
@@ -54,7 +48,7 @@ struct Index {
             await keyboardController.releaseKey(KeyCode.KEYCODE_C);
             await keyboardController.releaseKey(KeyCode.KEYCODE_CTRL_LEFT);
 
-            console.log('按键操作完成');
+            console.info('按键操作完成');
           } catch (error) {
             console.error(`按键操作失败, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
@@ -64,9 +58,9 @@ struct Index {
 }
 ```
 
-## 使用MouseController
+## 使用MouseController模拟鼠标事件
 
-MouseController接口提供了模拟鼠标操作的功能,包括光标移动、按键按下和轴事件(如滚动)。
+MouseController接口提供了模拟鼠标操作的功能，包括光标移动、按键按下和轴事件（如滚动）。
 
 ```js
 import { inputEventClient, Button, Axis as MouseAxis } from '@kit.InputKit';
@@ -95,7 +89,7 @@ struct Index {
             await mouseController.updateAxis(MouseAxis.SCROLL_VERTICAL, 30);
             await mouseController.endAxis(MouseAxis.SCROLL_VERTICAL);
 
-            console.log('鼠标操作完成');
+            console.info('鼠标操作完成');
           } catch (error) {
             console.error(`鼠标操作失败, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
