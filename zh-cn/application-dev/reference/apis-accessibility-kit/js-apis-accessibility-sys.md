@@ -139,6 +139,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | NOTIFICATION_CENTER        | 18   | 显示通知中心。                  |
 | CONTROL_CENTER             | 19   | 显示控制中心。                  |
 | SPAN_CLICK                 | 20   | 对局部文本进行点击操作。             |
+| INJECT_ACTION              | 21   | 表示注入动作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | EXECUTE_CUSTOM_ACTION      | 22   | 执行自定义操作。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。             |
 
 ## FocusMoveResultCode<sup>23+</sup>
@@ -161,6 +162,24 @@ import { accessibility } from '@kit.AccessibilityKit';
 | DOUBLE_CHECK_CHILD_PROPERTY               | 6  | 返回节点不具备可聚焦属性，需要使用返回节点的所有子节点继续查询。    |
 | DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | 返回节点不具备可聚焦属性，需要使用返回节点的子节点列表中的最后一个节点继续查询。  |
 | SEARCH_FAILURE_IN_SCROLL                  | 8  | 节点在滚动组件内查询失败。        |
+
+## InjectActionType	 
+
+表示注入动作的枚举。	 
+
+**起始版本：** 26.0.0	 
+
+**模型约束**：此接口仅可在Stage模型下使用。	 
+
+**系统接口**：此接口为系统接口。	 
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core	 
+
+| 名称                        | 值   | 说明                     |	 
+| -------------------------- | ---- | ------------------------ |	 
+| CLICK                      | 1    | 表示注入单击动作。         |	 
+| DOUBLE_CLICK               | 2    | 表示注入双击动作。         |	 
+| LONG_CLICK                 | 3    | 表示注入长按动作。         |
 
 ## AccessibilityFocusScene
 
