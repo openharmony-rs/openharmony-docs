@@ -11,6 +11,8 @@ CompletionHandlerForAtomicService作为[AtomicServiceOptions](js-apis-app-abilit
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
@@ -25,9 +27,13 @@ import { CompletionHandlerForAtomicService } from '@kit.AbilityKit';
 
 打开原子化服务失败的特定错误码。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                     | 值   | 说明                                       |
 | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -39,15 +45,32 @@ import { CompletionHandlerForAtomicService } from '@kit.AbilityKit';
 
 CompletionHandlerForAtomicService提供了[onAtomicServiceRequestSuccess](#onatomicservicerequestsuccess)和[onAtomicServiceRequestFailure](#onatomicservicerequestfailure)两个回调函数，分别在打开原子化服务成功和失败时回调。
 
+### 属性
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                          | 类型                                                         | 只读 | 可选 | 说明                             |
+| ----------------------------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------- |
+| onAtomicServiceRequestSuccess | [OnAtomicServiceRequestSuccessFn](#onatomicservicerequestsuccessfn23) | 否   | 否   | 打开原子化服务成功时的回调函数。 |
+| onAtomicServiceRequestFailure | [OnAtomicServiceRequestFailureFn](#onatomicservicerequestfailurefn23) | 否   | 否   | 打开原子化服务失败时的回调函数。 |
+
 ### onAtomicServiceRequestSuccess
 
 onAtomicServiceRequestSuccess(appId: string): void
 
 打开原子化服务成功时的回调函数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -57,7 +80,7 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **示例：**
 
-参见[CompletionHandlerForAtomicService示例](#completionhandlerforatomicservice示例)。
+参见[onAtomicServiceRequestFailure](#onatomicservicerequestfailure)接口的示例。
 
 ### onAtomicServiceRequestFailure
 
@@ -65,9 +88,13 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 打开原子化服务失败时的回调函数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -78,10 +105,6 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 | failureMessage | string | 是 | 失败原因的描述。 |
 
 **示例：**
-
-参见[CompletionHandlerForAtomicService示例](#completionhandlerforatomicservice示例)。
-
-### CompletionHandlerForAtomicService示例
 
 ```ts
 import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
@@ -105,6 +128,85 @@ export default class EntryAbility extends UIAbility {
     this.context.openAtomicService(appId, options).then((result: common.AbilityResult) => {
       hilog.info(0x0000, 'testTag', `openAtomicService succeed:${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', `openAtomicService failed:${JSON.stringify(err)}`);
+    });
+  }
+}
+```
+
+## OnAtomicServiceRequestSuccessFn<sup>23+</sup>
+
+type OnAtomicServiceRequestSuccessFn = (appId: string) => void
+
+打开原子化服务成功时的回调函数。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                      |
+| ------ | ------ | ---- | ------------------------- |
+| appId  | string | 是   | 被拉起原子化服务的appId。 |
+
+**示例：**
+
+参见[OnAtomicServiceRequestFailureFn](#onatomicservicerequestfailurefn23)接口的示例。
+
+## OnAtomicServiceRequestFailureFn<sup>23+</sup>
+
+type OnAtomicServiceRequestFailureFn = (appId: string, failureCode: FailureCode, failureMessage: string) => void
+
+打开原子化服务失败时的回调函数。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名         | 类型                        | 必填 | 说明                      |
+| -------------- | --------------------------- | ---- | ------------------------- |
+| appId          | string                      | 是   | 被拉起原子化服务的appId。 |
+| failureCode    | [FailureCode](#failurecode) | 是   | 失败原因的错误码。        |
+| failureMessage | string                      | 是   | 失败原因的描述。          |
+
+**示例：**
+
+```ts
+// ArkTS-Sta示例
+import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import CompletionHandlerForAtomicService from '@ohos.app.ability.CompletionHandlerForAtomicService';
+import FailureCode from '@ohos.app.ability.CompletionHandlerForAtomicService';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyCompletionHandler extends CompletionHandlerForAtomicService {
+  onAtomicServiceRequestSuccessFn(appId: string) {
+    hilog.info(0x0000, 'testTag', `appId:${appId}`);
+  }
+
+  onAtomicServiceRequestFailureFn(appId: string, failureCode: FailureCode, failureMessage: string) {
+    hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let completionHandler = new MyCompletionHandler();
+    let options: AtomicServiceOptions = {
+      completionHandlerForAtomicService: completionHandler
+    };
+    let appId: string = '5765880207853275489'; // 根据实际appId修改此值
+    this.context.openAtomicService(appId, options).then((result: common.AbilityResult) => {
+      hilog.info(0x0000, 'testTag', `openAtomicService succeed:${JSON.stringify(result)}`);
+    }).catch((error) => {
+      let err = error as BusinessError;
       hilog.error(0x0000, 'testTag', `openAtomicService failed:${JSON.stringify(err)}`);
     });
   }
