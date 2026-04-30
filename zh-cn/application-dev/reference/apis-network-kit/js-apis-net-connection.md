@@ -3701,11 +3701,11 @@ SOCKS5代理配置信息。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.Communication.NetStack
+**系统能力**：SystemCapability.Communication.NetManager.Core
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| host  | string | 否  | 否 |代理服务器主机名。<br>**说明:** 当该项为空时，视为未配置SOCKS5代理。|
+| host  | string | 否  | 否 |代理服务器主机名。<br>**说明:** 当该项为空字符串时，视为未配置SOCKS5代理。|
 | port  | number | 否  |否  |主机端口。取值范围[0, 65535]。<br>**说明:** 当参数不在上述取值范围时，视为未配置SOCKS5代理。 |
 | username | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
 | password | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
