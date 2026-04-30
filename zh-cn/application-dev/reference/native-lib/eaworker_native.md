@@ -18,7 +18,7 @@ ani_status AttachCurrentThread(ani_vm *vm, const ani_options *options, uint32_t 
 | 参数名         | 类型             | 必填         | 说明                                                                 |
 |---------------|------------------|------------|----------------------------------------------------------------------|
 | vm            | ani_vm*          | 是           | ArkTS-Sta虚拟机实例句柄。                            |
-| options     | ani_options*   | 是           | 用于控制创建的EAWorker是否支持interop。使用方式见示例。|
+| options     | ani_options*   | 是           | 用于控制创建的EAWorker是否支持interop。<br>结构体成员：<br> nr_options：选项数量。<br> options：ani_option数组指针。<br>用法示例：<br> `{0, nullptr}`：不使用选项，默认禁用interop。<br> `{1, &option}`：使用一个配置项。<br> - option为`{"--interop=enable", nullptr}`时启用interop功能。<br>  - option为`{"--interop=disable", nullptr}`时禁用interop功能（默认行为）。|
 | version     | uint32_t       | 是           | ANI接口版本标识。                      |
 | result      | ani_env**      | 是           | 输出参数，返回绑定成功的线程执行环境指针。   |
 
@@ -26,7 +26,7 @@ ani_status AttachCurrentThread(ani_vm *vm, const ani_options *options, uint32_t 
 **返回值：**
 | 类型         | 说明                         |
 | ---------- | -------------------------- |
-| ani_status | AttachCurrentThread接口调用的结果。<br>- ANI_OK表示接口调用成功。<br>- ANI_ERROR表示接口调用失败。<br>- ANI_INVALID_ARGS表示参数校验失败。<br>- ANI_INVALID_VERSION表示ANI版本校验失败。<br>- ANI_ALREADY_ATTACHED表示当前线程已经attach，开发者尝试重复attach同一个线程。 |
+| ani_status | AttachCurrentThread接口调用的结果。<br>- ANI_OK表示接口调用成功。<br>- ANI_ERROR表示接口调用失败或者当前线程已经attach，开发者尝试重复attach同一个线程。<br>- ANI_INVALID_ARGS表示参数校验失败。<br>- ANI_INVALID_VERSION表示ANI版本校验失败。 |
 
 **示例：**
 
@@ -92,7 +92,7 @@ ani_status DetachCurrentThread(ani_vm *vm)
 **返回值：**
 | 类型         | 说明                         |
 | ---------- | -------------------------- |
-| ani_status | DetachCurrentThread接口调用的结果。<br>- ANI_OK表示接口调用成功。<br>- ANI_ERROR表示接口调用失败。<br>- ANI_INVALID_ARGS表示用户传入参数校验失败。<br>- ANI_ALREADY_DETACHED表示当前线程已经detach，开发者尝试重复detach同一个线程。 |
+| ani_status | DetachCurrentThread接口调用的结果。<br>- ANI_OK表示接口调用成功。<br>- ANI_ERROR表示接口调用失败或者当前线程已经detach，开发者尝试重复detach同一个线程。<br>- ANI_INVALID_ARGS表示用户传入参数校验失败。 |
 
 **示例：**
 
