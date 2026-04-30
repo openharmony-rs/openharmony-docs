@@ -252,7 +252,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | width      | [Range](#range11)                | 否   | 是   | 视频帧的宽度，包含宽度的最大和最小值，仅视频编码器拥有。单位为像素（px）。       |
 | height     | [Range](#range11)                | 否   | 是   | 视频帧的高度，包含高度的最大和最小值，仅视频编码器拥有。单位为像素（px）。       |
 | channels   | [Range](#range11)                | 否   | 是   | 音频采集声道数，包含声道数的最大和最小值，仅音频编码器拥有。   |
-| sampleRate | Array\<number>                    | 否   | 是   | 音频采样率，包含所有可以使用的音频采样率值数组，具体数值依赖编码器类型，仅音频编码器拥有。单位为赫兹（Hz）。 |
+| sampleRate | ArkTS-Dyn: Array\<number> <br>ArkTS-Sta: Array\<int>                    | 否   | 是   | 音频采样率，包含所有可以使用的音频采样率值数组，具体数值依赖编码器类型，仅音频编码器拥有。单位为赫兹（Hz）。 |
 
 ## Range<sup>11+</sup>
 
@@ -508,17 +508,17 @@ async function setupPlayer() {
 
 | 名称              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| fd                | number                                                       | 否   | 否   | 录制输出的文件fd。                                           |
-| frameWidth        | number                                                       | 否   | 是   | 录屏的视频宽度。<br>默认屏幕宽度，根据不同屏幕默认值不同。单位为像素（px）。 |
-| frameHeight       | number                                                       | 否   | 是   | 录屏的视频高度。<br>默认屏幕高度，根据不同屏幕默认值不同。单位为像素（px）。 |
-| videoBitrate      | number                                                       | 否   | 是   | 录屏的视频比特率。<br>默认为10000000。单位为比特每秒（bit/s）。                            |
-| audioSampleRate   | number                                                       | 否   | 是   | 录屏的音频采样率。<br>内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。单位为赫兹（Hz）。 |
-| audioChannelCount | number                                                       | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。 |
-| audioBitrate      | number                                                       | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。单位为比特每秒（bit/s）。 |
-| preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | 否   | 是   | 录屏使用的编码和封装格式，默认SCREEN_RECORD_PRESET_H264_AAC_MP4格式。 |
-| displayId<sup>15+</sup>            | number | 否   | 是   | 指定录屏使用的屏幕，默认主屏幕。 |
-| fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| 否   | 是   | 录屏时视频流的填充模式。 |
-| strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| 否   | 是   | 录屏策略。 |
+| fd                | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 否   | 录制输出的文件fd。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                                           |
+| frameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频宽度。<br>默认屏幕宽度，根据不同屏幕默认值不同。单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| frameHeight       | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频高度。<br>默认屏幕高度，根据不同屏幕默认值不同。单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| videoBitrate      | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频比特率。<br>默认为10000000。单位为比特每秒（bit/s）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                            |
+| audioSampleRate   | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频采样率。<br>内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。单位为赫兹（Hz）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| audioChannelCount | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| audioBitrate      | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。单位为比特每秒（bit/s）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | 否   | 是   | 录屏使用的编码和封装格式，默认SCREEN_RECORD_PRESET_H264_AAC_MP4格式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>15+</sup>            | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 指定录屏使用的屏幕，默认主屏幕。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
+| fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| 否   | 是   | 录屏时视频流的填充模式。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| 否   | 是   | 录屏策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## AVMetricsEvent<sup>23+</sup>
 
@@ -591,12 +591,30 @@ async function setupPlayer() {
 
 | 名称                                | 类型                                         | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| audioEncoder                        | [AudioEncoder](arkts-apis-media-e.md#audioencoderdeprecated)                | 否   | 是   | 音频编码格式，默认设置为AAC_LC。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用audioEncoderMime替代。 |
-| audioEncodeBitRate                  | number                                       | 否   | 是   | 音频编码比特率，默认值为48000。单位为比特每秒（bit/s）。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioBitrate替代。 |
-| audioSampleRate                     | number                                       | 否   | 是   | 音频采集采样率，默认值为48000。单位为赫兹（Hz）。<br>可变比特率模式，码率仅作参考。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioSampleRate替代。 |
-| numberOfChannels                    | number                                       | 否   | 是   | 音频采集声道数，默认值为2。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioChannels替代。 |
-| format                              | [AudioOutputFormat](arkts-apis-media-e.md#audiooutputformatdeprecated)      | 否   | 是   | 音频输出封装格式，默认设置为MPEG_4。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用fileFormat替代。 |
-| location                            | [Location](#location)                        | 否   | 是   | 音频采集的地理位置。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVMetadata](#avmetadata11)中的location替代。 |
-| uri                                 | string                                       | 否   | 否   | 音频输出URI：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/zh-cn_image_url.png) <br/>文件需要由调用者创建，并赋予适当的权限。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderConfig](#avrecorderconfig9)中的url替代。 |
-| audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 容器编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioCodec替代。 |
-| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 是   | 音频编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的fileFormat替代。 |
+| audioEncoder                        | [AudioEncoder](arkts-apis-media-e.md#audioencoderdeprecated)                | 否   | 是   | 音频编码格式，默认设置为AAC_LC。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用audioEncoderMime替代。<br>**ArkTS-Dyn起始版本：** 6 |
+| audioEncodeBitRate                  | number                                       | 否   | 是   | 音频编码比特率，默认值为48000。单位为比特每秒（bit/s）。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioBitrate替代。<br>**ArkTS-Dyn起始版本：** 6 |
+| audioSampleRate                     | number                                       | 否   | 是   | 音频采集采样率，默认值为48000。单位为赫兹（Hz）。<br>可变比特率模式，码率仅作参考。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioSampleRate替代。<br>**ArkTS-Dyn起始版本：** 6 |
+| numberOfChannels                    | number                                       | 否   | 是   | 音频采集声道数，默认值为2。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioChannels替代。<br>**ArkTS-Dyn起始版本：** 6 |
+| format                              | [AudioOutputFormat](arkts-apis-media-e.md#audiooutputformatdeprecated)      | 否   | 是   | 音频输出封装格式，默认设置为MPEG_4。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用fileFormat替代。<br>**ArkTS-Dyn起始版本：** 6 |
+| location                            | [Location](#location)                        | 否   | 是   | 音频采集的地理位置。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVMetadata](#avmetadata11)中的location替代。<br>**ArkTS-Dyn起始版本：** 6 |
+| uri                                 | string                                       | 否   | 否   | 音频输出URI：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/zh-cn_image_url.png) <br/>文件需要由调用者创建，并赋予适当的权限。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderConfig](#avrecorderconfig9)中的url替代。<br>**ArkTS-Dyn起始版本：** 6 |
+| audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 容器编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioCodec替代。<br>**ArkTS-Dyn起始版本：** 8 |
+| fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 是   | 音频编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的fileFormat替代。<br>**ArkTS-Dyn起始版本：** 8 |
+
+## AVTimedMetaData
+
+描述基于时间的元数据的信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| id  | string | 否   | 是   | 基于时间的元数据的唯一标记。<br>该标记在视频源的数据信息中须保持唯一。 |
+| classify | string | 否   | 是   | 基于时间的元数据的分类标签。 |
+| start | number | 否   | 否   | 基于时间的元数据相对整个媒体起始时间的偏移值。<br>取值限定为整数。<br>单位：毫秒。 |
+| duration | number | 否   | 否   | 基于时间的元数据的持续时长。<br>取值限定为整数。<br>单位：毫秒。 |
+| contents | Record<string, object> | 否   | 否   | 基于时间的元数据对应的键值对集合。 |
