@@ -1446,6 +1446,60 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## getTextPathWithFallback
+
+ArkTS-Dyn: getTextPathWithFallback(text: string, byteLength: number, x: number, y: number): Path
+
+ArkTS-Sta: getTextPathWithFallback(text: string, byteLength: int, x: double, y: double): Path | undefined
+
+获取文字的轮廓路径，支持字体回退能力。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名    | 类型                                               | 必填 | 说明                    |
+| ------   | ------------------------------------------------   | ---- | ---------------------- |
+|   text   |    string                                          | 是   | 表示存储UTF-8 文本编码的字符。|
+|byteLength|    ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 表示要获取对应文本路径的字节长度，按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
+|    x     |    ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。单位为物理像素px。|
+|    y     |    ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。单位为物理像素px。|
+
+**返回值：**
+
+| 类型   | 说明             |
+| ------ | ---------------- |
+| ArkTS-Dyn: [Path](arkts-apis-graphics-drawing-Path.md)<br/>ArkTS-Sta: [Path](arkts-apis-graphics-drawing-Path.md) \| undefined | 返回获取到的文本的路径轮廓。创建路径轮廓失败时，返回undefined。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { buffer } from '@kit.ArkTS';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    font.setSize(50)
+    let myString: string = "Hello";
+    let length = buffer.from(myString).length;
+    let path = font.getTextPathWithFallback(myString, length, 0, 100);
+    if (path == undefined) {
+      return;
+    }
+    canvas.drawPath(path);
+  }
+}
+```
+
 ## createPathForGlyph<sup>18+</sup>
 
 ArkTS-Dyn: createPathForGlyph(index: number): Path
