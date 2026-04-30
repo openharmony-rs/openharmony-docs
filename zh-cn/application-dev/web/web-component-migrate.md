@@ -70,7 +70,7 @@ import { createNWeb, defaultUrl } from '../pages/common';
         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
        });
      } catch (e) {
-       hilog.info(0x0000, 'testTag', 'loadContent catch error：-----------' + e.message);
+       hilog.info(0x0000, 'testTag', 'loadContent catch error:-----------' + e.message);
      }
    }
  
