@@ -272,7 +272,7 @@ Obtains a Display object based on the display ID.
 
 | Name| Type                     | Mandatory| Description      |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | number                    | Yes  | Screen ID. The value must be a non-negative integer. An object can be obtained only when the passed-in display ID is correct. You can use the value of the **displayId** property in [WindowProperties](arkts-apis-window-i.md#windowproperties) as the input parameter.|
+| displayId     | number                    | Yes  | Display ID. The value must be a non-negative integer. An object can be obtained only when the passed-in display ID is correct. You can use the value of the **displayId** property in [WindowProperties](arkts-apis-window-i.md#windowproperties) as the input parameter.|
 
 **Return value**
 
