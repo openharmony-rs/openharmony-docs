@@ -126,7 +126,7 @@
 
    ``` TypeScript
    // 导入串口通信模块
-    import { serial, BusinessError } from "@kit.BasicServicesKit";
+   import { serial, BusinessError } from "@kit.BasicServicesKit";
    ```
 
 2. 获取串口设备列表。
@@ -181,8 +181,8 @@
    ``` TypeScript
    // 注册数据接收回调，当串口收到数据时会触发该回调
    port.onDataRead((data: Uint8Array) => {
-     console.info('Received data length: ' + data.length);
-     console.info('Received data: ' + ${Array.from(data).map(b => b.toString(16).padStart(2, '0')).join(' ')});
+     console.info(`Received data length: + ${data.length}`);
+     console.info(`Received data:  + ${Array.from(data).map(b => b.toString(16).padStart(2, '0')).join(' ')}`);
 
    });
    ```
