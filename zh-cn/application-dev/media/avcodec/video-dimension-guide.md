@@ -18,13 +18,13 @@
 | 参数 | 键名 | 类型 | 含义 | 编码器使用场景 | 解码器使用场景 | 调用接口 |
 |------|------|------|------|--------|--------|----------|
 | width/height | `OH_MD_KEY_WIDTH`/`OH_MD_KEY_HEIGHT` | int32_t | 配置的视频宽/高。 | 配置目标编码分辨率。 | 配置预分配缓冲区。 | Configure |
-| stride | `OH_MD_KEY_VIDEO_STRIDE` | int32_t | 宽跨距（行对齐后每行字节数）。 | 获取Buffer内存对齐宽。 | 获取Buffer内存对齐宽。 | GetInputDescription/GetOutputDescription/OnStreamChanged |
-| sliceHeight | `OH_MD_KEY_VIDEO_SLICE_HEIGHT` | int32_t | 高跨距（列对齐后总行数）。 | 获取Buffer内存对齐高。 | 获取Buffer内存对齐高。 | GetInputDescription/GetOutputDescription/OnStreamChanged |
-| picWidth/picHeight | `OH_MD_KEY_VIDEO_PIC_WIDTH`/`OH_MD_KEY_VIDEO_PIC_HEIGHT` | int32_t | 图像真实有效宽/高。 | — | 获取解码输出有效宽/高。| GetOutputDescription/OnStreamChanged |
-| cropTop | `OH_MD_KEY_VIDEO_CROP_TOP` | int32_t | 裁剪矩形顶部行坐标（y），包含裁剪框顶部的行，行索引从0开始。 | — | 获取解码裁剪上边界。| GetOutputDescription/OnStreamChanged |
-| cropBottom | `OH_MD_KEY_VIDEO_CROP_BOTTOM` | int32_t | 裁剪矩形底部行坐标（y），包含裁剪框底部的行，行索引从0开始。 | — | 获取解码裁剪下边界。 | GetOutputDescription/OnStreamChanged |
-| cropLeft | `OH_MD_KEY_VIDEO_CROP_LEFT` | int32_t | 裁剪矩形左列坐标（x），包含裁剪框最左边的列，列索引从0开始。 | — | 获取解码裁剪左边界。 | GetOutputDescription/OnStreamChanged |
-| cropRight | `OH_MD_KEY_VIDEO_CROP_RIGHT` | int32_t | 裁剪矩形右列坐标（x），包含裁剪框最右边的列，列索引从0开始。 | — | 获取解码裁剪右边界。 | GetOutputDescription/OnStreamChanged |
+| stride | `OH_MD_KEY_VIDEO_STRIDE` | int32_t | 宽跨距（行对齐后每行字节数）。 | 获取Buffer内存对齐宽。 | 获取Buffer内存对齐宽。 |GetInputDescription/GetOutputDescription/OnStreamChanged |
+| sliceHeight | `OH_MD_KEY_VIDEO_SLICE_HEIGHT` | int32_t | 高跨距（列对齐后总行数）。 | 获取Buffer内存对齐高。 | 获取Buffer内存对齐高。 |GetInputDescription/GetOutputDescription/OnStreamChanged |
+| picWidth/picHeight | `OH_MD_KEY_VIDEO_PIC_WIDTH`/`OH_MD_KEY_VIDEO_PIC_HEIGHT` | int32_t | 图像真实有效宽/高。 | — | 获取解码输出有效宽/高。|GetOutputDescription/OnStreamChanged |
+| cropTop | `OH_MD_KEY_VIDEO_CROP_TOP` | int32_t | 裁剪矩形顶部行坐标（y），包含裁剪框顶部的行，行索引从0开始。 | — | 获取解码裁剪上边界。|GetOutputDescription/OnStreamChanged |
+| cropBottom | `OH_MD_KEY_VIDEO_CROP_BOTTOM` | int32_t | 裁剪矩形底部行坐标（y），包含裁剪框底部的行，行索引从0开始。 | — | 获取解码裁剪下边界。 |GetOutputDescription/OnStreamChanged |
+| cropLeft | `OH_MD_KEY_VIDEO_CROP_LEFT` | int32_t | 裁剪矩形左列坐标（x），包含裁剪框最左边的列，列索引从0开始。 | — | 获取解码裁剪左边界。 |GetOutputDescription/OnStreamChanged |
+| cropRight | `OH_MD_KEY_VIDEO_CROP_RIGHT` | int32_t | 裁剪矩形右列坐标（x），包含裁剪框最右边的列，列索引从0开始。 | — | 获取解码裁剪右边界。 |GetOutputDescription/OnStreamChanged |
 
 > **说明：**
 >
@@ -316,7 +316,7 @@ Configure 配置参数：
 
 因此建议每次在`OnStreamChanged`或首次`GetInputDescription`/`GetOutputDescription`时重新查询，不要缓存跨距值。
 
-### Q6：`OH_AVCapability_IsVideoSizeSupported`等能力查询接口中的宽高参数是指什么？
+### Q6：`OH_AVCapability_IsVideoSizeSupported`等能力查询接口中的宽高参数是指什么
 
 **回答**：这些接口中的宽高参数通常指的是码流参数集（如SPS）中定义的**编码帧宽高**，与`avcodec`接口中使用的各种宽高Key（如`OH_MD_KEY_WIDTH`、`OH_MD_KEY_VIDEO_PIC_WIDTH`等）均无直接对标关系。解码时，解码器会据读入的码流参数集中的**编码帧宽高**判断是否支持解码该分辨率。若此前查询的宽高与实际码流中的参数不一致，可能会出现实际是否能解码与查询的结果不一致的情况。
 
