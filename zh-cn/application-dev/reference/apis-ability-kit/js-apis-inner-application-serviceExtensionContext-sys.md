@@ -3001,7 +3001,7 @@ export default class ServiceExtension extends ServiceExtensionAbility {
           // 执行正常业务
           console.info('requestModalUIExtensionWithAccount succeed');
         })
-        .catch((BusinessError<void>): void => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
         });
