@@ -1851,7 +1851,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NativeBuffer](capi-image-nativemodule-oh-nativebuffer.md) *nativeBuffer | 含有PixelMap数据的NativeBuffer对象。 |
+| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) *nativeBuffer | 含有PixelMap数据的NativeBuffer对象。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 被创建的PixelMap。 |
 
 **返回：**
