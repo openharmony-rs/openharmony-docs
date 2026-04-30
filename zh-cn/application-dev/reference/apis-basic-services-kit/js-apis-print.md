@@ -835,7 +835,7 @@ ArkTS-Sta: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 201 | the application does not permission to call this function. |
+| 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
@@ -1912,9 +1912,9 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。 |
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。 |
 | borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。 |
-| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。 |
-| defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。 |
-| defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。 |
+| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。**模型约束：** 此接口仅可在Stage模型下使用。 |
+| defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。**模型约束：** 此接口仅可在Stage模型下使用。 |
+| defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。**模型约束：** 此接口仅可在Stage模型下使用。 |
 | options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。 |
 
 ## PrinterEvent<sup>18+</sup>
@@ -2441,7 +2441,7 @@ print.connectPrinter(printerId).then(() => {
 })
 ```
 
-## startPrint<sup>23+</sup>
+## print.startPrint<sup>23+</sup>
 
 startPrint(job: PrintJobData): Promise&lt;void&gt;
 
@@ -2552,7 +2552,7 @@ print.startPrint(printJobData).then(() => {
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
 | pageSize | [PrintPageSize](#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
 | jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
-| fdList | Array&lt;number&gt; | 否 | 是 | 表示待打印文件fd列表。 |
+| fdList | nmuber[] | 否 | 是 | 表示待打印文件fd列表。 |
 | binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
 | printQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示打印质量。 |
 | mediaType | string | 否 | 是 | 表示打印纸张类型。 |
@@ -2844,4 +2844,260 @@ print.updatePrinterInformation(printerInformation).then(() => {
 }).catch((error: BusinessError) => {
     console.error('updatePrinterInformation error : ' + JSON.stringify(error));
 })
+```
+
+
+## PpdInfo<sup>24+</sup>
+
+定义打印机所使用驱动的PPD文件信息的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| manufacturer | string | 否 | 否 | 表示当前PPD文件内的打印机厂商名称。 |
+| nickName | string | 否 | 否 | 表示当前PPD文件内的打印机别名。 |
+| ppdName | string | 否 | 否 | 表示当前PPD文件的名称。 |
+
+## SharedHost<sup>24+</sup>
+
+定义共享设备信息的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| ip | string | 否 | 否 | 表示共享设备的IP地址。 |
+| shareName | string | 否 | 否 | 表示共享设备的主机名称。 |
+| workgroupName | string | 否 | 否 | 表示共享设备的工作组名称。 |
+
+## print.addPrinter<sup>24+</sup>
+
+addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise&lt;boolean&gt;
+
+添加打印机到系统中，使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINTER_DRIVER
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| printerName | string | 是 | 表示打印机名称。 |
+| uri | string | 是 | 表示打印机的URI。 |
+| ppdName | string | 否 | 表示打印机的PPD文件名称。 |
+| options | string | 否 | JSON对象字符串，表示打印机选项参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象，返回添加打印机成功与否的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 13100003 | Add the printer to system failed. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+
+let printerName : string = 'printerName';
+let uri : string = 'uri';
+let ppdName : string = 'ppdName';
+print.addPrinter(printerName, uri, ppdName).then(() => {
+    console.info('add printer success');
+}).catch((error: BusinessError) => {
+    console.error('add printer error : ' + JSON.stringify(error));
+})
+```
+
+## WatermarkHandleResult<sup>24+</sup>
+
+强制水印处理结果的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| WATERMARK_HANDLE_SUCCESS | 0 | 表示强制水印处理成功。 |
+| WATERMARK_HANDLE_FAILURE | 1 | 表示强制水印处理失败。 |
+
+## print.WatermarkCallback<sup>24+</sup>
+
+type WatermarkCallback = (jobId: string, fd: number) => void
+
+定义用来注册强制水印处理的监听事件时使用的回调类型。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示当前打印任务的id。 |
+| fd | number | 是 | 表示当前文件的文件描述符。 |
+
+## print.registerWatermarkCallback<sup>24+</sup>
+
+registerWatermarkCallback(callback: WatermarkCallback): void
+
+注册强制水印处理的监听事件。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | 是 | 表示注册强制水印处理的监听事件时使用的回调类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.unregisterWatermarkCallback<sup>24+</sup>
+
+unregisterWatermarkCallback(callback?: WatermarkCallback): void
+
+注销强制水印处理的监听事件。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+    // 取消注册指定的水印处理回调
+    print.unregisterWatermarkCallback(watermarkCallback);
+    console.info('unregisterWatermarkCallback success');
+} catch (error) {
+    console.error('unregisterWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.notifyWatermarkComplete<sup>24+</sup>
+
+notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
+
+通知水印处理完成。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示打印任务ID。 |
+| result | [WatermarkHandleResult](#watermarkhandleresult24) | 是 | 表示水印处理结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+    
+    try {
+        // 处理水印后通知系统处理成功
+        print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
+        console.info('notifyWatermarkComplete success');
+    } catch (error) {
+        console.error('notifyWatermarkComplete error: ' + JSON.stringify(error));
+    }
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
 ```
