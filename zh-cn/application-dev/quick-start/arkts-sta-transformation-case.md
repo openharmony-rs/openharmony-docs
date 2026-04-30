@@ -1,5 +1,269 @@
 # ArkTS静态类型改造案例
 
+## 通过ESValue实现静态调用动态
+
+在静态化改造过程中，常会遇到将动态类型对象传入静态环境使用，或在静态环境中执行动态类型操作的情况。针对这类ArkTS-Sta调用ArkTS-Dyn的互操作场景，推荐开发者显式使用ESValue进行“有缝调用”，该方式相较于无缝操作更加稳定且安全。
+
+ESValue是一个动态类型封装类，专用于在静态类型的ArkTS-Sta中操作ArkTS-Dyn动态数据。作为跨域交互的桥接层，它将动态侧的对象包装为可在静态侧安全操作的容器，并提供类型安全的访问接口。通过ESValue，开发者可以执行加载动态模块、读写属性、调用方法及实例化类等操作，同时配合类型判断机制来确保运行时的安全性。
+
+其核心价值在于，为静态类型环境与动态世界交互提供了一套标准化的API。所有动态数据均需通过`wrap`方法封装为ESValue对象；操作时需显式调用`getProperty`、`invoke`等接口，由于返回值同样是ESValue包装对象，最终还需通过`unwrap`或特定类型方法进行解包。这种设计将类型检查从编译期推迟到了运行期，非常适合处理不确定类型的动态数据。
+
+### ESValue支持的操作
+
+| ESValue支持的操作 | 操作功能说明 |
+| :--- | :--- |
+| **对动态对象的包装** | 将数据类型包装为ESValue对象。支持：`boolean`、`string`、`number`、`bigint`、`byte`、`short`、`int`、`long`、`float`、`double` 以及动态引用对象。 |
+| **对动态对象的判断** | 判断并获取包装的具体数据类型。支持：`boolean`、`string`、`number`、`bigint`、`undefined`、`null`、`staticObject`、`ECMAObject`、`object`、`function`、`promise`。 |
+| **对动态对象的解包** | 将ESValue还原为原始数据或对象。支持：`boolean`、`string`、`number`、`bigint`、`undefined`、`null`、`staticObject`、`promise`。 |
+| **对动态对象的比较** | 比较两个ESValue包装的对象是否相同，支持相等与严格相等判断。 |
+| **属性访问与设置** | 检查、获取或设置动态对象的属性。支持获取并遍历对象的 `key`、`value` 及 `entry`，返回结果同样为ESValue包装对象。 |
+| **实例化与方法调用** | 支持对包装的动态对象进行实例化操作，以及对包装的动态方法进行调用与执行。 |
+| **其它接口** | 提供创建动态空对象/空数组、加载动态文件与SDK、以及获取动态全局变量等辅助功能。 |
+
+对于更具体的ESValue接口使用方法以及示例见：[ESValue接口文档](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/static_core/plugins/ets/runtime/interop_js/docs/ESValueApi_cn.md)。
+
+### ESValue使用示例
+
+**利用ESValue实例化动态类并操作属性和方法**
+
+以下示例演示如何使用ESValue在ArkTS-Sta中实例化ArkTS-Dyn定义的类，并对其属性进行读写和调用其方法。
+
+```ts
+//  ========== 动态文件DynamicModule.ets ==========
+export class Person {
+    name: string;
+    age: number;
+    
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    greet(): string {
+        return `Hello, I'm ${this.name}, ${this.age} years old.`;
+    }
+    
+    setAge(newAge: number): void {
+        this.age = newAge;
+    }
+    
+    getAge(): number {
+        return this.age;
+    }
+}
+
+//  ========== 静态文件StaticModule.ets ==========
+'use static'
+
+function demoPersonClass(): void {
+    // 加载动态模块，入参为动态模块的路径
+    let module = ESValue.load('dynhar/src/main/ets/components/DynamicModule');  
+    // 获取Person类
+    let PersonClass = module.getProperty('Person');
+    
+    // 实例化Person类，传入构造函数的参数需要为ESValue
+    let person = PersonClass.instantiate(
+        ESValue.wrapString('Alice'),
+        ESValue.wrapNumber(25)
+    );
+    
+    // 获取属性值
+    let name = person.getProperty('name');
+    let age = person.getProperty('age');
+    console.info(`Name: ${name.toString()}`);  // Name: Alice
+    console.info(`Age: ${age.toNumber()}`);     // Age: 25
+    
+    // 设置属性值
+    person.setProperty('name', ESValue.wrapString('Bob'));
+    person.setProperty('age', ESValue.wrapNumber(30));
+    
+    // 验证属性修改
+    let updatedName = person.getProperty('name');
+    console.info(`Updated Name: ${updatedName.toString()}`);  // Updated Name: Bob
+    
+    // 调用无参方法
+    let greetResult = person.invokeMethod('greet');
+    console.info(greetResult.toString());  // Hello, I'm Bob, 30 years old.
+    
+    // 调用带参数方法
+    person.invokeMethod('setAge', ESValue.wrapNumber(35));
+    let newAge = person.invokeMethod('getAge');
+    console.info(`New Age: ${newAge.toNumber()}`);  // New Age: 35
+    
+    // 检查属性是否存在
+    let hasName = person.hasProperty('name');      // true
+    let hasSalary = person.hasProperty('salary');   // false
+    
+    // 检查实例类型
+    let isInstanceOf = person.instanceOf(PersonClass);  // true
+    console.info(`Is instance of Person: ${isInstanceOf}`);
+}
+```
+
+**利用ESValue处理异步Promise**
+
+以下示例演示如何使用ESValue在ArkTS-Sta中处理ArkTS-Dyn中的Promise操作。
+
+```ts
+//  ========== 动态文件 DynamicModule.ets ==========
+export function fetchUserData(id: number): Promise<{ name: string; score: number }> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({ name: `User${id}`, score: id * 100 });
+        }, 100);
+    });
+}
+
+export function processItems(items: number[]): Promise<number[]> {
+    return Promise.all(items.map(x => Promise.resolve(x * 2)));
+}
+
+//  ========== 静态文件 StaticModule.ets ==========
+'use static'
+
+async function handleAsyncOperations(): Promise<void> {
+    let module = ESValue.load('har/src/main/ets/components/DynamicModule');
+    
+    // 调用返回Promise的函数
+    let fetchFunc = module.getProperty('fetchUserData');
+    let promiseVal = fetchFunc.invoke(ESValue.wrapNumber(42));
+    
+    // 检查是否为Promise
+    if (promiseVal.isPromise()) {
+        // 等待Promise完成
+        let result = await promiseVal.toPromise();
+        let name = result.getProperty('name').toString();
+        let score = result.getProperty('score').toNumber();
+        console.info(`User: ${name}, Score: ${score}`);
+    }
+    
+    // 处理Promise.all场景
+    let processFunc = module.getProperty('processItems');
+    let itemsArr = ESValue.instantiateEmptyArray();
+    itemsArr.invokeMethod('push', ESValue.wrapNumber(1));
+    itemsArr.invokeMethod('push', ESValue.wrapNumber(2));
+    itemsArr.invokeMethod('push', ESValue.wrapNumber(3));
+    
+    let allPromise = processFunc.invoke(itemsArr);
+    let allResult = await allPromise.toPromise();
+    
+    // 遍历结果数组
+    for (const item of allResult) {
+        console.info(`Processed: ${item.toNumber()}`);
+    }
+}
+```
+
+## 通过STValue实现动态调用静态
+
+在ArkTS应用的静态化改造中，同样会面临将静态对象跨域传递至动态环境，或在ArkTS-Dyn中执行静态操作的需求。面对此类ArkTS-Dyn调用ArkTS-Sta的互操作场景，强烈建议开发者采用显式引入STValue的有缝调用模式，以获取比隐式无缝操作更高的系统稳定性和安全边界。
+
+作为与ESValue对标的封装类，STValue专门提供了一套在ArkTS-Dyn环境中操作ArkTS-Sta静态数据的标准化接口。STValue通过持有对ArkTS-Sta对象的底层引用，构建起跨运行时的安全桥梁，从而确保ArkTS-Dyn能够安全可靠地访问并操控静态运行环境中的核心数据。
+
+### STValue支持的操作
+
+| STValue支持的操作| 操作功能说明 |
+| :--- | :--- |
+| **对静态对象的包装** | 提供`wrap`接口将ArkTS-Dyn值转换为ArkTS-Sta值并封装。支持：`boolean`、`char`、`byte`、`short`、`int`、`long`、`float`、`double`、`number`、`string`、`bigint` 以及静态引用对象。 |
+| **对静态对象的判断** | 提供`check`接口检查包装类型（支持`string`、`bigint`、`undefined`、`null`），并提供`objectInstanceOf`接口判断对象是否属于指定类型。 |
+| **对静态对象的解包** | 提供`unwrap`接口将STValue反解为ArkTS-Dyn值。支持解包获取 `boolean`、`number`、`string`、`bigint` 基本类型值及引用类型。 |
+| **对静态对象的比较** | 提供比较接口，支持判断两个STValue包装的静态对象（包括基本类型和引用类型）是否相等。 |
+| **属性访问与设置** | 通过`accessor`接口支持获取和设置类静态字段、实例对象属性、固定数组元素、动态数组元素以及命名空间变量。 |
+| **实例化与方法调用** | 通过`instance`接口提供类实例化操作（支持查找类、命名空间、枚举及获取父类）；通过`invoke`接口提供方法动态调用（支持实例方法、类静态方法和命名空间函数）。 |
+| **其它接口** | 提供查找类和命名空间、动态数组的 length/push/pop 操作、获取对象类型信息和固定数组长度等功能。配合SType类型枚举和Mangling签名规则实现跨运行时的类型安全调用。 |
+
+对于更具体的STValue接口使用方法以及示例见：[STValue接口文档](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/static_core/plugins/ets/runtime/interop_js/docs/stvalue_cn.md)。
+
+### STValue使用示例
+
+以下示例演示如何使用STValue在ArkTS-Dyn中实例化ArkTS-Sta定义的类，并对其属性进行读写和调用其方法。
+```typescript
+//  ========== 静态文件StaticModule.ets ==========
+export class Counter {
+    name: string;
+    count: int = 0;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    static increment(value: int): int {
+        return value + 1;
+    }
+
+    static calculateSum(a: int, b: int): int {
+        return a + b;
+    }
+
+    getCount(): int {
+        return this.count;
+    }
+
+    reset(): void {
+        this.count = 0;
+    }
+}
+
+//  ========== 动态文件DynamicModule.ets ==========
+import {STValue, SType} from "static.@ohos.lang.interop"; // STValue配置可参考STValue接口文档
+
+// 查找静态类定义，传入对应静态文件的路径
+let counterCls = STValue.findClass('stahar.src.main.ets.components.StaticModule.Counter'); 
+
+// 实例化静态对象
+// 使用构造函数: constructor(name: string)
+// 签名'C{std.core.String}:'表示传入String参数，无返回值
+let counterObj = counterCls.classInstantiate('C{std.core.String}:', [
+    STValue.wrapString('MyCounter')
+]);
+
+// 获取对象的属性值,objectGetProperty获取的是STValue包装后的值，所以需要进行unwrap操作进行解包
+let name = counterObj.objectGetProperty('name', SType.REFERENCE).unwrapToString();
+let count = counterObj.objectGetProperty('count', SType.INT).unwrapToNumber();
+
+// 调用静态方法increment修改count值
+// 静态方法: static increment(value: int): int
+// 签名'i:i'表示传入int参数，返回int
+let incrementResult = counterCls.classInvokeStaticMethod('increment', 'i:i', [
+    STValue.wrapInt(count)
+]);
+let newCount = incrementResult.unwrapToNumber();
+
+// 重新设置实例对象的属性值
+counterObj.objectSetProperty('count', STValue.wrapInt(newCount), SType.INT);
+
+// 再次获取属性值验证设置结果
+let verifyCount = counterObj.objectGetProperty('count', SType.INT).unwrapToNumber();
+
+// 再次调用静态方法increment增加count
+let incrementResult2 = counterCls.classInvokeStaticMethod('increment', 'i:i', [
+    STValue.wrapInt(verifyCount)
+]);
+let newCount2 = incrementResult2.unwrapToNumber();
+console.info(`  原值: ${verifyCount}, 新值: ${newCount2}`);  // 输出: 原值: 1, 新值: 2
+
+// 设置新的count值
+counterObj.objectSetProperty('count', STValue.wrapInt(newCount2), SType.INT);
+
+// 获取最终属性值并调用静态方法calculateSum计算总和
+let finalCount = counterObj.objectGetProperty('count', SType.INT).unwrapToNumber();
+let baseValue = 10;
+
+// 静态方法: static calculateSum(a: int, b: int): int
+// 签名'ii:i'表示传入两个int参数，返回int
+let sumResult = counterCls.classInvokeStaticMethod('calculateSum', 'ii:i', [
+    STValue.wrapInt(finalCount),
+    STValue.wrapInt(baseValue)
+]);
+let totalSum = sumResult.unwrapToNumber();
+
+let finalName = counterObj.objectGetProperty('name', SType.REFERENCE).unwrapToString();
+let finalCountValue = counterObj.objectGetProperty('count', SType.INT).unwrapToNumber();
+console.info(`对象属性: name=${finalName}, count=${finalCountValue}`);  // 输出: name=MyCounter, count=2
+console.info(`计算结果: sum=${totalSum}`);  // 输出: sum=12
+```
+
+
 ## 大批量动态类型对象高效地转换为静态类型对象
 
 **场景描述**
@@ -122,9 +386,6 @@ function objectAssign(from: string, to: ToType): void {
 }
 ```
 
-## ESValue基础用法
-详见：[ESValue的基础用法](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/static_core/plugins/ets/runtime/interop_js/docs/ESValueApi_cn.md)
-
 ## 动态enum传入静态中如何使用
 ```TS
 // ========== 动态文件 DynamicModule.ets ==========
@@ -156,19 +417,20 @@ function handleProcessStatus(statusValue: Any): void {
   // 4. 使用switch进行分支处理
   switch (statusValue) {
     case idleStatus:
-      console.log("当前状态：空闲");
+      console.info("当前状态：空闲");
       break;
     case runningStatus:
-      console.log("当前状态：运行中");
+      console.info("当前状态：运行中");
       break;
     default:
-      console.log("未知状态");
+      console.info("未知状态");
       break;
   }
 }
 
 // 动态中使用静态enum，正常import使用即可。
 ```
+
 ## 动态Record传入静态中如何使用
 动态语言中Record是类型，静态语言中是类。跨语言传递时，运行时实际得到的是动态语言中的普通对象(plain object)，而非Record类。
 ```TS
@@ -194,9 +456,9 @@ function transferToSta(dataRecord: Any): void {
   //2:静态中遍历动态record
   for (const d of dataRecordDyna.keys()) {
     //3:打印动态record的key值
-    console.log("dataRecordDyna keys:" + d.toString());
+    console.info("dataRecordDyna keys:" + d.toString());
     //4:打印动态record中的value
-    console.log("dataRecordDyna value:" + dataRecordDyna.getProperty(d.toString()).toString());
+    console.info("dataRecordDyna value:" + dataRecordDyna.getProperty(d.toString()).toString());
   }
 }
 
@@ -252,7 +514,7 @@ function processRecord(): void {
 
   // ✗ 动态中无法对静态record进行遍历，下面是错误写法
   // Object.entries(recordSta).forEach((key, value) => {
-  //   console.log(key, value);
+  //   console.info(key, value);
   // });
   processRecordValue(value);
 }
@@ -262,7 +524,7 @@ function processRecord(): void {
  * @param value Record中的某个值
  */
 export function processRecordValue(value: string): void {
-  console.log("processRecordValue:" + value);
+  console.info("processRecordValue:" + value);
 }
 ```
 
