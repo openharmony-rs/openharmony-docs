@@ -9,7 +9,28 @@
 
 > **说明：**
 >
-> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+
+## 3800001 输入服务异常
+
+**错误信息**
+
+Input service exception.
+
+**错误描述**
+
+当调用输入事件注入相关接口时，如果输入服务内部发生异常，会产生此错误码。
+
+**可能原因**
+
+1. 内存分配失败。
+2. 线程繁忙。
+3. 服务运行异常。
+4. 其他非预期错误。
+
+**处理步骤**
+
+建议稍后重试。如果问题持续存在，请检查系统资源使用情况。
 
 ## 4300001 按键状态错误
 
@@ -19,7 +40,7 @@ The key has been pressed and is not the most recently pressed key, or the number
 
 **错误描述**
 
-当调用键盘控制器的 pressKey 接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
+当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
 
 **可能原因**
 
@@ -40,7 +61,7 @@ The key has not been pressed.
 
 **错误描述**
 
-当调用键盘控制器的 releaseKey 接口时，如果按键未被按下，会产生此错误码。
+当调用键盘控制器的releaseKey接口时，如果按键未被按下，会产生此错误码。
 
 **可能原因**
 
@@ -58,15 +79,15 @@ The display does not exist.
 
 **错误描述**
 
-当调用鼠标控制器的 moveTo 接口时，如果指定的显示器不存在，会产生此错误码。
+当调用鼠标控制器的moveTo接口时，如果指定的显示器不存在，会产生此错误码。
 
 **可能原因**
 
-指定的 displayId 对应的显示器不存在。
+指定的displayId对应的显示器不存在。
 
 **处理步骤**
 
-使用有效的显示器 ID，可以通过显示管理接口查询可用的显示器列表。
+使用有效的显示器ID，可以通过显示管理接口查询可用的显示器列表。
 
 ## 4300001 鼠标按键已被按下
 
@@ -76,7 +97,7 @@ The mouse button has been pressed.
 
 **错误描述**
 
-当调用鼠标控制器的 pressButton 接口时，如果鼠标按键已被按下，会产生此错误码。
+当调用鼠标控制器的pressButton接口时，如果鼠标按键已被按下，会产生此错误码。
 
 **可能原因**
 
@@ -94,7 +115,7 @@ The mouse button has not been pressed.
 
 **错误描述**
 
-当调用鼠标控制器的 releaseButton 接口时，如果鼠标按键未被按下，会产生此错误码。
+当调用鼠标控制器的releaseButton接口时，如果鼠标按键未被按下，会产生此错误码。
 
 **可能原因**
 
@@ -112,7 +133,7 @@ An axis event is in progress.
 
 **错误描述**
 
-当调用鼠标控制器的 beginAxis 接口时，如果已有轴事件正在进行中，会产生此错误码。
+当调用鼠标控制器的beginAxis接口时，如果已有轴事件正在进行中，会产生此错误码。
 
 **可能原因**
 
@@ -130,7 +151,7 @@ No axis event is in progress.
 
 **错误描述**
 
-当调用鼠标控制器的 updateAxis 或 endAxis 接口时，如果没有轴事件正在进行中，会产生此错误码。
+当调用鼠标控制器的updateAxis或endAxis接口时，如果没有轴事件正在进行中，会产生此错误码。
 
 **可能原因**
 
@@ -138,4 +159,4 @@ No axis event is in progress.
 
 **处理步骤**
 
-确保在调用 updateAxis 或 endAxis 之前，先调用 beginAxis 开始轴事件序列。
+确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
