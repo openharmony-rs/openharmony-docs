@@ -50234,6 +50234,11 @@
 						"end_line":67,
 						"name":"async_operation_error_handling_with_try_catch",
 						"start_line":57
+					},
+					{
+						"end_line":54,
+						"name":"promise_then_catch_handling",
+						"start_line":16
 					}
 				]
 			}
