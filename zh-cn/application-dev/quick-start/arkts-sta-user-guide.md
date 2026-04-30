@@ -74,7 +74,9 @@ ArkTS静态类型通过严格的类型限制和低运行时开销设计，显著
 - 了解builtin的语法和规则变更：[builtin规则变更](./arkts-dyn-to-sta-builtin-rules.md)。
 - 了解ArkUI的语法和接口变更：[从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](../ui/arkts-dyn-sta-ui-rules.md)。
 - 了解SDK的语法和规则变更：[SDK规则变更](./arkts-dyn-to-sta-sdk-rules.md)。
-- 了解ArkTS-Sta的应用迁移改造：[ArkTS新增静态类型及应用迁移改造概述](./arkts-sta-additions-application-migration.md)。
+- 了解ArkTS-Sta的应用迁移改造：[ArkTS新增静态类型及应用迁移改造概述](./arkts-sta-additions-application-migration.md)。 
+- 了解ArkTS-Sta的类型改造示例：[ArkTS静态类型改造案例](./arkts-sta-transformation-case.md)。
+- 了解ArkTS-Sta的应用改造示例：[ArkTS静态类型迁移改造案例](./arkts-sta-migration-case.md)。
 
 ## ArkTS-Sta与ArkTS-Dyn文件区分方式
 

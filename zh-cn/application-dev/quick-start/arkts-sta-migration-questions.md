@@ -148,3 +148,20 @@ export function createDataParser(): void {
 > **说明：** 
 >
 > 在原有工程项目中增加`arkTSVersion`字段，设置值为`1.2`即可启用ArkTS静态类型支持。
+
+## DevEco Studio如何使用debug功能进行调试
+
+DevEco Studio使用debug功能需要手机切换到debug模式配合。 
+
+**打开手机debug模式：**
+```shell
+hdc shell param set persist.ark.enableDebugMode true
+hdc shell reboot
+```
+
+**关闭手机debug模式：**
+
+```shell
+hdc shell param set persist.ark.enableDebugMode false
+hdc shell reboot
+```
