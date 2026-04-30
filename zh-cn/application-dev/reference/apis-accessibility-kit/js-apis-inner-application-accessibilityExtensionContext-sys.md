@@ -48,8 +48,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | spanId              | string | 否   |是 |对超链接文本进行点击操作时文本编号。                |
 | scrollType          | string | 否   | 是|组件滚动类型，包括'fullScreen'（全屏）和'halfScreen'（半屏）。 |
 | injectActionType    | [InjectActionType](./js-apis-accessibility-sys.md#injectactiontype) | 否   | 是|设置注入的动作。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| customAction          | string | 否   | 是|自定义操作。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| accessibilityFocusScene          | [AccessibilityFocusScene](./js-apis-accessibility-sys.md#accessibilityfocusscene) | 否   | 是|设置无障碍聚焦的场景。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| customAction          | string | 否   | 是|[AccessibilityAction.EXECUTE_CUSTOM_ACTION](./js-apis-accessibility-sys.md#accessibilityaction)的参数，表示自定义的操作名称。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| accessibilityFocusScene          | [AccessibilityFocusScene](./js-apis-accessibility-sys.md#accessibilityfocusscene) | 否   | 是|[AccessibilityAction.ACCESSIBILITY_FOCUS](./js-apis-accessibility-sys.md#accessibilityaction)的参数，用于设置无障碍聚焦的场景。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 例如：选中文本输入框中index从0到7的字符时，executeAction(AccessibilityAction.SET_SELECTION, parameter)方法设置的参数如下:
 ```ts
