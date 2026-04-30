@@ -5922,17 +5922,3 @@ Allows a system application to generate integrity protection credentials for sen
 **Supported devices**: general devices
 
 **Since**: 26.0.0
-
- ## ohos.permission.MANAGE_AOD
- 	 
-Allows an application to trigger the Always On Display (AOD) mode or exit it, and manage the AOD status.
-
-**Permission level**: system_core
- 	 
-**Authorization mode**: system_grant
- 	 
-**Enable via ACL**: true
- 	 
-**Supported devices**: Phone | Tablet
- 	 
-**Since**: 26.0.0
