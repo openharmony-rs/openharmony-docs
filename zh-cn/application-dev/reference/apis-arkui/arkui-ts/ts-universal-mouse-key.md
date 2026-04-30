@@ -100,6 +100,8 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
 
  5. 数据分析：历史点中的timestamp可用于计算鼠标移动速度。
 
+### 属性
+
  **起始版本：** 26.0.0
 
  **模型约束：** 此接口仅可在Stage模型下使用。
@@ -119,6 +121,26 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  | globalDisplayX | number| 是   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br>单位：vp  |
  | globalDisplayY | number| 是   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br>单位：vp  |
  | timestamp  | number    | 是   | 否   | 鼠标事件的时间戳。<br>单位：ns                              |
+
+### getCurrentLocalPosition
+
+getCurrentLocalPosition?(): Coordinate2D
+
+获取鼠标位置相对于当前组件实时位置的左上角坐标。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 鼠标位置相对于当前组件实时位置的左上角坐标。 |
 
 ## 示例
 
@@ -254,3 +276,42 @@ struct HistoricalPointsExample {
   }
 }
 ```
+
+### 示例3（获取组件实时位置）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('获取鼠标位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .onMouse((event?: MouseEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.getCurrentLocalPosition?.();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+示意图： 
+
+鼠标触发事件时：
+
+![mouse](figures/localPosition1.gif)
