@@ -1559,6 +1559,9 @@ struct Index {
 | E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效。 |
 | E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误。 |
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。 |
+| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 
 ## ApplicationEvent<sup>14+</sup>
 
