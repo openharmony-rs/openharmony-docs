@@ -240,3 +240,22 @@ configuration标签示例：
 alternateIcons标签示例：
 
 <!-- @[app_json5_alternateIcons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
+{
+  "app": {
+    // ...
+    "alternateIcons": [
+      {
+        "name": "summer_theme",
+        "icon": "$media:layered-image"
+      },
+      {
+        "name": "winter_theme",
+        "icon": "$media:background"
+      }
+    ],
+    // ...
+  }
+}
+```
