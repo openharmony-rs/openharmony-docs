@@ -174,7 +174,7 @@ enum PIXEL_FORMAT
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102格式。 |
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010格式。 |
 | PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010格式。 |
-| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br/>**起始版本：** 26.0.0 |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -725,7 +725,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, i
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | 被操作的OH_Pixelmap_ImageInfo指针。 |
-| int32_t *alphaMode | 被操作的alpha格式的指针。 |
+| int32_t *alphaMode | 获取的透明通道类型。 |
 
 **返回：**
 
