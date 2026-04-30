@@ -1019,14 +1019,14 @@ getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTran
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type   | CallTransferType               | 是   | 指示要获取哪种类型的呼叫转移。  |
+| type   | [CallTransferType](#calltransfertype)               | 是   | 指示要获取哪种类型的呼叫转移。  |
 | number | string              | 是   | 指示用于获取呼叫转移状态的号码。 |
 
 **返回值：**
 
 | 类型                | 说明                        |
 | ------------------- | --------------------------- |
-| Promise&lt;CallTransferResult&gt; | Promise对象，返回呼叫转移结果。 |
+| Promise&lt;[CallTransferResult](#calltransferresult)&gt; | Promise对象，返回呼叫转移结果。 |
 
 **错误码：**
 
@@ -1152,3 +1152,35 @@ call.getCallTransferInfo(type, number)
 |    名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
 | countryCode | string | 否   | 是   | 国家码，支持所有国家的国家码，如：CN（中国）。默认为：CN。 |
+
+## CallTransferType
+
+呼叫转移类型。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ------------ |
+| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   |
+| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     |
+| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   |
+| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
+
+## CallTransferResult
+
+呼叫转移结果。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+|          名称            |                 类型               | 必填 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus8) |  是  | 转移状态。         |
+| number                   | string                             |  是  | 号码。             |
+| startHour<sup>9+</sup>   | number                             |  是  | 开始时间的小时数。 |
+| startMinute<sup>9+</sup> | number                             |  是  | 开始时间的分钟数。 |
+| endHour<sup>9+</sup>     | number                             |  是  | 结束时间的小时数。 |
+| endMinute<sup>9+</sup>   | number                             |  是  | 结束时间的分钟数。 |
