@@ -207,7 +207,7 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 
 获取系统信任的CA证书详情，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -270,7 +270,7 @@ getSystemTrustedCertificateList(): Promise\<CMResult>
 
 获取系统信任的CA证书列表，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -326,7 +326,7 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 
 设置CA证书的状态，当前仅支持设置用户CA证书状态，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -387,7 +387,7 @@ uninstallAllUserTrustedCertificate() : Promise\<void>
 
 卸载所有用户信任的CA证书，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -436,7 +436,7 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 
 安装用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -503,7 +503,7 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
 卸载用户的户公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -562,7 +562,7 @@ getAllPublicCertificates() : Promise\<CMResult>
 
 获取所有用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -619,7 +619,7 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 
 授予应用使用用户公共凭据的权限，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -681,7 +681,7 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 
 获取用户公共凭据的授权应用列表，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -745,7 +745,7 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 
 移除应用使用用户公共凭据的权限，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -806,7 +806,7 @@ getAllAppPrivateCertificatesByUid(appUid: number) : Promise\<CMResult>
 
 获取指定应用的所有私有凭据，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -870,7 +870,7 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 
 安装系统应用凭据，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -937,7 +937,7 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
 获取系统应用的凭据详情，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1001,7 +1001,7 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
 卸载系统应用的凭据，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1060,7 +1060,7 @@ uninstallAllAppCertificate() : Promise\<void>
 
 卸载所有系统应用凭据和用户公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
