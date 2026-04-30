@@ -50531,7 +50531,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/ResidentTaskGuide.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":44,
 						"name":"worker_receive_child_thread_message",
 						"start_line":16
 					}
@@ -50541,7 +50541,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/Worker.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":46,
 						"name":"worker_correspond_main_thread",
 						"start_line":16
 					}
