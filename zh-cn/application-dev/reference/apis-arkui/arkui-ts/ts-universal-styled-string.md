@@ -990,6 +990,14 @@ ArkTS-Sta: constructor(lineHeight: LengthMetrics, lineHeightMultiple: double)
 
 文本行高及倍数的构造函数。
 
+> **说明：**
+>
+> - lineHeightMultiple与lineHeight或[LineSpacingStyle](ts-universal-styled-string.md#linespacingstyle)同时设置时，仅lineHeightMultiple生效，行高为该行最高字体高度与倍数的乘积。
+>
+> - lineHeightMultiple小于0或undefined时不生效，使用lineHeight和[LineSpacingStyle](ts-universal-styled-string.md#linespacingstyle)设置行高和行间距。
+>
+> - lineHeightMultiple等于0时等效于设置为1。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1005,7 +1013,7 @@ ArkTS-Sta: constructor(lineHeight: LengthMetrics, lineHeightMultiple: double)
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
 | lineHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本行高设置项。LengthMetrics的value值大于0时，文本行高设置生效，否则文本行高自适应字体大小。 |
-| lineHeightMultiple | ArkTS-Dyn: number<br/>ArkTS-Sta: double | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | 文本行高的倍数值。 <br/>取值范围：[0, +∞) <br/>**说明：** 倍数大于0时，仅lineHeightMultiple生效，此时行高为该行最高的字体高度与倍数的乘积。倍数小于等于0时，行高以lineHeight值生效。支持小数。 |
+| lineHeightMultiple | ArkTS-Dyn: number<br/>ArkTS-Sta: double | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | 文本行高的倍数值。<br/>取值范围：[0, +∞)，支持小数。 |
 
 ## LineSpacingStyle
 
