@@ -239,7 +239,7 @@ selectedTextStyle(value: PickerTextStyle)
 
 selectedTextStyle(style: Optional\<PickerTextStyle>)
 
-设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle10)相比，style参数新增了对undefined类型的支持
+设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle10)相比，style参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

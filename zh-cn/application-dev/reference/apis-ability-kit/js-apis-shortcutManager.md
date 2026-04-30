@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用对于[快捷方式](../../quick-start/typical-scenario-configuration.md)的管理能力，包括设置快捷方式是否显示等。
 

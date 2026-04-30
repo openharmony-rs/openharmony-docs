@@ -3796,6 +3796,108 @@ mkdtempSync(prefix: string): string
   let res = fileIo.mkdtempSync(pathDir + "/XXXXXX");
   ```
 
+## fileIo.mmap
+
+mmap(file: number | File, mode: MappingMode, offset: number, size: number): Promise&lt;FileMapping&gt;
+
+基于文件描述符或文件对象创建文件映射对象，实现文件的高效读写访问。使用Promise异步回调。
+
+> **说明：**
+>
+> 1. 仅支持对常规文件（regular file）进行内存映射，不支持管道、socket、设备文件等非常规文件类型。可通过[statSync](#fileiostatsync)获取文件属性后调用[Stat.isFile()](#isfile)判断文件是否为常规文件。
+> 2. 若映射范围超过原始文件大小且文件具有写权限，将自动扩展映射文件大小。
+> 3. 对于外部存储或网络文件等，由于底层文件系统的差异，映射的建立及对映射内存的访问行为不做保证，可能导致应用异常终止。建议此类场景优先使用[read](#fileioread)、[write](#fileiowrite)或[Stream](#stream)等其他文件访问接口。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。 |
+| mode | [MappingMode](#mappingmode) | 是 | 创建文件内存映射对象的选项，必须指定如下选项中的一个：<br/>- MappingMode.READ_ONLY(0)：只读映射模式。文件映射区不可写，修改会抛出异常。<br/>- MappingMode.READ_WRITE(1)：读写映射模式。修改会写入文件映射区，后续由操作系统同步到文件（非实时）。<br/>- MappingMode.PRIVATE(2)：私有映射模式。是一种写时复制的映射机制，对映射区的修改仅对当前进程可见，不会影响原始文件。 |
+| offset | number | 是 | 文件映射区的起始位置，单位为Byte。 |
+| size | number | 是 | 文件映射区的大小，取值范围(0, INT32_MAX]，单位为Byte。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;[FileMapping](#filemapping)&gt; | Promise对象，返回文件映射对象。返回的对象初始状态：position为0，limit和capacity均等于size。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+fileIo.mmap(file, fileIo.MappingMode.READ_WRITE, 0, 1024).then((mapping: fileIo.FileMapping) => {
+  console.info(`Succeeded in mmap`);
+  mapping.unmapSync();
+}).catch((err: BusinessError) => {
+  console.error(`Failed to mmap. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  fileIo.closeSync(file);
+});
+```
+
+## fileIo.mmapSync
+
+mmapSync(file: number | File, mode: MappingMode, offset: number, size: number): FileMapping
+
+以同步方法基于文件描述符或文件对象创建文件映射对象，实现文件的高效读写访问。
+
+> **说明：**
+>
+> 1. 仅支持对常规文件（regular file）进行内存映射，不支持管道、socket、设备文件等非常规文件类型。可通过[statSync](#fileiostatsync)获取文件属性后调用[Stat.isFile()](#isfile)判断文件是否为常规文件。
+> 2. 若映射范围超过原始文件大小且文件具有写权限，将自动扩展映射文件大小。
+> 3. 对于外部存储或网络文件等，由于底层文件系统的差异，映射的建立及对映射内存的访问行为不做保证，可能导致应用异常终止。建议此类场景优先使用[read](#fileioread)、[write](#fileiowrite)或[Stream](#stream)等其他文件访问接口。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。 |
+| mode | [MappingMode](#mappingmode) | 是 | 创建文件内存映射对象的选项，必须指定如下选项中的一个：<br/>- MappingMode.READ_ONLY(0)：只读映射模式。文件映射区不可写，修改会抛出异常。<br/>- MappingMode.READ_WRITE(1)：读写映射模式。修改会写入文件映射区，后续由操作系统同步到文件（非实时）。<br/>- MappingMode.PRIVATE(2)：私有映射模式。是一种写时复制的映射机制，对映射区的修改仅对当前进程可见，不会影响原始文件。 |
+| offset | number | 是 | 文件映射区的起始位置，单位为Byte。 |
+| size | number | 是 | 文件映射区的大小，取值范围(0, INT32_MAX]，单位为Byte。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [FileMapping](#filemapping) | 创建的文件映射对象。返回的对象初始状态：position为0，limit和capacity均等于size。  |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+console.info("Succeeded in mmapSync.");
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
 ## fileIo.utimes<sup>11+</sup>
 
 utimes(path: string, mtime: number): void
@@ -5757,6 +5859,697 @@ unlock(): void
   fileIo.closeSync(file);
   ```
 
+
+## FileMapping
+
+文件映射对象，在调用FileMapping的方法前，需要先通过[mmap()](#fileiommap)或方法[mmapSync()](#fileiommapsync)构建一个FileMapping实例。
+
+**起始版本**：26.0.0
+
+### setPosition
+
+setPosition(position: number): void
+
+设置文件映射区的当前位置。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| position | number | 是 | 期望设置的目标位置，单位为Byte。<br>必须为非负数且不大于当前可读写上界的limit，可通过[getLimit()](#getlimit)获得可读写上界的limit。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+mapping.setPosition(100);
+console.info("Succeeded in setPosition.");
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### getPosition
+
+getPosition(): number
+
+获取文件映射区的当前位置。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 文件映射区的当前位置，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+let pos = mapping.getPosition();
+console.info(`Succeeded in getting position, the position is: ${pos}`);
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### capacity
+
+capacity(): number
+
+获取文件映射区的容量。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 文件映射区的容量，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+let cap = mapping.capacity();
+console.info(`Succeeded in getting capacity, the capacity is: ${cap}`);
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### setLimit
+
+setLimit(limit: number): void
+
+设置文件映射区可读写区域的上界。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| limit | number | 是 | 要设置的可读写区域上界值，单位为Byte。<br>取值需大于等于0，且小于等于当前[容量](#capacity)。若所设值小于文件映射区的当前位置，则当前位置将自动调整至该值。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+mapping.setLimit(512);
+console.info("Succeeded in setLimit.");
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### getLimit
+
+getLimit(): number
+
+获取文件映射区可读写区域的上界。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 当前可读写区域上界值，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+let lim = mapping.getLimit();
+console.info(`Succeeded in getting limit, the limit is: ${lim}`);
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### flip
+
+flip(): void
+
+翻转文件映射区，将写入准备状态切换为读取准备状态。调用后，limit被设置为当前position的值，position被重置为0。
+
+推荐在一系列[write()](#write-2)操作完成后，调用此方法准备后续的[read()](#read-2)操作。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let writeData = new ArrayBuffer(50);
+mapping.write(writeData);
+mapping.flip(); // limit=50, position=0
+console.info("Succeeded in flip.");
+
+let readBuffer = new ArrayBuffer(50);
+mapping.read(readBuffer);
+
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### remaining
+
+remaining(): number
+
+获取从当前位置（position）到可读写区域的上界（limit）之间的剩余字节数。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 剩余可读或可写的字节数，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+mapping.setPosition(100);
+let remaining = mapping.remaining();
+console.info(`Succeeded in getting remaining, the remaining is: ${remaining}`);
+
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### read
+
+read(buffer: ArrayBuffer, length?: number): number
+
+从当前位置读取数据，并将位置后移实际读取的字节数。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
+| length | number | 否 | 期望读取数据的长度，单位为Byte。默认缓冲区长度。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 返回实际读取的数据长度，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(100);
+let bytesRead = mapping.read(buffer);
+console.info(`Succeeded in reading data, size is: ${bytesRead}`);
+
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### read
+
+read(position: number, buffer: ArrayBuffer, length?: number): number
+
+从指定位置读取数据，当前位置不会发生移动。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| position | number | 是 | 期望读取的起始位置，单位为Byte。 |
+| buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
+| length | number | 否 | 期望读取数据的长度，单位为Byte。默认缓冲区长度。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 返回实际读取的数据长度，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(100);
+let bytesRead = mapping.read(50, buffer, 50);
+console.info(`Succeeded in reading data, size is: ${bytesRead}`);
+
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### write
+
+write(data: ArrayBuffer, length?: number): number
+
+从当前位置写入数据，并将位置后移实际写入的字节数。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| data | ArrayBuffer | 是 | 待写入文件的缓冲区数据。 |
+| length | number | 否 | 期望写入数据的长度，单位为Byte。默认缓冲区长度。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 返回实际写入的长度，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(11);
+let bytesWritten = mapping.write(buffer);
+console.info(`Succeeded in writing data to file, size is: ${bytesWritten}`);
+
+mapping.msyncSync();
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### write
+
+write(position: number, data: ArrayBuffer, length?: number): number
+
+从指定位置写入数据，当前位置不会发生移动。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| position | number | 是 | 期望写入的起始位置，单位为Byte。 |
+| data | ArrayBuffer | 是 | 待写入文件的缓冲区数据。 |
+| length | number | 否 | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 返回实际写入的长度，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(11);
+let bytesWritten = mapping.write(50, buffer);
+console.info(`Succeeded in writing data to file, size is: ${bytesWritten}`);
+
+mapping.msyncSync();
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### msync
+
+msync(): Promise&lt;void&gt;
+
+将整个文件映射区的数据同步到磁盘文件，使用Promise异步回调。
+
+> **说明：**
+>
+> 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(11);
+mapping.write(buffer);
+
+mapping.msync().then(() => {
+  console.info("Succeeded in msync.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to msync. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  mapping.unmapSync();
+  fileIo.closeSync(file);
+});
+```
+
+### msync
+
+msync(position: number, length: number): Promise&lt;void&gt;
+
+将文件映射区指定范围内的数据同步到磁盘文件，使用Promise异步回调。
+
+> **说明：**
+>
+> 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| position | number | 是 | 期望同步的起始位置，单位为Byte。 |
+| length | number | 是 | 期望同步的数据长度，单位为Byte。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(11);
+mapping.write(50, buffer);
+
+mapping.msync(50, buffer.byteLength).then(() => {
+  console.info("Succeeded in msync.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to msync. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  mapping.unmapSync();
+  fileIo.closeSync(file);
+});
+```
+
+### msyncSync
+
+msyncSync(): void
+
+以同步方法将整个文件映射区的数据同步到磁盘文件。
+
+> **说明：**
+>
+> 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(11);
+mapping.write(buffer);
+
+mapping.msyncSync();
+console.info("Succeeded in msync.");
+
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### msyncSync
+
+msyncSync(position: number, length: number): void
+
+以同步方法将文件映射区指定范围内的数据同步到磁盘文件。
+
+> **说明：**
+>
+> 如果文件不在本地设备上，调用此接口不保证所有更改都已持久化存储。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ------ |
+| position | number | 是 | 期望同步的起始位置，单位为Byte。 |
+| length | number | 是 | 期望同步的数据长度，单位为Byte。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(11);
+mapping.write(50, buffer);
+
+mapping.msyncSync(50, buffer.byteLength);
+console.info("Succeeded in msync.");
+
+mapping.unmapSync();
+fileIo.closeSync(file);
+```
+
+### unmap
+
+unmap(): Promise&lt;void&gt;
+
+释放文件映射区，使用Promise异步回调。调用后，position、limit和capacity均被重置为0，FileMapping对象不可再进行任何操作。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+let buffer = new ArrayBuffer(11);
+mapping.write(buffer);
+mapping.unmap().then(() => {
+  console.info("Succeeded in unmap.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to unmap. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  fileIo.closeSync(file);
+});
+```
+
+### unmapSync
+
+unmapSync(): void
+
+以同步方法释放文件映射区。调用后，position、limit和capacity均被重置为0，FileMapping对象不可再进行任何操作。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let mapping = fileIo.mmapSync(file, fileIo.MappingMode.READ_WRITE, 0, 1024);
+
+mapping.unmapSync();
+console.info("Succeeded in unmap.");
+fileIo.closeSync(file);
+```
+
 ## fileIo.DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
@@ -6273,6 +7066,23 @@ filter(name: string): boolean
 | 类型 | 说明 |
 | ---- | ---- |
 | boolean | 表示是否包含在返回的文件列表中。true：包含该文件；false：不包含该文件。 |
+
+
+## MappingMode
+
+文件内存映射模式类型的枚举。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ------ |
+| READ_ONLY | 0 | 只读映射模式。文件映射区不可写，修改会抛出异常。 |
+| READ_WRITE | 1 | 读写映射模式。修改会写入文件映射区，后续由操作系统同步到文件（非实时）。 |
+| PRIVATE | 2 | 私有映射模式。是一种写时复制的映射机制，对映射区的修改仅对当前进程可见，不会影响原始文件。 |
 
 ## Filter<sup>10+</sup>
 

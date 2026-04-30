@@ -63,7 +63,7 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [UIPickerComponentOptions](#uipickercomponentoptions对象说明)| 否 | 配置UIPickerComponent容器的参数。 |
+| options |  [UIPickerComponentOptions](#uipickercomponentoptions对象说明)| 否 | 配置UIPickerComponent容器的参数。参数缺省时组件占位，但内容显示为空。 |
 
 ## UIPickerComponentOptions对象说明
 

@@ -177,3 +177,307 @@ ArkUI API version 10及以上的全量接口。
 **适配指导**
 
 推荐使用Stage模型。Stage模型是当前系统主推的应用模型，请参考[Stage模型开发概述](../../../application-dev/application-models/stage-model-development-overview.md)和[FA模型开发概述](../../../application-dev/application-models/fa-model-development-overview.md)了解模型差异，进行应用适配。 
+
+## cl.arkui.3 主页NavDestination中使用queryNavDestinationInfo接口的行为变更
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+通过queryNavDestinationInfo(isInner: Optional&lt;boolean&gt;)接口无法获取到主页NavDestination的信息，不符合接口设计规格。
+
+**变更影响**
+
+变更前：通过入参包含HomePathInfo的Navigation接口，指定一个NavDestination作为Navigation主页后，通过[queryNavDestinationInfo](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口无法获取主页NavDestination的信息。
+
+变更后：通过[queryNavDestinationInfo](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口能够获取主页NavDestination的信息。
+
+**起始 API Level**
+
+20
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.22开始。
+
+**变更的接口/组件**
+
+[queryNavDestinationInfo(isInner: Optional&lt;boolean&gt;)](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口。
+
+**适配指导**
+
+开发者需要根据变更内容审视自身业务代码是否需要进行适配，下面的示例代码展示了主页NavDestination中使用queryNavDestinationInfo接口在变更前后的差异。
+
+```ts
+import hilog from '@ohos.hilog';
+
+@Component
+struct MyPage {
+  build() {
+    NavDestination() {
+    }
+    .width('100%')
+    .height('100%')
+    .title('DetailPage')
+  }
+}
+
+@Component
+struct InnerCustomComponent {
+  GetDestInfo() {
+    // 向上查找当前自定义组件的所在的NavDestination
+    let info = this.queryNavDestinationInfo(false);
+    if (info) {
+      // 变更后能够获取到主页NavDestination的信息，会走这个分支
+      hilog.info(0x0000, 'testTag', `success to get HomeNavDestination's name: ${info.name}`)
+    } else {
+      // 变更前无法获取到主页NavDestination的信息，会走这个分支
+      hilog.info(0x0000, 'testTag', `failed to get NavDestinationInfo for HomeNavDestination`)
+    }
+  }
+
+  build() {
+    Column() {
+      Button('queryOuterNavDestination').onClick(() => {
+        this.GetDestInfo();
+      })
+    }
+  }
+}
+
+@Component
+struct MyHomeDestination {
+  GetDestInfo() {
+    // 向下查找当前自定义组件内部的NavDestination
+    let info = this.queryNavDestinationInfo(true);
+    if (info) {
+      // 变更后能够获取到主页NavDestination的信息，会走这个分支
+      hilog.info(0x0000, 'testTag', `success to get HomeNavDestination's name: ${info.name}`)
+    } else {
+      // 变更前无法获取到主页NavDestination的信息，会走这个分支
+      hilog.info(0x0000, 'testTag', `failed to get NavDestinationInfo for HomeNavDestination`)
+    }
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('queryInnerNavDestination').onClick(() => {
+          this.GetDestInfo();
+        })
+        InnerCustomComponent()
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .title('HomePage')
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  MyPageName(name: string) {
+    if (name === 'Home') {
+      MyHomeDestination()
+    } else {
+      MyPage()
+    }
+  }
+
+  build() {
+    // 使用主页NavDestination功能
+    Navigation(this.stack, {name: 'Home'}) {
+    }
+    .width('100%')
+    .height('100%')
+    .navDestination(this.MyPageName)
+  }
+}
+```
+
+## cl.arkui.4 主页NavDestination的onResult接口行为变更
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+主页NavDestination的onResult接口在如下场景中表现不符合预期，具体场景为：开发者使用了主页NavDestination，且操作前栈为PageA（未设置onResult）、PageB。从PageB返回到PageA时，会触发主页NavDestination的onResult，不符合接口设计规格。
+
+**变更影响**
+
+变更前：通过入参包含HomePathInfo的Navigation接口，指定一个NavDestination作为Navigation主页后，栈操作的目标页面非主页面，且没有设置[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)，返回该页面时会触发主页NavDestination的onResult。
+
+变更后：栈操作的目标页面非主页面，且没有设置[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)，返回该页面时不会触发主页NavDestination的onResult。
+
+**起始 API Level**
+
+20
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.22开始。
+
+**变更的接口/组件**
+
+NavDestination的[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口。
+
+**适配指导**
+
+开发者需要根据变更内容审视自身业务代码是否需要进行适配，下面的示例代码展示了主页NavDestination的onResult接口在如下场景中的变化：使用了主页NavDestination，栈中当前有PageA（未设置onResult）和PageB两个页面，然后从PageB返回到PageA，变更前会触发主页的NavDestination的onResult，变更后不会触发主页NavDestination的onResult。
+
+```ts
+import hilog from '@ohos.hilog';
+
+@Component
+struct MyPage {
+  @State name: string = '';
+  build() {
+    // PageA不设置onResult事件
+    NavDestination() {
+    }
+    .width('100%')
+    .height('100%')
+    .title(`${this.name}`)
+    .onReady((ctx: NavDestinationContext) => {
+      this.name = ctx.pathInfo.name;
+    })
+  }
+}
+
+@Component
+struct MyHomeDestination {
+  build() {
+    NavDestination() {
+    }
+    .width('100%')
+    .height('100%')
+    .title('HomePage')
+    .onResult((param: ESObject) => {
+      // PageA未设置onResult事件，从PageB返回到PageA时，
+      // 在变更前会触发主页NavDestination的onResult函数，在变更后不会触发主页NavDestination的onResult函数
+      hilog.info(0x0000, 'testTag', `HomeDestination onResult`)
+    })
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  MyPageName(name: string) {
+    if (name === 'Home') {
+      MyHomeDestination()
+    } else {
+      MyPage()
+    }
+  }
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'PageA'})
+    this.stack.pushPath({name: 'PageB'})
+  }
+
+  build() {
+    // 使用主页NavDestination功能
+    Navigation(this.stack, {name: 'Home'}) {
+    }
+    .width('100%')
+    .height('100%')
+    .navDestination(this.MyPageName)
+  }
+}
+```
+
+## cl.arkui.5 NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL事件回调的返回值行为变更
+
+**访问级别**
+
+公开接口
+
+**变更原因**
+
+[NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL](../../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件回调返回值中的主轴方向上页面的长度ArkUI_NodeComponentEvent.data[3].f32，和实际长度不符。
+
+**变更影响**
+
+此变更涉及应用适配。
+
+- 变更前：NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL的返回值中的ArkUI_NodeComponentEvent.data[3].f32不符合页面的实际主轴长度。例如实际长度为100vp，开发者接收vp单位时，返回的值是100/屏幕像素密度，开发者接收px单位时，返回的值是100。
+  
+- 变更后：NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL的返回值中的ArkUI_NodeComponentEvent.data[3].f32符合页面的实际主轴长度。例如实际长度为100vp，开发者接收vp单位时，返回的值是100，开发者接收px单位时，返回的值是100*屏幕像素密度。
+
+**起始API Level**
+
+12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.22开始。
+
+**变更的接口/组件**
+
+[NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL](../../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)的返回参数值ArkUI_NodeComponentEvent.data[3].f32。
+
+**适配指导**
+
+原先的返回值不符合实际页面主轴长度，开发者在使用时需要给获取的返回值*屏幕像素密度。变更后可以直接使用正确的长度值进行业务开发。
+
+```cpp
+static ArkUI_NativeNodeAPI_1 *nodeAPI_ = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+    OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+
+static napi_value CreateSwiperNode(napi_env env, napi_callback_info info) {
+    const int size = 11;
+    const char *arr[size] = {"0", "1", "2", "3"};
+    static ArkUI_NodeHandle swiper = nodeAPI_->createNode(ARKUI_NODE_SWIPER);
+
+    for (int j = ConstIde::NUMBER_0; j < size; j++) {
+        ArkUI_NodeHandle textNode = nodeAPI_->createNode(ARKUI_NODE_TEXT);
+        ArkUI_AttributeItem content = {.string = arr[j]};
+        nodeAPI_->setAttribute(textNode, NODE_TEXT_CONTENT, &content);
+
+        ArkUI_NumberValue value[] = {0};
+        ArkUI_AttributeItem item = {.value = value, .size = 1};
+        value[ConstIde::NUMBER_0].f32 = ConstIde::TEXT_HEIGHT_VP;
+        nodeAPI_->setAttribute(textNode, NODE_HEIGHT, &item);
+        value[ConstIde::NUMBER_0].u32 = ConstIde::TEXT_BG_COLOR;
+        nodeAPI_->setAttribute(textNode, NODE_BACKGROUND_COLOR, &item);
+        value[ConstIde::NUMBER_0].i32 = ConstIde::TEXT_ALIGN_CENTER;
+        nodeAPI_->setAttribute(textNode, NODE_TEXT_ALIGN, &item);
+        value[ConstIde::NUMBER_0].f32 = ConstIde::TEXT_FONT_SIZE_VP;
+        nodeAPI_->setAttribute(textNode, NODE_FONT_SIZE, &item);
+
+        ArkUI_AttributeItem textId = {.string = "SwiperAutoPlayText"};
+        nodeAPI_->setAttribute(textNode, NODE_ID, &textId);
+        nodeAPI_->addChild(swiper, textNode);
+    }
+    ArkUI_NumberValue value[] = {};
+    ArkUI_AttributeItem item = {.value = value, .size = 1};
+    
+    value[0].f32 = 300;
+    nodeAPI_->setAttribute(swiper, NODE_WIDTH, &item);
+
+    nodeAPI_->setLengthMetricUnit(swiper, ArkUI_LengthMetricUnit::ARKUI_LENGTH_METRIC_UNIT_PX);
+    nodeAPI_->registerNodeEvent(swiper, NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL, 0, nullptr);
+    nodeAPI_->addNodeEventReceiver(swiper, [](ArkUI_NodeEvent *event) {
+        ArkUI_NodeComponentEvent* compEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event) ; 
+        int selectedIndex = compEvent->data[0].i32; 
+        int index = compEvent->data[1].i32;
+        float position = compEvent->data[2].f32; 
+        float maxAxisLength = compEvent->data[3].f32;
+        // 变更前页面真实的长度为maxAxisLength * 屏幕像素密度，变更后为maxAxisLength
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "maxAxisLength: %{public}f", maxAxisLength);
+    });
+}
+```

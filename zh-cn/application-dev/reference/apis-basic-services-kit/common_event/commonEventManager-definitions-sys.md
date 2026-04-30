@@ -297,6 +297,21 @@
 **取值：** "usual.event.USER_LOCKED"
 
 
+### COMMON_EVENT_SCREEN_LOCK_EXITING
+
+表示锁屏退出的公共事件。
+
+锁屏退出时将会触发事件通知服务发布该系统公共事件，此公共事件不关注文件系统是否解密。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**取值：** "usual.event.SCREEN_LOCK_EXITING"
+
+
 ## Core File Kit
 
 文件管理子系统面向应用发布如下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[@ohos.commonEventManager](../js-apis-commonEventManager.md)。

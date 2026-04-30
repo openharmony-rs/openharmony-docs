@@ -2562,7 +2562,7 @@ function PostMsgToEts(data) {
 
 requestFocus(): void
 
-使当前Web页面获取焦点。
+使指定组件获取焦点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2696,7 +2696,7 @@ struct WebComponent {
 
 getWebId(): number
 
-获取当前Web组件的索引值，用于多个Web组件的管理。
+获取Web组件的索引值，用于多个Web组件的管理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2704,7 +2704,7 @@ getWebId(): number
 
 | 类型   | 说明                  |
 | ------ | --------------------- |
-| number | 当前Web组件的索引值。 |
+| number | Web组件的索引值。 |
 
 **错误码：**
 
@@ -4970,7 +4970,8 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. |
 
 **示例：**
 
@@ -5682,7 +5683,7 @@ struct WebComponent {
 
 isIntelligentTrackingPreventionEnabled(): boolean
 
-获取当前Web是否启用了智能防跟踪功能。
+获取Web组件是否启用了智能防跟踪功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5692,7 +5693,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 当前Web是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。<br>默认值：false。 |
+| boolean | Web组件是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。<br>默认值：false。 |
 
 **错误码：**
 
@@ -7169,7 +7170,7 @@ struct WebComponent {
 
 setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-为当前Web组件设置[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md), [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)类用于拦截指定scheme的请求。
+为Web组件设置[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md), [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)类用于拦截指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7222,7 +7223,7 @@ struct WebComponent {
 
 clearWebSchemeHandler(): void
 
-清除当前Web组件设置的所有WebSchemeHandler。
+清除Web组件设置的所有WebSchemeHandler。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9958,7 +9959,7 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **示例：**
 
@@ -10031,7 +10032,7 @@ setBlanklessLoadingWithKey(key: string, is_start: boolean): WebBlanklessErrorCod
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **示例：**
 
@@ -10176,7 +10177,7 @@ static clearBlanklessLoadingCache(keys?: Array\<string\>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **示例：**
 
@@ -10233,7 +10234,7 @@ static setBlanklessLoadingCacheCapacity(capacity: number): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|  801     | Capability not supported. |
+|  801     | This functionality is not supported. |
 
 **示例：**
 
