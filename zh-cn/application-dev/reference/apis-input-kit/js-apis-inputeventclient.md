@@ -5,13 +5,11 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @@zhang_yixin13-->
 
 输入事件注入模块，提供键盘和鼠标输入事件模拟能力。
 
-> **说明：**
->
-> 本模块首批接口从API version 26开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -19,11 +17,13 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
-## inputEventClient.createKeyboardController<sup>26+</sup>
+## inputEventClient.createKeyboardController
 
 createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 创建键盘控制器,用于模拟按键操作。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -71,11 +71,13 @@ struct Index {
 }
 ```
 
-## inputEventClient.createMouseController<sup>26+</sup>
+## inputEventClient.createMouseController
 
 createMouseController(): Promise&lt;MouseController&gt;
 
 创建鼠标控制器,用于模拟鼠标操作。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -123,7 +125,7 @@ struct Index {
 }
 ```
 
-## KeyboardController<sup>26+</sup>
+## KeyboardController
 
 提供模拟按键操作的功能。模拟按键操作序列必须满足以下要求：
 
@@ -131,11 +133,13 @@ struct Index {
 2. 按键只能在被按下后才能释放。
 3. 最多可以同时按下并保持五个按键。
 
-### pressKey<sup>26+</sup>
+### pressKey
 
 pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 按下按键。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -190,11 +194,13 @@ struct Index {
 }
 ```
 
-### releaseKey<sup>26+</sup>
+### releaseKey
 
 releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 释放按键。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -250,7 +256,7 @@ struct Index {
 }
 ```
 
-## MouseController<sup>26+</sup>
+## MouseController
 
 提供模拟鼠标操作的功能。模拟鼠标操作序列必须满足以下要求：
 
@@ -259,11 +265,13 @@ struct Index {
 3. 有效的轴事件序列必须先开始,包含零个或多个更新,然后结束。
 4. 同一时间只能有一个进行中的轴事件序列。
 
-### moveTo<sup>26+</sup>
+### moveTo
 
 moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&gt;
 
 将鼠标光标移动到指定的显示器坐标。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -320,11 +328,13 @@ struct Index {
 }
 ```
 
-### pressButton<sup>26+</sup>
+### pressButton
 
 pressButton(button: Button): Promise&lt;void&gt;
 
 按下鼠标按键。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -379,11 +389,13 @@ struct Index {
 }
 ```
 
-### releaseButton<sup>26+</sup>
+### releaseButton
 
 releaseButton(button: Button): Promise&lt;void&gt;
 
 释放鼠标按键。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -439,11 +451,13 @@ struct Index {
 }
 ```
 
-### beginAxis<sup>26+</sup>
+### beginAxis
 
 beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 开始轴事件。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -499,11 +513,13 @@ struct Index {
 }
 ```
 
-### updateAxis<sup>26+</sup>
+### updateAxis
 
 updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 更新轴事件。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -560,11 +576,13 @@ struct Index {
 }
 ```
 
-### endAxis<sup>26+</sup>
+### endAxis
 
 endAxis(axis: Axis): Promise&lt;void&gt;
 
 结束轴事件。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
