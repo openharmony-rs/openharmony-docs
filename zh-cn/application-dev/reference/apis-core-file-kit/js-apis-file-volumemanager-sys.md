@@ -551,7 +551,7 @@ ArkTS-Sta示例：
 
 getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
-通过卷设备id获得指定卷设备信息，使用Promise异步回调
+通过卷设备id获得指定卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
