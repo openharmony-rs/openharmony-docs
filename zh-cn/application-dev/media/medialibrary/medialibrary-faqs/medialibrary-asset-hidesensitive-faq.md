@@ -72,7 +72,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ```
 
 ## 附录
-地理位置信息字段说明，具体字段说明和使用使用方式请参考[Image Kit](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
+地理位置信息字段说明，具体字段说明和使用方式请参考[Image Kit](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
 | 名称  |  说明 |
 | ----- | ---- |
 | GPSLatitude | 图片纬度。 |
