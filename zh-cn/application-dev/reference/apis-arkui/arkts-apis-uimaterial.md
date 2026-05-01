@@ -129,6 +129,22 @@ static get empty(): Material
 | THICK | 3 | 厚样式。模糊效果强。 |
 | ULTRA_THICK | 4 | 超厚样式。模糊效果很强。 |
 
+## LightEffectOptions
+
+沉浸式材质的光感交互反馈配置。用于自定义反馈光感的颜色。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                           | 类型                                     | 只读 | 可选 | 说明                                     |
+| ----------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
+| color       | [ResourceColor](./arkui-ts/ts-types.md#resourcecolor) | 否    | 是   | 自定义交互反馈光感的颜色。<br/>默认值：Color.White |
+
 ## ImmersiveOptions
 
 沉浸式材质参数。
@@ -148,6 +164,7 @@ static get empty(): Material
 | colorInvert   | boolean                                   | 否 | 是   | 设置了材质对象的节点的子树是否自动适配材质到背景色的反色。<br/>若为false，则不会自动反色。<br/>若为true，则只有材质参数足够薄时才会自动反色。具体能反色的材质由系统定义，材质样式至少为THIN或ULTRA_THIN，且与设置应用的沉浸光感的强弱配置相关。材质越薄、沉浸光感越强，越容易符合反色材质的要求。<br/>自动反色能力仅对部分属性接口设置特殊资源值时生效，生效的属性接口包括：Text组件的[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor)，Button组件的[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor)，SymbolGlyph组件的[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，Image组件的[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor)，Search组件的[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10)、[searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，TabContent组件的[tabBar](arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)样式时其中的文本和图标颜色。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：false |
 | applyShadow   | boolean                                   | 否 | 是   | 是否添加材质的阴影效果。<br/>当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。<br/>**说明**：该参数仅对所有档位的算力设备的显示效果生效。<br/>默认值：true |
 | interactive   | boolean                                   | 否 | 是   | 是否为设置材质的组件设置交互形变效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：false |
+| lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 是否为设置材质的组件设置光感交互反馈效果。当该参数为null时，禁用光感交互反馈效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
 
 ## Material
 
@@ -187,7 +204,7 @@ ImmersiveMaterial的构造函数。
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  options      | [ImmersiveOptions](#immersiveoptions)                      | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:ImmersiveStyle.REGULAR, materialColor:Color.Transparent, colorInvert:false, applyShadow:true}。    |
+|  options      | [ImmersiveOptions](#immersiveoptions)                      | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:ImmersiveStyle.REGULAR, materialColor:Color.Transparent, colorInvert:false, applyShadow:true, interactive:false, lightEffect:undefined}。    |
 
 ## 示例
 
@@ -406,3 +423,53 @@ struct Index {
 ```
 
 ![zh-cn_sheet](figures/material-interactive.gif)
+
+### 示例4（设置组件材质的光感交互反馈效果）
+
+本示例介绍如何通过[ImmersiveOptions](#immersiveoptions)中的lightEffect接口使组件实现光感交互反馈效果。
+
+从API版本26.0.0开始，新增lightEffect接口。
+
+``` ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct LightEffect {
+  @State itemsKey: number[] = [0, 1, 2];
+  @State circleRadius: number = 40;
+  @State spaceValue: number = 10;
+  @State myMaterial: uiMaterial.Material = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+    interactive: true,
+    lightEffect: { color: undefined },
+  });
+
+  build() {
+    Column() {
+      Row() {
+        Text("标题")
+          .flexGrow(2)
+          .fontColor(Color.White)
+        Row({ space: this.spaceValue }) {
+          ForEach(this.itemsKey, (item: number, index: number) => {
+            Row()
+              .width(this.circleRadius * 2)
+              .height(this.circleRadius * 2)
+              .borderRadius(this.circleRadius)
+              .systemMaterial(this.myMaterial)
+          })
+        }
+      }
+      .justifyContent(FlexAlign.End)
+      .backgroundColor(Color.Black)
+      .width('100%')
+      .padding(20)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![zh-cn_sheet](figures/materialLightEffect.gif)
