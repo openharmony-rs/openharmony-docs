@@ -94,6 +94,8 @@
     - [调试意图](insight-intent-debug.md)
   - 智能体开发指导<!--agent-->
     - [Agent配置文件说明](agent-extension-configuration.md)
+  - ModularObjectExtensionAbility开发指导<!--agent-->
+    - [使用IDL实现ModularObjectExtensionAbility的IPC通信](ModularObjectExtensionAbility.md)
 - FA模型开发指导<!--fa-model-development-->
   - [FA模型开发概述](fa-model-development-overview.md)
   - FA模型应用组件<!--fa-model-application-components-->
