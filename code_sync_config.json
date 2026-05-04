@@ -1146,12 +1146,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":203,
+						"end_line":204,
 						"name":"module_all",
 						"start_line":16
 					},
 					{
-						"end_line":202,
+						"end_line":203,
 						"name":"module_metadata",
 						"start_line":17
 					},
