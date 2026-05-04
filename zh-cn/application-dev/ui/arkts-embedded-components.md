@@ -168,9 +168,9 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 - 会话管理
 
-  [onSessionCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onSessionCreate)：创建独立存储上下文并加载UI界面；
+  [onSessionCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)：创建独立存储上下文并加载UI界面；
 
-  [onSessionDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onSessionDestroy)：处理会话结束时（如用户主动关闭）的清理操作。
+  [onSessionDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessiondestroy)：处理会话结束时（如用户主动关闭）的清理操作。
 
 - 上下文传递
 
