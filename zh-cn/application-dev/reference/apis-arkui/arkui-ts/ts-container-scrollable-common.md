@@ -261,6 +261,8 @@ clipContent(clip: ContentClipMode | RectShape): T
 
 设置滚动容器的内容层裁剪区域。
 
+对于List、Grid和WaterFlow组件，当内容层裁剪区域比组件自身大小更大时，完全在组件区域外但在裁剪区域内的子组件默认不会显示。若需要显示可将组件的cachedCount属性的isShow参数设置为true，但由于cachedCount属性设置的预加载子组件只会在空闲时隙时执行，组件大小变化、数据更新等场景可能存在更新不及时导致闪烁问题。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
