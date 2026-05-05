@@ -13886,7 +13886,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { WebBuilder } from "./InjectWebview";
+   import { injectWebview } from "./InjectWebview";
 
    export class BuilderData {
      url: string;
@@ -13931,7 +13931,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
          return;
        }
        this.rootNode = new BuilderNode<BuilderData>(uiContext);
-       this.rootNode!.build(wrapBuilder(WebBuilder), new BuilderData(url, controller, uiContext));
+       this.rootNode!.build(injectWebview, new BuilderData(url, controller, uiContext));
      }
    }
 
@@ -14005,7 +14005,6 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { webview } from '@kit.ArkWeb';
    import { resourceConfigs } from "./Resource";
    import { BuilderData } from "./DynamicComponent";
-   import { BusinessError } from '@kit.BasicServicesKit';
 
    @Builder
    export function WebBuilder(data: BuilderData) {
@@ -14015,7 +14014,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
            try {
              const result = await getData(data.context);
              data.controller.injectOfflineResources(result);
-           } catch (err: BusinessError) {
+           } catch (err) {
              console.error("error: " + err.code + " " + err.message);
            }
          })();
@@ -17362,6 +17361,7 @@ import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
 import { webview } from '@kit.ArkWeb';
 import { AppStorage } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {

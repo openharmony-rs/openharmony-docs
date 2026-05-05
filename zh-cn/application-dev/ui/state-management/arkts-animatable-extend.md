@@ -10,7 +10,7 @@
 
 - 可动画属性：如果一个属性方法在[animation](../arkts-animation.md)属性前调用，改变这个属性的值可以使animation属性的动画效果生效，这个属性称为可动画属性。比如[height](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[width](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[translate](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)属性，和Text组件的[fontSize](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)属性等。
 
-- 不可动画属性：如果一个属性方法在animation属性前调用，改变这个属性的值不能使animation属性的动画效果生效，这个属性称为不可动画属性。比如Polyline组件的points属性等。
+- 不可动画属性：如果一个属性方法在animation属性前调用，改变这个属性的值不能使animation属性的动画效果生效，这个属性称为不可动画属性。比如[Polyline](../../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)组件的[points](../../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#points)属性等。
 
 >  **说明：**
 >

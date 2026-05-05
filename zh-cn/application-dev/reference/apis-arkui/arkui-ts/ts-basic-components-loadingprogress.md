@@ -115,7 +115,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)>  \| undefined | 是   | 在LoadingProgress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)>  \| undefined | 是   | 在LoadingProgress组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示内容重置为未设置contentModifier属性时的显示内容。 |
 
 ## 事件
 

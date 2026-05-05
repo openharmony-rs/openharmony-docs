@@ -165,11 +165,11 @@ static show(options?: TextPickerDialogOptions)
 该示例通过点击按钮弹出文本选择弹窗。
 
 ```ts
-// xxx.ets
+// TextPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: int | int[] = 0;
+  private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State selectedValue: string = '';
 
@@ -228,12 +228,14 @@ struct TextPickerDialogExample {
 
 该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本和按钮样式。
 
+ArkTS-Dyn示例：
+
 ```ts
-// xxx.ets
+// TextPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: int | int[] = 0;
+  private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State selectedValue: string = '';
 
@@ -310,6 +312,94 @@ struct TextPickerDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// TextPickerDialogExampleSta.ets
+
+import { Button, ButtonRole, ButtonStyleMode, ButtonType, Color, Column, Component,
+  Entry, FontStyle, FontWeight, PickerDialogButtonStyle } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct TextPickerDialogExample {
+  private select: int | int[] = 0;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
+  @State selectedValue: string = '';
+
+  build() {
+    Row() {
+      Column() {
+        Button('TextPickerDialog:' + this.selectedValue)
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              disappearTextStyle: { color: '#297bec', font: { size: 15, weight: FontWeight.Lighter } },
+              textStyle: { color: Color.Black, font: { size: 20, weight: FontWeight.Normal } },
+              selectedTextStyle: { color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } },
+              acceptButtonStyle: {
+                type: ButtonType.Normal,
+                style: ButtonStyleMode.NORMAL,
+                role: ButtonRole.NORMAL,
+                fontColor: 'rgb(81, 81, 216)',
+                fontSize: '26fp',
+                fontWeight: FontWeight.Bolder,
+                fontStyle: FontStyle.Normal,
+                fontFamily: 'sans-serif',
+                backgroundColor: '#A6ACAF',
+                borderRadius: 20
+              } as PickerDialogButtonStyle,
+              cancelButtonStyle: {
+                type: ButtonType.Normal,
+                style: ButtonStyleMode.NORMAL,
+                role: ButtonRole.NORMAL,
+                fontColor: Color.Blue,
+                fontSize: '16fp',
+                fontWeight: FontWeight.Normal,
+                fontStyle: FontStyle.Italic,
+                fontFamily: 'sans-serif',
+                backgroundColor: '#50182431',
+                borderRadius: 10
+              } as PickerDialogButtonStyle,
+              onAccept: (value: TextPickerResult) => {
+                // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+                this.select = value.index;
+                console.info(this.select + '');
+                // 点击确定后，被选到的文本数据展示到页面
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info('TextPickerDialog:onCancel()');
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
+              },
+              onScrollStop: (value: TextPickerResult) => {
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
+              },
+              onDidAppear: () => {
+                console.info('TextPickerDialog:onDidAppear()');
+              },
+              onDidDisappear: () => {
+                console.info('TextPickerDialog:onDidDisappear()');
+              },
+              onWillAppear: () => {
+                console.info('TextPickerDialog:onWillAppear()');
+              },
+              onWillDisappear: () => {
+                console.info('TextPickerDialog:onWillDisappear()');
+              }
+            });
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
 ![TextPickerDialog](figures/TextPickerDialog_CustomButton.png)
 
 ### 示例3（悬停态弹窗）
@@ -317,10 +407,11 @@ struct TextPickerDialogExample {
 该示例展示了在折叠屏悬停态下设置dialog布局区域的效果。
 
 ```ts
+// TextPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: int | int[] = 0;
+  private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State selectedValue: string = '';
 
@@ -382,11 +473,11 @@ struct TextPickerDialogExample {
 该示例通过alignment、offset设置弹窗的位置。
 
 ```ts
-// xxx.ets
+// TextPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: int | int[] = 0;
+  private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State selectedValue: string = '';
 
@@ -424,11 +515,11 @@ struct TextPickerDialogExample {
 该示例通过maskRect设置遮蔽区。
 
 ```ts
-// xxx.ets
+// TextPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: int | int[] = 0;
+  private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State selectedValue: string = '';
 
@@ -470,11 +561,11 @@ struct TextPickerDialogExample {
 该示例通过backgroundColor、backgroundBlurStyle和shadow设置弹窗背板。
 
 ```ts
-// xxx.ets
+// TextPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: int | int[] = 0;
+  private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State selectedValue: string = '';
 
@@ -514,11 +605,11 @@ struct TextPickerDialogExample {
 该示例通过配置canLoop设置是否循环滚动。
 
 ```ts
-// xxx.ets
+// TextPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
-  private select: int | int[] = 0;
+  private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State selectedValue: string = '';
 
@@ -558,7 +649,7 @@ struct TextPickerDialogExample {
 从API version 20开始，新增了[TextPickerDialogOptions](#textpickerdialogoptions对象说明)的selectedBackgroundStyle属性。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
@@ -595,6 +686,7 @@ struct TextPickerExample {
 从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#textpickerdialogoptions对象说明)，实现自定义背景模糊效果。
 
 ```ts
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
@@ -633,6 +725,7 @@ struct TextPickerExample {
 从API version 19开始，该示例通过配置[backgroundEffect](#textpickerdialogoptions对象说明)，实现自定义背景效果。
 
 ```ts
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {

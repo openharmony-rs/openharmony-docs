@@ -4,7 +4,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供设备使用信息统计能力，包括查询应用是否为常用应用、优先级分组、使用时长、系统事件（休眠、唤醒、解锁、锁屏）信息、应用事件（前台、后台、长时任务开始和结束）信息、通知次数等不同类型信息。
 
@@ -922,6 +922,67 @@ usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: A
 
 ## usageStatistics.queryBundleEvents
 
+queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+
+通过指定起始时间、结束时间及最大返回条数，查询指定时间段内所有应用的事件集合。若条数大于maxNum，则按事件发生时间降序排列，返回前maxNum条，否则返回所有数据。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
+
+**系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**参数**：
+
+| 参数名   | 类型     | 必填   | 说明    |
+| ----- | ------ | ---- | ----- |
+| begin | number | 是    | 起始时间。<br/>单位：ms |
+| end   | number | 是    | 结束时间。<br/>单位：ms |
+| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1, 1000]。 |
+
+**返回值**：
+
+| 类型                                       | 说明                                     |
+| ---------------------------------------- | -------------------------------------- |
+| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise对象，返回起始和结束时间段内，所有应用的事件集合。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied. |
+| 202  | Not System App. |
+| 10000001   | Memory operation failed.           |
+| 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
+| 10000003   | Failed to get system ability manager. |
+| 10000004   | Failed to access the device usage service.        |
+| 10000006   | Failed to get the application information.       |
+| 10000007   | Failed to get the system time.  |
+| 10000008   | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+
+**示例**：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+usageStatistics.queryBundleEvents(0, 20000000000000, 100).then((res: Array<usageStatistics.BundleEvents>) => {
+  console.info('BUNDLE_ACTIVE queryBundleEvents promise success.');
+  for (let i = 0; i < res.length; i++) {
+    console.info('BUNDLE_ACTIVE queryBundleEvents promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleEvents promise result ' + JSON.stringify(res[i]));
+  }
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE queryBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
+});
+```
+## usageStatistics.queryBundleEvents
+
 queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
 
 通过指定起始和结束时间，查询所有应用的事件集合，使用Promise异步回调。
@@ -1023,6 +1084,65 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError,
       console.info('BUNDLE_ACTIVE queryCurrentBundleEvents callback result ' + JSON.stringify(res[i]));
     }
   }
+});
+```
+
+## usageStatistics.queryCurrentBundleEvents
+
+queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+
+通过指定起始时间、结束时间及最大返回条数，查询指定时间段内当前应用的事件集合。若条数大于maxNum，则按事件发生时间降序排列，返回前maxNum条，否则返回所有数据。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**参数**：
+
+| 参数名   | 类型     | 必填   | 说明    |
+| ----- | ------ | ---- | ----- |
+| begin | number | 是    | 起始时间。<br/>单位：ms |
+| end   | number | 是    | 结束时间。<br/>单位：ms |
+| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1, 1000] |
+
+**返回值**：
+
+| 类型                                       | 说明                                     |
+| ---------------------------------------- | -------------------------------------- |
+| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise对象，返回指定起始和结束时间段内，当前应用的事件集合。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Not System App. |
+| 10000001   | Memory operation failed.           |
+| 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
+| 10000003   | Failed to get system ability manager. |
+| 10000004   | Failed to access the device usage service.        |
+| 10000006   | Failed to get the application information.      |
+| 10000007   | Failed to get the system time.  |
+| 10000008 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+
+**示例**：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+usageStatistics.queryCurrentBundleEvents(0, 20000000000000, 100).then((res: Array<usageStatistics.BundleEvents>) => {
+  console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise success.');
+  for (let i = 0; i < res.length; i++) {
+    console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise result ' + JSON.stringify(res[i]));
+  }
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE queryCurrentBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
 ```
 

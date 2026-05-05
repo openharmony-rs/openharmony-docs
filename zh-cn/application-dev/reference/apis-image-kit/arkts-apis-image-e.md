@@ -395,7 +395,7 @@
 | REDUCTION_MATRIX2 | 'ReductionMatrix2' | 第二校准光源下的降维矩阵。 |
 | ANALOG_BALANCE | 'AnalogBalance' | 模拟增益平衡系数。 |
 | AS_SHOT_NEUTRAL | 'AsShotNeutral' | 拍摄时的中性白点。 |
-| AS_SHOT_WHITE_XY | 'AsShotWhiteXY' | 拍摄时白点的CIE x-y色度坐标。 |
+| AS_SHOT_WHITEXY | 'AsShotWhiteXY' | 拍摄时白点的CIE x-y色度坐标。 |
 | BASELINE_EXPOSURE | 'BaselineExposure' | 基准曝光补偿值，单位：EV。 |
 | BASELINE_NOISE | 'BaselineNoise' | 基准噪声水平。 |
 | BASELINE_SHARPNESS | 'BaselineSharpness' | 基准锐度增益。 |

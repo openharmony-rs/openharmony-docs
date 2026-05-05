@@ -146,7 +146,8 @@ static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
 
 > **注意：**
 >
-> 如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在枚举结果中。
+> - 如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在枚举结果中。
+> - 当应用获取蓝牙权限后，需重新枚举MIDI设备以获取已连接的蓝牙MIDI设备。
 
 通过[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取设备数量，再通过[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口获取设备详细信息。
 
@@ -827,7 +828,7 @@ if (result == OH_MIDI_STATUS_WOULD_BLOCK) {
 1. 权限未声明：确保在module.json5中声明了`ohos.permission.ACCESS_BLUETOOTH`权限。
 2. 蓝牙未开启：连接前确保系统蓝牙已开启。
 3. 地址错误：确认蓝牙设备地址格式正确（例如"AA:BB:CC:DD:EE:FF"）。
-4. 超时问题：蓝牙连接是异步的，等待时间通常需要1-3秒（具体时间因设备型号和性能而异）。
+4. 超时问题：蓝牙连接是异步的，正常情况下需要等待1-3秒（具体时间因设备型号和性能而异）。如果目标设备已被其他主机连接，则需等待约30秒才会返回连接失败结果。建议在回调中处理超时逻辑，避免阻塞主线程。
 
 > **说明：**
 >
