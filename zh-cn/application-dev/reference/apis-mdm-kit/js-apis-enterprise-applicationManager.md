@@ -2272,6 +2272,205 @@ try {
 }
 ```
 
+## applicationManager.addAllowedDistributeAbilityConnBundles
+
+addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
+
+为指定用户添加允许使用分布式能力的应用名单，名单中的应用在指定用户下可以使用指定的分布式能力。
+
+当前支持的分布式类型有：[协同服务](#servicetype)。
+> **说明：**
+>
+> 1.如果要设置允许使用协同服务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
+> 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用协同服务的应用名单会被同步清除。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| appIdentifiers | Array&lt;string&gt;                                   | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。允许列表总数不能超过200个。 |
+| serviceType | [ServiceType](#servicetype) | 是   | 分布式能力类型。 |
+| accountId  | number      | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201043  | Prerequisites for the API call have not been satisfied. For example, distributed outgoing transmission is not disallowed before adding the distributed bidirectional collaboration trustlist. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+// 如果要在100用户下，禁止设备上除了指定应用以外的其他应用向其他设备传输数据，需要执行两个步骤：
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let accountId: number = 100;
+
+// 步骤1. 禁用100用户下的设备间单向传输数据能力（若之前已经设置过设备间单向传输数据能力的禁用，此处无需重复设置）
+try {
+  restrictions.setDisallowedPolicyForAccount(wantTemp, 'distributedTransmissionOutgoing', true, accountId);
+  console.info('Succeeded in setting distributedTransmissionOutgoing disabled');
+} catch (err) {
+  console.error(`Failed to set distributedTransmissionOutgoing disabled. Code is ${err.code}, message is ${err.message}`);
+}
+
+// 步骤2. 设置100用户下允许使用协同服务的应用名单
+try {
+  // 需根据实际情况进行替换
+  let appIdentifiers: Array<string> = ['6917****3569'];
+  applicationManager.addAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers, applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  console.info('Succeeded in adding allowed distribute ability conn bundles.');
+} catch(err) {
+  console.error(`Failed to add allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
+}
+// 执行以上两个步骤后，在100用户下，仅应用6917****3569可以向其他设备传输数据，其他应用无法向其他设备传输数据。
+// 注意：禁用某用户下的设备间单向传输数据能力后，是否需要添加允许使用协同服务的应用名单，应根据实际业务需求判断。
+```
+
+## applicationManager.removeAllowedDistributeAbilityConnBundles
+
+removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
+
+为指定用户移除允许使用分布式能力的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用在指定用户下可以使用指定类型的分布式能力；若名单中已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用指定类型的分布式能力。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| appIdentifiers | Array&lt;string&gt;                                   | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。允许列表总数不能超过200个。 |
+| serviceType | [ServiceType](#servicetype) | 是   | 分布式能力类型。 |
+| accountId  | number      | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let appIdentifiers: Array<string> = ['6917****3569'];
+  let accountId: number = 100;
+  applicationManager.removeAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers, applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  console.info('Succeeded in removing allowed distribute ability conn bundles.');
+  // 注意：移除用户下允许使用协同服务的应用名单后，是否需要解除禁用该用户下的设备间单向传输数据能力，应根据实际业务需求判断。
+} catch(err) {
+  console.error(`Failed to remove allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getAllowedDistributeAbilityConnBundles
+
+getAllowedDistributeAbilityConnBundles(admin: Want | null, serviceType: ServiceType, accountId: number): Array&lt;string&gt;
+
+获取指定用户下允许使用指定类型的分布式能力的应用名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| serviceType | [ServiceType](#servicetype) | 是   | 分布式能力类型。 |
+| accountId  | number | 是 | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;string&gt; | 允许使用指定类型的分布式能力的应用的[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let accountId: number = 100;
+  let result: Array<string> = applicationManager.getAllowedDistributeAbilityConnBundles(wantTemp, applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  console.info(`Succeeded in getting allowed distribute ability conn bundles: ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## KioskFeature<sup>20+</sup>
 
 Kiosk模式的特征。
@@ -2317,6 +2516,20 @@ Kiosk模式的特征。
 | bundleName              | string | 否    | 否   | 应用的包名。 |
 | appIndex                | number | 否    | 否   | 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)等接口来获取。 |
 | abilityInFgTotalTime    | number | 否    | 否   | Ability在前台运行的总时长，单位：毫秒。 |
+
+## ServiceType
+
+分布式能力类型。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值   | 说明  |
+| ----------- | ------ |------ |
+| COLLABORATION_SERVICE  | 0 | 协同服务。允许使用协同服务的应用，可以向其他设备传输数据。 |
 
 ## applicationManager.queryBundleStatsInfos
 

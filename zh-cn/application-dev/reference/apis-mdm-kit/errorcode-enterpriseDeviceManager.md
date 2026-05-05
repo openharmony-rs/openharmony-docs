@@ -804,3 +804,21 @@ A lock screen password has been set for the device.
 **处理步骤**
 
 删除锁屏密码。
+
+## 9201043 API调用的前置条件未满足
+
+**错误信息**
+
+Prerequisites for the API call have not been satisfied. For example, distributed outgoing transmission is not disallowed before adding the distributed bidirectional collaboration trustlist.
+
+**错误描述**
+
+当API调用的前置条件未满足时，会产生此错误码。
+
+**可能原因**
+
+在添加允许分布式双向协同应用名单之前，设备间单向传输能力未被禁止。
+
+**处理步骤**
+
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
