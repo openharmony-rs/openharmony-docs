@@ -163,7 +163,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | 返回节点不具备可聚焦属性，需要使用返回节点的子节点列表中的最后一个节点继续查询。  |
 | SEARCH_FAILURE_IN_SCROLL                  | 8  | 节点在滚动组件内查询失败。        |
 
-## InjectActionType	 
+## InjectActionType
 
 表示注入动作的枚举。	 
 
