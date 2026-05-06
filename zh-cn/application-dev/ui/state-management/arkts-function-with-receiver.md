@@ -12,7 +12,7 @@
 
 ### 语法
 
-如果是拓展[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件样式，用户声明Function-with-Reciever函数的第一个入参需要名称为this，类型是[TextAttribute](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#属性)。
+如果是拓展[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件样式，用户声明Function-with-Receiver函数的第一个入参需要名称为this，类型是[TextAttribute](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#属性)。
 
 ```ts
 function functionName(this: TextAttribute, ...): TextAttribute { ... }
