@@ -3976,7 +3976,7 @@ getParagraphStyle(): ParagraphStyle
 
 | 类型 | 说明 |
 | - | - |
-| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。<br>ArkTS-Dyn: 其中textStyle.color、textStyle.textShadows.color、textStyle.backgroundRect.color、textStyle.decoration.color属性：返回32位无符号整型颜色数值。示例：返回值4278190080，对应纯黑色十六进制颜色值0xFF000000，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>ArkTS-Sta: 其中textStyle.color、textStyle.textShadows.color、textStyle.backgroundRect.color、textStyle.decoration.color属性：返回[common2D.Color](js-apis-graphics-common2D.md#color)对象。 |
+| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。<br>ArkTS-Dyn: 其中`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>ArkTS-Sta: 其中textStyle.color、textStyle.textShadows.color、textStyle.backgroundRect.color、textStyle.decoration.color属性：返回[common2D.Color](js-apis-graphics-common2D.md#color)对象。 |
 
 **示例：**
 
