@@ -1700,7 +1700,7 @@ try {
 
 terminateUpgrade(callback: AsyncCallback\<void>): void
 
-终止升级流程。使用callback异步回调。
+终止升级。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1712,7 +1712,7 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 | 参数名      | 类型                   | 必填   | 说明                                     |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当终止升级流程成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当终止升级执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1749,7 +1749,7 @@ try {
 
 terminateUpgrade(): Promise\<void>
 
-终止升级流程。使用Promise异步回调。
+终止升级。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
