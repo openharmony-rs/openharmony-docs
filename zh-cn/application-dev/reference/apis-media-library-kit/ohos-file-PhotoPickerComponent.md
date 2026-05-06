@@ -382,7 +382,7 @@ type ScrollStopAtEndCallback = () => void
 
 type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
-用户在Picker组件中打开/关闭动态效果时的回调事件。
+宫格试图进入到大图视图、大图浏览切换时产生的回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
