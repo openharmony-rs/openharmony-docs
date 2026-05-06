@@ -8130,7 +8130,7 @@ try {
 
 setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Promise&lt;void&gt;
 
-使用逐个像素alpha数组设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+使用逐个的像素alpha数组设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
@@ -8146,7 +8146,7 @@ setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: nu
 
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------- | :--- | :----------------------------- |
-| windowMask   | Uint8Array  | 是   | 异形窗口的掩码，为逐个像素alpha数组，数组长度等于maskWidth乘以maskHeight，该数组中每个数字代表所在像素的透明度，取值范围[0, 255]，0表示所在像素完全透明，255表示所在像素完全不透明。 |
+| windowMask   | Uint8Array  | 是   | 异形窗口的掩码，为逐个的像素alpha数组，数组长度等于maskWidth乘以maskHeight，该数组中每个数字代表所在像素的透明度，取值范围[0, 255]，0表示所在像素完全透明，255表示所在像素完全不透明。 |
 | maskWidth    | number      | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度。 |
 | maskHeight   | number      | 是   | 表示异形窗口掩码的高度，必须等于窗口高度。 |
 
