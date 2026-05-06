@@ -116,6 +116,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **Example**
 
@@ -288,6 +291,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **Example**
 
@@ -1389,6 +1395,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **Example**
 
@@ -1602,6 +1610,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **Example**
 
@@ -1654,6 +1664,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **Example**
 
@@ -1714,6 +1726,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **Example**
 
@@ -2251,7 +2265,7 @@ initSession(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<Huk
 
 Initializes a session for a key operation. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2295,7 +2309,7 @@ initSession(keyAlias: string, options: HuksOptions) : Promise\<HuksSessionHandle
 
 Initializes a session for a key operation. This API uses a promise to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2344,7 +2358,7 @@ updateSession(handle: number, options: HuksOptions, callback: AsyncCallback\<Huk
 
 Updates the key operation. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2390,7 +2404,7 @@ updateSession(handle: number, options: HuksOptions, token: Uint8Array, callback:
 
 Updates the key operation by segment. The **updateSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2433,7 +2447,7 @@ updateSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promis
 
 Updates the key operation. This API uses a promise to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2485,7 +2499,7 @@ finishSession(handle: number, options: HuksOptions, callback: AsyncCallback\<Huk
 
 Finishes the key operation. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2532,7 +2546,7 @@ finishSession(handle: number, options: HuksOptions, token: Uint8Array, callback:
 
 Finishes the key operation by segment. The **finishSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2576,7 +2590,7 @@ finishSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promis
 
 Finishes the key operation. This API uses a promise to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3486,7 +3500,7 @@ Enumerates the user authentication types.
 
 | Name                           | Value  | Description                     |
 | ------------------------------- | ---- | ------------------------- |
-| **HUKS_USER_AUTH_TYPE_FINGERPRINT**.| 1 << 0 | Fingerprint authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| HUKS_USER_AUTH_TYPE_FINGERPRINT | 1 << 0 | Fingerprint authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | HUKS_USER_AUTH_TYPE_FACE        | 1 << 1 | Facial authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | HUKS_USER_AUTH_TYPE_PIN         | 1 << 2  | PIN authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | HUKS_USER_AUTH_TYPE_TUI_PIN<sup>20+</sup>         | 1 << 5  | TUI PIN authentication. <!--Del-->(Currently not supported.)<!--DelEnd--><br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
@@ -3576,7 +3590,7 @@ The system capability is **SystemCapability.Security.Huks.Extension** in API ver
 | HUKS_AUTH_STORAGE_LEVEL_ECE | 2    | The key can be accessed only when the device is unlocked.|
 > **NOTE**
 >
->  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [lock screen event](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) to ensure security.
+>  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [lock screen event](../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) to ensure security.
 ## HuksKeyWrapType<sup>20+</sup>
 
 Enumerates the key encryption types (exporting or importing keys).
@@ -4314,7 +4328,7 @@ init(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<HuksHandle
 
 Initializes a session for a key operation. This API uses an asynchronous callback to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -4336,7 +4350,7 @@ init(keyAlias: string, options: HuksOptions) : Promise\<HuksHandle>
 
 Initializes a session for a key operation. This API uses a promise to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -4363,7 +4377,7 @@ update(handle: number, token?: Uint8Array, options: HuksOptions, callback: Async
 
 Updates the key operation data by segment. This API uses an asynchronous callback to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -4386,7 +4400,7 @@ update(handle: number, token?: Uint8Array, options: HuksOptions) : Promise\<Huks
 
 Updates the key operation data by segment. This API uses a promise to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -4414,7 +4428,7 @@ finish(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksResult
 
 Finishes the key operation. This API uses an asynchronous callback to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -4436,7 +4450,7 @@ finish(handle: number, options: HuksOptions) : Promise\<HuksResult>
 
 Finishes the key operation. This API uses a promise to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
