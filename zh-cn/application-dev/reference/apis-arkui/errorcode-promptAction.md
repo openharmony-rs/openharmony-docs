@@ -126,7 +126,7 @@ The overlay cannot be opened due to the system pop-up window.
 
 **可能原因**
 
-当前页面存在系统弹出，拦截浮层的显示。
+当前页面存在系统弹出窗口，拦截浮层的显示。
 
 **处理步骤**
 
