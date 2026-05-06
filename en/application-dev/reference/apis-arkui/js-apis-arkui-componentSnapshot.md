@@ -627,6 +627,7 @@ Defines the size limit of a component screenshot.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name          | Type           |    Read-Only      |    Optional          |   Description                   |
 | ---------------|------------     | -------------|---------------| -----------------------------|
 | scale           | number | No |  Yes| Scale ratio for rendering pixel maps during a snapshot. Note that a high scale ratio may increase the time taken for the snapshot or even result in a snapshot failure.<br>Value range: [0, +∞). If the value is less than or equal to 0, the default value is used.<br> Default value: **1**<br>**NOTE**<br>Avoid capturing images that are excessively large, ideally not larger than the screen size. If the size of the image to capture exceeds device-specific underlying limits, the capture will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |

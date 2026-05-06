@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ConfigurationConstant模块提供配置信息枚举值定义的能力。
 

@@ -1,13 +1,12 @@
 # 请求通知授权
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-应用需要获取用户授权才能发送通知。在通知发布前调用[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1)接口，弹窗让用户选择是否允许发送通知。当用户拒绝授权后，将无法通过该接口再次拉起弹窗。如果应用需要向用户再次申请通知授权，则可以使用[openNotificationSettings](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettings13)接口拉起通知管理半模态弹窗。
+应用需要获取用户授权才能发送通知。在通知发布前调用[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1)接口，弹窗让用户选择是否允许发送通知。当用户拒绝授权后，将无法通过该接口再次拉起弹窗。如果应用需要向用户再次申请通知授权，则可以使用[openNotificationSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult)接口拉起通知管理半模态弹窗。
 
 ## 接口说明
 
@@ -19,7 +18,7 @@
 | -------- | -------- |
 | isNotificationEnabled():Promise\<boolean\>       | 查询通知是否授权。  |
 | requestEnableNotification(context: UIAbilityContext): Promise\<void\> | 请求发送通知的许可，第一次调用会弹窗让用户选择。     |
-| openNotificationSettings(context: UIAbilityContext): Promise\<void\>  | 拉起通知管理弹窗。|
+| openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>  | 拉起通知管理弹窗, 用户设置完成后返回设置结果。|
 
 
 ## 开发步骤
@@ -68,6 +67,8 @@
    ```
 
 3. （可选）拉起通知管理半模态弹窗，向用户再次申请通知授权。
+
+   用户授权完成后会返回设置结果，其中包含通知授权开关以及锁屏、横幅、角标、铃声、振动的开关设置结果。
 
    <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
    

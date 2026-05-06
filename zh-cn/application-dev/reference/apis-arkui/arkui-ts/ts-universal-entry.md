@@ -26,6 +26,7 @@
 **示例：**
 
 ```ts
+// @Entry装饰的自定义组件作为UI页面的入口
 @Entry
 @Component
 struct Index {
@@ -50,6 +51,7 @@ struct Index {
 **示例：**
 
 ```ts
+// 设置路由页面名字为myPage
 @Entry({ routeName: 'myPage' })
 @Component
 struct Index {

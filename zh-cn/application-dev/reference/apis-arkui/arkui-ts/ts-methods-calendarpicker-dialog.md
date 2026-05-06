@@ -34,7 +34,7 @@ static show(options?: CalendarDialogOptions): void
 
 | 参数名  | 类型                                                    | 必填 | 说明                       |
 | ------- | ------------------------------------------------------- | ---- | -------------------------- |
-| options | [CalendarDialogOptions](#calendardialogoptions对象说明) | 否   | 配置日历选择器弹窗参数。 |
+| options | [CalendarDialogOptions](#calendardialogoptions对象说明) | 否   | 配置日历选择器弹窗参数。参数缺省时无法弹出弹窗。 |
 
 ## CalendarDialogOptions对象说明
 

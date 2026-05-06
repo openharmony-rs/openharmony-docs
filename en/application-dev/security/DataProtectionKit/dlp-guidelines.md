@@ -58,6 +58,7 @@ For an application in the DLP sandbox state, the permissions granted to the appl
 
 This document provides API sample code. For details about how to create a project, see [Creating a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-project).
 1. Import the [dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) module.
+
     <!-- @[dlp_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -66,7 +67,8 @@ This document provides API sample code. For details about how to create a projec
     ```
 
 2. Open an encrypted file. The system automatically installs a DLP sandbox application for your application. <br>Add the following code to your application: 
-Prerequisites for using this API: The DLP credential server has been connected. 
+
+   Prerequisites for using this API: The DLP credential server has been connected. 
 
     <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -129,7 +131,8 @@ Prerequisites for using this API: The DLP credential server has been connected.
     ```
   
 3. Generate an encrypted DLP file. 
-Prerequisites for using this API: The DLP credential server has been connected.
+
+   Prerequisites for using this API: The DLP credential server has been connected.
 
    [You need to set up the cloud module for this feature](../DataProtectionKit/dlp-overview.md) and configure a domain account environment.
 
@@ -167,8 +170,9 @@ Prerequisites for using this API: The DLP credential server has been connected.
     }
     ```
 
-4. Check whether the application is running in a sandbox. 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+4. Check whether the application is running in a sandbox.
+
+   Prerequisites for using this API: The DLP file has been opened by the demo application.
 
     <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -188,7 +192,9 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
 
 
 5. Obtain the permissions on the file. The permissions of the DLP sandbox application vary with the user's permission on the file. For more information, see [Sandbox Restrictions](#sandbox-restrictions). 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+   
+   Prerequisites for using this API: The DLP file has been opened by the demo application.
+
     <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -221,10 +227,11 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     }
     ```
 
-7. Check whether the opened file is a DLP file. 
-Prerequisites for using this API: The DLP file needs to be checked.
+7. Check whether the opened file is a DLP file.
 
-    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   Prerequisites for using this API: The DLP file needs to be checked.
+
+    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->  
     
     ``` TypeScript
     isCurrentDlpFile() {
@@ -246,12 +253,11 @@ Prerequisites for using this API: The DLP file needs to be checked.
         console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
         hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
       }).finally(() => {
-          fs.closeSync(file);
+        fileIo.closeSync(file);
       });
     }
     ```
-
-
+    
 8. Subscribe to or unsubscribe from the DLP file open event.
 
     <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -276,7 +282,7 @@ Prerequisites for using this API: The DLP file needs to be checked.
       
     subscribe() {
       try {
-        dlpPermission.on ('openDLPFile' , this.event); // Subscribe to the DLP file open event.
+        dlpPermission.on('openDLPFile', this.event); // Subscribe to the DLP file open event.
         this.result = 'subscribe result: Subscribed';
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'subscribe result: Subscribed');
       } catch (err) {
@@ -289,7 +295,8 @@ Prerequisites for using this API: The DLP file needs to be checked.
 
 
 9. Obtain information about the DLP files that are recently accessed. 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+
+   Prerequisites for using this API: The DLP file has been opened by the demo application.
 
     <!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -307,8 +314,9 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     }
     ```
 
-10. Obtain information about the DLP sandbox applications in the retention state. 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+10. Obtain information about the DLP sandbox applications in the retention state.
+
+    Prerequisites for using this API: The DLP file has been opened by the demo application.
 
     <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -381,7 +389,8 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     ```
 
 14. Start the DLP manager application in borderless mode. This API can be called only in the UIAbility context and supports only the stage model. 
-Prerequisites for using this API: The DLP credential server has been connected.
+    
+    Prerequisites for using this API: The DLP credential server has been connected.
 
     <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -410,7 +419,8 @@ Prerequisites for using this API: The DLP credential server has been connected.
     }
     ```
 15. Check whether the current system provides the DLP feature. 
-Prerequisites for using this API: The DLP credential server has been connected.
+
+    Prerequisites for using this API: The DLP credential server has been connected.
     <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -427,7 +437,8 @@ Prerequisites for using this API: The DLP credential server has been connected.
     }
     ```
 16. Sets the protection policy for enterprise applications.  
-Prerequisites for using this API: The DLP credential server has been connected.
+
+    Prerequisites for using this API: The DLP credential server has been connected.
     
     16.1 Policy format
     | Field| Type| Description|
@@ -439,13 +450,13 @@ Prerequisites for using this API: The DLP credential server has been connected.
     16.2 Rule format
     | Field| Type| Description|
     | -------- | -------- | -------- |
-      | ruleId |string | Rule name. The value can contain a maximum of 64 bytes and can contain only letters (case-sensitive), digits (0-9), and underscores (_).|
+    | ruleId |string | Rule name. The value can contain a maximum of 64 bytes and can contain only letters (case-sensitive), digits (0-9), and underscores (_).|
     | attributes | Array&lt;Attribute&gt; | Attribute list. A rule can contain a maximum of 32 attributes.|
 
     16.3 Attribute format
     | Field| Type| Description|
     | -------- | -------- | -------- |
-      | attributeId |string | Attribute name.|
+    | attributeId |string | Attribute name.|
     | attributeValues | Array&lt;string&gt; | Attribute value. A maximum of 32 attribute values is allowed.|
     | valueType | number | Attribute value type. The value** 0** indicates an integer, and the value **1** indicates a string.|
     | opt | number | Comparison method, which is used to compare the actual attribute with the policy attribute.|
@@ -453,7 +464,7 @@ Prerequisites for using this API: The DLP credential server has been connected.
     16.4 Supported attributes
     | Attribute Name| Attribute Value| Attribute Value Type| Scenario|
     | -------- | -------- | -------- | -------- |
-     | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | Integer| 1: The device health report is normal.<br>2: The device has health risks, but the risk factor is irrelevant to the root.<br> 3: The device has health risks, and the risk factor is relevant to the root.<br> 4: An exception occurs.|
+    | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | Integer| 1: The device health report is normal.<br>2: The device has health risks, but the risk factor is irrelevant to the root.<br> 3: The device has health risks, and the risk factor is relevant to the root.<br> 4: An exception occurs.|
     | NetStatus | InterNet <br> ExtraNet <br> NoNet | String| InterNet: The device is used inside the company.<br>ExtraNet: The device is used outside the company.<br>NoNet: The device is offline.|
     | DebugMode | 1 <br> 2 | Integer| 1: The debugging mode is enabled on the device.<br>2: The debugging mode is disabled on the device.|
     | AdvancedSecurityMode | 1 <br> 2 | Integer| 1: The advanced security mode is enabled on the device.<br>2: The advanced security mode is disabled on the device. |

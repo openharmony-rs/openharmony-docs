@@ -87,10 +87,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          // 获取所有系统热键
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
+            console.info(`Succeeded in getting list of system hotkeys: ${JSON.stringify(data)}.`);
           }).catch((error: BusinessError) => {
-            console.error(`Get all system hotkeys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get all system hotkeys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           })
         })
     }
@@ -147,12 +148,13 @@ struct Index {
             isRepeat: true
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           }
           try {
+            // 订阅热键变更事件
             inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
           } catch (error) {
-            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -201,15 +203,17 @@ struct Index {
           let zKey = 2042;
           // 取消订阅单个应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           }
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
+            // 订阅热键变更事件
             inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            // 取消订阅热键变更事件
             inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -231,15 +235,17 @@ struct Index {
           let zKey = 2042;
           // 取消订阅所有应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           }
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
+            // 订阅热键变更事件
             inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            // 取消订阅热键变更事件
             inputConsumer.off("hotkeyChange", hotkeyOption);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -294,11 +300,12 @@ struct Index {
               action: 1,
               isRepeat: false,
             }
+            // 订阅按键按下事件
             inputConsumer.on('keyPressed', options, (event: KeyEvent) => {
-              console.info(`Subscribe success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in subscribing ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Subscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to subscribe , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -352,14 +359,16 @@ struct Index {
               isRepeat: false,
             }
             let callback = (event: KeyEvent) => {
-              console.info(`Unsubscribe success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in unsubscribing ${JSON.stringify(event)}.`);
             }
+            // 订阅按键按下事件
             inputConsumer.on('keyPressed', options, callback);
+            // 取消订阅按键按下事件
             inputConsumer.off('keyPressed', callback);
             // 取消当前已订阅的所有回调函数
             inputConsumer.off("keyPressed");
           } catch (error) {
-            console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

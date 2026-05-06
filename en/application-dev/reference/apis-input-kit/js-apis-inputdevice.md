@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The inputDevice module implements input device management functions such as listening for the connection and disconnection of input devices and querying input device information such as the device name.
 
@@ -316,7 +316,7 @@ const DOMAIN = 0x0000;
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
   @State message: string = "Click to obtain the device list and monitor device hot-plug events";
-  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
+  keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   build() {
     RelativeContainer() {
@@ -331,7 +331,7 @@ struct Index {
                     if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
                       // The physical keyboard is connected.
                       this.isPhysicalKeyboardExist = true;
-                      this.keyBoards.set(data[i], type);
+                      this.keyboards.set(data[i], type);
                     }
                   });
                 }
@@ -344,14 +344,14 @@ struct Index {
                   if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
                     // The physical keyboard is inserted.
                     this.isPhysicalKeyboardExist = true;
-                    this.keyBoards.set(data.deviceId, type);
+                    this.keyboards.set(data.deviceId, type);
                   }
                 });
-                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
                   // The physical keyboard is removed.
                   this.isPhysicalKeyboardExist = false;
-                  this.keyBoards.delete(data.deviceId);
+                  this.keyboards.delete(data.deviceId);
                 }
               });
               this.message = "Device monitoring enabled successfully"
@@ -626,7 +626,7 @@ Checks whether the input device supports the specified keys. This API uses an as
 | Name    | Type                                     | Mandatory| Description                                                  |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number                                    | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode)  | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt;  | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
 | callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | Yes  | Callback used to return the result.                          |
 
 **Error codes**
@@ -677,7 +677,7 @@ Checks whether the input device supports the specified keys. This API uses a pro
 | Name    | Type                | Mandatory| Description                                                  |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number               | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
 
 **Return value**
 
@@ -735,7 +735,7 @@ Checks whether the input device supports the specified keys.
 | Name    | Type                | Mandatory| Description                                                  |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number               | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
 
 **Return value**
 
@@ -814,7 +814,7 @@ struct Index {
         .onClick(() => {
           // Query the keyboard type of the input device whose ID is 1.
           try {
-            inputDevice.getKeyboardType(1, (error: BusinessError, type: number) => {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: inputDevice.KeyboardType) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -873,7 +873,7 @@ struct Index {
         .onClick(() => {
           // Query the keyboard type of the input device whose ID is 1.
           try {
-            inputDevice.getKeyboardType(1).then((type: number) => {
+            inputDevice.getKeyboardType(1).then((type: inputDevice.KeyboardType) => {
               console.info(`Keyboard type: ${JSON.stringify(type)}`);
             }).catch((error: BusinessError) => {
               console.error(`Get keyboard type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -929,7 +929,7 @@ struct Index {
         .onClick(() => {
           // Query the keyboard type of the input device whose ID is 1.
           try {
-            let type: number = inputDevice.getKeyboardTypeSync(1)
+            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1)
             console.info(`Keyboard type: ${JSON.stringify(type)}`)
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`)
@@ -1115,6 +1115,7 @@ Provides information about an input device.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
 | id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|

@@ -13,7 +13,7 @@ typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendIn
 
 ## Overview
 
-A struct that describes the returned information about a transient task.
+A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task.
 
 **Since**: 13
 

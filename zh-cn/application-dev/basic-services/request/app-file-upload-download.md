@@ -4,7 +4,7 @@
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 应用支持将文件上传到网络服务器，也支持从网络服务器下载资源文件到本地目录。
 
@@ -669,8 +669,7 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
         logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
       })
       task.on('completed', async (progress) => {
-        console.warn('Request download completed, ' + JSON.stringify(progress));
-        logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         // 获取文件状态信息，其中包含大小
         let filePath = filesDir + '/' + fileName;
         // 获取文件状态信息，其中包含大小

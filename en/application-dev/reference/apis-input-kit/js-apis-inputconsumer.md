@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **inputConsumer** module implements listening for combination key events as well as listening and interception for volume key events.
 
@@ -31,8 +31,8 @@ Defines shortcut key options.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
-| preKeys   | Array&lt;number&gt; | No     | No     | Modifier key set (including Ctrl, Shift, and Alt). A maximum of two modifier keys are supported. There is no requirement on the sequence of modifier keys.<br>For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.|
-| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Keycode](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.|
+| preKeys   | Array&lt;number&gt; | No     | No     | Modifier key set (including Ctrl, Shift, and Alt). One to four modifier keys are supported. There is no requirement on the sequence of modifier keys.<br>For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.|
+| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [@ohos.multimodalInput.keyCode (Keycode)](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.|
 | isRepeat  | boolean  | No     | Yes     | Whether to report repeated key events. The value **true** means to report repeated key events, and the value **false** means the opposite. The default value is **true**.|
 
 ## KeyPressedConfig<sup>16+</sup>
@@ -43,6 +43,7 @@ Sets the key event consumption configuration.
 
 **Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | key       | number  | No     | No     | Key value.<br>**Note**: From API version 21, the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode), [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode), and [KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode) keys.<br>In API version 20 or earlier versions, only the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode) and [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode) keys are supported.|
@@ -63,7 +64,7 @@ Obtains all system shortcut keys. This API uses a promise to return the result.
 
 | Type        |  Description                                      |
 | ---------- |  ---------------------------------------- |
-| Promise&lt;Array&lt;HotkeyOptions&gt;&gt;                    | Promise used to return the list of all system shortcut keys.|
+| Promise&lt;Array&lt;[HotkeyOptions](#hotkeyoptions)&gt;&gt;                    | Promise used to return the list of all system shortcut keys.|
 
 **Error codes**:
 
@@ -113,7 +114,7 @@ Subscribes to application shortcut key change events based on the specified opti
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | Yes   | Event type. This parameter has a fixed value of **hotkeyChange**.                  |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | Yes   | Shortcut key options.                |
-| callback   | Callback&lt;HotkeyOptions&gt; | Yes   | Callback used to return the application shortcut key change event.|
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | Yes   | Callback used to return the application shortcut key change event.|
 
 **Error codes**:
 
@@ -175,7 +176,7 @@ Unsubscribes from application shortcut key change events. This API uses an async
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | Yes   | Event type. This parameter has a fixed value of **hotkeyChange**.       |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | Yes   | Shortcut key options.            |
-| callback   | Callback&lt;HotkeyOptions&gt; | No   | Callback to unregister. If this parameter is left unspecified, listening will be disabled for all callbacks registered for the specified shortcut key options.|
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | No   | Callback to unregister. If this parameter is left unspecified, listening will be disabled for all callbacks registered for the specified shortcut key options.|
 
 **Error codes**:
 

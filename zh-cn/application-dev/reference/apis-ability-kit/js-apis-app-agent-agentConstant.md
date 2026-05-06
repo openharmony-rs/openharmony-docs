@@ -5,7 +5,7 @@
 <!--Owner: @yangxuguang-huawei-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 agentConstant模块提供Agent相关的常量。
 

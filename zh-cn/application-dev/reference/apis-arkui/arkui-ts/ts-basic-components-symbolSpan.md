@@ -112,6 +112,29 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
 | value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | SymbolSpan组件粗细。<br/>默认值：FontWeight.Normal |
 
+### fontWeight
+
+fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+
+设置SymbolSpan组件图标小符号的粗细，支持通过FontWeightConfigs配置是否开启可变字重调节、是否开启随设备的字体粗细级别自动更新字重。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是 | SymbolSpan组件图标小符号的粗细。<br/>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。<br/>ResourceStr类型仅支持number类型取值的字符串形式，例如“400"，以及“bold”、“bolder”、“lighter”、“regular”、“medium”分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal |
+| fontWeightConfigs | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否 | 字体粗细配置。<br/>默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
+
 ### renderingStrategy
 
 renderingStrategy(value: SymbolRenderingStrategy)
@@ -318,3 +341,75 @@ struct Index {
 }
 ```
 ![SymbolSpanModifier](figures/symbolSpanModifier.gif)
+
+### 示例3（设置字体粗细）
+
+该示例通过[fontWeight](#fontweight-1)属性展示SymbolSpan不同粗细配置下的效果：第一行图标小符号展示启用可变字重后，分别设置字重值为220和660的效果；第二行图标小符号展示在将设备的系统字体粗细设置为粗体后，分别设置跟随和不跟随设备的字体粗细级别自动更新的效果。
+
+从API版本26.0.0开始，新增[fontWeight](#fontweight-1)属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Text('font weight: 220')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(220, { enableVariableFontWeight: true })
+              .fontSize(96)
+          }
+        }
+        Column() {
+          Text('            ')
+        }
+        Column() {
+          Text('font weight: 660')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(660, { enableVariableFontWeight: true })
+              .fontSize(96)
+          }
+        }
+      }
+      Row() {
+        Text('    ')
+      }
+      Row() {
+        Text('After set system text weight: Bold')
+      }
+      Row() {
+        Column() {
+          Text('device category: true')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: true })
+              .fontSize(96)
+          }
+        }
+        Column() {
+          Text('    ')
+        }
+        Column() {
+          Text('device category: false')
+          Text() {
+            // ohos_trash为系统预置的垃圾桶小符号
+            SymbolSpan($r('sys.symbol.ohos_trash'))
+              .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: false })
+              .fontSize(96)
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+![symbolSpanFontWeightConfigs](figures/symbolSpanFontWeightConfigs.png)

@@ -1,8 +1,8 @@
 # 业务模块并发加载场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -95,7 +95,7 @@
      }
    
      // 倒计时
-     async Countdown(time: number) {
+     async countdown(time: number) {
        return new Promise((resolve: (value: boolean) => void) => {
          setTimeout(() => {
            resolve(true);
@@ -182,7 +182,7 @@
              })
              .onClick(async () => {
                console.info(`Timer start`);
-               await this.timer?.Countdown(1000);
+               await this.timer?.countdown(1000);
                console.info(`Timer end`);
                this.countdown = 'success';
              })

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 The **Zip** module provides APIs for file compression and decompression.
 
@@ -983,7 +983,7 @@ Creates this **Zip** instance. A **Zip** instance is returned upon a success.
 
 | Type         | Description                    |
 | ------------- | ------------------------ |
-| [Zip](#zip12) | The **Zip** instance created.|
+| [Zip](#zip12) | **Zip** instance created.|
 
 **Example**
 

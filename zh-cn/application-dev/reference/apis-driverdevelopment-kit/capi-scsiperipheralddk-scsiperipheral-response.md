@@ -1,7 +1,7 @@
 # ScsiPeripheral_Response
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
@@ -26,8 +26,8 @@ typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t senseData[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN] | sense data（SCSI设备返回给主机的信息，用于报告设备的状态、错误信息以及诊断信息）。 |
-| ScsiPeripheral_Status status | 调用完成时的状态，例如良好（Good）、忙（Busy）。 |
+| uint8_t senseData[[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN](capi-scsi-peripheral-types-h.md)] | sense data（SCSI设备返回给主机的信息，用于报告设备的状态、错误信息以及诊断信息）。 |
+| [ScsiPeripheral_Status](capi-scsi-peripheral-types-h.md#scsiperipheral_status) status | 调用完成时的状态，例如良好（Good）、忙（Busy）。 |
 | uint8_t maskedStatus | 在Linux的SCSI通用接口（SG）中，masked_status 字段用于存储经过处理后的SCSI状态，以便应用程序可以更方便地读取和解析。 |
 | uint8_t msgStatus | 消息状态。 |
 | uint8_t sbLenWr | 指的是实际写入到 Sense Buffer（感应缓冲区）的字节数。 |

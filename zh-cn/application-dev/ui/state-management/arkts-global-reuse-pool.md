@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为提升组件回收与复用的性能和内存效率，全局复用池功能允许开发者在组件树中的任意组件处为@Reusable/@ReusableV2组件配置针对指定自定义组件的复用池，该全局复用池优先级高于与父组件绑定的默认复用池。
+为提升组件回收与复用的性能和内存效率，全局复用池功能允许开发者在任意自定义组件上配置针对指定@Reusable/@ReusableV2复用组件的复用池，该全局复用池优先级高于与父组件绑定的默认复用池。
 
 全局复用池提供了在不同父组件间共享回收组件实例、控制缓存生命周期和大小、以及首次使用前预渲染组件的能力。在阅读本文档之前，建议先阅读[@ComponentV2](./arkts-create-custom-components.md#componentv2)、[@Component](./arkts-create-custom-components.md#component)、[@Reusable](./arkts-reusable.md)和[@ReusableV2](./arkts-new-reusableV2.md)。
 
@@ -20,15 +20,136 @@
 
 在当前实现中，每个@Reusable/@ReusableV2组件的父组件都维护自己的本地复用池。当相同的可复用组件类型被多个同级组件使用时，这会导致复用效率低下，因为一个父组件池中的回收实例无法被另一个父组件复用。
 
-全局复用池通过允许开发者在上级组件@Component或@ComponentV2处配置复用池来解决上述复用效率问题。全局复用池启用后，当复用组件创建或销毁时，框架会向上遍历组件树，为回收和复用操作查找接受指定可复用组件类型的全局复用池，从而支持跨父组件的复用场景，增加复用率，提升复用组件切换的性能。
-
-全局复用池的能力：
+全局复用池通过允许开发者在组件树的上级节点（标注为@Component或@ComponentV2的组件）处配置复用池来解决上述复用效率问题。全局复用池启用后，当复用组件创建或销毁时，框架会向上遍历组件树，为回收和复用操作查找接受指定可复用组件类型的全局复用池，从而支持跨父组件的复用场景，增加复用率，提升复用组件切换的性能。全局复用池的能力：
 
 - 单个复用池可以为多个子组件提供服务，减少复用池的数量并提高复用率。
-- 开发者可以选择组件类的所有实例共享单个复用池（`shared`）还是每个实例拥有自己的池（`perInstance`）。
-- `IReusableInfo`接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
-- `preRender`接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
-- 如果通过祖先遍历未找到复用池，框架将回退到直接父组件中的传统复用池行为。
+- 开发者可以选择组件类的所有实例共享单个复用池（[shared](#复用池所有权模式)）还是每个实例拥有自己的池（[perInstance](#复用池所有权模式)）。
+- [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo)接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
+- [preRender](../../reference/apis-arkui/js-apis-stateManagement.md#prerender)接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
+- 复用组件在被回收或创建时，如果通过遍历父组件未找到匹配的全局复用池，则该组件会使用直接父组件中的默认复用池进行回收和复用。
+
+### @Reusable/@ReusableV2默认复用池的局限性
+
+@Reusable和@ReusableV2声明的自定义组件有默认的复用能力，其默认复用池仅存在父组件中，所以当复用的组件是粒度较小的自定义组件，同一复用组件在不同父组件中使用时，无法复用不同父组件下创建的复用组件。
+
+典型应用场景如下，一个父组件下拥有2个可以切换的不同子组件，不同子组件使用了相同的复用组件，这些复用组件的复用池在默认情况下只能存在于子组件中，在子组件切换时，复用池会跟着子组件一起销毁，导致渲染新组件时使用的复用组件只能重新创建，无法从默认复用池中复用已创建的实例。
+
+![](./figures/arkts-global-reuse-reusable-diff.png)
+
+默认复用池实例代码：
+
+```ts
+@Entry
+@ComponentV2
+struct Index {
+  @Local componentSwitch: boolean = false;
+  build() {
+    Column() {
+      Button('Switch components')
+        .onClick(() => {
+          this.componentSwitch = !this.componentSwitch;
+        })
+      if (this.componentSwitch) { // 切换不同子组件
+        ChildComponentA()
+      } else {
+        ChildComponentB()
+      }
+    }
+  }
+}
+@ComponentV2
+struct ChildComponentA { // ReusableComponent复用组件的复用池默认在组件ChildComponentA上，在Index组件中if分支切换时销毁
+  build() {
+    Column() {
+      Text('Component A')
+      ReusableComponent() // 子组件ComponentA和ComponentB共用复用组件ReusableComponent
+    }
+  }
+}
+@ComponentV2
+struct ChildComponentB {
+  build() {
+    Column() {
+      Text('Component B')
+      ReusableComponent() // 子组件ComponentA和ComponentB共用复用组件ReusableComponent
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableComponent { // 复用组件
+  aboutToRecycle() {
+    console.info("Reusable component is being recycled");
+  }
+  aboutToDisappear() {
+    console.info("Reusable component is being destroyed"); // 在Index组件中if分支切换时，由于位于父组件ChildComponentA的默认复用池被销毁，该复用组件也会被销毁，无法被ChildComponentB复用。
+  }
+  build() {
+    Text('ReusableComponent')
+  }
+}
+```
+
+新增全局复用能力后，我们可以在最上层组件`Index`上声明全局复用池，在if切换组件时，`ChildComponentA`下的复用组件`ReusableComponent`能存入`Index`上的全局复用池，然后在`ChildComponentB`中的`ReusableComponent`创建时从全局复用池中取出并复用，避免重复创建复用组件。
+
+适配全局复用能力的示例如下：
+
+```ts
+@Entry
+@ComponentV2({
+  reusePool: 'shared', // 配置全局复用池模式，使能全局复用能力
+  poolAccepts: ['ReusableComponent'], // 配置全局复用池接纳名称为ReuseComponent的自定义组件
+  freezeWhenInactive: false // 组件冻结默认配置 
+})
+struct Index {
+  @Local componentSwitch: boolean = false;
+  build() {
+    Column() {
+      Button('Switch components')
+        .onClick(() => {
+          this.componentSwitch = !this.componentSwitch;
+        })
+      if (this.componentSwitch) { // 切换不同子组件
+        ChildComponentA()
+      } else {
+        ChildComponentB()
+      }
+    }
+  }
+}
+@ComponentV2
+struct ChildComponentA { // ReusableComponent复用组件的复用池使用上层组件Index的全局复用池，在ComponentA上的默认复用池会被跳过
+  build() {
+    Column() {
+      Text('Component A')
+      ReusableComponent() // 子组件ComponentA和ComponentB共用复用组件ReusableComponent
+    }
+  }
+}
+@ComponentV2
+struct ChildComponentB {
+  build() {
+    Column() {
+      Text('Component B')
+      ReusableComponent() // 子组件ComponentA和ComponentB共用复用组件ReusableComponent
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableComponent { // 复用组件
+  aboutToRecycle() {
+    // 在Index组件中if分支切换时，该组件由上层组件Index声明的全局复用池接纳，并复用到ChildComponentB中的ReusableComponent创建过程中
+    console.info("Reusable component is being recycled"); 
+  }
+  aboutToDisappear() {
+    console.info("Reusable component is being destroyed"); 
+  }
+  build() {
+    Text('ReusableComponent')
+  }
+}
+```
 
 ### 全局复用池与默认复用池对比
 
@@ -41,8 +162,7 @@
 | 预渲染 | 不支持 | `preRender`在首次使用前创建组件。 |
 | 内存管理 | 池生命周期与父实例绑定 | `shared`池持续存在直到所有拥有实例被销毁；`perInstance`池与单个实例绑定。 |
 | V1 与 V2 混合 | 不支持 | `poolAccepts`可同时包含@Reusable复用组件@ReusableV2复用组件。 |
-| 读取复用池状态 | 不支持 | `getReusableInfo`可获取当前自定义组件的全局复用池的信息。 |
-
+| 读取复用池状态 | 不支持 | [getReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#getreusableinfo)可获取当前自定义组件的全局复用池的信息。 |
 
 ## 装饰器说明
 
@@ -50,8 +170,8 @@
 
 | 参数 | 说明 |
 | --------- | ----------- |
-| `reusePool` | `ReusePoolOwnership`类型的字符串字面量。必须为`"shared"`或`"perInstance"`。决定此组件类的所有实例是共享单个复用池还是每个实例拥有自己的池。必须与`poolAccepts`一起使用。 |
-| `poolAccepts` | 可复用组件构造函数引用数组。列出此复用池接受哪些@Reusable/@ReusableV2组件进行回收。`reusePool`和`poolAccepts`参数必须同时提供。|
+| `reusePool` | [`ReusePoolOwnership`](#复用池所有权模式)类型的字符串字面量。必须为`"shared"`或`"perInstance"`。决定此组件类的所有实例是共享单个复用池还是每个实例拥有自己的池。必须与`poolAccepts`一起使用。 |
+| `poolAccepts` | 可复用组件名称的数组。列出此复用池接受哪些@Reusable/@ReusableV2组件进行回收。`reusePool`和`poolAccepts`参数必须同时提供。|
 
 
 ## 使用规则
@@ -74,6 +194,8 @@
 
 **`"shared"`**：拥有@Component/@ComponentV2类的所有实例共享单个复用池实例。
 
+![](./figures/arkts-global-reuse-reusable-shared.png)
+
 `shared`复用池的生命周期：
 
 1. 当拥有组件的第一个实例被创建时，复用池被创建并被该实例引用。
@@ -86,9 +208,11 @@
 
 **`"perInstance"`**：拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。复用池的生命周期与其拥有组件实例的生命周期相同。当拥有组件被销毁时，其复用池和其中的所有回收组件也被销毁。
 
+![](./figures/arkts-global-reuse-reusable-perinstance.png)
+
 建议开发者配置`shared`所有权。这样可以获得更好的复用率和更低的内存占用。
 
-## 可用接口
+## 接口说明
 
 有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅[状态管理API参考](../../reference/apis-arkui/js-apis-stateManagement.md)。
 
@@ -96,16 +220,16 @@
 
 | 接口 | 说明 |
 | --- | ----------- |
-| `UIUtils.getCustomComponentContext(this).getReusePool()` | 获取当前组件的`IReusePool`。如果未配置全局复用池，则返回`undefined`。 |
-| `IReusePool.getReusableInfo(reusableComp, reuseId?)` | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
-| `IReusePool.preRender(builder, n)` | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
-| `IReusableInfo.count` | 池中当前回收的组件数（只读）。 |
+| [UIUtils.getCustomComponentContext(this).getReusePool()](../../reference/apis-arkui/js-apis-stateManagement.md#getreusepool) | 获取当前组件的[IReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#ireusepool)。如果未配置全局复用池，则返回`undefined`。 |
+| [IReusePool.getReusableInfo(reusableComp, reuseId?)](../../reference/apis-arkui/js-apis-stateManagement.md#getreusableinfo) | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
+| [IReusePool.preRender(builder, n)](../../reference/apis-arkui/js-apis-stateManagement.md#prerender) | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
+| [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo).count` | 池中当前回收的组件数（只读）。 |
 | `IReusableInfo.maxCount` | 允许的最大回收组件数。设置此项可控制缓存大小。 |
 | `IReusableInfo.reuseId` | 与此池桶关联的reuseId（只读）。 |
 
 ## 使用限制
 
-- @Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局服用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结功能（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结功能（V2）](./arkts-custom-components-freezeV2.md)。
+- @Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局复用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结功能（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结功能（V2）](./arkts-custom-components-freezeV2.md)。
 
 - `getReusableInfo`和`preRender`仅在全局复用池实例上可用。它们不能在默认复用池的自定义组件上使用。
 
@@ -115,7 +239,7 @@
 
 - 使用`"shared"`所有权时，只要拥有组件类的任何实例存在，池就会持续存在。如果拥有组件在应用程序的多个部分中使用，回收的组件可能会累积。使用`maxCount`来控制内存使用。
 
-- 建议不要在`aboutToRecycle`中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
+- 建议不要在[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
 
 ## 使用场景
 
@@ -184,7 +308,7 @@ struct ReusableCompA {
   }
 }
 
-@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableCompA], freezeWhenInactive: false})
+@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableCompA'], freezeWhenInactive: false})
 struct CompA {
   @Require @Param label: string;
 
@@ -231,7 +355,7 @@ ReusableCompA aboutToDisappear (×6, 所有缓存实例被永久销毁)
 
 ### 使用@Provider/@Consumer的独立复用池
 
-此示例演示与特定父实例绑定的`perInstance`池。它还展示了@Consumer在复用周期后如何重连到 @Provider。
+此示例演示与特定父实例绑定的`perInstance`池。它还展示了[@Consumer](./arkts-new-provider-and-consumer.md)在复用周期后如何重连到[@Provider](./arkts-new-provider-and-consumer.md)。
 
 ```typescript
 @ReusableV2
@@ -264,7 +388,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
 struct Parent {
   @Provider() provide: number = 100;
   @Local boolVal: boolean = false;
@@ -470,7 +594,7 @@ struct SubChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: [LegacyComp, GlobalChild, ReusableChild, SubChild], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['LegacyComp', 'GlobalChild', 'ReusableChild', 'SubChild'], freezeWhenInactive: false })
 struct Index {
   @Provider() provide: number = 100;
   @Local boolVal: boolean = true;
@@ -520,12 +644,12 @@ struct Index {
 **步骤 1 — 启动**（GlobalChild可见）：
 ```plaintext
 GlobalChild aboutToAppear
-  LegacyComp 池: count=0, maxCount=Infinity
+  LegacyComp 池: count=0, maxCount=100
   设置后 LegacyComp 池: maxCount=10
 SubChild aboutToAppear
 ```
 
-点击"检查GlobalChild"：`count=0, maxCount=Infinity`（GlobalChild可见，不在池中）。
+点击"检查GlobalChild"：`count=0, maxCount=100`（GlobalChild可见，不在池中）。
 
 点击"检查LegacyComp"：`count=0, maxCount=10`（不可见，从未回收，但设置了maxCount）。
 
@@ -557,7 +681,7 @@ SubChild aboutToReuse         // 级联
 
 | 可见视图 | 组件 | 在池中 | count | maxCount |
 | ------------ | --------- | ------- | ----- | -------- |
-| GlobalChild树 | GlobalChild | 否 | 0 | Infinity |
+| GlobalChild树 | GlobalChild | 否 | 0 | 100 |
 | GlobalChild树 | LegacyComp | 是 | 1 | 10 |
 | LegacyComp树 | GlobalChild | 是 | 1 | 10 |
 | LegacyComp树 | LegacyComp | 否 | 0 | 10 |
@@ -593,7 +717,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;
@@ -741,7 +865,7 @@ struct ReusableChild {
   }
 }
 
-@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
 struct Index2 {
   @Local showChild: boolean = true;
 
@@ -819,7 +943,7 @@ struct ReusableLeaf {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: [ChildA], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: ['ChildA'], freezeWhenInactive: false })
 struct EntryComp {
   @Local showParent: boolean = true;
 
@@ -839,7 +963,7 @@ struct EntryComp {
   }
 }
 
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableLeaf], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableLeaf'], freezeWhenInactive: false })
 struct ParentA {
   @Local showChild: boolean = true;
 
@@ -864,13 +988,13 @@ struct ParentA {
 - `ReusableLeaf`使用`ParentA`上声明的全局复用池，因为`ParentA`复用池配置`poolAccepts`接受 `ReusableLeaf`。
 
 
-**关闭/打开ChildA** — 两者都从各自的池中回收和复用：
+**关闭/打开ChildA** — `ChildA`和`ReusableLeaf`都从各自的池中回收和复用：
 ```plaintext
 ChildA aboutToRecycle / aboutToReuse         // EntryComp的池
 ReusableLeaf aboutToRecycle / aboutToReuse   // ParentA的池
 ```
 
-**关闭ParentA**（当ChildA在池中时）— ParentA被销毁。其perInstance类型全局复用池被销毁，同时清理ReusableLeaf。但ChildA被在EntryComp的复用池缓存：
+**关闭ParentA**（当ChildA在池中时）— ParentA被销毁。其perInstance复用池被销毁，同时清理ReusableLeaf。但ChildA仍保留在EntryComp的复用池中：
 ```plaintext
 ParentA aboutToDisappear
 ReusableLeaf aboutToDisappear   // ParentA的perInstance类型复用池被销毁
@@ -886,7 +1010,7 @@ ReusableLeaf aboutToAppear      // 全新创建—旧池被销毁
 
 ### 使用`preRender`预渲染组件
 
-`preRender`API用于提前创建可复用组件实例并将其放入复用池，在后续可复用组件被创建时可以从复用池取已创建的实例。
+`preRender`用于提前创建可复用组件实例并将其放入复用池，后续创建时可直接复用。
 
 ```typescript
 import { UIUtils } from '@kit.ArkUI';
@@ -916,7 +1040,7 @@ function preRenderBuilder() {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
@@ -960,4 +1084,4 @@ struct CompA {
 
 >**说明：**
 >
-> `preRender`仅将池配置为接受的组件放入池中。预渲染复用池不接受的组件会立即创建并销毁。预渲染期间不会从全局复用池中复用组件；复用池仅接受新创建的实例。
+> `preRender`仅将池配置为接受的组件放入其中。预渲染复用池不接受的组件会立即创建并销毁。预渲染期间不会从全局池中复用组件；复用池仅接受新创建的实例。

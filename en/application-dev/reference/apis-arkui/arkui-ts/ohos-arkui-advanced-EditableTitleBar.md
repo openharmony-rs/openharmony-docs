@@ -372,7 +372,7 @@ struct Index {
 ![editabletitlebarDefaultFocus01](figures/editabletitlebarDefaultFocus01.png)
 
 ### Example 5: Setting a Custom Right Icon as the Default Focus
-This example demonstrates how to set the **leftIconDefaultFocus** attribute in **EditableTitleBar** to ensure the right icon obtains focus by default in the focused state.
+This example demonstrates how to set the **defaultFocus** attribute in **EditableTitleBar** to ensure the right icon obtains focus by default in the focused state.
 
 The **defaultFocus** API is added to [EditableTitleBarMenuItem](#editabletitlebarmenuitem) since API version 18.
 ```ts

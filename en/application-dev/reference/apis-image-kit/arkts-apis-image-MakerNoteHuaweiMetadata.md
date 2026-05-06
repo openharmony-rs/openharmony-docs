@@ -72,7 +72,7 @@ Returns an empty [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetad
 
 **Returns**:
 
-| Type                                                        | **Description**                                 |
+| Type                                                        | Description                                 |
 | ------------------------------------------------------------ | ------------------------------------- |
 | [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) | Empty **MakerNoteHuaweiMetadata** instance.|
 
@@ -107,7 +107,7 @@ For details about the properties, see [PropertyKey](arkts-apis-image-e.md#proper
 
 **Returns**:
 
-| Type                                    | **Description**                                                        |
+| Type                                    | Description                                                        |
 | ---------------------------------------- | ------------------------------------------------------------ |
 | Promise\<Record\<string, string \| null>> | Promise used to return the property values. If the operation fails, an error code is returned.|
 
@@ -123,11 +123,11 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -184,11 +184,11 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -233,11 +233,11 @@ Obtains all properties and their values from the image metadata. This API return
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -279,11 +279,11 @@ Clones [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) me
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -305,7 +305,7 @@ async function makerNoteHuaweiClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -324,11 +324,11 @@ Obtains the metadata in binary format. This API returns the result asynchronousl
 **Example**:
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -346,7 +346,7 @@ async function makerNoteHuaweiGetBlob(context: Context) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
@@ -364,7 +364,7 @@ Replaces the current metadata with binary data. This API returns the result asyn
 
 **Returns**:
 
-| Type          | **Description**         |
+| Type          | Description         |
 | -------------- | ------------- |
 | Promise\<void> | Promise that returns no value.|
 
@@ -379,11 +379,11 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**:
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }

@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **deviceSettings** module provides APIs for setting enterprise devices, including obtaining the screen-off time of a device.
 
@@ -252,7 +252,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     }
   });
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
@@ -324,7 +324,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
@@ -614,3 +614,4 @@ Enumerates the actions that can be performed to apply the power policy.
 | FORCE_SUSPEND | 2 | Forcibly enter the sleep mode.|
 | HIBERNATE | 3 | Enter the sleep mode. This policy does not take effect currently.|
 | SHUTDOWN | 4 | Shut down the system.|
+<!--no_check-->

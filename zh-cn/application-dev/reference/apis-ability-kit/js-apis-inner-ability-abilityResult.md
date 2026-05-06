@@ -4,7 +4,7 @@
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义UIAbility被拉起并退出后返回给调用方的结果码和数据。
 

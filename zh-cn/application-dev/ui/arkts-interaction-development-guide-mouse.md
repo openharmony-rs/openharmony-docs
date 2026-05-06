@@ -310,7 +310,11 @@ struct ListExample {
               // 判断修饰键状态
               let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                try {
+                  isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                } catch (error) {
+                  console.error('Get modifier key state failed!')
+                }
               }
               // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
               if (!isCtrlPressing) {
@@ -335,6 +339,7 @@ struct ListExample {
       .friction(0.6)
       .edgeEffect(EdgeEffect.Spring)
       .width('90%')
+      .height('100%')
     }
     .width('100%')
     .height('100%')

@@ -64,7 +64,7 @@ format(value: ResourceStr)
 
 Sets the time format, for example, **yyyy/MM/dd** or **yyyy-MM-dd**.
 
-**y**: year (yyyy indicates the complete year, and yy indicates the last two digits of the year.)<br>**M**: month (To display 01 for January, use **MM** instead.)<br>**d**: day (To display 01 for the first day, use **dd** instead.)<br>**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)<br>H: hour (24-hour format); h: hour (12-hour format)<br>**m**: minute<br>**s**: second<br>SS: centisecond (If the number of S characters in the format is less than 3, all are treated as centiseconds.)<br>SSS: millisecond (If the number of S characters in the format is greater than or equal to 3, all are treated as milliseconds.)<br>**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
+**y**: year (**yyyy** indicates the complete year, and **yy** indicates the last two digits of the year.)<br>**M**: month (To display 01 for January, use **MM** instead.)<br>**d**: day (To display 01 for the first day, use **dd** instead.)<br>**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)<br>**H**: hour (24-hour format); **h**: hour (12-hour format)<br>**m**: minute<br>**s**: second<br>**SS**: centisecond (If the number of S characters in the format is less than 3, all are treated as centiseconds.)<br>**SSS**: millisecond (If the number of S characters in the format is greater than or equal to 3, all are treated as milliseconds.)<br>**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
 
 Date separators: year, month, day, slash (/), hyphen (-), and period (.) (Custom separator styles are allowed. Letters cannot be used as separators, while Chinese characters can be treated as separators.)
 
@@ -95,7 +95,7 @@ The following table shows how different settings of **format** work out.
 | EEEE, M, d, yyyy      | Saturday, February 4, 2023|
 | MMM d, yyyy           | February 4, 2023       |
 | EEEE, M, d            | Saturday, February 4      |
-| MMM dd                 | February 4             |
+| MMM d                 | February 4             |
 | MM/dd/yyyy              | 02/04/2023          |
 | EEEE MM dd          | Saturday February 04    |
 | yyyy       | 2023             |
@@ -623,7 +623,7 @@ struct Index {
         .margin('10%')
 
       Text('fontWeight').fontColor(0xCCCCCC)
-      Sets font weight.
+      // Set the font weight.
       TextClock()
         .fontWeight(FontWeight.Normal)
       TextClock()
@@ -640,3 +640,4 @@ struct Index {
   }
 }
 ```
+![TextClockFontExample](figures/text_clock_font_example.png)

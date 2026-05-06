@@ -17136,7 +17136,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontW
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向待修改的文本文本字体粗配置对象的指针。 |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向待修改的文本字体粗配置对象的指针。 |
 | bool enable | 是否启用文本字体粗细跟随设备的字体粗细级别更新。true表示当设备的字体粗细级别改变时，文本字体粗细将自动更新。false表示当设备的字体粗细级别改变时，文本字体粗不会自动更新。默认值为true。 |
 
 ### OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory()

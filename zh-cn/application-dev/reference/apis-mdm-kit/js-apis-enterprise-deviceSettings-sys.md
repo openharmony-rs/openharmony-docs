@@ -321,7 +321,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     .then((result) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((error: BusinessError) => {
   console.error(`Failed to get raw file content. message: ${error.message}`);

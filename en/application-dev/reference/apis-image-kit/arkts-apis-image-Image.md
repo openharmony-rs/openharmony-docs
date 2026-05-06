@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-The **Image** class is used to obtain image content.
+The Image class is used by ImageReceiver and ImageCreator for transferring image objects, with the actual content determined by the producer. For example, the Image object provided by a camera preview stream contains YUV data, whereas the image object provided by a camera photo contains a JPEG file.
 
 An Image instance is returned when [readNextImage](arkts-apis-image-ImageReceiver.md#readnextimage9) and [readLatestImage](arkts-apis-image-ImageReceiver.md#readlatestimage9) are called.
 
@@ -31,7 +31,7 @@ import { image } from '@kit.ImageKit';
 
 | Name    | Type              | Read Only| Optional| Description                                              |
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
-| clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | No  | No  | Image area to be cropped.                                |
+| clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | No  | No  | Image area to be cropped. It is always equal to the entire image and cannot be modified.                                |
 | size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | Yes  | No  | Image size.<br>If the Image object stores camera preview stream data (YUV image data), the width and height in **size** reflect the dimensions of the YUV image.<br>If the Image object stores camera capture stream data (JPEG image data), given that it is an encoded file, the width in **size** is the size of the JPEG file, while the height is set to **1**.<br>The type of data stored in the Image object depends on whether the application passes the surface ID in the receiver to a previewOutput or captureOutput object of the camera.<br>For details about the best practices of camera preview and photo capture, see [Dual-Channel Preview (ArkTS)](../../media/camera/camera-dual-channel-preview.md) and [Photo Capture Sample (ArkTS)](../../media/camera/camera-shooting-case.md).|
 | format<sup>9+</sup>    | number             | Yes  | No  | Image format. For details, see [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format).|
 | timestamp<sup>12+</sup> | number         | Yes     | No  | Image timestamp. Timestamps, measured in nanoseconds, are usually monotonically increasing. The specific meaning and baseline of these timestamps are determined by the image producer, which is the camera in the camera preview and photo scenarios. As a result, images from different producers may carry timestamps with distinct meanings and baselines, making direct comparison between them infeasible. To obtain the generation time of a photo, you can use [getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11) to read the related Exif information.|

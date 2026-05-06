@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
@@ -37,7 +37,7 @@ The sensor is not supported by the device.
 
 **错误描述**
 
-当调用GetSingleSensor接口时，若设备不支持该传感器，会报此错误码。
+当调用[getSingleSensor](js-apis-sensor.md#sensorgetsinglesensor9)接口时，若设备不支持该传感器，会报此错误码。
 
 **可能原因**
 
@@ -45,4 +45,4 @@ The sensor is not supported by the device.
 
 **处理步骤**
 
-使用GetSingleSensor接口，返回14500102则表示设备不支持该传感器。
+使用[getSingleSensor](js-apis-sensor.md#sensorgetsinglesensor9)接口，返回14500102则表示设备不支持该传感器。

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 vibrator模块提供控制马达振动的能力，主要包含灯的列表查询、打开灯、关闭灯等接口，振动器的列表查询、振动效果查询、触发/关闭等接口。
@@ -26,14 +26,17 @@ vibrator模块提供控制马达振动的能力，主要包含灯的列表查询
 ```ts
 import { Vibrator } from '@kit.SensorServiceKit';
 ```
+## Vibrator
 
-## Vibrator.vibrate
+### Vibrator.vibrate
 
- vibrate(options?: VibrateOptions): void
+ static vibrate(options?: VibrateOptions): void
 
 触发设备振动。
 
-除Lite Wearable外，从API Version8开始，推荐使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)。
+> **说明：**
+>
+> 除Lite Wearable外，从API Version8开始，建议使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)替代。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -73,9 +76,9 @@ Vibrator.vibrate(vibrateOptions);
 
 **系统能力**：SystemCapability.Sensors.MiscDevice.Lite
 
-| 名称     | 类型     | 必填 | 说明                                                         |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| mode     | string   | 否   | 振动的模式，其中long表示长振动，short表示短振动，默认值为long。 |
-| success  | Function | 否   | 感应到振动数据变化后的回调函数。                             |
-| fail     | Function | 否   | 接口调用失败的回调函数。                                     |
-| complete | Function | 否   | 接口调用结束的回调函数。                                     |
+| 名称     | 类型     | 只读 | 可选 | 说明                                                         |
+| -------- | -------- | ---- | ---- | ------------------------------------------------------------ |
+| mode     | string   | 否   | 是   | 振动的模式，其中long表示长振动，short表示短振动，默认值为long。 |
+| success  | Function | 否   | 否   | 感应到振动数据变化后的回调函数。                             |
+| fail     | Function | 否   | 是   | 接口调用失败的回调函数。                                     |
+| complete | Function | 否   | 是   | 接口调用结束的回调函数。                                     |

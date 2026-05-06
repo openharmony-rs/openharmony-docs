@@ -33,7 +33,7 @@ Checks whether the camera device has flash.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for whether the camera device has flash. **true** if it has flash, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean    | Whether the camera has flash. **true** if it has, **false** otherwise.<br>If **false** is returned, [isFlashModeSupported](#isflashmodesupported11), [setFlashMode](arkts-apis-camera-Flash.md#setflashmode11), and [getFlashMode](arkts-apis-camera-Flash.md#getflashmode11) do not take effect.<br>If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 

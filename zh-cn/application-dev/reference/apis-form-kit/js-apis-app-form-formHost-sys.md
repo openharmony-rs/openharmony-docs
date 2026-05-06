@@ -3054,7 +3054,7 @@ on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | type | string | 是   | 事件回调类型，支持的事件为'getFormRect'，表示卡片位置尺寸查询。|
-| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。|
 
 **错误码：**
 

@@ -249,11 +249,11 @@ Obtains the metadata in binary format. This API uses a promise to return the res
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg'; // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -306,11 +306,11 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
-  const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const filePath: string = context.cacheDir + '/exif.jpg'; // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }

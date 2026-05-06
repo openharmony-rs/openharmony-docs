@@ -2,11 +2,17 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-将所支持格式的图片文件解码成[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，以便在应用或系统中显示或处理图片。当前支持的图片文件格式包括JPEG、PNG、GIF、WebP、BMP、SVG、ICO、DNG、HEIC、TIFF<sup>23+</sup>、HEIFS<sup>23+</sup>、WBMP<sup>23+</sup>。从API版本26.0.0开始，增加支持AVIF格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](../../reference/apis-image-kit/arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。
+将所支持格式的图片文件解码成[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，以便在应用或系统中显示或处理图片。
+
+当前支持的图片文件格式包括JPEG、PNG、GIF、WebP、BMP、SVG、ICO、DNG、HEIC、TIFF<sup>23+</sup>、HEIFS<sup>23+</sup>、WBMP<sup>23+</sup>。
+
+从API版本26.0.0开始，增加支持AVIF、AVIS格式。
+
+部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](../../reference/apis-image-kit/arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。
 
 从API version 22开始，支持对专业相机拍摄的CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW格式图片内嵌的预览图（通常为JPEG格式）进行解码。该解码能力不受运行设备类型限制。
 
@@ -19,7 +25,7 @@
    <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
@@ -47,7 +53,7 @@
      function getFileFd(context: Context, fileName: string): number | undefined {
        try {
          const filePath: string = context.cacheDir + '/' + fileName;
-         const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+         const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
          const fd: number = file?.fd;
          return fd;
        } catch (err) {

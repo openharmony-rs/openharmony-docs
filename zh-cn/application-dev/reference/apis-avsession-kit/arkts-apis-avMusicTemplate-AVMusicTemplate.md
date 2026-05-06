@@ -2897,7 +2897,7 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setUserInfo can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -2966,7 +2966,7 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setDialogCommand can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3029,7 +3029,7 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setCurrentSingle can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3125,7 +3125,7 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setMediaEntities can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3183,7 +3183,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setTabContent can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3255,7 +3255,7 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setPlaylist can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3323,7 +3323,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setDownloadMediaEntityStatus can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3384,7 +3384,7 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setCustomElements can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3456,7 +3456,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setSettings can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3514,7 +3514,7 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function reportExecuteAction can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3565,7 +3565,7 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 801      | capability not supported.              |
 | 35000005 | AVMusicTemplate does not exist.        |
-| 35000011 | Thr data write error, data is invalid. |
+| 35000011 | The data write error, data is invalid. |
 
 **示例：**
 

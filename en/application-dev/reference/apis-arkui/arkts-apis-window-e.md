@@ -32,17 +32,18 @@ Enumerates the types of areas to avoid for window content.
 
 When adapting window content for an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout), you should adjust the content based on the corresponding [AvoidArea](arkts-apis-window-i.md#avoidarea7) specified by **AvoidAreaType**.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 | Name                            | Value  | Description                                                        |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
-| TYPE_SYSTEM                      | 0    | Default area of the system. <!--RP11-->It contains the status bar and three-button navigation bar.<!--RP11End-->       |
-| TYPE_CUTOUT                      | 1    | Cutout area.                                                             |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | Side return gesture area. Currently, no devices support this type of avoid area.                                   |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | Fixed soft keyboard area.                                                             |
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | Bottom navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End-->                             |
+| TYPE_SYSTEM                      | 0    | Default area of the system. <!--RP11-->It contains the status bar and three-button navigation bar.<!--RP11End--> <br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_CUTOUT                      | 1    | Cutout area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | Side return gesture area. Currently, no devices support this type of avoid area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | Fixed soft keyboard area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | Bottom navigation bar. <!--Del-->OpenHarmony devices do not support this capability.<!--DelEnd--> <br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_FLOAT_NAVIGATION | 5    | Three-button navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End--> <br>**System capability**: SystemCapability.Window.SessionManager<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+
+<!--RP13-->
+
+<!--RP13End-->
 
 ## Orientation<sup>9+</sup>
 
@@ -324,6 +325,24 @@ Enumerates the screenshot event types.
 | SCROLL_SHOT_START | 2 | Scroll screenshot starts.|
 | SCROLL_SHOT_END | 3 | Scroll screenshot ends.|
 | SCROLL_SHOT_ABORT | 4 | Scroll screenshot aborted.|
+
+## OrientationExecutionResult
+
+Enumerates the result of setting the window display orientation.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name  |  Value| Description                  |
+| ------ | ---- | --------------------- |
+| ORIENTATION_APPLIED | 0 | The setting has taken effect.|
+| ORIENTATION_IGNORED | 1 | The setting does not take effect.|
+| ORIENTATION_PENDING | 2 | The setting will take effect after the system animation ends.|
 
 ## RotationInfoType<sup>23+</sup>
 

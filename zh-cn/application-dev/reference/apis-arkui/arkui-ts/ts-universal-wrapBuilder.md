@@ -44,6 +44,7 @@ function MyBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
 }
+// 使用wrapBuilder封装MyBuilder
 let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
 ```
 ## WrappedBuilder
@@ -85,5 +86,6 @@ function MyBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
 }
+// 使用WrappedBuilder封装MyBuilder
 let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(MyBuilder);
 ```

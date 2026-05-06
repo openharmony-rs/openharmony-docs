@@ -9,9 +9,9 @@ A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-ar
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This module can be imported only to ArkTS files (with the file name extension .ets).
+> This module can be imported only to ArkTS files (with the file name extension .ets).
 
 **Decorator**: \@Sendable
 
@@ -353,7 +353,7 @@ Creates an ArkTS Uint8ClampedArray with a variable number of parameters.
 
 | Name   | Type         | Mandatory| Description                           |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | number[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more.|
+| items | number[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more. The default value is an empty array.|
 
 **Return value**
 
@@ -769,7 +769,7 @@ Returns the index of the first occurrence of a value in this ArkTS Uint8ClampedA
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | Yes  | Value to search for.               |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8ClampedArray, **-1** is returned. If a negative number is passed in, the search starts from the start of the ArkTS Uint8ClampedArray.|
+| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8ClampedArray, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint8ClampedArray.|
 
 **Return value**
 

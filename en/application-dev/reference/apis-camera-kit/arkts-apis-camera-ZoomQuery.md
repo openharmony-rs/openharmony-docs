@@ -33,7 +33,7 @@ Obtains the supported zoom ratio range.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| Array\<number\>   | Array containing the minimum and maximum zoom ratios. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
+| Array\<number\>   | Array containing the minimum and maximum zoom ratios. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown. If the device does not support zoom, **undefined** is returned when this API is called.|
 
 **Error codes**
 
@@ -56,6 +56,51 @@ function getZoomRatioRange(photoSession: camera.PhotoSession): Array<number> {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
     console.error(`The getZoomRatioRange call failed. error code: ${err.code}`);
+  }
+  return zoomRatioRange;
+}
+```
+
+## getRAWCaptureZoomRatioRange<sup>24+</sup>
+
+getRAWCaptureZoomRatioRange(): Array\<number\>
+
+Obtains the supported zoom ratio range during shooting in RAW format.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| Array\<number\>   | Zoom ratio range.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.            |
+| 7400103                |  Session not config.            |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getRAWCaptureZoomRatioRange(photoSession: camera.PhotoSession): Array<number> {
+  let zoomRatioRange: Array<number> = [];
+  try {
+    zoomRatioRange = photoSession.getRAWCaptureZoomRatioRange();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getRAWCaptureZoomRatioRange call failed. error code: ${err.code}`);
   }
   return zoomRatioRange;
 }

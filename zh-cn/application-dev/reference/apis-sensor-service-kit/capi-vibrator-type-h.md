@@ -2,13 +2,13 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
-为您提供标准的开放API，用于控制马达振动的启停
+为您提供标准的开放API，用于控制马达振动的启停。
 
 **引用文件：** <sensors/vibrator_type.h>
 
@@ -71,7 +71,7 @@ enum Vibrator_Usage
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIBRATOR_USAGE_UNKNOWN = 0 | 未知场景 |
+| VIBRATOR_USAGE_UNKNOWN = 0 | 未知场景，最低优先级 |
 | VIBRATOR_USAGE_ALARM = 1 | 报警 |
 | VIBRATOR_USAGE_RING = 2 | 铃声 |
 | VIBRATOR_USAGE_NOTIFICATION = 3 | 通知 |

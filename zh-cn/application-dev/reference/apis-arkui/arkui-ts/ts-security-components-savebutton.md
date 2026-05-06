@@ -251,7 +251,7 @@ userCancelEvent(enabled: boolean)
 
 ### symbolIconColor
 
-symbolIconColor(color: Array&lt;ResourceColor&gt; )
+symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 设置安全控件Symbol图标颜色。
 
