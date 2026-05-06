@@ -656,7 +656,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-通过跳转到日程创建页面创建单个日程，入参Event不填日程id，只支持设置创建页面已有的日程属性，不支持设置instanceStartTime、instanceEndTime、identifier、attendee、service、isLunar或timeZone。使用Promise异步回调。使用该接口创建的日程，系统日历可以进行查询和修改，申请到READ_WHOLE_CALENDAR权限的三方应用可以查询，申请到WRITE_WHOLE_CALENDAR权限的三方应用可以修改。
+通过跳转到日程创建页面创建单个日程，入参Event不填日程id，不支持设置instanceStartTime、instanceEndTime、identifier、attendee、service、isLunar或timeZone属性。使用Promise异步回调。使用该接口创建的日程，系统日历可以进行查询和修改，申请到READ_WHOLE_CALENDAR权限的三方应用可以查询，申请到WRITE_WHOLE_CALENDAR权限的三方应用可以修改。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
