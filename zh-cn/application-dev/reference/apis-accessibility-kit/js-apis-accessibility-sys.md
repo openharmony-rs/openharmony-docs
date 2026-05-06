@@ -165,24 +165,24 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 ## InjectActionType
 
-表示注入动作的枚举。	 
+表示注入动作的枚举。
 
-**起始版本：** 26.0.0	 
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。	 
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。	 
+**系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core	 
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-| 名称                        | 值   | 说明                     |	 
-| -------------------------- | ---- | ------------------------ |	 
-| CLICK                      | 1    | 表示注入单击动作。         |	 
-| DOUBLE_CLICK               | 2    | 表示注入双击动作。         |	 
+| 名称                        | 值   | 说明                     |
+| -------------------------- | ---- | ------------------------ |
+| CLICK                      | 1    | 表示注入单击动作。         |
+| DOUBLE_CLICK               | 2    | 表示注入双击动作。         |
 | LONG_CLICK                 | 3    | 表示注入长按动作。         |
 
 ## AccessibilityFocusScene
- 	 
+
 表示无障碍聚焦的场景参数的枚举。
 
 **起始版本：** 26.0.0
