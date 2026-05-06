@@ -262,7 +262,7 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' | 'r
 | 'fourFingerSwipeDown'<sup>11+</sup>          | 表示四指向下滑动的手势。 |
 | 'fourFingerSwipeLeft'<sup>11+</sup>          | 表示四指向左滑动的手势。 |
 | 'fourFingerSwipeRight'<sup>11+</sup>         | 表示四指向右滑动的手势。 |
-| 'oneFingerDoubleTap'         | 表示单指双击的手势。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| 'oneFingerDoubleTap'         | 表示单指双击的手势。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## PageUpdateType
 
