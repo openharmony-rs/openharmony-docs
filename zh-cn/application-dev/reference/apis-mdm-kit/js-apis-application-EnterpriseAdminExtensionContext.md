@@ -1,7 +1,7 @@
 # EnterpriseAdminExtensionContext
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -76,39 +76,36 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
-被启动组件在module.json5中配置信息。
+需要在module.json5中配置被启动组件的信息。permissions为可选字段，需根据实际情况进行替换或者不填。
 
-```json
+```json5
 "abilities": [
-    {
-        "name": "MainAbility",
-        "srcEntry": "./ets/MainAbility/MainAbility.ts",
-        "description": "$string:MainAbility_desc",
-        "icon": "$media:icon",
-        "label": "$string:MainAbility_label",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white",
-        "exported": true,
-        // 可选字段
-        "permissions": [
-            // 需根据实际情况进行替换或者不填
-            "ohos.permission.START_UI_Ability"
-        ]
-    }
+  {
+    "name": "MainAbility",
+    "srcEntry": "./ets/MainAbility/MainAbility.ts",
+    "description": "$string:MainAbility_desc",
+    "icon": "$media:icon",
+    "label": "$string:MainAbility_label",
+    "startWindowIcon": "$media:icon",
+    "startWindowBackground": "$color:white",
+    "exported": true,
+    "permissions": [
+      "ohos.permission.START_UI_Ability"
+    ]
+  }
 ]
 ```
 
-调用方应用需要在module.json5中申请对应的权限。
+调用方应用需要在module.json5中申请对应的权限。启动其他应用中的组件时，调用方应用必须获取该组件所要求的权限。
 
-```json
+```json5
 "requestPermissions": [
-    {
-        // 启动其他应用中的组件时，调用方应用必须获取该组件所要求的权限。
-        "name": "ohos.permission.START_UI_ABILITY"
-    },
-    {
-        "name": "ohos.permission.ENTERPRISE_START_ABILITIES"
-    }
+  {
+    "name": "ohos.permission.START_UI_ABILITY"
+  },
+  {
+    "name": "ohos.permission.ENTERPRISE_START_ABILITIES"
+  }
 ]
 ```
 
@@ -122,42 +119,42 @@ import { BusinessError } from '@kit.BasicServicesKit';
  * 企业设备管理扩展能力组件
  */
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-    onAdminEnabled() {
-        // 需根据实际情况进行替换
-        let admin: Want = {
-            bundleName: 'com.example.myapplication',
-            abilityName: 'EnterpriseAdminAbility',
-        };
-        // 需根据实际情况进行替换
-        let want: Want = {
-            bundleName: 'com.example.myotherapplication',
-            abilityName: 'MainAbility'
-        };
-        this.context.startAbilityByAdmin(admin, want).catch((err: BusinessError) => {
-            console.error(`Failed to start an ability. Code: ${err.code}, message: ${err.message}`);
-        });
+  onAdminEnabled() {
+    // 需根据实际情况进行替换
+    let admin: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EnterpriseAdminAbility',
+    };
+    // 需根据实际情况进行替换
+    let want: Want = {
+      bundleName: 'com.example.myotherapplication',
+      abilityName: 'MainAbility'
+    };
+    this.context.startAbilityByAdmin(admin, want).catch((err: BusinessError) => {
+      console.error(`Failed to start an ability. Code: ${err.code}, message: ${err.message}`);
+    });
     
-        // 通过context获取到应用文件路径
-        let preferencesDir = this.context.preferencesDir;
-        console.log(`preferencesDir: ` + preferencesDir);
+    // 通过context获取到应用文件路径
+    let preferencesDir = this.context.preferencesDir;
+    console.info(`preferencesDir: ` + preferencesDir);
     
-        // 通过context获取到preferences数据
-        let options: preferences.Options = {
-        // 需根据实际情况进行替换
-            name: "key",
-        };
-        try {
-        let preference = preferences.getPreferencesSync(this.context, options);
-        // 需根据实际情况进行替换
-        preference.putSync("key", "value");
-        preference.flushSync();
+    // 通过context获取到preferences数据
+    let options: preferences.Options = {
+      // 需根据实际情况进行替换
+      name: "key",
+    };
+    try {
+      let preference = preferences.getPreferencesSync(this.context, options);
+      // 需根据实际情况进行替换
+      preference.putSync("key", "value");
+      preference.flushSync();
     
-        // 需根据实际情况进行替换
-        let value: string = preference.getSync('key', 'default') as string;
-            console.info(`get preferences value: ${value}`);
-        } catch (error) {
-            console.error('get preference fail');
-        }
+      // 需根据实际情况进行替换
+      let value: string = preference.getSync('key', 'default') as string;
+      console.info(`get preferences value: ${value}`);
+    } catch (error) {
+      console.error('get preference fail');
     }
+  }
 }
 ```

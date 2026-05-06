@@ -1324,13 +1324,13 @@ definePermissions标签示例：
 
 ## executableBinaryPaths标签
 
-标识应用内可执行二进制文件的路径信息。
+标识应用内可执行二进制文件的路径信息。从API version 24开始，支持该标签。
 
 **表31** executableBinaryPaths标签说明
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| path | 标识可执行文件的路径。该路径是相对路径，其根目录为libs库的解压路径。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| path | 标识可执行文件的路径。该路径是相对路径，必须以`libs/{abi}/`为前缀，其中`{abi}`为设备CPU架构类型（如arm64-v8a、x86_64、armeabi-v7a），即可执行二进制文件必须配置在`libs/{abi}/`目录下。 | 字符串 | 该标签不可缺省。 |
 
 
 executableBinaryPaths示例：
@@ -1343,7 +1343,7 @@ executableBinaryPaths示例：
     // ...
     "executableBinaryPaths": [
       {
-        "path": "framework/test.bin"
+        "path": "libs/arm64-v8a/test.bin"
       }
     ],
     // ...

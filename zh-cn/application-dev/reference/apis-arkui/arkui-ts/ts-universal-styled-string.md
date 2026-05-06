@@ -599,21 +599,21 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 `fontWeight`参数与返回值的关系如下：
 | 参数        | 返回值 |
 | ----------- | ----------- |  
-| 100 |  0  | 
-| 200  |  1  |  
-| 300 |  2  |  
-| 400  |  3  |  
-| 500    |  4  | 
-| 600  |  5  | 
-| 700  |  6  |  
-| 800    |  7  | 
-| 900  |  8  | 
-| FontWeight.Bold (or 'bold')|  9  | 
-| FontWeight.Normal (or 'normal') |  10  |  
-| FontWeight.Bolder (or 'bolder') |  11  |  
-| FontWeight.Lighter (or 'lighter')|  12  |  
-| FontWeight.Medium (or 'medium') |  13  | 
-| FontWeight.Regular (or 'regular') |  14  |  
+| 100 |  '0' | 
+| 200  |  '1'  |  
+| 300 |  '2'  |  
+| 400  |  '3'  |  
+| 500    |  '4'  | 
+| 600  |  '5'  | 
+| 700  |  '6'  |  
+| 800    |  '7'  | 
+| 900  |  '8'  | 
+| FontWeight.Bold (or 'bold')|  '9'  | 
+| FontWeight.Normal (or 'normal') |  '10' |  
+| FontWeight.Bolder (or 'bolder') |  '11'  |  
+| FontWeight.Lighter (or 'lighter')|  '12'  |  
+| FontWeight.Medium (or 'medium') |  '13'  | 
+| FontWeight.Regular (or 'regular') |  '14'  |  
 
 ### constructor
 
@@ -2570,14 +2570,14 @@ struct styled_string_html_convert_demo {
         .margin(5)
 
       // 按钮1:将HTML转换为SpanString
-      Button("将HTML转换为SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML to SpanString successfully.";
       }).margin(5)
 
       // 按钮2:将SpanString转换为HTML
-      Button("将SpanString转换为HTML").onClick(() => {
+      Button("Convert SpanString to HTML").onClick(() => {
         if (this.spanString) {
           // 将spanString转换为HTML并替换当前的HTML状态
           const newHtml = StyledString.toHtml(this.spanString);
@@ -2591,14 +2591,14 @@ struct styled_string_html_convert_demo {
       }).margin(5)
 
       // 按钮3:将HTML转换回SpanString
-      Button("将HTML转换回SpanString").onClick(async () => {
+      Button("Convert HTML back to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML back to SpanString successfully.";
       }).margin(5)
 
       // 重置：重置HTML和SpanString
-      Button("重置").onClick(() => {
+      Button("Reset").onClick(() => {
         this.html = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
         this.spanString = undefined;
         this.controller.setStyledString(new StyledString("")); // 使用空的StyledString实例

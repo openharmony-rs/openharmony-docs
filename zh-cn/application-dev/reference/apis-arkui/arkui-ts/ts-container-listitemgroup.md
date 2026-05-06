@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 该组件用来展示列表item分组，宽度默认充满[List](ts-container-list.md)组件，必须配合List组件来使用。
@@ -63,6 +63,7 @@ ListItemGroup组件参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称              | 类型                                            | 只读 | 可选   | 说明                                                     |
 | ------------------- | --------------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | header              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;   | 否   | 是 | 设置ListItemGroup头部组件。<br/>**说明：**<br/>可以放单个子组件或不放子组件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。               |

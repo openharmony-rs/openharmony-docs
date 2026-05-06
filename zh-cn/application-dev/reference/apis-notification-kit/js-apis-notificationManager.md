@@ -1,8 +1,8 @@
 # @ohos.notificationManager (NotificationManager模块)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -1563,7 +1563,7 @@ let requestEnableNotificationCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("requestEnableNotification success");
+    console.info(`requestEnableNotification success`);
   }
 };
 notificationManager.requestEnableNotification(requestEnableNotificationCallback);
@@ -1605,7 +1605,7 @@ requestEnableNotification(): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.requestEnableNotification().then(() => {
-  console.info("requestEnableNotification success");
+  console.info(`requestEnableNotification success`);
 }).catch((err: BusinessError) => {
   console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1996,6 +1996,20 @@ type NotificationRequest = _NotificationRequest
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | 通知请求。 |
+
+## NotificationParameters<sup>24+</sup>
+
+type NotificationParameters = _NotificationParameters
+
+描述通知请求中wantAgent的部分信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**： SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24) | 描述通知请求中wantAgent的部分信息。 |
 
 ## DistributedOptions
 

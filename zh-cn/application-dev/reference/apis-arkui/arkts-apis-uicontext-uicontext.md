@@ -1,8 +1,8 @@
 # Class (UIContext)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -1126,7 +1126,9 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
-2. 当uniqueId对应的是自定义组件时，若其有渲染内容，则返回该自定义组件的根节点，类型为__Common__；若其无渲染内容，则返回其第一个子组件的FrameNode。
+2. 当uniqueId对应的是自定义组件时：
+   - 若其有渲染内容，且没有被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。
+   - 若其无渲染内容，或者被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。
 3. 当uniqueId无对应的组件时，返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -4369,7 +4371,9 @@ export struct pageThreeTmp {
 
 isEasySplit(): boolean
 
+<!--RP1-->
 获取当前UI实例的兼容模式分栏状态。
+<!--RP1End-->
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -4379,9 +4383,11 @@ isEasySplit(): boolean
 
 **返回值：**
 
+<!--RP2-->
 | 类型   | 说明               |
 | ------ | ------------------ |
 | boolean | 返回当前UI实例的兼容模式分栏状态。true表示处于分栏模式，false表示未处于分栏模式。 |
+<!--RP2End-->
 
 **示例：**
 

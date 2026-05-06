@@ -4,14 +4,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
-
-<!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
-<!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义拉起UIExtensionAbility执行结果的回调。
 

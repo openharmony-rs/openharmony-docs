@@ -10,11 +10,11 @@
 
 > **说明**
 >
-> 后续此接口不再新增功能，相关功能在接口[uiExtension](js-apis-arkui-uiExtension.md)中提供。
+> - 后续此接口不再新增功能，相关功能在接口[uiExtension](js-apis-arkui-uiExtension.md)中提供。
 >
-> 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本模块接口为系统接口。
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -38,7 +38,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
-获取宿主应用窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
+获取宿主应用窗口内容避让的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,7 +65,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -84,7 +84,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-注册系统避让区变化的监听。
+注册宿主应用窗口避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +106,7 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -124,7 +124,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-注销系统避让区变化的监听。
+注销宿主应用窗口避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,7 +146,7 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -184,7 +184,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -192,7 +192,7 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionHostWindow.on('windowSizeChange', (size) => {
-      console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
     });
   }
 }
@@ -224,7 +224,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -277,7 +277,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -340,11 +340,12 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | 401 | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -424,11 +425,12 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -508,7 +510,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -538,6 +540,7 @@ export default class EntryAbility extends UIExtensionAbility {
 hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 设置UIExtension组件在非系统截图时的隐私内容保护开关，使用Promise异步回调。
+
 > **说明：**
 >
 > 开启截图隐私内容保护后，使用窗口截图[window.snapshot](arkts-apis-window-Window.md#snapshot9)或者组件截图[UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)
@@ -572,7 +575,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

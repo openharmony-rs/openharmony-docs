@@ -1,7 +1,7 @@
 # @ohos.enterprise.deviceSettings （设备设置管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -43,7 +43,7 @@ setValue(admin: Want, item: string, value: string): void
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | string                                                  | 是   | 设备设置策略类型。<br/>- screenOff：设备息屏策略，对于PC/2in1设备，支持设置电池和电源供电下的息屏策略。<br/>- dateTime：设置系统时间。<br/>- powerPolicy：设备电源策略，对于PC/2in1设备，仅支持设置电池供电下的电源策略。<br/>- eyeComfort：从API version 23开始支持，设置护眼模式开关状态，仅支持全天开启和关闭护眼模式。<br/>- defaultInputMethod：从API version 23开始支持，设置默认输入法。 |
-| value  | string                                                  | 是   | 策略类型值。<br/>当item为screenOff时，value为设备息屏时间（单位：毫秒）。<br/>当item为dateTime时，value为要设置的系统时间（单位：毫秒）。<br/>当item为powerPolicy时，value为JSON字符串，格式：{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。powerScene为电源策略场景；delayTime为延迟时间（单位：毫秒），不支持设置为30000毫秒；powerPolicyAction为休眠策略。<br/>电源策略场景：<br/>- 0：超时场景。<br/>休眠策略：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>当item为eyeComfort时，value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>当item为defaultInputMethod时，value为输入法应用包名字符串。<br/>- 可以通过[getCurrentInputMethod](../apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcurrentinputmethod9)获取当前输入法应用包名。 |
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为screenOff时，value为设备息屏时间（单位：毫秒）。<br/>当item为dateTime时，value为要设置的系统时间（单位：毫秒）。<br/>当item为powerPolicy时，value为JSON字符串，格式：{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。powerScene为电源策略场景；delayTime为延迟时间（单位：毫秒），不支持设置为30000毫秒，其余数值均在允许范围内；powerPolicyAction为休眠策略。<br/>电源策略场景：<br/>- 0：超时场景。<br/>休眠策略：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>当item为eyeComfort时，value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>当item为defaultInputMethod时，value为输入法应用包名字符串。<br/>- 可以通过[getCurrentInputMethod](../apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcurrentinputmethod9)获取当前输入法应用包名。 |
 
 **错误码**：
 
@@ -282,7 +282,7 @@ setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: st
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
-| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态，'0'表示三键导航已开启（在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](./js-apis-enterprise-applicationManager.md#applicationmanagersetkioskfeatures20)设置开启或关闭），'1'表示三键导航已关闭。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。只允许设置当前用户的设备名称，设置其他用户的设备名称返回9200012错误码。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态，'0'表示三键导航已开启（在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](./js-apis-enterprise-applicationManager.md#applicationmanagersetkioskfeatures20)设置开启或关闭），'1'表示三键导航已关闭。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
 
 **错误码**：
 
@@ -343,7 +343,7 @@ getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 策略类型值。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，返回指定用户的三键导航的开关状态。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
+| string | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，返回当前用户的设备名称，查询非当前用户的设备名称返回9200012错误码。 <br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，返回指定用户的三键导航的开关状态。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
 
 **错误码**：
 
@@ -388,4 +388,5 @@ try {
 
 | 名称 | 值   | 说明           |
 | ---- | ---- | -------------- |
+| DEVICE_NAME   | 0    | 设备名称。 |
 | FLOATING_NAVIGATION<sup>24+</sup>   | 1   | 三键导航。 |

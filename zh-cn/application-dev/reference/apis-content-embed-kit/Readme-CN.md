@@ -1,21 +1,21 @@
-# Content Embed Kit（内容嵌入服务）<!--ContentEmbed-kit-->
+# Content Embed Kit（内容嵌入服务）<!--content-embed-kit-->
 
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @wanxiaoguo-->
-<!--Designer: @zhuwei;@weiguoning-->
-<!--Tester: @yinjian-->
+<!--Owner: @qq_41146650-->
+<!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
+<!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
 
-- C API<!--ContentEmbed-c-->
-  - 模块<!--ContentEmbed-module-->
+- C API<!--content-embed-c-->
+  - 模块<!--content-embed-module-->
     - [ContentEmbed](capi-contentembed.md)
-  - 头文件<!--ContentEmbed-header-->
+  - 头文件<!--content-embed-header-->
     - [content_embed_common.h](capi-content-embed-common-h.md)
     - [content_embed_document.h](capi-content-embed-document-h.md)
     - [content_embed_extension.h](capi-content-embed-extension-h.md)
     - [content_embed_proxy.h](capi-content-embed-proxy-h.md)
-  - 结构体<!--ContentEmbed-struct-->
+  - 结构体<!--content-embed-struct-->
     - [ContentEmbed_Document](capi-contentembed-contentembed-document.md)
     - [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)
     - [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)

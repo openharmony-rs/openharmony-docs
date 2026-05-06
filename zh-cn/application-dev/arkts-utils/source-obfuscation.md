@@ -1,10 +1,10 @@
 # ArkGuard混淆原理及功能
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 术语清单
 
@@ -1382,6 +1382,8 @@ export namespace Ns {
 **需要手动配置白名单的顶层作用域名称**
 
 当以命名导入的方式导入so库的API时，如果同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
+
+在只开启`-enable-toplevel-obfuscation`规则的情况下，如果so库没有提供声明文件（如Index.d.ts），混淆工具无法将该库的方法收集至白名单中，因此so库的方法仍可能被混淆。此时需提供so库的声明文件，或将so库的方法加入到`-keep-global-name`选项中以避免被混淆。
 
 <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/cpp/types/libentry/Index.d.ts) -->         
 

@@ -365,7 +365,7 @@ class EntryAbility extends UIAbility {
 
 downloadMms\(context: Context, mmsParams: MmsParams\): Promise&lt;void&gt;
 
-Sends an MMS message. This API uses a promise to return the result.
+Downloads an MMS message. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1428,7 +1428,7 @@ Obtains SMS message segment information. This API uses an asynchronous callback 
 | --------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
 | slotId    | number                                                       | Yes  | SIM card slot ID. <br>- **0**: card slot 1<br>- **1**: card slot 2|
 | message   | string                                                       | Yes  | SMS message.                                     |
-| force7bit | boolean                                                      | Yes  | Whether to use 7-bit encoding. The default value is **false**.<br>- **true**: Use 7-bit encoding.<br>- **false**: Do not use 7-bit encoding.                         |
+| force7bit | boolean                                                      | Yes  | Whether to use 7-bit encoding. The default value is **false**.<br>- **true**: yes<br>- **false**: no                         |
 | callback  | AsyncCallback&lt;[SmsSegmentsInfo](#smssegmentsinfo8)&gt; | Yes  | Callback used to return the result. |
 
 **Error codes**
@@ -1473,7 +1473,7 @@ Obtains SMS message segment information. This API uses a promise to return the r
 | --------- | ------- | ---- | ----------------------------------------- |
 | slotId    | number  | Yes  | SIM card slot ID. <br>- **0**: card slot 1<br>- **1**: card slot 2|
 | message   | string  | Yes  | SMS message.                                     |
-| force7bit | boolean | Yes  | Whether to use 7-bit encoding. The default value is **false**.<br>- **true**: Use 7-bit encoding.<br>- **false**: Do not use 7-bit encoding.                         |
+| force7bit | boolean | Yes  | Whether to use 7-bit encoding. The default value is **false**.<br>- **true**: yes<br>- **false**: no                         |
 
 **Return value**
 
@@ -1524,7 +1524,7 @@ Checks whether SMS is supported on IMS. This API uses an asynchronous callback t
 | Name  | Type                        | Mandatory| Description      |
 | -------- | ---------------------------- | ---- | ---------- |
 | slotId   | number                       | Yes  | SIM card slot ID. <br>- **0**: card slot 1<br>- **1**: card slot 2|
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to indicate whether SMS is supported on IMS. The default value is **false**.<br>- **true**: SMS is supported on IMS.<br>- **false**: SMS is not supported on IMS.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Whether SMS is supported on IMS. The default value is **false**.<br>- **true**: yes<br>- **false**: no|
 
 **Error codes**
 

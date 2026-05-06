@@ -89,8 +89,4 @@ The following code snippet shows how to skip the disabled biometric authenticati
   }
 
 ```
-
-
-## Sample Code
-
-  - [Perceiving and adjusting the authentication process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+<!--no_check-->

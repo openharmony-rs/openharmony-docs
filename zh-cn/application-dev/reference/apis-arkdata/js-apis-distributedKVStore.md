@@ -173,6 +173,8 @@ import { distributedKVStore } from '@kit.ArkData';
 
 用于备份数据库的配置信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
 | 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
 | --------------| -------------- | ---- | ----| -------------------------|
 | fileName      | string         | 否 | 否 | 备份数据库的名称，无长度限制，不能包含特殊字符'/'。 |

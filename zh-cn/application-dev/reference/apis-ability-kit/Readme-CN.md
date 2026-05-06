@@ -4,7 +4,7 @@
 <!--Owner: @wanghang-->
 <!--Designer: @hanfeng6; @lihaitao-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--ability-arkts-->
   - Stage模型能力的接口<!--stage-model-->
@@ -106,6 +106,7 @@
     - [@ohos.app.ability.dataUriUtils (DataUriUtils模块)](js-apis-app-ability-dataUriUtils.md)
     - [@ohos.app.ability.dialogRequest (dialogRequest模块)](js-apis-app-ability-dialogRequest.md)
     - [@ohos.app.ability.errorManager (错误管理模块)](js-apis-app-ability-errorManager.md)
+    - [@ohos.app.ability.hyperSnapManager (应用快照管理)](js-apis-app-ability-hyperSnapManager.md)
     - [@ohos.app.ability.kioskManager (Kiosk管理模块)](js-apis-app-ability-kioskManager.md)
     - [@ohos.app.ability.Want (Want)](js-apis-app-ability-want.md)
     - [@ohos.app.ability.wantAgent (WantAgent模块)](js-apis-app-ability-wantAgent.md)
@@ -277,7 +278,6 @@
     - [@system.package (应用管理)](js-apis-system-package.md)
     - ability<!--ability-deprecated-->
       - [want](js-apis-inner-ability-want.md)
-    - continuation<!--ability--continuation-->
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)
