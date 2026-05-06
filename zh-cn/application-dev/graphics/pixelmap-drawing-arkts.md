@@ -55,31 +55,36 @@
    <!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
-   let width = 600;
-   let height = 400;
-   let byteLength = width * height * 4;
-   const color: ArrayBuffer = new ArrayBuffer(byteLength);
-   let bufferArr = new Uint8Array(color);
-   for (let i = 0; i < bufferArr.length; i += 4) {
-     bufferArr[i] = 0x00;
-     bufferArr[i + 1] = 0x00;
-     bufferArr[i + 2] = 0x00;
-     bufferArr[i + 3] = 0xFF;
-     let n = Math.floor(i / 80) % 3;
-     if (n == 0) {
-       bufferArr[i] = 0xFF;
-     } else if (n == 1) {
-       bufferArr[i + 1] = 0xFF;
-     } else {
-       bufferArr[i + 2] = 0xFF;
-     }
-   }
-   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
-   let pm = image.createPixelMapSync(color, opts);
-   if (pm != null) {
-     canvas.drawImage(pm, 0, 0);
-   }
-   ```
+    // 图片宽高
+    let width = 600;
+    let height = 400;
+    // 字节长度，RGBA_8888每个像素占4字节
+    let byteLength = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(byteLength);
+    let bufferArr = new Uint8Array(color);
+    for (let i = 0; i < bufferArr.length; i += 4) {
+      // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
+      bufferArr[i] = 0x00;
+      bufferArr[i + 1] = 0x00;
+      bufferArr[i + 2] = 0x00;
+      bufferArr[i + 3] = 0xFF;
+      let n = Math.floor(i / 80) % 3;
+      if (n == 0) {
+        bufferArr[i] = 0xFF;
+      } else if (n == 1) {
+        bufferArr[i + 1] = 0xFF;
+      } else {
+        bufferArr[i + 2] = 0xFF;
+      }
+    }
+    // 设置像素属性
+    let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
+    // 创建PixelMap
+    let pm = image.createPixelMapSync(color, opts);
+    if (pm != null) {
+      canvas.drawImage(pm, 0, 0);
+    }
+    ```
 
 2. （可选）编辑PixelMap中的像素。如果没有编辑像素的需求，此步骤可以省略。
 
@@ -128,37 +133,43 @@
    <!-- @[arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
-   if (pixelMap == null) {
-     return;
-   }
-   let pm = pixelMap;
-   let innerWidth = 400;
-   let innerHeight = 200;
-   let innerByteLength = innerWidth * innerHeight * 4;
-   const innerColor: ArrayBuffer = new ArrayBuffer(innerByteLength);
-   let innerBufferArr = new Uint8Array(innerColor);
-   for (let i = 0; i < innerBufferArr.length; i += 4) {
-     let n = Math.floor(i / 80) % 2;
-     if (n == 0) {
-       innerBufferArr[i] = 0x00;
-       innerBufferArr[i + 1] = 0x00;
-       innerBufferArr[i + 2] = 0x00;
-     } else {
-       innerBufferArr[i] = 0xFF;
-       innerBufferArr[i + 1] = 0xFF;
-       innerBufferArr[i + 2] = 0xFF;
-     }
-     innerBufferArr[i + 3] = 0xFF;
-   }
-   const area: image.PositionArea = {
-     pixels: innerColor,
-     offset: 0,
-     stride: innerWidth * 4,
-     region: { size: { height: innerHeight, width: innerWidth }, x: 100, y: 100 }
-   };
-   pm!.writePixelsSync(area);
-   canvas.drawImage(pm as image.PixelMap, 0, 0);
-   ```
+    if (pixelMap == null) {
+      return;
+    }
+    let pm = pixelMap;
+    // 设置编辑区域的宽高
+    let innerWidth = 400;
+    let innerHeight = 200;
+    // 编辑区域的字节长度，RGBA_8888每个像素占4字节
+    let innerByteLength = innerWidth * innerHeight * 4;
+    const innerColor: ArrayBuffer = new ArrayBuffer(innerByteLength);
+    let innerBufferArr = new Uint8Array(innerColor);
+    for (let i = 0; i < innerBufferArr.length; i += 4) {
+      // 编辑区域的像素都设置为黑白相间条纹
+      let n = Math.floor(i / 80) % 2;
+      if (n == 0) {
+        innerBufferArr[i] = 0x00;
+        innerBufferArr[i + 1] = 0x00;
+        innerBufferArr[i + 2] = 0x00;
+      } else {
+        innerBufferArr[i] = 0xFF;
+        innerBufferArr[i + 1] = 0xFF;
+        innerBufferArr[i + 2] = 0xFF;
+      }
+      innerBufferArr[i + 3] = 0xFF;
+    }
+    // 设置编辑区域的像素、宽高、偏移量等
+    const area: image.PositionArea = {
+      pixels: innerColor,
+      offset: 0,
+      stride: innerWidth * 4,
+      region: { size: { height: innerHeight, width: innerWidth }, x: 100, y: 100 }
+    };
+    // 编辑位图，形成中间的黑白相间条纹
+    pm!.writePixelsSync(area);
+    // 为了使图片完全显示，修改绘制起点参数为（0，0）
+    canvas.drawImage(pm as image.PixelMap, 0, 0);
+    ```
 
 3. 绘制PixelMap。
 
