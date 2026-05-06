@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-除了[photoAccessHelper.PhotoKeys](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys)里的一些字段可以判断媒体资源类型外，本文档还提供了其他判断媒体资源类型的示例方法。
+鸿蒙为开发者提供了多种获取媒体资源的方式，同样也对应了多种媒体资源类型的判断方式，本文档提供了相应的示例方法。
 
 ## 使用mimeType字段来判断资源类型
 
