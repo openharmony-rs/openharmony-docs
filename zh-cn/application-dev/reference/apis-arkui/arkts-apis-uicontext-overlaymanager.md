@@ -24,7 +24,7 @@
 
 ## openOrderOverlay<sup>26.0.0+</sup>
 
-openOrderOverlay<T extends Object>(content: ComponentContent<T>, options?: OrderOverlayOptions): Promise<void>
+openOrderOverlay<T extends Object>(content: ComponentContent\<T\>, options?: OrderOverlayOptions): Promise\<void\>
 
 打开浮层。
 
