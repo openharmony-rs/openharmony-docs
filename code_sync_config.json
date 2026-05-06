@@ -757,9 +757,9 @@
 						"start_line":989
 					},
 					{
-						"end_line":1422,
+						"end_line":1464,
 						"name":"AppEvent_C++_Init",
-						"start_line":1047
+						"start_line":1089
 					},
 					{
 						"end_line":910,
@@ -3158,7 +3158,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":29,
 						"name":"first_error_handler",
 						"start_line":1
 					}
@@ -3168,7 +3168,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":28,
 						"name":"second_error_handler",
 						"start_line":1
 					}
@@ -3208,9 +3208,9 @@
 						"start_line":27
 					},
 					{
-						"end_line":958,
+						"end_line":1112,
 						"name":"Hicollie_Set_Timer",
-						"start_line":938
+						"start_line":1092
 					},
 					{
 						"end_line":1129,
@@ -3293,9 +3293,9 @@
 						"start_line":23
 					},
 					{
-						"end_line":216,
+						"end_line":256,
 						"name":"hicollie_timer_ndk_Button",
-						"start_line":203
+						"start_line":243
 					}
 				]
 			}
@@ -3313,9 +3313,9 @@
 						"start_line":27
 					},
 					{
-						"end_line":958,
+						"end_line":1112,
 						"name":"Hicollie_Set_Timer",
-						"start_line":938
+						"start_line":1092
 					},
 					{
 						"end_line":1129,
@@ -3348,9 +3348,9 @@
 						"start_line":23
 					},
 					{
-						"end_line":216,
+						"end_line":256,
 						"name":"hicollie_timer_ndk_Button",
-						"start_line":203
+						"start_line":243
 					}
 				]
 			}
