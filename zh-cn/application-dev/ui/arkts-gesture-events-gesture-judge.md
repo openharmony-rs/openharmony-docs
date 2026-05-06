@@ -191,7 +191,7 @@
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截，获取手势识别器，初始化手势识别器开闭状态。|
 |[parallelGesture](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)|可使开发者定义的手势，与比他优先级高的手势并行。|
 
-以下示例是两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景，使用手势控制的api去控制外部组件和内部组件的嵌套滚动联动。
+以下示例是两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景，使用手势控制的API去控制外部组件和内部组件的嵌套滚动联动。
 
 1. 使用shouldBuiltInRecognizerParallelWith接口设置外部Scroll组件的PanGesture手势与内部Scroll组件的PanGesture手势并行。
 
