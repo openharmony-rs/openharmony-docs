@@ -128,9 +128,11 @@
      .then((data:intelligence.TextEmbedding) => {
        console.info('Succeeded in getting TextModel');
        textEmbedding = data;
+       // ...
      })
      .catch((err) => {
        console.error('Failed to get TextModel and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -162,9 +164,11 @@
    textEmbedding?.loadModel()
      .then(() => {
        console.info('Succeeded in loading Model');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to load Model and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -208,9 +212,11 @@
    intelligence.splitText(splitText, splitConfig)
      .then((data:Array<string>) => {
        console.info('Succeeded in splitting Text');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to split Text and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -255,18 +261,22 @@
    textEmbedding?.getEmbedding(text)
      .then((data:Array<double>) => {
        console.info('Succeeded in getting Embedding');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
      })
    
    let batchTexts = ['text1','text2'];
    textEmbedding?.getEmbedding(batchTexts)
      .then((data:Array<Array<double>>) => {
        console.info('Succeeded in getting Embedding');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -298,9 +308,11 @@
    textEmbedding?.releaseModel()
      .then(() => {
        console.info('Succeeded in releasing Model');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to release Model and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -375,9 +387,11 @@
      .then((data:intelligence.ImageEmbedding) => {
        console.info('Succeeded in getting ImageModel');
        imageEmbedding = data;
+       // ...
      })
      .catch((err) => {
        console.error('Failed to get ImageModel and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -409,9 +423,11 @@
    imageEmbedding?.loadModel()
      .then(() => {
        console.info('Succeeded in loading Model');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to load Model and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -445,9 +461,11 @@
    imageEmbedding?.getEmbedding(image)
      .then((data:Array<double>) => {
        console.info('Succeeded in getting Embedding');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -479,8 +497,10 @@
    imageEmbedding?.releaseModel()
      .then(() => {
        console.info('Succeeded in releasing Model');
+       // ...
      })
      .catch((err) => {
        console.error('Failed to release Model and code is ' + err.code);
+       // ...
      })
    ```
