@@ -13370,6 +13370,100 @@ try {
 }
 ```
 
+## setWindowMaskWithAlpha
+
+ArkTS-Dyn: setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: int, maskHeight: int): Promise&lt;void&gt;
+
+使用逐个的像素alpha数组设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+
+当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
+
+异形窗口蒙层设置不会影响窗口可见状态(可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)或[on('occlusionStateChanged')](arkts-apis-window-Window.md#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                          | 必填 | 说明                           |
+| :----------- | :---------- | :--- | :----------------------------- |
+| windowMask   | Uint8Array  | 是   | 异形窗口的掩码，为逐个的像素alpha数组，数组长度等于maskWidth乘以maskHeight，该数组中每个数字代表所在像素的透明度，取值范围[0, 255]，0表示所在像素完全透明，255表示所在像素完全不透明。 |
+| maskWidth    | ArkTS-Dyn: number </br>ArkTS-Sta: int    | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度。 |
+| maskHeight   | ArkTS-Dyn: number </br>ArkTS-Sta: int    | 是   | 表示异形窗口掩码的高度，必须等于窗口高度。 |
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300003  | This window manager service works abnormally. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
+| 1300016  | Parameter error. Possible cause: 1. The maskWidth is not equal to the window width or the maskHeight is not equal to the window height. 2. The length of windowMask is not equal to maskWidth multiplied by maskHeight. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = new Uint8Array(maskWidth * maskHeight);
+  for (let i = 0 ; i < maskHeight; i++) {
+    for (let j = 0 ; j < maskWidth; j++) {
+      windowMask[i * maskWidth + j] = (i + j) > (maskWidth + maskHeight) / 2 ? 255 : 0;
+    }
+  }
+  windowClass.setWindowMaskWithAlpha(windowMask, maskWidth, maskHeight).then(() => {
+    console.info('Succeeded in setting the window mask.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = new Uint8Array(maskWidth * maskHeight);
+  for (let i = 0 ; i < maskHeight; i++) {
+    for (let j = 0 ; j < maskWidth; j++) {
+      windowMask[i * maskWidth + j] = (i + j) > (maskWidth + maskHeight) / 2 ? 255 : 0;
+    }
+  }
+  windowClass.setWindowMaskWithAlpha(windowMask, maskWidth, maskHeight).then(() => {
+    console.info('Succeeded in setting the window mask.');
+  }).catch((err) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## clearWindowMask<sup>24+</sup>
 
 clearWindowMask(): Promise&lt;void&gt;
