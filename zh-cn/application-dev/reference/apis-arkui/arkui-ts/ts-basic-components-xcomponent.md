@@ -241,7 +241,7 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false。<br/>ArkTS-Sta模式下可不传，不传时使用默认值false。 |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false<br/>ArkTS-Sta模式下可不传，不传时使用默认值false。 |
 
   > **说明：**
   >
