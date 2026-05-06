@@ -371,7 +371,7 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 | 参数名                | 类型                                       | 必填   | 说明             |
 | ------------------ | ---------------------------------------- | ---- | -------------- |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息。         |
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述信息选项。        |
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项。        |
 | callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回新版本描述信息。 |
 
 **错误码**：
