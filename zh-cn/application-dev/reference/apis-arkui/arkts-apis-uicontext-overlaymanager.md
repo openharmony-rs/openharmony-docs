@@ -22,11 +22,13 @@
 >
 > - 与OverlayManager相关的属性推荐采用AppStorage来进行应用全局存储，以免切换页面后属性值发生变化从而导致业务错误。
 
-## openOrderOverlay<sup>26.0.0+</sup>
+## openOrderOverlay
 
-openOrderOverlay\<T extends Object>(content: ComponentContent\<T>, options?: OrderOverlayOptions): Promise&lt;void&gt;
+openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise&lt;void&gt;
 
 打开浮层。
+
+**起始版本：** 26.0.0
 
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -37,7 +39,7 @@ openOrderOverlay\<T extends Object>(content: ComponentContent\<T>, options?: Ord
 | 参数名     | 类型                                       | 必填   | 说明          |
 | ------- | ---------------------------------------- | ---- | ----------- |
 | content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager的新节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
-| options | [OrderOverlayOptions](#orderoverlayoptions2600) | 否    | 浮层的配置选项。 |
+| options | [OrderOverlayOptions](#orderoverlayoptions) | 否    | 浮层的配置选项。 |
 
 **返回值：**
 
@@ -104,9 +106,11 @@ struct OverlayExample {
 }
 ```
 
-## OrderOverlayOptions<sup>26.0.0+</sup>
+## OrderOverlayOptions
 
 浮层的配置选项。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
