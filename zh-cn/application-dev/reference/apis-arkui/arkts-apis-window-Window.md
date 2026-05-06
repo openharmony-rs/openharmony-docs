@@ -8356,6 +8356,12 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.SET_WINDOW_TOUCH_AREAS
 
+**设备行为差异：**
+
+针对PC/2in1设备，当窗口的大小或位置发生变化后，通过该接口设置的热区不会被重置。
+
+针对其他设备，当窗口的大小或位置发生变化后，通过该接口设置的热区会被重置，需调用此接口重新设置。
+
 **参数：**
 
 | 参数名       | 类型                          | 必填 | 说明                           |
