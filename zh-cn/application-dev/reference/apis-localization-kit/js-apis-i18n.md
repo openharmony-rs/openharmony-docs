@@ -17,7 +17,7 @@
 >
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如[时间日期格式化接口](#simplenumberformat18)，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅CLDR官方文档。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如[时间日期格式化接口](#simplenumberformat18)，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 
@@ -32,7 +32,7 @@ import { i18n } from '@kit.LocalizationKit';
 
 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -147,8 +147,6 @@ static getSystemLanguages(): Array&lt;string&gt;
 
 获取系统支持的语言列表。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该类型支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
@@ -195,7 +193,7 @@ static getSystemCountries(language: string): Array&lt;string&gt;
 
 | 类型                  | 说明           |
 | ------------------- | ------------ |
-| Array&lt;string&gt; | 某种特定语言下系统支持的国家地区列表。 |
+| Array&lt;string&gt; | language参数指定的语言下，系统支持的国家/地区列表。 |
 
 **错误码：**
 
@@ -950,14 +948,14 @@ getCalendar(locale: string, type? : string): Calendar
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
-| [Calendar](#calendar8) | 日历对象。 |
+| [Calendar](#calendar) | 日历对象。 |
 
 **示例：**
 ```ts
 let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese'); // 获取中国农历日历对象
 ```
 
-## Calendar<sup>8+</sup>
+## Calendar
 
 提供历法相关的能力，包括历法名称获取和日期计算等。
 
@@ -1550,7 +1548,7 @@ let calendar: i18n.ChineseCalendar = i18n.getChineseCalendar(locale);
 
 ## ChineseCalendar
 
-提供农历相关的能力，包括设置农历时间、判断指定年份某月是否存在闰月。继承自[Calendar](#calendar8)，支持[Calendar](#calendar8)的方法。
+提供农历相关的能力，包括设置农历时间、判断指定年份某月是否存在闰月。继承自[Calendar](#calendar)，支持[Calendar](#calendar)的方法。
 
 ### setChineseCalendarTime
 
@@ -1674,7 +1672,7 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 | 参数名     | 类型                                       | 必填   | 说明               |
 | ------- | ---------------------------------------- | ---- | ---------------- |
-| country | string                                   | 是    | 表示电话号码所属的国家地区代码。 |
+| country | string                                   | 是    | 表示电话号码所属的国家地区代码，要求是[合法的国家地区码](../../internationalization/i18n-locale-culture.md#实现原理)。 |
 | options | [PhoneNumberFormatOptions](#phonenumberformatoptions8) | 否    | 电话号码格式化时设置的配置项。默认值：NATIONAL。  |
 
 **示例：**
@@ -1994,7 +1992,7 @@ getIndex(text: string): string
 
 getLineInstance(locale: string): BreakIterator
 
-获取用于获取可换行点的BreakIterator对象。BreakIterator对象内部维护一个换行迭代器，可以用于访问各个可换行点。
+获取用于定位文本可换行点的BreakIterator对象。该对象内部维护一个换行迭代器，可以用于访问各个可换行点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
