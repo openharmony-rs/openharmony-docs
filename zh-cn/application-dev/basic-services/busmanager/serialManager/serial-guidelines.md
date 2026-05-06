@@ -241,7 +241,7 @@
      console.info('CTS signal status: ' + cts);
    } catch (error) {
      let e = error as BusinessError;
-     console.error(`Failed to set CTS: ${JSON.stringify(e)}`);
+     console.error(`Failed to get CTS: ${JSON.stringify(e)}`);
    }
 
    // 发送break信号
