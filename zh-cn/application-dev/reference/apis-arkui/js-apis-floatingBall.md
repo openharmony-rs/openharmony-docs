@@ -102,7 +102,7 @@ try {
   floatingBall.create(config).then((data: floatingBall.FloatingBallController) => {
     floatingBallController = data;
     console.info(`Succeeded in creating floating ball controller. Data: ${data}`);
-  }).catch((err: BusinessError):void => {
+  }).catch((err: BusinessError): void => {
     console.error(`Failed to create floating ball controller. Cause:${err.code}, message:${err.message}`);
   });
 } catch(e) {
@@ -187,7 +187,7 @@ let startParams: floatingBall.FloatingBallParams = {
 try {
   floatingBallController.startFloatingBall(startParams).then(() => {
     console.info('Succeeded in starting floating ball.');
-  }).catch((err: BusinessError):void => {
+  }).catch((err: BusinessError): void => {
     console.error(`Failed to start floating ball. Cause:${err.code}, message:${err.message}`);
   });
 } catch(e) {
@@ -249,7 +249,7 @@ let updateParams: floatingBall.FloatingBallParams = {
 try {
   floatingBallController.updateFloatingBall(updateParams).then(() => {
     console.info('Succeeded in updating floating ball.');
-  }).catch((err: BusinessError):void => {
+  }).catch((err: BusinessError): void => {
     console.error(`Failed to update floating ball. Cause:${err.code}, message:${err.message}`);
   });
 } catch(e) {
@@ -293,7 +293,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 floatingBallController.stopFloatingBall().then(() => {
   console.info('Succeeded in stopping floating ball.');
-}).catch((err: BusinessError):void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to stop floating ball. Cause:${err.code}, message:${err.message}`);
 });
 ```
@@ -705,7 +705,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.FloatingBallWindowInfo) => {
   console.info('Succeeded in getting floating ball window info. Info: ' + JSON.stringify(data));
-}).catch((err: BusinessError):void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to get floating ball window info. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -766,7 +766,7 @@ let want: Want = {
 try {
   floatingBallController.restoreMainWindow(want).then(() => {
     console.info('Succeeded in restoring floating ball main window.');
-  }).catch((err: BusinessError):void => {
+  }).catch((err: BusinessError): void => {
     console.error(`Failed to restore floating ball main window. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch(e) {
