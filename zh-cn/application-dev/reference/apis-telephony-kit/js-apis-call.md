@@ -1153,6 +1153,19 @@ call.getCallTransferInfo(type, number)
 | ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
 | countryCode | string | 否   | 是   | 国家码，支持所有国家的国家码，如：CN（中国）。默认为：CN。 |
 
+## TransferStatus
+
+转移状态。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称             | 值   | 说明     |
+| ---------------- | ---- | -------- |
+| TRANSFER_DISABLE | 0    | 禁用转移。 |
+| TRANSFER_ENABLE  | 1    | 启用转移。 |
+
 ## CallTransferType
 
 呼叫转移类型。
@@ -1178,8 +1191,7 @@ call.getCallTransferInfo(type, number)
 
 |          名称            |                 类型               | 必填 |       说明       |
 | ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](js-apis-call-sys.md#transferstatus8) |  是  | 转移状态。         |
-| number                   | string                             |  是  | 号码。             |
+| status                   | [TransferStatus](#transferstatus) |  是  | 转移状态。         |
 | startHour   | number                             |  是  | 开始时间的小时数。 |
 | startMinute | number                             |  是  | 开始时间的分钟数。 |
 | endHour     | number                             |  是  | 结束时间的小时数。 |

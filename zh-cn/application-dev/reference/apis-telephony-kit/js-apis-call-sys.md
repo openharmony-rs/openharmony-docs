@@ -5113,6 +5113,18 @@ VoIP通话信息。
 | -------------- | ------ | ---- | -------- |
 | messageContent | string | 是   | 消息内容。 |
 
+ ## CallTransferResult<sup>8+</sup> 
+ 
+ 呼叫转移结果。 
+ 
+ **系统接口：** 此接口为系统接口。 
+ 
+ **系统能力**：SystemCapability.Telephony.CallManager 
+ 
+ |          名称            |                 类型               | 必填 |       说明       | 
+ | ------------------------ | ---------------------------------- | ---- | ---------------- | 
+ | number                   | string                             |  是  | 号码。             | 
+
 ## CallWaitingStatus<sup>7+</sup>
 
 呼叫等待状态。
@@ -5138,19 +5150,6 @@ VoIP通话信息。
 | ------------------- | ---- | -------- |
 | RESTRICTION_DISABLE | 0    | 禁用限制。 |
 | RESTRICTION_ENABLE  | 1    | 启用限制。 |
-
-## TransferStatus<sup>8+</sup>
-
-转移状态。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-| 名称             | 值   | 说明     |
-| ---------------- | ---- | -------- |
-| TRANSFER_DISABLE | 0    | 禁用转移。 |
-| TRANSFER_ENABLE  | 1    | 启用转移。 |
 
 ## DisconnectedDetails<sup>9+</sup>
 
