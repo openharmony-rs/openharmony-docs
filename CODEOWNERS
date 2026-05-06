@@ -925,7 +925,7 @@ zh-cn/application-dev/media/media/using-ndk-avplayer-for-video-playback.md @xush
 zh-cn/application-dev/media/media/using-ndk-avrecorder-for-audio-recording.md @shiwei75 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avrecorder-for-video-recording.md @shiwei75 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avtranscoder-for-transcodering.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/media/media/using-ndk-lpp-for-playback.md @Saber_e @yangde_dy @w_Machine_cc
+zh-cn/application-dev/media/media/using-ndk-lpp-for-playback.md @hanzhengshi @yangde_dy @w_Machine_cc
 zh-cn/application-dev/media/media/using-soundpool-for-playback.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/media/media/video-playback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/video-recording.md @shiwei75 @HmQQQ @w_Machine_cc
@@ -4210,16 +4210,16 @@ zh-cn/application-dev/reference/apis-media-kit/capi-avtranscoder-h.md @wang-haiz
 zh-cn/application-dev/reference/apis-media-kit/capi-avtranscoder-oh-avtranscoder-config.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avtranscoder-oh-avtranscoder.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avtranscoder.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-audio-sink-base-h.md @Saber_e @yangde_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-audio-sink-h.md @Saber_e @yangde_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-avsink-base-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-video-sink-base-h.md @Saber_e @yangde_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-video-sink-h.md @Saber_e @yangde_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosink.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-audio-sink-base-h.md @hanzhengshi @yangde_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-audio-sink-h.md @hanzhengshi @yangde_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-avsink-base-h.md @hanzhengshi @yangde_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-video-sink-base-h.md @hanzhengshi @yangde_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpower-video-sink-h.md @hanzhengshi @yangde_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosink.md @hanzhengshi @yangde_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md @hanzhengshi @yangde_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-lowpoweraudiosink.md 无
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpowervideosink-oh-lowpowervideosink.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-lowpowervideosink-oh-lowpowervideosinkcallback.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpowervideosink-oh-lowpowervideosink.md @hanzhengshi @yangde_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-lowpowervideosink-oh-lowpowervideosinkcallback.md @hanzhengshi @yangde_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-lowpowervideosink.md 无
 zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-base-h.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-errors-h.md @zzs_911 @stupig001 @w_Machine_cc
