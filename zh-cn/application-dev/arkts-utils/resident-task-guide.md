@@ -19,32 +19,27 @@
    <!-- @[worker_receive_child_thread_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/ResidentTaskGuide.ets) -->
    
    ``` TypeScript
-   import { worker } from '@kit.ArkTS';
-   import p2pManager from '../util/resource';
-   
-   const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+   import { MessageEvents, worker } from '@kit.ArkTS';
    
    @Entry
    @Component
    struct Index {
-     @State message: string = 'Listener task';
-   
      build() {
        Column() {
-         Text(this.message)
+         Text('Listener task')
            .id('HelloWorld')
            .fontSize(50)
            .fontWeight(FontWeight.Bold)
            .onClick(() => {
-             workerInstance.postMessage({ type: 'End' });
-             workerInstance.onmessage = (event) => {
-               console.info(p2pManager.resourceToString($r('app.string.Information').id), event.data);
+             const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+             workerInstance.onmessage = (event: MessageEvents) => {
+               console.info('UI主线程收到消息：', event.data);
              }
+             workerInstance.postMessage({type: 'start'})
              // 10秒后停止worker
              setTimeout(() => {
                workerInstance.postMessage({ type: 'stop' });
              }, 10000);
-             this.message = 'success';
            })
        }
        .height('100%')
