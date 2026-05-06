@@ -52,9 +52,10 @@
    ``` TypeScript
    import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { UIContext } from '@kit.ArkUI';
    import { common } from '@kit.AbilityKit';
    
-   async function certificateManagerDialogSample() {
+   async function certificateManagerDialogSample(): Promise<void> {
      /* context为应用的上下文信息，由调用方自行获取，此处仅为示例 */
      let context: common.Context = new UIContext().getHostContext() as common.Context;
      /* pageType为页面类型，此处赋值PAGE_MAIN，即拉起证书管理主界面 */
@@ -63,7 +64,8 @@
      try {
        certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
          console.info('Succeeded in opening certificate manager dialog.');
-       }).catch((err: BusinessError) => {
+       }).catch((error: Error) => {
+         let err = error as BusinessError;
          console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
        })
      } catch (error) {
@@ -108,7 +110,7 @@
    4sJBdSpWBq172ZEyOvTqC4xX9lLYqwwBQ++TFoo=
    -----END CERTIFICATE-----`);
    
-   async function installUserCADialogSample() {
+   async function installUserCADialogSample(): Promise<void> {
      /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
      let context: common.Context = new UIContext().getHostContext() as common.Context;
      let certScope = certificateManagerDialog.CertificateScope.CURRENT_USER; /* 安装在当前用户下。 */
@@ -117,7 +119,8 @@
        certificateManagerDialog.openInstallCertificateDialog(context, certType, certScope, cert).then((result) => {
          console.info('Succeeded in opening install ca dialog.');
          certUri = result;
-       }).catch((err: BusinessError) => {
+       }).catch((error: Error) => {
+         let err = error as BusinessError;
          console.error(`Failed to open install ca dialog. Code: ${err.code}, message: ${err.message}`);
        })
      } catch (error) {
@@ -125,14 +128,15 @@
      }
    }
    
-   async function uninstallUserCADialogSample() {
+   async function uninstallUserCADialogSample(): Promise<void> {
      /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
      let context: common.Context = new UIContext().getHostContext() as common.Context;
      try {
        /* 删除证书。 */
        certificateManagerDialog.openUninstallCertificateDialog(context, certType, certUri).then(() => {
          console.info('Succeeded in opening uninstall ca dialog.');
-       }).catch((err: BusinessError) => {
+       }).catch((error: Error) => {
+         let err = error as BusinessError;
          console.error(`Failed to open uninstall ca dialog. Code: ${err.code}, message: ${err.message}`);
        })
      } catch (error) {
@@ -140,7 +144,7 @@
      }
    }
    
-   async function certDetailDialogSample() {
+   async function certDetailDialogSample(): Promise<void> {
      /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
      let context: common.Context = new UIContext().getHostContext() as common.Context;
      try {
@@ -150,7 +154,8 @@
        /* 显示证书详情。 */
        certificateManagerDialog.openCertificateDetailDialog(context, cert, property).then(() => {
          console.info('Succeeded in opening show ca detail dialog.');
-       }).catch((err: BusinessError) => {
+       }).catch((error: Error) => {
+         let err = error as BusinessError;
          console.error(`Failed to open show ca detail dialog. Code: ${err.code}, message: ${err.message}`);
        })
      } catch (error) {

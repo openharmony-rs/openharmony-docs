@@ -64,7 +64,7 @@
    import { certificateManager } from '@kit.DeviceCertificateKit';
    import { util } from '@kit.ArkTS';
    
-   async function userCASample() {
+   async function userCASample(): Promise<void> {
      /* 安装的用户CA证书数据需要业务赋值。 */
      let userCAData: Uint8Array = new util.TextEncoder().encodeInto('-----BEGIN CERTIFICATE-----\n' +
        'MIIDSTCCAjECFFRZKkiBuiZ+zqfjJOg05yeTePM9MA0GCSqGSIb3DQEBCwUAMGEx\n' +
@@ -92,7 +92,7 @@
      try {
        /* 在当前用户下，安装用户CA证书。 */
        let result = certificateManager.installUserTrustedCertificateSync(userCAData, certScope);
-       certUri = (result.uri != undefined) ? result.uri : '';
+       certUri = result.uri ?? '';
        console.info(`Succeeded in install user ca cert, certUri is ${certUri}`);
      } catch (err) {
        console.error(`Failed to install user ca cert. Code: ${err.code}, message: ${err.message}`);
@@ -143,7 +143,7 @@
    ``` TypeScript
    import { certificateManager } from '@kit.DeviceCertificateKit';
    
-   function getUserCaPathSample() {
+   function getUserCaPathSample(): void {
      try {
        /* 获取系统CA的存储位置。 */
        let property1: certificateManager.CertStoreProperty = {
