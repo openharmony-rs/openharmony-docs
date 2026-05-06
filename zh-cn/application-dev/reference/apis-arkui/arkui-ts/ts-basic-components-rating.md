@@ -324,17 +324,9 @@ ArkTS-Sta: onChange(callback: OnRatingChangeCallback | undefined)
 
 **参数：**
 
-ArkTS-Dyn参数：
-
 | 参数名   | 类型     | 必填 | 说明                         |
 | -------- | -------- | ---- | ---------------------------- |
-| callback | [OnRatingChangeCallback](#onratingchangecallback18) | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
-
-ArkTS-Sta参数：
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [OnRatingChangeCallback](#onratingchangecallback18) \| undefined | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | ArkTS-Dyn: [OnRatingChangeCallback](#onratingchangecallback18)<br/>ArkTS-Sta: [OnRatingChangeCallback](#onratingchangecallback18) \| undefined | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onChange<sup>18+</sup>
 
