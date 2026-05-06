@@ -1848,7 +1848,7 @@ struct Index {
         .onClick(() => {
           try {
             // 订阅向内滑动事件
-            inputMonitor.on('swipelnward', (SwipeInward) => {
+            inputMonitor.on('swipeInward', (SwipeInward) => {
               console.info(`Succeeded in monitoring on ${JSON.stringify(SwipeInward)}.`);
               return false;
             });

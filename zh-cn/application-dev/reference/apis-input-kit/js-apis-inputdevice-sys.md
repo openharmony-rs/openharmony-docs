@@ -531,10 +531,10 @@ struct Index {
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
               console.info(`Succeeded in setting input device enabled.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set device enabled, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to set device enabled, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
