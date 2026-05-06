@@ -562,7 +562,7 @@ isBluetoothSupported(): boolean
 
 查询本机是否接入蓝牙模块。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
