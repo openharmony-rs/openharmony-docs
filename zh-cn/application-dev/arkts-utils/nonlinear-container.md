@@ -276,7 +276,7 @@ import { HashMap, TreeMap, LightWeightMap, PlainArray } from '@kit.ArkTS';
 
   // ...
   // HashMap
-  let hashMap1: HashMap<string, int> = new  HashMap<string, int>();
+  let hashMap1: HashMap<string, int> = new HashMap<string, int>();
   hashMap1.set('a', 123); // 增加一个键为'a'，值为123的元素
   let hashMap2: HashMap<int, int> = new HashMap<int, int>();
   hashMap2.set(4, 123); // 增加一个键为4，值为123的元素
