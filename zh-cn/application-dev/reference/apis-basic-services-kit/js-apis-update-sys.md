@@ -675,7 +675,7 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回当前版本描述信息的数组。 |
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回当前版本描述信息。 |
 
 **错误码**：
 
