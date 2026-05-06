@@ -3976,7 +3976,7 @@ getParagraphStyle(): ParagraphStyle
 
 | 类型 | 说明 |
 | - | - |
-| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。 |
+| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。<br>ArkTS-Dyn: 其中textStyle.color、textStyle.textShadows.color、textStyle.backgroundRect.color、textStyle.decoration.color属性：返回32位无符号整型颜色数值。示例：返回值4278190080，对应纯黑色十六进制颜色值0xFF000000，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>ArkTS-Sta: 其中textStyle.color、textStyle.textShadows.color、textStyle.backgroundRect.color、textStyle.decoration.color属性：返回[common2D.Color](js-apis-graphics-common2D.md#color)对象。 |
 
 **示例：**
 
@@ -3984,6 +3984,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -4008,10 +4009,22 @@ struct Index {
           let paragraphStyle = paragraph.getParagraphStyle();
           if (paragraphStyle.textStyle != undefined) {
             console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+            if (paragraphStyle.textStyle?.color != undefined && typeof paragraphStyle.textStyle?.color == 'number') {
+              let textColor: common2D.Color = numberToRGBA(paragraphStyle.textStyle?.color);
+              console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+            }
           }
         })
     }
   }
+}
+
+function numberToRGBA(colorNum: number): common2D.Color {
+  const a = (colorNum >>> 24) & 0xFF;
+  const r = (colorNum >>> 16) & 0xFF;
+  const g = (colorNum >>> 8) & 0xFF;
+  const b = colorNum & 0xFF;
+  return { alpha: a, red: r, green: g, blue: b };
 }
 ```
 
@@ -4020,6 +4033,7 @@ ArkTS-Sta示例：
 ```ts
 import { Entry, Component, Column, Button} from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D";
+import { common2D } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -4042,7 +4056,13 @@ struct Index {
           let paragraph = paragraphBuilder.build();
           paragraph.layoutSync(200);
           let paragraphStyle = paragraph.getParagraphStyle();
-          console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+          if (paragraphStyle.textStyle != undefined) {
+            console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+            let textColor = paragraphStyle.textStyle?.color;
+            if (textColor != undefined) {
+              console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+            }
+          }
         })
     }
   }
