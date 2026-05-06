@@ -26,34 +26,36 @@
 
 openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise&lt;void&gt;
 
-打开浮层。
+打开一个支持层级配置的浮层。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
-| 参数名     | 类型                                       | 必填   | 说明          |
-| ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager的新节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
-| options | [OrderOverlayOptions](#orderoverlayoptions) | 否    | 浮层的配置选项。 |
+| 参数名     | 类型                                       | 只读   | 可选    | 说明          |
+| ------- | ---------------------------------------- | ------ | ------ | ----------- |
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | 否| 否    | 在OverlayManager的新节点上添加此内容节点。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
+| options | [OrderOverlayOptions](#orderoverlayoptions) | 否 | 是    | 浮层的层级配置选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 103307 | 由于系统弹出窗口，无法打开浮层。 |
+| 103307 | The overlay cannot be opened due to the system popup-up window. |
 
 **示例：**
 
@@ -108,17 +110,21 @@ struct OverlayExample {
 
 ## OrderOverlayOptions
 
-浮层的配置选项。
+浮层的层级配置选项。
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 浮层的显示顺序。 |
-| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 浮层的显示模式。 |
-| levelUniqueId | int | 否 | 路由或导航页面中任意节点的uniqueId。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- |--------| -------- |
+| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 是 | 浮层的显示顺序。 |
+| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 浮层的显示模式。 |
+| levelUniqueId | int | 否 | 是 | 路由或导航页面中任意节点的uniqueId。需大于等于0。 |
 
 ## addComponentContent<sup>12+</sup>
 
