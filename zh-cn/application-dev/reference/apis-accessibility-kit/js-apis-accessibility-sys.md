@@ -103,8 +103,8 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_FOUR_FINGER_SWIPE_RIGHT  |68| 表示四指向右滑动的手势。|
 | TYPE_PAGE_ACTIVE<sup>23+</sup> |69| 表示页面发生变化。 |
 | TYPE_NOTIFICATION_UPDATE |70| 表示通知发生变化。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| TYPE_FOCUS_INVISIBLE |71| 表示焦点变为不可见状态。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| TYPE_ONE_FINGER_DOUBLE_TAP |72| 表示单指双击的手势。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_FOCUS_INVISIBLE |71| 表示焦点变为不可见状态。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_ONE_FINGER_DOUBLE_TAP |72| 表示单指双击的手势。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AccessibilityAction
 
@@ -140,7 +140,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | CONTROL_CENTER             | 19   | 显示控制中心。                  |
 | SPAN_CLICK                 | 20   | 对局部文本进行点击操作。             |
 | INJECT_ACTION              | 21   | 表示注入动作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| EXECUTE_CUSTOM_ACTION      | 22   | 执行自定义操作。<Br>**起始版本：** 26.0.0<Br>**模型约束：** 此接口仅可在Stage模型下使用。    |
+| EXECUTE_CUSTOM_ACTION      | 22   | 执行自定义操作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。    |
 
 ## FocusMoveResultCode<sup>23+</sup>
 
