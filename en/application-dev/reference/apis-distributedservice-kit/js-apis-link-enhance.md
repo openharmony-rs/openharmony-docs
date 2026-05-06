@@ -4,7 +4,8 @@
 <!--Owner: @wangJE-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+
 The **linkEnhance** module delivers highly efficient Bluetooth connectivity and data transmission capabilities, significantly enhancing the cross-device connection stability. By employing a multi-channel merging algorithm, it not only increases the number of available cross-device connections but also strengthens cross-device data transmission capabilities, thereby improving the overall user experience.
 
 > **NOTE**
@@ -50,6 +51,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed |
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -105,6 +107,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed |
 | 32390206 | Invalid parameter.  |
 
 **Example**
