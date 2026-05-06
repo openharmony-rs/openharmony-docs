@@ -18,6 +18,7 @@
    有多个API接口可以创建PixelMap，下文以createPixelMapSync()为例。更多创建方式和接口请见[@ohos.multimedia.image (图片处理)](../reference/apis-image-kit/arkts-apis-image.md)模块。
 
    ArkTS-Dyn示例：
+
    <!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
@@ -50,6 +51,7 @@
    pixelMap = image.createPixelMapSync(color, opts);
    ```
    ArkTS-Sta示例：
+
    <!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
@@ -84,6 +86,7 @@
    有多个API接口可以编辑PixelMap中的像素，下文以writePixelsSync()为例。更多方式和接口的使用可见[PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
    ArkTS-Dyn示例：
+
    <!-- @[arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
@@ -121,6 +124,7 @@
    canvas.drawImage(pixelMap, 0, 0);
    ```
    ArkTS-Sta示例：
+
    <!-- @[arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
@@ -163,6 +167,7 @@
    drawImage()函数接受4个参数，第一个就是上文中创建的PixelMap，第二个是绘制图片位置的左上角x轴坐标，第三个是左上角y轴坐标，第四个为采样选项对象，默认为不使用任何参数构造的原始采样选项对象。
 
    ArkTS-Dyn示例：
+
    <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
@@ -170,6 +175,7 @@
    canvas.drawImage(pixelMap, 0, 0);
    ```
    ArkTS-Sta示例：
+
    <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
    ``` TypeScript
