@@ -600,7 +600,7 @@ try {
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-获取当前版本描述信息。根据使用callback异步回调。
+获取当前版本描述信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
