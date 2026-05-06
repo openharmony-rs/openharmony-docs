@@ -4301,6 +4301,16 @@ ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeightMultiple(OH_ArkUI_LineHeig
 
 设置行高样式的行高倍数。
 
+> **说明：**
+>
+> - lineHeightMultiple与lineHeight或[OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)同时设置时，仅lineHeightMultiple生效，行高为该行最高字体高度与倍数的乘积。
+>
+> - lineHeightMultiple小于0时不生效，使用lineHeight和[OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)设置行高和行间距。
+>
+> - lineHeight可以通过[OH_ArkUI_LineHeightStyle_SetLineHeight()](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheight)接口设置。
+>
+> - lineHeightMultiple等于0时等效于设置为1。
+
 **起始版本：** 26.0.0
 
 **参数：**

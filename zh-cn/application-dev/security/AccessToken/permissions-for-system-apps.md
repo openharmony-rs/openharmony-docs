@@ -5881,6 +5881,34 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.QUERY_TOOL_PERMISSIONS
+
+允许系统应用查询执行CLI/Skill所需要的权限。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+允许系统应用设置和查询指定CLI/Skill运行所需要的权限。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
 
 允许应用使用跨设备互通能力。
@@ -5906,5 +5934,19 @@
 **ACL使能**：true
 
 **支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_AOD
+
+通过API调用AOD Service，触发进入或退出AOD、状态管理等接口时，需要校验该权限。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
 
 **起始版本**：26.0.0

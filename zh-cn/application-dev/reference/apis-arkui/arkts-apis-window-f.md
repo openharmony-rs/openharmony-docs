@@ -652,6 +652,8 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
+**示例：**
+
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -684,6 +686,13 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 
 获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。
 
+> **说明：**
+>
+> 本接口返回的可见窗口与肉眼所见可能存在区别，如以下场景：
+> - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+> - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+> - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -710,6 +719,8 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 | 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
+**示例：**
+
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -732,6 +743,13 @@ try {
 getAllWindowLayoutInfo(displayId: number, option?: WindowInfoOptions): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
 
 根据option指定的过滤条件获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。当未传入option或其中的字段都为默认值时，当前接口与[getAllWindowLayoutInfo](#windowgetallwindowlayoutinfo15)等价。
+
+> **说明：**
+>
+> 本接口返回的可见窗口与肉眼所见可能存在区别，如以下场景：
+> - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+> - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+> - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
 
 **起始版本：** 26.0.0
 
@@ -862,7 +880,7 @@ getGlobalWindowMode(displayId?: number): Promise&lt;number&gt;
 
 | 类型                             | 说明                      |
 | -------------------------------- |-------------------------|
-| Promise&lt;number&gt; | Promise对象。返回获取到的窗口模式。每一个二进制位代表一种窗口模式，当前支持的窗口模式见[GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20)，返回值为对应窗口模式值按位进行或运算的结果。比如，当前屏幕上存在全屏窗口、悬浮窗和画中画三种窗口，则返回值为`0b1\|0b100\|0b1000 = 13`。|
+| Promise&lt;number&gt; | Promise对象。返回获取到的窗口模式。每一个二进制位代表一种窗口模式，当前支持的窗口模式见[GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20)，返回值为对应窗口模式值按位进行或运算的结果。比如，当前屏幕上存在全屏窗口、自由悬浮窗口和画中画三种窗口，则返回值为`0b1\|0b100\|0b1000 = 13`。|
 
 **错误码：**
 

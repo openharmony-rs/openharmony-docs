@@ -68,7 +68,7 @@ hiAppEvent.setEventConfig(hiappEvent.event.RESOURCE_OVERLIMIT, configParams);
 
 从**API version 24**开始支持页面切换日志配置。当应用发生资源泄漏故障时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
 
-从**API version 24**开始支持设置资源泄漏事件的日志和回调事件规格。
+从**API version 26.0.0**开始支持设置资源泄漏事件的日志和回调事件规格。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -90,9 +90,9 @@ import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
     resourceOverlimitPolicy: {
-        pageSwitchLogEnable: true, // 启用页面切换日志
-        js_heap_logtype: "event", // 仅获取事件
-        // js_heap_logtype: "event_rawheap", // 同时获取堆快照
+        pageSwitchLogEnable: true, // 启用页面切换日志。从API version 24开始支持该参数
+        js_heap_logtype: "event", // 仅获取事件。从API版本26.0.0开始支持该参数
+        // js_heap_logtype: "event_rawheap", // 同时获取堆快照。从API版本26.0.0开始支持该参数
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {

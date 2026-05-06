@@ -5769,6 +5769,20 @@ Allows an application to deliver, control, and query tasks through the asset cac
 
 **Since**: 24
 
+## ohos.permission.MANAGE_AOD
+
+Allows an application to trigger the Always On Display (AOD) mode or exit it, and manage the AOD status.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 Allows an application and a service to access the device-side model deployment management.
@@ -5878,6 +5892,34 @@ Allows an application to enable the outdoor exploration service to provide the a
 **Enable via ACL**: true
 
 **Supported devices**: phones
+
+**Since**: 26.0.0
+
+## ohos.permission.QUERY_TOOL_PERMISSIONS
+
+Allows a system application to query the permissions required for running a CLI or skill.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+Allows a system application to set and query the permissions required for running a specified CLI or skill.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
 
 **Since**: 26.0.0
 
