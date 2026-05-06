@@ -87,14 +87,14 @@
       // 设置混合模式
       brush.setBlendMode(drawing.BlendMode.SRC_IN);
       canvas.saveLayer(null, brush);
-     const brushRect = new drawing.Brush();
-     brushRect.setColor({ alpha: 255, red: 255, green: 255, blue: 0 });
-     canvas.attachBrush(brushRect);
-     const rect: common2D.Rect = { left: 100, top: 100, right: 500, bottom: 500 };
-     canvas.drawRect(rect);
-     canvas.restore();
-     canvas.restore();
-     canvas.detachBrush();
+      const brushRect = new drawing.Brush();
+      brushRect.setColor({ alpha: 255, red: 255, green: 255, blue: 0 });
+      canvas.attachBrush(brushRect);
+      const rect: common2D.Rect = { left: 100, top: 100, right: 500, bottom: 500 };
+      canvas.drawRect(rect);
+      canvas.restore();
+      canvas.restore();
+      canvas.detachBrush();
    }
    ```
 
@@ -169,7 +169,7 @@
     canvas.drawRect(rect);
     // 去除描边效果
     canvas.detachPen();
-    ```
+  ```
 
 | 原始图 | 设置虚线效果后的效果图 |
 | -------- | -------- |
@@ -254,7 +254,7 @@
       // 去除填充效果
       canvas.detachBrush();
     }
-    ```
+  ```
 
 ![zh-cn_image_0000002158744106](figures/zh-cn_image_0000002158744106.png)
 
@@ -315,7 +315,7 @@
       // 去除填充效果
       canvas.detachBrush();
     }
-    ```
+  ```
 
 ![Screenshot_20241130164939281](figures/Screenshot_20241130164939281.jpg)
 
@@ -376,7 +376,7 @@
       // 去除填充效果
       canvas.detachBrush();
     }
-    ```
+  ```
 
 ![Screenshot_20241130165741720](figures/Screenshot_20241130165741720.jpg)
 
@@ -487,7 +487,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
     canvas.drawRect(rect);
     // 去除填充效果
     canvas.detachBrush();
-    ```
+  ```
 
 | 原始图 | 设置5x4颜色矩阵的颜色滤波器后的效果图 |
 | -------- | -------- |
@@ -564,7 +564,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
     canvas.drawRect(rect);
     // 去除描边效果
     canvas.detachPen();
-    ```
+  ```
 
 | 原始图 | 设置模糊效果后的效果图 |
 | -------- | -------- |
@@ -637,7 +637,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
     canvas.drawRect(rect);
     // 去除描边效果
     canvas.detachPen();
-    ```
+  ```
 
 | 原始图 | 设置模糊效果后的效果图 |
 | -------- | -------- |
