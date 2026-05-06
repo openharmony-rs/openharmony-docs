@@ -2491,6 +2491,7 @@ HTTP协议版本。
 **系统能力**：SystemCapability.Communication.NetStack
 
 **ArkTS-Dyn起始版本：**  11
+
 **ArkTS-Sta起始版本：**  23
 | 名称 |   值   | 说明       |
 | --- | ------ | ---------- |
@@ -2555,7 +2556,9 @@ type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
 
 用于构造URL查询参数的键值对象类型。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **系统能力**：SystemCapability.Communication.NetStack
 
