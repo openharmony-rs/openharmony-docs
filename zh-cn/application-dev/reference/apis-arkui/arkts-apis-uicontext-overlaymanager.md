@@ -113,7 +113,7 @@ struct OverlayExample {
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 浮层的显示顺序。 |
-| levelMode | [LevelMode](js-apis-promptAction.md#levelmode18) | 否 | 浮层的显示模式。 |
+| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 浮层的显示模式。 |
 | levelUniqueId | int | 否 | 路由或导航页面中任意节点的uniqueId。 |
 
 ## addComponentContent<sup>12+</sup>
