@@ -189,6 +189,8 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -281,6 +283,8 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -352,6 +356,8 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统API：** 此接口为系统接口。
 
@@ -482,7 +488,7 @@ struct Index {
 | isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
 | finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
-| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。取值为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。<br>**起始版本：** 26.0.0|
+| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。取值为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。<br>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## shieldMode<sup>11+</sup>
 
@@ -501,6 +507,8 @@ struct Index {
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统API：** 此接口为系统接口。
 
