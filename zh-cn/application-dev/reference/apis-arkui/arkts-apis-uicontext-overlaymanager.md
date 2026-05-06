@@ -26,7 +26,7 @@
 
 openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise&lt;void&gt;
 
-打开一个支持层级配置的浮层。使用Promise异步回调。
+打开一个支持层级配置的浮层，浮层中的内容由开发者传入的组件内容（content字段）决定，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -40,7 +40,7 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 
 | 参数名     | 类型                                       | 只读   | 可选    | 说明          |
 | ------- | ---------------------------------------- | ------ | ------ | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | 否| 否    | 在OverlayManager的新节点上添加此内容节点。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | 否| 否    | 浮层的显示内容，在OverlayManager的新节点上添加此内容节点。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
 | options | [OrderOverlayOptions](#orderoverlayoptions) | 否 | 是    | 浮层的层级配置选项。 |
 
 **返回值：**
@@ -124,7 +124,7 @@ struct OverlayExample {
 | -------- | -------- | -------- |--------| -------- |
 | levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 是 | 浮层的显示顺序。 |
 | levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 浮层的显示模式。 |
-| levelUniqueId | int | 否 | 是 | 路由或导航页面中任意节点的uniqueId。需大于等于0。 |
+| levelUniqueId | int | 否 | 是 | 路由或导航页面中任意节点的uniqueId，uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。需大于等于0。 |
 
 ## addComponentContent<sup>12+</sup>
 
