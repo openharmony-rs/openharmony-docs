@@ -142,7 +142,7 @@ Internal error. Invalid contact id. Failed to generate contact profile.
 
 **错误描述**
 
-内部关联联系人id无效。
+内部关联联系人ID无效。
 
 **可能原因**
 
