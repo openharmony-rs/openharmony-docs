@@ -34,8 +34,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 |----|------------|----|
-| void  | CommonEvent_Subscriber    | 提供CommonEvent_Subscriber订阅者结构体声明。   |
-| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附加信息结构体声明。  |
+| void  | CommonEvent_Subscriber    | 提供CommonEvent_Subscriber订阅者声明。   |
+| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附加信息声明。  |
 
 ### 枚举
 
@@ -49,8 +49,8 @@
 | -- | -- | -- |
 | [typedef void (\*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)](#commonevent_receivecallback) | CommonEvent_ReceiveCallback | 提供CommonEvent_ReceiveCallback回调函数声明。 |
 | [CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](#oh_commonevent_createsubscribeinfo) | - | 创建订阅者信息。 |
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)](#oh_commonevent_setpublisherpermission) | - | 设置订阅者权限。 |
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)](#oh_commonevent_setpublisherbundlename) | - | 设置订阅者包名称。 |
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)](#oh_commonevent_setpublisherpermission) | - | 设置发布方权限。 |
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)](#oh_commonevent_setpublisherbundlename) | - | 设置发布方包名称。 |
 | [void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](#oh_commonevent_destroysubscribeinfo) | - | 释放订阅者信息。 |
 | [CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info,CommonEvent_ReceiveCallback callback)](#oh_commonevent_createsubscriber) | - | 创建订阅者。 |
 | [void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)](#oh_commonevent_destroysubscriber) | - | 释放订阅者。 |
@@ -186,7 +186,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeI
 
 **描述**
 
-设置订阅者权限。
+设置发布方权限。
 
 **起始版本：** 12
 
@@ -212,7 +212,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeI
 
 **描述**
 
-设置订阅者包名称。
+设置发布方包名称。
 
 **起始版本：** 12
 
