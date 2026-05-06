@@ -10,7 +10,7 @@
 
 提供IPC序列化/反序列化C接口。
 
-**对应的开发指南及样例可参考：** [IPC与RPC通信开发指导(C/C++)](../../ipc/ipc-capi-development-guideline.md)
+对应的开发指南及样例可参考[IPC与RPC通信开发指导(C/C++)](../../ipc/ipc-capi-development-guideline.md)。
 
 **引用文件：** <IPCKit/ipc_cparcel.h>
 
