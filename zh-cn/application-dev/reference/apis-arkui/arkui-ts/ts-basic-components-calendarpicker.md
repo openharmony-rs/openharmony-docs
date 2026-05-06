@@ -14,6 +14,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
 ## 子组件

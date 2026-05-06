@@ -50,6 +50,8 @@ TextPicker(options?: TextPickerOptions)
 
 文本选择器的参数说明。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
@@ -69,6 +71,8 @@ TextPicker(options?: TextPickerOptions)
 
 单列数据选择器的数据选项内容。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -86,6 +90,8 @@ TextPicker(options?: TextPickerOptions)
 
 多列联动数据选择器的数据选项内容。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -98,9 +104,12 @@ TextPicker(options?: TextPickerOptions)
 | ------ | -------------------------------------------------------- | ---- | ---------- | ---------- |
 | text   | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否  | 否  | 文本信息。<br/>**说明**：当文本长度大于列宽时，文本被截断。 |
 | children   | [TextCascadePickerRangeContent](#textcascadepickerrangecontent10对象说明)[] | 否  | 是  | 联动数据。 |
+
 ## DividerOptions<sup>12+</sup>对象说明
 
 分割线的信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -835,6 +844,8 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 **ArkTS-Dyn起始版本：** 18
 
+**参数：**
+
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。<br/>当enable的值为undefined时，使用默认值。 |
@@ -862,6 +873,8 @@ enableHapticFeedback(enable: boolean | undefined)
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[enableHapticFeedback](#enablehapticfeedback18)。
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
@@ -985,7 +998,7 @@ attributeModifier(modifier: AttributeModifier\<TextPickerAttribute> | AttributeM
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[TextPickerAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是    | 设置属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[TextPickerAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是    | 设置属性修改器。<br/>当modifier的值为undefined时，不设置属性修改器。 |
 
 ## 事件
 
@@ -1020,7 +1033,7 @@ onChange(callback:&nbsp;(value:&nbsp;string&nbsp;\|&nbsp;string[],&nbsp;index:&n
 
 onChange(callback: Optional\<OnTextPickerChangeCallback>)
 
-滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。当显示文本或图片加文本列表时，选中项的文本值为选中项中的文本值，当显示图片列表时，选中项的文本值为空。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea](#onenterselectedarea18)接口。
 
@@ -1042,9 +1055,9 @@ onChange(callback: Optional\<OnTextPickerChangeCallback>)
 
 ### onChange<sup>23+</sup>
 
-onChange(callback: (value: string | string[], index: int | int[]) => void | undefined)
+onChange(callback: (selectItem: string | string[], index: int | int[]) => void | undefined)
 
-滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。
+滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。当显示文本或图片加文本列表时，selectItem值为选中项中的文本值，当显示图片列表时，selectItem值为空。
 
 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea](#onenterselectedarea18)接口。
 
@@ -1060,7 +1073,7 @@ onChange(callback: (value: string | string[], index: int | int[]) => void | unde
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | (value: string \| string[], index: int \| int[]) => void \| undefined | 是   | 滑动选中TextPicker文本内容后，触发的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | (selectItem: string \| string[], index: int \| int[]) => void \| undefined | 是   | 滑动选中TextPicker文本内容后，触发的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onScrollStop<sup>14+</sup>
 
@@ -1234,6 +1247,8 @@ onCancel(callback: () => void)
 
 文本样式选项，继承自[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1252,11 +1267,11 @@ onCancel(callback: () => void)
 
 ## OnTextPickerChangeCallback<sup>18+</sup>
 
-ArkTS-Dyn: type OnTextPickerChangeCallback = (value: string | string[], index: number | number[]) => void
+ArkTS-Dyn: type OnTextPickerChangeCallback = (selectItem: string | string[], index: number | number[]) => void
 
-ArkTS-Sta: type OnTextPickerChangeCallback = (value: string | string[], index: int | int[]) => void
+ArkTS-Sta: type OnTextPickerChangeCallback = (selectItem: string | string[], index: int | int[]) => void
 
-滑动选中TextPicker文本内容后，触发该回调。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。
+滑动选中TextPicker文本内容后，触发该回调。当显示文本或图片加文本列表时，选中项的文本值为选中项中的文本值，当显示图片列表时，选中项的文本值为空。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1270,7 +1285,7 @@ ArkTS-Sta: type OnTextPickerChangeCallback = (value: string | string[], index: i
 
 | 参数名     | 类型                                       | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | 是   | 当前选中项的文本。多列数据选择器的selectItem为数组类型。<br/>**说明：**<br/>当选择器内容为文本或图文混排时，selectItem值为选中项中的文本值；当选择器内容为图片时，selectItem值为空。   |
+| selectItem  | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | 是   | 当前选中项的文本。多列数据选择器的selectItem为数组类型。<br/>**说明：**<br/>当选择器内容为文本或图文混排时，selectItem值为选中项中的文本值；当选择器内容为图片时，selectItem值为空。   |
 | index  | ArkTS-Dyn: number&nbsp;\|&nbsp;number[]<sup>10+</sup><br/>ArkTS-Sta: int&nbsp;\|&nbsp;int[] | 是   | 当前选中项的索引值，索引从0开始。多列数据选择器的index为数组类型。 |
 
 ## TextPickerScrollStopCallback<sup>14+</sup>
@@ -1327,6 +1342,8 @@ ArkTS-Sta: type TextPickerEnterSelectedAreaCallback = (value: string | string[],
 
 选择器选中项的背景样式，包括选中项的背景颜色和边框圆角半径。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1341,6 +1358,7 @@ ArkTS-Sta: type TextPickerEnterSelectedAreaCallback = (value: string | string[],
 | ------ | ------------------------------------- | ---- | ------------------------------------------------- | ------------------------------------------------- |
 | color  | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 选中项的背景颜色。<br/>默认值：<br/>'sys.color.comp_background_tertiary'   |
 | borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | 否  | 是  | 选中项的边框圆角半径。<br/>默认值：{ value:24, unit:LengthUnit.VP }，即四个圆角半径均为24VP。<br/>**说明：**<br/>1. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)类型的value参数同时作用于四个圆角半径大小，unit参数用于设置单位。<br/>2. [BorderRadiuses](ts-types.md#borderradiuses9)类型可以设置四个不同值的圆角半径，所有单位固定为VP。<br/>3. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12)类型可以设置四个不同值的圆角半径，并且可以单独设置每个圆角的单位。 |
+
 ## 示例
 
 ### 示例1（设置选择器列数）
