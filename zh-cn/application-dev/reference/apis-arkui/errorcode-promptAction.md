@@ -114,7 +114,7 @@ The node of targetId is not in the component tree.
 
 2. 请确认targetId对应的节点已挂载在主节点树上，可以通过内容节点的[isAttached()](./js-apis-arkui-frameNode.md#isattached12)接口判断是否被挂载到主节点树上。
 
-## 103307 由于系统弹出窗口，无法打开浮层。
+## 103307 系统弹出窗口导致无法打开浮层
 
 **错误信息**
 
@@ -130,7 +130,7 @@ The overlay cannot be opened due to the system pop-up window.
 
 **处理步骤**
 
-关闭系统弹窗。 
+等待用户关闭系统弹出窗口后重新尝试打开浮层。
 
 ## 103401 无法找到对应的文本提示框
 
