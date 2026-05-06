@@ -10,7 +10,7 @@
 
 > **说明：** 
 > - 本模块接口为系统接口。
-> - 使用本模块的接口前，需先通过[RenderContext.loadPlugin](js-apis-inner-scene.md#loadplugin20)加载群组模拟插件。
+> - 使用本模块的接口前，需先通过[RenderContext.loadPlugin](js-apis-inner-scene.md#loadplugin20)加载[群组模拟插件](#boidssimplugin)。
 
 **起始版本：** 26.0.0
 
@@ -33,11 +33,18 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+> **说明：**
+>
+> 模拟帧是指群组模拟中按固定时间步长执行的更新周期，类似Unity中的FixedUpdate。默认时间步长为16ms（约62.5FPS），模拟通过累积真实时间并按固定步长消耗来驱动。下文部分参数的默认值基于该时间步长计算：
+> - **maxVelocityMag**：0.01 / 0.016 ≈ 0.625（m/s）。
+> - **maxAccelerationMag**：maxVelocityMag / 0.016 ≈ 39.06（m/s²）。
+> - **maxTurnRate**：π × 0.75 × 0.016 ≈ 0.0377（rad/模拟帧）。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | initialVelocity | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 每个个体的初始速度向量。默认值为(0, 0, 0)。 |
 | initialPosition | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 每个个体的初始位置。未设置时保留当前实体位置。默认值为(NaN, NaN, NaN)。 |
-| initialRotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 每个个体的初始旋转。未设置时保留当前实体旋转。默认值为(NaN, NaN, NaN, NaN)。 |
+| initialRotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 每个个体的初始旋转方向的四元数。未设置时保留当前实体旋转方向的四元数。默认值为(NaN, NaN, NaN, NaN)。 |
 | boundaryMinPos | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 约束个体运动范围的轴对齐包围盒最小角点。当boundaryMinPos的任一分量大于或等于boundaryMaxPos对应分量时，该个体视为无边界约束。默认值为(0, 0, 0)。 |
 | boundaryMaxPos | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 约束个体运动范围的轴对齐包围盒最大角点。默认值为(0, 0, 0)。 |
 | maxVelocityMag | number | 否 | 是 | 个体每模拟帧可达到的最大速度。取值 >= 0。默认值约为0.625。 |
@@ -92,6 +99,10 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 群组模拟世界对象，用于管理群组模拟的生命周期及组件。
 
+> **说明：**
+>
+> 使用以下接口前，需先通过[BoidsSimPlugin.getDefaultBoidsSimWorld](#getdefaultboidssimworld)获取群组模拟世界实例。
+
 ### 属性
 
 **起始版本：** 26.0.0
@@ -125,13 +136,7 @@ play(): void
 import { BoidsSimWorld } from '@kit.ArkGraphics3D';
 
 function controlBoidsSimLifecycle(world: BoidsSimWorld): void {
-  // 开始模拟
   world.play();
-  let playing: boolean = world.isPlaying;
-  // 暂停模拟
-  world.pause();
-  // 停止模拟并重置状态
-  world.stop();
 }
 ```
 
@@ -149,6 +154,15 @@ pause(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**示例：**
+```ts
+import { BoidsSimWorld } from '@kit.ArkGraphics3D';
+
+function pauseBoidsSim(world: BoidsSimWorld): void {
+  world.pause();
+}
+```
+
 ### stop
 
 stop(): void
@@ -162,6 +176,15 @@ stop(): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**示例：**
+```ts
+import { BoidsSimWorld } from '@kit.ArkGraphics3D';
+
+function stopBoidsSim(world: BoidsSimWorld): void {
+  world.stop();
+}
+```
 
 ### addBoidsSimComponent
 
@@ -228,6 +251,21 @@ setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
 | param | [BoidsSimParameters](#boidssimparameters) | 是 | 群组行为参数。 |
 
+**示例：**
+```ts
+import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function updateBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
+  let newParams: BoidsSimParameters = {
+    boundaryMinPos: { x: -20.0, y: -20.0, z: -20.0 },
+    boundaryMaxPos: { x: 20.0, y: 20.0, z: 20.0 },
+    separationWeight: 5.0,
+    separationDistance: 1.0,
+  };
+  world.setBoidsSimComponent(node, newParams);
+}
+```
+
 ### addBoidsSimGravityComponent
 
 addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
@@ -287,6 +325,16 @@ setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
 | param | [BoidsSimGravityParameters](#boidssimgravityparameters) | 是 | 引力场参数。 |
+
+**示例：**
+```ts
+import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function updateBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
+  let newParams: BoidsSimGravityParameters = { accelerationMag: 8.0, radius: 15.0 };
+  world.setBoidsSimGravityComponent(node, newParams);
+}
+```
 
 ### addBoidsSimRepulsionComponent
 
@@ -348,6 +396,16 @@ setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
 | param | [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) | 是 | 斥力场参数。 |
 
+**示例：**
+```ts
+import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function updateBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void {
+  let newParams: BoidsSimRepulsionParameters = { accelerationMag: 8.0, radius: 15.0 };
+  world.setBoidsSimRepulsionComponent(node, newParams);
+}
+```
+
 ### getBoidsSimComponent
 
 getBoidsSimComponent(node: Node): BoidsSimParameters \| null
@@ -371,6 +429,18 @@ getBoidsSimComponent(node: Node): BoidsSimParameters \| null
 | 类型 | 说明 |
 | ---- | ---- |
 | [BoidsSimParameters](#boidssimparameters) \| null | 返回群组行为参数，若结点未挂载该组件则返回null。 |
+
+**示例：**
+```ts
+import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function queryBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
+  let params: BoidsSimParameters | null = world.getBoidsSimComponent(node);
+  if (params) {
+    let maxVel: number = params.maxVelocityMag;
+  }
+}
+```
 
 ### getBoidsSimGravityComponent
 
@@ -396,6 +466,18 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters \| null
 | ---- | ---- |
 | [BoidsSimGravityParameters](#boidssimgravityparameters) \| null | 返回引力场参数，若结点未挂载该组件则返回null。 |
 
+**示例：**
+```ts
+import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function queryBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
+  let params: BoidsSimGravityParameters | null = world.getBoidsSimGravityComponent(node);
+  if (params) {
+    let accel: number = params.accelerationMag;
+  }
+}
+```
+
 ### getBoidsSimRepulsionComponent
 
 getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters \| null
@@ -420,6 +502,18 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters \| null
 | ---- | ---- |
 | [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) \| null | 返回斥力场参数，若结点未挂载该组件则返回null。 |
 
+**示例：**
+```ts
+import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function queryBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void {
+  let params: BoidsSimRepulsionParameters | null = world.getBoidsSimRepulsionComponent(node);
+  if (params) {
+    let accel: number = params.accelerationMag;
+  }
+}
+```
+
 ### removeBoidsSimComponent
 
 removeBoidsSimComponent(node: Node): void
@@ -438,6 +532,15 @@ removeBoidsSimComponent(node: Node): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+
+**示例：**
+```ts
+import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function removeBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
+  world.removeBoidsSimComponent(node);
+}
+```
 
 ### removeBoidsSimGravityComponent
 
@@ -458,6 +561,15 @@ removeBoidsSimGravityComponent(node: Node): void
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
 
+**示例：**
+```ts
+import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function removeBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
+  world.removeBoidsSimGravityComponent(node);
+}
+```
+
 ### removeBoidsSimRepulsionComponent
 
 removeBoidsSimRepulsionComponent(node: Node): void
@@ -476,6 +588,15 @@ removeBoidsSimRepulsionComponent(node: Node): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+
+**示例：**
+```ts
+import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
+
+function removeBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void {
+  world.removeBoidsSimRepulsionComponent(node);
+}
+```
 
 ## BoidsSimPlugin
 
@@ -517,13 +638,15 @@ static getDefaultBoidsSimWorld(scene: Scene): BoidsSimWorld \| null
 ```ts
 import { BoidsSimPlugin, BoidsSimWorld, Scene, RenderContext } from '@kit.ArkGraphics3D';
 
-async function initBoidsSim(pluginName: string): Promise<BoidsSimWorld | null> {
+async function initBoidsSim(): Promise<BoidsSimWorld | null> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (!renderContext) {
     return null;
   }
+  // 群组模拟插件UUID
+  const BOIDS_SIM_PLUGIN_UUID: string = 'a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d';
   // 加载群组模拟插件
-  const loaded = await renderContext.loadPlugin(pluginName);
+  const loaded: boolean = await renderContext.loadPlugin(BOIDS_SIM_PLUGIN_UUID);
   if (!loaded) {
     return null;
   }
