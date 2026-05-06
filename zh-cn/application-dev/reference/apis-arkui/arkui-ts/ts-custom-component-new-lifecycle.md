@@ -491,3 +491,89 @@ struct Child {
   }
 }
 ```
+
+## \@ComponentActive
+
+激活生命周期装饰器。
+
+被装饰的函数会在自定义组件从非激活态切换为激活态时触发。
+
+自定义组件在创建后默认为激活态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+参考[激活状态生命周期使用示例](#激活状态生命周期使用示例)。
+
+## \@ComponentInactive
+
+非激活生命周期装饰器。
+
+被装饰的函数会在自定义组件从激活态切换为非激活态时触发。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+参考[激活状态生命周期使用示例](#激活状态生命周期使用示例)。
+
+## 激活状态生命周期使用示例
+
+以自定义组件复用场景为例，展示激活态与非激活态的状态切换与回调触发。
+
+```ts
+'use static'
+ 
+import { Entry, Text, Column, Component, Button, ClickEvent, Reusable, State, ComponentActive, ComponentInactive } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+ 
+@Entry
+@Component
+struct Reuse {
+  @State flag: boolean = true;
+
+  build() {
+    Column(undefined) {
+      Button('switch')
+        .onClick(() => {
+          this.flag = !this.flag; // 切换回收、复用
+        })
+      if (this.flag) {
+        FreezeChild()
+      }
+    }
+  }
+}
+ 
+@Reusable
+@Component
+struct FreezeChild {
+  @State message: string = '';
+  @ComponentActive
+  myActive() {
+    // 当组件从非激活态切换为激活态时触发
+    this.message += '-A';
+    console.info(`FreezeChild myActive`);
+  }
+  @ComponentInactive
+  myInActive() {
+    // 当组件从激活态切换为非激活态时触发
+    this.message += '-I';
+    console.info(`FreezeChild myInActive`);
+  }
+
+  build() {
+    Text(`message ${this.message}`)
+      .fontSize(50)
+  }
+}
+```

@@ -989,6 +989,68 @@ struct Page {
 }
 ```
 
+### addMonitor
+
+static addMonitor(valueInfo: MonitorValueInfo | MonitorValueInfo[], monitorCallback: MonitorCallback, options?: MonitorBaseOptions): IMonitorDecoratedVariable
+
+动态地为状态变量注册监听。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名          | 类型                                                         | 必填 | 说明                                                         |
+| --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| valueCallback   | [MonitorValueInfo](#monitorvalueinfo) \| MonitorValueInfo[]  | 是   | 监听变量的信息或其数组。                                     |
+| monitorCallback | [MonitorCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorcallback) | 是   | 触发监听时调用的回调函数。                                   |
+| options         | [MonitorBaseOptions](#monitorbaseoptions)                    | 否   | 设置函数的行为，默认行为详见[MonitorBaseOptions](#monitorbaseoptions)。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable) | 指代监听关系的句柄。 |
+
+```ts
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: int = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+  // 注册监听关系
+    this.monitor = UIUtils.addMonitor({ valueCallback: () => this.value, path: 'value' }, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<int>(path)?.before} to ${monitor.value<int>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 值修改时触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+```
+
 ### clearMonitor<sup>23+</sup>
 
 static clearMonitor(monitor: IMonitorDecoratedVariable): void
@@ -1097,6 +1159,30 @@ struct Index {
   }
 }
 ```
+
+### getCustomComponentContext
+
+static getCustomComponentContext\<T extends IVariableOwner\>(customComponent: T): CustomComponentContext
+
+获取自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：**26.0.0
+
+**参数：**
+
+| 参数名          | 类型 | 必填 | 说明             |
+| --------------- | ---- | ---- | ---------------- |
+| customComponent | T    | 是   | 自定义组件对象。 |
+
+**返回值：**
+
+| 类型                                              | 说明                         |
+| ------------------------------------------------- | ---------------------------- |
+| [CustomComponentContext](#customcomponentcontext) | 传入自定义组件的上下文信息。 |
 
 ## MonitorOptions<sup>23+</sup>
 
@@ -1453,3 +1539,44 @@ function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: Muta
 | ------ | ---- | ---- |---- | ------------ |
 | elementName | string  | 否 | 否   | 组件的名称。 |
 | elementId | int | 否 | 否   | 组件的ID。 |
+
+## MonitorValueInfo
+
+监听变量信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| valueCallback | [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback) | 否   | 否   | 获取变量的回调。                                             |
+| path          | string                                                       | 否   | 是   | 路径信息。未传入将使用自动生成的默认值。                     |
+| observeProps  | boolean                                                      | 否   | 是   | 是否开启属性观察。<br>true：开启属性观察；false：不开启属性观察。<br>默认值：false。 |
+
+## MonitorBaseOptions
+
+监听基础选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| isSynchronous | boolean                                                      | 否   | 是   | 是否同步回调。<br>true：同步回调；false：异步回调。<br>默认值：false。 |
+| owner         | [IVariableOwner](./arkui-ts/ts-state-management-monitor-static.md#ivariableowner) | 否   | 是   | 指定冻结的组件，仅能传入[@ComponentV2](../../ui/state-management-static/arkts-static-componentv2.md)装饰的自定义组件。默认值为`undefined`，即不指定冻结的组件。 |
+
+## CustomComponentContext
+
+自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
