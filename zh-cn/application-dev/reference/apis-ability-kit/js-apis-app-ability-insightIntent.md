@@ -11,9 +11,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -27,10 +29,14 @@ import { insightIntent } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| UI_ABILITY_FOREGROUND | 0 | 将UIAbility在前台显示。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| UI_ABILITY_BACKGROUND | 1 | 将UIAbility在后台拉起。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| UI_ABILITY_FOREGROUND | 0 | 将UIAbility在前台显示。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| UI_ABILITY_BACKGROUND | 1 | 将UIAbility在后台拉起。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | UI_EXTENSION_ABILITY | 2 | 拉起UIExtensionAbility。 |
 
 ## ExecuteResult
@@ -41,10 +47,10 @@ import { insightIntent } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | 否 | 否 | 意图执行返回的错误码，由开发者定义。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| result | Record<string, Object> | 否 | 是 | 意图执行返回的结果，通常会包含需要返回给系统入口的数据。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图执行返回的URI列表。该字段需要与flags字段配合使用，根据URI列表将flags字段的相应权限授权给系统入口。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
-| flags<sup>18+</sup> | number | 否 | 是 | 意图执行返回给系统入口的URI列表的授权权限。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。权限介绍见[Flags](js-apis-app-ability-wantConstant.md#flags)。 |
+| code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 意图执行返回的错误码，由开发者定义。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| result | ArkTS-Dyn: Record\<string, Object><br>ArkTS-Sta: Record\<string, RecordData> | 否 | 是 | 意图执行返回的结果，通常会包含需要返回给系统入口的数据。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图执行返回的URI列表。该字段需要与flags字段配合使用，根据URI列表将flags字段的相应权限授权给系统入口。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| flags<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 意图执行返回给系统入口的URI列表的授权权限。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。权限介绍见[Flags](js-apis-app-ability-wantConstant.md#flags)。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## IntentEntity<sup>20+</sup>
 
@@ -54,9 +60,13 @@ import { insightIntent } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| entityId | string | 否 | 否 | 意图实体的ID。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| entityId | string | 否 | 否 | 意图实体的ID。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## IntentResult\<T><sup>20+</sup>
 
@@ -66,14 +76,18 @@ import { insightIntent } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | 否 | 否 | 意图执行返回的错误码，由开发者定义。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
-| result | T | 否 | 是 | 意图执行返回的结果，通常会包含需要返回给系统入口的数据。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| code | number | 否 | 否 | 意图执行返回的错误码，由开发者定义。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| result | T | 否 | 是 | 意图执行返回的结果，通常会包含需要返回给系统入口的数据。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## ReturnMode<sup>23+</sup>
 
 意图执行结果返回给意图拉起方的返回形式。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
