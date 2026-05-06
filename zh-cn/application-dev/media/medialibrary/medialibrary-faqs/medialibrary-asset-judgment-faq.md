@@ -6,10 +6,6 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **注意：**
->
-> [Media Library Kit](../photoAccessHelper-overview.md)仅提供图片和视频的管理能力，不涉及音频文件的管理。
-
 ## 使用mimeType字段来判断资源类型
 
 开发者可以通过判断mimeType的字符串前缀来区分媒体类型，具体判断方式如下：
@@ -33,11 +29,11 @@ function getMediaTypeByMimeType(mimeType: string): string {
 
 ## 通过URI判断连拍图资源
 
-未重命名连拍照片的URI中包含特定标识，开发者可以通过检查URI中的关键字来判断是否为连拍图资源：
+未重命名连拍照片的URI中包含特定标识，开发者可以通过检查URI中的关键字来判断是否为连拍图资源。
 
-- URI同时包含`burst`和`cover`时，表示该资源为连拍封面。
-- URI仅包含`burst`时，表示该资源为连拍照片（非封面）。
-- URI中不包含`burst`关键字时，表示该资源为非连拍图。
+- 当URI同时包含`burst`和`cover`时，表示该资源为连拍封面。
+- 当URI仅包含`burst`时，表示该资源为连拍照片（非封面）。
+- 当URI中不包含`burst`关键字时，表示该资源为非连拍图。
 
 **示例：**
 
