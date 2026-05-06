@@ -612,9 +612,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerGetCAPathSample.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":46,
 						"name":"certificate_management_get_ca_path",
-						"start_line":16
+						"start_line":15
 					}
 				]
 			}
@@ -642,7 +642,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"certificate_management_dialog_box_development_guide",
 						"start_line":15
 					}
@@ -652,7 +652,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerCaDialogSample.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":98,
 						"name":"certificate_management_ca_dialog_development_guide",
 						"start_line":15
 					}
