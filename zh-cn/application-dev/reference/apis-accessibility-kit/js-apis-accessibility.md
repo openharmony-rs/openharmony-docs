@@ -124,7 +124,7 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'controlCenter'       | 表示打开控制中心操作。   |
 | 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。   |
 | 'injectAction'    | 表示注入动作，需配置参数injectActionType。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<Br>**起始版本：** 26.0.0   |
+| 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<br>**起始版本：** 26.0.0   |
 
 ## Capability
 
@@ -576,7 +576,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
 | 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
 | 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**起始版本：** 26.0.0 |
-| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<Br>**起始版本：** 26.0.0 |
+| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<br>**起始版本：** 26.0.0 |
 
 ## TextMoveUnit
 
