@@ -445,17 +445,14 @@
 
 
    <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  ```ts
-  function onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info(`photo capture end, captureId : ${captureEndInfo.captureId}`);
-      console.info(`frameCount : ${captureEndInfo.frameCount}`);
-    });
-  }
-  ```
+   
+   ``` TypeScript
+   // 监听拍照结束
+   photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
+     Logger.info(TAG, `photoOutputCallBack captureEnd captureId:
+       ${captureEndInfo.captureId}, frameCount: ${captureEndInfo.frameCount}`);
+   });
+   ```
 
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
