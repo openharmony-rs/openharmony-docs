@@ -63,34 +63,50 @@
     需要在[photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)接口获取到buffer时，将buffer在安全控件中保存到媒体库。
 
    <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   ```ts
-   function setPhotoOutputCb(photoOutput: camera.PhotoOutput) {
-   // 设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
+   
+   ``` TypeScript
+   setPhotoOutputCb(photoOutput: camera.PhotoOutput, context: Context) {
+     // 设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
-        console.info('getPhoto start');
-        if (errCode || photo === undefined) {
-          console.error('getPhoto failed, err: ${errCode}');
-          return;
-        }
-        let imageObj: image.Image = photo.main;
-        imageObj.getComponent(image.ComponentType.JPEG, (errCode: BusinessError, component: image.Component): void => {
-          console.info('getComponent start');
-          if (errCode || component === undefined) {
-            console.error('getComponent failed');
-            return;
-          }
-          let buffer: ArrayBuffer;
-          if (component.byteBuffer) {
-            buffer = component.byteBuffer;
-          } else {
-            console.error('byteBuffer is null');
-            return;
-          }
-          // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
-
-         // buffer处理结束后需要释放该资源，如果未正确释放资源会导致后续拍照获取不到buffer。
-         imageObj.release();
-       });
+       console.info('getPhoto start');
+       if (errCode || photo === undefined) {
+         console.error('getPhoto failed, err: ${errCode}');
+         return;
+       }
+         // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
+         this.mediaLibSavePhotoSingle(context, photo.main)
+     });
+   }
+   
+   mediaLibSavePhotoSingle(context: Context, imageObj: image.Image) {
+     imageObj.getComponent(image.ComponentType.JPEG, async (errCode: BusinessError, component: image.Component) => {
+       if (errCode || component === undefined) {
+         Logger.error('getComponent failed');
+         return;
+       }
+       const buffer: ArrayBuffer = component.byteBuffer;
+       if (!buffer) {
+         Logger.error('byteBuffer is null');
+         return;
+       }
+       let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+       let extension: string = 'jpg';
+       let options: photoAccessHelper.CreateOptions = {
+         title: 'testPhoto'
+       }
+       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+         photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension, options);
+       assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, buffer)
+       assetChangeRequest.saveCameraPhoto();
+       let accessHelper: photoAccessHelper.PhotoAccessHelper =
+         photoAccessHelper.getPhotoAccessHelper(context);
+       await accessHelper.applyChanges(assetChangeRequest);
+       let imageSource = image.createImageSource(buffer);
+       let pixelmap = imageSource.createPixelMapSync();
+       this.callback(pixelmap, assetChangeRequest.getAsset().uri);
+       accessHelper.release();
+       // buffer处理结束后需要释放该资源，如果未正确释放资源会导致后续拍照获取不到buffer。
+       imageObj.release();
      });
    }
    ```
