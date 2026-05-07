@@ -44,8 +44,6 @@ export struct Scene1 {
             let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
             this.latitude = await example(phAccessHelper, context);
           })
-
-        // ...
       }
       .width('100%')
       .height('100%')
@@ -56,7 +54,7 @@ export struct Scene1 {
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context): Promise<string> {
   try {
-    // 获取图片uri
+    // 获取图片URI。
 	let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOption: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
@@ -65,11 +63,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
       await phAccessHelper.getAssets(fetchOption);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    // 通过图片uri打开图片
+    // 通过图片URI打开图片。
     let file: fs.File = fs.openSync(photoAsset.uri, fs.OpenMode.READ_ONLY);
     const imageSourceObj = image.createImageSource(file.fd);
     console.info("getImagePropertySync");
-    // 获取图片中的维度信息
+    // 获取图片中的维度信息。
     let latitude = imageSourceObj.getImagePropertySync(image.PropertyKey.GPS_LATITUDE);
     return latitude;
   } catch (err) {
