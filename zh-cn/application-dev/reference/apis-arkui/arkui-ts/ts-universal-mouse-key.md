@@ -69,6 +69,8 @@ onMouse(event: (event: MouseEvent) => void): T
 getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  
 获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果。
+ 
+该接口仅能在[MouseEvent](#mouseevent对象说明)中调用，用于获取触发[onMouse](#onmouse)时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent](#mouseevent对象说明)数目大于1，会将该帧最后一个点通过[onMouse](#onmouse)返回，其余点作为历史点。
 
  **起始版本：** 26.0.0
 
@@ -82,7 +84,7 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  
  | 类型                                                 | 说明              |
  | -------------------------------------------------- | --------------- |
- | Array&lt;[MouseHistoricalPoint](#mousehistoricalpoint)&gt; | 当前帧的所有历史点信息。 |
+ | Array&lt;[MouseHistoricalPoint](#mousehistoricalpoint)&gt; | 当前帧的所有历史点信息组成的数组。 |
  
 ## MouseHistoricalPoint
  
@@ -144,7 +146,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 ## 示例
 
-### 示例1（使用鼠标事件）
+### 示例1（获取鼠标事件相关参数）
 
 该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
 
@@ -260,11 +262,16 @@ struct HistoricalPointsExample {
         .height(80)
         .onMouse((event: MouseEvent) => {
           if (event.action === MouseAction.Move) {
+            // 调用getHistoricalPoints接口获取当前帧历史点信息
             const historicalPoints = event.getHistoricalPoints?.();
             if (historicalPoints) {
-              this.historicalPointsInfo = `历史点数量: ${historicalPoints.length}\n`;
+              this.historicalPointsInfo = `历史点数量: ${historicalPoints.length}`;
               historicalPoints.forEach((point: MouseHistoricalPoint, index: number) => {
-                this.historicalPointsInfo += `点${index}: (${point.x}, ${point.y})\n`;
+                this.historicalPointsInfo += `\n点${index}: `
+                  +`x = ${point.x}, y = ${point.y}, windowX = ${point.windowX}, windowY = ${point.windowY}, `
+                  +`displayX = ${point.displayX}, displayY = ${point.displayY}, `
+                  +`globalDisplayX = ${point.globalDisplayX}, globalDisplayY = ${point.globalDisplayY}, `
+                  +`timestamp = ${point.timestamp}`;
               });
               console.info(this.historicalPointsInfo);
             }
