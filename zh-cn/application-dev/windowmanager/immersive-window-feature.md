@@ -521,6 +521,466 @@ interface Rect {
 可通过@Env直接获取避让区域信息（单位为vp或px），当避让区域变化时，绑定了该变量的组件会自动更新。示例代码如下：
 
    ```ts
+   
+   // area-format.ets
+ import { window } from "@kit.ArkUI";
+
+export function formatRect(rect: window.Rect | window.RectInVP, label?: string) {
+  if (rect.left > 0 || rect.top > 0 || rect.width > 0 || rect.height) {
+    return `${label ?? ''}{${rect.left.toFixed(2)}|${rect.top.toFixed(2)}|${rect.width.toFixed(2)}|${rect.height.toFixed(2)}}`;
+  } else {
+    return undefined;
+  }
+}
+
+export function formatAvoidArea(area: window.AvoidArea | window.UIEnvAvoidAreaVP) {
+  return formatRect(area.topRect, 'TOP') ||
+    formatRect(area.bottomRect, 'BOTTOM') ||
+    formatRect(area.leftRect, 'LEFT') ||
+    formatRect(area.rightRect, 'RIGHT') ||
+    `empty`;
+}
+
+export function formatEnvAvoidArea(env: window.UIEnvWindowAvoidAreaInfoPX | window.UIEnvWindowAvoidAreaInfoVP) {
+  return `status: ${formatAvoidArea(env.statusBar)}\ncutout: ${formatAvoidArea(env.cutout)}\n` +
+    `keyboard: ${formatAvoidArea(env.keyboard)}\nnavi: ${formatAvoidArea(env.navigationIndicator)}`;
+}
+
+// ComponentV1.ets
+import { KeyboardAvoidMode, window } from '@kit.ArkUI';
+import { formatEnvAvoidArea } from '../../utils/area-format';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      V1ContentComponent()
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+export struct V1ContentComponent {
+  win: window.Window | undefined = AppStorage.get('mainWindow');
+  windowStage: window.WindowStage | undefined = AppStorage.get('windowStage');
+  @Env(SystemProperties.WINDOW_AVOID_AREA_PX) avoidAreasPx: window.UIEnvWindowAvoidAreaInfoPX;
+  @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
+  @Prop topText: string = 'Top Avoid';
+  @Prop bottomText: string = 'Bottom Avoid'
+
+  aboutToAppear(): void {
+    this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Row() {
+        Text(this.topText).fontSize(24).textAlign(TextAlign.Center).width('100%')
+      }
+      .backgroundColor('#2786d9')
+      .flexShrink(0)
+      .padding({
+        top: this.avoidAreasVp.statusBar.topRect.height + 3,
+        bottom: 10
+      }) // 避让顶部高度+3vp
+
+      Scroll() {
+        Column({ space: 5 }) {
+          Column() {
+            Text('PX {LEFT|TOP|WIDTH|HEIGHT}').fontWeight(FontWeight.Bold)
+            Text(formatEnvAvoidArea(this.avoidAreasPx))
+          }
+          .padding(10)
+          .width('100%')
+          .alignItems(HorizontalAlign.Start)
+
+          Column() {
+            Text('VP {LEFT|TOP|WIDTH|HEIGHT}').fontWeight(FontWeight.Bold)
+            Text(formatEnvAvoidArea(this.avoidAreasVp))
+          }
+          .padding(10)
+          .width('100%')
+          .alignItems(HorizontalAlign.Start)
+
+          Column() {
+            Row({ space: 5 }) {
+              Button('竖屏').onClick(() => {
+                this.win?.setPreferredOrientation(window.Orientation.USER_ROTATION_PORTRAIT);
+              })
+              Button('横屏').onClick(() => {
+                this.win?.setPreferredOrientation(window.Orientation.USER_ROTATION_LANDSCAPE);
+              })
+            }
+          }
+
+          Column() {
+            Row({ space: 5 }) {
+              Button('状态栏隐藏').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('status', false);
+              })
+              Button('状态栏显示').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('status', true);
+              })
+            }
+          }
+
+          Column() {
+            Row({ space: 5 }) {
+              Button('导航条隐藏').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('navigationIndicator', false);
+              })
+              Button('导航条显示').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('navigationIndicator', true);
+              })
+            }
+          }
+
+          Column() {
+            Column({ space: 5 }) {
+              Button('density DEFAULT').onClick(() => {
+                this.windowStage?.setCustomDensity(-1);
+              })
+              Button('density 2').onClick(() => {
+                this.windowStage?.setCustomDensity(2);
+              })
+              Button('density 3').onClick(() => {
+                this.windowStage?.setCustomDensity(3);
+              })
+              Button('density 4').onClick(() => {
+                this.windowStage?.setCustomDensity(4);
+              })
+            }
+          }
+
+          TextInput({ placeholder: '测试输入' })
+        }
+      }
+      .backgroundColor(Color.White)
+      .padding({
+        top: 20,
+        bottom: 20,
+        left: 5,
+        right: 5
+      })
+      .margin({ top: 20, bottom: 20 })
+      .borderRadius(15)
+      .width('95%')
+      .flexGrow(1)
+
+      Row() {
+        Text(this.bottomText).fontSize(24).textAlign(TextAlign.Center).width('100%')
+      }
+      .backgroundColor('#96dffa')
+      .flexShrink(0)
+      .padding({
+        top: 10,
+        bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 3
+      }) // 避让底部高度+3vp
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#d5d5d5')
+  }
+}
 
 
+// ComponentV2.ets
+import { KeyboardAvoidMode, window } from '@kit.ArkUI';
+import { formatEnvAvoidArea } from '../../utils/area-format';
+
+@Entry
+@ComponentV2
+struct Index {
+  build() {
+    Column() {
+      V2ContentComponent()
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+export struct V2ContentComponent {
+  win: window.Window | undefined = AppStorage.get('mainWindow');
+  windowStage: window.WindowStage | undefined = AppStorage.get('windowStage');
+  @Env(SystemProperties.WINDOW_AVOID_AREA_PX) avoidAreasPx: window.UIEnvWindowAvoidAreaInfoPX;
+  @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
+  @Param topText: string = 'Top Avoid';
+  @Param bottomText: string = 'Bottom Avoid'
+
+  aboutToAppear(): void {
+    this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Row() {
+        Text(this.topText).fontSize(24).textAlign(TextAlign.Center).width('100%')
+      }
+      .backgroundColor('#2786d9')
+      .flexShrink(0)
+      .padding({
+        top: this.avoidAreasVp.statusBar.topRect.height + 3,
+        bottom: 10
+      }) // 避让顶部高度+3vp
+
+      Scroll() {
+        Column({ space: 5 }) {
+          Column() {
+            Text('PX {LEFT|TOP|WIDTH|HEIGHT}').fontWeight(FontWeight.Bold)
+            Text(formatEnvAvoidArea(this.avoidAreasPx))
+          }
+          .padding(10)
+          .width('100%')
+          .alignItems(HorizontalAlign.Start)
+
+          Column() {
+            Text('VP {LEFT|TOP|WIDTH|HEIGHT}').fontWeight(FontWeight.Bold)
+            Text(formatEnvAvoidArea(this.avoidAreasVp))
+          }
+          .padding(10)
+          .width('100%')
+          .alignItems(HorizontalAlign.Start)
+
+          Column() {
+            Row({ space: 5 }) {
+              Button('竖屏').onClick(() => {
+                this.win?.setPreferredOrientation(window.Orientation.USER_ROTATION_PORTRAIT);
+              })
+              Button('横屏').onClick(() => {
+                this.win?.setPreferredOrientation(window.Orientation.USER_ROTATION_LANDSCAPE);
+              })
+            }
+          }
+
+          Column() {
+            Row({ space: 5 }) {
+              Button('状态栏隐藏').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('status', false);
+              })
+              Button('状态栏显示').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('status', true);
+              })
+            }
+          }
+
+          Column() {
+            Row({ space: 5 }) {
+              Button('导航条隐藏').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('navigationIndicator', false);
+              })
+              Button('导航条显示').onClick(() => {
+                this.win?.setSpecificSystemBarEnabled('navigationIndicator', true);
+              })
+            }
+          }
+
+          Column() {
+            Column({ space: 5 }) {
+              Button('density DEFAULT').onClick(() => {
+                this.windowStage?.setCustomDensity(-1);
+              })
+              Button('density 2').onClick(() => {
+                this.windowStage?.setCustomDensity(2);
+              })
+              Button('density 3').onClick(() => {
+                this.windowStage?.setCustomDensity(3);
+              })
+              Button('density 4').onClick(() => {
+                this.windowStage?.setCustomDensity(4);
+              })
+            }
+          }
+
+          TextInput({ placeholder: '测试输入' })
+        }
+      }
+      .backgroundColor(Color.White)
+      .padding({
+        top: 20,
+        bottom: 20,
+        left: 5,
+        right: 5
+      })
+      .margin({ top: 20, bottom: 20 })
+      .borderRadius(15)
+      .width('95%')
+      .flexGrow(1)
+
+      Row() {
+        Text(this.bottomText).fontSize(24).textAlign(TextAlign.Center).width('100%')
+      }
+      .backgroundColor('#96dffa')
+      .flexShrink(0)
+      .padding({
+        top: 10,
+        bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 3
+      }) // 避让底部高度+3vp
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#d5d5d5')
+  }
+}
+
+// SubWindow.ets
+import { V2ContentComponent } from './ComponentV2'
+import { window } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    this.getUIContext().getPromptAction().showToast({
+      message: '进入子窗，返回手势退出'
+    });
+  }
+
+  onBackPress(): boolean | void {
+    const win = window.findWindow(this.getUIContext().getWindowName());
+    win?.destroyWindow();
+  }
+
+  build() {
+    Column() {
+      V2ContentComponent({
+        topText: '子窗'
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+// SysWindow.ets
+import { V2ContentComponent } from './ComponentV2'
+import { window } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    this.getUIContext().getPromptAction().showToast({
+      message: '进入系统窗，返回手势退出'
+    });
+  }
+
+  onBackPress(): boolean | void {
+    const win = window.findWindow(this.getUIContext().getWindowName());
+    win?.destroyWindow();
+  }
+
+  build() {
+    Column() {
+      V2ContentComponent({
+        topText: '系统窗'
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+// Index.ets
+import router from '@ohos.router';
+import { window } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+interface PageInfo {
+  title: string
+  url: string
+}
+
+const pageList: PageInfo[] = [
+  { title: 'ComponentV1', url: 'pages/test/ComponentV1' },
+]
+
+
+@Entry
+@Component
+struct Index {
+  @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
+  win: window.Window | undefined = AppStorage.get('mainWindow');
+  windowStage: window.WindowStage | undefined = AppStorage.get('windowStage');
+
+  async createSubWindow() {
+    const win = await this.windowStage?.createSubWindow('sub');
+    await win?.setUIContent('pages/test/SubWindow');
+    await win?.showWindow();
+  }
+
+  async createSysWindow() {
+    let win: window.Window | undefined = undefined;
+    try {
+      win = await window.createWindow({
+        name: 'sys',
+        windowType: window.WindowType.TYPE_FLOAT,
+        ctx: AppStorage.get('context')!
+      });
+    } catch (e) {
+      hilog.error(0, '!!!', `${JSON.stringify(e)}`);
+      this.getUIContext().getPromptAction().showToast({
+        message: `创建系统窗失败：${e.message}`,
+      });
+    }
+    await win?.setSystemAvoidAreaEnabled(true);
+    await win?.setUIContent('pages/test/SysWindow');
+    await win?.showWindow();
+  }
+
+  build() {
+    Column() {
+      Text('WindowAvoidArea Env测试').fontWeight(FontWeight.Bold).fontSize(20).padding(30)
+      List({ space: 8 }) {
+        ForEach(pageList, (item: PageInfo) => {
+          ListItem() {
+            Text(item.title)
+              .width('100%')
+              .backgroundColor(Color.Pink)
+              .fontSize(20)
+              .padding(20)
+              .onClick(() => {
+                router.pushUrl({
+                  url: item.url
+                }, router.RouterMode.Single)
+              })
+          }
+        }, (item: PageInfo) => item.title)
+        ListItem() {
+          Text("Sub Window")
+            .width('100%')
+            .backgroundColor(Color.Pink)
+            .fontSize(20)
+            .padding(20)
+            .onClick(async () => {
+              await this.createSubWindow();
+            })
+        }
+
+        ListItem() {
+          Text("System Window")
+            .width('100%')
+            .backgroundColor(Color.Pink)
+            .fontSize(20)
+            .padding(20)
+            .onClick(async () => {
+              await this.createSysWindow();
+            })
+        }
+      }
+    }
+    .padding({
+      left: 5,
+      right: 5,
+      top: this.avoidAreasVp.statusBar.topRect.height + 5,
+      bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 5,
+    })
+    .width('100%')
+    .height('100%')
+  }
+}
    ```
