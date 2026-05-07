@@ -25,7 +25,7 @@ function getMediaTypeByMimeType(mimeType: string): string {
   } else if (mimeType.startsWith('image/')) {
     return 'image';
   }
-  return 'unKnown';
+  return 'unknown';
 }
 ```
 
