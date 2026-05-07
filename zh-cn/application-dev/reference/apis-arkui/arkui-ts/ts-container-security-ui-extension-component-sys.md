@@ -294,7 +294,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，取消订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
+| callback | Callback\<[SecurityUIExtensionProxy](#UIExtensionProxy)\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
 
 ## 示例
 
