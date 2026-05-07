@@ -87,17 +87,21 @@
     > 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
 
    <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-    ```ts
-    function enableMovingPhoto(photoOutput: camera.PhotoOutput): void {
-      try {
-        photoOutput.enableMovingPhoto(true);
-      } catch (error) {
-        // 失败返回错误码error.code并处理。
-        let err = error as BusinessError;
+   
+   ``` TypeScript
+   enableMovingPhoto(enable: boolean): void {
+     try {
+       if (this.photoOutput != undefined) {
+         console.info(TAG, `enableMovingPhoto: ${enable}`);
+         this.photoOutput.enableMovingPhoto(enable);
+       }
+     } catch (error) {
+       // 失败返回错误码error.code并处理。
+       let err = error as BusinessError;
        console.error(`The enableMovingPhoto call failed. error code: ${err.code}`);
-      }
-    }
-    ```
+     }
+   }
+   ```
 
 5. 触发拍照，与普通拍照方式相同，请参考[拍照](camera-shooting.md)。
 
