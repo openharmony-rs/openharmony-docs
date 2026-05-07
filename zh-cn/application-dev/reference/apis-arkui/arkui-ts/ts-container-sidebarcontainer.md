@@ -1,9 +1,9 @@
 # SideBarContainer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供侧边栏可以显示和隐藏的容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区。
@@ -264,7 +264,7 @@ minSideBarWidth(value: Length | undefined)
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 
-**系统能力：** SystemCapability.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -485,7 +485,7 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 | -------- | -------- | -------- | -------- | -------- |
 | left | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮距离容器左界限的间距。<br/>默认值：16vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | top | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮距离容器上界限的间距。<br/>默认值：48vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
-| width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及以下默认值为32vp；从API version 10开始默认值为24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
+| width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮的高度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18对象说明) | 否 | 是 | 设置侧边栏控制按钮的图标。<br/>资源获取错误以及未设置该属性时，使用默认图标。 |
 
@@ -532,6 +532,18 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 设置分割线的样式。
 
+>  **说明：** 
+>
+>  针对侧边栏子组件设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效。
+>
+>  针对侧边栏内容区设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
+>
+>  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
+>
+>  - 小于[minSideBarWidth](#minsidebarwidth) + [minContentWidth](#mincontentwidth10)：默认不显示侧边栏。
+>
+>  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -546,16 +558,6 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 | color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#000000，3%，黑色。   |
 | startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
-
->  **说明：** 
->
->  针对侧边栏子组件设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效。
->  针对侧边栏内容区设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
->
->  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
->
->  - 小于[minSideBarWidth](#minsidebarwidth) + [minContentWidth](#mincontentwidth10)：默认不显示侧边栏。
->  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
 
 ## 事件
 
