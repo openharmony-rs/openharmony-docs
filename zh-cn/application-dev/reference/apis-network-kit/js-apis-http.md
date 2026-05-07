@@ -382,10 +382,10 @@ class Header {
 let httpRequest = http.createHttp();
 let options: http.HttpRequestOptions = {
     method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET。
-  // 推荐使用body字段传递请求体内容，具体格式与服务端协商确定。
-  body: 'data to send', // 自API 26开始支持。
-  // 推荐使用queryParams字段传递URL参数。可传string或对象。
-  queryParams: { scene: 'request-demo', page: 1 }, // 自API 26开始支持。
+    // 推荐使用body字段传递请求体内容，具体格式与服务端协商确定。
+    body: 'data to send', // 自API 26开始支持。
+    // 推荐使用queryParams字段传递URL参数。可传string或对象。
+    queryParams: { scene: 'request-demo', page: 1 }, // 自API 26开始支持。
     expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
     usingCache: true, // 可选，默认为true。
     priority: 1, // 可选，默认为1。
