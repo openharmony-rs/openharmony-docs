@@ -197,16 +197,30 @@
 
 
    <!-- @[camera_capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   ```ts
-   function capture(captureLocation: camera.Location, photoOutput: camera.PhotoOutput): void {
+   
+   ``` TypeScript
+   capture(captureLocation?: camera.Location): void {
+     let captureLocationDefault: camera.Location = {
+       latitude: 0,
+       longitude: 0,
+       altitude: 0
+     };
+     if (captureLocation != undefined) {
+       captureLocationDefault = captureLocation;
+     }
      let settings: camera.PhotoCaptureSetting = {
        quality: camera.QualityLevel.QUALITY_LEVEL_HIGH,  // 设置图片质量高。
-       rotation: camera.ImageRotation.ROTATION_0,  // 设置图片旋转角度的camera.ImageRotation.ROTATION_0是通过说明中获取拍照角度的getPhotoRotation方法获取的值进行设置。
+       // 设置图片旋转角度的camera.ImageRotation.ROTATION_0是通过说明中获取拍照角度的getPhotoRotation方法获取的值进行设置。
+       rotation: camera.ImageRotation.ROTATION_0,
        location: captureLocation,  // 设置图片地理位置。
        mirror: false  // 设置镜像使能开关(默认关)。
      };
      try {
-       photoOutput.capture(settings, (err: BusinessError) => {
+       if (this.photoOutput == undefined) {
+         console.info(`photoOutput is undefined.`);
+         return;
+       }
+       this.photoOutput.capture(settings, (err: BusinessError) => {
          if (err) {
            console.error(`Failed to capture the photo. error: ${err}`);
            return;
