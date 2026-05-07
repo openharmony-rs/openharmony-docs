@@ -49,7 +49,18 @@ import { screenshot } from '@kit.ArkUI';
 | displayId | number        | 否 | 是   | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 |
 | isNotificationNeeded| boolean        | 否 | 是   | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。   |
 | isCaptureFullOfScreen | boolean        | 否 | 是   | 表示是否截取当前物理屏上所有DisplayId对应的逻辑屏。对于一个物理屏上有多个DisplayId的场景，true表示截取整个物理屏，false表示只截取DisplayId所在区域的逻辑屏。默认值为false。 |
+| displayIntent<sup>24+</sup> | [DisplayIntentType](#displayintenttype-24)        | 否 | 是   | 指定截取图像的显示优化类型。根据设置枚举值的不同，系统会调整截取的HDR图像的显示效果。CANONICAL表示根据标准HDR参数生成HDR截图，LOCAL表示根据当前显示效果生成HDR截图。默认值为CANONICAL。 |
 
+## DisplayIntentType <sup>24+</sup>
+
+截取图像的显示优化类型枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CANONICAL | 0 | 表示根据标准HDR参数生成HDR截图。|
+| LOCAL | 1 | 表示根据当前显示效果生成HDR截图。|
 ## Size
 
 表示截取图像的大小。
@@ -284,7 +295,8 @@ import { image } from '@kit.ImageKit';
 let hdrScreenshotOptions: screenshot.HdrScreenshotOptions = {
   "displayId": 0,
   "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true
+  "isCaptureFullOfScreen": true,
+  "displayIntent": screenshot.DisplayIntentType.CANONICAL
 };
 try {
   let promise = screenshot.saveHdrPicture(hdrScreenshotOptions);
