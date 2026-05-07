@@ -31,6 +31,7 @@
 | RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位。 |
 | YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
 | YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
+| ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。所有像素紧密排列，不进行对齐。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
 | ASTC_4x4<sup>18+</sup> | 102 | 存储格式为ASTC 4x4格式，内存使用量仅为RGBA_8888的1/4。该格式仅用于直接显示场景，不支持像素访问或后期处理编辑，不支持仿射变换级联使用。  |
 
 ## AlphaType<sup>9+</sup>
@@ -85,6 +86,7 @@
 | PNG_METADATA | 19    | PNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | JFIF_METADATA | 20    | JFIF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | TIFF_METADATA | 21    | TIFF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| AVIS_METADATA | 23    | AVIS图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -358,10 +360,11 @@
 ## DngPropertyKey<sup>24+</sup>
 
 枚举，DNG图片信息。
-- 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。
-- 格式示例中的key为：image.DngPropertyKey.XXX（XXX为枚举的名称，如：image.DngPropertyKey.DNG_BACKWARD_VERSION）。
-- 格式示例仅用于读取结果的格式。具体接口使用方法请参考：[readImageMetadata](arkts-apis-image-ImageSource.md#readimagemetadata23)。
-- 返回字段类型具体参考[DngMetadata](arkts-apis-image-i.md#dngmetadata24)。
+
+> **说明：**
+>
+> - 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。
+> - 返回字段类型具体参考[DngMetadata](arkts-apis-image-i.md#dngmetadata24)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -392,7 +395,7 @@
 | REDUCTION_MATRIX2 | 'ReductionMatrix2' | 第二校准光源下的降维矩阵。 |
 | ANALOG_BALANCE | 'AnalogBalance' | 模拟增益平衡系数。 |
 | AS_SHOT_NEUTRAL | 'AsShotNeutral' | 拍摄时的中性白点。 |
-| AS_SHOT_WHITE_XY | 'AsShotWhiteXY' | 拍摄时白点的CIE x-y色度坐标。 |
+| AS_SHOT_WHITEXY | 'AsShotWhiteXY' | 拍摄时白点的CIE x-y色度坐标。 |
 | BASELINE_EXPOSURE | 'BaselineExposure' | 基准曝光补偿值，单位：EV。 |
 | BASELINE_NOISE | 'BaselineNoise' | 基准噪声水平。 |
 | BASELINE_SHARPNESS | 'BaselineSharpness' | 基准锐度增益。 |
@@ -465,8 +468,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.PngPropertyKey.XXX（XXX为枚举的名称，如：image.PngPropertyKey.X_PIXELS_PER_METER）。
-> - 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
+> 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -499,8 +501,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.JfifPropertyKey.XXX（XXX为枚举的名称，如：image.JfifPropertyKey.DENSITY_UNIT）。
-> - 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
+> 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -522,8 +523,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.TiffPropertyKey.XXX（XXX为枚举的名称，如：image.TiffPropertyKey.DOCUMENT_NAME）。
-> - 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
+> 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -553,6 +553,24 @@
 | SOFTWARE | 'TiffSoftware' | 用于生成图像的软件名称和版本。 |
 | PRIMARY_CHROMATICITIES | 'TiffPrimaryChromaticities' | 图像中RGB三原色的色度坐标。 |
 | ARTIST | 'TiffArtist' | 创建图像的用户名称。 |
+
+## AvisPropertyKey
+
+枚举，AVIS图片信息。
+
+> **说明：**
+>
+> 返回字段类型具体参考[AvisMetadata](arkts-apis-image-AvisMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 值                | 说明                   |
+| ----------------- | ----------------- | --------------------- |
+| DELAY_TIME    | 'AvisDelayTime'    | AVIS图片的每帧播放时长。<br>单位为毫秒（ms）。 |
 
 ## ImageFormat<sup>9+</sup>
 

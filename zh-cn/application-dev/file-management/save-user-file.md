@@ -15,6 +15,17 @@
 - 获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 - 使用Picker对音频、图片、视频、文档类文件的保存操作**无需申请权限**。
 
+**约束限制**
+
+如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse](../reference/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
+
+```ts
+if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
+      console.error('This API is not supported on this device');
+      return;
+}
+```
+
 **系统隔离说明**
 
 - 通过Picker保存的文件存储在用户指定的目录。此类文件与图库管理的资源隔离，无法在图库中看到。

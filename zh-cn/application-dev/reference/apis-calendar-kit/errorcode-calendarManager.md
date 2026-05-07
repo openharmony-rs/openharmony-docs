@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @huangxinwei-->
+<!--Designer: @windsky6-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -71,7 +71,11 @@ Internal program error.
 
 **可能原因**
 
-内部处理异常
+1. dataShare数据库执行错误。
+
+2. 空指针错误。
+
+3. 数据解析错误。
 
 **处理步骤**
 
