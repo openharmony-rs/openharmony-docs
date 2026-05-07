@@ -214,7 +214,7 @@ try {
   let spaceName = colorSpace.getColorSpaceName();
   console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-  console.error(`Fail to get colorSpace's name. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get colorSpace's name. Cause: ` + JSON.stringify(err));
 }
 ```
 
