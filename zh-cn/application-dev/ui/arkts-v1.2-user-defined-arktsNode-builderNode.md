@@ -234,11 +234,11 @@ import {
   Button,
   Color
 } from '@ohos.arkui.component';
-import { State, Prop } from '@ohos.arkui.stateManagement';
+import { State, PropRef } from '@ohos.arkui.stateManagement';
 import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
 
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -248,7 +248,7 @@ class Params {
 // 自定义组件
 @Component
 struct TextBuilder {
-  @Prop message: string = "TextBuilder";
+  @PropRef message: string = 'TextBuilder';
 
   build() {
     Row() {
@@ -274,7 +274,7 @@ function buildText(params: Params) {
 
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<Params> | null = null;
-  private message: string = "";
+  private message: string = '';
 
   constructor(message: string) {
     super();
@@ -297,7 +297,7 @@ class TextNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello";
+  @State message: string = 'hello';
   private textNodeController: TextNodeController = new TextNodeController(this.message);
   private count: number = 0;
 
@@ -311,7 +311,7 @@ struct Index {
         Button('Update')
           .onClick((event: ClickEvent) => {
             this.count += 1;
-            const message = "Update " + this.count.toString();
+            const message = 'Update ' + this.count.toString();
             this.textNodeController.update(message);
           })
       }
@@ -358,11 +358,11 @@ import {
   Color,
   $r
 } from '@ohos.arkui.component';
-import { State, Prop } from '@ohos.arkui.stateManagement';
+import { State, PropRef } from '@ohos.arkui.stateManagement';
 import { NodeController, BuilderNode, FrameNode, RenderNode } from '@ohos.arkui.node';
 
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -372,8 +372,8 @@ class Params {
 // 自定义组件
 @Component
 struct TextBuilder {
-  // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
-  @Prop message: string = "TextBuilder";
+  // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@PropRef
+  @PropRef message: string = 'TextBuilder';
 
   build() {
     Row() {
@@ -398,7 +398,7 @@ function buildText(params: Params) {
 
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<Params> | null = null;
-  private message: string = "";
+  private message: string = '';
 
   constructor(message: string) {
     super();
@@ -441,7 +441,7 @@ function updateColorMode() {
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello";
+  @State message: string = 'hello';
   private textNodeController: TextNodeController = new TextNodeController(this.message);
   private count: number = 0;
 
@@ -465,7 +465,7 @@ struct Index {
         Button('Update')
           .onClick((event: ClickEvent) => {
             this.count += 1;
-            const message = "Update " + this.count.toString();
+            const message = 'Update ' + this.count.toString();
             this.textNodeController.update(message);
           })
         Button('通知切换环境变量')
