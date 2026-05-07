@@ -470,10 +470,10 @@
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
    <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  ```ts
-  function onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('error', (error: BusinessError) => {
-      console.error(`Photo output error code: ${error.code}`);
-    });
-  }
-  ```
+   
+   ``` TypeScript
+   // 监听拍照异常
+   photoOutput.on('error', (data: BusinessError): void => {
+     Logger.info(TAG, `photoOutPut data: ${JSON.stringify(data)}`);
+   });
+   ```
