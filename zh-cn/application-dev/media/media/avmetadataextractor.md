@@ -26,6 +26,7 @@
    开发者需根据实际情况，确认资源有效性并设置（只能设置其中一种）：
    
    - 如果设置fdSrc，可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。也可以通过应用沙箱路径访问对应资源（必须确保资源可用），参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+    ArkTS-Dyn:
      ```ts
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
@@ -40,6 +41,7 @@
      ```
 
    - 如果设置dataSrc，必须正确设置dataSrc中的callback属性，确保callback被调用时能正确读取到对应资源，使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+    ArkTS-Dyn:
      ```ts
      import { fileIo, ReadOptions } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
@@ -80,6 +82,7 @@
      ```
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
+    ArkTS-Dyn:
      ```ts
      import { media } from '@kit.MediaKit';
 
@@ -94,6 +97,7 @@
      ```
 
    - 不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
+   ArkTS-Dyn:
      ```ts
      import { common } from '@kit.AbilityKit';
      import { fileIo } from '@kit.CoreFileKit';
@@ -165,6 +169,7 @@
    ```
 
 7. （可选）批量获取视频缩略图：调用fetchFramesByTimes，能够批量获取视频缩略图。
+   ArkTS-Dyn:
    ```ts
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
