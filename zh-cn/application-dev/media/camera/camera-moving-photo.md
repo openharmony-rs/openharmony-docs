@@ -61,19 +61,24 @@
     > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
 
    <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-    ```ts
-    function isMovingPhotoSupported(photoOutput: camera.PhotoOutput): boolean {
-      let isSupported: boolean = false;
-      try {
-        isSupported = photoOutput.isMovingPhotoSupported();
-      } catch (error) {
-        // 失败返回错误码error.code并处理。
-        let err = error as BusinessError;
-        console.error(`The isMovingPhotoSupported call failed. error code: ${err.code}`);
-      }
-      return isSupported;
-    }
-    ```
+   
+   ``` TypeScript
+   isMovingPhotoSupported(): boolean {
+     let isSupported: boolean = false;
+     try {
+       if (this.photoOutput == undefined) {
+         console.error(`photoOutput is nullptr.`);
+         return false;
+       }
+       isSupported = this.photoOutput.isMovingPhotoSupported();
+     } catch (error) {
+       // 失败返回错误码error.code并处理。
+       let err = error as BusinessError;
+       console.error(`The isMovingPhotoSupported call failed. error code: ${err.code}`);
+     }
+     return isSupported;
+   }
+   ```
 
 4. 使能动态照片拍照能力。
 
