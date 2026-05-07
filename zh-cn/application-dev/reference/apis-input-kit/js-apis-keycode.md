@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -25,6 +27,10 @@ import { KeyCode } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                               | 值   |  说明        |
 | -------------------------------- | ------ | --------------------------- |
 | KEYCODE_FN                       |  0 | 功能（Fn）键。                     |
@@ -32,12 +38,12 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_HOME                     |  1 | 功能（Home）键。                  |
 | KEYCODE_BACK                     |  2 | 返回键。                         |
 | KEYCODE_SEARCH<sup>13+</sup> | 9 | 搜索键。 |
-| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | 多媒体键：播放/暂停。<br/>与KEYCODE_PLAYPAUSE的区别为：<br/>KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| KEYCODE_MEDIA_STOP               |  11 | 光盘停止键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| KEYCODE_MEDIA_NEXT               |  12 | 多媒体键：下一首。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
-| KEYCODE_MEDIA_PREVIOUS           |  13 | 多媒体键：上一首。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
-| KEYCODE_MEDIA_REWIND            |  14 | 多媒体键：快退。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| KEYCODE_MEDIA_FAST_FORWARD       |  15 | 多媒体键：快进。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | 多媒体键：播放/暂停。<br/>与KEYCODE_PLAYPAUSE的区别为：<br/>KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
+| KEYCODE_MEDIA_STOP               |  11 | 光盘停止键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_NEXT               |  12 | 多媒体键：下一首。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
+| KEYCODE_MEDIA_PREVIOUS           |  13 | 多媒体键：上一首。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
+| KEYCODE_MEDIA_REWIND            |  14 | 多媒体键：快退。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_FAST_FORWARD       |  15 | 多媒体键：快进。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
 | KEYCODE_VOLUME_UP                |  16 | 音量增加键。                       |
 | KEYCODE_VOLUME_DOWN              |  17 | 音量减小键。                       |
 | KEYCODE_POWER                    |  18 | 电源键。                        |
@@ -131,8 +137,8 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_MOVE_END                 |  2082 | 光标移动到末尾键。                    |
 | KEYCODE_INSERT                   |  2083 | 插入键。                         |
 | KEYCODE_FORWARD                  |  2084 | 前进键。                         |
-| KEYCODE_MEDIA_PLAY               |  2085 | 多媒体键：播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| KEYCODE_MEDIA_PAUSE              |  2086 | 光盘暂停键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_PLAY               |  2085 | 多媒体键：播放。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_PAUSE              |  2086 | 光盘暂停键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
 | KEYCODE_MEDIA_CLOSE              |  2087 | 光盘关闭键。                     |
 | KEYCODE_MEDIA_EJECT              |  2088 | 光盘弹出键。                     |
 | KEYCODE_MEDIA_RECORD             |  2089 | 多媒体键：录音。                     |

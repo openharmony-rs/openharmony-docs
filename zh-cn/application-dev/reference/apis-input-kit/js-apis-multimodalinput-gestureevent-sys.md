@@ -11,6 +11,8 @@
 
 >  **说明：**
 >
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -27,6 +29,10 @@ import { Touch , SwipeInward } from '@kit.InputKit';
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
+
 | 名称               | 类型                      | 只读 | 可选 | 说明             |
 | ------------------ | ------------------------- | ---- | ---- | ---------------- |
 | action | [TouchGestureAction](#touchgestureaction18) | 否   | 否   | 触摸屏手势类型。 |
@@ -37,6 +43,10 @@ import { Touch , SwipeInward } from '@kit.InputKit';
 触摸屏手势类型。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
 
 | 名称            | 值  | 说明             |
 | --------------- | --- | --------------- |
@@ -54,8 +64,12 @@ import { Touch , SwipeInward } from '@kit.InputKit';
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称               | 类型                      | 只读 | 可选 | 说明             |
 | ------------------ | ------------------------- | ---- | ---- | ---------------- |
 | type      | [ActionType](js-apis-multimodalinput-gestureevent.md#actiontype)  | 否   | 否   |        表示向内滑动事件的类型，固定为SwipeInward。     |
-| x      | number  | 否   | 否   |    滑动事件触发点的横坐标，单位为像素。      |
-| y      | number  | 否   | 否   |     滑动事件触发点的纵坐标，单位为像素。     |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否   | 否   |    滑动事件触发点的横坐标，单位为像素。      |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否   | 否   |     滑动事件触发点的纵坐标，单位为像素。     |
