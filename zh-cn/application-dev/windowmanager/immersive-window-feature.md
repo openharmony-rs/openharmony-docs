@@ -445,7 +445,7 @@ struct Index {
    ```
 
   
-![zh-cn_image_0000002536554368](figures/image.png) 
+![zh-cn_image_0000002536554368](figures/image.png)  ![zh-cn_image_0000002536554361](figures/image1.png) 
 
 5. 根据实际的UI界面显示或相关UI元素背景颜色等，还可以按需设置状态栏的文字颜色、背景色或设置导航区域的显示或隐藏，以使UI界面效果呈现和谐。状态栏和导航区域默认是透明的，透传的是应用界面的背景色。  
 
