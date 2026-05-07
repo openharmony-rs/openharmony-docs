@@ -679,6 +679,8 @@ getMediaQuery(): MediaQuery
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -923,7 +925,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
-> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish动画播放完成回调](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish](arkui-ts/ts-explicit-animation.md#animateparam对象说明)动画播放完成回调。
 > - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
@@ -2118,6 +2120,8 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -2126,7 +2130,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| value | [KeyboardAvoidMode](arkts-apis-uicontext-e.md#keyboardavoidmode11)| 是    | 键盘弹出时的页面避让模式。<br />默认值：KeyboardAvoidMode.OFFSET |
+| value | [KeyboardAvoidMode](arkts-apis-uicontext-e.md#keyboardavoidmode11)| 是    | 配置虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br />setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
 >  **说明：**
 >
@@ -2165,6 +2169,8 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -4339,6 +4345,8 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
@@ -4376,6 +4384,8 @@ getPixelRoundMode(): PixelRoundMode
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 18
 

@@ -142,9 +142,7 @@ ArkTS-Sta: borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors |
 
 ## borderRadius
 
-ArkTS-Dyn: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
-
-ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses | undefined): this
+borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 设置边框的圆角半径。
 
@@ -154,21 +152,21 @@ ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 7
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup><br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) \| undefined | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。<br/>设置四个不同圆角值，若某个圆角值超过高度或者宽度最小值一半时，按值的比例绘制异形圆角。<br/>取值为undefined时，与不设置表现一致。|
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。<br/>设置四个不同圆角值，若某个圆角值超过高度或者宽度最小值一半时，按值的比例绘制异形圆角。<br/>取值为undefined时，与不设置表现一致。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## borderRadius<sup>22+</sup>
 

@@ -23,7 +23,15 @@
 
 ## 接口
 
+### GridContainer<sup>(deprecated)</sup>
+
 GridContainer(value?: GridContainerOptions)
+
+纵向排布栅格布局容器。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[GridCol](ts-container-gridcol.md#gridcol-1)或[GridRow](ts-container-gridrow.md#gridrow-1)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,7 +41,11 @@ GridContainer(value?: GridContainerOptions)
 | -------- | -------- | -------- | -------- |
 | value | GridContainerOptions | 否 | GridContainer参数。 |
 
-## GridContainerOptions对象说明
+## GridContainerOptions<sup>(deprecated)</sup>对象说明
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[GridColOptions](ts-container-gridcol.md#gridcoloptions对象说明)或[GridRowOptions](ts-container-gridrow.md#gridrowoptions对象说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +56,11 @@ GridContainer(value?: GridContainerOptions)
 | gutter | number&nbsp;\|&nbsp;string | 否 | 是 | 栅格布局列间距，不支持百分比。 |
 | margin | number&nbsp;\|&nbsp;string | 否 | 是 | 栅格布局两侧间距，不支持百分比。 |
 
-## SizeType枚举说明
+## SizeType<sup>(deprecated)</sup>枚举说明
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[GridColColumnOption](ts-container-gridcol.md#gridcolcolumnoption)或[GridRowColumnOption](ts-container-gridrow.md#gridrowcolumnoption)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
