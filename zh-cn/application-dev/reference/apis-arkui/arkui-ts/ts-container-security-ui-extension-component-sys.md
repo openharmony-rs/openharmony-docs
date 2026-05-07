@@ -115,7 +115,7 @@ onReceive(callback: Callback\<Record\<string, Object\>\>)
 
 ### onError
 
-onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback))
+onError(callback: ErrorCallback)
 
 被拉起的Ability扩展在运行过程中发生异常时触发的回调，不包含与UIExtensionAbility断开连接场景。
 
