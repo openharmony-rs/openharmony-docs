@@ -237,7 +237,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，代表订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<[UIExtensionProxy]\> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
+| callback | Callback\<[UIExtensionProxy]\> | 是 | 回调函数。订阅扩展Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
 
 ### on('syncReceiverRegister')
 
@@ -256,7 +256,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<UIExtensionProxy\> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
+| callback | Callback\<UIExtensionProxy\> | 是 | 回调函数。扩展Ability注册[setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setReceiveDataForResultCallback)后触发的回调。 |
 
 ### off('asyncReceiverRegister')
 
