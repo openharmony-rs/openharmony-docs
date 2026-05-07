@@ -2895,36 +2895,41 @@ forceReuseRasterResult(isForce: boolean): void
 import { text, drawing } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
  
+function textFunc(pixelmap: PixelMap) {
+  let canvas = new drawing.Canvas(pixelMap);
+  let textData = "Hello World";
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addText(textData);
+  let paragraph = paragraphBuilder.build();
+  paragraph.layoutSync(200);
+  paragraph.forceReuseRasterResult(true);
+  paragraph.paint(canvas, 0, 0);
+}
+
 @Entry
 @Component
 struct Index {
+  @State pixelmap?: PixelMap = undefined;
+  fun: Function = textFunc;
   build() {
     Column() {
-      Button("Click")
-        .onClick(() => {
-          let textData = "Hello World";
-          let myTextStyle: text.TextStyle = {
-            color: { alpha: 255, red: 255, green: 0, blue: 0 },
-            fontSize: 33,
-          };
-          let myParagraphStyle: text.ParagraphStyle = {
-            textStyle: myTextStyle
-          };
-          let fontCollection = new text.FontCollection();
-          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-          paragraphBuilder.addText(textData);
-          let paragraph = paragraphBuilder.build();
-          paragraph.layoutSync(200);
-        
+      Image(this.pixelmap).width(200).height(200);
+      Button().onClick(() => {
+        if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
-            size: { height: 200, width: 200 } }
-          let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-          let canvas = new drawing.Canvas(pixelMap);
-
-          paragraph.forceReuseRasterResult(true);
-          paragraph.paint(canvas, 0, 0);
-        })
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
     }
   }
 }
