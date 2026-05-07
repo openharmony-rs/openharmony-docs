@@ -26,6 +26,7 @@ The API can be called in either of the following ways:
 
 
 - Create a toggle that does not contain child components.
+
   This can be achieved by calling the API with **ToggleType** set to **Checkbox** or **Switch**.
   
   <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
@@ -177,7 +178,7 @@ export struct ToggleSample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.xxx') with the string resource file you use.
+    // Replace $r('app.string.ToggleCaseExample_title') with the actual resource file. In this example, the value in the resource file is "Bluetooth."
     .title($r('app.string.ToggleCaseExample_title'))
   }
 }

@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -71,6 +71,8 @@ Asset Store Kit（关键资产存储服务，简称ASSET）包含了一系列开
      - 在API 20及之前的版本：清除存储在ASSET中的非群组和群组数据。
   - 系统子用户删除时，清除该用户下ASSET中所有数据。
   - 设备恢复出厂设置时，清除ASSET中所有数据。
+
+<!--RP1--><!--RP1End-->
 
 ## 与相关Kit的关系
 

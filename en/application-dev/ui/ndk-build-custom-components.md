@@ -155,8 +155,8 @@ The following example creates a custom container that uses the maximum size of i
    #endif // MYAPPLICATION_ARKUICUSTOMCONTAINERNODE_H
    ```
 
-3. Use the custom container to create a sample UI with text, and continue with the [timer module simple implementation](ndk-embed-arkts-components.md).
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) -->
+3. Use the custom container to create a sample UI with text.
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    #include "NativeEntry.h"
@@ -195,10 +195,11 @@ The following example creates a custom container that uses the maximum size of i
            textNode->SetBackgroundColor(0xFFfffacd);
            textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
            node->AddChild(textNode);
-           CreateNativeTimer(env, textNode.get(), 1, [](void *userData, int32_t count) {
-               auto textNode = reinterpret_cast<ArkUITextNode *>(userData);
+           auto onClick = [](ArkUI_NodeEvent *event) {
+               auto textNode = (ArkUITextNode *)OH_ArkUI_NodeEvent_GetUserData(event);
                textNode->SetFontColor(0xFF00FF7F);
-           });
+           };
+           textNode->RegisterOnClick(onClick, textNode.get());
    
            // Keep the native side object in the management class to maintain its lifecycle.
            NativeEntry::GetInstance()->SetRootNode(node);
@@ -371,8 +372,8 @@ The following example creates a custom drawing component that can draw a custom 
    #endif // MYAPPLICATION_ARKUICUSTOMNODE_H
    ```
 
-3. Create a sample UI using the custom drawing component and the custom container, and continue with the [timer module simple implementation](ndk-embed-arkts-components.md).
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) -->
+3. Use the custom drawing component and custom container to create a sample UI.
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    
@@ -413,10 +414,11 @@ The following example creates a custom drawing component that can draw a custom 
            customNode->SetWidth(width);
            customNode->SetHeight(height);
            node->AddChild(customNode);
-           CreateNativeTimer(env, customNode.get(), 1, [](void *userData, int32_t count) {
-               auto customNode = reinterpret_cast<ArkUICustomNode *>(userData);
+           auto onClick = [](ArkUI_NodeEvent *event) {
+               auto customNode = (ArkUICustomNode *)OH_ArkUI_NodeEvent_GetUserData(event);
                customNode->SetRectColor(0xFF00FF7F);
-           });
+           };
+           customNode->RegisterOnClick(onClick, customNode.get());
    
            // Keep the native side object in the management class to maintain its lifecycle.
            NativeEntry::GetInstance()->SetRootNode(node);

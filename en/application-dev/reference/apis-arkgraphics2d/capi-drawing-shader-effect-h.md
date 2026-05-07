@@ -14,6 +14,8 @@ This file declares the functions related to the shader effect in the drawing mod
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -47,7 +49,7 @@ This file declares the functions related to the shader effect in the drawing mod
 
 ### OH_Drawing_TileMode
 
-```
+```c
 enum OH_Drawing_TileMode
 ```
 
@@ -69,7 +71,7 @@ Defines an enum for the tile modes of the shader effect.
 
 ### OH_Drawing_ShaderEffectCreatePixelMapShader()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreatePixelMapShader(OH_Drawing_PixelMap* pixelMap,OH_Drawing_TileMode tileX, OH_Drawing_TileMode tileY, const OH_Drawing_SamplingOptions* samplingOptions,const OH_Drawing_Matrix* matrix)
 ```
 
@@ -100,7 +102,7 @@ Creates a PixelMap shader object.
 
 ### OH_Drawing_ShaderEffectCreateColorShader()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t color)
 ```
 
@@ -127,7 +129,7 @@ Creates an **OH_Drawing_ShaderEffect** object with a single color.
 
 ### OH_Drawing_ShaderEffectCreateLinearGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Drawing_Point* startPt,const OH_Drawing_Point* endPt, const uint32_t* colors,const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)
 ```
 
@@ -159,7 +161,7 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 
 ### OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(const OH_Drawing_Point2D* startPt, const OH_Drawing_Point2D* endPt, const uint32_t* colors, const float* pos,uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -192,7 +194,7 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 
 ### OH_Drawing_ShaderEffectCreateRadialGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Drawing_Point* centerPt, float radius,const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)
 ```
 
@@ -224,7 +226,7 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient b
 
 ### OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(const OH_Drawing_Point2D* centerPt, float radius, const uint32_t* colors, const float* pos, uint32_t size,OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -257,7 +259,7 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient b
 
 ### OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(const OH_Drawing_Point* centerPt,const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -285,11 +287,11 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient ba
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>A null pointer is returned if any of the following conditions is met: 1. The available memory is empty. 2. **centerPt** or **colors** is NULL. 3. The value of **tileMode** is out of the enumerated value range.|
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>A null pointer is returned if any of the following conditions is met:<br>- The available memory is empty.<br>- **centerPt** or **colors** is NULL.<br>- The value of **tileMode** is out of the enumerated value range.|
 
 ### OH_Drawing_ShaderEffectCreateSweepGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Drawing_Point* centerPt,const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)
 ```
 
@@ -316,11 +318,11 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient ba
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* |  Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>A null pointer is returned if any of the following conditions is met: 1. The available memory is empty. 2. **centerPt** or **colors** is NULL. 3. The value of **tileMode** is out of the enumerated value range.
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* |  Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>A null pointer is returned if any of the following conditions is met:<br>- The available memory is empty.<br>- **centerPt** or **colors** is NULL.<br>- The value of **tileMode** is out of the enumerated value range.|
 
 ### OH_Drawing_ShaderEffectCreateImageShader()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Image* image,OH_Drawing_TileMode tileX, OH_Drawing_TileMode tileY, const OH_Drawing_SamplingOptions* samplingOptions,const OH_Drawing_Matrix* matrix)
 ```
 
@@ -347,11 +349,11 @@ Creates an **OH_Drawing_ShaderEffect** object for an image shader. You are advis
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>A null pointer is returned if any of the following conditions is met: 1. The available memory is empty. 2. **image** or **samplingOptions** is NULL. 3. The value of **tileX** or **tileY** is out of the enumerated value range.|
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>A null pointer is returned if any of the following conditions is met:<br>- The available memory is empty.<br>- **image** or **samplingOptions** is NULL.<br>- The value of **tileX** or **tileY** is out of the enumerated value range.|
 
 ### OH_Drawing_ShaderEffectCreateTwoPointConicalGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(const OH_Drawing_Point2D* startPt,float startRadius, const OH_Drawing_Point2D* endPt, float endRadius, const uint32_t* colors, const float* pos,uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -382,11 +384,11 @@ Creates an **OH_Drawing_ShaderEffect** object that generates a gradient between 
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created. If the returned pointer is NULL, the creation fails. The possible causes are as follows: 1. The available memory is empty. 2. **startPt**, **endPt**, or **colors** is NULL. 3. The value of **tileMode** is out of the enumerated value range.|
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created. If the returned pointer is NULL, the creation fails. The possible causes are as follows:<br>- The available memory is empty.<br>- **startPt**, **endPt**, or **colors** is NULL.<br>- The value of **tileMode** is out of the enumerated value range.|
 
 ### OH_Drawing_ShaderEffectCreateCompose()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderEffect* dst,OH_Drawing_ShaderEffect* src, OH_Drawing_BlendMode mode)
 ```
 
@@ -411,11 +413,11 @@ Creates a shader by blending two existing shaders in a certain way.
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>If the returned pointer is NULL, the creation fails. The possible causes are as follows: 1. The available memory is empty. 2. **dst** or **src** is NULL. 3. The value of **mode** is out of the enumerated value range.|
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | Returns the pointer to the [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) object created.<br>If the returned pointer is NULL, the creation fails. The possible causes are as follows:<br>- The available memory is empty.<br>- **dst** or **src** is NULL.<br>- The value of **mode** is out of the enumerated value range.|
 
 ### OH_Drawing_ShaderEffectDestroy()
 
-```
+```c
 void OH_Drawing_ShaderEffectDestroy(OH_Drawing_ShaderEffect* shaderEffect)
 ```
 

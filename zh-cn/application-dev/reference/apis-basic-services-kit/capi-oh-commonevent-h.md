@@ -1,9 +1,8 @@
 # oh_commonevent.h
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -12,6 +11,8 @@
 定义公共事件订阅与退订API接口与枚举错误码。
 
 **库：** libohcommonevent.so
+
+**引用文件：** <BasicServicesKit/oh_commonevent.h>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -34,7 +35,7 @@
 | 名称 | typedef关键字 | 描述 |
 |----|------------|----|
 | void  | CommonEvent_Subscriber    | 提供CommonEvent_Subscriber订阅者结构体声明。   |
-| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附件信息结构体声明。  |
+| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附加信息结构体声明。  |
 
 ### 枚举
 

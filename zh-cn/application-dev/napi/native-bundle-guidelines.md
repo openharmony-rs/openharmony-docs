@@ -37,10 +37,10 @@
 
 创建完成后，DevEco Studio会在工程生成cpp目录，目录中包含types/libentry/index.d.ts、napi_init.cpp、CMakeLists.txt等文件。
 
-1. 打开src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加包管理的libbundle_ndk.z.so。
+1. 打开src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加包管理的libbundle_ndk.so。
 
     ```c++
-    target_link_libraries(entry PUBLIC libace_napi.z.so libbundle_ndk.z.so)
+    target_link_libraries(entry PUBLIC libace_napi.z.so libbundle_ndk.so)
     ```
 
 2. 打开src/main/cpp/napi_init.cpp文件，添加头文件。
@@ -355,7 +355,7 @@
         // 该接口从API version 21开始支持
         OH_NativeBundle_GetDrawableDescriptor(temp, &rawDrawable);
         if (rawDrawable) {
-            //使用ArkUI_DrawableDescriptor对象绘制图标
+            // 使用ArkUI_DrawableDescriptor对象绘制图标
         }
     }
     
@@ -445,17 +445,14 @@
     export const getAppIdentifier: () => string;            // 新增暴露方法 getAppIdentifier
     export const getMainElementName: () => object;          // 新增暴露方法 getMainElementName
     export const getCompatibleDeviceType: () => string;     // 新增暴露方法 getCompatibleDeviceType
-    export const isDebugMode: () => string;                 // 新增暴露方法 isDebugMode
+    export const isDebugMode: () => boolean;                // 新增暴露方法 isDebugMode
     export const getModuleMetadata: () => object;           // 新增暴露方法 getModuleMetadata
     export const getAbilityResourceInfo: (fileType: string) => object;      // 新增暴露方法 getAbilityResourceInfo
     ```
 
 **5. js侧调用**
 
-1. 打开src/main/ets/pages/index.ets, 导入"libentry.so"。
-
-
-2. 调用Native接口打印出获取的信息内容。示例如下：
+1. 打开src/main/ets/pages/Index.ets，导入"libentry.so"，调用Native接口打印出获取的信息内容。示例如下：
 
     <!-- @[native-bundle-guidelines_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/ets/pages/Index.ets) -->
     

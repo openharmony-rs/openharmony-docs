@@ -8,11 +8,12 @@
 
 应用可以在布局中嵌入AlbumPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的相册列表。
 
-需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用，用户通过AlbumPickerComponent组件选择对应相册并通知PhotoPickerComponent组件刷新成对应相册的图片和视频。
+需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用，用户通过AlbumPickerComponent组件选择对应相册并通知PhotoPickerComponent组件刷新为对应相册的图片和视频。
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件不支持[同层渲染](../../../application-dev/web/web-same-layer.md)。
 
 ## 导入模块
 
@@ -26,12 +27,7 @@ import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, photoAccessHelper,
 
 ## AlbumPickerComponent
 
-AlbumPickerComponent({
-  albumPickerOptions?: AlbumPickerOptions,
-  onAlbumClick?: (albumInfo: AlbumInfo) => boolean,
-  onEmptyAreaClick?: EmptyAreaClickCallback,
-  albumPickerController?: AlbumPickerController
-})
+AlbumPickerComponent( {albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) => boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController })
 
 应用可以在布局中嵌入AlbumPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的相册列表。
 
@@ -58,7 +54,7 @@ Album Picker配置选项。
 |----------------|-------|-----|-----|-------------------------------------------------------------|
 | themeColorMode | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode) | 否 | 是   | 相册页主题颜色，包括跟随系统、浅色模式以及深色模式，默认为跟随系统。 <br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                         |
 | filterType<sup>13+</sup>     | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否 | 是   | 相册组件过滤参数，可筛选只显示图片、视频或者图片和视频。若未配置此参数，则某个具体相册中显示图片和视频类型的所有资源。<br> **原子化服务API**：从API version 13开始，该接口支持在原子化服务中使用。 |
-| fontSize<sup>20+</sup> | number \| string | 否 | 是 | 字体大小，取值范围参考[fontsize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。  |
+| fontSize<sup>20+</sup> | number \| string | 否 | 是 | 字体大小，取值范围参考[fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。  |
 
 ## EmptyAreaClickCallback<sup>13+</sup>
 
@@ -105,7 +101,7 @@ setFontSize(fontSize: number | string): void
 
 |  参数名        | 类型                                    | 必填  | 说明  |
 | ------------------------- | ------------------ | ----- | --------------- |
-| fontSize | number \| string | 是 | 字体大小，取值范围参考[fontsize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。 |
+| fontSize | number \| string | 是 | 字体大小，取值范围参考[fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize)。 |
 
 ## 示例
 
@@ -148,3 +144,4 @@ struct PickerDemo {
     }
   }
 }
+```

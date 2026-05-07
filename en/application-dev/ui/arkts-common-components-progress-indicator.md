@@ -39,7 +39,7 @@ Progress indicators come in five styles. When creating a progress indicator, you
 
 
   <!-- @[progress_style_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
-  
+
   ``` TypeScript
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(200).height(50)
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(50).height(200)
@@ -59,7 +59,7 @@ Progress indicators come in five styles. When creating a progress indicator, you
     .color(Color.Grey)    // Set the foreground color to gray.
     .style({ strokeWidth: 15})    // Set the stroke width to 15.0 vp.
   ```
-    
+  
   ![progress_ring](figures/progress_ring.png)
 
 - Determinate ring style
@@ -129,7 +129,8 @@ struct ProgressCase1 {
       Column() {
         Progress({value:0, total:100, type:ProgressType.Capsule}).width(200).height(50).value(this.progressValue)
         Row().width('100%').height(5)
-        Button('Progress + 5')
+        // Replace $r('app.string.progress_add') with the actual resource file. In this example, the value of the resource file is "Progress + 5."
+        Button($r('app.string.progress_add'))
           .onClick(()=>{
             this.progressValue += 5;
             if (this.progressValue > 100){
@@ -141,6 +142,5 @@ struct ProgressCase1 {
   }
 }
 ```
-    
-![progress](figures/progress.gif)
 
+![progress](figures/progress.gif)

@@ -5,7 +5,7 @@
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ErrorCode定义启动Ability时返回的错误码，包括无效的参数、权限拒绝等。
 
@@ -27,7 +27,7 @@ import { ErrorCode } from '@kit.AbilityKit';
 
 | 名称                             | 值    | 说明                                       |
 | ------------------------------ | ---- | ---------------------------------------- |
-| NO_ERROR         | 0    | 没有异常。   |
+| NO_ERROR         | 0    | 启动成功，无错误。   |
 | INVALID_PARAMETER | -1   | 无效的参数。 |
 | ABILITY_NOT_FOUND | -2   | 找不到Ability。 |
 | PERMISSION_DENY   | -3   | 权限拒绝。   |

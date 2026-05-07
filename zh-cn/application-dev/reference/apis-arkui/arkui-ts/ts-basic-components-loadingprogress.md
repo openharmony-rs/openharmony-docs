@@ -12,8 +12,10 @@
 
 >  **说明：**
 >
-> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
-
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 
+> - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
+>
 
 ## 子组件
 
@@ -62,7 +64,7 @@ color(value: ResourceColor)
 
 enableLoading(value: boolean)
 
-设置LoadingProgress动画是否显示。LoadingProgress动画不显示时，该组件依旧占位。通用属性[Visibility.Hidden](ts-universal-attributes-visibility.md#visibility)隐藏的是包括[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)等整个组件范围，而enableLoading=false只隐藏LoadingProgress本身动画内容，不包括border等。
+设置LoadingProgress动画是否显示。LoadingProgress动画不显示时，该组件依旧占位。通用属性[Visibility](ts-appendix-enums.md#visibility).Hidden隐藏的是包括[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)等整个组件范围，而enableLoading=false只隐藏LoadingProgress本身动画内容，不包括border等。
 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -89,7 +91,7 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<LoadingProgressConfiguration>](#loadingprogressconfiguration12对象说明) | 是   | 在LoadingProgress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ContentModifier\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)> | 是   | 在LoadingProgress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## 事件
 
@@ -119,9 +121,9 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 | 名称                     | 值 | 说明                                     |
 | ---------------------- | - | ---------------------------------------- |
-| Default       | - | 默认加载样式。API version 8及以后不支持设置。            |
-| Circular      | - | 环形加载样式。API version 8及以后不支持设置。            |
-| Orbital       | - | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
+| Default       | 1 | 默认加载样式。API version 8及以后不支持设置。            |
+| Circular      | 2 | 环形加载样式。API version 8及以后不支持设置。            |
+| Orbital       | 3 | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
 
 ## 示例
 
@@ -170,8 +172,8 @@ class MyLoadingProgressStyle implements ContentModifier<LoadingProgressConfigura
 }
 
 let arr1: string[] =
-  ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"];
-let arr2: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
+let arr2: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 @Builder
 function buildLoadingProgress(config: LoadingProgressConfiguration) {
@@ -208,10 +210,10 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
         }) {
           Column() {
             Text('60')
-              .maxFontSize("180sp")
-              .minFontSize("160.0vp")
+              .maxFontSize('180sp')
+              .minFontSize('160.0vp')
               .fontWeight(FontWeight.Medium)
-              .fontColor("#ff182431")
+              .fontColor('#ff182431')
               .width('40%')
               .height('30%')
               .textAlign(TextAlign.Center)
@@ -260,7 +262,7 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
       .scrollBar(BarState.Off)
     }
 
-  }.width("100%").padding(10)
+  }.width('100%').padding(10)
 }
 
 

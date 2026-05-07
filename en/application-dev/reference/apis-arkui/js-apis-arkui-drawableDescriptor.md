@@ -61,7 +61,7 @@ Represents the base class providing overridable methods for [PixelMap](../apis-i
 
 getPixelMap(): image.PixelMap
 
-Obtains this **pixelMap** object.
+Obtains this **PixelMap** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -75,16 +75,7 @@ Obtains this **pixelMap** object.
 
 **Example**
 
-```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
-import { image } from '@kit.ImageKit'
-
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-// Replace $r('app.media.app_icon') with the image resource file you use.
-let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-  .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
-let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
-```
+For details, see [LayeredDrawableDescriptor](#layereddrawabledescriptor).
 
 ### loadSync<sup>21+</sup>
 
@@ -167,7 +158,7 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-Implements a **PixelMapDrawableDescriptor** object , which can be created by passing in a **pixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
 
 ### constructor<sup>12+</sup>
 
@@ -510,18 +501,93 @@ struct Index {
 }
 ```
 
+### setBlendMode<sup>23+</sup>
+
+setBlendMode(mode: drawing.BlendMode): void
+
+Sets the blend mode of **LayeredDrawableDescriptor**. If this API is called for multiple times on the same **LayeredDrawableDescriptor** object, only the last call before the drawing completion takes effect. This API does not support dynamic switching. The default drawing order of **LayeredDrawableDescriptor** is background, mask, and foreground. After the blend mode is set, the drawing order changes to background, foreground, and mask. If the specified value is invalid, the default drawing order is used.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| mode | [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)  | Yes  | Blend mode.|
+
+**Example**
+
+```ts
+import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+  private setBlendMode(blendMode: drawing.BlendMode): DrawableDescriptor | undefined {
+    let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the layered icon file you use.
+    let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+    if (!drawable) {
+      return undefined;
+    }
+    let layeredDrawableDescriptor = drawable as LayeredDrawableDescriptor;
+    layeredDrawableDescriptor.setBlendMode(blendMode);
+    return layeredDrawableDescriptor;
+  }
+
+  aboutToAppear(): void {
+    this.drawableDescriptor = this.setBlendMode(drawing.BlendMode.SRC_OVER);
+  }
+
+  build() {
+    RelativeContainer() {
+      if (this.drawableDescriptor) {
+        Image(this.drawableDescriptor)
+          .width(100)
+          .height(100)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## AnimationStopMode<sup>24+</sup>
+
+Enumerates the stop modes of an animation.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name     | **Value** | Description             |
+| ---------- | ---- |------------------------ |
+| FIRST_FRAME   | 0 | The animation returns to the first frame when it stops.|
+| LAST_FRAME | 1 | The animation stays at the last frame when it stops.|
+
 ## AnimationOptions<sup>12+</sup>
 
 Provides the configuration options for animation playback, including the playback duration, number of playback times, and autoplay behavior.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name     | Type   | Read-Only| Optional | Description                                   |
 | :--------- | :----- | :----| :----| :-------------------------------------- |
 | duration   | number | No  | Yes | Total playback duration for the image sequence.<br>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the duration is determined by the playback delay embedded in the image resource.<br>Unit: ms.<br> Value range: [0, +∞).<br>Negative values are treated as the default value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 | autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model constraint**: This API can be used only in the stage model.|
 
 **Example**
 
@@ -584,7 +650,7 @@ Defines a descriptor object used to play animated content (for example, **PixelM
 
 constructor(pixelMaps: Array\<image.PixelMap>, options?: AnimationOptions)
 
-A constructor used to create an **AnimatedDrawableDescriptor** instance.
+A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -601,7 +667,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 constructor(src: ResourceStr | Array\<image.PixelMap>, options?: AnimationOptions)
 
-A constructor used to create an **AnimatedDrawableDescriptor** instance.
+A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -611,7 +677,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | ResourceStr \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
 | options   | [AnimationOptions](#animationoptions12) | No  | Animation playback configuration.|
 
 **Example**
@@ -746,7 +812,7 @@ struct Example {
 
 ## AnimationController<sup>21+</sup>
 
-Implements an animation controller object. Provides animation playback control and status query APIs.
+Implements an animation controller object. It provides APIs for playing, stopping, resuming, and pausing animations, as well as querying the status.
 
 ### start<sup>21+</sup>
 
@@ -910,7 +976,7 @@ Obtains the current animation playback status.
 
 | Type            | Description                              |
 | ---------------- | -----------------------------------|
-| [AnimationStatus](./arkui-ts/ts-appendix-enums.md#animationstatus) | Current animation state:  initial, running, paused, or stopped.|
+| [AnimationStatus](./arkui-ts/ts-appendix-enums.md#animationstatus) | Current animation state: initial, running, paused, or stopped.|
 
 **Example**
 

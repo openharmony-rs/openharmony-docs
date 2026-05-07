@@ -25,20 +25,25 @@
     - [Constants](arkts-apis-audio-c.md)
     - [Types](arkts-apis-audio-t.md)
   - [@ohos.multimedia.audioHaptic (Audio-Haptic)](js-apis-audioHaptic.md)
+  - [@ohos.multimedia.systemSoundManager (System Sound Management)](js-apis-systemSoundManager.md)
   <!--Del-->
   - [@ohos.multimedia.audio (Audio Management) (System API)](js-apis-audio-sys.md)
   - [@ohos.multimedia.audioHaptic (Audio-Haptic) (System API)](js-apis-audioHaptic-sys.md)
   - [@ohos.multimedia.systemSoundManager (System Sound Management) (System API)](js-apis-systemSoundManager-sys.md)
-  - multimedia
+  <!--DelEnd-->
+  - multimedia<!--audio-multimedia-->
+    - [SystemSoundPlayer (Sound Effect Player)](js-apis-inner-multimedia-systemSoundPlayer.md)
+    <!--Del-->
     - [ringtonePlayer (Ringtone Player) (System API)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
     - [systemTonePlayer (System Alert Tone Player) (System API)](js-apis-inner-multimedia-systemTonePlayer-sys.md)
-  <!--DelEnd-->
+    <!--DelEnd-->
 - ArkTS Components<!--audio-comp-->
   - [@ohos.multimedia.avVolumePanel (Volume Panel)](ohos-multimedia-avvolumepanel.md)
 - C APIs<!--audio-c-->
   - Modules<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
+    - [AudioConverter](capi-audioconverter.md)
   - Header Files<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
     - [native_audio_manager.h](capi-native-audio-manager-h.md)
@@ -48,12 +53,14 @@
     - [native_audio_volume_manager.h](capi-native-audio-volume-manager-h.md)
     - [native_audiorenderer.h](capi-native-audiorenderer-h.md)
     - [native_audio_common.h](capi-native-audio-common-h.md)
+    - [native_audio_converter.h](capi-native-audio-converter-h.md)
     - [native_audio_device_base.h](capi-native-audio-device-base-h.md)
     - [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
     - [native_audiostream_base.h](capi-native-audiostream-base-h.md)
     - [native_audiostreambuilder.h](capi-native-audiostreambuilder-h.md)
     - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
     - [native_audio_suite_engine.h](capi-native-audio-suite-engine-h.md)
+    - [native_audio_session_base.h](capi-native-audio-session-base-h.md)
   - Structs<!--audio-struct-->
     - [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)
     - [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md)
@@ -80,8 +87,15 @@
     - [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)
     - [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md)
     - [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md)
+    - [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)
+    - [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)
+    - [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)
+    - [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)
+    - [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)
+    - [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md)
 - Error Codes<!--audio-arkts-errcode-->
   - [Audio Error Codes](errorcode-audio.md)
   <!--Del-->
   - [Ringtone Error Codes](errorcode-ringtone.md)
   <!--DelEnd-->
+<!--no_check-->

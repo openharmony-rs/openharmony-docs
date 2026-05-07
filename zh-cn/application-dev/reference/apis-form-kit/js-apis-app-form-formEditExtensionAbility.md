@@ -1,4 +1,4 @@
-# @ohos.app.form.FormEditExtensionAbility  (FormEditExtensionAbility)
+# @ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -29,4 +29,4 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 **系统能力：** SystemCapability.Ability.Form
   | 名称 | 类型    | 只读 | 可选  |说明|
   | ------ | ------ | ---- | ---- | ---- |
-  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | 否   | 否 |FormEditExtensionAbility的上下文环境，默认值是继承自UIExtensionContext的对象。|
+  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | 否   | 否 |FormEditExtensionAbility的上下文环境，默认值是继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext-1)的对象。|

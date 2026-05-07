@@ -26,6 +26,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
 
 - 创建不包含子组件的Toggle。
+
   当ToggleType为Checkbox或者Switch时，用于创建不包含子组件的Toggle：
   
   <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
@@ -177,7 +178,7 @@ export struct ToggleSample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    // 请将$r('app.string.ToggleCaseExample_title')替换为实际资源文件，在本示例中该资源文件的value值为"toggle蓝牙示例"
     .title($r('app.string.ToggleCaseExample_title'))
   }
 }

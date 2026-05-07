@@ -1,7 +1,7 @@
 # Focus Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -26,7 +26,7 @@ The component is not focusable by default or has been configured through attribu
 
 **Solution**
 
-N/A
+Check whether the current component is focusable and whether **focusable** is set to **true**.
 
 ## 150002 Ancestor Component Not Focusable
 
@@ -44,7 +44,7 @@ The ancestor component is not focusable by default or has been configured throug
 
 **Solution**
 
-N/A
+Check whether the ancestor component is focusable and whether **focusable** is set to **true**.
 
 ## 150003 Component Does Not Exist
 
@@ -58,8 +58,10 @@ This error code is reported when the provided ID points to a non-existent, detac
 
 **Possible Causes**
 
-The provided ID is incorrect, or the component has been destroyed.
+- The provided ID is incorrect, or the component has been destroyed.
+
+- Focus is requested for a component that is not focusable. For details about such components, see [Component Focusability](../../ui/arkts-common-events-focus-event.md#component-focusability).
 
 **Solution**
 
-N/A
+Use the correct ID or component.

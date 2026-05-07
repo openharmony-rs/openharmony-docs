@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如控制设备转动（仅限系统应用）。
 

@@ -1,4 +1,4 @@
-# Introduction to Asset Store Kit
+# About This Kit
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
@@ -46,7 +46,7 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
 - Alias-based access
 
-  Assets are stored in the ASSET database in ciphertext and uniquely identified by the service identity and alias. The alias of each asset must be unique.
+  Assets are stored in the Asset Store Kit database in ciphertext and uniquely identified by the service identity and alias. The alias of each asset must be unique.
 
 - Batch asset query
 
@@ -54,9 +54,9 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
 - Custom service data storage
 
-  - ASSET provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
+  - Asset Store Kit provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an attribute of this kit.
 
-  - ASSET protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
+  - Asset Store Kit protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
 - Group-based access control
 
@@ -71,6 +71,8 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
      - From API version 20 or earlier: Both non-group and group data stored in ASSET is cleared.
   - When a user is deleted, the asset data of the user will be deleted.
   - When a device is reset to restore factory settings, the asset data will be deleted.
+
+<!--RP1--><!--RP1End-->
 
 ## Relationship with Other Kits
 

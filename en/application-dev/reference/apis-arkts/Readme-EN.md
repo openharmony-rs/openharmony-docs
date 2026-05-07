@@ -4,7 +4,7 @@
 <!--Owner: @lijiamin2025; @xliu-huanwei-->
 <!--Designer: @weng-changcheng; @yuanyao14-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - ArkTS APIs<!--arkts-arkts--> 
   - @arkts.collections (ArkTS Collections)<!--js-apis-arkts-collections-->
@@ -67,3 +67,4 @@
   - [TypeScript Compiler Error Codes](errorcode-tsc.md)
   - [Compilation Toolchain Error Codes](errorcode-ets-loader.md)
   - [es2abc Compiler Error Codes](errorcode-es2abc.md)
+  - [Source Code Obfuscation Error Codes](errorcode-source-obfuscation.md)

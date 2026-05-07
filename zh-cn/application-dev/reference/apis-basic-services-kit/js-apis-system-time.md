@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要由系统时间和系统时区功能组成。开发者可以设置、获取系统时间及系统时区。
 
@@ -27,7 +27,7 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -40,7 +40,7 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -73,7 +73,7 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -81,11 +81,11 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型               | 必填 | 说明                            |
 | -------- | ----------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自Unix纪元以来经过的时间。         |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自Unix纪元以来经过的时间（ms）。         |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -118,7 +118,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -136,7 +136,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -167,7 +167,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -180,7 +180,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -213,7 +213,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -221,11 +221,11 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明    |
 | -------- | -------------- | ---- | --------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，不包括深度睡眠时间。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间（ms），不包括深度睡眠时间。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -258,7 +258,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -276,7 +276,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -307,7 +307,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -320,7 +320,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -353,7 +353,7 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated-1)替代。。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -361,11 +361,11 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明      |
 | -------- | --------- | ---- | --------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。   |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间（ms），包括深度睡眠时间。   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -398,7 +398,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -416,7 +416,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -447,7 +447,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getDate](js-apis-date-time.md#systemdatetimegetdatedeprecated)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -459,7 +459,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -492,7 +492,7 @@ getDate(): Promise&lt;Date&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getDate](js-apis-date-time.md#systemdatetimegetdatedeprecated-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -504,7 +504,7 @@ getDate(): Promise&lt;Date&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -547,7 +547,7 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -592,7 +592,7 @@ getTimezone(): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -638,7 +638,7 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -654,7 +654,7 @@ let time = 1611081385000;
 try {
   systemTime.setTime(time, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting time`);
@@ -693,7 +693,7 @@ setTime(time : number) : Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -710,7 +710,7 @@ try {
   systemTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -741,7 +741,7 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -756,7 +756,7 @@ let date = new Date();
 try {
   systemTime.setDate(date, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting date.`);
@@ -795,7 +795,7 @@ setDate(date: Date): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -811,7 +811,7 @@ try {
   systemTime.setDate(date).then(() => {
     console.info(`Succeeded in setting date.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -842,7 +842,7 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -856,7 +856,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemTime.setTimezone('Asia/Shanghai', (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting timezone.`);
@@ -895,7 +895,7 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -910,7 +910,7 @@ try {
   systemTime.setTimezone('Asia/Shanghai').then(() => {
     console.info(`Succeeded in setting timezone.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;

@@ -1,4 +1,4 @@
-# Shared Audio Input
+# Recording Concurrency Strategy Description
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -63,6 +63,6 @@ The system has implemented preliminary management for concurrent recording scena
 - Avoid concurrent recording scenarios whenever possible. Design applications to minimize overlap with other recording tasks. If necessary, display a message to users such as "Another recording task is currently in progress."
 
   If concurrent recording is unavoidable, clearly inform users that audio quality may be affected.
-- [Select the appropriate recording stream type](using-right-streamusage-and-sourcetype.md), as different types correspond to different system optimization strategies. You are advised to select the appropriate [recording stream type](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) based on your service requirements.
+- Different audio recording stream types correspond to different system optimization and processing strategies. You are advised to select an appropriate [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) based on their requirements. For details, see [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md).
 - If recording is no longer required, stop and release recording resources promptly to avoid impacting other audio streams and to reduce unnecessary system overhead.
 - Application implementation should not overly rely on fixed concurrent recording rules but should adapt based on the status returned by system interfaces.

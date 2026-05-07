@@ -2,13 +2,15 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
 The **oh_sensor.h** file declares the APIs for operating sensors, including obtaining sensor information and subscribing to and unsubscribing from sensor data.
+
+**File to include**: <sensors/oh_sensor.h>
 
 **Library**: libohsensor.so
 

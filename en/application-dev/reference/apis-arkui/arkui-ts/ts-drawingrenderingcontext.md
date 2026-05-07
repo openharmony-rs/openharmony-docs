@@ -42,7 +42,7 @@ Obtains the size of the **DrawingRenderingContext** object.
 
 | Type         | Description                                      |
 | ----------- | ---------------------------------------- |
-| [Size](#size) | Size of the **DrawingRenderingContext** object.|
+| [Size](#size-1) | Size of the **DrawingRenderingContext** object.|
 
 ## canvas
 
@@ -142,7 +142,7 @@ struct CanvasExample {
             green: 0,
             blue: 0
           };
-          // Clear the canvas using RGBA(0, 0, 0, 0).
+          // Fill the canvas using RGBA(0, 0, 0, 0).
           this.context.canvas.clear(color);
           this.context.invalidate();
         })

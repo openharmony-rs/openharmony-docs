@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
  本模块提供系统相关的或者增强的国际化能力，包括区域管理、电话号码处理、日历等，相关接口为ECMA 402标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化支持能力。
 
@@ -14,7 +14,7 @@
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 >
->  - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.i18n (国际化-I18n)](js-apis-intl.md)。
+>  - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.i18n (国际化-I18n)](js-apis-i18n.md)。
 
 
 ## 导入模块

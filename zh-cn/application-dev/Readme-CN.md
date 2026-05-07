@@ -20,6 +20,7 @@
     - [ArkUI（方舟UI框架）](ui/Readme-CN.md)
     - [ArkWeb（方舟Web）](web/Readme-CN.md)
     - [Background Tasks Kit（后台任务开发服务）](task-management/Readme-CN.md)
+    - [Content Embed Kit（内容嵌入服务）](content-embed/Readme-CN.md)
     - [Core File Kit（文件基础服务）](file-management/Readme-CN.md)
     - [Form Kit（卡片开发服务）](form/Readme-CN.md)
     - [IME Kit（输入法开发服务）](inputmethod/Readme-CN.md)
@@ -74,7 +75,7 @@
     - [MindSpore Lite Kit（昇思推理框架服务）](ai/mindspore/Readme-CN.md)
     - [Neural Network Runtime Kit（Neural Network运行时服务）](ai/nnrt/Readme-CN.md)
   - Game<!--game-->
-    - [Game Controller kit（游戏控制器服务）](game-controller/Readme-CN.md)
+    - [Game Controller Kit（游戏控制器服务）](game-controller/Readme-CN.md)
   - [IDL工具规格及使用说明书](IDL/idl-guidelines.md)
   - [Native API的相关指导](napi/Readme-CN.md)
   - [性能](performance/Readme-CN.md)

@@ -5,7 +5,7 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -30,6 +30,16 @@ Defines the names of all predefined event parameters. In addition to custom even
 | [PARAM_USER_ID](#param_user_id) "user_id"                                                        | User ID.<br>**Since**: 8 |
 | [PARAM_DISTRIBUTED_SERVICE_NAME](#param_distributed_service_name) "ds_name"                      | Distributed service name.<br>**Since**: 8  |
 | [PARAM_DISTRIBUTED_SERVICE_INSTANCE_ID](#param_distributed_service_instance_id) "ds_instance_id" | Distributed service instance ID.<br>**Since**: 8|
+| [MAIN_THREAD_JANK_PARAM_LOG_TYPE](#main_thread_jank_param_log_type) "log_type" | Type of the log collected by the main thread jank event detection. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
+| [MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL](#main_thread_jank_param_sample_interval) "sample_interval" | Sampling interval of the main thread jank event detection. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
+| [MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME](#main_thread_jank_param_ignore_startup_time) "ignore_startup_time" | Main thread jank event detection time ignored during application startup. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
+| [MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT](#main_thread_jank_param_sample_count) "sample_count" | Number of stack samplings of the main thread timeout detection. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
+| [MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP](#main_thread_jank_param_report_times_per_app) "report_times_per_app" | Number of sampling reporting times of the main thread jank event detection within a single lifecycle of an application PID, which can only be set once in a lifecycle. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
+| [MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING](#main_thread_jank_param_auto_stop_sampling) "auto_stop_sampling" | Whether to stop sampling the main thread stack when the main thread jank event ends. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
+| [OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING](#oh_app_crash_param_extend_pc_lr_printing) "extend_pc_lr_printing"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print the memory contents of the extended byte ranges of the PC and LR.<br>**Since**: 24 |
+| [OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES](#oh_app_crash_param_log_file_cutoff_sz_bytes) "log_file_cutoff_sz_bytes"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, truncate **CPP_CRASH** logs based on the configured parameter value.<br>**Since**: 24 |
+| [OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING](#oh_app_crash_param_simplify_vma_printing) "simplify_vma_printing"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print only the VMA mapping information of the address in the crash log to reduce the size of the **CPP_CRASH** log file.<br>**Since**: 24 |
+| [OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG](#oh_app_crash_param_merge_cppcrash_app_log) "merge_cppcrash_app_log"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to combine the logs of the specified file in the application sandbox in the **CPP_CRASH** scenario.<br>**Since**: 24 |
 
 
 ## Macro Description
@@ -69,3 +79,123 @@ Distributed service name.
 Distributed service instance ID.
 
 **Since**: 8
+
+### MAIN_THREAD_JANK_PARAM_LOG_TYPE
+
+```c
+#define MAIN_THREAD_JANK_PARAM_LOG_TYPE "log_type"
+```
+
+**Description**
+
+Type of the log collected by the main thread jank event detection. This macro is used for **MAIN_THREAD_JANK_V2** events.
+
+**Since**: 22
+
+### MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL
+
+```c
+#define MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL "sample_interval"
+```
+
+**Description**
+
+Sampling interval of the main thread jank event detection. This macro is used for **MAIN_THREAD_JANK_V2** events.
+
+**Since**: 22
+
+### MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME
+
+```c
+#define MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME "ignore_startup_time"
+```
+
+**Description**
+
+Main thread jank event detection time ignored during application startup. This macro is used for **MAIN_THREAD_JANK_V2** events.
+
+**Since**: 22
+
+### MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT
+
+```c
+#define MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT "sample_count"
+```
+
+**Description**
+
+Number of stack samplings of the main thread timeout detection. This macro is used for **MAIN_THREAD_JANK_V2** events.
+
+**Since**: 22
+
+### MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP
+
+```c
+#define MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP "report_times_per_app"
+```
+
+**Description**
+
+Number of sampling reporting times of the main thread jank event detection within a single lifecycle of an application PID, which can only be set once in a lifecycle. This macro is used for **MAIN_THREAD_JANK_V2** events.
+
+**Since**: 22
+
+### MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING
+
+```c
+#define MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING "auto_stop_sampling"
+```
+
+**Description**
+
+Whether to stop sampling the main thread stack. This macro is used for **MAIN_THREAD_JANK_V2** events.
+
+**Since**: 22
+
+### OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING
+
+```c
+#define OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING "extend_pc_lr_printing"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print the memory contents of the extended byte ranges of the PC and LR.
+
+**Since**: 24
+
+### OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES
+
+```c
+#define OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES "log_file_cutoff_sz_bytes"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, truncate **CPP_CRASH** logs based on the configured parameter value.
+
+**Since**: 24
+
+### OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING
+
+```c
+#define OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING "simplify_vma_printing"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print only the VMA mapping information of the address in the crash log to reduce the size of the **CPP_CRASH** log file.
+
+**Since**: 24
+
+### OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG
+
+```c
+#define OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG "merge_cppcrash_app_log"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to combine the logs of the specified file in the application sandbox in the **CPP_CRASH** scenario.
+
+**Since**: 24

@@ -1,4 +1,10 @@
 # ArkUI Layout Development (ArkTS)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu; @yylong; @zcdqs-->
+<!--Designer: @lanshouren; @yylong; @zcdqs-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @HelloCrease-->
 
 
 ## What should I do if the height settings in position do not take effect? (API version 9)
@@ -20,7 +26,7 @@ Add the **layoutWeight** attribute for the **List** component so that it takes u
 
 ## Can tab switching be disabled for the Tabs component? (API version 9)
 
-No. This feature is not supported.
+No.
 
 
 ## How do I intercept the onBackPress event so that it does not trigger page return? (API version 9)
@@ -90,7 +96,7 @@ If the default key generator is used, the framework automatically generates a ke
 
 **Reference**
 
-[ForEach: Rendering of Repeated Content](../ui/rendering-control/arkts-rendering-control-foreach.md)
+[ForEach: Rendering Repeated Content](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 ## How do I decouple a dialog box from pages? What are the best practices? (API 10)
 
@@ -100,15 +106,15 @@ A dialog box must be bound a component and triggered by events. Its content can 
 
 Global builder:
 
-Syntax:
+Syntax definition:
 
 @Builder function MyGlobalBuilderFunction(){ ... }
 
-Usage:
+Invocation pattern:
 
 MyGlobalBuilderFunction()
 
-A custom global build function is accessible throughout the application. As such, it is recommended if no own state is involved.
+A custom global build function is accessible throughout the application. If there are no component state changes involved, you are advised to use a global custom build function.
 
 **Reference**
 
@@ -116,14 +122,13 @@ A custom global build function is accessible throughout the application. As such
 2. [Popup Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
 3. [@Builder Decorator: Custom Builder Function](../ui/state-management/arkts-builder.md)
 
-## What should I do if there are white and dark lines between two adjacent components of the same color? (API version 11)
+## What are the white and dark lines between two adjacent components of the same color? How can I fix this issue? (API version 11)
 
 **Solution**
 
-If the boundaries of adjacent components with the same color fall on floating-point coordinates, a seemingly white or dark line appears after anti-aliasing processing is performed at the graphics layer. To fix this issue, set the universal attribute **pixelRound**
-so that the component boundaries on both sides of the white and dark lines are aligned with the integer pixel coordinates.
+If the boundaries of adjacent components with the same color fall on floating-point coordinates, a seemingly white or dark line appears after anti-aliasing processing is performed at the graphics layer. You can use the **pixelRound** attribute to align the boundaries of the components to the integer pixel coordinates.
 
-Usage:
+Invocation pattern:
 ```ts
 Flex(){
     Column().height('30%').width('30%').backgroundColor(Color.Blue)

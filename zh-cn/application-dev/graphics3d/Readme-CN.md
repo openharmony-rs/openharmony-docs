@@ -14,3 +14,5 @@
   - [创建并使用环境资源](arkgraphics3D-resource-environment.md)
   - [.shader资源文件格式要求](arkgraphics3D-shader-resource.md)
 - [ArkGraphics 3D场景动画控制以及管理](arkgraphics3D-animation.md)
+<!--RP1-->
+<!--RP1End-->

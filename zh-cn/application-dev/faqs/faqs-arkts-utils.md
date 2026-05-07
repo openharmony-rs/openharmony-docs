@@ -117,7 +117,7 @@ for (let i: number = 0; i < allCount; i++) { // 每次执行3个任务
 
 **解决方案**
 
-可以利用TaskPool接口转换，大概可以分为如下五个场景。
+可以利用TaskPool接口转换，可以分为如下五个场景。
 
 场景一：主线程将独立的耗时任务放到子线程执行
 
@@ -481,7 +481,9 @@ Sendable对象需要满足一定的规格：
 6. 不支持#定义私有属性，要用private
 7. 导出Sendable类的文件，不能导出非Sendable属性
 8. 传输方式有如下两种：
+
     8.1 序列化传递：深拷贝到其他线程，非共享模式。
+
     8.2 共享模式：可以跨线程引用传递，多线程可同时读写，开发者需要自行采用同步机制避免多线程竞争。
 
 **参考链接**
@@ -630,19 +632,19 @@ export class Calc {
   public constructor() {}
   public static staticAdd(a: number, b: number): number {
     let c = a + b;
-    console.log("DynamicImport I'm harLibrary in staticAdd, %d + %d = %d", a, b, c);
+    console.info("DynamicImport I'm harLibrary in staticAdd, %d + %d = %d", a, b, c);
     return c;
   }
   public instanceAdd(a: number, b: number): number {
     let c = a + b;
-    console.log("DynamicImport I'm harLibrary in instanseAdd, %d + %d = %d", a, b, c);
+    console.info("DynamicImport I'm harLibrary in instanceAdd, %d + %d = %d", a, b, c);
     return c;
   }
 }
 
 export function addHarLibrary(a: number, b: number): number {
   let c = a + b;
-  console.log("DynamicImport I'm harLibrary in addHarLibrary, %d + %d = %d", a, b, c);
+  console.info("DynamicImport I'm harLibrary in addHarLibrary, %d + %d = %d", a, b, c);
   return c;
 }
 

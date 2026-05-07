@@ -38,13 +38,13 @@ Sets the next refresh time for a widget. This API uses an asynchronous callback 
 **Example**
 
   ```ts
-  import Base from '@ohos.base';
-  import formProvider from '@ohos.application.formProvider';
-
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider } from '@kit.FormKit';
+  // Use an existing widget ID (formId).
   let formId: string = '12400633174999288';
-  formProvider.setFormNextRefreshTime(formId, 5, (error: Base.BusinessError) => {
+  formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error.code) {
-      console.error(`formProvider setFormNextRefreshTime, error: ${JSON.stringify(error)}`);
+      console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
     }
   });
   ```
@@ -73,20 +73,20 @@ Sets the next refresh time for a widget. This API uses a promise to return the r
 **Example**
 
   ```ts
-  import Base from '@ohos.base';
-  import formProvider from '@ohos.application.formProvider';
-
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider } from '@kit.FormKit';
+  // Use an existing widget ID (formId).
   let formId: string = '12400633174999288';
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info('formProvider setFormNextRefreshTime success');
-  }).catch((error: Base.BusinessError) => {
-    console.error(`formProvider setFormNextRefreshTime, error: ${JSON.stringify(error)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
   });
   ```
 
 ## formProvider.updateForm
 
-updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void
+updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 Updates a widget. This API uses an asynchronous callback to return the result.
 
@@ -103,19 +103,19 @@ Updates a widget. This API uses an asynchronous callback to return the result.
 **Example**
 
   ```ts
-  import Base from '@ohos.base';
-  import formBindingData from '@ohos.application.formBindingData';
-  import formProvider from '@ohos.application.formProvider';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider, formBindingData } from '@kit.FormKit';
 
+  // Use an existing widget ID (formId).
   let formId: string = '12400633174999288';
   let param: Record<string, string> = {
     'temperature': '22c',
     'time': '22:00'
   }
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-  formProvider.updateForm(formId, obj, (error: Base.BusinessError) => {
+  formProvider.updateForm(formId, obj, (error: BusinessError) => {
     if (error.code) {
-      console.error(`formProvider updateForm, error: ${JSON.stringify(error)}`);
+      console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
     }
   });
   ```
@@ -144,10 +144,10 @@ Updates a widget. This API uses a promise to return the result.
 **Example**
 
   ```ts
-  import Base from '@ohos.base';
-  import formBindingData from '@ohos.application.formBindingData';
-  import formProvider from '@ohos.application.formProvider';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider, formBindingData } from '@kit.FormKit';
 
+  // Use an existing widget ID (formId).
   let formId: string = '12400633174999288';
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -156,7 +156,7 @@ Updates a widget. This API uses a promise to return the result.
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj).then(() => {
     console.info('formProvider updateForm success');
-  }).catch((error: Base.BusinessError) => {
-    console.error(`formProvider updateForm, error: ${JSON.stringify(error)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
   });
   ```

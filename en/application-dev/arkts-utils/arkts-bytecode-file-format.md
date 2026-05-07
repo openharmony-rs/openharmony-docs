@@ -5,7 +5,7 @@
 <!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
 <!--Designer: @ctw-ian; @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 This topic describes the Ark bytecode file format in detail, aiming to help you understand its structure and facilitate the analysis and modification of bytecode files.
 
@@ -50,7 +50,7 @@ The Ark bytecode uses a variety of basic and composite data types. Below are the
 
 
 ## TypeDescriptor
-Represents [class](#class) names in the format of **L_ClassName;**, where **ClassName** is the fully qualified name, in which **'.'** is replaced with **'/'**.
+Represents [class](#class) names in the format of `L_ClassName;`, where `ClassName` is the fully qualified name, in which `'.'` is replaced with `'/'`.
 
 
 ## Bytecode File Layout
@@ -238,7 +238,9 @@ A 32-bit unsigned integer, divided into three parts.
 | 24 - 31      | `reserved`       | `uint8_t`        | Reserved field for internal use by the Ark bytecode file.                          |
 
 
-#### FunctionKind
+
+**FunctionKind**
+
 
 | **Name**          | **Value**| **Description**  |
 | ------------------------ | ------------ | ---------------- |
@@ -396,11 +398,15 @@ Contains mappings between program counters of the method and the line/column num
 | `line_number_program_idx` | `uleb128`        | An index that points to a position in [LineNumberProgramIndex](#linenumberprogramindex). The value of the position is an offset pointing to the line number program. The length of **Line number program** is variable and ends with the **END_SEQUENCE** operation code.|
 
 
-#### Constant Pool
+
+**Constant pool**
+
 A structure within **DebugInfo** for storing constants. Many methods have similar line number programs, differing only in variable names, variable types, and file names. To eliminate redundancy in these programs, all referenced constants are stored in the constant pool. During program interpretation, the state machine maintains a pointer to the constant pool. When interpreting an instruction that requires a constant parameter, the state machine reads the value from the position pointed to by the constant pool pointer and then increments the pointer.
 
 
-#### State Machine
+
+**State machine**
+
 Generates [DebugInfo](#debuginfo) information. It contains the following registers.
 
 | **Name**   | **Initial Value**                                            | **Description**                                              |
@@ -413,21 +419,23 @@ Generates [DebugInfo](#debuginfo) information. It contains the following registe
 | `constant_pool_ptr` | Start address of the constant pool in [DebugInfo](#debuginfo).| Pointer to the current constant value.                                      |
 
 
-#### Line Number Program
+
+**Line number program**
+
 Consists of instructions, each containing a single-byte operation code and optional parameters. Depending on the operation code, the parameter values may be encoded within the instruction (called instruction parameters) or retrieved from the constant pool (called constant pool parameters).
 
 | **Operation Code** | **Value**| **Instruction Parameter**  | **Constant Pool Parameters**   | **Parameter Description**| **Description** |
 | ----- | ----- | ------- | ---- | ------- | ------ |
-| `END_SEQUENCE`         | `0x00`  |       |          |        | Marks the end of the line number program.   |
-| `ADVANCE_PC`           | `0x01`  |    | `uleb128 addr_diff`   | **addr_diff**: value to increment the **address** register.   | Increments the **address** register by **addr_diff** to point to the next address, without generating a location entry.|
-| `ADVANCE_LINE`         | `0x02` |     | `sleb128 line_diff`  | **line_diff**: value to increment the **line** register.   | Increments the **line** register by **line_diff** to point to the next line position, without generating a location entry.|
+| `END_SEQUENCE`         | `0x00`  | - | - | - | Marks the end of the line number program.   |
+| `ADVANCE_PC`           | `0x01`  | - | `uleb128 addr_diff`   | **addr_diff**: value to increment the **address** register.   | Increments the **address** register by **addr_diff** to point to the next address, without generating a location entry.|
+| `ADVANCE_LINE`         | `0x02` | - | `sleb128 line_diff`  | **line_diff**: value to increment the **line** register.   | Increments the **line** register by **line_diff** to point to the next line position, without generating a location entry.|
 | `START_LOCAL`          | `0x03` | `sleb128 register_num` | `uleb128 name_idx`<br>`uleb128 type_idx`   | **register_num**: register containing the local variable.<br>**name_idx**: an offset to a [string](#string) representing the variable name.<br>**type_idx**: an offset to a [string](#string) representing the variable type.| Introduces a local variable with a name and type at the current address. The number of the register that will contain this variable is encoded in the instruction. If the register number is **-1**, the register is the accumulator register. The values of `name_idx` and `type_idx` may be **0**, indicating no such information.|
 | `START_LOCAL_EXTENDED` | `0x04` | `sleb128 register_num` | `uleb128 name_idx`<br>`uleb128 type_idx`<br>`uleb128 sig_idx` | **register_num**: register containing the local variable.<br>**name_idx**: an offset to a [string](#string) representing the variable name.<br>**type_idx**: an offset to a [string](#string) representing the variable type.<br>**sig_idx**: an offset to a [string](#string) representing the variable signature.| Introduces a local variable with a name, type, and signature at the current address. The number of the register that will contain this variable is encoded in the instruction. If the register number is **-1**, the register is the accumulator register. The values of `name_idx`, `type_idx`, and `sig_idx` may be **0**, indicating no such information.|
-| `END_LOCAL`            | `0x05` | `sleb128 register_num` |    | **register_num**: register containing the local variable. | Marks the local variable in the specified register as out of scope at the current address. If the register number is **-1**, the register is the accumulator register.|
-| `SET_FILE`             | `0x09`  |    | `uleb128 name_idx`  | **name_idx**: an offset to a [string](#string) representing the file name.| Sets the value of the `file` register. The value of `name_idx` may be **0**, indicating no such information.|
-| `SET_SOURCE_CODE`      | `0x0a`  |    | `uleb128 source_idx` | **source_idx**: an offset to a [string](#string) representing the source code of the file.| Sets the value of the **source_code** register. The value of `source_idx` may be **0**, indicating no such information.|
-| `SET_COLUMN`           | `0x0b` |    | `uleb128 column_num`   | **column_num**: column number to be set.  | Sets the value of the **column** register and generates a location entry. |
-| Special operation code          | `0x0c..0xff`   |   |  |   | Adjusts the **line** and **address** registers to the next address and generate a location entry. Details are described below.|
+| `END_LOCAL`            | `0x05` | `sleb128 register_num` | - | **register_num**: register containing the local variable. | Marks the local variable in the specified register as out of scope at the current address. If the register number is **-1**, the register is the accumulator register.|
+| `SET_FILE`             | `0x09`  | - | `uleb128 name_idx`  | **name_idx**: an offset to a [string](#string) representing the file name.| Sets the value of the `file` register. The value of `name_idx` may be **0**, indicating no such information.|
+| `SET_SOURCE_CODE`      | `0x0a`  | - | `uleb128 source_idx` | **source_idx**: an offset to a [string](#string) representing the source code of the file.| Sets the value of the **source_code** register. The value of `source_idx` may be **0**, indicating no such information.|
+| `SET_COLUMN`           | `0x0b` | - | `uleb128 column_num`   | **column_num**: column number to be set.  | Sets the value of the **column** register and generates a location entry. |
+| Special operation code          | `0x0c..0xff`   | - | - | - | Adjusts the **line** and **address** registers to the next address and generate a location entry. Details are described below.|
 
 
 For special operation codes in the range **0x0c** to **0xff** (included), the state machine performs the following steps to adjust the **line** and **address** registers and then generates a new location entry. For details, see section 6.2.5.1 "Special Opcodes" in [DWARF 3.0 Standard](https://dwarfstd.org/dwarf3std.html).
@@ -437,7 +445,7 @@ For special operation codes in the range **0x0c** to **0xff** (included), the st
 | 1     | `adjusted_opcode = opcode - OPCODE_BASE`            | Calculates the adjusted operation code. The value of **OPCODE_BASE** is **0x0c**, which is the first special operation code.|
 | 2     | `address += adjusted_opcode / LINE_RANGE`            | Increments the **address** register. The value of **LINE_RANGE** is 15, which is used to calculate changes in the line number information.|
 | 3     | `line += LINE_BASE + (adjusted_opcode % LINE_RANGE)` | Increments the **line** register. The value of **LINE_BASE** is **-4**, which is the minimum line number increment. The maximum increment is **LINE_BASE + LINE_RANGE - 1**.|
-| 4     |                                                    | Generates a new location entry.                                      |
+| 4     |         -                                          | Generates a new location entry.                                      |
 
 > **NOTE**
 > 

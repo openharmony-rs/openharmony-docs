@@ -5,15 +5,15 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 设备上报的触屏输入事件，继承自[InputEvent](./js-apis-inputevent.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.touchEvent (触屏输入事件)](js-apis-touchevent.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.touchEvent (触屏输入事件)](js-apis-touchevent.md)。
 
 ## 导入模块
 
@@ -44,8 +44,9 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 | 名称          | 类型   | 只读   | 可选   | 说明                                  |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| fixedDisplayX | number| 否    | 是    | 适配单手模式下screenX坐标的修正值。 |
-| fixedDisplayY | number| 否    | 是    | 适配单手模式下screenY坐标的修正值。    |
+| fixedDisplayX | number | 否    | 是    | 适配单手模式下screenX坐标的修正值。 |
+| fixedDisplayY | number | 否    | 是    | 适配单手模式下screenY坐标的修正值。 |
+| blobId<sup>24+</sup> | number | 否    | 是    | 触摸点属性标识。当前仅支持单指触摸：左手触摸为1，右手触摸为2。 |
 
 ## TouchEvent
 

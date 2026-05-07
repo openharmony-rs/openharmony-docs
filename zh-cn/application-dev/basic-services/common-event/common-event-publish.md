@@ -1,8 +1,8 @@
 # 发布公共事件
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -51,7 +51,7 @@
        hilog.error(DOMAIN_NUMBER, TAG,
          `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
      } else {
-       //...
+       // ...
        hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
      }
    });
@@ -97,7 +97,7 @@
        hilog.error(DOMAIN_NUMBER, TAG,
          `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
      } else {
-       //...
+       // ...
        hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing common event.`);
      }
    });

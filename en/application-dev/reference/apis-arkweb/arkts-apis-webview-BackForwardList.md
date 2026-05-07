@@ -14,7 +14,7 @@ Defines the backforward list of the current WebView.
 >
 > - The initial APIs of this interface are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Module to Import
 

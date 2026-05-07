@@ -102,7 +102,7 @@ Releases all graphics resources associated with this **ImageBitmap** object and 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Read-Only| Optional| Description|
+| Name    | Type| Read Only| Optional| Description|
 | ------ | ------ | ----- | -------- | --------------------------- |
 | width | number | Yes| No| Pixel width of the **ImageBitmap** object.<br>Default unit: vp|
 | height | number | Yes| No| Pixel height of the **ImageBitmap** object.<br>Default unit: vp|
@@ -112,6 +112,10 @@ Releases all graphics resources associated with this **ImageBitmap** object and 
 ### Example 1: Loading an Image
 
 This example demonstrates how to load a local image using the **ImageBitmap** object.
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
   ```ts
   // xxx.ets
@@ -198,7 +202,7 @@ import { worker } from '@kit.ArkTS';
 struct imageBitmapExamplePage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ts');
+  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
   // Replace "common/images/example.jpg" with the image resource file you use.
   private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
 
@@ -226,6 +230,10 @@ struct imageBitmapExamplePage {
 In the worker thread, the application uses **onmessage** to receive the **ImageBitmap** object sent by the main thread through **postMessage** and proceeds with rendering.
 
 ```ts
+import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { image } from '@kit.ImageKit';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   if (e.data.myImage) {
     let img: ImageBitmap = e.data.myImage

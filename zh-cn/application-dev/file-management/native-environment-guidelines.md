@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 场景介绍
 
@@ -17,7 +17,7 @@
 
 ## 接口说明
 
-接口的详细说明，请参考[API参考](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
+接口的详细说明，请参考[oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -46,7 +46,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
    void GetUserDownloadDirPathExample()
@@ -54,10 +54,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *downloadPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, path=%{public}s", downloadPath);
            free(downloadPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
    }
    ```
@@ -65,7 +65,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 2. 调用OH_Environment_GetUserDesktopDir接口获取用户Desktop目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
    void GetUserDesktopDirPathExample()
@@ -73,10 +73,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *desktopPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Desktop Path=%{public}s", desktopPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user desktop directory, path=%{public}s", desktopPath);
            free(desktopPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDesktopPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get user desktop path, error code is %{public}d", ret);
        }
    }
    ```
@@ -84,7 +84,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 3. 调用OH_Environment_GetUserDocumentDir接口获取用户Document目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
    void GetUserDocumentDirPathExample()
@@ -92,10 +92,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *documentPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Document Path=%{public}s", documentPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user document directory, path=%{public}s", documentPath);
            free(documentPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDocumentPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get user document path, error code is %{public}d", ret);
        }
    }
    ```
@@ -107,7 +107,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    ``` C++
    #include <sys/stat.h>
    ```
-   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDownloadDirSizeExample()
@@ -115,17 +115,17 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *documentPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Document Path=%{public}s", documentPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user document directory, path=%{public}s", documentPath);
            struct stat fileStat;
            int result = stat(documentPath, &fileStat);
            if (result == 0) {
-               OH_LOG_INFO(LOG_APP, "Document Size=%{public}ld", fileStat.st_size);
+               OH_LOG_INFO(LOG_APP, "Succeeded in getting file info. document Size=%{public}ld", fileStat.st_size);
            } else {
-               OH_LOG_ERROR(LOG_APP, "GetDocumentSize fail, error code is %{public}ld", result);
+               OH_LOG_ERROR(LOG_APP, "Failed to stat user document directory, error code is %{public}d", result);
            }
            free(documentPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDocumentPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get user document directory, error code is %{public}d", ret);
        }
    }
    ```

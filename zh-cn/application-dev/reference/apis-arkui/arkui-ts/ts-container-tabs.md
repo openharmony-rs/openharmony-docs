@@ -1,8 +1,8 @@
 # Tabs
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,9 +10,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
+>  - 该组件从API version 11开始，支持安全区域避让特性，其[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性的默认值为expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])。开发者可通过重写该属性覆盖默认行为。对于API version 11之前的版本，则需配合expandSafeArea属性手动实现安全区域避让。
 
 
 ## 子组件
@@ -50,6 +50,7 @@ Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tab
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 8%; 8%; 54%-->
 | 名称         | 类型                              | 只读 | 可选   | 说明                                     |
 | ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
 | barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否 | 是    | 设置Tabs的页签位置。<br/>默认值：BarPosition.Start。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
@@ -87,6 +88,7 @@ vertical(value: boolean)
 
 **参数：** 
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | 是   | 是否为纵向Tab。<br/>默认值：false，横向Tabs，为true时纵向Tabs。<br/>当横向Tabs设置height为auto时，Tabs组件高度自适应子组件高度，即为tabBar高度+divider线宽+TabContent高度+上下padding值+上下border宽度。<br/>当纵向Tabs设置width为auto时，Tabs组件宽度自适应子组件宽度，即为tabBar宽度+divider线宽+TabContent宽度+左右padding值+左右border宽度。<br/>尽量保持每一个页面中的子组件尺寸大小一致，避免滑动页面时出现页面切换动画跳动现象。 |
@@ -169,6 +171,7 @@ barWidth(value: Length)
 
 **参数：** 
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length)<sup>8+</sup> | 是   | TabBar的宽度值。<br/>默认值：<br/>未设置[SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9)和[BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9)的TabBar且vertical属性为false时，默认值为Tabs的宽度。<br/>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，默认值为56vp。<br/>设置SubTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。<br/>设置SubTabBarStyle样式且vertical属性为true时，默认值为56vp。<br/>设置BottomTabBarStyle样式且vertical属性为true时，默认值为96vp。<br/>设置BottomTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。 |
@@ -187,6 +190,7 @@ API version 14之前的版本，若设置barHeight为固定值后，TabBar无法
 
 **参数：** 
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length)<sup>8+</sup> | 是   | TabBar的高度值。<br/>默认值：<br/>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为false时，默认值为56vp。<br/>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为true时，默认值为Tabs的高度。<br/>设置[SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9)样式且vertical属性为false时，默认值为56vp。<br/>设置SubTabBarStyle样式且vertical属性为true时，默认值为Tabs的高度。<br/>设置[BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9)样式且vertical属性为true时，默认值为Tabs的高度。<br/>设置BottomTabBarStyle样式且vertical属性为false时，默认值为56vp，从API version 12开始，默认值变更为48vp。 |
@@ -203,6 +207,7 @@ barHeight(height: Length, noMinHeightLimit: boolean)
 
 **参数：** 
 
+<!--Table: 20%; 10%; 10%; 60%-->
 | 参数名           | 类型                         | 必填 | 说明                                                         |
 | ---------------- | ---------------------------- | ---- | ------------------------------------------------------------ |
 | height           | [Length](ts-types.md#length) | 是   | TabBar的高度值。<br/>默认值：<br/>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为false时，默认值为56vp。<br/>未设置样式或者通过CustomBuilder设置自定义样式的TabBar且vertical属性为true时，默认值为Tabs的高度。<br/>设置[SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9)样式且vertical属性为false时，默认值为56vp。<br/>设置SubTabBarStyle样式且vertical属性为true时，默认值为Tabs的高度。<br/>设置[BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9)样式且vertical属性为true时，默认值为Tabs的高度。<br/>设置BottomTabBarStyle样式且vertical属性为false时，默认值为48vp。 |
@@ -220,6 +225,7 @@ animationCurve(curve: Curve | ICurve)
 
 **参数：** 
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | 参数名 | 类型                                                         | 必填 | 说明                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
 | curve  | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) | 是   | Tabs翻页的动画曲线。<br/>默认值：<br/>滑动TabContent翻页时，默认值为interpolatingSpring(-1, 1, 228, 30)。<br/>点击TabBar页签和调用TabsController的changeIndex接口翻页时，默认值为cubicBezierCurve(0.2, 0.0, 0.1, 1.0)。<br/>设置自定义动画曲线时，滑动翻页和点击页签、调用changeIndex翻页都使用设置的动画曲线。 |
@@ -240,6 +246,7 @@ animationCurve不设置时，由于滑动TabContent翻页动画曲线interpolati
 
 **参数：** 
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | number | 是   | Tabs翻页的动画时长。<br/>默认值：<br/>API version 10及以前，不设置该属性或设置为null时，默认值为0，即Tabs翻页无动画。设置为小于0或undefined时，默认值为300。<br/>API version 11及以后，不设置该属性或设置为异常值，且设置TabBar为BottomTabBarStyle样式时，默认值为0。设置TabBar为其他样式时，默认值为300。<br/>单位：ms<br/>取值范围：[0, +∞) |
@@ -260,9 +267,10 @@ animationMode(mode: Optional\<AnimationMode\>)
 
 **参数：**
 
+<!--Table: 10%; 25%; 10%; 55%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[AnimationMode](#animationmode12枚举说明)\> | 是   | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationMode](#animationmode12枚举说明)\> | 是   | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。|
 
 ### barPosition<sup>9+</sup>
 
@@ -415,7 +423,7 @@ edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
 | 参数名 | 类型                                          | 必填 | 说明                                         |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| edgeEffect  | Optional&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | 是   | 边缘滑动效果。<br/>默认值：EdgeEffect.Spring |
+| edgeEffect  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | 是   | 边缘滑动效果。<br/>默认值：EdgeEffect.Spring |
 
 ### barBackgroundEffect<sup>18+</sup>
 
@@ -447,13 +455,13 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
 
 ### cachedMaxCount<sup>19+</sup>
 
 cachedMaxCount(count: number, mode: TabsCacheMode)
 
-设置子组件的最大缓存个数和缓存模式。设置该属性后，不会对缓存范围内的子组件进行预加载，仅对缓存范围外的子组件进行释放。
+设置子组件的最大缓存个数及缓存模式。未设置该属性时默认缓存所有子组件且缓存后不会释放。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -463,8 +471,26 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count  | number                                                      | 是   | 子组件的最大缓存个数。默认所有子组件加载后都不再释放。<br/>取值范围：[0, +∞)。|
+| count  | number                                                      | 是   | 子组件的最大缓存个数。超出范围时自动释放不再需要的子组件。<br/>取值范围：[0, +∞)。|
 | mode   | [TabsCacheMode](#tabscachemode19枚举说明)                   | 是   | 子组件的缓存模式。<br/>默认值：TabsCacheMode.CACHE_BOTH_SIDE   |
+
+### nestedScroll<sup>24+</sup>
+
+nestedScroll(value: TabsNestedScrollMode | undefined)
+
+设置Tabs组件与其父组件的嵌套滚动模式。未通过该接口设置时，默认嵌套滚动模式为[SELF_ONLY](#tabsnestedscrollmode24枚举说明)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value   | [TabsNestedScrollMode](#tabsnestedscrollmode24枚举说明) \| undefined                | 是   | Tabs组件和父组件的嵌套滚动模式。<br/>设置undefined时，Tabs自身滚动，不与父组件联动。   |
 
 ## DividerStyle<sup>10+</sup>对象说明
 
@@ -545,6 +571,7 @@ Scrollable模式下不滚动时的页签排布方式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 30%; 10%; 60%-->
 | 名称         | 值 | 说明                                     |
 | ---------- | -- | ---------------------------------------- |
 | ALWAYS_CENTER | 0 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度时，TabBar不可滚动，页签紧凑居中。|
@@ -577,6 +604,21 @@ type CommonModifier = CommonModifier
 | --------------------- | -- | ---------------------------------------- |
 | CACHE_BOTH_SIDE       | 0  | 缓存当前显示的子组件和其两侧的子组件。即当设置cachedMaxCount属性的count值为n时，最多缓存2n+1个子组件。 |
 | CACHE_LATEST_SWITCHED | 1  | 缓存当前显示的子组件和最近切换过的子组件。即当设置cachedMaxCount属性的count值为n时，最多缓存n+1个子组件。 |
+
+## TabsNestedScrollMode<sup>24+</sup>枚举说明
+
+Tabs组件和父组件的嵌套滚动模式枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                  | 值 | 说明                                     |
+| --------------------- | -- | ---------------------------------------- |
+| SELF_ONLY       | 0  | Tabs自身滚动，不与父组件联动。 |
+| SELF_FIRST | 1  | Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Tabs触发边缘效果。 |
 
 ## 事件
 
@@ -756,6 +798,10 @@ onSelected(event: Callback\<number>)
 
 4. 通过页签处点击触发。
 
+> **说明：**
+>
+> onSelected回调中不可通过[TabsOptions](#tabsoptions15)的index设置当前显示页的索引，不可调用TabsController.changeIndex()方法。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -765,10 +811,6 @@ onSelected(event: Callback\<number>)
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前选中元素的索引。 |
-
-> **说明：**
->
-> onSelected回调中不可通过TabsOptions的index设置当前显示页的索引，不可调用TabsController.changeIndex()方法。
 
 ### onUnselected<sup>18+</sup>
 
@@ -1044,6 +1086,8 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 > - Tabs的preloadItems需要在Tabs创建之后去调用，首次预加载推荐在Tabs的[onAppear](./ts-universal-events-show-hide.md#onappear)生命周期中去控制。
 > 
 > - 如果TabsController对象未绑定任何Tabs组件，直接调用该接口，会抛出JS异常。因此使用该接口时，建议通过try-catch捕获异常。
+>
+> - 使用preloadItems预加载标签页时，若需自定义TabBar上的显示内容，推荐使用ComponentContent实现，使用示例请参考[示例10](./ts-container-tabcontent.md#示例10通过componentcontent设置tabbar)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1053,7 +1097,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | Optional\<Array\<number>> | 是 | 需预加载的子节点的下标数组。<br/>默认值：空数组。 |
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。<br/>默认值：空数组。 |
 
 **返回值：** 
 
@@ -1859,7 +1903,7 @@ struct TabsCustomAnimationExample {
 本示例通过onContentWillChange实现了自定义页面手势滑动切换拦截。
 
 ```ts
-//xxx.ets
+// xxx.ets
 @Entry
 @Component
 struct TabsExample {
@@ -2436,7 +2480,9 @@ struct TabsExample {
 
 ### 示例15（页签超出TabBar区域显示）
 
-从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
+该示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
+
+从API version 15开始，在TabsOptions中新增了barModifier接口。
 
 ```ts
 // xxx.ets
@@ -2526,7 +2572,9 @@ struct TabsBarModifierExample {
 
 ### 示例16（页签对齐布局）
 
-从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的align属性实现页签对齐布局效果。
+本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的align属性实现页签对齐布局效果。
+
+从API version 15开始，在TabsOptions中新增了barModifier接口。
 
 ```ts
 // xxx.ets
@@ -2627,9 +2675,11 @@ struct TabsBarModifierExample {
 
 ![tabs16](figures/tabs_barModifier_align.gif)
 
-### 示例17（Tabs与TabBar联动切换）
+### 示例17（Tabs与TabBar同步切换）
 
-从API version 18开始，该示例通过[onSelected](#onselected18)接口，实现了Tabs与TabBar联动切换。
+该示例通过[onSelected](#onselected18)接口，实现了Tabs与TabBar的同步切换。
+
+从API version 18开始，新增了onSelected接口。
 
 ```ts
 // xxx.ets
@@ -2704,7 +2754,9 @@ struct TabsExample {
 
 ### 示例18（释放Tabs子组件）
 
-从API version 19开始，该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
+该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
+
+从API version 19开始，新增了cachedMaxCount接口。
 
 ```ts
 @Entry
@@ -2758,7 +2810,9 @@ struct MyComponent {
 
 ### 示例19（设置TabBar背景模糊效果）
 
-该示例分别通过barBackgroundBlurStyle和[barBackgroundEffect](#barbackgroundeffect18)（从API version 18开始）设置TabsBar页签栏的背景模糊效果。
+该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabsBar页签栏的背景模糊样式和效果。
+
+从API version 18开始，新增了barBackgroundBlurStyle和barBackgroundEffect接口。
 
 ```ts
 // xxx.ets
@@ -2823,11 +2877,11 @@ struct TabsExample {
   }
 }
 ```
-![tabs19](figures/tabBar_backgroud.png)
+![tabs19](figures/tabBar_background.png)
 
 ### 示例20（设置边缘滑动效果）
 
-该示例通过edgeEffect实现不同边缘滑动效果。
+该示例通过[edgeEffect](#edgeeffect12)实现了不同的边缘回弹效果。
 
 ```ts
 // xxx.ets
@@ -2883,7 +2937,9 @@ struct TabsExample {
 
 ### 示例21（Tabs设置翻页动画曲线）
 
-该示例展示了如何通过[animationCurve](#animationcurve20)（从API version 20开始）接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
+该示例展示了如何通过[animationCurve](#animationcurve20)接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
+
+从API version 20开始，新增了animationCurve接口。
 
 ```ts
 import { curves } from '@kit.ArkUI';
@@ -2908,7 +2964,7 @@ struct TabsExample {
     'cubicBezierCurve(0.25, 0.1, 0.25, 1.0)'
   ];
   @State curveIndex: number = 0;
-  private datas: TabsItemType[] = [
+  private data: TabsItemType[] = [
     { text: '1', backgroundColor: '#004AAF' },
     { text: '2', backgroundColor: '#2787D9' },
     { text: '3', backgroundColor: '#D5D5D5' },
@@ -2920,7 +2976,7 @@ struct TabsExample {
   build() {
     Column({ space: 2 }) {
       Tabs({ controller: this.tabsController }) {
-        ForEach(this.datas, (item: TabsItemType, index: number) => {
+        ForEach(this.data, (item: TabsItemType, index: number) => {
           TabContent() {
           }
           .tabBar(item.text)
@@ -3070,3 +3126,70 @@ struct TabsDidScrollExample {
 ```
 
 ![tabs_didScroll](figures/tabs_didScroll.gif)
+
+### 示例23（Tabs嵌套滚动）
+
+该示例展示了如何通过[nestedScroll](#nestedscroll24)接口设置Tabs嵌套滚动效果。
+
+从API version 24开始，新增nestedScroll接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsExample {
+  @State text: string = '文本';
+  @State barMode: BarMode = BarMode.Fixed;
+  build() {
+    Column() {
+      Row() {
+
+        Tabs() {
+          TabContent() {
+            Tabs() {
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Blue)
+              }.tabBar(SubTabBarStyle.of('子页a'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Green)
+              }.tabBar(SubTabBarStyle.of('子页b'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Pink)
+              }.tabBar(SubTabBarStyle.of('子页c'))
+            }
+            .nestedScroll(TabsNestedScrollMode.SELF_FIRST)
+          }.tabBar(SubTabBarStyle.of("首页1"))
+
+
+          TabContent() {
+            Tabs() {
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Blue)
+              }.tabBar(SubTabBarStyle.of('子页d'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Green)
+              }.tabBar(SubTabBarStyle.of('子页e'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Pink)
+              }.tabBar(SubTabBarStyle.of('子页f'))
+            }
+            .nestedScroll(TabsNestedScrollMode.SELF_FIRST)
+          }.tabBar(SubTabBarStyle.of('首页2'))
+
+        }
+        .height('100%')
+        .backgroundColor(0xf1f3f5)
+        .barMode(this.barMode)
+      }
+      .width('100%')
+      .height('100%')
+      .padding('24vp')
+    }
+  }
+}
+```
+![tabs_nestedScroll](figures/tabs_nestedscroll.gif)

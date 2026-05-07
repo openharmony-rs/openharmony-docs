@@ -41,7 +41,7 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 上述四种方法的区别仅在于触发的时机（见[按键事件数据流](#按键事件数据流)）。其中onKeyPreIme的返回值决定了该按键事件后续是否会被继续分发给页面快捷键、输入法、onKeyEventDispatch和onKeyEvent。
 
 
-当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)，可由该参数获得当前按键事件的按键行为（[KeyType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keytype)）、键码（[keyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
+当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)，可由该参数获得当前按键事件的按键行为（[KeyType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keytype)）、键码（[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
 
 <!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKey.ets) -->
 
@@ -60,7 +60,7 @@ struct KeyEventExample {
         .defaultFocus(true)
         .width(140).height(70)
         .onKeyEvent((event?: KeyEvent) => { // 给Button设置onKeyEvent事件
-          if(event){
+          if (event) {
             if (event.type === KeyType.Down) {
               this.buttonType = 'Down';
             }
@@ -68,9 +68,9 @@ struct KeyEventExample {
               this.buttonType = 'Up';
             }
             this.buttonText = 'Button: \n' +
-            'KeyType:' + this.buttonType + '\n' +
-            'KeyCode:' + event.keyCode + '\n' +
-            'KeyText:' + event.keyText;
+              'KeyType:' + this.buttonType + '\n' +
+              'KeyCode:' + event.keyCode + '\n' +
+              'KeyText:' + event.keyText;
           }
         })
 
@@ -81,7 +81,7 @@ struct KeyEventExample {
       Text(this.columnText).fontColor(Color.Red)
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
     .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-      if(event){
+      if (event) {
         if (event.type === KeyType.Down) {
           this.columnType = 'Down';
         }
@@ -89,16 +89,16 @@ struct KeyEventExample {
           this.columnType = 'Up';
         }
         this.columnText = 'Column: \n' +
-        'KeyType:' + this.columnType + '\n' +
-        'KeyCode:' + event.keyCode + '\n' +
-        'KeyText:' + event.keyText;
+          'KeyType:' + this.columnType + '\n' +
+          'KeyCode:' + event.keyCode + '\n' +
+          'KeyText:' + event.keyText;
       }
     })
   }
 }
 ```
 
-上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制见[焦点事件](arkts-common-events-focus-event.md)。
+上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制见[支持焦点处理](arkts-common-events-focus-event.md)。
 
 
 ![zh-cn_image_0000001511421324](figures/zh-cn_image_0000001511421324.gif)
@@ -109,7 +109,7 @@ struct KeyEventExample {
 
 1. 由于onKeyEvent事件默认是冒泡的，所以Button和Column的onKeyEvent都可以响应。
 
-2. 每个按键都有2次回调，分别对应KeyType.Down和KeyType.Up，表示按键被按下、然后抬起。
+2. 每个按键都有2次回调，分别对应KeyType.Down和KeyType.Up，表示按键被按下，然后抬起。
 
 
 如果要阻止冒泡，即仅Button响应键盘事件，Column不响应，在Button的onKeyEvent回调中加入event.stopPropagation()方法即可，如下：
@@ -132,8 +132,8 @@ struct KeyEventPreventBubble {
         .width(140).height(70)
         .onKeyEvent((event?: KeyEvent) => {
           // 通过stopPropagation阻止事件冒泡
-          if(event){
-            if(event.stopPropagation){
+          if (event) {
+            if (event.stopPropagation) {
               event.stopPropagation();
             }
             if (event.type === KeyType.Down) {
@@ -156,7 +156,7 @@ struct KeyEventPreventBubble {
       Text(this.columnText).fontColor(Color.Red)
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
     .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-      if(event){
+      if (event) {
         if (event.type === KeyType.Down) {
           this.columnType = 'Down';
         }
@@ -197,8 +197,8 @@ struct PreImeEventExample {
       })
         .width('80%')
         .height('40vp')
-        .border({ radius:'20vp' })
-        .onKeyPreIme((event:KeyEvent) => {
+        .border({ radius: '20vp' })
+        .onKeyPreIme((event: KeyEvent) => {
           if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }

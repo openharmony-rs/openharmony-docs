@@ -20,7 +20,7 @@
 
 ## Modules to Import
 
-```
+```ts
 import { AtomicServiceWeb } from '@kit.ArkUI';
 ```
 
@@ -34,7 +34,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## AtomicServiceWeb
 
-```
+```ts
 AtomicServiceWeb({
   src: ResourceStr,
   controller: AtomicServiceWebController,
@@ -142,7 +142,7 @@ For details about the error codes, see [Webview Error Codes](../../apis-arkweb/e
 
 setCustomUserAgent(userAgent: string): void
 
-Sets a custom user agent, which will overwrite the default user agent.
+Sets a custom user agent, which will override the default user agent.
 
 Set the user agent in the **onControllerAttached** callback to ensure that it takes effect. For details about the setting, see the example. Avoid setting the user agent in **onLoadIntercept**. Otherwise, the setting may fail occasionally.
 
@@ -557,7 +557,6 @@ struct WebComponent {
 ```
 
 ```html
-// index.html
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
@@ -784,7 +783,7 @@ struct AtomicServiceNestedScroll {
   build() {
     Scroll() {
       Column() {
-        Text("Nested Web - Header")
+        Text("Nested AsWeb - Header")
           .height("15%")
           .width("100%")
           .fontSize(30)

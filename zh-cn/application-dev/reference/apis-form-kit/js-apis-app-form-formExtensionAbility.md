@@ -158,7 +158,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     formProvider.updateForm(formId, obj2).then(() => {
       console.info(`FormExtensionAbility context updateForm`);
     }).catch((error: BusinessError) => {
-      console.error(`FormExtensionAbility context updateForm failed, data: ${error}`);
+      console.error(`FormExtensionAbility context updateForm failed, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     });
   }
 };
@@ -168,8 +168,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onChangeFormVisibility(newStatus: Record\<string, number>): void
 
-卡片提供方接收修改可见性的通知接口。
-该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
+卡片提供方接收修改可见性的通知接口。该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -179,7 +178,7 @@ onChangeFormVisibility(newStatus: Record\<string, number>): void
 
 | 参数名  | 类型   | 必填 | 说明                   |
 | ------- | ------ | ---- | ---------------------- |
-| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。 |
+| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。<br>详细参考 [formInfo.VisibilityType](js-apis-app-form-formInfo.md#visibilitytype) |
 
 **示例：**
 
@@ -208,9 +207,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     for (let i: number = 0; i < keys.length; i++) {
       console.info(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
       formProvider.updateForm(keys[i], obj2).then(() => {
-        console.info(`FormExtensionAbility context updateForm`);
+        console.info('FormExtensionAbility context updateForm');
       }).catch((error: BusinessError) => {
-        console.error(`Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        console.error(`Operation updateForm failed. , code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       });
     }
   }
@@ -306,7 +305,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
     // 仅当前formExtensionAbility存活时更新配置才会触发此生命周期。
     // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
-    console.info(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
+    console.info(`onConfigurationUpdate, config: ${newConfig?.language}`);
   }
 };
 ```
@@ -315,7 +314,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onAcquireFormState?(want: Want): formInfo.FormState
 
-卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态(该方法可以选择性重写)。
+卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

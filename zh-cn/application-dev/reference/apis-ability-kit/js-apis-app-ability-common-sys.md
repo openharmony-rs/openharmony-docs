@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 开发者可以通过该模块引用Ability公共模块类。
 
@@ -37,7 +37,7 @@ ServiceExtensionContext二级模块。
 | --- | --- |
 | [_ServiceExtensionContext.default](js-apis-inner-application-serviceExtensionContext-sys.md) | ServiceExtensionContext二级模块。 |
 
-## AutoFillExtensionContext<sup>11+<sup>
+## AutoFillExtensionContext<sup>11+</sup>
 
 type AutoFillExtensionContext = _AutoFillExtensionContext.default
 
@@ -51,7 +51,7 @@ AutoFillExtensionContext二级模块。
 | --- | --- |
 | [_AutoFillExtensionContext.default](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
 
-## AutoStartupInfo<sup>11+<sup>
+## AutoStartupInfo<sup>11+</sup>
 
 type AutoStartupInfo = _AutoStartupInfo
 
@@ -65,7 +65,7 @@ AutoStartupInfo二级模块。
 | --- | --- |
 | [_AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | AutoStartupInfo二级模块。 |
 
-## AutoStartupCallback<sup>11+<sup>
+## AutoStartupCallback<sup>11+</sup>
 
 type AutoStartupCallback = _AutoStartupCallback
 
@@ -79,7 +79,7 @@ AutoStartupCallback二级模块。
 | --- | --- |
 | [_AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | AutoStartupCallback二级模块。 |
 
-## UIServiceExtensionContext<sup>14+<sup>
+## UIServiceExtensionContext<sup>14+</sup>
 
 type UIServiceExtensionContext = _UIServiceExtensionContext.default
 
@@ -93,7 +93,7 @@ UIServiceExtensionContext二级模块。
 | --- | --- |
 | [_UIServiceExtensionContext.default](js-apis-inner-application-uiserviceExtensionContext-sys.md) | UIServiceExtensionContext二级模块。 |
 
-## UIServiceHostProxy<sup>14+<sup>
+## UIServiceHostProxy<sup>14+</sup>
 
 type UIServiceHostProxy = _UIServiceHostProxy.default
 
@@ -106,6 +106,42 @@ UIServiceHostProxy二级模块。
 | 类型 | 说明 |
 | --- | --- |
 | [_UIServiceHostProxy.default](js-apis-inner-application-uiservicehostproxy-sys.md) | UIServiceHostProxy二级模块。 |
+
+## AgentProxy<sup>24+</sup>
+
+type AgentProxy = _AgentProxy
+
+AgentProxy二级模块。
+
+[AgentProxy](../apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)用于从客户端向[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端发送数据或安全认证请求。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentProxy](../apis-ability-kit/js-apis-inner-application-agentProxy-sys.md) | 用于从客户端向[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端发送数据或安全认证请求。 |
+
+## AgentExtensionConnectCallback<sup>24+</sup>
+
+type AgentExtensionConnectCallback = _AgentExtensionConnectCallback
+
+AgentExtensionConnectCallback二级模块。
+
+[AgentExtensionConnectCallback](../apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)中提供了回调接口给开发者来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentExtensionConnectCallback](../apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md) | 提供回调接口给开发者来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。 |
 
 **示例：**
 
@@ -128,4 +164,6 @@ let connectOptions: common.ConnectOptions;
 let autoFillExtensionContext: common.AutoFillExtensionContext;
 let uiServiceExtensionContext: common.UIServiceExtensionContext;
 let uiServiceHostProxy: common.UIServiceHostProxy;
+let agentProxy: common.AgentProxy;
+let agentExtensionConnectCallback: common.AgentExtensionConnectCallback;
 ```

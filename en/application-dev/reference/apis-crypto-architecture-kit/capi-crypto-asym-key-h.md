@@ -49,36 +49,36 @@ Defines APIs for asymmetric keys.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)](#oh_cryptoasymkeygenerator_create) | Creates an asymmetric key generator instance based on the specified algorithm.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_generate) | Randomly generates an asymmetric key pair.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_convert) | Converts asymmetric key data into a key pair.|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)](#oh_cryptoasymkeygenerator_create) | Creates an asymmetric key generator instance based on the specified algorithm.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymKeyGenerator_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_generate) | Randomly generates an asymmetric key pair.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_convert) | Converts asymmetric key data into a key pair.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy).|
 | [const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx)](#oh_cryptoasymkeygenerator_getalgoname) | Obtains the asymmetric key algorithm.|
 | [void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)](#oh_cryptoasymkeygenerator_destroy) | Destroys an asymmetric key generator instance.|
 | [void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_destroy) | Destroys an asymmetric key pair instance.|
 | [OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_getpubkey) | Obtains the public key instance from a key pair.|
 | [OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_getprivkey) | Obtains the private key of a key pair.|
-| [OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)](#oh_cryptopubkey_encode) | Encodes the public key data in the specified format.|
-| [OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptopubkey_getparam) | Obtains the specified parameter from a public key instance.|
+| [OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)](#oh_cryptopubkey_encode) | Encodes the public key data in the specified format.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
+| [OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptopubkey_getparam) | Obtains the specified parameter from a public key instance.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password, uint32_t passwordLen)](#oh_cryptoasymkeygenerator_setpassword) | Sets the password of the asymmetric key generator context.|
-| [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)](#oh_cryptoprivkeyencodingparams_create) | Creates private key encoding parameters.|
+| [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)](#oh_cryptoprivkeyencodingparams_create) | Creates private key encoding parameters.<br> Note: The created resource must be destroyed by calling [OH_CryptoPrivKeyEncodingParams_Destroy](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx, CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)](#oh_cryptoprivkeyencodingparams_setparam) | Sets a private key encoding parameter.|
 | [void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)](#oh_cryptoprivkeyencodingparams_destroy) | Destroys a private key encoding parameter.|
-| [OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)](#oh_cryptoprivkey_encode) | Obtains the specified parameter from a private key instance.|
-| [OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptoprivkey_getparam) | Obtains the specified parameter of a private key.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_geneccommonparamsspec) | Generates EC common parameter specifications.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_gendhcommonparamsspec) | Generates DH common parameter specifications.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_create) | Creates asymmetric key specifications based on the given algorithm name and specification type.|
+| [OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)](#oh_cryptoprivkey_encode) | Obtains the specified parameter from a private key instance.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
+| [OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptoprivkey_getparam) | Obtains the specified parameter of a private key.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_geneccommonparamsspec) | Generates EC common parameter specifications.<br> Note: After the use is complete, the memory for storing the **spec** parameter must be destroyed by calling [OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_gendhcommonparamsspec) | Generates DH common parameter specifications.<br> Note: After the use is complete, the memory for storing the **spec** parameter must be destroyed by calling [OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_create) | Creates asymmetric key specifications based on the given algorithm name and specification type.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_setparam) | Sets the specified parameters for asymmetric key specifications.|
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec, OH_CryptoAsymKeySpec *commonParamsSpec)](#oh_cryptoasymkeyspec_setcommonparamsspec) | Sets the common parameter specifications for asymmetric key specifications.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_getparam) | Obtains the specified parameters for asymmetric key specifications.|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_getparam) | Obtains the specified parameters for asymmetric key specifications.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)](#oh_cryptoasymkeyspec_destroy) | Destroys asymmetric key specifications.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)](#oh_cryptoasymkeygeneratorwithspec_create) | Creates a struct for an asymmetric key generator with specifications.|
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)](#oh_cryptoasymkeygeneratorwithspec_genkeypair) | Generates a key pair based on asymmetric key specifications.|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)](#oh_cryptoasymkeygeneratorwithspec_create) | Creates a struct for an asymmetric key generator with specifications.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymKeyGeneratorWithSpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygeneratorwithspec_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)](#oh_cryptoasymkeygeneratorwithspec_genkeypair) | Generates a key pair based on asymmetric key specifications.<br> Note: After the use is complete, the memory for storing the **keyPair** parameter must be released by calling [OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy).|
 | [void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec *generator)](#oh_cryptoasymkeygeneratorwithspec_destroy) | Destroys a struct for an asymmetric key generator with specifications.|
-| [OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)](#oh_cryptoecpoint_create) | Creates an EC point.|
-| [OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_getcoordinate) | Obtains the X and Y coordinates of an EC point.|
+| [OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)](#oh_cryptoecpoint_create) | Creates an EC point.<br> Note: The created resource must be destroyed by calling [OH_CryptoEcPoint_Destroy](capi-crypto-asym-key-h.md#oh_cryptoecpoint_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_getcoordinate) | Obtains the X and Y coordinates of an EC point.<br> Note: After the use is complete, the memory for storing the **x** and **y** parameters must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_setcoordinate) | Sets the X and Y coordinates of an EC point.|
-| [OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)](#oh_cryptoecpoint_encode) | Encodes an EC point in a specified format.|
+| [OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)](#oh_cryptoecpoint_encode) | Encodes an EC point in a specified format.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)](#oh_cryptoecpoint_destroy) | Destroys an EC point.|
 
 ## Enum Description
@@ -113,7 +113,7 @@ Enumerates the types of the asymmetric key parameters.
 | CRYPTO_ECC_PK_X_DATABLOB = 209 | X coordinate of the public key **pk** (a point on the elliptic curve) in the ECC algorithm.|
 | CRYPTO_ECC_PK_Y_DATABLOB = 210 | Y coordinate of the public key **pk** (a point on the elliptic curve) in the ECC algorithm.|
 | CRYPTO_ECC_FIELD_TYPE_STR = 211 | Elliptic curve field type in the ECC algorithm. Currently, only the **Fp** field is supported.|
-| CRYPTO_ECC_FIELD_SIZE_INT = 212 | Size of the field in the ECC algorithm, in bits.<br>**NOTE**: The size of the **Fp** field is the length of the prime **p**, in bits.|
+| CRYPTO_ECC_FIELD_SIZE_INT = 212 | Size of the field in the ECC algorithm, in bits.<br>Note: The size of the **Fp** field is the length of the prime **p**, in bits.|
 | CRYPTO_ECC_CURVE_NAME_STR = 213 | Standards for Efficient Cryptography Group (SECG) curve name in the ECC algorithm.|
 | CRYPTO_RSA_N_DATABLOB = 301 | Modulus **n** in the RSA algorithm.|
 | CRYPTO_RSA_D_DATABLOB = 302 | Private key **sk** (private key exponent **d**) in the RSA algorithm.|
@@ -192,16 +192,15 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 **Description**
 
-Creates an asymmetric key generator instance based on the specified algorithm.
+Creates an asymmetric key generator instance based on the specified algorithm.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymKeyGenerator_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer the algorithm used to create a generator.<br> For example, **'RSA1024\|PRIMES_2'**.| |
+| const char *algoName | Pointer the algorithm used to create a generator.<br> For example, **RSA1024\|PRIMES_2**.|
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) **ctx | Pointer to the asymmetric key generator context created.|
 
 **Returns**
@@ -218,10 +217,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 **Description**
 
-Randomly generates an asymmetric key pair.
+Randomly generates an asymmetric key pair.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -239,22 +237,21 @@ Randomly generates an asymmetric key pair.
 ### OH_CryptoAsymKeyGenerator_Convert()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type,Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)
+OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)
 ```
 
 **Description**
 
-Converts asymmetric key data into a key pair.
+Converts asymmetric key data into a key pair.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) *ctx | Pointer to the asymmetric key generator instance.|
-| [Crypto_EncodingType](#crypto_encodingtype) type | Encoding type.|
+| [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | Encoding type.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *pubKeyData | Pointer to the public key data to convert.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *priKeyData | Pointer to the private key data to convert.|
 | [OH_CryptoKeyPair](capi-cryptoasymkeyapi-oh-cryptokeypair.md) **keyCtx | Pointer to the asymmetric key pair instance.|
@@ -276,7 +273,6 @@ const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx
 Obtains the asymmetric key algorithm.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -302,7 +298,6 @@ Destroys an asymmetric key generator instance.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -321,7 +316,6 @@ Destroys an asymmetric key pair instance.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -339,7 +333,6 @@ OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 Obtains the public key from a key pair.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -365,7 +358,6 @@ Obtains the private key of a key pair.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -381,22 +373,21 @@ Obtains the private key of a key pair.
 ### OH_CryptoPubKey_Encode()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type,const char *encodingStandard, Crypto_DataBlob *out)
+OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)
 ```
 
 **Description**
 
-Encodes the public key data in the specified format.
+Encodes the public key data in the specified format.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *key | Ponter to the public key data.|
-| [Crypto_EncodingType](#crypto_encodingtype) type | Encoding type.|
+| [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | Encoding type.|
 | const char *encodingStandard | Encoding type.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | Pointer to the public key encoded in the specified format.|
 
@@ -414,17 +405,16 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 
 **Description**
 
-Obtains the specified parameter from a public key instance.
+Obtains the specified parameter from a public key instance.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *key | Ponter to the public key data.|
-| [CryptoAsymKey_ParamType](#cryptoasymkey_paramtype) item | Type of the asymmetric key parameter to obtain.|
+| [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) item | Type of the asymmetric key parameter to obtain.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the parameter value obtained.|
 
 **Returns**
@@ -436,7 +426,7 @@ Obtains the specified parameter from a public key instance.
 ### OH_CryptoAsymKeyGenerator_SetPassword()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password,uint32_t passwordLen)
+OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password, uint32_t passwordLen)
 ```
 
 **Description**
@@ -444,7 +434,6 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerato
 Sets the password of the asymmetric key generator context.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -468,10 +457,9 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 
 **Description**
 
-Creates private key encoding parameters.
+Creates private key encoding parameters.<br> Note: The created resource must be destroyed by calling [OH_CryptoPrivKeyEncodingParams_Destroy](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -488,7 +476,7 @@ Creates private key encoding parameters.
 ### OH_CryptoPrivKeyEncodingParams_SetParam()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx,CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)
+OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx, CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)
 ```
 
 **Description**
@@ -497,13 +485,12 @@ Sets a private key encoding parameter.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoPrivKeyEncodingParams](capi-cryptoasymkeyapi-oh-cryptoprivkeyencodingparams.md) *ctx | Pointer to the private key encoding parameters.|
-| [CryptoPrivKeyEncoding_ParamType](#cryptoprivkeyencoding_paramtype) type | Parameter type for private key encoding.|
+| [CryptoPrivKeyEncoding_ParamType](capi-crypto-asym-key-h.md#cryptoprivkeyencoding_paramtype) type | Parameter type for private key encoding.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the parameter values for private key encoding.|
 
 **Returns**
@@ -524,7 +511,6 @@ Destroys a private key encoding parameter.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -534,22 +520,21 @@ Destroys a private key encoding parameter.
 ### OH_CryptoPrivKey_Encode()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type,const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)
+OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)
 ```
 
 **Description**
 
-Obtains the specified parameter from a private key instance.
+Obtains the specified parameter from a private key instance.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoPrivKey](capi-cryptoasymkeyapi-oh-cryptoprivkey.md) *key | Pointer to the private key.|
-| [Crypto_EncodingType](#crypto_encodingtype) type | Private key encoding type.|
+| [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | Private key encoding type.|
 | const char *encodingStandard | Pointer to the encoding standard,<br> for example, **PKCS8**.|
 | [OH_CryptoPrivKeyEncodingParams](capi-cryptoasymkeyapi-oh-cryptoprivkeyencodingparams.md) *params | Pointer to the private key encoding parameters, which can be **NULL**. Set this parameter if you need to encrypt a private key.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | Pointer to the encoding output.|
@@ -563,22 +548,21 @@ Obtains the specified parameter from a private key instance.
 ### OH_CryptoPrivKey_GetParam()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item,Crypto_DataBlob *value)
+OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)
 ```
 
 **Description**
 
-Obtains the specified parameter of a private key.
+Obtains the specified parameter of a private key.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoPrivKey](capi-cryptoasymkeyapi-oh-cryptoprivkey.md) *key | Pointer to the private key.|
-| [CryptoAsymKey_ParamType](#cryptoasymkey_paramtype) item | Type of the asymmetric key parameter to obtain.|
+| [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) item | Type of the asymmetric key parameter to obtain.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the output data.|
 
 **Returns**
@@ -595,10 +579,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 
 **Description**
 
-Generates EC common parameter specifications.
+Generates EC common parameter specifications.<br> Note: After the use is complete, the memory for storing the **spec** parameter must be destroyed by calling [OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -621,10 +604,9 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 
 **Description**
 
-Generates DH common parameter specifications.
+Generates DH common parameter specifications.<br> Note: After the use is complete, the memory for storing the **spec** parameter must be destroyed by calling [OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -643,22 +625,21 @@ Generates DH common parameter specifications.
 ### OH_CryptoAsymKeySpec_Create()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type,OH_CryptoAsymKeySpec **spec)
+OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)
 ```
 
 **Description**
 
-Creates asymmetric key specifications based on the given algorithm name and specification type.
+Creates asymmetric key specifications based on the given algorithm name and specification type.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate specifications.<br> For example, **'RSA'**.|
-| [CryptoAsymKeySpec_Type](#cryptoasymkeyspec_type) type | Specification type of an asymmetric key.|
+| const char *algoName | Pointer to the algorithm used to generate specifications.<br> For example, **RSA**.|
+| [CryptoAsymKeySpec_Type](capi-crypto-asym-key-h.md#cryptoasymkeyspec_type) type | Specification type of an asymmetric key.|
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) **spec | Pointer to the asymmetric key specifications.|
 
 **Returns**
@@ -670,7 +651,7 @@ Creates asymmetric key specifications based on the given algorithm name and spec
 ### OH_CryptoAsymKeySpec_SetParam()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)
+OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)
 ```
 
 **Description**
@@ -679,13 +660,12 @@ Sets the specified parameters for asymmetric key specifications.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *spec | Pointer to the asymmetric key specifications.|
-| [CryptoAsymKey_ParamType](#cryptoasymkey_paramtype) type | Type of the asymmetric key parameter to obtain.|
+| [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) type | Type of the asymmetric key parameter to obtain.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the input data.|
 
 **Returns**
@@ -697,7 +677,7 @@ Sets the specified parameters for asymmetric key specifications.
 ### OH_CryptoAsymKeySpec_SetCommonParamsSpec()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec,OH_CryptoAsymKeySpec *commonParamsSpec)
+OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec, OH_CryptoAsymKeySpec *commonParamsSpec)
 ```
 
 **Description**
@@ -706,13 +686,12 @@ Sets the common parameter specifications for asymmetric key specifications.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *spec | Pointer to the asymmetric key specifications.|
-| [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *commonParamsSpec | Pointer to the common parameter specifications.|
+| [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *commonParamsSpec | Common parameter specifications.|
 
 **Returns**
 
@@ -723,22 +702,21 @@ Sets the common parameter specifications for asymmetric key specifications.
 ### OH_CryptoAsymKeySpec_GetParam()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)
+OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)
 ```
 
 **Description**
 
-Obtains the specified parameters for asymmetric key specifications.
+Obtains the specified parameters for asymmetric key specifications.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *spec | Pointer to the asymmetric key specifications.|
-| [CryptoAsymKey_ParamType](#cryptoasymkey_paramtype) type | Type of the asymmetric key parameter to obtain.|
+| [CryptoAsymKey_ParamType](capi-crypto-asym-key-h.md#cryptoasymkey_paramtype) type | Type of the asymmetric key parameter to obtain.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the output data.|
 
 **Returns**
@@ -759,7 +737,6 @@ Destroys asymmetric key specifications.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -769,15 +746,14 @@ Destroys asymmetric key specifications.
 ### OH_CryptoAsymKeyGeneratorWithSpec_Create()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec,OH_CryptoAsymKeyGeneratorWithSpec **generator)
+OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)
 ```
 
 **Description**
 
-Creates a struct for an asymmetric key generator with specifications.
+Creates a struct for an asymmetric key generator with specifications.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymKeyGeneratorWithSpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygeneratorwithspec_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -795,15 +771,14 @@ Creates a struct for an asymmetric key generator with specifications.
 ### OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator,OH_CryptoKeyPair **keyPair)
+OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)
 ```
 
 **Description**
 
-Generates a key pair based on asymmetric key specifications.
+Generates a key pair based on asymmetric key specifications.<br> Note: After the use is complete, the memory for storing the **keyPair** parameter must be released by calling [OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -830,7 +805,6 @@ Destroys a struct for an asymmetric key generator with specifications.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -845,17 +819,16 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 
 **Description**
 
-Creates an EC point.
+Creates an EC point.<br> Note: The created resource must be destroyed by calling [OH_CryptoEcPoint_Destroy](capi-crypto-asym-key-h.md#oh_cryptoecpoint_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | const char *curveName | Pointer to the curve name.|
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *ecKeyData | Pointer to the EC point data, in **'04 \|\| x \|\| y'**, **'02 \|\| x'**, or **'03 \|\| x'** format.<br>| |  | |  | |  | |  If **ecKeyData** is **NULL**, an empty EC point specification is created.|
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *ecKeyData | Pointer to the EC point data, in **04 \|\| x \|\| y**, **02 \|\| x**, or **03 \|\| x** format. If **ecKeyData** is **NULL**, an empty EC point specification is created.|
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) **point | Pointer to the EC point.|
 
 **Returns**
@@ -872,10 +845,9 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 **Description**
 
-Obtains the X and Y coordinates of an EC point.
+Obtains the X and Y coordinates of an EC point.<br> Note: After the use is complete, the memory for storing the **x** and **y** parameters must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -903,7 +875,6 @@ Sets the X and Y coordinates of an EC point.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -926,10 +897,9 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 
 **Description**
 
-Encodes an EC point in a specified format.
+Encodes an EC point in a specified format.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -956,7 +926,6 @@ void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)
 Destroys an EC point.
 
 **Since**: 20
-
 
 **Parameters**
 

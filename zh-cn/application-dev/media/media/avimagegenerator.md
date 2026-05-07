@@ -2,7 +2,7 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,9 +12,9 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVImageGenerator API参考](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)。
+详细的API说明请参考[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)。
 
-1. 使用createAVImageGenerator()创建实例。
+1. 使用[createAVImageGenerator()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavimagegenerator12-1)创建实例。
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -70,7 +70,7 @@
 参考以下示例，获取一个视频指定时间的缩略图。
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS)，并将示例工程的资源复制到对应目录。
-    ```
+    ```txt
     AVImageGeneratorArkTS
     entry/src/main/ets/
     └── pages

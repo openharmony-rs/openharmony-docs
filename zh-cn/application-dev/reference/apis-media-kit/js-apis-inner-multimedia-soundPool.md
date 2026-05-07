@@ -31,11 +31,11 @@ import { audio } from '@kit.AudioKit';
 
 | 名称            | 类型                                     | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
-| loop | number   | 否 | 是  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。                   |
+| loop | number   | 否 | 是  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。<br>当loop为浮点数时只截取整数部分。                   |
 | rate | number    | 否 | 是  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：0。 |
-| leftVolume  | number | 否 | 是  | 设置左声道音量，设置范围（0.0, 1.0）。默认值：1.0。                                    |
-| rightVolume | number  | 否 | 是  | 设置右声道音量，设置范围（0.0, 1.0）。（当前不支持左右分别设置，将以左声道音量为准）。默认值：1.0。 |
-| priority  | number  | 否 | 是  | 音频流播放的优先级，0为最低优先级，数值越大优先级越高，通过相互比较大小确定播放优先级，设置范围为大于等于0的整数。默认值：0。      |
+| leftVolume  | number | 否 | 是  | 设置左声道音量。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。                       |
+| rightVolume | number  | 否 | 是  | 设置右声道音量（当前不支持左右分别设置，将以左声道音量为准）。设置范围为[0.0, 1.0]，默认值为1.0。<br> 当音量超过边界值时自动设置为边界值。 |
+| priority  | number  | 否 | 是  | 音频流播放的优先级。0为最低优先级，数值越大优先级越高。<br> 通过相互比较数值大小确定播放优先级，设置范围为大于等于0的整数。默认值为0。 <br> 当优先级为负数时自动设置为0，为浮点数时只截取整数部分。     |
 
 ## ErrorType<sup>20+</sup>
 
@@ -67,25 +67,28 @@ import { audio } from '@kit.AudioKit';
 
 > **说明：**
 >
-> 在使用SoundPool实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。
-> - [on('loadComplete')](#onloadcomplete)：监听资源加载完成。
-> - [on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)：监听播放完成，同时返回播放结束的音频的streamId。
-> - [on('playFinished')](#onplayfinished)：监听播放完成。
-> - [on('error')](#onerror)：监听错误事件。
-> - [on('errorOccurred')](#onerroroccurred20)：监听错误事件，同时返回[errorInfo](#errorinfo20)。
+> - 在使用SoundPool实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。
+>   - [on('loadComplete')](#onloadcomplete)：监听资源加载完成。建议开发者监听此回调以确保音频在加载完成后进行播放。
+>   - [on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)：监听播放完成，同时返回播放结束的音频的streamId。
+>   - [on('playFinished')](#onplayfinished)：监听播放完成。
+>   - [on('error')](#onerror)：监听错误事件。
+>   - [on('errorOccurred')](#onerroroccurred20)：监听错误事件，同时返回[errorInfo](#errorinfo20)。
+> - SoundPool目前不支持后台播放、设置音频打断等音频焦点策略和跳过音频头尾的静音帧。SoundPool低时延播放可参考[使用SoundPool播放短音频(ArkTS)](../../media/media/using-soundpool-for-playback.md)。
 
 ### load
 
 load(uri: string, callback: AsyncCallback\<number>): void
 
-加载音频资源。使用callback异步回调获取资源ID，入参uri通过获取文件fd生成以"fd://"开头的文件描述字符串。
+加载音频资源。使用callback异步回调。
+
+通过callback异步回调获取资源ID，入参URL通过获取文件fd生成以"fd://"开头的文件描述字符串。
 
 该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
 
->**说明：**
+> **说明：**
 >
->将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
->同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
+> - 将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
+> - 同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -98,7 +101,7 @@ load(uri: string, callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -122,11 +125,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let uri:string = "";
     let file: fileIo.File;
     // 获取fd的uri路径。
@@ -136,7 +139,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       uri = 'fd://' + (file.fd).toString();
       soundPool.load(uri, (error: BusinessError, soundId_: number) => {
         if (error) {
-          console.error(`Failed to load soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+          console.error(`Failed to load soundPool: Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`Succeeded in loading soundPool` + JSON.stringify(soundId_));
         }
@@ -150,14 +153,16 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(uri: string): Promise\<number>
 
-加载音频资源。使用Promise异步回调获取资源ID，入参uri通过获取文件fd生成以"fd://"开头的文件描述字符串。
+加载音频资源。使用Promise异步回调。
+
+通过Promise异步回调获取资源ID，入参URL通过获取文件fd生成以"fd://"开头的文件描述字符串。
 
 该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
 
->**说明：**
+> **说明：**
 >
->将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
->同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
+> - 将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
+> - 同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -175,7 +180,7 @@ load(uri: string): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -199,11 +204,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let uri:string = "";
     let soundID: number = 0;
     let file: fileIo.File;
@@ -216,7 +221,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading uri');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundPool and catch error is ' + err.message);
+        console.error('Failed to load soundPool. Code: ${err.code}, message: ${err.message}');
       });
     }); // '/test_01.mp3' 作为样例，使用时需要传入文件对应路径。
   }
@@ -227,12 +232,14 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void
 
-加载音频资源。使用callback异步回调获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
+加载音频资源。使用callback异步回调。
+
+通过callback异步回调获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
 
 >**说明：**
 >
->将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
->同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
+> - 将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
+> - 同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -247,7 +254,7 @@ load(fd: number, offset: number, length: number, callback: AsyncCallback\<number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -271,11 +278,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // 通过fileIo.stat()获取size值。
@@ -287,7 +294,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize, (error: BusinessError, soundId_: number) => {
         if (error) {
-          console.error(`Failed to load soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+          console.error(`Failed to load soundPool: Code: ${error.code}, message: ${error.message}`);
         } else {
           soundID = soundId_;
           console.info('Succeeded in loading soundId:' + soundId_);
@@ -315,7 +322,7 @@ function create(context: Context) {
   let soundID: number = 0;
   media.createSoundPool(5, audioRendererInfo, async (error: BusinessError, soundPool_: media.SoundPool) => {
     if (error) {
-      console.error(`Failed to createSoundPool`);
+      console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
       return;
     } else {
       soundPool = soundPool_;
@@ -324,7 +331,7 @@ function create(context: Context) {
       let fileDescriptor = await context.resourceManager.getRawFd('test_01.mp3');
       soundPool.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length, (error: BusinessError, soundId_: number) => {
         if (error) {
-          console.error(`Failed to load soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+          console.error(`Failed to load soundPool. Code: ${error.code}, message: ${error.message}`);
         } else {
           soundID = soundId_;
           console.info('Succeeded in loading soundId:' + soundId_);
@@ -339,12 +346,14 @@ function create(context: Context) {
 
 load(fd: number, offset: number, length: number): Promise\<number>
 
-加载音频资源。使用Promise异步回调获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
+加载音频资源。使用Promise异步回调。
 
->**说明：**
+通过Promise异步回调获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
+
+> **说明：**
 >
->将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
->同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
+> - 将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
+> - 同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -364,7 +373,7 @@ load(fd: number, offset: number, length: number): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -388,11 +397,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // 通过fileIo.stat()获取size值。
@@ -406,7 +415,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool and catch error is ' + err.message);
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     });
   }
@@ -431,18 +440,18 @@ function create(context: Context) {
   let soundID: number = 0;
   media.createSoundPool(5, audioRendererInfo, async (error: BusinessError, soundPool_: media.SoundPool) => {
     if (error) {
-      console.error(`Failed to createSoundPool`);
+      console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
       return;
     } else {
       soundPool = soundPool_;
-      console.info(`Succeeded in createSoundPool`);
+      console.info(`Succeeded in creating SoundPool`);
       // test_01.mp3为rawfile目录资源下面的音频。
       let fileDescriptor = await context.resourceManager.getRawFd('test_01.mp3');
       soundPool.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length).then((soundId: number) => {
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool and catch error is ' + err.message);
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     }
   });
@@ -467,7 +476,7 @@ play(soundID: number, params: PlayParameters, callback: AsyncCallback\<number>):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -490,7 +499,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -533,7 +542,7 @@ play(soundID: number, callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -556,11 +565,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let soundID: number = 0;
     let streamID: number = 0;
     soundPool.play(soundID,  (error: BusinessError, streamId: number) => {
@@ -598,7 +607,7 @@ play(soundID: number, params?: PlayParameters): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -621,11 +630,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
@@ -640,7 +649,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       console.info('Succeeded in playing soundpool');
       streamID = streamId;
     },(err: BusinessError) => {
-      console.error('Failed to play soundpool and catch error is ' + err.message);
+      console.error('Failed to play soundpool. Code: ${err.code}, message: ${err.message}');
     });
   }
 });
@@ -659,11 +668,11 @@ stop(streamID: number, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池stop的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池stop回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -686,7 +695,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -723,11 +732,11 @@ stop(streamID: number): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | Promise方式返回，无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -750,7 +759,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -760,7 +769,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.stop(streamID).then(() => {
       console.info('Succeeded in stopping soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to stop soundpool and catch error is ' + err.message);
+      console.error(`Failed to stop soundpool Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -768,7 +777,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setLoop
 
-setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
+setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void
 
 设置循环模式。使用callback异步回调。
 
@@ -780,11 +789,11 @@ setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
 | loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。 |
-| callback | AsyncCallback\<void> | 是   | 异步setLoop的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当setLoop的回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -807,7 +816,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -819,7 +828,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to setLoop soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setLoopping soundpool, streamID:' + streamID);
+        console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
       }
     });
   }
@@ -850,7 +859,7 @@ setLoop(streamID: number, loop: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -873,7 +882,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -882,9 +891,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // 先通过调用play方法获取到对应的streamID。
     // 设置循环1次。
     soundPool.setLoop(streamID, 1).then(() => {
-      console.info('Succeeded in setLoopping soundpool, streamID:' + streamID);
+      console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
     }).catch((err: BusinessError) => {
-      console.error('Failed to setLoop soundPool and catch error is ' + err.message);
+      console.error(`Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -904,11 +913,11 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>):
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
 | priority | number | 是   | 优先级，0表示最低优先级。设置范围为大于等于0的整数。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池setPriority方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池setPriority方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -931,11 +940,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     // 先调用play方法获取到对应资源的streamID。
     // 给对应的streamID资源设置优先级为1。
@@ -943,7 +952,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to setPriority soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setPriority soundpool, streamID:' + streamID);
+        console.info('Succeeded in setting Priority soundpool, streamID:' + streamID);
       }
     });
   }
@@ -973,7 +982,7 @@ setPriority(streamID: number, priority: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -996,19 +1005,19 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     // 先调用play方法获取到对应资源的streamID。
     // 给对应的streamID资源设置优先级为1。
 
     soundPool.setPriority(streamID, 1).then(() => {
-      console.info('Succeeded in setPriority soundpool');
+      console.info('Succeeded in setting Priority soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setPriority soundPool and catch error is ' + err.message);
+      console.error('Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}');
     });
   }
 });
@@ -1028,11 +1037,11 @@ setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
 | rate | [audio.AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8) | 是   | 音频rate相关参数。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池setRate方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池setRate方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1055,19 +1064,19 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool.  Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     let selectedAudioRendererRate: audio.AudioRendererRate = audio.AudioRendererRate.RENDER_RATE_NORMAL; // 默认正常速率
     // 先调用play方法获取到对应资源的streamID。
     soundPool.setRate(streamID, selectedAudioRendererRate, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to setRate soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+        console.error(`Failed to set Rate soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setRate success, streamID:' + streamID);
+        console.info('Succeeded in setting Rate, streamID:' + streamID);
       }
     })
   }
@@ -1097,7 +1106,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1120,18 +1129,18 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool.  Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     let selectedAudioRendererRate: audio.AudioRendererRate = audio.AudioRendererRate.RENDER_RATE_NORMAL; // 默认正常速率
     // 先调用play方法获取到对应资源的streamID。
     soundPool.setRate(streamID, selectedAudioRendererRate).then(() => {
-      console.info('Succeeded in setRate soundpool');
+      console.info('Succeeded in setting Rate soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setRate soundpool and catch error is ' + err.message);
+      console.error(`Failed to set Rate. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1151,13 +1160,13 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: A
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| leftVolume | number | 是   | 左声道音量，设置范围为0.0-1.0之间。 |
-| rightVolume | number | 是   | 右声道音量，设置范围为0.0-1.0之间，当前右声道设置无效，以左声道为准。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池setVolume方法的回调方法。 |
+| leftVolume | number | 是   | 左声道音量，设置范围为[0.0, 1.0]。 |
+| rightVolume | number | 是   | 右声道音量，设置范围为[0.0, 1.0]，当前右声道设置无效，以左声道为准。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池setVolume方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1180,7 +1189,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool.  Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -1192,7 +1201,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to setVolume soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setVolume soundpool, streamID:' + streamID);
+        console.info('Succeeded in setting Volume soundpool, streamID:' + streamID);
       }
     })
   }
@@ -1212,8 +1221,8 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| leftVolume | number | 是   | 左声道音量，设置范围为0.0-1.0之间。 |
-| rightVolume | number | 是   | 右声道音量，设置范围为0.0-1.0之间，当前右声道设置无效，以左声道为准。 |
+| leftVolume | number | 是   | 左声道音量，设置范围为[0.0, 1.0]。 |
+| rightVolume | number | 是   | 右声道音量，设置范围为[0.0, 1.0]，当前右声道设置无效，以左声道为准。 |
 
 **返回值：**
 
@@ -1223,7 +1232,7 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1318,11 +1327,11 @@ unload(soundID: number, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | soundID | number | 是   | 资源ID，通过load方法获取。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池unload方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池unload方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1385,7 +1394,7 @@ unload(soundID: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1437,11 +1446,11 @@ release(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| callback | AsyncCallback\<void> | 是   | 异步音频池release方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池release方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1494,7 +1503,7 @@ release(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1534,7 +1543,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'loadComplete', callback: Callback\<number>): void
 
-音频池资源加载完成监听。
+音频池资源加载完成监听。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1543,7 +1552,7 @@ on(type: 'loadComplete', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'loadComplete'，对应的ID加载完成会触发此回调。 |
-| callback | Callback\<number> | 是   | 对应资源加载完成的资源ID。                               |
+| callback | Callback\<number> | 是   | 回调函数，返回对应资源加载完成的资源ID。                               |
 
 **示例：**
 
@@ -1617,7 +1626,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
-音频池资源播放完成监听，同时返回播放结束的音频的streamId。
+音频池资源播放完成监听，同时返回播放结束的音频的streamId。使用callback异步回调。
 
 当仅单独注册[on('playFinished')](#onplayfinished)事件回调或者[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
@@ -1630,7 +1639,7 @@ on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'playFinishedWithStreamId'，音频流播放完成会触发此回调，并返回播放完成的音频的streamId。 |
-| callback | Callback\<number> | 是   |  异步'playFinishedWithStreamId'的回调方法。返回播放完成的音频的streamId。   |
+| callback | Callback\<number> | 是   |  回调函数，返回播放完成的音频的streamId。   |
 
 **示例：**
 
@@ -1702,7 +1711,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: me
 
 on(type: 'playFinished', callback: Callback\<void>): void
 
-音频池资源播放完成监听。
+音频池资源播放完成监听。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1785,7 +1794,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'error', callback: ErrorCallback): void
 
-监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。
+监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1867,7 +1876,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 
-监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。
+监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1876,7 +1885,7 @@ on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件回调类型，支持的事件为'errorOccurred'，当用户或系统操作导致错误，触发该事件。 |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 是   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+| callback | Callback\<[ErrorInfo](#errorinfo20)> | 是   | 回调函数，返回错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
 
 **示例：**
 
@@ -1922,7 +1931,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | 是   | 事件回调类型，取消注册的事件为'errorOccurred'。 |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+| callback | Callback\<[ErrorInfo](#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)，不设置callback时不提供相关信息。 |
 
 **示例：**
 

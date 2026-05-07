@@ -33,10 +33,11 @@ let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioMan
 | BLUETOOTH_SCO | 7 | 蓝牙设备SCO（Synchronous Connection Oriented）连接。 | 
 | MIC | 15 | 麦克风。 | 
 | USB_HEADSET | 22 | USB耳机，带麦克风。 | 
+| NEARLINK | 31 | 星闪设备。 | 
 
 ## 获取输入设备信息
 
-使用getDevices()方法可以获取当前所有输入设备的信息。
+使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输入设备的信息。
 
 <!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
 
@@ -54,20 +55,22 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 
 可以设置监听事件来监听设备连接状态的变化，当有设备连接或断开时触发回调：
 
-<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->  
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import { audio } from '@kit.AudioKit';  // 导入audio模块。
 // ...
   // 监听音频设备状态变化。
   audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG,
     (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('device change type : ' + deviceChanged.type); // 设备连接状态变化,0为连接,1为断开连接。
+    console.info('device change type : ' + deviceChanged.type);  // 设备连接状态变化,0为连接,1为断开连接。
     console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole); // 设备角色。
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType); // 设备类型。
+    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);  // 设备角色。
+    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);  // 设备类型。
 
     // ...
+  });
+  // ...
   // 取消监听音频设备状态变化。
   audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
     console.info('Should be no callback.');

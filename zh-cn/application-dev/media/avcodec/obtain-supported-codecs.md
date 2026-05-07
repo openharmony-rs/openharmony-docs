@@ -12,6 +12,7 @@
 为确保编解码行为符合预期，请通过音视频编解码能力接口查询系统支持的编解码器及其能力，选择符合开发需求的编解码器，并正确配置参数。
 
 ## 通用开发指导
+
 1. 在CMake脚本中链接动态库。
 
    ``` cmake
@@ -24,7 +25,6 @@
    > **说明：**
    >
    > 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。
-   >
 
 2. 添加头文件。
 
@@ -38,24 +38,34 @@
 
 3. 获得音视频编解码能力实例。
 
-   支持两种方式获取音视频编解码能力实例。
+   支持以下方式获取音视频编解码能力实例。若获取能力实例成功，继续向下执行。实例无显式释放接口，使用完毕后系统会自动回收。
    
    方式一：通过`OH_AVCodec_GetCapability`获取系统推荐的音视频编解码器能力实例。推荐策略与`OH_XXX_CreateByMime`系列接口一致。
+
    ```c++
    // 获取系统推荐的音频AAC解码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
    
    方式二：通过`OH_AVCodec_GetCapabilityByCategory`获取指定软硬件的编解码能力实例。
+
    ```c++
    // 获取指定硬件的视频AVC编码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
-   若获取能力实例成功，继续向下执行。实例无显性释放接口，使用完毕后系统会自动回收。
+
+   方式三：从API version 24开始，通过OH_AVCodec_GetCapabilityList获取指定编解码器类型的全量能力实例列表。此方式适用于需要遍历系统支持的所有特定类型（如视频解码器）并根据多个条件进行组合筛选的场景。
+
+   ```c++
+   // 获取系统中所有视频解码器的能力实例列表。
+   uint32_t count = 0;
+   OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
+   ```
    
-4. 按需调用相应的查询接口。详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
+4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
 
 ## 场景化开发
+
 基于开发过程中可能遇到的具体场景，此处将举例说明能力查询接口的使用方法。
 
 ### 创建指定名称的编解码器
@@ -166,15 +176,15 @@ if (createdVDecNum < NEEDED_VDEC_NUM) {
 
 ### 控制编码质量
 
-提供四种码控模式供开发者选择：恒定码率（CBR）、动态码率（VBR）、恒定质量（CQ）及质量稳定（SQR）。
-- CBR和VBR码控模式下，编码质量取决于码率参数。
+提供以下码控模式供开发者选择：恒定码率（CBR）、动态码率（VBR）、恒定质量（CQ）、质量稳定（SQR）和高质量恒定码率（CBRHQ）。
+- CBR、VBR和CBRHQ码控模式下，编码质量取决于码率参数。CBRHQ码控模式从API版本26.0.0开始使用，仅支持H.265（HEVC）编码。如果配置了CBRHQ但是平台不支持，会自动使用CBR码控模式替代。
 - CQ码控模式下，编码质量取决于质量参数。
 - SQR码控模式下，编码质量由质量稳定码率因子和最大码率决定，且仅支持H.265（HEVC）编码。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCapability_IsEncoderBitrateModeSupported  | 确认当前编码器是否支持给定的码控模式。 |
-| OH_AVCapability_GetEncoderBitrateRange     | 获取当前编码器支持的码率范围，适用于CBR、VBR和SQR码控模式。 |
+| OH_AVCapability_GetEncoderBitrateRange     | 获取当前编码器支持的码率范围，适用于CBR、VBR、SQR和CBRHQ码控模式。 |
 | OH_AVCapability_GetEncoderQualityRange  | 获取当前编码器支持的质量范围，适用于CQ码控模式。  |
 
 CBR和VBR码控模式示例如下。
@@ -312,7 +322,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 }
 OH_AVFormat_Destroy(format);
 
-// 6.启动编码器，开始编码。
+// 6. 启动编码器，开始编码。
 ret = OH_VideoEncoder_Prepare(videoEnc);
 if (ret != AV_ERR_OK) {
    // 异常处理。
@@ -335,6 +345,50 @@ if (ret != AV_ERR_OK) {
 }
 OH_AVFormat_Destroy(dynamicFormat);
 ```
+CBRHQ码控模式示例如下：
+```c++
+OH_BitrateMode bitrateMode = BITRATE_MODE_CBR_HIGH_QUALITY;
+int32_t bitrate = 3000000;
+OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true);
+if (capability == nullptr) {
+   // 异常处理。
+}
+// 1. 确认待配置码控模式是否支持。
+bool isSupported = OH_AVCapability_IsEncoderBitrateModeSupported(capability, bitrateMode);
+if (!isSupported) {
+   // 异常处理。
+}
+// 2. 获取码率范围，判断待配置最大码率参数是否在范围内。
+OH_AVRange bitrateRange = {-1, -1};
+// 最大码率参数的取值范围同码率参数，故复用OH_AVCapability_GetEncoderBitrateRange获取取值范围。
+int32_t ret = OH_AVCapability_GetEncoderBitrateRange(capability, &bitrateRange);
+if (ret != AV_ERR_OK || bitrateRange.maxVal <= 0) {
+   // 异常处理。
+}
+
+if (bitrate > bitrateRange.maxVal || bitrate < bitrateRange.minVal) {
+   // 3.（可选）调整待配置最大码率参数。
+}
+
+// 4. 配置编码参数。
+OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+if (videoEnc == nullptr) {
+   // 异常处理。
+}
+OH_AVFormat *format = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, 1920, 1080);
+if (format == nullptr) {
+   // 异常处理。
+}
+if (!OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, bitrateMode) ||
+   !OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, static_cast<int64_t>(bitrate))) {
+   // 异常处理。
+}
+if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
+   // 异常处理。
+}
+OH_AVFormat_Destroy(format);
+```
+
 
 ### 查询编码器支持复杂度范围
 
@@ -738,6 +792,7 @@ if (!isMatched) {
 ### 查询编解码特性支持情况并获取特性属性信息
 
 编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考[OH_AVCapabilityFeature](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature)。
+
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCapability_IsFeatureSupported              | 确认当前编解码器是否支持给定的特性。 |
@@ -772,5 +827,47 @@ if (isSupported) {
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
 if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
    // 异常处理。
+}
+```
+
+### 筛选特定MIME类型的安全解码器（DRM播放场景）
+
+从API version 24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的"安全解码器"。
+
+开发者可以通过获取解码器列表，并结合MIME类型通过接口OH_AVCapability_IsSecure查询解码器类型，精准筛选出符合要求的安全解码器。
+
+| 接口     | 功能描述                         |
+| -------- | ---------------------------- |
+| OH_AVCodec_GetCapabilityList              | 获取指定类型（如视频解码器）的所有编解码能力实例列表。 |
+| OH_AVCapability_GetMimeType               | 获取该能力实例对应的MIME类型字符串。 |
+| OH_AVCapability_CheckMimeType             | 校验该能力实例的MIME类型是否与目标类型一致。 |
+| OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理DRM资源的安全解码器。 |
+
+查找并创建H.264安全硬件解码器的示例代码如下：
+
+```c++
+// 1. 定义期望的MIME类型。
+const char *targetMime = OH_AVCODEC_MIMETYPE_VIDEO_AVC;
+uint32_t count = 0;
+
+// 2. 获取所有视频解码器的能力列表。
+OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
+
+if (capabilityList != nullptr && count > 0) {
+    for (uint32_t i = 0; i < count; i++) {
+        OH_AVCapability *cap = capabilityList[i];
+        
+        // 3. 检查是否为目标的MIME类型，且必须是安全解码器。
+        if (OH_AVCapability_CheckMimeType(cap, targetMime) && OH_AVCapability_IsSecure(cap)) {
+            // 4. 找到符合条件的编解码器，获取其名称用于创建实例。
+            const char *codecName = OH_AVCapability_GetName(cap);
+            OH_AVCodec *secureVideoDec = OH_VideoDecoder_CreateByName(codecName);
+            
+            if (secureVideoDec != nullptr) {
+                // 成功创建安全解码器，跳出循环执行后续业务。
+                break;
+            }
+        }
+    }
 }
 ```

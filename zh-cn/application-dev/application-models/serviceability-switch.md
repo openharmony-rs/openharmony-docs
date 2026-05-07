@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 [FA模型](ability-terminology.md#fa模型)中的ServiceAbility对应[Stage模型](ability-terminology.md#stage模型)中的ServiceExtensionAbility。Stage模型下的ServiceExtensionAbility为系统API，只有系统应用才可以创建。因此，FA模型的ServiceAbility的切换，对于系统应用和三方应用策略有所不同。下面分别介绍这两种场景。
 
@@ -20,7 +20,7 @@
 
    ServiceAbility和ServiceExtensionAbility生命周期对比见下表。
 
-     | FA的ServiceAbility | Stage的ServiceExtensionAbility | 对比描述 | 
+   | FA的ServiceAbility | Stage的ServiceExtensionAbility | 对比描述 | 
    | -------- | -------- | -------- |
    | onStart():&nbsp;void | onCreate(want:&nbsp;Want):&nbsp;void | 两者调用时机一致，Stage模型下增加了入参want以便开发者在创建时获取参数。 | 
    | onCommand(want:&nbsp;Want,&nbsp;startId:&nbsp;number):&nbsp;void | onRequest(want:&nbsp;Want,&nbsp;startId:&nbsp;number):&nbsp;void | 两者意义和调用时机一致，参数也一致。 | 
@@ -34,7 +34,7 @@
 
 Stage模型下三方应用不能对其他三方提供服务，应用可以根据具体业务选择切换方案。
 
-  | 业务类型 | 切换策略 | 
+| 业务类型 | 切换策略 | 
 | -------- | -------- |
 | 对其他三方应用提供服务 | 需根据业务场景匹配到系统对应的场景化[ExtensionAbility](extensionability-overview.md)。 | 
 | 应用内：前台运行时公共使用 | 可以将该组件代码抽取成公共模块供其他组件使用。 | 

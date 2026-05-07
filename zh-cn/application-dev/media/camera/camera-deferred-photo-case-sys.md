@@ -209,7 +209,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   if (photoOutput === undefined) {
     return;
   }
-  //创建会话。
+  // 创建会话。
   let photoSession: camera.PhotoSession | undefined = undefined;
   try {
     photoSession = cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO) as camera.PhotoSession;

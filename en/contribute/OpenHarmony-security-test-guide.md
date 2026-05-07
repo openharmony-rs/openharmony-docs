@@ -10,7 +10,7 @@ With reference to industry standards and best practices, this document provides 
 
 - Use the compilation option scanning tool to scan your binary file and ensure that the settings of all the compilation options comply with the OpenHarmony Compilation Specifications.
 
-- For the module that receives and processes user-mode parameters, develop gray-box and white-box fuzz testing suites according to the [Fuzz Testing Guide](https://gitee.com/openharmony/test_developertest/tree/master/libs/fuzzlib) and complete the tests.
+- For the module that receives and processes user-mode parameters, develop gray-box and white-box fuzz testing suites according to the [Fuzz Testing Guide](https://gitcode.com/openharmony/test_developertest/tree/master/libs/fuzzlib) and complete the tests.
 
 - Use mainstream vulnerability scanning tools to scan open-source components. Ensure that all the detected vulnerabilities have been fixed according to the vulnerability management process of the community.
 

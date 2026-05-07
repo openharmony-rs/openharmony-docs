@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -27,7 +27,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[ImagePacker API参考](../../reference/apis-image-kit/capi-image-packer-mdk-h.md)。
+详细的API说明请参考文件[image_packer_mdk.h](../../reference/apis-image-kit/capi-image-packer-mdk-h.md)。
 
 参考以下示例代码，完成图片编码的全流程，包括：创建编码器、初始化资源、编码过程、销毁资源。
 
@@ -87,6 +87,7 @@ target_link_libraries(entry PUBLIC libimage_packer_ndk.z.so)
       > 根据MIME标准，标准编码格式为image/jpeg。当使用image编码时，编码参数中的编码格式format设置为image/jpeg，image编码后的文件扩展名可设为.jpg或.jpeg，可在支持image/jpeg解码的平台上使用。
 
    编码接口可按输出方式分为向缓存区（内存）输出和向文件输出两种接口，入参均为上述内容。
+   
    应用可根据输出的不同需求选择编码接口。
 
    向缓存区（内存）输出。

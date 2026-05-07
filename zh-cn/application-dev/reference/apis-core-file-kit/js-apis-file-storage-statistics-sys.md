@@ -1,10 +1,10 @@
 # @ohos.file.storageStatistics (应用空间统计)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供空间查询相关的常用功能：包括对内外卡的空间查询、对应用分类数据统计的查询、对应用数据的查询等。
 
@@ -23,7 +23,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 
 getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），以Promise方式返回。
+异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -82,7 +82,7 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
 
-异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），以callback方式返回。
+异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -139,7 +139,7 @@ getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;):
 
 getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
-异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以Promise方式返回。
+异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -198,7 +198,7 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
 
-异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以callback方式返回。
+异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -255,7 +255,7 @@ getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): 
 
 getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
-异步获取应用存储数据的空间大小（单位为Byte），以Promise方式返回。
+异步获取应用存储数据的空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -284,7 +284,7 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
@@ -319,9 +319,9 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
-getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
+getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
 
-异步获取应用存储数据的空间大小（单位为Byte），以callback方式返回。
+异步获取应用存储数据的空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -345,7 +345,7 @@ getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;,
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
@@ -384,7 +384,7 @@ getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;,
 
 getSystemSize(): Promise&lt;number&gt;
 
-异步获取系统数据的空间大小（单位为Byte），以Promise方式返回。
+异步获取系统数据的空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -425,7 +425,7 @@ getSystemSize(): Promise&lt;number&gt;
 
 getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 
-异步获取系统数据的空间大小（单位为Byte），以callback方式返回。
+异步获取系统数据的空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -469,7 +469,7 @@ getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 
 getUserStorageStats(): Promise&lt;StorageStats&gt;
 
-异步获取当前用户各类别存储空间大小（单位为Byte），以Promise方式返回。
+异步获取当前用户各类别存储空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -510,7 +510,7 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
-异步获取当前用户各类别存储空间大小（单位为Byte），以callback方式返回。
+异步获取当前用户各类别存储空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -554,7 +554,7 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
-异步获取指定用户各类别存储空间大小（单位为Byte），以Promise方式返回。
+异步获取指定用户各类别存储空间大小（单位为Byte），使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -603,7 +603,7 @@ getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
 getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;): void
 
-异步获取指定用户各类别存储空间大小（单位为Byte），以callback方式返回。
+异步获取指定用户各类别存储空间大小（单位为Byte），使用callback异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -902,5 +902,49 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
     console.info("listUserdataDirInfo successfully.");
   }).catch((err: BusinessError) => {
     console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+  
+## storageStatistics.getSystemDataSize<sup>24+</sup>
+
+getSystemDataSize(): Promise&lt;number&gt;
+
+获取系统数据的总空间大小，使用Promise异步回调。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**返回值：**
+
+| 类型                   | 说明    |
+| --------------------- | :---- |
+|  Promise&lt;number&gt; | Promise对象，返回系统数据的总空间大小。单位：Byte。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600018 | Failed to query the system data size. |
+
+**示例：**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  storageStatistics.getSystemDataSize().then((systemDataSize: number) => {
+    console.info("getSystemDataSize successfully: " + JSON.stringify(systemDataSize));
+  }).catch((err: BusinessError) => {
+    console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```

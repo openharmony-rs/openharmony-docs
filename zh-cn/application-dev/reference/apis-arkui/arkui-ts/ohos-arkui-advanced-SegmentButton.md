@@ -10,7 +10,7 @@
 
 >**说明：**
 >
->该组件从 API Version 11 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## 导入模块
@@ -33,7 +33,7 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray } fr
 
 ## SegmentButton
 
-SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource })
+SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
 
 **装饰器类型：**@Component
 
@@ -41,17 +41,19 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+>**说明：** 
+>
+> - 分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
+>
+> - @Prop装饰的属性为可选参数，仅当与@Require装饰器联合使用时，才必须在构造时传入对应参数。
+
 | 名称            | 类型                                      | 必填 | 装饰器类型  | 说明                                                         |
 | --------------- | --------------------------------------------- | ---- | ----------- | ------------------------------------------------------------ |
 | options         | [SegmentButtonOptions](#segmentbuttonoptions) | 是   | @ObjectLink | 分段按钮选项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | selectedIndexes | number[]                                      | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/>**说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| onItemClicked<sup>13+</sup> | Callback\<number\> | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是 | @Prop | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| enableStateAnimation<sup>23+</sup> | boolean   | 否 | @Prop | 当通过修改selectedIndexes来进行选中项切换时，是否开启动画效果。<br>true表示开启动画；false表示关闭动画。 <br>默认值：false <br/>值为undefined时，按默认值处理。<br>**说明：**<br> 默认情况下，只有点击按钮触发的选中项切换带有动画效果。<br>开启此选项后，修改selectedIndexes触发的选中项切换也带有动画效果。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-
->**说明：** 
->
->分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
+| onItemClicked<sup>13+</sup> | Callback\<number\> | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | @Prop | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| enableStateAnimation<sup>24+</sup>       | boolean   | 否 | @Prop| 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SegmentButtonOptions
 
@@ -69,9 +71,10 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                  | 类型                                                         | 只读                                                     | 可选                                                     | 说明                                                       |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| type                    | “tab” \|“capsule”                                  | 否                                       | 否                                       | 分段按钮组件的类型。<br/>**说明：**<br/>'tab'：页签类分段按钮，适用于页面或内容区域的切换场景。<br/>'capsule'：胶囊类分段按钮，适用于单选或多选的选择场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| type                    | "tab" \|"capsule"                                  | 否                                       | 否                                       | 分段按钮组件的类型。<br/>**说明：**<br/>"tab"：页签类分段按钮，适用于页面或内容区域的切换场景。<br/>"capsule"：胶囊类分段按钮，适用于单选或多选的选择场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | multiply                | boolean                                                      | 否                                                  | 否                                               | 分段按钮组件是否可以多选。<br/>true: 可多选；false: 不可多选。页签类分段按钮只支持单选，设置`multiply`为`true`不生效。<br/>值为undefined时，分段按钮不支持多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | buttons                 | [SegmentButtonItemOptionsArray](#segmentbuttonitemoptionsarray) | 否 | 否 | 分段按钮组件的按钮信息，包括图标和文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否              | 分段按钮组件的按钮未选中态的文本颜色。<br/>值为undefined时，颜色为$r('sys.color.ohos_id_color_text_secondary')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -80,8 +83,8 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮选中态的字体大小，不支持百分比设置。<br/>值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮未选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Regular。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Medium。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的底板颜色。<br/>值为undefined时，背板颜色为$r('sys.color.ohos_id_color_button_normal')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的按钮选中态底板颜色。<br/>值为undefined时，type为"tab"时，底板颜色为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>type为"capsule"时，底板颜色为`$r('sys.color.ohos_id_color_emphasize')`。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的背景板颜色。<br/>值为undefined时，背景板颜色为$r('sys.color.ohos_id_color_button_normal')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的按钮选中态背景板颜色。<br/>值为undefined时，type为"tab"时，背景板颜色为`$r('sys.color.segment_button_checked_foreground_color')`。<br/>type为"capsule"时，背景板颜色为`$r('sys.color.ohos_id_color_emphasize')`。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 否                    | 分段按钮组件的图片尺寸。<br>值为undefined时，图片尺寸为{ width: 24, height: 24 }。<br>单位：vp <br>**说明：**<br/>`imageSize`属性对仅图标按钮和图标+文本按钮生效，对仅文字按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的按钮内边距。<br>值为undefined时，仅图标按钮和仅文字按钮内边距：`{ top: 4, right: 8, bottom: 4, left: 8 }`<br/>图标+文本按钮内边距：`{ top: 6, right: 8, bottom: 6, left: 8 }` <br>单位：vp <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的文本内边距。<br/>值为undefined时，文本内边距为0。<br>单位：vp<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -90,8 +93,9 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 分段按钮组件的布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 否              | 分段按钮组件的背景模糊材质。<br/>值为undefined时，背景模糊材质为BlurStyle.NONE。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButton的动效发生改变。<br/>对于胶囊类多选按钮（即type为"capsule"且multiply为true），该属性不生效。<br/>默认值：无材质效果。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### constructor
 
@@ -195,8 +199,8 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 | selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 是            | 按钮选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 是              | 按钮未选中态的字体粗细。<br/>默认值：FontWeight.Regular<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 是              | 按钮选中态的字体粗细。<br/>默认值：FontWeight.Medium<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 底板颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮选中态的底板颜色。<br/>默认值：<br>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 背景板颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮选中态的背景板颜色。<br/>默认值：<br>type为"tab"时，默认值为`$r('sys.color.segment_button_checked_foreground_color')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 是                     | 图片尺寸。<br>默认值：{ width: 24, height: 24 }<br>单位：vp<br/>值为undefined时，按默认值处理。<br>**说明：**<br/>`imageSize`属性仅对图标按钮和图标+文本按钮生效，对纯文本按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 按钮内边距。<br/>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: 4, right: 8, bottom: 4, left: 8 }`<br>图标+文本按钮默认值：`{ top: 6, right: 8, bottom: 6, left: 8 }`<br>单位：vp<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 文本内边距。<br/>默认值：0<br>单位：vp<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -205,8 +209,9 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 是               | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButton的动效发生改变。<br/>对于胶囊类多选按钮（即type为"capsule"且multiply为true），该属性不生效。<br/>默认值：无材质效果。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## BorderRadiusMode<sup>20+</sup>
 
@@ -661,21 +666,27 @@ import {
 @Entry
 @Component
 struct Index {
+  // 页签类分段按钮数组。
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
       text: '页签按钮3'
     }] as ItemRestriction<SegmentButtonTextItem>,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
+  // 胶囊类分段按钮数组。
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
     multiply: false,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
+  // 可多选胶囊类分段按钮数组。
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as SegmentButtonItemTuple,
     multiply: true
   });
+  // 胶囊类分段按钮带选中非选中图标数组。
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -684,8 +695,10 @@ struct Index {
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ] as SegmentButtonItemTuple,
     multiply: false,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
+  // 可多选胶囊类分段按钮带选中非选中图标数组。
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -756,28 +769,28 @@ struct Index {
       text: '页签按钮3'
     }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: 'rgb(213,213,213)',
-    selectedBackgroundColor: 'rgb(112,112,112)',
+    selectedBackgroundColor: 'rgb(112,112,112)', // 配置CommonSegmentButtonOptions，实现选中背景色
     textPadding: {
       top: 10,
       right: 10,
       bottom: 10,
       left: 10
-    },
+    }, // 配置CommonSegmentButtonOptions，实现文字内边距
   });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
     multiply: false,
-    fontColor: 'rgb(0,74,175)',
-    selectedFontColor: 'rgb(247,247,247)',
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+    fontColor: 'rgb(0,74,175)', // 配置CommonSegmentButtonOptions，实现文字颜色
+    selectedFontColor: 'rgb(247,247,247)', // 配置CommonSegmentButtonOptions，实现选中文字颜色
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK // 配置CommonSegmentButtonOptions，实现背景模糊样式
   });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as SegmentButtonItemTuple,
     multiply: true,
     fontSize: 18,
     selectedFontSize: 18,
-    fontWeight: FontWeight.Bolder,
-    selectedFontWeight: FontWeight.Lighter,
+    fontWeight: FontWeight.Bolder, // 配置CommonSegmentButtonOptions，实现文字粗细
+    selectedFontWeight: FontWeight.Lighter, // 配置CommonSegmentButtonOptions，实现选中文字粗细
   });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
@@ -859,10 +872,12 @@ import {
 @Entry
 @Component
 struct Index {
+  // 胶囊类分段按钮数组。
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '1' }, { text: '2' }, { text: '3' },
       { text: '4' }, { text: '5' }] as SegmentButtonItemTuple,
     multiply: false,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
   @State capsuleSelectedIndexes: number[] = [0];
@@ -875,28 +890,34 @@ struct Index {
             options: this.singleSelectCapsuleOptions,
             selectedIndexes: $capsuleSelectedIndexes
           })
+          // 点击’删除第一个按钮‘，第一个按钮会删除。
           Button('删除第一个按钮')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.shift()
             })
+          // 点击’删除最后一个按钮‘，最后一个按钮会删除。
           Button('删除最后一个按钮')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.pop()
             })
+          // 点击’末尾增加一个按钮push‘，在按钮末尾会增加一个按钮。
           Button('末尾增加一个按钮push')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.push({ text: 'push' })
             })
+          // 点击’开头增加一个按钮unshift‘，在按钮开头会增加一个按钮。
           Button('开头增加一个按钮unshift')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.unshift(({ text: 'unshift' }))
             })
+          // 点击’将按钮2、3替换为splice1、splice2‘，按钮2、3会被替换成splice1、splice2。
           Button('将按钮2、3替换为splice1、splice2')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.splice(1, 2, new SegmentButtonItemOptions({
                 text: 'splice1'
               }), new SegmentButtonItemOptions({ text: 'splice2' }))
             })
+          // 点击’更改所有按钮文字‘，按钮会由1、2、3、4、5替换成a、b、c、d、e。
           Button('更改所有按钮文字')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons =
@@ -921,35 +942,40 @@ import { LengthMetrics, SegmentButton, SegmentButtonOptions } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
+  // 页签类分段按钮数组。
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
       text: '页签按钮3'
     }],
-    direction: Direction.Rtl,
-    backgroundColor: Color.Green,
-    selectedBackgroundColor: Color.Orange,
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    backgroundColor: Color.Green, // 设置分段按钮的背景板颜色。
+    selectedBackgroundColor: Color.Orange, // 设置分段按钮组件的按钮选中态背景板颜色。
+    // 设置文本内边距。
     localizedTextPadding: {
       end: LengthMetrics.vp(10),
       start: LengthMetrics.vp(10)
     },
   });
+  // 胶囊类分段按钮数组。
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }],
-    multiply: false,
-    direction: Direction.Rtl,
-    fontColor: Color.Black,
-    selectedFontColor: Color.Yellow,
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+    multiply: false, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    fontColor: Color.Black, // 设置分段按钮组件的按钮未选中态的文本颜色。
+    selectedFontColor: Color.Yellow, // 设置分段按钮组件的按钮选中态的文本颜色。
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK // 设置分段按钮组件的背景模糊材质。
   });
+  // 胶囊类分段按钮数组。
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }],
-    multiply: true,
-    direction: Direction.Rtl,
-    fontSize: 18,
-    selectedFontSize: 18,
-    fontWeight: FontWeight.Bolder,
-    selectedFontWeight: FontWeight.Lighter,
+    multiply: true, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    fontSize: 18, // 设置分段按钮组件的按钮未选中态的字体大小。
+    selectedFontSize: 18, // 设置分段按钮组件的按钮选中态的字体大小。
+    fontWeight: FontWeight.Bolder, // 设置分段按钮组件的按钮未选中态的字体粗细。
+    selectedFontWeight: FontWeight.Lighter, // 设置分段按钮组件的按钮选中态的字体粗细。
   });
+  // 胶囊类分段按钮数组。
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -958,14 +984,15 @@ struct Index {
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ],
-    multiply: false,
-    direction: Direction.Rtl,
-    imageSize: { width: 40, height: 40 },
+    multiply: false, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    imageSize: { width: 40, height: 40 }, // 设置分段按钮组件的图片尺寸。
+    // 设置分段按钮组件的按钮内边距。
     localizedButtonPadding: {
       end: LengthMetrics.vp(10),
       start: LengthMetrics.vp(10)
     },
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK // 设置分段按钮组件的背景模糊材质。
   });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
@@ -975,9 +1002,9 @@ struct Index {
       { text: '图标4', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
       { text: '图标5', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ],
-    multiply: true,
-    direction: Direction.Rtl,
-    imageSize: { width: 10, height: 10 },
+    multiply: true, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    imageSize: { width: 10, height: 10 }, // 设置分段按钮组件的图片尺寸。
   });
   @State tabSelectedIndexes: number[] = [0];
   @State singleSelectCapsuleSelectedIndexes: number[] = [0];
@@ -1043,35 +1070,35 @@ struct Index {
     buttons: [
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       },
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       },
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       },
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       }
     ] as SegmentButtonItemTuple,
     multiply: false,
@@ -1082,38 +1109,38 @@ struct Index {
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       },
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       },
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       },
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       }
     ] as SegmentButtonItemTuple,
     multiply: true
@@ -1145,11 +1172,11 @@ struct Index {
               }), new SegmentButtonItemOptions({
                 text: 'splice2',
                 icon: $r('sys.media.ohos_ic_public_email'),
-                iconAccessibilityText: '未选中图标无障碍文本',
+                iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
                 selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-                selectedIconAccessibilityText: '选中图标无障碍文本',
-                accessibilityLevel: 'yes',
-                accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+                selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+                accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+                accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
               }))
             })
         }.width('90%')
@@ -1181,7 +1208,7 @@ struct Index {
       text: '页签按钮3'
     }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK,
-    borderRadiusMode: BorderRadiusMode.CUSTOM,
+    borderRadiusMode: BorderRadiusMode.CUSTOM, // 设置自定义的边框圆角半径
     backgroundBorderRadius: LengthMetrics.vp(8),
     itemBorderRadius: LengthMetrics.vp(6)
   });
@@ -1203,3 +1230,126 @@ struct Index {
 ```
 
 ![segmentbutton-sample6](figures/segmentbutton-sample6.png)
+
+### 示例7（开启SegmentButton的属性动画）
+
+本示例展示了SegmentButton开启属性动画，即enableStateAnimation设置为true后，修改选中项编号selectedIndexes值会触发按钮切换动画。并且选中项编号相同的两个SegmentButton组件，是否开启属性动画，也会呈现不同的切换动画。
+
+从API version 24开始，[SegmentButton](#segmentbutton-1)新增enableStateAnimation属性。
+
+```ts
+import { SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index12 {
+  @State singleSelectTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [
+      { text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }
+    ] as SegmentButtonItemTuple,
+    multiply: false
+  });
+
+  @State textCapsuleSingleSelected: number[] = [0]; // 单选按钮的选中索引值，默认选中第一个。
+
+  enableStateAnimation: boolean[] = [false, true];
+  @State enableStateAnimationIndex: number = 0;
+  @State currentSelectedIndex: number = 0; // 切换选中项的索引计数器。
+
+  build() {
+    Row() {
+      Column() {
+        Column({ space: 25 }) {
+          // 动画仅在手动点击切换选中项时生效，非点击类操作修改选中项均无动画。
+          SegmentButton({
+            options: this.singleSelectTextCapsuleOptions,
+            selectedIndexes: this.textCapsuleSingleSelected // 未开启属性动画。
+          })
+
+          Text('enableStateAnimation: ' + this.enableStateAnimation[this.enableStateAnimationIndex])
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+
+          Row({ space: 10 }) {
+            Button('false')
+              .onClick(() => {
+                this.enableStateAnimationIndex = 0;
+              })
+
+            Button('true')
+              .onClick(() => {
+                this.enableStateAnimationIndex = 1;
+              })
+          }
+          .width('100%')
+          .justifyContent(FlexAlign.Center)
+          .margin({ bottom: 10 })
+
+          // enableStateAnimation为true时，切换选中项会触发按钮切换动画。enableStateAnimation为false时，动画仅在手动点击切换选中项时生效，非点击类操作修改选中项均无动画。
+          SegmentButton({
+            options: this.singleSelectTextCapsuleOptions,
+            selectedIndexes: this.textCapsuleSingleSelected,
+            enableStateAnimation: this.enableStateAnimation[this.enableStateAnimationIndex] // 开启属性动画。
+          })
+
+          Button('change selectedIndexes')
+            .onClick(() => {
+              // 对选中项的索引值进行自增操作，若超出最大索引则重置为0。
+              this.currentSelectedIndex = this.currentSelectedIndex < 2 ? this.currentSelectedIndex + 1 : 0;
+              this.textCapsuleSingleSelected = [this.currentSelectedIndex];
+            })
+        }.width('90%')
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
+
+### 示例8（设置背景板材质）
+以下示例通过backgroundSystemMaterial属性，为分段按钮设置了半透明的背景板材质。
+
+从API版本26.0.0开始，[SegmentButtonOptions](#segmentbuttonoptions)和[CommonSegmentButtonOptions](#commonsegmentbuttonoptions)中新增backgroundSystemMaterial属性。
+
+```ts
+import {
+  ItemRestriction,
+  SegmentButton,
+  SegmentButtonOptions,
+  SegmentButtonTextItem,
+  uiMaterial
+} from '@kit.ArkUI';
+
+
+@Entry
+@Component
+struct IndexCl {
+  @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
+      text: '页签按钮3'
+    }] as ItemRestriction<SegmentButtonTextItem>,
+    backgroundColor: Color.Transparent,
+    // 设置为半透明材质
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+  });
+
+  @State tabSelectedIndexes: number[] = [2];
+
+  build() {
+    Stack() {
+      // 作为分段按钮的背景，其中('app.media.pic')需要替换为开发者所需的图片
+      Image($r('app.media.pic'))
+      Column() {
+        SegmentButton({
+          options: this.tabOptions,
+          selectedIndexes: $tabSelectedIndexes
+        })
+      }
+    }
+  }
+}
+
+```
+
+![segmentbutton-sample7](figures/segmentbutton-sample7.png)

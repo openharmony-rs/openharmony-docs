@@ -55,7 +55,7 @@ Creates an application account with the given name. This API uses an asynchronou
 
 | Name     | Type                   | Mandatory | Description              |
 | -------- | ------------------------- | ----- | -------------------- |
-| name     | string                    | Yes   | Name of the application account to create.         |
+| name     | string                    | Yes   | Name of the application account.         |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -101,7 +101,7 @@ Creates an application account with custom data. This API uses an asynchronous c
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | Yes   | Name of the application account to create.                             |
+| name      | string                    | Yes   | Name of the application account.                             |
 | options | [CreateAccountOptions](#createaccountoptions9) | Yes   | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens).|
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
@@ -153,7 +153,7 @@ Creates an application account with custom data. This API uses a promise to retu
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | Yes   | Name of the application account to create.                             |
+| name      | string | Yes   | Name of the application account.                             |
 | options | [CreateAccountOptions](#createaccountoptions9) | No   | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens). <br>By default, no value is passed in, which means no additional information needs to be added for the account.|
 
 **Return value**
@@ -361,7 +361,7 @@ Removes an application account. This API uses an asynchronous callback to return
 
 | Name     | Type                       | Mandatory  | Description              |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | Yes   | Name of the target application account.     |
+| name     | string                    | Yes   | Name of the application account.     |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -406,7 +406,7 @@ Removes an application account. This API uses a promise to return the result.
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| name | string | Yes   | Name of the target application account.|
+| name | string | Yes   | Name of the application account.|
 
 **Return value**
 
@@ -454,7 +454,7 @@ Sets the access to the data of an account for an application. This API uses an a
 
 | Name       | Type                     | Mandatory  | Description                               |
 | ------------ | ------------------------- | ---- | --------------------------------- |
-| name         | string                    | Yes   | Name of the target application account.                          |
+| name         | string                    | Yes   | Name of the application account.                          |
 | bundleName   | string                    | Yes   | Bundle name of the application.                        |
 | isAccessible | boolean                   | Yes   | Whether the access is allowed. The value **true** means to allow the access; the value **false** means the opposite.|
 | callback     | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
@@ -502,7 +502,7 @@ Sets the access to the data of an account for an application. This API uses a pr
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the target application account.  |
+| name       | string | Yes   | Name of the application account.  |
 | bundleName | string | Yes   | Bundle name of the application.|
 | isAccessible | boolean | Yes   | Whether the access is allowed. The value **true** means to allow the access; the value **false** means the opposite.|
 
@@ -553,7 +553,7 @@ Checks whether an application can access the data of an account. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the target application account.                          |
+| name       | string                    | Yes   | Name of the application account.                          |
 | bundleName | string                    | Yes   | Bundle name of the application.                        |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means the application can access the account data; the value **false** means the opposite.|
 
@@ -600,7 +600,7 @@ Checks whether an application can access the data of an account. This API uses a
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the target application account.  |
+| name       | string | Yes   | Name of the application account.  |
 | bundleName | string | Yes   | Bundle name of the application.|
 
 **Return value**
@@ -651,7 +651,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 | Name     | Type                       | Mandatory  | Description                       |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | Yes   | Name of the target application account.                  |
+| name     | string                    | Yes   | Name of the application account.                  |
 | isEnabled | boolean                   | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.      |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -696,7 +696,7 @@ Sets data synchronization for an application account. This API uses a promise to
 
 | Name     | Type     | Mandatory  | Description         |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | Yes   | Name of the target application account.    |
+| name     | string  | Yes   | Name of the application account.    |
 | isEnabled | boolean | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.|
 
 **Return value**
@@ -748,7 +748,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name     | Type                          | Mandatory  | Description                   |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | Yes   | Name of the target application account.              |
+| name     | string                       | Yes   | Name of the application account.              |
 | callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
 
 **Error codes**
@@ -796,7 +796,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the target application account.|
+| name | string | Yes   | Name of the application account.|
 
 **Return value**
 
@@ -845,8 +845,8 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 | Name           | Type                       | Mandatory  | Description           |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | Yes   | Name of the target application account.    |
-| credentialType | string                    | Yes   | Type of the credential to set.    |
+| name           | string                    | Yes   | Name of the application account.    |
+| credentialType | string                    | Yes   | Credential type.    |
 | credential     | string                    | Yes   | Credential value.      |
 | callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the credential is set successfully, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -892,8 +892,8 @@ Sets a credential for an application account. This API uses a promise to return 
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the target application account.  |
-| credentialType | string | Yes   | Type of the credential to set.|
+| name           | string | Yes   | Name of the application account.  |
+| credentialType | string | Yes   | Credential type.|
 | credential     | string | Yes   | Credential value.   |
 
 **Return value**
@@ -942,8 +942,8 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 | Name           | Type                         | Mandatory  | Description            |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | Yes   | Name of the target application account.       |
-| credentialType | string                      | Yes   | Type of the credential to obtain.|
+| name           | string                      | Yes   | Name of the application account.       |
+| credentialType | string                      | Yes   | Credential type.|
 | callback       | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -989,8 +989,8 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 | Name         | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the target application account.|
-| credentialType | string | Yes   | Type of the credential to obtain.|
+| name           | string | Yes   | Name of the application account.|
+| credentialType | string | Yes   | Credential type.|
 
 **Return value**
 
@@ -1039,9 +1039,9 @@ Sets custom data for an application account. This API uses an asynchronous callb
 
 | Name     | Type                       | Mandatory  | Description               |
 | -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | Yes   | Name of the target application account.|
-| key      | string                    | Yes   | Key of the custom data to set.|
-| value    | string                    | Yes   | Value of the custom data to set.|
+| name     | string                    | Yes   | Name of the application account.|
+| key      | string                    | Yes   | Key of the custom data.|
+| value    | string                    | Yes   | Value of the custom data.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1087,9 +1087,9 @@ Sets custom data for an application account. This API uses a promise to return t
 
 | Name  | Type| Mandatory | Description             |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | Yes   | Name of the target application account.  |
-| key   | string | Yes   | Key of the custom data to set.|
-| value | string | Yes   | Value of the custom data to set.|
+| name  | string | Yes   | Name of the application account.  |
+| key   | string | Yes   | Key of the custom data.|
+| value | string | Yes   | Value of the custom data.|
 
 **Return value**
 
@@ -1138,8 +1138,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name   | Type                       | Mandatory | Description                    |
 | -------- | --------------------------- | ----- | ------------------------ |
-| name     | string                      | Yes   | Name of the target application account.          |
-| key      | string                      | Yes   | Key of the custom data to obtain.        |
+| name     | string                      | Yes   | Name of the application account.          |
+| key      | string                      | Yes   | Key of the custom data.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the custom data value obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1185,8 +1185,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the target application account.  |
-| key  | string | Yes   | Key of the custom data to obtain.|
+| name | string | Yes   | Name of the application account.  |
+| key  | string | Yes   | Key of the custom data.|
 
 **Return value**
 
@@ -1235,14 +1235,14 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the target application account.  |
-| key  | string | Yes   | Key of the custom data to obtain.|
+| name | string | Yes   | Name of the application account.  |
+| key  | string | Yes   | Key of the custom data.|
 
 **Return value**
 
 | Type                   | Description                   |
 | --------------------- | --------------------- |
-| string | Value of the custom data obtained.|
+| string | Value of the custom data.|
 
 **Error codes**
 
@@ -1547,7 +1547,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the target application account.    |
+| name     | string                | Yes   | Name of the application account.    |
 | owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
 | authType | string                | Yes   | Authentication type.          |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
@@ -1624,7 +1624,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the target application account.    |
+| name     | string                | Yes   | Name of the application account.    |
 | owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
 | authType | string                | Yes   | Authentication type.          |
 | options  | Record<string, Object>  | Yes   | Options for the authentication.      |
@@ -1705,7 +1705,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type                         | Mandatory  | Description         |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | Yes   | Name of the target application account.   |
+| name     | string                      | Yes   | Name of the application account.   |
 | owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | authType | string                      | Yes   | Authentication type.      |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object.   |
@@ -1754,7 +1754,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description         |
 | -------- | ------ | ---- | ----------- |
-| name     | string | Yes   | Name of the target application account.   |
+| name     | string | Yes   | Name of the application account.   |
 | owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | authType | string | Yes   | Authentication type.      |
 
@@ -1805,9 +1805,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type                       | Mandatory  | Description      |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | Yes   | Name of the target application account.|
+| name     | string                    | Yes   | Name of the application account.|
 | authType | string                    | Yes   | Authentication type.   |
-| token    | string                    | Yes   | Authorization token to set.|
+| token    | string                    | Yes   | Authorization token.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1853,9 +1853,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type    | Mandatory  | Description      |
 | -------- | ------ | ---- | -------- |
-| name     | string | Yes   | Name of the target application account.|
+| name     | string | Yes   | Name of the application account.|
 | authType | string | Yes   | Authentication type.   |
-| token    | string | Yes   | Authorization token to set.|
+| token    | string | Yes   | Authorization token.|
 
 **Return value**
 
@@ -1904,10 +1904,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type                       | Mandatory  | Description          |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | Yes   | Name of the target application account.    |
+| name     | string                    | Yes   | Name of the application account.    |
 | owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. |
 | authType | string                    | Yes   | Authentication type.       |
-| token    | string                    | Yes   | Authorization token to delete. If the token does not exist, no operation is performed.|
+| token    | string                    | Yes   | Authorization token. If the token does not exist, no operation is performed.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.    |
 
 **Error codes**
@@ -1954,10 +1954,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | ------ | ---- | ------------ |
-| name     | string | Yes   | Name of the target application account.    |
+| name     | string | Yes   | Name of the application account.    |
 | owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. |
 | authType | string | Yes   | Authentication type.       |
-| token    | string | Yes   | Authorization token to delete. If the token does not exist, no operation is performed.|
+| token    | string | Yes   | Authorization token. If the token does not exist, no operation is performed.|
 
 **Return value**
 
@@ -2006,7 +2006,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the target application account.                 |
+| name       | string                    | Yes   | Name of the application account.                 |
 | authType   | string                    | Yes   | Authentication type.                    |
 | bundleName | string                    | Yes   | Bundle name of the application.             |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
@@ -2057,7 +2057,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name     | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the target application account.                 |
+| name       | string                    | Yes   | Name of the application account.                 |
 | authType   | string                    | Yes   | Authentication type.                    |
 | bundleName | string                    | Yes   | Bundle name of the application.             |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
@@ -2110,7 +2110,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type                          | Mandatory  | Description         |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | Yes   | Name of the target application account.   |
+| name       | string                       | Yes   | Name of the application account.   |
 | authType   | string                       | Yes   | Authentication type.      |
 | bundleName | string                       | Yes   | Bundle name of the application.|
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object.   |
@@ -2159,7 +2159,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type    | Mandatory  | Description           |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | Yes   | Name of the target application account.     |
+| name       | string | Yes   | Name of the application account.     |
 | authType   | string | Yes   | Authentication type.        |
 | bundleName | string | Yes   | Bundle name of the application.|
 
@@ -2211,7 +2211,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name     | Type                                      | Mandatory  | Description         |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | Yes   | Name of the target application account.   |
+| name     | string                                   | Yes   | Name of the application account.   |
 | owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | callback | AsyncCallback&lt;Array&lt;[AuthTokenInfo](#authtokeninfo9)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object.   |
 
@@ -2258,7 +2258,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| name  | string | Yes   | Name of the target application account.   |
+| name  | string | Yes   | Name of the application account.   |
 | owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
 
 **Return value**
@@ -2308,7 +2308,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type                                      | Mandatory  | Description                     |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | Yes   | Name of the target application account.               |
+| name     | string                                   | Yes   | Name of the application account.               |
 | authType | string                                   | Yes   | Authentication type.|
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object.|
 
@@ -2355,7 +2355,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type    | Mandatory  | Description                     |
 | -------- | ------ | ---- | ------------------------------ |
-| name     | string | Yes   | Name of the target application account.               |
+| name     | string | Yes   | Name of the application account.               |
 | authType | string | Yes   | Authentication type.|
 
 **Return value**
@@ -2625,7 +2625,7 @@ Checks whether an application account has specific labels. This API uses an asyn
 
 | Name        | Type                      | Mandatory | Description            |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | Yes   | Name of the target application account. |
+| name           | string                    | Yes   | Name of the application account. |
 | owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | labels         | Array&lt;string&gt;       | Yes   | Labels to check.      |
 | callback       | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** or **false**. The value **true** means the application account has the labels; the value **false** means the opposite. If the operation fails, **err** is an error object. |
@@ -2677,7 +2677,7 @@ Checks whether an application account has specific labels. This API uses a promi
 
 | Name        | Type                      | Mandatory | Description            |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | Yes   | Name of the target application account. |
+| name           | string                    | Yes   | Name of the application account. |
 | owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | labels         | Array&lt;string&gt;       | Yes   | Labels to check.      |
 
@@ -2732,8 +2732,8 @@ Deletes the credential of the specified type from an application account. This A
 
 | Name        | Type                      | Mandatory | Description           |
 | -------------- | ------------------------- | ----- | -------------- |
-| name           | string                    | Yes   | Name of the target application account.|
-| credentialType | string                    | Yes   | Type of the credential to delete.     |
+| name           | string                    | Yes   | Name of the application account.|
+| credentialType | string                    | Yes   | Credential type.     |
 | callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -2779,8 +2779,8 @@ Deletes the credential of the specified type from an application account. This A
 
 | Name        | Type  | Mandatory  | Description           |
 | -------------- | ------ | ----- | --------------- |
-| name           | string | Yes   | Name of the target application account.|
-| credentialType | string | Yes   | Type of the credential to delete.      |
+| name           | string | Yes   | Name of the application account.|
+| credentialType | string | Yes   | Credential type.      |
 
 **Return value**
 
@@ -2932,7 +2932,7 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 | Name   | Type                 | Mandatory | Description                    |
 | -------- | --------------------- | ----- | ----------------------- |
-| name     | string                | Yes   | Name of the target application account.         |
+| name     | string                | Yes   | Name of the application account.         |
 | owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.       |
 | callback | [AuthCallback](#authcallback9) | Yes   | Callback used to return the result.|
 
@@ -2984,9 +2984,9 @@ Verifies the user credential. This API uses an asynchronous callback to return t
 
 | Name   | Type                   | Mandatory | Description                    |
 | -------- | ----------------------- | ----- | ----------------------- |
-| name     | string                  | Yes   | Name of the target application account.         |
+| name     | string                  | Yes   | Name of the application account.         |
 | owner    | string                  | Yes   | Owner of the application account. The value is the bundle name of the application.       |
-| options  | [VerifyCredentialOptions](#verifycredentialoptions9) | Yes   | Options for verifying the user credential.         |
+| options  | [VerifyCredentialOptions](#verifycredentialoptions9) | Yes   | Options for credential verification.         |
 | callback | [AuthCallback](#authcallback9)   | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -3149,7 +3149,7 @@ Adds an application account with the given name. This API uses an asynchronous c
 
 | Name     | Type                       | Mandatory  | Description                  |
 | -------- | ------------------------- | ---- | -------------------- |
-| name     | string                    | Yes   | Name of the application account to add.         |
+| name     | string                    | Yes   | Name of the application account.         |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3178,7 +3178,7 @@ Adds an application account name and additional information. This API uses an as
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | Yes   | Name of the application account to add.                             |
+| name      | string                    | Yes   | Name of the application account.                             |
 | extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
@@ -3207,7 +3207,7 @@ Adds an application account name and additional information. This API uses a pro
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | Yes   | Name of the application account to add.                           |
+| name      | string | Yes   | Name of the application account.                           |
 | extraInfo | string | No   | Additional information (information that can be converted to the string type). <br>The additional information cannot be sensitive information (such as the password and token) of the application account.<br>By default, no value is passed, which means no additional information needs to be added for the account.|
 
 **Return value**
@@ -3236,7 +3236,7 @@ Adds an application account implicitly based on the specified owner. This API us
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [createAccountImplicitly](#createaccountimplicitly9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [createAccountImplicitly](#createaccountimplicitly9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3246,7 +3246,7 @@ Adds an application account implicitly based on the specified owner. This API us
 | -------- | --------------------- | ---- | ----------------------- |
 | owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.         |
 | authType | string                | Yes   | Authentication type. The authentication type is customized. |
-| options  | {[key: string]: any}  | Yes   | Authentication options, which can be set as required.|
+| options  | {[key: string]: any}  | Yes   | Options for the authentication, which can be set as required.|
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.        |
 
 **Example**
@@ -3306,7 +3306,7 @@ Deletes an application account. This API uses an asynchronous callback to return
 
 | Name     | Type                       | Mandatory  | Description              |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | Yes   | Name of the target application account.     |
+| name     | string                    | Yes   | Name of the application account.     |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3335,7 +3335,7 @@ Deletes an application account. This API uses a promise to return the result.
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| name | string | Yes   | Name of the target application account.|
+| name | string | Yes   | Name of the application account.|
 
 **Return value**
 
@@ -3371,7 +3371,7 @@ Disables an application account from accessing an application. This API uses an 
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the target application account.                 |
+| name       | string                    | Yes   | Name of the application account.                 |
 | bundleName | string                    | Yes   | Bundle name of the application.                        |
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3438,7 +3438,7 @@ Enables an application account to access an application. This API uses an asynch
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the target application account.                          |
+| name       | string                    | Yes   | Name of the application account.                          |
 | bundleName | string                    | Yes   | Bundle name of the application.                        |
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3472,7 +3472,7 @@ Enables an application account to access an application. This API uses a promise
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the target application account.  |
+| name       | string | Yes   | Name of the application account.  |
 | bundleName | string | Yes   | Bundle name of the application.|
 
 **Return value**
@@ -3511,7 +3511,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name     | Type                          | Mandatory  | Description                   |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | Yes   | Name of the target application account.              |
+| name     | string                       | Yes   | Name of the application account.              |
 | callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
 
 **Example**
@@ -3546,7 +3546,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the target application account.|
+| name | string | Yes   | Name of the application account.|
 
 **Return value**
 
@@ -3574,7 +3574,7 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCredential](#setcredential9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. Use [setCredential](#setcredential9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3582,8 +3582,8 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 | Name           | Type                       | Mandatory  | Description           |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | Yes   | Name of the target application account.    |
-| credentialType | string                    | Yes   | Type of the credential to set.    |
+| name           | string                    | Yes   | Name of the application account.    |
+| credentialType | string                    | Yes   | Credential type.    |
 | credential     | string                    | Yes   | Credential value.     |
 | callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3609,7 +3609,7 @@ Sets a credential for an application account. This API uses a promise to return 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCredential](#setcredential9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. Use [setCredential](#setcredential9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3617,8 +3617,8 @@ Sets a credential for an application account. This API uses a promise to return 
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the target application account.  |
-| credentialType | string | Yes   | Type of the credential to set.|
+| name           | string | Yes   | Name of the application account.  |
+| credentialType | string | Yes   | Credential type.|
 | credential     | string | Yes   | Credential value.|
 
 **Return value**
@@ -3655,7 +3655,7 @@ Sets additional information for an application account. This API uses an asynchr
 
 | Name      | Type                       | Mandatory  | Description             |
 | --------- | ------------------------- | ---- | --------------- |
-| name      | string                    | Yes   | Name of the target application account.        |
+| name      | string                    | Yes   | Name of the application account.        |
 | extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.      |
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3689,7 +3689,7 @@ Sets additional information for an application account. This API uses a promise 
 
 | Name      | Type    | Mandatory  | Description       |
 | --------- | ------ | ---- | --------- |
-| name      | string | Yes   | Name of the target application account.  |
+| name      | string | Yes   | Name of the application account.  |
 | extraInfo | string | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
 
 **Return value**
@@ -3728,7 +3728,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 | Name     | Type                       | Mandatory  | Description                       |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | Yes   | Name of the target application account.                 |
+| name     | string                    | Yes   | Name of the application account.                 |
 | isEnable | boolean                   | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.  |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3764,7 +3764,7 @@ Sets data synchronization for an application account. This API uses a promise to
 
 | Name     | Type     | Mandatory  | Description         |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | Yes   | Name of the target application account.    |
+| name     | string  | Yes   | Name of the application account.    |
 | isEnable | boolean | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.|
 
 **Return value**
@@ -3801,8 +3801,8 @@ Sets data to be associated with an application account. This API uses an asynchr
 
 | Name     | Type                       | Mandatory  | Description               |
 | -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | Yes   | Name of the target application account.          |
-| key      | string                    | Yes   | Key of the associated data to set.|
+| name     | string                    | Yes   | Name of the application account.          |
+| key      | string                    | Yes   | Key of the associated data.|
 | value    | string                    | Yes   | Value of the data to set.        |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3836,8 +3836,8 @@ Sets data to be associated with an application account. This API uses a promise 
 
 | Name  | Type    | Mandatory  | Description               |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | Yes   | Name of the target application account.          |
-| key      | string | Yes   | Key of the associated data to set.|
+| name  | string | Yes   | Name of the application account.          |
+| key      | string | Yes   | Key of the associated data.|
 | value    | string | Yes   | Value of the data to set.|
 
 **Return value**
@@ -4015,8 +4015,8 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 | Name           | Type                         | Mandatory  | Description            |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | Yes   | Name of the target application account.       |
-| credentialType | string                      | Yes   | Type of the credential to obtain.|
+| name           | string                      | Yes   | Name of the application account.       |
+| credentialType | string                      | Yes   | Credential type.|
 | callback       | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4049,8 +4049,8 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the target application account.   |
-| credentialType | string | Yes   | Type of the credential to obtain.|
+| name           | string | Yes   | Name of the application account.   |
+| credentialType | string | Yes   | Credential type.|
 
 **Return value**
 
@@ -4086,7 +4086,7 @@ Obtains additional information of an application account. Additional information
 
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
-| name     | string                      | Yes   | Name of the target application account.        |
+| name     | string                      | Yes   | Name of the application account.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the additional information obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4119,7 +4119,7 @@ Obtains additional information of an application account. Additional information
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the target application account.|
+| name | string | Yes   | Name of the application account.|
 
 **Return value**
 
@@ -4155,8 +4155,8 @@ Obtains the associated data of an application account based on the specified key
 
 | Name     | Type                         | Mandatory  | Description               |
 | -------- | --------------------------- | ---- | ----------------- |
-| name     | string                      | Yes   | Name of the target application account.          |
-| key      | string                      | Yes   | Key of the associated data to obtain.        |
+| name     | string                      | Yes   | Name of the application account.          |
+| key      | string                      | Yes   | Key of the associated data.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the data obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4189,8 +4189,8 @@ Obtains data associated with an application account. This API uses a promise to 
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the target application account.  |
-| key  | string | Yes   | Key of the associated data to obtain.|
+| name | string | Yes   | Name of the application account.  |
+| key  | string | Yes   | Key of the associated data.|
 
 **Return value**
 
@@ -4294,7 +4294,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [auth](#auth9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [auth](#auth9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4302,7 +4302,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the target application account.    |
+| name     | string                | Yes   | Name of the application account.    |
 | owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
 | authType | string                | Yes   | Authentication type.          |
 | options  | {[key: string]: any}  | Yes   | Options for the authentication.      |
@@ -4357,7 +4357,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAuthToken](#getauthtoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthToken](#getauthtoken9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4365,7 +4365,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type                         | Mandatory  | Description         |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | Yes   | Name of the target application account.   |
+| name     | string                      | Yes   | Name of the application account.   |
 | owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | authType | string                      | Yes   | Authentication type.      |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object.  |
@@ -4393,7 +4393,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAuthToken](#getauthtoken9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthToken](#getauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4401,7 +4401,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description         |
 | -------- | ------ | ---- | ----------- |
-| name     | string | Yes   | Name of the target application account.   |
+| name     | string | Yes   | Name of the application account.   |
 | owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | authType | string | Yes   | Authentication type.      |
 
@@ -4431,7 +4431,7 @@ Sets an authorization token of the specific authentication type for an applicati
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [setAuthToken](#setauthtoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthToken](#setauthtoken9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4439,9 +4439,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type                       | Mandatory  | Description      |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | Yes   | Name of the target application account.|
+| name     | string                    | Yes   | Name of the application account.|
 | authType | string                    | Yes   | Authentication type.   |
-| token    | string                    | Yes   | Authorization token to set.|
+| token    | string                    | Yes   | Authorization token.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4466,7 +4466,7 @@ Sets an authorization token of the specific authentication type for an applicati
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [setAuthToken](#setauthtoken9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthToken](#setauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4474,9 +4474,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type    | Mandatory  | Description      |
 | -------- | ------ | ---- | -------- |
-| name     | string | Yes   | Name of the target application account.|
+| name     | string | Yes   | Name of the application account.|
 | authType | string | Yes   | Authentication type.   |
-| token    | string | Yes   | Authorization token to set.|
+| token    | string | Yes   | Authorization token.|
 
 **Return value**
 
@@ -4504,7 +4504,7 @@ Deletes the authorization token of the specified authentication type for an appl
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4512,10 +4512,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type                       | Mandatory  | Description          |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | Yes   | Name of the target application account.    |
+| name     | string                    | Yes   | Name of the application account.    |
 | owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. |
 | authType | string                    | Yes   | Authentication type.       |
-| token    | string                    | Yes   | Authorization token to delete.|
+| token    | string                    | Yes   | Authorization token.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.    |
 
 **Example**
@@ -4541,7 +4541,7 @@ Deletes the authorization token of the specified authentication type for an appl
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4549,10 +4549,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | ------ | ---- | ------------ |
-| name     | string | Yes   | Name of the target application account.    |
+| name     | string | Yes   | Name of the application account.    |
 | owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. |
 | authType | string | Yes   | Authentication type.       |
-| token    | string | Yes   | Authorization token to delete.|
+| token    | string | Yes   | Authorization token.|
 
 **Return value**
 
@@ -4580,7 +4580,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4588,7 +4588,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the target application account.                 |
+| name       | string                    | Yes   | Name of the application account.                 |
 | authType   | string                    | Yes   | Authentication type.                    |
 | bundleName | string                    | Yes   | Bundle name of the application.             |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
@@ -4617,7 +4617,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4625,7 +4625,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type     | Mandatory  | Description          |
 | ---------- | ------- | ---- | ------------ |
-| name       | string  | Yes   | Name of the target application account.    |
+| name       | string  | Yes   | Name of the application account.    |
 | authType   | string  | Yes   | Authentication type.       |
 | bundleName | string  | Yes   | Bundle name of the application.|
 | isVisible  | boolean | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.       |
@@ -4656,7 +4656,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4664,7 +4664,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type                          | Mandatory  | Description         |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | Yes   | Name of the target application account.   |
+| name       | string                       | Yes   | Name of the application account.   |
 | authType   | string                       | Yes   | Authentication type.      |
 | bundleName | string                       | Yes   | Bundle name of the application.|
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object.   |
@@ -4692,7 +4692,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4700,7 +4700,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type    | Mandatory  | Description           |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | Yes   | Name of the target application account.     |
+| name       | string | Yes   | Name of the application account.     |
 | authType   | string | Yes   | Authentication type.        |
 | bundleName | string | Yes   | Bundle name of the application.|
 
@@ -4731,7 +4731,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4739,7 +4739,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name     | Type                                      | Mandatory  | Description         |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | Yes   | Name of the target application account.   |
+| name     | string                                   | Yes   | Name of the application account.   |
 | owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.|
 | callback | AsyncCallback&lt;Array&lt;[OAuthTokenInfo](#oauthtokeninfodeprecated)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object.   |
 
@@ -4766,7 +4766,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4774,7 +4774,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| name  | string | Yes   | Name of the target application account.   |
+| name  | string | Yes   | Name of the application account.   |
 | owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
 
 **Return value**
@@ -4804,7 +4804,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAuthList](#getauthlist9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthList](#getauthlist9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4812,7 +4812,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type                                      | Mandatory  | Description                     |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | Yes   | Name of the target application account.               |
+| name     | string                                   | Yes   | Name of the application account.               |
 | authType | string                                   | Yes   | Authentication type.|
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object.              |
 
@@ -4838,7 +4838,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAuthList](#getauthlist9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthList](#getauthlist9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4846,7 +4846,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type    | Mandatory  | Description                     |
 | -------- | ------ | ---- | ----------------------- |
-| name     | string | Yes   | Name of the target application account.               |
+| name     | string | Yes   | Name of the application account.               |
 | authType | string | Yes   | Authentication type.|
 
 **Return value**
@@ -4875,7 +4875,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAuthCallback](#getauthcallback9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthCallback](#getauthcallback9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4920,7 +4920,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [getAuthCallback](#getauthcallback9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthCallback](#getauthcallback9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4968,7 +4968,7 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [queryAuthenticatorInfo](#queryauthenticatorinfo9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [queryAuthenticatorInfo](#queryauthenticatorinfo9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5002,7 +5002,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [queryAuthenticatorInfo](#queryauthenticatorinfo9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [queryAuthenticatorInfo](#queryauthenticatorinfo9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5060,7 +5060,7 @@ Defines authorization token information.
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [AuthTokenInfo](#authtokeninfo9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [AuthTokenInfo](#authtokeninfo9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5157,8 +5157,8 @@ Enumerates the constants.
 
 | Name                           | Value                   | Description                  |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | Operation of adding an account implicitly. |
-| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | Authentication operation.        |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | Operation of adding an account implicitly.<br>Note: This API is supported since API version 8 and deprecated since API version 9. Use **ACTION_CREATE_ACCOUNT_IMPLICITLY** instead. |
+| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | Authentication operation.<br>Note: This API is supported since API version 8 and deprecated since API version 9. Use **ACTION_AUTH** instead.        |
 | ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | Operation of creating an account implicitly. |
 | ACTION_AUTH<sup>9+</sup>              | 'auth'         | Authentication operation.        |
 | ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | Operation of verifying credentials. |
@@ -5180,7 +5180,7 @@ Enumerates the constants.
 Enumerates the result codes.
 
 > **NOTE**<br>
-> This enum is supported since API version 8 and deprecated since API version 9. For details, see [Account Management Error Codes](errorcode-account.md).
+> This API is supported since API version 8 and deprecated since API version 9. For details, see [Account Management Error Codes](errorcode-account.md).
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5325,7 +5325,7 @@ Provides OAuth authenticator callbacks.
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. Use [AuthCallback](#authcallback9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [AuthCallback](#authcallback9) instead.
 
 ### onResult<sup>(deprecated)</sup>
 
@@ -5335,7 +5335,7 @@ Called to return the result of an authentication request.
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. You are advised to use [onResult](#onresult9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [onResult](#onresult9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5373,7 +5373,7 @@ Called to redirect a request.
 
 > **NOTE**
 >
-> This enum is supported since API version 8 and deprecated since API version 9. You are advised to use [onRequestRedirected](#onrequestredirected9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [onRequestRedirected](#onrequestredirected9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5461,7 +5461,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | Yes   | Name of the target application account.       |
+| name             | string                | Yes   | Name of the application account.       |
 | authType         | string                | Yes   | Authentication type.     |
 | options          | Record<string, Object>  | Yes   | Options for the authentication.     |
 | callback         | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
@@ -5482,7 +5482,7 @@ Authenticates an application account to obtain the OAuth token. This API uses an
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | Yes   | Name of the target application account.       |
+| name             | string                | Yes   | Name of the application account.       |
 | authType         | string                | Yes   | Authentication type.     |
 | callerBundleName | string                | Yes   | Bundle name of the authentication requester.      |
 | options          | {[key: string]: any}  | Yes   | Options for the authentication.     |
@@ -5500,7 +5500,7 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                   | Yes   | Name of the target application account.             |
+| name      | string                   | Yes   | Name of the application account.             |
 | options   | [VerifyCredentialOptions](#verifycredentialoptions9)  | Yes   | Options for credential verification.           |
 | callback  | [AuthCallback](#authcallback9)    | Yes   | Authenticator callback used to return the result.|
 
@@ -5539,7 +5539,7 @@ Checks the account labels. This API uses an asynchronous callback to return the 
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | Yes   | Name of the target application account.             |
+| name      | string                | Yes   | Name of the application account.             |
 | labels    | Array&lt;string&gt;          | Yes   | Labels to check.                  |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
@@ -5559,7 +5559,7 @@ Checks whether an application account can be deleted. This API uses an asynchron
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | Yes   | Name of the target application account.             |
+| name      | string                | Yes   | Name of the application account.             |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Example**

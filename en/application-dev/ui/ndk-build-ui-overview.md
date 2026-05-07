@@ -7,12 +7,10 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The ArkUI framework offers NDK APIs for building UIs with C/C++, including component creation, UI tree control, attribute configuration, and event handling. While ArkTS and the ArkUI declarative framework are recommended for most UI development, use the ArkUI NDK APIs when:
+The ArkUI framework offers [NDK APIs](../napi/ndk-development-overview.md) for building UIs with C/C++, including component creation, UI tree control, attribute configuration, and event listening. While ArkTS and the ArkUI declarative framework are recommended for most UI development, use the ArkUI NDK APIs when:
 
 
 - You need to dynamically create and mount UI components for bridging to your own UI framework.
-
-- You want to enhance UI performance by finely controlling component creation and attributes to reduce latency and handle high loads.
 
 - You aim to reuse C or C++ UI libraries developed by yourself or others.
 
@@ -34,7 +32,7 @@ The ArkUI NDK APIs provide the following capabilities:
 
 - **Animation**
 
-  Animations are one of the key elements of UI. The ArkUI NDK provides explicit animation APIs for crafting property animations that enhance the user experience with efficient and sophisticated effects.
+  Animations are one of the key elements of UI. The ArkUI NDK provides explicit animation APIs for crafting property animations that enhance user experience with efficient and sophisticated effects.
 
 - **Interaction event**
 

@@ -20,7 +20,7 @@ This document describes how to develop an ArkTS widget based on the declarative 
 
     - Animation: ArkTS widgets support the [property animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) and [explicit animation](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) capabilities, which can be leveraged to deliver a more engaging experience.
     - Custom drawing: ArkTS widgets allow you to draw graphics with the [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) component to present information more vividly.
-    - Logic code execution: Some service logic can be implemented directly within the widget via code, expanding the use scenarios of widgets.
+    - Logic code execution: When this capability is enabled, certain service logic can be implemented within widgets, effectively expanding application scenarios.
 
 ## How to Implement
 

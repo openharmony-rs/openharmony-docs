@@ -2,9 +2,9 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 The **BackupExtensionAbility** module provides extended backup and restore capabilities for applications.
 
@@ -17,7 +17,7 @@ The **BackupExtensionAbility** module provides extended backup and restore capab
 ## Modules to Import
 
 ```ts
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
 ```
 
 ### getBackupInfo<sup>12+</sup>

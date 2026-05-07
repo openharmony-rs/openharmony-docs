@@ -72,10 +72,10 @@ struct OverlayExample {
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 80 };
+  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 110 };
 
   build() {
-    Column() {
+    Column({ space: 5 }) {
       Button("++componentContentIndex: " + this.componentContentIndex).onClick(() => {
         ++this.componentContentIndex;
       })
@@ -126,18 +126,14 @@ struct OverlayExample {
       Button("隐藏所有ComponentContent").onClick(() => {
         this.overlayNode.hideAllComponentContents();
       })
-
-      Button("跳转页面").onClick(() => {
-        this.getUIContext().getRouter().pushUrl({
-          url: 'pages/Second'
-        });
-      })
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+
+![overlayManager01](figures/overlayManager01.gif)
 
 ## addComponentContentWithOrder<sup>18+</sup>
 
@@ -238,6 +234,8 @@ struct Index {
   }
 }
 ```
+
+![](figures/overlayManager02.gif)
 
 ## removeComponentContent<sup>12+</sup>
 

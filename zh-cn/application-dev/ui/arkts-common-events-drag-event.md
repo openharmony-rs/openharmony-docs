@@ -112,7 +112,7 @@
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -166,8 +166,9 @@
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   
    const DOMAIN = 0x0000;
-   const TAG = 'DefaultDragError: '
+   const TAG = 'DefaultDragError: ';
    ```
 
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
@@ -176,7 +177,7 @@
    @Builder
    pixelMapBuilder() {
      Column() {
-       // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+       // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
          .width(120)
          .height(120)
@@ -185,7 +186,6 @@
    }
    
    // ...
-   
    // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
    private getComponentSnapshot(): void {
      this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
@@ -254,7 +254,7 @@
 
 5. 拖拽数据的接收。
 
-   需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显示设置拖拽结果。
+   需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显式设置拖拽结果。
 
    <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -292,8 +292,7 @@
        callback(event);
        return true;
      } catch (e) {
-       hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-       (e as BusinessError).message);
+       hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
        return false;
      }
    }
@@ -332,6 +331,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
 const TAG = 'DefaultDragError: ';
 
@@ -347,7 +347,7 @@ export struct DefaultDrag {
   @Builder
   pixelMapBuilder() {
     Column() {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon'))
         .width(120)
         .height(120)
@@ -368,8 +368,7 @@ export struct DefaultDrag {
       callback(event);
       return true;
     } catch (e) {
-      hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-      (e as BusinessError).message);
+      hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
       return false;
     }
   }
@@ -382,7 +381,6 @@ export struct DefaultDrag {
       this.getDataFromUdmfRetry(event, callback);
     }, 1500);
   }
-
 
   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
   private getComponentSnapshot(): void {
@@ -398,7 +396,6 @@ export struct DefaultDrag {
       });
   }
 
-
   build() {
     // ...
         Row() {
@@ -410,7 +407,7 @@ export struct DefaultDrag {
               .margin(10)
               .backgroundColor('#008888')
             Row() {
-              // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+              // 请将$r('app.media.app_icon')替换为实际资源文件
               Image($r('app.media.app_icon'))
                 .width(100)
                 .height(100)
@@ -493,6 +490,7 @@ export struct DefaultDrag {
         }
         .height('100%')
       }
+      
       // ...
 }
 ```
@@ -742,11 +740,12 @@ build() {
 当开发者需要实现自定义落位动效时，可以禁用系统的默认动效。从API version 18开始，ArkUI提供了[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口，用于自定义落位动效。以下以Image组件为例，详细介绍使用[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口的基本步骤，以及开发过程中需要注意的事项。
 
 1. 组件拖拽设置。
+
    设置draggable为true，并配置onDragStart、onDragEnd等回调函数。
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -839,7 +838,7 @@ export struct DropAnimationExample {
     // ...
       Row() {
         Column() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.app_icon')替换为实际资源文件
           Image($r('app.media.app_icon'))
             .width(100)
             .height(100)
@@ -1070,7 +1069,7 @@ struct GridEts {
 
   loadData() {
     this.timeout = setTimeout(() => {
-      //数据准备完成后的状态
+      // 数据准备完成后的状态
       if (this.dragEvent) {
         this.dragEvent.setData(this.unifiedData);
       }
@@ -1226,11 +1225,11 @@ Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的
 
 ### 触发原理
 
-要实现这些能力，需要在组件上注册onDragSpringLoading接口，并传入一个用于处理拖拽悬停触发通知的回调。使用该接口后，该组件将如同注册了onDrop接口的组件一样，成为一个可拖入目标，并且遵循与onDrop相同的命中检测规则，即：在悬停位置下方，仅有一个组件可以接收拖拽事件响应，并且总是首个被检测到的组件
+要实现这些能力，需要在组件上注册onDragSpringLoading接口，并传入一个用于处理拖拽悬停触发通知的回调。使用该接口后，该组件将如同注册了onDrop接口的组件一样，成为一个可拖入目标，并且遵循与onDrop相同的命中检测规则，即：在悬停位置下方，仅有一个组件可以接收拖拽事件响应，并且总是首个被检测到的组件。
 
 Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -> 结束。在结束之前，如果用户重新开始移动，会自动中断Spring Loading，并通知应用取消。如果在悬停检测期间移动，且尚未进入Spring Loading状态，则不会触发取消通知。
 
-![drag spring loading pharse](figures/drag_springloading-02.png)
+![drag spring loading phase](figures/drag_springloading-02.png)
 
 应用通过回调接收当前的状态，动态改变UI显示，从而达到用户提醒的效果。
 
@@ -1251,9 +1250,9 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
 可以自定义修改Spring Loading检测参数，动态决定是否继续触发。
 
-1.触发参数自定义
+1. 触发参数自定义
 
-  [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口还提供了一个可选参数configuration供应用自定义静止检测时长以及触发间隔与次数等配置，可以通过此参数来个性化定义Spring   Loading触发条件。但绝大数多情况下，不需要进行修改，使用系统默认配置即可。
+  [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口还提供了一个可选参数configuration供应用自定义静止检测时长以及触发间隔与次数等配置，可以通过此参数来个性化定义Spring Loading触发条件。但绝大数多情况下，不需要进行修改，使用系统默认配置即可。
   
   configuration参数必须在检测开始前准备就绪。系统一旦启动Spring Loading检测过程，将不再从该参数读取配置。然而，可以通过回调中传入的context对象中的updateCon  figuration方法动态更新配置。此动态更新仅对当前触发有效，不会影响通过configuration的配置。
   

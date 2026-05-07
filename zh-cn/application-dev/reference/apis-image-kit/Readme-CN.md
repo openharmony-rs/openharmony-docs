@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -17,11 +17,21 @@
     - [Interface (ImageReceiver)](arkts-apis-image-ImageReceiver.md)
     - [Interface (ImageSource)](arkts-apis-image-ImageSource.md)
     - [Interface (Metadata)](arkts-apis-image-Metadata.md)
+    - [Class (ExifMetadata)](arkts-apis-image-ExifMetadata.md)
+    - [Class (MakerNoteHuaweiMetadata)](arkts-apis-image-MakerNoteHuaweiMetadata.md)
+    - [Class (HeifsMetadata)](arkts-apis-image-HeifsMetadata.md)
+    - [Class (WebPMetadata)](arkts-apis-image-WebPMetadata.md)
+    - [Class (GifMetadata)](arkts-apis-image-GifMetadata.md)
+    - [Class (JfifMetadata)](arkts-apis-image-JfifMetadata.md)
+    - [Class (TiffMetadata)](arkts-apis-image-TiffMetadata.md)
+    - [Class (PngMetadata)](arkts-apis-image-PngMetadata.md)
+    - [Class (AvisMetadata)](arkts-apis-image-AvisMetadata.md)
     - [Interface (Picture)](arkts-apis-image-Picture.md)
     - [Interface (PixelMap)](arkts-apis-image-PixelMap.md)
     - [Interfaces (其他)](arkts-apis-image-i.md)
     - [Enums](arkts-apis-image-e.md)
     - [Types](arkts-apis-image-t.md)
+    - [Constants](arkts-apis-image-c.md)
   - [@ohos.multimedia.sendableImage (基于Sendable对象的图片处理)](js-apis-sendableImage.md)
   - [@ohos.multimedia.videoProcessingEngine (视频处理引擎)](js-apis-videoProcessingEngine.md)
   <!--Del-->
@@ -73,6 +83,7 @@
     - [Image_String](capi-image-nativemodule-image-string.md)
     - [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)
     - [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md)
+    - [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) 
     - [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md)
     - [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md)
     - [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)
@@ -117,6 +128,8 @@
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
     - [Image_PositionArea](capi-image-nativemodule-image-positionarea.md)
     - [Image_Scale](capi-image-nativemodule-image-scale.md)
+    - [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md)
+    - [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md)
 - 错误码<!--image-arkts-errcode-->
   - [Image错误码](errorcode-image.md)
   - [视频处理引擎错误码](errorcode-videoprocessingengine.md)

@@ -10,7 +10,7 @@
 
 With the sensor module, a device can obtain sensor data. For example, the device can subscribe to data of the orientation sensor to detect its own orientation, and data of the pedometer sensor to learn the number of steps the user walks every day.
 
-For details about the APIs, see [Sensor](../../reference/apis-sensor-service-kit/js-apis-sensor.md).
+For details about the APIs, see [@ohos.sensor (Sensor)](../../reference/apis-sensor-service-kit/js-apis-sensor.md).
 
 
 ## Available APIs
@@ -53,7 +53,7 @@ The acceleration sensor is used as an example.
    ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
 4. Define constants.

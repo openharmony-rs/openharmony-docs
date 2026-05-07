@@ -10,8 +10,8 @@
 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画的能力。
 
 >  **说明：**
->  
->  该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  本模块为系统接口。
 
@@ -60,11 +60,11 @@ RemoteWindow(target: WindowAnimationTarget)
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | ------- | ------ | ------ | ------ | ----------------------- |
-| left   | number | 否 | 否 | 动画窗口左上角相对于屏幕横坐标。|
-| top    | number | 否 | 否 | 动画窗口左上角相对于屏幕纵坐标。|
-| width  | number | 否 | 否 | 动画窗口宽度大小。|
-| height | number | 否 | 否 | 动画窗口高度大小。|
-| radius | number | 否 | 否 | 动画窗口圆角大小。|
+| left   | number | 否 | 否 | 动画窗口左上角相对于屏幕横坐标，单位为px。 |
+| top    | number | 否 | 否 | 动画窗口左上角相对于屏幕纵坐标，单位为px。 |
+| width  | number | 否 | 否 | 动画窗口宽度大小，单位为px。 |
+| height | number | 否 | 否 | 动画窗口高度大小，单位为px。 |
+| radius | number | 否 | 否 | 动画窗口圆角大小，单位为px。 |
 
 ## 属性
 
@@ -76,6 +76,7 @@ RemoteWindow(target: WindowAnimationTarget)
 
 ## 示例
 RemoteWindow需要接收由[windowAnimationManager](../js-apis-windowAnimationManager-sys.md)设置的WindowAnimationController对象传入对应窗口WindowAnimationTarget对象，可以创建一个RemoteWindowExample.ets作为示例组件将RemoteWindow组件和传入的WindowAnimationTarget对象关联封装起来。
+
 由于RemoteWindow只能用于系统应用程序Launcher中，可以将RemoteWindowExample组件放置于Launcher的EntryView.ets页面的build函数中，编译Launcher, 然后推送Launcher安装包到设备系统中运行。
 
 ```ts
@@ -161,7 +162,7 @@ import WindowAnimationControllerImpl from './WindowAnimationControllerImpl';
 @Component
 export default struct RemoteWindowExample {
   @State target:WindowAnimationTarget | undefined = undefined // 通过windowAnimationManager获取
-  
+
   aboutToAppear(): void {
     let controller: WindowAnimationControllerImpl = new WindowAnimationControllerImpl();
     windowAnimationManager.setController(controller);

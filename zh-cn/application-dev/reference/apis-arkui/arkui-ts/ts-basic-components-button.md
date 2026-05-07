@@ -24,7 +24,7 @@
 
 Button(options: ButtonOptions)
 
-创建可以包含单个子组件的按钮。
+创建可以包含单个子组件的按钮。未通过该接口设置时，则按照ButtonOptions中各参数的默认值配置。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -57,7 +57,7 @@ Button(label: ResourceStr, options?: ButtonOptions)
 | 参数名  | 类型                                    | 必填 | 说明                 |
 | ------- | --------------------------------------- | ---- | -------------------- |
 | label   | [ResourceStr](ts-types.md#resourcestr)  | 是   | 按钮文本内容。<br/>**说明：** 当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
-| options | [ButtonOptions](#buttonoptions对象说明) | 否   | 配置按钮的显示样式。 |
+| options | [ButtonOptions](#buttonoptions对象说明) | 否   | 配置按钮的显示样式。 <br/> 未设置时，则按照ButtonOptions中各参数的默认值配置。 |
 
 ### Button
 
@@ -311,7 +311,7 @@ contentModifier(modifier: ContentModifier\<ButtonConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ButtonConfiguration>](#buttonconfiguration12对象说明) | 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ButtonConfiguration](#buttonconfiguration12对象说明)> | 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### minFontScale<sup>18+</sup>
 
@@ -380,8 +380,8 @@ Button组件的label文本及其字体样式。
 | minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 是   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| font                 | [Font](ts-types.md#font)                                     | 否   | 是   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 是   | 设置label文本在水平方向上的对齐方式。当使用子节点的Text组件设置label时，此属性不生效，实际的文本对齐方式由子节点Text组件的textAlign属性决定。<br> Wearable设备默认值为TextAlign.Center，其他设备默认值为TextAlign.Start。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| font                 | [Font](ts-types.md#font)                                     | 否   | 是   | 设置label文本字体样式。<br>默认值：<br/> {<br/>size:'16.0fp',<br/> weight:FontWeight.Medium,<br/> style:FontStyle.Normal,<br/>  family:'HarmonyOS Sans'<br/>} <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 是   | 设置label文本在水平方向上的对齐方式，label文本被截断时生效。当使用子节点的Text组件设置label时，此属性不生效，实际的文本对齐方式由子节点Text组件的textAlign属性决定。<br> Wearable设备默认值为TextAlign.Center，其他设备默认值为TextAlign.Start。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ButtonStyleMode<sup>11+</sup>枚举说明
 
@@ -777,6 +777,7 @@ struct ButtonExample {
 
 ### 示例8（设置label文本水平对齐方式）
 该示例通过配置[LabelStyle](#labelstyle10对象说明)的textAlign，设置文本对齐方式。
+
 从API version 23开始，新增textAlign接口。
 ```ts
 @Entry

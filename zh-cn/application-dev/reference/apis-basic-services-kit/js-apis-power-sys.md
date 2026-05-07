@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块主要提供重启、关机、查询屏幕状态等接口。
 
@@ -359,6 +359,7 @@ try {
 refreshActivity(reason: string): void
 
 刷新设备活动状态（如：重设屏幕超时息屏时间等）。
+
 只有设备在活动状态下生效，设备活动状态见[power.isActive](js-apis-power.md#powerisactive9)接口。
 
 **系统接口：** 此接口为系统接口。
@@ -396,9 +397,10 @@ try {
 
 ## power.setPowerKeyFilteringStrategy<sup>21+</sup>
 
-setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void;
+setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void
 
 设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。
+
 电源键过滤策略见[power.PowerKeyFilteringStrategy](js-apis-power.md#powerkeyfilteringstrategy21)接口。
 
 **系统接口：** 此接口为系统接口。
@@ -512,5 +514,102 @@ try {
     console.info('unregister shutdown callback success.');
 } catch(err) {
     console.error('unregister shutdown callback failed, err: ' + err);
+}
+```
+
+## power.getPowerConfig
+
+getPowerConfig(sceneName: string): string
+
+读取电源配置节点。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_CONFIG
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| sceneName | string | 是    | 场景名称。最大长度128字节。 |
+
+**返回值：**
+
+| 类型     | 说明         |
+| ------ | ------------ |
+| string | 返回配置节点值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes. |
+| 4900501 | Failed to read the power configuration value. |
+
+**示例：**
+
+```js
+try {
+    let configVal = power.getPowerConfig('scene_name_test');
+    console.info('get power config success, configVal: ' + configVal);
+} catch(err) {
+    console.error('get power config failed, err: ' + err);
+}
+```
+
+## power.setPowerConfig
+
+setPowerConfig(sceneName: string, value: string): void
+
+写入电源配置节点。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_CONFIG
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| sceneName | string | 是    | 场景名称。最大长度128字节。 |
+| value | string | 是    | 配置节点值。最大长度128字节。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName or value parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes; <br>3. The length of value parameter exceeds 128 bytes. |
+| 4900601 | Failed to write the power configuration value. |
+
+**示例：**
+
+```js
+try {
+    power.setPowerConfig('scene_name_test', 'value_test');
+    console.info('set power config success');
+} catch(err) {
+    console.error('set power config failed, err: ' + err);
 }
 ```

@@ -101,7 +101,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | 名称         | 类型   | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
 | reuseMode        | [ReuseMode](#reusemode12) | 否 | 否   | 复用解锁认证结果的模式。       |
-| reuseDuration    | number | 否 | 否 | 允许复用解锁认证结果的有效时长，有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
+| reuseDuration    | number | 否 | 否 | 允许复用解锁认证结果的有效时长，单位为毫秒。有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
 
 ## userAuth.getAuthLockState<sup>22+</sup>
 
@@ -153,11 +153,11 @@ let authLockState : userAuth.AuthLockState = {
 }
 
 userAuth.getAuthLockState(queryType)
-  .then((result : userAuth.AuthLockState) => {
+  .then((result: userAuth.AuthLockState) => {
     authLockState = result;
-    console.info(`get auth lock state success, authLockState is: ${JSON.stringify(authLockState)}`);
+    console.info('get auth lock state successfully.');
   })
-  .catch((err : BusinessError) => {
+  .catch((err: BusinessError) => {
     console.info(`get auth lock state failed, err code is : ${err?.code}, err message is : ${err?.message}`);
   })
 ```
@@ -206,7 +206,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-  console.info(`get current enrolled state success, enrolledState = ${JSON.stringify(enrolledState)}`);
+  console.info('get current enrolled state successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
   console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
@@ -237,7 +237,7 @@ try {
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | title                | string                              |  否  |  否  | 用户认证界面的标题，建议传入认证目的，例如用于支付、登录应用等，不支持传空字串，最大长度为500字符。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | navigationButtonText | string                              |  否  |  是  | 导航按键的说明文本，最大长度为60字符。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹场景。默认为不展示自定义导航按键。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统方式显示。 默认以模系统方式显示身份认证对话框。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用弹窗方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统弹窗方式显示。 默认以模系统弹窗方式显示身份认证对话框。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 ## UserAuthResult<sup>10+</sup>
 
@@ -308,19 +308,19 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -362,19 +362,19 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -416,19 +416,19 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -493,17 +493,17 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onAuthTip获取到认证中间状态。
   userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
-    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+    console.info('userAuthInstance callback');
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -513,15 +513,15 @@ try {
 
 使用以下接口前，需先通过[getUserAuthInstance](#userauthgetuserauthinstance10)方法获取UserAuthInstance对象。
 
-### on<sup>10+</sup>
+### on('result')<sup>10+</sup>
 
 on(type: 'result', callback: IAuthCallback): void
 
-订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#on20)接口订阅。
+订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#onauthtip20)接口订阅。
 
 > **说明：**
 >
-> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+> 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#onauthtip20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -545,7 +545,7 @@ on(type: 'result', callback: IAuthCallback): void
 
 **示例1：**
 
-以模系统方式进行用户身份认证。
+以模系统弹窗方式进行用户身份认证。
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -576,25 +576,25 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
 **示例2：**
 
-以模应用方式进行用户身份认证。
+以模应用弹窗方式进行用户身份认证。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -632,19 +632,19 @@ struct Index {
         uiContext: context,
       };
       const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      console.info('get userAuth instance success');
+      console.info('get userAuth instance successfully.');
       // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
       userAuthInstance.on('result', {
         onResult (result) {
-          console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+          console.info(`userAuthInstance callback result =${result.result}`);
         }
       });
-      console.info('auth on success');
+      console.info('auth on successfully.');
       userAuthInstance.start();
-      console.info('auth start success');
+      console.info('auth start successfully.');
     } catch (error) {
       const err: BusinessError = error as BusinessError;
-      console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+      console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
     }
   }
 
@@ -659,7 +659,7 @@ struct Index {
 }
 ```
 
-### off<sup>10+</sup>
+### off('result')<sup>10+</sup>
 
 off(type: 'result', callback?: IAuthCallback): void
 
@@ -678,7 +678,7 @@ off(type: 'result', callback?: IAuthCallback): void
 | 参数名   | 类型                              | 必填 | 说明                                       |
 | -------- | --------------------------------- | ---- | ------------------------------------------ |
 | type     | 'result'                          | 是   | 订阅事件类型，表明该事件用来返回认证结果。 |
-| callback | [IAuthCallback](#iauthcallback10) | 否   | 认证接口的回调函数，用于返回认证结果。     |
+| callback | [IAuthCallback](#iauthcallback10) | 否   | 认证接口的回调函数，用于返回认证结果。当不传该参数时默认值为调用[on('result')](#onresult10-1)接口时传递的参数值。|
 
 **错误码：**
 
@@ -720,16 +720,16 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   userAuthInstance.off('result', {
     onResult (result) {
-      console.info(`auth off result = ${JSON.stringify(result)}`);
+      console.info(`auth off result = ${result.result}`);
     }
   });
-  console.info('auth off success');
+  console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -799,12 +799,12 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -863,19 +863,19 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能调用cancel()接口。
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
   userAuthInstance.cancel();
-  console.info('auth cancel success');
+  console.info('auth cancel successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
-### on<sup>20+</sup>
+### on('authTip')<sup>20+</sup>
 
 on(type: 'authTip', callback: AuthTipCallback): void
 
@@ -883,7 +883,7 @@ on(type: 'authTip', callback: AuthTipCallback): void
 
 > **说明：**
 >
-> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+> 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#onauthtip20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -935,21 +935,21 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onAuthTip获取到认证中间状态。
   userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
-    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+    console.info('userAuthInstance callback.');
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
-### off<sup>20+</sup>
+### off('authtip')<sup>20+</sup>
 
 off(type: 'authTip', callback?: AuthTipCallback): void
 
@@ -967,8 +967,8 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 
 | 参数名   | 类型           | 必填 | 说明                                       |
 | -------- | ------------- | ---- | ------------------------------------------ |
-| type     | string        | 是   | 取消订阅的事件类型，支持的事件为'authTip'，当[start()](#start10)调用完成，发起身份认证并调用[on()](#on20)订阅该事件后，调用该方法可取消订阅，不会再触发该事件。 |
-| callback | [AuthTipCallback](#authtipcallback20) | 否   | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用[on()](#on20)接口时传递的参数值。 |
+| type     | string        | 是   | 取消订阅的事件类型，支持的事件为'authTip'，当[start()](#start10)调用完成，发起身份认证并调用[on('authTip')](#onauthtip20)订阅该事件后，调用该方法可取消订阅，不会再触发该事件。 |
+| callback | [AuthTipCallback](#authtipcallback20) | 否   | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用[on('authTip')](#onauthtip20)接口时传递的参数值。 |
 
 **错误码：**
 
@@ -1009,14 +1009,14 @@ try {
     title: '请输入密码',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   userAuthInstance.off('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
-    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+    console.info('userAuthInstance callback');
   });
-  console.info('auth off success');
+  console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -1089,10 +1089,10 @@ try {
     title: '请输入密码',
   };
   let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -1205,16 +1205,13 @@ try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.on('result', {
     callback: (result: userAuth.AuthResultInfo) => {
-      console.info(`authV9 result ${result.result}`);
-      console.info(`authV9 token ${result.token}`);
-      console.info(`authV9 remainAttempts ${result.remainAttempts}`);
-      console.info(`authV9 lockoutDuration ${result.lockoutDuration}`);
+      console.info(`result: ${result.result}`);
     }
   } as userAuth.AuthEvent);
   auth.start();
-  console.info('authV9 start success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
   // do error.
 }
 // 通过callback获取认证过程中的提示信息。
@@ -1235,9 +1232,9 @@ try {
     }
   } as userAuth.AuthEvent);
   auth.start();
-  console.info('authV9 start success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
   // do error.
 }
 ```
@@ -1258,7 +1255,7 @@ on : (name : AuthEventKey, callback : AuthEvent) => void
 
 > **说明：**
 >
-> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[on](#on10)替代。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[on('result')](#onresult10-1)替代。
 >
 > 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行订阅。
 
@@ -1293,10 +1290,7 @@ try {
   // 订阅认证结果。
   auth.on('result', {
     callback: (result: userAuth.AuthResultInfo) => {
-      console.info(`authV9 result ${result.result}`);
-      console.info(`authV9 token ${result.token}`);
-      console.info(`authV9 remainAttempts ${result.remainAttempts}`);
-      console.info(`authV9 lockoutDuration ${result.lockoutDuration}`);
+      console.info(`result: ${result.result}`);
     }
   });
   // 订阅认证过程中的提示信息。
@@ -1315,9 +1309,9 @@ try {
     }
   } as userAuth.AuthEvent);
   auth.start();
-  console.info('authV9 start success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
   // do error.
 }
 ```
@@ -1330,7 +1324,7 @@ off : (name : AuthEventKey) => void
 
 > **说明：**
 >
-> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[off](#off10)替代。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[off('result')](#offresult10)替代。
 >
 > 需要使用已经成功订阅事件的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消订阅。
 
@@ -1362,15 +1356,12 @@ try {
   // 订阅认证结果。
   auth.on('result', {
     callback: (result: userAuth.AuthResultInfo) => {
-      console.info(`authV9 result ${result.result}`);
-      console.info(`authV9 token ${result.token}`);
-      console.info(`authV9 remainAttempts ${result.remainAttempts}`);
-      console.info(`authV9 lockoutDuration ${result.lockoutDuration}`);
+      console.info(`result: ${result.result}`);
     }
   });
   // 取消订阅结果。
   auth.off('result');
-  console.info('cancel subscribe authentication event success');
+  console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   console.error(`cancel subscribe authentication event failed, error = ${error}`);
   // do error.
@@ -1423,9 +1414,9 @@ let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.start();
-  console.info('authV9 start auth success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 start auth failed, error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
 }
 ```
 
@@ -1467,9 +1458,9 @@ let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.cancel();
-  console.info('cancel auth success');
+  console.info('cancel auth successfully.');
 } catch (error) {
-  console.error(`cancel auth failed, error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
 }
 ```
 
@@ -1524,9 +1515,9 @@ let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
 
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
-  console.info('let auth instance success');
+  console.info('get auth instance successfully.');
 } catch (error) {
-  console.error(`get auth instance success failed, error = ${error}`);
+  console.error(`get auth instance failed, error = ${error}`);
 }
 ```
 
@@ -1701,9 +1692,9 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 let auth = new userAuth.UserAuth();
 let checkCode = auth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1);
 if (checkCode == userAuth.ResultCode.SUCCESS) {
-  console.info('check auth support success');
+  console.info('check auth support successfully.');
 } else {
-  console.error(`check auth support fail, code = ${checkCode}`);
+  console.error(`check auth support failed, code = ${checkCode}`);
 }
 ```
 
@@ -1747,14 +1738,13 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
   onResult: (result, extraInfo) => {
     try {
       console.info(`auth onResult result = ${result}`);
-      console.info(`auth onResult extraInfo = ${JSON.stringify(extraInfo)}`);
       if (result == userAuth.ResultCode.SUCCESS) {
         // 此处添加认证成功逻辑。
       } else {
         // 此处添加认证失败逻辑。
       }
     } catch (error) {
-      console.error(`auth onResult error = ${error}`);
+      console.error(`auth onResult failed, error = ${error}`);
     }
   }
 });
@@ -1796,9 +1786,9 @@ let contextId = new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7]);
 let auth = new userAuth.UserAuth();
 let cancelCode = auth.cancelAuth(contextId);
 if (cancelCode == userAuth.ResultCode.SUCCESS) {
-  console.info('cancel auth success');
+  console.info('cancel auth successfully.');
 } else {
-  console.error('cancel auth fail');
+  console.error('cancel auth failed.');
 }
 ```
 
@@ -1840,14 +1830,13 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
   onResult: (result, extraInfo) => {
     try {
       console.info(`auth onResult result = ${result}`);
-      console.info(`auth onResult extraInfo = ${JSON.stringify(extraInfo)}`);
       if (result == userAuth.ResultCode.SUCCESS) {
         // 此处添加认证成功逻辑。
       }  else {
         // 此处添加认证失败逻辑。
       }
     } catch (error) {
-      console.error(`auth onResult error = ${error}`);
+      console.error(`auth onResult failed, error = ${error}`);
     }
   }
 });
@@ -1884,23 +1873,20 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
   onResult: (result, extraInfo) => {
     try {
       console.info(`auth onResult result = ${result}`);
-      console.info(`auth onResult extraInfo = ${JSON.stringify(extraInfo)}`);
       if (result == userAuth.ResultCode.SUCCESS) {
         // 此处添加认证成功逻辑。
       }  else {
         // 此处添加认证失败逻辑。
       }
     } catch (error) {
-      console.error(`auth onResult error = ${error}`);
+      console.error(`auth onResult failed, error = ${error}`);
     }
   },
   onAcquireInfo: (module, acquire, extraInfo : userAuth.AuthResult) => {
     try {
-      console.info(`auth onAcquireInfo module = ${module}`);
-      console.info(`auth onAcquireInfo acquire = ${acquire}`);
-      console.info(`auth onAcquireInfo extraInfo = ${JSON.stringify(extraInfo)}`);
+      console.info('auth onAcquireInfo successfully.');
     } catch (error) {
-      console.error(`auth onAcquireInfo error = ${error}`);
+      console.error(`auth onAcquireInfo failed, error = ${error}`);
     }
   }
 });
@@ -1920,7 +1906,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 | ------------ | ---------- | ---- | ---- | -------------------|
 | token        | Uint8Array | 否 | 是 | 认证成功的令牌信息。 |
 | remainTimes  | number     | 否 | 是 | 剩余的认证操作次数。 |
-| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。 |
+| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。单位为毫秒。|
 
 ## ResultCode<sup>(deprecated)</sup>
 
@@ -2062,7 +2048,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[constructor](#constructordeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[getAuthInstance](#userauthgetauthinstancedeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2085,7 +2071,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuth](#userauthdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[AuthInstance](#authinstancedeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2095,7 +2081,7 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[start](#startdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -2117,10 +2103,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 let authenticator = userAuth.getAuthenticator();
 authenticator.execute('FACE_ONLY', 'S2', (error, code)=>{
   if (code === userAuth.ResultCode.SUCCESS) {
-    console.info('auth success');
+    console.info('auth successfully.');
     return;
   }
-  console.error(`auth fail, code = ${code}`);
+  console.error(`auth failed, code = ${code}`);
 });
 ```
 
@@ -2133,7 +2119,7 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[start](#startdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -2160,10 +2146,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   let authenticator = userAuth.getAuthenticator();
   authenticator.execute('FACE_ONLY', 'S2').then((code)=>{
-    console.info('auth success');
+    console.info('auth successfully.');
   })
 } catch (error) {
-  console.error(`auth fail, code = ${error}`);
+  console.error(`auth failed, code = ${error}`);
 }
 ```
 
@@ -2173,7 +2159,7 @@ try {
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[ResultCode](#resultcodedeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuthResultCode](#userauthresultcode9)代替。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 

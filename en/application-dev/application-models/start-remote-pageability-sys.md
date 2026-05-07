@@ -18,7 +18,7 @@ In addition to '\@ohos.ability.featureAbility', you must import '\@ohos.distribu
 The [getTrustedDeviceListSync](../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync) method is available only for system applications. Therefore, non-system applications cannot obtain remote device information or start a remote ability.
 
 
-**Table 1** featureAbility APIs
+  **Table 1** featureAbility APIs
 
 | API| Description|
 | -------- | -------- |
@@ -26,7 +26,7 @@ The [getTrustedDeviceListSync](../reference/apis-distributedservice-kit/js-apis-
 | startAbilityForResult(parameter: StartAbilityParameter)| Starts an ability and returns the execution result when the ability is terminated.|
 
 
-**Table 2** deviceManager APIs
+  **Table 2** deviceManager APIs
 
 | API| Description|
 | -------- | -------- |
@@ -36,18 +36,18 @@ The [getTrustedDeviceListSync](../reference/apis-distributedservice-kit/js-apis-
 In the cross-device scenario, before starting a remote PageAbility, you must request the data synchronization permission. The related APIs are described in the table below.
 
 
-**Table 3** AtManager APIs
+  **Table 3** AtManager APIs
 
 | API| Description|
 | -------- | -------- |
-| checkAccessToken(tokenID: number, permissionName: string): Promise&lt;GrantStatus&gt; | Verifies whether a permission is granted to an application. This API uses a promise to return the result **GrantStatus**. You are advised to use **checkAccessToken** instead of **verifyAccessToken**, which is deprecated since API version 9.|
+| checkAccessToken(tokenID: number, permissionName: string): Promise&lt;GrantStatus&gt; <br> | Verifies whether a permission is granted to an application. This API uses a promise to return the result **GrantStatus**. You are advised to use **checkAccessToken** instead of **verifyAccessToken**, which is deprecated since API version 9.|
 
 
-**Table 4** context APIs
+  **Table 4** context APIs
 
 | API| Description|
 | -------- | -------- |
-| requestPermissionsFromUser(permissions: Array&lt;string&gt;, requestCode: number, resultCallback: AsyncCallback&lt; PermissionRequestResult&gt;): void | Requests permissions from the system. This API uses an asynchronous callback to return the result. For details, see [API Reference](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextrequestpermissionsfromuser7-1).|
+| requestPermissionsFromUser(permissions: Array&lt;string&gt;, requestCode: number, resultCallback: AsyncCallback&lt; PermissionRequestResult&gt;): void <br> <br> | Requests permissions from the system. This API uses an asynchronous callback to return the result. For details, see [API Reference](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextrequestpermissionsfromuser7-1).|
 
 
 The following sample code shows how to request the data synchronization permission from users:
@@ -96,7 +96,7 @@ struct PagePageAbilitySecond {
   }
 
   build() {
-    //...
+    // ...
   }
 }
 
@@ -106,7 +106,7 @@ struct PagePageAbilitySecond {
 After obtaining the data synchronization permission, obtain the trusted device list for device selection.
 
 
-The following sample code shows how to use **getAvailableDeviceListSync()** to obtain the trusted device list.
+  The following sample code shows how to use **getAvailableDeviceListSync()** to obtain the trusted device list.
 
 ```ts
 import deviceManager from '@ohos.distributedDeviceManager';
@@ -147,7 +147,7 @@ struct PagePageAbilitySecond {
   }
 
   build() {
-    //...
+    // ...
   }
 }
 ```
@@ -197,7 +197,7 @@ struct PagePageAbilitySecond {
     hilog.info(domain, TAG, 'onStartRemoteAbility end');
   }
   build() {
-    //...
+    // ...
   }
 }
 

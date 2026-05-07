@@ -45,9 +45,11 @@
 @Component
 struct Index {
   @State @Watch('onChange') num: number = 0; // @Watch入参为函数名
+
   onChange() {
     console.info(`num change to ${this.num}`);
   }
+
   build() {
     Column() {
       Text(`num is: ${this.num}`)
@@ -71,9 +73,29 @@ Monitor: MonitorDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## MonitorDecoratorOptions
+
+@Monitor装饰器的配置选项。
+
+### 属性
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 类型    | 只读 | 可选 | 说明                                                         |
+| -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| enableWildcard | boolean | 否   | 是   | 是否支持通配符能力。true：使能通配符能力，false：关闭通配符能力。默认值为true，即默认使能通配符能力。 |
+
 ## MonitorDecorator<sup>12+</sup>
 
-type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
+type MonitorDecorator = (value: string | MonitorDecoratorOptions, ...args: string[]) => MethodDecorator
 
 @Monitor装饰器的实际类型。
 
@@ -87,7 +109,7 @@ type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
 
 | 参数名 | 类型     | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| value  | string   | 是   | 用于监听的变量名路径，内容由开发者指定。当开发者仅传入一个字符串时，入参为该类型。 |
+| value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | 是   | 在API版本26.0.0之前，该参数为监听的变量名路径，内容由开发者指定。当开发者仅传入一个字符串时，入参为string类型。从API版本26.0.0开始，该参数也可以为MonitorDecoratorOptions类型的对象，用于配置通配符能力。 |
 | ...args   | string[] | 否   | 用于监听的变量名路径数组，内容由开发者指定。当开发者传入多个字符串时，入参为该类型。 |
 
 **返回值：**
@@ -104,21 +126,27 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // 监听一个变量
-  onNameChange(monitor: IMonitor) {
+
+  // 监听一个变量
+  @Monitor('name')
+  onNameChange() {
     console.info(`name change to ${this.name}`);
   }
-  @Monitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -173,7 +201,7 @@ value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 
 | 类型                                                  | 说明                                                         |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| [IMonitorValue\<T\>](#imonitorvaluet12)  \| undefined | @Monitor监听变量的路径以及变化前后值信息。<br>T为监听变量的类型。<br>当监听的路径不存在时，返回undefined。<br>当未指定路径时，默认返回变化路径数组dirty中第一个路径对应的信息。 |
+| [IMonitorValue\<T\>](#imonitorvaluet12)  \| undefined | @Monitor监听变量的路径以及变化前后值信息。<br>T为监听变量的类型。<br>当监听的路径不存在时，返回undefined。<br>API版本26.0.0之前，当未指定路径时，默认返回变化路径数组dirty中第一个路径对应的信息。<br>从API版本26.0.0开始，当未指定路径时，默认返回变化路径数组dirty中第一个非通配符路径。<br>当指定路径为通配符路径时，返回undefined。<br>当未指定路径，且变化路径数组dirty中所有路径均为通配符路径时，返回undefined。 |
 
 **示例：**
 
@@ -183,12 +211,16 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // 监听一个变量
+
+  // 监听一个变量
+  @Monitor('name')
   onNameChange(monitor: IMonitor) {
     // 未指定value的入参时，默认使用dirty中的第一个路径作为入参
     console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
-  @Monitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     // 指定value的入参时，将返回入参路径path对应的变量变化值信息
     monitor.dirty.forEach((path: string) => {
@@ -196,10 +228,12 @@ class Info {
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -271,6 +305,20 @@ SyncMonitor: MonitorDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称        | 类型             | 说明                           |
+| ----------- | ---------------- | ------------------------------ |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 属性装饰器，监听状态变量的修改。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](../errorcode-stateManagement.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | -------------------- |
+| 130001   | The path is invalid. |
+
 **示例：**
 
 ```ts
@@ -281,11 +329,15 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @SyncMonitor('name') // 监听一个变量
-  onNameChange(monitor: IMonitor) {
+
+  // 监听一个变量
+  @SyncMonitor('name')
+  onNameChange() {
     hilog.info(0xFF00, 'testTag', '%{public}s', `name change to ${this.name}`);
   }
-  @SyncMonitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @SyncMonitor('age','height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -293,10 +345,12 @@ class Info {
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)

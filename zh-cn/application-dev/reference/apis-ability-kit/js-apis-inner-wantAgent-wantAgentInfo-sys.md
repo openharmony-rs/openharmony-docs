@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义触发WantAgent所需要的信息。
 
@@ -29,7 +29,7 @@ import { wantAgent as abilityWantAgent } from '@kit.AbilityKit';
 
 | 名称           | 类型                            | 只读 | 可选 | 说明                   |
 | -------------- | ------------------------------ | ---- | ---- |---------------------- |
-| userId<sup>22+</sup>    | number | 否 | 是 | 用户ID。<br>取值范围：大于等于0。<br>默认值为调用方所在用户ID。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| userId<sup>23+</sup>    | number | 否 | 是 | 用户ID。<br>取值范围：大于等于0。<br>默认值为调用方所在用户ID。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 
 
 ## LocalWantAgentInfo<sup>20+</sup>

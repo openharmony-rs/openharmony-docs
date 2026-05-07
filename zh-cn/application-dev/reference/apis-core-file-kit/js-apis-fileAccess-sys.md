@@ -1,10 +1,10 @@
 # @ohos.file.fileAccess (公共文件访问与管理)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 fileAccess模块是基于[extension](../../application-models/extensionability-overview.md)机制实现的一个对公共文件访问和操作的框架。该模块一方面对接各类文件管理服务，如存储管理服务等；另一方面为系统应用提供一套统一的文件访问管理接口。存储管理服务可以管理内置存储部分目录，以及共享盘、U盘、SD卡等设备上的资源。
 
@@ -13,6 +13,7 @@ fileAccess模块是基于[extension](../../application-models/extensionability-o
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 > - 当前只支持FilePicker、文件管理器调用。
+> - 本模块接口从API version 23开始废弃。不建议使用以下接口，推荐使用[文件管理](js-apis-file-fs.md)接口进行文件访问。
 
 ## 导入模块
 
@@ -256,8 +257,8 @@ createFileAccessHelper(context: Context) : FileAccessHelper
 | relativePath<sup>10+</sup> | string | 是 | 否 | 文件(夹)的相对路径。 |
 | fileName | string | 否 | 否 | 文件(夹)的名称。 |
 | mode | number | 否 | 否 | 文件(夹)的权限信息。 |
-| size | number | 否 | 否 |  文件(夹)的大小。 |
-| mtime | number | 否 | 否 |  文件(夹)的修改时间。 |
+| size | number | 否 | 否 |  文件(夹)的大小。（单位：字节） |
+| mtime | number | 否 | 否 |  文件(夹)的修改时间。自1970年1月1日起至目标时间的毫秒数。 |
 | mimeType | string | 否 | 否 |  文件(夹)的媒体资源类型。 |
 
 ### listFile
@@ -1538,7 +1539,6 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
     console.error("getFileInfoFromUri failed, errCode:" + error.code + ", errMessage:" + error.message);
   }
   ```
-
 
 ### getFileInfoFromRelativePath<sup>10+</sup>
 

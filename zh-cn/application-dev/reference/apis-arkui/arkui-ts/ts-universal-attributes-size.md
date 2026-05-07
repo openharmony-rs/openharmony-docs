@@ -14,7 +14,7 @@
 >
 > - 如果组件的尺寸通过百分比进行设置， 在计算组件尺寸的百分比大小时，参考最近设置了固定大小的祖先节点的尺寸。
 >
-> - 从API version 10开始，尺寸设置内部分属性支持使用calc计算特性，具体支持属性请参考对应的属性说明。calc计算特性是一种动态计算长度值的函数，常用于灵活设置布局尺寸（如宽度、高度、边距等）。它允许通过数学表达式组合不同单位和数值，实现动态响应式设计。注意，在使用calc时，运算符与数值之间需要使用空格隔开。具体使用场景可见[示例1](#示例1设置组件的宽高和边距)。
+> - 从API version 10开始，尺寸设置内部分属性支持使用calc计算特性，具体支持属性请参考对应的属性说明。calc计算特性是一种动态计算长度值的函数，常用于灵活设置布局尺寸（如宽度、高度、边距等）。它允许通过数学表达式组合不同单位和数值，支持通过加减乘除括号运算符组成计算表达式，实现动态响应式设计。注意，在使用calc时，运算符与数值之间需要使用空格隔开。具体使用场景可见[示例1](#示例1设置组件的宽高和边距)。
 
 ## width
 
@@ -234,7 +234,7 @@ safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 
 > **说明：**
 > 
-> 当父辈和祖先容器设置了组件级安全区域时，子组件可以感知并利用该区域，称该区域为累计安全区延伸（accumulatedSafeAreaExpand，下文简称SAE），表示子组件在四个方向上各可延伸的长度。当祖辈与更上一级祖辈的safeAreaPadding相邻接（即未被margin、border、padding分隔）时，SAE将递归地向外累积，直至不存在相邻的更外层safeAreaPadding或递归至页面容器外。系统级避让区域（如状态栏、导航条、挖孔区等，详情参见[expandSafeArea](./ts-universal-attributes-expand-safe-area.md)中的说明）可视为页面容器特有的safeAreaPadding，同样参与该延伸范围的计算。
+> 当父辈和祖先容器设置了组件级安全区域时，子组件可以感知并利用该区域，称该区域为累计安全区延伸（accumulatedSafeAreaExpand，下文简称SAE），表示子组件在四个方向上各可延伸的长度。当祖辈与更上一级祖辈的safeAreaPadding相邻接（即未被margin、border、padding分隔）时，SAE将递归地向外累积，直至不存在相邻的更外层safeAreaPadding或递归至页面容器外。系统级避让区域（如状态栏、导航条、挖孔区等，详情参见[安全区域](./ts-universal-attributes-expand-safe-area.md)中的说明）可视为页面容器特有的safeAreaPadding，同样参与该延伸范围的计算。
 >
 >通过与其他属性配合使用，可对上述计算得到的组件级安全区区域加以利用。例如，对子组件设置[ignoreLayoutSafeArea](./ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性，即可利用SAE延伸组件的布局范围。
 
@@ -325,6 +325,8 @@ constraintSize(value: ConstraintSizeOptions): T
 > - LayoutPolicy优先级低于constraintSize。
 > 
 > - 从API version 15开始，仅Row和Column组件的width和height属性支持设置LayoutPolicy类型参数，其他组件设置LayoutPolicy类型参数后与不设置宽度或高度表现一致；从API version 20开始，所有基础组件均支持设置LayoutPolicy类型参数。
+>
+> - 当Row、Column、Flex组件主轴尺寸自适应子组件，且子组件A仅交叉轴设置matchParent时，API版本26.0.0之前，子组件A不参与Row、Column、Flex组件的主轴尺寸测量过程，此时Row、Column、Flex组件主轴方向不自适应子组件A的尺寸；从API版本26.0.0开始，子组件A会参与Row、Column、Flex组件的主轴尺寸测量过程，此时Row、Column、Flex组件主轴方向会自适应子组件A的尺寸。交叉轴方向同理。具体变更效果参见[示例6（子组件单方向设置matchParent效果）](#示例6子组件单方向设置matchparent效果)。
 
 ## 示例
 
@@ -344,12 +346,17 @@ struct SizeExample {
         // 宽度80 ,高度80 ,外边距20(蓝色区域），上下左右的内边距分别为5、15、10、20（白色区域）
         Row() {
           Row()
-          .size({ width: '100%', height: '100%' })
-          .backgroundColor(Color.Yellow)
+            .size({ width: '100%', height: '100%' })
+            .backgroundColor(Color.Yellow)
         }
         .width(80)
         .height(80)
-        .padding({ top: 5, left: 10, bottom: 15, right: 20 })
+        .padding({
+          top: 5,
+          left: 10,
+          bottom: 15,
+          right: 20
+        })
         .margin(20)
         .backgroundColor(Color.White)
       }.backgroundColor(Color.Blue)
@@ -382,19 +389,37 @@ struct SizeExample {
       }
       .size({ width: '90%', height: 140 })
       .backgroundColor(0xAFEEEE)
+
       // calc计算特性
       Text('calc:')
         .fontSize(12)
         .fontColor(0xCCCCCC)
         .width('90%')
-      Text('calc test')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .backgroundColor(0xFFFAF0)
-        .textAlign(TextAlign.Center)
-        .margin('calc(25vp*2)')
-        // width和height设置百分比时，以父容器的width和height作为基础值。
-        .size({ width: 'calc(90%)', height: 'calc(50vp + 10%)' })
+      Column() {
+        Row() {
+          Text('width 50%')
+            .fontSize(14)
+            .borderWidth(1)
+            .textAlign(TextAlign.Center)
+            .size({ width: '50%', height: 50 })
+          Text('width 50vp')
+            .fontSize(14)
+            .borderWidth(1)
+            .textAlign(TextAlign.Center)
+            .size({ width: '50vp', height: 50 })
+        }
+        .width('100%')
+        .justifyContent(FlexAlign.Center)
+
+        Text('width:calc(50% + 50vp), height:calc(50%)')
+          .fontSize(14)
+          .borderWidth(1)
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor(0xFFFAF0)
+          .textAlign(TextAlign.Center)
+          .size({ width: 'calc(50% + 50vp)', height: 'calc(50%)' })
+          // width和height设置百分比时，以父容器的width和height作为基础值。calc的宽度计算结果与上方的两个text宽度之和相等。
+      }.width('100%').height(100)
     }
     .width('100%')
     .margin({ top: 5 })
@@ -475,8 +500,8 @@ struct SafeAreaPaddingExample {
     Column() {
       Column() {
         Column()
-          .width("100%")
-          .height("100%")
+          .width('100%')
+          .height('100%')
           .backgroundColor(Color.Pink)
       }
       .width(200)
@@ -520,8 +545,8 @@ struct SafeAreaPaddingExample {
     Column() {
       Column() {
         Column()
-          .width("100%")
-          .height("100%")
+          .width('100%')
+          .height('100%')
           .backgroundColor(Color.Pink)
       }
       .width(200)
@@ -552,7 +577,7 @@ struct LayoutPolicyExample {
     Column() {
       Column() {
         // matchParent生效时，当前组件会与其父组件内容区大小（180vp * 180vp）相等，同时依旧受自身constraintSize（150vp * 150vp）约束，因此当前组件大小为150vp * 150vp
-        Text("matchParent")
+        Text('matchParent')
         Flex()
           .backgroundColor('rgb(0, 74, 175)')
           .width(LayoutPolicy.matchParent)
@@ -560,7 +585,7 @@ struct LayoutPolicyExample {
           .constraintSize({ maxWidth: 150, maxHeight: 150 })
 
         // wrapContent生效时，当前组件会与其子组件大小（300vp * 300vp）相等，但不能超过父组件内容大小（180vp * 180vp）且会受自身constraintSize（250vp * 250vp）约束，因此当前组件大小为180vp * 180vp
-        Text("wrapContent")
+        Text('wrapContent')
         Row() {
           Flex()
             .width(300)
@@ -572,7 +597,7 @@ struct LayoutPolicyExample {
         .constraintSize({ maxWidth: 250, maxHeight: 250 })
 
         // 从API version 20开始，layoutPolicy支持wrapContent和fixAtIdealSize。fixAtIdealSize生效时，当前组件会与其子组件大小（300vp * 300vp）相等，可以超过父组件内容大小（180vp * 180vp）但会受自身constraintSize（250vp * 250vp）约束，因此当前组件大小为250vp * 250vp
-        Text("fixAtIdealSize")
+        Text('fixAtIdealSize')
 
         Row() {
           Flex()
@@ -588,10 +613,51 @@ struct LayoutPolicyExample {
       .height(200)
       .padding(10)
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
 
 ![layoutPolicyExample](figures/layoutPolicy_demo.jpg)
+
+### 示例6（子组件单方向设置matchParent效果）
+
+该示例展示Column组件自适应子组件且子组件仅单方向设置matchParent时的布局效果。从API版本26.0.0开始，Column组件高度自适应第一个和第二个子组件，宽度自适应第一个和第三个子组件。
+
+```ts
+@Entry
+@Component
+struct Demo {
+  build() {
+    Column() {
+      // API版本26.0.0之前，父组件高度计算为 padding + 组件1高度 = 30px * 2 + 200px = 260px, 宽度计算为 padding + 组件1宽度 = 30px * 2 + 200px = 260px
+      // 从API版本26.0.0开始，父组件高度计算为 padding + space + 组件1高度 + 组件2高度 = 30px * 2 + 30px + 200px + 200px = 490px, 宽度计算为 padding + max(组件1宽度, 组件3宽度) = 30px * 2 + max(200px, 400px) = 460px
+      Column({space: "30px"}) {
+        Column()
+          .width("200px")
+          .height("200px")
+          .backgroundColor('rgb(0, 74, 175)')
+
+        Column()
+          .width(LayoutPolicy.matchParent) // 子组件宽度与父组件内容区宽度保持一致
+          .height("200px")
+          .backgroundColor('rgb(0, 74, 175)')
+
+        Column()
+          .width("400px")
+          .height(LayoutPolicy.matchParent) // 子组件高度与父组件内容区高度保持一致
+          .backgroundColor('rgb(0, 74, 175)')
+      }
+      .width(LayoutPolicy.wrapContent)
+      .height(LayoutPolicy.wrapContent)
+      .backgroundColor('rgb(39, 135, 217)')
+      .padding("30px")
+    }.width("100%")
+  }
+}
+```
+
+|API版本26.0.0前|从API版本26.0.0开始|
+|--|--|
+|![](figures/singleMatchParentBefore.png)|![](figures/singleMatchParentAfter.png)|

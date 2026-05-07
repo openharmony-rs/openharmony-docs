@@ -12,7 +12,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
      
@@ -37,13 +37,13 @@
       imageWidth: number = 1920;
       imageHeight: number = 1080;
       private uiContext: UIContext = this.getUIContext();
+      private mXComponentOptions: XComponentOptions = {
+        type: XComponentType.SURFACE,
+        controller: this.xComponentCtl
+      }
 
       build() {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.surfaceId = this.xComponentCtl.getXComponentSurfaceId(); // 获取组件surfaceId。
@@ -70,7 +70,7 @@
      }
      let previewOutput: camera.PreviewOutput | undefined = undefined;
      try {
-       //previewProfilesArray要选择与步骤二设置宽高比一致的previewProfile配置信息，此处选择数组第一项仅供接口使用示例参考。
+       // previewProfilesArray要选择与步骤二设置宽高比一致的previewProfile配置信息，此处选择数组第一项仅供接口使用示例参考。
        previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
      } catch (error) {
        let err = error as BusinessError;
@@ -80,7 +80,7 @@
    }
    ```
 
-4. 使能。通过[Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法输出预览流，接口调用失败会返回相应错误码，错误码类型参见[Camera错误码](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+4. 使能。通过[Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法输出预览流，接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
      
    ```ts
    async function startPreviewOutput(cameraManager: camera.CameraManager, previewOutput: camera.PreviewOutput): Promise<void> {
@@ -128,7 +128,7 @@
 
 在相机应用开发过程中，可以随时监听预览输出流状态，包括预览流启动、预览流结束、预览流输出错误。
 
-- 通过注册固定的frameStart回调函数获取监听预览启动结果，previewOutput创建成功时即可监听，预览第一次曝光时触发，有该事件返回结果则认为预览流已启动。
+- 通过注册固定的[on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)回调函数获取监听预览启动结果，previewOutput创建成功时即可监听，预览第一次曝光时触发，有该事件返回结果则认为预览流已启动。
     
   ```ts
   function onPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
@@ -141,7 +141,7 @@
   }
   ```
 
-- 通过注册固定的frameEnd回调函数获取监听预览结束结果，previewOutput创建成功时即可监听，预览完成最后一帧时触发，有该事件返回结果则认为预览流已结束。
+- 通过注册固定的[on('frameEnd')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframeend)回调函数获取监听预览结束结果，previewOutput创建成功时即可监听，预览完成最后一帧时触发，有该事件返回结果则认为预览流已结束。
     
   ```ts
   function onPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): void {
@@ -154,7 +154,7 @@
   }
   ```
 
-- 通过注册固定的error回调函数获取监听预览输出错误结果，回调返回预览输出接口使用错误时对应的错误码，错误码类型参见[Camera错误码](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听预览输出错误结果，回调返回预览输出接口使用错误时对应的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
     
   ```ts
   function onPreviewOutputError(previewOutput: camera.PreviewOutput): void {
@@ -180,7 +180,7 @@ struct Index {
   @State imageWidth: number = 1920;
   @State imageHeight: number = 1080;
   private cameraManager: camera.CameraManager | undefined = undefined;
-  private cameras: Array<camera.CameraDevice> | Array<camera.CameraDevice> = [];
+  private cameras: Array<camera.CameraDevice> | undefined = [];
   private cameraInput: camera.CameraInput | undefined = undefined;
   private previewOutput: camera.PreviewOutput | undefined = undefined;
   private session: camera.VideoSession | undefined = undefined;
@@ -188,7 +188,10 @@ struct Index {
   private context: Context | undefined = this.uiContext.getHostContext();
   private cameraPermission: Permissions = 'ohos.permission.CAMERA'; // 申请权限相关问题可参考本篇开头的申请相关权限文档
   @State isShow: boolean = false;
-
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentCtl
+  }
 
   async requestPermissionsFn(): Promise<void> {
     let atManager = abilityAccessCtrl.createAtManager();
@@ -221,11 +224,7 @@ struct Index {
   build() {
     Column() {
       if (this.isShow) {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.xComponentSurfaceId = this.xComponentCtl.getXComponentSurfaceId(); // 获取组件surfaceId。

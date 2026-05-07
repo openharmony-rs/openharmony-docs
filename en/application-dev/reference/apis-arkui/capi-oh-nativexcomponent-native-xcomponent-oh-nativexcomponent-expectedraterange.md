@@ -2,9 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} OH_NativeXComponent_ExpectedRateRange
+```
 
 ## Overview
 
@@ -22,6 +26,6 @@ Defines the expected frame rate range.
 
 | Name| Description|
 | -- | -- |
-| int32_t min | Minimum value of the expected frame rate range.|
-| int32_t max | Maximum value of the expected frame rate range.|
-| int32_t expected | Expected frame rate.|
+| int32_t min | Minimum value of the expected frame rate range. The unit is frame/second.|
+| int32_t max | Maximum value of the expected frame rate range. The unit is frame/second.|
+| int32_t expected | Expected frame rate. The unit is frame/second.|

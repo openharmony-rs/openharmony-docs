@@ -24,7 +24,7 @@ Performs internal interactions within a function and processes operations relate
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -40,16 +40,16 @@ Performs internal interactions within a function and processes operations relate
 
 | **Name**| **Type**|  **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| action | string | Yes|Action type.<br>- **"router"**: redirection to the specified UIAbility of the widget provider. This type of action can be triggered only in a click event.<br>- **"message"**: custom message. If this type of action is triggered, the [onFormEvent()](../apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent) lifecycle callback of the provider FormExtensionAbility is called.<br>- **"call"**: launch of the widget provider in the background. If this type of action is triggered, the specified UIAbility (whose [launch type](../../application-models/uiability-launch-type.md) must be singleton) of the widget provider is started in the background, but not displayed in the foreground. This action type requires that the widget provider should have the [ohos.permission.KEEP_BACKGROUND_RUNNING](../../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running) permission.|
+| action | string | Yes|Action type.<br>- **"router"**: redirection to the specified UIAbility of the widget provider. This type of action can be triggered only in a click event.<br>- **"message"**: custom message. If this type of action is triggered, the [onFormEvent()](../apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent) lifecycle callback of the provider **FormExtensionAbility** is called.<br>- **"call"**: launch of the widget provider in the background. If this type of action is triggered, the specified **UIAbility** (whose [launch type](../../application-models/uiability-launch-type.md) must be singleton) of the widget provider is started in the background, but not displayed in the foreground. This action type requires that the widget provider have the [ohos.permission.KEEP_BACKGROUND_RUNNING](../../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running) permission.|
 | bundleName | string | No| Name of the target bundle when **action** is **"router"** or **"call"**.|
 | moduleName | string | No| Name of the target module when **action** is **"router"** or **"call"**.|
-| abilityName | string | No| Name of the target UIAbility when **action** is **"router"** or **"call"**.|
-| uri<sup>11+</sup> | string   | No  | URI of the target UIAbility when **action** is **"router"**. If both **uri** and **abilityName** are set, **abilityName** takes precedence.|
+| abilityName | string | No| Name of the target **UIAbility** when **action** is **"router"** or **"call"**.|
+| uri<sup>11+</sup> | string   | No  | URI of the target **UIAbility** when action is **"router"**. If both **uri** and **abilityName** are set, **abilityName** takes precedence.|
 | params | Object | No| Additional parameters carried in the current action. The value is a key-value pair in JSON format.|
 
 >**NOTE**
 >
->When **action** is **"call"**, a string value of **'method'** must be passed to **params** to trigger the corresponding method in the UIAbility.
+>When **action** is **"call"**, a string value of **'method'** must be passed to **params** to trigger the corresponding method in the **UIAbility**.
 
 **Example**
 

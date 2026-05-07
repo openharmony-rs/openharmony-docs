@@ -57,7 +57,7 @@ Defines common attributes of the location service.
 
 ### Location_ResultCode
 
-```
+```c
 enum Location_ResultCode
 ```
 
@@ -78,7 +78,7 @@ Enumerates error codes of the location service.
 
 ### Location_UseScene
 
-```
+```c
 enum Location_UseScene
 ```
 
@@ -97,7 +97,7 @@ Enumerates use scenes in a location request.
 
 ### Location_PowerConsumptionScene
 
-```
+```c
 enum Location_PowerConsumptionScene
 ```
 
@@ -115,7 +115,7 @@ Enumerates power consumption scenarios in a location request.
 
 ### Location_SourceType
 
-```
+```c
 enum Location_SourceType
 ```
 
@@ -137,7 +137,7 @@ Defines the source of location information.
 
 ### OH_LocationInfo_GetBasicInfo()
 
-```
+```c
 Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
 ```
 
@@ -161,7 +161,7 @@ Obtains basic location information.
 
 ### OH_LocationInfo_GetAdditionalInfo()
 
-```
+```c
 Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)
 ```
 
@@ -187,7 +187,7 @@ Obtains the additional information in the location information.
 
 ### Location_InfoCallback()
 
-```
+```c
 typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 ```
 
@@ -206,7 +206,7 @@ Defines the callback for receiving reported location information.
 
 ### OH_Location_CreateRequestConfig()
 
-```
+```c
 Location_RequestConfig* OH_Location_CreateRequestConfig(void)
 ```
 
@@ -224,7 +224,7 @@ Creates a **Location_RequestConfig** instance.
 
 ### OH_Location_DestroyRequestConfig()
 
-```
+```c
 void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
 ```
 
@@ -242,7 +242,7 @@ Destroys the **Location_RequestConfig** instance and reclaims the memory.
 
 ### OH_LocationRequestConfig_SetUseScene()
 
-```
+```c
 void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene)
 ```
 
@@ -261,7 +261,7 @@ Sets the use scene in the location request configuration.<br> **useScene** takes
 
 ### OH_LocationRequestConfig_SetPowerConsumptionScene()
 
-```
+```c
 void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)
 ```
 
@@ -280,7 +280,7 @@ Sets the power consumption scene in the location request configuration.
 
 ### OH_LocationRequestConfig_SetInterval()
 
-```
+```c
 void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)
 ```
 
@@ -299,7 +299,7 @@ Sets the location reporting interval in the location request configuration.
 
 ### OH_LocationRequestConfig_SetCallback()
 
-```
+```c
 void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)
 ```
 

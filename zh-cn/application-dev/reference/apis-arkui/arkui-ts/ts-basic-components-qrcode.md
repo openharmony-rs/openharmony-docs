@@ -10,11 +10,11 @@
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > 
-> 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
-
-
+> - 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
+>
+> <!--RP1--><!--RP1End-->
 ## 子组件
 
 无
@@ -152,7 +152,7 @@ struct QRCodeExample {
         // $r('app.media.ocean')需要替换为开发者所需的图像资源文件。
         Image($r('app.media.ocean'))
         // 设置二维码背景色为透明
-        QRCode(this.value).width(200).height(200).backgroundColor("#00ffffff")
+        QRCode(this.value).width(200).height(200).backgroundColor('#00ffffff')
       }.width(200).height(200)
     }.width('100%').margin({ top: 5 })
   }

@@ -15,7 +15,7 @@ This topic walks you through on how to export the public key of a persistently s
 
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```

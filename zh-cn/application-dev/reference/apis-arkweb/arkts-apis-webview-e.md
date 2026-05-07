@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -12,7 +12,7 @@
 
 ## WebHitTestType
 
-[getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18)接口用于指示游标节点。
+[getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18)接口用于指示光标节点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,7 +78,7 @@ Web组件使用HTTPDNS的模式。
 
 ## WebMessageType<sup>10+</sup>
 
-[webMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。
+[WebMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -105,7 +105,7 @@ Web组件使用HTTPDNS的模式。
 | NUMBER       | 2 |数值类型。|
 | BOOLEAN      | 3 |布尔类型。|
 | ARRAY_BUFFER | 4 |原始二进制数据缓冲区。|
-| ARRAY        | 5 |数组类型|
+| ARRAY        | 5 |数组类型。|
 
 ## RenderProcessMode<sup>12+</sup>
 
@@ -128,8 +128,8 @@ ArkWeb渲染子进程模式类型。
 | ------------ | -- |--------------------------------- |
 | IMAGE  | 0 | 图片类型的资源。 |
 | CSS       | 1 | CSS类型的资源。|
-| CLASSIC_JS       | 2 | 通过<script src="" /\>标签加载的Javascript资源。|
-| MODULE_JS      | 3 |通过<script src="" type="module" /\>标签加载的Javascript资源。|
+| CLASSIC_JS       | 2 | 通过<script src="" /\>标签加载的JavaScript资源。|
+| MODULE_JS      | 3 |通过<script src="" type="module" /\>标签加载的JavaScript资源。|
 
 ## ScrollType<sup>12+</sup>
 
@@ -139,7 +139,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 | 名称         | 值 | 说明                              |
 | ------------ | -- |--------------------------------- |
-| EVENT  | 0 | 滚动事件，表示通过触摸屏，触摸板，鼠标滚轮生成的网页滚动。|
+| EVENT  | 0 | 滚动事件，表示通过触摸屏、触摸板、鼠标滚轮生成的网页滚动。|
 
 ## WebDownloadState<sup>11+</sup>
 
@@ -169,7 +169,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | FILE_FAILED | 1 |  常规文件操作失败。|
 | FILE_ACCESS_DENIED | 2 | 没有权限访问文件。|
 | FILE_NO_SPACE | 3 | 磁盘没有足够的空间。|
-| FILE_NAME_TOO_LONG | 5 | 文件名字过长。|
+| FILE_NAME_TOO_LONG | 5 | 文件名过长。|
 | FILE_TOO_LARGE | 6 | 文件太大。|
 | FILE_TRANSIENT_ERROR | 10 |  出现了一些临时问题，例如内存不足、文件正在使用以及同时打开的文件过多。|
 | FILE_BLOCKED | 11 |  由于某些本地策略，文件被阻止访问。|
@@ -231,10 +231,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 | 名称 | 值 | 说明 |
 |------|----|------|
-| PAUSED  | 0 | 播放状态为播放状态。 |
-| PLAYING | 1 | 播放状态为暂停状态。 |
+| PAUSED  | 0 | 播放状态为暂停状态，表示媒体已暂停。 |
+| PLAYING | 1 | 播放状态为播放状态，表示媒体正在播放。 |
 
-## NetworkState<sup>12+<sup>
+## NetworkState<sup>12+</sup>
 
 播放器的网络状态。
 
@@ -247,7 +247,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | LOADING       | 2 | 播放器正在下载媒体数据。 |
 | NETWORK_ERROR | 3 | 发生了网络错误。 |
 
-## ReadyState<sup>12+<sup>
+## ReadyState<sup>12+</sup>
 
 播放器的缓存状态。
 
@@ -261,7 +261,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | HAVE_FUTURE_DATA  | 3 | 缓存时长超过了当前的播放进度, 但是仍有可能导致卡顿。 |
 | HAVE_ENOUGH_DATA  | 4 | 缓存了足够的数据，保证播放流畅。 |
 
-## MediaError<sup>12+<sup>
+## MediaError<sup>12+</sup>
 
 播放器的错误类型。
 
@@ -273,7 +273,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | FORMAT_ERROR  | 2 | 媒体格式错误。 |
 | DECODE_ERROR  | 3 | 解码错误。 |
 
-## SuspendType<sup>12+<sup>
+## SuspendType<sup>12+</sup>
 
 表示播放器的挂起类型。
 
@@ -281,11 +281,11 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 | 名称 | 值 | 说明 |
 |------|----|------|
-| ENTER_BACK_FORWARD_CACHE | 0 | 页面进BFCache。 |
-| ENTER_BACKGROUND         | 1 | 页面进后台。 |
+| ENTER_BACK_FORWARD_CACHE | 0 | 页面进入BFCache。 |
+| ENTER_BACKGROUND         | 1 | 页面进入后台。 |
 | AUTO_CLEANUP             | 2 | 系统自动清理。 |
 
-## MediaType<sup>12+<sup>
+## MediaType<sup>12+</sup>
 
 表示媒体类型。
 
@@ -296,7 +296,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | VIDEO | 0 | 视频。 |
 | AUDIO | 1 | 音频。 |
 
-## SourceType<sup>12+<sup>
+## SourceType<sup>12+</sup>
 
 表示媒体源的类型。
 
@@ -307,7 +307,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | URL | 0 | 媒体源的类型是URL。 |
 | MSE | 1 | 媒体源的类型是blob。 |
 
-## Preload<sup>12+<sup>
+## Preload<sup>12+</sup>
 
 播放器预加载媒体数据。
 
@@ -350,8 +350,9 @@ Web页面场景下，全局滚动条模式。
 
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
-| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条。 |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条，可以拖拽。 |
 | FORCE_DISPLAY_SCROLLBAR    | 1 | 常驻滚动条。 |
+| OVERLAY_VISUAL_SCROLLBAR    | 2 | 非常驻滚动条，不可以拖拽。<br/>**起始版本：** 26.0.0 |
 
 ## WebBlanklessErrorCode<sup>20+</sup>
 
@@ -367,31 +368,48 @@ Web页面场景下，全局滚动条模式。
 | ERR_CONTROLLER_NOT_INITED   | -3 | WebViewController未绑定组件。 |
 | ERR_KEY_NOT_MATCH   | -4 | 未匹配到key值，对于[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)需与[getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20)配套使用并且key值一致，否则返回该错误码。 |
 | ERR_SIGNIFICANT_CHANGE   | -5 | 当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)接口不会成功启用插帧。 |
+| ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的插帧持续时间超出范围。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ERR_EXPIRATION_TIME_OUT_OF_RANGE<sup>23+</sup>   | -7 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的历史帧失效时间超出范围。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## BlanklessFrameInterpolationState <sup>23+</sup>
+
+白屏插帧状态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| FRAME_INTERPOLATION_SUCCEEDED | 0 | 插帧成功。 |
+| FRAME_INTERPOLATION_FAILED   | 1 | 插帧失败。 |
+| FRAME_INTERPOLATION_REMOVED   | 2 | 插帧移除。 |
 
 ## ArkWebEngineVersion<sup>20+</sup>
 
-ArkWeb内核版本，请参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)。
+ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)，[M132内核在OpenHarmony 7.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| SYSTEM_DEFAULT   | 0     | 系统默认内核，OpenHarmony 6.0版本默认为M132。|
+| SYSTEM_DEFAULT   | 0     | 系统默认内核，OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M144。|
 | M114             | 1     | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效。|
-| M132             | 2     | OpenHarmony 6.0版本的常青内核，M132为此版本的默认内核。若系统版本上不存在此内核则设置无效。|
-| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 常青内核，系统的最新内核。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony 6.1及之后所有系统版本都生效。 |
+| M132             | 2     | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效。|
+| M144             | 3     | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效。<br/>**起始版本：** 26.0.0 |
+| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 常青内核，系统的最新内核。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony开发套件（基于API 23）及之后所有系统版本都生效。 |
 
-> **表1** 常青内核与遗留内核含义说明
->
-> | 内核类型 | 英文 | 说明 |
-> | ----------- | -------- | -------- |
-> | 常青内核     | EVERGREEN WebCore | 当前系统的最新Web内核，系统基于此内核进行完整的功能实现，推荐应用使用。|
-> | 遗留内核     | LEGACY WebCore    | 复用上一版本的内核，只做安全补丁及舆情问题修复，仅作为兼容性回滚使用，且遗留内核的支持有时间限制。 |
+**表1** 常青内核与遗留内核含义说明
+
+| 内核类型 | 英文 | 说明 |
+| ----------- | -------- | -------- |
+| 常青内核     | EVERGREEN WebCore | 当前系统的最新Web内核，系统基于此内核进行完整的功能实现，推荐应用使用。|
+| 遗留内核     | LEGACY WebCore    | 复用上一版本的内核，只做安全补丁及舆情问题修复，仅作为兼容性回滚使用，且遗留内核的支持有时间限制。 |
 
 
 ## SiteIsolationMode<sup>21+</sup>
 
-站点隔离机制将不同源的网站隔离在不同的Render进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个Render进程，站点隔离打开后，让不同源的Iframe运行在独立的Render进程中。
+站点隔离机制将不同源的网站隔离在不同的渲染进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个Render进程，站点隔离打开后，让不同源的Iframe运行在独立的Render进程中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -423,3 +441,21 @@ Web软键盘自动控制模式。
 | NONE | 0 | 允许在跨站请求中携带cookie，但必须同时设置secure属性。 |
 | LAX | 1 | 允许特定的跨站请求携带cookie，如某些get请求的导航场景。 |
 | STRICT | 2 | 禁止在跨站请求中携带cookie。 |
+
+## UserAgentFormFactor<sup>24+</sup>
+
+用户设备形态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值 | 说明                              |
+| ------------ | -- |--------------------------------- |
+| AUTOMOTIVE  | 'Automotive' |车机，字符串类型。|
+| DESKTOP       | 'Desktop' |PC，字符串类型。|
+| MOBILE       | 'Mobile' |手机，字符串类型。|
+| EINK      | 'EInk' |墨水屏，字符串类型。|
+| TABLET | 'Tablet' |平板，字符串类型。|
+| WATCH        | 'Watch' |手表，字符串类型。|
+| XR        | 'XR' |VR+AR设备，字符串类型。|

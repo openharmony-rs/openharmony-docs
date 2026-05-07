@@ -22,7 +22,7 @@ NetConnection常用接口如下表所示，详细的接口说明请参考[net_co
 | OH_NetConn_IsDefaultNetMetered(int32_t \*isMetered) | 检查当前网络上的数据流量使用是否被计量。 |
 | OH_NetConn_GetConnectionProperties(NetConn_NetHandle \*netHandle, NetConn_ConnectionProperties *prop) | 获取netHandle对应的网络的连接信息。 |
 | OH_NetConn_GetNetCapabilities (NetConn_NetHandle \*netHandle, NetConn_NetCapabilities \*netCapacities) | 获取netHandle对应的网络的能力信息。 |
-| OH_NetConn_GetDefaultHttpProxy (NetConn_HttpProxy \*httpProxy) | 获取网络默认的代理配置信息。 如果设置了全局代理，则会返回全局代理配置信息。如果进程已经绑定到指定netHandle对应的网络，则返回网络句柄对应网络的代理配置信息。在其它情况下，将返回默认网络的代理配置信息。 |
+| OH_NetConn_GetDefaultHttpProxy (NetConn_HttpProxy \*httpProxy) | 获取网络默认的代理配置信息。 如果设置了全局代理，则会返回全局代理配置信息。如果进程已经绑定到指定netHandle对应的网络，则返回网络句柄对应网络的代理配置信息。在其他情况下，将返回默认网络的代理配置信息。 |
 | OH_NetConn_GetAddrInfo (char \*host, char \*serv, struct addrinfo \*hint, struct addrinfo \*\*res, int32_t netId) | 通过netId获取DNS结果。 |
 | OH_NetConn_FreeDnsResult(struct addrinfo \*res) | 释放DNS结果内存。 |
 | OH_NetConn_GetAllNets(NetConn_NetHandleList \*netHandleList) | 获取所有处于连接状态的网络列表。 |
@@ -158,7 +158,7 @@ libnet_connection.so
    ```
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
-   <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    import testNetManager from 'libentry.so';
@@ -231,6 +231,8 @@ libnet_connection.so
          }
        // ...
      }
+     // ...
+   }
    ```
 6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_connection.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 

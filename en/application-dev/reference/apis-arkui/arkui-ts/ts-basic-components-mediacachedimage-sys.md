@@ -27,15 +27,15 @@ Obtains an image from the specified source for subsequent rendering and display.
 
 **Parameters**
 
-| Name| Type                                                    | Mandatory| Description                                                    |	
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
-| src    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr) \| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) \| [ASTCResource](#astcresource12) | Yes  | Data source of the image. Media library resources are supported. For details about how to reference an image of the PixelMap, ResourceStr, or DrawableDescriptor type, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources). The ASTCResource type is available for system applications only.|
+| Name| Type                                                    | Mandatory| Description                                                    |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| src    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)&nbsp;\|&nbsp;[ASTCResource](#astcresource12) | Yes  | Data source of the image. Media library resources are supported. For details about how to reference an image of the PixelMap, ResourceStr, or DrawableDescriptor type, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources). The ASTCResource type is available for system applications only.|
 
 ## Attributes
 
 The [universal attributes](ts-component-general-attributes.md) are supported.
 
-## Events
+## Event
 
 The [universal events](ts-component-general-events.md) are supported.
 

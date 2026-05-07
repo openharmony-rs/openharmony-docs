@@ -59,11 +59,11 @@ Defines the configuration options of the **SelectionMenu** component.
 | -------- | -------- | -------- | -------- | -------- |
 | editorMenuOptions | Array&lt;[EditorMenuOptions](#editormenuoptions)&gt; | No| Yes| Edit menu.<br>If **editorMenuOptions** is not set, the edit menu is not displayed.<br>When both **action** and **builder** in **EditorMenuOptions** are configured, clicking the edit icon will trigger both.<br>By default, the context menu is not closed when the edit menu icon is clicked. You can configure **closeSelectionMenu** of **RichEditorController** in **action** to enable the menu to be closed.|
 | expandedMenuOptions | Array&lt;[ExpandedMenuOptions](#expandedmenuoptions)&gt; | No| Yes| Expanded drop-down menu options.<br>If this parameter is left empty, the expanded drop-down menu is not displayed.<br>The options configured for **ExpandedMenuOptions** are displayed in the **More** menu option, and clicking **More** shows the expanded drop-down menu.|
-| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | No| Yes| Rich text editor controller. If **controller** is set, the default system menu (including the cut, copy, and paste options) is displayed, and the preset menu features are provided.<br>If **controller** is left empty, the **More** menu option is not displayed. If **expandedMenuOptions** is not empty, the expanded drop-down menu is displayed.<br>By default, the copy and paste feature is only available for rich text. To use the feature for content that includes both text and images, define custom **onCopy** and **onPaste** APIs. If a custom **onCopy** or **onPaste** API is defined, the default copy and paste feature is ineffective, and the custom API is called instead.<br>**NOTE**<br> When the preset copy option is selected, the custom context menu on selection is hidden, while the selected text is still highlighted.<br> When the preset select-all option is selected, the custom context menu on selection is hidden, while all text is highlighted.<br> When the preset paste option is selected, the style of the copied text is retained, whether the text is pasted to a blank area or not.<br> When the **copyOptions** attribute of the [RichEditor](ts-basic-components-richeditor.md) component is set to **CopyOptions.None**, the preset copy and cut features are not restricted. |
-| onCopy | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset copy menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
-| onPaste | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset paste menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
-| onCut | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset cut menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
-| onSelectAll | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset select-all menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
+| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | No| Yes| Rich text editor controller. If **controller** is set, the default system menu (including the cut, copy, and paste options) is displayed, and the preset menu features are provided.<br>If **controller** is left empty, the **More** menu option is not displayed. If **expandedMenuOptions** is not empty, the expanded drop-down menu is displayed.<br>By default, the copy and paste feature is only available for rich text. To use the feature for content that includes both text and images, define custom **onCopy** and **onPaste** APIs. If a custom **onCopy** \| **onPaste** API is defined, the default copy and paste feature is ineffective, and the custom API is called instead.<br>**NOTE**<br> When the preset copy option is selected, the custom context menu on selection is hidden, while the selected text is still highlighted.<br> When the preset select-all option is selected, the custom context menu on selection is hidden, while all text is highlighted.<br> When the preset paste option is selected, the style of the copied text is retained, whether the text is pasted to a blank area or not.<br> When the **copyOptions** attribute of the [RichEditor](ts-basic-components-richeditor.md) component is set to **CopyOptions.None**, the preset copy and cut features are not restricted.|
+| onCopy | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | No| Yes| Event callback to take the place of the preset copy menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
+| onPaste | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | No| Yes| Event callback to take the place of the preset paste menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
+| onCut | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | No| Yes| Event callback to take the place of the preset cut menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
+| onSelectAll | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | No| Yes| Event callback to take the place of the preset select-all menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
 
 
 ## EditorMenuOptions
@@ -77,8 +77,8 @@ Describes the edit menu options.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | icon | [ResourceStr](ts-types.md#resourcestr) | No| No| Icon.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| builder | () =&gt; void | No| Yes| Builder of the custom component displayed upon click. It must be used with @Builder for building the custom component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| action | () =&gt; void | No| Yes| Action triggered when the menu option is clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| builder | ()&nbsp;=&gt;&nbsp;void | No| Yes| Builder of the custom component displayed upon click. It must be used with @Builder for building the custom component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| action | ()&nbsp;=&gt;&nbsp;void | No| Yes| Action triggered when the menu option is clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No| Yes| Symbol icon resource, which has higher priority than **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 
@@ -96,7 +96,7 @@ Inherits from [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions)
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| action | () =&gt; void | No| Yes| Action triggered when the menu option is clicked.|
+| action | ()&nbsp;=&gt;&nbsp;void | No| Yes| Action triggered when the menu option is clicked.|
 
 ## EditorEventInfo
 
@@ -450,7 +450,7 @@ struct Index {
 >
 > Icons in bold and italics are not preset in the system. The sample code uses the default icons. You need to replace the icons in **editorMenuOptions** with the desired icons.
 
-
+![selectionmenu](figures/selectionmenu.gif)
 
 ### Example 2: Setting the Symbol Icon
 

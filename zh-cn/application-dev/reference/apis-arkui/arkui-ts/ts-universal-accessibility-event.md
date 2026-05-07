@@ -202,7 +202,7 @@ struct OnAccessibilityFocusExample {
         Text("onAccessibilityFocus doesn't take effect")
         Text("onAccessibilityFocus takes effect")
         .onAccessibilityFocus((isFocus)=>{
-          console.info('[testingTag] isFocus current is ${isFocus}')
+          console.info(`[testingTag] isFocus current is ${isFocus}`)
           })
       }
       .padding(24)

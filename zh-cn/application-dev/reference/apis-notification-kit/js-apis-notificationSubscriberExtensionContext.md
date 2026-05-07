@@ -1,7 +1,7 @@
 # @ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -10,8 +10,8 @@ NotificationSubscriberExtensionContext模块提供通知订阅者扩展能力。
 
 > **说明**
 > 
-> - 本模块接口从 API version 22 开始支持。
-> - 仅可在 Stage 模型下使用。
+> 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 

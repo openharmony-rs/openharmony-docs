@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -109,3 +109,39 @@ UIContext对象的解析策略。
 | UNIQUE | 3 | 获取唯一UI实例的UIContext。 |
 | LAST_FOREGROUND | 4| 获取最近切换到前台状态的UIContext。 |
 | UNDEFINED | 5 | 获取未定义调用作用域的UIContext。 |
+
+## CustomKeyboardContinueFeature<sup>23+</sup>
+
+指定自定义键盘切换时是否接续。
+
+设置为接续，切换输入框时，自定义键盘不会收起和重新拉起。
+
+设置为不接续，切换输入框时，自定义键盘会收起并重新拉起。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| ENABLED | 0 | 接续。 |
+| DISABLED | 1 | 不接续。 |
+
+## TextSelectionClearPolicy
+
+文本选择清除策略枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 0 | 触摸到文本组件外部时，保留文本选中和手柄。 |
+| CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 1 | 触摸到文本组件外部时，清除文本选中和手柄。 |

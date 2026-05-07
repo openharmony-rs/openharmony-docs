@@ -703,6 +703,7 @@ getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名       | 类型        | 必填   | 说明                                    |
 | --------- | --------- | ---- | ------------------------------------- |
 | profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | 否    | 表示Profile协议的枚举值。如果携带ProfileId，则返回指定Profile协议的连接状态。如果未携带ProfileId，则检查所有支持的Profile连接状态，按如下优先级顺序检查并返回：<br>- 存在已连接的Profile协议，则返回[STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在连接的Profile协议，则返回[STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在断连的Profile协议，则返回[STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 以上条件均不满足，则返回[STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。 |
@@ -936,7 +937,7 @@ try {
 
 setBluetoothScanMode(mode: ScanMode, duration: number): void
 
-设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。
+设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。搭配[onScanModeChange](#connectiononscanmodechange23)接口使用，可实时监听蓝牙扫描模式变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -979,7 +980,7 @@ try {
 
 getBluetoothScanMode(): ScanMode
 
-获取蓝牙扫描模式。
+获取蓝牙扫描模式。搭配[onScanModeChange](#connectiononscanmodechange23)接口使用，可实时监听蓝牙扫描模式变更事件。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -1681,6 +1682,86 @@ try {
 ```
 
 
+## connection.onScanModeChange<sup>23+</sup>
+
+onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
+
+订阅蓝牙扫描模式变更事件。使用Callback异步回调。当调用[setBluetoothScanMode](#connectionsetbluetoothscanmode)更改当前蓝牙扫描模式后，如订阅此事件，则会收到携带最新扫描模式的回调函数。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                               |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 是    | 指定订阅的回调函数，会携带变更后最新的蓝牙扫描模式。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.              |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.onScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.offScanModeChange<sup>23+</sup>
+
+offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
+
+取消订阅蓝牙扫描模式变更事件。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.onScanModeChange](#connectiononscanmodechange23)中的回调函数一致；若无传参，则取消订阅所有蓝牙扫描模式变更的回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.offScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ## connection.getLastConnectionTime<sup>15+</sup>
 
 getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
@@ -1738,7 +1819,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
-**需要权限：**: ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
@@ -1789,7 +1870,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
-**需要权限：**: ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
@@ -1830,6 +1911,60 @@ try {
   });
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## connection.getVirtualAddressByHash<sup>24+</sup>
+
+getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): string
+
+根据已配对设备[实际MAC地址](../../connectivity/bluetooth/bluetooth-overview.md#蓝牙设备地址类型)的哈希值获取对应的[虚拟MAC地址](../../connectivity/bluetooth/bluetooth-overview.md#蓝牙设备地址类型)。
+
+当[HashAlgorithmType](#hashalgorithmtype24)为HASH_ALGORITHM_SHA256时，应使用大写实际MAC地址通过SHA256算法生成对应的哈希值（十六进制64位），取后32位作为输入，哈希值字母不区分大小写。
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名     | 类型    | 必填  | 说明                                 |
+| -------- | ------ | ---- | ----------------------------------- |
+| algorithmType | [HashAlgorithmType](#hashalgorithmtype24) | 是   | 哈希算法类型。|
+| hashValue | string | 是   | 哈希值，例如："c10b57deb2e1aafd255596e0d4fd6789"。|
+
+**返回值：**
+
+| 类型                                             | 说明               |
+| ------------------------------------------------- | ------------------- |
+| string | 返回与哈希值相对应的设备虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"，返回地址为大写。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见 [通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID| 错误信息|
+| -------- | ---------------------------- |
+|201     | Permission denied.                       |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|2900003 | Bluetooth disabled.                 |
+|2900015 | Parameter format mismatch with specification.   |
+|2900016 | Device unpaired.   |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
+
+**示例：**
+
+```js
+// 若查询的真实地址为11:22:33:44:55:AA,
+// 对应的64位哈希值为 d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789,
+// 当HashAlgorithmType为HASH_ALGORITHM_SHA256时取后32位哈希值
+let hashValue: string = "c10b57deb2e1aafd255596e0d4fd6789";
+try {
+  let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1968,9 +2103,24 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId    | string      | 否    | 否    | 扫描到的设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。|
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
+
+## HashAlgorithmType<sup>24+</sup>
+
+枚举，表示哈希算法类型。
+
+哈希算法是一种数学函数，通过对输入数据进行复杂计算，生成一个唯一且固定长度的字符串（即哈希值）。常用于数据完整性校验、数字签名等场景。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+| 名称                 | 值  | 说明     |
+| ------------------ | ---- | ------ |
+| HASH_ALGORITHM_SHA256        | 0    | SHA256哈希算法。|

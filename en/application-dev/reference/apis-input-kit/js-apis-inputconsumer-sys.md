@@ -5,9 +5,9 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
-The **inputConsumer** module provides APIs for subscribing to and unsubscribing from global hotkeys.
+The **inputConsumer** module provides APIs for subscribing to and unsubscribing from global hotkeys. 
 
 > **NOTE**
 >
@@ -24,11 +24,15 @@ The **inputConsumer** module provides APIs for subscribing to and unsubscribing 
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-## inputConsumer.on
+## inputConsumer.on('key')
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
 Enables listening for system hotkey change events. This API uses an asynchronous callback to return the system hotkey data when a system hotkey event that meets the specified condition occurs.
+> **NOTE**
+>
+> - You can subscribe to only the Down event of a key, or subscribe to both the Down and Up events of a key.
+> - If you subscribe to only the Up event of a key, the Down event may be consumed by the focus window, and the Up event may not be closed. In this case, check whether the design and implementation are proper.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -38,7 +42,7 @@ Enables listening for system hotkey change events. This API uses an asynchronous
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | type       | string                     | Yes   | Event type. Currently, only **key** is supported.                      |
 | keyOptions | [KeyOptions](#keyoptions)  | Yes   | Combination key options.                |
-| callback   | Callback&lt;KeyOptions&gt; | Yes   | Callback used to return the combination key data when a combination key event that meets the specified condition occurs.|
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | Yes   | Callback used to return the combination key data when a combination key event that meets the specified condition occurs.|
 
 **Error codes**
 
@@ -84,11 +88,11 @@ struct Index {
 ```
 
 
-## inputConsumer.off
+## inputConsumer.off('key')
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
-Disables listening for system hotkey change events.
+Disables listening for system hotkey change events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -98,7 +102,7 @@ Disables listening for system hotkey change events.
 | ---------- | -------------------------- | ---- | ------------------------------- |
 | type       | string                     | Yes   | Event type. Currently, only **key** is supported.             |
 | keyOptions | [KeyOptions](#keyoptions)  | Yes   | Combination key options.            |
-| callback   | Callback&lt;KeyOptions&gt; | No   | Callback to unregister. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | No   | Callback to unregister. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
 
@@ -184,7 +188,7 @@ Sets the system hotkey shield status.
 
 | Name        | Type                        | Mandatory  | Description                                      |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
-| shieldMode       | [ShieldMode](js-apis-inputconsumer-sys.md#shieldmode11)                     | Yes   | System hotkey shield mode. Currently, only **FACTORY_MODE** is supported, which means to shield all system hotkeys.                      |
+| shieldMode       | [ShieldMode](#shieldmode11)                     | Yes   | System hotkey shield mode. Currently, only **FACTORY_MODE** is supported, which means to shield all system hotkeys.                      |
 | isShield | boolean  | Yes   | Whether to enable shortcut key shielding. The value **true** means to enable shortcut key shielding, and the value **false** indicates the opposite.             |
 
 **Error codes**
@@ -236,7 +240,7 @@ Obtains the system hotkey shield status.
 
 | Name        | Type                        | Mandatory  | Description                                      |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
-| shieldMode       | [ShieldMode](js-apis-inputconsumer-sys.md#shieldmode11)                    | Yes   | System hotkey shield mode. Currently, only **FACTORY_MODE** is supported, which means to shield all system hotkeys.                      |
+| shieldMode       | [ShieldMode](#shieldmode11)                    | Yes   | System hotkey shield mode. Currently, only **FACTORY_MODE** is supported, which means to shield all system hotkeys.                      |
 
 **Return value**
 
@@ -301,6 +305,4 @@ Enumerates system hotkey shield modes.
 
 | Name                       | Value| Description          |
 | ------------------------------ | ----------- | ---------------- |
-| UNSET_MODE | -1 | Unspecified mode, which means not to shield system hotkeys.|
 | FACTORY_MODE | 0 | Factory mode, which means to shield all system hotkeys.|
-| OOBE_MODE | 1 | OOBE mode, which means to shield all system hotkeys during OOBE. This function is not supported currently.|

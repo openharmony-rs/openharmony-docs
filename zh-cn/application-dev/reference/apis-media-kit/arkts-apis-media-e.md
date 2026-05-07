@@ -12,7 +12,7 @@
 
 ## AVErrorCode<sup>9+</sup>
 
-[媒体错误码](errorcode-media.md)类型枚举。
+[Media错误码](errorcode-media.md)类型枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -22,7 +22,7 @@
 | :------------------------------------ | ------- | ------------------------------------ |
 | AVERR_OK                              | 0       | 表示操作成功。                       |
 | AVERR_NO_PERMISSION                   | 201     | 表示无权限执行此操作。               |
-| AVERR_INVALID_PARAMETER               | 401     | 表示传入入参无效。                   |
+| AVERR_INVALID_PARAMETER               | 401     | 表示传入参数无效。                   |
 | AVERR_UNSUPPORT_CAPABILITY            | 801     | 表示当前版本不支持该API能力。        |
 | AVERR_NO_MEMORY                       | 5400101 | 表示系统内存不足或服务数量达到上限。 |
 | AVERR_OPERATE_NOT_PERMIT              | 5400102 | 表示当前状态不允许或无权执行此操作。 |
@@ -46,6 +46,7 @@
 | AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | 表示不支持超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | 表示未使能超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | 表示参数超过取值范围。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
+| AVERR_IO_CLEARTEXT_NOT_PERMITTED<sup>23+</sup> | 5411012 | 表示不允许HTTP明文访问。 <br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。        |
 
 ## MediaType<sup>8+</sup>
 
@@ -55,7 +56,7 @@
 
 | 名称           | 值                    | 说明                 |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。           |
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。 |
 | MEDIA_TYPE_AUD | 0                     | 表示音频。 <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。           |
 | MEDIA_TYPE_VID | 1                     | 表示视频。  <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。          |
 | MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | 表示字幕。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
@@ -96,9 +97,9 @@ Codec MIME类型枚举。
 
 | 名称         | 值                    | 说明                        |
 | ------------ | --------------------- | --------------------------- |
-| AAC_LC       |     0                 | 表示 AAC Low-Complexity 类型。        |
-| AAC_HE       |     1                 | 表示 AAC Hight-Efficiency 类型。        |
-| AAC_HE_V2    |     2                 | 表示 AAC Hight-Efficiency version 2 类型。     |
+| AAC_LC       |     0                 | 表示AAC Low-Complexity类型。        |
+| AAC_HE       |     1                 | 表示AAC High-Efficiency类型。        |
+| AAC_HE_V2    |     2                 | 表示AAC High-Efficiency version 2类型。     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
@@ -124,8 +125,23 @@ Codec MIME类型枚举。
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | 表示视频轨类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | 表示视频原始宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 | MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | 表示视频原始高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。对于音视频轨道，该值与MD_KEY_CODEC_MIME相同。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+## FetchResult<sup>23+</sup>
+
+表示批量获取缩略图操作结果的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| 名称                     | 值              | 说明                                                         |
+| ------------------------ | --------------- | ------------------------------------------------------------ |
+| FETCH_FAILED             | 0               | 从视频中获取该缩略图失败。  |
+| FETCH_SUCCEEDED          | 1               | 从视频中获取该缩略图成功。  |
+| FETCH_CANCELED           | 2               | 从视频中获取该缩略图操作被取消。|
+
 ## PlaybackInfoKey<sup>12+</sup>
 
 播放信息描述枚举。
@@ -152,9 +168,9 @@ Codec MIME类型枚举。
 | RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。       |
 | FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。 |
 | TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。       |
-| DOWNLOAD_REQUESTS_COUNT            | 'loading_count'                      | 表示总的请求次数。                         |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | 表示总的请求次数。<br> **模型约束：** 此接口仅可在Stage模型下使用。                         |
 | TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。       |
-| TOTAL_DOWNLOAD_SIZE                | 'total_loading_Bytes'                | 表示总的加载大小，单位为字节（Byte）。             |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。             |
 | STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
 | TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
 
@@ -210,11 +226,13 @@ Codec MIME类型枚举。
 | SEEK_NEXT_SYNC | 0    | 表示跳转到指定时间点的下一个关键帧，建议向后快进的时候用这个枚举值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | SEEK_PREV_SYNC | 1    | 表示跳转到指定时间点的上一个关键帧，建议向前快进的时候用这个枚举值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | SEEK_CLOSEST<sup>12+</sup> | 2    | 表示跳转到距离指定时间点最近的帧，建议精准跳转进度的时候用这个枚举值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SEEK_CONTINUOUS<sup>18+</sup> | 3    | 该模式提供了一种画面平滑流畅变化的Seek体验，应用可以结合进度条控件持续调用Seek方法，AVPlayer根据Seek调用持续流畅地更新画面。<br>应用可以调用[isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18)方法根据返回结果感知视频源是否支持该模式Seek。<br>对于不支持该Seek模式的视频源调用该模式Seek时，会上报AVERR_SEEK_CONTINUOUS_UNSUPPORTED错误([媒体错误码](#averrorcode9))，同时画面更新的流畅性会降低。<br>该Seek模式不会触发[seekDone事件](arkts-apis-media-AVPlayer.md#onseekdone9)。<br>当应用需要退出该模式下的Seek时，需要调用`seek(-1, SeekMode.SEEK_CONTINUOUS)`来结束该模式下的Seek。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| SEEK_CONTINUOUS<sup>18+</sup> | 3    | 该模式提供了一种画面平滑流畅变化的Seek体验，应用可以结合进度条控件持续调用Seek方法，AVPlayer根据Seek调用持续流畅地更新画面。<br>应用可以调用[isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18)方法根据返回结果感知视频源是否支持该模式Seek。<br>对于不支持该Seek模式的视频源调用该模式Seek时，会上报AVERR_SEEK_CONTINUOUS_UNSUPPORTED错误(参考[AVErrorCode](#averrorcode9))，同时画面更新的流畅性会降低。<br>该Seek模式不会触发[on('seekDone')](arkts-apis-media-AVPlayer.md#onseekdone9)事件。<br>当应用需要退出该模式下的Seek时，需要调用`seek(-1, SeekMode.SEEK_CONTINUOUS)`来结束该模式下的Seek。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## SwitchMode<sup>12+</sup>
 
-视频播放的selectTrack模式枚举，可通过selectTrack方法作为参数传递下去，当前仅DASH协议视频轨支持该扩展参数。
+表示视频播放的selectTrack模式枚举。
+
+可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API版本26.0.0开始HLS协议视频轨支持该扩展参数）。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -397,6 +415,10 @@ Codec MIME类型枚举。
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。       |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。       |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。       |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | 录屏已被用户暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | 录屏已被用户恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | 录屏已被应用程序暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | 录屏已被应用程序恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
@@ -430,6 +452,25 @@ Codec MIME类型枚举。
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
+
+## PlaylistLoopMode
+
+表示播放列表循环模式的枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYLIST_LOOP_MODE_ALL | 1    | 列表循环模式。 |
+| PLAYLIST_LOOP_MODE_ONE | 2    | 单曲循环模式。 |
+| PLAYLIST_LOOP_MODE_SHUFFLE | 3    | 随机循环模式。 |
+| PLAYLIST_LOOP_MODE_NONE | 4    | 关闭循环模式。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 
@@ -470,7 +511,7 @@ Codec MIME类型枚举。
 媒体服务错误类型枚举。
 
 > **说明：**
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[媒体错误码](#averrorcode9)替代。
+> 从API version 8开始支持，从API version 11开始废弃，建议使用[AVErrorCode](#averrorcode9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

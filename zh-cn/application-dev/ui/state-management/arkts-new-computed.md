@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者使用相同的计算逻辑重复绑定在UI上时，为了防止重复计算，可以使用\@Computed计算属性。计算属性中的依赖的状态变量变化时，只会计算一次。这解决了UI多次重用该属性导致的重复计算和性能问题。如下面例子。
+当开发者使用相同的计算逻辑重复绑定在UI上时，为了防止重复计算，可以使用\@Computed计算属性。计算属性中依赖的状态变量变化时，只会计算一次。这解决了UI多次重用该属性导致的重复计算和性能问题。如下面例子。
 
 <!-- @[computed_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
 
@@ -109,7 +109,8 @@ get varName(): T {
   ```
 
 - 在\@Computed装饰的getter方法中，不能改变参与计算的属性，以防止重复执行计算属性导致的appfreeze。
- 在下面例子中，计算`fullName1`时触发了`this.lastName`的改变，`this.lastName`的改变，触发`fullName2`的计算，在`fullName2`的计算中，改变了`this.firstName`，再次触发`fullName1`的重新计算，从而导致循环计算，最终引起appfreeze。
+
+  在下面例子中，计算`fullName1`时触发了`this.lastName`的改变，`this.lastName`的改变，触发`fullName2`的计算，在`fullName2`的计算中，改变了`this.firstName`，再次触发`fullName1`的重新计算，从而导致循环计算，最终引起appfreeze。
 
   ```ts
   @Entry
@@ -261,9 +262,9 @@ get varName(): T {
 
    点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
-
-   ```ts
+   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) --> 
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
@@ -293,6 +294,7 @@ get varName(): T {
        Column() {
          Text(this.name1.fullName)
          Text(this.name1.fullName)
+         // 点击Button改变lastName，触发fullName重新计算，且只被计算一次
          Button('changed lastName').onClick(() => {
            this.name1.lastName += 'a';
          })
@@ -365,7 +367,7 @@ get varName(): T {
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->
+  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) --> 
   
   ``` TypeScript
   @ObservedV2
@@ -401,6 +403,7 @@ get varName(): T {
         ForEach(this.shoppingBasket, (item: Article) => {
           Row() {
             Text(`unitPrice: ${item.unitPrice}`)
+            // 点击Button减少quantity，触发total和qualifiesForDiscount重新计算
             Button('-')
               .onClick(() => {
                 if (item.quantity > 0) {
@@ -408,6 +411,7 @@ get varName(): T {
                 }
               })
             Text(`quantity: ${item.quantity}`)
+            // 点击Button增加quantity，触发total和qualifiesForDiscount重新计算
             Button('+')
               .onClick(() => {
                 item.quantity++;

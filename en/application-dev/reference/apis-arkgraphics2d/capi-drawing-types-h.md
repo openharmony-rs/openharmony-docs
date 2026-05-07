@@ -14,6 +14,8 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -24,8 +26,9 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | Describes a two-dimensional coordinate point.|
-| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | Describes a three-dimensional coordinate point.|
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | Defines a two-dimensional coordinate point.|
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Corner_Radii | Defines a struct for the radii of a rounded corner. The radii consist of the x-axis radius and y-axis radius.|
+| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | Defines a three-dimensional coordinate point.|
 | [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) | OH_Drawing_Image_Info | Describes the image information.|
 | [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) | OH_Drawing_RectStyle_Info | Describes the style of a rectangle.|
 | [OH_Drawing_String](capi-drawing-oh-drawing-string.md) | OH_Drawing_String | Describes a string of characters encoded in UTF-16.|
@@ -180,4 +183,3 @@ Defines an enum for the text encoding types.
 | TEXT_ENCODING_UTF16 | Two bytes used to indicate most Unicode characters.|
 | TEXT_ENCODING_UTF32 | Four bytes used to indicate all Unicode characters.|
 | TEXT_ENCODING_GLYPH_ID | Two bytes used to indicate the glyph index.|
-<!--no_check-->

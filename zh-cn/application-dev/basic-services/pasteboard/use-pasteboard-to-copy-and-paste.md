@@ -18,9 +18,9 @@
 
 ## 剪贴板接入原理介绍
 
--剪贴板为应用提供应用数据的复制粘贴能力，支持在应用内或应用间共享复制或剪切的应用数据。剪贴板默认支持文本、HTML富文本、文件URI、PixelMap通用数据格式类型数据，同时也支持应用自定义扩展类型数据处理。
+- 剪贴板为应用提供应用数据的复制粘贴能力，支持在应用内或应用间共享复制或剪切的应用数据。剪贴板默认支持文本、HTML富文本、文件URI、PixelMap通用数据格式类型数据，同时也支持应用自定义扩展类型数据处理。
 
--剪贴板数据定义对应PasteData，复制应用通过向剪贴板服务写入PasteData实现数据复制，粘贴应用通过读取剪贴板服务的PasteData实现数据粘贴，PasteData整体结构示意如下：
+- 剪贴板数据定义对应PasteData，复制应用通过向剪贴板服务写入PasteData实现数据复制，粘贴应用通过读取剪贴板服务的PasteData实现数据粘贴，PasteData整体结构示意如下：
 
 ![pasteboard](figures/pastedata.png)
 
@@ -41,7 +41,7 @@
 - 剪贴板数据属于个人数据，读取剪贴板数据需要支持剪贴板读取权限授权，剪贴板提供了安全控件和用户授权ohos.permission.READ_PASTEBOARD权限两种授权方式。 </br>
 - 复制应用写入剪贴板的数据可能包含多种格式数据，粘贴应用需根据当前粘贴页面和场景选择最合适的格式进行粘贴显示。
 
--剪贴板同时提供了TS API和NDK API，应用按需选择合适的API支持复制粘贴功能。
+- 剪贴板同时提供了TS API和NDK API，应用按需选择合适的API支持复制粘贴功能。
 
 ## 使用基础数据类型进行复制粘贴
 
@@ -62,17 +62,15 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 
 ### 接口说明
 
-详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9)。
-
-使用剪贴板getData接口获取到uri类型数据之后，请使用文件管理的[fs.copy](../../reference/apis-core-file-kit/js-apis-file-fs.md#fscopy11)接口获取文件。
+使用剪贴板getData接口获取到uri类型数据之后，请使用文件管理的[fileIo.copy](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocopy11)接口获取文件。
 
 | 名称 | 说明                                                                                                                                        |
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void | 将数据写入系统剪贴板，使用callback异步回调。 |
-| setData(data: PasteData): Promise&lt;void&gt; | 将数据写入系统剪贴板，使用Promise异步回调。 |
-| getData( callback: AsyncCallback&lt;PasteData&gt;): void | 读取系统剪贴板内容，使用callback异步回调。 |
-| getData(): Promise&lt;PasteData&gt; | 读取系统剪贴板内容，使用Promise异步回调。 |
-| getDataSync(): PasteData | 读取系统剪贴板内容, 此接口为同步接口，不能与SetData同线程调用。 |
+| [setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9) | 将数据写入系统剪贴板，使用callback异步回调。 |
+| [setData(data: PasteData): Promise&lt;void&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setdata9-1) | 将数据写入系统剪贴板，使用Promise异步回调。 |
+| [getData( callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | 读取系统剪贴板内容，使用callback异步回调。 |
+| [getData(): Promise&lt;PasteData&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9-1) | 读取系统剪贴板内容，使用Promise异步回调。 |
+| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | 读取系统剪贴板内容, 此接口为同步接口，不能与SetData同线程调用。 |
 
 ### 示例代码
 
@@ -85,22 +83,32 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 // ...
   export async function setPlainData(content: string): Promise<void> {
-    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
-    await systemPasteboard.setData(pasteData);
-  }
-  export async function getPlainData(): Promise<string> {
-    // 从系统剪贴板中读取数据
-    let data = await systemPasteboard.getData();
-    // 从剪贴板数据中获取条目数量
-    let recordCount = data.getRecordCount();
-    // 从剪贴板数据中获取对应条目信息
-    let result = '';
-    for (let i = 0; i < recordCount; i++) {
-      let record = data.getRecord(i).toPlainText();
-      hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
-      result += record;
+    try {
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
+      await systemPasteboard.setData(pasteData);
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Set data to pasteboard successfully');
+    } catch (error) {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set data to pasteboard, error:' + error);
     }
-    return result;
+  }
+  export async function getPlainData(type: string): Promise<string> {
+    try {
+      // 从系统剪贴板中读取数据
+      let data = await systemPasteboard.getData();
+      // 从剪贴板数据中获取条目数量
+      let recordCount = data.getRecordCount();
+      // 从剪贴板数据中获取对应条目信息
+      let result = '';
+      for (let i = 0; i < recordCount; i++) {
+        let record = data.getRecord(i).toPlainText();
+        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
+        result = record;
+      }
+      return result;
+    } catch (error) {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get data from pasteboard, error:' + error);
+      return '';
+    }
   }
 ```
 
@@ -113,14 +121,12 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 ### 接口说明
 
-详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12)。
-
 | 名称 | 说明                                                                                                   |
 | -------- |---------------------------------------------------------------------------------------------------|
-| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | 将统一数据对象的数据写入系统剪贴板。                   |
-| setUnifiedDataSync(data: udc.UnifiedData): void | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。          |
-| getUnifiedData(): Promise\<udc.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。                           |
-| getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。                  |
+| [setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddata12) | 将统一数据对象的数据写入系统剪贴板。                   |
+| [setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddatasync12) | 将统一数据对象的数据写入系统剪贴板，此接口为同步接口。          |
+| [getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12) | 从系统剪贴板中读取统一数据对象的数据。                           |
+| [getUnifiedDataSync(): unifiedDataChannel.UnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddatasync12) | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。                  |
 
 ### 示例代码
 

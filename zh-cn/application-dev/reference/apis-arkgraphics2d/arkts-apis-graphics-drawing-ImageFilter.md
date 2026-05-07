@@ -37,8 +37,8 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number, tileMode: TileMode,
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| sigmaX | number | 是   | 表示沿x轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
-| sigmaY | number | 是   | 表示沿y轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
+| sigmaX | number | 是   | 表示沿x轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。单位为物理像素px。 |
+| sigmaY | number | 是   | 表示沿y轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。单位为物理像素px。 |
 | tileMode | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12)| 是   | 表示在边缘处应用的平铺模式。 |
 | imageFilter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
 
@@ -91,8 +91,9 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const width = 1000;
     const height = 1000;
     const bufferSize = width * height * 4;
@@ -106,15 +107,25 @@ class DrawingRenderNode extends RenderNode {
       colorData[i+3] = 255;
     }
 
-    let opts : image.InitializationOptions = {
+    let opts: image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }
     }
 
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-    let srcRect: common2D.Rect = { left: 10, top: 10, right: 80, bottom: 80 };
-    let dstRect: common2D.Rect = { left: 200, top: 200, right: 400, bottom: 400 };
+    let srcRect: common2D.Rect = {
+      left: 10,
+      top: 10,
+      right: 80,
+      bottom: 80
+    };
+    let dstRect: common2D.Rect = {
+      left: 200,
+      top: 200,
+      right: 400,
+      bottom: 400
+    };
     if (pixelMap != null) {
       let filter = drawing.ImageFilter.createFromImage(pixelMap, srcRect, dstRect);
     }
@@ -236,6 +247,7 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
+
 let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
 let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
 let imgFilter1 = drawing.ImageFilter.createFromColorFilter(colorFilter, imgFilter);
@@ -252,8 +264,8 @@ static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | nul
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | 是   | 水平方向的平移距离， 该参数为浮点数。 |
-| dy | number | 是   | 竖直方向的平移距离， 该参数为浮点数。 |
+| dx | number | 是   | 水平方向的平移距离，该参数为浮点数。单位为物理像素px。 |
+| dy | number | 是   | 竖直方向的平移距离，该参数为浮点数。单位为物理像素px。 |
 | input | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 需进行平移的滤波器。默认为空，如果为空，则将无滤波效果的绘制结果进行平移。 |
 
 **返回值：**

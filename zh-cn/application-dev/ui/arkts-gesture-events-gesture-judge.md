@@ -9,7 +9,7 @@
 手势冲突是指多个手势识别器在同一组件或重叠区域同时识别时产生竞争，导致识别结果不符合预期。常见冲突场景包括：
 - 同一组件上的多手势（如按钮同时添加点击与长按手势）。
 - 父子组件的同类型手势识别器。
-- 系统默认手势与自定义手势（如scroll滑动手势与子组件点击手势冲突）。
+- 系统默认手势与自定义手势（如[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)滑动手势与子组件点击手势冲突）。
 
 干预手势处理可有效解决冲突，除控制组件响应热区和命中测试模式外，主要通过以下三种方式：[自定义手势判定](#自定义手势判定)、[手势并行动态控制](#手势并行动态控制)、[阻止手势参与识别](#阻止手势参与识别)。
 
@@ -39,7 +39,7 @@
    <!-- @[component_dragging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
    
    ``` TypeScript
-   //  $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
+   // $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
    Image($r('sys.media.ohos_app_icon'))
      .draggable(true)
      .onDragStart(()=>{
@@ -63,8 +63,9 @@
         LongPressGesture()
           .onAction((event: GestureEvent) => {
             // ...
-            /* 请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，
-             * 在本示例中该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应"
+            /*
+            请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，在本示例中
+            该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应"
              */
             promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
           })
@@ -106,9 +107,9 @@
      build() {
        Scroll(this.scroller) {
          Column({ space: 8 }) {
-           /* 请将$r('app.string.Drag_instructions')替换为实际资源文件，
-            * 在本示例中该资源文件的value值为"包括上下两层组件，上层组件绑定长按手势，下层组件绑定拖拽。
-            * 其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。"
+           /*
+           请将$r('app.string.Drag_instructions')替换为实际资源文件，在本示例中该资源文件的value值为"包括上下两层组件，上层组件绑定长按手势，
+           下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。"
             */
            Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
            Stack({ alignContent: Alignment.Center }) {
@@ -119,7 +120,7 @@
              }.width('200vp').height('200vp')
    
              // Stack的下半区是绑定了滑动手势的图像区域。
-             //  $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
+             // $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
                .onDragStart(() => {
@@ -136,8 +137,9 @@
              .gesture(GestureGroup(GestureMode.Parallel,
                LongPressGesture()
                  .onAction((event: GestureEvent) => {
-                   /* 请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，
-                    * 在本示例中该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应"
+                   /*
+                   请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，在本示例中
+                   该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应"
                     */
                    this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
                  })
@@ -170,6 +172,7 @@
 **图3** 手势并行动态控制流程图
 
 ![gesture_judge_controller](figures/gesture_judge_controller.png)
+
 手势并行动态控制的前提是手势识别成功，如果手势不成功则不会产生手势回调响应。
 
 1. 业务手势作业流：指真正触发UI变化的业务手势，比如使页面滚动的PanGesture，触发点击的TapGesture等。

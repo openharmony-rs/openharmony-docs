@@ -31,7 +31,7 @@ Enumerates dragging states.
 
 | Name                 | Value  | Description          |
 | --------------------- | ---- | -------------- |
-| MSG_DRAG_STATE_START  | 1    | Dragging starts.|
+| MSG_DRAG_STATE_START  | 1    | Dragging is started.|
 | MSG_DRAG_STATE_STOP   | 2    | Dragging is ended.|
 | MSG_DRAG_STATE_CANCEL | 3    | Dragging is canceled.|
 
@@ -43,7 +43,7 @@ Defines the data summary of the dragged object.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Drag
 
-| Name          | Type           | Read-Only| 	Optional| Description                          |
+| Name          | Type           | Read-Only| Optional| Description                          |
 | ---------      | -------------- | ---- | ---- | ------------------------     |
 | dataType     | string          | No  | No  | Type of the dragged object.|
 | dataSize       | number         | No  | No  | Data length of the dragged object.|
@@ -171,66 +171,4 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
 console.info(`Drag interaction summary: ${summary}`);
-```
-
-## dragInteraction.setDragSwitchState<sup>18+</sup>
-
-setDragSwitchState(enabled: boolean): void
-
-Sets the global drag-and-drop switch.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Msdp.DeviceStatus.Drag
-
-**Parameters**
-
-| Name  | Type                              | Mandatory| Description                                                                  |
-| -------- | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled  | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.                                             |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message         |
-| -------- | ----------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-
-**Example**
-
-```ts
-dragInteraction.setDragSwitchState(false);
-```
-
-## dragInteraction.setAppDragSwitchState<sup>18+</sup>
-
-setAppDragSwitchState(enabled: boolean, bundleName: string): void
-
-Sets the drag-and-drop switch for a specific application.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Msdp.DeviceStatus.Drag
-
-**Parameters**
-
-| Name     | Type                              | Mandatory| Description                                                                  |
-| --------   | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled    | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.                                             |
-| bundleName | string                             | Yes  | Bundle name of the target application.                                              |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message         |
-| -------- | ----------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-**Example**
-
-```ts
-dragInteraction.setAppDragSwitchState(true, "com.app.bundleName");
 ```

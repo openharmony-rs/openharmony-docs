@@ -5,7 +5,7 @@
 <!--Owner: @YingCong-->
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供访问设置数据项的能力。
 
@@ -150,19 +150,19 @@ import { settings } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-| 名称                                                    | 类型   | 只读 | 说明                                                                         |
-|-------------------------------------------------------| ------ |----|----------------------------------------------------------------------------|
-| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | 是  | 设备在来电响铃时是否振动。此属性由电话和设置应用程序使用。<br/>该值是布尔类型，仅影响设备因来电而响铃的情况，不影响任何其他应用程序或场景（该常量不支持使用）。 |
-| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | 是  | 系统默认告警的存储区域（该常量不支持使用）。                                                               |
-| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | 是  | 拨号时播放的双音多频（DTMF）音的类型。 <br>- 值为0，表示常规的短音效。<br/>- 值为1，表示长音效（该常量不支持使用）。                 |
-| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | 是  | 拨号时是否播放DTMF音。<br>- 值为1，表示播放DTMF音。<br/>- 值为0，表示不播放（该常量不支持使用）。                         |
-| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | 是  | 音频流受振铃模式和请勿打扰（DND）模式更改的影响。要求特定的音频流受到振铃模式和DND模式变化的影响，将对应比特位设置为1（该常量不支持使用）。            |
-| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | 是  | 受静音模式影响的音频流。若需在静音模式下保持特定音频流静音，将相应位设为1（该常量不支持使用）。                                     |
-| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | 是  | 系统默认通知音的存储区域（该常量不支持使用）。                                                              |
-| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | 是  | 系统默认铃声的存储区域（该常量不支持使用）。                                                               |
-| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | 是  | 声音功能是否可用。<br>- 值为0，表示不可用。 <br/>- 值为1，表示可用（该常量不支持使用）。                                 |
-| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | 是  | 设备是否为事件振动。该参数在系统内部使用。 <br>- 值为1，表示设备会因事件而振动。 <br/>- 值为0，表示设备不因事件振动（该常量不支持使用）。        |
-| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | 是  | 设备是否启用触觉反馈。<br/>- 值为true，表示启用触觉反馈。<br/>- 值为false，表示不启用触觉反馈（该常量不支持使用）。                |
+| 名称                                                    | 类型   | 只读 | 说明                                                                            |
+|-------------------------------------------------------| ------ |----|-------------------------------------------------------------------------------|
+| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | 是  | 设备在来电响铃时是否振动。此属性由电话和设置应用程序使用。<br/>该值仅影响设备因来电而响铃的情况，不影响任何其他应用程序或场景（该常量不支持使用）。  |
+| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | 是  | 系统默认告警的存储区域（该常量不支持使用）。                                                        |
+| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | 是  | 拨号时播放的双音多频（DTMF）音的类型。 <br>- 值为0，表示常规的短音效。<br/>- 值为1，表示长音效（该常量不支持使用）。          |
+| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | 是  | 拨号时是否播放DTMF音。<br>- 值为1，表示播放DTMF音。<br/>- 值为0，表示不播放（该常量不支持使用）。                  |
+| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | 是  | 音频流受振铃模式和请勿打扰（DND）模式更改的影响。要求特定的音频流受到振铃模式和DND模式变化的影响，将对应比特位设置为1（该常量不支持使用）。     |
+| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | 是  | 受静音模式影响的音频流。若需在静音模式下保持特定音频流静音，将相应位设为1（该常量不支持使用）。                              |
+| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | 是  | 系统默认通知音的存储区域（该常量不支持使用）。                                                       |
+| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | 是  | 系统默认铃声的存储区域（该常量不支持使用）。                                                        |
+| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | 是  | 声音功能是否可用。<br>- 值为0，表示不可用。 <br/>- 值为1，表示可用（该常量不支持使用）。                          |
+| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | 是  | 设备是否为事件振动。该参数在系统内部使用。 <br>- 值为1，表示设备会因事件而振动。 <br/>- 值为0，表示设备不因事件振动（该常量不支持使用）。 |
+| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | 是  | 设备是否启用触觉反馈。<br/>- 值为true，表示启用触觉反馈。<br/>- 值为false，表示不启用触觉反馈（该常量不支持使用）。         |
 
 ## TTS
 
@@ -743,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.info(`callback:return whether setings is open.`)
+  console.info(`callback:return whether settings is open.`);
 });
 ```
 
@@ -1108,6 +1108,8 @@ openInputMethodSettings(context: Context): void
 
 打开输入法设置页面。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.Settings.Core
 
 **设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
@@ -1145,6 +1147,8 @@ openInputMethodDetail(context: Context, bundleName: string, inputMethodId: strin
 
 打开输入法详情页面。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.Settings.Core
 
 **设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
@@ -1178,4 +1182,354 @@ const context: Context = this.getUIContext().getHostContext() as common.UIAbilit
 let bundleName: string = "target inputMethod bundle name";
 let inputMethodId: string = "target inputMethod id";
 settings.openInputMethodDetail(context, bundleName, inputMethodId);
+```
+
+## settings.openBiometricsSettingsPage<sup>24+</sup>
+
+openBiometricsSettingsPage(context: Context): void
+
+打开生物识别和密码设置页面。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openBiometricsSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the biometrics and password settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openNfcSettingsPage<sup>24+</sup>
+
+openNfcSettingsPage(context: Context): void
+
+打开NFC设置页面。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openNfcSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openMobileNetworkSettingsPage
+
+openMobileNetworkSettingsPage(context: Context): void
+
+打开移动网络设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openMobileNetworkSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the mobile network settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openDisplaySettingsPage
+
+openDisplaySettingsPage(context: Context): void
+
+打开显示和亮度设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDisplaySettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the display settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openScreenRefreshRateSettingsPage
+
+openScreenRefreshRateSettingsPage(context: Context): void
+
+打开屏幕刷新率设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openScreenRefreshRateSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the screen refresh rate settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openSoundSettingsPage
+
+openSoundSettingsPage(context: Context): void
+
+打开声音和振动设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openSoundSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the sound settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openAboutDeviceSettingsPage
+
+openAboutDeviceSettingsPage(context: Context): void
+
+打开关于本机设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openAboutDeviceSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the about device settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openAppDetailSettingsPage
+
+openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
+
+打开应用详情设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| bundleName  | string | 是 | 应用包名 |
+| appIndex  | int | 否 | 应用分身的索引 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openAppDetailSettingsPage(context, 'com.example');
+} catch (err) {
+  console.error(`Failed to open the app detail settings page. code: ${err?.code}, message: ${err?.message}`);
+}
 ```

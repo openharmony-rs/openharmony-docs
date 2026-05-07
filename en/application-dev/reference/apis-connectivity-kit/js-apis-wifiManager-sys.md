@@ -81,7 +81,7 @@ Sets whether scan is always allowed.
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | Error Codes| Error Message|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -143,7 +143,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 ## WifiDeviceConfig<sup>9+</sup>
 
-Represents the WLAN configuration.
+Describes the WLAN configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -161,7 +161,7 @@ Represents the WLAN configuration.
 | configStatus<sup>12+</sup> | number | No| Yes| Status indicating whether the current network can be selected.<br>  **1**: network selection allowed<br>**2**: network selection forbidden<br> **3**: network selection permanently forbidden<br>4: unknown<br> **System API**: This is a system API.|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | No| Yes| Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 | isSecureWifi<sup>20+</sup> | boolean | No| Yes| Whether Wi-Fi is secure. The value **true** indicates that Wi-Fi is secure, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
-| isRandomMacDisabled<sup>21+</sup> | boolean | No| Yes| Whether the random MAC address is disabled. The value **true** indicates that the random MAC address is disabled, and the value **false** indicatesthe opposite.<br> **System API**: This is a system API.|
+| isRandomMacDisabled<sup>21+</sup> | boolean | No| Yes| Whether the random MAC address is disabled. The value **true** indicates that the random MAC address is disabled, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 ## IpType<sup>9+</sup>
 
 Enumerates the IP address types.
@@ -224,6 +224,56 @@ Enumerates the Wi-Fi proxy methods.
 | METHOD_NONE  | 0 | No proxy.|
 | METHOD_AUTO  | 1 | Use an automatically configured proxy.|
 | METHOD_MANUAL  | 2 | Use a manually configured proxy.|
+
+## wifiManager.getDeviceConfig<sup>24+</sup>
+
+getDeviceConfig(networkId: number): WifiDeviceConfig
+
+Obtains the configuration of a single network based on the network ID.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG (for system applications only)
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| networkId | number | Yes| ID of the network configuration to be queried.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| [WifiDeviceConfig](#wifideviceconfig9) | Network configuration of a specified network ID.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| Error Codes| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**Example**
+```ts
+  import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let networkId = 0;
+    let config = wifiManager.getDeviceConfig(networkId);
+    console.info(`config: ${JSON.stringify(config)}`);    
+  }catch(error){
+    console.error(`failed: ${JSON.stringify(error)}`);
+  }
+```
 
 ## wifiManager.connectToDevice<sup>9+</sup>
 
@@ -813,7 +863,7 @@ try {
 
 startWifiDetection(): void
 
-Starts Wi-Fi network detection.
+Starts Wi-Fi network detections.
 
 **System API**: This is a system API.
 
@@ -903,7 +953,7 @@ factoryReset(): void
 
 **System API**: This is a system API.
 
-Resets Wi-Fi configurations.
+Resets Wi-Fi configurations and disables Wi-Fi.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG (for system applications only)
 
@@ -1056,7 +1106,7 @@ Checks whether WLAN hotspot operations are allowed under certain circumstances. 
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Whether the hotspot supports dual band. The value **true** indicates dual band is supported, and the value **false** indicates the opposite.|
+  | boolean | Whether WLAN hotspot operations are allowed. The value **true** indicates WLAN hotspot operations are allowed, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1252,7 +1302,7 @@ Represents the station information. Contains the details about the device that i
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
-addHotspotBlockList(stationInfo: StationInfo)
+addHotspotBlockList(stationInfo: StationInfo): void
 
 Adds a device to the list of blocked devices of the hotspot. Devices in the list cannot access the hotspot.
 
@@ -1300,7 +1350,7 @@ try {
 
 ## wifiManager.delHotspotBlockList<sup>11+</sup>
 
-delHotspotBlockList(stationInfo: StationInfo)
+delHotspotBlockList(stationInfo: StationInfo): void
 
 Deletes a device from the list of blocked devices of the hotspot.
 
@@ -1368,7 +1418,7 @@ Obtains the list of devices that are in the blocklist of the current WLAN hotspo
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | Error Codes| Error Message|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. |
@@ -1582,7 +1632,7 @@ Subscribes to Wi-Fi stream changes. When the service exits, call **off(type: 'st
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
 
 **Error codes**
 
@@ -1592,7 +1642,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1613,7 +1663,7 @@ Unsubscribes from Wi-Fi stream changes. This API uses an asynchronous callback t
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | No| Callback to unregister. The stream change can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | No| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
 
 **Error codes**
 
@@ -1623,7 +1673,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1670,7 +1720,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1701,7 +1751,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1769,7 +1819,7 @@ Unsubscribes from the event of an STA joining a WLAN hotspot. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-| callback | Callback&lt;StationInfo&gt; | No| Callback to unregister.|
+| callback | Callback&lt;StationInfo&gt; | No| Callback used to return the event.|
 
 **Error codes**
 
@@ -1847,7 +1897,7 @@ Unsubscribes from the event of an STA leaving a WLAN hotspot. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-| callback | Callback&lt;StationInf&gt; | No| Callback to unregister.|
+| callback | Callback&lt;StationInf&gt; | No| Callback used to return the event.|
 
 **Error codes**
 
@@ -1926,4 +1976,113 @@ try {
 }catch (error) {
   console.error("failed:" + JSON.stringify(error));
 }
+```
+## WifiCapability
+
+Describes the capabilities supported by the Wi-Fi module.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.WiFi.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| WIFI_AUTO_ENABLE | 0 | Wi-Fi enabled automatically.|
+
+
+## wifiManager.setWifiCapability
+
+setWifiCapability(capability: WifiCapability, enable: boolean): void
+
+Configures the Wi-Fi capability.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications)
+
+**System capability**: SystemCapability.Communication.WiFi.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| capability | [WifiCapability](#wificapability) | Yes| Wi-Fi capability.|
+| enable | boolean | Yes| Whether the Wi-Fi capability is enabled. The value **true** indicates it is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+
+| Error Codes| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true);
+
+```
+
+## wifiManager.getWifiCapability
+
+getWifiCapability(capability: WifiCapability): boolean
+
+Obtains the capabilities supported by the Wi-Fi module.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications)
+
+**System capability**: SystemCapability.Communication.WiFi.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| capability | [WifiCapability](#wificapability)| Yes| Wi-Fi capability.|
+
+**Return value**
+
+  | Type| Description|
+  | -------- | -------- |
+  | boolean | The value **true** indicates the Wi-Fi capability is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+
+| Error Codes| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let result = wifiManager.getWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE);
+console.info("result:" + result);
+
 ```

@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行Date相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -78,7 +78,7 @@ const char *srcCallNative = R"JS(createDate())JS";
 ```
 
 预期结果：
-```
+```txt
 JSVM CreateDate success:Mon Jul 7 10:42:34 2025
 ```
 
@@ -125,7 +125,7 @@ const char *srcCallNative = R"JS(getDateValue(new Date(Date.now())))JS";
 ```
 
 预期结果：
-```
+```txt
 JSVM GetDateValue success:Mon Jul 7 10:47:08 2025
 ```
 
@@ -165,7 +165,7 @@ const char *srcCallNative = R"JS(isDate(new Date(Date.now())))JS";
 ```
 
 预期结果：
-```
+```txt
 JSVM IsDate success:1
 ```
 

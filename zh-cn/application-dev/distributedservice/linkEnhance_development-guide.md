@@ -4,7 +4,8 @@
 <!--Owner: @wangJE-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+
 ## 简介
 
 随着技术的发展，各种应用层出不穷，设备间的互联关系也成为一种常态，此时对于网络环境的依赖也不可避免。然而，在某些特殊场景下（如航空、远洋航行等），网络受限，蓝牙成为少数可行的连接方式。但是传统蓝牙连接存在着连接数量有限、连接成功率低、连接不稳定等缺点，影响了用户体验。
@@ -15,7 +16,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 在设备互联过程中，发现对端的蓝牙地址并建立物理链路；在多设备互联场景下，通过特有的多通道合并算法，在保证设备间交互能力的前提下，减少实际物理链路的个数，达到设备间可用连接数增大、降低干扰提升通信的稳定性的效果。
 
-两个设备的交互实现如下，在使用linkEnhance能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
+两个设备的交互实现如下，在使用[linkEnhance](../reference/apis-distributedservice-kit/js-apis-link-enhance.md)能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
 
 ![linkEnhance-process](figures/linkEnhance-process.png)
 
@@ -23,13 +24,16 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 - 设备互联时需要开启蓝牙功能。
 
-- 通过蓝牙广播/扫描接口获取对端设备BLE MAC。[蓝牙ble接口参见](../connectivity/bluetooth/ble-development-guide.md)
+- 通过蓝牙广播/扫描接口获取对端设备BLE MAC。蓝牙BLE接口参见[查找设备](../connectivity/bluetooth/ble-development-guide.md)。
 
 - 不同设备间只有相同bundleName的应用才能进行互联。
 
 - 需要配置ohos.permission.DISTRIBUTED_DATASYNC权限。
 
 - 该接口提供连接能力，链路安全策略遵循调用者初始设置的蓝牙配对策略（如：Numeric Comparison、Passkey Entry、Just Works、Out of Band四种方式）。
+
+<!--RP1-->
+<!--RP1End-->
 
 ## 环境准备
 
@@ -58,19 +62,19 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 | on(type: 'connectResult')                  | 订阅连接结果通知变化的事件。                                                                              |
 | on(type: 'disconnected')                   | 订阅连接状态断开的事件。                                                                                  |
 | on(type: 'dataReceived')                   | 注册收数据的通知事件。                                                                                    |
-| createConnection(deviceId：string,name:string)| 创建一个connection对象。                                                                              |
+| createConnection(deviceId: string,name:string)| 创建一个connection对象。                                                                              |
 | start()                                    | 服务端开启服务。                                                                                         |   
 | stop()                                     | 服务端停止服务。                                                                                           |
 | close()                                    | 销毁Server对象，注销已注册的服务并取消已订阅的所有事件，调用该接口后Server对象将不能再使用。                    |
-| on(type: 'acceptConnected')                | Server端订阅收到对端连接的事件。                                                                           |
+| on(type: 'connectionAccepted')                | Server端订阅收到对端连接的事件。                                                                           |
 | on(type: 'serverStopped')                  | Server端订阅服务状态停止的事件。                                                                           |
 | createServer(name: string)                 | 创建一个server对象。                                                                                      |
 
 ## 增强连接开发指导
 
-- 服务端开启蓝牙后，创建Server对象，并调用start()接口开启服务，让服务端处于可连接状态，通过注册的事件监听，监听事件的变化通知。
-- 客户端开启蓝牙后，创建Connection对象，并调用connect()接口发起连接，通过注册的事件监听，监听事件的变化通知。
-- 连接成功后，可以使用sendData接口发送数据。
+- 服务端开启蓝牙后，创建Server对象，并调用[start()接口](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#start)开启服务，让服务端处于可连接状态，通过注册的事件监听，监听事件的变化通知。
+- 客户端开启蓝牙后，创建Connection对象，并调用[connect()接口](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#connect)发起连接，通过注册的事件监听，监听事件的变化通知。
+- 连接成功后，可以使用[sendData接口](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#senddata)发送数据。
 
 ### 服务端开发指导
 1. 导入所需的模块。
@@ -258,5 +262,3 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
-
-

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 vibrator模块提供控制设备马达振动的能力。包括启动指定时长、预置效果、自定义文件等模式的振动；停止指定时长、预置效果或所有模式的振动。
@@ -1024,7 +1024,7 @@ on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | 'vibratorStateChange'                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
+| type     | string                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
 | callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | 是   | 回调函数，回调参数数据为VibratorStatusEvent。 |
 
 **错误码**：
@@ -1070,7 +1070,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | 'vibratorStateChange'                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
+| type     | string                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
 | callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | 否   | 回调函数，回调参数数据为VibratorStatusEvent，不填此参数则为注销所有callback |
 
 **错误码**：
@@ -1114,7 +1114,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 | 名称               | 类型      | 只读 | 可选 | 说明                               |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | 否  | 否  | 报告事件的时间戳。                        |
+| timestamp        | number  | 否  | 否  | 报告事件的时间戳，单位ms。                        |
 | deviceId         | number  | 否  | 否  | 设备的ID。                           |
 | vibratorCount    | number  | 否  | 否  | 设备上的马达的数量。                       |
 | isVibratorOnline | boolean | 否  | 否  | 指示设备的上线和下线状态，true表示上线，false表示下线。 |
@@ -1173,7 +1173,7 @@ isHdHapticSupported(): boolean
 
 | 类型    | 说明                                                      |
 | ------- | --------------------------------------------------------- |
-| boolean | 返回对象，当返回true表示支持高清振动，返回false不支持。 |
+| boolean | 是否支持高清振动，true为支持，false为不支持。 |
 
 **错误码**：
 
@@ -1202,11 +1202,15 @@ isHdHapticSupported(): boolean
 
 ## VibratorPatternBuilder<sup>18+</sup>
 
-### vibrator('addContinuousEvent')<sup>18+</sup>
+提供添加长振、短振事件和生成VibratorPattern对象的方法。
+
+**系统能力**：SystemCapability.Sensors.MiscDevice
+
+### addContinuousEvent<sup>18+</sup>
 
 addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder;
 
-添加长振事件的方法成VibratorPattern对象。
+添加长振事件的方法，添加后使用[build](#build18)方法生成[VibratorPattern](#vibratorpattern18)对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1268,11 +1272,11 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
    }
    ```
 
-### vibrator('addTransientEvent')<sup>18+</sup>
+### addTransientEvent<sup>18+</sup>
 
 addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
 
-添加短振事件的方法成VibratorPattern对象。
+添加短振事件的方法, 添加后使用[build](#build18)方法生成[VibratorPattern](#vibratorpattern18)对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1319,7 +1323,7 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
    }
    ```
 
-### vibrator('build')<sup>18+</sup>
+### build<sup>18+</sup>
 
 build(): VibratorPattern;
 
@@ -1374,9 +1378,9 @@ build(): VibratorPattern;
 
 ## EffectId
 
-预置的振动效果。在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的时候需要使用此参数类型。此参数值种类多样，'haptic.clock.timer'为其中一种。[HapticFeedback<sup>12+</sup>](#hapticfeedback12)展示了几种常用的EffectId值。
+预置的振动效果。在调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的时候需要使用此参数类型。此参数值种类多样，'haptic.clock.timer'为其中一种。[HapticFeedback<sup>12+</sup>](#hapticfeedback12)展示了几种常用的EffectId值。
 
-> **说明：**
+> **说明**
 > 
 > 由于设备存在多样性，不同的设备可能预置不同的效果，建议使用预置效果前先使用[vibrator.isSupportEffect](#vibratorissupporteffect10-1)<sup>10+</sup>接口查询当前设备是否支持该预置效果。
 
@@ -1388,7 +1392,7 @@ build(): VibratorPattern;
 
 ## HapticFeedback<sup>12+</sup>
 
-简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的示例代码。
+简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的示例代码。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1403,7 +1407,7 @@ build(): VibratorPattern;
 
 ## VibratorStopMode
 
-停止振动的模式。在调用[vibrator.stopVibration9+](#vibratorstopvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口时，需要使用此参数类型指定停止的振动模式。停止模式和[VibrateEffect9+](#vibrateeffect9)中下发的模式为对应关系。
+停止振动的模式。在调用[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9)或[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1)接口时，需要使用此参数类型指定停止的振动模式。停止模式和[VibrateEffect<sup>9+</sup>](#vibrateeffect9)中下发的模式为对应关系。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1416,7 +1420,7 @@ build(): VibratorPattern;
 
 type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFromPattern
 
-马达振动效果，支持以下四种：在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。
+马达振动效果，支持以下四种：在调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1442,7 +1446,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 ## VibratePreset<sup>9+</sup>
 
-预置振动类型。当调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)时，[VibrateEffect9+](#vibrateeffect9)参数的值可以为VibratePreset，表示触发预置振动类型。
+预置振动类型。当调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1)时，[VibrateEffect<sup>9+</sup>](#vibrateeffect9)参数的值可以为VibratePreset，表示触发预置振动类型。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1455,7 +1459,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 ## VibrateFromFile<sup>10+</sup>
 
-自定义振动类型。仅部分设备支持。当设备不支持此振动类型时，返回设备不支持错误码。当调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)时，[VibrateEffect9+](#vibrateeffect9)参数的值可以为VibrateFromFile，表示触发自定义振动类型。
+自定义振动类型。仅部分设备支持。当设备不支持此振动类型时，返回设备不支持错误码。当调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1)时，[VibrateEffect<sup>9+</sup>](#vibrateeffect9)参数的值可以为VibrateFromFile，表示触发自定义振动类型。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1466,7 +1470,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 ## HapticFileDescriptor<sup>10+</sup>
 
-自定义振动配置文件的描述符，必须确认资源文件可用，其参数可通过[文件管理API](../apis-core-file-kit/js-apis-file-fs.md#fsopen)从沙箱路径获取或者通过[资源管理API](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)从HAP资源获取。使用场景：振动序列被存储在一个文件中，需要根据偏移量和长度进行振动，振动序列存储格式，请参考[自定义振动格式](../../device/sensor/vibrator-guidelines.md#振动效果说明)。
+自定义振动配置文件的描述符，必须确认资源文件可用，其参数可通过[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)从沙箱路径获取或者通过[getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)从HAP资源获取。使用场景：振动序列被存储在一个文件中，需要根据偏移量和长度进行振动，振动序列存储格式，请参考[振动效果说明](../../device/sensor/vibrator-guidelines.md#振动效果说明)。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1495,7 +1499,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| time      | number | 否   | 否   | 起始时间偏移。                                               |
+| time      | number | 否   | 否   | 起始时间偏移，单位ms。                                               |
 | intensity | number | 否   | 是   | 可选参数，相对事件振动强度增益，取值范围[0,100%]，省略时默认值为1。 |
 | frequency | number | 否   | 是   | 可选参数，相对事件振动频率变化，取值范围[-100,100]内所有整数，省略时默认值为0。 |
 
@@ -1509,7 +1513,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | --------- | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | eventType | VibratorEventType               | 否   | 否   | 振动事件类型。                                               |
 | time      | number                          | 否   | 否   | 振动起始时间，单位ms。取值范围[0,1800000]区间内所有整数。    |
-| duration  | number                          | 否   | 是   | 可选参数，表示振动持续时间，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000 |
+| duration  | number                          | 否   | 是   | 可选参数，表示振动持续时间，单位ms，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000 |
 | intensity | number                          | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。 |
 | frequency | number                          | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。 |
 | index     | number                          | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。        |
@@ -1523,8 +1527,8 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 名称   | 类型                       | 只读 | 可选 | 说明                                                 |
 | ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
-| time   | number                     | 否   | 否   | 振动绝对起始时间。                                   |
-| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+| time   | number                     | 否   | 否   | 振动绝对起始时间，单位ms。                                   |
+| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否   | 否   | 振动事件数组。 |
 
 ## ContinuousParam<sup>18+</sup>
 
@@ -1560,7 +1564,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | 名称    | 类型            | 只读 | 可选 | 说明                                                 |
 | ------- | --------------- | ---- | ---- | ---------------------------------------------------- |
 | type    | 'pattern'       | 否   | 否   | 值为“pattern”，根据组合模式触发电机振动。            |
-| pattern | VibratorPattern | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+| pattern | VibratorPattern | 否   | 否   | [build](#build18)方法返回的[VibratorPattern](#vibratorpattern18)对象。 |
 
 ## VibrateAttribute<sup>9+</sup>
 
@@ -1644,7 +1648,9 @@ vibrate(duration: number, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定持续时间触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)替代。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1679,7 +1685,9 @@ vibrate(effectId: EffectId): Promise&lt;void&gt;
 
 按照预置振动效果触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)替代。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1751,7 +1759,9 @@ stop(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 按照指定模式停止马达的振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1798,7 +1808,9 @@ stop(stopMode: VibratorStopMode, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定模式停止马达的振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 

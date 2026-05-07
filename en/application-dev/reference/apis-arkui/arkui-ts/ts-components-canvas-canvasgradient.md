@@ -30,7 +30,7 @@ Adds a color stop for the **CanvasGradient** object based on the specified offse
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------------------------------- |
-| offset | number | Yes | Relative position of the gradient stop along the gradient vector, represented by the ratio of the distance between the gradient stop and the start point to the total length. The value ranges from 0 to 1.<br>If the value of **offset** is less than 0 or greater than 1, there is no gradient effect.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **CanvasGradient** exceptions.|
+| offset | number | Yes | Relative position of the gradient stop along the gradient vector, represented by the ratio of the distance between the gradient stop and the start point to the total length. The value ranges from 0 to 1.<br>If the value of **offset** is less than 0 or greater than 1, there is no gradient effect.<br>**undefined** and **null** are treated as invalid values, and the current stop is ignored. **NaN** causes a **CanvasGradient** exception, and **Infinity** causes **CanvasGradient** to be invalid.|
 | color  | string | Yes | Gradient color to set. For details about the color notation, see the description of the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Invalid values result in no gradient effect being displayed.|
 
 
@@ -51,12 +51,12 @@ This example shows how to add a color stop using **addColorStop**. Colors in RGB
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             let grad = this.context.createLinearGradient(50, 0, 300, 100)
-            grad.addColorStop(0.0, '#ff0000')
-            grad.addColorStop(0.5, '#ffffff')
-            grad.addColorStop(1.0, '#00ff00')
+            grad.addColorStop(0.0, 'rgb(39,135,217)')
+            grad.addColorStop(0.5, 'rgb(255,238,240)')
+            grad.addColorStop(1.0, 'rgb(23,169,141)')
             this.context.fillStyle = grad
             this.context.fillRect(0, 0, 400, 400)
           })
@@ -66,7 +66,7 @@ This example shows how to add a color stop using **addColorStop**. Colors in RGB
     }
   }
   ```
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.jpeg)
+  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.png)
 
  
  ## addColorStop<sup>20+</sup>
@@ -85,12 +85,12 @@ Adds a color stop for the **CanvasGradient** object based on the specified offse
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------------------------------- |
-| offset | number | Yes | Relative position of the gradient stop along the gradient vector, represented by the ratio of the distance between the gradient stop and the start point to the total length. The value ranges from 0 to 1.<br>If the value of **offset** is less than 0 or greater than 1, there is no gradient effect.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **CanvasGradient** exceptions.|
-| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes | Color of the gradient fill.<br>You can use the [colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20) method to construct a color with the color gamut attribute [ColorSpace](ts-appendix-enums.md#colorspace20) set to SRGB or DISPLAY_P3. The color gamut attributes of each gradient ColorMetrics must be the same. If different color gamut attributes are set, an exception is thrown, and the error code is 103701.<br>Setting null and undefined is invalid.  |
+| offset | number | Yes | Relative position of the gradient stop along the gradient vector, represented by the ratio of the distance between the gradient stop and the start point to the total length. The value ranges from 0 to 1.<br>If the value of **offset** is less than 0 or greater than 1, there is no gradient effect.<br>**undefined** and **null** are treated as invalid values and are not applied. **NaN** causes a **CanvasGradient** exception, and **Infinity** causes **CanvasGradient** to be invalid.|
+| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes | Color of the gradient fill.<br>You can use the [colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20) method to construct a color with the color gamut attribute [ColorSpace](ts-appendix-enums.md#colorspace20) set to **SRGB** or **DISPLAY_P3**. The color gamut attributes of each gradient ColorMetrics must be the same. If different color gamut attributes are set, an exception is thrown, and the error code is 103701.<br>**undefined** and **null** are treated as invalid values, and the current stop is ignored.  |
 
 **Error codes**
 
-For details about the following error codes, see [Canvas Component Error Codes](../errorcode-canvas.md).
+For details about the error codes, see [Canvas Component Error Codes](../errorcode-canvas.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -98,13 +98,13 @@ For details about the following error codes, see [Canvas Component Error Codes](
 
 > **NOTE**
 >
-> Only the [fillStyle](ts-canvasrenderingcontext2d.md#fillstyle) and [strokeStyle](ts-canvasrenderingcontext2d.md#strokestyle) attributes of the [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) object support the CanvasGradient object with the P3 wide color gamut. In addition, the color gamut mode of the window where the Canvas component is located must be set to wide color gamut mode WIDE_GAMUT by calling the [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9) method.<br>
+> Only the [fillStyle](ts-canvasrenderingcontext2d.md#fillstyle) and [strokeStyle](ts-canvasrenderingcontext2d.md#strokestyle) attributes of the [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) object support the **CanvasGradient** object with the P3 wide color gamut. In addition, the color gamut mode of the window where the **Canvas** component is located must be set to wide color gamut mode **WIDE_GAMUT** via the [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9) method.<br>
 
 
 **Example**
 
-Sets the gradient breakpoint value of a specified color gamut, including the offset and color. Set the color gamut mode of the window to wide color gamut. For details, see [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9).
-  ```ts
+This example demonstrates how to set the gradient stop value of a specified color gamut using **addColorStop**, including the offset and color. For details about how to set the color gamut mode of the window to wide color gamut, see [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9).
+```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics } from '@kit.ArkUI'
@@ -154,5 +154,5 @@ struct AddColorStop {
     .height('100%')
   }
 }
-  ```
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032517.png)
+```
+![en-us_image_0000001194032516](figures/en-us_image_0000001194032517.png)

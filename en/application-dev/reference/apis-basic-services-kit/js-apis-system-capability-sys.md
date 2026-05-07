@@ -17,10 +17,10 @@ System capability (SysCap) refers to a relatively independent feature in the ope
 ## Modules to Import
 
 ```ts
-import { systemcapability } from '@kit.BasicServicesKit';
+import { systemCapability } from '@kit.BasicServicesKit';
 ```
 
-## systemcapability.querySystemCapabilities
+## systemCapability.querySystemCapabilities
 
 querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 
@@ -39,7 +39,7 @@ Queries the system capabilities. This API uses an asynchronous callback to retur
 
 ```ts
 try {
-    systemcapability.querySystemCapabilities((err:Error, data:string) => {
+    systemCapability.querySystemCapabilities((err:Error, data:string) => {
     if (err == undefined) {
         console.info("get system capabilities:" + data);
     } else {
@@ -51,7 +51,7 @@ try {
 ```
 
 
-## systemcapability.querySystemCapabilities
+## systemCapability.querySystemCapabilities
 
 querySystemCapabilities(): Promise&lt;string&gt;
 
@@ -69,7 +69,7 @@ Queries the system capabilities. This API uses a promise to return the result.
 
 ```ts
 try {
-    systemcapability.querySystemCapabilities().then((value:string) => {
+    systemCapability.querySystemCapabilities().then((value:string) => {
         console.info("get system capabilities: " + value);
     }).catch((err:Error) => {
         console.error("get system capabilities error: " + err);

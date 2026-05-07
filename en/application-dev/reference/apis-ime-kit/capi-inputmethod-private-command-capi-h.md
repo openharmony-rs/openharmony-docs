@@ -1,7 +1,7 @@
 # inputmethod_private_command_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -64,7 +64,7 @@ Creates an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecomm
 | Name| Description|
 | -- | -- |
 | char key[] | Key value of the private data.|
-| size_t keyLength | Key length.|
+| size_t keyLength | Key length. The total size of all private data and keys in a single operation cannot exceed 32 KB.|
 
 **Returns**
 
@@ -162,7 +162,7 @@ Sets the value of the integer type for [InputMethod_PrivateCommand](capi-inputme
 | Name| Description|
 | -- | -- |
 | [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance to be set.|
-| int32_t value | Integer value.|
+| int32_t value | Value of the integer type.|
 
 **Returns**
 
@@ -300,7 +300,7 @@ Obtains the value of the integer type from [InputMethod_PrivateCommand](capi-inp
 
 | Type| Description|
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code.<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success.<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer.<br>     [IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Query failed as the command contains no Boolean value.<br> For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode).|
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code.<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success.<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer.<br>     [IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Query failed because the command does not contain an integer value.<br> For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode).|
 
 ### OH_PrivateCommand_GetStrValue()
 
@@ -327,4 +327,4 @@ Obtains the value of the string type from [InputMethod_PrivateCommand](capi-inpu
 
 | Type| Description|
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code.<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success.<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer.<br>     [IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Query failed as the command contains no Boolean value.<br> For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode).|
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code.<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success.<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer.<br>     [IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Query failed because the command does not contain a string value.<br> For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode).|

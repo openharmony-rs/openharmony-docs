@@ -1,8 +1,8 @@
 # @ohos.convertxml (xml转换JavaScript)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -100,6 +100,8 @@ largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 将XML文本转换为Object类型对象，此方法支持解析单个节点大小超过10M的大型XML文本。
 
 > **说明：**
+>
+> 当传入的XML文本无法正确解析为Object类型对象时，打印异常信息并返回一个仅包含XML标签头的基础Object对象。
 >
 > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。本接口转换后的对象以换行符（LF）表示换行。
 

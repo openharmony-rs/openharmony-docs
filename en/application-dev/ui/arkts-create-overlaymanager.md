@@ -19,7 +19,7 @@ You can use the [getOverlayManager](../reference/apis-arkui/arkts-apis-uicontext
 * The drawing method inside and outside the safe area of nodes on **OverlayManager** is consistent with that of the page, and the keyboard avoidance method is also the same as that of the page.
 * You are advised to use AppStorage to store attributes related to **OverlayManager** to prevent service errors caused by attribute value changes during page switching.
 * For API versions earlier than 19, **OverlayManager** does not support swipe-to-close gestures (left or right). You must implement the logic to close the OverlayManager in [onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress). In API version 19 or later, you can set the **enableBackPressedEvent** property in [OverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-i.md#overlaymanageroptions15) to control whether the OverlayManager responds to the swipe-to-close gesture.
-* The event mechanism in **OverlayManager** gives priority to the component decorated with WrappedBuilder. To allow events to pass through to the underlying layer, set **hitTestBehavior** to **HitTestMode.Transparent**.
+* The event mechanism in **OverlayManager** gives priority to the component decorated with [WrappedBuilder](state-management/arkts-wrapBuilder.md). To allow events to pass through to the underlying layer, set [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) to **HitTestMode.Transparent**.
 
 ## Managing Overlays
 
@@ -65,7 +65,7 @@ export struct OverlayManagerComponent {
   @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 30 };
 
   build() {
-    // ···
+    // ...
       Column({ space: 10 }) {
         Button('Increment componentContentIndex:' + this.componentContentIndex)
           .onClick(() => {
@@ -137,7 +137,7 @@ export struct OverlayManagerComponent {
       }
       .width('100%')
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -282,7 +282,7 @@ export struct OverlayManagerWithOrder {
   @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 80 };
 
   build() {
-    // ···
+    // ...
       Row() {
         Column({ space: 5 }) {
           Button('Open Top-Level Dialog Box')
@@ -313,7 +313,7 @@ export struct OverlayManagerWithOrder {
           })
         }.width('100%')
       }
-    // ···
+      // ...
   }
 }
 ```

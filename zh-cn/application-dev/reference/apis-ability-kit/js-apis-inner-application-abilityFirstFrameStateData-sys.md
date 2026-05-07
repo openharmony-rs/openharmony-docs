@@ -4,7 +4,7 @@
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义了首帧绘制完成事件回调上报的数据结构。通过[on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12)注册监听Ability首帧绘制完成事件后，可使用[AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md)的[onAbilityFirstFrameDrawn](./js-apis-inner-application-abilityFirstFrameStateObserver-sys.md#onabilityfirstframedrawn)回调获取上报的数据结构。
 
@@ -30,5 +30,5 @@ import { appManager } from '@kit.AbilityKit';
 | bundleName  | string  | 否   | 否   | 应用Bundle名称。 |
 | moduleName  | string  | 否   | 否   | 应用Module名称。 |
 | abilityName | string  | 否   | 否   | Ability名称。    |
-| appIndex    | number  | 否   | 否   | DLP沙盒的索引。  |
-| isColdStart | boolean | 否   | 否   | 是否冷启动。true表示冷启动，false表示热启动。     |
+| appIndex    | number  | 否   | 否   | DLP沙盒的索引，默认值为0。  |
+| isColdStart | boolean | 否   | 否   | 是否冷启动。true表示冷启动，false表示热启动，默认值为false。 |

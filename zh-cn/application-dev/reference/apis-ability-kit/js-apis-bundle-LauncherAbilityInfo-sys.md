@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityInfos](js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated)获取。
 
@@ -16,7 +16,7 @@ LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityIn
 >
 > 本模块为系统接口。
 
-## LauncherAbilityInfo<sup>(deprecated)<sup>
+## LauncherAbilityInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >

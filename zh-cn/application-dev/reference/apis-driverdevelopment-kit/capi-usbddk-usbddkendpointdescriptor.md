@@ -1,10 +1,10 @@
 # UsbDdkEndpointDescriptor
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
@@ -16,7 +16,7 @@ typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
 
 **起始版本：** 10
 
-**相关模块：** [UsbDDK](capi-usbddk.md)
+**相关模块：** [UsbDdk](capi-usbddk.md)
 
 **所在头文件：** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 
@@ -26,7 +26,7 @@ typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
 
 | 名称 | 描述 |
 | -- | -- |
-| struct UsbEndpointDescriptor endpointDescriptor | 标准端点描述符。 |
+| [struct UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) endpointDescriptor | 标准端点描述符。 |
 | const uint8_t* extra | 未做解析的描述符，包含特定于类或供应商的描述符。 |
 | uint32_t extraLength | 未做解析的描述符长度。 |
 

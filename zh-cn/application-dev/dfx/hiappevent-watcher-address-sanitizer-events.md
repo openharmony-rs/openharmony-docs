@@ -4,7 +4,7 @@
 <!--Owner: @mlkgeek-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -12,9 +12,9 @@
 
 开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-- [订阅踩内存事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
+- [订阅地址越界事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
 
-- [订阅踩内存事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
+- [订阅地址越界事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
 
 > **说明：**
 >
@@ -23,6 +23,43 @@
 ## 检测原理
 
 详见[地址越界类问题检测](address-sanitizer-guidelines.md)。
+
+## 页面切换日志规格自定义参数
+
+从**API version 24**开始支持页面切换日志配置。当应用发生地址越界故障时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
+
+### configEventPolicy接口说明
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置地址越界事件策略参数接口，支持开启地址越界事件的页面切换日志采集。 |
+
+### configEventPolicy接口参数设置说明
+
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启地址越界事件的页面切换日志采集。
+
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| addressSanitizerPolicy | [AddressSanitizerPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。 |
+
+
+参数配置示例：
+
+```ts
+import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+import { deviceInfo, BusinessError } from '@kit.BasicServicesKit';
+
+let policy: hiAppEvent.EventPolicy = {
+    "addressSanitizerPolicy": {
+        "pageSwitchLogEnable": true // 启用页面切换日志
+    }
+};
+hiAppEvent.configEventPolicy(policy).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `Set addressSanitizer config policy successfully.`);
+}).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set addressSanitizer config policy. code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## 事件字段说明
 
@@ -40,6 +77,7 @@
 | type | string | 地址越界错误类型，取值范围详见type属性。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
 | log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见通用日志。<br>**说明**：从API version 24开始支持。 |
 
 ### type字段说明
 

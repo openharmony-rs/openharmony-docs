@@ -1,10 +1,10 @@
 # Basic Types
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**NOTE**
 >
@@ -12,7 +12,7 @@
 
 ## Resource
 
-The **Resource** type is used to reference resources for setting component attributes. Resource files must be stored and managed in specific subdirectories. For examples of resource directories, see [Resource Categories](../../../quick-start/resource-categories-and-access.md#resource-categories).
+Defines reference resources for component attributes. Resource files must be stored and managed in specific subdirectories. For examples of resource directories, see [Resource Categories](../../../quick-start/resource-categories-and-access.md#resource-categories).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -36,13 +36,13 @@ You can use `$r` or `$rawfile` to create a **Resource** object, but its attribut
 
 >  **NOTE**
 >
->  When referencing a resource type, ensure that the data type in the resource type object is the same as the type of the attribute method that uses the resource type as the parameter. For example, if an attribute method supports setting string | Resource, the data type must be string when Resource is used.
+>  When using a resource reference, ensure the data type of the resource object matches the type expected by the attribute method that uses the resource as the parameter. For example, if an attribute supports **string | Resource**, the data type of the referenced Resource object must also be **string**.
 >
->  When referencing a resource type, ensure that the resource type object is used in the supported mode. Otherwise, the attribute effect of the resource type as a parameter is the same as that of not setting the attribute.
+>  When using a resource reference, ensure that the use of the resource object is supported. Otherwise, the attribute that uses the resource as the parameter behaves as if it is not set.
 
 ## Length
 
-The **Length** type is used to represent a size unit.
+Defines a size unit.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -52,13 +52,13 @@ The **Length** type is used to represent a size unit.
 
 | Type                   | Description                                    |
 | --------------------- | -------------------------------------- |
-| string                | String type. Specify the length [unit](ts-pixel-units.md) explicitly, for example, **'10px'**, or provide the length in percentage, for example, **'100%'**.<br>**NOTE**<br>If the unit is not specified, the default unit vp is used, in which case '10' is equivalent to 10 vp.|
+| string                | String type. Specify the length [unit](ts-pixel-units.md) explicitly, for example, **'10px'**, or provide the length in percentage, for example, **'100%'**.<br>**NOTE**<br>If the unit is not specified, the default unit vp is used, in which case **'10'** is equivalent to 10 vp.|
 | number                | Number type. The default unit is vp.                               |
-| [Resource](#resource) | Size referenced from system or application resources.              |
+| [Resource](#resource) | Size referenced from system or app resources.              |
 
 ## ResourceStr
 
-The **ResourceStr** type is used to represent the types that can be used by input parameters of the string type.
+Defines the types that can be used by input parameters of the string type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -69,11 +69,11 @@ The **ResourceStr** type is used to represent the types that can be used by inpu
 | Type                   | Description                       |
 | --------------------- | ------------------------- |
 | string                | String type.                   |
-| [Resource](#resource) | String referenced from system or application resources.|
+| [Resource](#resource) | String referenced from system or app resources.|
 
 ## Padding
 
-The **Padding** type is used to describe the paddings in different directions of a component.
+Defines the paddings in different directions of a component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -90,7 +90,7 @@ The **Padding** type is used to describe the paddings in different directions of
 
 ## LocalizedPadding<sup>12+</sup>
 
-The **Padding** type is used to describe the paddings in different directions of a component.
+Defines the paddings in different directions of a component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -101,13 +101,13 @@ The **Padding** type is used to describe the paddings in different directions of
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Height of the padding on the top of the component. |
-| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Width of the padding on the right of the component.<br> <br>Width of the padding on the left of the component in RTL mode.|
+| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Width of the padding on the right of the component.<br>Width of the padding on the left of the component in RTL mode.|
 | bottom | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Height of the padding at the bottom of the component. |
-| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Width of the padding on the left of the component.<br> <br>Width of the padding on the right of the component in RTL mode.|
+| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Width of the padding on the left of the component.<br>Width of the padding on the right of the component in RTL mode.|
 
 ## Margin
 
-The **Margin** type is used to describe the margins in different directions of a component.
+Defines the margins in different directions of a component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -124,7 +124,7 @@ The **Margin** type is used to describe the margins in different directions of a
 
 ## LocalizedMargin<sup>12+</sup>
 
-The **Margin** type is used to describe the margins in different directions of a component.
+Defines the margins in different directions of a component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -135,13 +135,14 @@ The **Margin** type is used to describe the margins in different directions of a
 | Name    | Type               | Read-Only |  Optional  | Description                  |
 | ------ | ----------------- | ---- | -------------------- | -------- |
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No | Yes | Height of the margin above the component. |
-| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No  | Yes| Width of the margin on the right of the component.<br> <br>Width of the margin on the left of the component in RTL mode.|
+| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No  | Yes| Width of the margin on the right of the component.<br>Width of the margin on the left of the component in RTL mode.|
 | bottom | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No  | Yes| Height of the margin below the component. |
-| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No | Yes | Width of the margin on the left of the component.<br> <br>Width of the margin on the right of the component in RTL mode.|
+| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No | Yes | Width of the margin on the left of the component.<br>Width of the margin on the right of the component in RTL mode.|
 
 ## EdgeWidths<sup>9+</sup>
 
-The **EdgeWidths** type is used to describe the edge widths in different directions of a component.
+Defines component edge widths for absolute directions.
+
 To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
@@ -159,7 +160,8 @@ To reference this object, at least one parameter must be passed.
 
 ## LocalizedEdgeWidths<sup>12+</sup>
 
-The **EdgeWidths** type is used to describe the edge widths in different directions of a component.
+Defines component edge widths for localized logical directions.
+
 To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -177,7 +179,8 @@ To reference this object, at least one parameter must be passed.
 
 ## BorderRadiuses<sup>9+</sup>
 
-The **BorderRadiuses** type is used to describe the corner radius of a component's border.
+Defines the corner radius of a component's border.
+
 To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
@@ -188,14 +191,15 @@ To reference this object, at least one parameter must be passed.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| topLeft     | [Length](#length) | No|Yes   | Radius of the upper left corner of the component.|
-| topRight    | [Length](#length) | No|Yes   | Radius of the upper right corner of the component.|
-| bottomLeft  | [Length](#length) | No|Yes   | Radius of the lower left corner of the component.|
-| bottomRight | [Length](#length) | No|Yes   | Radius of the lower right corner of the component.|
+| topLeft     | [Length](#length) | No|Yes   | Radius of the top-left corner of the component.|
+| topRight    | [Length](#length) | No|Yes   | Radius of the top-right corner of the component.|
+| bottomLeft  | [Length](#length) | No|Yes   | Radius of the bottom-left corner of the component.|
+| bottomRight | [Length](#length) | No|Yes   | Radius of the bottom-right corner of the component.|
 
 ## LocalizedBorderRadiuses<sup>12+</sup>
 
-The **LocalizedBorderRadiuses** type is used to describe the corner radius of a component's border.
+Defines the corner radius of a component's border.
+
 To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -206,14 +210,15 @@ To reference this object, at least one parameter must be passed.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| topStart    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the upper left corner of the component.<br>Radius of the upper left right of the component in RTL mode.|
-| topEnd      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the upper right corner of the component.<br>Radius of the upper left corner of the component in RTL mode.|
-| bottomStart | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the lower left corner of the component.<br>Radius of the lower right corner of the component in RTL mode.|
-| bottomEnd   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the lower right corner of the component.<br>Radius of the lower left corner of the component in RTL mode.|
+| topStart    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the top-left corner of the component.<br>For right-to-left scripts, this indicates the radius of the top-right corner of the component.|
+| topEnd      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the top-right corner of the component.<br>For right-to-left scripts, this indicates the corner radius of the top-left corner of the component.|
+| bottomStart | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the bottom-left corner of the component.<br>For right-to-left scripts, this indicates the corner radius of the bottom-right corner of the component.|
+| bottomEnd   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the bottom-right corner of the component.<br>For right-to-left scripts, this indicates the corner radius of the bottom-left corner of the component.|
 
 ## EdgeColors<sup>9+</sup>
 
-The **EdgeColors** type is used to describe the edge colors of a component.
+Defines the edge colors of a component.
+
 To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
@@ -231,7 +236,8 @@ To reference this object, at least one parameter must be passed.
 
 ## LocalizedEdgeColors<sup>12+</sup>
 
-The **EdgeColors** type is used to describe the edge colors of a component.
+Defines the edge colors of a component.
+
 To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -249,7 +255,8 @@ To reference this object, at least one parameter must be passed.
 
 ## EdgeStyles<sup>9+</sup>
 
-The **EdgeStyles** type is used to describe the edge styles of a component.
+Defines the edge styles of a component.
+
 To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
@@ -267,7 +274,7 @@ To reference this object, at least one parameter must be passed.
 
 ## Offset
 
-The **Offset** type is used to describe the offset coordinates of a component in the layout.
+Defines the offset coordinates of a component in the layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -280,7 +287,7 @@ The **Offset** type is used to describe the offset coordinates of a component in
 
 ## RectResult<sup>10+</sup>
 
-The **RectResult** type is used to describe the position, width, and height of a component.
+Defines the position, width, and height of a component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -288,8 +295,8 @@ The **RectResult** type is used to describe the position, width, and height of a
 
 | Name     | Type  | Read-Only| Optional | Description|
 | ------- | ------ | ----- | -------- | ---------- |
-| x     | number | No| No| Horizontal coordinate.|
-| y     | number |  No| No| Vertical coordinate.|
+| x     | number | No| No| X-coordinate.|
+| y     | number |  No| No| Y-coordinate.|
 | width | number | No| No| Content width.|
 | height | number | No| No| Content height.|
 
@@ -297,7 +304,7 @@ The **RectResult** type is used to describe the position, width, and height of a
 
 type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Resource](#resource)
 
-The **ResourceColor** type is used to describe the color types of resources.
+Defines the color types of resources.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -308,13 +315,13 @@ The **ResourceColor** type is used to describe the color types of resources.
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
 | [Color](ts-appendix-enums.md#color) | Color enums.                                                |
-| number                              | Color in hexadecimal notation. RGB and ARGB are supported. Examples: **0xffffff** and **0xffff0000**. If the number type is used, the format of the color value depends on the value. For example, 0x00ffffff is parsed as an RGB color value.|
-| string                              | Color in RGB or ARGB notation. Example: **'#ffffff'**, **'#ff000000'**, **'rgb(255, 100, 255)'**, **'rgba(255, 100, 255, 0.5)'**|
-| [Resource](#resource)               | Color referenced from system or application resources.      |
+| number                              | Color in HEX format. RGB and ARGB are supported. Examples: **0xffffff** and **0xffff0000**. The input length is not checked; the format is determined by the value range. For example, **0x00ffffff** is parsed as RGB.|
+| string                              | Color in RGB, RGBA, or ARGB format.<br>RGB examples: **'#ffffff'** and **'rgb(255, 100, 255)'**<br>RGBA example: **'rgba(255, 100, 255, 0.5)'**<br>ARGB example: **'#ff000000'**|
+| [Resource](#resource)               | Color referenced from system or app resources.      |
 
 ## LengthConstrain
 
-The **LengthConstrain** type is used to describe the maximum and minimum lengths of a component.
+Defines the maximum and minimum lengths of a component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -330,7 +337,11 @@ The **LengthConstrain** type is used to describe the maximum and minimum lengths
 
 ## Font
 
-The **Font** type is used to set the text style.
+Sets the text style.
+
+> **NOTE**
+>
+> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -339,13 +350,13 @@ The **Font** type is used to set the text style.
 | Name  | Type                                                        | Read-Only |  Optional| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
 | size   | [Length](#length)                                            | No  |  Yes | Font size. If the value is of the number type, the unit fp is used. Percentage strings are not supported.<br>Default value: **16.0**|
-| weight | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | No |  Yes| Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a thicker font.<br>Default value: **400** \| **FontWeight.Normal** |
-| family | string \| [Resource](#resource)                              | No  |  Yes | Font family of the text. Use commas (,) to separate multiple fonts. The priority of the fonts is the sequence in which they are placed. An example value is **'Arial, HarmonyOS Sans'**. Currently, the HarmonyOS Sans font and custom font [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) are supported.|
+| weight | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | No |  Yes| Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a thicker font.<br>Default value: **400** \| **FontWeight.Normal**|
+| family | string \| [Resource](#resource)                              | No  |  Yes | Font family. Default font: **'HarmonyOS Sans'**.<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
 | style  | [FontStyle](ts-appendix-enums.md#fontstyle)                  | No  |  Yes | Font style.<br>Default value: **FontStyle.Normal**            |
 
 ## Area<sup>8+</sup>
 
-Area type, which is used to store the area information of an element.
+Defines the area information of a component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -357,12 +368,12 @@ Area type, which is used to store the area information of an element.
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | Width of the target element.<br>Unit: vp|
 | height         | [Length](#length)      | Height of the target element.<br>Unit: vp|
-| position       | [Position](#position) | Position of the upper left corner of the component relative to that of its parent container.           |
-| globalPosition | [Position](#position) | Position of the upper left corner of the component relative to that of the page where the component resides.            |
+| position       | [Position](#position) | Position of the top-left corner of the target element in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) of the parent element.           |
+| globalPosition | [Position](#position) | Position of the top-left corner of the target element in the current window coordinate system.            |
 
 ## Position
 
-The **Position** type is used to represent coordinates of a point.
+Defines the coordinates of a point.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -372,12 +383,12 @@ The **Position** type is used to represent coordinates of a point.
 
 | Name  | Type               | Read-Only |  Optional  | Description                         |
 | ---- | ----------------- | ---- | -------- | --------------------------- |
-| x    | [Length](#length) | No  |  Yes| X-coordinate<br>Unit: vp|
+| x    | [Length](#length) | No  |  Yes| X-coordinate.<br>Unit: vp|
 | y    | [Length](#length) | No  |  Yes| Y-coordinate.<br>Unit: vp|
 
 ## LocalizedPosition<sup>12+</sup>
 
-The **LocalizedPosition** type is used to represent coordinates of a point.
+Defines the coordinates of a point.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -390,7 +401,7 @@ The **LocalizedPosition** type is used to represent coordinates of a point.
 
 ## Edges<sup>12+</sup>
 
-The **Edges** type is used to describe the offset relative to the four edges. If both **top** and **bottom** are set, only **top** takes effect. If both **left** and **right** are set, only **left** takes effect.
+Defines the offset relative to the four edges. If both **top** and **bottom** are set, only **top** takes effect. If both **left** and **right** are set, only **left** takes effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -407,7 +418,7 @@ The **Edges** type is used to describe the offset relative to the four edges. If
 
 ## LocalizedEdges<sup>12+</sup>
 
-The **LocalizedEdges** type is used to describe the offset relative to the four edges. If both **top** and** bottom **are set, only **top** takes effect. If both **start** and **end** are set, only **start** takes effect.
+Defines the offset relative to the four edges. If both **top** and** bottom **are set, only **top** takes effect. If both **start** and **end** are set, only **start** takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -418,11 +429,11 @@ The **LocalizedEdges** type is used to describe the offset relative to the four 
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No |  Yes | Offset relative to the top edge.|
 | bottom    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Offset relative to the bottom edge.|
 | start    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Offset relative to the left in LTR mode; offset relative to the right in RTL mode.|
-| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No |  Yes | Offset relative to the right for in LTR mode; offset relative to the left in RTL mode.|
+| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No |  Yes | Offset relative to the right in LTR mode; offset relative to the left in RTL mode.|
 
 ## ConstraintSizeOptions
 
-Describes the size constraints of a component during layout.
+Defines the size constraints of a component during layout.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -443,7 +454,7 @@ Describes the size constraints of a component during layout.
 
 ## SizeOptions
 
-Describes the width and height of a component during layout.
+Defines the width and height of a component during layout.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -459,22 +470,22 @@ Describes the width and height of a component during layout.
 
 ## BorderOptions
 
-The **BorderOptions** type is used to provide border information.
+Defines border information.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
-| width  | [EdgeWidths](./ts-types.md#edgewidths9)<sup>9+</sup> \| [Length](ts-types.md#length) \| [LocalizedEdgeWidths](./ts-types.md#localizededgewidths12)<sup>12+</sup> | No|Yes  | Border width.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.    |
-| color  | [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup> \| [ResourceColor](ts-types.md#resourcecolor) \| [LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No|Yes  | Border color.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.    |
-| radius | [BorderRadiuses](#borderradiuses9)<sup>9+</sup> \| [Length](ts-types.md#length) \| [LocalizedBorderRadiuses](#localizedborderradiuses12)<sup>12+</sup> | No|Yes  | Border corner radius.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| style  | [EdgeStyles](#edgestyles9)<sup>9+</sup> \| [BorderStyle](ts-appendix-enums.md#borderstyle) | No|Yes  | Border style.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.   |
-| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9) \| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LocalizedEdgeWidths](#localizededgewidths12) | No|Yes | Gap between dashed line segments. It takes effect when the border style is set to dashed.<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API cannot be used in ArkTS widgets.|
-| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9) \| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LocalizedEdgeWidths](#localizededgewidths12) | No|Yes  | Width of dashed line segments. It takes effect when the border style is set to dashed.<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API cannot be used in ArkTS widgets.    |
+| width  | [EdgeWidths](./ts-types.md#edgewidths9)<sup>9+</sup>&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedEdgeWidths](./ts-types.md#localizededgewidths12)<sup>12+</sup> | No|Yes  | Border width.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.    |
+| color  | [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup>&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No|Yes  | Border color.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.    |
+| radius | [BorderRadiuses](#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](#localizedborderradiuses12)<sup>12+</sup> | No|Yes  | Border corner radius.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| style  | [EdgeStyles](#edgestyles9)<sup>9+</sup>&nbsp;\|&nbsp;[BorderStyle](ts-appendix-enums.md#borderstyle) | No|Yes  | Border style.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.   |
+| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | No|Yes | Gap between dashed line segments. It takes effect when the border style is set to dashed.<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API cannot be used in ArkTS widgets.|
+| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | No|Yes  | Width of dashed line segments. It takes effect when the border style is set to dashed.<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API cannot be used in ArkTS widgets.    |
 
 ## ColorFilter<sup>9+</sup>
 
-The **ColorFilter** type is used to create a color filter with a 4 x 5 matrix.
+Defines a color filter with a 4 x 5 matrix.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -489,11 +500,29 @@ The **ColorFilter** type is used to create a color filter with a 4 x 5 matrix.
 
 ## CustomBuilder<sup>8+</sup>
 
-The **CustomBuilder** type is used to define custom UI descriptions in component attribute methods.
+Defines a custom UI content builder for component attribute methods.
 
 | Name           | Type                  | Description                                      |
 | ------------- | ---------------------- | ---------------------------------------- |
-| CustomBuilder | (() =&gt; any) \| void | Builder used to generate a custom UI component when used with the [@Builder](../../../ui/state-management/arkts-builder.md) decorator.|
+| CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | Builder used to generate a custom UI component when used with the [@Builder](../../../ui/state-management/arkts-builder.md) decorator.|
+
+## CustomBuilderT\<T><sup>23+</sup>
+
+type CustomBuilderT\<T> = (t: T) => void
+
+Defines a custom UI content builder. Compared with **CustomBuilder**, this API supports one input parameter.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ----------- | -------- | ---- | ---------------------------------------- |
+| t | T| Yes| Used with [@Builder](../../../ui/state-management/arkts-builder.md) to generate a custom component and accepts one input parameter.|
 
 ## MarkStyle<sup>10+</sup>
 
@@ -509,7 +538,7 @@ The **CustomBuilder** type is used to define custom UI descriptions in component
 
 ## ModalTransition<sup>10+</sup>
 
-The **ModalTransition** type is used to set the transition type for a full-screen modal.
+Enumerates full-screen modal transition types.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -523,7 +552,7 @@ The **ModalTransition** type is used to set the transition type for a full-scree
 
 ## OutlineOptions<sup>11+</sup>
 
-Outer outline options.
+Defines the outline options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -531,10 +560,10 @@ Outer outline options.
 
 | Name  | Type                  | Read-Only  |   Optional                            | Description                                                        |
 | ------ | ----------------------|----------------- | --------------------- | ------------------------------------------------------------ |
-| width  | [Dimension](#dimension10) \| [EdgeOutlineWidths](#edgeoutlinewidths11)| No| Yes| Width of the outline. Percentage values are not supported.<br>Default value: **0**.<br>**width** must be set to display the outline effect.|
-| color  | [ResourceColor](#resourcecolor) \| [EdgeColors](#edgecolors9) \| [LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No| Yes| Color of the outline.<br>Default value: **Color.Black**.                  |
-| radius | [Dimension](#dimension10) \| [OutlineRadiuses](#outlineradiuses11)| No| Yes| Radius of the outline corners. Percentage values are not supported.<br>Default value: **0**<br>Maximum effective value: Component width/2 + outlineWidth or component height/2 + outlineWidth|
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)  \| [EdgeOutlineStyles](#edgeoutlinestyles11)| No| Yes| Outline style.<br>Default value: **OutlineStyle.SOLID**           |
+| width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11)| No| Yes| Width of the outline. Percentage values are not supported.<br>Default value: **0**<br>**width** must be set to display the outline effect.|
+| color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No| Yes| Color of the outline.<br>Default value: **Color.Black**                  |
+| radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11)| No| Yes| Corner radius of the outline. Percentage values are not supported.<br>Default value: **0**<br>Maximum effective value: Component width/2 + outlineWidth or component height/2 + outlineWidth|
+| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11)| No| Yes| Outline style.<br>Default value: **OutlineStyle.SOLID**           |
 
 ## EdgeOutlineWidths<sup>11+</sup>
 
@@ -546,10 +575,10 @@ To reference this object, at least one parameter must be passed.
 
 | Name    | Type                        | Read-Only| Optional  | Description     |
 | ------ | ---------------------------- | -- | -- | ------- |
-| left   | [Dimension](#dimension10) | No| Yes  | Thickness of the left outline.|
-| right  | [Dimension](#dimension10) | No| Yes   | Thickness of the right outline.|
+| left   | [Dimension](#dimension10) | No| Yes  | Width of the left outline.|
+| right  | [Dimension](#dimension10) | No| Yes   | Width of the right outline.|
 | top    | [Dimension](#dimension10) | No| Yes  | Width of the top outline.|
-| bottom | [Dimension](#dimension10) | No| Yes | Thickness of the bottom outline.|
+| bottom | [Dimension](#dimension10) | No| Yes | Width of the bottom outline.|
 
 ## OutlineRadiuses<sup>11+</sup>
 
@@ -563,10 +592,10 @@ To reference this object, at least one parameter must be passed.
 
 | Name         | Type                        | Read-Only| Optional  | Description      |
 | ----------- | -------------------- | -------- | ---- | -------- |
-| topLeft     | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the upper left corner.|
-| topRight    | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the upper right corner.|
-| bottomLeft  | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the lower left corner.|
-| bottomRight | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the lower right corner.|
+| topLeft     | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the top-left corner.|
+| topRight    | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the top-right corner.|
+| bottomLeft  | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the bottom-left corner.|
+| bottomRight | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the bottom-right corner.|
 
 ## EdgeOutlineStyles<sup>11+</sup>
 
@@ -580,14 +609,16 @@ To reference this object, at least one parameter must be passed.
 
 | Name    | Type                                    | Read-Only| Optional | Description     |
 | ------ | ---------------------------------------- | -- | -- | ------- |
-| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the left outline.|
-| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the right outline.|
-| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the top outline.|
-| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No | Yes | Style of the bottom outline.|
+| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No| Yes  | Style of the left outline.|
+| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No| Yes  | Style of the right outline.|
+| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No| Yes  | Style of the top outline.|
+| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No | Yes | Style of the bottom outline.|
 
 ## Dimension<sup>10+</sup>
 
-The **Length** type is used to represent a size unit.
+Defines a size unit.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -596,15 +627,15 @@ The **Length** type is used to represent a size unit.
 | Type                   | Description                                    |
 | --------------------- | -------------------------------------- |
 | [PX](#px10)               | Physical pixel unit type. The unit px must be included, for example, **'10px'**.|
-| [VP](#vp10)                | Pixel unit type specific to the screen density. The unit vp can be included or omitted, for example, **10** or **'10vp'**.|
+| [VP](#vp10)                | Viewport pixel unit. The unit vp can be included or omitted, for example, **10** or **'10vp'**.|
 | [FP](#fp10)                | Font pixel unit type. The unit fp must be included, for example, **'10fp'**.|
 | [LPX](#lpx10)              | Logical pixel unit type. The unit lpx must be included, for example, **'10lpx'**.|
 | [Percentage](#percentage10)        | Percentage type. The unit % must be included, for example, **'10%'**.|
-| [Resource](#resource) | Size referenced from system or application resources.|
+| [Resource](#resource) | Size referenced from system or app resources.|
 
 ## PX<sup>10+</sup>
 
-The **PX** type is used to represent a length in px.
+Defines a length in px.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -616,7 +647,7 @@ The **PX** type is used to represent a length in px.
 
 ## VP<sup>10+</sup>
 
-The **VP** type is used to represent a length in vp.
+Defines a length in vp.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -624,11 +655,11 @@ The **VP** type is used to represent a length in vp.
 
 | Type                   | Description                                    |
 | --------------------- | -------------------------------------- |
-| {number}vp\|number | Pixel unit type specific to the screen density. The unit vp can be included or omitted, for example, **10** or **'10vp'**.|
+| {number}vp\|number | Viewport pixel unit. The unit vp can be included or omitted, for example, **10** or **'10vp'**.|
 
 ## FP<sup>10+</sup>
 
-The **FP** type is used to represent a length in fp.
+Defines a length in fp.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -640,7 +671,7 @@ The **FP** type is used to represent a length in fp.
 
 ## LPX<sup>10+</sup>
 
-The **LPX** type is used to represent a length in lpx.
+Defines a length in lpx.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -652,7 +683,7 @@ The **LPX** type is used to represent a length in lpx.
 
 ## Percentage<sup>10+</sup>
 
-The **Percentage** type is used to represent a length in percentage.
+Defines a length in percentage.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -664,7 +695,7 @@ The **Percentage** type is used to represent a length in percentage.
 
 ## Degree<sup>10+</sup>
 
-The **Degree** type is used to represent a length in deg.
+Defines an angle in deg.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -676,7 +707,7 @@ The **Degree** type is used to represent a length in deg.
 
 ## TouchPoint<sup>11+</sup>
 
-The **TouchPoint** type is used to define the coordinates of the touch point.
+Defines the coordinates of the touch point. If it is not set, the touch point is centered.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -699,7 +730,7 @@ type VoidCallback: () => void;
 
 Callback<T,V = void> = (data: T) => V;
 
-The **Callback** type is used to represent the callback with parameters.
+Defines the callback with parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -707,7 +738,7 @@ The **Callback** type is used to represent the callback with parameters.
 
 ## DividerStyleOptions<sup>12+</sup>
 
-The **DividerStyleOptions** type is used to provide the information about the divider.
+Defines divider information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -723,20 +754,20 @@ The **DividerStyleOptions** type is used to provide the information about the di
 
 ## ChainWeightOptions<sup>14+</sup>
 
-The **ChainWeightOptions** type is used to describe the layout weight of a component within a chain.
+Defines the layout weight of a component in a chain.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type    | Description            |
-| ----- | ------ | -------------- |
-| horizontal | number | Layout weight of the component in the horizontal direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**. |
-| vertical     | number | Layout weight of the component in the vertical direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**.|
+| Name     | Type  | Read-Only| Optional| Description      |
+| --------- | ------ | ---- | ---- | ---------- |
+| horizontal | number | No| Yes| Layout weight of the component in the horizontal direction. It takes effect when set to a value greater than 0.<br>Default value: **0**<br>Invalid values are treated as **0**. |
+| vertical     | number | No| Yes| Layout weight of the component in the vertical direction. It takes effect when set to a value greater than 0.<br>Default value: **0**<br>Invalid values are treated as **0**.|
 
 ## Configuration
 
-The **Configuration** type is used to describe the color mode and font scale.
+ Defines the color mode and font scale.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -751,17 +782,19 @@ The **Configuration** type is used to describe the color mode and font scale.
 
 ## AccessibilityOptions<sup>14+</sup>
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                  | Type   | Read-Only| Optional| Description                                                        |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| accessibilityPreferred | boolean | No| Yes  | Whether to prioritize the accessibility text of child components during a deep traversal. The value **true** means to prioritize the accessibility text of child components.<br>If the accessibility text is empty, the text is selected. The combined text is set to the parent node whose accessibilityText and text are empty.<br>The value **false** means not to prioritize the accessibility text of child components.<br>Default value: **false**.|
+| accessibilityPreferred | boolean | No| Yes  | If **accessibilityPreferred** is set to **true**, the accessibility text of this child node is prioritized during depth-first traversal of each child node.<br>If **accessibilityText** is empty, the component's **Text** is used. The concatenated text is set for the parent node whose **accessibilityText** and **text** are both empty.<br>If **accessibilityPreferred** is set to **false**, this feature is disabled.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| stateControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18) | No| Yes  | Type of the target child component. After a container component with [accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14) enabled performs accessibility grouping, the selection state and state announcement text of the child component of the specified type are used as the state and announcement text of the grouped component. This aggregates state announcements during screen reading and eliminates the need to focus on child components individually.<br>**NOTE**<br>If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component.<br>Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**.<br>Default value: no specified component<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| stateControllerId<sup>23+</sup> | string | No| Yes  | [Unique ID](ts-universal-attributes-component-id.md#id) of the target child component. After a container component with [accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14) enabled performs accessibility grouping, the selection state and state announcement text of the child component of the specified ID are used as the state and announcement text of the grouped component. This aggregates state announcements during screen reading and eliminates the need to focus on child components individually.<br>**NOTE**<br>If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component.<br>If this API is configured together with **stateControllerRoleType**, the component with a matching ID is prioritized.<br>Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**.<br>Default value: no specified component<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| actionControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18) | No| Yes  | Type of the target child component. After a container component with [accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14) enabled performs accessibility grouping, any triggered accessibility control operation is forwarded to the child component of the specified type. This aggregates click events during screen reading and eliminates the need to focus on child components individually.<br>**NOTE**<br>If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component.<br>Currently, only accessibility click actions are supported.<br>Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**.<br>Default value: no specified component<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| actionControllerId<sup>23+</sup> | string | No| Yes  |  [Unique ID](ts-universal-attributes-component-id.md#id) of the target child component. After a container component with [accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14) enabled performs accessibility grouping, any triggered accessibility control operation is forwarded to the child component of the specified ID. This aggregates click events during screen reading and eliminates the need to focus on child components individually.<br>**NOTE**<br>If multiple child components of the same type exist in the grouped component, the first matching child component found under the grouped component in the component tree acts as the controller component.<br>Currently, only accessibility click actions are supported.<br>If this API is configured together with **actionControllerRoleType**, the component with a matching ID is prioritized.<br>Specific types in cross-process embedded components are not supported, such as widgets and **EmbeddedUIExtension**.<br>Default value: no specified component<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## ScrollBarMargin<sup>20+</sup>
 
-Scroll bar margin.
+Defines the margin of the scroll bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -770,11 +803,39 @@ Scroll bar margin.
 | Name | Type                                                        | Read-Only| Optional| Description                                  |
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
 | start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Start margin of the scroll bar.<br>Default value: **0**, in vp|
-| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Margin at the end of the scroll bar.<br>Default value: **0**, in vp|
+| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| End margin of the scroll bar.<br>Default value: **0**, in vp|
+
+## ResponsiveFillType<sup>22+</sup>
+
+type ResponsiveFillType = PresetFillType
+
+Defines the fill type for responsive layouts, applicable to the **WaterFlow**, **Grid**, **List**, and **Swiper** components.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+
+
+| Type                   | Description                       |
+| --------------------- | ------------------------- |
+| [PresetFillType](../arkui-ts/ts-appendix-enums.md#presetfilltype22)                | Column count for different responsive breakpoints.                   |
+
+## ItemFillPolicy<sup>22+</sup>
+
+Defines a responsive layout policy applicable to the **WaterFlow**, **Grid**, **List**, and **Swiper** components.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type|Read-Only|Optional| Description            |
+| ------ | ---- |------|------| ---------------- |
+| fillType     | [ResponsiveFillType](#responsivefilltype22) |No| Yes  | Column count for different breakpoints. The default value is **BREAKPOINT_DEFAULT**.|
 
 ## DirectionalEdgesT\<T><sup>12+</sup>
 
-Edge width type, which is used to describe the width of the component edge in different directions. Globalization is supported.
+Defines component edge widths for localized logical directions. Globalization is supported.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -784,19 +845,22 @@ Edge width type, which is used to describe the width of the component edge in di
 
 | Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
-| start   | T    |No|No| Start edge. It is the left edge if the direction is left-to-right and the right edge if the direction is right-to-left.|
-| end    | T    | No|No|End edge. It is the right edge if the direction is left-to-right and the left edge if the direction is right-to-left.|
+| start   | T    |No|No| Start edge. Corresponds to the left edge in LTR layout and the right edge in RTL layout.|
+| end    | T    | No|No|End edge. Corresponds to the right edge in LTR layout and the left edge in RTL layout.|
 | top  | T    | No|No|Top edge.|
 | bottom | T    | No|No|Bottom edge.|
 
 ## Bias
 
-Defines the offset of the component under the anchor constraints.
-<br>In the horizontal direction, the value of **Bias** is the ratio of the distance from the component to the left anchor D<sub>start</sub> to the total distance between the component and the horizontal anchors D<sub>start</sub> + D<sub>end</sub>. In a mirrored language layout, D<sub>start</sub> is the distance from the component to the right anchor. The width of the component is represented by D<sub>width</sub>.
-<br>![bias_horizontal_example.png](figures/bias_horizontal_example.png)
-<br>Similarly, in the vertical direction, the value of **Bias** is the ratio of the distance from the component to the top anchor D<sub>top</sub> to the total distance between the component and the vertical anchors D<sub>top</sub> + D<sub>bottom</sub>. The height of the component is represented by D<sub>height</sub>.
-<br>![bias_vertical_example.png](figures/bias_vertical_example.png)
+Defines offset parameters for a component under anchor constraints.
 
+Taking horizontal bias as an example, the value is the ratio of D<sub>start</sub> (the distance from the component to the left anchor) to D<sub>start</sub> +  D<sub>end</sub> (the total horizontal distance between anchors). In a mirrored language, D<sub>start</sub> represents the distance from the component to the right anchor. In the following figure, D<sub>width</sub> indicates the width of the component.
+
+![bias_horizontal_example.png](figures/bias_horizontal_example.png)
+
+The same rule applies to the vertical direction. The value is the ratio of D<sub>top</sub> (the distance from the component to the top anchor) to D<sub>top</sub> + D<sub>bottom</sub> (the total vertical distance between anchors). In the following figure, D<sub>height</sub> indicates the height of the component.
+
+![bias_vertical_example.png](figures/bias_vertical_example.png)
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -804,5 +868,33 @@ Defines the offset of the component under the anchor constraints.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| horizontal  | number | No|Yes| Bias value in the horizontal direction.<br>This parameter is valid only when the width attribute of the child component has a correct value and two horizontal anchors are available. The value must be greater than or equal to 0.<br>Default value: **0.5**|
-| vertical  | number | No|Yes| Returns the bias value in the vertical direction.<br>This parameter is valid only when the height attribute of the child component has a correct value and two vertical anchors are available. The value must be greater than or equal to 0.<br>Default value: **0.5**|
+| horizontal  | number | No|Yes| Bias value in the horizontal direction.<br>This parameter takes effect only when the child component has a valid **width** value and two horizontal anchors. The value must be greater than or equal to 0.<br>Default value: **0.5**|
+| vertical  | number | No|Yes| Bias value in the vertical direction.<br>This parameter takes effect only when the child component has a valid **height** value and two vertical anchors. The value must be greater than or equal to 0.<br>Default value: **0.5**|
+
+## CacheCountInfo<sup>22+</sup>
+
+Defines the number of cached items.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type                                                        | Read-Only| Optional| Description                                  |
+| ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
+| minCount | number | No  | No| Minimum number of cached items. When the actual number of cached items is lower than this value, cached items are loaded during idle intervals between scrolling animation frames.<br>Value range: [0, +∞). Values less than 0 are clamped to **1**.|
+| maxCount   | number | No  | No| Maximum number of cached items. When the actual number of cached items exceeds this value, redundant items are recycled or released. The system loads items to reach the maximum count when the UI is idle (no animations or user interactions).<br>Value range: [**minCount**, +∞). Values less than **minCount** are clamped to **minCount**.|
+
+## AccessibilityActionOptions<sup>23+</sup>
+
+Defines optional parameters for accessibility operations of a component, which is used to restrict or modify the operations initiated by accessibility apps such as the screen reader. This API is supported only by the [Slider](ts-basic-components-slider.md) component. If this API is used on other components, compilation succeeds but the API does not take effect.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+<!--Table: 15%; 10%; 10%; 10%; 55%-->
+| Name                  | Type   | Read-Only| Optional| Description                                                        |
+| ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| scrollStep | number | No| Yes  | Operation step count for an accessibility scroll action triggered by an accessibility gesture. The default value is determined by the component.<br>This setting does not take effect on unsupported components.<br>Currently, the [Slider](ts-basic-components-slider.md) component is supported. This API triggers sliding for the **Slider** component through swipe gestures after the component gains focus. Scrolling distance: scrollStep * [step](ts-basic-components-slider.md#slideroptions). Value range: [1, ([max](ts-basic-components-slider.md#slideroptions) - [min](ts-basic-components-slider.md#slideroptions))/[step](ts-basic-components-slider.md#slideroptions)]. The default value is **1**. Out-of-range values fall back to **1**. For non-integer values within the valid range, the value is rounded down to the nearest integer.<br>|

@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiDebug provides multiple methods for debugging and profiling applications. With these methods, you can obtain memory, CPU, GPU, and GC data, collect process trace and profiler data, and dump VM heap snapshots. Since most APIs of this module are both performance-consuming and time-consuming, and are defined based on the HiDebug module, you are advised to use these APIs only during the application debugging and profiling phases. If the APIs are required in other scenarios, evaluate the impact of the APIs on application performance.
 
@@ -39,6 +39,7 @@ Obtains the total number of bytes occupied by the total space (**uordblks** + **
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
+console.info(`nativeHeapSize = ${nativeHeapSize}`);
 ```
 
 ## hidebug.getNativeHeapAllocatedSize
@@ -61,6 +62,7 @@ Obtains the total number of bytes occupied by the total allocated space (**uordb
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
+console.info(`nativeHeapAllocatedSize = ${nativeHeapAllocatedSize}`);
 ```
 
 ## hidebug.getNativeHeapFreeSize
@@ -82,6 +84,7 @@ Obtains the total number of bytes occupied by the total free space (**fordblks**
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapFreeSize: bigint = hidebug.getNativeHeapFreeSize();
+console.info(`nativeHeapFreeSize = ${nativeHeapFreeSize}`);
 ```
 
 ## hidebug.getPss
@@ -107,6 +110,7 @@ Obtains the size of the physical memory actually used by the application process
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let pss: bigint = hidebug.getPss();
+console.info(`pss = ${pss}`);
 ```
 
 ## hidebug.getVss<sup>11+</sup>
@@ -129,6 +133,7 @@ Obtains the virtual set size used by the application process. This API is implem
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let vss: bigint = hidebug.getVss();
+console.info(`vss = ${vss}`);
 ```
 
 ## hidebug.getSharedDirty
@@ -155,6 +160,7 @@ Obtains the size of the shared dirty memory of a process. This API is implemente
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let sharedDirty: bigint = hidebug.getSharedDirty();
+console.info(`sharedDirty = ${sharedDirty}`);
 ```
 
 ## hidebug.getPrivateDirty<sup>9+</sup>
@@ -180,6 +186,7 @@ Obtains the size of the private dirty memory of a process. This API is implement
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let privateDirty: bigint = hidebug.getPrivateDirty();
+console.info(`privateDirty = ${privateDirty}`);
 ```
 
 ## hidebug.getCpuUsage<sup>9+</sup>
@@ -206,6 +213,7 @@ Obtains the CPU usage of a process.
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let cpuUsage: number = hidebug.getCpuUsage();
+console.info(`cpuUsage = ${cpuUsage}`);
 ```
 
 ## hidebug.getServiceDump<sup>9+</sup>
@@ -224,7 +232,7 @@ Obtains system service information.
 | -------- | ------ | ---- |----------------------------|
 | serviceid | number | Yes  | Service ID used to obtain system service information.|
 | fd | number | Yes  | File descriptor to which data is written by the API.        |
-| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service. The maximum length of a string is 254.|
+| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service. The maximum length of a string is 254 characters. The excess part will be truncated.|
 
 **Error codes**
 
@@ -337,7 +345,7 @@ Dumps VM heap data.
 
 | Name  | Type  | Mandatory| Description                                           |
 | -------- | ------ | ---- | ----------------------------------------------- |
-| filename | string | Yes  | User-defined name of the VM heap data output file. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name. The maximum length of a string is 128.|
+| filename | string | Yes  | User-defined name of the VM heap data output file. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name. The maximum length of a string is 128 bytes.|
 
 **Error codes**
 
@@ -360,13 +368,49 @@ try {
 }
 ```
 
+## hidebug.dumpJsHeapData<sup>24+</sup>
+
+dumpJsHeapData(filename: string, needClean: boolean): void
+
+Dumps VM heap data and clears the nodeId cache.
+
+> **NOTE**
+>
+> Exporting the VM heap is time-consuming, and this API is a synchronous API. Therefore, you are advised not to call this API in the release version. Otherwise, the application screen may freeze, affecting user experience.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                           |
+| -------- | ------ | ---- | ----------------------------------------------- |
+| filename | string | Yes  | Custom name of the heap dump file. A **fileName.heapsnapshot** file will be generated in the **files** directory of the application. The maximum length of a string is 128 bytes.|
+| needClean | boolean | Yes | Whether to clear the node ID cache before dumping heap snapshots. **true**: yes; **false**: no.|
+
+**Example**:
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  hidebug.dumpJsHeapData("heapData", true);
+} catch (error) {
+  console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
+}
+```
+
 ## hidebug.startProfiling<sup>(deprecated)</sup>
 
 startProfiling(filename: string): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9) instead.
 
 Starts the VM profiling method. **startProfiling(filename: string)** and **stopProfiling()** are called in pairs. **startProfiling(filename: string)** always occurs before **stopProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
@@ -396,7 +440,7 @@ stopProfiling(): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9) instead.
 
 Stops the VM profiling method. **stopProfiling()** and **startProfiling(filename: string)** are called in pairs. **startProfiling(filename: string)** always occurs before **stopProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
@@ -420,7 +464,7 @@ dumpHeapData(filename: string): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9) instead.
 
 Dumps the VM heap data and generates the **filename.heapsnapshot** file.
 
@@ -572,6 +616,7 @@ let limitSize: number = 1024 * 1024;
 
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
@@ -611,12 +656,73 @@ let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
 let limitSize: number = 1024 * 1024;
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
   hidebug.stopAppTraceCapture();
 } catch (error) {
   console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
+}
+```
+
+## hidebug.requestTrace<sup>24+</sup>
+
+requestTrace(config: RequestTraceConfig): Promise&lt;string&gt;
+
+Obtains the trace information of the current process, including the application tag, image window tag, CPU scheduling, and binder kernel information. This API uses a promise to return the result.
+
+A maximum of three .sys files returned by trace collection can be stored in the directory. If the number of .sys files is greater than or equal to three, error code 11400120 is reported when the API is called again.
+
+This API cannot be used in the [input method applications](../../inputmethod/ime-kit-intro.md).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                                |
+| -------- | ------   | ---- |------------------------------------|
+| config   | [RequestTraceConfig](#requesttraceconfig24) | Yes| Trace collection configuration information.|
+
+**Return value**
+
+| Type            | Description           |
+| -----------------|---------------|
+| Promise&lt;string&gt; | Promise used to return the application sandbox path of the .sys trace file.|
+
+**Error codes**
+
+For details about the error codes, see [HiDebug Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md).
+
+| ID| Error Message|
+| ------- | ----------------------------------------------------------------- |
+| 11400104 | Remote service exception.                                         |
+| 11400120 | Trace storage limit reached.                                |
+| 11400302 | Resource unavailable.                                 |
+
+**Example**:
+
+```ts
+import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  hidebug.requestTrace({
+    identifier: "trace_name",
+    bufferSizeKb: 1024,
+    durationMs: 1000,
+    reserved: 0,
+  }).then((tracePath: string) => {
+    hilog.info(0x0000, 'hidebug', `tracePath: ${tracePath}`)
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hidebug', `error code: ${err.code}, message: ${err.message}`)
+  })
+} catch (error) {
+  hilog.error(0x0000, 'hidebug', `error code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`)
 }
 ```
 
@@ -640,6 +746,8 @@ Obtains the memory limit of an application process.
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appMemoryLimit:hidebug.MemoryLimit = hidebug.getAppMemoryLimit();
+console.info(`rssLimit: ${appMemoryLimit.rssLimit}, vssLimit: ${appMemoryLimit.vssLimit},` +
+  `vmHeapLimit: ${appMemoryLimit.vmHeapLimit}, vmTotalHeapSize: ${appMemoryLimit.vmTotalHeapSize}`);
 ```
 
 ## hidebug.getSystemCpuUsage<sup>12+</sup>
@@ -690,7 +798,7 @@ This API is used to construct a memory leak. For details, see [Subscribing to Re
 
 > **NOTE**
 >
-> This API is valid only when the **Developer options** is enabled.
+> Enable **System resource leak log** in **Developer options** and restart the device for the API to take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -701,7 +809,7 @@ This API is used to construct a memory leak. For details, see [Subscribing to Re
 | Name  | Type  | Mandatory| Description                                                                                                                                                                     |
 | -------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | type | string |  Yes | Types of leak resources:<br>- pss_memory (native memory)<br>- js_heap (JavaScript heap memory)<br>- fd (file descriptor)<br>- thread (thread)                                                                           |
-| value | number |  Yes | Value range of the maximum values of the leak resource types:<br>- pss_memory: **[1024, 4 × 1024 × 1024]** (Unit: KB)<br>- js_heap: **[85, 95]** (85% to 95% of the upper size limit of the JS heap memory)<br>- fd: **[10, 10000]**<br>- thread: **[1, 1000]**|
+| value | number |  Yes | Value range of the maximum values of the leak resource types:<br>- pss_memory: **[1024, 4 × 1024 × 1024]** (Unit: KB)<br>- js_heap: **[85, 95]** (85% to 95% of the upper size limit of the JS heap memory)<br>- fd: **[10, 10000]**<br>- thread: **[1, 1000]**. If the value is out of range, the feature becomes invalid.|
 | enableDebugLog | boolean |  Yes | Whether to enable external debugging logs. Enable external debugging logs only in the grayscale version (test version released to a small number of users before the official version is released). Collecting debugging logs occupies a large number of CPU and memory resources, which may cause application smoothness problems.<br>The value **true** means to enable external debugging logs, and false means the opposite.<br>                                     |
 
 **Error codes**
@@ -740,6 +848,8 @@ Obtains the memory information of the application process. This API is implement
 > **NOTE**
 >
 > Reading the **/proc/{pid}/smaps_rollup** node takes a long time. You are advised to use the asynchronous API [hidebug.getAppNativeMemInfoAsync](#hidebuggetappnativememinfoasync20) to avoid frame loss or frame freezing.
+>
+> You are advised to use the [hidebug.getRssInfo](#hidebuggetrssinfo24) API to obtain the RSS information of an application.
 
 **Return value**
 
@@ -790,7 +900,7 @@ Obtains the memory information of the application process. This API uses the cac
 
 > **NOTE**
 >
-> Reading **/proc/{pid}/smaps_rollup** is time-consuming. Therefore, you are advised not to use this API in the main thread. You can use @ohos.taskpool or @ohos.worker to enable asynchronous threads to avoid application freezing.
+> Reading **/proc/{pid}/smaps_rollup** is time-consuming. Therefore, you are advised not to use this API in the main thread. You can use [@ohos.taskpool](../apis-arkts/js-apis-taskpool.md) or [@ohos.worker](../apis-arkts/js-apis-worker.md) to enable asynchronous threads to avoid application frame freezing.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -920,7 +1030,7 @@ Defines the memory limit of the application process.
 
 | Name     | Type  | Read Only| Optional| Description        |
 | --------- | ------ | --|----| ------------ |
-| rssLimit    | bigint |  No | No | Limit on the resident set size, in KB.    |
+| rssLimit    | bigint |  No | No | Limit on the physical memory size of the application process, in KB. Currently, the system does not limit the physical memory size of the process. However, the available physical memory of the process cannot exceed the maximum physical memory of the device. You can call [hidebug.getSystemMemInfo](#hidebuggetsystemmeminfo12) to obtain the physical memory usage of the device.    |
 | vssLimit  | bigint |  No | No | Limit on the virtual memory size, in KB.      |
 | vmHeapLimit | bigint |  No | No | Limit on the JS VM heap size of the calling thread, in KB.|
 | vmTotalHeapSize | bigint |  No | No | Limit on the JS heap memory size of the process, in KB. |
@@ -949,6 +1059,8 @@ Describes the CPU usage of a thread.
 | cpuUsage           | number  | No | No | CPU usage of the thread.|
 
 ## hidebug.tags<sup>12+</sup>
+
+### Constants
 
 Enumerates the tags used in trace collection. You can use the [HiTrace](../../dfx/hitrace.md) commands to capture the trace data of a specified tag.
 
@@ -1057,7 +1169,37 @@ You are advised to use **TRIM_LEVEL_1** to ensure application stability and use 
 | Name        | Value  | Description                                                        |
 | ------------ | ---- | ------------------------------------------------------------ |
 | TRIM_LEVEL_1 | 0    | Level 1 trimming, mainly used for strings.                      |
-| TRIM_LEVEL_2 | 1    | Level 2 trimming, which reduces the size of the object address identifier from 8 bytes to 4 bytes.|
+| TRIM_LEVEL_2 | 1    | Level 2 trimming, which reduces the size of the object address identifier from 8 bytes to 4 bytes based on **TRIM_LEVEL_1**.|
+
+## RssInfo<sup>24+</sup>
+
+Describes the physical memory information about an application process.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+| Name     | Type  | Read Only | Optional| Description                                             |
+| --------- | ------ | ---- |---- |-------------------------------------------------|
+| rss  | bigint |  No |   No |Resident set size (RSS), in KB. It includes anonymous pages, file mapping pages, and shared memory pages. The calculation formula is **/proc/{pid}/status: VmRss**.     |
+| swapRss  | bigint |  No |   No |Total size of anonymous private pages swapped out to the swap partition, in KB. The calculation formula is **/proc/{pid}/status: VmSwap**.     |
+
+## RequestTraceConfig<sup>24+</sup>
+
+Provides options of trace collection.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+| Name     | Type                   | Read Only| Optional| Description                                                        |
+| --------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
+| identifier   | string | No| No| Prefix of the name of the file generated by trace collection. Only the first 20 characters of the string are used as the prefix. They can contain only uppercase letters, lowercase letters, and underscores (_). If the value does not meet the requirements, it defaults to an empty string.|
+| bufferSizeKb | number | No| No| Cache size of the trace file, in KB. The value is a 32-bit unsigned integer. If the value is out of the valid range, an overflow occurs. The value range is [1024, 15360]. If the input parameter is out of the valid range, the parameter will be set to the nearest boundary value.|
+| durationMs   | number | No| No| Trace collection duration, in milliseconds. The value is a 32-bit unsigned integer. If the value is out of the valid range, an overflow occurs. The value range is [1000, 15000]. If the input parameter is out of the valid range, the parameter will be set to the nearest boundary value.|
+| reserved     | number | No| No| Reserved field. The value can be set to **0**.|
 
 ## hidebug.isDebugState<sup>12+</sup>
 
@@ -1108,7 +1250,7 @@ For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx
 **Example**:
 
 ```ts
-import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 hidebug.getGraphicsMemory().then((ret: number) => {
@@ -1206,12 +1348,13 @@ hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => 
 
 dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
-Dumps the original VM heap snapshot for the current thread and generates a .rawheap file. You can use [rawheap-translator](../../tools/rawheap-translator.md) to convert the generated file into a .heapsnapshot file for parsing. This API uses a promise to return the generated file path.
+Dumps the original heap snapshot of the VM for the current thread and generates a .rawheap file. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using [rawheap-translator](../../tools/rawheap-translator.md) for parsing.
 
 > **NOTE**
 >
 > This API is resource-consuming. Therefore, the calling frequency and times are strictly limited. You need to delete the files immediately after processing them.
-> You are advised to use this API only in the grayscale version of an application.  
+>
+> This API is valid only when the **Developer options** is enabled.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1251,6 +1394,65 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData().then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+## hidebug.dumpJsRawHeapData<sup>24+</sup>
+
+dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
+
+Dumps the original heap snapshot of the VM for the current thread and clears the **nodeId** cache. The generated file is in the rawheap format. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using [rawheap-translator](../../tools/rawheap-translator.md) for parsing.
+
+> **NOTE**
+>
+> This API is resource-consuming. Therefore, the calling frequency and times are strictly limited. You need to delete the files immediately after processing them.
+>
+> This API is valid only when the **Developer options** is enabled.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name                    | Type     | Mandatory| Description                                         |
+|-------------------------|---------|----|---------------------------------------------|
+| needGC         | boolean | Yes | Whether GC is required before storing heap snapshots. **true**: yes; **false**: no.|
+| needClean      | boolean | Yes | Whether to clear the node ID before dumping heap snapshots. **true**: yes; **false**: no.|
+
+**Return value**
+
+| Type | Description                                                                                                  |
+| ------ |------------------------------------------------------------------------------------------------------|
+| Promise&lt;string&gt; | Path of the generated snapshot file. ([Application Sandbox](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path))|
+
+**Error codes**
+
+For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
+
+| ID   | Error Message|
+|----------| ----------------------------------------------------------------- |
+| 11400106 | Quota exceeded. |
+| 11400107 | Fork operation failed. |
+| 11400108 | Failed to wait for the child process to finish. |
+| 11400109 | Timeout while waiting for the child process to finish. |
+| 11400110 | Disk remaining space too low. |
+| 11400111 | Napi interface call exception. |
+| 11400112 | Repeated data dump. |
+| 11400113 | Failed to create dump file. |
+
+**Example**:
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
 }).catch((error: BusinessError) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
@@ -1397,3 +1599,66 @@ Describes the GPU memory data of an application, including the GL and Graph part
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
 | gl  | number |  No |   No | GL memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.|
 | graph  | number |  No |   No | Graph memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|
+
+## hidebug.setProcDumpInSharedOOM<sup>24+</sup>
+
+setProcDumpInSharedOOM(enable: boolean): void
+
+Changes the dump heap snapshot from the thread-level to the process-level.
+
+> **NOTE**
+>
+> To dump a process-level heap snapshot, you must call this API and pass **true**. In addition, SharedHeap OOM must occur.
+>
+> This API does not affect the heap snapshot dumped in other scenarios. For example, it does not affect the result of [dumpJsRawHeapData](#hidebugdumpjsrawheapdata18).
+>
+> This API can be called multiple times in the application lifecycle, but only the last call takes effect.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**Parameters**
+
+| Name        | Type | Mandatory| Description|
+|--------------|------|------|------|
+| enable | boolean | Yes| When SharedHeap OOM occurs in a process, the system dumps the heap snapshot of the corresponding level based on the information recorded when the process calls the API for the last time in its lifecycle.<br>**true**: process level.<br>**false**: thread level.<br> The default value is **false**.|
+
+**Example**:
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+hidebug.setProcDumpInSharedOOM(true);
+```
+
+## hidebug.getRssInfo<sup>24+</sup>
+
+getRssInfo(): RssInfo
+
+Obtains the physical memory usage of the application process. Reads data from the **/proc/{pid}/status** node.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+> **NOTE**
+>
+> Reading the /proc/{pid}/status node takes a short time. The value obtained by this API is slightly different from the **rss** value obtained by the [hidebug.getAppNativeMemInfo](#hidebuggetappnativememinfo12) API. However, this API is more lightweight. To avoid frame loss or frame freezing, you are advised to use this API.
+
+**Return value**
+
+| Type | Description                     |
+| ------ | -------------------------- |
+| [RssInfo](#rssinfo24) | Physical memory information about the application process.|
+
+**Example**:
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
+console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
+```

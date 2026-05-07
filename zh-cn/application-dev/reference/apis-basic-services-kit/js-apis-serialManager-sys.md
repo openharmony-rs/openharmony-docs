@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要提供串口管理功能，包括打开和关闭设备的串口、写入和读取数据、设置和获取串口的配置参数、权限管理等。
 
@@ -53,7 +53,7 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
 | 31400001 | Serial port management exception. |
-| 31400003 | Device does not exist. |
+| 31400003 | PortId does not exist. |
 
 **示例：**
 ```ts

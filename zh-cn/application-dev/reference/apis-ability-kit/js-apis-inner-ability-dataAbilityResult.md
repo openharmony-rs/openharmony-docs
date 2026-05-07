@@ -4,7 +4,7 @@
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义DataAbility数据操作结果，通过[executeBatch](js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperexecutebatch)操作数据库时，操作结果使用DataAbilityResult对象返回。
 
@@ -74,8 +74,8 @@ function executeBatchOperation() {
         DAHelper.executeBatch(dataAbilityUri, operations).then((data) => {
             for (let i = 0; i < data.length; i++) {
                 let dataAbilityResult: ability.DataAbilityResult = data[i];
-                console.log(`dataAbilityResult.uri: ${dataAbilityResult.uri}`);
-                console.log(`dataAbilityResult.count: ${dataAbilityResult.count}`);
+                console.info(`dataAbilityResult.uri: ${dataAbilityResult.uri}`);
+                console.info(`dataAbilityResult.count: ${dataAbilityResult.count}`);
             }
         }).catch((err: BusinessError) => {
             console.error(`executeBatch error: ${JSON.stringify(err)}`);

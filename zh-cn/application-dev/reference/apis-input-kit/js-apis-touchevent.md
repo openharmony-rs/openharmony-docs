@@ -5,13 +5,13 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 设备上报的触屏输入事件，继承自[InputEvent](./js-apis-inputevent.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,10 +27,13 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 | 名称     | 值   | 说明   |
 | ------ | ------ | ---- |
-| CANCEL | 0 | 触屏取消。 |
+| CANCEL | 0 | 触屏取消。触屏down事件异常打断，未正常闭环，例如：手指按下后未抬起，屏幕发生旋转、折叠或有新hover等场景时触发cancel事件。 |
 | DOWN   | 1 | 触屏按下。 |
 | MOVE   | 2 | 触屏移动。 |
 | UP     | 3 | 触屏抬起。 |
+| PULL_DOWN  | 4 | 触屏开始拖拽。<br/>**起始版本：** 26.0.0 |
+| PULL_MOVE  | 5 | 触屏拖拽移动。<br/>**起始版本：** 26.0.0 |
+| PULL_UP    | 6 | 触屏结束拖拽。<br/>**起始版本：** 26.0.0 |
 
 ## ToolType
 

@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @piggyguy; @jiyujia926; @hehongyang3-->
+<!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -180,6 +180,23 @@
 | HORIZONTAL_AXIS  | 1    | 水平滚动轴。 |
 | PINCH_AXIS | 2    | 捏合轴。 |
 
+## RawInputEventType
+
+原始输入事件类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称   | 值  | 说明       |
+| ------ | --- | ---------- |
+| TOUCH  | 0   | 触摸事件。 |
+| MOUSE  | 1   | 鼠标事件。 |
+
 ## BarState
 
 用于设置滚动条的状态。
@@ -193,7 +210,7 @@
 | 名称   | 值 | 说明                 |
 | ---- | --- | ------------------ |
 | Off  | 0 | 不显示。               |
-| Auto | 1 | 按需显示(触摸时显示，2s后消失)。 |
+| Auto | 1 | 按需显示（触摸时显示，2s后消失）。 |
 | On   | 2 | 常驻显示。              |
 
 ## BorderStyle
@@ -314,7 +331,7 @@
 
 |名称                | 值 | 说明                                   |
 |-------------------| -- | ------------------------------------- |
-| BEGIN             | 0  | 表冠开始转动。                          |
+| BEGIN<sup>(deprecated) </sup>             | 0  | 表冠开始转动。<br/> **说明：** 从API version 18 开始支持，从API version 24 开始废弃。                          |
 | UPDATE            | 1  | 表冠转动中。                            |
 | END                | 2  | 表冠停止转动。                          |
 
@@ -436,15 +453,15 @@
 
 省略的位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
 | ----- | --- | -------------------------------------- |
-| START  | 0 | 省略行首内容。|
-| CENTER | 1 | 省略行中内容。|
-| END | 2 | 省略行末内容。|
+| START  | 0 | 省略行首内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CENTER | 1 | 省略行中内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| END | 2 | 省略行末内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| MULTILINE_START<sup>24+</sup> | 3 | 省略行首内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| MULTILINE_CENTER<sup>24+</sup> | 4 | 省略行中内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## EmbeddedType<sup>12+</sup>
 枚举类型，用于指定EmbeddedComponent可拉起的提供方类型。
@@ -523,14 +540,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称           | 说明                                       |
-| ------------ | ---------------------------------------- |
-| Start        | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
-| Center       | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
-| End          | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
-| SpaceBetween | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
-| SpaceAround  | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
-| SpaceEvenly  | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
+| 名称           | 值 | 说明                                       |
+| ------------ | ------ | ---------------------------------------- |
+| Start        | 0 | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
+| Center       | 1 | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
+| End          | 2 | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
+| SpaceBetween | 3 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
+| SpaceAround  | 4 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
+| SpaceEvenly  | 5 | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
 
 ## FlexDirection
 
@@ -542,12 +559,12 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称            | 说明               |
-| ------------- | ---------------- |
-| Row           | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 与Row方向相反方向进行布局。  |
-| Column        | 主轴与列方向一致作为布局模式。  |
-| ColumnReverse | 与Column相反方向进行布局。 |
+| 名称            | 值 | 说明               |
+| ------------- | ------ | ---------------- |
+| Row           | 0 | 主轴与行方向一致作为布局模式。  |
+| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
+| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
 
@@ -559,11 +576,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                          |
-| ----------- | --------------------------- |
-| NoWrap      | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
-| Wrap        | Flex容器的元素以多行/列排布，子项允许超出容器。   |
-| WrapReverse | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
+| 名称          | 值 | 说明                          |
+| ----------- | ------ | --------------------------- |
+| NoWrap      | 0 | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
+| Wrap        | 1 | Flex容器的元素以多行/列排布，子项允许超出容器。   |
+| WrapReverse | 2 | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
 
 ## FontStyle
 
@@ -575,10 +592,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明       |
-| ------ | -------- |
-| Normal | 标准的字体样式。 |
-| Italic | 斜体的字体样式。 |
+| 名称     |值| 说明       |
+| ------ |-| -------- |
+| Normal |0| 标准的字体样式。 |
+| Italic |1| 斜体的字体样式。 |
 
 ## FontWeight
 
@@ -675,6 +692,26 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | RightBottom | 从右下向左上。   |
 | None        | 无。    |
 
+## GestureCollectIntervention
+
+定义手势和事件收集的干预操作类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| CONTINUE        | 0 | 继续正常的手势和事件收集流程。不进行任何干预。 |
+| DISCARD_LOWER         | 1 | 丢弃所有待收集的低优先级手势和事件。丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。仅保留当前节点和更高优先级节点中已收集的手势。 |
+| DISCARD_HIGHER       | 2 | 丢弃已经收集到的高优先级手势和事件。会丢弃已收集的右侧兄弟节点和当前节点上的手势。将继续处理低优先级手势的收集流程（左侧兄弟节点和祖先节点）。 |
+| DISCARD_SELF      | 3 | 丢弃当前节点自身的手势和事件。当前节点的手势和事件将从手势树中排除。兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。 |
+| DISCARD_LOWER_PRIORITY_SIBLINGS     | 4 | 丢弃左侧兄弟节点中待收集的手势和事件。当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。将继续处理父节点以及祖先节点的收集流程。   |
+
 ## HorizontalAlign
 
 定义子组件在水平方向上的对齐方式。
@@ -685,11 +722,11 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Start  | 按照语言方向起始端对齐。 |
-| Center | 居中对齐，默认对齐方式。 |
-| End    | 按照语言方向末端对齐。  |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Start  | 0 | 按照语言方向起始端对齐。 |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| End    | 2 | 按照语言方向末端对齐。  |
 
 ## HoverEffect<sup>8+</sup>
 
@@ -699,27 +736,31 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 说明             |
-| --------- | -------------- |
-| Auto      | 使用组件的系统默认悬浮效果。 |
-| Scale     | 放大缩小的效果。        |
-| Highlight | 背景淡入淡出的强调效果。   |
-| None      | 不设置效果。         |
+| 名称        | 值 | 说明             |
+| --------- | --- | -------------- |
+| None      | 0 | 不设置效果。         |
+| Scale     | 2 | 放大缩小的效果。        |
+| Highlight | 3 | 背景淡入淡出的强调效果。   |
+| Auto      | 4 | 使用组件的系统默认悬浮效果。 |
 
 ## HitTestMode<sup>9+</sup>
 
 定义触摸测试的响应逻辑及节点阻塞规则。
 
+> **说明：**
+>
+> 当Stack组件中有多个节点触摸区域重叠时，如果最上层节点的子组件命中，则默认只会对显示在最上层的节点做触摸测试。此时只有给显示在最上层的节点设置[hitTestBehavior](./ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                                       |
-| ----------- | ---------------------------------------- |
-| Default     | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Block       | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Transparent | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| None        | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| BLOCK_HIERARCHY<sup>20+</sup>   | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| BLOCK_DESCENDANTS<sup>20+</sup> | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| 名称          | 值 | 说明                                       |
+| ----------- | --- | ---------------------------------------- |
+| Default     | 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Block       | 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Transparent | 2 | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| None        | 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## HeightBreakpoint<sup>13+</sup>
 
@@ -772,14 +813,14 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明                                       |
-| -------- | ---------------------------------------- |
-| Auto     | 使用Flex容器中的默认配置。                           |
-| Start    | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
-| Center   | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
-| End      | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
-| Stretch  | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
-| Baseline | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| 名称       | 值 | 说明                                       |
+| -------- | ------ | ---------------------------------------- |
+| Auto     | 0 | 使用Flex容器中的默认配置。                           |
+| Start    | 1 | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
+| Center   | 2 | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
+| End      | 3 | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
+| Stretch  | 4 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
+| Baseline | 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
 
 ## ImageRepeat
 
@@ -857,14 +898,13 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 定义按键操作的状态类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 值 | 说明    |
 | ---- | ----- | ----- |
-| Down | 0 | 按键按下。 |
-| Up   | 1 | 按键松开。 |
+| Down | 0 | 按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Up   | 1 | 按键松开。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| CANCEL   | 2 | 取消按键事件。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## LineJoinStyle
 
@@ -936,6 +976,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## MouseButton<sup>8+</sup>
 
+定义鼠标按键的类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -957,11 +999,13 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称      |  值  | 说明      |
 | ------- | ----- |  ------- |
-| Press   |   -   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| Press   |   1   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Release |   2   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Move    |   3   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Hover   |   4   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| ENTER_WINDOW<sup>23+</sup>   |   4   | 鼠标进入窗口。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
+| LEAVE_WINDOW<sup>23+</sup>   |   5   | 鼠标离开窗口。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
 
@@ -1076,10 +1120,10 @@ type Nullable\<T> = T | undefined
 | Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
 | Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
 | Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API Version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API Version 9开始，与组件右侧边缘对齐。 |
+| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
+| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
+| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
+| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
 | LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
 | LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
 | RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
@@ -1133,7 +1177,7 @@ type Nullable\<T> = T | undefined
 
 ## PresetFillType<sup>22+</sup>
 
-为不同响应式[断点规格](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
+为不同响应式[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1233,8 +1277,8 @@ type Nullable\<T> = T | undefined
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
-| FAST | 0 | 在线绘制模式，当前节点和它的子节点都会被裁切圆角后直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
-| OFFSCREEN | 1 | 离屏绘制模式，当前节点和子节点会先绘制到离屏画布上，随后进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式效果更好，可以解决在线绘制模式显示效果异常的问题，但会带来额外的性能损失。<br/>2. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
+| FAST | 0 | 在线绘制模式，组件进行圆角内容绘制时，绘制内容被裁剪成圆角，直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
+| OFFSCREEN | 1 | 离屏绘制模式，组件进行圆角内容绘制时，绘制内容先不带圆角绘制到离屏画布上，随后对离屏画布上的内容进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式相比在线绘制模式会带来额外的性能损失。<br/>2. 离屏绘制模式是指将内容绘制到主画布之前，先在一个额外的画布上完成绘制工作，然后将绘制结果绘制到主画布上。<br/>3. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
 
 ## ScrollSource<sup>12+</sup>
 
@@ -1276,10 +1320,10 @@ type Nullable\<T> = T | undefined
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| Down   | -    | 手指按下时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Up     | -    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Move   | -    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Cancel | -    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| Down   | 0    | 手指按下时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| Up     | 1    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| Move   | 2    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | HOVER_ENTER<sup>20+</sup> | 9    | 无障碍模式下，手指按下时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_MOVE<sup>20+</sup>   | 10    | 无障碍模式下，触摸移动时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_EXIT<sup>20+</sup> | 11    | 无障碍模式下，抬手时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
@@ -1314,6 +1358,21 @@ type Nullable\<T> = T | undefined
 | Insert | 1 | 指定当前的Transition动效在组件的插入显示场景中生效。 |
 | Delete | 2 | 指定当前的Transition动效在组件的删除隐藏场景中生效。 |
 
+## CompetitionStrategy<sup>24+</sup>
+
+定义分发的事件是否为竞争手势，竞争场景手势原始节点和目标节点只有一个节点会响应手势，非竞争场景可以同时响应。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                | 值  | 说明                         |
+| ------------------- | --- | ---------------------------- |
+| DEFAULT | 0   | 表示分发的事件为非竞争手势。 |
+| COMPETITION | 1   | 表示分发的事件为竞争手势。 |
+
 ## TextAlign
 
 文本段落在水平方向的对齐方式。
@@ -1326,7 +1385,7 @@ type Nullable\<T> = T | undefined
 | Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## TextOverflow
@@ -1457,11 +1516,11 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Top    | 顶部对齐。        |
-| Center | 居中对齐，默认对齐方式。 |
-| Bottom | 底部对齐。        |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Top    | 0 | 顶部对齐。        |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| Bottom | 2 | 底部对齐。        |
 
 ## Visibility
 
@@ -1475,8 +1534,8 @@ type Nullable\<T> = T | undefined
 
 | 名称      | 值 | 说明               |
 | ------- | ---------------- | ---------------- |
-| Hidden  | 1 | 隐藏，但参与布局进行占位。    |
 | Visible | 0 | 显示。              |
+| Hidden  | 1 | 隐藏，但参与布局进行占位。    |
 | None    | 2 | 隐藏，但不参与布局，不进行占位。 |
 
 ## Week
@@ -1536,3 +1595,48 @@ type Nullable\<T> = T | undefined
 | COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+
+## InputEventSubTypeMask
+
+输入事件子类型掩码枚举，用于标识不同类型的输入事件子类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| LEFT_MOUSE_DOWN | 1 << 0 | 鼠标左键按下。 |
+| LEFT_MOUSE_UP | 1 << 1 | 鼠标左键抬起。 |
+| RIGHT_MOUSE_DOWN | 1 << 2 | 鼠标右键按下。 |
+| RIGHT_MOUSE_UP | 1 << 3 | 鼠标右键抬起。 |
+| MIDDLE_MOUSE_DOWN | 1 << 4 | 鼠标中键按下。 |
+| MIDDLE_MOUSE_UP | 1 << 5 | 鼠标中键抬起。 |
+| LEFT_MOUSE_DRAGGING | 1 << 6 | 鼠标左键按下并移动。 |
+| RIGHT_MOUSE_DRAGGING | 1 << 7 | 鼠标右键按下并移动。 |
+| MIDDLE_MOUSE_DRAGGING | 1 << 8 | 鼠标中键按下并移动。 |
+| TOUCH_DOWN | 1 << 9 | 触控按下。 |
+| TOUCH_UP | 1 << 10 | 触控抬起。 |
+| KEY_DOWN | 1 << 11 | 物理键盘按下。 |
+| KEY_UP | 1 << 12 | 物理键盘抬起。 |
+
+## InputEventInterceptAction
+
+输入事件拦截动作枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| CONTINUE | 0 | 允许事件继续传递到UI框架。 |
+| BLOCK | 1 | 阻止事件传递到UI框架。 |

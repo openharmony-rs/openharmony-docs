@@ -54,7 +54,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setVisible(false);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -99,7 +99,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setBackgroundColor(0x88888888);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -144,7 +144,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setTitleContent('text2');
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -189,7 +189,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setTitleFontStyle(FontStyle.Normal);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -235,7 +235,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setIconColor(0x12345678);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -281,12 +281,58 @@ struct Index {
         let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
         if (currentBar != undefined) {
           let rect = currentBar.getBarRect();
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully. x:'
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully. x:'
             + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
         } else {
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar failed.');
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
         }
       })
+  }
+}
+```
+
+## onBarRectChange
+
+onBarRectChange(callback: Callback\<Frame\>): void
+
+Callback triggered when the size or position of the atomic service AtomicServiceMenuBar (menu capsule at the upper right corner) changes. It returns the latest layout information of the AtomicServiceMenuBar, including its size and position.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | ------- | ------- | ------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<[Frame](./js-apis-arkui-graphics.md#frame)> | Yes| Callback used to return the new layout information when the AtomicServiceBar layout changes.|
+
+**Example**
+
+```ts
+import { AtomicServiceBar, UIContext, Frame } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear() : void {
+    let uiContext: UIContext = this.getUIContext();
+    let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+    if (currentBar != undefined) {
+      currentBar.onBarRectChange((rect: Frame) => {
+        hilog.info(0x0000, 'testTag', 'trigger onBarRectChange callback success. X: %{public}d, Y: %{public}d, Width: %{public}d, height: %{public}d.', rect.x, rect.y, rect.width, rect.height);
+      });
+    } else {
+      hilog.info(0x0000, 'testTag', 'set onBarRectChange callback failed.');
+    }
+  }
+  build() {
+    Text('hello world')
   }
 }
 ```

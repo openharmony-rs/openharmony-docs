@@ -41,7 +41,7 @@ export struct TextPopupExample {
           })
       }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -50,7 +50,7 @@ export struct TextPopupExample {
 
 ## Adding an Event Listener for Popup State Changes
 
-You can use the **onStateChange** parameter to add an event callback for popup state changes, so as to determine the current state of the popup.
+You can use the **onStateChange** parameter of [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions) to add an event callback for popup state changes, so as to determine the current state of the popup.
 
 <!-- @[state_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets) -->
 
@@ -79,7 +79,7 @@ export struct StatePopupExample {
             })
         }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -88,7 +88,7 @@ export struct StatePopupExample {
 
 ## Creating a Popup with Buttons
 
-You can add a maximum of two buttons to a popup through the **primaryButton** and **secondaryButton** attributes. For each of the buttons, you can set the **action** parameter to specify the operation to be triggered.
+You can add a maximum of two buttons to a popup through the **primaryButton** and **secondaryButton** attributes of [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions). For each of the buttons, you can set the action parameter to specify the operation to be triggered.
 
 <!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
 
@@ -131,7 +131,7 @@ export struct ButtonPopupExample {
             })
         }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -140,7 +140,7 @@ export struct ButtonPopupExample {
 
 ## Implementing Popup Animation
 
-You implement the entrance and exit animation effects of popups through **transition**.
+You can implement the entrance and exit animation effects of popups through **transition** of [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions) or [CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8).
 
 <!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
 
@@ -207,7 +207,7 @@ export struct AnimationPopupExample {
           .position({ x: 80, y: 300 })
       }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -216,12 +216,12 @@ export struct AnimationPopupExample {
 
 ## Creating a Custom Popup
 
-You can create a custom popup with **builder** in **CustomPopupOptions**, defining custom content in \@Builder. In addition, you can use parameters such as **popupColor** to control the popup style.
+You can create a custom popup with **builder** in [CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8), defining custom content in @Builder. In addition, you can use parameters such as **popupColor** to control the popup style.
 
 <!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
 
 ``` TypeScript
-// Replace $r('app.media.xxx') with the image resource file you use.
+// Replace $r('app.media.xxx') with the actual resource file.
 @Entry
 @Component
 export struct CustomPopupExample {
@@ -273,10 +273,14 @@ To place the popup in a specific position, set the **placement** parameter. The 
 You can define the popup style using both builder-based customization and through specific API configurations.
 
 Background color: While popups initially come with a transparent background, they have a blur effect, which is **COMPONENT_ULTRA_THICK** on phones.
+
 Mask style: Popups come with a default mask that is transparent.
+
 Size: The size of a popup is determined by the content within the builder or the length of the message it holds.
-Position: Popups are located below their host component by default. You can control the display position and alignment using the **Placement** API.
-The following example demonstrates how to configure a popup's style using **popupColor**, **mask**, **width**, and **placement**.
+
+Position: Popups are located below their host component by default. You can control the display position and alignment using the **Placement** attribute of [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions).
+
+The following example demonstrates how to configure a popup's style using **popupColor**, **mask**, **width**, and **placement** of [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions).
 
 <!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
 
@@ -308,7 +312,7 @@ export struct StylePopupExample {
       }
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -317,7 +321,7 @@ export struct StylePopupExample {
 
 ## Enabling the Popup to Avoid the Soft Keyboard
 
-By default, popups do not avoid the soft keyboard and may be obscured by it. To enable keyboard avoidance, set **keyboardAvoidMode** (supported since API version 15) to **KeyboardAvoidMode.DEFAULT**. If there is insufficient space, the popup will shift from its default position to overlay its host component.
+By default, popups do not avoid the soft keyboard and may be obscured by it. To enable keyboard avoidance, set **keyboardAvoidMode** (supported since API version 15) of [CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8) to **KeyboardAvoidMode.DEFAULT**. If there is insufficient space, the popup will shift from its default position to overlay its host component.
 
 <!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
 
@@ -358,7 +362,7 @@ export struct AvoidSoftKeyboardPopupExample {
       }
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -373,10 +377,11 @@ When @Builder is used for custom popup content, polymorphic styles are not suppo
 <!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
 
 ``` TypeScript
-// Replace $r('app.media.xxx') with the image resource file you use.
+// Replace $r('app.media.xxx') with the actual resource file.
 @Entry
 @Component
 export struct PolymorphicEffectPopupExample {
+  // Configure the resource whose name is 'xxx' and value is a non-empty string in the resources\base\element\string.json file.
   @State scan: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Scan_title') as string;
   @State createGroupChat: string =
@@ -486,6 +491,7 @@ Since API version 18, popups support center axis avoidance. Since API version 20
 @Entry
 @Component
 export struct SupportedAvoidAxisPopupExample {
+  // Configure the resource whose name is 'xxx' and value is a non-empty string in the resources\base\element\string.json file.
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =
@@ -566,7 +572,7 @@ export struct SupportedAvoidAxisPopupExample {
       .height('100%')
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```

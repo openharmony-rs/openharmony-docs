@@ -36,11 +36,17 @@ constructor()
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -70,11 +76,17 @@ constructor(region: Region)
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -98,21 +110,27 @@ constructor(left: number, top: number, right: number, bottom: number)
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | 是   | 矩形区域的左侧位置（矩形左上角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。|
-| top    | number | 是   | 矩形区域的顶部位置（矩形左上角纵坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
-| right  | number | 是   | 矩形区域的右侧位置（矩形右下角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| bottom | number | 是   | 矩形区域的底部位置（矩形右下角纵坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| left   | number | 是   | 矩形区域的左侧位置（矩形左上角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。单位为物理像素px。|
+| top    | number | 是   | 矩形区域的顶部位置（矩形左上角纵坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。单位为物理像素px。 |
+| right  | number | 是   | 矩形区域的右侧位置（矩形右下角横坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。单位为物理像素px。 |
+| bottom | number | 是   | 矩形区域的底部位置（矩形右下角纵坐标）。该参数必须为整数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。单位为物理像素px。 |
 
 **示例：**
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region(100, 100, 200, 200);
@@ -147,17 +165,23 @@ isEqual(other: Region): boolean
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     let other = new drawing.Region();
     region.setRect(100, 100, 400, 400);
-    other.setRect(150, 150, 250 ,250);
+    other.setRect(150, 150, 250, 250);
     let flag: boolean = false;
     flag = region.isEqual(other);
     console.info('flag: ', flag);
@@ -185,14 +209,19 @@ isComplex(): boolean
 **示例：**
 
 ```ts
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 import { RenderNode } from '@kit.ArkUI';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -230,10 +259,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -289,6 +323,7 @@ getBoundaryPath(): Path
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
+
 let region = new drawing.Region();
 let path = region.getBoundaryPath();
 ```
@@ -305,8 +340,8 @@ isPointContained(x: number, y: number) : boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x      | number | 是   | 测试点的x轴坐标。该参数必须为整数。如果输入的数字包含小数部分，小数部分将被舍去。 |
-| y      | number | 是   | 测试点的y轴坐标。该参数必须为整数。如果输入的数字包含小数部分，小数部分将被舍去。 |
+| x      | number | 是   | 测试点的x轴坐标。该参数必须为整数。如果输入的数字包含小数部分，小数部分将被舍去。单位为物理像素px。 |
+| y      | number | 是   | 测试点的y轴坐标。该参数必须为整数。如果输入的数字包含小数部分，小数部分将被舍去。单位为物理像素px。 |
 
 **返回值：**
 
@@ -329,18 +364,23 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     region.setRect(100, 100, 400, 400);
     let flag: boolean = false;
-    flag = region.isPointContained(200,200);
+    flag = region.isPointContained(200, 200);
     console.info("region isPointContained : " + flag);
-    canvas.drawPoint(200,200);
+    canvas.drawPoint(200, 200);
     canvas.drawRegion(region);
     canvas.detachPen();
   }
@@ -359,25 +399,31 @@ offset(dx: number, dy: number): void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| dx      | number | 是   | x轴方向平移量，正数往x轴正方向平移，负数往x轴负方向平移，该参数为整数。 |
-| dy      | number | 是   | y轴方向平移量，正数往y轴正方向平移，负数往y轴负方向平移，该参数为整数。|
+| dx      | number | 是   | x轴方向平移量，正数往x轴正方向平移，负数往x轴负方向平移，该参数为整数。单位为物理像素px。 |
+| dy      | number | 是   | y轴方向平移量，正数往y轴正方向平移，负数往y轴负方向平移，该参数为整数。单位为物理像素px。|
 
 **示例：**
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     region.setRect(100, 100, 400, 400);
     region.offset(10, 20);
-    canvas.drawPoint(200,200);
+    canvas.drawPoint(200, 200);
     canvas.drawRegion(region);
     canvas.detachPen();
   }
@@ -419,16 +465,21 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     let other = new drawing.Region();
     region.setRect(100, 100, 400, 400);
-    other.setRect(150, 150, 250 ,250);
+    other.setRect(150, 150, 250, 250);
     let flag: boolean = false;
     flag = region.isRegionContained(other);
     console.info("region isRegionContained : " + flag);
@@ -475,10 +526,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -486,7 +542,7 @@ class DrawingRenderNode extends RenderNode {
     let othregion = new drawing.Region();
     othregion.setRect(110, 110, 240, 240);
     let flag: boolean = false;
-    flag = region.op(othregion,drawing.RegionOp.REPLACE);
+    flag = region.op(othregion, drawing.RegionOp.REPLACE);
     console.info("region op : " + flag);
     canvas.drawRegion(region);
     canvas.detachPen();
@@ -506,10 +562,10 @@ quickReject(left: number, top: number, right: number, bottom: number) : boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| top    | number | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| right  | number | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| bottom | number | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
+| left   | number | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| top    | number | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| right  | number | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| bottom | number | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
 
 **返回值：**
 
@@ -532,10 +588,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -576,10 +637,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -630,10 +696,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -641,7 +712,7 @@ class DrawingRenderNode extends RenderNode {
     region.setRect(100, 100, 400, 400);
     path.arcTo(50, 50, 300, 300, 0, 359);
     let flag: boolean = false;
-    flag = region.setPath(path,region);
+    flag = region.setPath(path, region);
     console.info("region setPath : " + flag);
     canvas.drawRegion(region);
     canvas.detachPen();
@@ -670,10 +741,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -701,7 +777,7 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     let region = new drawing.Region();
     region.setRect(100, 100, 200, 200);
     let isEmpty = region.isEmpty();
@@ -725,10 +801,10 @@ setRect(left: number, top: number, right: number, bottom: number) : boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| top    | number | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| right  | number | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| bottom | number | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
+| left   | number | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| top    | number | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| right  | number | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| bottom | number | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
 
 **返回值：**
 
@@ -751,10 +827,15 @@ import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -790,10 +871,15 @@ import { drawing } from '@kit.ArkGraphics2D';
 import { RenderNode } from '@kit.ArkUI';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
@@ -827,10 +913,10 @@ quickContains(left: number, top: number, right: number, bottom: number): boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| top    | number | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| right  | number | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
-| bottom | number | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。 |
+| left   | number | 是   | 矩形区域的左侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| top    | number | 是   | 矩形区域的顶部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| right  | number | 是   | 矩形区域的右侧位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
+| bottom | number | 是   | 矩形区域的底部位置。该参数必须为整数。当输入的数字带小数时，小数部分会被舍去。单位为物理像素px。 |
 
 **返回值：**
 
@@ -845,10 +931,15 @@ import { drawing } from '@kit.ArkGraphics2D';
 import { RenderNode } from '@kit.ArkUI';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();

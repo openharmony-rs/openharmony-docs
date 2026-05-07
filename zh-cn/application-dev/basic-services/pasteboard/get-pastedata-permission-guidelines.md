@@ -33,7 +33,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 - 使用安全控件
 
-    使用[安全控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+    [使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
     已经使用了安全控件的应用无需做任何适配就可以访问剪贴板内容。
 
@@ -47,7 +47,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
     
     2.在module.json5配置文件中[声明权限](../../security/AccessToken/declare-permissions.md)。
     
-    3.通过弹窗[向用户申请权限](../../security/AccessToken/request-user-authorization.md)。
+    3.通过弹窗[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
     <!--RP1End-->
 
 ## 剪贴板弹窗适配优化
@@ -60,7 +60,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 - 使用[getChangeCount](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getchangecount18)获取剪贴板的内容变化次数，与上次读取剪贴板时查询的变化次数比较是否一致，一致则剪贴板内容无变化，不访问剪贴板。
 
-- 使用[detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13)判断是否包含应用自身口令的格式，如果格式不匹配，则不访问剪贴板。应用读取口令后如果确认是自身的口令，建议使用[cleardata](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9)清除剪贴板口令内容。
+- 使用[detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13)判断是否包含应用自身口令的格式，如果格式不匹配，则不访问剪贴板。应用读取口令后如果确认是自身的口令，建议使用[clearData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9)清除剪贴板口令内容。
 
 ## 示例代码
 

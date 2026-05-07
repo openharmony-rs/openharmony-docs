@@ -77,7 +77,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | 参数名 | 类型 | 必填 | 说明                            |
 | ------ | ---- | ---- | ------------------------------- |
 | first  | T    | 是   | 初始化ArkTS Array的第一个元素。 |
-| left   | T[]  | 否   | 初始化ArkTS Array的剩余元素。   |
+| left   | T[]  | 否   | 初始化ArkTS Array的剩余元素。默认值为空数组。 |
 
 **错误码：**
 
@@ -139,7 +139,7 @@ static create\<T>(arrayLength: number, initialValue: T): Array\<T>
 
 | 参数名    | 类型          | 必填 | 说明                            |
 | --------- | ------------- | ---- | ------------------------------- |
-| arrayLength | number | 是   | 用于构造ArkTS Array的长度。 |
+| arrayLength | number | 是   | 用于构造ArkTS Array的长度。取值应为非负整数，否则会抛出异常。 |
 | initialValue | T | 是   | 用于填充ArkTS Array的值。 |
 
 **返回值：**
@@ -240,7 +240,6 @@ static from\<T>(iterable: Iterable\<T>): Array\<T>
 **示例：**
 
 ```ts
-// 正例
 const mapper = new Map([
   ['1', 'a'],
   ['2', 'b'],
@@ -379,7 +378,7 @@ static of\<T>(...items: T\[]): Array\<T>
 
 | 参数名    | 类型          | 必填 | 说明                            |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | T[] | 否   | 用于创建数组的元素集合，参数个数可以是0个、1个或者多个。 |
+| items | T[] | 否   | 用于创建数组的元素集合，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -415,9 +414,9 @@ copyWithin(target: number, start: number, end?: number): Array\<T>
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| target | number | 是 | 目标起始位置的下标，如果`target < 0`，则会从`target + array.length`位置开始。 |
-| start | number | 是 | 源起始位置下标，如果`start < 0`，则会从`start + array.length`位置开始。 |
-| end | number | 否 | 源终止位置下标，如果`end < 0`，则会从`end + array.length`位置终止。默认为ArkTS Array的长度。|
+| target | number | 是 | 目标起始位置的下标，如果`target < 0`，则会从`target + array.length`位置开始。取值应为整数，当输入浮点数时会向下取整。|
+| start | number | 是 | 源起始位置下标，如果`start < 0`，则会从`start + array.length`位置开始。取值应为整数，当输入浮点数时会向下取整。拷贝过程中包含start位置下标所在的元素。|
+| end | number | 否 | 源终止位置下标，如果`end < 0`，则会从`end + array.length`位置终止。默认为ArkTS Array的长度。取值应为整数，当输入浮点数时会向下取整。拷贝过程中不包含end位置下标所在的元素。|
 
 **返回值：**
 
@@ -458,7 +457,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 | 参数名           | 类型     | 必填  | 说明                                                                                |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | T | 是   | 待索引的值。                                                                            |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Array的长度，则返回-1。如果提供的下标值是负数，则从数组末尾开始倒数计数：使用 fromIndex + array.length 的值。 |
+| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Array的长度，则返回-1。如果fromIndex < 0，则会从fromIndex + array.length位置开始搜索。 |
 
 **返回值：**
 
@@ -945,7 +944,7 @@ indexOf(searchElement: T, fromIndex?: number): number
 | 参数名        | 类型   | 必填 | 说明                        |
 | ------------- | ------ | ---- | --------------------------- |
 | searchElement | T      | 是   | 要搜索的值。                |
-| fromIndex     | number | 否   | 开始搜索的索引，从0开始，默认值为0。 |
+| fromIndex     | number | 否   | 开始搜索的索引，从0开始，默认值为0。如果下标大于等于ArkTS Array的长度，则返回-1。如果fromIndex < 0，则会从fromIndex + array.length位置开始搜索。 |
 
 **返回值：**
 
@@ -1364,7 +1363,7 @@ includes(searchElement: T, fromIndex?: number): boolean
 | 参数名        | 类型   | 必填 | 说明                        |
 | ------------- | ------ | ---- | --------------------------- |
 | searchElement | T      | 是   | 要搜索的元素。              |
-| fromIndex     | number | 否   | 开始搜索的索引。默认值为0。 |
+| fromIndex     | number | 否   | 开始搜索的索引。默认值为0。如果下标大于等于ArkTS Array的长度，则返回false。如果fromIndex < 0，则会从fromIndex + array.length位置开始搜索。 |
 
 **返回值：**
 
@@ -1443,8 +1442,8 @@ fill(value: T, start?: number, end?: number): Array\<T>
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
 | value  | T      | 是   | 要填充的值。                                           |
-| start  | number | 否   | 开始填充的索引。默认值为0。                            |
-| end    | number | 否   | 结束填充的索引（不包括该元素）。如果省略，则填充到Array的最后一个元素。 |
+| start  | number | 否   | 开始填充的索引。默认值为0。如果start < 0，则从下标为0的元素开始。如果start > 数组长度或start > end，则不做填充。填充过程中包含start位置下标所在的元素。|
+| end    | number | 否   | 结束填充的索引（不包括该元素）。如果省略或end > 数组长度，则填充到Array的最后一个元素。如果end < 0或start > end，则不做填充。填充过程中不包含end位置下标所在的元素。|
 
 **返回值：**
 

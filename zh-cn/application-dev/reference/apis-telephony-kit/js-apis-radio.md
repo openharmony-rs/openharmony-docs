@@ -38,7 +38,7 @@ getRadioTech\(slotId: number, callback: AsyncCallback<[NetworkRadioTech](#networ
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -60,7 +60,7 @@ radio.getRadioTech(slotId, (err: BusinessError, data: radio.NetworkRadioTech) =>
         console.error(`getRadioTech failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getRadioTech success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getRadioTech success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -89,7 +89,7 @@ getRadioTech\(slotId: number\): Promise\<[NetworkRadioTech](#networkradiotech11)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -107,7 +107,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
-    console.log(`getRadioTech success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getRadioTech success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getRadioTech failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -136,6 +136,19 @@ getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 | ------------------------------------------------------------ | ----------------------------------------------- |
 | [NetworkRadioTech](#networkradiotech11) | 返回当前接入的CS域和PS域技术。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service.                  |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                               |
+
 **示例：**
 
 ```ts
@@ -163,7 +176,7 @@ getNetworkState\(callback: AsyncCallback\<NetworkState\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -184,7 +197,7 @@ radio.getNetworkState((err: BusinessError, data: radio.NetworkState) => {
         console.error(`getNetworkState failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -208,7 +221,7 @@ getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -230,7 +243,7 @@ radio.getNetworkState(slotId, (err: BusinessError, data: radio.NetworkState) => 
         console.error(`getNetworkState failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -259,7 +272,7 @@ getNetworkState\(slotId?: number\): Promise\<NetworkState\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -277,7 +290,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNetworkState(slotId).then((data: radio.NetworkState) => {
-    console.log(`getNetworkState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNetworkState failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -301,7 +314,7 @@ getNetworkSelectionMode\(slotId: number, callback: AsyncCallback\<NetworkSelecti
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -322,7 +335,7 @@ radio.getNetworkSelectionMode(slotId, (err: BusinessError, data: radio.NetworkSe
         console.error(`getNetworkSelectionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkSelectionMode success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSelectionMode success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -349,7 +362,7 @@ getNetworkSelectionMode\(slotId: number\): Promise\<NetworkSelectionMode\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -366,7 +379,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNetworkSelectionMode(slotId).then((data: radio.NetworkSelectionMode) => {
-    console.log(`getNetworkSelectionMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSelectionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -390,7 +403,7 @@ getISOCountryCodeForNetwork\(slotId: number, callback: AsyncCallback\<string\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -411,7 +424,7 @@ radio.getISOCountryCodeForNetwork(slotId, (err: BusinessError, data: string) => 
         console.error(`getISOCountryCodeForNetwork failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getISOCountryCodeForNetwork success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getISOCountryCodeForNetwork success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -438,7 +451,7 @@ getISOCountryCodeForNetwork\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -455,7 +468,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getISOCountryCodeForNetwork(slotId).then((data: string) => {
-    console.log(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getISOCountryCodeForNetwork failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -486,7 +499,7 @@ getISOCountryCodeForNetworkSync\(slotId: number\): string
 ```ts
 let slotId: number = 0;
 let countryISO: string = radio.getISOCountryCodeForNetworkSync(slotId);
-console.log(`the country ISO is:` + countryISO);
+console.info(`the country ISO is:` + countryISO);
 ```
 
 
@@ -507,7 +520,7 @@ getPrimarySlotId\(callback: AsyncCallback\<number\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -527,7 +540,7 @@ radio.getPrimarySlotId((err: BusinessError, data: number) => {
         console.error(`getPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getPrimarySlotId success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getPrimarySlotId success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -548,7 +561,7 @@ getPrimarySlotId\(\): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -562,7 +575,7 @@ getPrimarySlotId\(\): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.getPrimarySlotId().then((data: number) => {
-    console.log(`getPrimarySlotId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getPrimarySlotId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -586,7 +599,7 @@ getSignalInformation\(slotId: number, callback: AsyncCallback\<Array\<SignalInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -607,7 +620,7 @@ radio.getSignalInformation(slotId, (err: BusinessError, data: Array<radio.Signal
         console.error(`getSignalInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getSignalInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getSignalInformation success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -634,7 +647,7 @@ getSignalInformation\(slotId: number\): Promise\<Array\<SignalInformation\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -651,7 +664,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getSignalInformation(slotId).then((data: Array<radio.SignalInformation>) => {
-    console.log(`getSignalInformation success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSignalInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSignalInformation failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -683,7 +696,7 @@ getSignalInformationSync\(slotId: number\): Array\<SignalInformation\>
 ```ts
 let slotId: number = 0;
 let signalInfo: Array<radio.SignalInformation> = radio.getSignalInformationSync(slotId);
-console.log(`signal information size is:` + signalInfo.length);
+console.info(`signal information size is:` + signalInfo.length);
 ```
 
 ## radio.isNrSupported<sup>8+(deprecated)</sup>
@@ -708,7 +721,7 @@ isNrSupported\(\): boolean
 
 ```ts
 let result: boolean = radio.isNrSupported();
-console.log("Result: "+ result);
+console.info("Result: "+ result);
 ```
 
 ## radio.isNrSupported<sup>(deprecated)</sup>
@@ -740,7 +753,7 @@ isNrSupported\(slotId: number\): boolean
 ```ts
 let slotId: number = 0;
 let result: boolean = radio.isNrSupported(slotId);
-console.log("Result: "+ result);
+console.info("Result: "+ result);
 ```
 
 
@@ -762,7 +775,7 @@ isNRSupported\(\): boolean
 
 ```ts
 let result: boolean = radio.isNRSupported();
-console.log("Result: "+ result);
+console.info("Result: "+ result);
 ```
 
 
@@ -791,7 +804,7 @@ isNRSupported\(slotId: number\): boolean
 ```ts
 let slotId: number = 0;
 let result: boolean = radio.isNRSupported(slotId);
-console.log("Result: "+ result);
+console.info("Result: "+ result);
 ```
 
 
@@ -813,7 +826,7 @@ isRadioOn\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -834,7 +847,7 @@ radio.isRadioOn((err: BusinessError, data: boolean) => {
         console.error(`isRadioOn failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
+    console.info(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -858,7 +871,7 @@ isRadioOn\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -880,7 +893,7 @@ radio.isRadioOn(slotId, (err: BusinessError, data: boolean) => {
         console.error(`isRadioOn failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
+    console.info(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -909,7 +922,7 @@ isRadioOn\(slotId?: number\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -927,7 +940,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.isRadioOn(slotId).then((data: boolean) => {
-    console.log(`isRadioOn success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isRadioOn success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isRadioOn failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -951,7 +964,7 @@ getOperatorName\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -972,7 +985,7 @@ radio.getOperatorName(slotId, (err: BusinessError, data: string) => {
         console.error(`getOperatorName failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getOperatorName success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getOperatorName success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -999,7 +1012,7 @@ getOperatorName\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1016,7 +1029,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getOperatorName(slotId).then((data: string) => {
-    console.log(`getOperatorName success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getOperatorName success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getOperatorName failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1048,7 +1061,7 @@ getOperatorNameSync\(slotId: number\): string
 ```ts
 let slotId: number = 0;
 let operatorName: string = radio.getOperatorNameSync(slotId);
-console.log(`operator name is:` + operatorName);
+console.info(`operator name is:` + operatorName);
 ```
 
 

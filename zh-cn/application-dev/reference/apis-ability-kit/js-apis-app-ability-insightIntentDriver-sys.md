@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供执行意图调用的能力，系统根据用户交互等信息执行意图调用。
 
@@ -46,7 +46,8 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | displayId<sup>12+</sup> | number | 否 | 是 | 意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI_ABILITY_FOREGROUND时生效。 |
 | uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)的URI。 |
 | flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
-| userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+| userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。    |
+| deviceId | string | 否 | 是 | 连接的目标设备ID。<br/>**说明：**<br/>如果调用方应用的设备ID与目标意图所属的设备ID不同，则需要申请权限`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`。<br>**起始版本：** 26.0.0    |
 
 ## InsightIntentInfoFilter<sup>23+<sup>
 
@@ -64,7 +65,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | bundleName  | string | 否   | 是   | 目标意图所属的应用包名称。                                                 |
 | moduleName  | string | 否   | 是   | 目标意图所属的模块名称。                                                   |
 | intentName  | string | 否   | 是   | 目标意图名称。                                                   |
-| userId      | number | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+| userId      | number | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。   |
 ## InsightIntentType<sup>20+<sup>
 
 表示通过意图装饰器定义的意图类型，可通过[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)等方法返回的[LinkIntentInfo](#linkintentinfo20)获取。
@@ -291,7 +292,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 
 ## GetInsightIntentFlag<sup>20+<sup>
 
-意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于[getAllInsightIntentInfo](#insightintentdrivergetinsightintentinfobybundlename20)、[getInsightIntentInfoByBundleName](#insightintentdrivergetinsightintentinfobybundlename20)和[getInsightIntentInfoByIntentName](#insightintentdrivergetinsightintentinfobyintentname20)接口查询意图信息。
+意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)、[getInsightIntentInfoByBundleName](#insightintentdrivergetinsightintentinfobybundlename20)和[getInsightIntentInfoByIntentName](#insightintentdrivergetinsightintentinfobyintentname20)接口查询意图信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -333,7 +334,9 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult>): void
 
 执行意图调用的接口。使用callback异步回调。
+
 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
+
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -374,6 +377,8 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
+| 16000137 | Cross-device execution failed due to a connection error. |
+| 16000138 | Device disconnected during cross-device intent execution. |
 
 **示例：**
 
@@ -414,7 +419,9 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 执行意图调用的接口。使用Promise异步回调。
+
 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
+
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -460,6 +467,8 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
+| 16000137 | Cross-device execution failed due to a connection error. |
+| 16000138 | Device disconnected during cross-device intent execution. |
 
 **示例：**
 
@@ -523,7 +532,7 @@ getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo]
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module. |
 
 **示例：**
 
@@ -581,7 +590,7 @@ getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promi
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module.  |
 
 **示例：**
 
@@ -642,7 +651,7 @@ getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentN
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module.  |
 
 **示例：**
 

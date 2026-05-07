@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 This module provides the serial port management functions, including enabling and disabling the serial port of the device, writing and reading data, setting and obtaining the configuration parameters of the serial port, and managing permissions.
 
@@ -27,7 +27,7 @@ Obtains the serial port device list, including the device name and port number.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
-**Returns**
+**Return value**
 
 | Type                                       | Description         |
 |-------------------------------------------|-------------|
@@ -48,8 +48,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function getPortList() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -68,9 +68,9 @@ Checks whether the application has the permission to access the serial port devi
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
-**Returns**
+**Return value**
 
 | Type     | Description              |
 |---------|------------------|
@@ -102,8 +102,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function hasSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('portList: ', JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -112,7 +112,7 @@ function hasSerialRight() {
   if (serialManager.hasSerialRight(portId)) {
     console.info('The serial port is accessible');
   } else {
-    console.info('No permission to access the serial port');
+    console.error('No permission to access the serial port');
   }
 }
 ```
@@ -129,9 +129,9 @@ Requests the permission for the application to access the serial port device. Af
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
-**Returns**
+**Return value**
 
 | Type                    | Description           |
 |------------------------|---------------|
@@ -163,8 +163,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function requestSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -174,7 +174,7 @@ function requestSerialRight() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -196,7 +196,7 @@ Opens a serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
@@ -225,8 +225,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function open() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -236,7 +236,7 @@ function open() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -266,9 +266,9 @@ Obtains the configuration parameters of a specified serial port.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -300,8 +300,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function getAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -311,7 +311,7 @@ function getAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -354,7 +354,7 @@ Sets the parameters of the serial port. If this method is not called, the defaul
 
 | Name      | Type                                 | Mandatory| Description         |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | Yes | Port number.|
+| portId    | number                              | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 | attribute | [SerialAttribute](#serialattribute) | Yes | Configuration parameters of the serial port.    |
 
 **Error codes**
@@ -383,8 +383,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function setAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -394,7 +394,7 @@ function setAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -439,11 +439,11 @@ Reads data from the serial port device asynchronously. This API uses a promise t
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.     |
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).     |
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
-**Returns**
+**Return value**
 
 | Type                   | Description            |
 |-----------------------|----------------|
@@ -477,8 +477,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function read() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -488,7 +488,7 @@ function read() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -526,11 +526,11 @@ Reads data from the serial port device synchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.|
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -564,8 +564,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function readSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -575,7 +575,7 @@ function readSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -606,7 +606,7 @@ function readSync() {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Writes data to the serial port device asynchronously. This API uses a promise to return the result.
+Writes data to the serial port device asynchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -614,11 +614,11 @@ Writes data to the serial port device asynchronously. This API uses a promise to
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.     |
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).     |
 | buffer  | Uint8Array | Yes | Buffer for writing data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval for checking whether the buffer is writable, in milliseconds. If not, **0** is returned after the interval. The default value **0** is returned when data cannot be written into the target port.|
 
-**Returns**
+**Return value**
 
 | Type                   | Description         |
 |-----------------------|-------------|
@@ -641,7 +641,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> The following sample code shows the basic process for calling the **addSerialRight** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
+> The following sample code shows the basic process for calling the **write** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
 ```ts
@@ -653,8 +653,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function write() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -664,7 +664,7 @@ function write() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -694,7 +694,7 @@ function write() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-Writes data to the serial port device synchronously.
+Writes data to the serial port device synchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -702,11 +702,11 @@ Writes data to the serial port device synchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.    |
+| portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).    |
 | buffer  | Uint8Array | Yes | Destination buffer for writing data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval for checking whether the buffer is writable, in milliseconds. If not, **0** is returned after the interval. The default value **0** is returned when data cannot be written into the target port.|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -741,8 +741,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function writeSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -752,7 +752,7 @@ function writeSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -791,7 +791,7 @@ Closes the serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
@@ -819,8 +819,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function close() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -830,7 +830,7 @@ function close() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -869,7 +869,7 @@ Cancels the permission to access the serial port device when the application is 
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).|
 
 **Error codes**
 
@@ -898,8 +898,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function cancelSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -909,7 +909,7 @@ function cancelSerialRight() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');

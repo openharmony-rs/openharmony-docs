@@ -45,7 +45,42 @@ getLocation(options?: GetLocationOption): void
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationOption](#getlocationoptiondeprecated) | 否 | 单次定位请求的配置参数。 |
 
-**示例：**
+**JS示例：**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getLocation
+  </text>
+  <input type="button" value="获取设备的地理位置" style="width: 240px; height: 50px;" onclick="getLocation"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
@@ -58,7 +93,7 @@ export default {
         console.info('fail to get location. code:' + code + ', data:' + data);            
       }
     });    
-  }
+  },
 }
 ```
 
@@ -80,7 +115,42 @@ getLocationType(options?: GetLocationTypeOption): void
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationTypeOption](#getlocationtypeoptiondeprecated) | 否 | 回调函数，用于接收查询结果，或者接收查询失败的结果。 |
 
-**示例：**
+**JS示例：**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getLocationType
+  </text>
+  <input type="button" value="获取当前设备支持的定位类型" style="width: 240px; height: 50px;" onclick="getLocationType"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
@@ -117,7 +187,42 @@ subscribe(options: SubscribeLocationOption): void
 | -------- | -------- | -------- | -------- |
 | options | [SubscribeLocationOption](#subscribelocationoptiondeprecated) | 是 | 持续定位的配置参数。 |
 
-**示例：**
+**JS示例：**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    subscribe
+  </text>
+  <input type="button" value="订阅设备的地理位置信息" style="width: 240px; height: 50px;" onclick="subscribe"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
@@ -148,13 +253,48 @@ unsubscribe(): void
 
 **系统能力：** SystemCapability.Location.Location.Lite
 
-**示例：**
+**JS示例：**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    unsubscribe
+  </text>
+  <input type="button" value="取消订阅设备的地理位置信息" style="width: 240px; height: 50px;" onclick="unsubscribe"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
   unsubscribe() {        
     geolocation.unsubscribe();    
-  }
+  },
 }
 ```
 
@@ -176,12 +316,48 @@ getSupportedCoordTypes(): Array&lt;string&gt;
 | -------- | -------- | -------- |
 | Array&lt;string&gt; | 是 | 表示坐标系类型，如[wgs84,&nbsp;gcj02]。 |
 
-**示例：**
+**JS示例：**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getSupportedCoordTypes
+  </text>
+  <input type="button" value="获取设备支持的坐标系类型" style="width: 240px; height: 50px;" onclick="getSupportedCoordTypes"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
   getSupportedCoordTypes() {       
-    var types = geolocation.getSupportedCoordTypes();   
+    var types = geolocation.getSupportedCoordTypes();
+    console.info('getSupportedCoordTypes:' types); 
   },
 }
 ```
@@ -229,7 +405,7 @@ fail返回错误代码：
 | longitude | number | 否 | 否 | 设备位置信息：经度。 |
 | latitude | number | 否 | 否 | 设备位置信息：纬度。 |
 | altitude | number | 否 | 否 | 设备位置信息：海拔。 |
-| accuracy | number | 否 | 否 | 设备位置信息：精确度。 |
+| accuracy | number | 否 | 否 | 设备位置信息：精确度。<!--RP1-->（该字段由GNSS定位芯片或网络定位服务提供，如果不支持该功能则返回默认值0）<!--RP1End--> |
 | time | number | 否 | 否 | 设备位置信息：时间。 |
 
 ## GetLocationTypeOption<sup>(deprecated)</sup>

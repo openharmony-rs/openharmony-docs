@@ -5,13 +5,13 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -27,10 +27,13 @@ Enumerates the touch event types.
 
 | Name    | Value  | Description  |
 | ------ | ------ | ---- |
-| CANCEL | 0 | Touch cancellation.|
-| DOWN   | 1 | Touch press.|
-| MOVE   | 2 | Touch moving.|
-| UP     | 3 | Touch release.|
+| CANCEL | 0 | Touch canceled. The **DOWN** event of the touchscreen is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the finger is pressed but not lifted, the screen is rotated or folded, or a new hover occurs.|
+| DOWN   | 1 | Touch down.|
+| MOVE   | 2 | Touch moved.|
+| UP     | 3 | Touch up.|
+| PULL_DOWN  | 4 | Drag started.<br>**Since**: 26.0.0|
+| PULL_MOVE  | 5 | Dragging.<br>**Since**: 26.0.0|
+| PULL_UP    | 6 | Drag ended.<br>**Since**: 26.0.0|
 
 ## ToolType
 

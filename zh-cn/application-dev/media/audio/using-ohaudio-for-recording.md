@@ -1,4 +1,4 @@
-# 使用OHAudio开发音频录制功能(C/C++)
+# 推荐使用OHAudio开发音频录制功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -9,6 +9,7 @@
 OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输入功能的场景。
 
 OHAudio音频录制状态变化示意图：
+
 ![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
 
 ## 使用入门
@@ -103,7 +104,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
 
    <!-- @[Set_AudioCallbackFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+   
    ``` C++
    void MyOnReadData_NewAPI(
        OH_AudioCapturer* capturer,
@@ -113,7 +114,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 从buffer中取出length长度的录音数据。
    }
-
+   
    void MyOnInterruptEvent_NewAPI(
        OH_AudioCapturer* capturer,
        void* userData,
@@ -122,7 +123,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 根据type和hint表示的音频中断信息，更新录制器状态和界面。
    }
-
+   
    void MyOnError_NewAPI(
        OH_AudioCapturer* capturer,
        void* userData,
@@ -132,8 +133,8 @@ OH_AudioStreamBuilder_Destroy(builder);
    }
    // ...
        // 配置音频中断事件回调函数。
-       OH_AudioCapturer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent_NewAPI;
-       OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, OnIntereruptCb, nullptr);
+       OH_AudioCapturer_OnInterruptCallback OnInterruptCb = MyOnInterruptEvent_NewAPI;
+       OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, OnInterruptCb, nullptr);
    
        // 配置音频异常回调函数。
        OH_AudioCapturer_OnErrorCallback OnErrorCb = MyOnError_NewAPI;
@@ -165,6 +166,10 @@ OH_AudioStreamBuilder_Destroy(builder);
     | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | 释放录制实例。 |
 
+    > **注意：**
+    >
+    > 音频流控制接口执行会有耗时（例如OH_AudioCapturer_Stop接口单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
+
 6. 释放构造器。
 
    构造器不再使用时，需要释放相关资源。
@@ -183,7 +188,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 
 > **注意：**
 >
-> - 当音频录制场景[OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为`AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
+> - 当音频录制场景[OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为`AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输入的音频通路。
 > - 部分场景（如通话来电）下系统能力受限会回落至普通音频通路模式，缓冲区大小也会发生变化，此时应同普通音频通路模式一样根据缓冲区大小将缓冲区中数据一次性全部取走，否则录制的数据会出现不连续，导致杂音。
 
 <!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
@@ -212,7 +217,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 - 方式1：请确保[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
 
   <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+  
   ``` C++
   int32_t MyOnReadData_Legacy(
       OH_AudioCapturer* capturer,
@@ -236,7 +241,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
       // 配置回调函数，如果需要监听，则赋值。
       callbacks.OH_AudioCapturer_OnReadData = MyOnReadData_Legacy;
       callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
-
+      
       // （必选）如果不需要监听，使用空指针初始化。
       callbacks.OH_AudioCapturer_OnStreamEvent = nullptr;
       callbacks.OH_AudioCapturer_OnError = nullptr;
@@ -245,7 +250,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 - 方式2：使用前，初始化并清零结构体。
 
   <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+  
   ``` C++
   int32_t MyOnReadData_Legacy(
       OH_AudioCapturer* capturer,

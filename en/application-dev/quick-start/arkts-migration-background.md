@@ -29,84 +29,84 @@ class Person {
   }
   
   getName(): string {
-  // Return type "string" hides from the developers the fact that name can be undefined.
-  // The most correct would be to write the return type as "string | undefined". By doing so, we tell the users of our API about all possible return values.
+  // Return type "string" hides the fact that name can be "undefined".
+  // The most correct action would be to write the return type as "string | undefined". By doing so, we could tell the users of our API about the type of all possible return values.
     return this.name;
   }
 }
 
 let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
+// Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
 buddy.getName().length; // Runtime exception: name is undefined.
 ```
 
 ArkTS requires explicit initialization. The code is as follows:
 
-```typescript
+<!-- @[def_person](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 class Person {
-  name: string = '';
-  
+  name: string = ''; // undefined
+
   setName(n: string): void {
     this.name = n;
   }
-  
-  // The type is string in all cases, null and undefined are impossible.
+
+  // The type is string in all cases; null and undefined are impossible.
   getName(): string {
     return this.name;
   }
 }
-
-let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
-buddy.getName().length; // 0, no runtime error
+// ...
+  let buddy = new Person()
+  // Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
+  let len = buddy.getName().length; // 0. No runtime error.
 ```
 
 If **name** can be **undefined**, its type must be accurately annotated in the code.
 
-```typescript
-class Person {
-    name?: string; // The field may be undefined.
+<!-- @[def_personFix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
 
-    setName(n: string): void {
-        this.name = n;
-    }
+``` TypeScript
+class Person1 {
+  name?: string; // The field may be undefined.
 
-    // Compile-time error: name can be "undefined", so the return type of this API cannot be marked as "string".
-    getNameWrong(): string {
-        return this.name;
-    }
+  setName(n: string): void {
+    this.name = n;
+  }
 
-    getName(): string | undefined { // Return type matches the type of name.
-        return this.name;
-    }
+  getName(): string | undefined { // Return type matches the type of name.
+    return this.name;
+  }
 }
+// ...
+  let buddy = new Person1()
+  // Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
 
-let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
-
-// Compile-time error: Compiler suspects that we may possibly access something undefined and will not build the code:
-buddy.getName().length;  // The code will not build and run.
-
-buddy.getName()?.length; // Successful builds and no runtime error.
+  let len = buddy.getName()?.length; // Compilation succeeded. No runtime error.
 ```
 
 ## Program Performance
 
-To ensure program correctness, dynamically typed languages have to check object types at runtime. Back to our example, the undefined property cannot be read in JS. But the only way to check if a value is **undefined** is to perform a runtime check, and all JS engines will perform as follows: If the value is not **undefined**, the property is read, otherwise an exception is thrown. Modern engines can optimize such checks greatly, but these checks cannot be eliminated completely, which slows down the program. Since the standard TS compiles to JS, the code written in TS has the same issues as described above. ArkTS addresses this problem. It enforces a static type check and compiles the program to Ark bytecode instead of JS, thus speeding up the execution and making it easier to optimize the code even further.
+To ensure program correctness, dynamically typed languages have to check object types at runtime. In the context of our example, the **undefined** property cannot be read in JS. The only way to check if a value is **undefined** is to perform a runtime check, and all JS engines will perform as follows: If the value is not **undefined**, the property is read, otherwise an exception is thrown. Modern engines can optimize such checks greatly, but these checks cannot be eliminated completely, which slows down the program. Since the standard TS compiles to JS, the code written in TS has the same issues as described above. ArkTS addresses this problem. It enforces a static type check and compiles the program to Ark bytecode instead of JS, thus speeding up the execution and making it easier to optimize the code even further.
 
 
 **Null Safety**
 
-```typescript
+<!-- @[def_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 function notify(who: string, what: string) {
   console.info(`Dear ${who}, a message for you: ${what}`);
 }
 
-notify('Jack', 'You look great today');
+// ...
+  notify('Jack', 'You look great today');
 ```
 
 In most cases, the **notify** function will take two **string** variables as an input and produces a new string. However, what if we pass some "special" values to the function, for example **notify(null, undefined)**?
-The program will continue to work, the output will be as expected (**Dear null, a message for you: undefined**), so from the first glance everything is fine. But please note that the engine that runs our code should always check for such special cases to ensure correct behavior. In pseudocode, something like this happens:
+
+The program runs to completion and produces the expected output (**Dear null, a message for you: undefined**), so its behavior may appear correct at first glance. However, the engine that runs the code still checks for such special cases to ensure correct behavior. In pseudocode, something like this happens:
 
 ```typescript
 function __internal_tostring(s: any): string {
@@ -180,15 +180,24 @@ The OpenHarmony SDK of API version 11 uses TypeScript 4.9.5, with the **target**
 5. Prohibit circular dependency.
 
     Example of circular dependency:
-    ```typescript
+    
+    <!-- @[import_v](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/bar.ets) -->  
+    
+    ``` TypeScript
     // bar.ets
     import {v} from './foo'; // bar.ets depends on foo.ets.
     export let u = 0;
+    console.info(`v: ${v}`);
+    ```
 
+    <!-- @[import_u](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/foo.ets) -->  
+    
+    ``` TypeScript
     // foo.ets
     import {u} from './bar'; // foo.ets depends on bar.ets reversely.
     export let v = 0;
-
+    console.info(`u: ${u}`);
+    
     // Application loading fails.
     ```
 

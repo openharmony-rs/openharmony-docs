@@ -5,14 +5,17 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ApplicationContext模块继承自[Context](js-apis-inner-application-context.md)，提供开发者应用级别的上下文的能力，包括提供注册及取消注册应用内组件生命周期的监听接口。
 
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[ApplicationContext](js-apis-inner-application-applicationContext.md)。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -31,11 +34,16 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 预加载指定UIExtensionAbility实例。使用Promise异步回调。
 
 被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的OnCreate生命周期，然后等待被当前应用正式加载。
+
 支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从OnCreate继续完成UIExtensionAbility的生命周期。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**系统接口**：此接口为系统接口。
+**参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -75,7 +83,7 @@ export default class EntryAbility extends UIAbility {
       abilityName: 'UIExtensionProvider',
       moduleName: 'entry',
       parameters: {
-        //与UIExtensionAbility在module.json5中"type"字段配置一致
+        // 与UIExtensionAbility在module.json5中"type"字段配置一致
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };

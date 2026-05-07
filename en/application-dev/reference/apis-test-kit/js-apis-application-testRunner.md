@@ -23,24 +23,15 @@ To implement your own unit test framework, extend this class and override its AP
 import { TestRunner } from '@kit.TestKit';
 ```
 
-## TestRunner
+## TestRunner.onPrepare
+
+onPrepare(): void
+
+Prepares the unit test environment to run test cases.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| onPrepare | [OnPrepareFn](#onpreparefn23) | No   | No   | Prepares the unit test environment to run test cases.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>Since API version 23, the original **onPrepare()** API is changed to a property, but its usage remains unchanged.|
-| onRun | [OnRunFn](#onrunfn23) | No   | No   | Runs all test cases.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>Since API version 23, the original **onRun()** API is changed to a property, but its usage remains unchanged.|
-
-## OnPrepareFn<sup>23+</sup>
-
-type OnPrepareFn = () => void
-
-Triggered when the unit test environment is ready.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Example**
 
@@ -57,15 +48,15 @@ export default class UserTestRunner implements TestRunner {
 }
 ```
 
-## OnRunFn<sup>23+</sup>
+## TestRunner.onRun
 
-type OnRunFn = () => void
+onRun(): void
 
-Triggered when the test case is executed.
+Runs test cases.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Example**
 
@@ -78,6 +69,40 @@ export default class UserTestRunner implements TestRunner {
 
   onRun() {
     console.info('Trigger onRun');
+  }
+}
+```
+
+## TestRunner.onStop
+
+onStop(): void
+
+Called when the test is complete and before the test environment exits.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Example**
+
+```ts
+import { TestRunner } from '@kit.TestKit';
+
+export default class UserTestRunner implements TestRunner {
+  onPrepare() {
+    console.info('Trigger onPrepare');
+  }
+
+  onRun() {
+    console.info('Trigger onRun');
+  }
+
+  onStop() {
+    console.info('Trigger onStop');
   }
 }
 ```

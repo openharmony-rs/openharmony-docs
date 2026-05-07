@@ -14,17 +14,20 @@ Once embedded, users can directly select images or videos within the **PhotoPick
 
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component does not support [same-layer rendering](../../../application-dev/web/web-same-layer.md).
 
 ## Modules to Import
 
 ```ts
+// In versions earlier than API version 23, you need to use the 'import { api1, api2,... } from @ohos.file.PhotoPickerComponent' import mode.
 import {
   PhotoPickerComponent, PickerController, PickerOptions,
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
   MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement,
-  ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback
-} from '@ohos.file.PhotoPickerComponent';
+  ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, SingleLineConfig,
+  BadgeConfig, PreselectedInfo, SaveMode, BadgeType, VideoPlayerState, ItemDisplayRatio
+} from '@kit.MediaLibraryKit';
 ```
 
 ## Attributes
@@ -33,27 +36,14 @@ The [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attribute
 
 ## PhotoPickerComponent
 
-PhotoPickerComponent({
-  pickerOptions?: PickerOptions,
-  onSelect?: (uri: string) => void,
-  onDeselect?: (uri: string) => void,
-  onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) => boolean,
-  onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean,
-  onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean,
-  onPickerControllerReady?: () => void,
-  onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) => boolean,
-  onSelectedItemsDeleted?: ItemsDeletedCallback,
-  onExceedMaxSelected?: ExceedMaxSelectedCallback,
-  onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback,
-  onVideoPlayStateChanged?: videoPlayStateChangedCallback,
-  pickerController: PickerController
-})
+PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) => void, onDeselect?: (uri: string) => void, onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) => boolean, onItemClickedNotify?: ItemClickedNotifyCallback, onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean, onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean, onPickerControllerReady?: () => void, onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) => boolean, onSelectedItemsDeleted?: ItemsDeletedCallback, onExceedMaxSelected?: ExceedMaxSelectedCallback, onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback, onVideoPlayStateChanged?: videoPlayStateChangedCallback, pickerController: PickerController })
 
 Allows the application to access images or videos in the user directory without any permission.
 
 > **NOTE**
+> If the **PhotoPickerComponent** is used with the **Tabs** component, the swipe gestures of the **Tabs** component conflict with those of the photo browser page.
 >
-> If the **PhotoPickerComponent** is used with the **Tabs** component, the swipe gestures of the **Tabs** component conflict with those of the photo browser page. To prevent this problem, you can disable the swipe operation for the **Tabs** component in **onEnterPhotoBrowser()** and enable it in **onExitPhotoBrowser()**. This conflict will be resolved in later versions.
+> To prevent this problem, you can disable the swipe operation for the **Tabs** component in **onEnterPhotoBrowser()** and enable it in **onExitPhotoBrowser()**. This conflict will be resolved in later versions.
 
 **Decorator**: @Component
 
@@ -66,7 +56,9 @@ Allows the application to access images or videos in the user directory without 
 | pickerOptions           | [PickerOptions](#pickeroptions)                                                  | No  | - | Picker configuration parameters.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                                                    |
 | onSelect                | (uri: string) => void                                                            | No  | - | Callback to be invoked when an image is selected by using **PhotoPickerComponent**. This callback returns the URI of the image selected to the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                           |
 | onDeselect              | (uri: string) => void                                                            | No  | - | Callback to be invoked when an image is deselected by using **PhotoPickerComponent**. This callback returns the URI of the image deselected to the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                     |
-| onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | No  | - | Callback to be invoked when an item in a **PhotoPickerComponent** is clicked.<br>For an image (thumbnail item), if **true** is returned, the image is selected. Otherwise, the image is not selected and the URI is not granted with the permission. For a camera item, if **true** is returned, the system camera is started. Otherwise, the camera is not started and the application handles the request.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                           |
+| onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | No  | - | Callback to be invoked when an item in a **PhotoPickerComponent** is clicked.<br>For an image (thumbnail item), if **true** is returned, the image is selected. Otherwise, the image is not selected and the URI is not granted with the permission. For a camera item, if **true** is returned, the system camera is started. Otherwise, the camera is not started and the application handles the request.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                   |
+| onItemClickedNotify<sup>23+</sup> | [ItemClickedNotifyCallback](#itemclickednotifycallback23) | No  | - | Callback to be invoked when an item in a **PhotoPickerComponent** is clicked.<br>The application can execute the logic of determining whether the item is selected. This parameter must be used together with the **addData** method to select or deselect the item based on the value of **ADD_ITEM_CLICK_RESULT**. If no click result is set, the authorization is canceled 2 seconds later or when the **PhotoPickerComponent** is closed.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| onPinchGridSwitched<sup>23+</sup>           |  [PinchGridSwitchedCallback](#pinchgridswitchedcallback23)  | No  | - | Callback to be invoked when a grid is pinched. This callback is triggered only when [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23) is set to **FULL_FUNCTION_GRID**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.  | 
 | onEnterPhotoBrowser     | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | No  | - | Callback to be invoked when the photo browser page is displayed. The callback returns photo browser information to the application. No special processing is performed on the return value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                                    |
 | onExitPhotoBrowser      | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | No  | - | Callback to be invoked when the photo browser page exits. The callback returns photo browser information to the application. No special processing is performed on the return value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                                      |
 | onPickerControllerReady | () => void                                                                       | No  | - | Callback to be invoked when **pickerController** is available.<br>The **PickerController** APIs can be called only after this callback is invoked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                              |
@@ -79,6 +71,8 @@ Allows the application to access images or videos in the user directory without 
 | onMovingPhotoBadgeStateChanged<sup>22+</sup> | [MovingPhotoBadgeStateChangedCallback](#movingphotobadgestatechangedcallback22) | No| - | Callback to be invoked when the moving photo effect of the **PhotoPickerComponent** is enabled or disabled. This callback reports the image's URI and its new moving photo badge state to the application.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | onScrollStopAtStart<sup>23+</sup> | [ScrollStopAtStartCallback](#scrollstopatstartcallback23) | No| - | Callback to be invoked when the user stops scrolling and is positioned at the beginning of the grid content in the **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | No| - | Callback to be invoked when the user stops scrolling and is positioned at the end of the grid content in the **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | No| - | Callback to be invoked when a grid view switches to the photo browser page or the photo browser page is switched.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| onError<sup>23+</sup> | [ErrorCallback](#errorcallback23) | No| - | Callback to be invoked when an error occurs during the use of the **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## PickerOptions
 
@@ -96,10 +90,10 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | maxSelectedReminderMode         | [ReminderMode](#remindermode)           | No | Yes| Mode of the reminder when the number of selected items reaches the maximum. The options are **NONE**, **TOAST**, and **MASK**. The default value **TOAST**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | orientation                     | [PickerOrientation](#pickerorientation) | No | Yes| Sliding preview direction of the grid page. The options are **HORIZONTAL** and **VERTICAL**. The default value is **VERTICAL**. (This parameter is supported since API version 20. In earlier versions, the system defaults to vertical.)<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                |
 | selectMode                      | [SelectMode](#selectmode)               | No | Yes | Select mode, which can be **SINGLE_SELECT** or **MULTI_SELECT**. The default value is **MULTI_SELECT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                     |
-| maxPhotoSelectNumber            | number                                  | No | Yes| Maximum number of images that can be selected. The maximum value is **500**, which is limited by **MaxSelected**. The default value is **500**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
-| maxVideoSelectNumber            | number                                  | No | Yes| Maximum number of videos that can be selected. The maximum value is **500**, and it is restricted by the maximum number of media files that can be selected in the system. The default value is **500**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
-| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | No | Yes| Whether sliding selection (selecting multiple items by sliding finger across the screen) is supported. The value **true** means that sliding selection is supported. By default, it is not supported. This parameter is not available for repeat selection.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                           |
-| photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | No | Yes| Position of the check box on the photo browser page. The first parameter specifies the offset in the X direction, and the second parameter specifies the offset in the Y direction. The value range is 0-1, which indicates the offset (from 0% to 100%) to the upper-left corner of the component. The default value is [0, 0].<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| maxPhotoSelectNumber            | number                                  | No | Yes| Maximum number of images that can be selected. The maximum value is **500**, which is limited by **MaxSelected**. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
+| maxVideoSelectNumber            | number                                  | No | Yes| Maximum number of videos that can be selected. The maximum value is **500**, and it is restricted by the maximum number of media files that can be selected in the system. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
+| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | No | Yes| Whether sliding selection (selecting multiple items by sliding finger across the screen) is supported. The value **true** means that sliding selection is supported. The default value is **false**. This parameter is not available for repeat selection.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                           |
+| photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | No | Yes| Position of the check box on the photo browser page. The first parameter specifies the offset in the X direction, and the second parameter specifies the offset in the Y direction. The value range is [0, 1], which indicates the offset (from 0% to 100%) to the upper-left corner of the component. The default value is [0, 0].<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a grid page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a photo browser page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | singleLineConfig<sup>20+</sup>             | [SingleLineConfig](#singlelineconfig20)                                                | No | Yes| Single-line display mode of a grid page. In single-line mode, the component does not provide functions for viewing a larger image. The component does not support callbacks related to large images, and the PickerController does not support APIs related to large images, making API calls ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |  
@@ -111,7 +105,8 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | No  | Yes| Badge configuration. Currently, the **PhotoPickerComponent** supports only one type of badge. For details, see [BadgeType](#badgetype21).<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | isSlidingSupported<sup>23+</sup>         | boolean                         | No  | Yes| Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.<br>The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-
+| appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -199,6 +194,178 @@ Callback to be invoked when the user stops scrolling and is positioned at the be
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## ItemClickedNotifyCallback<sup>23+</sup>
+
+type ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => void
+
+Callback to be invoked when an item in a **PhotoPickerComponent** is clicked.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type                           | Mandatory| Description|
+| ----- |-------------------------------| ----- |----------------------------------------------|
+| itemInfo    | [ItemInfo](#iteminfo) | Yes   | Type of the clicked item, which can be a thumbnail item or a camera item.|
+| clickType  | [ClickType](#clicktype) | Yes| Enumerates the click operation types.|
+
+**Example**:
+
+```ts
+import {
+    ClickResult,
+    ClickType,
+    DataType,
+    ItemInfo,
+    ItemClickedNotifyCallback,
+    PhotoPickerComponent,
+    PickerController,
+    PickerOptions,
+} from '@kit.MediaLibraryKit';
+import { router } from '@kit.ArkUI';
+
+
+const DOMAIN = 0x0000;
+const TAG: string = 'clickedNotifyDemo';
+
+interface Checks {
+    isOnClicked: boolean;
+    isOnClickedNotify: boolean;
+}
+
+export interface ClickResultEx {
+    uri: string,
+    isSelected: boolean,
+}
+
+@Entry
+@Component
+struct PickerPage {
+@State pickerController: PickerController = new PickerController();
+private pickerOptions: PickerOptions = new PickerOptions();
+@State currentUri: string = '';
+@State currentState: number = 0;
+@State clickedUris: Map<string, ClickResultEx> = new Map();
+private isOnClicked: boolean = false;
+private isOnClickedNotify: boolean = false;
+
+    onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
+        return true;
+    };
+    // When an item is clicked, the code checks whether the corresponding URI is valid. An invalid URI is ignored.
+    // Then, the code checks whether the URI already exists in clickedUris. If not, it creates a record and sets the isSelected property to true.
+    // If yes, the code updates the isSelected property of the record to true.
+    // After the data is saved, clicking the setClickResult button will call addData(SET_ITEM_CLICK_RESULT) to set the corresponding item to the selected state.
+    onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
+        if (!itemInfo.uri) {
+            return;
+        }
+
+        let clickResult = this.clickedUris.get(itemInfo.uri);
+        if (!clickResult) {
+            clickResult = {
+                uri: itemInfo.uri,
+                isSelected: true,
+            };
+        } else {
+            clickResult.isSelected = true;
+        }
+        this.clickedUris.set(itemInfo.uri, clickResult);
+    };
+
+    aboutToAppear(): void {
+        let params = router.getParams() as Checks;
+
+        this.pickerOptions.isSlidingSelectionSupported = true;
+        this.pickerOptions.isSearchSupported = false;
+        this.isOnClicked = params.isOnClicked;
+        // Obtain parameters from the index.ets page.
+        this.isOnClickedNotify = params.isOnClickedNotify;
+        this.pickerOptions.maxPhotoSelectNumber = 500;
+    }
+
+    // Obtain the URIs from this.clickedUris, which will be used when pickerController.addData() is called to set the item to be selected.
+    getClickedUris(): ClickResult[] {
+        let uris: ClickResultEx[] = [];
+        this.clickedUris.forEach((uri, index) => {
+            uris.push(uri)
+        })
+        return uris;
+    }
+
+    build() {
+        Column() {
+            Row() {
+                // Call the photo picker component.
+                PhotoPickerComponent({
+                    pickerOptions: this.pickerOptions,
+                    pickerController: this.pickerController,
+                    onItemClicked: this.isOnClicked ? this.onClicked : undefined,
+                    onItemClickedNotify: this.isOnClickedNotify ? this.onClickedNotify : undefined,
+                    onSelect: (uri: string) => {},
+                    onDeselect: (uri: string) => {}
+                })
+            }.height('50%')
+
+            Row() {
+                Column() {
+                    Text('Selected assets')
+                    ForEach(this.getClickedUris(), (uri: ClickResult) => {
+                        Row() {
+                            // You can remove or add a selection.
+                            Checkbox({ name: "OnClick" })
+                                .select(uri.isSelected)
+                                .onChange((checked: boolean) => {
+                                    let clickResult = this.clickedUris.get(uri.uri);
+                                    if (!clickResult) {
+                                        clickResult = {
+                                            uri: uri.uri,
+                                            isSelected: checked
+                                        };
+                                    } else {
+                                        clickResult.isSelected = checked;
+                                    }
+                                    if (uri.uri !== 'abnormal') {
+                                        this.clickedUris.set(uri.uri, clickResult);
+                                    }
+                                }).margin({ right: 5 })
+                            Text(uri.uri.slice(-30)).margin({right: 5}).width(150)
+                            // Remove the selected item from this.clickeduris.
+                            Button('Delete').onClick(() => {
+                                this.clickedUris.delete(uri.uri);
+                            })
+                            // The following code is an example of an exception scenario. When an abnormal URI is passed, the item selected by Picker does not take effect.
+                            Button('Abnormal').onClick(() => {
+                                let clickResult = this.clickedUris.get(uri.uri);
+                                if (clickResult) {
+                                    let oldClickUri = clickResult.uri;
+                                    clickResult.uri = 'abnormal'
+                                    this.clickedUris.set(oldClickUri, clickResult)
+                                }
+                            })
+                        }.width('100%')
+                    })
+                }
+            }.height('20%')
+
+            Row() {
+                // Send URI (SET_ITEM_CLICK_RESULT).
+                Button('Set ClickResult')
+                    .onClick(() => {
+                        this.pickerController.addData(DataType.SET_ITEM_CLICK_RESULT, this.getClickedUris())
+                    })
+            }.height('10%')
+        }
+    .height('100%')
+            .width('100%')
+    }
+}
+```
+
 ## ScrollStopAtEndCallback<sup>23+</sup>
 
 type ScrollStopAtEndCallback = () => void
@@ -210,6 +377,60 @@ Callback to be invoked when the user stops scrolling and is positioned at the en
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## PhotoBrowserChangeStartCallback<sup>23+</sup>
+
+type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
+
+Callback to be invoked when the moving photo effect of the **PhotoPickerComponent** is enabled or disabled.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type                           | Mandatory| Description|
+| ----- |-------------------------------| ----- |----------------------------------------------|
+| targetPhotoInfo  | [BaseItemInfo](#baseiteminfo) | Yes| Basic information about the selected items.|
+
+## PinchGridSwitchedCallback<sup>23+</sup>
+
+type PinchGridSwitchedCallback = (gridLevel: photoAccessHelper.GridLevel) => void
+
+Callback to be invoked when a user pinches a grid component.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type                           | Mandatory| Description|
+| ----- |-------------------------------| ----- |----------------------------------------------|
+| gridLevel  | [photoAccessHelper.GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | Yes| Number of columns in the grid.|
+
+## ErrorCallback<sup>23+</sup>
+
+type ErrorCallback = (pickerError: PickerError) => void
+
+Callback to be invoked when an error occurs in the **PhotoPickerComponent**.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type                           | Mandatory| Description|
+| ----- |-------------------------------| ----- |----------------------------------------------|
+| pickerError  | [PickerError](#pickererror23) | Yes| Basic information about the error.|
 
 ## PickerController
 
@@ -259,7 +480,7 @@ Sends additional configuration data to the **PhotoPickerComponent**. The [DataTy
 
 deleteData(dataType: DataType, data: Object): void
 
-Sends removal configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data being sent, and only the **SET_BADGE_CONFIGS** type is supported currently.
+Sends removal configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported currently.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -276,7 +497,7 @@ Sends removal configuration data to the **PhotoPickerComponent**. The [DataType]
 
 setMaxSelected(maxSelected: MaxSelected): void
 
-Sets the maximum number of images, videos, or images and videos that can be selected on a real-time basis.
+Sets the maximum number of images, videos, or images and videos that can be selected in real time.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -366,8 +587,8 @@ Saves files in a URI list. Generally, this API is used together with [replacePho
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | Yes| URIs of the images or videos in the application sandbox path. Generally, **trustedUris** comes from **newUri** of new images generated by [replacePhotoPickerPreview](#replacephotopickerpreview15).|
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | Yes| URIs of the new files in Gallery.            |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.            |
-| saveMode | [SaveMode](#savemode15)           | No| Mode for saving the files.            |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>1. If a **subtype** option is passed, the configuration does not take effect. Only **DEFAULT** images can be saved.<br>By default, the values of **title**, **fileNameExtension**, and **photoType** of **mediaItem** corresponding to **trustedUris** are used, and the value of **subtype** is fixed to **DEFAULT**.<br>2. This parameter does not take effect when [SaveMode](#savemode15) is set to **OVERWRITE**.            |
+| saveMode | [SaveMode](#savemode15)           | No| Mode for saving the files.<br>By default, the **SAVE_AS** mode is used to save the files as new files.            |
 
 ### updatePickerOptions<sup>22+</sup>
 
@@ -391,6 +612,71 @@ Updates the attributes of the **PhotoPickerComponent**. This API uses a promise 
 | ------ | ------------------------ |
 | Promise\<void> | Promise that returns no value.|
 
+### saveTrustedPhotoAssetsEx<sup>23+</sup>
+
+saveTrustedPhotoAssetsEx(trustedUris: Array\<string>,settings?: Array\<photoAccessHelper.CreationSetting>, saveMode?: SaveMode): Promise\<Array\<string>>
+
+Saves files in a URI list. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is usually used together with [replacePhotoPickerPreview](#replacephotopickerpreview15) to save the new images or videos in the application sandbox path to Gallery.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name       | Type                                                                                                  | Mandatory | Description               |
+|-------------- |-------------------------------------------------------------------------------------------------------| ----- |-------------------|
+| trustedUris   | Array&lt;string&gt;                                                                                   | Yes| URIs of the images or videos in the application sandbox path.<br>**trustedUris** is usually the **newUri** of the images or videos in the application sandbox path that are successfully replaced by [replacePhotoPickerPreview](#replacephotopickerpreview15).|
+| settings       | Array&lt;[photoAccessHelper.CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt;| No| Configuration parameters corresponding to the original files.<br>By default, the **title**, **fileNameExtension**, and **photoType** values of **mediaItem** corresponding to **trustedUris** are used.|
+| saveMode      | [SaveMode](#savemode15)                                                                               | No| Mode for saving images or videos.<br>By default, the **SAVE_AS** mode is used to save the files as new files.              |
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| Promise\<Array\<string>> | Promise used to return the URI of the new asset.|
+
+### setMovingPhotoState<sup>23+</sup>
+
+setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateType): Promise\<void>
+
+Sets the state of the moving photo on the photo browser page. This API uses a promise to return the result.
+
+This parameter takes effect only on the photo browser page. **NOT_MOVING_PHOTO** cannot be set.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name        | Type                                                            | Mandatory | Description               |
+|-------------|----------------------------------------------------------------| ----- |-------------------|
+|movingPhotoState|[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | Yes| State of the moving photo on the photo browser page.|
+
+**Error codes**
+
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 23800151 | Scene parameters validate failed, possible causes: 1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLE and MOVING_PHOTO_DISABLE are supported for configuration | 
+| 23800202 | Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.     |   
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
 ## BaseItemInfo
 
 Represents basic image and video information.
@@ -403,13 +689,13 @@ Represents basic image and video information.
 | mimeType | string                | No| Yes  | MIME type of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | width    | number                | No| Yes  | Width of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | height   | number                | No| Yes  | Height of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
+| size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | duration   | number                | No| Yes  | Video duration, in milliseconds. For an image or a moving photo, the value **-1** is returned.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | No| Yes  | Subtype of the photo. The options are **DEFAULT**, **MOVING_PHOTO**, and **BRUST**.<br>The default value is **DEFAULT (0)**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | No| Yes  | Subtype of the photo. The options are **DEFAULT**, **MOVING_PHOTO**, and **BURST**.<br>The default value is **DEFAULT (0)**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | No| Yes  | Dynamic range type of the media file. The options are **HDR** and **SDR**.<br>For moving photos, this parameter specifies the dynamic range type of the cover image.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | orientation<sup>21+</sup>   | number             | No| Yes  | Image or video direction information.<br>1: **TOP-left**: The image is not rotated.<br>2: **TOP-right**: The image is flipped horizontally.<br>3: **Bottom-right**: The image is rotated by 180°.<br>4: **Bottom-left**: The image is flipped vertically.<br>5: **Left-top**: The image is flipped horizontally and then rotated clockwise by 270°.<br>6: **Right-top**: The image is rotated clockwise by 90°.<br>7: **Right-bottom**: The image is vertically flipped and then rotated clockwise by 90°.<br>8: **Left-bottom**: The image is rotated clockwise by 270°.<br>Images with mirroring information retain their original width and height attributes regardless of rotation, whereas images without such information have these attributes updated to reflect the post-rotation dimensions.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | movingPhotoBadgeState<sup>22+</sup> | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | No| Yes  | State of the moving photo badge.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| VideoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | No| Yes  | Log mode of a video file.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | No| Yes  | Log mode of a video file.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 ## ItemInfo
 
 Represents the image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
@@ -437,7 +723,7 @@ Represents information about the photo browser page.
 
 ## AnimatorParams
 
-Animation parameters for entering or exiting the photo browser page.
+Defines animation parameters for entering or exiting the photo browser page.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -487,6 +773,21 @@ Describes the badge configuration.
 | badgeType | [BadgeType](#badgetype21) | No  | Yes| Badge type.|
 | uris | Array&lt;string&gt;  | No  | Yes| URIs of the assets for the badge.|
 
+## ClickResult<sup>23+</sup>
+
+Sets whether the asset with the specified URI is selected.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type                                            | Read-Only| Optional| Description     |
+| ---- | ------------------------------------------------ | ---- | ---- |---------|
+| uri | string | No  | No| URI of the media asset.|
+| isSelected | boolean  | No  | No| Sets whether the specified media asset is selected. The value **true** indicates that the asset is selected, and **false** indicates the opposite. |
+
 ## PreselectedInfo<sup>21+</sup>
 
 Describes the information about the preselected files and their corresponding **PhotoPickerComponent** index.
@@ -524,19 +825,39 @@ Describes the updatable attributes of the **PhotoPickerComponent**. These attrib
 | uiComponentColorMode            | [PickerColorMode](#pickercolormode) | No | Yes| Color mode of the Picker UI component.<br>Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark background color, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light background color for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 22. |
 | isSlidingSupported<sup>23+</sup>         | boolean                         | No  | Yes| Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.<br>The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | No  | Yes| Playback mode of the moving photo. The maximum array length is 2. If this limit is exceeded, the first two elements are used, and the extra ones are automatically ignored.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| backgroundOpacity<sup>24+</sup>         | number                         | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+
+## PickerError<sup>23+</sup>
+
+Describes the function name, error code, and message of the error returned when an error occurs during the use of the **PhotoPickerComponent** component.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type  | Read-Only| Optional| Description  |
+| ---- | ------------------------------------------------ | ---- | ---- | ------ |
+| functionName | string | No  | No|Function name of the error.|
+| errorCode | number | No  | No| Error code.|
+| message | string | No  | No| Error message.|
 
 ## DataType
 
 Enumerates the types of data sent from **PickerController** to the **PhotoPickerComponent**.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
+ 
 | Name               | Value  | Description                                                                                                                |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
 | SET_SELECTED_URIS | 1   | Sends a list of selected items to instruct the **PhotoPickerComponent** to refresh the selection status. A string array needs to be passed in.<br>For example, after an image is deleted from an application's page, the application calls **setData()** to notify the **PhotoPickerComponent** of the remaining selected items. Then, the **PhotoPickerComponent** refreshes the check box status.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | SET_ALBUM_URI | 2   | Sends the selected album to instruct the **PhotoPickerComponent** to refresh the album data. A string array needs to be passed in.<br>For example, after an album is selected from an application's page, the application calls **setData** to notify the **PhotoPickerComponent** of the URI of the selected album. Then, the **PhotoPickerComponent** refreshes the album data.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | SET_SELECTED_INFO<sup>21+</sup> | 3   | Sends the URI of the selected file and the index of the selected **PhotoPickerComponent**. If the index of a **PhotoPickerComponent** matches the one provided in the parameter, the selected file is automatically highlighted in that **PhotoPickerComponent**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | SET_BADGE_CONFIGS<sup>21+</sup> | 4   | Sends the badge configurations, which are of the [badgeConfig](#badgeconfig21) type and include a list of data with badge types and corresponding file URIs. Once configured, the badge of the configured type is displayed in the specified file.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| SET_ITEM_CLICK_RESULT<sup>23+</sup> | 5   | Result of the click, which is of the [ClickResult](#clickresult23) type.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## ItemType
 
@@ -581,7 +902,7 @@ This capability can be configured since API version 20. If this capability is se
 
 ## SelectMode
 
-Enumerates the select modes.
+Enumerates the selection modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -718,6 +1039,7 @@ Enumerates the aspect ratios for grid display in single-line display mode.
 
 ```ts
 // xxx.ets
+// In versions earlier than API version 23, you need to use the 'import { api1, api2,... } from @ohos.file.PhotoPickerComponent' import mode.
 import {
   PhotoPickerComponent,
   PickerController,
@@ -735,10 +1057,10 @@ import {
   ExceedMaxSelectedCallback,
   CurrentAlbumDeletedCallback,
   videoPlayStateChangedCallback,
-  VideoPlayerState
-} from '@ohos.file.PhotoPickerComponent';
+  VideoPlayerState,
+  photoAccessHelper
+} from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -795,7 +1117,7 @@ struct PickerDemo {
       return true; // If true is returned, the system camera is started. If false is returned, the app processes its services.
     } else {
       if (clickType === ClickType.SELECTED) {
-        // The application performs its own service logic (not time-consuming operations, such as opening a large file using OpenSync).
+        // The application performs its own service logic (not time-consuming operations, such as opening a large file using openSync).
         if (uri) {
           this.selectUris.push(uri);
           this.pickerOptions.preselectedUris = [...this.selectUris];
@@ -870,8 +1192,8 @@ struct PickerDemo {
 
         PhotoPickerComponent({
           pickerOptions: this.pickerOptions,
-          // onSelect: (uri: string): void => this.onSelect(uri),
-          // onDeselect: (uri: string): void => this.onDeselect(uri),
+          onSelect: (uri: string): void => this.onSelect(uri),
+          onDeselect: (uri: string): void => this.onDeselect(uri),
           onItemClicked: (itemInfo: ItemInfo, clickType: ClickType): boolean => this.onItemClicked(itemInfo,
             clickType), // This API can replace the preceding two APIs.
           onEnterPhotoBrowser: (photoBrowserInfo: PhotoBrowserInfo): boolean => this.onEnterPhotoBrowser(photoBrowserInfo),

@@ -1,14 +1,18 @@
 # ArkUI_DragAndDropInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_DragAndDropInfo ArkUI_DragAndDropInfo
+```
+
 ## Overview
 
-Defines a struct for drag and drop information returned through a drag status listener.
+Defines drag and drop information returned through a drag status listener.
 
 **Since**: 12
 

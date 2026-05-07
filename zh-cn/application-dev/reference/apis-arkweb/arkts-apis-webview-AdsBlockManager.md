@@ -40,7 +40,7 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | -------------------------------- |
-| rulesFile | string | 是   | 指定了符合 easylist 通用语法的规则文件路径，应用需要有此文件的读权限。 |
+| rulesFile | string | 是   | 指定了符合easylist通用语法的规则文件路径，应用需要有此文件的读权限。 |
 | replace   | boolean | 是   | true表示强制替换掉内置的默认规则，false表示设置的自定义规则将与内置规则共同工作。 |
 
 **错误码：**
@@ -106,7 +106,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 >
 > 此接口设置的域名不会持久化，应用重启需要重新设置。
 >
-> 广告过滤特性会使用后缀匹配的方式判断domainSuffix和当前站点的url是否能匹配，例如，当前Web组件打开的网站是https://www.example.com，设置的DisallowList中有'example.com'或者'www.example.com'，后缀匹配成功，此网站将禁用广告过滤，访问'https://m.example.com'也将禁用广告过滤。
+> 广告过滤特性会使用后缀匹配的方式判断domainSuffix和当前站点的url是否能匹配，例如，当前Web组件打开的网站是https://www.example.com，设置的DisallowedList中有'example.com'或者'www.example.com'，后缀匹配成功，此网站将禁用广告过滤，访问'https://m.example.com'也将禁用广告过滤。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -333,13 +333,13 @@ struct WebComponent {
 
 static addAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
-向AdsBlockManager的AllowedList中添加一组域名，主要用于重新开启DisallowList中的部分网站的广告过滤。
+向AdsBlockManager的AllowedList中添加一组域名，主要用于重新开启DisallowedList中的部分网站的广告过滤。
 
 > **说明：**
 >
 > 此接口设置的域名不会持久化，应用重启需要重新设置。
 >
-> AllowedList的优先级比DisAllowList高，例如，DisallowList中配置了['example.com']，禁用了所有example.com域名下的网页，此时如果需要开启'news.example.com'下的广告过滤，可以使用addAdsBlockAllowedList(['news.example.com'])。
+> AllowedList的优先级比DisallowedList高，例如，DisallowedList中配置了['example.com']，禁用了所有example.com域名下的网页，此时如果需要开启'news.example.com'下的广告过滤，可以使用addAdsBlockAllowedList(['news.example.com'])。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -453,7 +453,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
-// 演示通过一个按钮的点击从AdsBlockManager的DisallowedList中删除域名元素
+// 演示通过一个按钮的点击从AdsBlockManager的AllowedList中删除域名元素
 @Entry
 @Component
 struct WebComponent {

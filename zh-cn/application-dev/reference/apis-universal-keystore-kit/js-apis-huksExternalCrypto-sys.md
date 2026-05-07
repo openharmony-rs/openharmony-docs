@@ -48,17 +48,18 @@ PIN码认证。使用Promise异步回调。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 202 | non-system applications are not allowed to use system APIs. |
+| 202 | The caller is not a system application and is not allowed to use system applications. |
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | the Ukey driver operation failed. |
-| 12000011 | the provider is not found. |
+| 12000011 | queried entity does not exist. |
+| 12000012 | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
-| 12000022 | The Ukey PIN is incorrect. |
-| 12000024 | The provider or Ukey is busy. |
+| 12000022 | the Ukey PIN is incorrect. |
+| 12000024 | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -73,8 +74,8 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-let uid: number = 3511
-const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"userid\":100, \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+let uid: number = 3511;
+const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
 const pin = "123456";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {

@@ -14,7 +14,7 @@ Implements the **PermissionRequest** object. For details about the sample code, 
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor
 

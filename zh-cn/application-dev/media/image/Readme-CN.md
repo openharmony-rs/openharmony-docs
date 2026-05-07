@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -11,7 +11,8 @@
   - 图片解码<!--image-decoding-arts-->
     - [使用ImageSource完成图片解码](image-decoding.md)
     - [使用ImageSource完成多图对象解码](image-picture-decoding.md)
-    - [申请图片解码内存](image-allocator-type.md)
+    - [图片解码内存优化(ArkTS)](image-allocator-type.md)
+    - [使用ImageSource获取RAW数据](image-raw-data.md)
   - 图片编码<!--image-encoding-arts-->
     - [使用ImagePacker完成图片编码](image-encoding.md)
     - [使用ImagePacker完成多图对象编码](image-picture-encoding.md)
@@ -25,7 +26,7 @@
   - 图片解码<!--image-decoding-c-->
     - [使用Image_NativeModule完成图片解码](image-source-c.md)
     - [使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)
-    - [申请图片解码内存](image-allocator-type-c.md)
+    - [图片解码内存优化(C/C++)](image-allocator-type-c.md)
   - 图片编码<!--image-encoding-c-->
     - [使用Image_NativeModule完成图片编码](image-packer-c.md)
     - [使用Image_NativeModule完成多图对象编码](image-packer-picture-c.md)
@@ -39,6 +40,7 @@
   - [如何处理HEIF图片](image-faqs/heif-adapter-faq.md)
   - [如何获取图片的旋转角度信息](image-faqs/image-rotate-faq.md)
   - [Image Kit异常处理](image-faqs/image-error-faq.md)
+  - [Image Kit常见崩溃报错问题](image-faqs/image-common-mistakes.md)
 - 图片开发指导(依赖JS对象)(不再推荐)<!--image-native-js-objects-->
     - [图片解码](image-decoding-native.md)
     - [图片编码](image-encoding-native.md)

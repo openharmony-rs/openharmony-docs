@@ -24,7 +24,7 @@ Defines the custom component parameters used to configure whether component free
 >
 > Since API version 11, this parameter can be used to configure component freezing for [@Component](../../../ui/state-management/arkts-create-custom-components.md#component). For implementation examples, see [Freezing a Custom Component](../../../ui/state-management/arkts-custom-components-freeze.md).
 >
-> Since API version 12, this parameter can be used to configure component freezing for [@ComponentV2](../../../ui/state-management/arkts-new-componentV2.md). For implementation examples, see [Freezing a Custom Component](../../../ui/state-management/arkts-custom-components-freezeV2.md).
+> Since API version 12, this parameter can be used to configure component freezing for [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2). For implementation examples, see [Freezing a Custom Component](../../../ui/state-management/arkts-custom-components-freezeV2.md).
 >
 
 | Name| Type| Read-Only| Optional    | Description  |

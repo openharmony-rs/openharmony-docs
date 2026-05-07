@@ -111,8 +111,7 @@ PluginManager.Request方法接收到的回调结果。
 
 ### OnPushEventCallback
 
-type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject,
-    extraData: KVObject) => void
+type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject, extraData: KVObject) => void
 
 对应Push事件的监听回调函数。
 
@@ -278,7 +277,7 @@ pluginComponentManager.request(
 
 ### pluginComponentManager.on
 
-on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback ): void
+on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback): void
 
 提供方监听"request"类型的事件，给使用方返回通过request接口主动请求的数据；使用方监听"push"类型的事件，接收提供方通过push接口主动推送的数据。
 

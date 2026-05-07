@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 <!--deprecated_code_no_check-->
 
@@ -53,7 +53,6 @@ let context = featureAbility.getContext();
         });
         hilog.info(domain, TAG, 'Application onCreate');
       }
-      //...
     }
     
     export default new MainAbility();
@@ -82,7 +81,6 @@ let context = featureAbility.getContext();
       onDestroy() {
         hilog.info(domain, TAG, 'Application onDestroy');
       }
-      //...  
     }
     
     export default new PageAbilitySingleton();

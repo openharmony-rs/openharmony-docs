@@ -27,6 +27,9 @@
   - [@ohos.secureElement (安全单元的通道管理)](js-apis-secureElement.md)
   - [@ohos.wifiManager (WLAN)(推荐)](js-apis-wifiManager.md)
   - [@ohos.wifiManagerExt (WLAN扩展接口)(推荐)](js-apis-wifiManagerExt.md)
+  - [@ohos.FusionConnectivity.partnerAgent (设备状态通知模块)](js-apis-fusionConnectivity-partnerAgent.md)
+  - [@ohos.FusionConnectivity.PartnerAgentExtensionContext (设备状态通知能力上下文)](js-apis-fusionConnectivity-partnerAgentExtensionContext.md)
+  - [@ohos.FusionConnectivity.PartnerAgentExtensionAbility (支持设备状态通知的ExtensionAbility组件)](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)
   <!--Del-->
   - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(系统接口)](js-apis-bluetooth-a2dp-sys.md)
   - [@ohos.bluetooth.access(蓝牙access模块)(系统接口)](js-apis-bluetooth-access-sys.md)
@@ -45,6 +48,7 @@
   - [@ohos.nfc.cardEmulation (标准NFC-cardEmulation)(系统接口)](js-apis-cardEmulation-sys.md)
   - [@ohos.nfc.tag (标准NFC-Tag)(系统接口)](js-apis-nfcTag-sys.md)
   - [@ohos.wifiManager (WLAN)(推荐)(系统接口)](js-apis-wifiManager-sys.md)
+  - [@ohos.FusionConnectivity.partnerAgent (设备状态通知模块)(系统接口)](js-apis-fusionConnectivity-partnerAgent-sys.md)
   <!--DelEnd-->
   - tag<!--connectivity-nfc-tag-arkts-->
     - [nfctech (标准NFC-Tag Nfc 技术)](js-apis-nfctech.md)
@@ -61,6 +65,7 @@
   - [WIFI错误码](errorcode-wifi.md)
   - [NFC错误码](errorcode-nfc.md)
   - [SE(secureElement)错误码](errorcode-se.md)
+  - [融合短距服务子系统错误码](errorcode-fusionConnectivity.md)
 - 已停止维护的接口<!--connectivity-arkts-dep-->
   - [@ohos.bluetooth (蓝牙)](js-apis-bluetooth.md)
   - [@ohos.bluetoothManager (蓝牙)](js-apis-bluetoothManager.md)

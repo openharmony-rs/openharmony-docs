@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件与下方画布已有内容进行混合的图像效果。
+本模块提供设置组件的模糊、阴影、球面效果以及设置图片的图像效果等相关接口。
 
 > **说明：**
 >
@@ -69,6 +69,8 @@ excludeFromRenderGroup(exclude: boolean \| undefined): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。
+
 **参数：** 
 
 | 参数名  | 类型               | 必填 | 说明                                                         |
@@ -80,6 +82,96 @@ excludeFromRenderGroup(exclude: boolean \| undefined): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
+
+## systemMaterial<sup>23+</sup>
+
+systemMaterial(material: SystemUiMaterial | undefined): T
+
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[设置系统材质](../arkts-apis-uimaterial-sys.md#示例1设置系统材质)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：** 
+
+| 参数名 | 类型                            | 必填 | 说明                                                         |
+| ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
+| material  | [SystemUiMaterial](#systemuimaterial23) &nbsp;\|&nbsp; undefined  | 是   | 组件的系统材质对象。设置为undefined时恢复为无材质的效果。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## SystemUiMaterial<sup>23+</sup>
+
+type SystemUiMaterial = uiMaterial.Material
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 类型                              | 说明           |
+| --------------------------------- | -------------- |
+| [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象。 |
+
+## edgeLight
+   
+edgeLight(params: EdgeLightParams | undefined): T
+
+为组件添加边缘流光效果。边缘流光效果会在组件的边缘创建发光效果，从指定位置开始并沿边缘延伸，此效果可以增强组件的视觉吸引力并突出显示重要组件。
+
+> **说明：**
+>
+> - 仅设置edgeLight不会产生边缘流光效果，需结合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)更改position参数达到流光效果。可参考[示例4（设置组件边缘流光效果）](#示例4设置组件边缘流光效果)。
+>
+> - 当position参数以对角线方式变更时，边缘流光将沿倾斜角45°的方式运行。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| params | [EdgeLightParams](#edgelightparams) \| undefined | 是   | 定义边缘流光效果的位置、长度、强度、颜色和厚度。<br/>当params的值为undefined时，移除边缘流光效果。 |
+
+**返回值：**
+
+| 类型 | 说明                     |
+| ---- | ------------------------ |
+| T    | 返回当前组件。 |
+
+## EdgeLightParams
+
+定义边缘流光效果参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 名称     | 类型                                                       | 只读 | 可选 | 说明                                                    |
+| -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------- |
+| position | [EdgeLightPosition](./ts-appendix-enums-sys.md#edgelightposition枚举说明)          | 否   | 否   | 边缘流光位置。                                           |
+| length   | [Length](ts-types.md#length)                              | 否   | 否   | 沿流动方向的边缘流光的投影长度（不支持百分比）。<br/>取值范围：[0, +∞)<br/>单位：vp<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
+| intensity | number                                                   | 否   | 是   | 边缘流光效果的发光强度。<br/>取值范围：[0, 1]<br/>默认值：1<br/>**说明：**<br/>值为0时，流光效果完全不可见。<br/>值为1时，流光效果达到最大亮度。<br/>设置大于1的值时，按值为1处理。<br/>设置小于0的值时，按值为0处理。 |
+| color    | [ResourceColor](ts-types.md#resourcecolor)                | 否   | 是   | 边缘流光颜色。<br/>默认值：#FFFFFF，显示为白色。 |
+| thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光线条粗细（不支持百分比）。<br/>取值范围：[0, +∞)<br/>单位：vp<br/>默认值：0<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
 
 ## 示例
 ### 示例1（设置组件提亮）
@@ -263,3 +355,49 @@ struct Index {
 ```
 
 ![advancedBlendMode2](figures/advancedBlendMode2.jpg)
+
+### 示例4（设置组件边缘流光效果）
+
+该示例主要演示如何通过[edgeLight](#edgelight)给组件添加边缘流光效果。
+
+从API版本26.0.0开始，新增edgeLight方法。
+
+```ts
+// xxx.ets
+import { curves } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  @State animate: boolean = false;
+  @State edgeLightPosition: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  build() {
+    Column() {
+      Column()
+        .height(300)
+        .width(300)
+        .backgroundColor(Color.Gray)
+        .borderRadius(20)
+        .edgeLight({
+          position: this.edgeLightPosition,
+          length: 90,
+          intensity: 1,
+          color: Color.White,
+          thickness: 2
+        })
+        .onClick(()=>{
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, ()=>{
+            this.animate = !this.animate;
+            this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
+          })
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .backgroundColor('#aaaaaa')
+  }
+}
+```
+
+![edgeLightDemo](figures/edgeLightDemo.gif)

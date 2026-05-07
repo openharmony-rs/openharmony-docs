@@ -4,7 +4,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
  
 
 ## 概述
@@ -63,7 +63,7 @@
 
     2. 当[app.json5配置文件](../quick-start/app-configuration-file.md)中的[appPreloadPhase](../quick-start/app-configuration-file.md#配置文件标签)配置为windowStageCreated时，需要在entry模块的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置EntryAbility的launchType标签为[singleton](uiability-launch-type.md#singleton启动模式)或[specified](uiability-launch-type.md#specified启动模式)。
 
-    ```json
+    ```json5
     {
       "module": {
         "name": "entry",

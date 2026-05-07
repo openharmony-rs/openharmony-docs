@@ -49,6 +49,7 @@
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)](#oh_photooutput_unregistercallback) | - | 注销拍照输出更改事件回调。 |
 | [Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)](#oh_photooutput_registercapturestartwithinfocallback) | - | 注册拍照开始事件回调。 |
 | [Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)](#oh_photooutput_getphotorotation) | - | 获取照片旋转角度。 |
+| [Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_PhotoOutput* photoOutput, Camera_ImageRotation* imageRotation)](#oh_photooutput_getphotorotationwithoutdevicedegree) | - | 获取照片旋转角度。 |
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)](#oh_photooutput_unregistercapturestartwithinfocallback) | - | 注销拍照开始事件回调。 |
 | [Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)](#oh_photooutput_registercaptureendcallback) | - | 注册拍照结束事件回调。 |
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)](#oh_photooutput_unregistercaptureendcallback) | - | 注销拍照结束事件回调。 |
@@ -88,7 +89,6 @@ typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -106,7 +106,6 @@ typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, C
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧快门回调。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -127,7 +126,6 @@ typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -146,7 +144,6 @@ typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_E
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出错误回调。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -172,7 +169,6 @@ typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -191,7 +187,6 @@ typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOut
 拍照开始回调。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -212,7 +207,6 @@ typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -232,7 +226,6 @@ typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -250,7 +243,6 @@ typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* phot
 预计拍照时间回调。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -271,7 +263,6 @@ typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, O
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -291,7 +282,6 @@ typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutp
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -310,7 +300,6 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput
 注册拍照输出更改事件回调。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -337,7 +326,6 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutp
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -362,7 +350,6 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_Phot
 注册拍照开始事件回调。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -389,13 +376,37 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于获取照片旋转角度的拍照输出实例。 |
 | int deviceDegree | 当前设备旋转角度。 |
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 照片旋转角度的结果。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree()
+
+```c
+Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_PhotoOutput* photoOutput, Camera_ImageRotation* imageRotation)
+```
+
+**描述**
+
+获取照片旋转角度。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于获取照片旋转角度的拍照输出实例。 |
 | [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 照片旋转角度的结果。 |
 
 **返回：**
@@ -416,13 +427,12 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_Ph
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_CaptureStartWithInfo](#oh_photooutput_capturestartwithinfo) callback | 要注销的拍照开始事件回调。 |
+| [OH_PhotoOutput_CaptureStartWithInfo](capi-photo-output-h.md#oh_photooutput_capturestartwithinfo) callback | 要注销的拍照开始事件回调。 |
 
 **返回：**
 
@@ -442,13 +452,12 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* p
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_CaptureEnd](#oh_photooutput_captureend) callback | 要注册的拍照结束事件回调。 |
+| [OH_PhotoOutput_CaptureEnd](capi-photo-output-h.md#oh_photooutput_captureend) callback | 要注册的拍照结束事件回调。 |
 
 **返回：**
 
@@ -468,13 +477,12 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput*
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_CaptureEnd](#oh_photooutput_captureend) callback | 要注销的拍照结束事件回调。 |
+| [OH_PhotoOutput_CaptureEnd](capi-photo-output-h.md#oh_photooutput_captureend) callback | 要注销的拍照结束事件回调。 |
 
 **返回：**
 
@@ -494,13 +502,12 @@ Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutp
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_OnFrameShutterEnd](#oh_photooutput_onframeshutterend) callback | 要注册的拍照曝光结束事件回调。 |
+| [OH_PhotoOutput_OnFrameShutterEnd](capi-photo-output-h.md#oh_photooutput_onframeshutterend) callback | 要注册的拍照曝光结束事件回调。 |
 
 **返回：**
 
@@ -520,13 +527,12 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOu
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_OnFrameShutterEnd](#oh_photooutput_onframeshutterend) callback | 要注销的拍照曝光结束事件回调。 |
+| [OH_PhotoOutput_OnFrameShutterEnd](capi-photo-output-h.md#oh_photooutput_onframeshutterend) callback | 要注销的拍照曝光结束事件回调。 |
 
 **返回：**
 
@@ -546,13 +552,12 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput*
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_CaptureReady](#oh_photooutput_captureready) callback | 要注册的拍照就绪事件回调。 |
+| [OH_PhotoOutput_CaptureReady](capi-photo-output-h.md#oh_photooutput_captureready) callback | 要注册的拍照就绪事件回调。 |
 
 **返回：**
 
@@ -572,13 +577,12 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutpu
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_CaptureReady](#oh_photooutput_captureready) callback | 要注销的拍照就绪事件回调。 |
+| [OH_PhotoOutput_CaptureReady](capi-photo-output-h.md#oh_photooutput_captureready) callback | 要注销的拍照就绪事件回调。 |
 
 **返回：**
 
@@ -598,13 +602,12 @@ Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_EstimatedCaptureDuration](#oh_photooutput_estimatedcaptureduration) callback | 要注册的预计拍照时间事件回调。 |
+| [OH_PhotoOutput_EstimatedCaptureDuration](capi-photo-output-h.md#oh_photooutput_estimatedcaptureduration) callback | 要注册的预计拍照时间事件回调。 |
 
 **返回：**
 
@@ -624,13 +627,12 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camer
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_EstimatedCaptureDuration](#oh_photooutput_estimatedcaptureduration) callback | 要注销的预计拍照时间事件回调。 |
+| [OH_PhotoOutput_EstimatedCaptureDuration](capi-photo-output-h.md#oh_photooutput_estimatedcaptureduration) callback | 要注销的预计拍照时间事件回调。 |
 
 **返回：**
 
@@ -650,13 +652,12 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutpu
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_PhotoAvailable](#oh_photooutput_photoavailable) callback | 要注册的输出照片可用回调。 |
+| [OH_PhotoOutput_PhotoAvailable](capi-photo-output-h.md#oh_photooutput_photoavailable) callback | 要注册的输出照片可用回调。 |
 
 **返回：**
 
@@ -676,13 +677,12 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOut
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_PhotoAvailable](#oh_photooutput_photoavailable) callback | 要注销的输出照片可用回调。 |
+| [OH_PhotoOutput_PhotoAvailable](capi-photo-output-h.md#oh_photooutput_photoavailable) callback | 要注销的输出照片可用回调。 |
 
 **返回：**
 
@@ -702,13 +702,12 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_Photo
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_PhotoAssetAvailable](#oh_photooutput_photoassetavailable) callback | 要注册的输出照片资源可用回调。 |
+| [OH_PhotoOutput_PhotoAssetAvailable](capi-photo-output-h.md#oh_photooutput_photoassetavailable) callback | 要注册的输出照片资源可用回调。 |
 
 **返回：**
 
@@ -728,13 +727,12 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_Pho
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 |
-| [OH_PhotoOutput_PhotoAssetAvailable](#oh_photooutput_photoassetavailable) callback | 要注销的输出照片资源可用回调。 |
+| [OH_PhotoOutput_PhotoAssetAvailable](capi-photo-output-h.md#oh_photooutput_photoassetavailable) callback | 要注销的输出照片资源可用回调。 |
 
 **返回：**
 
@@ -753,7 +751,6 @@ Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 拍摄照片。<br> 必须在[OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release)之前调用，否则会导致无法拍照。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -778,7 +775,6 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* p
 使用捕获设置捕获拍照。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -805,7 +801,6 @@ Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -829,7 +824,6 @@ Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutpu
 检查是否支持镜像拍照。
 
 **起始版本：** 11
-
 
 **参数：**
 
@@ -856,7 +850,6 @@ Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bo
 
 **起始版本：** 13
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -881,7 +874,6 @@ Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput
 获取当前照片输出配置文件。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -908,7 +900,6 @@ Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -932,7 +923,6 @@ Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photo
 检查是否支持动态照片。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -959,7 +949,6 @@ Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutpu
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -984,7 +973,6 @@ Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_Pho
 检查是否支持指定的拍照画质优先策略。
 
 **起始版本：** 21
-
 
 **参数：**
 
@@ -1011,7 +999,6 @@ Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput
 设置拍照画质优先策略。
 
 **起始版本：** 21
-
 
 **参数：**
 

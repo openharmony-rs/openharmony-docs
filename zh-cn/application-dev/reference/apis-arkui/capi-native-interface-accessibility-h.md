@@ -40,6 +40,7 @@
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider |  该结构体为第三方操作提供者，用于承载回调函数的实现。 |
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | ArkUI_AccessibilityActionArguments | 用于设置无障碍操作的具体参数。 |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | ArkUI_AccessibilityElementInfoList | 提供封装的ArkUI_AccessibilityElementInfo的List实例。 |
+| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI native组件实例对象指针。<br>**起始版本：** 23  |
 
 ### 枚举
 
@@ -75,7 +76,7 @@
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)](#oh_arkui_accessibilityelementinfosetfocusable) | 为ArkUI_AccessibilityElementInfo设置是否可聚焦。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)](#oh_arkui_accessibilityelementinfosetfocused) | 为ArkUI_AccessibilityElementInfo设置是否聚焦。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)](#oh_arkui_accessibilityelementinfosetvisible) | 为ArkUI_AccessibilityElementInfo设置是否可见。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)](#oh_arkui_accessibilityelementinfosetaccessibilityfocused) | 为ArkUI_AccessibilityElementInfo设置accessibilityFocused。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)](#oh_arkui_accessibilityelementinfosetaccessibilityfocused) | 为ArkUI_AccessibilityElementInfo设置元素是否处于无障碍焦点状态。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)](#oh_arkui_accessibilityelementinfosetselected) | 为ArkUI_AccessibilityElementInfo设置是否被选中。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)](#oh_arkui_accessibilityelementinfosetclickable) | 为ArkUI_AccessibilityElementInfo设置是否支持点击。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)](#oh_arkui_accessibilityelementinfosetlongclickable) | 为ArkUI_AccessibilityElementInfo设置是否支持长按。 |
@@ -83,34 +84,36 @@
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)](#oh_arkui_accessibilityelementinfosetispassword) | 为ArkUI_AccessibilityElementInfo设置是否为密码。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)](#oh_arkui_accessibilityelementinfosetscrollable) | 为ArkUI_AccessibilityElementInfo设置是否支持滚动。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)](#oh_arkui_accessibilityelementinfoseteditable) | 为ArkUI_AccessibilityElementInfo设置是否支持编辑。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)](#oh_arkui_accessibilityelementinfosetishint) | 为ArkUI_AccessibilityElementInfo设置isHint。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)](#oh_arkui_accessibilityelementinfosetishint) | 为ArkUI_AccessibilityElementInfo设置提示状态。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)](#oh_arkui_accessibilityelementinfosetrangeinfo) | 为ArkUI_AccessibilityElementInfo设置rangeInfo。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)](#oh_arkui_accessibilityelementinfosetgridinfo) | 为ArkUI_AccessibilityElementInfo设置gridInfo。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)](#oh_arkui_accessibilityelementinfosetgriditeminfo) | 为ArkUI_AccessibilityElementInfo设置gridItem。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)](#oh_arkui_accessibilityelementinfosetselectedtextstart) | 为ArkUI_AccessibilityElementInfo设置selectedTextStart。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)](#oh_arkui_accessibilityelementinfosetselectedtextend) | 为ArkUI_AccessibilityElementInfo设置selectedTextEnd。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)](#oh_arkui_accessibilityelementinfosetcurrentitemindex) | 为ArkUI_AccessibilityElementInfo设置currentItemIndex。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)](#oh_arkui_accessibilityelementinfosetstartitemindex) | 为ArkUI_AccessibilityElementInfo设置startItemIndex。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)](#oh_arkui_accessibilityelementinfosetenditemindex) | 为ArkUI_AccessibilityElementInfo设置endItemIndex。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)](#oh_arkui_accessibilityelementinfosetitemcount) | 为ArkUI_AccessibilityElementInfo设置itemCount。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)](#oh_arkui_accessibilityelementinfosetaccessibilityoffset) | 为ArkUI_AccessibilityElementInfo设置offset。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)](#oh_arkui_accessibilityelementinfosetgridinfo) | 为ArkUI_AccessibilityElementInfo设置网格信息。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)](#oh_arkui_accessibilityelementinfosetgriditeminfo) | 为ArkUI_AccessibilityElementInfo设置网格容器中单项内容容器。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)](#oh_arkui_accessibilityelementinfosetselectedtextstart) | 为ArkUI_AccessibilityElementInfo设置选中文本的起始位置。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)](#oh_arkui_accessibilityelementinfosetselectedtextend) | 为ArkUI_AccessibilityElementInfo设置选中文本的结束位置。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)](#oh_arkui_accessibilityelementinfosetcurrentitemindex) | 为ArkUI_AccessibilityElementInfo设置当前获焦控件的位置信息。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)](#oh_arkui_accessibilityelementinfosetstartitemindex) | 为ArkUI_AccessibilityElementInfo设置当前屏幕中显示的第一个元素的位置信息。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)](#oh_arkui_accessibilityelementinfosetenditemindex) | 为ArkUI_AccessibilityElementInfo设置当前屏幕中显示的最后一个元素的位置信息。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)](#oh_arkui_accessibilityelementinfosetitemcount) | 为ArkUI_AccessibilityElementInfo设置特定组件的元素总数。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)](#oh_arkui_accessibilityelementinfosetaccessibilityoffset) | 为ArkUI_AccessibilityElementInfo设置内容区相对于元素顶部坐标的滚动像素偏移量。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)](#oh_arkui_accessibilityelementinfosetaccessibilitygroup) | 为ArkUI_AccessibilityElementInfo设置无障碍分组。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)](#oh_arkui_accessibilityelementinfosetaccessibilitylevel) | 为ArkUI_AccessibilityElementInfo设置无障碍重要性。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | 为ArkUI_AccessibilityElementInfo设置zIndex。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | 为ArkUI_AccessibilityElementInfo设置组件z序。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)](#oh_arkui_accessibilityelementinfosetaccessibilityopacity) | 为ArkUI_AccessibilityElementInfo设置透明度。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)](#oh_arkui_accessibilityelementinfosetbackgroundcolor) | 为ArkUI_AccessibilityElementInfo设置背景色。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)](#oh_arkui_accessibilityelementinfosetbackgroundimage) | 为ArkUI_AccessibilityElementInfo设置背景图。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)](#oh_arkui_accessibilityelementinfosetblur) | 为ArkUI_AccessibilityElementInfo设置模糊度。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | 为ArkUI_AccessibilityElementInfo设置hitTest模式。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | 为ArkUI_AccessibilityElementInfo设置触摸测试的响应逻辑及节点阻塞规则。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)](#oh_arkui_accessibilityelementinfosetcomponentidentifier) | 为无障碍节点信息ArkUI_AccessibilityElementInfo设置组件标识，可用于自动化测试识别特定组件。|
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)](#oh_arkui_createaccessibilityelementinfo) | 创建一个ArkUI_AccessibilityElementInfo对象，创建后需要调用OH_ArkUI_DestoryAccessibilityElementInfo释放。 |
 | [void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_destoryaccessibilityelementinfo) | 销毁一个ArkUI_AccessibilityElementInfo对象。 |
 | [ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)](#oh_arkui_createaccessibilityeventinfo) | 创建一个ArkUI_AccessibilityEventInfo对象，创建后需要调用OH_ArkUI_DestoryAccessibilityEventInfo释放。 |
 | [void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)](#oh_arkui_destoryaccessibilityeventinfo) | 销毁ArkUI_AccessibilityEventInfo对象。 |
 | [int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityEventType eventType)](#oh_arkui_accessibilityeventseteventtype) | 为ArkUI_AccessibilityEventInfo设置事件类型。 |
-| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | 为ArkUI_AccessibilityEventInfo设置textAnnouncedForAccessibility。 |
-| [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | 为ArkUI_AccessibilityEventInfo设置requestFocusId。 |
+| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | 为ArkUI_AccessibilityEventInfo设置主动播报的内容。 |
+| [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | 为ArkUI_AccessibilityEventInfo设置请求焦点id。 |
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | 为ArkUI_AccessibilityEventInfo设置elementInfo。 |
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | 获取ArkUI_AccessibilityActionArguments中指定key的value值。 |
+| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) |获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br>其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。<br>三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)类型的[RenderNode](js-apis-arkui-renderNode.md)并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br>再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。<br>最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。<br>仅当三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)的[RenderNode](js-apis-arkui-renderNode.md)，该接口才会生效，否则会报错误码。<br>本接口通过[RenderNode](js-apis-arkui-renderNode.md)实现三方框架的接入，仅支持[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)接入无障碍服务，可以实现无障碍控件树获取能力。<br>不支持多线程并发，由三方框架保证调用时的线程安全。|
 
 ## 枚举类型说明
 
@@ -139,10 +142,10 @@ Accessibility操作类型的枚举。
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY = 0x00000400 | 复制文本组件的选定内容。                                                                                                                      |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE = 0x00000800 | 粘贴文本组件的选定内容。                                                                                                                      |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT = 0x00001000 | 剪切文本组件的选定内容。                                                                                                                      |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | 针对文本组件进行选择操作。结合ArkUI_AccessibilityActionArguments使用，配置selectTextStart，selectTextEnd，selectTextInForWard。进入编辑区选择一段文本内容。                                                                    |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | 针对文本组件进行选择操作。结合ArkUI_AccessibilityActionArguments使用，配置selectTextBegin（表示选择起始位置），selectTextEnd（表示选择结束位置），selectTextInForWard（true表示为前光标，false表示为后光标）进入编辑区选择一段文本内容。                                                                    |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_TEXT = 0x00004000 | 设置文本组件的文本内容。                                                                                                                      |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | 针对文本组件设置光标位置。结合ArkUI_AccessibilityActionArguments使用，配置offset设置位置。 |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | 焦点移动操作中支持查找下一个焦点。此处的HTML并不代表网页元素，仅用于表示具有可自行查找下一个可见聚焦组件的能力，与Web支持的能力相似。实现findNextFocusAccessibilityNode的能力才可配置该属性。<br>**起始版本：** 15 |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | 针对文本组件设置光标位置，结合ArkUI_AccessibilityActionArguments使用，配置可输入文本控件的光标位置。 |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | 焦点移动操作中支持查找下一个焦点。此处的HTML并不代表网页元素，仅用于表示具有可自行查找下一个可见聚焦组件的能力，与Web支持的能力相似。实现[findNextFocusAccessibilityNode](./capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md#findnextfocusaccessibilitynode)的能力才可配置该属性。<br>**起始版本：** 15 |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PREVIOUS_HTML_ITEM = 0x04000000 | 焦点移动操作中支持查找上一个焦点。此处的HTML并不代表网页元素，仅用于表示具有可自行查找上一个可见聚焦组件的能力，与Web支持的能力相似。实现findNextFocusAccessibilityNode的能力才可配置该属性。<br>**起始版本：** 15     |
 
 ### ArkUI_AccessibilityEventType
@@ -674,6 +677,10 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 为ArkUI_AccessibilityElementInfo设置是否被检查。
 
+> **说明：** 
+>
+> 本接口仅设置是否被检查，不会设置是否可查。若需要设置是否可查，需调用[OH_ArkUI_AccessibilityElementInfoSetCheckable](#oh_arkui_accessibilityelementinfosetcheckable)。
+
 **起始版本：** 13
 
 
@@ -778,7 +785,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_Accessibi
 
 **描述：**
 
-为ArkUI_AccessibilityElementInfo设置accessibilityFocused。
+为ArkUI_AccessibilityElementInfo设置元素是否处于无障碍焦点状态。
 
 **起始版本：** 13
 
@@ -994,7 +1001,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置isHint。
+为ArkUI_AccessibilityElementInfo设置提示状态。
 
 **起始版本：** 13
 
@@ -1030,7 +1037,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfode的指针。 |
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
 | [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md)* rangeInfo | 表示特定组件的当前值、最大值、最小值。 |
 
 **返回：**
@@ -1048,7 +1055,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置gridInfo。
+为ArkUI_AccessibilityElementInfo设置网格信息。
 
 **起始版本：** 13
 
@@ -1075,7 +1082,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置gridItem。
+为ArkUI_AccessibilityElementInfo设置网格容器中单项内容容器。
 
 **起始版本：** 13
 
@@ -1102,7 +1109,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置selectedTextStart。
+为ArkUI_AccessibilityElementInfo设置选中文本的起始位置。
 
 **起始版本：** 13
 
@@ -1129,7 +1136,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityE
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置selectedTextEnd。
+为ArkUI_AccessibilityElementInfo设置选中文本的结束位置。
 
 **起始版本：** 13
 
@@ -1156,7 +1163,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置currentItemIndex。
+为ArkUI_AccessibilityElementInfo设置当前获焦控件的位置信息。
 
 **起始版本：** 13
 
@@ -1183,7 +1190,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置startItemIndex。
+为ArkUI_AccessibilityElementInfo设置当前屏幕中显示的第一个元素的位置信息。
 
 **起始版本：** 13
 
@@ -1210,7 +1217,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置endItemIndex。
+为ArkUI_AccessibilityElementInfo设置当前屏幕中显示的最后一个元素的位置信息。
 
 **起始版本：** 13
 
@@ -1226,7 +1233,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>参数错误返回[ARKUI_ACCESSIBILITY_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>参数错误返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 ### OH_ArkUI_AccessibilityElementInfoSetItemCount()
 
@@ -1237,7 +1244,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置itemCount。
+为ArkUI_AccessibilityElementInfo设置特定组件的元素总数。
 
 **起始版本：** 13
 
@@ -1264,7 +1271,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置offset。
+为ArkUI_AccessibilityElementInfo设置内容区相对于元素顶部坐标的滚动像素偏移量。
 
 **起始版本：** 13
 
@@ -1274,7 +1281,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| int32_t offset | 对于可滚动类控件，如List、Grid，内容区相对于元素顶部坐标的滚动像素偏移量。 |
+| int32_t offset | 对于可滚动类控件，如[List](./arkui-ts/ts-container-list.md)、[Grid](./arkui-ts/ts-container-grid.md)，内容区相对于元素顶部坐标的滚动像素偏移量。 |
 
 **返回：**
 
@@ -1345,7 +1352,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置zIndex。
+为ArkUI_AccessibilityElementInfo设置组件z序。
 
 **起始版本：** 13
 
@@ -1355,7 +1362,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| int32_t zIndex | 组件z序，用于控制元素在垂直于屏幕的z轴上的位置。UITest需要使用。 |
+| int32_t zIndex | 组件z序，用于控制元素在垂直于屏幕的z轴上的位置。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1382,7 +1389,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| float opacity | 表示透明度。其取值范围是0到1，其中1表示完全不透明，0表示完全透明。UITest需要使用。 |
+| float opacity | 表示透明度。其取值范围是0到1，其中1表示完全不透明，0表示完全透明。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1409,7 +1416,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* backgroundColor | 表示背景色。UITest需要使用。 |
+| const char* backgroundColor | 表示背景色。数据为"#ARGB"格式，例如非透明白色，即"#FFFFFFFF"。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1436,7 +1443,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* backgroundImage | 表示背景图片。UITest需要使用。 |
+| const char* backgroundImage | 表示背景图片。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1463,7 +1470,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* blur | 表示模糊度。UITest需要使用。 |
+| const char* blur | 表示模糊度。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1480,7 +1487,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置hitTest模式。
+为ArkUI_AccessibilityElementInfo设置触摸测试的响应逻辑及节点阻塞规则。
 
 **起始版本：** 13
 
@@ -1491,6 +1498,33 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
 | const char* hitTestBehavior | 表示hitTest模式，取值范围参考[HitTestMode](./arkui-ts/ts-appendix-enums.md#hittestmode9)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 成功返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>参数错误返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+
+### OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier()
+
+```c
+int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)
+```
+
+**描述：**
+
+
+为无障碍节点信息ArkUI_AccessibilityElementInfo设置组件标识，可用于自动化测试识别特定组件。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示无障碍节点信息元素信息。 |
+| const char* identifier | 表示组件的唯一标识字符串。<br>需保证上报的组件树中的组件标识唯一，且字符串长度不大于1024，超过1024会截断使用。|
 
 **返回：**
 
@@ -1612,7 +1646,7 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 **描述：**
 
 
-为ArkUI_AccessibilityEventInfo设置textAnnouncedForAccessibility。
+为ArkUI_AccessibilityEventInfo设置主动播报的内容。
 
 **起始版本：** 13
 
@@ -1622,7 +1656,7 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)* eventInfo | 表示事件信息。 |
-| const char* textAnnouncedForAccessibility | 表示textAnnouncedForAccessibility。 |
+| const char* textAnnouncedForAccessibility | 表示主动播报的内容。 |
 
 **返回：**
 
@@ -1639,7 +1673,7 @@ int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInf
 **描述：**
 
 
-为ArkUI_AccessibilityEventInfo设置requestFocusId。
+为ArkUI_AccessibilityEventInfo设置请求焦点id。
 
 **起始版本：** 13
 
@@ -1712,4 +1746,41 @@ int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionA
 | -- | -- |
 | int32_t | 成功返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>参数错误返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
+### OH_ArkUI_NativeModule_GetNativeAccessibilityProvider()
 
+```c
+int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)
+```
+
+**描述：**
+
+获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。
+
+其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。
+
+三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)类型的[RenderNode](js-apis-arkui-renderNode.md)并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。
+
+再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。
+
+最终实现ArkUI无障碍服务对三方框架UI的识别与事件触发。
+
+仅当三方框架将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)的[RenderNode](js-apis-arkui-renderNode.md)，该接口才会生效，否则会报错误码。
+
+本接口通过[RenderNode](js-apis-arkui-renderNode.md)实现三方框架的接入，仅支持[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)接入无障碍服务，可以实现无障碍控件树获取能力。
+
+不支持多线程并发，由三方框架保证调用时的线程安全。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | 指向一个ArkUI_NodeHandle对象的指针。|
+| [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)** provider | 指向一个ArkUI_AccessibilityProvider类型对象的指针。provider用于注册无障碍回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>参数错误返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>参数错误：1. 传入的参数node或者provider为空指针。<br>2. node对应的ArkUI_NodeHandle类型不为ARKUI_NODE_CUSTOM。 |

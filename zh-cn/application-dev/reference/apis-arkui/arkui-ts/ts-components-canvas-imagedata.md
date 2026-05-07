@@ -10,7 +10,7 @@ ImageData对象可以存储canvas渲染的像素数据。
 
 >  **说明：**
 >
->  从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 创建ImageData时，宽高不超过16384px，最大面积不超过16000px*16000px，超过最大面积则无法正常绘制。当创建面积超过536870911px时，返回值的width和height均为0px，data为undefined。
 
@@ -70,7 +70,7 @@ constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: Leng
 
 >  **说明：**
 >
->  可使用[px2vp](ts-pixel-units.md#px2vpdeprecated)接口进行单位转换。
+>  可使用[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)接口进行单位转换。
 
 ## 示例
 

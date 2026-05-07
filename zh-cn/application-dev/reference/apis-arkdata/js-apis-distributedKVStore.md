@@ -34,7 +34,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称     | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
-| context    | BaseContext    | 否   | 否   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
+| context    | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)    | 否   | 否   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
 | bundleName | string          | 否   | 否   | 调用方的包名。                                               |
 
 ## Constants
@@ -91,7 +91,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 ## ChangeNotification
 
-数据变更时通知的对象，包括数据插入的数据、更新的数据、删除的数据和设备ID。
+数据变更时通知的对象，包括插入的数据、更新的数据、删除的数据和设备ID。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -152,7 +152,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | S1         | 2 | 表示数据库的安全级别为低级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。<br>例如，性别、国籍，用户申请记录等。 |
 | S2         | 3 | 表示数据库的安全级别为中级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。<br>例如，个人详细通信地址，姓名昵称等。 |
 | S3         | 5 | 表示数据库的安全级别为高级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。<br>例如，个人实时精确定位信息、运动轨迹等。 |
-| S4         | 6 | 表示数据库的安全级别为关键级别，业界法律法规中定义的特殊数据类型，涉及个人的最私密领域的信息或者一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响数据。<br>例如，政治观点、宗教、和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况、性取向等或设备认证鉴权、个人的信用卡等财务信息。 |
+| S4         | 6 | 表示数据库的安全级别为关键级别，业界法律法规中定义的特殊数据类型，涉及个人的最私密领域的信息，一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响。<br>例如，政治观点、宗教、哲学信仰、工会成员资格、基因数据、生物信息、健康、性生活状况、性取向、设备认证鉴权或个人的信用卡等财务信息。 |
 
 ## Options
 
@@ -167,6 +167,18 @@ import { distributedKVStore } from '@kit.ArkData';
 | kvStoreType     | [KVStoreType](#kvstoretype)     | 否    | 是   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+
+## BackupConfig<sup>24+</sup>
+
+用于备份数据库的配置信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+| 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
+| --------------| -------------- | ---- | ----| -------------------------|
+| fileName      | string         | 否 | 否 | 备份数据库的名称，无长度限制，不能包含特殊字符'/'。 |
+| filePath      | string         | 否 | 否 | 备份数据库的路径，无长度限制。 |
 
 ## Schema
 
@@ -503,7 +515,9 @@ try {
     backup: false,
     autoSync: false,
     kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-    securityLevel: distributedKVStore.SecurityLevel.S3
+    securityLevel: distributedKVStore.SecurityLevel.S3,
+    // 从API version 24开始，可使用rootDir指定数据库存储路径
+    rootDir: "/data/storage/el2/database/entry"
   };
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then((store: distributedKVStore.SingleKVStore) => {
     console.info("Succeeded in getting KVStore");
@@ -529,7 +543,7 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256。                                      |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字符。                                      |
 | storeId  | string                    | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要关闭的数据库成功关闭，err为undefined，否则为错误对象。     |
 
@@ -585,9 +599,9 @@ try {
 
 ### closeKVStore
 
-closeKVStore(appId: string, storeId: string): Promise&lt;void&gt;
+closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;void&gt;
 
-通过storeId的值关闭指定的分布式键值数据库，使用Promise异步回调。
+通过storeId的值关闭指定的分布式键值数据库，如果使用kvConfig参数，关闭的是指定路径下的分布式键值数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -595,14 +609,15 @@ closeKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256。                           |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。                           |
 | storeId | string   | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要关闭的数据库的配置信息，默认为空。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -626,7 +641,9 @@ const options: distributedKVStore.Options = {
   autoSync: false,
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
-  securityLevel: distributedKVStore.SecurityLevel.S3
+  securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
+  rootDir: "/data/storage/el2/database/entry"
 }
 try {
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
@@ -635,8 +652,8 @@ try {
     kvStore = null;
     store = null;
     if (kvManager != undefined) {
-      // appId为createKVManager中的appId
-      kvManager.closeKVStore(appId, 'storeId').then(() => {
+      // appId为createKVManager中的appId, 如果options中没有配置rootDir，closeKVStore不需要options参数
+      kvManager.closeKVStore(appId, 'storeId', options).then(() => {
         console.info('Succeeded in closing KVStore');
       }).catch((err: BusinessError) => {
         console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
@@ -663,7 +680,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256。                                      |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字符。                                      |
 | storeId  | string                    | 是   | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要删除的数据库成功删除，err为undefined，否则为错误对象。     |
 
@@ -721,9 +738,9 @@ try {
 
 ### deleteKVStore
 
-deleteKVStore(appId: string, storeId: string): Promise&lt;void&gt;
+deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;void&gt;
 
-通过storeId的值删除指定的分布式键值数据库，使用Promise异步回调。
+通过storeId的值删除指定的分布式键值数据库，如果使用kvConfig参数，删除的是指定路径下的分布式键值数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -731,14 +748,15 @@ deleteKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256。                           |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。                           |
 | storeId | string   | 是   | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要删除的数据库的配置信息，默认为空。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -763,7 +781,9 @@ const options: distributedKVStore.Options = {
   autoSync: false,
   kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
   schema: undefined,
-  securityLevel: distributedKVStore.SecurityLevel.S3
+  securityLevel: distributedKVStore.SecurityLevel.S3,
+  // 从API version 24开始，可使用rootDir指定数据库存储路径
+  rootDir: "/data/storage/el2/database/entry"
 }
 try {
   kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
@@ -772,8 +792,8 @@ try {
     kvStore = null;
     store = null;
     if (kvManager != undefined) {
-      // appId为createKVManager中的appId
-      kvManager.deleteKVStore(appId, 'storeId').then(() => {
+      // appId为createKVManager中的appId, 如果options中没有配置rootDir，deleteKVStore不需要options参数
+      kvManager.deleteKVStore(appId, 'storeId', options).then(() => {
         console.info('Succeeded in deleting KVStore');
       }).catch((err: BusinessError) => {
         console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
@@ -800,7 +820,7 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                |
 | -------- | ----------------------------- | ---- | --------------------------------------------------- |
-| appId    | string                        | 是   | 应用的BundleName，不可为空且长度不大于256。                              |
+| appId    | string                        | 是   | 应用的BundleName，不可为空且长度不大于256字符。                              |
 | callback | AsyncCallback&lt;string[]&gt; | 是   | 回调函数。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
@@ -844,7 +864,7 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 
 | 参数名 | 类型 | 必填 | 说明                   |
 | ------ | -------- | ---- | ---------------------- |
-| appId  | string   | 是   | 应用的BundleName，不可为空且长度不大于256。 |
+| appId  | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。 |
 
 **返回值：**
 
@@ -1224,7 +1244,7 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting resultSet');
     resultSet = result;
-    moved = resultSet.move(2); //若当前位置为0，将读取位置从绝对位置为0的位置移动2行，即移动到绝对位置为2，行数为3的位置
+    moved = resultSet.move(2); // 若当前位置为0，将读取位置从绝对位置为0的位置移动2行，即移动到绝对位置为2，行数为3的位置
     console.info(`Succeeded in moving.moved = ${moved}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
@@ -2635,7 +2655,7 @@ deviceId(deviceId:string):Query
 添加设备ID作为Key的前缀。
 > **说明：**
 >
-> 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
+> 其中deviceId为[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)中的networkId，通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
 > deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
@@ -2888,7 +2908,7 @@ try {
         console.info(`entries[0]: ${entries[0]}`);
       });
     } else {
-      console.error('KvStore is null'); //后续示例代码与此处保持一致
+      console.error('KvStore is null'); // 后续示例代码与此处保持一致
     }
   });
 } catch (e) {
@@ -3259,7 +3279,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | ------------------------- | ---- | ---------------------- |
-| deviceId | string                    | 是   | 表示要删除设备的networkId。 |
+| deviceId | string                    | 是   | 设备的networkId。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。删除指定设备的数据成功，err为undefined，否则为错误对象。    |
 
 **错误码：**
@@ -3280,19 +3300,27 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try {
   kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to put device data: ${err.code} - ${err.message}`);
+      return;
+    }
     console.info('Succeeded in putting data');
     const deviceid = 'no_exist_device_id';
-    if (kvStore != null) {
+    if (kvStore) {
       kvStore.removeDeviceData(deviceid, async (err: BusinessError) => {
-        if (err == undefined) {
-          console.info('succeeded in removing device data');
-        } else {
-          console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
-          if (kvStore != null) {
+        if (err) {
+          console.error(`Failed to remove device data: ${err.code} - ${err.message}`);
+          if (kvStore) {
             kvStore.get(KEY_TEST_STRING_ELEMENT, async (err: BusinessError, data: boolean | string | number | Uint8Array) => {
-              console.info('Succeeded in getting data');
-            });
+                if (err) {
+                  console.error(`Failed to get data: ${err.code} - ${err.message}`);
+                  return;
+                }
+                console.info(`Succeeded in getting data.data=${data}`);
+              });
           }
+        } else {
+          console.info('Succeeded in removing device data');
         }
       });
     }
@@ -3319,7 +3347,7 @@ removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型 | 必填 | 说明                   |
 | -------- | -------- | ---- | ---------------------- |
-| deviceId | string   | 是   | 表示要删除设备的networkId。 |
+| deviceId | string   | 是   | 设备的networkId。 |
 
 **返回值：**
 
@@ -3356,7 +3384,7 @@ try {
     console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
   });
   kvStore.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
-    console.info('Succeeded in getting data');
+    console.info(`Succeeded in getting data. Data=${data}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get data.code is ${err.code},message is ${err.message} `);
   });
@@ -4377,6 +4405,55 @@ try {
 }
 ```
 
+### backupEx<sup>24+</sup>
+
+backupEx(backupConfig:BackupConfig): Promise&lt;void&gt;
+
+以指定名称和路径备份数据库，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| backupConfig   | [BackupConfig](#backupconfig24)  | 是   | 备份数据库的信息（名称和路径）。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100000     | Input parameters do not meet the API requirements, such as invalid value ranges, length limits, or incorrect formats. |
+| 15100005     | Database or result set already closed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore.backupEx(backupConfig).then(() => {
+    console.info(`Succeeded in backupping data`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to backup.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
 ### restore
 
 restore(file:string, callback: AsyncCallback&lt;void&gt;):void
@@ -4458,6 +4535,56 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let backupFile = "BK001";
 try {
   kvStore.restore(backupFile).then(() => {
+    console.info(`Succeeded in restoring data`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to restore.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+### restoreEx<sup>24+</sup>
+
+restoreEx(backupConfig:BackupConfig): Promise&lt;void&gt;
+
+从指定的数据库文件恢复数据库，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| backupConfig   | [BackupConfig](#backupconfig24)  | 是   | 备份数据库的信息（名称和路径）。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100000     | Input parameters do not meet the API requirements, such as invalid value ranges, length limits, or incorrect formats. |
+| 15100005     | Database or result set already closed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore.restoreEx(backupConfig).then(() => {
     console.info(`Succeeded in restoring data`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to restore.code is ${err.code},message is ${err.message}`);
@@ -4557,6 +4684,55 @@ try {
 }
 ```
 
+### deleteBackupEx<sup>24+</sup>
+
+deleteBackupEx(backupConfig:BackupConfig): Promise&lt;void&gt;
+
+根据指定名称和路径删除备份文件，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**参数：**
+
+| 参数名 | 类型            | 必填 | 说明                                                         |
+| ------ | ------------------- | ---- | ------------------------------------------------------------ |
+| backupConfig   | [BackupConfig](#backupconfig24)  | 是   | 备份数据库的信息（名称和路径）。 |
+
+**返回值：**
+
+| 类型                                         | 说明                                            |
+| -------------------------------------------- | ----------------------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100000     | Input parameters do not meet the API requirements, such as invalid value ranges, length limits, or incorrect formats. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const backupConfig: distributedKVStore.BackupConfig = {
+  fileName: 'BK001',
+  filePath: '/data/storage/el2/database'
+};
+try {
+  kvStore.deleteBackupEx(backupConfig).then(() => {
+    console.info(`Succeed in deleting Backup.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
+  })
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### startTransaction
 
 startTransaction(callback: AsyncCallback&lt;void&gt;): void
@@ -4603,7 +4779,7 @@ function putBatchString(len: number, prefix: string) {
     entries.push(entry);
   }
   return entries;
-} //自定义函数，放置在作用域最外侧，防止语法检查报错
+} // 自定义函数，放置在作用域最外侧，防止语法检查报错
 
 try {
   let count = 0;
@@ -4714,15 +4890,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   kvStore.commit((err: BusinessError) => {
-    if (err == undefined) {
-      console.info('Succeeded in committing');
+    if (err) {
+      console.error(`Failed to commit. Code is ${err.code}, message is ${err.message}`);
     } else {
-      console.error(`Failed to commit.code is ${err.code},message is ${err.message}`);
+      console.info('Succeeded in committing');
     }
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -4794,15 +4970,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   kvStore.rollback((err: BusinessError) => {
-    if (err == undefined) {
-      console.info('Succeeded in rolling back');
+    if (err) {
+      console.error(`Failed to rollback. Code is ${err.code}, message is ${err.message}`);
     } else {
-      console.error(`Failed to rollback.code is ${err.code},message is ${err.message}`);
+      console.info('Succeeded in rolling back');
     }
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -4875,15 +5051,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   kvStore.enableSync(true, (err: BusinessError) => {
-    if (err == undefined) {
-      console.info('Succeeded in enabling sync');
+    if (err) {
+      console.error(`Failed to enable sync. Code is ${err.code}, message is ${err.message}`);
     } else {
-      console.error(`Failed to enable sync.code is ${err.code},message is ${err.message}`);
+      console.info('Succeeded in enabling sync');
     }
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -5579,6 +5755,46 @@ try {
 }
 ```
 
+### rekey
+
+rekey(): Promise&lt;void&gt;
+
+更新数据库的加密密钥，使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100003     | Database corrupted. |
+| 15100005     | Database or result set already closed. |
+| 15100006     | Failed to update the key. |
+
+**示例：**
+
+```ts
+try {
+  kvStore.rekey().then(() => {
+    console.info('Success');
+  })
+} catch (err) {
+  console.error(`Failed to rekey. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## DeviceKVStore
 
 设备协同数据库，继承自SingleKVStore，提供查询数据和端端同步数据的方法，可以使用SingleKVStore的方法例如：put、putBatch等。
@@ -5635,7 +5851,7 @@ try {
           console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
           return;
         }
-        console.info(`Succeeded in getting data.data=${data}`);
+        console.info(`Succeeded in getting data. Data=${data}`);
       });
     }
   });
@@ -5706,7 +5922,7 @@ try {
 
 get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
 
-获取与指定设备ID和Key匹配的string值，使用callback异步回调。
+获取与指定设备ID和Key匹配的值，使用callback异步回调。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -5767,7 +5983,7 @@ try {
 
 get(deviceId: string, key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
-获取与指定设备ID和Key匹配的string值，使用Promise异步回调。
+获取与指定设备ID和Key匹配的值，使用Promise异步回调。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -6265,7 +6481,7 @@ getEntries(deviceId: string, query: Query, callback: AsyncCallback&lt;Entry[]&gt
 
 | 参数名   | 类型                               | 必填 | 说明                                                    |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------- |
-| deviceId | string                                 | 是   | 键值对所属的设备ID。                                    |
+| deviceId | string                                 | 是   | 设备的networkId。                                    |
 | query    | [Query](#query)                         | 是   | 表示查询对象。                                          |
 | callback | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数。返回与指定设备ID和Query对象匹配的键值对列表。 |
 
@@ -6343,7 +6559,7 @@ getEntries(deviceId: string, query: Query): Promise&lt;Entry[]&gt;
 
 | 参数名   | 类型       | 必填 | 说明                 |
 | -------- | -------------- | ---- | -------------------- |
-| deviceId | string         | 是   | 键值对所属的设备ID。 |
+| deviceId | string         | 是   | 设备的networkId。 |
 | query    | [Query](#query) | 是   | 表示查询对象。       |
 
 **返回值：**

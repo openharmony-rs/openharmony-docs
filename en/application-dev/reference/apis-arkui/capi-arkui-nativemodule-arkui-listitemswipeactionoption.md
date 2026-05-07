@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_ListItemSwipeActionOption ArkUI_ListItemSwipeActionOption
+```
+
 ## Overview
 
 Defines the configuration for **ListItemSwipeActionOption**.

@@ -8,7 +8,7 @@
 
 通过文本显示计时信息并控制其计时器状态的组件。
 
-组件不可见时，时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
+组件不可见（非锁屏状态和应用后台状态）时，UI时间变动将停止（即该组件此时不会绘制），[onTimer](#ontimer)仍然会正常触发。
 
 >  **说明：**
 >
@@ -32,23 +32,20 @@ TextTimer(options?: TextTimerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [TextTimerOptions](#texttimeroptions对象说明)| 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。 |
+| options |  [TextTimerOptions](#texttimeroptions对象说明)| 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。默认值继承[TextTimerOptions](#texttimeroptions对象说明) 。|
 
 ## TextTimerOptions对象说明
 
 用于构建TextTimer组件的选项。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型     | 只读 | 可选 | 说明                   |
 | ----------- | -------- | -------- | -------- | -------- |
-| isCountDown | boolean  | 否  | 是  | 倒计时开关。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br/>默认值：false |
-| count       | number   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 |
-| controller  | [TextTimerController](#texttimercontroller) | 否 | 是 | TextTimer控制器。 |
+| isCountDown | boolean  | 否  | 是  | 倒计时开关。<br/>true：计时器开启倒计时，例如从30秒~0秒。<br/>false：计时器开始计时，例如从0秒~30秒。<br/>默认值：false <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| count       | number   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| controller  | [TextTimerController](#texttimercontroller) | 否 | 是 | TextTimer控制器。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| startTime | number | 否 | 是 | 计时器正向计时模式下的初始时间，仅当isCountDown为false时该参数设置生效。<br/>默认值：0 <br/>单位：毫秒 <br/>当值为负数时，计时器将从负值开始计时，经过0后继续向正数计时。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -72,7 +69,7 @@ format(value: string)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | string | 是   | 自定义格式。<br/>默认值：'HH:mm:ss.SS' |
+| value  | string | 是   | 自定义日期显示的格式。<br/>默认值：'HH:mm:ss.SS' |
 
 
 ### fontColor
@@ -91,7 +88,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>Wearable设备上默认值为：'#c5ffffff'，显示白色。<br/>其他设备上默认值：'#e6182431'，显示黑色。|
 
 ### fontSize
 
@@ -109,7 +106,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
+| value  | [Length](ts-types.md#length) | 是   | 字体大小。value为Length中的number类型时，单位为fp。字体大小默认为16fp。value为Length中的string类型时，设置值为非数字开头的字符串时，按0fp处理；设置值为数字开头的字符串时，如果数字后内容包含除[像素单位](ts-pixel-units.md)外的字符（如字母、特殊符号等），则取值字符串开头的数字部分，单位为fp。例如设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
 
 ### fontStyle
 
@@ -127,7 +124,7 @@ fontStyle(value: FontStyle)
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式，例如斜体的字体样式。<br/>默认值：FontStyle.Normal |
 
 ### fontWeight
 
@@ -183,7 +180,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果的参数，包括颜色、模糊半径、偏移量。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -199,7 +196,7 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<TextTimerConfiguration>](#texttimerconfiguration12对象说明) | 是   | 在TextTimer组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<TextTimerConfiguration>](#texttimerconfiguration12对象说明) | 是   | 在TextTimer组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## 事件
 
@@ -207,8 +204,7 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 
 onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。
-设置高精度的format（SSS、SS）时，回调间隔可能会出现波动。
+时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。设置高精度的[format](#format)（SS）时，回调间隔可能会出现波动。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -225,7 +221,7 @@ onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;
 
 ## TextTimerController
 
-TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组件仅支持绑定一个控制器，组件创建完成后相关指令才能被调用。
+TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组件仅支持绑定一个控制器，组件创建完成后相关指令才能被调用。一个TextTimerController只能控制最后一个绑定此TextTimerController的TextTimer组件。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -291,16 +287,15 @@ ContentModifier接口使用的TextTimer配置。
 
 开发者需要自定义class实现ContentModifier接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型    |  只读  |  可选   |  说明              |
 | ------ | ------ | ------ | ------ |-------------------------------- |
-| count | number | 否 | 否 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。 |
-| isCountDown | boolean| 否 | 否 | 是否倒计时。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br> 默认值：false |
-| started | boolean | 否 | 否 | 是否已经开始了计时。默认值：false， 表示未开始计时。|
-| elapsedTime | number | 否 | 否 |计时器经过的时间，单位为设置格式的最小单位。 |
+| count | number | 否 | 否 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| isCountDown | boolean| 否 | 否 | 是否倒计时。<br/>true：计时器开启倒计时，例如从30秒 ~ 0秒；false：计时器开始计时，例如从0秒 ~ 30秒。<br/> 默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| started | boolean | 否 | 否 | 是否已经开始了计时。<br/>true：开始计时；false：未开始计时。<br/>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| elapsedTime | number | 否 | 否 |计时器经过的时间，单位为设置格式的最小单位。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| startTime | number | 否 | 是 | 计时器正向计时模式下的初始时间，仅当isCountDown为false时该参数设置生效。<br/>默认值：0 <br/>单位：毫秒 <br/>当值为负数时，计时器将从负值开始计时，经过0后继续向正数计时。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 ### 示例1（支持手动启停的文本计时器）
@@ -327,13 +322,13 @@ struct TextTimerExample {
           console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
         })
       Row() {
-        Button("start").onClick(() => {
+        Button('start').onClick(() => {
           this.textTimerController.start();
         })
-        Button("pause").onClick(() => {
+        Button('pause').onClick(() => {
           this.textTimerController.pause();
         })
-        Button("reset").onClick(() => {
+        Button('reset').onClick(() => {
           this.textTimerController.reset();
         })
       }
@@ -412,13 +407,13 @@ function buildTextTimer(config: TextTimerConfiguration) {
       Circle({ width: 150, height: 150 })
         .fill(config.started ? (config.isCountDown ? 0xFF232323 : 0xFF717171) : 0xFF929292)
       Column() {
-        Text(config.isCountDown ? "倒计时" : "正计时").fontColor(Color.White)
+        Text(config.isCountDown ? '倒计时' : '正计时').fontColor(Color.White)
         Text(
-          (config.isCountDown ? "剩余" : "已经过去了") + (config.isCountDown ?
-            (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + "/" +
+          (config.isCountDown ? '剩余' : '已经过去了') + (config.isCountDown ?
+            (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + '/' +
             (config.count / 1000).toFixed(0)
             : ((config.elapsedTime / 100).toFixed(0))
-          ) + "秒"
+          ) + '秒'
         ).fontColor(Color.White)
       }
     }
@@ -448,15 +443,15 @@ struct Index {
             console.info('textTimer onTimer utc is：' + utc + ', elapsedTime: ' + elapsedTime);
           })
         Row() {
-          Button("start").onClick(() => {
+          Button('start').onClick(() => {
             this.countDownTextTimerController.start();
             this.countUpTextTimerController.start();
           }).margin(10)
-          Button("pause").onClick(() => {
+          Button('pause').onClick(() => {
             this.countDownTextTimerController.pause();
             this.countUpTextTimerController.pause();
           }).margin(10)
-          Button("reset").onClick(() => {
+          Button('reset').onClick(() => {
             this.countDownTextTimerController.reset();
             this.countUpTextTimerController.reset();
           }).margin(10)
@@ -495,7 +490,104 @@ struct TextTimerStart {
           this.textTimerController.start();
         })
     }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 ![text_timer_auto_start](figures/text_timer_auto_start.gif)
+
+### 示例5（设置文本样式）
+
+该示例通过[fontColor](#fontcolor)、[fontSize](#fontsize)、[fontStyle](#fontstyle)、[fontWeight](#fontweight)、[fontFamily](#fontfamily)属性展示了不同样式的文本效果。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct demo {
+  textTimerController: TextTimerController = new TextTimerController();
+  @State format: string = 'HH:mm:ss.SS';
+  @State countValue: number = 5025678;
+
+  build() {
+    Column({ space: 10 }) {
+      Text('设置字体颜色').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontColor(Color.Blue)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontColor(Color.Gray)
+
+      Text('设置字体大小').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontSize(10)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontSize(30)
+
+      Text('设置字体样式').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontStyle(FontStyle.Normal)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontStyle(FontStyle.Italic)
+
+      Text('设置字重').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontWeight(FontWeight.Lighter)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontWeight(FontWeight.Bolder)
+
+      Text('设置字体族').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontFamily('HMOS Color Emoji')
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontFamily('HarmonyOS Sans')
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![](figures/text_timer_example_font_setting.png)
+
+### 示例6（设置初始计时时间）
+
+该示例通过[TextTimerOptions](#texttimeroptions对象说明)的startTime属性设置计时器初始计时时间。
+
+从API版本26.0.0开始，[TextTimerOptions](#texttimeroptions对象说明)新增了startTime属性。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextTimerExample {
+  textTimerController: TextTimerController = new TextTimerController();
+  @State format: string = 'mm:ss.SS';
+
+  build() {
+    Column() {
+      TextTimer({ isCountDown: false, controller: this.textTimerController, startTime: 30000 })
+        .format(this.format)
+        .fontColor(Color.Black)
+        .fontSize(50)
+        .onTimer((utc: number, elapsedTime: number) => {
+          console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
+        })
+      Row({ space: 10 }) {
+        Button('start').onClick(() => {
+          this.textTimerController.start();
+        })
+        Button('pause').onClick(() => {
+          this.textTimerController.pause();
+        })
+        Button('reset').onClick(() => {
+          this.textTimerController.reset();
+        })
+      }
+    }
+  }
+}
+```
+![text_timer_auto_start](figures/text_timer_starttime.gif)

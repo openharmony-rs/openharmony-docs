@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS APIs<!--input-arkts-->
   - [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md)
@@ -42,6 +42,7 @@
   - Structs<!--input-struct-->
     - [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md)
     - [Input_DeviceListener](capi-input-input-devicelistener.md)
+    - [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)
     - [Input_KeyState](capi-input-input-keystate.md)
     - [Input_KeyEvent](capi-input-input-keyevent.md)
     - [Input_MouseEvent](capi-input-input-mouseevent.md)
@@ -61,3 +62,4 @@
   - [Shortcut Key Error Codes](errorcode-inputconsumer.md)
   - [Input Device Error Codes](errorcode-inputdevice.md)
   - [Mouse Pointer Error Codes](errorcode-pointer.md)
+  - [IR Management Error Codes](errorcode-infraredemitter.md)

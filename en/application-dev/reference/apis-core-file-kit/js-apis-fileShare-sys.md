@@ -3,8 +3,8 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
-<!--Tester: @leiyuqian-->
-<!--Adviser: @foryourself-->
+<!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
+<!--Adviser: @jinqiuheng-->
 
 The **fileShare** module provides APIs for granting the access permissions on a user file to another application based on the file Uniform Resource Identifier (URI). Then, the authorized application can access the file by using the [@ohos.file.fs](js-apis-file-fs.md) APIs.
 
@@ -38,7 +38,7 @@ Grants the permissions on a user file to an application. This API uses an asynch
 | uri   | string| Yes  | URI of the file under user directory.|
 | bundleName   | string| Yes  | Application to be granted with the permissions.  |
 | flag   | [wantConstant.Flags](../apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) | Yes  | Permissions to grant.    |
- | callback | AsyncCallback&lt;void&gt;| Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt;| Yes   | Callback used to return the result.|
 
 **Error codes**
 
@@ -49,7 +49,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 143000001 | IPC error. |
+| 14300001 | IPC error. |
 
 **Example**
 
@@ -58,7 +58,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let uri: string =
-    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
@@ -110,7 +110,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 143000001 | IPC error. |
+| 14300001 | IPC error. |
 
 **Example**
 
@@ -119,7 +119,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let uri: string =
-    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
@@ -170,11 +170,11 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
+| 13900042 | Out of memory.|
 
 **Example**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { fileShare } from '@kit.CoreFileKit';
   
   async function checkPersistentPermissionExample() {
@@ -237,7 +237,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message      |
 |----------| --------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 201      | Permission verification failed.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |

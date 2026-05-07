@@ -84,7 +84,7 @@ NavDestination提供了两种类型。
 
 ## 页面生命周期
 
-页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和[NavDestination生命周期](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[OnAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[OnDisappear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
+页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和[NavDestination生命周期](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
 
 生命周期时序如下图所示：
 
@@ -92,7 +92,7 @@ NavDestination提供了两种类型。
 
 - **[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)**：在创建自定义组件后，执行其build()函数之前执行（NavDestination创建之前），允许在该方法中改变状态变量，更改将在后续执行build()函数中生效。
 - **[onWillAppear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillappear12)**：NavDestination创建后，挂载到组件树之前执行，在该方法中更改状态变量会在当前帧显示生效。
-- **[OnAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)**：通用生命周期事件，NavDestination组件挂载到组件树时执行。
+- **[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)**：通用生命周期事件，NavDestination组件挂载到组件树时执行。
 - **[onWillShow](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillshow12)**：NavDestination组件布局显示之前执行，此时页面不可见（应用切换到前台不会执行）。
 - **[onShown](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onshown10)**：NavDestination组件布局显示之后执行，此时页面已完成布局。
 - **[onActive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)**：NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）执行。

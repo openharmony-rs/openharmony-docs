@@ -13,14 +13,14 @@ You can install and uninstall applications using debug commands, for example, th
 
 **Figure 1** Process of installing and uninstalling an application (applicable to developers)
 
-![hap-intall-uninstall](figures/hap-install-uninstall-developer.png)
+![hap-install-uninstall](figures/hap-install-uninstall-developer.png)
 
 
 After an application is released to AppGallery, users can install the application on their devices through the AppGallery.
 
 **Figure 2** Process of installing and uninstalling an application (applicable to consumers)
 
-![hap-intall-uninstall](figures/hap-install-uninstall-user.png)
+![hap-install-uninstall](figures/hap-install-uninstall-user.png)
 
 ## Updating an Application
 

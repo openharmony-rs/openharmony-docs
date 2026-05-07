@@ -148,6 +148,7 @@ Represents the result returned.
 | uri         | string    | No | Yes  | Unique identifier of a certificate or credential. The value contains up to 256 bytes.|
 | outData         | Uint8Array    | No | Yes  | Signature generated.|
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | No | Yes  | Represents detailed information about a credential.|
+| uriList         | Array\<string>    | No | Yes  | Certificate URI list.<br>**Since**: 26.0.0|
 
 ## CMHandle
 
@@ -158,6 +159,20 @@ Represents the handle to a signing or signature verification operation.
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | handle         | Uint8Array        | No | No  | Handle of the initialization for signing and signature verification. The value contains up to 8 bytes.|
+
+## CertBlob
+
+Represents the certificate data in binary format.
+
+**System capability**: System SystemCapability.Security.CertificateManager
+
+**Since**: 26.0.0
+
+| Name       | Type                               | Read-Only| Optional| Description |
+| ----------- | ----------------------------------- | ---- | ---- | ---- |
+| certData    | Uint8Array                           | No  | No | Certificate file data.|
+| certFormat  | [CertFileFormat](#certfileformat)   | No  | Yes | Certificate file format.|
+| certScope   | [CertScope](#certscope18)         | No  | Yes | Scope of the CA certificate.|
 
 ## CMErrorCode
 
@@ -259,6 +274,19 @@ Provides USB credential attributes.
 | -------------- | ---- | ---- | ---- | ---- |
 | certPurpose  | [CertificatePurpose](#certificatepurpose22)  | No  | Yes | Credential usage.|
 
+## CertFileFormat
+
+Represents the certificate file format.
+
+**System capability**: System SystemCapability.Security.CertificateManager
+
+**Since**: 26.0.0
+
+| Name      | Value| Description     |
+| ---------- | ------ | --------- |
+| PEM_DER   | 0      | The certificate file format is PEM or DER.|
+| P7B       | 1      | The certificate file format is P7B.|
+
 ## certificateManager.installPrivateCertificate
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
@@ -280,7 +308,7 @@ Installs a private credential. This API uses an asynchronous callback to return 
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -339,7 +367,7 @@ Installs a private credential. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -399,7 +427,7 @@ Installs a private credential and specifies its storage level. This API uses a p
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID              | Error Message                                                    |
 | ---------------------- | ------------------------------------------------------------ |
@@ -453,7 +481,7 @@ Obtains detailed information about a private credential. This API uses an asynch
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -509,7 +537,7 @@ Obtains detailed information about a private credential. This API uses a promise
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -559,7 +587,7 @@ Uninstalls a private credential. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -610,7 +638,7 @@ Uninstalls a private credential. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -633,6 +661,70 @@ try {
   })
 } catch (error) {
   console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManager.installUserTrustedCertificate
+
+installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
+
+Installs a user CA certificate. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT or ohos.permission.ACCESS_USER_TRUSTED_CERT
+
+**System capability**: System SystemCapability.Security.CertificateManager
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name     | Type                      | Mandatory| Description                                                        |
+| ----------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| certificate | [CertBlob](#certblob) | Yes  | Certificate information.                                          |
+
+**Return value**
+
+| Type                           | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[CMResult](#cmresult)> | Promise used to return the operation result, that is, **uri** in the [CMResult](#cmresult) object.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
+
+| ID   | Error Message                                                                                                                                           |
+| ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 201         | Permission verification failed. The application does not have the permission required to call the API. |
+| 401         | Parameter verification failed. Possible causes: the certData parameter is empty or exceeds the maximum length. |
+| 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500003    | Indicates that the certificate is in an invalid format. |
+| 17500004    | Indicates that the number of certificates reaches the maximum allowed. |
+| 17500007    | Indicates that the device enters advanced security mode. In this mode, the user CA certificate cannot be installed. |
+
+**Example**
+
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* The CA certificate data must be assigned by the service. In this example, the data is not CA certificate data. */
+let certData: Uint8Array = new Uint8Array([
+    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+]);
+try {
+    let certBlob: certificateManager.CertBlob = {
+        certData: certData,
+        certFormat: certificateManager.CertFileFormat.PEM_DER,
+        certScope: certificateManager.CertScope.CURRENT_USER
+    };
+    certificateManager.installUserTrustedCertificate(certBlob).then((cmResult: certificateManager.CMResult) => {
+        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+        console.info('Succeeded in installing user trusted certificate.');
+    }).catch((err: BusinessError) => {
+        console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
+    })
+} catch (error: BusinessError) {
+    console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -661,7 +753,7 @@ Installs a user CA certificate.
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID                 | Error Message                                                                                                                                           |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -687,7 +779,7 @@ try {
     if (certUri === undefined) {
         console.error("The result of install user trusted certificate is undefined.");
     } else {
-        console.info("Successed to install user trusted certificate.");
+        console.info("Succeeded to install user trusted certificate.");
     }
 } catch (error) {
     console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
@@ -712,7 +804,7 @@ Uninstalls a user CA certificate.
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID                 | Error Message                                                                                                                                           |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -754,7 +846,7 @@ Initializes the signing or signature verification operation using the specified 
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -762,7 +854,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005<sup>12+</sup> | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user. |
 
 **Example**
 ```ts
@@ -808,11 +900,11 @@ Initializes the signing or signature verification operation using the specified 
 
 | Type                                       | Description                |
 | ------------------------------------------- | -------------------- |
-| Promise\<[CMHandle](#cmhandle)> | Promise used to return a **CMHandle** object.|
+| Promise\<[CMHandle](#cmhandle)> | Promise used to return the operation result, that is, the **CMHandle** object.|
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -820,7 +912,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005<sup>12+</sup> | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user. |
 
 **Example**
 ```ts
@@ -864,7 +956,7 @@ Updates the data for the signing or signature verification operation. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -921,7 +1013,7 @@ Updates the data for the signing or signature verification operation. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -971,7 +1063,7 @@ Finishes the signing operation. This API uses an asynchronous callback to return
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1025,7 +1117,7 @@ Finishes the signature verification operation. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1072,7 +1164,7 @@ Finishes the signing or signature verification operation. This API uses a promis
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
-| signature | Uint8Array                   | No  | Data to sign or verify.|
+| signature | Uint8Array                   | No  | Signature data used for signature verification. This parameter needs to be specified only for signature verification.|
 
 **Return value**
 
@@ -1082,7 +1174,7 @@ Finishes the signing or signature verification operation. This API uses a promis
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1146,7 +1238,7 @@ Aborts the signing or signature verification operation. This API uses an asynchr
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1199,7 +1291,7 @@ Aborts the signing or signature verification operation. This API uses a promise 
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1251,7 +1343,7 @@ Obtains detailed information about a public credential. This API uses a promise 
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -1307,7 +1399,7 @@ Checks whether this application is authorized by the specified user credential. 
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -1350,11 +1442,11 @@ Obtains all user trusted root CA certificates of the device. This API uses a pro
 
 | Type                           | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise used to return the user's root CA certificates obtained, that is, **certList** in the [CMResult](#cmresult) object.|
+| Promise\<[CMResult](#cmresult)> | Promise used to return the operation result, that is, **certList** in the [CMResult](#cmresult) object.|
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -1369,7 +1461,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.getAllUserTrustedCertificates().then((cmResult) => {
     if (cmResult === undefined) { // If the number of root CA certificates is 0, the returned cmResult is undefined.
-      console.info('the count of the user trusted certificates is 0');
+      console.info('The count of the user trusted certificates is 0.');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting all user trusted certificates is undefined.');
     } else {
@@ -1404,11 +1496,11 @@ Obtains the user root CA certificates based on the certificate scope. This API u
 
 | Type                           | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise used to return the user's root CA certificates obtained, that is, **certList** in the [CMResult](#cmresult) object.|
+| Promise\<[CMResult](#cmresult)> | Promise used to return the operation result, that is, **certList** in the [CMResult](#cmresult) object.|
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1427,7 +1519,7 @@ try {
   let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
   certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
     if (cmResult === undefined) { // If the number of root CA certificates is 0, the returned cmResult is undefined.
-      console.info('the count of the user trusted certificates is 0');
+      console.info('The count of the user trusted certificates is 0.');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting current user trusted certificates is undefined.');
     } else {
@@ -1462,11 +1554,11 @@ Obtains the detailed information about a user root CA certificate. This API uses
 
 | Type                           | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise used to return the detailed CA certificate information obtained, that is, **certInfo** in the [CMResult](#cmresult) object.|
+| Promise\<[CMResult](#cmresult)> | Promise used to return the operation result, that is, **certInfo** in the [CMResult](#cmresult) object.|
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -1514,7 +1606,7 @@ Obtains the credentials for installing the application. This API uses a promise 
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
@@ -1529,7 +1621,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.getPrivateCertificates().then((cmResult) => {
     if (cmResult === undefined) { // If the number of certificate credentials is 0, the returned cmResult is undefined.
-      console.info('the count of the private certificates is 0');
+      console.info('The count of the private certificates is 0.');
     } else if (cmResult.credentialList == undefined) {
       console.info('The result of getting all private certificates installed by the application is undefined.');
     } else {
@@ -1565,7 +1657,7 @@ Obtains the certificate storage path.
 
 **Error codes**
 
-For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
 | ID   | Error Message     |
 |----------| ------------- |
@@ -1668,5 +1760,66 @@ try {
   })
 } catch (error) {
   console.error(`Failed to get detail of USB key certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManager.getUkeyCertificateList
+
+getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
+
+Obtains the list of USB credential certificates. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
+
+**System capability**: System SystemCapability.Security.CertificateManager
+
+**Since**: 26.0.0
+
+**Device behavior differences**: This API can be properly called on PCs. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name      | Type                               | Mandatory| Description                                     |
+| ------------ | ----------------------------------- | ---- | ----------------------------------------- |
+| ukeyProvider | string                               | Yes  | USB credential provider.                      |
+| ukeyInfo     | [UkeyInfo](#ukeyinfo22)             | Yes  | Attributes of a USB credential.                    |
+
+**Return value**
+
+| Type                           | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[CMResult](#cmresult)> | Promise used to return the operation result, that is, **credentialDetailList** in the [CMResult](#cmresult) object.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
+
+| ID   | Error Message                                                                                                                                           |
+| ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 201         | Permission verification failed. The application does not have the permission required to call the API. |
+| 801         | Capability not supported. |
+| 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500010    | Indicates that access USB key service failed. |
+| 17500011    | Parameter verification failed. Possible causes: the ukeyInfo parameter is invalid. For example, the parameter format is incorrect or the value range is invalid. |
+
+**Example**
+
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ukeyProvider: string = 'testProvider'; /* USB credential provider, which is omitted here. */
+let ukeyInfo: certificateManager.UkeyInfo = { /* USB credential attributes. The value is omitted here. */
+    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+}
+try {
+    certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult: certificateManager.CMResult) => {
+        let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
+        console.info('Succeeded in getting USB key certificate list.');
+    }).catch((err: BusinessError) => {
+        console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
+    })
+} catch (error: BusinessError) {
+    console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
 }
 ```

@@ -33,12 +33,8 @@ The event interaction pipeline describes the end-to-end process where ArkUI rece
     Components with registered gestures form a gesture response chain. The system combines events to detect gestures, resolves gesture conflicts through competition logic, and triggers the callback of the winning gesture.
 
    (4) Event Interception
-
-    You can intercept events at two levels:
-
-   - Pre-chain: Configure hit test properties to affect the formation of the event response chain.
-
-   - Post-chain:
+   
+    You can intercept events at two levels:<br>Pre-chain: Configure hit test properties to affect the formation of the event response chain.<br>Post-chain:
 
     During event dispatch to the touch event response chain, you can block touch event propagation using touch interceptors.
 
@@ -86,7 +82,7 @@ Applications can intervene in hit test results through the following methods to 
 
 | Intervention Mode      | Description                            | API        | Remarks                                                                                                                                                                                                                                                                                                                                     |
 | -------------- | ------------------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Response region setting  | Sets the region where a component can respond to user interactions.| [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)   | 1. The response region is used to determine whether the user's touch falls within its range; only touches within the range will be collected.<br>3. The response region also affects gesture recognition, such as clicks, which are triggered only when the touch is released within the response region range.<br>                                                                                                                                                                    |
+| Response region setting  | Sets the region where a component can respond to user interactions.| [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)   | 1. The response region is used to determine whether the user's touch falls within its range; only touches within the range will be collected.<br>2. The response region also affects gesture recognition, such as clicks, which are triggered only when the touch is released within the response region range.<br>                                                                                                                                                                    |
 | Hit test control  | Intervenes in the collection results of the component itself and other components.        | [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)  | **hitTestBehavior** works similarly to **onTouchIntercept**, but it is statically configured.                                                                                                                                                                                                                                                                              |
 | Custom event interception| Intervenes in the collection results of the component itself and other components.        | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | This callback is triggered when the user triggers a press event and the system begins collecting all components that need to participate in event processing at the current position. Applications can return a **HitTestMode** value through this callback to influence the system's behavior in collecting child or sibling nodes. This enables dynamic control over interaction responses, such as allowing certain components to participate in interactions only under specific service conditions.<br>**onTouchIntercept** works similarly to **hitTestBehavior**, but it is a dynamic callback.|
 
@@ -112,13 +108,14 @@ Applications can intervene in hit test results through the following methods to 
    @Entry
    @Component
    struct FocusOnclickExample {
-     @State text: string = ''
-     @State number:number = 0
+     @State text: string = '';
+     @State number:number = 0;
    
      build() {
        Column() {
          Text(this.text)
            .margin({bottom:20})
+         // Replace $r('app.string.button') with the actual resource file. In this example, the value in the resource file is "Button."
          Button($r('app.string.button'))
            .responseRegion([
              {
@@ -132,11 +129,11 @@ Applications can intervene in hit test results through the following methods to 
                y: 0,
                width: '30%',
                height: '100%'
-             }, // Second response region: right 1/3 of the button
+             },// Second response region: right 1/3 of the button
            ])
            .onClick(() => {
              this.number++;
-             this.text = 'button' + this.number + 'clicked'
+             this.text = 'button' + this.number + 'clicked';
            })
            .width(200)
        }.width('100%').justifyContent(FlexAlign.Center)
@@ -146,7 +143,7 @@ Applications can intervene in hit test results through the following methods to 
 
    The above code divides the button into three parts, with the middle 40% area non-responsive to clicks, while the remaining areas on both sides remain responsive.
 
-   ![response region](figures/interaction-basic-respose-region-01.png)
+   ![response region](figures/interaction-basic-response-region-01.png)
 
 2. Hit Test Control
 

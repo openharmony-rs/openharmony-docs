@@ -10,7 +10,7 @@
 
 For security purposes, the ArkWeb kernel does not allow the file and resource protocols to access cross-origin requests. As such, the **Web** component blocks such requests when loading local offline resources. To allow cross-origin requests using the file, you can use method 2 to set a path list. When **Web** components cannot access local cross-origin resources, the DevTools console displays the following error message:
 
-```
+```text
 Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, arkweb, data, chrome-extension, chrome, https, chrome-untrusted.
 ```
 
@@ -118,8 +118,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   2. The application resource directory and its subdirectories, which can be obtained through [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), such as:
 
-  * /data/storage/el1/bundle/entry/resource/resfile
-  * /data/storage/el1/bundle/entry/resource/resfile/example
+  * /data/storage/el1/bundle/entry/resources/resfile
+  * /data/storage/el1/bundle/entry/resources/resfile/example
 
   3. Since API version 21, the application cache directory is obtained through [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context). Example subdirectories are as follows:
 

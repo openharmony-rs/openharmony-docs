@@ -2,13 +2,13 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
-为您提供标准的开放api，用于控制马达振动的启停
+为您提供标准的开放API，用于控制马达振动的启停。
 
 **引用文件：** <sensors/vibrator_type.h>
 
@@ -71,14 +71,14 @@ enum Vibrator_Usage
 
 | 枚举项 | 描述 |
 | -- | -- |
-| USAGE_UNKNOWN = 0 | 未知场景 |
-| USAGE_ALARM = 1 | 报警 |
-| USAGE_RING = 2 | 铃声 |
-| USAGE_NOTIFICATION = 3 | 通知 |
-| USAGE_COMMUNICATION = 4 | 通信 |
-| USAGE_TOUCH = 5 | 触摸 |
-| USAGE_MEDIA = 6 | 媒体 |
-| USAGE_PHYSICAL_FEEDBACK = 7 | 物理反馈 |
-| USAGE_SIMULATE_REALITY = 8 | 模拟现实 |
+| VIBRATOR_USAGE_UNKNOWN = 0 | 未知场景，最低优先级 |
+| VIBRATOR_USAGE_ALARM = 1 | 报警 |
+| VIBRATOR_USAGE_RING = 2 | 铃声 |
+| VIBRATOR_USAGE_NOTIFICATION = 3 | 通知 |
+| VIBRATOR_USAGE_COMMUNICATION = 4 | 通信 |
+| VIBRATOR_USAGE_TOUCH = 5 | 触摸 |
+| VIBRATOR_USAGE_MEDIA = 6 | 媒体 |
+| VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | 物理反馈 |
+| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | 模拟现实 |
 
 

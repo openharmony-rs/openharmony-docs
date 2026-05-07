@@ -10,6 +10,7 @@
 网络连接管理提供一些网络基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
 
 > **说明：**
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.connection (网络连接管理)](js-apis-net-connection.md)。
 
@@ -24,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-获取网络的全局代理配置信息，使用callback方式作为异步方法。
+获取网络的全局代理配置信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -61,7 +62,7 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 
 getGlobalHttpProxy(): Promise\<HttpProxy>;
 
-获取网络的全局代理配置信息，使用Promise方式作为异步方法。
+获取网络的全局代理配置信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -98,7 +99,7 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 
-设置网络全局Http代理配置信息，使用callback方式作为异步方法。
+设置网络全局Http代理配置信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -150,7 +151,7 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
 
-设置网络全局Http代理配置信息，使用Promise方式作为异步方法。
+设置网络全局Http代理配置信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -205,7 +206,7 @@ connection.setGlobalHttpProxy({
 
 enableAirplaneMode(callback: AsyncCallback\<void>): void
 
-开启飞行模式，使用callback方式作为异步方法。
+开启飞行模式，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -244,7 +245,7 @@ connection.enableAirplaneMode((error: BusinessError) => {
 
 enableAirplaneMode(): Promise\<void>
 
-开启飞行模式，使用Promise方式作为异步方法。
+开启飞行模式，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -281,7 +282,7 @@ connection.enableAirplaneMode().then((error: void) => {
 
 disableAirplaneMode(callback: AsyncCallback\<void>): void
 
-关闭飞行模式，使用callback方式作为异步方法。
+关闭飞行模式，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -320,7 +321,7 @@ connection.disableAirplaneMode((error: BusinessError) => {
 
 disableAirplaneMode(): Promise\<void>
 
-关闭飞行模式，使用Promise方式作为异步方法。
+关闭飞行模式，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -358,7 +359,7 @@ connection.disableAirplaneMode().then((error: void) => {
 
 factoryReset(): Promise\<void\>
 
-出厂重置网络设置，使用Promise方式作为异步方法。
+出厂重置网络设置，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -473,6 +474,12 @@ getProxyMode(): Promise\<ProxyMode\>
 |---------------------------| ------------------------ |
 | Promise\<[ProxyMode](#proxymode20)\> | Promise对象，返回当前代理模式。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 202     | Non-system applications use system APIs.              |
 
 **示例：**
 
@@ -484,5 +491,254 @@ connection.getProxyMode().then(mode => {
     console.info("Current proxy mode:", mode);
 }).catch((error: BusinessError) => {
     console.error("Error getting proxy mode:", error);
+});
+```
+
+## connection.createVlanInterface<sup>23+</sup>
+
+createVlanInterface(ifName: string, vlanId: number): Promise\<void\>
+
+在指定的以太网网卡上，创建一个由vlanId指定的虚拟局域网。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+connection.createVlanInterface(ifName, vlanId).then(() => {
+  console.info(`Create vlan success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create vlan. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.destroyVlanInterface<sup>23+</sup>
+
+destroyVlanInterface(ifName: string, vlanId: number): Promise\<void\>
+
+删除指定以太网网卡上由vlanId指定的虚拟局域网。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+connection.destroyVlanInterface(ifName, vlanId).then(() => {
+  console.info(`Destroy vlan success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to destroy vlan. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.addVlanIp<sup>23+</sup>
+
+addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
+
+为以太网网卡上对应vlanId的虚拟局域网配置指定的IP地址及子网掩码。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | 是 | 链路信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.addVlanIp(ifName, vlanId, address).then(() => {
+  console.info(`Add vlan ip success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to add vlan ip. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.deleteVlanIp<sup>23+</sup>
+
+deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
+
+从以太网网卡上对应vlanId的虚拟局域网中，删除已配置的IP地址及子网掩码。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | 是 | 链路信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+| 2100401 | The input ip address not found. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.deleteVlanIp(ifName, vlanId, address).then(() => {
+  console.info(`Delete vlan ip success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to delete vlan ip. Code:${error.code}, message:${error.message}`);
 });
 ```

@@ -142,7 +142,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
 
-Queries the information about the nearest **NavDestination** component in the navigation stack for a custom component.
+Queries the information of the nearest **NavDestination** component (a navigation page or subpage of the **Navigation** component) associated with this custom component. The search direction is controlled by **isInner**: **true** for inward search and **false** for outward search.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

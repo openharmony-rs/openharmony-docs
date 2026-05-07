@@ -2,16 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
 
 > **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 针对卡片场景，建议开发者控制list中的子节点list-item的数量（建议30条以内）以便获得更好的卡片交互体验。
 
@@ -34,7 +34,7 @@
 | scrolleffect  | string         | spring  | 否    | 滑动效果，目前支持如下滑动效果：<br/>-&nbsp;spring：弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松开后回弹。<br/>-&nbsp;fade：渐隐物理动效，滑动到边缘后展示一个波浪形的渐隐，根据速度和滑动距离的变化渐隐也会发生一定的变化。<br/>-&nbsp;no：滑动到边缘后无效果。 |
 | divider       | boolean        | false   | 否    | item是否自带分隔线。<br/>其样式参考[样式列表](#样式)的divider-color、divider-height、divider-length、divider-origin。<br/>-&nbsp;false：item不自带分隔线。<br/>-&nbsp;true：item自带分隔线。 |
 | shapemode     | string         | default | 否    | 侧边滑动栏的形状类型。<br/>-&nbsp;default：不指定，跟随主题。<br/>-&nbsp;rect：矩形。<br/>-&nbsp;round：圆形。 |
-| updateeffect  | boolean        | false   | 否    | 用于设置当list内部的item发生删除或新增时是否支持动效。<br/>-&nbsp;false：新增删除item时无过渡动效。<br/>-&nbsp;true：新增删除item时播放过程动效。 |
+| updateeffect  | boolean        | false   | 否    | 用于设置当list内部的item发生删除或新增时是否支持动效。<br/>-&nbsp;false：新增删除item时无过渡动效。<br/>-&nbsp;true：新增删除item时有过渡动效。 |
 | initialindex  | number         | 0       | 否    | 用于设置当前List初次加载时视口起始位置显示的item，默认为0，即显示第一个item，如设置的序号超过了最后一个item的序号，则设置不生效，当同时设置了initialoffset属性时，当前属性不生效。 |
 | initialoffset | &lt;length&gt; | 0       | 否    | 用于设置当前List初次加载时视口的起始偏移量，偏移量无法超过当前List可滑动的范围，如果超过会被截断为可滑动范围的极限值。 |
 | selected      | string         | -       | 否    | 指定当前列表中被选中激活的项，可选值为list-item的section属性值。 |
@@ -69,7 +69,7 @@
 
 
 ```html
-<!-- index.hml -->
+<!-- index.html -->
 <div class="container">
   <list class="todo-wrapper">
     <list-item for="{{todolist}}" class="todo-item">

@@ -4,7 +4,7 @@
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -100,7 +100,7 @@ idl_service_ext_impl.ts实现如下：
 
 ```ts
 import IdlServiceExtStub from './idl_service_ext_stub';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import type { insertDataToMapCallback } from './i_idl_service_ext';
 import type { processDataCallback } from './i_idl_service_ext';
 
@@ -144,7 +144,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     └
     ```
 
-3. 在ServiceExtAbility.ets文件中，增加导入[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调，在[onConnect](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)生命周期回调里，需要将之前定义的ServiceExtImpl对象返回。
+3. 在ServiceExtAbility.ets文件中，增加导入[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调，在[onConnect](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)生命周期回调里，需要将之前定义的ServiceExtImpl对象返回。
 
     ```ts
     import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -185,7 +185,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
 
 4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册ServiceExtensionAbility，type标签需要设置为“service”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -205,7 +205,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
 
 ## 启动一个后台服务（仅对系统应用开放）
 
-系统应用通过[startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动一个后台服务，服务的[onRequest()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest)回调就会被调用，并在该回调方法中接收到调用者传递过来的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象。后台服务启动后，其生命周期独立于客户端，即使客户端已经销毁，该后台服务仍可继续运行。因此，后台服务需要在其工作完成时通过调用[ServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md)的[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextterminateself)来自行停止，或者由另一个组件调用[stopServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability)来将其停止。
+系统应用通过[startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)或[requestDialogService()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#requestdialogservice)启动一个后台服务，服务的[onRequest()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest)回调会被调用，并在该回调方法中接收到调用者传递的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象。后台服务启动后，其生命周期独立于客户端，即使客户端已经销毁，该后台服务仍可继续运行。因此，后台服务需要在其工作完成时通过调用[ServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md)的[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextterminateself)来自行停止，或由另一个组件调用[stopServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability)将其停止。
 
 > **说明：**
 > ServiceExtensionContext的startServiceExtensionAbility()、stopServiceExtensionAbility()和terminateSelf()为系统接口，三方应用不支持调用。
@@ -225,11 +225,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -249,11 +249,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -273,11 +273,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -296,11 +296,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -320,11 +320,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -339,11 +339,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -408,11 +408,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -426,11 +426,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
               hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -451,11 +451,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -471,11 +471,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
               });
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -570,7 +570,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
     }
   };
-  //...
+  // ...
   ```
 
 ## 服务端对客户端身份校验
@@ -579,7 +579,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
 
 - **通过callerUid识别客户端应用**
 
-  通过调用[getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid)接口获取客户端的uid，再调用[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14)接口获取uid对应的bundleName，从而识别客户端身份。此处需要注意的是[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14)是一个异步接口，因此服务端无法将校验结果返回给客户端，这种校验方式适合客户端向服务端发起执行异步任务请求的场景，示例代码如下：
+  通过调用[getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid)接口获取客户端的uid，再调用[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)接口获取uid对应的bundleName，从而识别客户端身份。此处需要注意的是[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)是一个异步接口，因此服务端无法将校验结果返回给客户端，这种校验方式适合客户端向服务端发起执行异步任务请求的场景，示例代码如下：
 
   ```ts
   import { bundleManager } from '@kit.AbilityKit';
@@ -612,7 +612,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       }).catch((err: BusinessError) => {
         hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
-      //...
+      // ...
     };
   
     insertDataToMap(key: string, val: number, callback: InsertDataToMapCallback): void {

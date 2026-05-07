@@ -133,7 +133,7 @@ struct WebComponent {
     Menu() {
       // A component that is used to represent an item in a menu.
       MenuItem({
-        content: 'Copy Image',
+        content: 'Copy image',
       })
         .width(100)
         .height(50)
@@ -169,7 +169,7 @@ struct WebComponent {
           this.showMenu = false;
         })
       MenuItem({
-        content: 'Copy Link',
+        content: 'Copy link',
       })
         .width(100)
         .height(50)
@@ -183,7 +183,7 @@ struct WebComponent {
           this.showMenu = false;
         })
       MenuItem({
-        content: 'Select All',
+        content: 'Select all',
       })
         .width(100)
         .height(50)
@@ -283,12 +283,12 @@ struct WebComponent {
   @Builder
   MenuBuilder() {
     Menu() {
-      MenuItem({content:'Copy',})
+      MenuItem({ content: 'Copy', })
         .onClick(() => {
           this.result?.copy();
           this.result?.closeContextMenu();
         })
-      MenuItem({content:'Select All',})
+      MenuItem({ content: 'Select All', })
         .onClick(() => {
           this.result?.selectAll();
           this.result?.closeContextMenu();
@@ -350,7 +350,7 @@ struct WebComponent {
 
 Since API version 20, the hyperlink menu triggered by long-pressing can be bound. You can bind different custom menus to images and links.
 
-The following example uses **PreviewBuilder** to define the content of the pop-up menu corresponding to the hyperlink, loads the hyperlink content using the **Web** component, and displays the loading progress using [the Progress component](../ui/arkts-common-components-progress-indicator.md).
+In the following example, **PreviewBuilder** defines the content of the menu corresponding to the hyperlink, uses the **Web** component to load the hyperlink content, and uses the [Progress component](../ui/arkts-common-components-progress-indicator.md) to display the loading progress. (Note that the **Web** component in **PreviewBuilder** does not receive events.)
 
 ```ts
 import { webview } from '@kit.ArkWeb';
@@ -415,7 +415,6 @@ struct SelectionMenuLongPress {
         .onPageEnd(()=>{
           this.progressVisible = false;
         })
-        .hitTestBehavior(HitTestMode.None) // Disable the gesture response during web page preview.
     }.width($$.width).height ($$.height) // Set the preview width and height.
   }
 
@@ -548,117 +547,124 @@ HTML example:
 2. Obtain the image URL in **onContextMenuShow** and save the image to the application sandbox by calling **copyLocalPicToDir** or **copyUrlPicToDir**.
 3. Save images in the application sandbox to the gallery by using **photoAccessHelper**.
 
-  ```ts
-  import { webview } from '@kit.ArkWeb';
-  import { common } from '@kit.AbilityKit';
-  import { fileIo as fs} from '@kit.CoreFileKit';
-  import { systemDateTime } from '@kit.BasicServicesKit';
-  import { http } from '@kit.NetworkKit';
-  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
 
-  @Entry
-  @Component
-  struct WebComponent {
-    saveButtonOptions: SaveButtonOptions = {
-      icon: SaveIconStyle.FULL_FILLED,
-      text: SaveDescription.SAVE_IMAGE,
-      buttonType: ButtonType.Capsule
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs} from '@kit.CoreFileKit';
+import { systemDateTime } from '@kit.BasicServicesKit';
+import { http } from '@kit.NetworkKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+@Entry
+@Component
+struct WebComponent {
+  saveButtonOptions: SaveButtonOptions = {
+    icon: SaveIconStyle.FULL_FILLED,
+    text: SaveDescription.SAVE_IMAGE,
+    buttonType: ButtonType.Capsule
+  }
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State showMenu: boolean = false;
+  @State imgUrl: string = '';
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
+    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
+    let dstPath = this.context.filesDir + '/' +newFileName;
+    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let bufsize = 4096;
+    let buf = new ArrayBuffer(bufsize);
+    let off = 0;
+    let len = 0;
+    let readLen = 0;
+    while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
+      readLen += len;
+      fs.writeSync(dest.fd, buf, { offset: off, length: len });
+      off = off + len;
+      if ((srcFileDes.length - readLen) < bufsize) {
+        bufsize = srcFileDes.length - readLen;
+      }
     }
-    controller: webview.WebviewController = new webview.WebviewController();
-    @State showMenu: boolean = false;
-    @State imgUrl: string = '';
-    context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    fs.close(dest.fd);
+    return dest.path;
+  }
 
-    copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
-      let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
-      let dstPath = this.context.filesDir + "/" +newFileName;
+  async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
+    let uri = '';
+    let httpRequest = http.createHttp();
+    let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
+    if (data?.responseCode == http.ResponseCode.OK) {
+      let dstPath = this.context.filesDir + '/' + newFileName;
       let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-      let bufsize = 4096;
-      let buf = new ArrayBuffer(bufsize);
-      let off = 0, len = 0, readedLen = 0;
-      while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
-        readedLen += len;
-        fs.writeSync(dest.fd, buf, { offset: off, length: len });
-        off = off + len;
-        if ((srcFileDes.length - readedLen) < bufsize) {
-          bufsize = srcFileDes.length - readedLen;
-        }
-      }
-      fs.close(dest.fd);
-      return dest.path;
+      let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
+      uri = dest.path;
     }
+    return uri;
+  }
 
-    async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
-      let uri = '';
-      let httpRequest = http.createHttp();
-      let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
-      if (data?.responseCode == http.ResponseCode.OK) {
-        let dstPath = this.context.filesDir + "/" + newFileName;
-        let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-        let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
-        uri = dest.path;
-      }
-      return uri;
-    }
-
-    @Builder
-    MenuBuilder() {
-      Column() {
-        Row() {
-          SaveButton(this.saveButtonOptions)
-            .onClick(async (event, result: SaveButtonOnClickResult) => {
-              if (result == SaveButtonOnClickResult.SUCCESS) {
-                try {
-                  let context = this.context;
-                  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-                  let uri = '';
-                  if (this.imgUrl?.includes('rawfile')) {
-                    let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
-                    uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
-                  } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
-                    uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
-                  }
-                  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context,  uri);
-                  await phAccessHelper.applyChanges(assetChangeRequest);
+  @Builder
+  MenuBuilder() {
+    Column() {
+      Row() {
+        SaveButton(this.saveButtonOptions)
+          .onClick(async (event, result: SaveButtonOnClickResult) => {
+            if (result == SaveButtonOnClickResult.SUCCESS) {
+              try {
+                let context = this.context;
+                let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+                let uri = '';
+                if (this.imgUrl?.includes('rawfile')) {
+                  let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
+                  uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
+                } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
+                  uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
                 }
-                catch (err) {
-                  console.error(`create asset failed with error: ${err.code}, ${err.message}`);
-                }
-              } else {
-                console.error(`SaveButtonOnClickResult create asset failed`);
+                let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+                  photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context,  uri);
+                await phAccessHelper.applyChanges(assetChangeRequest);
+              } catch (err) {
+                console.error(`create asset failed with error: ${err.code}, ${err.message}`);
               }
-              this.showMenu = false;
-            })
-        }
-        .margin({ top: 20, bottom: 20 })
-        .justifyContent(FlexAlign.Center)
-      }
-      .width('80')
-      .backgroundColor(Color.White)
-      .borderRadius(10)
-    }
-
-    build() {
-      Column() {
-        Web({src: $rawfile("index.html"), controller: this.controller})
-          .onContextMenuShow((event) => {
-            if (event) {
-              let hitValue = this.controller.getLastHitTest();
-              this.imgUrl = hitValue.extra;
+            } else {
+              console.error(`SaveButtonOnClickResult create asset failed`);
             }
-            this.showMenu = true;
-            return true;
+            this.showMenu = false;
           })
-          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-          .fileAccess(true)
-          .javaScriptAccess(true)
-          .domStorageAccess(true)
       }
+      .margin({ top: 20, bottom: 20 })
+      .justifyContent(FlexAlign.Center)
+    }
+    .width('80')
+    .backgroundColor(Color.White)
+    .borderRadius(10)
+  }
+
+  build() {
+    Column() {
+      Web({src: $rawfile('index4.html'), controller: this.controller})
+        .onContextMenuShow((event) => {
+          if (event) {
+            let hitValue = this.controller.getLastHitTest();
+            this.imgUrl = hitValue.extra;
+          }
+          this.showMenu = true;
+          return true;
+        })
+        .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+        .fileAccess(true)
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
     }
   }
-  ```
+}
+```
+
+<!---->
+
   ```html
-  <!--index.html-->
+  <!--index4.html-->
   <!DOCTYPE html>
   <html>
   <head>
@@ -770,153 +776,8 @@ The [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attrib
   ```
 ![web-menu-get-select](./figures/web-menu-get-select.gif)
 
-## Identifying QR Codes
-In QR code redirection or payment scenarios, you can implement the context menu to obtain QR code image information from the [onContextMenuShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontextmenushow9) API for processing and provide a QR code scanning entry for users.
-1. Create a **MenuBuilder** component as the menu pop-up window and bind it to the **Web** component through **bindContextMenu**.
-2. Obtain the image URL in **onContextMenuShow** and save the image to the application sandbox by calling **copyLocalPicToDir** or **copyUrlPicToDir**.
-3. Use **detectBarcode.decode** to parse the image stored in the sandbox and obtain the result.
-
-<!-- @[web_Scan_QR_code](https://gitee.com/harmonyos_samples/guide-snippets/blob/master/ArkWebKit/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets) -->
-
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
-import { common } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
-import { systemDateTime } from '@kit.BasicServicesKit';
-import { http } from '@kit.NetworkKit';
-import { scanCore, scanBarcode, detectBarcode } from '@kit.ScanKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  saveButtonOptions: SaveButtonOptions = {
-    icon: SaveIconStyle.FULL_FILLED,
-    text: SaveDescription.SAVE_IMAGE,
-    buttonType: ButtonType.Capsule
-  }
-  controller: webview.WebviewController = new webview.WebviewController();
-  private result: WebContextMenuResult | undefined = undefined;
-  @State showMenu: boolean = false;
-  @State imgUrl: string = '';
-  @State decodeResult: string = '';
-  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-  copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
-    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
-    let dstPath = this.context.filesDir + '/' +newFileName;
-    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-    let bufsize = 4096;
-    let buf = new ArrayBuffer(bufsize);
-    let off = 0;
-    let len = 0;
-    let readedLen = 0;
-    while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
-      readedLen += len;
-      fs.writeSync(dest.fd, buf, { offset: off, length: len });
-      off = off + len;
-      if ((srcFileDes.length - readedLen) < bufsize) {
-        bufsize = srcFileDes.length - readedLen;
-      }
-    }
-    fs.close(dest.fd);
-    return dest.path;
-  }
-
-  async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
-    let uri = '';
-    let httpRequest = http.createHttp();
-    let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
-    if (data?.responseCode == http.ResponseCode.OK) {
-      let dstPath = this.context.filesDir + '/' + newFileName;
-      let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-      let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
-      uri = dest.path;
-    }
-    return uri;
-  }
-
-  @Builder
-  MenuBuilder() {
-    Menu() {
-      MenuItem({
-        content: 'Scan QR Code',
-      })
-        .width(200)
-        .height(50)
-        .onClick(async () => {
-          try {
-            let uri = '';
-            if (this.imgUrl?.includes('rawfile')) {
-              let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
-              uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
-            } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
-              uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
-            }
-            let options: scanBarcode.ScanOptions = { scanTypes: [scanCore.ScanType.ALL],
-              enableMultiMode: true, enableAlbum: true }
-            let inputImage: detectBarcode.InputImage = { uri: uri };
-            try {
-              // Call the image recognition API.
-              detectBarcode.decode(inputImage, options,
-                (error: BusinessError, result: Array<scanBarcode.ScanResult>) => {
-                  if (error && error.code) {
-                    console.error(`create asset failed with error: ${error.code}, ${error.message}`);
-                    return;
-                  }
-                  this.decodeResult = JSON.stringify(result);
-                });
-            } catch (err) {
-              console.error(`Failed to detect Barcode. Code: ${err.code}, ${err.message}`);
-            }
-          } catch (err) {
-            console.error(`create asset failed with error: ${err.code}, ${err.message}`);
-          }
-        })
-    }
-  }
-
-  build() {
-    Column() {
-      Web({src: $rawfile('index6.html'), controller: this.controller})
-        .onContextMenuShow((event) => {
-          if (event) {
-            let hitValue = this.controller.getLastHitTest();
-            this.imgUrl = hitValue.extra;
-          }
-          this.showMenu = true;
-          return true;
-        })
-        .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-        .fileAccess(true)
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .height('40%')
-      Text('Decode result is ' + this.decodeResult)
-        .fontSize(20)
-        .height('10%')
-    }
-  }
-}
-```
-
-<!---->
-
-```html
-<!--index6.html-->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>test QR code</title>
-</head>
-<body>
-<h1>Long press and click to scan the QR code</h1>
-<!--img.png is a QR code image-->
-<img src="img.png" >
-</body>
-</html>
-```
-![web-menu-scan-qr-code](./figures/web-menu-scan-qrcode.gif)
+<!--RP1-->
+<!--RP1End-->
 
 ## FAQs
 ### How do I disable the menu triggered by a long press?
@@ -991,7 +852,7 @@ struct WebComponent {
         'clearSelection()',
         (error, result) => {
           if (error) {
-            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: $  {(error as BusinessError).message}`);
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             return;
           }
           if (result) {
@@ -999,7 +860,7 @@ struct WebComponent {
           }
         });
     } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
     }
   }
 
@@ -1013,7 +874,7 @@ struct WebComponent {
               'copySelectedText()',
               (error, result) => {
                 if (error) {
-                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},    Message: ${(error as BusinessError).message}`);
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
                   return;
                 }
                 if (result) {
@@ -1021,7 +882,7 @@ struct WebComponent {
                 }
               });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           this.clearSelection()
         }).backgroundColor(Color.Pink)

@@ -1,8 +1,8 @@
 # @ohos.util.stream (数据流基类stream)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -70,7 +70,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -78,7 +78,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入。 |
+| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入以避免内存溢出。 |
 
 **错误码：**
 
@@ -485,7 +485,7 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunks    | string[] \|  Uint8Array[] | 是 | 被批量写出的数据数组。 |
+| chunks    | string[] \|  Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
 
 **错误码：**
@@ -1196,7 +1196,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -1473,7 +1473,7 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunks    | string[] \| Uint8Array[] | 是 | 被批量写出的数据数组。 |
+| chunks    | string[] \| Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
 
 **错误码：**

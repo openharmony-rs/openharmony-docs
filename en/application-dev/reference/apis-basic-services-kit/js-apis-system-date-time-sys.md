@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemDateTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
 
@@ -56,6 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -111,6 +112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -268,6 +270,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -321,6 +324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -372,7 +376,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   systemDateTime.updateNtpTime().then(() => {
-    console.info(`Succeeded in update ntp time.`);
+    console.info(`Succeeded in updating ntp time.`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
   });
@@ -404,7 +408,7 @@ For details about the error codes, see [Time and Time Zone Service Error Codes](
 
 | ID| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 13000002    | Location NTP time of the system is invalid.                                                           |
+| 13000002    | updateNtpTime() is not called successfully.                                                           |
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 
 **Example**
@@ -457,7 +461,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 13000001  | Network connection error or OS error. Possible causes: System memory is insufficient or Calls the underlying system interface failed|
+| 204       | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint; 2. The required privilege for the operation has not been granted. |
+| 13000001  | Network connection error or OS error. Possible causes: 1. System memory is insufficient; 2. Calls the underlying system interface failed.|
 
 
 **Example**

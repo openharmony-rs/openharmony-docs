@@ -82,7 +82,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       printf("get stat failed");
       return;
    }
-   // Create a source resource instance for the FD resource file. If offset is not the start position of the file or size is not the actual file size, the data obtained may be incomplete. Consequently, the source resource object may fail to create or subsequent demultiplexing may fail.
+   // Note: The offset (start offset of the file) and fileSize (file size) must match the file to be parsed.
+   // If fd points to a single resource file, set offset to 0 and fileSize to the size of the resource file.
+   // If fd points to multiple consecutive resource files (for example, multiple MP3 binary files), set offset and fileSize based on the actual offset and size of the resource file to be parsed.
    OH_AVSource *source = OH_AVSource_CreateWithFD(fd, 0, fileSize);
    if (source == nullptr) {
       printf("create source failed");
@@ -90,7 +92,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    // (Optional) Create a source resource instance for the URI resource file.
    // OH_AVSource *source = OH_AVSource_CreateWithURI(uri);
-
+   
    // (Optional) Create a source resource instance for the custom data source. Before the operation, you must implement AVSourceReadAt.
    // Add g_filePath when OH_AVSource_CreateWithDataSource is used.
    // g_filePath = filePath ;
@@ -107,49 +109,49 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    ```c++
    static std::string g_filePath;
-
+   
    enum MediaDataSourceError : int32_t {
       SOURCE_ERROR_IO = -2,
       SOURCE_ERROR_EOF = -1
    };
-
+   
    int32_t AVSourceReadAt(OH_AVBuffer *data, int32_t length, int64_t pos)
    {
       if (data == nullptr) {
          printf("AVSourceReadAt : data is nullptr!\n");
          return MediaDataSourceError::SOURCE_ERROR_IO;
       }
-
+   
       std::ifstream infile(g_filePath, std::ofstream::binary);
       if (!infile.is_open()) {
          printf("AVSourceReadAt : open file failed! file:%s\n", g_filePath.c_str());
          return MediaDataSourceError::SOURCE_ERROR_IO; // Failed to open the file.
       }
-
+   
       infile.seekg(0, std::ios::end);
       int64_t fileSize = infile.tellg();
       if (pos >= fileSize) {
          printf("AVSourceReadAt : pos over or equals file size!\n");
          return MediaDataSourceError::SOURCE_ERROR_EOF; // pos is already at the end of the file and cannot be read.
       }
-
+   
       if (pos + length > fileSize) {
          length of length = fileSize - pos; // When the sum of pos and length exceeds the file size, the data from pos to the end of the file is read.
       }
-
+   
       infile.seekg(pos, std::ios::beg);
       if (length <= 0) {
-         printf("AVSourceReadAt : raed length less than zero!\n");
+         printf("AVSourceReadAt : read length less than zero!\n");
          return MediaDataSourceError::SOURCE_ERROR_IO;
       }
       char* buffer = new char[length];
       infile.read(buffer, length);
       infile.close();
-
+   
       memcpy(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(data)),
          buffer, length);
       delete[] buffer;
-
+   
       return length;
    }
    ```
@@ -197,9 +199,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    // Precautions:
    // 1. customKey must exactly match the key used during multiplexing (including the complete naming hierarchy).
-   //    The example key is for demonstration only. Replace it with the actual custom string.
-   //    For example, if the key used during multiplexing is com.openharmony.custom.meta.abc.efg,
-   //       you must use the full key. Using a truncated key like com.openharmony.custom.meta.abc will fail.
+   // The example key is for demonstration only. Replace it with the actual custom string.
+   // For example, if the key used during multiplexing is com.openharmony.custom.meta.abc.efg,
+   // you must use the full key. Using a truncated key like com.openharmony.custom.meta.abc will fail.
    // 2. The value type must match the data type used during multiplexing. In this example, it is a string. For other types, use the right API. The types ints and floats are supported. Starting from API version 20, the type buffer is also supported.
    const char *customKey = "com.openharmony.custom.meta.string"; // Replace it with the actual key used during multiplexing.
    const char *customValue;
@@ -241,7 +243,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    const char* mimetype = nullptr;
    uint8_t *codecConfig = nullptr;
    size_t bufferSize = 0;
-   int32_t trackType;
+   int32_t trackType = -1;
    for (uint32_t index = 0; index < (static_cast<uint32_t>(trackCount)); index++) {
       // Obtain the track information. You can call the API to obtain track-level attributes. For details, see Table 2 in Appendix.
       OH_AVFormat *trackFormat = OH_AVSource_GetTrackFormat(source, index);
@@ -249,6 +251,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          printf("get track format failed");
          return;
       }
+      // Obtain the track type. Unsupported types will not modify the value of trackType.
+      // It is recommended that the initial value of trackType be set to an invalid value (for example, -1) to prevent misuse.
       if (!OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType)) {
          printf("get track type from track format failed");
          return;
@@ -417,13 +421,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ## Appendix
 ### Supported File-Level Attributes
 
-> **NOTE**
->
-> Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
-> 
-> Currently, data in the GBK character set is converted to UTF-8. If other character sets need to be converted to UTF-8, you must handle the conversion. For details, see [icu4c](../../reference/native-lib/icu4c.md).
-> 
-> For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
+> **NOTE**<br>
+> - Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
+> - Currently, data in the GBK character set is converted to UTF-8. If other character sets need to be converted to UTF-8, you must handle the conversion. For details, see [icu4c](../../reference/native-lib/icu4c.md).
+> - Starting from API version 23, some OGG format resources, such as **OH_MD_KEY_TITLE, OH_MD_KEY_ARTIST** and **OH_MD_KEY_ALBUM**, are stored in and can be retrieved from track attributes.
+> - For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
 **Table 1** Supported file-level attributes
 | Name| Description|
@@ -445,8 +447,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 ### Supported Track-Level Attributes
 
-> **NOTE**
->
+> **NOTE**<br>
 > Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
 > The supported attributes of the auxiliary track must match the actual media type (audio or video).
 > 

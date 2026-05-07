@@ -86,8 +86,8 @@ shortcutManager.getAllShortcutInfoForSelf()
   .then((data: shortcutManager.ShortcutInfo[]) => {
     console.info('getAllShortcutInfoForSelf shortcut data is' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
-  });
+  console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
+});
 ```
 ## ShortcutInfo
 

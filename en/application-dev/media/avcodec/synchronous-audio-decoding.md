@@ -27,7 +27,7 @@ Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocode
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 
-During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.
+During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
 
 The figure below shows the call relationship of audio decoding in synchronous mode.
 
@@ -86,6 +86,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     Call this API after the media key system information is obtained but before **Prepare()** is called. For details about how to obtain such information, see step 4 in [Media Data Demultiplexing](audio-video-demuxer.md).
 
     For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
+
+     
 
     Add the header files.
 

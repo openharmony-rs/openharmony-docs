@@ -1,8 +1,8 @@
 # PersistentStorage：持久化存储UI状态
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -20,7 +20,7 @@ PersistentStorage的存储路径为module级别，即哪个module调用了Persis
 
 PersistentStorage的存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了PersistentStorage，并且该ability能被不同的module拉起，那么ability存在多少种启动方式，就会有多少份数据副本。
 
-PersistentStorage功能上耦合了AppStorage，并且数据在不同module中使用也会有问题，因此推荐开发者使用[PersistenceV2](arkts-new-persistencev2.md)的globalConnect接口替换掉PersistentStorage的persistProp接口。PersistentStorage向PersistenceV2迁移的方案见[PersistentStorage->PersistenceV2](arkts-v1-v2-migration-application-and-others.md#persistentstorage-persistencev2)。
+PersistentStorage功能上耦合了AppStorage，并且数据在不同module中使用也会有问题，因此推荐开发者使用[PersistenceV2](arkts-new-persistencev2.md)的globalConnect接口替换掉PersistentStorage的persistProp接口。PersistentStorage向PersistenceV2迁移的方案见[PersistentStorage->PersistenceV2](arkts-v1-v2-migration-application.md#persistentstorage-persistencev2)。
 
 ## 限制条件
 
@@ -44,7 +44,8 @@ PersistentStorage不允许的类型和值有：
 
 - 持久化经常变化的变量。
 
-PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘是在UI线程同步执行的，大量数据本地读写会影响UI渲染性能。如果开发者需要存储大量的数据，建议使用[数据库api](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘是在UI线程同步执行的，大量数据本地读写会影响UI渲染性能。如果开发者需要存储大量的数据，建议使用[@ohos.data.relationalStore (关系型数据库)](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md)相关接口。
+
 PersistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败。
 
 ```ts
@@ -219,7 +220,7 @@ struct TestCase6 {
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新。且persistedDate的值被持久化存储。
 
-<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) -->
+<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedDate', new Date());
@@ -266,6 +267,7 @@ struct PersistedDate {
           .width('60%')
           .height('5%')
           .onClick(() => {
+            // 改变persistedDate的值，视图会随之刷新
             this.updateDate();
           })
 
@@ -281,7 +283,7 @@ struct PersistedDate {
 
 在下面的示例中，@StorageLink装饰的persistedMapString类型为Map\<number, string\>，点击Button改变persistedMapString的值，视图会随之刷新。且persistedMapString的值被持久化存储。
 
-<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) -->
+<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedMapString', new Map<number, string>([]));
@@ -319,6 +321,7 @@ struct PersistedMap {
           .width('60%')
           .height('5%')
           .onClick(() => {
+            // 点击Button改变persistedMapString的值，视图会随之刷新
             this.persistMapString();
           })
 
@@ -333,7 +336,7 @@ struct PersistedMap {
 
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) -->
+<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedSet', new Set<number>([]));
@@ -392,6 +395,7 @@ struct PersistedSet {
           .width('60%')
           .height('5%')
           .onClick(() => {
+            // 点击Button改变persistedSet的值，视图会随之刷新
             this.clearSet();
           })
 

@@ -142,8 +142,8 @@ For details about how to use the APIs (such as parameter usage restrictions and 
    }
    
    static napi_value Leak(napi_env env, napi_callback_info info) {
-   	std::thread t1(NativeLeak);
-   	t1.detach();
+    std::thread t1(NativeLeak);
+    t1.detach();
        return {};
    }
    ```
@@ -198,7 +198,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
     > **NOTE**
     >
-    > Based on the error log information, you can check the [specific cause of the killed event](./hiappevent-watcher-app-killed-events.md).
+    > For details about the error information, see [Application Killed Event Overview](./hiappevent-watcher-app-killed-events.md#field-description).
 
 10. Remove the event watcher.
 

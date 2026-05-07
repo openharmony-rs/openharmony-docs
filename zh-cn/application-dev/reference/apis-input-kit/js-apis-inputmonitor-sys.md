@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 输入监听模块，提供了监听输入设备事件的能力。输入设备事件当前包括触屏输入事件、鼠标输入事件和触控板输入事件。
 
@@ -64,12 +64,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', (touchEvent: TouchEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -81,7 +82,7 @@ struct Index {
 
 on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
-监听全局鼠标事件。
+监听全局鼠标事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -118,12 +119,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', (mouseEvent: MouseEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -135,7 +137,7 @@ struct Index {
 
 on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
-监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。
+监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -146,7 +148,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | 是    | 输入设备事件类型，取值'mouse'。 |
-| rect     | display.Rect[]             | 是    | 可以触发回调任务的矩形区域，可传入1至2个。 |
+| rect     | [display.Rect](../apis-arkui/js-apis-display.md#rect9)[]             | 是    | 可以触发回调任务的矩形区域，可传入1至2个。 |
 | receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | 是    | 回调函数，异步上报鼠标输入事件。  |
 
 **错误码**：
@@ -180,7 +182,7 @@ struct Index {
             this.getUIContext().getPromptAction().showToast({
               message: `监听成功：${JSON.stringify(mouseEvent)}`
             })
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
 
@@ -200,9 +202,10 @@ struct Index {
           }];
 
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', rect, callback);
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -252,15 +255,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (touchEvent: TouchEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
             return false;
           };
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', callback);
+            // 取消订阅触摸事件
             inputMonitor.off('touch', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -281,15 +286,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (touchEvent: TouchEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
             return false;
           };
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', callback);
+            // 取消订阅触摸事件
             inputMonitor.off('touch');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -301,7 +308,7 @@ struct Index {
 
 off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
-取消监听全局鼠标事件。
+取消监听全局鼠标事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -312,7 +319,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | 是    | 输入设备事件类型，取值'mouse'。 |
-| receiver | Callback&lt;MouseEvent&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
 
 **错误码**：
 
@@ -339,15 +346,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (mouseEvent: MouseEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', callback);
+            // 取消订阅鼠标事件
             inputMonitor.off('mouse', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -368,15 +377,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (mouseEvent: MouseEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', callback);
+            // 取消订阅鼠标事件
             inputMonitor.off('mouse');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -386,7 +397,7 @@ struct Index {
 
 ## TouchEventReceiver
 
-(touchEvent: TouchEvent): Boolean
+type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
@@ -410,7 +421,6 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -420,14 +430,15 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length == 3) { // 当前有三个手指按下
+              if (touchEvent.touches.length === 3) { // 当前有三个手指按下
                 return true;
               }
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -437,9 +448,9 @@ struct Index {
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
-on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
-监听全局触控板的捏合事件。
+监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -466,7 +477,6 @@ on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gesturee
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -476,12 +486,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', (pinchEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -491,9 +502,9 @@ struct Index {
 
 ## inputMonitor.off('pinch')<sup>10+</sup>
 
-off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
-取消监听全局触控板的捏合事件。
+取消监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -531,15 +542,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -560,15 +573,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -578,9 +593,9 @@ struct Index {
 
 ## inputMonitor.on('threeFingersSwipe')<sup>10+</sup>
 
-on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
-监听全局触控板的三指滑动事件。
+监听全局触控板的三指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -616,12 +631,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅三指滑动事件
             inputMonitor.on('threeFingersSwipe', (threeFingersSwipe) => {
-              console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -631,9 +647,9 @@ struct Index {
 
 ## inputMonitor.off('threeFingersSwipe')<sup>10+</sup>
 
-off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
 
-取消监听全局触控板的三指滑动事件。
+取消监听全局触控板的三指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -671,15 +687,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅三指滑动事件
             inputMonitor.on('threeFingersSwipe', callback);
+            // 取消订阅三指滑动事件
             inputMonitor.off("threeFingersSwipe", callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -700,15 +718,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅三指滑动事件
             inputMonitor.on("threeFingersSwipe", callback);
+            // 取消订阅三指滑动事件
             inputMonitor.off("threeFingersSwipe");
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -718,9 +738,9 @@ struct Index {
 
 ## inputMonitor.on('fourFingersSwipe')<sup>10+</sup>
 
-on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
-监听全局触控板的四指滑动事件。
+监听全局触控板的四指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -756,12 +776,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅四指滑动事件
             inputMonitor.on('fourFingersSwipe', (fourFingersSwipe) => {
-              console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -771,9 +792,9 @@ struct Index {
 
 ## inputMonitor.off('fourFingersSwipe')<sup>10+</sup>
 
-off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
-取消监听全局触控板的四指滑动事件。
+取消监听全局触控板的四指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -811,15 +832,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅四指滑动事件
             inputMonitor.on('fourFingersSwipe', callback);
+            // 取消订阅四指滑动事件
             inputMonitor.off('fourFingersSwipe', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -840,15 +863,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅四指滑动事件
             inputMonitor.on('fourFingersSwipe', callback);
+            // 取消订阅四指滑动事件
             inputMonitor.off('fourFingersSwipe');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -860,7 +885,7 @@ struct Index {
 
 on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
-监听全局触控板的旋转事件。
+监听全局触控板的旋转事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -898,12 +923,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 旋转手势监听手指数2
             inputMonitor.on('rotate', 2, (rotateEvent: Rotate) => {
-              console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -915,7 +941,7 @@ struct Index {
 
 off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
-取消监听全局触控板的旋转事件。
+取消监听全局触控板的旋转事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -954,15 +980,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (rotateEvent: Rotate) => {
-            console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
             return false;
           };
           try {
+            // 旋转手势监听手指数2
             inputMonitor.on('rotate', 2, callback);
+            // 取消订阅旋转事件
             inputMonitor.off('rotate', 2, callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`); 
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -983,15 +1011,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (rotateEvent: Rotate) => {
-            console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
             return false;
           };
           try {
+            // 旋转手势监听手指数2
             inputMonitor.on('rotate', 2, callback);
+            // 取消订阅旋转事件
             inputMonitor.off('rotate', 2);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1003,7 +1033,7 @@ struct Index {
 
 on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
-监听全局触控板的捏合事件。
+监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1041,12 +1071,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 捏合手势监听手指数2
             inputMonitor.on('pinch', 2, (pinchEvent: Pinch) => {
-              console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1058,7 +1089,7 @@ struct Index {
 
 off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
-取消监听全局触控板的捏合事件。
+取消监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1097,15 +1128,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', 2, callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch', 2, callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1126,15 +1159,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 捏合手势监听手指数2
             inputMonitor.on('pinch', 2, callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch', 2);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1144,9 +1179,9 @@ struct Index {
 
 ## inputMonitor.on('threeFingersTap')<sup>11+</sup>
 
-on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
-监听全局触控板的三指轻点事件。
+监听全局触控板的三指轻点事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1182,12 +1217,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', (threeFingersTap) => {
-              console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1197,9 +1233,9 @@ struct Index {
 
 ## inputMonitor.off('threeFingersTap')<sup>11+</sup>
 
-off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
-取消监听全局触控板的三指轻点事件。
+取消监听全局触控板的三指轻点事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1237,15 +1273,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
             return false;
           };
           try {
+            // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
+            // 取消订阅三指点击事件
             inputMonitor.off("threeFingersTap", callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1266,15 +1304,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
             return false;
           };
           try {
+            // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
+            // 取消订阅三指点击事件
             inputMonitor.off("threeFingersTap");
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1286,7 +1326,7 @@ struct Index {
 
 on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-监听触摸屏滑动手势事件。
+监听触摸屏滑动手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1314,7 +1354,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1325,11 +1365,12 @@ struct Index {
         .onClick(() => {
           let fingers: number = 4;
           try {
+            // 订阅触摸屏滑动事件
             inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1341,7 +1382,7 @@ struct Index {
 
 off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-取消监听触摸屏滑动手势事件。
+取消监听触摸屏滑动手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1369,7 +1410,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1380,14 +1421,16 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (event: TouchGestureEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(event)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
           };
           let fingers: number = 4;
           try {
+            // 订阅触摸屏滑动事件
             inputMonitor.on('touchscreenSwipe', fingers, callback);
+            // 取消订阅触摸屏滑动事件
             inputMonitor.off('touchscreenSwipe', fingers, callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1397,7 +1440,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1409,12 +1452,14 @@ struct Index {
           // 取消监听所有回调函数
           let fingers: number = 4;
           try {
+            // 订阅触摸屏滑动事件
             inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
+            // 取消订阅触摸屏滑动事件
             inputMonitor.off('touchscreenSwipe', fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1426,7 +1471,7 @@ struct Index {
 
 on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-监听触摸屏捏合手势事件。
+监听触摸屏捏合手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1454,7 +1499,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1465,11 +1510,12 @@ struct Index {
         .onClick(() => {
           let fingers: number = 4;
           try {
+            // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1481,7 +1527,7 @@ struct Index {
 
 off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-取消监听触摸屏捏合手势事件。
+取消监听触摸屏捏合手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1509,7 +1555,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1520,14 +1566,16 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (event: TouchGestureEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(event)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
           };
           let fingers: number = 4;
           try {
+            // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, callback);
+            // 取消订阅触摸屏捏合事件
             inputMonitor.off("touchscreenPinch", fingers, callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1537,7 +1585,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1549,12 +1597,14 @@ struct Index {
           // 取消监听所有回调函数
           let fingers: number = 4;
           try {
+            // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
+            // 取消订阅触摸屏捏合事件
             inputMonitor.off("touchscreenPinch", fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1566,7 +1616,7 @@ struct Index {
 
 on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): void
 
-监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。
+监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1582,7 +1632,7 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[按键监听错误码](./errorcode-inputmonitor.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[按键前置监听错误码](./errorcode-inputmonitor.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1605,11 +1655,12 @@ struct Index {
         .onClick(() => {
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, (event: KeyEvent ) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1621,7 +1672,7 @@ struct Index {
 
 off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
-取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。
+取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1659,13 +1710,15 @@ struct Index {
           // 取消监听单个回调函数
           try {
             let callback = (event: KeyEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             };
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, callback);
+            // 取消订阅按键按下事件
             inputMonitor.off("keyPressed", callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1686,12 +1739,14 @@ struct Index {
           // 取消监听所有回调函数
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, (event: KeyEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
+            // 取消订阅按键按下事件
             inputMonitor.off("keyPressed");
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1737,16 +1792,305 @@ import { inputMonitor, TouchEvent } from '@kit.InputKit'
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 查询触屏事件数量
   inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
     events.forEach((event, index) => {
-      console.info(`Touch event ${index}: actionTime=${event.actionTime}, sourceType=${event.sourceType}`);
+      console.info(`Succeeded in querying touch event ${index}, actionTime=${event.actionTime}, sourceType=${event.sourceType}.`);
     });
   }).catch((error: BusinessError) => {
-    console.error('queryTouchEvents promise error: ' + JSON.stringify(error));
+    console.error(`Failed to query touch events promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
   });
 } catch (error) {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
-  console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+  console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
+}
+```
+
+## inputMonitor.on('swipeInward')<sup>12+</sup>
+
+on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
+
+监听向内滑动事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'SwipeInward'。 |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | 是   | 回调函数，返回[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅向内滑动事件
+            inputMonitor.on('swipelnward', (SwipeInward) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(SwipeInward)}.`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Failed to monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('swipeInward')<sup>12+</sup>
+
+off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
+
+取消监听向内滑动事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 输入事件类型，取值'swipeInward'。                    |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听单个回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // 订阅向内滑动事件
+          inputMonitor.on('swipeInward', callback);
+          // 取消订阅向内滑动事件
+          inputMonitor.off("swipeInward", callback);
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
+}
+```
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听所有回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // 订阅向内滑动事件
+          inputMonitor.on('swipeInward', callback);
+          // 取消订阅向内滑动事件
+          inputMonitor.off("swipeInward");
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
+}
+```
+
+## inputMonitor.on('fingerprint')<sup>12+</sup>
+
+on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
+
+监听指纹手势输入事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'fingerprint'。 |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅指纹事件
+            inputMonitor.on('fingerprint', (FingerprintEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(FingerprintEvent)}.`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Failed to monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('fingerprint')<sup>12+</sup>
+
+off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
+
+取消监听指纹手势输入事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 输入事件类型，取值'fingerprint'。                    |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅指纹事件
+            inputMonitor.on('fingerprint', callback);
+            // 取消订阅指纹事件
+            inputMonitor.off("fingerprint", callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅指纹事件
+            inputMonitor.on('fingerprint', callback);
+            // 取消订阅指纹事件
+            inputMonitor.off("fingerprint");
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
 }
 ```

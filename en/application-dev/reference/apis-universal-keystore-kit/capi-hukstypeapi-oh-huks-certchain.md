@@ -28,4 +28,4 @@ Defines the struct of a certificate chain.
 | Name| Description|
 | -- | -- |
 | struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *certs | Pointer to the certificate data.|
-| uint32_t certsCount | Number of certificates in the certificate chain.|
+| uint32_t certsCount | Number of certificates.|

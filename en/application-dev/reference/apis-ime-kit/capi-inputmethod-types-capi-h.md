@@ -1,7 +1,7 @@
 # inputmethod_types_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -182,7 +182,7 @@ Enumerates the input method error codes.
 | Enum Item| Description|
 | -- | -- |
 | IME_ERR_OK = 0 | Success.|
-| IME_ERR_UNDEFINED = 1 | Query failed.|
+| IME_ERR_UNDEFINED = 1 | Undefined error.|
 | IME_ERR_PARAMCHECK = 401 | Parameter check failed.|
 | IME_ERR_PACKAGEMANAGER = 12800001 | Package management error.|
 | IME_ERR_IMENGINE = 12800002 | Input method application error.|

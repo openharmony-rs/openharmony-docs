@@ -14,19 +14,27 @@
 
 相机设备信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                              | 类型                                  | 只读 | 可选 | 说明        |
 |---------------------------------|-------------------------------------| ---- |----|---------- |
-| cameraId                        | string                              | 是   | 否  | 相机ID。|
-| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否  | 相机位置。    |
-| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否  | 相机类型。    |
-| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否  | 相机连接类型。 |
-| cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变，取值范围为0°-360°，单位：度。 |
-| hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。 |
-| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。 |
+| cameraId                        | string                              | 是   | 否  | 相机ID。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否  | 相机位置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
+| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否  | 相机类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
+| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否  | 相机连接类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变。取值范围为[0, 360]。单位：度。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | 是 | 是 | 相机镜头等效焦距。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成）, true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是 | 是 | 组成此逻辑相机的物理相机列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensFocalLength<sup>24+</sup> | number | 是 | 是 | 镜头实际焦距。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| minimumFocusDistance<sup>24+</sup> | number | 是 | 是 | 相机最小对焦距离。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensDistortion<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头畸变参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头内参标定参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器物理尺寸（宽度和高度）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器像素阵列尺寸（宽度和高度。单位：像素）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是 | 是 | 传感器颜色滤镜排列方式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## CameraStatusInfo
 
@@ -77,8 +85,8 @@
 
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
-| min      | number                        |  是  | 否 | 最小帧率，单位：fps。      |
-| max      | number                        |  是  | 否 | 最大帧率，单位：fps。      |
+| min      | number                        |  是  | 否 | 最小帧率。单位：fps。      |
+| max      | number                        |  是  | 否 | 最大帧率。单位：fps。      |
 
 ## VideoProfile
 
@@ -90,7 +98,7 @@
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | 是  |  否  | 帧率范围，单位：fps(frames per second)。 |
+| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | 是  |  否  | 帧率范围。单位：fps(frames per second)。 |
 
 ## CameraOutputCapability
 
@@ -131,8 +139,8 @@
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
-| height | number | 否   | 否   | 图像尺寸高(像素)。 |
-| width  | number | 否   | 否   | 图像尺寸宽(像素)。 |
+| height | number | 否   | 否   | 图像尺寸高（像素）。 |
+| width  | number | 否   | 否   | 图像尺寸宽（像素）。 |
 
 ## Point
 
@@ -202,7 +210,7 @@
 | 名称       | 类型   | 只读 | 可选 | 说明        |
 | --------- | ------ | ---- | ---- | ---------- |
 | captureId | number | 否   | 否   | 拍照的ID。|
-| timestamp | number | 否   | 否   | 快门时间戳，单位毫秒。|
+| timestamp | number | 否   | 否   | 快门时间戳。单位毫秒。|
 
 ## FrameShutterEndInfo<sup>12+</sup>
 
@@ -258,7 +266,9 @@
 ## Rect
 
 矩形定义，返回的检测点坐标系以设备充电口在右侧时的横向设备方向为基准。该坐标系左上角为（0，0），右下角为（1，1），其中（topLeftX，topLeftY）表示矩形区域的左上角坐标，width和height分别表示矩形区域的宽和高。因此在实际使用中根据业务诉求需要裁剪或者选择人脸区域时，必须将矩形区域的x坐标和y坐标分别乘以实际相机预览输出流的宽和高，即可得到裁剪后的人脸矩形区域。
+
 实际预览流的宽高指的是相机输出流的分辨率，请参考[profile](arkts-apis-camera-i.md#profile)中的size。
+
 预览流的数据获取请参考[双路预览(ArkTs)](../../media/camera/camera-dual-channel-preview.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
@@ -283,7 +293,7 @@
 | 名称         | 类型                                        | 只读 | 可选 |说明                |
 | ----------- | ------------------------------------------- | ---- | ---- | ----------------- |
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  是  |  否  | metadata 类型。    |
-| timestamp   | number                                      |  是  |  否  | 当前时间戳，单位为纳秒（ns）。|
+| timestamp   | number                                      |  是  |  否  | 当前时间戳。单位为纳秒（ns）。|
 | boundingBox | [Rect](#rect)                               |  是  |  否  | metadata 区域框。  |
 
 ## SmoothZoomInfo<sup>11+</sup>
@@ -296,7 +306,7 @@
 
 | 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
-| duration |   number   |   否     |    否    | 平滑变焦总时长，单位ms。 |
+| duration |   number   |   否     |    否    | 平滑变焦总时长。单位ms。 |
 
 ## ControlCenterStatusInfo<sup>20+</sup>
 
@@ -322,3 +332,54 @@
 | 名称 | 类型    | 只读 | 可选 | 说明           |
 | ---- | ------- | ---- |--| -------------- |
 | iso  | number  | 是   | 是 | ISO值。        |
+
+## CameraOcclusionDetectionResult<sup>23+</sup>
+
+镜头遮挡或脏污检测回调返回的接口实例，表示镜头遮挡或脏污状态信息。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                 | 类型       | 只读 | 可选 | 说明                                |
+|--------------------| ---------- | ---- | ---- |-----------------------------------|
+| isCameraOccluded   | boolean    | 是   | 否   | 镜头是否被遮挡。true表示镜头被遮挡，false表示镜头无遮挡。 |
+| isCameraLensDirty  | boolean    | 是   | 否   | 镜头是否有脏污。true表示镜头有脏污，false表示镜头无脏污。 |
+
+## ZoomRange<sup>24+</sup>
+
+变焦范围。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称      | 类型                          | 只读 | 可选 | 说明            |
+| -------- | ----------------------------- |----- |---| --------------|
+| min      | number                        |  是  | 否 | 最小变焦值。      |
+| max      | number                        |  是  | 否 | 最大变焦值。      |
+
+## PhysicalAperture<sup>24+</sup>
+
+物理光圈对象。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 类型                                      | 只读 | 可选 | 说明        |
+| ------------------------- | ----------------------------------------- | --- | ---- |----------- |
+| zoomRange            | [ZoomRange](#zoomrange24)         | 否  |  否  | 特定物理光圈的变焦范围。 |
+| apertures                 | Array\<number\>              | 否  |  否  | 支持的物理光圈值。        |
+
+## ExposureInfo<sup>24+</sup>
+
+曝光信息对象。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称      | 类型                          | 只读 | 可选 | 说明            |
+| -------- | ----------------------------- |----- |---| --------------|
+| exposureTime      | number                        |  是  | 是 | 曝光时间值。单位：微秒。      |

@@ -815,7 +815,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-Starts a new ServiceExtensionAbility with the account ID specified. This API uses a promise to return the result asynchronously.
+Starts a ServiceExtensionAbility with the account ID specified. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 > 
@@ -2472,9 +2472,9 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 Starts a UIAbility through App Linking. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
-- The **actions** list contains **ohos.want.action.viewData**.
-- The **entities** list contains **entity.system.browsable**.
-- The **uris** list contains elements where **scheme** is set to **https** and **domainVerify** is set to **true**.
+- The **actions** field must contain **ohos.want.action.viewData**.
+- The **entities** field must contain **entity.system.browsable**.
+- The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.
 
 If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
@@ -2555,7 +2555,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
       });
     }
     catch (e) {
-      log(`exception occured, errCode ${JSON.stringify(e.code)}`);
+      log(`exception occurred, errCode ${JSON.stringify(e.code)}`);
     }
   }
 
@@ -2640,7 +2640,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     } catch (e) {
       let code = (e as BusinessError).code;
       let msg = (e as BusinessError).message;
-      log(`exception occured, errCode: ${code}, errMsg: ${msg}.`);
+      log(`exception occurred, errCode: ${code}, errMsg: ${msg}.`);
     }
   }
 

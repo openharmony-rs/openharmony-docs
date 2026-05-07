@@ -7,7 +7,7 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-- [Introduction to User Authentication Kit](user-authentication-overview.md)
+- [About This Kit](user-authentication-overview.md)
 - User Authentication Development<!--user-authentication-dev-->
   - [Before You Start](prerequisites.md)
   - [Obtaining Supported Authentication Capabilities](obtain-supported-authentication-capabilities.md)
@@ -18,4 +18,4 @@
   - [Obtaining Enrolled Credential Information](obtain-enrolled-state-capabilities.md)
   - [Using userAuthIcon](user-auth-icon.md)
   - [Querying the Locking Status of a Specified Authentication Type](obtain-auth-lock-state-capabilities.md)
-<!--no_check-->
+- [Glossary](user-authentication-glossary.md)

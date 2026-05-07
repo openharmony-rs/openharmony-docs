@@ -109,7 +109,7 @@ Enumerates the camera scene modes.
 | Name                        | Value      | Description                                         |
 |----------------------------|---------|---------------------------------------------|
 | NORMAL_PHOTO               | 1       | Normal photo mode. For details, see [PhotoSession](arkts-apis-camera-PhotoSession.md).  |
-| NORMAL_VIDEO               | 2       | Normal record mode. For details, see [VideoSession](arkts-apis-camera-VideoSession.md).  |
+| NORMAL_VIDEO               | 2       | Normal record mode. For details, see [VideoSession](arkts-apis-camera-VideoSession.md). |
 | SECURE_PHOTO<sup>12+</sup> | 12      | Secure mode. For details, see [SecureSession](arkts-apis-camera-SecureSession.md).|
 
 ## CameraErrorCode
@@ -118,23 +118,21 @@ Enumerates the camera error codes,
 
 which are returned when an API call is incorrect or the **on()** API is used to listen for the error status.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                      | Value         | Description           |
 | -------------------------  | ----       | ------------    |
-| INVALID_ARGUMENT           | 7400101    | A parameter is missing or the parameter type is incorrect.  |
-| OPERATION_NOT_ALLOWED      | 7400102    | The operation is not allowed.    |
-| SESSION_NOT_CONFIG         | 7400103    | The session is not configured.      |
-| SESSION_NOT_RUNNING        | 7400104    | The session is not running.   |
-| SESSION_CONFIG_LOCKED      | 7400105    | The session configuration is locked.    |
-| DEVICE_SETTING_LOCKED      | 7400106    | The device setting is locked.    |
-| CONFLICT_CAMERA            | 7400107    | The device is already started.    |
-| DEVICE_DISABLED            | 7400108    | The camera is disabled for security reasons.    |
-| DEVICE_PREEMPTED           | 7400109    | The camera is preempted.    |
-| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.    |
-| SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.    |
+| INVALID_ARGUMENT           | 7400101    | A parameter is missing or the parameter type is incorrect.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| OPERATION_NOT_ALLOWED      | 7400102    | The operation is not allowed.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| SESSION_NOT_CONFIG         | 7400103    | The session is not configured.<br> **Atomic service API**: This API can be used in atomic services since API version 19. |
+| SESSION_NOT_RUNNING        | 7400104    | The session is not running.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| SESSION_CONFIG_LOCKED      | 7400105    | The session configuration is locked.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| DEVICE_SETTING_LOCKED      | 7400106    | The device setting is locked.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| CONFLICT_CAMERA            | 7400107    | The device is already started.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| DEVICE_DISABLED            | 7400108    | The camera is disabled for security reasons.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| DEVICE_PREEMPTED           | 7400109    | The camera is preempted.<br> **Atomic service API**: This API can be used in atomic services since API version 19. |
+| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.<br> **Atomic service API**: This API can be used in atomic services since API version 19.   |
 
 ## TorchMode<sup>11+</sup>
 
@@ -166,6 +164,7 @@ Enumerates the camera output formats.
 | CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010 image.     |
 | CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010 image.     |
 | CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF image.           |
+| CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  Digital Negative (DNG) image.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -226,13 +225,12 @@ Enumerates the image quality levels.
 
 Enumerates the metadata object types.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                      | Value  | Description             |
 | ------------------------- | ---- | ----------------- |
-| FACE_DETECTION            | 0    | Metadata object used for face detection.|
+| FACE_DETECTION            | 0    | Metadata object used for face detection.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| HUMAN_BODY<sup>23+</sup>     | 1    | Metadata object used for body detection.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## FlashMode
 
@@ -253,15 +251,15 @@ Enumerates the flash modes.
 
 Enumerates the exposure modes.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                          | Value  | Description        |
 | ----------------------------- | ---- | ----------- |
-| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.|
-| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).|
-| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.|
+| EXPOSURE_MODE_UNSPECIFIED<sup>24+</sup>      | -1    | Unspecified exposure.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_MANUAL | 3    | Manual exposure. The exposure duration can be set.<br>In this mode, you can set the exposure duration by calling [ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24).<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## FocusMode
 
@@ -324,16 +322,15 @@ Enumerates the smooth zoom modes.
 
 Enumerates the preconfigured resolution types.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                     | Value| Description        |
 |-------------------------|---|------------|
-| PRECONFIG_720P          | 0 | 720p resolution.  |
-| PRECONFIG_1080P         | 1 | 1080p resolution. |
-| PRECONFIG_4K            | 2 | 4K resolution.    |
-| PRECONFIG_HIGH_QUALITY  | 3 | High-quality resolution.   |
+| PRECONFIG_720P          | 0 | 720p resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| PRECONFIG_1080P         | 1 | 1080p resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| PRECONFIG_4K            | 2 | 4K resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19.    |
+| PRECONFIG_HIGH_QUALITY  | 3 | High-quality resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19.   |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | Resolution that supports HDR preview and GIF photography.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## PreconfigRatio<sup>12+</sup>
 
@@ -400,14 +397,13 @@ Enumerates the system pressure levels.
 
 Enumerates the effect types supported by the camera controller.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name     | Value| Description   |
 |-----------|---|---------|
-| BEAUTY    | 0 | Beauty effect.  |
-| PORTRAIT  | 1 | Portrait blur effect.|
+| BEAUTY    | 0 | Beauty effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.  |
+| PORTRAIT  | 1 | Portrait blur effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| AUTO_FRAMING<sup>24+</sup> | 2 | Auto focus.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
@@ -421,3 +417,98 @@ Enumerates the photo quality prioritization strategies.
 |--------------|-------|---------|
 | HIGH_QUALITY | 0     | Focuses on image quality, which may increase the time required for capturing photos to ensure high-quality output.|
 | SPEED        | 1     | Focuses on performance, trading off image quality for faster capture times.|
+
+## SensorColorFilterArrangement<sup>24+</sup>
+
+Enumerates the arrangement modes of the sensor color filter.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                        | Value  | Description                                                             |
+| --------------------------- | ---- |-----------------------------------------------------------------|
+| BGGR                        | 0    | Blue-green-green-red filter arrangement.                                                       |
+| GBRG                        | 1    | Green-blue-red-green filter arrangement.                                                          |
+| GRBG                        | 2    | Green-red-blue-green arrangement mode.                                                          |
+| RGGB                        | 3    | Red-green-green-blue arrangement mode.                                                          |
+
+## FlashState<sup>24+</sup>
+
+Enumerates the flash states.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| FLASH_STATE_UNAVAILABLE      | 0    | The flash is unavailable. This is the default value.  |
+| FLASH_STATE_READY   | 1    | The flash is available.|
+| FLASH_STATE_FLASHING   | 2    | The flash is turned on.      |
+
+## ExposureMeteringMode<sup>24+</sup>
+
+Enumerates the exposure metering modes.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| MATRIX      | 0    | Matrix metering mode. A wide area of the screen is selected, which is ideal for shooting natural landscapes.  |
+| CENTER   | 1    | Center-weighted metering mode. Metering is performed on the entire image, with the center allocated with the maximum weight, which is ideal for shooting portraits.|
+| SPOT   | 2    | Spot metering mode. Metering is performed around 2.5% of the metering points, focusing on the light in a specific small area, such as the eyes of the subject.      |
+
+## OISMode<sup>24+</sup>
+
+Enumerates the optical image stabilization (OIS) mode.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| OFF      | 0    | OIS is disabled.  |
+| AUTO   | 1    | OIS is automatically controlled.|
+| CUSTOM   | 2    | OIS is controlled by the application.      |
+
+## OISAxes<sup>24+</sup>
+
+Enumerates the OIS axes.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.  |
+| YAW   | 1    | Yaw axis. It controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|
+
+## ExposureState
+
+Enumerates the exposure states.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| EXPOSURE_STATE_SCAN       | 0    | Focusing.    |
+| EXPOSURE_STATE_CONVERGED  | 1    | Exposure converged.    |

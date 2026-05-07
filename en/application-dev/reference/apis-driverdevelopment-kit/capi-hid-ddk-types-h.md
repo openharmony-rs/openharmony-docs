@@ -1,10 +1,10 @@
 # hid_ddk_types.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
@@ -26,14 +26,14 @@ Defines the enum variables and structs used in the HID DDK.
 
 | Name                                                       | typedef Keyword| Description|
 |-----------------------------------------------------------| -- | -- |
-| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | Defines event information.|
-| [Hid_Device](capi-hidddk-hid-device.md)                   | Hid_Device | Defines basic device information.|
-| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | Defines an array of event types.|
-| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | Defines an array of key codes.|
+| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | Represents the event information.|
+| [Hid_Device](capi-hidddk-hid-device.md)                   | Hid_Device | Defines a struct for basic device information.|
+| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | Defines a struct for an array of event types.|
+| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | Defines a struct for the key code array.|
 | [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md)       | Hid_AbsAxesArray | Defines an array of absolute coordinates.|
 | [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md)       | Hid_RelAxesArray | Defines an array of relative coordinates.|
 | [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md)     | Hid_MscEventArray | Defines an array of miscellaneous events.|
-| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | Defines the event properties of a device.|
+| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | Defines a struct for the event properties of a device.|
 | [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md)           | Hid_RawDevInfo | Defines the raw device information.|
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md)       | Hid_DeviceHandle | Defines the opaque USB HID device structure.|
 
@@ -61,7 +61,7 @@ Defines the enum variables and structs used in the HID DDK.
 
 ### Hid_DeviceProp
 
-```
+```c
 enum Hid_DeviceProp
 ```
 
@@ -83,7 +83,7 @@ Enumerates the properties of input devices.
 
 ### Hid_EventType
 
-```
+```c
 enum Hid_EventType
 ```
 
@@ -103,7 +103,7 @@ Enumerates the event types.
 
 ### Hid_SynEvent
 
-```
+```c
 enum Hid_SynEvent
 ```
 
@@ -122,7 +122,7 @@ Enumerates sync events.
 
 ### Hid_KeyCode
 
-```
+```c
 enum Hid_KeyCode
 ```
 
@@ -247,7 +247,7 @@ Enumerates the key codes.
 
 ### Hid_AbsAxes
 
-```
+```c
 enum Hid_AbsAxes
 ```
 
@@ -288,7 +288,7 @@ Enumerates the absolute coordinates.
 
 ### Hid_RelAxes
 
-```
+```c
 enum Hid_RelAxes
 ```
 
@@ -316,7 +316,7 @@ Enumerates the relative coordinates.
 
 ### Hid_MscEvent
 
-```
+```c
 enum Hid_MscEvent
 ```
 
@@ -337,7 +337,7 @@ Enumerates miscellaneous input events.
 
 ### Hid_DdkErrCode
 
-```
+```c
 enum Hid_DdkErrCode
 ```
 
@@ -364,7 +364,7 @@ Enumerates the HID DDK error codes.
 
 ### Hid_ReportType
 
-```
+```c
 enum Hid_ReportType
 ```
 
@@ -383,7 +383,7 @@ Defines the report (data packets exchanged between the HID device and the host) 
 
 ### HID_MAX_REPORT_BUFFER_SIZE
 
-```
+```c
 HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1)
 ```
 

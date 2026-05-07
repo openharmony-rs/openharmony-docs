@@ -40,7 +40,7 @@ Creates a pan gesture. Inherits from [GestureInterface\<T>](ts-gesture-common.md
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: PanDirection; distance?: number } \| [PanGestureOptions](#pangestureoptions) | No| Parameters for the pan gesture.<br> - **fingers**: minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**.<br>Value range: [1, 10].<br>**NOTE**<br>If the value is less than 1 or is not set, the default value is used.<br> - **direction**: pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.<br> - **distance**: minimum pan distance to trigger the gesture, in vp.<br>Value range: [0, +∞).<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.|
+| value | { fingers?: number; direction?: [PanDirection](ts-basic-gestures-pangesture.md#pandirection); distance?: number } \| [PanGestureOptions](#pangestureoptions)| No| Parameters for the pan gesture.<br> - **fingers**: minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**<br>Value range: [1, 10]<br>**NOTE**<br>If the value is less than 1 or is not set, the default value is used.<br> - **direction**: pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**<br> - **distance**: minimum pan distance to trigger the gesture, in vp.<br>Value range: [0, +∞)<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>When the [scale](./ts-universal-attributes-transformation.md#scale) attribute is applied to the component, the actual pan distance is adjusted based on the **scale** ratio.|
 
 ### PanGesture<sup>15+</sup>
 
@@ -94,7 +94,7 @@ Creates a pan gesture configuration object. The **PanGestureOptions** API enable
 
 | Name| Type| Mandatory| Description|
 | --------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value   | { fingers?: number; direction?: [PanDirection](#pandirection); distance?: number } | No  | Pan gesture configuration.<br>**fingers**: minimum number of fingers required. The value ranges from 1 to 10.<br>Default value: **1**.<br>**direction**: pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.<br>**distance**: minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.|
+| value   | { fingers?: number; direction?: [PanDirection](#pandirection); distance?: number } | No  | Pan gesture configuration.<br>**fingers**: minimum number of fingers required. The value ranges from 1 to 10.<br>Default value: **1**<br>**direction**: pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**<br>**distance**: minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.<br>When the [scale](./ts-universal-attributes-transformation.md#scale) attribute is applied to the component, the actual pan distance is adjusted based on the **scale** ratio.|
 
 ### setDirection
 
@@ -110,7 +110,7 @@ Sets the pan direction.
 
 | Name| Type                                      | Mandatory| Description                     |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  [PanDirection](#pandirection) | Yes  | Pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.|
+| value  |  [PanDirection](#pandirection) | Yes  | Pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**|
 
 ### setDistance
 
@@ -126,7 +126,7 @@ Sets the minimum pan distance to trigger the gesture, in vp. To avoid performanc
 
 | Name| Type                                      | Mandatory| Description                       |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | Yes  | Minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.|
+| value  |  number | Yes  | Minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.<br>When the [scale](./ts-universal-attributes-transformation.md#scale) attribute is applied to the component, the actual pan distance is adjusted based on the **scale** ratio.|
 
 ### setFingers
 
@@ -142,7 +142,7 @@ Sets the minimum number of fingers to trigger the gesture.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | Yes  | Minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**.|
+| value  |  number | Yes  | Minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**|
 
 ### getDirection<sup>12+</sup>
 
@@ -178,8 +178,6 @@ Obtains the minimum pan distance to trigger the gesture.
 
 
 ## Events
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 >  **NOTE**
 >
@@ -296,7 +294,7 @@ struct PanGestureExample {
       PanGesture(this.panOption)
         .onActionStart((event: GestureEvent) => {
           console.info('Pan start');
-          console.info('Pan start timeStamp is: ' + event.timestamp);
+          console.info(`Pan start timeStamp is: ${event.timestamp}`);
         })
         .onActionUpdate((event: GestureEvent) => {
           if (event) {
@@ -308,7 +306,7 @@ struct PanGestureExample {
           this.positionX = this.offsetX;
           this.positionY = this.offsetY;
           console.info('Pan end');
-          console.info('Pan end timeStamp is: ' + event.timestamp);
+          console.info(`Pan end timeStamp is: ${event.timestamp}`);
         })
       )
 

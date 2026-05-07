@@ -109,7 +109,7 @@ When a component triggers an event, the event callback receives an event object 
 
 | Attribute                  | Type    | Description                                      |
 | -------------------- | ------ | ---------------------------------------- |
-| dataSet<sup>6+</sup> | Object | Custom attribute set defined through [data-*](js-components-common-attributes.md).|
+| dataSet<sup>6+</sup> | Object | Custom attribute set defined through [data-*](js-components-common-attributes.md#common-attributes).|
 
 **Example**
 
@@ -159,14 +159,14 @@ Sets the data associated with the specified key. If there is no data associated 
 ```js
 // value in setData can be of a primitive type.
 dragStart(e) {
-	var isSetOK = e.dataTransfer.setData('name', 1);
+    var isSetOK = e.dataTransfer.setData('name', 1);
 },
 // value in setData can be of the object type.
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	var isSetOK = e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    var isSetOK = e.dataTransfer.setData('person', person);
 }
 ```
 ### getData<sup>9+</sup>
@@ -191,13 +191,13 @@ Obtains the data associated with the specified key. If no data is associated wit
 
 ```js
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    e.dataTransfer.setData('person', person);
 },
 dragEnd(e){
-	var person = e.dataTransfer.getData('person');
+    var person = e.dataTransfer.getData('person');
 },
 ```
 ### clearData<sup>9+</sup>
@@ -223,7 +223,7 @@ If the key is null, all data will be deleted.
 
 ```js
 dragEnd(e) {
-	var isSuccess = e.dataTransfer.clearData('name');
+    var isSuccess = e.dataTransfer.clearData('name');
 }
 ```
 ### setDragImage<sup>9+</sup>

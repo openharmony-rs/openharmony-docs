@@ -14,12 +14,14 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果Filter设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Filter本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Filter设置通用属性和通用事件。
 
 
 ## 导入模块
 
-```
+```ts
 import { Filter } from '@kit.ArkUI';
 ```
 
@@ -46,7 +48,7 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | 名称 | 类型 | 必填  | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | multiFilters | Array&lt;[FilterParams](#filterparams)&gt; | 是   | \@Prop | 多条件筛选列表。 |
-| additionFilters | [FilterParams](#filterparams) | 否   | \@Prop | 附加快捷筛选项。 |
+| additionFilters | [FilterParams](#filterparams) | 否   | \@Prop | 附加快捷筛选项。如果不设置，则不显示附加快捷筛选项。 |
 | filterType | [FilterType](#filtertype) | 否   | \@Prop | 筛选器的样式类型。<br/>默认值：FilterType.LIST_FILTER |
 | onFilterChanged | (filterResults: Array&lt;[FilterResult](#filterresult)&gt;)&nbsp;=&gt;&nbsp;void | 是   | - | 用户点击后的回调事件。回调函数的参数为选中的筛选项结果列表。 |
 | container | ()=&gt;void | 是   | \@BuilderParam | 筛选结果展示区域自定义内容，通过尾随闭包形式传入。 |
@@ -62,7 +64,7 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | 名称 | 类型 | 只读 | 可选 | 说明                                                              |
 | -------- | -------- |----|----|-----------------------------------------------------------------|
 | name | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 筛选项维度名称。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。              |
-| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | 否  | 否  | 筛选项维度可选项列表。<br/>默认值：空字符串。<br/>**说明**：文本超长显示省略号。 |
+| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | 否  | 否  | 筛选项维度可选项列表。<br/>默认值：空数组。<br/>**说明**：文本超长显示省略号。 |
 
 ## FilterType
 

@@ -16,6 +16,8 @@
 
 - [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md)类，用于查询设备是否支持自动切换镜头，使能或去使能自动切换镜头。
 - [AutoExposure](arkts-apis-camera-AutoExposure.md)类，针对设备的自动曝光特性提供了一系列查询功能，支持设置或查询当前曝光值、曝光区域中心点以及曝光补偿。
+- [Aperture](arkts-apis-camera-Aperture.md)类，提供物理光圈相关功能的能力。
+- [ApertureQuery](arkts-apis-camera-ApertureQuery.md)类，提供物理光圈查询相关功能的能力。
 - [CameraInput](arkts-apis-camera-CameraInput.md)类，提供开关相机，以及监听输入流异常的能力。
 - [CameraManager](arkts-apis-camera-CameraManager.md)类，提供获取相机设备对象、创建输入/输出流以及会话Session、注册/解注册监听相机相关状态等能力。
 - [ColorManagement](arkts-apis-camera-ColorManagement.md)类，提供查询是否支持色彩空间，设置以及获取色彩空间参数的能力。
@@ -23,7 +25,15 @@
 - [Flash](arkts-apis-camera-Flash.md)类，提供查询是否支持闪光灯功能，以及具有对闪光灯设备操作的能力。
 - [Focus](arkts-apis-camera-Focus.md)类，提供查询对焦模式在设备上是否支持的接口，以及设置对焦相关功能的能力。
 - [Macro](arkts-apis-camera-Macro.md)类，提供查询是否支持微距，以及使能微距的能力。
+- [ManualExposure](arkts-apis-camera-ManualExposure.md)类，提供手动曝光相关功能的能力。
+- [ManualExposureQuery](arkts-apis-camera-ManualExposureQuery.md)类，提供手动曝光查询相关功能的能力。
+- [ManualFocusQuery](arkts-apis-camera-ManualFocusQuery.md)类，提供手动对焦查询相关功能的能力。
+- [ManualFocus](arkts-apis-camera-ManualFocus.md)类，提供手动对焦相关功能的能力。
+- [ManualIso](arkts-apis-camera-ManualIso.md)类，提供手动ISO相关功能的能力。
+- [ManualIsoQuery](arkts-apis-camera-ManualIsoQuery.md)类，提供手动ISO查询相关功能的能力。
 - [MetadataOutput](arkts-apis-camera-MetadataOutput.md)类，用于注册/解注册监听meta数据以及启动/停止meta流。
+- [OIS](arkts-apis-camera-OIS.md)类，提供光学防抖（OIS）相关功能的能力。
+- [OISQuery](arkts-apis-camera-OISQuery.md)类，提供光学防抖（OIS）查询相关功能的能力。
 - [Photo](arkts-apis-camera-Photo.md)类，全质量图对象，包含一张图片的完整信息。
 - [PhotoOutput](arkts-apis-camera-PhotoOutput.md)类，拍照会话中使用的输出信息，提供拍照相关的能力，如拍照、使能动态拍照和获取拍照旋转角度等。
 - [PhotoSession](arkts-apis-camera-PhotoSession.md)类，普通拍照模式会话类，提供了预配置以及会话状态监听相关的能力。

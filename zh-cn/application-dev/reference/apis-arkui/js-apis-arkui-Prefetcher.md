@@ -2,15 +2,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
-<!--Designer: @lixingchi1-->
-<!--Tester: @TerryTsao-->
+<!--Designer: @keerecles-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 配合LazyForEach，为List、Grid、WaterFlow和Swiper等容器组件滑动浏览时提供内容预加载能力，提升用户浏览体验。
 
 >  **说明：**
 >
->  本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>  - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+>  - 本模块内的接口不支持在预览器中使用。
 
 ## 导入模块
 
@@ -29,7 +31,7 @@ import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@kit.ArkUI
 ### setDataSource
 setDataSource(dataSource: IDataSourcePrefetching): void;
 
-设置支持预取的DataSource以绑定到Prefetcher。
+设置支持预取的数据源以绑定到Prefetcher。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -87,6 +89,8 @@ class MyPrefetcher implements IPrefetcher {
 
 ## BasicPrefetcher
 BasicPrefetcher是IPrefetcher的基础实现。它提供了一种智能数据预取算法，以根据屏幕上可见区域的实时变化和预取持续时间的变化来决定应预取哪些数据项。它还可以根据用户的滚动操作来确定哪些预取请求应该被取消。
+
+BasicPrefetcher对象不支持使用JSON序列化。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

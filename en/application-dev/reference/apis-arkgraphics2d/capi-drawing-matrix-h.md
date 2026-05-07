@@ -18,6 +18,8 @@ This file declares the functions related to the matrix in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -284,7 +286,7 @@ Scales a matrix to map a source rectangle to a destination rectangle.<br>This AP
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the operation is successful; returns **false** if the operation fails; returns **true** and sets the matrix as follows if the passed-in matrix is empty:<br> If the width or height of **src** is less than or equal to 0, **false** is returned and the matrix is set to an identity matrix.<br> If the width or height of **dst** is less than or equal to 0, **true** is returned and the matrix is set as follows (perspective scale coefficient = 1; other values = 0).|
+| bool | Returns **true** if the operation is successful; returns **false** if the operation fails; returns **true** and sets the matrix as follows if the passed-in matrix is empty:<br> If the width or height of **src** is less than or equal to 0, **false** is returned and the matrix is set to an identity matrix.<br>If the width or height of **dst** is less than or equal to 0, **true** is returned and the matrix is set as follows (perspective scale coefficient = 1; other values = 0).|
 
 ### OH_Drawing_MatrixPreRotate()
 
@@ -502,7 +504,7 @@ Obtains all element values of a matrix.
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns an execution result.<br> **OH_DRAWING_SUCCESS** if all element values of the matrix are successfully obtained.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if the matrix element values fail to be obtained. The failure cause is that **matrix** or **value** is NULL.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns an execution result.<br>**OH_DRAWING_SUCCESS** if all element values of the matrix are successfully obtained.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if the matrix element values fail to be obtained. The failure cause is that **matrix** or **value** is NULL.|
 
 ### OH_Drawing_MatrixGetValue()
 
@@ -801,8 +803,6 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing
 **Description**
 
 Left-multiplies matrix a by matrix b.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 22
 

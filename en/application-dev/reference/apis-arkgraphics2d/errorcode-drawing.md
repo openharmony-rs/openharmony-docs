@@ -14,11 +14,11 @@
 
 **Error Message**
 
-The parameter value is out of range.
+Parameter error. Possible causes: Incorrect parameter range.
 
 **Description**
 
-This error code is reported when the parameter value exceeds the value range.
+This error code is reported when the parameter value exceeds the allowable range.
 
 **Possible Causes**
 

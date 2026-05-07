@@ -3,15 +3,15 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-HiAppEvent提供了事件订阅接口，用于获取应用的事件。
+HiAppEvent提供了事件订阅接口，用于订阅并接收应用产生的事件。
 
 ## 接口说明
 
-API接口的使用说明，包括参数使用限制和取值范围，请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+API接口的使用说明，包括参数使用限制和取值范围，请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 **订阅接口功能介绍**：
 
@@ -32,41 +32,52 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 
 ### 步骤一：新建工程及编译配置
 
-1. 获取该示例工程依赖的jsoncpp文件。
+1. 将示例工程依赖的jsoncpp库文件复制到新建工程中。
 
-    从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
-
-   新建Native C++工程，并将jsoncpp导入工程，目录结构如下：
-
+   打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，并点击“下载当前目录”，下载EventSub工程文件。
+   
+   新建一个Native C++工程。从解压后的EventSub文件夹中拷贝jsoncpp库文件（entry/libs和entry/src/main/cpp/thirdparty整个目录）到新建的工程中，得到的目录结构如下：
    ```text
    entry
+   ├── libs        // 自行创建文件夹,放入相关的三方库
    └── src
-       └── main
-           ├── cpp
-           │   ├── CMakeLists.txt
-           │   ├── json
-           │   │   ├── json-forwards.h
-           │   │   └── json.h
-           │   ├── jsoncpp.cpp
-           │   ├── napi_init.cpp
-           │   └── types
-           │       └── libentry
-           │           ├── Index.d.ts
-           │           └── oh-package.json5
-           └── ets
-               ├── entryability
-               │   └── EntryAbility.ets
-               └── pages
-                   └── Index.ets
+       ├── main
+       │   ├── cpp
+       │   │   ├── CMakeLists.txt       // 导入so链接
+       │   │   ├── napi_init.cpp        // 功能函数，观察者定义
+       │   │   ├── thirdparty    // 自行创建文件夹,放入相关的三方库
+       │   │   │   └── jsoncpp
+       │   │   └── types
+       │   │       └── libentry
+       │   │           ├── Index.d.ts        // 定义ArkTS接口
+       │   │           └── oh-package.json5
+       │   ├── ets
+       │   │   ├── entryability
+       │   │   │   └── EntryAbility.ets    // 新增接口调用
+       │   │   ├── entrybackupability
+       │   │   │   └── EntryBackupAbility.ets
+       │   │   └── pages
+       │   │       └── Index.ets        // 主页
    ```
+   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)。
 
-2. 编辑“CMakeLists.txt”文件，添加源文件和动态库。
+2. 编辑“CMakeLists.txt”文件，添加所需的源文件和动态库。
 
    ```cmake
-   # 新增jsoncpp.cpp(解析订阅事件中的json字符串)源文件
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # 检查是否存在entry/build目录
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   add_library(entry SHARED napi_init.cpp)
    # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 3. 编辑“napi_init.cpp”文件，导入依赖的文件并定义LOG_TAG：
@@ -75,10 +86,10 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
-   #include "hilog/log.h"
+   // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
+   #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
    #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
+   #include "hilog/log.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -88,7 +99,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 1. 订阅事件。分别使用OnReceive类型观察者、OnTrigger类型观察者的订阅方式。
    - 订阅崩溃事件（系统事件），采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“napi_init.cpp”文件，定义OnReceive类型观察者相关方法：
 
-    <!-- @[AppEvent_Crash_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+    <!-- @[AppEvent_Crash_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     // 定义变量，用来缓存创建的观察者的指针。
@@ -96,7 +107,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
     
     static void OnReceive1(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen)
     {
-        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onReceive callback form C API \n");
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onReceive callback from C API \n");
         for (int i = 0; i < groupLen; ++i) {
             for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
                 OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.domain=%{public}s",
@@ -135,7 +146,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
         const char *names[] = {EVENT_APP_CRASH};
         // 开发者订阅感兴趣的事件，此处订阅了系统事件。
         OH_HiAppEvent_SetAppEventFilter(eventWatcherR1, DOMAIN_OS, 0, names, 1);
-        // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive1回调。
+        // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive1回调。
         OH_HiAppEvent_SetWatcherOnReceive(eventWatcherR1, OnReceive1);
         // 使观察者开始监听订阅的事件。
         OH_HiAppEvent_AddWatcher(eventWatcherR1);
@@ -145,7 +156,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 
    - 订阅按钮点击事件（应用事件），采用OnTrigger类型观察者的订阅方式。需满足OH_HiAppEvent_SetTriggerCondition()设置的条件，才能触发OnTrigger()回调。编辑 “napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
-    <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+    <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     // 定义变量，用来缓存创建的观察者的指针。
@@ -154,7 +165,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
     static void OnTake1(const char *const *events, uint32_t eventLen)
     {
         Json::Reader reader(Json::Features::strictMode());
-        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback form C API \n");
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback from C API \n");
         for (int i = 0; i < eventLen; ++i) {
             OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo=%{public}s", events[i]);
             Json::Value eventInfo;
@@ -315,7 +326,7 @@ Button('writeEvent C++')
 2. 搜索关键字“AppEvents”，在HiLog窗口查看应用处理崩溃事件数据的日志：
 
    ```text
-   AppEvents HiAppEvent success to read events with onReceive callback form C API
+   AppEvents HiAppEvent success to read events with onReceive callback from C API
    AppEvents HiAppEvent eventInfo.domain=OS
    AppEvents HiAppEvent eventInfo.name=APP_CRASH
    AppEvents HiAppEvent eventInfo.eventType=1
@@ -327,7 +338,7 @@ Button('writeEvent C++')
 3. 点击“writeEvent C++”按钮，触发按钮点击事件。搜索关键字“AppEvents”，在HiLog窗口查看应用处理按钮点击事件数据的日志：
 
    ```text
-   AppEvents HiAppEvent success to read events with onTrigger callback form C API
+   AppEvents HiAppEvent success to read events with onTrigger callback from C API
    AppEvents HiAppEvent eventInfo={"domain_":"button","name_":"click","type_":4,"time_":1750947007108,"tz_":"","pid_":64750,"tid_":64750,"clickTime":1750947007}
    AppEvents HiAppEvent eventInfo.domain=button
    AppEvents HiAppEvent eventInfo.name=click

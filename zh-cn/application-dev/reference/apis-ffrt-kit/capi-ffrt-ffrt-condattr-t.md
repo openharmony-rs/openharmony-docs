@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
 typedef struct {...} ffrt_condattr_t
@@ -27,6 +27,6 @@ FFRT条件变量属性结构。
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | FFRT条件变量属性所占空间 |
+| long storage | FFRT条件变量属性占用空间 |
 
 

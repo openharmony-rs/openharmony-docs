@@ -1,7 +1,7 @@
 # InputMethod_InputMethodProxy
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -12,7 +12,7 @@ typedef struct InputMethod_InputMethodProxy InputMethod_InputMethodProxy
 
 ## Overview
 
-Input method proxy object, which can be used to call the method for using the input method.
+A struct that serves as the proxy between an application and the input method. The application can call APIs of the input method through this proxy and receive event callbacks from the input method.
 
 **Since**: 12
 

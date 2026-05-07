@@ -97,13 +97,13 @@ export default {
      '+Enz0RzmVFh/4yk6lmqRzuEFQqhQqSZzaLq6sq2N2G0Sv2Xl3sLvqAfe2HNm2oBw\n' +
      'jBpApTJ3TeneOo6Z5QIDAQAB',
       success: function(data) {
-        console.log(`handling success:${data.text}`);
+        console.info(`handling success:${data.text}`);
       },
       fail: function(data, code) {
-        console.log(`### cipher.rsa encrypt fail ### ${code}:${data}`);
+        console.error(`### cipher.rsa encrypt fail ### ${code}:${data}`);
       },
       complete: function() {
-        console.log(`operation complete!`);
+        console.info(`operation complete!`);
       }
       });
       cipher.rsa({
@@ -130,13 +130,13 @@ export default {
         'M9TORIgdH8MjIbWsGnndAkEAw9yURDaorE8IYPLF2IEn09g1uzvWPs3phDb6smVx\n' +
         '8GfqIdUNf+aCG5TZK/kXBF1sqcsi7jXMAf4jBlejVbSVZg==',
          success: function(data) {
-           console.log(`handling success:${data.text}`);
+           console.info(`handling success:${data.text}`);
          },
          fail: function(data, code) {
-           console.log(`### cipher.rsa decrypt fail ### ${code}:${data}`);
+           console.error(`### cipher.rsa decrypt fail ### ${code}:${data}`);
          },
          complete: function() {
-           console.log(`operation complete!`);
+           console.info(`operation complete!`);
          }
        });
    }
@@ -174,13 +174,13 @@ export default {
       ivOffset: '0',
       ivLen: '16',
       success: function(data) {
-        console.log(`handling success:${data.text}`);
+        console.info(`handling success:${data.text}`);
         },
       fail: function(data, code) {
-        console.log(`### cipher.aes encrypt fail ### ${code}:${data}`);
+        console.error(`### cipher.aes encrypt fail ### ${code}:${data}`);
         },
       complete: function() {
-        console.log(`operation complete!`);
+        console.info(`operation complete!`);
       }
     });
     cipher.aes({
@@ -194,13 +194,13 @@ export default {
        ivOffset: '0',
        ivLen: '16',
        success: function(data) {
-         console.log(`handling success:${data.text}`);
+         console.info(`handling success:${data.text}`);
         },
        fail: function(data, code) {
-         console.log(`### cipher.aes decrypt fail ### ${code}:${data}`);
+         console.error(`### cipher.aes decrypt fail ### ${code}:${data}`);
        },
        complete: function() {
-         console.log(`operation complete!`);
+         console.info(`operation complete!`);
         }
      });
   }

@@ -2,14 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供了跟踪进程轨迹，度量程序执行性能的打点能力。本模块打点的数据供hiTraceMeter工具分析使用。
 
-详细开发流程请参考：[性能打点跟踪开发指导](../../dfx/hitracemeter-guidelines-arkts.md)。
+详细开发流程请参考：[使用HiTraceMeter跟踪性能（ArkTS）](../../dfx/hitracemeter-guidelines-arkts.md)。
 
 > **说明：**
 >
@@ -47,10 +47,10 @@ startTrace(name: string, taskId: number): void
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明               |
-| ------ | ------ | ---- | ------------------ |
-| name   | string | 是   | 要跟踪的任务名称。 |
-| taskId | number | 是   | 任务id。           |
+| 参数名 | 类型   | 必填 | 说明                                                                |
+| ------ | ------ | ---- |-------------------------------------------------------------------|
+| name   | string | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
+| taskId | number | 是   | 任务id。<br/>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。            |
 
 **示例：**
 
@@ -80,10 +80,6 @@ finishTrace的name和taskId必须与流程开始的[startTrace()](#hitracemeters
 | taskId | number | 是   | 任务id。           |
 
 **示例：**
-
-```js
-hiTraceMeter.finishTrace("myTestFunc", 1);
-```
 
 ```js
 // 跟踪并行执行的同名任务
@@ -123,16 +119,16 @@ traceByValue(name: string, count: number): void
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| name   | string | 是   | 要跟踪的整数变量名称。 |
+| name   | string | 是   | 要跟踪的整数变量名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
 | count  | number | 是   | 整数变量的值。         |
 
 **示例：**
 
 ```js
 let traceCount = 3;
-hiTraceMeter.traceByValue("myTestCount", traceCount);
+hiTraceMeter.traceByValue("myTestCount", traceCount);  // 使用trace打点记录myTestCount的值。
 traceCount = 4;
-hiTraceMeter.traceByValue("myTestCount", traceCount);
+hiTraceMeter.traceByValue("myTestCount", traceCount);  // 当myTestCount发生变化时，记录新值。
 // 业务流程......
 ```
 
@@ -152,7 +148,7 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);
 | INFO       | 1    | 用于log版本的输出级别。                 |
 | CRITICAL   | 2    | 用于log版本的输出级别，优先级高于INFO。 |
 | COMMERCIAL | 3    | 用于nolog版本的输出级别，优先级最高。   |
-| MAX        | 3    | 输出级别范围限制，MAX = COMMERCIAL。    |
+| MAX        | COMMERCIAL    | 输出级别范围限制，MAX = COMMERCIAL。    |
 
 ## hiTraceMeter.startAsyncTrace<sup>19+</sup>
 
@@ -170,13 +166,13 @@ startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number, customC
 
 **参数：**
 
-| 参数名         | 类型                                        | 必填 | 说明                                                         |
-| -------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| level          | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                               |
-| name           | string                                      | 是   | 要跟踪的任务名称。                                           |
-| taskId         | number                                      | 是   | 任务id。                                                     |
-| customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。                 |
-| customArgs     | string                                      | 否   | 自定义键值对，格式key=value，多个键值对用逗号分隔。<br>不传入该参数等同于传入空字符串。 |
+| 参数名         | 类型                                        | 必填 | 说明                                                                                                                                |
+| -------------- | ------------------------------------------- | ---- |-----------------------------------------------------------------------------------------------------------------------------------|
+| level          | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                                                                                                           |
+| name           | string                                      | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。                            |
+| taskId         | number                                      | 是   | 任务id。<br/>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。                                                                        |
+| customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。               |
+| customArgs     | string                                      | 否   | 自定义键值对，格式key=value，多个键值对用逗号分隔，默认为空字符串。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。 |
 
 **示例：**
 
@@ -262,11 +258,11 @@ startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): vo
 
 **参数：**
 
-| 参数名     | 类型                                        | 必填 | 说明                                                         |
-| ---------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| level      | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                               |
-| name       | string                                      | 是   | 要跟踪的任务名称。                                           |
-| customArgs | string                                      | 否   | 键值对，格式key=value，多个键值对用逗号分隔。<br>不传入该参数等同于传入空字符串。 |
+| 参数名     | 类型                                        | 必填 | 说明                                                                                     |
+| ---------- | ------------------------------------------- | ---- |----------------------------------------------------------------------------------------|
+| level      | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                                                                |
+| name       | string                                      | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。 |
+| customArgs | string                                      | 否   | 键值对，格式key=value，多个键值对用逗号分隔，默认值为空字符串。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。                               |
 
 **示例：**
 
@@ -325,7 +321,7 @@ hiTraceMeter.finishSyncTrace(COMMERCIAL);
 
 traceByValue(level: HiTraceOutputLevel, name: string, count: number): void
 
-整数跟踪事件，分级控制跟踪输出。用来标记一个预跟踪的整数变量名及整数值。
+整数跟踪事件，分级控制跟踪输出。用来标记一个预先定义需要跟踪的整数变量名及整数值。
 
 **原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -336,7 +332,7 @@ traceByValue(level: HiTraceOutputLevel, name: string, count: number): void
 | 参数名 | 类型                                        | 必填 | 说明                   |
 | ------ | ------------------------------------------- | ---- | ---------------------- |
 | level  | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。         |
-| name   | string                                      | 是   | 要跟踪的整数变量名称。 |
+| name   | string                                      | 是   | 要跟踪的整数变量名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
 | count  | number                                      | 是   | 整数变量的值。         |
 
 **示例：**
@@ -370,9 +366,9 @@ isTraceEnabled(): boolean
 
 ```js
 if (hiTraceMeter.isTraceEnabled()) {
-    // 业务流程......
+  // 业务流程......
 } else {
-    // 业务流程......
+  // 业务流程......
 }
 ```
 
@@ -429,17 +425,17 @@ registerTraceListener(callback: TraceEventListener): number
 ```js
 // 注册的回调函数定义
 let callback: hiTraceMeter.TraceEventListener = (traceStatus: boolean) => {
-    if (traceStatus) {
-        // 当前应用trace捕获开启，业务流程......
-    } else {
-        // 当前应用trace捕获关闭，业务流程......
-    }
+  if (traceStatus) {
+    // 当前应用trace捕获开启，业务流程......
+  } else {
+    // 当前应用trace捕获关闭，业务流程......
+  }
 };
 
 // 注册应用trace捕获开关通知回调
 let index = hiTraceMeter.registerTraceListener(callback);
 if (index < 0) {
-    // 异常处理......
+  // 异常处理......
 }
 ```
 
@@ -447,9 +443,8 @@ if (index < 0) {
 
 unregisterTraceListener(index: number): number
 
-注销应用trace捕获开关通知回调。
+注销通过registerTraceListener()注册的trace捕获开关通知回调函数。
 
-使用[registerTraceListener()](#hitracemeterregistertracelistener22)返回的回调索引，注销该索引关联的回调函数。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -459,7 +454,7 @@ unregisterTraceListener(index: number): number
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| index  | number | 是   | 已注册回调函数索引。 |
+| index  | number | 是   | 已注册回调函数索引，即[registerTraceListener()](#hitracemeterregistertracelistener22)调用成功时的返回值。 |
 
 **返回值：**
 
@@ -473,6 +468,6 @@ unregisterTraceListener(index: number): number
 // 注销应用trace捕获开关通知回调，index为hiTraceMeter.registerTraceListener返回的回调索引
 let ret = hiTraceMeter.unregisterTraceListener(index);
 if (ret < 0) {
-    // 异常处理......
+  // 异常处理......
 }
 ```

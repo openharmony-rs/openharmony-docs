@@ -40,7 +40,7 @@ Defines data structures for the C APIs of the SSL/TLS certificate chain verifica
 
 ### OH_NetStack_CertVerification()
 
-```
+```c
 uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)
 ```
 
@@ -68,7 +68,7 @@ Provides certificate chain verification APIs for external systems.
 
 ### OH_NetStack_GetPinSetForHostName()
 
-```
+```c
 int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)
 ```
 
@@ -96,7 +96,7 @@ Obtains the certificate lock information.
 
 ### OH_NetStack_GetCertificatesForHostName()
 
-```
+```c
 int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)
 ```
 
@@ -124,7 +124,7 @@ Obtains the certificate information.
 
 ### OH_Netstack_DestroyCertificatesContent()
 
-```
+```c
 void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 ```
 
@@ -145,7 +145,7 @@ Releases the certificate content.
 
 ### OH_Netstack_IsCleartextPermitted()
 
-```
+```c
 int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 ```
 
@@ -172,7 +172,7 @@ Boolean value indicating whether plaintext HTTP is allowed.
 
 ### OH_Netstack_IsCleartextPermittedByHostName()
 
-```
+```c
 int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)
 ```
 
@@ -200,7 +200,7 @@ Boolean value indicating whether host name–based plaintext HTTP is allowed.
 
 ### OH_Netstack_IsCleartextCfgByComponent
 
-```
+```c
 int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);
 ```
 

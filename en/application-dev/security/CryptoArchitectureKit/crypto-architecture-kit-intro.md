@@ -1,4 +1,4 @@
-# Introduction to Crypto Architecture Kit
+# About This Kit
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -54,6 +54,8 @@ Before you get started, be sure to understand the following basic concepts:
   The public key is public and open to anyone in the system, while the private key is private.
 
   For signing and signature verification, the private key is used to sign the plaintext, and the public key is used to verify the signature.
+
+<!--RP1--><!--RP1End-->
 
 ## Related Kits
 

@@ -1,8 +1,8 @@
 # @ohos.buffer (Buffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -360,7 +360,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 | -------- | -------- | -------- | -------- |
 | arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 实例对象。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
-| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。 |
+| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。在传入null时字节长度为0。 |
 
 **返回值：**
 
@@ -658,7 +658,7 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 | -------- | -------- | -------- | -------- | -------- |
 | length | number | 是 | 否 | Buffer对象的字节长度。 |
 | buffer | ArrayBuffer | 是 | 否 | ArrayBuffer对象。 |
-| byteOffset | number | 是 | 否 | 当前Buffer所在内存池的偏移量。 |
+| byteOffset | number | 是 | 否 | 当前Buffer所在内存池的偏移量。<br>- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](#bufferallocuninitializedfrompool)创建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。<br>- 当Buffer直接分配内存时（如使用[alloc](#bufferalloc)），返回值为0。 |
 
 **错误码：**
 
@@ -673,14 +673,17 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 ```ts
 import { buffer } from '@kit.ArkTS';
 
-let buf = buffer.from("1236");
+let buf = buffer.from("12345678");
 console.info(JSON.stringify(buf.length));
-// 输出结果：4
+// 输出结果：8
 let arrayBuffer = buf.buffer;
 console.info(JSON.stringify(new Uint8Array(arrayBuffer)));
-// 输出结果：{"0":49,"1":50,"2":51,"3":54}
+// 输出结果：{"0":49,"1":50,"2":51,"3":52,"4":53,"5":54,"6":55,"7":56}
 console.info(JSON.stringify(buf.byteOffset));
 // 输出结果：0
+let buf1 = buffer.from("abcd");
+console.info(JSON.stringify(buf1.byteOffset));
+// 输出结果：8
 ```
 
 ### compare
@@ -818,7 +821,7 @@ while (!next.done) {
            buffer: 3,102
            buffer: 4,101
            buffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -1034,7 +1037,7 @@ for (const key of keys) {
         3
         4
         5
-*/
+ */
 ```
 
 ### lastIndexOf
@@ -2117,7 +2120,7 @@ subarray(start?: number, end?: number): Buffer
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | start | number | 否 | 截取开始位置。默认值：0。 |
-| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。 |
+| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。在传入null时返回空Buffer。 |
 
 **返回值：**
 
@@ -2360,7 +2363,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```

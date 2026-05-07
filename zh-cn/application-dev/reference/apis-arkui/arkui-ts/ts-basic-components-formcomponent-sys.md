@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
-> - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件为卡片组件的使用方，对应提供方的使用参考文档[JS服务卡片UI组件](../js-service-widget-ui/js-service-widget-file.md)。
 >
@@ -52,17 +52,19 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
-| --------- | ------------------------------- | ---- |-------|
-| id        | number \| string                    | 是   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。                                        |
-| name      | string                          | 是   | 卡片名称。                                                              |
-| bundle    | string                          | 是   | 目标卡片包名。                                                          |
-| ability   | string                          | 是   | 目标卡片Ability名称。                                                   |
-| module    | string                          | 是   | 卡片模块名称。                                                          |
-| dimension | [FormDimension](#formdimension) | 否   | 卡片尺寸，支持2 * 2，4 * 4，2 * 4等类型卡片。<br/>默认值：Dimension_2_2。 |
-| temporary | boolean                         | 否   | 卡片是否为临时卡片，true表示是临时卡片，false表示不是临时卡片。<br/>默认值：false。 |
-| renderingMode | [FormRenderingMode](#formrenderingmode11) | 否   | 卡片渲染模式。取值如下，默认值为 FULL_COLOR。<br>- FULL_COLOR：代表全色模式，卡片框架不会对卡片效果做出修改，保持和卡片开发者设置的效果不变。<br>- SINGLE_COLOR：代表单色模式，卡片框架会把卡片背景设为透明，开发者需按最佳实践设置卡片风格。<br>**说明：**<br/>如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。 |
-| exemptAppLock<sup>20+</sup> |boolean        | 否   | 卡片是否豁免应用锁，true表示卡片所属应用添加应用锁时，不受应用锁管控，不显示应用锁蒙层；false表示卡片所属应用添加应用锁时，受应用锁管控，正常展示应用锁蒙层。<br/>默认值：false。 |
+| 参数名    | 参数类型                        | 只读 | 可选 | 说明                                                                |
+| --------- | ------------------------------- | ---- |---- |-------|
+| id        | number \| string                    | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。<br>id大于等于0小于2^32。                                        |
+| name      | string                          |  否   | 否   | 卡片名称。                                                              |
+| bundle    | string                          |  否   | 否   | 目标卡片包名。                                                          |
+| ability   | string                          |  否   | 否   | 目标卡片Ability名称。                                                   |
+| module    | string                          |  否   | 否   | 卡片模块名称。                                                          |
+| dimension | [FormDimension](#formdimension) |  否   | 是   | 卡片尺寸，支持2 * 2，4 * 4，2 * 4等类型卡片。<br/>默认值：Dimension_2_2。 |
+| temporary | boolean                         |  否   | 是   | 卡片是否为临时卡片，true表示是临时卡片，false表示不是临时卡片。<br/>默认值：false。 |
+| renderingMode | [FormRenderingMode](#formrenderingmode11) |  否   | 是   | 卡片渲染模式。取值如下，默认值为 FULL_COLOR。<br>- FULL_COLOR：代表全色模式，卡片框架不会对卡片效果做出修改，保持和卡片开发者设置的效果不变。<br>- SINGLE_COLOR：代表单色模式，卡片框架会把卡片背景设为透明，开发者需按最佳实践设置卡片风格。<br>**说明：**<br/>如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。 |
+| want | [import('../api/@ohos.app.ability.Want').default](../../../reference/apis-ability-kit/js-apis-app-ability-want.md#want) |  否   | 是   | 卡片传递信息的载体。 |
+| shape  | [FormShape](#formshape12)      | 否    | 是    | 卡片的形状。 |
+| exemptAppLock<sup>20+</sup> |boolean        |  否   | 是   | 卡片是否豁免应用锁，true表示卡片所属应用添加应用锁时，不受应用锁管控，不显示应用锁蒙层；false表示卡片所属应用添加应用锁时，受应用锁管控，正常展示应用锁蒙层。<br/>默认值：false。 |
 
 ## FormCallbackInfo<sup>12+</sup>
 
@@ -72,10 +74,11 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
-| --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
-| id        | number                 | 是   | 卡片标识（number类型）。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。                                        |
-| idString      | string            | 是           | 卡片标识（string类型）。                             |
+| 参数名    | 参数类型                        | 只读 | 可选 | 说明              |
+| --------- | ------------------------------- | ---- | ---- | ----------------- |
+| id        | number                 |   否   |  否   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。                                        |
+| idString      | string            |   否   |  否   | 卡片标识。                             |
+| isLocked<sup>22+</sup>      | boolean             |   否   |   否   | 表示卡片是否被锁定，true表示卡片被锁定，false表示卡片没有被锁定。|
 
 ## FormSize<sup>18+</sup>
 
@@ -85,10 +88,10 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 必填 | 参数描述    |
-| --------- | ------------------------------- | ---- |---------|
-| width        | number                 | 是   | 卡片宽的尺寸，单位：vp。 |
-| height      | number            | 是           | 卡片高的尺寸，单位：vp。 |
+| 参数名    | 参数类型                        | 只读 | 可选 | 说明    |
+| --------- | ------------------------------- | ---- | ---- |---------|
+| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。<br/>**说明：**<br>width的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
+| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。<br/>**说明：**<br>height的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
 
 ## ErrorInformation<sup>18+</sup>
 
@@ -98,10 +101,10 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
-| --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
-| errcode        | number                 | 是   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
-| msg      | string            | 是           | 错误信息。                             |
+| 参数名    | 参数类型                        | 只读 | 可选 | 说明                     |
+| --------- | ------------------------------- | ---- | ---- | ------------------------------ |
+| errcode        | number                 | 否  | 否   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
+| msg      | string            | 否       | 否   | 错误信息。                             |
 
 ## FormDimension
 
@@ -111,17 +114,17 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                       | 描述     |
-| -------------------------- | -------- |
-| Dimension_1_2              | 1*2 卡片 |
-| Dimension_2_2              | 2*2 卡片 |
-| Dimension_2_4              | 2*4 卡片 |
-| Dimension_4_4              | 4*4 卡片 |
-| Dimension_2_1<sup>(deprecated)</sup> | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
-| Dimension_1_1<sup>11+</sup> | 1*1 卡片 |
-| Dimension_6_4<sup>12+</sup> | 6*4 卡片 |
-| Dimension_2_3<sup>18+</sup> | 2*3 卡片为穿戴设备使用 |
-| Dimension_3_3<sup>18+</sup> | 3*3 卡片为穿戴设备使用 |
+| 名称                       | 值     | 说明     |
+| -------------------------- | -------- | -------- |
+| Dimension_1_2              | 0 | 1*2 卡片 |
+| Dimension_2_2              | 1 | 2*2 卡片 |
+| Dimension_2_4              | 2 | 2*4 卡片 |
+| Dimension_4_4              | 3 | 4*4 卡片 |
+| Dimension_2_1<sup>(deprecated)</sup> | 4 | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
+| Dimension_1_1<sup>11+</sup> | 6 | 1*1 卡片 |
+| Dimension_6_4<sup>12+</sup> | 7 | 6*4 卡片 |
+| Dimension_2_3<sup>18+</sup> | 8 | 2*3 卡片为穿戴设备使用 |
+| Dimension_3_3<sup>18+</sup> | 9 | 3*3 卡片为穿戴设备使用 |
 
 ## FormRenderingMode<sup>11+</sup>
 
@@ -131,10 +134,10 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                       | 描述     |
-| -------------------------- | -------- |
-| FULL_COLOR                 | 全色模式。|
-| SINGLE_COLOR               | 单色模式。|
+| 名称                       | 值     | 说明     |
+| -------------------------- | -------- | -------- |
+| FULL_COLOR                 | 0 | 全色模式。|
+| SINGLE_COLOR               | 1 | 单色模式。|
 
 ## FormColorMode<sup>23+</sup>
 
@@ -146,11 +149,24 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-| 名称                       | 值     | 描述     |
+| 名称                       | 值     | 说明      |
 | -------------------------- | -------- | -------- |
 | MODE_AUTO                  | -1 | 跟随系统。|
 | MODE_DARK                  | 0 | 深色模式。|
 | MODE_LIGHT                 | 1 |浅色模式。|
+
+## FormShape<sup>12+</sup>
+
+定义卡片形状枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                       | 值     | 说明      |
+| -------------------------- | -------- | -------- |
+| RECT                  | 1 | 方形卡片。|
+| CIRCLE                  | 2 | 圆形卡片。|
 
 ## 属性
 
@@ -356,7 +372,7 @@ onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp
 
 该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调。
 ```ts
-//card.ets
+// card.ets
 @Entry
 @Component
 struct CardExample {
@@ -379,7 +395,7 @@ struct CardExample {
         .size({width:360,height:360})
         .visibility(Visibility.Visible)
         .onAcquired((form: FormCallbackInfo)=>{
-          console.info(`form info : ${JSON.stringify(form)}`);
+          console.info(`form info : ${form?.id}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -387,11 +403,11 @@ struct CardExample {
             this.formId = form.id.toString();
           }
         })
-        .onError((err)=>{
-          console.error(`fail to add form, err: ${JSON.stringify(err)}`);
+        .onError((error)=>{
+          console.error(`fail to add form, error code: ${error?.errcode}, error message: ${error?.msg}`);
         })
         .onUninstall((form: FormCallbackInfo)=>{
-          console.info(`uninstall form success : ${JSON.stringify(form)}`);
+          console.info(`uninstall form success : ${form?.id}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -400,7 +416,7 @@ struct CardExample {
           }
         })
         .onUpdate((form: FormCallbackInfo)=>{
-          console.info(`form update done : ${JSON.stringify(form)}`);
+          console.info(`form update done : ${form?.id}`);
         })
     }
     .width('100%')

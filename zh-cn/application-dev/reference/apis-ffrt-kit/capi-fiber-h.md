@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -44,16 +44,15 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | fiber | 指向要初始化的纤程的指针, 具体可参考[ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md)。 |
 | func | 纤程切换后所要执行的方法。 |
-|  void* arg | 纤程切换后所要执行方法的入参。 |
-|  void* stack | 纤程堆栈内存指针。 |
-|  size_t stack_size | 纤程堆栈大小, 具体可参考[ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t)。 |
+| void\* arg | 纤程切换后所要执行方法的入参。 |
+| void\* stack | 纤程堆栈内存指针。 |
+| size_t stack_size | 纤程堆栈大小, 具体可参考[ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t)。 |
 
 **返回：**
 
@@ -72,7 +71,6 @@ FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)
 纤程切换函数，调用该函数的线程会暂停当前任务的执行，并将当前上下文保存到from纤程中，同时恢复to纤程中的上下文。
 
 **起始版本：** 20
-
 
 **参数：**
 

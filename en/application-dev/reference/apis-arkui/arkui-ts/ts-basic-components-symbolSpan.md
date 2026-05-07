@@ -86,7 +86,7 @@ Sets the size of the symbol span. When using the string type, numeric string val
 
 | Name| Type                                                        | Mandatory| Description                                         |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Size of the symbol span.<br>Default value: **16fp**<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Size of the symbol span.<br>Default value: **16fp**<br>Unit: [fp](ts-pixel-units.md)|
 
 ### fontWeight
 
@@ -110,7 +110,7 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
 | Name| Type                                                        | Mandatory| Description                                              |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | Yes  | Weight of the symbol span.<br>Default value: **FontWeight.Normal**|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Weight of the symbol span.<br>Default value: **FontWeight.Normal**|
 
 ### renderingStrategy
 

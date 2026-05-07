@@ -33,4 +33,4 @@ ArkUI with the JavaScript-compatible web-like development paradigm consists of t
 
 - **Porting Layer**
 
-  Abstracts the platform layer to provide abstract interfaces to connect to the platform. For example, event interconnection, rendering pipeline interconnection, and lifecycle interconnection.
+  Abstracts the platform layer to provide abstract APIs to connect to the platform. For example, event interconnection, rendering pipeline interconnection, and lifecycle interconnection.

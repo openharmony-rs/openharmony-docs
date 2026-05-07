@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-**SaveButton** is a security component that provides a save button. After it is integrated into your application and is used for the first time, a dialog box is displayed to ask for user authorization. If the user taps **Allow**, the application automatically obtains the permission to access the media library within one minute. No more dialog box is displayed for authorization.
+**SaveButton** is a security component that provides a save button. After it is integrated into your application and is used for the first time, a dialog box is displayed to ask for user authorization. If the user taps **Allow**, the application automatically obtains the permission to access the media library within a short period of time. No more dialog box is displayed for authorization. For API version 19 and earlier, the authorization duration is 10 seconds. For API version 20 and later, the authorization duration is 1 minute.
 
 > **NOTE**
 >
@@ -56,7 +56,7 @@ Describes the icon, text, and other specific elements for the **SaveButton** com
 > **NOTE**
 >
 > - At least one of **icon** or **text** must be provided.<br>
-> - If neither **icon** nor **text** is provided, the **options** parameter in [SaveButton](#savebutton-1) will not take effect, and the created **SaveButton** component will use the default style:
+> - If neither **icon** nor **text** is provided, the **options** parameter in **SaveButton** will not take effect, and the created **SaveButton** component will use the default style:
 >
 >   The default value of **SaveIconStyle** is **FULL_FILLED**.
 >
@@ -137,8 +137,8 @@ Triggered when the **SaveButton** component is clicked.
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
 | event | [ClickEvent](ts-universal-events-click.md#clickevent) |Yes|See **ClickEvent**.|
-| result | [SaveButtonOnClickResult](#savebuttononclickresult)| Yes| Storage permission authorization result. Authorization lasts for 1 minute, allowing unlimited media library API calls within this period. Calls made after 1 minute will fail authentication.|
-| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | No| Error code and message when the component is clicked.<br>Error code 0 indicates that the authorization is successful or the user cancels the authorization.<br>Error code 1 indicates an internal system error, including but not limited to:<br>1. IPC communication failure.<br>2. Failed to display the security component dialog box.<br>Error code 2 indicates attribute setting errors, including but not limited to:<br>1. The font or icon size is too small.<br>2. The font or icon color is too similar to the background color.<br>3. The font or icon color is too transparent.<br>4. The padding is negative.<br>5. The component is obscured by other components or windows.<br>6. The text exceeds the background range.<br>7. The component exceeds the window or screen bounds.<br>8. The component size is too large.<br>9. The component text is truncated and not fully displayed.<br>10. Related attribute settings affect the display of security components.|
+| result | [SaveButtonOnClickResult](#savebuttononclickresult)| Yes| Authorization result.|
+| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | No| Error code and message when the component is clicked.<br>Error code 0 indicates that the authorization is successful or the user cancels the authorization.<br>Error code 1 indicates an internal system error, including but not limited to:<br>1. IPC failed.<br>2. Failed to display the security component dialog box.<br>Error code 2 indicates attribute setting errors, including but not limited to:<br>1. The font or icon size is too small.<br>2. The font or icon color is too similar to the background color.<br>3. The font or icon color is too transparent.<br>4. The padding is negative.<br>5. The component is obscured by other components or windows.<br>6. The text exceeds the background range.<br>7. The component exceeds the window or screen bounds.<br>8. The component size is too large.<br>9. The component text is truncated and not fully displayed.<br>10. Related attribute settings affect the display of security components.|
 
 ## SaveButtonAttribute
 SaveButtonAttribute provides methods for setting attributes such as custom icon (setIcon), custom text (setText), icon size (iconSize), icon corner radius (iconBorderRadius), and pressed state effect (stateEffect).
@@ -201,7 +201,7 @@ Sets the icon size of the **SaveButton** component.
 
 iconBorderRadius(radius: Dimension | BorderRadiuses)
 
-Sets the border radius of the **SaveButton** component corners.
+Sets the corner radius of the **SaveButton** component.
 
 **Required permissions**: ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
@@ -213,7 +213,7 @@ Sets the border radius of the **SaveButton** component corners.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |Yes|Border radius of the **SaveButton** component corners. You can set the radius for each of the four corners individually.<br>If the application does not have the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission, the rounded corner radius setting does not take effect.|
+| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |Yes|Corner radius of the **SaveButton** component. You can set the radius for each of the four corners individually.<br>If the application does not have the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission, the corner radius setting does not take effect.|
 
 ### stateEffect<sup>20+</sup>
 
@@ -290,7 +290,6 @@ struct Index {
         try {
           const context = this.getUIContext().getHostContext();
           let helper = photoAccessHelper.getPhotoAccessHelper(context);
-          // Call createAsset() within 1 minute after onClick is triggered to create an image file. After 1 minute, the permission for calling createAsset is revoked.
           let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
           // Open the file based on its URI. The write process is not time bound.
           let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
@@ -339,7 +338,7 @@ struct Index {
             minHeight: 0,
             maxHeight: 30
           })
-        // Configure the save component to receive the user authorization cancellation event.
+        // Configure the SaveButton component to receive the user authorization cancellation event.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .onClick((this.handleSaveButtonClick))
           .userCancelEvent(true)
@@ -368,7 +367,7 @@ struct SetIcon {
           .setIcon($r('app.media.startIcon'))
         // Set text to the string type. The text is displayed when permission is granted.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
-          .setText("Save button settings text")
+          .setText("SaveButton Set Text")
         // Set text to the resource type. The resource text is displayed when permission is granted.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .setText($r('app.string.app_name'))
@@ -386,7 +385,7 @@ struct SetIcon {
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .setIcon($r('app.media.startIcon'))
           .iconSize({ width: 40 })
-        // Set the border radius for the SaveButton component corners. The input parameter is of the Dimension type. All four corners use the input parameter value.
+        // Set the corner radius of the SaveButton component icon. The input parameter is of the Dimension type. All four corners use the input parameter value.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .backgroundColor(Color.Orange)
           .setIcon($r('app.media.background'))

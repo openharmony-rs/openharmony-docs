@@ -1,10 +1,16 @@
 # MediaAssetManager
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
 提供媒体库资源请求能力的API。
 
-对应的开发指南及样例可参考[使用MediaAssetManager请求图片资源](../../media/medialibrary/using-ndk-mediaassetmanager-for-request-resource.md)。
+对应的开发指南及样例可参考[使用MediaAssetManager请求媒体资源(C/C++)](../../media/medialibrary/using-ndk-mediaassetmanager-for-request-resource.md)。
 
 **起始版本：** 12
 

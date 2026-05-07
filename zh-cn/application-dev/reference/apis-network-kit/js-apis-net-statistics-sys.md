@@ -10,6 +10,7 @@
 流量管理模块，支持基于网卡/UID 的实时流量统计和历史流量统计查询能力。
 
 > **说明：**
+>
 > 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.statistics (流量管理)](js-apis-net-statistics.md)。
 
@@ -20,7 +21,7 @@ import { statistics } from '@kit.NetworkKit';
 ```
 
 
-## statistics.on('netStatsChange')<sup>10+</sup>
+## statistics.on('netStatsChange')
 
 on(type: 'netStatsChange', callback: Callback\<NetStatsChangeInfo\>): void
 
@@ -41,7 +42,7 @@ on(type: 'netStatsChange', callback: Callback\<NetStatsChangeInfo\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -65,7 +66,7 @@ statistics.on('netStatsChange', (data: IFace) => {
 });
 ```
 
-## statistics.off('netStatsChange')<sup>10+</sup>
+## statistics.off('netStatsChange')
 
 off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 
@@ -86,7 +87,7 @@ off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -114,11 +115,11 @@ statistics.off('netStatsChange', callback);
 statistics.off('netStatsChange');
 ```
 
-## statistics.getTrafficStatsByIface<sup>10+</sup>
+## statistics.getTrafficStatsByIface
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-获取指定网卡历史流量信息，使用 callback 方式作为异步方法。
+获取指定网卡历史流量信息，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -130,12 +131,12 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 
 | 参数名    | 类型                                            | 必填 | 说明                                                                                    |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| ifaceInfo | [IfaceInfo](#ifaceinfo10)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo10)。                                     |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo10)> | 是   | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
+| ifaceInfo | [IfaceInfo](#ifaceinfo)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。                                     |
+| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -177,11 +178,11 @@ if (iFaceInfo) {
 }
 ```
 
-## statistics.getTrafficStatsByIface<sup>10+</sup>
+## statistics.getTrafficStatsByIface
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
-获取指定网卡历史流量信息，使用 Promise 方式作为异步方法。
+获取指定网卡历史流量信息，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -191,16 +192,16 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
 | 参数名    | 类型                      | 必填 | 说明                                                |
 | --------- | ------------------------- | ---- | --------------------------------------------------- |
-| ifaceInfo | [IfaceInfo](#ifaceinfo10) | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo10)。 |
+| ifaceInfo | [IfaceInfo](#ifaceinfo) | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。 |
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo10)> | 以 Promise 形式返回获取结果,返回网卡历史流量信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo)> | 以 Promise 形式返回获取结果,返回网卡历史流量信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -240,11 +241,11 @@ if (iFaceInfo) {
 }
 ```
 
-## statistics.getTrafficStatsByUid<sup>10+</sup>
+## statistics.getTrafficStatsByUid
 
 getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-获取指定应用历史流量信息，使用 callback 方式作为异步方法。
+获取指定应用历史流量信息，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -256,12 +257,12 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 
 | 参数名   | 类型                                            | 必填 | 说明                                                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| uidInfo  | [UidInfo](#uidinfo10)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo10)。                                         |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo10)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
+| uidInfo  | [UidInfo](#uidinfo)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。                                         |
+| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -312,11 +313,11 @@ statistics.getTrafficStatsByUid(
 );
 ```
 
-## statistics.getTrafficStatsByUid<sup>10+</sup>
+## statistics.getTrafficStatsByUid
 
 getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
-获取指定应用历史流量信息，使用 Promise 方式作为异步方法。
+获取指定应用历史流量信息，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -328,17 +329,17 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
 | 参数名  | 类型                  | 必填 | 说明                                            |
 | ------- | --------------------- | ---- | ----------------------------------------------- |
-| uidInfo | [UidInfo](#uidinfo10) | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo10)。 |
+| uidInfo | [UidInfo](#uidinfo) | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。 |
 
 **返回值：**
 
 | 类型                                      | 说明                                               |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo10)> | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo)> | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -376,7 +377,7 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
 
 getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
-获取指定时间段内所有应用在指定网络中的流量使用详情，使用 Promise 方式作为异步方法。
+获取指定时间段内所有应用在指定网络中的流量使用详情，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -398,7 +399,7 @@ getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -434,7 +435,7 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
 
 getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<NetStatsInfoSequence>
 
-获取指定时间段内，应用在指定网络中的流量使用详情，使用 Promise 方式作为异步方法。
+获取指定时间段内，应用在指定网络中的流量使用详情，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -457,7 +458,7 @@ getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<Net
 
 **错误码：**
 
-以下错误码的详细介绍参见[statistics 错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码 ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -489,7 +490,62 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 })
 ```
 
-## IfaceInfo<sup>10+</sup>
+## statistics.setCalibrationTraffic<sup>26+</sup>
+
+setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
+
+设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_NETWORK_STATS
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名         | 类型                            | 必填 | 说明                                         |
+|-------------|-------------------------------|----|--------------------------------------------|
+| simId         | number                        | 是  | SIM卡ID。                               |
+| remainTraffic | number | 是  | 当前剩余流量，单位：Byte。 |
+| totalTraffic | number | 否  | 套餐总流量，单位：Byte。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                               |
+|-----------------------------------------------------------|----------------------------------|
+| Promise\<void> | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[流量管理错误码](errorcode-net-statistics.md)。
+
+| 错误码 ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 201       | Permission denied.                           |
+| 202       | Non-system applications use system APIs.     |
+| 401       | Parameter error.                             |
+| 801       | Capability not supportedr.                             |
+| 2100001   | Invalid parameter value, such as simId error.                     |
+| 2100002   | Failed to connect to the service.            |
+| 2100003   | System internal error, such as nullptr.                       |
+
+**示例**
+
+```js
+import { connection, statistics } from '@kit.NetworkKit';
+
+let simId:number = 1;
+let remainData:number = 600*1024*1024;   // 当前剩余流量为600MB。
+let totalData:number = 1024*1024*1024;   // 套餐总流量为1GB。
+statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
+  console.info(`setCalibrationTraffic succ`);
+}).catch((error: BusinessError) => {
+  console.info(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
+});
+```
+
+## IfaceInfo
 
 查询网卡历史流量参数信息。
 
@@ -503,7 +559,7 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 | startTime | number | 否   |否 |查询的开始时间(时间戳;单位：秒)。 |
 | endTime   | number | 否  | 否|查询的结束时间(时间戳;单位：秒)。 |
 
-## UidInfo<sup>10+</sup>
+## UidInfo
 
 查询应用历史流量参数信息。
 
@@ -513,10 +569,10 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 | 名称      | 类型                                  | 只读 |可选| 说明                        |
 | --------- | ------------------------------------- | ---- |---| -------------------------- |
-| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo10)> | 否   |否 |需查询的网卡和时间参数信息。 |
+| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo)> | 否   |否 |需查询的网卡和时间参数信息。 |
 | uid       | number                                | 否   |否 |需查询的应用 uid。          |
 
-## NetStatsInfo<sup>10+</sup>
+## NetStatsInfo
 
 获取的历史流量信息。
 
@@ -569,7 +625,7 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 | 名称        | 类型                                            | 只读 |可选| 说明           |
 |-----------|-----------------------------------------------|----|---|--------------|
-| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | 否  |否 |所有应用的历史流量信息。 |
+| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
@@ -583,4 +639,4 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 |-----------|---------------------------------|----|---|--------------|
 | startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |
 | endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |
-| info      | [NetStatsInfo](#netstatsinfo10) | 否  |否 |获取的应用历史流量信息。 |
+| info      | [NetStatsInfo](#netstatsinfo) | 否  |否 |获取的应用历史流量信息。 |

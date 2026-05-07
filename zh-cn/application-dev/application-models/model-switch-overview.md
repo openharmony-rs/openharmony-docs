@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本文介绍如何将一个[FA模型](ability-terminology.md#fa模型)开发的声明式范式应用切换到[Stage模型](ability-terminology.md#stage模型)，您需要完成如下动作：
 

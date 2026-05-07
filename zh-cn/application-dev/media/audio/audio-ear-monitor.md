@@ -14,7 +14,7 @@
 
 - 开发者可使用OHAudio提供的播放和录制能力相结合，将录制获取的音频数据作为播放的音频输入，实现耳返功能。
 
-  实现参考[使用OHAudio开发音频播放功能](using-ohaudio-for-playback.md)、[使用OHAudio开发音频录制功能](using-ohaudio-for-recording.md)。
+  实现参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)、[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
 - 当前仅支持通过有线耳机实现耳返功能。音频由有线耳机采集并播放。
 

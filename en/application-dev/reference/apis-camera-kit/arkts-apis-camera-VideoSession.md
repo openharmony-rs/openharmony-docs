@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-VideoSession inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [Stabilization](arkts-apis-camera-Stabilization.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), and [ControlCenter](arkts-apis-camera-ControlCenter.md).
+**VideoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [Stabilization](arkts-apis-camera-Stabilization.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), and [ControlCenter](arkts-apis-camera-ControlCenter.md).
 
 It implements a video session, which provides operations on the flash, exposure, white balance, focus, zoom, video stabilization, color space, macro mode, and controller.
 
-VideoSession is provided for the default video recording mode. It applies to common scenarios. It supports recording at various resolutions (such as 720p and 1080p) and frame rates (such as 30 fps and 60 fps).
+**VideoSession** is provided for the default video recording mode. It applies to common scenarios. It supports recording at various resolutions (such as 720p and 1080p) and frame rates (such as 30 fps and 60 fps).
 
 > **NOTE**
 >
@@ -37,7 +37,7 @@ Checks whether this session supports a preconfigured resolution.
 
 | Name           | Type                                 | Mandatory | Description             |
 |----------------|-------------------------------------|-----|-----------------|
-| preconfigType  | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12)   | Yes  | Resolution type.     |
+| preconfigType | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12) | Yes| Resolution type.|
 | preconfigRatio | [PreconfigRatio](arkts-apis-camera-e.md#preconfigratio12) | No  | Aspect ratio. The default value is 16:9.|
 
 **Return value**
@@ -117,7 +117,7 @@ function testPreconfig(videoSession: camera.VideoSession, preconfigType: camera.
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to VideoSession error events. This API uses an asynchronous callback to return the result.
+Subscribes to **VideoSession** error events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -152,7 +152,7 @@ function registerSessionError(videoSession: camera.VideoSession): void {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Unsubscribes from VideoSession error events. This API uses a callback to return the result.
+Unsubscribes from **VideoSession** error events. This API uses a callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -320,7 +320,7 @@ Subscribes to automatic camera switch status change events. This API uses an asy
 | Name    | Type                                                                  | Mandatory| Description                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------ |
 | type     | string                                                               | Yes  | Event type. The value is fixed at **'autoDeviceSwitchStatusChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)\> | Yes  | Callback function, which is used to obtain the status of automatic camera switch. |
+| callback | AsyncCallback\<[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)\> | Yes  | Callback used to obtain the status of automatic camera switch. |
 
 **Example**
 
@@ -387,7 +387,7 @@ Sets the priority level for video recording quality.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
 | ID| Error Message                                                                                                                                       |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -615,7 +615,7 @@ Subscribes to sensitivity (ISO) state change events and obtains the latest ISO v
 
 | Name    | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback function, which is used to obtain the current ISO value of the camera.|
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback used to obtain the current ISO value of the camera.|
 
 
 **Example**

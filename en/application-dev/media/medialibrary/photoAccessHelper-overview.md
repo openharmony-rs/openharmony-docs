@@ -1,4 +1,4 @@
-# Introduction to Media Library Kit
+# About This Kit
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
@@ -20,7 +20,7 @@ The following capabilities are opened to all applications:
 - Managing moving photos
   - [Accessing and Managing Moving Photos](photoAccessHelper-movingphoto.md)
   - [Playing Moving Photos with MovingPhotoView](movingphotoview-guidelines.md)
-<!--RP2--><!--RP2End-->
+  <!--RP2--><!--RP2End-->
 
 The following capabilities are restrictedly opened to third-party applications:
 
@@ -59,7 +59,7 @@ The following capabilities are opened to system applications:
   - Hiding an album
   - Favoriting and unfavoriting an album
   - Using the Screenshots album
-<!--DelEnd-->
+  <!--DelEnd-->
 
 ## Features
 

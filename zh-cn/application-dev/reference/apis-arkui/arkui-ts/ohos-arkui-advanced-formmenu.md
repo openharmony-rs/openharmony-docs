@@ -18,7 +18,7 @@
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 该组件不支持在Wearable设备上使用。
 >
@@ -41,13 +41,13 @@ import { AddFormMenuItem } from '@kit.ArkUI';
 
 ## AddFormMenuItem 
 
-
+```ts
 AddFormMenuItem(
   want: Want,
   componentId: string,
   options?: AddFormOptions
 ): void
-
+```
 
 **装饰器类型：**@Builder
 
@@ -129,11 +129,11 @@ struct Index {
           formBindingData: formBindingData.createFormBindingData({}),
           // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
           callback: (error, formId) => {
-            hilog.info(0x3900, tag, `callback info：error = ${JSON.stringify(error)}, formId = ${formId}`);
+            hilog.info(0x3900, tag, `callback info：formId = ${formId}`);
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "添加至桌面成功")
             } else {
-              hilog.info(0x3900, tag, "添加至桌面失败，请尝试其它添加方式")
+              hilog.error(0x3900, tag, `添加至桌面失败，请尝试其它添加方式, error code: ${error?.code}, error message: ${error?.message}`)
             }
           },
           style: {

@@ -17,11 +17,13 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果TreeView设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到TreeView本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议TreeView设置通用属性和通用事件。
 
 ## 导入模块
 
-```
+```ts
 import { TreeView } from "@kit.ArkUI";
 ```
 
@@ -76,7 +78,7 @@ addNode(nodeParam?: NodeParam): TreeController
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息。 |
+| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息，用于指定新增节点的属性。如果不传该参数，在当前选中的节点下添加一个标题为“新建文件夹”节点。 |
 
 **返回值：** 
 
@@ -274,7 +276,7 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。 |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。传入时取消对应的节点信息的监听，否则取消该类型的所有节点信息的监听。 |
 
 ## TreeListenType
 

@@ -4,7 +4,7 @@
 <!--Owner: @huangkai71-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 DSoftBus provides stable and reliable underlying channels for cross-device communication. This module is developed based on DSoftBus. It supports efficient data exchange between phones and wearables, providing users with a seamless device interconnection experience. During collaboration between the phone application and watch application, if the phone application is not running in the foreground, its downlink messages are forwarded to the notification server and then sent to the watch through the proxy module. The core functions of this module include proxy channel management, data route management, application state awareness and wakeup, and link state monitoring.
 
@@ -19,8 +19,10 @@ DSoftBus provides stable and reliable underlying channels for cross-device commu
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> **Model restriction**: This API can be used only in the stage model.
 
-## Importing modules
+## Modules to Import
 
 ```js
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
@@ -44,6 +46,8 @@ Opens a proxy channel. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
@@ -63,6 +67,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.[since 26] |
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
 | 32390006 | Parameter error.|
@@ -120,6 +125,8 @@ Closes a proxy channel that has been opened.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
@@ -133,6 +140,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.[since 26] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -177,6 +185,8 @@ Sends data to the peer end. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
@@ -197,6 +207,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.[since 26] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -246,6 +257,8 @@ Subscribes to data receiving events. This API returns the result asynchronously 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -306,6 +319,8 @@ Unsubscribes from data receiving events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
@@ -362,6 +377,8 @@ Subscribes to channel state change events. This API returns the result asynchron
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -421,6 +438,8 @@ Unsubscribes from channel state change events.
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

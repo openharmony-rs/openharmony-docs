@@ -39,7 +39,7 @@
   - [数据库加密 (C/C++)](native-data-encryption.md)
   - [基于设备分类和数据分级的访问控制 (ArkTS)](access-control-by-device-and-data-level.md)
   - [基于设备分类和数据分级的访问控制 (C/C++)](native-access-control-by-device-and-data-level.md)
-  - [E类加密数据库的使用 (ArkTS)](encrypted_estore_guidelines.md)
+  - [E类加密数据库的使用 (ArkTS)](encrypted-estore-guidelines.md)
 - 跨应用数据共享<!--cross-app-data-share-->
   - [跨应用数据共享概述](data-share-overview.md)
   - 一对多跨应用数据共享<!--one-to-many-data-share-->
@@ -52,6 +52,8 @@
     - [通过标准化数据通路实现数据共享 (ArkTS)](unified-data-channels.md)
     - [通过标准化数据通路实现数据共享 (C/C++)](unified-data-channels-c.md)
 - [应用数据向量化 (ArkTS)](aip-data-intelligence-embedding.md)
+<!--RP2-->
+<!--RP2End-->
 - [SQLite调试工具指导](sqlite-database-debug-tool.md)
 - [ArkData术语](data-terminology.md)
 - [ArkData常见问题](data-faq.md)

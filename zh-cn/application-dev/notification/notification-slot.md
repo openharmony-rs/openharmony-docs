@@ -1,9 +1,8 @@
 # 管理通知渠道
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -28,7 +27,7 @@
 
 ## 接口说明
 
-通知渠道主要接口如下。其他接口介绍详情参见[API参考](../reference/apis-notification-kit/js-apis-notificationManager.md)。
+通知渠道主要接口如下。其他接口介绍详情参见[@ohos.notificationManager (NotificationManager模块)](../reference/apis-notification-kit/js-apis-notificationManager.md)。
 
 | **接口名** | **描述** |
 | ---------- | -------- |
@@ -74,7 +73,7 @@
    获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有声音提示，是否有震动，锁屏是否可见等。
 
    <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
-    
+   
    ``` TypeScript
    // getSlot回调
    let getSlotCallback = (err: BusinessError, data: notificationManager.NotificationSlot): void => {

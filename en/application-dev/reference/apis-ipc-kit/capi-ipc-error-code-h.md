@@ -10,6 +10,8 @@
 
 Defines the IPC error codes.
 
+**File to include**: <IPCKit/ipc_error_code.h>
+
 **Library**: libipc_capi.so
 
 **System capability**: SystemCapability.Communication.IPC.Core

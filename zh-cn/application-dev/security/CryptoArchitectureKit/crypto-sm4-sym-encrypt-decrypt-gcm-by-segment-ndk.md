@@ -29,9 +29,9 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 5. 将一次传入数据量设置为20字节，多次调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（明文）。
    
    - 当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
-   - 建议开发者对每次update的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文。因为在不同的规格下，update的结果可能会受到不同影响。
+   - 建议开发者对每次update的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文。因为在不同的模式下，update的结果可能会受到不同影响。
       
-      1）比如ECB和CBC模式，始终以分组作为基本单位来加密，并输出本次update产生的加密分组结果。即当本次update操作凑满一个分组就输出密文，没有凑满则此次update输出null，将未加密的数据与下次输入的数据拼接凑分组再输出。等到最后doFinal的时候，将未加密的数据，根据指定的填充模式进行填充，在输出剩余加密结果。解密过程中的update同理。
+      1）比如ECB和CBC模式，始终以分组作为基本单位来加密，并输出本次update产生的加密分组结果。即当本次update操作凑满一个分组就输出密文，没有凑满则此次update输出null，将未加密的数据与下次输入的数据拼接凑分组再输出。等到最后doFinal的时候，将未加密的数据，根据指定的填充模式进行填充，再输出剩余加密结果。解密过程中的update同理。
 
       2）对于流加密模式（比如CTR和OFB模式），通常密文长度和明文长度相等。
 
@@ -56,14 +56,17 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密后的数据。
 
-```c++
-#include <string.h>
+<!-- @[crypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_seg_encryption_decryption.cpp) -->
+
+``` C++
+#include <cstring>
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
 
 #define OH_CRYPTO_GCM_TAG_LEN 16
 #define OH_CRYPTO_MAX_TEST_DATA_LEN 128
-static OH_Crypto_ErrCode doTestSm4GcmSeg()
+
+OH_Crypto_ErrCode doTestSm4GcmSeg()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -75,7 +78,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
     uint8_t aad[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     uint8_t tagArr[16] = {0};
-    uint8_t iv[12] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4}; // iv使用安全随机数生成。
+    uint8_t iv[12] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4}; // iv使用安全随机数生成
     Crypto_DataBlob tag = {.data = nullptr, .len = 0};
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
     Crypto_DataBlob aadBlob = {.data = aad, .len = sizeof(aad)};
@@ -90,9 +93,8 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
     uint8_t cipherText[OH_CRYPTO_MAX_TEST_DATA_LEN] = {0};
     Crypto_DataBlob cipherBlob;
 
-    // 生成密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
+    // 生成密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -101,7 +103,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         goto end;
     }
 
-    // 设置参数。
+    // 设置参数
     ret = OH_CryptoSymCipherParams_Create(&params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -119,7 +121,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         goto end;
     }
 
-    // 加密。
+    // 加密
     ret = OH_CryptoSymCipher_Create("SM4_128|GCM|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -138,6 +140,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         msgBlob.data += blockSize;
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     if (rem > 0) {
         msgBlob.len = rem;
@@ -147,13 +150,14 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         }
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     ret = OH_CryptoSymCipher_Final(encCtx, nullptr, &tag);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
-    // 解密。
+
+    // 解密
     cipherBlob = {.data = reinterpret_cast<uint8_t *>(cipherText), .len = (size_t)cipherLen};
     msgBlob.data -= strlen(plainText) - rem;
     msgBlob.len = strlen(plainText);
@@ -185,3 +189,4 @@ end:
     return ret;
 }
 ```
+

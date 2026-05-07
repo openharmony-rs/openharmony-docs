@@ -1,8 +1,8 @@
 # 开放权限（系统授权）
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -272,36 +272,6 @@
 
 **起始版本**：7
 
-## ohos.permission.MODIFY_AUDIO_SETTINGS
-
-允许应用修改音频设置。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：8
-
-## ohos.permission.RUNNING_LOCK
-
-允许应用获取运行锁，保证应用在后台的持续运行。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
-## ohos.permission.SET_WALLPAPER
-
-允许应用设置壁纸。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 允许应用进行查询证书及私有凭据等操作。
@@ -312,21 +282,11 @@
 
 **起始版本**：9
 
-## ohos.permission.hsdr.HSDR_ACCESS
-
-允许应用访问安全检测与响应框架。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：10
-
 ## ohos.permission.RUN_DYN_CODE
 
 允许系统方舟运行时引擎在受限模式下执行动态下发的方舟字节码。
 
-该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。 
+该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。
 
 **权限级别**：normal
 
@@ -639,7 +599,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：22
+**起始版本**：23
 
 ## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
 
@@ -682,3 +642,59 @@
 **支持设备**：Phone | Tablet
 
 **起始版本**：23
+
+## ohos.permission.ALLOW_COREDUMP
+
+允许系统将应用进程的内存转储到应用沙箱。
+
+应用获取该权限后，表示应用允许系统将本应用的内存，存储到应用沙箱中。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：2in1
+
+**起始版本**：23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+允许应用使用HDR提亮能力。
+
+获取该权限后，应用可为组件内容添加HDR提亮效果。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+允许应用查询ObjectEditorExtensionAbility信息和拉起ObjectEditorExtensionAbility组件。
+
+获取该权限后，应用可以查询当前可插入的嵌入内容类型，并编辑该类型的内容。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
+
+## ohos.permission.STYLUS_FRAME_BOOST
+
+允许应用使用手写笔跟手性的增强接口。
+
+获取该权限后，应用可以优化手写效果跟手性，提升应用中使用手写笔书写场景的跟手性体验。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0

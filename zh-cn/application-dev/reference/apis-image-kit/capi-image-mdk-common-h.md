@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -38,7 +38,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | 可能被使用的接口返回值的枚举。 |
+| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | 被使用的接口返回值的枚举。 |
 
 ## 枚举类型说明
 
@@ -50,7 +50,7 @@ enum IRNdkErrCode
 
 **描述**
 
-可能被使用的接口返回值的枚举。
+被使用的接口返回值的枚举。
 
 **起始版本：** 10
 
@@ -111,16 +111,16 @@ enum IRNdkErrCode
 | IMAGE_RESULT_MEDIA_READ_PARCEL_FAIL = IMAGE_RESULT_BASE + 51 | 读取parcel失败。 |
 | IMAGE_RESULT_MEDIA_NO_AVAIL_BUFFER = IMAGE_RESULT_BASE + 52 | 无效数据。 |
 | IMAGE_RESULT_MEDIA_INVALID_PARAM = IMAGE_RESULT_BASE + 53 | 媒体接口发现无效参数。 |
-| IMAGE_RESULT_MEDIA_CODEC_ADAPTER_NOT_EXIST = IMAGE_RESULT_BASE + 54 | 媒体代码适配器不存在。 |
-| IMAGE_RESULT_MEDIA_CREATE_CODEC_ADAPTER_FAILED = IMAGE_RESULT_BASE + 55 | 媒体创建代码适配器失败。 |
-| IMAGE_RESULT_MEDIA_CODEC_ADAPTER_NOT_INIT = IMAGE_RESULT_BASE + 56 | 媒体代码适配器未初始化。 |
-| IMAGE_RESULT_MEDIA_ZCODEC_CREATE_FAILED = IMAGE_RESULT_BASE + 57 | 媒体代码创建失败。 |
-| IMAGE_RESULT_MEDIA_ZCODEC_NOT_EXIST = IMAGE_RESULT_BASE + 58 | 媒体代码不存在。 |
+| IMAGE_RESULT_MEDIA_CODEC_ADAPTER_NOT_EXIST = IMAGE_RESULT_BASE + 54 | 媒体编解码适配器不存在。 |
+| IMAGE_RESULT_MEDIA_CREATE_CODEC_ADAPTER_FAILED = IMAGE_RESULT_BASE + 55 | 媒体创建编解码适配器失败。 |
+| IMAGE_RESULT_MEDIA_CODEC_ADAPTER_NOT_INIT = IMAGE_RESULT_BASE + 56 | 媒体编解码适配器未初始化。 |
+| IMAGE_RESULT_MEDIA_ZCODEC_CREATE_FAILED = IMAGE_RESULT_BASE + 57 | 媒体编解码创建失败。 |
+| IMAGE_RESULT_MEDIA_ZCODEC_NOT_EXIST = IMAGE_RESULT_BASE + 58 | 媒体编解码不存在。 |
 | IMAGE_RESULT_MEDIA_JNI_CLASS_NOT_EXIST = IMAGE_RESULT_BASE + 59 | 媒体JNI层类不存在。 |
 | IMAGE_RESULT_MEDIA_JNI_METHOD_NOT_EXIST = IMAGE_RESULT_BASE + 60 | 媒体JNI层方法不存在。 |
 | IMAGE_RESULT_MEDIA_JNI_NEW_OBJ_FAILED = IMAGE_RESULT_BASE + 61 | 媒体JNI层创建对象失败。 |
 | IMAGE_RESULT_MEDIA_JNI_COMMON_ERROR = IMAGE_RESULT_BASE + 62 | 媒体JNI层异常。 |
-| IMAGE_RESULT_MEDIA_DISTRIBUTE_NOT_SUPPORT = IMAGE_RESULT_BASE + 63 | 媒体不支持分布。 |
+| IMAGE_RESULT_MEDIA_DISTRIBUTE_NOT_SUPPORT = IMAGE_RESULT_BASE + 63 | 媒体不支持分布式。 |
 | IMAGE_RESULT_MEDIA_SOURCE_NOT_SET = IMAGE_RESULT_BASE + 64 | 媒体源未设置。 |
 | IMAGE_RESULT_MEDIA_RTSP_ADAPTER_NOT_INIT = IMAGE_RESULT_BASE + 65 | 媒体rtsp适配器未初始化。 |
 | IMAGE_RESULT_MEDIA_RTSP_ADAPTER_NOT_EXIST = IMAGE_RESULT_BASE + 66 | 媒体rtsp适配器不存在。 |

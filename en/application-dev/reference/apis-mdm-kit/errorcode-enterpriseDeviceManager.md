@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -40,7 +40,7 @@ This error code is reported when the device administrator application does not h
 
 **Possible Causes**
 
-A device administrator application calls an API that is accessible only by a super device administrator application.
+The device administrator application calls an API that is accessible only by a super device administrator application.
 
 **Solution**
 
@@ -110,7 +110,7 @@ The possible causes are as follows:
 
 1. Check that the target device administrator application has been enabled.
 2. Check that the specified device administrator ability component of the target device administrator application has been enabled.
-3. Check that the device administrator application to be disabled is the caller itself.
+3. Ensure that the device administrator application to be disabled is the caller itself.
 
 ## 9200006 Invalid User ID
 
@@ -130,8 +130,8 @@ The possible causes are as follows:
 
 **Solution**
 
-1. Check whether the user ID specified for the API is valid.
-2. Check whether the caller user ID and the specified user ID are the same. If the application is a device administrator application, policies cannot be set across users.
+1. Ensure that the user ID specified for the API is valid.
+2. Ensure that the caller user ID and the specified user ID are the same. If the application is a device administrator application, policies cannot be set across users.
 
 ## 9200007 System Ability Error
 
@@ -247,15 +247,15 @@ The possible causes are as follows:
 2. The length of the input parameter exceeds the upper limit.
 3. The length of the input array exceeds the upper limit.
 4. The parameter value is out of the value range.
-5. The blocklist or trustlist that has not been set is removed.
+5. A removal operation is performed on a blocklist or trustlist that has not been set yet.
 
 **Solution**
 
-1. Check whether the input **EnterpriseAdminExtensionAbility** belongs to the current application.
-2. Check whether the length of the input parameter exceeds the upper limit.
-3. Check whether the length of the input array exceeds the upper limit.
-4. Check whether the input parameter value is within the supported value range.
-5. Before removing the list, check whether the corresponding list is set.
+1. Ensure that the input **EnterpriseAdminExtensionAbility** belongs to the current application.
+2. Ensure that the length of the input parameter does not exceed the upper limit.
+3. Ensure that the length of the input array does not exceed the upper limit.
+4. Ensure that the input parameter value is within the supported value range.
+5. Before removing the list, ensure that the corresponding list is set.
 
 ## 9200013 Control Not Immediately Effective
 
@@ -274,7 +274,65 @@ In external storage management scenarios, disabling external storage may not tak
 **Solution**
 
 Restart the device for the control to take effect. In external storage management scenarios, disabling external storage takes effect after the device is restarted. The external storage is not automatically loaded.
-   
+
+## 9200014 Failed to Start the Component
+
+**Error Message**
+
+Failed to start the ability.
+
+**Description**
+
+This error code is generated when the component fails to be started.
+
+**Possible Causes**
+
+1. If the list of applications that are forbidden to run is set (for example, by calling the [addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) API) and the application is in the list, the component fails to be started.
+2. If the list of applications that are allowed to run is set (for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API) and the application is not in the list, the component fails to be started.
+
+**Solution**
+
+1. Remove the application from the list of applications that are forbidden to run, for example, by calling the [removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync) API.
+2. Add the application to the list of applications that are allowed to run, for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API.
+
+## 9200015 Component Not Exist
+
+**Error Message**
+
+The ability does not exist.
+
+**Description**
+
+This error code is generated when a component that does not exist is started.
+
+**Possible Causes**
+
+1. The input **bundleName** and **abilityName** do not exist.
+2. The passed component is not visible to the outside.
+
+**Solution**
+
+1. Check whether the values of **bundleName** and **abilityName** in **want** are correct.
+2. Check whether the passed component is visible to the outside.
+
+## 9200016 Service Timeout
+
+**Error Message**
+
+Service timeout.
+
+**Description**
+
+This error code is reported when the service times out.
+
+**Possible Causes**
+
+The service times out.
+
+**Solution**
+
+Try again later.
+
 ## 9201001 Failed to Manage the Certificate
 
 **Error Message**
@@ -301,7 +359,7 @@ Failed to install the application.
 
 **Description**
 
-This error code is reported when a device administrator application fails to install an enterprise app.
+This error code is reported when a device administrator application fails to install an enterprise application.
 
 **Possible Causes**
 
@@ -394,3 +452,254 @@ The possible causes are as follows:
 2. Check whether the application has the MainAbility.
 3. Check whether the application has the tray service.
 4. Check whether the application has been added to the tray.
+
+## 9201006 Installed Enterprise Re-signing Certificate Exceeding the Limit
+
+**Error Message**
+
+The number of certificates has reached the limit.
+
+**Description**
+
+This error code is reported when the number of installed enterprise re-signing certificates reaches 10.
+
+**Possible Causes**
+
+The number of installed enterprise re-signing certificates reaches the upper limit.
+
+**Solution**
+
+Check whether the number of installed enterprise re-signing certificates reaches 10. If yes, uninstall unnecessary certificates.
+
+## 9201007 Invalid Enterprise Re-signing Certificate
+
+**Error Message**
+
+The certificate is invalid.
+
+**Description**
+
+This error code is generated when the enterprise re-signing certificate fails to be installed.
+
+**Possible Causes**
+
+The enterprise re-signing certificate fails to be installed. The possible causes are as follows:
+
+1. The certificate is invalid.
+2. A certificate with the same name has been installed.
+
+**Solution**
+
+1. Check whether the certificate is a valid enterprise re-signing certificate.
+2. Check whether a certificate with the same name has been installed.
+
+## 9201008 Enterprise Re-signing Certificate Not Exist
+
+**Error Message**
+
+The certificate does not exist.
+
+**Description**
+
+This error code is generated when the enterprise re-signing certificate fails to be uninstalled.
+
+**Possible Causes**
+
+The uninstalled certificate does not exist.
+
+**Solution**
+
+Check whether the uninstalled certificate exists.
+
+## 9201009 Failed to Create a Log Collection Task
+
+**Error Message**
+
+Collecting logs, please try again later.
+
+**Description**
+
+This error code is generated when a log collection task fails to be created.
+
+**Possible Causes**
+
+When a log collection task is being executed, the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API is called to create a log collection task.
+
+**Solution**
+
+Wait until the previous log collection task is complete (that is, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback is received), and then call the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API to create a new log collection task.
+
+## 9201010 Failed to Configure the Ethernet Network Interface
+
+**Error Message**
+
+Ethernet configuration failed. Ethernet device not connected.
+
+**Description**
+
+The Ethernet configuration fails, or the Ethernet device is not connected.
+
+**Possible Causes**
+
+The Ethernet configuration fails. The possible causes are as follows:
+
+1. The NIC is not enabled.
+2. The NIC name is incorrect.
+3. The configuration parameters are incorrect.
+
+**Solution**
+
+1. Check whether the NIC is enabled.
+2. Check whether the input NIC name is correct.
+3. Check whether the configured parameters are correct.
+
+## 9201011 Invalid Activation Lock Credential
+
+**Error Message**
+
+The credential of the activation lock is invalid.
+
+**Description**
+
+The credential for the activation lock is invalid.
+
+**Possible Causes**
+
+1. The format of the passed activation lock credential is incorrect.
+2. The values of fields in the passed activation lock credential are incorrect.
+3. The passed activation lock credential does not match the current device.
+
+**Solution**
+
+1. Ensure that the format of the activation lock credential is correct.
+2. Ensure that the values of fields in the activation lock credential are correct.
+3. Ensure that the activation lock credential is for the current device.
+
+## 9201012 Failed to Enable or Disable Activation Lock
+
+**Error Message**
+
+Failed to enable or disable the activation lock.
+
+**Description**
+
+Failed to disable or enable the activation lock.
+
+**Possible Causes**
+
+<!--RP1-->The device does not support the activation lock service.
+<!--RP1End-->
+
+**Solution**
+
+<!--RP2-->Ensure that the device supports the activation lock service.
+<!--RP2End-->
+
+## 9201013 Number of Applications in Dock Reaches Maximum
+
+**Error Message**
+
+The number of applications in the Dock has reached the maximum.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+The number of applications in the Dock has reached the maximum.
+
+**Solution**
+
+Delete unnecessary applications from the Dock.
+
+## 9201014 Specified Application Already in Docker
+
+**Error Message**
+
+The application is already in the Dock.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+The specified application has already in the Dock.
+
+**Solution**
+
+Remove the specified application from the Dock and add it to the specified location in the Dock again.
+
+## 9201015 Specified Application Not Installed
+
+**Error Message**
+
+The application is not installed.
+
+**Description**
+
+This error code is reported when the policy of an application needs to be delivered but the application has not been installed.
+
+**Possible Causes**
+
+The specified application has not been installed yet.
+
+**Solution**
+
+Install the specified application and try again.
+
+## 9201016 Specified Application Not in Dock
+
+**Error Message**
+
+The application has not been added to the Dock.
+
+**Description**
+
+This error code is reported when an enterprise device administrator removes an application from the Dock.
+
+**Possible Causes**
+
+The application to be removed is not in the Dock.
+
+**Solution**
+
+Ensure that the package name of the application to be removed from the Dock is correct.
+
+## 9201018 Specified Application Inoperable
+
+**Error Message**
+
+The application is inoperable.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+The specified application, such as Application Center, Task Center, Files, Recycle Bin, or an application without an icon, is inoperable.
+
+**Solution**
+
+The specified application cannot be added to the Dock. Add another application.
+
+## 9201019 Specified Location Inoperable
+
+**Error Message**
+
+The location is inoperable.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+If the application in position 0 or 1 in the Dock is Application Center or Task Center, the application at that location cannot be changed.
+
+**Solution**
+
+Add the application to another location.
+<!--no_check-->

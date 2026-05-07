@@ -65,8 +65,8 @@ export default {
       iterations: 2,
       begin: 0,
       end: 180
-    };//设置参数
-    this.animation = this.getUIContext().createAnimator(options);//创建动画
+    }; // 设置参数
+    this.animation = this.getUIContext().createAnimator(options); // 创建动画
   },
   playAnimation() {
     var _this = this;
@@ -86,6 +86,8 @@ export default {
 > - begin插值起点，不设置时默认为0。
 >
 > - end插值终点，不设置时默认为1。
+>
+> - 示例代码不支持模拟器运行。
 
 
 ## 添加动画事件和调用接口
@@ -172,7 +174,7 @@ export default {
     };
     this.animation = this.getUIContext().createAnimator(options);
     var _this= this;
-    //添加动画重放事件
+    // 添加动画重放事件
     this.animation.onrepeat = function() {
       this.getUIContext().getPromptAction().showToast({
         message: 'repeat'
@@ -190,7 +192,7 @@ export default {
   },
   playAnimation() {
     var _this= this;
-    //添加动画逐帧插值回调事件
+    // 添加动画逐帧插值回调事件
     this.animation.onframe = function(value) {
       _this.scaleVal= value/150,
       _this.DivWidth = value,
@@ -207,26 +209,26 @@ export default {
       end: 180
     };
     this.animation.update(newoptions);
-    this.animation.play();//调用动画播放接口
+    this.animation.play(); // 调用动画播放接口
   },
   pauseAnimation() {
-    this.animation.pause();//调用动画暂停接口
+    this.animation.pause(); // 调用动画暂停接口
   },
   finishAnimation() {
     var _this= this;
-   //添加动画完成事件
+    // 添加动画完成事件
     this.animation.onfinish = function() {
       this.getUIContext().getPromptAction().showToast({
         message: 'finish'
       });
     };
-    this.animation.finish(); //调用动画完成接口
+    this.animation.finish(); // 调用动画完成接口
   },
   cancelAnimation() {
-    this.animation.cancel(); //调用动画取消接口
+    this.animation.cancel(); // 调用动画取消接口
   },
   reverseAnimation() {
-    this.animation.reverse(); //调用动画倒放接口
+    this.animation.reverse(); // 调用动画倒放接口
   }
 }
 ```

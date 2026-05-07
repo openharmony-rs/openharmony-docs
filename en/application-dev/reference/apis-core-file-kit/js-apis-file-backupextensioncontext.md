@@ -2,9 +2,9 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 **BackupExtensionContext** is the context of **BackupExtension** and inherits from **ExtensionContext**.
 
@@ -29,7 +29,7 @@ import  { BackupExtensionContext } from '@kit.CoreFileKit';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- |-------| -------- | -------- |
-| backupDir | string | Yes| No| Temporary directory used for backup or restore. This directory cannot be used for other purposes. Currently, only **el1/** and **el2/** are supported.|
+| backupDir | string | Yes| No| Temporary directory used for backup or restore. This directory cannot be used for other purposes. Currently, only the **el1** and **el2** directories are supported. If other directories are used, null is returned.|
 
 ### When to Use
 **BackupExtensionContext** is used to obtain a temporary directory for backup or restore.
@@ -37,7 +37,7 @@ import  { BackupExtensionContext } from '@kit.CoreFileKit';
 **Example**
 
 ```ts
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
 import { contextConstant } from '@kit.AbilityKit';
 
 export default class MyBackupExtAbility extends BackupExtensionAbility {

@@ -231,6 +231,42 @@ The user rejects the preprocessing operation.
 
 Perform the preprocessing operation again.
 
+## 2900015 Parameter Format Inconsistent with Specifications
+
+**Error Message**
+
+Parameter format mismatch with specification.
+
+**Description**
+
+The parameter format is inconsistent with the specifications.
+
+**Possible Causes**
+
+For example, the parameter length does not meet the specifications, or lowercase letters are passed for a parameter that should use uppercase letters.
+
+**Solution**
+
+Check whether the parameter format complies with the specifications.
+
+## 2900016 Device Not Paired
+
+**Error Message**
+
+Device unpaired.
+
+**Description**
+
+The device is not paired.
+
+**Possible Causes**
+
+The queried address is not paired with the device.
+
+**Solution**
+
+On the Bluetooth settings screen, check whether the device is paired.
+
 ## 2900099
 
 **Error Message**
@@ -243,7 +279,9 @@ The operation failed.
 
 **Possible Causes**
 
-The profile is not supported by the device.
+Common error code for Bluetooth API calling failures. The possible causes are as follows:
+1. The prerequisites for calling the API are not met.
+2. The specified virtual address does not exist.
 
 **Solution**
 
@@ -365,7 +403,7 @@ The connection is not authenticated.
 
 **Description**
 
-This error code is reported if characteristic or descriptor read and write operations requiring authentication is performed when the GATT connection is not authenticated. Whether authentication is required for the operation is subject to the permission of the characteristic or descriptor on the server.
+This error code is reported if characteristic or descriptor read and write operations requiring authentication is performed when the GATT connection is not authenticated. Whether encryption is required for the operation is subject to the permission of the characteristic or descriptor on the server.
 
 **Possible Causes**
 
@@ -482,3 +520,75 @@ The input advertising ID must be the value returned by [startAdvertising](js-api
 **Solution**
 
 Check whether the input advertising ID is a valid advertising ID returned by [startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11).
+
+## 2903050 HID Is Not in the Foreground
+
+**Error Message**
+
+HID application is not int the foreground.
+
+**Description**
+
+The application that registers the HID device is not in the foreground.
+
+**Possible Causes**
+
+The application that registers the HID device is in the background.
+
+**Solution**
+
+Check whether the application that registers the HID device is in the foreground.
+
+## 2903051 HID Has Been Registered
+
+**Error Message**
+
+Any HID application has been registered.
+
+**Description**
+
+The HID device has been registered by another application.
+
+**Possible Causes**
+
+Only one application can register the HID device.
+
+**Solution**
+
+Check whether the HID device has been registered by another application.
+
+## 2903052 HID Not Registered
+
+**Error Message**
+
+HID application does not register.
+
+**Description**
+
+The application has not registered the HID device.
+
+**Possible Causes**
+
+An application can connect to and exchange data with the HID host only after registering the HID device.
+
+**Solution**
+
+Check whether the application successfully registers the HID device.
+
+## 2903053 HID Not Connected
+
+**Error Message**
+
+HID device is not connected.
+
+**Description**
+
+The HID device has not connected to the HID host.
+
+**Possible Causes**
+
+The HID device can exchange data with the HID host only after the connection is successful.
+
+**Solution**
+
+Check whether the application successfully registers the HID device and connects to the HID host.

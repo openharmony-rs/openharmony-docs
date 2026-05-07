@@ -17,6 +17,18 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.hsdr.HSDR_ACCESS
+
+允许应用访问安全检测与响应框架。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：false
+
+**起始版本**：10
+
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
 允许控制系统灯，包括打开、关闭等操作。
@@ -148,6 +160,22 @@
 **ACL使能**：false
 
 **起始版本**：10
+
+## ohos.permission.ACCESS_DEVELOPER_PCAP_SWITCH
+
+允许系统应用管理pcap抓包开关，包括开启、关闭、查看状态等。
+
+获取该权限后，应用可以调用系统层提供的用于抓pcap包的接口，完成开关设置、状态获取、状态变化的注册监听。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：false
+
+**支持设备**：Phone | TV | Tablet
+
+**起始版本**：26.0.0
 
 ## ohos.permission.ENFORCE_USER_IDM
 

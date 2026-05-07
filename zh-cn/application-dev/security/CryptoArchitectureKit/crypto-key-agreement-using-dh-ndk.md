@@ -19,85 +19,83 @@
 
 3. 调用[OH_CryptoKeyAgreement_GenerateSecret](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_generatesecret)，基于传入的私钥（keyPair.priKey）与公钥（keyPair.pubKey）进行密钥协商，返回共享密钥。
 
-```C++
+
+<!-- @[TestDh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiationCpp/entry/src/main/cpp/types/project/DH.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include "CryptoArchitectureKit/crypto_key_agreement.h"
-#include <stdio.h>
+#include "file.h"
+#include <cstdio>
 #include <cstring>
 
-static OH_Crypto_ErrCode doTestDHKeyAgreement()
+static OH_Crypto_ErrCode GenerateSecret(OH_CryptoKeyAgreement *dhKeyAgreement, OH_CryptoKeyPair *keyPairA,
+    OH_CryptoKeyPair *keyPairB, Crypto_DataBlob *secret)
 {
-    // 创建DH密钥生成器。
+    OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPairA);
+    OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(keyPairB);
+    return OH_CryptoKeyAgreement_GenerateSecret(dhKeyAgreement, privKey, pubKey, secret);
+}
+
+static OH_Crypto_ErrCode compareSecrets(const Crypto_DataBlob *secret1, const Crypto_DataBlob *secret2)
+{
+    if ((secret1->len == secret2->len) &&
+        (memcmp(secret1->data, secret2->data, secret1->len) == 0)) {
+        return CRYPTO_SUCCESS;
+    }
+    return CRYPTO_OPERTION_ERROR;
+}
+
+OH_Crypto_ErrCode doTestDHKeyAgreement()
+{
     OH_CryptoAsymKeyGenerator *dhGen = nullptr;
+    OH_CryptoKeyPair *keyPairA = nullptr;
+    OH_CryptoKeyPair *keyPairB = nullptr;
+    OH_CryptoKeyAgreement *dhKeyAgreement = nullptr;
+    Crypto_DataBlob secret1 = { 0 };
+    Crypto_DataBlob secret2 = { 0 };
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("DH_modp1536", &dhGen);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
 
-    // 生成公私钥对A。
-    OH_CryptoKeyPair *keyPairA = nullptr;
+    // 生成公私钥对A 和 B。
     ret = OH_CryptoAsymKeyGenerator_Generate(dhGen, &keyPairA);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymKeyGenerator_Destroy(dhGen);
-        return ret;
+        goto goto_cleanup;
     }
 
-    // 生成公私钥对B。
-    OH_CryptoKeyPair *keyPairB = nullptr;
     ret = OH_CryptoAsymKeyGenerator_Generate(dhGen, &keyPairB);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoAsymKeyGenerator_Destroy(dhGen);
-        return ret;
+        goto goto_cleanup;
     }
 
-    // 创建密钥协议生成器。
-    OH_CryptoKeyAgreement *dhKeyAgreement = nullptr;
     ret = OH_CryptoKeyAgreement_Create("DH_modp1536", &dhKeyAgreement);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoKeyPair_Destroy(keyPairB);
-        OH_CryptoAsymKeyGenerator_Destroy(dhGen);
-        return ret;
+        goto goto_cleanup;
     }
 
     // 使用A的公钥和B的私钥进行密钥协商。
-    OH_CryptoPrivKey *privKeyB = OH_CryptoKeyPair_GetPrivKey(keyPairB);
-    OH_CryptoPubKey *pubKeyA = OH_CryptoKeyPair_GetPubKey(keyPairA);
-    Crypto_DataBlob secret1 = { 0 };
-    ret = OH_CryptoKeyAgreement_GenerateSecret(dhKeyAgreement, privKeyB, pubKeyA, &secret1);
+    ret = GenerateSecret(dhKeyAgreement, keyPairB, keyPairA, &secret1);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKeyAgreement_Destroy(dhKeyAgreement);
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoKeyPair_Destroy(keyPairB);
-        OH_CryptoAsymKeyGenerator_Destroy(dhGen);
-        return ret;
+        goto goto_cleanup;
     }
 
     // 使用B的公钥和A的私钥进行密钥协商。
-    OH_CryptoPrivKey *privKeyA = OH_CryptoKeyPair_GetPrivKey(keyPairA);
-    OH_CryptoPubKey *pubKeyB = OH_CryptoKeyPair_GetPubKey(keyPairB);
-    Crypto_DataBlob secret2 = { 0 };
-    ret = OH_CryptoKeyAgreement_GenerateSecret(dhKeyAgreement, privKeyA, pubKeyB, &secret2);
+    ret = GenerateSecret(dhKeyAgreement, keyPairA, keyPairB, &secret2);
     if (ret != CRYPTO_SUCCESS) {
-        OH_Crypto_FreeDataBlob(&secret1);
-        OH_CryptoKeyAgreement_Destroy(dhKeyAgreement);
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoKeyPair_Destroy(keyPairB);
-        OH_CryptoAsymKeyGenerator_Destroy(dhGen);
-        return ret;
+        goto goto_cleanup;
     }
 
     // 比较两次协商的结果。
-    if ((secret1.len == secret2.len) &&
-        (memcmp(secret1.data, secret2.data, secret1.len) == 0)) {
-        printf("dh success\n");
-    } else {
+    ret = compareSecrets(&secret1, &secret2);
+    if (ret != CRYPTO_SUCCESS) {
         printf("dh result is not equal\n");
-        ret = CRYPTO_OPERTION_ERROR;
+        goto goto_cleanup;
     }
 
-    // 清理资源。
+goto_cleanup:
     OH_Crypto_FreeDataBlob(&secret1);
     OH_Crypto_FreeDataBlob(&secret2);
     OH_CryptoKeyAgreement_Destroy(dhKeyAgreement);
@@ -107,3 +105,4 @@ static OH_Crypto_ErrCode doTestDHKeyAgreement()
     return ret;
 }
 ```
+

@@ -6,7 +6,7 @@ The policy defined in this document enables the OpenHarmony community to comply 
 
 ## Scope
 
-This document applies to all contributors to the OpenHarmony community, including the code repositories under [OpenHarmony](https://gitee.com/openharmony) and those under [OpenHarmony-SIG](https://gitee.com/openharmony-sig).
+This document applies to all contributors to the OpenHarmony community, including the code repositories under [OpenHarmony](https://gitcode.com/openharmony) and those under [OpenHarmony-SIG](https://gitcode.com/openharmony-sig).
 
 ## Improvements and Revisions
 
@@ -25,7 +25,7 @@ This document applies to all contributors to the OpenHarmony community, includin
 #### License Usage and Review Specifications of Open-Source Software
 
 - [Licenses and Special License Review](licenses-and-special-license-review.md)
-- [OpenHarmony License Agreement](https://gitee.com/openharmony#license-agreement)
+- [OpenHarmony License Agreement](https://gitcode.com/openharmony#license-agreement)
 
 #### Introduction and Exit Specifications of Open-Source Software
 
@@ -41,8 +41,8 @@ This document applies to all contributors to the OpenHarmony community, includin
 
 #### Gated Check-In Compliance Specifications
 
-- [Gated Check-In Requirements](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/%E4%BB%A3%E7%A0%81%E9%97%A8%E7%A6%81%E8%A6%81%E6%B1%82.md#codecheck%E6%A3%80%E6%9F%A5)
-- [OSS Audit Tool](https://gitee.com/openharmony-sig/tools_oat/blob/master/README.md)
+- [Gated Check-In Requirements](https://gitcode.com/openharmony/community/blob/master/sig/sig_qa/%E4%BB%A3%E7%A0%81%E9%97%A8%E7%A6%81%E8%A6%81%E6%B1%82.md#codecheck%E6%A3%80%E6%9F%A5)
+- [OSS Audit Tool](https://gitcode.com/openharmony-sig/tools_oat/blob/master/README.md)
 
 #### Specifications for Participation in Upstream Communities
 
@@ -52,7 +52,7 @@ This document applies to all contributors to the OpenHarmony community, includin
 
 #### Software Bill of Material (SBOM) Specifications
 
-[OpenHarmony SBOM Specifications](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%A4%BE%E5%8C%BASBOM%E8%A7%84%E8%8C%83.md)
+[OpenHarmony SBOM Specifications](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%A4%BE%E5%8C%BASBOM%E8%A7%84%E8%8C%83.md)
 
 #### Open-Source Obligation Fulfillment
 
@@ -60,13 +60,13 @@ This document applies to all contributors to the OpenHarmony community, includin
 
 #### Compliance Alarm Clarification Specifications
 
-[Guidelines for Clarifying Open Source Compliance Alerts with FossLicense](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/FossLicense%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%91%8A%E8%AD%A6%E6%BE%84%E6%B8%85%E8%A7%84%E8%8C%83.md)
+[Guidelines for Clarifying Open Source Compliance Alerts with FossLicense](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/FossLicense%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%91%8A%E8%AD%A6%E6%BE%84%E6%B8%85%E8%A7%84%E8%8C%83.md)
 
 #### Community Version Release and SIG Graduation Open Source Compliance Review
 
-- [OpenHarmony Community Version Release Open Source Compliance Review Guidelines](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E9%A1%B9%E8%AF%84%E5%AE%A1%E8%A7%84%E8%8C%83.md#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E8%AF%84%E5%AE%A1%E6%B5%81%E7%A8%8B)
-- [Open Source Compliance and Quality Review Criteria for Version Release](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/%E7%89%88%E6%9C%AC%E8%B4%A8%E9%87%8F%E8%A6%81%E6%B1%82.md)
-- [Graduation Review Participants](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/guidance_for_incubation_project_graduation.md#graduation-review-checklist)
+- [OpenHarmony Community Version Release Open Source Compliance Review Guidelines](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E9%A1%B9%E8%AF%84%E5%AE%A1%E8%A7%84%E8%8C%83.md#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E8%AF%84%E5%AE%A1%E6%B5%81%E7%A8%8B)
+- [Open Source Compliance and Quality Review Criteria for Version Release](https://gitcode.com/openharmony/community/blob/master/sig/sig_qa/%E7%89%88%E6%9C%AC%E8%B4%A8%E9%87%8F%E8%A6%81%E6%B1%82.md)
+- [Graduation Review Participants](https://gitcode.com/openharmony/community/blob/master/sig/sig_qa/guidance_for_incubation_project_graduation.md#graduation-review-checklist)
 
 ## Binary Compliance Specifications
 
@@ -78,11 +78,11 @@ This document applies to all contributors to the OpenHarmony community, includin
 
 ## Open-Source Compliance Roles and Responsibilities
 
-[Open-Source Compliance Role and Capability Requirements](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E8%A7%92%E8%89%B2%E8%81%8C%E8%B4%A3%E5%8F%8A%E8%83%BD%E5%8A%9B%E8%A6%81%E6%B1%82.md)
+[Open-Source Compliance Role and Capability Requirements](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E8%A7%92%E8%89%B2%E8%81%8C%E8%B4%A3%E5%8F%8A%E8%83%BD%E5%8A%9B%E8%A6%81%E6%B1%82.md)
 
 ## Open-Source Compliance Training Resources and Requirements
 
-[Open-Source Compliance Training Plan](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%9F%B9%E8%AE%AD%E8%AE%A1%E5%88%92.md)
+[Open-Source Compliance Training Plan](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%9F%B9%E8%AE%AD%E8%AE%A1%E5%88%92.md)
 
 ## Consequences of Incompliance
 

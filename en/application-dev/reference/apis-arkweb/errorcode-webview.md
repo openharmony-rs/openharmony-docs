@@ -1,8 +1,8 @@
 # Webview Error Codes
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -20,12 +20,16 @@ Init error. The WebviewController must be associated with a Web component.
 
 This error code is reported when the **WebviewController** object is not associated with any **Web** component.
 
+**Possible Causes**
+
+The **WebViewController** object is not associated with any **Web** component.
+
 **Solution**
 
-Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10) to check whether the **WebViewController** object is attached with the **Web** component.
+Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10) to check whether the **WebViewController** object is attached with the **Web** component.<!--RP1--><!--RP1End-->
 
 
-## 17100002 Invalid URL
+## 17100002 Incorrect URL Format
 
 **Error Message**
 
@@ -34,6 +38,12 @@ URL error. Possible causes: 1. No valid cookie found for the specified URL. 2. T
 **Description**
 
 The URL is incorrect. Possible causes are as follows:
+
+1. No valid cookie is found for the specified URL.
+
+2. The web page corresponding to the URL is invalid, or the URL length exceeds 2 × 1024 × 1024 characters.
+
+**Possible Causes**
 
 1. No valid cookie is found for the specified URL.
 
@@ -48,20 +58,23 @@ Check whether the URL is correct and contains a maximum of 2 × 1024 × 1024 cha
 
 **Error Message**
 
-Invalid resource path or file type.
+1. Invalid resource path or file type.
+2. Calling a JS method that returns an empty ArrayBuffer via runJavaScript.
 
 **Description**
 
-This error code is reported when the path to the resource file is incorrect.
+1. This error code is reported when the path to the resource file is incorrect.
+2. The method on the H5 side invoked via **runJavaScript** returns an empty **ArrayBuffer**.
 
 **Possible Causes**
 
-The resource file does not exist or cannot be accessed.
+1. The resource file does not exist or cannot be accessed.
+2. The method on the H5 side invoked via **runJavaScript** returns an empty **ArrayBuffer**.
 
 **Solution**
 
-Make sure the path to the resource file is correct.
-
+1. Make sure the path to the resource file is correct.
+2. Use the **runJavaScriptExt** API to replace the **runJavaScript** API.
 
 ## 17100004 Function Not Enabled
 
@@ -73,9 +86,13 @@ Function not enabled.
 
 This error code is reported when the related function is not enabled.
 
+**Possible Causes**
+
+The related function is not set or enabled, or the function is incorrectly invoked.
+
 **Solution**
 
-Make sure the related function is enabled.
+Check whether the related function is enabled, for example, whether XXXAccess is set to **true**, or whether the current API supports concurrency.
 
 
 ## 17100005 Invalid Cookie Value
@@ -116,7 +133,7 @@ The port is closed.
 Make sure the port is open.
 
 
-## 17100008 javaScriptProxy Does Not Exist
+## 17100008 Deleting a JavaScriptProxy That Does Not Exist
 
 **Error Message**
 
@@ -124,15 +141,15 @@ Failed to delete JavaScriptProxy because it does not exist.
 
 **Description**
 
-This error code is reported when the **javaScriptProxy** object to delete does not exist.
+A JavaScriptProxy that does not exist is deleted.
 
 **Possible Causes**
 
-The target **javaScriptProxy** object is not yet registered.
+The passed JavaScriptProxy has not been registered.
 
 **Solution**
 
-Make sure the **javaScriptProxy** object is registered.
+Check whether the passed JavaScriptProxy is successfully registered.
 
 
 ## 17100010 Failure to Send Messages Through a Port
@@ -384,4 +401,4 @@ The error code is not within the range of [WebNetErrorList](arkts-apis-netErrorL
 
 **Solution**
 
-Check whether the error code is within the range of [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) or whether **NET_OK** is used when the **difFail** API is called.
+Check whether the error code is within the range of [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) or whether **NET_OK** is used when the **didFail** API is called.

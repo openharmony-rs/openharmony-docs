@@ -1,8 +1,8 @@
 # ArkTSUtils.ASON
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -24,7 +24,7 @@ import { ArkTSUtils } from '@kit.ArkTS'
 
 type ISendable = lang.ISendable
 
-ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有任何必须的方法和属性。
+ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有任何必要的方法和属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -48,9 +48,9 @@ type Transformer = (this: ISendable, key: string, value: ISendable | undefined |
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| this   | [ISendable](#isendable) | 是 | 在解析的键值对所属的对象。|
+| this   | [ISendable](#isendable) | 是 | 所解析的键值对所属的对象。|
 | key  | string | 是 | 属性名。|
-| value  | [ISendable](#isendable) \| undefined \| null| 是 | 在解析的键值对的值。|
+| value  | [ISendable](#isendable) \| undefined \| null| 是 | 所解析的键值对的值。|
 
 **返回值：**
 
@@ -113,7 +113,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
 | text   | string | 是 | 有效的JSON字符串。|
-| reviver   | [Transformer](#transformer) | 否 | 转换函数，传入该参数，可以用来修改解析生成的原始值。默认值是undefined。目前只支持传入undefined。|
+| reviver   | [Transformer](#transformer) | 否 | 转换函数，传入该参数，可以用来修改解析生成的原始值。默认值是undefined。该参数目前仅支持传入undefined值，其他值会被忽略或视为无效。|
 | options   | [ParseOptions](#parseoptions) | 否 | 解析的配置，传入该参数，可以用来控制解析生成的结果类型。默认值是undefined。|
 
 **返回值：**
@@ -212,40 +212,40 @@ hashMap.set("sh","b");
 hashMap.set("map","c");
 let str1 = ArkTSUtils.ASON.stringify(hashMap);
 console.info(str1);
-//期望输出：'{"sh":"b","ha":"a","map":"c"}'
+// 因HashMap的存储顺序由hashCode决定，因此存储位置不确定，输出可能是：'{"sh":"b","ha":"a","map":"c"}'
 let hashSet = new HashSet<string>();
 hashSet.add("ha");
 hashSet.add("sh");
 hashSet.add("set");
 let str2 = ArkTSUtils.ASON.stringify(hashSet);
 console.info(str2);
-//期望输出：'["set","sh","ha"]'
+// 因HashSet的存储顺序由hashCode决定，因此存储位置不确定，输出可能是：'["set","sh","ha"]'
 let map = new Map<string,string>();
 map.set("m","a");
 map.set("a","b");
 map.set("p","c");
 let str3 = ArkTSUtils.ASON.stringify(map);
 console.info(str3);
-//期望输出：'{"m":"a","a":"b","p":"c"}'
+// 期望输出：'{"m":"a","a":"b","p":"c"}'
 let set = new Set<string>();
 set.add("s");
 set.add("e");
 set.add("t");
 let str4 = ArkTSUtils.ASON.stringify(set);
 console.info(str4);
-//期望输出：'["s","e","t"]'
+// 期望输出：'["s","e","t"]'
 let sendableMap = new collections.Map<string,string>();
 sendableMap.set("send","a");
 sendableMap.set("able","b");
 sendableMap.set("map","c");
 let str5 = ArkTSUtils.ASON.stringify(sendableMap);
 console.info(str5);
-//期望输出：'{"send":"a","able":"b","map":"c"}'
+// 期望输出：'{"send":"a","able":"b","map":"c"}'
 let sendableSet = new collections.Set<string>();
 sendableSet.add("send");
 sendableSet.add("able");
 sendableSet.add("set");
 let str6 = ArkTSUtils.ASON.stringify(sendableSet);
 console.info(str6);
-//期望输出：'["send","able","set"]'
+// 期望输出：'["send","able","set"]'
 ```

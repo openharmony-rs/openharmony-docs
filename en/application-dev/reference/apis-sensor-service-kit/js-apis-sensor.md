@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
@@ -85,7 +85,7 @@ Subscribes to the fused pressure sensor data.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).FUSION_PRESSURE            | Yes  | Sensor type. The value is fixed at SensorId.FUSION_PRESSURE. |
-| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | Yes  | Callback used to report the sensor data, which is a **FusionPressureResponse** object.|
+| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | Yes  | Callback used to report the sensor data, which is a **FusionPressureResponse** object.|
 | options  | [Options](#options)                                          | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
 
 **Error codes**
@@ -406,8 +406,7 @@ try {
 
 ###  GYROSCOPE_UNCALIBRATED<sup>9+</sup>
 
-on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;,
-      options?: Options): void
+on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
 Subscribes to data of the uncalibrated gyroscope sensor.
 
@@ -600,8 +599,7 @@ try {
 
 ###   LINEAR_ACCELEROMETER<sup>9+</sup>
 
-on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;,
-        options?: Options): void
+on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
 Subscribes to data of the linear acceleration sensor.
 
@@ -849,8 +847,7 @@ try {
 
 ### PEDOMETER_DETECTION<sup>9+</sup>
 
-on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
 Subscribes to data of the pedometer detection sensor.
 
@@ -943,8 +940,7 @@ try {
 
 ### ROTATION_VECTOR<sup>9+</sup>
 
-on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;,
-        options?: Options): void
+on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
 Subscribes to data of the rotation vector sensor.
 
@@ -992,8 +988,7 @@ try {
 
 ### SIGNIFICANT_MOTION<sup>9+</sup>
 
-on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
 Subscribes to the significant motion sensor data.
 
@@ -1038,8 +1033,7 @@ try {
 
 ###  WEAR_DETECTION<sup>9+</sup>
 
-on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options): void
 
 Subscribes to data of the wear detection sensor.
 
@@ -1393,7 +1387,7 @@ try {
 
 once(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): void
 
-Obtains to data of the gyroscope sensor once.
+Obtains data of the gyroscope sensor once.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -2258,7 +2252,7 @@ Unsubscribes from the fused pressure sensor data.
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).FUSION_PRESSURE            | Yes  | Sensor type. The value is fixed at SensorId.FUSION_PRESSURE. |
 | sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  No| Sensor parameters, including **deviceId** and **sensorIndex**.|
-| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
 
 **Error codes**
 
@@ -5095,7 +5089,7 @@ Obtains the information about all sensors on the device.
 
 | Name         | Type                                                        | Mandatory| Description    |
 | --------------- | ------------------------------------------------------------ | ---- |--------|
-| deviceId | number                 | No  | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the device ID.|
+| deviceId | number                 | No  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensorstatuschange19) to obtain the device ID.|
 
 
 **Return value**
@@ -5137,7 +5131,7 @@ Obtains information about the sensor of a specific type.
 | Name         | Type                                                        | Mandatory| Description      |
 | --------------- | ------------------------------------------------------------ | ---- |----------|
 | type     | [SensorId](#sensorid9) | Yes  | Sensor type.|
-| deviceId | number                 | No  | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the device ID.|
+| deviceId | number                 | No  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensorstatuschange19) to obtain the device ID.|
 
 
 **Return value**
@@ -5482,8 +5476,7 @@ try {
 
 ## sensor.getAngleVariation<sup>9+</sup>
 
- getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 Obtains the angle change between two rotation matrices. This API uses an asynchronous callback to return the result.
 
@@ -5495,7 +5488,7 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 | --------------------- | ---------------------------------------- | ---- | --------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | Yes  | Current rotation matrix.               |
 | preRotationMatrix     | Array&lt;number&gt;                      | Yes  | The other rotation matrix.                   |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the angle change around the z, x, and y axes.|
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5563,7 +5556,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 | Type                              | Description                             |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5713,8 +5706,7 @@ try {
 
 ## sensor.transformRotationMatrix<sup>9+</sup> 
 
-transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 Transforms a rotation vector based on the coordinate system. This API uses an asynchronous callback to return the result.
 
@@ -5935,7 +5927,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 | Name        | Type                                    | Mandatory| Description                             |
 | -------------- | ---------------------------------------- | ---- | --------------------------------- |
 | rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                   |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5995,7 +5987,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Type                              | Description                             |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -6441,7 +6433,7 @@ Enumerates the sensor types.
 | HEART_RATE                  | 278  | Heart rate sensor.                                                |
 | WEAR_DETECTION              | 280  | Wear detection sensor.                                            |
 | ACCELEROMETER_UNCALIBRATED  | 281  | Uncalibrated acceleration sensor.                                      |
-| FUSION_PRESSURE             | 283  | Fused pressure sensor.<br>This sensor is available only on smart watches.                       |
+| FUSION_PRESSURE<sup>22+</sup>             | 283  | Fused pressure sensor.<br>This sensor is available only on smart watches.                       |
 
 
 ## SensorInfoParam<sup>19+</sup>
@@ -6455,8 +6447,8 @@ Defines sensor parameters, including **deviceId** and **sensorIndex**.
 
 | Name         | Type    | Read-Only | Optional | Description            |
 |--------------|----------|-------|------|----------------- |
-| deviceId    | number    | No   | Yes   | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.     |
-| sensorIndex | number    | No   | Yes   | Sensor index. The default value is **0**, indicating the default sensor on the device. You can use [getSensorList](#sensorgetsensorlist9) or [on](#sensorstatuschange19) to obtain the sensor index.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| deviceId    | number    | No   | Yes   | Device ID. The default value is -1, indicating the local device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensorstatuschange19) to obtain the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.     |
+| sensorIndex | number    | No   | Yes   | Sensor index. The default value is **0**, indicating the default sensor on the device. You can use [getSensorList](#sensorgetsensorlist9) or [sensorStatusChange](#sensorstatuschange19) to obtain the sensor index.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
 
 ## SensorStatusEvent<sup>19+</sup>
@@ -6467,7 +6459,7 @@ Defines a device status change event.
 
 | Name          | Type    | Read-Only| Optional| Description                         |
 |----------------|---------|-----|-----|-----------------------------|
-| timestamp      | number  | No | No | Timestamp when an event occurs.                  |
+| timestamp      | number  | No | No | Timestamp when the event occurs, in milliseconds.                  |
 | sensorId       | number  | No | No | Sensor ID.                     |
 | sensorIndex    | number  | No | No | Sensor index.                     |
 | isSensorOnline | boolean | No | No | Sensor status. The value **true** indicates that the sensor is online, and the value **false** indicates the opposite.|
@@ -6573,7 +6565,7 @@ Describes the uncalibrated acceleration sensor data. It extends from [Response](
 | biasZ | number | No  | No  | Uncalibrated acceleration bias along the z-axis of the device, in m/s².|
 
 
-## FusionPressureResponse
+## FusionPressureResponse<sup>22+</sup>
 
 Describes the fusion pressure sensor data. It extends from [Response](#response).
 
@@ -6889,13 +6881,13 @@ Describes a geomagnetic response object.
 
 | Name           | Type  | Read-Only| Optional| Description                                              |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | number | No  | No  | North component of the geomagnetic field.                                  |
-| y               | number | No  | No  | East component of the geomagnetic field.                                  |
-| z               | number | No  | No  | Vertical component of the geomagnetic field.                                |
-| geomagneticDip  | number | No  | No  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector.            |
-| deflectionAngle | number | No  | No  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field).|
-| levelIntensity  | number | No  | No  | Horizontal intensity of the magnetic field vector field.                                |
-| totalIntensity  | number | No  | No  | Total intensity of the magnetic field vector.                                  |
+| x               | number | No  | No  | North component of the geomagnetic field, in nT.                                  |
+| y               | number | No  | No  | East component of the geomagnetic field, in nT.                                  |
+| z               | number | No  | No  | Vertical component of the geomagnetic field, in nT.                                |
+| geomagneticDip  | number | No  | No  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector, in degrees (°).            |
+| deflectionAngle | number | No  | No  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field), in degrees (°).|
+| levelIntensity  | number | No  | No  | Horizontal intensity of the geomagnetic field, in nT.                                |
+| totalIntensity  | number | No  | No  | Total intensity of the geomagnetic field, in nT.                                  |
 
 ## LocationOptions
 
@@ -6905,9 +6897,9 @@ Describes the geographical location.
 
 | Name     | Type  | Read-Only| Optional| Description      |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | number | No  | No  | Latitude.    |
-| longitude | number | No  | No  | Longitude.    |
-| altitude  | number | No  | No  | Altitude.|
+| latitude  | number | No  | No  | Latitude, in degrees (°).    |
+| longitude | number | No  | No  | Longitude, in degrees (°).    |
+| altitude  | number | No  | No  | Altitude, in meters.|
 
 ## sensor.on<sup>(deprecated)</sup>
 
@@ -8891,7 +8883,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
 
 off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
-Unsubscribes from the significant motion sensor data.
+Unsubscribes from valid motion sensor data.
 
 > **NOTE**
 >
@@ -9271,8 +9263,8 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 | Name               | Type                                    | Mandatory| Description                                 |
 | --------------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | Yes  | Current rotation matrix.                   |
-| preRotationMatrix     | Array&lt;number&gt;                      | Yes  | Peer rotation matrix.                       |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the angle change around the z, x, and y axes.|
+| preRotationMatrix     | Array&lt;number&gt;                      | Yes  | The other rotation matrix.                       |
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angle changes around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9309,13 +9301,13 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 | Name                  | Type                 | Mandatory  | Description       |
 | --------------------- | ------------------- | ---- | --------- |
 | currentRotationMatrix | Array&lt;number&gt; | Yes   | Current rotation matrix.|
-| preRotationMatrix     | Array&lt;number&gt; | Yes   | Peer rotation matrix.  |
+| preRotationMatrix     | Array&lt;number&gt; | Yes   | The other rotation matrix.  |
 
 **Return value**
 
 | Type                              | Description                                         |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle changes of the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9507,8 +9499,8 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 | Name        | Type                                    | Mandatory| Description                                 |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
-| rotationMatrix | Array&lt;number&gt;                      | Yes  | Peer rotation matrix.                       |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
+| rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                       |
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9544,13 +9536,13 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name           | Type                 | Mandatory  | Description     |
 | -------------- | ------------------- | ---- | ------- |
-| rotationMatrix | Array&lt;number&gt; | Yes   | Peer rotation matrix.|
+| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation matrix.|
 
 **Return value**
 
 | Type                              | Description                                         |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9573,7 +9565,7 @@ promise.then((data: Array<number>) => {
 
 createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;, callback: AsyncCallback&lt;RotationMatrixResponse&gt;): void
 
-Creates a rotation matrix based on the gravity vector and geomagnetic vector. This API uses an asynchronous callback to return the result.
+Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -9609,7 +9601,7 @@ sensor.createRotationMatrix([-0.27775216, 0.5351276, 9.788099], [210.87253, -78.
 
 createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;): Promise&lt;RotationMatrixResponse&gt;
 
-Creates a rotation matrix based on the gravity vector and geomagnetic vector. This API uses a promise to return the result.
+Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses a promise to return the result.
 
 > **NOTE**
 >

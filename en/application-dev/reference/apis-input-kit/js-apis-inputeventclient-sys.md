@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **inputEventClient** module provides the capability of injecting key, mouse/touchpad, and touchscreen events.
 
@@ -66,13 +66,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             }
-
-            class EventDown {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventDown: EventDown = { KeyEvent: backKeyDown }
-            inputEventClient.injectEvent(eventDown);
+            inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
             let backKeyUp: inputEventClient.KeyEvent = {
               isPressed: false,
@@ -80,13 +74,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
-
-            class EventUp {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventUp: EventUp = { KeyEvent: backKeyUp }
-            inputEventClient.injectEvent(eventUp);
+            inputEventClient.injectEvent({ KeyEvent: backKeyUp });
           } catch (error) {
             console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -184,7 +172,7 @@ Permission required: ohos.permission.INJECT_INPUT_EVENT
 
 | Name      | Type                   | Mandatory  | Description       |
 | -------- | --------------------- | ---- | --------- |
-| mouseEvent | [MouseEventData](#mouseeventdata11) | Yes   | Mouse/touchpad event to inject.|
+| mouseEvent | [MouseEventData](#mouseeventdata11) | Yes   | Mouse/touchpad event to inject. [Action](js-apis-mouseevent.md#action) in this parameter cannot be set to **CANCEL**.|
 
 **Error codes**
 
@@ -298,7 +286,7 @@ Permission required: ohos.permission.INJECT_INPUT_EVENT
 
 | Name      | Type                   | Mandatory  | Description       |
 | -------- | --------------------- | ---- | --------- |
-| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touch event data.|
+| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touch event data. [Action](js-apis-touchevent.md#action) in this parameter cannot be set to **CANCEL**.|
 
 **Error codes**
 
@@ -346,7 +334,7 @@ struct Index {
             }
 
             let touchEventUpData: TouchEvent = {
-              action: 1,
+              action: 3,
               sourceType: 0,
               touch: touchEvent,
               touches: [],

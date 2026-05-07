@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -17,6 +17,10 @@
 
 Resource unavailable.
 
+**错误描述**
+
+无法调用接口。
+
 **可能原因**
 
 图片被跨线程传递，原对象无法调用接口。
@@ -29,7 +33,11 @@ Resource unavailable.
 
 **错误信息**
 
-Transaction operation failed.
+The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.
+
+**错误描述**
+
+操作失败。
 
 **可能原因**
 
@@ -47,7 +55,11 @@ Transaction operation failed.
 
 **错误信息**
 
-RPC error.
+IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception. 3. Decode process exception. 4. Insufficient memory.
+
+**错误描述**
+
+pixelmap序列化传输失败。
 
 **可能原因**
 
@@ -66,6 +78,10 @@ RPC error.
 
 Shared memory does not exist.
 
+**错误描述**
+
+共享内存空间错误。
+
 **可能原因**
 
 1. 内存大小不够。
@@ -80,7 +96,11 @@ Shared memory does not exist.
 
 **错误信息**
 
-Shared memory data abnormal.
+The shared memory data is abnormal.
+
+**错误描述**
+
+共享内存数据异常。
 
 **可能原因**
 
@@ -97,6 +117,10 @@ Shared memory data abnormal.
 **错误信息**
 
 Image decoding abnormal.
+
+**错误描述**
+
+图片解码错误。
 
 **可能原因**
 
@@ -115,6 +139,10 @@ Image decoding abnormal.
 
 The image data is abnormal.
 
+**错误描述**
+
+图片输入数据错误。
+
 **可能原因**
 
 1. 输入图片数据不对。
@@ -129,7 +157,11 @@ The image data is abnormal.
 
 **错误信息**
 
-Image malloc abnormal.
+Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data.
+
+**错误描述**
+
+图片分配内存错误。
 
 **可能原因**
 
@@ -143,7 +175,11 @@ Image malloc abnormal.
 
 **错误信息**
 
-Image types are not supported.
+The image data is not supported.
+
+**错误描述**
+
+图片类型不支持。
 
 **可能原因**
 
@@ -157,7 +193,11 @@ Image types are not supported.
 
 **错误信息**
 
-Image initialization abnormal.  
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+
+**错误描述**
+
+图片初始化错误。
 
 **可能原因**
 
@@ -173,7 +213,11 @@ Image initialization abnormal.
 
 **错误信息**
 
-Failed to get the image data.
+Failed to get the data.
+
+**错误描述**
+
+图片获取数据错误。
 
 **可能原因**
 
@@ -188,7 +232,11 @@ Failed to get the image data.
 
 **错误信息**
 
-The image data is too large.
+The image data is too large. This status code is thrown when an error occurs during the process of checking size.
+
+**错误描述**
+
+图片数据太大。
 
 **可能原因**
 
@@ -204,6 +252,10 @@ The image data is too large.
 
 Image conversion abnormal.
 
+**错误描述**
+
+图片转换错误。
+
 **可能原因**
 
 1. 图片转换过程中异常停止。
@@ -217,7 +269,11 @@ Image conversion abnormal.
 
 **错误信息**
 
-Image color conversion is abnormal.
+Failed to convert the color space.
+
+**错误描述**
+
+图片颜色转换错误。
 
 **可能原因**
 
@@ -232,7 +288,11 @@ Image color conversion is abnormal.
 
 **错误信息**
 
-Cropping exceptions.
+Failed to crop the image.
+
+**错误描述**
+
+裁剪错误。
 
 **可能原因**
 
@@ -247,7 +307,11 @@ Cropping exceptions.
 
 **错误信息**
 
-The image source data is abnormal.
+The image source data is incorrect.
+
+**错误描述**
+
+图片源数据错误。
 
 **可能原因**
 
@@ -263,6 +327,10 @@ The image source data is abnormal.
 
 The image source data is incomplete.
 
+**错误描述**
+
+图片源数据不完整。
+
 **可能原因**
 
 图片源数据缺失。
@@ -277,6 +345,10 @@ The image source data is incomplete.
 
 The image format does not match.
 
+**错误描述**
+
+图片格式不匹配。
+
 **可能原因**
 
 该图片的格式不匹配。
@@ -289,7 +361,11 @@ The image format does not match.
 
 **错误信息**
 
-Unknown image format.
+Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.
+
+**错误描述**
+
+图片未知格式。
 
 **可能原因**
 
@@ -305,6 +381,10 @@ Unknown image format.
 
 Image source not parsed.
 
+**错误描述**
+
+图片源未解析。
+
 **可能原因**
 
 图片源数据错误。
@@ -319,6 +399,10 @@ Image source not parsed.
 
 Invalid image parameter.
 
+**错误描述**
+
+图片无效参数。
+
 **可能原因**
 
 输入的参数无效。
@@ -331,7 +415,11 @@ Invalid image parameter.
 
 **错误信息**
 
-Decoding failed.
+Failed to decode the image.
+
+**错误描述**
+
+解码失败。
 
 **可能原因**
 
@@ -349,6 +437,10 @@ Decoding failed.
 
 Failed to register the plugin.
 
+**错误描述**
+
+注册插件失败。
+
 **可能原因**
 
 1. 未匹配到对应格式的解码或编码插件。
@@ -362,7 +454,11 @@ Failed to register the plugin.
 
 **错误信息**
 
-Failed to create the plugin.
+Failed to create the image plugin.
+
+**错误描述**
+
+创建插件失败。
 
 **可能原因**
 
@@ -377,7 +473,11 @@ Failed to create the plugin.
 
 **错误信息**
 
-Image encoding failed.
+Failed to encode the image.
+
+**错误描述**
+
+图片编码失败。
 
 **可能原因**
 
@@ -392,7 +492,11 @@ Image encoding failed.
 
 **错误信息**
 
-Failed to add the pixel mappings.
+Add pixelmap out of range.
+
+**错误描述**
+
+图片添加像素映射失败。
 
 **可能原因**
 
@@ -409,6 +513,10 @@ Failed to add the pixel mappings.
 
 Image hardware decoding is not supported.
 
+**错误描述**
+
+不支持图片硬解码。
+
 **可能原因**
 
 使用了图片硬解码。
@@ -422,6 +530,10 @@ Image hardware decoding is not supported.
 **错误信息**
 
 Failed to decode the image header.
+
+**错误描述**
+
+解码图片头异常。
 
 **可能原因**
 
@@ -438,6 +550,10 @@ Failed to decode the image header.
 
 The image does not support EXIF decoding.
 
+**错误描述**
+
+图片不支持exif解码。
+
 **可能原因**
 
 图片不支持exif解码。
@@ -451,6 +567,10 @@ The image does not support EXIF decoding.
 **错误信息**
 
 The image property does not exist.
+
+**错误描述**
+
+图片属性不存在。
 
 **可能原因**
 
@@ -467,6 +587,10 @@ The image property does not exist.
 
 The EXIF data is out of range.
 
+**错误描述**
+
+图片属性赋值超出范围。
+
 **可能原因**
 
 图片属性赋值超出范围。
@@ -480,6 +604,10 @@ The EXIF data is out of range.
 **错误信息**
 
 The EXIF value is invalid.
+
+**错误描述**
+
+图片属性值无效。
 
 **可能原因**
 
@@ -495,6 +623,10 @@ The EXIF value is invalid.
 
 Invalid media operation.
 
+**错误描述**
+
+图片操作无效。
+
 **可能原因**
 
 当前图片格式不支持该操作。
@@ -508,6 +640,10 @@ Invalid media operation.
 **错误信息**
 
 The EXIF data failed to be written to the file.
+
+**错误描述**
+
+图片属性值写入文件失败。
 
 **可能原因**
 
@@ -523,6 +659,10 @@ The EXIF data failed to be written to the file.
 
 Invalid MIME type for the image source.
 
+**错误描述**
+
+图片参数无效。
+
 **可能原因**
 
 当前图片格式不支持该操作。
@@ -537,6 +677,10 @@ Invalid MIME type for the image source.
 
 Failed to encode icc.
 
+**错误描述**
+
+编码ICC失败。
+
 **可能原因**
 
 图片ICC信息存在问题。
@@ -550,6 +694,10 @@ Failed to encode icc.
 **错误信息**
 
 The DMA memory does not exist.
+
+**错误描述**
+
+DMA内存空间错误。
 
 **可能原因**
 
@@ -567,6 +715,10 @@ The DMA memory does not exist.
 
 The DMA memory data is abnormal.
 
+**错误描述**
+
+DMA内存数据异常。
+
 **可能原因**
 
 1. 读写共享内存时没有正确地进行同步操作。
@@ -583,6 +735,10 @@ The DMA memory data is abnormal.
 
 Abnormal API environment.
 
+**错误描述**
+
+API环境异常。
+
 **可能原因**
 
 API使用环境存在问题。
@@ -596,6 +752,10 @@ API使用环境存在问题。
 **错误信息**
 
 Failed to create the PixelMap.
+
+**错误描述**
+
+PixelMap创建失败。
 
 **可能原因**
 
@@ -612,6 +772,10 @@ Failed to create the PixelMap.
 
 Abnormal buffer size.
 
+**错误描述**
+
+缓冲区大小异常。
+
 **可能原因**
 
 参数错误（如区域大小超出、入参值非法等）导致的创建失败。
@@ -626,6 +790,10 @@ Abnormal buffer size.
 
 FD mapping failed.
 
+**错误描述**
+
+文件描述符映射失败。
+
 **可能原因**
 
 传入的文件描述符存在问题。
@@ -639,6 +807,10 @@ FD mapping failed.
 **错误信息**
 
 Failed to read the pixel map.
+
+**错误描述**
+
+读取PixelMap失败。
 
 **可能原因**
 
@@ -655,6 +827,10 @@ Failed to read the pixel map.
 
 Failed to write the pixel map.
 
+**错误描述**
+
+写入像素映射失败。
+
 **可能原因**
 
 1. PixelMap数据错误。
@@ -670,6 +846,10 @@ Failed to write the pixel map.
 
 PixelMap does not allow modification.
 
+**错误描述**
+
+PixelMap不允许修改。
+
 **可能原因**
 
 对PixelMap进行了修改。
@@ -683,6 +863,10 @@ PixelMap does not allow modification.
 **错误信息**
 
 Failed to create surface.
+
+**错误描述**
+
+创建surface失败。
 
 **可能原因**
 
@@ -698,6 +882,10 @@ Failed to create surface.
 
 Configuration error.
 
+**错误描述**
+
+配置错误。
+
 **可能原因**
 
 配置出现错误。
@@ -711,6 +899,10 @@ Configuration error.
 **错误信息**
 
 The conversion failed.
+
+**错误描述**
+
+图片转换失败。
 
 **可能原因**
 
@@ -727,6 +919,10 @@ The conversion failed.
 
 The type to be converted is an unsupported target pixel format.
 
+**错误描述**
+
+不支持图片转换目标类型。
+
 **可能原因**
 
 不支持该目标类型的转换。
@@ -740,6 +936,10 @@ The type to be converted is an unsupported target pixel format.
 **错误信息**
 
 Memory format not supported.
+
+**错误描述**
+
+PixelMap设置内存标识符失败。
 
 **可能原因**
 
@@ -757,6 +957,10 @@ Memory format not supported.
 
 Memory copy failed.
 
+**错误描述**
+
+内存拷贝失败。
+
 **可能原因**
 
 1. 内存类型不匹配。
@@ -767,11 +971,69 @@ Memory copy failed.
 
 检查是否已释放要拷贝的实例。检查内存类型是否匹配。
 
+## 7600101 不支持的MIME类型
+
+**错误信息**
+
+Unsupported mime type.
+
+**错误描述**
+
+不支持的MIME类型。
+
+**可能原因**
+
+设备不支持该MIME类型。
+
+**处理步骤**
+
+检查图片数据或更换图片，可使用相关接口查询编解码能力范围。
+
+## 7600102 未知MIME类型
+
+**错误信息**
+
+Unknown mime type.
+
+**错误描述**
+
+未知的MIME类型。
+
+**可能原因**
+
+设备不支持该图像类型或图片损坏。
+
+**处理步骤**
+
+检查图片数据或更换图片。
+
+## 7600103 数据或图片太大
+
+**错误信息**
+
+Too large data or image.
+
+**错误描述**
+
+数据或图片太大。
+
+**可能原因**
+
+图片尺寸太大。
+
+**处理步骤**
+
+更换较小的图片。
+
 ## 7600104 获取图像数据失败
 
 **错误信息**
 
-Failed to get image data.
+Failed to get the data from Surface.
+
+**错误描述**
+
+获取图像数据失败。
 
 **可能原因**
 
@@ -782,15 +1044,91 @@ Failed to get image data.
 
 检查图像数据来源或使用新的图像数据。
 
+## 7600105 PixelMap已被释放
+
+**错误信息**
+
+PixelMap has been released.
+
+**错误描述**
+
+PixelMap已被释放。
+
+**可能原因**
+
+PixelMap对象已被释放，其关联的native对象已不存在。
+
+**处理步骤**
+
+检查该PixelMap对象是否存在被提前释放的风险（例如，在异步任务或另一个线程中意外释放），需确保该对象在使用结束前及所有异步方法执行完成前不被释放。
+
+## 7600106 PixelMap已被传递至另一个线程
+
+**错误信息**
+
+PixelMap has been passed to another thread.
+
+**错误描述**
+
+PixelMap已被传递至另一个线程。
+
+**可能原因**
+
+PixelMap对象已被传递至另一个线程。
+
+**处理步骤**
+
+不要在PixelMap对象被传递到另一个线程后仍在当前线程调用该对象的方法。
+
+## 7600173 DMA内存不存在
+
+**错误信息**
+
+DMA memory does not exist.
+
+**错误描述**
+
+DMA内存不存在。
+
+**可能原因**
+
+没有使用DMA内存解码HDR图片。
+
+**处理步骤**
+
+使用正确的内存分配类型。
+
+## 7600174 DMA操作失败
+
+**错误信息**
+
+DMA operation failed.
+
+**错误描述**
+
+DMA内存操作失败。
+
+**可能原因**
+
+读写DMA内存时没有正确地进行同步操作。
+
+**处理步骤**
+
+使用正确的方式读写DMA内存。
+
 ## 7600201 不支持的操作
 
 **错误信息**
 
-Unsupported operation.
+Unsupported operation, e.g. on cross-platform.
+
+**错误描述**
+
+不支持的操作。如：修改一个Editable属性为false的PixelMap等。
 
 **可能原因**
 
-不支持的操作。
+不支持的操作。如：修改一个Editable属性为false的PixelMap等。
 
 **处理步骤**
 
@@ -802,6 +1140,10 @@ Unsupported operation.
 
 Unsupported metadata. Possible causes: Unsupported metadata type.
 
+**错误描述**
+
+不支持的元数据读写。
+
 **可能原因**
 
 不支持的元数据读写，如不支持的Exif字段，对类型不符的辅助图，获取特定辅助图元数据，如对深度图获取GainmapMetadata。
@@ -810,11 +1152,33 @@ Unsupported metadata. Possible causes: Unsupported metadata type.
 
 重新确定辅助图类型和元数据类型是否对应，再进行读写操作。
 
+## 7600203 不支持的转换
+
+**错误信息**
+
+Unsupported conversion.
+
+**错误描述**
+
+不支持的转换。
+
+**可能原因**
+
+PixelMap的格式不支持转换。
+
+**处理步骤**
+
+检查并更换格式匹配的PixelMap数据。
+
 ## 7600204 无效的区域
 
 **错误信息**
 
 Invalid region.
+
+**错误描述**
+
+无效的区域。
 
 **可能原因**
 
@@ -830,6 +1194,10 @@ Region中设置的顶点位置、宽度或高度超出图片尺寸范围。
 
 Unsupported memory format or pixel format.
 
+**错误描述**
+
+不支持的内存格式或像素格式。
+
 **可能原因**
 
 接口不支持当前PixelMap的内存格式或像素格式。
@@ -844,6 +1212,10 @@ Unsupported memory format or pixel format.
 
 Invalid parameter.
 
+**错误描述**
+
+非法参数。
+
 **可能原因**
 
 输入的参数无效。
@@ -852,11 +1224,34 @@ Invalid parameter.
 
 检查并重新输入正确的参数。
 
+## 7600207 不支持的数据格式
+
+**错误信息**
+
+Unsupported data format.
+
+**错误描述**
+
+不支持的数据格式。
+
+**可能原因**
+
+1. 接口不支持传入的像素数据格式。
+2. 对象中的数据格式不支持特定的操作。
+
+**处理步骤**
+
+查看接口文档并使用接口支持的数据格式。
+
 ## 7600301 申请内存失败
 
 **错误信息**
 
 Memory alloc failed.
+
+**错误描述**
+
+申请内存失败。
 
 **可能原因**
 
@@ -872,6 +1267,10 @@ Memory alloc failed.
 
 Memory copy failed.
 
+**错误描述**
+
+内存拷贝失败。
+
 **可能原因**
 
 拷贝的内存不存在，设备内存不足。
@@ -880,11 +1279,33 @@ Memory copy failed.
 
 检查要拷贝的内存是否存在，清理内存后重试。
 
+## 7600303 内存锁定或解锁失败
+
+**错误信息**
+
+Memory lock or unlock failed.
+
+**错误描述**
+
+内存锁定或解锁失败。
+
+**可能原因**
+
+PixelMap或内存地址无效。
+
+**处理步骤**
+
+检查PixelMap或内存地址是否有效。
+
 ## 7600305 创建PixelMap失败
 
 **错误信息**
 
 Failed to create the PixelMap.
+
+**错误描述**
+
+创建PixelMap失败。
 
 **可能原因**
 
@@ -895,11 +1316,53 @@ Failed to create the PixelMap.
 
 检查函数入参或检查是否提前释放了实例。
 
+## 7600306 数据转换失败
+
+**错误信息**
+
+Data conversion failed.
+
+**错误描述**
+
+数据转换失败。
+
+**可能原因**
+
+1. 传入的像素数据缓冲区的大小不符合预期。
+2. PixelMap内部的像素数据损坏。
+
+**处理步骤**
+
+1. 如果传入了一个缓冲区，检查缓冲区的大小是否符合预期。
+2. 检查PixelMap的像素数据和元数据是否正常。
+
+## 7600501 不支持的分配器模式
+
+**错误信息**
+
+Unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata.
+
+**错误描述**
+
+不支持的分配器模式。
+
+**可能原因**
+
+没有指定内存分配类型，或指定了错误的内存分配类型。例如：使用共享内存方式解码HDR图片就会出错，因为只有DMA方式才支持HDR元数据。
+
+**处理步骤**
+
+使用正确的内存分配类型。
+
 ## 7600901 未知错误
 
 **错误信息**
 
 Unknown error.
+
+**错误描述**
+
+未知错误。
 
 **可能原因**
 
@@ -915,6 +1378,10 @@ Unknown error.
 
 Bad source.
 
+**错误描述**
+
+图片源存在问题。
+
 **可能原因**
 
 1. 设备不支持该图片类型。
@@ -929,7 +1396,11 @@ Bad source.
 
 **错误信息**
 
-Unsupported mimetype.
+Unsupported MIME type.
+
+**错误描述**
+
+不支持的MIME类型。
 
 **可能原因**
 
@@ -945,6 +1416,10 @@ Unsupported mimetype.
 
 Image too large.
 
+**错误描述**
+
+图片太大。
+
 **可能原因**
 
 图片大小超出限制。
@@ -959,6 +1434,10 @@ Image too large.
 
 Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata.
 
+**错误描述**
+
+不支持的内存分配类型。
+
 **可能原因**
 
 没有指定内存分配类型，或指定了错误的内存分配类型。例如：使用共享内存方式解码HDR图片就会出错，因为只有DMA方式才支持HDR元数据。
@@ -971,7 +1450,11 @@ Unsupported allocator type, e.g., use share memory to decode a HDR image as only
 
 **错误信息**
 
-Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+Unsupported metadata.
+
+**错误描述**
+
+不支持的元数据。
 
 **可能原因**
 
@@ -988,6 +1471,10 @@ Unsupported metadata. For example, the property key is not supported, or the pro
 
 Unsupported options, e.g, cannot convert image into desired pixel format.
 
+**错误描述**
+
+不支持的选项。
+
 **可能原因**
 
 部分选项参数配置存在错误，不支持该选项要求的操作。
@@ -996,11 +1483,33 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 
 检查选项参数配置。
 
+## 7700204 无效参数
+
+**错误信息**
+
+Invalid parameter.
+
+**错误描述**
+
+非法参数。
+
+**可能原因**
+
+输入的参数无效。
+
+**处理步骤**
+
+检查并重新输入正确的参数。
+
 ## 7700301 解码失败
 
 **错误信息**
 
 Decode failed.
+
+**错误描述**
+
+解码失败。
 
 **可能原因**
 
@@ -1018,6 +1527,10 @@ Decode failed.
 
 Memory allocation failed.
 
+**错误描述**
+
+内存分配失败。
+
 **可能原因**
 
 1. 设备的内存不足。
@@ -1027,11 +1540,53 @@ Memory allocation failed.
 
 检查设备内存或检查传入数据。
 
+## 7700303 图片不包含缩略图数据
+
+**错误信息**
+
+Image does not carry thumbnail data.
+
+**错误描述**
+
+图片不包含缩略图数据。
+
+**可能原因**
+
+图片文件中不包含缩略图数据，且未开启缩略图生成功能。
+
+**处理步骤**
+
+检查图片文件是否包含缩略图数据，或开启缩略图生成功能后重试。
+
+## 7700305 缩略图生成失败
+
+**错误信息**
+
+Thumbnail generation failed.
+
+**错误描述**
+
+缩略图生成失败。
+
+**可能原因**
+
+1. 输入图片数据异常。
+2. 缩略图生成参数不合理。
+3. 设备资源不足。
+
+**处理步骤**
+
+检查输入图片数据和缩略图生成参数，必要时释放系统资源后重试。
+
 ## 7700304 图片信息写入文件失败
 
 **错误信息**
 
 Failed to write image properties to the file.
+
+**错误描述**
+
+图片信息写入文件失败。
 
 **可能原因**
 
@@ -1048,6 +1603,10 @@ Failed to write image properties to the file.
 
 Unsupported options.
 
+**错误描述**
+
+不支持的选项。
+
 **可能原因**
 
 部分选项参数配置存在错误，不支持该选项要求的操作。
@@ -1056,11 +1615,33 @@ Unsupported options.
 
 检查选项参数配置。
 
+## 7800202 ImagePacker无效参数
+
+**错误信息**
+
+Invalid parameter for ImagePacker.
+
+**错误描述**
+
+编码参数无效。
+
+**可能原因**
+
+编码参数为空或无效。
+
+**处理步骤**
+
+检查编码选项参数配置。
+
 ## 7800301 编码失败
 
 **错误信息**
 
 Encode failed.
+
+**错误描述**
+
+编码失败。
 
 **可能原因**
 
@@ -1070,3 +1651,22 @@ Encode failed.
 **处理步骤**
 
 更换图片或检查传入数据。
+
+## 7900201 无效参数
+
+**错误信息**
+
+Invalid parameter.
+
+**错误描述**
+
+非法参数。
+
+**可能原因**
+
+1. 传入的参数数量、类型不正确。
+2. 设置的图像格式不支持。
+
+**处理步骤**
+
+检查参数配置。

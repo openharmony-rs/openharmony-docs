@@ -38,7 +38,7 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](errorcode-devicestatus.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
@@ -50,16 +50,19 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepareCooperate((error: BusinessError) => {
     if (error) {
-      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
       return;
     }
     console.info(`Keyboard mouse crossing prepareCooperate success.`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -75,7 +78,7 @@ prepareCooperate(): Promise&lt;void&gt;;
 
 **返回值：**
 
-| 参数                | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -92,16 +95,18 @@ prepareCooperate(): Promise&lt;void&gt;;
 **示例**：
 
 ```ts
-
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepareCooperate().then(() => {
     console.info(`Keyboard mouse crossing prepareCooperate success.`);
   }, (error: BusinessError) => {
-    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -116,6 +121,8 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**参数**：
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -135,16 +142,19 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepareCooperate((error: BusinessError) => {
     if (error) {
-      console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
       return;
     }
     console.info(`Keyboard mouse crossing unprepareCooperate success.`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -160,7 +170,7 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 **返回值：**
 
-| 参数                | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -177,14 +187,17 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepareCooperate().then(() => {
     console.info(`Keyboard mouse crossing unprepareCooperate success.`);
   }, (error: BusinessError) => {
-    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -223,6 +236,7 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number, callback: Asyn
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
@@ -257,7 +271,7 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;vo
 
 **返回值：**
 
-| 参数名              | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -276,10 +290,11 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;vo
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
     console.info(`Start Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
     console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -322,6 +337,7 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivateCooperate(false, (error: BusinessError) => {
     if (error) {
@@ -353,7 +369,7 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 
 **返回值：**
 
-| 参数名              | 说明                      |
+| 类型               | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -370,6 +386,7 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivateCooperate(false).then(() => {
     console.info(`Stop Keyboard mouse crossing success.`);
@@ -414,6 +431,7 @@ getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
@@ -446,7 +464,7 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 **返回值**：
 
-| 参数                   | 说明                                                         |
+| 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
 | Promise&lt;boolean&gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
 
@@ -464,6 +482,7 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean) => {
@@ -478,7 +497,7 @@ try {
 
 
 
-## on('cooperateMessage')<sup>11+</sup>
+## cooperate.on('cooperateMessage')<sup>11+</sup>
 
 on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
 
@@ -492,7 +511,7 @@ on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'   |
+| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'。   |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 是   | 回调函数，异步返回键鼠穿越状态消息。 |
 
 **错误码：**
@@ -512,6 +531,7 @@ function callback(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callback);
 } catch (error) {
@@ -521,7 +541,7 @@ try {
 
 
 
-## off('cooperateMessage')<sup>11+</sup>
+## cooperate.off('cooperateMessage')<sup>11+</sup>
 
 off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void;
 
@@ -535,7 +555,7 @@ off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperate'。                                |
+| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'。                                |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
@@ -546,7 +566,7 @@ off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes:1.Incorrect parameter types.2.Parameter verification failed. |
 
 **示例**：
 
@@ -556,10 +576,12 @@ function callbackOn(msgOn: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOn)}`);
   return false;
 }
+
 function callbackOff(msgOff: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callbackOn);
   cooperate.off('cooperateMessage', callbackOff);
@@ -575,6 +597,7 @@ function callbackOn(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callbackOn);
   cooperate.off('cooperateMessage');
@@ -584,7 +607,7 @@ try {
 ```
 
 
-## on('cooperateMouse')<sup>12+</sup>
+## cooperate.on('cooperateMouse')<sup>12+</sup>
 
 on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void;
 
@@ -598,8 +621,8 @@ on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocatio
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'   |
-| networkId| string                                                | 是   | 目标设备描述符   |
+| type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'。   |
+| networkId| string                                                | 是   | 目标设备描述符。   |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 是   | 回调函数，异步返回指定监听设备鼠标光标位置信息。 |
 
 **错误码：**
@@ -617,8 +640,9 @@ on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocatio
 ```ts
 function callback(data: cooperate.MouseLocation) {
   console.info('displayX:' + data.displayX + 'displayY:' + data.displayY + 'displayWidth:' +
-    data.displayWidth + 'displayHeight:' + data.displayHeight );
+  data.displayWidth + 'displayHeight:' + data.displayHeight);
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callback);
@@ -629,7 +653,7 @@ try {
 
 
 
-## off('cooperateMouse')<sup>12+</sup>
+## cooperate.off('cooperateMouse')<sup>12+</sup>
 
 off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocation&gt;): void;
 
@@ -644,7 +668,7 @@ off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocat
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'。                                |
-| networkId| string                                                | 是   | 目标设备描述符   |
+| networkId| string                                                | 是   | 目标设备描述符。   |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
@@ -665,10 +689,12 @@ function callbackOn(data: cooperate.MouseLocation) {
   console.info('Register mouse location listener');
   return false;
 }
+
 function callbackOff(data: cooperate.MouseLocation) {
   console.info('Unregister mouse location listener');
   return false;
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callbackOn);
@@ -683,6 +709,7 @@ try {
 function callbackOn(data: cooperate.MouseLocation) {
   console.info('Register mouse location listener');
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callbackOn);
@@ -712,7 +739,7 @@ activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, coo
 
 **返回值：**
 
-| 参数                | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -724,16 +751,17 @@ activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, coo
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 20900001 | Operation failed. |
+| 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status.|
 
 **示例**：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
+  cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
     console.info(`activateCooperateWithOptions success.`);
   }, (error: BusinessError) => {
     console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -806,7 +834,7 @@ prepare(callback: AsyncCallback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -829,6 +857,7 @@ prepare(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepare((error: BusinessError) => {
     if (error) {
@@ -850,13 +879,13 @@ prepare(): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11-1)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **返回值**：
 
-| 参数                 | 说明                     |
+| 类型                 | 说明                     |
 | ------------------- | ------------------------------- |
 | Promise&lt;void&gt;      | 无返回结果的Promise对象。 |
 
@@ -873,6 +902,7 @@ prepare(): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepare().then(() => {
     console.info(`Keyboard mouse crossing prepare success.`);
@@ -894,9 +924,11 @@ unprepare(callback: AsyncCallback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**参数**：
 
 | 参数名   | 类型                      | 必填 | 说明                                       |
 | -------- | ------------------------- | ---- | ------------------------------------------ |
@@ -915,6 +947,7 @@ unprepare(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepare((error: BusinessError) => {
     if (error) {
@@ -936,13 +969,13 @@ unprepare(): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11-1)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **返回值**：
 
-| 参数                | 说明                                          |
+| 类型                | 说明                                          |
 | ------------------- | --------------------------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -959,6 +992,7 @@ unprepare(): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepare().then(() => {
     console.info(`Keyboard mouse crossing unprepare success.`);
@@ -980,7 +1014,7 @@ activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1006,6 +1040,7 @@ activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
@@ -1029,7 +1064,7 @@ activate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11-1)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1044,7 +1079,7 @@ activate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
 
 **返回值**：
 
-| 参数名                  | 说明                             |
+| 类型                  | 说明                             |
 | ---------------------- | ------------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -1062,10 +1097,11 @@ activate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activate(targetNetworkId, inputDeviceId).then(() => {
+  cooperate.activate(targetNetworkId, inputDeviceId).then(() => {
     console.info(`Start Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
     console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1085,7 +1121,7 @@ deactivate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1109,6 +1145,7 @@ deactivate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivate(false, (error: BusinessError) => {
     if (error) {
@@ -1130,7 +1167,7 @@ deactivate(isUnchained: boolean): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11-1)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1144,7 +1181,7 @@ deactivate(isUnchained: boolean): Promise&lt;void&gt;;
 
 **返回值**：
 
-| 参数名                | 说明                            |
+| 类型                | 说明                            |
 | --------             | ----------------------------   |
 | Promise&lt;void&gt; |  无返回结果的Promise对象。|
 
@@ -1160,6 +1197,7 @@ deactivate(isUnchained: boolean): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivate(false).then(() => {
     console.info(`Stop Keyboard mouse crossing success.`);
@@ -1181,7 +1219,7 @@ getCrossingSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1205,6 +1243,7 @@ getCrossingSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCrossingSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
@@ -1227,7 +1266,7 @@ getCrossingSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11-1)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1248,7 +1287,7 @@ getCrossingSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 **返回值**：
 
-| 参数                        | 说明                     |
+| 类型                       | 说明                     |
 | -------------------        | ------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
 
@@ -1258,6 +1297,7 @@ getCrossingSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCrossingSwitchState(deviceDescriptor).then((data: boolean) => {
@@ -1272,7 +1312,7 @@ try {
 
 
 
-## on('cooperate')<sup>(deprecated)</sup>
+## cooperate.on('cooperate')<sup>(deprecated)</sup>
 
 on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateMsg }&gt;): void;
 
@@ -1280,7 +1320,7 @@ on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateM
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[on('cooperateMessage')](#oncooperatemessage11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.on('cooperateMessage')](#cooperateoncooperatemessage11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1288,7 +1328,7 @@ on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateM
 
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
-| type                 | string                                                          |  是  | 监听类型，取值为'cooperate' |
+| type                 | string                                                          |  是  | 监听类型，取值为'cooperate'。 |
 | callback             | Callback&lt;{ networkId: string, msg: [CooperateMsg](#cooperatemsgdeprecated) }&gt; |  是  | 回调函数，异步返回键鼠穿越状态消息。 |
 
 **错误码：**
@@ -1308,8 +1348,9 @@ class Data {
   networkId: string = "networkId";
   msg: cooperate.CooperateMsg = 0;
 }
+
 try {
-  cooperate.on('cooperate', (data: Data)=>{
+  cooperate.on('cooperate', (data: Data) => {
     console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
   });
 } catch (error) {
@@ -1319,7 +1360,7 @@ try {
 
 
 
-## off('cooperate')<sup>(deprecated)</sup>
+## cooperate.off('cooperate')<sup>(deprecated)</sup>
 
 off(type: 'cooperate', callback?: Callback&lt;void&gt;): void;
 
@@ -1327,7 +1368,7 @@ off(type: 'cooperate', callback?: Callback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[off('cooperateMessage')](#offcooperatemessage11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.off('cooperateMessage')](#cooperateoffcooperatemessage11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1355,12 +1396,14 @@ class Data {
   networkId: string = "networkId";
   msg: cooperate.CooperateMsg = 0;
 }
+
 function callbackOff() {
   console.info(`Keyboard mouse crossing event`);
   return false;
 }
+
 try {
-  cooperate.on('cooperate', (data: Data)=>{
+  cooperate.on('cooperate', (data: Data) => {
     console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
   });
   cooperate.off('cooperate', callbackOff);
@@ -1374,8 +1417,9 @@ class Data {
   networkId: string = "networkId";
   msg: cooperate.CooperateMsg = 0;
 }
+
 try {
-  cooperate.on('cooperate', (data: Data)=>{
+  cooperate.on('cooperate', (data: Data) => {
     console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
   });
   cooperate.off('cooperate');
@@ -1392,7 +1436,7 @@ try {
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[CooperateMessage](#cooperatemessage11)替代
+> 从API version 11开始不再维护。建议使用[CooperateState](#cooperatestate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 

@@ -1,8 +1,8 @@
 # 自定义节点常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -25,8 +25,7 @@
 
 - 将需要释放的自定义组件从父节点上移除，排除父节点对自定义组件生命周期的影响。
 - 自定义组件由[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建时，调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用。
-- 对于使用OH_ArkUI_GetNodeHandleFromNapiValue获取BuilderNode或ComponentContent对象的root节点，
-调用[disposenode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)减少OH_ArkUI_GetNodeHandleFromNapiValue增加的引用计数。
+- 对于使用OH_ArkUI_GetNodeHandleFromNapiValue获取BuilderNode或ComponentContent对象的root节点，调用[disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)减少OH_ArkUI_GetNodeHandleFromNapiValue增加的引用计数。
 - 未调用dispose时，当前端的BuilderNode对象在[GC](../arkts-utils/gc-introduction.md)中被回收会释放对后端根节点的引用。调试阶段可使用[hidumper](../dfx/hidumper.md)指令触发GC或[查询堆内存](../dfx/hidumper.md#查询虚拟机堆内存)来分析引用关系。
 
 **示例代码**
@@ -282,16 +281,17 @@ export struct pageThreeTmp {
 **可能原因**
 
 - 使用[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建自定义节点，创建的前端BuilderNode对象默认持有后端节点的强引用，而后端节点可能通过某些路径（如事件回调、全局缓存）反过来引用前端BuilderNode对象，因此形成了前后端循环引用，前端对象无法被回收，后端节点也因为被前端对象持有强引用而无法释放，导致内存泄漏。
-- BuilderNode会持有[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build)函数传递的参数对象，如果传递给BuilderNode的参数对象也引用了BuilderNode对象，会产生前端对象的循环引用。
+- BuilderNode会持有[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build)函数传递的参数对象，如果传递给BuilderNode的参数对象也引用了BuilderNode对象，会产生前端对象的循环引用。从API version 26.0.0版本开始，该循环引用会被自动释放。
 
 **解决措施**
 
-- 步骤一：如果传递给BuilderNode的参数持有了BuilderNode对象，当不再需要一个BuilderNode节点时，使用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口更新参数，解除参数对象对BuilderNode的引用。
+- 步骤一：如果传递给BuilderNode的参数持有了BuilderNode对象，当不再需要一个BuilderNode节点时，使用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口更新参数，解除参数对象对BuilderNode的引用。从API version 26.0.0版本开始，步骤一可被省略。
 - 步骤二：当不再需要一个BuilderNode节点时，将此BuilderNode节点从组件树上移除，并调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用，解除前后端的引用关系。
 
 **示例代码**
 
 如下示例中，将BuilderNode前端对象作为参数传递给了自定义组件，构造了前后端循环引用的场景。
+
 下文中，[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)表示BuilderNode中构建的自定义组件（即TestComponent）析构时的回调。
 
 - 不调用dispose接口的情况（点击示例中的"Destroy"按钮），由于前后端循环引用，导致自定义组件无法析构，体现为[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调未触发。

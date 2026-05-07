@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-CameraManager implements camera management. Before calling any API in CameraManager, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a CameraManager instance.
+**CameraManager** implements camera management. Before calling any API in **CameraManager**, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a **CameraManager** instance.
 
 > **NOTE**
 >
@@ -65,7 +65,7 @@ Obtains the scene modes supported by a camera device. This API returns the resul
 
 | Name        | Type                                                           | Mandatory| Description                     |
 | ------------ |--------------------------------------------------------------- | -- | -------------------------- |
-| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| CameraDevice instance, which is obtained through [getSupportedCameras](#getsupportedcameras). An error code is returned if the input parameter is invalid.      |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| **CameraDevice** instance, which is obtained through [getSupportedCameras](#getsupportedcameras). Error code [7400101](./errorcode-camera.md#7400101-invalid-parameter) is returned if the input parameter is invalid.      |
 
 **Return value**
 
@@ -104,7 +104,7 @@ Obtains the output capability supported by a camera device in a given scene mode
 
 | Name        | Type                                                           | Mandatory| Description                     |
 | ------------ |--------------------------------------------------------------- | -- | -------------------------- |
-| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| CameraDevice instance, which is obtained through [getSupportedCameras](#getsupportedcameras).      |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| **CameraDevice** instance, which is obtained through [getSupportedCameras](#getsupportedcameras).      |
 | mode | [SceneMode](arkts-apis-camera-e.md#scenemode11)                              | Yes| Scene mode, which is obtained through [getSupportedSceneModes](#getsupportedscenemodes11).      |
 
 **Return value**
@@ -118,6 +118,46 @@ Obtains the output capability supported by a camera device in a given scene mode
 ```ts
 function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
   let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedOutputCapability(camera, sceneMode);
+  return cameraOutputCapability;
+}
+```
+
+## getSupportedFullOutputCapability<sup>23+</sup>
+
+getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
+
+Obtains the complete output capabilities supported by a specified camera in a specified mode, including YUV, HEIF, and HDR.
+
+> **NOTE**
+>
+> Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.
+ 
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name        | Type                                                           | Mandatory| Description                     |
+| ------------ |--------------------------------------------------------------- | -- | -------------------------- |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| **CameraDevice** instance, which is obtained through [getSupportedCameras](#getsupportedcameras).      |
+| mode | [SceneMode](arkts-apis-camera-e.md#scenemode11)                              | Yes| Scene mode, which is obtained through [getSupportedSceneModes](#getsupportedscenemodes11).      |
+
+**Return value**
+
+| Type                                            | Description                          |
+| ----------------------------------------------- | ---------------------------- |
+| [CameraOutputCapability](arkts-apis-camera-i.md#cameraoutputcapability)            | Camera output capability obtained.                  |
+
+**Example**
+
+```ts
+import { camera } from '@kit.CameraKit';
+
+function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
+  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
   return cameraOutputCapability;
 }
 ```
@@ -151,9 +191,9 @@ function isCameraMuted(cameraManager: camera.CameraManager): boolean {
 
 createCameraInput(camera: CameraDevice): CameraInput
 
-Creates a CameraInput instance with the specified CameraDevice instance. This API returns the result synchronously.
+Creates a **CameraInput** instance with the specified **CameraDevice** instance. This API returns the result synchronously.
 
-Before calling this API, call [getSupportedCameras](#getsupportedcameras) to obtain the list of supported camera devices, select the camera device that meets the requirements based on the actual usage scenario, and then create the CameraInput instance.
+Before calling this API, call [getSupportedCameras](#getsupportedcameras) to obtain the list of supported camera devices, select the camera device that meets the requirements based on the actual usage scenario, and then create the **CameraInput** instance.
 
 **Required permissions**: ohos.permission.CAMERA
 
@@ -165,13 +205,13 @@ Before calling this API, call [getSupportedCameras](#getsupportedcameras) to obt
 
 | Name    | Type                                        | Mandatory| Description                                              |
 | -------- | ------------------------------------------- | ---- |--------------------------------------------------|
-| camera  | [CameraDevice](arkts-apis-camera-i.md#cameradevice)         | Yes  | CameraDevice instance, which is obtained through [getSupportedCameras](#getsupportedcameras).|
+| camera  | [CameraDevice](arkts-apis-camera-i.md#cameradevice)         | Yes  | **CameraDevice** instance, which is obtained through [getSupportedCameras](#getsupportedcameras).|
 
 **Return value**
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [CameraInput](arkts-apis-camera-CameraInput.md)    | CameraInput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [CameraInput](arkts-apis-camera-CameraInput.md)    | **CameraInput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -205,7 +245,7 @@ function createCameraInput(camera: camera.CameraDevice, cameraManager: camera.Ca
 
 createCameraInput(position: CameraPosition, type: CameraType): CameraInput
 
-Creates a CameraInput instance with the specified camera position and type. This API returns the result synchronously.
+Creates a **CameraInput** instance with the specified camera position and type. This API returns the result synchronously.
 
 Before calling this API, specify the camera position and type based on the usage scenario. For example, open the front camera for the selfie feature
 
@@ -226,7 +266,7 @@ Before calling this API, specify the camera position and type based on the usage
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [CameraInput](arkts-apis-camera-CameraInput.md)    | CameraInput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [CameraInput](arkts-apis-camera-CameraInput.md)    | **CameraInput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -262,7 +302,7 @@ function createCameraInput(camera: camera.CameraDevice, cameraManager: camera.Ca
 
 createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 
-Creates a PreviewOutput instance. This API returns the result synchronously.
+Creates a **PreviewOutput** instance. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -279,7 +319,7 @@ Creates a PreviewOutput instance. This API returns the result synchronously.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)  | PreviewOutput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)  | **PreviewOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -313,7 +353,7 @@ function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapabili
 
 createPreviewOutput(surfaceId: string): PreviewOutput
 
-Creates a PreviewOutput instance without configuration. This API returns the result synchronously. It must be used with [preconfig](arkts-apis-camera-PhotoSession.md#preconfig12).
+Creates a **PreviewOutput** instance without configuration. This API returns the result synchronously. It must be used with [preconfig](arkts-apis-camera-PhotoSession.md#preconfig12).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -329,7 +369,7 @@ Creates a PreviewOutput instance without configuration. This API returns the res
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)    | PreviewOutput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)    | **PreviewOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -358,11 +398,61 @@ function createPreviewOutput(cameraManager: camera.CameraManager, surfaceId: str
 }
 ```
 
+### createDeferredPreviewOutput<sup>24+</sup>
+
+createDeferredPreviewOutput(profile: Profile): PreviewOutput
+
+Creates a deferred **PreviewOutput** instance and adds it, instead of a common **PreviewOutput** instance, to the data stream during stream configuration.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type            | Mandatory| Description      |
+| -------- | --------------- | ---- | --------- |
+| profile | [Profile](arkts-apis-camera-i.md#profile) | Yes| Supported preview profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability11).|
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)  | **PreviewOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.               |
+| 7400201                |  Camera service fatal error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
+  let profile: camera.Profile = cameraOutputCapability.previewProfiles[0];
+  let previewOutput: camera.PreviewOutput | undefined = undefined;
+  try {
+    previewOutput = cameraManager.createDeferredPreviewOutput(profile);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The createPreviewOutput call failed. error code: ${err.code}`);
+  }
+  return previewOutput;
+}
+```
+
 ## createPhotoOutput<sup>11+</sup>
 
 createPhotoOutput(profile?: Profile): PhotoOutput
 
-Creates a PhotoOutput instance. This API returns the result synchronously.
+Creates a **PhotoOutput** instance. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -378,7 +468,7 @@ Creates a PhotoOutput instance. This API returns the result synchronously.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [PhotoOutput](arkts-apis-camera-PhotoOutput.md)   | PhotoOutput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [PhotoOutput](arkts-apis-camera-PhotoOutput.md)   | **PhotoOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -412,7 +502,14 @@ function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability
 
 createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
-Creates a VideoOutput instance. This API returns the result synchronously.
+Creates a **VideoOutput** instance. This API returns the result synchronously.
+
+In video recording mode, if SDR or HDR VIVID is enabled, the camera format and color space must be configured according to the relationships specified in the table below. Configurations that do not match the table will cause issues such as preview exceptions.
+
+| SDR/HDR Photo Capture        | CameraFormat             | ColorSpace       |
+|--------------------|--------------------------|------------------|
+| SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -429,7 +526,7 @@ Creates a VideoOutput instance. This API returns the result synchronously.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [VideoOutput](arkts-apis-camera-VideoOutput.md)   | VideoOutput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [VideoOutput](arkts-apis-camera-VideoOutput.md)   | **VideoOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -463,7 +560,7 @@ function createVideoOutput(cameraOutputCapability: camera.CameraOutputCapability
 
 createVideoOutput(surfaceId: string): VideoOutput
 
-Creates a VideoOutput instance without configuration. This API returns the result synchronously. It must be used with [preconfig](arkts-apis-camera-VideoSession.md#preconfig12).
+Creates a **VideoOutput** instance without configuration. This API returns the result synchronously. It must be used with [preconfig](arkts-apis-camera-VideoSession.md#preconfig12).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -479,7 +576,7 @@ Creates a VideoOutput instance without configuration. This API returns the resul
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [VideoOutput](arkts-apis-camera-VideoOutput.md)   | VideoOutput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [VideoOutput](arkts-apis-camera-VideoOutput.md)   | **VideoOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -512,7 +609,7 @@ function createVideoOutput(cameraManager: camera.CameraManager, surfaceId: strin
 
 createMetadataOutput(metadataObjectTypes: Array\<MetadataObjectType\>): MetadataOutput
 
-Creates a MetadataOutput instance. This API returns the result synchronously.
+Creates a **MetadataOutput** instance. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -528,7 +625,7 @@ Creates a MetadataOutput instance. This API returns the result synchronously.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [MetadataOutput](arkts-apis-camera-MetadataOutput.md)   | MetadataOutput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [MetadataOutput](arkts-apis-camera-MetadataOutput.md)   | **MetadataOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -561,7 +658,7 @@ function createMetadataOutput(cameraManager: camera.CameraManager, cameraOutputC
 
 createSession\<T extends Session\>(mode: SceneMode): T
 
-Creates a Session instance with a given scene mode. This API returns the result synchronously.
+Creates a **Session** instance with a given scene mode. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -577,7 +674,7 @@ Creates a Session instance with a given scene mode. This API returns the result 
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [T](arkts-apis-camera-Session.md)   | Session instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [T](arkts-apis-camera-Session.md)   | **Session** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -624,7 +721,7 @@ Subscribes to camera status events. This API uses an asynchronous callback to re
 
 | Name    | Type           | Mandatory| Description      |
 | -------- | -----------------| ---- | --------- |
-| type     | string           | Yes  | Event type. The value is fixed at **'cameraStatus'**. The event can be listened for when a CameraManager instance is obtained. This event is triggered and the corresponding information is returned only when the camera device is enabled or disabled.|
+| type     | string           | Yes  | Event type. The value is fixed at **'cameraStatus'**. The event can be listened for when a **CameraManager** instance is obtained. This event is triggered and the corresponding information is returned only when the camera device is enabled or disabled.|
 | callback | AsyncCallback\<[CameraStatusInfo](arkts-apis-camera-i.md#camerastatusinfo)\> | Yes  | Callback used to return the camera status change.|
 
 **Example**
@@ -660,7 +757,7 @@ Unsubscribes from camera status events. This API uses an asynchronous callback t
 
 | Name    | Type           | Mandatory| Description      |
 | -------- | -----------------| ---- | --------- |
-| type     | string           | Yes  | Event type. The value is fixed at **'cameraStatus'**. The event can be listened for when a CameraManager instance is obtained.|
+| type     | string           | Yes  | Event type. The value is fixed at **'cameraStatus'**. The event can be listened for when a **CameraManager** instance is obtained.|
 | callback | AsyncCallback\<[CameraStatusInfo](arkts-apis-camera-i.md#camerastatusinfo)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -750,7 +847,7 @@ Checks whether the camera device supports the flashlight.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the flashlight. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
+| boolean    | Whether the device supports the flashlight. **true** if supported, **false** otherwise.<br>If **false** is returned, [isTorchModeSupported](#istorchmodesupported11), [getTorchMode](#gettorchmode11), [setTorchMode](#settorchmode11), [isTorchLevelControlSupported](#istorchlevelcontrolsupported), and [setTorchModeOnWithLevel](#settorchmodeonwithlevel) do not take effect.<br>If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -877,7 +974,7 @@ Subscribes to flashlight status change events. This API uses an asynchronous cal
 
 | Name    | Type            | Mandatory| Description      |
 | -------- | --------------- | ---- | --------- |
-| type     | string          | Yes  | Event type. The value is fixed at **'torchStatusChange'**. The event can be listened for when a CameraManager instance is obtained. Currently, this event is triggered only in the following scenarios: The flashlight is turned on or turned off, or becomes unavailable or available.|
+| type     | string          | Yes  | Event type. The value is fixed at **'torchStatusChange'**. The event can be listened for when a **CameraManager** instance is obtained. Currently, this event is triggered only in the following scenarios: The flashlight is turned on or turned off, or becomes unavailable or available.|
 | callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo11)> | Yes  | Callback used to return the flashlight status.              |
 
 **Example**
@@ -912,7 +1009,7 @@ Unsubscribes from flashlight status change events. This API uses an asynchronous
 
 | Name    | Type            | Mandatory| Description      |
 | -------- | --------------- | ---- | --------- |
-| type     | string          | Yes  | Event type. The value is fixed at **'torchStatusChange'**. The event can be listened for when a CameraManager instance is obtained.|
+| type     | string          | Yes  | Event type. The value is fixed at **'torchStatusChange'**. The event can be listened for when a **CameraManager** instance is obtained.|
 | callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo11)> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -923,11 +1020,80 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 }
 ```
 
+## isTorchLevelControlSupported
+
+isTorchLevelControlSupported(): boolean
+
+Checks whether the device supports flashlight brightness control.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| boolean    | Whether the device supports flashlight brightness control. Returns **true** if supported, **false** if not. If the API call fails, undefined is returned.|
+
+**Example**
+
+```ts
+function isTorchLevelControlSupported(cameraManager: camera.CameraManager): boolean {
+  let isSupported = cameraManager.isTorchLevelControlSupported();
+  return isSupported;
+}
+```
+
+## SetTorchModeOnWithLevel
+
+SetTorchModeOnWithLevel(torchLevel: number): void
+
+Sets the specified brightness level for the flashlight.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type            | Mandatory| Description      |
+| -------- | --------------- | ---- | --------- |
+| torchLevel | number| Yes| Flashlight brightness level. The value range is [0.0, 1.0] (**0.0** indicates the darkest, and **1.0** indicates the brightest).|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+| 7400102 | Operation not allowed. |
+
+**Example**
+
+```ts
+function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: number): void {
+  cameraManager.setTorchModeOnWithLevel(torchLevel);
+  return ;
+}
+```
+
 ## getCameraDevice<sup>18+</sup>
 
-getCameraDevice(position:CameraPosition, type: CameraType): CameraDevice
+getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
 
 Obtains the specified camera based on the camera position and type.
+
+Obtains the camera lens of the specified [CameraPosition](arkts-apis-camera-e.md#cameraposition) and [CameraType](arkts-apis-camera-e.md#cameratype). If the returned result is undefined, the camera lens is not found on the current device.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1036,7 +1202,7 @@ Obtains the concurrency information of the specified cameras. If the return valu
 
 | Name    | Type            | Mandatory| Description      |
 | -------- | --------------- | ---- | --------- |
-| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | Yes  | Array of CameraDevice objects. You are advised to use the front and rear cameras obtained by calling [getCameraDevice](#getcameradevice18).|
+| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | Yes  | Array of **CameraDevice** objects. You are advised to use the front and rear cameras obtained by calling [getCameraDevice](#getcameradevice18).|
 
 **Return value**
 
@@ -1079,7 +1245,6 @@ getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability
 Obtains the output capability supported by a camera device. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getSupportedOutputCapability](#getsupportedoutputcapability11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -1088,7 +1253,7 @@ Obtains the output capability supported by a camera device. This API returns the
 
 | Name        | Type                                                           | Mandatory| Description                     |
 | ------------ |--------------------------------------------------------------- | -- | -------------------------- |
-| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| CameraDevice instance, which is obtained through [getSupportedCameras](#getsupportedcameras). An error code is returned if the input parameter is invalid.     |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| **CameraDevice** instance, which is obtained through [getSupportedCameras](#getsupportedcameras). An error code is returned if the input parameter is invalid.     |
 
 **Return value**
 
@@ -1109,11 +1274,12 @@ function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager
 
 createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 
-Creates a PhotoOutput instance. This API returns the result synchronously.
+Creates a **PhotoOutput** instance. This API returns the result synchronously.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createPhotoOutput](#createphotooutput11) instead.
+> - This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createPhotoOutput](#createphotooutput11) instead.
+> - This API can only be used to create a **PhotoOutput** object in JPEG format.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1128,7 +1294,7 @@ Creates a PhotoOutput instance. This API returns the result synchronously.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [PhotoOutput](arkts-apis-camera-PhotoOutput.md)   | PhotoOutput instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [PhotoOutput](arkts-apis-camera-PhotoOutput.md)   | **PhotoOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -1159,11 +1325,10 @@ function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability
 
 createCaptureSession(): CaptureSession
 
-Creates a CaptureSession instance. This API returns the result synchronously.
+Creates a **CaptureSession** instance. This API returns the result synchronously.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createSession](#createsession11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createSession](#createsession11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1171,7 +1336,7 @@ Creates a CaptureSession instance. This API returns the result synchronously.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [CaptureSession](arkts-apis-camera-CaptureSession.md)   | CaptureSession instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [CaptureSession](arkts-apis-camera-CaptureSession.md)   | **CaptureSession** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 

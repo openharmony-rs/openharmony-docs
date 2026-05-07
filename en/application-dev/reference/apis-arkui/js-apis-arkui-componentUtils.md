@@ -27,9 +27,9 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid) instead on the obtained [ComponentUtils](arkts-apis-uicontext-componentutils.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid) instead. Before calling this API, you need to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object using the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API provides access to component coordinates and size information after the target component completes layout. It is recommended that you invoke this API within [layout completion callbacks](./js-apis-arkui-inspector.md). Note that dynamically created components must be mounted to the node tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
+> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API provides access to component coordinates and size information after the target component completes layout. It is recommended that you invoke this API within [layout completion callbacks](./js-apis-arkui-inspector.md). Note that dynamically created components must be mounted to the component tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -49,7 +49,7 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
@@ -64,7 +64,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 ## ComponentInfo
 
-**ComponentInfo** object, which provides the size, position, translation, scaling, rotation, and affine matrix information of the component.
+Implements a **ComponentInfo** object, which provides the size, position, translation, scaling, rotation, and affine matrix information of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -111,9 +111,9 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | Name    | Type| Read-Only   | Optional    | Description                              |
 | --------| ---- | -------------------| -------------------------------| -----------------------------------|
-| x       | number | No      | No   | Translation distance along the x-axis.<br>Unit: px                      |
-| y       | number | No      | No   | Translation distance along the y-axis.<br>Unit: px                      |
-| z       | number | No      | No    | Translation distance along the z-axis.<br>Unit: px                      |
+| x       | number | No      | No   | Translation distance along the x-axis.<br>Unit: vp                      |
+| y       | number | No      | No   | Translation distance along the y-axis.<br>Unit: vp                      |
+| z       | number | No      | No    | Translation distance along the z-axis.<br>Unit: vp                      |
 
 ### ScaleResult
 
@@ -123,11 +123,11 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | Name    | Type| Read-Only   | Optional  | Description                              |
 | --------| ---- | ---- |-----------------------------------| -----------------------------------|
-| x       | number | No      | No| Scale factor along the x-axis.<br>Unit: px                      |
-| y       | number | No      | No | Scale factor along the y-axis.<br>Unit: px                      |
-| z       | number | No      | No| Scale factor along the z-axis.<br>Unit: px                      |
-| centerX | number | No      | No| X-coordinate of the center point.<br>Unit: px                 |
-| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: px               |
+| x       | number | No      | No| Scale factor along the x-axis.                      |
+| y       | number | No      | No | Scale factor along the y-axis.                      |
+| z       | number | No      | No| Scale factor along the z-axis.                      |
+| centerX | number | No      | No| X-coordinate of the center point.<br>Unit: vp                 |
+| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: vp               |
 
 ### RotateResult
 
@@ -137,12 +137,12 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | Name    | Type | Read-Only   | Optional    | Description                              |
 | --------| ---- | -----------------| ---------------------------------| -----------------------------------|
-| x       | number | No      | No | X-coordinate of the rotation vector.<br>Unit: px                  |
-| y       | number | No      | No | Y-coordinate of the rotation vector.<br>Unit: px                  |
-| z       | number | No      | No | Z coordinate of the rotation vector.<br>Unit: px                  |
-| angle   | number | No      | No | Rotation angle.<br>Unit: px                         |
-| centerX | number | No      | No | X-coordinate of the center point.<br>Unit: px                |
-| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: px                |
+| x       | number | No      | No | X-coordinate of the rotation vector.                  |
+| y       | number | No      | No | Y-coordinate of the rotation vector.                  |
+| z       | number | No      | No | Z coordinate of the rotation vector.                  |
+| angle   | number | No      | No | Rotation angle.<br>Unit: deg                         |
+| centerX | number | No      | No | X-coordinate of the center point.<br>Unit: vp                |
+| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: vp                |
 
 ### Matrix4Result
 
@@ -154,7 +154,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 
 | Type| Description                              |
 | --------| -----------------------------------|
-| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Unit: px |
+| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**. |
 
 **4 x 4 matrix description**
 
@@ -177,13 +177,13 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 | m32    | number | Yes  | Translation value of the z-axis, in px. The default value is **0** for the identity matrix.|
 | m33    | number | Yes  | Valid in homogeneous coordinates, presenting the perspective projection effect.  |
 
-**Example**
+## Example
 
-> **NOTE**
->
-> You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
+### Example 1: Obtaining the ComponentUtils Object
 
-  ```ts
+You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
+
+```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';
 
 @Entry
@@ -214,17 +214,19 @@ struct Utils {
         .height(100)
         .key("image_01")
       Button('getRectangleById')
-      .onClick(() => {
-        this.value = JSON.stringify(this.getUIContext().getComponentUtils().getRectangleById("image_01")) // You are advised to use this.getUIContext().getComponentUtils().
-      }).margin(10).id('onClick')
+        .onClick(() => {
+          this.value = JSON.stringify(this.getUIContext()
+            .getComponentUtils()
+            .getRectangleById("image_01")) // You are advised to use this.getUIContext().getComponentUtils().
+        }).margin(10).id('onClick')
       Text(this.value)
         .margin(20)
         .width(300)
         .height(300)
         .borderWidth(2)
-    }.margin({left: 50})
+    }.margin({ left: 50 })
   }
 }
-  ```
+```
 
-  ![componentget](figures/getRectangleById.gif) 
+![componentget](figures/getRectangleById.gif) 

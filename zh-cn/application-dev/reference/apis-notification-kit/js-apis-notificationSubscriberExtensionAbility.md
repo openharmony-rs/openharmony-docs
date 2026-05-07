@@ -1,7 +1,7 @@
 # @ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -16,13 +16,10 @@ NotificationSubscriberExtensionAbility 是通知订阅者扩展能力的基类�
 ## 导入模块
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
 ## NotificationSubscriberExtensionAbility
-
-### 属性
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -43,12 +40,11 @@ onDestroy(): void
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onDestroy(): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
+    console.info(`${TAG} onDestroy`);
   }
 }
 ```
@@ -70,12 +66,11 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
+    console.info(`${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
 ```
@@ -97,12 +92,11 @@ onCancelMessages(hashCodes: Array\<string>): void
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-    onCancelMessages(hashCodes: Array<string>): void {
-        hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
-    }
+  onCancelMessages(hashCodes: Array<string>): void {
+    console.info(`${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
+  }
 }
 ```

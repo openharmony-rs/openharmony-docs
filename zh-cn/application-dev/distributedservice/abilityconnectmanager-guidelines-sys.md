@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 
 ## 简介
@@ -49,15 +49,18 @@
 
 ### 约束与限制
 
-- 仅限于API version 18及以上版本设备，设备间需要登录相同的华为账号。
+- 仅限于API version 18及以上版本设备。
 
-- 不同设备间只有相同bundleName的UIAbility应用才能进行协同。
+- 双端设备登录同账号的场景下，支持相同或不同bundleName的应用间协同；非同账号场景下，系统侧会校验应用AppID，仅支持相同AppID的应用间协同。
 
 - 字节流、图片以及传输流的能力仅支持系统应用。
 
 - 业务协同完毕后需及时结束协同状态。为了系统的安全和资源合理利用考虑，未申请长时任务的应用，在锁屏或退至后台5秒以上，会被结束掉协同生命周期。
 
 - 分布式组件管理框架在协同过程中不会对传输内容进行审查。涉及隐私敏感数据时，建议业务通过弹框提醒等方式提醒用户。
+
+<!--RP1-->
+<!--RP1End-->
 
 
 ## 环境准备
@@ -72,7 +75,7 @@
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
 2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到PC。
-4. 打开设备A和设备B的蓝牙，互相识别，实现组网。
+4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过[设备发现](devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](devicemanager-guidelines.md#设备绑定开发指导)建立可信关系以完成组网。
 
 
 ### 检验环境是否搭建成功
@@ -128,7 +131,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 **发现设备**
 
-设备A上的应用，需要发现并选择设备B的netWorkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[分布式设备管理模块](devicemanager-guidelines.md)进行开发。
+设备A上的应用，需要发现并选择设备B的[networkId](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[设备信息查询开发指导](devicemanager-guidelines.md#设备信息查询开发指导)。
 
 
 **应用间创建会话并进行连接**
@@ -339,7 +342,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -352,7 +355,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);

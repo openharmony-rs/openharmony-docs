@@ -46,7 +46,7 @@ Defines the parameter used to execute an intent call.
 | displayId<sup>12+</sup> | number | No| Yes| Physical screen ID specified during intent call. The value must be an integer. This parameter is valid only when **executeMode** is set to **UI_ABILITY_FOREGROUND**.|
 | uris<sup>18+</sup> | Array&lt;string&gt; | No| Yes| List of URIs authorized by the intent caller to the intent executor during the call. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this field is mandatory. Only the first element in the array is read as the URI of [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12).|
 | flags<sup>18+</sup> | number | No| Yes| [Flags](js-apis-app-ability-wantConstant.md#flags) of the URIs authorized by the intent caller to the intent executor during the call.<br>**NOTE**<br>This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION\||FLAG_AUTH_WRITE_URI_PERMISSION.|
-| userId<sup>23+</sup> | number | No| Yes| ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
+| userId<sup>23+</sup> | number | No| Yes| ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.   |
 
 ## InsightIntentInfoFilter<sup>23+<sup>
 
@@ -64,7 +64,7 @@ Defines an intent filter, which specifies the criteria for selecting target inte
 | bundleName  | string | No  | Yes  | Bundle name of the application to which the intent belongs.                                                |
 | moduleName  | string | No  | Yes  | Module name of the application to which the intent belongs.                                                  |
 | intentName  | string | No  | Yes  | Intent name.                                                  |
-| userId      | number | No  | Yes  | ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
+| userId      | number | No  | Yes  | ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.  |
 ## InsightIntentType<sup>20+<sup>
 
 Enumerates the intent types defined by the intent decorator. You can obtain the intent type from [LinkIntentInfo](#linkintentinfo20) returned by calling APIs such as [getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20).

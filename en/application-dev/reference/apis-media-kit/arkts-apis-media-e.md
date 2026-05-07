@@ -12,7 +12,7 @@
 
 ## AVErrorCode<sup>9+</sup>
 
-Enumerates the [media error codes](errorcode-media.md).
+Enumerates the types of [Media error codes](errorcode-media.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -46,6 +46,7 @@ Enumerates the [media error codes](errorcode-media.md).
 | AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | Super resolution is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
 | AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | Super resolution is not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
 | AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | The parameter value is out of range.<br> **Atomic service API**: This API can be used in atomic services since API version 20.       |
+| AVERR_IO_CLEARTEXT_NOT_PERMITTED<sup>23+</sup> | 5411012 | HTTP plaintext access is not allowed.<br> **Atomic service API**: This API can be used in atomic services since API version 23.       |
 
 ## MediaType<sup>8+</sup>
 
@@ -55,7 +56,7 @@ Enumerates the media types.
 
 | Name          | Value                   | Description                |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | The media type is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 20.
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | The media type is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 | MEDIA_TYPE_AUD | 0                     | Media.<br> **Atomic service API**: This API can be used in atomic services since API version 11.          |
 | MEDIA_TYPE_VID | 1                     | Video.<br> **Atomic service API**: This API can be used in atomic services since API version 11.         |
 | MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | Subtitle.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -97,7 +98,7 @@ Enumerates the supported Advanced Audio Coding (AAC) formats.
 | Name        | Value                   | Description                       |
 | ------------ | --------------------- | --------------------------- |
 | AAC_LC       |     0                 | Standard AAC Low Complexity profile.       |
-| AAC_HE       |     1                 | AAC High Efficiency profile (also known as HE-AAC).       |
+| AAC_HE       |     1                 | Standard AAC High Efficiency profile.       |
 | AAC_HE_V2    |     2                 | AAC High Efficiency Version 2 profile (also known as HE-AAC v2).    |
 
 ## MediaDescriptionKey<sup>8+</sup>
@@ -124,8 +125,23 @@ Enumerates the media description keys.
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | MIME type of the track. The corresponding key value type is string. For audio and video tracks, the value is the same as that of **MD_KEY_CODEC_MIME**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | Reference relationships between this track and other tracks. The corresponding key value type is string, with values separated by commas (,).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | Auxiliary type of this track when it acts as a reference track. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+## FetchResult<sup>23+</sup>
+
+Enumerates the results of obtaining thumbnails in batches.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| Name                    | Value             | Description                                                        |
+| ------------------------ | --------------- | ------------------------------------------------------------ |
+| FETCH_FAILED             | 0               | Failed to obtain the thumbnail from the video. |
+| FETCH_SUCCEEDED          | 1               | Succeeded in obtaining the thumbnail from the video. |
+| FETCH_CANCELED           | 2               | The operation of obtaining the thumbnail from the video is canceled.|
+
 ## PlaybackInfoKey<sup>12+</sup>
 
 Enumerates the playback description keys.
@@ -139,6 +155,24 @@ Enumerates the playback description keys.
 | DOWNLOAD_RATE            | 'download_rate'        | Download rate in one second. The corresponding key value type is number, measured in bit/s.|
 | IS_DOWNLOADING           | 'is_downloading'       | Download status. The corresponding key value type is number. The value **1** means that the downloaded is in progress, and **0** means that the download is complete.|
 | BUFFER_DURATION          | 'buffer_duration'      | Duration that the cached data can be played. The corresponding key value type is number, measured in seconds.|
+
+## PlaybackMetricsKey<sup>23+</sup>
+
+Enumerates the playback metric keys.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+| Name                              | Value                                  | Description                                      |
+| ---------------------------------- | ------------------------------------ | ------------------------------------------ |
+| PREPARE_DURATION                   | 'prepare_duration'                   | Preparation duration, in milliseconds.          |
+| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | Duration for establishing a resource connection, in milliseconds.      |
+| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | Duration for decapsulating the first frame, in milliseconds.|
+| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | Total playback duration, in milliseconds.      |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | Total number of requests.<br> **Model restriction**: This API can be used only in the stage model.                        |
+| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | Total loading duration, in milliseconds.      |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | Total loading size, in bytes.<br> **Model restriction**: This API can be used only in the stage model.            |
+| STALLING_COUNT                     | 'stalling_count'                     | Total number of stalling times.                        |
+| TOTAL_STALLING_TIME                | 'total_stalling_time'                | Total stalling duration, in milliseconds.      |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -154,6 +188,19 @@ Enumerates the buffering event types.
 | BUFFERING_END     | 2    | Buffering ends. When this event is triggered, the player resumes the playback.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                  |
 | BUFFERING_PERCENT | 3    | Buffering percentage. You can use this event to monitor the buffering status.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
 | CACHED_DURATION   | 4    |  Estimated duration, in ms, that the buffered data can be played. This event is triggered once the data change amount in the buffer exceeds 500 ms. You can use this event to develop a progress bar.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+
+## SoundInterruptMode<sup>23+</sup>
+
+Enumerates the interruption modes of the audio files with the same ID in SoundPool.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.SoundPool
+
+| Name                                 | Value     | Description                            |
+| ----------------------------------- | ------- | --------------------------------- |
+| NO_INTERRUPT                            | 0       | If the former audio file is not completely played, the latter audio file with the same ID does not interrupt the former audio file. Two audio files are played concurrently.           |
+| SAME_SOUND_INTERRUPT                            | 1       | If the former audio file is not completely played, the latter audio file with the same ID interrupts the former audio file.           |
 
 ## StateChangeReason<sup>9+</sup>
 
@@ -179,11 +226,13 @@ Enumerates the video playback seek modes, which can be passed in the **seek** AP
 | SEEK_NEXT_SYNC | 0    | Seeks to the next key frame at the specified position. You are advised to use this value for the rewind operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_PREV_SYNC | 1    | Seeks to the previous key frame at the specified position. You are advised to use this value for the fast-forward operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_CLOSEST<sup>12+</sup> | 2    | Seeks to the frame closest to the specified position. You are advised to use this value for accurate seek.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Offers a smooth and fluid visual experience for seeking. Applications can use a progress bar component to continuously invoke the **seek** method, and the AVPlayer will update the video frames smoothly in response to these calls.<br>Applications can call [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) to check whether the video source supports this seeking mode.<br>If the video source does not support this mode, calling **seek** will result in an **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error (see [Media Error Codes](#averrorcode9)), and the smoothness of frame updates will be compromised.<br>This seeking mode does not trigger the [seekDone event](arkts-apis-media-AVPlayer.md#onseekdone9).<br>To exit this seeking mode, applications must call **seek(-1, SeekMode.SEEK_CONTINUOUS)** to end the seeking process.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Offers a smooth and fluid visual experience for seeking. Applications can use a progress bar component to continuously invoke the **seek** method, and the AVPlayer will update the video frames smoothly in response to these calls.<br>Applications can call [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) to check whether the video source supports this seeking mode.<br>If the video source does not support this mode, calling **seek** will result in an **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error (see [AVErrorCode](#averrorcode9)), and the smoothness of frame updates will be compromised.<br>This seek mode does not trigger the [on('seekDone')](arkts-apis-media-AVPlayer.md#onseekdone9) event.<br>To exit this seeking mode, applications must call **seek(-1, SeekMode.SEEK_CONTINUOUS)** to end the seeking process.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## SwitchMode<sup>12+</sup>
 
-Enumerates the track switching modes for video playback. The mode can be passed in to **selectTrack**. Currently, this enum is valid only for DASH video tracks.
+Enumerates the **selectTrack** modes for video playback.
+
+**SwitchMode** can be passed as a parameter through the **selectTrack** method. Currently, both DASH and HLS video tracks support this extended parameter. (HLS video tracks support this extended parameter since API version 24.)
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -366,6 +415,10 @@ Enumerates the screen capture states used in callbacks.
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | The system enters a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | The system exits a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | Screen capture is interrupted by system user switchover.      |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | Screen capture is paused by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | Screen capture is resumed by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | Screen capture is paused by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | Screen capture is resumed by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
@@ -390,10 +443,38 @@ Enumerates the display mode for the screen capture picker.
 | SCREEN_ONLY | 1    | Displays only a list of screens.|
 | SCREEN_AND_WINDOW | 2    | Displays both screens and windows.|
 
+## AVMetricsEventType<sup>23+</sup>
+
+Enumerates the metric events supported by the media service.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name                      | Value  | Description                                  |
+| -------------------------- | ---- | -------------------------------------- |
+| AV_METRICS_EVENT_STALLING | 1    | Metric event indicating playback stalling.|
+
+## PlaylistLoopMode
+
+Enumerates the loop modes of playlist playback.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name                      | Value  | Description                                  |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYLIST_LOOP_MODE_ALL | 1    | Loop all.|
+| PLAYLIST_LOOP_MODE_ONE | 2    | Repeat one.|
+| PLAYLIST_LOOP_MODE_SHUFFLE | 3    | Shuffle.|
+| PLAYLIST_LOOP_MODE_NONE | 4    | Loop off.|
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 8. You are advised to use [CodecMimeType](#codecmimetype8) instead.
 
 Enumerates the audio encoding formats.
@@ -411,7 +492,6 @@ Enumerates the audio encoding formats.
 ## AudioOutputFormat<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 8. You are advised to use [ContainerFormatType](#containerformattype8) instead.
 
 Enumerates the audio output formats.
@@ -431,8 +511,7 @@ Enumerates the audio output formats.
 Enumerates the media error codes.
 
 > **NOTE**
->
-> This enum is supported since API version 8 and deprecated since API version 11. You are advised to use [Media Error Codes](#averrorcode9) instead.
+> This API is supported since API version 8 and deprecated since API version 11. You are advised to use [AVErrorCode](#averrorcode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

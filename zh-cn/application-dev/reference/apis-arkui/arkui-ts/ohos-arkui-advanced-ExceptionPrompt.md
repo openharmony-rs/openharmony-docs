@@ -14,6 +14,8 @@
 >
 > - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果ExceptionPrompt设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ExceptionPrompt本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ExceptionPrompt设置通用属性和通用事件。
 
 ## 导入模块
@@ -45,8 +47,8 @@ ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextCli
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | options | [PromptOptions](#promptoptions) | 是 | \@Prop | 指定当前异常提示的配置信息。 |
-| onTipClick | ()=>void | 否 | - | 点击左侧提示文本的回调函数。 |
-| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。 |
+| onTipClick | ()=>void | 否 | - | 点击左侧提示文本的回调函数，缺省时不执行任何操作。 |
+| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。缺省时不执行任何操作。 |
 
 ## PromptOptions
 

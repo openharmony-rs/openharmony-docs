@@ -58,7 +58,7 @@ export struct FocusActiveExample {
         })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -127,7 +127,7 @@ export struct FocusTransferExample {
             Button('Button 1')
               .margin(20)
               .onClick(() => {
-                // The value in the app.string.Focus_Event resource file is 'Focus information.'
+                // Replace $r('app.string.Focus_Event') with the actual resource file. In this example, the value in the resource file is "Focus information."
                 this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + ': \n';
                 this.getUIContext().getFocusController().requestFocus('Row 2');
               })
@@ -139,21 +139,24 @@ export struct FocusTransferExample {
             Button('Button 2')
               .margin(20)
               .onFocus(() => {
-                // The value in the app.string.Get_Focus resource file is 'Focused.'
+                // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
                 this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
             Button('button 3')
               .margin(20)
               .onFocus(() => {
+                // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
                 this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
           }
           .id('Row 2')
           .onFocus(() => {
+            // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
             this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
           })
         }
         .onFocus(() => {
+          // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
           this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
         })
 
@@ -171,7 +174,7 @@ export struct FocusTransferExample {
       .height('100%')
       .padding(20)
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -191,24 +194,32 @@ Active focus traversal refers to focus movement initiated by deliberate actions,
 
 
 - Keyboard traversal
-1. Prerequisite: The application is in the focus activation state.
-2. Scope: limited to the currently focused hierarchical page, as detailed in the "Focus limitation" section under "Hierarchical Pages."
-3. Key types:
-**Tab** key: follows a Z-shaped logic to traverse all leaf nodes within the scope, looping back to the first after the last.
-**Shift+Tab**: reverses the direction of the **Tab** key.
-Arrow keys (up, down, left, and right): moves focus in a cross-shaped pattern, with container-specific algorithms determining the next focus in a single-layer container. If the algorithm determines the next focus should be on a container component, the system uses a center-point distance priority algorithm to further identify the target child node within the container.
-4. Traversal algorithm: Each focusable container has a unique algorithm defining how focus moves.
-5. Priority: Child components take precedence in handling keyboard events over parents.
+
+  1. Prerequisite: The application is in the focus activation state.
+  2. Scope: limited to the currently focused hierarchical page, as detailed in the "Focus limitation" section under "Hierarchical Pages."
+  3. Key types:
+
+     **Tab** key: follows a Z-shaped logic to traverse all leaf nodes within the scope, looping back to the first after the last.
+
+     **Shift+Tab**: reverses the direction of the **Tab** key.
+
+     Arrow keys (up, down, left, and right): moves focus in a cross-shaped pattern, with container-specific algorithms determining the next focus in a single-layer container. If the algorithm determines the next focus should be on a container component, the system uses a center-point distance priority algorithm to further identify the target child node within the container.
+  4. Traversal algorithm: Each focusable container has a unique algorithm defining how focus moves.
+  5. Priority: Child components take precedence in handling keyboard events over parents.
 
 - requestFocus
-Moves focus to a specific component, which is allowed across hierarchical pages but not across windows or different ArkUI instances.
-For details, see [Active Focus Acquisition/Loss](#active-focus-acquisitionloss).
+
+  Moves focus to a specific component, which is allowed across hierarchical pages but not across windows or different ArkUI instances.
+
+  For details, see [Active Focus Acquisition/Loss](#active-focus-acquisitionloss).
 
 - clearFocus
-Clears focus within the current hierarchical page, with focus reverting to the root container. For details, see [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12).
+
+  Clears focus within the current hierarchical page, with focus reverting to the root container. For details, see [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12).
 
 - focusOnTouch
-Enables a component to gain focus on touch. For details, see [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9). This API is ineffective on non-focusable components. For container components, focus goes to the last focused child or the first focusable child upon touch.
+
+  Enables a component to gain focus on touch. For details, see [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9). This API is ineffective on non-focusable components. For container components, focus goes to the last focused child or the first focusable child upon touch.
 
 
 **Passive Focus Traversal**
@@ -276,7 +287,7 @@ export struct FocusLinerExample {
         }
       }
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -327,14 +338,15 @@ The projection-based focus traversal algorithm determines the next focus based o
          }.width('100%').margin({ top: 5 })
        }.width('100%')
      }
-     // ···
+     // ...
    }
  }
  ```
 
 > **NOTE**
 >
-> - The focus order calculated by the projection-based focusing algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus order may deviate from the expected sequence.
+> - The focus traveral order calculated by the projection-based focus traversal algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus traversal order may deviate from the expected sequence.
+>
 > - If a clear focus order is required, it is recommended that you use containers that support sequential focusing, such as **Column** or **Row**.
 
 When components in a **Flex** multi-line layout have uniform sizes, focus traversal works as expected.
@@ -365,7 +377,7 @@ export struct ProjectAreaFocusFlexExample {
       }.width('100%').margin({ top: 5 })
     }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -453,7 +465,7 @@ export struct OnFocusBlur {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -494,17 +506,17 @@ export struct FocusAndBlurExample {
               .height(45)
               .margin(5)
               .onFocus(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onFocus`);
               })
               .onBlur(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onBlur');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onBlur`);
               })
           }
           .onFocus(() => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
           })
           .onBlur(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onBlur');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
           })
 
           Row() { // Parent node Row2
@@ -513,22 +525,22 @@ export struct FocusAndBlurExample {
               .height(45)
               .margin(5)
               .onFocus(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onFocus');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onFocus`);
               })
               .onBlur(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onBlur');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onBlur`);
               })
           }
           .onFocus(() => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
           })
           .onBlur(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onBlur');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
           })
         }.width('100%').margin({ top: 5 })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -555,11 +567,12 @@ Components can be classified into the following types based on their focus capab
 
 - **Conditionally focusable components**: Typical examples are **Text** and **Image**, which are not focusable by default. To make them focusable, you must explicitly set **focusable(true)**. Container components that contain no focusable children are also non-focusable by default. However, if you bind an **onClick** event or a single-tap gesture to such a container, it implicitly gains focusability. Note that if the container's **focusable** attribute is explicitly set to **false**, it remains non-focusable even if an event or gesture is attached.
 
-- **Non-focusable components**: Components that do not allow for interactions, such as **Blank** and **Circle**, cannot be made focusable, regardless of whether the **focusable** attribute is applied.
+- **Non-focusable components**: Components that do not allow for interactions, such as [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), and [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md), cannot be made focusable, regardless of whether the **focusable** attribute is applied.
 
 Setting a container component as focusable:
 
 The primary purpose of gaining focus is to enable interaction. If a component inherently lacks interactive capabilities, it cannot be made focusable. Container components (such as **Stack** and **Column**) are typically not interactive by themselves. Therefore, even if a container component is a leaf node in the view tree, it cannot be made focusable simply by calling **.focusable(true)**. Note that this same rule applies to [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) objects created dynamically.
+
 To make a leaf node container focusable, you can use one of these approaches:
 
 - Place a component that natively supports focus, such as a **Button** component, inside the container.
@@ -604,7 +617,7 @@ Sets whether the component is focusable on touch.
    build() {
      NavDestination() {
        Column({ space: 12 }) {
-         // The value in the app.string.Focus_Focusable_text resource file is 'When a component is focused.'
+         // Replace $r('app.string.Focus_Focusable_text') with the actual resource file. In this example, the value in the resource file is "When a component is focused."
          Text($r('app.string.Focus_Focusable_text'))
            .fontSize(14)
            .fontColor('#666')
@@ -681,7 +694,7 @@ Sets whether the component is focusable on touch.
        .height('100%')
        .padding({ left: 12, right: 12 })
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -728,7 +741,7 @@ export struct ScopeFocusExample {
     NavDestination() {
       Column() {
         Column({ space: 5 }) {
-          // The value in the app.string.Container_Coking resource file is 'Container focus'.
+          // Replace $r('app.string.Container_Coking') with the actual resource file. In this example, the value in the resource file is "Container focus".
           Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
         }
         .justifyContent(FlexAlign.Center)
@@ -798,7 +811,7 @@ export struct TabStopExample {
         }.tabStop(true)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -879,7 +892,7 @@ export struct DefaultFocus {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -985,7 +998,7 @@ export struct RequestFocusExample {
       .alignItems(HorizontalAlign.Center)
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1098,7 +1111,7 @@ The preceding example includes two steps:
           .width('100%')
           .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1166,7 +1179,7 @@ When a component is configured with **nextFocus**, focus movement strictly follo
           }
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1224,7 +1237,7 @@ When components with positive **tabIndex** values are present, only these compon
             .margin(5).tabIndex(2)
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1260,7 +1273,7 @@ export struct TabIndexFocusExample {
         }.tabIndex(2)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1345,7 +1358,7 @@ export struct FocusScopePriority {
                     .width(80)
                     .height(40)
                     .fontColor(Color.White)
-                    .focusScopePriority('ColumnScope1', FocusPriority.PRIOR) // Focuses when Column1 first gains focus.
+                    .focusScopePriority('ColumnScope1', FocusPriority.PRIOR)  // Focus when Column1 first gains focus.
                 }
                 Row({ space: 5 }) {
                   Button()
@@ -1384,7 +1397,7 @@ export struct FocusScopePriority {
                 .width(165)
                 .height(40)
                 .fontColor(Color.White)
-                .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focuses when Column2 first gains focus.
+                .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focus when Column2 gains focus.
               Row({ space: 5 }) {
                 Button()
                   .width(80)
@@ -1419,7 +1432,7 @@ export struct FocusScopePriority {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1431,7 +1444,7 @@ export struct FocusScopePriority {
 
 The preceding example includes two steps:
 
-- The **TextInput** component is part of a focus group. When the **Tab** key is pressed, focus quickly moves out of the **TextInput** component to the next focusable element outside the group. Arrow keys can be used to move focus within the **TextInput** component.
+- The **TextInput** component is part of a focus group. When the **Tab** key is pressed, the focus quickly moves out of the **TextInput** component to the next focusable element outside the group. Arrow keys can be used to move focus within the **TextInput** component.
 - The two **Column** components on the left do not have a focus group set. Therefore, focus can only be traversed one by one with the **Tab** key.
 
 
@@ -1495,7 +1508,7 @@ export struct FocusScopeIdExample {
         TextInput()
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1516,12 +1529,15 @@ The preceding example includes three steps:
 
 When a component is in focus and has either an **onClick** or **TapGesture** event defined, pressing the **Enter** key or spacebar triggers the associated event callback.
 
->  **NOTE**
+> **NOTE**
 >
->  1. If the **onClick** or **TapGesture** event is triggered by pressing the **Enter** key or spacebar, the event does not bubble up by default. This means that the parent component's corresponding [key event](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md) is not triggered synchronously.
->  2. The key event (**onKeyEvent**) bubbles up by default, which means that it will also trigger the parent component's key event callback.
->  3. If the component has both an **onClick** event and an **onKeyEvent**, pressing the **Enter** key or spacebar trigger both events.
->  4. The component's response to the **onClick** event is independent of whether the focus is activated or not.
+> - If the **onClick** or **TapGesture** event is triggered by pressing the **Enter** key or spacebar, the event does not bubble up by default. This means that the parent component's corresponding [key event](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md) is not triggered synchronously.
+>
+> - The key event (**onKeyEvent**) bubbles up by default, which means that it will also trigger the parent component's key event callback.
+>
+> - If the component has both an **onClick** event and an **onKeyEvent**, pressing the **Enter** key or spacebar trigger both events.
+>
+> - Since API version 18, the focused component responds to the **onClick** event only when the focus is active.
 
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
    
@@ -1538,7 +1554,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
            Button(this.name)
              .fontSize(30)
              .onClick(() => {
-               this.count++
+               this.count++;
                if (this.count % 2 === 0) {
                  this.name = 'count is even number';
                } else {
@@ -1547,7 +1563,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
              }).height(60)
          }.height('100%').width('100%').justifyContent(FlexAlign.Center)
        }
-       // ···
+       // ...
      }
    }
    ```
@@ -1565,34 +1581,46 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
 | [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md) | No      | false        |
 | [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) | Yes      | true         |
 | [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md) | Yes      | true         |
+| [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)                 | No      | false        |
 | [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) | Yes      | true         |
 | [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md) | Yes      | true         |
+| [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)                 | No      | false        |
+| [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md) | No      | false         |
 | [ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md) | No      | false         |
 | [DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md) | Yes      | false        |
 | [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md) | Yes      | true         |
 | [Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md) | Yes      | false        |
+| [Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)                 | No      | false        |
 | [Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md) | Yes      | false        |
 | [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) | Yes      | false        |
 | [ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md) | No      | false        |
 | [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)                 | No      | false        |
+| [Indicator](../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md) | Yes      | true        |
+| [Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md)                 | No      | false        |
 | [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md) | Yes      | true        |
 | [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md) | No      | false        |
 | [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) | Yes      | true         |
 | [MenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md) | Yes      | true         |
 | [MenuItemGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitemgroup.md) | No      | false         |
+| [MultiNavigation](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNavigation.md) | No      | false         |
 | [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | Yes      | true       |
 | [NavRouter](../reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md) | No      | false        |
 | [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) | Yes      | true        |
+| [Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md) | No      | false        |
 | [PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md) | Yes      | true        |
+| [Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)                 | No      | false        |
+| [Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)                 | No      | false        |
 | [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md) | Yes      | true        |
 | [QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md) | Yes      | true        |
 | [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md) | Yes      | true         |
 | [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md) | Yes      | true         |
+| [Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md) | No      | false        |
 | [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) | Yes      | true         |
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | No      | false        |
 | [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md) | No      | false        |
 | [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) | Yes      | true         |
 | [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) | Yes      | true         |
+| [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) | No      | false        |
 | [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) | Yes      | true         |
 | [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) | No      | false        |
 | [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md) | Yes      | true         |
@@ -1627,6 +1655,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
 | [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) | Yes    | true         |
 | [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) | Yes    | true         |
 | [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)         | Yes    | true         |
+| [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) | No    | false         |
 | [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) | Yes    | true         |
 | [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) | Yes    | true         |
 | [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) | Yes    | true         |
@@ -1640,7 +1669,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
 | [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) | Yes    | true         |
 | [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) | Yes    | true         |
 | [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) | Yes    | true         |
-| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | Yes    | true         |
+| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | No    | false         |
 | [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)         | No    | false         |
 | [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)         | Yes    | true         |
 

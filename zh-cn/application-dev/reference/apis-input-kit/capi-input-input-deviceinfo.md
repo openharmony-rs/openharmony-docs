@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ```c
 typedef struct Input_DeviceInfo Input_DeviceInfo
@@ -25,5 +25,5 @@ typedef struct Input_DeviceInfo Input_DeviceInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateDeviceInfo](capi-oh-input-manager-h.md#oh_input_createdeviceinfo) | 创建输入设备信息的对象。 |
+| [OH_Input_CreateDeviceInfo](capi-oh-input-manager-h.md#oh_input_createdeviceinfo) | 创建输入设备信息的对象。通过调用[OH_Input_DestroyDeviceInfo](capi-oh-input-manager-h.md#oh_input_destroydeviceinfo)销毁输入设备信息的对象。 |
 | [OH_Input_DestroyDeviceInfo](capi-oh-input-manager-h.md#oh_input_destroydeviceinfo) | 销毁输入设备信息的对象。 |

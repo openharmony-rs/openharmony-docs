@@ -402,6 +402,7 @@ class C {
 Since API version 22, custom decorators other than @Sendable can be added to Sendable classes.
 
 You can add the **disableSendableCheckRules** field to **strictMode** under the **buildOption** field in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app).
+
 The following is an example of the **disableSendableCheckRules** field and its value:
 
 ```json5
@@ -418,7 +419,9 @@ The following is an example of the **disableSendableCheckRules** field and its v
 >
 > - The value of **disableSendableCheckRules** is an array containing Sendable rules.
 > 
->   - By default, the value is an empty array. Custom decorators other than @Sendable cannot be added to Sendable classes.
+>   - By default, this field is not displayed. That is, custom decorators other than @Sendable cannot be added to Sendable classes.
+>
+>   - Configuring it as an empty array is prohibited.
 >   
 >   - When the **arkts-sendable-class-decorator** rule is configured in the array, custom decorators other than @Sendable can be added to Sendable classes.
 >   
@@ -562,4 +565,25 @@ To observe data changes in Sendable objects when interacting with UI, Sendable d
 
 ## Rules for Using Sendable in HARs
 
-When using Sendable in HAR, you must enable the configuration for compiling and generating TS files. For details, see [Building TS Files](../quick-start/har-package.md#building-ts-files).
+Sendable can be used in [HARs](../quick-start/har-package.md). When Sendable is used in a bytecode HAR, no additional configuration is required. When Sendable is used in a TS HAR, set **name** under **metadata** to **UseTsHar** in the **module.json5** file of the HAR module. The configuration is as follows:
+
+<!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "har",
+    "deviceTypes": [
+      "tablet",
+      "2in1"
+    ],
+    "metadata": [
+      {
+        "name": "UseTsHar",
+        "value": "true"
+      }
+    ]
+  }
+}
+```

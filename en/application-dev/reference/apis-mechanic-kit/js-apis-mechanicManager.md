@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **mechanicManager** module provides the mechanic device interaction capabilities, such as listening for the device connection status, tracking control, and listening for the tracking status.
 
@@ -50,7 +50,7 @@ let callback = (result: mechanicManager.AttachStateChangeInfo) => {
 
 console.info('Register');
 mechanicManager.on("attachStateChange", callback);
-console.info('Register: success');
+console.info('Succeeded in registering callback.');
 ```
 
 ## mechanicManager.off('attachStateChange')
@@ -66,7 +66,7 @@ Unregisters the callback listener for connection state changes. This API uses an
 | Name    | Type          | Mandatory| Description  |
 | ---------- | ------------- | ---- | ----- |
 | type | 'attachStateChange' | Yes| Event type. The value **attachStateChange** indicates a connection state change.|
-| callback | Callback\<[AttachStateChangeInfo](#attachstatechangeinfo)> | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified type of events are unregistered.|
+| callback | Callback\<[AttachStateChangeInfo](#attachstatechangeinfo)> | No| Callback used to return the connection state change of the mechanic device.|
 
 **Error codes**
 
@@ -85,7 +85,7 @@ let callback = (result: mechanicManager.AttachStateChangeInfo) => {
 
 console.info('Unregister');
 mechanicManager.off("attachStateChange", callback);
-console.info('Unregister: success');
+console.info('Succeeded in unregistering callback.');
 ```
 
 ## mechanicManager.getAttachedMechDevices
@@ -147,7 +147,7 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 ```ts
 console.info('Enable tracing');
 mechanicManager.setCameraTrackingEnabled(true);
-console.info('Enable Tracking Success');
+console.info('Succeeded in enabling tracking.');
 ```
 
 ## mechanicManager.getCameraTrackingEnabled
@@ -213,7 +213,7 @@ let callback = (result: mechanicManager.TrackingEventInfo) => {
 
 console.info('Register');
 mechanicManager.on("trackingStateChange", callback);
-console.info('Register: success');
+console.info('Succeeded in registering callback.');
 ```
 
 ## mechanicManager.off('trackingStateChange')
@@ -248,7 +248,7 @@ let callback = (result: mechanicManager.TrackingEventInfo) => {
 
 console.info('Unregister');
 mechanicManager.off("trackingStateChange", callback);
-console.info('Unregister: success');
+console.info('Succeeded in unregistering callback.');
 ```
 
 ## mechanicManager.getCameraTrackingLayout
@@ -279,7 +279,7 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 ```ts
 console.info('Query layout');
 let layout = mechanicManager.getCameraTrackingLayout();
-console.info(`'Query layout successful, current layout:' ${layout}`);
+console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 ```
 
 ## MechInfo
@@ -290,7 +290,7 @@ Defines information about the mechanic device.
 
 | Name  | Type| Read-Only| Optional| Description|
 | ----- | ---- | ---- | --- | --- |
-| mechId | number | No| No| ID of the mechanic device.|
+| mechId | number | No| No| ID of the mechanic device. The value is an integer greater than or equal to 0.|
 | mechDeviceType | [MechDeviceType](#mechdevicetype) | No| No| Type of the mechanic device.|
 | mechName | string | No| No| Name of the mechanic device.|
 

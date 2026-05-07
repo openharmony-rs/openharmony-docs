@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AbilityStage是一个[Module](../../../application-dev/quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。
 
@@ -195,7 +195,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 > **说明：**
 > 
-> 在onMemoryLevel回调中释放UI组件，可能会阻塞当前进程的主线程任务，因此不建议在该回调中释放UI组件。
+> onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务，因此不建议在该回调中释放UI组件。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +205,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 回调返回内存微调级别，显示当前内存使用状态。<br>**说明：**<br>不同产品的触发条件可能存在差异。以12G内存的标准设备为例：<br>- 当可用内存下降至1700M~1800M时，会触发取值为0的onMemoryLevel回调。<br>- 当可用内存下降至1600M~1700M时，会触发取值为1的onMemoryLevel回调。<br>- 当可用内存下降至1600M以下时，会触发取值为2的onMemoryLevel回调。|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel)。|
 
 **示例：**
 
@@ -405,6 +405,52 @@ class MyAbilityStage extends AbilityStage {
       setTimeout(res, 1000); // 延时1秒后执行
     });
     return '';
+  }
+}
+```
+
+### onLaunchFromHyperSnap<sup>24+</sup>
+
+onLaunchFromHyperSnap(): void
+
+当进程从[应用快照](./js-apis-app-ability-hyperSnapManager.md#实现原理)启动时调用。
+
+开发者可以通过重写此方法来处理应用从快照恢复时的特定逻辑，例如重新初始化某些资源或状态。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**示例：**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onLaunchFromHyperSnap(): void {
+    console.info('Launched from Hyper Snap, reinitializing resources...');
+    // 在此添加从快照恢复时的初始化逻辑
+  }
+}
+```
+
+### onAboutToCreateAbility<sup>24+</sup>
+
+onAboutToCreateAbility(): void
+
+当AbilityStage即将创建第一个Ability时调用。
+
+开发者可以通过重写此方法来执行在创建第一个Ability之前的准备工作。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**示例：**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onAboutToCreateAbility(): void {
+    console.info('About to create first ability, preparing...');
+    // 在此添加创建第一个Ability前的准备工作
   }
 }
 ```

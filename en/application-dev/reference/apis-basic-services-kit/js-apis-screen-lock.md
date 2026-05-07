@@ -1,4 +1,10 @@
 # @ohos.screenLock (Screen Lock)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @jiayunpeng2-->
+<!--Designer: @yaoruijiang-->
+<!--Tester: @dyx118186878-->
+<!--Adviser: @fang-jinxu-->
 
 The **screenlock** module is a system module in OpenHarmony. It provides APIs for screen lock applications to subscribe to screen lock status changes as well as callbacks for them to receive the results. It also provides APIs for third-party applications to unlock the screen, obtain the screen locked status, and check whether a lock screen password has been set.
 
@@ -20,7 +26,7 @@ Checks whether the screen is locked. This API uses an asynchronous callback to r
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only for system applications.
+> This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables. The substitute API is available only for system applications.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
@@ -52,7 +58,7 @@ Checks whether the screen is locked. This API uses a promise to return the resul
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9.
+> This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
@@ -82,7 +88,7 @@ Checks whether the device is in secure mode. When the device is in secure mode, 
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9.
+> This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
@@ -114,7 +120,7 @@ Checks whether the device is in secure mode. When the device is in secure mode, 
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9.
+> This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
@@ -144,7 +150,7 @@ Unlocks the screen. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9.
+> This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
@@ -176,7 +182,7 @@ Unlocks the screen. This API uses a promise to return the result.
 
 > **NOTE**
 > 
-> This API is supported since API version 7 and deprecated since API version 9.
+> This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 

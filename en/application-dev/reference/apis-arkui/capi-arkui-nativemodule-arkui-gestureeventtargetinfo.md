@@ -1,14 +1,18 @@
 # ArkUI_GestureEventTargetInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_GestureEventTargetInfo ArkUI_GestureEventTargetInfo
+```
+
 ## Overview
 
-Defines a struct for a **GestureEventTargetInfo** object that provides information about a gesture event target.
+Defines gesture event target information.
 
 **Since**: 12
 

@@ -135,6 +135,8 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**设备行为差异：** 当该接口在无振动器件设备中被设置为振动模式时，将不会产生振动效果。
+
 | 名称                |  值    | 说明       |
 | ------------------- | ------ | ---------- |
 | RINGER_MODE_SILENT  | 0      | 静音模式。 |
@@ -387,7 +389,7 @@
 
 当用户监听到音频中断（即收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)事件）时，获取此信息。
 
-此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](#interrupthint)获取。关于音频打断策略的详细说明可参考文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](#interrupthint)获取。关于音频打断策略的详细说明可参考文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -406,7 +408,7 @@
 
 此类型表示根据焦点策略，对音频流执行的具体操作（如暂停、调整音量等）。
 
-可以结合InterruptEvent中的[InterruptForceType](#interruptforcetype9)信息，判断该操作是否已由系统强制执行。详情请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+可以结合InterruptEvent中的[InterruptForceType](#interruptforcetype9)信息，判断该操作是否已由系统强制执行。详情请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -476,11 +478,13 @@
 
 表示输出设备变更后推荐操作的枚举。
 
+常见场景示例：耳机设备和外放设备之间进行切换。当佩戴耳机时，从外放设备切换到耳机设备，系统会推荐继续播放，提示应用无需停止当前播放。当摘下耳机设备切换到外放设备时，系统会推荐停止播放。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 | 名称                                        |  值     | 说明              |
 |:------------------------------------------| :----- |:----------------|
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | 推荐继续播放。           |
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | 推荐继续播放（该事件作为播放维持提示，作用是告知应用本次设备变动音频无需停止播放，但‌不可将其作为启动音频播放的判断依据）。           |
 | DEVICE_CHANGE_RECOMMEND_TO_STOP | 1 | 推荐停止播放。         |
 
 ## DeviceChangeType
@@ -543,7 +547,7 @@
 | 名称                   | 值 | 说明      |
 | :--------------------- |:--|:--------|
 | CONCURRENCY_DEFAULT | 0 | 默认使用系统策略。     |
-| CONCURRENCY_MIX_WITH_OTHERS | 1 | 和其他音频并发。     |
+| CONCURRENCY_MIX_WITH_OTHERS | 1 | 和其他音频并发，即混音。   |
 | CONCURRENCY_DUCK_OTHERS | 2 | 压低其他音频的音量。 |
 | CONCURRENCY_PAUSE_OTHERS | 3 | 暂停其他音频。 |
 
@@ -578,7 +582,7 @@
 
 此类型表示根据焦点策略对音频会话执行的操作，包括暂停、调整音量等。
 
-详情请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+详情请参阅文档[音频会话管理](../../media/audio/audio-session-management.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -588,8 +592,12 @@
 | AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE               | 1      | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到 AUDIO_SESSION_STATE_CHANGE_HINT_RESUME 事件。 |
 | AUDIO_SESSION_STATE_CHANGE_HINT_STOP                | 2      | 提示音频会话因焦点被抢占而停止，彻底失去音频焦点。 |
 | AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP                | 3      | 提示音频会话因长时间无业务而被系统停止，导致失去音频焦点。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可以选择执行静音操作。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE<sup>24+</sup>    | 8      |  提示音频会话静音。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE<sup>24+</sup>  | 9      | 提示音频会话解除静音，恢复播放。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -641,7 +649,7 @@
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptType](#interrupttype)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -697,3 +705,17 @@
 | FLAT   | 1     | 保持原始声音，不进行均衡调节。|
 | FULL   | 2     | 使人声更饱满（默认的均衡器类型）。|
 | BRIGHT | 3     | 使人声更明亮。|
+
+## AudioSessionBehaviorFlags<sup>24+</sup>
+
+表示音频会话行为的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                   | 值 | 说明      |
+| :--------------------- |:--|:--------|
+| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | 默认行为，用于清空音频会话行为设置。 |
+| VOIP_PRIVACY_TYPE_PUBLIC | 0x00000001 | 非隐私VoIP，允许VoIP录音流与其他应用的录音流同时进行录音。<br/>**注意：** VoIP通话流属于隐私流，请谨慎使用该接口并确保符合隐私保护要求。<br/>**起始版本：** 26.0.0 |
+| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | 当音频流被打断时，使用静音替代。<br/>通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置该行为的同时，也需要调用接口[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)使其生效。<br/>当播放被静音时，应用将收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE通知，并且在恢复时会收到[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE通知。 |

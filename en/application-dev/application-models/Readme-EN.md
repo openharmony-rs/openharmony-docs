@@ -8,7 +8,7 @@
 <!--Adviser: @huipeizi-->
 
 
-- [Introduction to Ability Kit](abilitykit-overview.md)
+- [About This Kit](abilitykit-overview.md)
 - [Application Models](application-models.md)
 - Stage Model Development<!--stage-model-development-->
   - [Stage Model Development Overview](stage-model-development-overview.md)
@@ -21,6 +21,7 @@
       - [UIAbility Usage](uiability-usage.md)
       - [Data Synchronization Between UIAbility and UI Page](uiability-data-sync-with-ui.md)
       - [Starting UIAbility Within the Same Application](uiability-intra-device-interaction.md)
+      - [Cross-Device Migration Through Call Invocation](uiability-cross-device-interaction.md)
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
@@ -56,9 +57,7 @@
       - [Overview of Starting a Specified Application](app-startup-overview.md)
       - [(Optional) Using canOpenLink to Check Application Accessibility](canopenlink.md)
       - [Using Deep Linking for Application Redirection](deep-linking-startup.md)
-      <!--Del-->
       - [Using App Linking for Application Redirection](app-linking-startup.md)
-      <!--DelEnd-->
       - [Switching from Explicit Want Redirection to Linking Redirection](uiability-startup-adjust.md)
       - [Application Link Description](app-uri-config.md)
     - Starting an Application of the Specified Type<!--specified-type-app-redirection-->
@@ -168,6 +167,6 @@
     - [Storage Switching](storage-switch.md)
 <!--DelEnd-->
 - Native Child Process Development<!--native-childprocess-development-->
-    - [Creating Native Child Processes](capi_nativechildprocess_development_guideline.md)
+    - [Creating/Terminating Native Child Processes (C/C++)](capi-nativechildprocess-development-guideline.md)
     - [Obtaining Exit Information of Native Child Processes](capi-nativechildprocess-exit-info.md)
 - [Ability Kit Terminology](ability-terminology.md)

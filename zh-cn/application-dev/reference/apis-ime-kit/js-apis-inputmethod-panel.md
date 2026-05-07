@@ -1,7 +1,7 @@
 # @ohos.inputMethod.Panel (输入法面板)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -43,6 +43,10 @@ import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
 ##  PanelFlag
 
 输入法面板状态类型枚举。
+
+> **说明：**
+>
+>目前仅用于SOFT_KEYBOARD类型的面板。
 
 **系统能力**：SystemCapability.MiscServices.InputMethodFramework
 

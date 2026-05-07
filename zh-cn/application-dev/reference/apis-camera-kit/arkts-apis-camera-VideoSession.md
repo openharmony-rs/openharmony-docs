@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-VideoSession 继承自 [Session](arkts-apis-camera-Session.md)、[Flash](arkts-apis-camera-Flash.md)、[AutoExposure](arkts-apis-camera-AutoExposure.md)、 [WhiteBalance](arkts-apis-camera-WhiteBalance.md)、[Focus](arkts-apis-camera-Focus.md)、[Zoom](arkts-apis-camera-Zoom.md)、[Stabilization](arkts-apis-camera-Stabilization.md)、[ColorManagement](arkts-apis-camera-ColorManagement.md)、[AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md)、[Macro](arkts-apis-camera-Macro.md)、[ControlCenter](arkts-apis-camera-ControlCenter.md)。
+VideoSession继承自[Session](arkts-apis-camera-Session.md)、[Flash](arkts-apis-camera-Flash.md)、[AutoExposure](arkts-apis-camera-AutoExposure.md)、 [WhiteBalance](arkts-apis-camera-WhiteBalance.md)、[Focus](arkts-apis-camera-Focus.md)、[Zoom](arkts-apis-camera-Zoom.md)、[Stabilization](arkts-apis-camera-Stabilization.md)、[ColorManagement](arkts-apis-camera-ColorManagement.md)、[AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md)、[Macro](arkts-apis-camera-Macro.md)、[ControlCenter](arkts-apis-camera-ControlCenter.md)。
 
 普通录像模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、视频防抖、色彩空间、微距及控制器的操作。
 
@@ -37,7 +37,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 | 参数名            | 类型                                  | 必填  | 说明              |
 |----------------|-------------------------------------|-----|-----------------|
-| preconfigType  | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12)   | 是   | 指定配置预期分辨率。      |
+| preconfigType | [PreconfigType](arkts-apis-camera-e.md#preconfigtype12) | 是 | 指定配置预期分辨率。 |
 | preconfigRatio | [PreconfigRatio](arkts-apis-camera-e.md#preconfigratio12) | 否   | 可选画幅比例，默认为16:9。 |
 
 **返回值：**
@@ -387,7 +387,7 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID | 错误信息                                                                                                                                        |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -588,7 +588,7 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 | 参数名    | 类型                     | 必填 | 说明                                                                     |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------------|
 | type     | string                   | 是   | 注销监听事件，固定为'macroStatusChanged'，session创建成功可触发此事件。                      |
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback, 返回true表示成功，false表示失败。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则参数默认为空，取消所有callback, 返回true表示成功，false表示失败。 |
 
 
 **示例：**

@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
 typedef struct {...} ffrt_dependence_t
@@ -25,9 +25,9 @@ typedef struct {...} ffrt_dependence_t
 
 ### 成员变量
 
-| 名称                                                 | 描述 |
-|----------------------------------------------------| -- |
+| 名称 | 描述 |
+| -- | -- |
 | [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | 依赖类型 |
-| const void* ptr                                    | 依赖数据地址 |
+| const void* ptr | 依赖数据地址 |
 
 

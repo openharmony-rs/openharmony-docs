@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 本模块提供系统相关的以及增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。接口中使用的名词定义如下：
 - 模式字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)和单引号包裹的自定义文本自由组合而成的字符串。
@@ -714,36 +714,6 @@ isRTL(locale: string): boolean
   let isArRTL: boolean = i18n.isRTL('ar-EG'); // 阿语是镜像语言，返回true
   ```
 
-## i18n.getCalendar<sup>8+</sup>
-
-getCalendar(locale: string, type? : string): Calendar
-
-获取指定区域和历法的日历对象。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**参数：**
-
-| 参数名    | 类型     | 必填   | 说明                                       |
-| ------ | ------ | ---- | ---------------------------------------- |
-| locale | string | 是    | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，例如zh-Hans-CN。                 |
-| type   | string | 否    | 表示历法，取值包括：buddhist,&nbsp;chinese,&nbsp;coptic,&nbsp;ethiopic,&nbsp;hebrew,&nbsp;gregory,&nbsp;indian,&nbsp;islamic_civil,&nbsp;islamic_tbla,&nbsp;islamic_umalqura,&nbsp;japanese,&nbsp;persian。<br>默认值：区域默认的历法。不同取值代表的含义和使用场景请参考[设置日历和历法](../../internationalization/i18n-calendar.md)。 |
-
-**返回值：**
-
-| 类型                     | 说明    |
-| ---------------------- | ----- |
-| [Calendar](#calendar8) | 日历对象。 |
-
-**示例：**
-  ```ts
-  import { i18n } from '@kit.LocalizationKit';
-
-  let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese'); // 获取中国农历日历对象
-  ```
-
 ## EntityRecognizer<sup>11+</sup>
 
 提供实体识别相关的能力，可以获取文本中实体的类型和起止位置。当前支持识别的实体包括电话号码和时间日期。
@@ -852,6 +822,34 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 | type | string | 否    | 否    | 实体的类型，当前支持phone_number和date类型。phone_number表示实体类型是电话号码，date表示实体类型是时间日期。 |
 | begin | number | 否    | 否    | 实体在输入字符串中的起始位置。 |
 | end | number | 否    | 否    | 实体在输入字符串中的终止位置。 |
+
+## i18n.getCalendar<sup>8+</sup>
+
+getCalendar(locale: string, type? : string): Calendar
+
+获取指定区域和历法的日历对象。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明                                       |
+| ------ | ------ | ---- | ---------------------------------------- |
+| locale | string | 是    | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，例如zh-Hans-CN。                 |
+| type   | string | 否    | 表示历法，取值包括：buddhist,&nbsp;chinese,&nbsp;coptic,&nbsp;ethiopic,&nbsp;hebrew,&nbsp;gregory,&nbsp;indian,&nbsp;islamic_civil,&nbsp;islamic_tbla,&nbsp;islamic_umalqura,&nbsp;japanese,&nbsp;persian。<br>默认值：区域默认的历法。不同取值代表的含义和使用场景请参考[设置日历和历法](../../internationalization/i18n-calendar.md)。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| [Calendar](#calendar8) | 日历对象。 |
+
+**示例：**
+```ts
+let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese'); // 获取中国农历日历对象
+```
 
 ## Calendar<sup>8+</sup>
 
@@ -1106,33 +1104,7 @@ get(field: string): number
 
 | 参数名   | 类型     | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| field | string | 是    | 指定的日历属性，目前支持的属性值请参考下表。 |
-
-
-| 属性名称   | 说明                                       |
-| ----- | ---------------------------------------- |
-| era | 纪元，例如公历中的公元前或者公元后。 |
-| year | 年。 |
-| month | 月。说明：月份从0开始计数，例如0表示一月。 |
-| date | 日。 |
-| hour | 挂钟小时数。 |
-| hour_of_day | 一天中的第几小时。 |
-| minute | 分。 |
-| second | 秒。 |
-| millisecond | 毫秒。 |
-| week_of_year | 一年中的第几周，按照星期计算周，注意：第一周的归属算法各地有区别。 |
-| year_woy | 一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。 |
-| week_of_month | 一个月中的第几周，按照星期计算周。 |
-| day_of_week_in_month | 一月中的第几周，按照数值计算周，例如1-7日属于第一周。 |
-| day_of_year | 一年中的第几天。 |
-| day_of_week | 一周中的第几天(星期)。 |
-| milliseconds_in_day | 一天中的第几毫秒。 |
-| zone_offset | 以毫秒计时的时区固定偏移量（不含夏令时）。 |
-| dst_offset | 以毫秒计时的夏令时偏移量。 |
-| dow_local | 本地星期。 |
-| extended_year | 扩展的年份数值，支持负数。 |
-| julian_day | 儒略日,与当前时区相关。 |
-| is_leap_month | 是否为闰月。 |
+| field | string | 是    | 指定的日历属性，取值包括：<br>"era"：纪元，例如公历中的公元前或者公元后。<br>"year"：年。<br>"month"：月，从0开始计数，0表示一月。<br>"date"：日。<br>"hour"：挂钟小时数。<br>"hour_of_day"：一天中的第几小时。<br>"minute"：分。<br>"second"：秒。<br>"millisecond"：毫秒。<br>"week_of_year"：一年中的第几周，按照星期计算周，第一周的归属各地有区别。<br>"year_woy"：一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。<br>"week_of_month"：一个月中的第几周，按照星期计算周。<br>"day_of_week_in_month"：一月中的第几周，按照数值计算周，例如1-7日属于第一周。<br>"day_of_year"：一年中的第几天。<br>"day_of_week"：一周中的第几天(星期)。<br>"milliseconds_in_day"：一天中的第几毫秒。<br>"zone_offset"：以毫秒计时的时区固定偏移量（不含夏令时）。<br>"dst_offset"：以毫秒计时的夏令时偏移量。<br>"dow_local"：本地星期。<br>"extended_year"：扩展的年份数值，支持负数。<br>"julian_day"：儒略日，与当前时区相关。<br>"is_leap_month"：返回1表示是闰月，返回0表示不是闰月。<br> |
 
 **返回值：**
 
@@ -1329,6 +1301,130 @@ compareDays(date: Date): number
     console.error(`call Calendar.compareDays failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
+
+## i18n.getChineseCalendar
+
+getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
+
+获取指定区域的农历对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明                                       |
+| ------ | ------ | ---- | ---------------------------------------- |
+| locale | Intl.Locale | 否   | 区域对象，默认值：系统区域对象。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| [ChineseCalendar](#chinesecalendar) | 农历对象。 |
+
+**示例：**
+```ts
+let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
+let calendar: i18n.ChineseCalendar = i18n.getChineseCalendar(locale);
+```
+
+## ChineseCalendar
+
+提供农历相关的能力，包括设置农历时间、判断指定年份某月是否存在闰月。继承自[Calendar](#calendar8)，支持[Calendar](#calendar8)的方法。
+
+### setChineseCalendarTime
+
+setChineseCalendarTime(chineseCalendarTime: ChineseCalendarTime): void
+
+设置农历对象的时间、日期。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| chineseCalendarTime | [ChineseCalendarTime](#chinesecalendar) | 是    | 农历时间对象。 |
+
+**示例：**
+```ts
+let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
+let calendar: i18n.ChineseCalendar = i18n.getChineseCalendar(locale);
+calendar.setChineseCalendarTime({
+  gregorianYear: 2026,
+  cyclicalYear: 43,
+  month: 1,
+  date: 15
+});
+```
+
+### checkLeapMonth
+
+static checkLeapMonth(gregorianYear: number, cyclicalYear: number, month: number): boolean
+
+判断指定年份某月是否存在闰月。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| gregorianYear   | number |   是   |  公历的年。   |
+| cyclicalYear    | number |   是   |  农历的干支年。   |
+| month           | number |   是   |  农历的月。   |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| boolean | 是否存在闰月。true表示该月存在闰月，false表示该月不存在闰月。 |
+
+**示例：**
+```ts
+let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
+```
+
+## ChineseCalendarTime
+
+农历时间对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | ------- | ------- | ------- | --------------------------------------- |
+| gregorianYear   | number |   否   |   否   |  公历的年。   |
+| cyclicalYear    | number |   否   |   否   |  农历的干支年。   |
+| month           | number |   否   |   否   |  农历的月。月份从0开始计数，例如0表示一月。   |
+| date            | number |   否   |   否   |  农历的日。   |
+| isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。  |
+| hour            | number |   否   |   是   |  农历的时。默认值：0。   |
+| minute          | number |   否   |   是   |  农历的分。默认值：0。   |
+| second          | number |   否   |   是   |  农历的秒。默认值：0。   |
 
 ## PhoneNumberFormat<sup>8+</sup>
 
@@ -1572,7 +1668,7 @@ getIndexList(): Array&lt;string&gt;
 
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   // indexList = [ '...', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-  //              'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
+  // 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
   let indexList: Array<string> = indexUtil.getIndexList();
   ```
 
@@ -2277,6 +2373,126 @@ let dateFormat: string =
   dateTimeFormat.format(new Date(zoneOffsetTransition.getMilliseconds())); // November 2, 2025, 1:00:00 PST
 ```
 
+### isDaylightSavingTime
+
+isDaylightSavingTime(date: Date): boolean
+
+判断指定的时间、日期是否处于夏令时。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| date   | Date   | 是   | 时间、日期。月份从0开始计数，例如0表示一月。|
+
+**返回值：**
+
+| 类型       | 说明         |
+| -------- | ---------- |
+| boolean | 是否处于夏令时。true表示处于夏令时，false表示不处于夏令时。 |
+
+**示例：**
+
+```ts
+let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
+let isDST = timezone.isDaylightSavingTime(new Date(2026, 3, 15));
+```
+
+### setAppDefaultTimeZoneById
+
+static setAppDefaultTimeZoneById(zoneID: string): void
+
+设置当前应用的默认时区，在应用运行时生命周期内有效。
+
+> **说明：**
+>
+> 进行日期时间格式化时，若未指定时区，会优先使用应用设置的默认时区。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| zoneID | string | 是   | 应用设置默认的时区ID，如："Asia/Shanghai"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 8900001   | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let zoneID: string = 'Asia/Shanghai';
+  i18n.TimeZone.setAppDefaultTimeZoneById(zoneID);
+  console.info('setAppDefaultTimeZoneById success.');
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call TimeZone.setAppDefaultTimeZoneById failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### getAppDefaultTimeZone
+
+static getAppDefaultTimeZone(): TimeZone
+
+获取应用使用的默认时区对象。若调用[setAppDefaultTimeZoneById](#setappdefaulttimezonebyid)设置了默认时区，则返回设置的默认时区对象；否则，返回系统时区对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| TimeZone | 应用使用的默认时区对象。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let zoneID: string = 'Asia/Shanghai';
+  i18n.TimeZone.setAppDefaultTimeZoneById(zoneID);
+  console.info('setAppDefaultTimeZoneById success.');
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call TimeZone.setAppDefaultTimeZoneById failed, error code: ${err.code}, message: ${err.message}.`);
+}
+let timeZone: i18n.TimeZone = i18n.TimeZone.getAppDefaultTimeZone();
+let id: string = timeZone.getID();
+console.info(`getAppDefaultTimeZone success, time zone id: ${id}`);
+```
+
 ## ZoneRules<sup>20+</sup>
 
 提供查询时区跳变规则的能力。
@@ -2441,7 +2657,7 @@ static getAvailableIDs(): string[]
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
-  // 共支持742个ID。每一个ID由使用中划线分割的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为译拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
+  // 共支持742个ID。每一个ID由短横线分隔的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
   // 更多使用信息可以参考ISO-15924。
   let ids: string[] = i18n.Transliterator.getAvailableIDs();
   ```
@@ -2789,43 +3005,7 @@ static getType(ch: string): string
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| string | 输入字符的一般类别值。|
-
-一般类别值如下，更详细的介绍可以参考Unicode标准。
-
-| 名称 | 值 | 说明 |
-| ---- | -------- | ---------- |
-| U_UNASSIGNED | U_UNASSIGNED | 表示未分配和非字符代码点对应类别。 |
-| U_GENERAL_OTHER_TYPES | U_GENERAL_OTHER_TYPES | 与 U_UNASSIGNED 一致。 |
-| U_UPPERCASE_LETTER | U_UPPERCASE_LETTER | 表示大写字母。 |
-| U_LOWERCASE_LETTER | U_LOWERCASE_LETTER | 表示小写字母。  |
-| U_TITLECASE_LETTER | U_TITLECASE_LETTER | 表示首字母大写。 |
-| U_MODIFIER_LETTER | U_MODIFIER_LETTER | 表示字母修饰符。 |
-| U_OTHER_LETTER | U_OTHER_LETTER | 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 |
-| U_NON_SPACING_MARK | U_NON_SPACING_MARK | 表示非间距标记，例如重音符号'，变音符号#。 |
-| U_ENCLOSING_MARK | U_ENCLOSING_MARK | 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 |
-| U_COMBINING_SPACING_MARK | U_COMBINING_SPACING_MARK | 表示间距标记，例如元音符号[ ]。 |
-| U_DECIMAL_DIGIT_NUMBER | U_DECIMAL_DIGIT_NUMBER | 表示十进制数字。 |
-| U_LETTER_NUMBER | U_LETTER_NUMBER | 表示字母数字，罗马数字。 |
-| U_OTHER_NUMBER | U_OTHER_NUMBER | 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 |
-| U_SPACE_SEPARATOR | U_SPACE_SEPARATOR | 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 |
-| U_LINE_SEPARATOR | U_LINE_SEPARATOR | 表示行分隔符。|
-| U_PARAGRAPH_SEPARATOR | U_PARAGRAPH_SEPARATOR | 表示段落分割符。 |
-| U_CONTROL_CHAR | U_CONTROL_CHAR | 表示控制字符。 |
-| U_FORMAT_CHAR | U_FORMAT_CHAR | 表示格式字符。 |
-| U_PRIVATE_USE_CHAR | U_PRIVATE_USE_CHAR | 表示私人使用区代码点类别，例如公司 logo。 |
-| U_SURROGATE | U_SURROGATE | 表示代理项，在UTF-16中用来表示补充字符的方法。 |
-| U_DASH_PUNCTUATION | U_DASH_PUNCTUATION | 表示短划线标点。 |
-| U_START_PUNCTUATION | U_START_PUNCTUATION | 表示开始标点，如左括号。 |
-| U_END_PUNCTUATION | U_END_PUNCTUATION | 表示结束标点，如右括号。 |
-| U_INITIAL_PUNCTUATION | U_INITIAL_PUNCTUATION | 表示前引号，例如左双引号、左单引号。 |
-| U_FINAL_PUNCTUATION | U_FINAL_PUNCTUATION | 表示后引号，例如右双引号、右单引号。 |
-| U_CONNECTOR_PUNCTUATION | U_CONNECTOR_PUNCTUATION | 表示连接符标点。 |
-| U_OTHER_PUNCTUATION | U_OTHER_PUNCTUATION | 表示其他标点。 |
-| U_MATH_SYMBOL | U_MATH_SYMBOL | 表示数学符号。 |
-| U_CURRENCY_SYMBOL | U_CURRENCY_SYMBOL | 表示货币符号。 |
-| U_MODIFIER_SYMBOL | U_MODIFIER_SYMBOL | 表示修饰符号。 |
-| U_OTHER_SYMBOL | U_OTHER_SYMBOL | 表示其它符号。 |
+| string | 输入字符的一般类别值。取值包括：<br>U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 <br>U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 <br>U_UPPERCASE_LETTER： 表示大写字母。 <br>U_LOWERCASE_LETTER： 表示小写字母。  <br>U_TITLECASE_LETTER： 表示首字母大写。 <br>U_MODIFIER_LETTER： 表示字母修饰符。 <br>U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 <br>U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 <br>U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 <br>U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 <br>U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 <br>U_LETTER_NUMBER： 表示字母数字，罗马数字。 <br>U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 <br>U_SPACE_SEPARATOR： 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 <br>U_LINE_SEPARATOR： 表示行分隔符。 <br>U_PARAGRAPH_SEPARATOR： 表示段落分隔符。 <br>U_CONTROL_CHAR： 表示控制字符。 <br>U_FORMAT_CHAR： 表示格式字符。 <br>U_PRIVATE_USE_CHAR： 表示私人使用区代码点类别，例如公司 logo。 <br>U_SURROGATE： 表示代理项，在UTF-16中用来表示补充字符的方法。 <br>U_DASH_PUNCTUATION： 表示短划线标点。 <br>U_START_PUNCTUATION： 表示开始标点，如左括号。 <br>U_END_PUNCTUATION： 表示结束标点，如右括号。 <br>U_INITIAL_PUNCTUATION： 表示前引号，例如左双引号、左单引号。 <br>U_FINAL_PUNCTUATION： 表示后引号，例如右双引号、右单引号。 <br>U_CONNECTOR_PUNCTUATION： 表示连接符标点。 <br>U_OTHER_PUNCTUATION： 表示其他标点。 <br>U_MATH_SYMBOL： 表示数学符号。 <br>U_CURRENCY_SYMBOL： 表示货币符号。 <br>U_MODIFIER_SYMBOL： 表示修饰符号。 <br>U_OTHER_SYMBOL： 表示其它符号。 <br> 更详细的介绍可以参考Unicode标准。|
 
 **示例：**
   ```ts
@@ -2833,6 +3013,53 @@ static getType(ch: string): string
 
   let unicodeType: string = i18n.Unicode.getType('a'); // unicodeType = 'U_LOWERCASE_LETTER'
   ```
+
+### detectEncoding
+
+static detectEncoding(bytes: Uint8Array): EncodingInfo
+
+识别输入字节流的编码信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明    |
+| ---- | ------ | ---- | ----- |
+| bytes | Uint8Array | 是    | 输入字节流。 |
+
+**返回值：**
+
+| 类型      | 说明                                       |
+| ------- | ---------------------------------------- |
+| [EncodingInfo](#encodinginfo) | 编码信息，包含编码名称和置信度。 |
+
+**示例：**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let uint8Array = new Uint8Array([0xEF, 0xBB, 0xBF, 0xE4, 0xB8, 0xAD]);
+  let info = i18n.Unicode.detectEncoding(uint8Array); // info.encodingName = 'UTF-8', info.confidence = 100
+  ```
+
+## EncodingInfo
+
+编码信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+| 名称  | 类型   | 只读   | 可选   | 说明                |
+| ---- | ---- | ---- | ---- | ----------------- |
+| encodingName | string | 否    | 否    | 编码名称，如UTF-8。 |
+| confidence | number | 否    | 否    | 识别结果的置信度，范围是0-100。值越大，识别结果越可靠。 |
 
 ## I18NUtil<sup>9+</sup>
 
@@ -3138,6 +3365,85 @@ try {
   let err: BusinessError = error as BusinessError;
   console.error(`call I18NUtil.getUnicodeWrappedFilePath failed, error code: ${err.code}, message: ${err.message}.`);
 }
+```
+
+### setUnicodeWrappedBidiDirection
+
+static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): string
+
+设置整段文本中部分文本方向，包括RTL、LTR。
+
+> **说明：**
+>
+> 在强字符（指具有明确书写方向的字符）中不生效。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| text | string | 是   | 需要设置方向的文本。 |
+| direction | 'RTL' \| 'LTR' | 是   | 'RTL'表示从右到左，'LTR'表示从左到右。 |
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| string | 设置方向后的文本。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let text: string = '(012) 345-6789';
+  let result: string = i18n.I18NUtil.setUnicodeWrappedBidiDirection(text, 'LTR');
+  console.info(`setUnicodeWrappedBidiDirection, result: ${result}`);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call I18NUtil.setUnicodeWrappedBidiDirection failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### convertCanonicalLocaleIdentifier
+
+static convertCanonicalLocaleIdentifier(locale: string): string
+
+将区域ID调整成符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准的格式。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| locale | string | 否    | 区域ID。 |
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| string | 有效的区域ID会返回符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准格式的区域ID。无效的区域ID会返回空字符串。 |
+
+**示例：**
+
+```ts
+let result: string = i18n.I18NUtil.convertCanonicalLocaleIdentifier('zh-cn'); // result = 'zh-CN'
 ```
 
 ### getUnicodeWrappedFilePath<sup>(deprecated)</sup>
@@ -3842,6 +4148,95 @@ try {
 | era        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定纪元的文本样式。默认值：StyledString默认的文本样式。     |
 | timeZoneName   | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定时区名称的文本样式。默认值：StyledString默认的文本样式。  |
 
+## ISO8601DateTimeFormat
+
+符合ISO 8601标准的日期格式化对象。
+
+### constructor
+
+constructor(options?: ISO8601DateTimeFormatOptions)
+
+创建符合ISO 8601标准的日期格式化对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 是    | 符合ISO 8601标准的日期格式化对象创建时的选项。 |
+
+**示例：**
+```ts
+let formatter = new i18n.ISO8601DateTimeFormat({
+  dateFormat: 'calendar',
+  timePrecision: 'minutes',
+  separatorStyle: 'extended'
+});
+```
+
+### format
+
+format(date: Date): string
+
+对时间、日期进行格式化，返回符合ISO 8601标准的时间、日期字符串。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| date | Date | 是    | 时间、日期。月份从0开始计数，例如0表示一月。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 格式化后的时间、日期字符串。 |
+
+**示例：**
+```ts
+let formatter = new i18n.ISO8601DateTimeFormat({
+  dateFormat: 'calendar',
+  timePrecision: 'minutes',
+  separatorStyle: 'extended'
+});
+let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
+```
+
+## ISO8601DateTimeFormatOptions
+
+符合ISO 8601标准的日期格式化对象创建时的选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | ------- | ------- | ------- | --------------------------------------- |
+| dateFormat   | string |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
+| timePrecision   | string |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
+| separatorStyle  | string |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
+| timeZone        | [TimeZone](#timezone) |   否   |   是   |  时区。默认值：**UTC**。   |
+| displayTimeZone     | boolean |   否  |   是   |  是否显示时区，true表示显示时区，false表示不显示时区。默认值：true。  |
+
 ## i18n.getSimpleNumberFormatBySkeleton<sup>20+</sup>
 
 getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleNumberFormat
@@ -4177,6 +4572,8 @@ format(value: number): StyledString
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### constructor<sup>23+</sup>
 
 constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOptions)
@@ -4187,12 +4584,14 @@ constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOpti
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
 | numberFormat | [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) | 是   | 用于格式化数字的对象。  |
-| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。  |
+| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。默认值：与[numberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)格式化效果一样。  |
 
 **示例：**
   ```ts
@@ -4213,6 +4612,8 @@ format(num: number): string
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -4245,6 +4646,8 @@ format(num: number): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | unitUsage        | [UnitUsage](#unitusage23) |   否    |   是    |  单位格式化使用场景的枚举。     |
@@ -4256,6 +4659,8 @@ format(num: number): string
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -4400,7 +4805,7 @@ getSystemRegion(): string
 
 getSystemLocale(): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaledeprecated)代替。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaleinstance20)代替。
 
 获取系统区域ID。
 

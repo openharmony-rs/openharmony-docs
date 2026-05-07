@@ -16,7 +16,7 @@
 - [ColorPicker](#colorpicker)：智能取色器。
 
 > **说明：**
-> 
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -119,9 +119,9 @@ let opts : image.InitializationOptions = {
 
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap).then(colorPicker => {
-    console.info("color picker=" + colorPicker);
-  }).catch( (reason : BusinessError) => {
-    console.error("error=" + reason.message);
+    console.info("Succeeded in creating colorPicker.");
+  }).catch((err : BusinessError) => {
+    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   })
 })
 ```
@@ -178,9 +178,9 @@ let opts : image.InitializationOptions = {
 
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
-    console.info("color picker=" + colorPicker);
-  }).catch( (reason : BusinessError) => {
-    console.error("error=" + reason.message);
+    console.info("Succeeded in creating colorPicker.");
+  }).catch((err : BusinessError) => {
+    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   })
 })
 ```
@@ -373,6 +373,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
+![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
 
 ### getMainColorSync
 
@@ -483,13 +484,13 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 **参数：**
 | 参数名      | 类型   | 必填 | 说明              |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | 是   | 需要取主色的个数，取值范围为[1, 10]，向下取整。   |
+| colorCount | number | 是   | 需要取主色的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
 
 **返回值：**
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。<br>- 取色个数大于10视为取前10个。 |
+| Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。 |
 
 **示例：**
 
@@ -694,7 +695,7 @@ blur(radius: number): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
+|  radius   | number | 是   | 模糊半径，单位为px。模糊效果与所设置的值成正比，值越大效果越明显。 |
 
 **返回值：**
 
@@ -710,9 +711,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let radius = 5;
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -720,7 +721,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -782,7 +783,7 @@ blur(radius: number, tileMode: TileMode): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
+|  radius   | number | 是   | 模糊半径，单位为px。模糊效果与所设置的值成正比，值越大效果越明显。 |
 |  tileMode   | [TileMode](#tilemode14) | 是   | 着色器效果平铺模式。影响图像边缘的模糊效果。目前仅支持CPU渲染，所以目前着色器平铺模式仅支持DECAL。 |
 
 **返回值：**
@@ -799,9 +800,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let radius = 30;
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -809,7 +810,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius, effectKit.TileMode.DECAL);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -877,16 +878,16 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
         // 对图片添加效果标识
         headFilter.invert();
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -968,9 +969,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let colorMatrix:Array<number> = [
       0.2126,0.7152,0.0722,0,0,
       0.2126,0.7152,0.0722,0,0,
@@ -983,7 +984,7 @@ function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.setColorMatrix(colorMatrix);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1027,6 +1028,7 @@ struct Index {
   }
 }
 ```
+![zh-ch_image_Set_ColorMatrix.png](figures/zh-ch_image_Set_ColorMatrix.png)
 
 ### brightness
 
@@ -1044,7 +1046,7 @@ brightness(bright: number): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  bright   | number | 是   | 高亮程度，取值范围在0-1之间，取值为0时图像保持不变。 |
+|  bright   | number | 是   | 高亮程度，取值范围为[0, 1]，取值为0时图像保持不变，取值为1时图像达到预设的最大亮度。 |
 
 **返回值：**
 
@@ -1060,9 +1062,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let bright = 0.5;
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -1070,7 +1072,7 @@ function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.brightness(bright);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1142,16 +1144,16 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
         // 对图片添加效果标识
         headFilter.grayscale();
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1213,7 +1215,7 @@ getEffectPixelMap(): Promise<image.PixelMap>
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Promise\<image.PixelMap>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 
 **示例：**

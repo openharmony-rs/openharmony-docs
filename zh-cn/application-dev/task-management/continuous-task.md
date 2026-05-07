@@ -2,16 +2,20 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
 ### 功能介绍
 
 应用退至后台后，在后台需要长时间运行用户可感知的任务，如播放音乐、导航等。为防止应用进程被挂起，导致对应功能异常，可以申请长时任务，使应用在后台长时间运行。在长时任务中，支持同时申请多种类型的任务，也可以对任务类型进行更新。应用退至后台执行业务时，系统会做一致性校验，确保应用在执行相应的长时任务。应用在申请长时任务成功后，通知栏会显示与长时任务相关联的消息，用户删除通知栏消息时，系统会自动停止长时任务。
+
+> **说明：**
+> 
+> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备生命周期的差异化行为](../windowmanager/window-overview.md#不同设备生命周期的差异化行为)。
 
 ### 使用场景
 
@@ -27,14 +31,15 @@
 | BLUETOOTH_INTERACTION | 蓝牙相关业务。 | bluetoothInteraction | 通过蓝牙传输文件时退后台。 |
 | MULTI_DEVICE_CONNECTION | 多设备互联。 | multiDeviceConnection | 分布式业务连接、投播。<br> **说明：** 支持在原子化服务中使用。 |
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
-| VOIP<sup>13+</sup> | 音视频通话。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
+| VOIP | 音视频通话。<br/>**说明：** 从API version 13开始支持。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
 | TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
-| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup> | 多媒体相关业务。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
+| MODE_AV_PLAYBACK_AND_RECORD | 多媒体相关业务。<br/>**说明：** 从API version 22开始支持。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
+| MODE_SPECIAL_SCENARIO_PROCESSING | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
+| MODE_NEARLINK | 星闪业务。<br/>**起始版本：** 26.0.0  | nearlink | 通过星闪传输文件时退后台。 |
 
 关于DATA_TRANSFER（数据传输）说明：
 
-- 在数据传输时，若应用使用[上传下载代理接口](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
+- 在数据传输时，若应用使用[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
 - 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
 
@@ -50,13 +55,29 @@
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统冻结。
+
+- 建议应用设置监听音频暂停事件[on('pause')](../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onpause10)，如果收到音频暂停事件上报且后续不再需要继续音频播放时，推荐取消已经申请的音视频播放长时任务。
+
 关于BLUETOOTH_INTERACTION（蓝牙相关业务）说明：
 
-如果应用仅申请了蓝牙长时任务，因设备远离等原因导致蓝牙断连，系统将取消应用的蓝牙长时任务。为确保蓝牙接续使用体验，在断连后的一段时间内（具体时长受系统负载影响，最长可达十分钟），如果恢复连接，可以通过如下操作，重新保活，实现在后台长时间运行。
+如果应用仅申请了蓝牙长时任务，因设备远离等原因导致蓝牙断连，系统将取消应用的蓝牙长时任务。为确保蓝牙接续使用体验，在断连后的一段时间内（具体时长受系统负载影响，最长可达十分钟），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。
 
-1. 应用需要主动注册长时任务暂停监听的事件，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)。
-2. 蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后，通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
-3. 成功扫描到设备之后，需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接。
+1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
+2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
+3. 成功扫描到设备之后，应用需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
+
+关于MODE_NEARLINK（星闪业务）说明： 
+
+如果应用仅申请了星闪长时任务，因设备远离等原因导致星闪断连，系统将取消应用的星闪长时任务。为确保星闪接续使用体验，在断连后的1-10分钟内（具体时长受系统负载影响），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。 
+ 
+1. 主动注册长时任务暂停监听的事件以避免星闪断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在星闪断连时系统不会立即取消长时任务，而是将其标记为暂停态。 
+2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后订阅星闪扫描结果，断连之后，本端设备主动发起星闪扫描，对端设备发送星闪广播。 
+3. 本端设备成功扫描到对端设备之后，需要向对端设备发起连接。如无其他业务扫描需求，本端设备可停止星闪扫描。
+
+关于长时任务通知说明：
+
+应用申请长时任务成功后，系统会在通知栏显示长时任务通知弹窗，弹窗的生命周期与长时任务的申请周期绑定，当长时任务取消后，通知也随之取消。建议应用根据自身业务需求，申请和释放长时任务，如果应用在前台时不希望存在长时任务通知，建议应用将申请长时任务推迟到[onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground)生命周期函数中执行。
 
 ### 约束与限制
 
@@ -70,7 +91,9 @@
 
 - 申请长时任务后，应用未执行相应的业务，系统会对应用进行管控，即应用退至后台会被挂起。如系统检测到应用申请了AUDIO_PLAYBACK（音视频播放），但实际未播放音乐。
 
-- 申请长时任务后，应用执行的业务类型与申请的不一致，系统会对应用进行管控，即应用退至后台会被挂起。如系统检测到应用只申请了AUDIO_PLAYBACK（音视频播放），但实际上除了播放音乐（对应AUDIO_PLAYBACK类型），还在进行录制（对应AUDIO_RECORDING类型）。
+- 申请长时任务后，应用执行的业务类型与申请的不一致，系统会对应用进行管控，即应用退至后台会被挂起或终止。如系统检测到应用只申请了AUDIO_PLAYBACK（音视频播放），但实际上除了播放音乐（对应AUDIO_PLAYBACK类型），还在进行录制（对应AUDIO_RECORDING类型）。
+
+- 若应用未申请音视频播放或录音等长时任务，但应用在后台又存在音视频播放或录音等行为，系统会对应用进行管控，即应用退至后台会被查杀。建议应用在后台有音视频播放或录音等行为时，提前申请音视频播放或录音等长时任务。
 
 - 申请长时任务后，应用的业务已执行完，系统会对应用进行管控，即应用退至后台会被挂起。
 
@@ -110,9 +133,10 @@
 1. 需要申请ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 2. 声明后台模式类型。
+
    在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
    
-   ```json
+   ``` json5
    "module": {
        "abilities": [
            {
@@ -147,9 +171,13 @@
 4. 申请和取消长时任务。
 
    **设备当前应用**申请和取消长时任务示例代码如下：
+   
+   从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   
+   从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
      // 长时任务id
@@ -157,33 +185,35 @@
      // 长时任务取消原因
      console.info('OnContinuousTaskCancel callback reason ' + info.reason);
    }
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
-
+   
+     // ...
+   
      OnContinuousTaskCancel() {
        try {
-          backgroundTaskManager.on('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
+         backgroundTaskManager.on('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      OffContinuousTaskCancel() {
        try {
-          // callback参数不传，则取消所有已注册的回调
-          backgroundTaskManager.off('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
+         // callback参数不传，则取消所有已注册的回调
+         backgroundTaskManager.off('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 申请长时任务.then()写法
      startContinuousTask() {
        let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -204,10 +234,10 @@
          // 车钥匙长时任务子类型，从API version 16开始支持。只有申请bluetoothInteraction类型的长时任务，车钥匙子类型才能生效。
          // 确保extraInfo参数中的Key值为backgroundTaskManager.BackgroundModeType.SUB_MODE，否则子类型不生效。
          // extraInfo: {
-         //   [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
+           // [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
          // }
        };
-
+   
        try {
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
          // 在原子化服务中，使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
@@ -215,12 +245,12 @@
            try {
              let list: string[] = ['audioPlayback'];
              // let list: string[] = ['bluetoothInteraction']; 长时任务类型包含bluetoothInteraction，CAR_KEY子类型合法
-             // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
              backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).
                then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-               console.info("Operation startBackgroundRunning succeeded");
+               console.info('Operation startBackgroundRunning succeeded');
                // 此处执行具体的长时任务逻辑，如播音等。
                // 系统会对业务场景的真实性进行检测，如果没有实际执行对应的业务，系统可能会取消对应的长时任务并挂起应用。
+               // ...
              }).catch((error: BusinessError) => {
                console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
              });
@@ -232,16 +262,17 @@
          console.error(`Failed to Operation getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 取消长时任务.then()写法
      stopContinuousTask() {
-        backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-          console.info(`Succeeded in operationing stopBackgroundRunning.`);
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
-        });
+       backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+         console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+       });
      }
-
+   
      build() {
        Row() {
          Column() {
@@ -257,6 +288,7 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('applyContinuousTask')
            .onClick(() => {
              // 通过按钮申请长时任务
              this.startContinuousTask();
@@ -270,13 +302,14 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('resetContinuousTask')
            .onClick(() => {
              // 此处结束具体的长时任务的执行
    
              // 通过按钮取消长时任务
              this.stopContinuousTask();
            })
-
+   
            Button() {
              Text('注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
            }
@@ -289,7 +322,7 @@
              // 通过按钮注册长时任务取消回调
              this.OnContinuousTaskCancel();
            })
-
+   
            Button() {
              Text('取消注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
            }
@@ -302,6 +335,7 @@
              // 通过按钮取消注册长时任务取消回调
              this.OffContinuousTaskCancel();
            })
+           // ...
          }
          .width('100%')
        }
@@ -313,17 +347,23 @@
 5. 申请和取消长时任务async/await写法。
 
    **设备当前应用**申请和取消长时任务async/await写法示例代码如下：
+   
+   从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   
+   从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
-
+   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
+   
    ``` TypeScript
    @Entry
    @Component
-   struct Index {
+   struct IndexAsyncAndAwait {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
-
+   
+     // ...
+   
      // 申请长时任务async/await写法
      async startContinuousTask() {
        let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -344,10 +384,10 @@
          // 车钥匙长时任务子类型，从API version 16开始支持。只有申请bluetoothInteraction类型的长时任务，车钥匙子类型才能生效。
          // 确保extraInfo参数中的Key值为backgroundTaskManager.BackgroundModeType.SUB_MODE，否则子类型不生效。
          // extraInfo: {
-         //   [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
+           // [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
          // }
        };
-
+   
        try {
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
          // 在原子化服务中，使用const wantAgentObj: object = await wantAgent.getWantAgent(wantAgentInfo);替换下面一行代码
@@ -360,6 +400,7 @@
              await backgroundTaskManager.startBackgroundRunning(this.context as Context, list, wantAgentObj);
            console.info(`Operation startBackgroundRunning succeeded, notificationId: ${res.notificationId}`);
            // 此处执行具体的长时任务逻辑，如播音等。
+           // ...
          } catch (error) {
            console.error(`Failed to Operation startBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
          }
@@ -367,17 +408,18 @@
          console.error(`Failed to Operation getWantAgent. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 取消长时任务async/await写法
      async stopContinuousTask() {
        try {
          await backgroundTaskManager.stopBackgroundRunning(this.context);
          console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         // ...
        } catch (error) {
          console.error(`Failed to operation stopBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`)
        }
      }
-
+   
      build() {
        Row() {
          Column() {
@@ -385,7 +427,7 @@
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
    
-          Button() {
+           Button() {
              Text('申请长时任务').fontSize(25).fontWeight(FontWeight.Bold)
            }
            .type(ButtonType.Capsule)
@@ -393,6 +435,7 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('applyContinuousTask')
            .onClick(() => {
              // 通过按钮申请长时任务
              this.startContinuousTask();
@@ -406,12 +449,14 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('resetContinuousTask')
            .onClick(() => {
              // 此处结束具体的长时任务的执行
-
+   
              // 通过按钮取消长时任务
              this.stopContinuousTask();
            })
+           // ...
          }
          .width('100%')
        }
@@ -421,9 +466,9 @@
    ```
    <!--Del-->
 
-   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[Call调用开发指南（同设备）](../application-models/uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)和[Call调用开发指南（跨设备）](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
+   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[通过跨设备Call调用实现多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
-   <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
+   <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
    
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
@@ -563,7 +608,7 @@
 
    在config.json文件中配置长时任务权限ohos.permission.KEEP_BACKGROUND_RUNNING，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。同时，为需要使用长时任务的ServiceAbility声明相应的长时任务类型。
    
-   ```json
+   ``` json5
    "module": {
        "package": "com.example.myapplication",
        "abilities": [
@@ -702,4 +747,4 @@
 
 针对长时任务开发，有以下相关实例可供参考：
 
-- [长时任务（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
+- [长时任务（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ContinuousTask)

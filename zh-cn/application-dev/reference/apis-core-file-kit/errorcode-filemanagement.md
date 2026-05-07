@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ Operation not permitted
 
 1.根据当前系统的[访问控制机制](../../security/AccessToken/access-token-overview.md)，应用无法使用分享给其他应用的URI。
 
-2.根据[系统Picker](../../application-models/system-app-startup.md)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
+2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
 
 3.URI路径不推荐进行拼接，拼接后的URI默认未授权。
 
@@ -258,7 +258,7 @@ Permission denied
 
 2.排查内核日志中是否有[avc拦截日志](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-security-selinux-develop-intro.md)，如果存在avc拦截告警，<!--RP1-->拦截原因分析请参考[SELinux开发说明](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md)。<!--RP1End-->
 
-3.确认文件的路径是否为应用内的沙箱路径[沙箱路径地址](../../file-management/app-sandbox-directory.md)，文件管理系统禁止操作应用沙箱以外的文档。
+3.确认文件的路径是否为应用内的沙箱路径（[应用沙箱目录与应用沙箱路径](../../file-management/app-sandbox-directory.md#应用沙箱目录与应用沙箱路径)），文件管理系统禁止操作应用沙箱以外的文档。
 
 ### 13900013 错误的地址
 
@@ -880,6 +880,138 @@ Software caused connection abort
 
 2.检查Wi-Fi和蓝牙，确认状态正常。
 
+### 13900050 内部资源错误
+
+**错误信息**
+
+Internal resource error.
+
+**错误描述**
+
+内部资源错误。
+
+**可能原因**
+
+系统内部资源分配失败。
+
+**处理步骤**
+
+重新运行当前代码。
+
+### 13900051 缓冲区读写越界
+
+**错误信息**
+
+Buffer read/write out of bounds.
+
+**错误描述**
+
+mmap缓冲区读写越界。
+
+**可能原因**
+
+读写的数据长度超过了mmap映射区的剩余可用空间。
+
+**处理步骤**
+
+1.调用[remaining](js-apis-file-fs.md#remaining)确认映射区的剩余可用空间。
+
+2.如需操作更大范围，可先调用[setLimit](js-apis-file-fs.md#setlimit)调整限制值。
+
+### 13900052 mmap缓冲区已释放
+
+**错误信息**
+
+Mmap buffer released.
+
+**错误描述**
+
+mmap缓冲区已释放。
+
+**可能原因**
+
+1.对已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放的缓冲区进行操作。
+
+2.FileMapping对象的内部状态无效。
+
+**处理步骤**
+
+1.确认mmap缓冲区是否已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放。
+
+2.代码如果已经调用过[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)接口，则需重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)接口建立新的映射。
+
+### 13900053 mmap缓冲区只读
+
+**错误信息**
+
+Read-only mmap buffer.
+
+**错误描述**
+
+mmap缓冲区只读。
+
+**可能原因**
+
+以只读模式映射的缓冲区尝试进行写操作。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式或私有模式。
+
+### 13900054 mmap缓冲区不可访问
+
+**错误信息**
+
+Mmap buffer is inaccessible.
+
+**错误描述**
+
+mmap缓冲区不可访问。
+
+**可能原因**
+
+系统内存映射异常导致缓冲区指针失效。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)映射文件。
+
+### 13900055 mmap映射类型不支持该操作
+
+**错误信息**
+
+Mmap operation not supported.
+
+**错误描述**
+
+mmap映射类型不支持该操作。
+
+**可能原因**
+
+[msync](js-apis-file-fs.md#msync)写入磁盘时，映射区为只读模式或私有模式。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式。
+
+### 13900056 mmap不支持映射此文件
+
+**错误信息**
+
+Mmap does not support mapping this file.
+
+**错误描述**
+
+mmap不支持映射此文件。
+
+**可能原因**
+
+目标文件不是常规文件，如管道、socket、设备文件等。
+
+**处理步骤**
+
+请使用[read](js-apis-file-fs.md#fileioread)、[write](js-apis-file-fs.md#fileiowrite)或[Stream](js-apis-file-fs.md#stream)等文件访问接口替代mmap。
+
 ## 用户数据管理错误码
 
 ### 14000001 文件名非法
@@ -1223,6 +1355,61 @@ Failed to traverse the query data partition directory.
 **处理步骤**
 
 重启设备后重试。
+
+### 13600016 获取文件系统inode数失败
+
+**错误信息**
+
+Failed to query the inode information of the data partition.
+
+**错误描述**
+
+获取数据分区的inode信息失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600017 获取当前应用的inode占用量失败
+
+**错误信息**
+
+Failed to query the inode information of the application.
+
+**错误描述**
+
+获取当前应用的inode占用量失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600018 查询系统数据大小失败
+
+**错误信息**
+
+Failed to query the system data size.
+
+**错误描述**
+
+查询系统数据大小失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
 ## 公共文件访问错误码
 
 ### 14300001 IPC通信失败

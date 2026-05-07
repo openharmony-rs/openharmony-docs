@@ -3,8 +3,8 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 request模块给应用提供上传下载文件、后台代理传输的基础功能。
 
@@ -131,7 +131,7 @@ uploadFile(context: BaseContext, config: UploadConfig): Promise&lt;UploadTask&gt
       console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
     });
   } catch (err) {
-    console.error(`Failed to request the upload. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -193,7 +193,7 @@ uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback&l
       uploadTask = data;
     });
   } catch (err) {
-    console.error(`Failed to request the upload. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -480,9 +480,9 @@ off(type:  'progress',  callback?: (uploadedSize: number, totalSize: number) =&g
   };
   uploadTask.on('progress', upProgressCallback1);
   uploadTask.on('progress', upProgressCallback2);
-  //表示取消upProgressCallback1的订阅
+  // 表示取消upProgressCallback1的订阅
   uploadTask.off('progress', upProgressCallback1);
-  //表示取消订阅上传任务进度事件的所有回调
+  // 表示取消订阅上传任务进度事件的所有回调
   uploadTask.off('progress');
   ```
 
@@ -528,9 +528,9 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
   };
   uploadTask.on('headerReceive', headerCallback1);
   uploadTask.on('headerReceive', headerCallback2);
-  //表示取消headerCallback1的订阅
+  // 表示取消headerCallback1的订阅
   uploadTask.off('headerReceive', headerCallback1);
-  //表示取消订阅上传任务HTTP标头事件的所有回调
+  // 表示取消订阅上传任务HTTP标头事件的所有回调
   uploadTask.off('headerReceive');
   ```
 
@@ -555,7 +555,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -575,9 +575,9 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
   };
   uploadTask.on('complete', upCompleteCallback1);
   uploadTask.on('complete', upCompleteCallback2);
-  //表示取消headerCallback1的订阅
+  // 表示取消headerCallback1的订阅
   uploadTask.off('complete', upCompleteCallback1);
-  //表示取消订阅上传任务完成的所有回调
+  // 表示取消订阅上传任务完成的所有回调
   uploadTask.off('complete');
 
   let upFailCallback1 = (taskStates: Array<request.TaskState>) => {
@@ -594,9 +594,9 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
   };
   uploadTask.on('fail', upFailCallback1);
   uploadTask.on('fail', upFailCallback2);
-  //表示取消headerCallback1的订阅
+  // 表示取消headerCallback1的订阅
   uploadTask.off('fail', upFailCallback1);
-  //表示取消订阅上传任务失败的所有回调
+  // 表示取消订阅上传任务失败的所有回调
   uploadTask.off('fail');
   ```
 
@@ -773,8 +773,8 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 | header | Object | 否 | 否 | 添加要包含在上传请求中的HTTP或HTTPS标志头。 |
 | method | string | 否 | 否 |  HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用PUT修改资源。 |
 | index<sup>11+</sup> | number | 否 | 是 | 任务的路径索引，默认值为0。 |
-| begins<sup>11+</sup> | number | 否 | 是 | 上传任务开始时读取的文件起点。默认值为0，取值范围为闭区间，表示从头开始传输。|
-| ends<sup>11+</sup> | number | 否 | 是 | 上传任务结束时读取的文件终点。默认值为-1，取值范围为闭区间，表示传输到整个文件末尾结束。 |
+| begins<sup>11+</sup> | number | 否 | 是 | 上传任务开始时读取的文件起点，单位为字节（B）。默认值为0，取值范围为闭区间，表示从头开始传输。|
+| ends<sup>11+</sup> | number | 否 | 是 | 上传任务结束时读取的文件终点，单位为字节（B）。默认值为-1，取值范围为闭区间，表示传输到整个文件末尾结束。 |
 | files | Array&lt;[File](#file)&gt; | 否 | 否 | 要上传的文件列表。文件以HTTP的multipart/form-data格式提交。 |
 | data | Array&lt;[RequestData](#requestdata)&gt; | 否 | 否 | 请求的表单数据。 |
 
@@ -885,7 +885,7 @@ downloadFile(context: BaseContext, config: DownloadConfig): Promise&lt;DownloadT
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -944,7 +944,7 @@ downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallba
       }
     });
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1025,7 +1025,7 @@ download(config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;): v
 以下错误码的详细介绍请参见[上传下载错误码](errorcode-request.md)与[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | The permissions check fails. |
 
 **示例：**
@@ -1102,7 +1102,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) =&gt; v
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1158,15 +1158,15 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) =&gt;
       };
       downloadTask.on('progress', progressCallback1);
       downloadTask.on('progress', progressCallback2);
-      //表示取消progressCallback1的订阅
+      // 表示取消progressCallback1的订阅
       downloadTask.off('progress', progressCallback1);
-      //表示取消订阅下载任务进度事件的所有回调
+      // 表示取消订阅下载任务进度事件的所有回调
       downloadTask.off('progress');
     }).catch((err: BusinessError) => {
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1224,7 +1224,7 @@ on(type: 'complete'|'pause'|'remove', callback: () =&gt; void): void
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1272,9 +1272,9 @@ off(type: 'complete'|'pause'|'remove', callback?: () =&gt; void): void
       };
       downloadTask.on('complete', completeCallback1);
       downloadTask.on('complete', completeCallback2);
-      //表示取消completeCallback1的订阅
+      // 表示取消completeCallback1的订阅
       downloadTask.off('complete', completeCallback1);
-      //表示取消订阅下载任务完成的所有回调
+      // 表示取消订阅下载任务完成的所有回调
       downloadTask.off('complete');
 
       let pauseCallback1 = () => {
@@ -1285,9 +1285,9 @@ off(type: 'complete'|'pause'|'remove', callback?: () =&gt; void): void
       };
       downloadTask.on('pause', pauseCallback1);
       downloadTask.on('pause', pauseCallback2);
-      //表示取消pauseCallback1的订阅
+      // 表示取消pauseCallback1的订阅
       downloadTask.off('pause', pauseCallback1);
-      //表示取消订阅下载任务暂停的所有回调
+      // 表示取消订阅下载任务暂停的所有回调
       downloadTask.off('pause');
 
       let removeCallback1 = () => {
@@ -1298,15 +1298,15 @@ off(type: 'complete'|'pause'|'remove', callback?: () =&gt; void): void
       };
       downloadTask.on('remove', removeCallback1);
       downloadTask.on('remove', removeCallback2);
-      //表示取消removeCallback1的订阅
+      // 表示取消removeCallback1的订阅
       downloadTask.off('remove', removeCallback1);
-      //表示取消订阅下载任务移除的所有回调
+      // 表示取消订阅下载任务移除的所有回调
       downloadTask.off('remove');
     }).catch((err: BusinessError) => {
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }  
   ```
 
@@ -1360,7 +1360,7 @@ on(type: 'fail', callback: (err: number) =&gt; void): void
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1414,15 +1414,15 @@ off(type: 'fail', callback?: (err: number) =&gt; void): void
       };
       downloadTask.on('fail', failCallback1);
       downloadTask.on('fail', failCallback2);
-      //表示取消failCallback1的订阅
+      // 表示取消failCallback1的订阅
       downloadTask.off('fail', failCallback1);
-      //表示取消订阅下载任务失败的所有回调
+      // 表示取消订阅下载任务失败的所有回调
       downloadTask.off('fail');
     }).catch((err: BusinessError) => {
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1474,7 +1474,7 @@ delete(): Promise&lt;boolean&gt;
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1530,7 +1530,7 @@ delete(callback: AsyncCallback&lt;boolean&gt;): void
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1584,7 +1584,7 @@ getTaskInfo(): Promise&lt;DownloadInfo&gt;
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   } 
   ```
 
@@ -1639,7 +1639,7 @@ getTaskInfo(callback: AsyncCallback&lt;DownloadInfo&gt;): void
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1692,7 +1692,7 @@ getTaskMimeType(): Promise&lt;string&gt;
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1747,7 +1747,7 @@ getTaskMimeType(callback: AsyncCallback&lt;string&gt;): void
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1800,7 +1800,7 @@ suspend(): Promise&lt;boolean&gt;
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1855,7 +1855,7 @@ suspend(callback: AsyncCallback&lt;boolean&gt;): void
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1908,7 +1908,7 @@ restore(): Promise&lt;boolean&gt;
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1963,7 +1963,7 @@ restore(callback: AsyncCallback&lt;boolean&gt;): void
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -2238,7 +2238,7 @@ pause(): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  downloadTask.pause().then((result: boolean) => {    
+  downloadTask.pause().then(() => {    
     console.info('Succeeded in pausing the download task.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2277,7 +2277,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```js
-  downloadTask.pause((err: BusinessError, result: boolean)=>{
+  downloadTask.pause((err: BusinessError) => {
     if(err) {
       console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -2318,7 +2318,7 @@ resume(): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  downloadTask.resume().then((result: boolean) => {
+  downloadTask.resume().then(() => {
     console.info('Succeeded in resuming the download task.')
   }).catch((err: BusinessError) => {
     console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2357,7 +2357,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```js
-  downloadTask.resume((err: BusinessError, result: boolean)=>{
+  downloadTask.resume((err: BusinessError) => {
     if (err) {
       console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -2375,13 +2375,13 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
-| header | Object | 否 | 是 | 添加要包含在下载请求中的HTTPS标志头。|
+| header | Object | 否 | 是 | 添加要包含在下载请求中的HTTPS标志头。默认值为空。|
 | enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br>**说明：**<br> Wi-Fi为非计费网络，数据流量为计费网络。 |
 | enableRoaming | boolean | 否 | 是 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。|
 | description | string | 否 | 是 | 设置下载会话的描述。默认值为空字符串。 |
-| filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)获取应用存储路径。<br/>-&nbsp;Stage模型下使用[AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md)类获取文件路径。|
-| networkType | number | 否 | 是 | 设置允许下载的网络类型。默认值为NETWORK_MOBILE&NETWORK_WIFI。<br/>-&nbsp;NETWORK_MOBILE：0x00000001<br/>-&nbsp;NETWORK_WIFI：0x00010000|
-| title | string | 否 | 是 | 设置下载任务名称。 |
+| filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)方法获取应用存储路径。<br/>-&nbsp;Stage模型下使用[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)中AbilityContext的类获取文件路径。|
+| networkType | number | 否 | 是 | 设置允许下载的网络类型，通过[网络类型常量](#常量)的位运算方式决定允许的网络类型，支持如下几种设置方式: <br/>- 仅支持蜂窝网络下载，参数为NETWORK_MOBILE或0x00000001 <br/>- 仅支持WLAN网络下载，参数为NETWORK_WIFI或0x00010000<br/>- 参数默认值，支持蜂窝/WLAN网络下载，参数为NETWORK_MOBILE \| NETWORK_WIFI或0x00010001。<br/>当参数为NETWORK_MOBILE \| NETWORK_WIFI时，enableMetered和enableRoaming参数不生效。|
+| title | string | 否 | 是 | 设置下载任务名称。默认值为download。 |
 | background<sup>9+</sup> | boolean | 否 | 是 | 后台任务通知开关，启用后可在通知中显示下载状态。true表示启用，false表示禁用。默认值为false。 |
 
 
@@ -2461,7 +2461,8 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 ## request.agent.BroadcastEvent<sup>11+</sup>
 
 定义自定义系统事件。用户可以使用公共事件接口获取该事件。
-上传下载 SA 具有 'ohos.permission.SEND_TASK_COMPLETE_EVENT' 该权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
+
+上传下载SA具有'ohos.permission.SEND_TASK_COMPLETE_EVENT'权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
 
 调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](js-apis-inner-commonEvent-commonEventData.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。
 
@@ -2485,7 +2486,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | mimeType<sup>(deprecated)</sup> | string | 否 | 是 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> 从 API version 18 开始废弃，建议使用contentType替代。 |
 | contentType<sup>18+</sup> | string | 否 | 是 | 文件内容类型，默认值为文件名后缀。该选项会被填写到HTTP表单指定的Content-Type字段中。 |
 | filename | string | 否 | 是 | 文件名，默认值通过路径获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| extras | object | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| extras | object | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
 ## request.agent.FormItem<sup>10+</sup> 
@@ -2517,7 +2518,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br/>- 上传时，使用PUT或POST，默认值为PUT。<br/>- 下载时，使用GET或POST，默认值为GET。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | headers | object | 否 | 是 | 添加要包含在任务中的HTTP协议标志头。<br/>- 上传请求，默认的Content-Type为"multipart/form-data"。<br/>- 下载请求，默认的Content-Type为"application/json"。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 否 | 是 | - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。<br/>- 上传时，data是表单项数组Array&lt;[FormItem](#requestagentformitem10)&gt;。从API version 15开始，创建单个任务可以上传最多100个文件。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| saveas | string | 否 | 是 | 保存下载文件的路径，包括如下几种：<br/>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br/>从API version 20开始，除[下载到用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| saveas | string | 否 | 是 | 保存下载文件的路径，包括如下几种：<br/>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br/>从API version 20开始，除[下载网络资源文件至用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | network | [Network](#requestagentnetwork10) | 否 | 是 | 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | metered | boolean | 否 | 是 | 是否允许在按流量计费的网络中工作，默认为false。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | roaming | boolean | 否 | 是 | 是否允许在漫游网络中工作，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -2525,8 +2526,8 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | redirect | boolean | 否 | 是 | 是否允许重定向，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | proxy<sup>12+</sup> | string | 否 | 是 | 设置代理地址，其最大长度为512个字符，默认为空。<br/>代理地址格式:"http://\<domain or address\>:\<port\>" |
 | index | number | 否 | 是 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| begins | number | 否 | 是 | 文件起点，通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ends | number | 否 | 是 | 文件终点，通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| begins | number | 否 | 是 | 文件起点，单位为字节（B），通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| ends | number | 否 | 是 | 文件终点，单位为字节（B），通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | gauge | boolean | 否 | 是 | 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br/>- false：代表仅完成或失败的通知。<br/>- true：发出每个进度已完成或失败的通知。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | precise | boolean | 否 | 是 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br/>- 如果设置为false，将文件大小设置为-1时任务继续。<br/>默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | token | string | 否 | 是 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -2571,7 +2572,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | index | number | 是 | 否 | 任务中当前正在处理的文件索引。                                                     |
 | processed | number | 是 | 否 | 任务中当前文件的已处理数据大小，单位为字节（B）。                                               |
 | sizes | Array&lt;number&gt; | 是 | 否 | 任务中文件的大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，sizes为 -1。 |
-| extras | object | 是 | 是 | 交互的额外内容，例如：来自服务器的响应的header和body。                                     |
+| extras | object | 是 | 是 | 交互的额外内容，例如：来自服务器的响应的header和body。默认值为空。                                     |
 
 
 ## request.agent.Faults<sup>10+</sup>  
@@ -2663,7 +2664,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | title   | string | 否 | 是 | 通知栏自定义标题。若不设置则使用默认显示方式。title长度上限为1024B。 |
 | text    | string | 否 | 是 | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B。  |
 | visibility<sup>21+</sup> | number | 否 | 是 | 设置任务的通知栏显示方式，通过[VISIBILITY常量](#常量-1)的位运算方式决定显示方式，任务通知的显示方式，包括如下几种：<br/>- 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。<br/>- 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。<br/>- 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。<br/>若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。|
-| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。|
+| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。默认值为空。|
 
 
 **示例：**
@@ -3551,7 +3552,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示任务进度。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
 
 回调函数的参数：
 
@@ -3614,9 +3615,9 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
   request.agent.create(context, config).then((task: request.agent.Task) => {
     task.on('progress', createOffCallback1);
     task.on('progress', createOffCallback2);
-    //表示取消createOffCallback1的订阅
+    // 表示取消createOffCallback1的订阅
     task.off('progress', createOffCallback1);
-    //表示取消订阅任务进度的所有回调
+    // 表示取消订阅任务进度的所有回调
     task.off('progress');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -3644,7 +3645,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'completed'，表示任务完成。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
 
 回调函数的参数：
 
@@ -3707,9 +3708,9 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
   request.agent.create(context, config).then((task: request.agent.Task) => {
     task.on('completed', createOffCallback1);
     task.on('completed', createOffCallback2);
-    //表示取消createOffCallback1的订阅
+    // 表示取消createOffCallback1的订阅
     task.off('completed', createOffCallback1);
-    //表示取消订阅任务完成的所有回调
+    // 表示取消订阅任务完成的所有回调
     task.off('completed');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -3737,7 +3738,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'failed'，表示任务失败。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
 
 回调函数的参数：
 
@@ -3799,9 +3800,9 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
   request.agent.create(context, config).then((task: request.agent.Task) => {
     task.on('failed', createOffCallback1);
     task.on('failed', createOffCallback2);
-    //表示取消createOffCallback1的订阅
+    // 表示取消createOffCallback1的订阅
     task.off('failed', createOffCallback1);
-    //表示取消订阅任务失败的所有回调
+    // 表示取消订阅任务失败的所有回调
     task.off('failed');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -3827,7 +3828,7 @@ off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'pause'，表示任务暂停。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
 
 回调函数的参数：
 
@@ -3889,9 +3890,9 @@ off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =
   request.agent.create(context, config).then((task: request.agent.Task) => {
     task.on('pause', createOffCallback1);
     task.on('pause', createOffCallback2);
-    //表示取消createOffCallback1的订阅
+    // 表示取消createOffCallback1的订阅
     task.off('pause', createOffCallback1);
-    //表示取消订阅任务暂停的所有回调
+    // 表示取消订阅任务暂停的所有回调
     task.off('pause');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -3917,7 +3918,7 @@ off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'resume'，表示任务恢复。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
 
 回调函数的参数：
 
@@ -3979,9 +3980,9 @@ off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) 
   request.agent.create(context, config).then((task: request.agent.Task) => {
     task.on('resume', createOffCallback1);
     task.on('resume', createOffCallback2);
-    //表示取消createOffCallback1的订阅
+    // 表示取消createOffCallback1的订阅
     task.off('resume', createOffCallback1);
-    //表示取消订阅任务恢复的所有回调
+    // 表示取消订阅任务恢复的所有回调
     task.off('resume');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4007,7 +4008,7 @@ off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'remove'，表示任务被移除。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。 |
+  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
 
 回调函数的参数：
 
@@ -4069,9 +4070,9 @@ off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) 
   request.agent.create(context, config).then((task: request.agent.Task) => {
     task.on('remove', createOffCallback1);
     task.on('remove', createOffCallback2);
-    //表示取消createOffCallback1的订阅
+    // 表示取消createOffCallback1的订阅
     task.off('remove', createOffCallback1);
-    //表示取消订阅任务移除的所有回调
+    // 表示取消订阅任务移除的所有回调
     task.off('remove');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4155,9 +4156,9 @@ off(event: 'response', callback?: Callback&lt;HttpResponse&gt;): void
   request.agent.create(context, config).then((task: request.agent.Task) => {
     task.on('response', createOffCallback1);
     task.on('response', createOffCallback2);
-    //表示取消createOffCallback1的订阅
+    // 表示取消createOffCallback1的订阅
     task.off('response', createOffCallback1);
-    //表示取消订阅任务移除的所有回调
+    // 表示取消订阅任务移除的所有回调
     task.off('response');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4340,8 +4341,9 @@ off(event: 'wait', callback?: Callback&lt;WaitingReason&gt;): void
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-启动一个任务，使用callback异步回调。<br>
+启动一个任务。使用callback异步回调。<br>
 以下状态的任务可以被启动：
+
 1. 刚被request.agent.create接口创建的任务。
 2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
 
@@ -4419,8 +4421,9 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 start(): Promise&lt;void&gt;
 
-启动一个任务，使用Promise异步回调。<br>
+启动一个任务。使用Promise异步回调。<br>
 以下状态的任务可以被启动：
+
 1. 刚被request.agent.create接口创建的任务。
 2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
 
@@ -5075,7 +5078,7 @@ create(context: BaseContext, config: Config, callback: AsyncCallback&lt;Task&gt;
     }
     console.info(`Succeeded in creating a download task. result: ${task.config}`);
     await task.start();
-    //用户需要手动调用remove从而结束task对象的生命周期
+    // 用户需要手动调用remove从而结束task对象的生命周期
     request.agent.remove(task.tid);
   });
   ```
@@ -5163,7 +5166,7 @@ create(context: BaseContext, config: Config): Promise&lt;Task&gt;
   request.agent.create(context, config).then(async (task: request.agent.Task) => {
     console.info(`Succeeded in creating a download task. result: ${task.config}`);
     await task.start();
-    //用户需要手动调用remove从而结束task对象的生命周期
+    // 用户需要手动调用remove从而结束task对象的生命周期
     request.agent.remove(task.tid);
   }).catch((err: BusinessError) => {
     console.error(`Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
@@ -5184,7 +5187,7 @@ getTask(context: BaseContext, id: string, token?: string): Promise&lt;Task&gt;
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
   | id | string | 是 | 任务id。 |
-  | token | string | 否 | 任务查询token。 |
+  | token | string | 否 | 任务查询token。默认值为空。 |
 
 **返回值：** 
 
@@ -5563,7 +5566,7 @@ search(filter?: Filter): Promise&lt;Array&lt;string&gt;&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | filter | [Filter](#requestagentfilter10) | 否 | 过滤条件。 |
+  | filter | [Filter](#requestagentfilter10) | 否 | 过滤条件。默认值为空。 |
 
 **返回值：** 
 
@@ -5708,7 +5711,7 @@ deleteGroup(gid: string): Promise\<void\>
 
 | 参数名  | 类型       | 必填 | 说明      |
 |------|----------|----|---------|
-| gid  | string   | 是  | 目标分组id。 |
+| gid  | string   | 是  | 目标分组id。与创建的任务分组ID保持一致，即使用[request.agent.createGroup](#requestagentcreategroup15)接口成功创建任务分组时的返回值。 |
 
 **返回值：**
 

@@ -71,4 +71,4 @@ struct Parent {
 }
 ```
 
-For details about the implementation of the .so file in the preceding code, see [Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkXComponent).
+For details about the implementation of the .so file in the preceding code, see [Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent).

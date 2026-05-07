@@ -5,7 +5,7 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 FeatureAbility模块提供与用户进行交互的Ability的能力，包括启动新的Ability、停止Ability、获取dataAbilityHelper对象、获取当前Ability对应的窗口，连接断连Service等。
 
@@ -71,7 +71,7 @@ featureAbility.startAbility(
     if (error && error.code !== 0) {
       console.error(`startAbility fail, error: ${JSON.stringify(error)}`);
     } else {
-      console.log(`startAbility success, data: ${JSON.stringify(data)}`);
+      console.info(`startAbility success, data: ${JSON.stringify(data)}`);
     }
   }
 );
@@ -89,9 +89,9 @@ startAbility(parameter: StartAbilityParameter): Promise\<number>
 >
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **参数：**
 
@@ -219,7 +219,7 @@ featureAbility.startAbilityForResult(
     if (error && error.code !== 0) {
       console.error(`startAbilityForResult fail, error: ${JSON.stringify(error)}`);
     } else {
-      console.log(`startAbilityForResult success, data: ${JSON.stringify(data)}`);
+      console.info(`startAbilityForResult success, data: ${JSON.stringify(data)}`);
     }
   }
 );
@@ -431,7 +431,7 @@ featureAbility.hasWindowFocus((error, data) => {
   if (error && error.code !== 0) {
     console.error(`hasWindowFocus fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`hasWindowFocus success, data: ${JSON.stringify(data)}`);
+    console.info(`hasWindowFocus success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -477,7 +477,7 @@ getWant(callback: AsyncCallback\<Want>): void
 
 | 参数名       | 类型                            | 必填   | 说明        |
 | -------- | ----------------------------- | ---- | --------- |
-| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，返回want信息。 |
+| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，当获取要拉起的Ability对应的Want成功，err为undefined，data为当前Ability对应的Want；否则为错误对象。 |
 
 **示例：**
 
@@ -489,7 +489,7 @@ featureAbility.getWant((error, data) => {
   if (error && error.code !== 0) {
     console.error(`getWant fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`getWant success, data: ${JSON.stringify(data)}`);
+    console.info(`getWant success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -548,7 +548,7 @@ context.getBundleName((error, data) => {
   if (error && error.code !== 0) {
     console.error(`getBundleName fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`getBundleName success, data: ${JSON.stringify(data)}`);
+    console.info(`getBundleName success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -655,10 +655,10 @@ let connectId = featureAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`featureAbilityTest ConnectAbility onFailed errCode : ${code}`);
@@ -698,10 +698,10 @@ let connectId = featureAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`featureAbilityTest ConnectAbility onFailed errCode : ${code}`);
@@ -713,7 +713,7 @@ featureAbility.disconnectAbility(connectId, (error) => {
   if (error && error.code !== 0) {
     console.error(`disconnectAbility fail, connectId: ${connectId}, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`disconnectAbility success， connectId: ${connectId}`);
+    console.info(`disconnectAbility success， connectId: ${connectId}`);
   }
 });
 ```
@@ -755,10 +755,10 @@ let connectId = featureAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`featureAbilityTest ConnectAbility onFailed errCode : ${code}`);
@@ -767,7 +767,7 @@ let connectId = featureAbility.connectAbility(
 );
 
 featureAbility.disconnectAbility(connectId).then(() => {
-  console.log('disconnectAbility success');
+  console.info('disconnectAbility success');
 }).catch((error: BusinessError)=>{
   console.error(`featureAbilityTest result errCode : ${error.code}`);
 });
@@ -788,7 +788,7 @@ getWindow(callback: AsyncCallback\<window.Window>): void
 
 | 参数名     | 类型                          | 必填 | 说明                          |
 | -------- | ----------------------------- | ---- | ----------------------------- |
-| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | 是   | 回调函数，返回当前Ability对应的窗口。 |
+| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | 是   | 回调函数。当获取窗口成功，err为undefined，data为当前Ability对应的窗口；否则为错误对象。 |
 
 **示例：**
 
@@ -802,7 +802,7 @@ featureAbility.getWindow((error: BusinessError, data: window.Window) => {
   if (error && error.code !== 0) {
     console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`getWindow success, data: ${typeof(data)}`);
+    console.info(`getWindow success, data: ${typeof(data)}`);
   }
 });
 ```
@@ -832,7 +832,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 featureAbility.getWindow().then((data: window.Window) => {
-  console.log(`getWindow success, data: ${typeof(data)}`);
+  console.info(`getWindow success, data: ${typeof(data)}`);
 }).catch((error: BusinessError)=>{
   console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
 });
@@ -924,9 +924,9 @@ type Context = _Context
 
 Context模块。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
@@ -938,9 +938,9 @@ type AppVersionInfo = _AppVersionInfo
 
 应用版本信息。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
@@ -952,9 +952,9 @@ type ProcessInfo = _ProcessInfo
 
 进程信息。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |

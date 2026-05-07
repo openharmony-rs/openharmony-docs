@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_BarrierOption ArkUI_BarrierOption
+```
+
 ## Overview
 
 Defines the ID, direction, and referenced component of a barrier.

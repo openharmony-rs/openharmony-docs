@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **FileHash** module implements hash processing on files.
 
@@ -154,12 +154,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   // pages/xxx.ets
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   function hashFileWithStream() {
     const filePath = pathDir + "/test.txt";
     // Create a readable stream.
-    const rs = fs.createReadStream(filePath);
+    const rs = fileIo.createReadStream(filePath);
     // Create a hash stream.
     const hs = hash.createHash('sha256');
     rs.on('data', (emitData) => {

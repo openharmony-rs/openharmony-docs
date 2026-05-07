@@ -1,4 +1,10 @@
 # Native api中没有导出的符号列表
+<!--Kit: NDK-->	 
+<!--Subsystem: arkcompiler-->	 
+<!--Owner: @liyiming13-->	 
+<!--Designer: @liyiming13-->	 
+<!--Tester: @zsw_zhushiwei-->	 
+<!--Adviser: @fang-jinxu-->
 
 |符号类型|符号名|备注|
 | --- | --- | --- |
@@ -18,7 +24,7 @@
 |OBJECT|_environ|-|
 |OBJECT|function_of_shared_lib|-|
 |OBJECT|h_errno|-|
-|OBJECT|ohos_malloc_hook_shared_liibrary|-|
+|OBJECT|ohos_malloc_hook_shared_library|-|
 |OBJECT|program_invocation_name|-|
 |OBJECT|program_invocation_short_name|-|
 |FUNC|__adjtime64|-|

@@ -5,13 +5,13 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 设备上报的鼠标事件，继承自[InputEvent](./js-apis-inputevent.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,7 +27,7 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 | 名称        | 值 | 说明                 |
 | ----------- | -------- | -------------------- |
-| CANCEL      | 0   | 取消。             |
+| CANCEL      | 0   | 取消。鼠标down事件异常打断，未正常闭环，例如：按下鼠标按键后未抬起，窗口退后台或被异常销毁时触发cancel事件。 |
 | MOVE        | 1   | 鼠标移动。             |
 | BUTTON_DOWN | 2   | 鼠标按键按下。         |
 | BUTTON_UP   | 3   | 鼠标按键抬起。         |

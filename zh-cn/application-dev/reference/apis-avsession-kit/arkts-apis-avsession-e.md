@@ -1,7 +1,7 @@
 # Enums
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -18,8 +18,8 @@
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| TYPE_LOCAL<sup>11+</sup>      | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| TYPE_CAST_PLUS_STREAM<sup>11+</sup>      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| TYPE_LOCAL     | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| TYPE_CAST_PLUS_STREAM      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | TYPE_DLNA<sup>12+</sup>      | 4    | DLNA协议。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | TYPE_CAST_PLUS_AUDIO<sup>20+</sup>      | 8    | PCM模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
@@ -201,6 +201,8 @@
 | ERR_CODE_MESSAGE_OVERLOAD              | 6600107 | 命令&消息过载。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | ERR_CODE_DEVICE_CONNECTION_FAILED      | 6600108 | 设备连接失败。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | ERR_CODE_REMOTE_CONNECTION_NOT_EXIST   | 6600109 | 远端会话不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| ERR_CODE_DESKTOP_LYRIC_NOT_ENABLED<sup>23+</sup>    | 6600110 | 应用程序的桌面歌词功能未开启。<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| ERR_CODE_DESKTOP_LYRIC_NOT_SUPPORTED<sup>23+</sup>    | 6600111 | 当前设备不支持桌面歌词功能。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | ERR_CODE_CAST_CONTROL_UNSPECIFIED<sup>13+</sup>    | 6611000 | 未被定义的投播错误码。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_REMOTE_ERROR<sup>13+</sup>    | 6611001 | 远端播放器中发生不明错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW<sup>13+</sup>     | 6611002 | 播放出现延迟。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
@@ -268,3 +270,31 @@
 | SECONDS_10             | 10 | 时间为10秒。             |
 | SECONDS_15             | 15 | 时间为15秒。             |
 | SECONDS_30             | 30 | 时间为30秒。             |
+
+## BackgroundPlayMode<sup>24+</sup>
+
+表示session支持的后台播放模式的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称                      | 值 | 说明                    |
+| ------------------------- | - | ----------------------- |
+| ENABLE_BACKGROUND_PLAY    | 0 | 支持后台播放。            |
+| DISABLE_BACKGROUND_PLAY   | 1 | 不支持后台播放。          |
+
+## ExtraKey
+
+表示定义在不同场景中使用的额外键的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| DLNA_CURRENT_URI_METADATA      | "CurrentURIMetadata"    | DLNA投播场景下，用于提供与资源相关元数据的键。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_DIDL_LITE      | "DIDL-Lite"    | DLNA投播场景下，用于在传输中描述内容元数据的键。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |

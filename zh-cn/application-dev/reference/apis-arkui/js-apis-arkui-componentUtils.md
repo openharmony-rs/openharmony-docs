@@ -29,7 +29,7 @@ getRectangleById(id: string): ComponentInfo
 >
 > - 从API version 10开始支持，从API version 18开始废弃，建议使用[getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid)替代。getRectangleById需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取[ComponentUtils](arkts-apis-uicontext-componentutils.md)对象，然后通过该对象进行调用。
 >
-> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的[ComponentUtils](arkts-apis-uicontext-componentutils.md)对象。在目标组件布局完成后，通过该接口能够获取组件坐标和尺寸信息。建议在[布局回调](./js-apis-arkui-inspector.md)中使用该接口。如果组件动态创建但未挂树，则无法通过该接口获取正常的组件信息。因为组件在未挂树的情况下，一般未经过UI框架正常的测量与布局，此时请确保组件正常挂树后再尝试获取组件信息。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的[ComponentUtils](arkts-apis-uicontext-componentutils.md)对象。在目标组件布局完成后，通过该接口能够获取组件坐标和尺寸信息。建议在[布局回调](./js-apis-arkui-inspector.md)中使用该接口。如果组件动态创建但未挂载组件树，则无法通过该接口获取正常的组件信息。因为组件在未挂载组件树的情况下，一般未经过UI框架正常的测量与布局，此时请确保组件正常挂载组件树后再尝试获取组件信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -49,7 +49,7 @@ getRectangleById(id: string): ComponentInfo
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -111,9 +111,9 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | 名称     | 类型 | 只读    | 可选     | 说明                               |
 | --------| ---- | -------------------| -------------------------------| -----------------------------------|
-| x       | number | 否       | 否    | x轴平移距离。<br />单位: px                       |
-| y       | number | 否       | 否    | y轴平移距离。<br />单位: px                       |
-| z       | number | 否       | 否     | z轴平移距离。<br />单位: px                       |
+| x       | number | 否       | 否    | x轴平移距离。<br />单位: vp                       |
+| y       | number | 否       | 否    | y轴平移距离。<br />单位: vp                       |
+| z       | number | 否       | 否     | z轴平移距离。<br />单位: vp                       |
 
 ### ScaleResult
 
@@ -123,11 +123,11 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | 名称     | 类型 | 只读    | 可选   | 说明                               |
 | --------| ---- | ---- |-----------------------------------| -----------------------------------|
-| x       | number | 否       | 否 | x轴缩放倍数。<br />单位: px                       |
-| y       | number | 否       | 否  | y轴缩放倍数。<br />单位: px                       |
-| z       | number | 否       | 否 | z轴缩放倍数。<br />单位: px                       |
-| centerX | number | 否       | 否 | 变换中心点x轴坐标。<br />单位: px                  |
-| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: px                |
+| x       | number | 否       | 否 | x轴缩放倍数。                       |
+| y       | number | 否       | 否  | y轴缩放倍数。                       |
+| z       | number | 否       | 否 | z轴缩放倍数。                       |
+| centerX | number | 否       | 否 | 变换中心点x轴坐标。<br />单位: vp                  |
+| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: vp                |
 
 ### RotateResult
 
@@ -137,12 +137,12 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | 名称     | 类型  | 只读    | 可选     | 说明                               |
 | --------| ---- | -----------------| ---------------------------------| -----------------------------------|
-| x       | number | 否       | 否  | 旋转轴向量x坐标。<br />单位: px                   |
-| y       | number | 否       | 否  | 旋转轴向量y坐标。<br />单位: px                   |
-| z       | number | 否       | 否  | 旋转轴向量z坐标。<br />单位: px                   |
-| angle   | number | 否       | 否  | 旋转角度。<br />单位: px                          |
-| centerX | number | 否       | 否  | 变换中心点x轴坐标。<br />单位: px                 |
-| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: px                 |
+| x       | number | 否       | 否  | 旋转轴向量x坐标。                   |
+| y       | number | 否       | 否  | 旋转轴向量y坐标。                   |
+| z       | number | 否       | 否  | 旋转轴向量z坐标。                   |
+| angle   | number | 否       | 否  | 旋转角度。<br />单位: deg                          |
+| centerX | number | 否       | 否  | 变换中心点x轴坐标。<br />单位: vp                 |
+| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: vp                 |
 
 ### Matrix4Result
 
@@ -154,7 +154,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 
 | 类型 | 说明                               |
 | --------| -----------------------------------|
-| [number,number,number,number,<br />number,number,number,number,<br />number,number,number,number,<br />number,number,number,number] | 取值范围为长度为16（4\*4）的number数组，&nbsp;详情见四阶矩阵说明。<br/>单位: px  |
+| [number,number,number,number,<br />number,number,number,number,<br />number,number,number,number,<br />number,number,number,number] | 取值范围为长度为16（4\*4）的number数组，&nbsp;详情见四阶矩阵说明。  |
 
 **四阶矩阵说明：**
 
@@ -177,11 +177,11 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 | m32    | number | 是   | z轴平移值，单位px，单位矩阵默认为0。 |
 | m33    | number | 是   | 齐次坐标下生效，产生透视投影效果。   |
 
-**示例：**
+## 示例
 
-> **说明：**
->
-> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
+### 示例1（获取ComponentUtils对象）
+
+推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
 
 ```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';
@@ -214,15 +214,17 @@ struct Utils {
         .height(100)
         .key("image_01")
       Button('getRectangleById')
-      .onClick(() => {
-        this.value = JSON.stringify(this.getUIContext().getComponentUtils().getRectangleById("image_01")) // 建议使用this.getUIContext().getComponentUtils()接口
-      }).margin(10).id('onClick')
+        .onClick(() => {
+          this.value = JSON.stringify(this.getUIContext()
+            .getComponentUtils()
+            .getRectangleById("image_01")) // 建议使用this.getUIContext().getComponentUtils()接口
+        }).margin(10).id('onClick')
       Text(this.value)
         .margin(20)
         .width(300)
         .height(300)
         .borderWidth(2)
-    }.margin({left: 50})
+    }.margin({ left: 50 })
   }
 }
 ```

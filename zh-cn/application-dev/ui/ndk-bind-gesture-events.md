@@ -1,7 +1,7 @@
 # 绑定手势事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -70,9 +70,10 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 通过上文的示例已经了解了如何将手势绑定在节点上，接下来将分别介绍不同手势的创建方法。
 
 - 点击手势
+
   通过给组件绑定点击手势可在组件被点击时触发此回调，可指定触发回调需要的点击次数和手指个数。
 
-    <!-- @[create_tap_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_tap_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -84,8 +85,9 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 
 - 滑动手势
+
   通过给组件绑定滑动手势可在用户滑动组件时触发回调，可指定触发回调需要的手指个数、滑动方向、滑动距离。单位为px。
-    <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -97,9 +99,10 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 
 - 长按手势
+
   通过给组件绑定长按手势可在用户长按组件时触发回调，可指定触发回调需要的手指个数、长按时间（单位毫秒）、是否连续触发。
 
-    <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -112,39 +115,42 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 
 - 捏合手势
+
   通过给组件绑定捏合手势可在用户捏合组件时触发回调，可指定触发回调需要的手指个数（最小为2）、捏合距离（单位px）。
 
-    <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
-    
-    ``` C
-    // 获取手势Native接口集合
-    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
-        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
-    // 创建捏合手势
-    // NUMBER_10 = 10
-    auto pinchGesture = gestureApi->createPinchGesture(1, NUMBER_10);
-    ```
+  <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  
+  ``` C
+  // 获取手势Native接口集合
+  auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+      OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+  // 创建捏合手势
+  // NUMBER_2 = 2，NUMBER_10 = 10
+  auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
+  ```
 
 
 - 旋转手势
+
   通过给组件绑定旋转手势可在用户旋转组件时触发回调，可指定触发回调需要的手指个数（最小为2）、旋转角度。
 
-    <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
-    
-    ``` C
-    // 获取手势Native接口集合
-    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
-        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
-    // 创建旋转手势
-    // NUMBER_10 = 10
-    auto rotationGesture = gestureApi->createRotationGesture(1, NUMBER_10);
-    ```
+  <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  
+  ``` C
+  // 获取手势Native接口集合
+  auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+      OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+  // 创建旋转手势
+  // NUMBER_2 = 2，NUMBER_10 = 10
+  auto rotationGesture = gestureApi->createRotationGesture(NUMBER_2, NUMBER_10);
+  ```
 
 
 - 快滑手势
+
   通过给组件绑定快滑手势可在用户快速滑动组件时触发回调，可指定触发回调需要的手指个数（最小为1）、滑动方向、滑动速度（单位px/s）。
 
-    <!-- @[create_swiper_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_swiper_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -173,6 +179,7 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 <!-- @[long_press_and_swipe_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h) -->
 
 ``` C
+// LongPressAndSwipeGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -182,7 +189,7 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 ArkUI_NodeHandle LongPressAndSwipeGesture()
 {
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
@@ -211,14 +218,14 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::SEQUENTIAL_GROUP);
 
     // 创建长按手势
-    auto longPressGesture = gestureApi->createLongPressGesture(GINGERS_NUM, true, DURATION_NUM);
+    auto longPressGesture = gestureApi->createLongPressGesture(FINGERS_NUM, true, DURATION_NUM);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(longPressGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_GestureSampleLog longPressGesture,"
                      "ArkUI_GestureRecognizerType%{public}d", type);
     }
-    // 给长按手势定回调
+    // 给长按手势绑定回调
     auto onActionCallBackPanLongPress = [](ArkUI_GestureEvent *event, void *extraParam) {
         ArkUI_GestureEventActionType actionType = OH_ArkUI_GestureEvent_GetActionType(event);
 
@@ -327,6 +334,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 <!-- @[long_press_and_flick_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndFlickGesture.h) -->
 
 ``` C
+// LongPressAndFlickGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -336,7 +344,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle LongPressAndFlickGesture()
 {
@@ -368,13 +376,13 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::PARALLEL_GROUP);
 
     // 创建长按手势
-    auto longPressGesture = gestureApi->createLongPressGesture(GINGERS_NUM, true, DURATION_NUM_500);
+    auto longPressGesture = gestureApi->createLongPressGesture(FINGERS_NUM, true, DURATION_NUM_500);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(longPressGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_GestureSampleLog,ArkUI_GestureRecognizerType%{public}d", type);
     }
-    // 给长按手势定回调
+    // 给长按手势绑定回调
     auto onActionCallBackPanLongPress = [](ArkUI_GestureEvent *event, void *extraParam) {
         ArkUI_GestureEventActionType actionType = OH_ArkUI_GestureEvent_GetActionType(event);
 
@@ -413,7 +421,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
                      "NdkAddInteractionEvent_GestureSampleLog, addChildGesture longPressGesture");
     }
     // 创建快滑手势 swipe
-    auto swipeGesture = gestureApi->createSwipeGesture(GINGERS_NUM, GESTURE_DIRECTION_ALL, DURATION_NUM_100);
+    auto swipeGesture = gestureApi->createSwipeGesture(FINGERS_NUM, GESTURE_DIRECTION_ALL, DURATION_NUM_100);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(swipeGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
@@ -484,6 +492,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 <!-- @[swipe_and_pinch_exclusive_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/SwipeAndPinchExclusiveGesture.h) -->
 
 ``` C
+// SwipeAndPinchExclusiveGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -493,7 +502,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 {
@@ -527,7 +536,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::EXCLUSIVE_GROUP);
 
     // 创建滑动手势
-    auto panGesture = gestureApi->createPanGesture(GINGERS_NUM, GESTURE_DIRECTION_VERTICAL, DURATION_NUM);
+    auto panGesture = gestureApi->createPanGesture(FINGERS_NUM, GESTURE_DIRECTION_VERTICAL, DURATION_NUM);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(panGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
@@ -726,7 +735,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
                    "NdkAddInteractionEvent_eventInfoOfCommonEvent eventInfo = %{public}s", eventInfo.c_str());
   };
   // 创建一个单指点击手势
-  auto TapGesture = gestureApi->createTapGesture(COUNT_NUM_1, GINGERS_NUM_1);
+  auto TapGesture = gestureApi->createTapGesture(COUNT_NUM_1, FINGERS_NUM_1);
   // 将事件回调绑定到TapGesture上，触发手势后，通过回调函数处理手势事件
   gestureApi->setGestureEventTarget(TapGesture,
                                     GESTURE_EVENT_ACTION_ACCEPT | GESTURE_EVENT_ACTION_UPDATE |

@@ -1,10 +1,10 @@
 # @ohos.enterprise.browser（浏览器管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供浏览器管理能力，包括设置/取消浏览器策略、获取浏览器策略等。
 
@@ -86,7 +86,7 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 
 setPolicies(admin: Want, appId: string, policies: string): Promise&lt;void&gt;
 
-为指定的浏览器设置浏览策略，使用promise异步回调。
+为指定的浏览器设置浏览策略，使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -200,7 +200,7 @@ browser.getPolicies(wantTemp, appId, (err, result) => {
 
 getPolicies(admin: Want, appId: string): Promise&lt;string&gt;
 
-获取指定浏览器的策略，使用promise异步回调。
+获取指定浏览器的策略，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -46,11 +46,11 @@ Defines the configuration options of the text picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| range | string[] \| string[][]<sup>10+</sup> \| [Resource](ts-types.md#resource) \|<br>[TextPickerRangeContent](#textpickerrangecontent10)[]<sup>10+</sup> \| [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<sup>10+</sup> | No| No| Data selection range of the picker. This parameter cannot be set to an empty array. If set to an empty array, it will not be displayed. If it is dynamically changed to an empty array, the current value remains displayed.<br>**NOTE**<br>1. Single-column pickers: string[], [Resource](ts-types.md#resource), or [TextPickerRangeContent](#textpickerrangecontent10)[]<br>2. Multi-column independent pickers: string[][]<br>3. Multi-column cascading pickers: [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<br>4. The Resource type supports only [strarray.json](../../../quick-start/resource-categories-and-access.md#resource-group-directories).<br>5. The type and number of columns in the range cannot be dynamically modified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected | number \| number[]<sup>10+</sup> | No| Yes| Index of the selected item in the data list. The index is zero-based.<br>Default value: **0**.<br>**NOTE**<br>1. Single-column pickers: number<br>2. Multi-column pickers: number[]<br>3. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| value | [ResourceStr](ts-types.md#resourcestr) \| [ResourceStr](ts-types.md#resourcestr)[] | No| Yes| Value of the selected item. The priority of this parameter is lower than that of **selected**.<br>Default value: value of the first item in the data list.<br> **NOTE**<br>1. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>2. The [Resource](ts-types.md#resource) type is supported since API version 20.<br>3. This parameter works only when the picker contains text only. It does not work when the picker contains images or mixed content.<br>4. Single-column pickers: [ResourceStr](ts-types.md#resourcestr)<br>5. Multi-column pickers: [ResourceStr](ts-types.md#resourcestr)[]<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| range | string[]&nbsp;\|&nbsp;string[][]<sup>10+</sup> \| [Resource](ts-types.md#resource)&nbsp;\|<br>[TextPickerRangeContent](#textpickerrangecontent10)[]<sup>10+</sup>&nbsp;\|&nbsp;[TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<sup>10+</sup> | No| No| Data selection range of the picker. This parameter cannot be set to an empty array. If it is set to an empty array, no value is displayed. If it is dynamically changed to an empty array, the current valid value remains displayed.<br>**NOTE**<br>1. Single-column pickers: string[], [Resource](ts-types.md#resource), or [TextPickerRangeContent](#textpickerrangecontent10)[]<br>2. Multi-column independent pickers: string[][]<br>3. Multi-column cascading pickers: [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<br>4. The Resource type supports only [strarray.json](../../../quick-start/resource-categories-and-access.md#resource-group-directories).<br>5. The type and number of columns in the range cannot be dynamically modified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | No| Yes| Index of the selected item in the data list. The index is zero-based.<br>Default value: **0**<br>**NOTE**<br>1. Single-column pickers: number<br>2. Multi-column pickers: number[]<br>3. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| value | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)[] | No| Yes| Value of the selected item. The priority of this parameter is lower than that of **selected**.<br>Default value: value of the first item in the data list.<br> **NOTE**<br>1. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>2. The [Resource](ts-types.md#resource) type is supported since API version 20.<br>3. This parameter works only when the picker contains text only. It does not work when the picker contains images or mixed content.<br>4. Single-column pickers: [ResourceStr](ts-types.md#resourcestr)<br>5. Multi-column pickers: [ResourceStr](ts-types.md#resourcestr)[]<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | columnWidths<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)[] | No| Yes| Custom widths for each column.<br>Default value: Each column has equal width, calculated by dividing the total component width by the number of columns.<br>**NOTE**<br>1. Text truncation occurs when content exceeds column width.<br>2. Invalid values are treated as the default value.<br>3. Individual array elements can be **Undefined** or **Null**, but the entire array cannot be **Undefined[]** or **Null[]**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## TextPickerRangeContent<sup>10+</sup>
@@ -61,10 +61,10 @@ Defines the content for single-column picker options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type                                                | Read-Only| Optional| Description                                                        |
+| Name| Type                                                | Read Only| Optional| Description                                                        |
 | ---- | ---------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| icon | string \| [Resource](ts-types.md#resource) | No  | No  | Image resource. If the value is a string, such as **"/common/hello.png"**, it represents the path to the image.|
-| text | string \| [Resource](ts-types.md#resource) | No  | Yes  | Text information.<br>An empty character string is used by default.<br>Note: Text truncation occurs when content exceeds column width.|
+| icon | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No  | No  | Image resource. If the value is a string, such as **"/common/hello.png"**, it represents the path to the image.|
+| text | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No  | Yes  | Text information.<br>An empty character string is used by default.<br>Note: Text truncation occurs when content exceeds column width.|
 
 ## TextCascadePickerRangeContent<sup>10+</sup>
 
@@ -74,9 +74,9 @@ Defines the content for multi-column picker options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type                                                | Read-Only| Optional| Description  |
+| Name| Type                                                | Read Only| Optional| Description  |
 | ------ | -------------------------------------------------------- | ---- | ---------- | ---------- |
-| text   | string \| [Resource](ts-types.md#resource) | No | No | Text information.<br>Note: Text truncation occurs when content exceeds column width.|
+| text   | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | No | Text information.<br>Note: Text truncation occurs when content exceeds column width.|
 | children   | [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[] | No | Yes | Linkage data.|
 ## DividerOptions<sup>12+</sup>
 
@@ -86,11 +86,11 @@ Define the divider configuration options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                      | Read-Only| Optional| Description                                                        |
+| Name       | Type                                      | Read Only| Optional| Description                                                        |
 | ----------- | ------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| strokeWidth | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Stroke width of the divider.<br>Default value: **2.0px**.<br>Unit: vp (default) or px.<br>If the value is less than 0, the default value is used. The maximum value allowed is half the height of the column. Percentages are not supported.|
-| startMargin | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the start edge of the text picker.<br>Default value: **0**.<br>Unit: vp (default) or px.<br>Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.|
-| endMargin   | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the end edge of the text picker.<br>Default value: **0**.<br>Unit: vp (default) or px.<br>Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.|
+| strokeWidth | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Stroke width of the divider.<br>Default value: **2.0px**<br>Unit: vp (default) or px.<br>If the value is less than 0, the default value is used. The maximum value allowed is half the height of the column. Percentages are not supported.|
+| startMargin | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the start edge of the text picker.<br>Default value: **0**<br>Unit: vp (default) or px.<br>Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.|
+| endMargin   | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the end edge of the text picker.<br>Default value: **0**<br>Unit: vp (default) or px.<br>Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.|
 | color       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the divider.<br>Default value: **'#33000000'**                      |
 
 ## Attributes
@@ -111,7 +111,7 @@ Sets the height of the picker items.
 
 | Name| Type                      | Mandatory| Description                  |
 | ------ | -------------------------- | ---- | ---------------------- |
-| value  | number \| string | Yes  | Height of the picker items.<br>Value range:<br>**number** type: [0, +∞), in vp.<br>**string** type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE**<br>The set value applies to both selected and unselected items.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Height of the picker items.<br>Value range:<br>Number type: [0, +∞), in vp.<br>String type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE**<br>The set value applies to both selected and unselected items.|
 
 ### defaultPickerItemHeight<sup>18+</sup>
 
@@ -127,7 +127,7 @@ Sets the height of the picker items. Compared with [defaultPickerItemHeight](#de
 
 | Name| Type                      | Mandatory| Description                  |
 | ------ | -------------------------- | ---- | ---------------------- |
-| height  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| string> | Yes  | Height of the picker items.<br>Value range:<br>**number** type: [0, +∞), in vp.<br>**string** type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE**<br>1. The set value applies to both selected and unselected items.<br>2. If **height** is set to **undefined**, the previous value is retained.|
+| height  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;string> | Yes  | Height of the picker items.<br>Value range:<br>Number type: [0, +∞), in vp.<br>String type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE**<br>1. The set value applies to both selected and unselected items.<br>2. If **height** is set to **undefined**, the previous value is retained.|
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -163,7 +163,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -183,7 +183,7 @@ Sets the text style of edge items (the second item above or below the selected i
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of edge items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of edge items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -223,7 +223,7 @@ Sets the text color, font size, and font weight of candidate items (the first it
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -243,7 +243,7 @@ Sets the text style of candidate items (the first item immediately above or belo
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Style of candidate items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Style of candidate items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -283,7 +283,7 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### selectedTextStyle<sup>20+</sup>
 
@@ -301,13 +301,13 @@ Sets the text style of the selected item, covering the following: text color, fo
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### selectedIndex<sup>10+</sup>
 
 selectedIndex(value: number | number[])
 
-Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](#textpickeroptions). Use **number** for single-column pickers. Use **number[]** for multi-column pickers.
+Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](#textpickeroptions). Use the number type for single-column pickers. Use the number[] type for multi-column pickers.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -317,13 +317,13 @@ Sets the index of the selected item or items in the data list. This setting take
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | number \| number[] | Yes  | Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**.<br>If the value is negative or exceeds the maximum index, the default value is used.<br>|
+| value  | number&nbsp;\|&nbsp;number[] | Yes  | Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**<br>If the value is negative or exceeds the maximum index, the default value is used.<br>|
 
 ### selectedIndex<sup>18+</sup>
 
 selectedIndex(index: Optional\<number | number[]>)
 
-Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](#textpickeroptions). Use **number** for single-column pickers. Use **number[]** for multi-column pickers. Compared with [selectedIndex<sup>10+</sup>](#selectedindex10), this API supports the **undefined** type for the **index** parameter.
+Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](#textpickeroptions). Use the number type for single-column pickers. Use the number[] type for multi-column pickers. Compared with [selectedIndex<sup>10+</sup>](#selectedindex10), this API supports the **undefined** type for the **index** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -333,7 +333,7 @@ Sets the index of the selected item or items in the data list. This setting take
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| index  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| number[]> | Yes  | Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**.<br>If **index** is **undefined**, the **selected** value of [TextPickerOptions](#textpickeroptions) is used.<br>If it is negative or exceeds the maximum index, the default value is used.<br>|
+| index  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;number[]> | Yes  | Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**<br>If **index** is **undefined**, the **selected** value of [TextPickerOptions](#textpickeroptions) is used.<br>If it is negative or exceeds the maximum index, the default value is used.<br>|
 
 ### canLoop<sup>10+</sup>
 
@@ -349,7 +349,7 @@ Sets whether to enable loop scrolling.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.|
+| value  | boolean | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**|
 
 ### canLoop<sup>18+</sup>
 
@@ -365,7 +365,7 @@ Sets whether to enable loop scrolling. Compared with [canLoop<sup>10+</sup>](#ca
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used.|
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used.|
 
 ### divider<sup>12+</sup>
 
@@ -400,7 +400,7 @@ If the sum of **startMargin** and **endMargin** in [DividerOptions](#divideropti
 
 | Name| Type   | Mandatory| Description                                                                 |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| textDivider | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[DividerOptions](#divideroptions12) \| null> | Yes  | Default value:<br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>}<br>1. If the value of **textDivider** is **undefined**, the default value is used.<br>2. If **textDivider** is a valid [DividerOptions](#divideroptions12) object, the divider is rendered using the specified style.<br>3. If **textDivider** is **null**, the divider is hidden.|
+| textDivider | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DividerOptions](#divideroptions12) \| null> | Yes  | Default value:<br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>}<br>1. If the value of **textDivider** is **undefined**, the default value is used.<br>2. If **textDivider** is a valid [DividerOptions](#divideroptions12) object, the divider is rendered using the specified style.<br>3. If **textDivider** is **null**, the divider is hidden.|
 
 ### gradientHeight<sup>12+</sup>
 
@@ -416,7 +416,7 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the fade effect.<br>Default value: **36vp**.<br>Value range: [0, +∞). Percentages are supported.<br>**NOTE**<br>1. If the value is set to a percentage, **100%** equals half the height of the text picker.<br>2. A value of **0** disables the fade effect.<br>3. Values exceeding half the height of the text picker revert to the default value.<br>4. If the value is **undefined** or negative, the default value is used.|
+| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the fade effect.<br>Default value: **36vp**<br>Value range: [0, +∞). Percentages are supported.<br>**NOTE**<br>1. If the value is set to a percentage, **100%** equals half the height of the text picker.<br>2. A value of **0** disables the fade effect.<br>3. Values exceeding half the height of the text picker revert to the default value.<br>4. If the value is **undefined** or negative, the default value is used.|
 
 ### gradientHeight<sup>18+</sup>
 
@@ -432,7 +432,7 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| height  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)> | Yes  | Height of the fade effect.<br>Default value: **36vp**.<br>Value range: [0, +∞). Percentages are supported.<br>**NOTE**<br>1. If the value is set to a percentage, **100%** equals half the height of the text picker.<br>2. A value of **0** disables the fade effect.<br>3. Values exceeding half the height of the text picker revert to the default value.<br>4. If the value is **undefined** or negative, the default value is used.|
+| height  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)> | Yes  | Height of the fade effect.<br>Default value: **36vp**<br>Value range: [0, +∞). Percentages are supported.<br>**NOTE**<br>1. If the value is set to a percentage, **100%** equals half the height of the text picker.<br>2. A value of **0** disables the fade effect.<br>3. Values exceeding half the height of the text picker revert to the default value.<br>4. If the value is **undefined** or negative, the default value is used.|
 
 ### disableTextStyleAnimation<sup>15+</sup>
 
@@ -448,7 +448,7 @@ Sets whether to disable the animation effect of text style changes during scroll
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| disabled  | boolean | Yes  | Whether to disable the animation effect of text style changes during scrolling.<br>- **true**: Disable the animation effect of text style changes.<br>- **false**: Do not disable the animation effect of text style changes.<br>Default value: **false**.<br>**NOTE**<br>When this API is used with **true**, there are no text style changes, including the font size, weight, and color, during scrolling, and all text is displayed in the style set by [defaultTextStyle](#defaulttextstyle15). If [defaultTextStyle](#defaulttextstyle15) is not set, the default style of the [Text](ts-basic-components-text.md) component is used.|
+| disabled  | boolean | Yes  | Whether to disable the animation effect of text style changes during scrolling.<br>- **true**: Disable the animation effect of text style changes.<br>- **false**: Do not disable the animation effect of text style changes.<br>Default value: **false**<br>**NOTE**<br>When this API is used with **true**, there are no text style changes, including the font size, weight, and color, during scrolling, and all text is displayed in the style set by [defaultTextStyle](#defaulttextstyle15). If [defaultTextStyle](#defaulttextstyle15) is not set, the default style of the [Text](ts-basic-components-text.md) component is used.|
 
 ### defaultTextStyle<sup>15+</sup>
 
@@ -466,16 +466,15 @@ Sets the text style of the items when the text style change animation during the
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [TextPickerTextStyle](#textpickertextstyle15) | Yes  | Text style of the items when the text style change animation during the scrolling process is disabled.<br>Default value: same as the default value of the [Text](ts-basic-components-text.md) component|
 
->  **NOTE**
->
->  To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
+
+```json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 ### enableHapticFeedback<sup>18+</sup>
 
@@ -491,18 +490,17 @@ Sets whether to enable haptic feedback.
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
 
->  **NOTE**
->
->  To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
+
+```json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -517,7 +515,7 @@ Sets the sensitivity to the digital crown rotation.
 
 | Name  | Type                                    | Mandatory  | Description                     |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**                    |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**                    |
 
 >  **NOTE**
 >
@@ -536,7 +534,7 @@ Sets the background style of selected items.
 
 | Name  | Type                                    | Mandatory  | Description                     |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| style | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerBackgroundStyle](#pickerbackgroundstyle20)> | Yes   | Background color and corner radius for selected items. Applies to all columns in multi-column mode.<br>Default value:<br>{ <br>color: $r('sys.color.comp_background_tertiary'),<br>borderRadius: $r('sys.float.corner_radius_level12')<br>}|
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerBackgroundStyle](#pickerbackgroundstyle20)> | Yes   | Background color and corner radius for selected items. Applies to all columns in multi-column mode.<br>Default value:<br>{ <br>color: $r('sys.color.comp_background_tertiary'),<br>borderRadius: $r('sys.float.corner_radius_level12')<br>}|
 
 ## Events
 
@@ -544,7 +542,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onChange
 
-onChange(callback: (value: string \| string[], index: number \| number[]) =&gt; void)
+onChange(callback:&nbsp;(value:&nbsp;string&nbsp;\|&nbsp;string[],&nbsp;index:&nbsp;number&nbsp;\|&nbsp;number[])&nbsp;=&gt;&nbsp;void)
 
 Triggered when the text picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty.
 
@@ -558,14 +556,14 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| value  | string \| string[]<sup>10+</sup> | Yes  | Text of the selected item. The value of the multi-column data selector is of the array type.  |
-| index  | number \| number[]<sup>10+</sup> | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
+| value  | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | Yes  | Text of the selected item. Use the array type for multi-column pickers.  |
+| index  | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
 
 ### onChange<sup>18+</sup>
 
 onChange(callback: Optional\<OnTextPickerChangeCallback>)
 
-Triggered when the text picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty. Compared with [onChange](#onchange), the **callback** parameter supports the **undefined** type.
+Triggered when the text picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
 This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead.
 
@@ -577,7 +575,7 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnTextPickerChangeCallback](#ontextpickerchangecallback18)> | Yes  | Callback invoked when an item in the picker is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnTextPickerChangeCallback](#ontextpickerchangecallback18)> | Yes  | Callback invoked when an item in the picker is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ### onScrollStop<sup>14+</sup>
 
@@ -599,7 +597,7 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [TextPickerScrollStopCallback](#textpickerscrollstopcallback14) | Yes  | Triggered when the scrolling in the text picker stops.|
+| callback | [TextPickerScrollStopCallback](#textpickerscrollstopcallback14) | Yes  | Event triggered when the scrolling in the text picker stops.|
 
 ### onScrollStop<sup>18+</sup>
 
@@ -621,7 +619,7 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextPickerScrollStopCallback](#textpickerscrollstopcallback14)> | Yes  | Triggered when the scrolling in the text picker stops.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextPickerScrollStopCallback](#textpickerscrollstopcallback14)> | Yes  | Event triggered when the scrolling in the text picker stops.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ### onEnterSelectedArea<sup>18+</sup>
 
@@ -645,7 +643,7 @@ Triggered when an option enters the selection zone during text picker scrolling 
 
 | Name  | Type                      | Mandatory| Description                                      |
 | -------- | -------------------------- | ---- | ------------------------------------------ |
-| callback | [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18) | Yes  | Callback triggered when an option enters the selection zone during text picker scrolling.|
+| callback | [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18) | Yes  | Callback invoked when an option enters the selection zone during text picker scrolling.|
 
 ### onAccept<sup>(deprecated) </sup>
 
@@ -653,7 +651,7 @@ onAccept(callback: (value: string, index: number) => void)
 
 Triggered when the OK button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](ts-methods-textpicker-dialog.md).
 
-This API is deprecated since API version 10.
+This API is supported since API version 8 and deprecated since API version 10. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -668,16 +666,16 @@ This API is deprecated since API version 10.
 
 onCancel(callback: () => void)
 
-Triggered when the Cancel button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](ts-methods-textpicker-dialog.md).
+Triggered when the cancel button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](ts-methods-textpicker-dialog.md).
 
-This API is deprecated since API version 10.
+This API is supported since API version 8 and deprecated since API version 10. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| callback  | () => void | Yes  | Triggered when the Cancel button in the dialog box is clicked.  |
+| callback  | () => void | Yes  | Callback invoked when the cancel button in the dialog box is clicked.  |
 
 ## TextPickerTextStyle<sup>15+</sup>
 
@@ -687,7 +685,7 @@ Defines the text style options for the text picker. Inherits from [PickerTextSty
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type                                    | Read-Only| Optional| Description                     |
+| Name  | Type                                    | Read Only| Optional| Description                     |
 | ----- | ---------------------------------------- | ---- | ------------------------- | ------------------------- |
 | minFontSize | number \| string \| [Resource](ts-types.md#resource) | No| Yes| Minimum font size for the text. Used with **maxFontSize** to enable font scaling. When both **minFontSize** and **maxFontSize** are set, the **size** property in **font** is ignored. By default, the maximum number of lines is 1, with the **MIN_FONT_SIZE_FIRST** adaptation strategy. For details, see [minFontSize](ts-basic-components-text.md#minfontsize).|
 | maxFontSize  | number \| string \| [Resource](ts-types.md#resource) | No  | Yes  | Maximum font size for the text. For details, see [maxFontSize](ts-basic-components-text.md#maxfontsize).                    |
@@ -707,8 +705,8 @@ Defines the **onChange** event callback signature.
 
 | Name    | Type                                      | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectItem | string \| string[]<sup>10+</sup> | Yes  | Text of the selected item. Use the array type for multi-column pickers.<br>**NOTE**<br>The return value is a text value for text or mixed content, and an empty string for image-only content.|
-| index      | number \| number[]<sup>10+</sup> | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
+| selectItem | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | Yes  | Text of the selected item. Use the array type for multi-column pickers.<br>**NOTE**<br>The return value is a text value for text or mixed content, and an empty string for image-only content.|
+| index      | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
 
 ## TextPickerScrollStopCallback<sup>14+</sup>
 
@@ -724,8 +722,8 @@ Defines the **onScrollStop** event callback signature.
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| value  | string \| string[] | Yes  | Text of the selected item. Use the array type for multi-column pickers.<br>**NOTE**<br>The return value is a text value for text or mixed content, and an empty string for image-only content.|
-| index  | number \| number[] | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
+| value  | string&nbsp;\|&nbsp;string[] | Yes  | Text of the selected item. Use the array type for multi-column pickers.<br>**NOTE**<br>The return value is a text value for text or mixed content, and an empty string for image-only content.|
+| index  | number&nbsp;\|&nbsp;number[] | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
 
 ## TextPickerEnterSelectedAreaCallback<sup>18+</sup>
 
@@ -741,8 +739,8 @@ Defines the **onEnterSelectedArea** event callback signature.
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| value  | string \| string[] | Yes  | Text of the selected item. Use the array type for multi-column pickers.<br>**NOTE**<br>The return value is a text value for text or mixed content, and an empty string for image-only content.|
-| index  | number \| number[] | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
+| value  | string&nbsp;\|&nbsp;string[] | Yes  | Text of the selected item. Use the array type for multi-column pickers.<br>**NOTE**<br>The return value is a text value for text or mixed content, and an empty string for image-only content.|
+| index  | number&nbsp;\|&nbsp;number[] | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
 
 ## PickerBackgroundStyle<sup>20+</sup>
 
@@ -752,15 +750,17 @@ Defines the background style configuration for selected picker items.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type                                      | Read-Only| Optional| Description                                             |
+| Name| Type                                      | Read Only| Optional| Description                                             |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------- | ------------------------------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item.<br>Default value: **'sys.color.comp_background_tertiary'**.  |
-| borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  \|  [BorderRadiuses](ts-types.md#borderradiuses9)  \|  [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No | Yes | Border radius of the selected item.<br>Default value: **{ value:24, unit:LengthUnit.VP }**, meaning 24 vp for all corners.<br>**NOTE**<br>1. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12): uniform radius with a customizable unit<br>2. [BorderRadiuses](ts-types.md#borderradiuses9): per-corner radius values (vp units only)<br>3. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12): per-corner radius values with individual units|
+| color  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item.<br>Default value:<br>'sys.color.comp_background_tertiary'   |
+| borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No | Yes | Border radius of the selected item.<br>Default value: **{ value:24, unit:LengthUnit.VP }**, meaning 24 vp for all corners.<br>**NOTE**<br>1. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12): uniform radius with a customizable unit<br>2. [BorderRadiuses](ts-types.md#borderradiuses9): per-corner radius values (vp units only)<br>3. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12): per-corner radius values with individual units|
 ## Example
 
 ### Example 1: Setting the Number of Columns in the Picker
 
 This example demonstrates how to configure single-column and multi-column text pickers by setting **range** and customizing the width of each column using **columnWidths**.
+
+The **columnWidths** attribute of [TextPickerOptions](#textpickeroptions) is added since API version 18.
 
 ```ts
 // xxx.ets
@@ -781,19 +781,19 @@ struct TextPickerExample {
   private multi: string[][] = [this.apfruits, this.orfruits, this.pefruits];
   private cascade: TextCascadePickerRangeContent[] = [
     {
-      text: 'Asia',
-      children: [{ text: 'China', children: [{ text: 'Beijing' }, { text: 'Shanghai' }, { text: 'Chongqing' }] },
-        { text: 'Japan', children: [{ text: 'Tokyo' }, { text: 'Hokkaido' }, { text: 'Osaka' }] }]
+      text: 'Liaoning Province',
+      children: [{ text: 'Shenyang', children: [{ text: 'Shenhe District' }, { text: 'Heping District' }, { text: 'Hunnan District' }] },
+        { text: 'Dalian', children: [{ text: 'Zhongshan District' }, { text: 'Jinzhou District' }, { text: 'Changhai County' }] }]
     },
     {
-      text: 'Europe',
-      children: [{ text: 'Germany', children: [{ text: 'Berlin' }, { text: 'Munich' }, { text: 'Nuremberg' }] },
-        { text: 'France', children: [{ text: 'Paris' }, { text: 'Lille' }, { text: 'Orleans' }] }]
+      text: 'Jilin Province',
+      children: [{ text: 'Changchun', children: [{ text: 'Nanguan District' }, { text: 'Kuancheng District' }, { text: 'Chaoyang District' }] },
+        { text: 'Siping', children: [{ text: 'Tiexi District' }, { text: 'Tiedong District' }, { text: 'Lishu County' }] }]
     },
     {
-      text: 'Africa',
-      children: [{ text: 'Egypt', children: [{ text: 'Cairo' }, { text: 'Damietta' }, { text: 'Girga' }] },
-        { text: 'Algeria', children: [{ text: 'Alger' }, { text: 'Oran' }, { text: 'Adrar' }] }]
+      text: 'Heilongjiang Province',
+      children: [{ text: 'Harbin', children: [{ text: 'Daoli District' }, { text: 'Daowai District' }, { text: 'Nangang District' }] },
+        { text: 'Mudanjiang', children: [{ text: `Dong'an District` }, { text: `Xi'an District` }, { text: 'Aimin District' }] }]
     }
   ];
   private singleColumnWidths: LengthMetrics[] = [
@@ -893,7 +893,7 @@ struct TextPickerExample {
 
 ### Example 3: Using the No-Divider Style
 
-This example demonstrates how to configure a text picker with no divider by setting **divider** to **null**.
+This example demonstrates how to configure a text picker with no divider by setting [divider](#divider12) to **null**.
 
 ```ts
 // xxx.ets
@@ -960,7 +960,7 @@ struct TextPickerExample {
 
 ### Example 5: Setting the Fade Effect
 
-This example shows how to set the gradient effect height for the text picker by configuring **gradientHeight**.
+This example shows how to set the gradient effect height for the text picker by configuring [gradientHeight](#gradientheight12).
 
 ```ts
 // xxx.ets
@@ -992,7 +992,7 @@ struct TextPickerExample {
 
 ### Example 6: Setting the Item Height
 
-This example demonstrates how to set the height of the picker items using **defaultPickerItemHeight**.
+This example demonstrates how to set the height of the picker items by configuring [defaultPickerItemHeight](#defaultpickeritemheight).
 
 ```ts
 // xxx.ets
@@ -1062,7 +1062,7 @@ struct TextPickerExample {
 
 ### Example 8: Setting the Selected Item Index
 
-This example demonstrates how to set the index of the default selected item using **selectedIndex**.
+This example demonstrates how to set the index of the default selected item by configuring [selectedIndex](#selectedindex10).
 
 ```ts
 // xxx.ets
@@ -1091,6 +1091,8 @@ struct TextPickerExample {
 ### Example 9: Disabling the Text Style Animation and Setting the Corresponding Text Style
 
 This example demonstrates how to disable the text style change animation for the text picker and set the text style by configuring [disableTextStyleAnimation](#disabletextstyleanimation15) and [defaultTextStyle](#defaulttextstyle15).
+
+The **disableTextStyleAnimation** and **defaultTextStyle** APIs are supported since API version 15.
 
 ```ts
 // xxx.ets
@@ -1135,26 +1137,26 @@ import { LengthUnit } from '@kit.ArkUI';
 @Component
 struct TextPickerExample {
   private showText1: string [] =
-    ["Text1", "Text1", "Text1", "Text1"]
+    ['Text1', 'Text1', 'Text1', 'Text1']
   private showText2: string[] [] =
     [
-      ["Text2", "Text2", "Text2", "Text2"],
-      ["Text3", "Text3", "Text3", "Text3"]
-    ]
+      ['Text2', 'Text2', 'Text2', 'Text2'],
+      ['Text3', 'Text3', 'Text3', 'Text3']
+  ]
 
   build() {
     Column() {
       Row() {
         TextPicker({ range: this.showText1 })
           .selectedBackgroundStyle({
-            color: "#FFD5D5D5",
+            color: '#FFD5D5D5',
             borderRadius: { value: 0, unit: LengthUnit.VP }
           })
         Column()
-          .width("10%")
+          .width('10%')
         TextPicker({ range: this.showText1 })
           .selectedBackgroundStyle({
-            color: "#FFE3F8F9",
+            color: '#FFE3F8F9',
             borderRadius: {
               topStart: { value: 5, unit: LengthUnit.VP },
               topEnd: { value: 10, unit: LengthUnit.VP },
@@ -1165,7 +1167,7 @@ struct TextPickerExample {
       }
 
       Row()
-        .height("10%")
+        .height('10%')
       Row() {
         TextPicker({ range: this.showText2 })
           .selectedBackgroundStyle({
@@ -1175,10 +1177,10 @@ struct TextPickerExample {
               bottomLeft: 8,
               bottomRight: 8
             },
-            color: "#FFFFEEF6"
+            color: '#FFFFEEF6'
           })
       }
-    }.height("100%")
+    }.height('100%')
   }
 }
 ```
@@ -1188,6 +1190,8 @@ struct TextPickerExample {
 ### Example 11: Setting the Font Size Range and Text Overflow Mode
 
 This example shows how to set the text color, maximum font size, minimum font size, and text overflow mode by configuring [disappearTextStyle](#disappeartextstyle20), [textStyle](#textstyle20), and [selectedTextStyle](#selectedtextstyle20).
+
+The **disappearTextStyle**, **textStyle**, and **selectedTextStyle** APIs are supported since API version 20.
 
 ```ts
 // xxx.ets

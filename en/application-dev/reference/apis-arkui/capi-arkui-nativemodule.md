@@ -1,14 +1,14 @@
 # ArkUI_NativeModule
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Provides drag and drop APIs of ArkUI on the native side. For details, see [Implementing Unified Drag and Drop](../../ui/ndk-drag-event.md).
+Provides drag and drop APIs of ArkUI on the native side. For details, see [Drag Event](../../ui/ndk-drag-event.md).
 
 Provides the general key event APIs of ArkUI on the native side.
 
@@ -34,6 +34,5 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [native_key_event.h](capi-native-key-event-h.md) | Declares the APIs of **NativeKeyEvent**.|
 | [native_node.h](capi-native-node-h.md) | Declares the APIs of **NativeNode**.|
 | [native_node_napi.h](capi-native-node-napi-h.md) | Declares the functions used to convert FrameNodes on the ArkTS side into NodeHandles.|
-| [native_render.h](capi-native-render-h.md) | Provides type definitions for RenderNode on the native side and the capability to operate RenderNodes.|
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module.|
 | [styled_string.h](capi-styled-string-h.md) | Declares styled string APIs of ArkUI on the native side.|

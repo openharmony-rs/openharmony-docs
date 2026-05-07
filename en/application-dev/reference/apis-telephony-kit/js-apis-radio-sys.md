@@ -41,7 +41,7 @@ Sets the ID of the slot in which the primary card is located. This API uses an a
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -65,7 +65,7 @@ radio.setPrimarySlotId(slotId, (err: BusinessError) => {
         console.error(`setPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setPrimarySlotId success.`);
+    console.info(`setPrimarySlotId success.`);
 });
 ```
 
@@ -96,7 +96,7 @@ Sets the ID of the slot in which the primary card is located. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.setPrimarySlotId(slotId).then(() => {
-    console.log(`setPrimarySlotId success.`);
+    console.info(`setPrimarySlotId success.`);
 }).catch((err: BusinessError) => {
     console.error(`setPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -142,7 +142,7 @@ Obtains the IMEI of the primary SIM card of the device. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -164,7 +164,7 @@ radio.getIMEI((err: BusinessError, data: string) => {
         console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -190,7 +190,7 @@ Obtains the IMEI of the SIM card in the specified slot. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -213,7 +213,7 @@ radio.getIMEI(slotId, (err: BusinessError, data: string) => {
         console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -244,7 +244,7 @@ Obtains the IMEI of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -263,7 +263,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getIMEI(slotId).then((data: string) => {
-    console.log(`getIMEI success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getIMEI failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -289,7 +289,7 @@ Obtains the MEID of the SIM card. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -311,7 +311,7 @@ radio.getMEID((err: BusinessError, data: string) => {
         console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -337,7 +337,7 @@ Obtains the MEID of the SIM card in the specified slot. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -360,7 +360,7 @@ radio.getMEID(slotId, (err: BusinessError, data: string) => {
         console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -391,7 +391,7 @@ Obtains the MEID of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -410,7 +410,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getMEID(slotId).then((data: string) => {
-    console.log(`getMEID success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getMEID failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -438,7 +438,7 @@ If the device registers with a 3GPP network, an IMEI is returned. If the device 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -460,7 +460,7 @@ radio.getUniqueDeviceId((err: BusinessError, data: string) => {
         console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}}`);
         return;
     }
-    console.log(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -488,7 +488,7 @@ If the device registers with a 3GPP network, an IMEI is returned. If the device 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -511,7 +511,7 @@ radio.getUniqueDeviceId(slotId, (err: BusinessError, data: string) => {
         console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -544,7 +544,7 @@ If the device registers with a 3GPP network, an IMEI is returned. If the device 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -563,7 +563,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getUniqueDeviceId(slotId).then((data: string) => {
-    console.log(`getUniqueDeviceId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getUniqueDeviceId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -589,7 +589,7 @@ Sends a cell location update request. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -611,7 +611,7 @@ radio.sendUpdateCellLocationRequest((err: BusinessError) => {
         console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
 });
 ```
 
@@ -636,7 +636,7 @@ Sends a cell location update request for the SIM card in the specified slot. Thi
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -659,7 +659,7 @@ radio.sendUpdateCellLocationRequest(slotId, (err: BusinessError) => {
         console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
 });
 ```
 
@@ -689,7 +689,7 @@ Sends a cell location update request for the SIM card in the specified slot. Thi
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -708,7 +708,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.sendUpdateCellLocationRequest(slotId).then(() => {
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -734,7 +734,7 @@ Obtains cell information. This API uses an asynchronous callback to return the r
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -756,7 +756,7 @@ radio.getCellInformation((err: BusinessError, data: Array<radio.CellInformation>
         console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -782,7 +782,7 @@ Obtains cell information of the SIM card in the specified slot. This API uses an
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -805,7 +805,7 @@ radio.getCellInformation(slotId, (err: BusinessError, data: Array<radio.CellInfo
         console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -836,7 +836,7 @@ Obtains cell information of the SIM card in the specified slot. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -855,7 +855,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getCellInformation(slotId).then((data: Array<radio.CellInformation>) => {
-    console.log(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCellInformation failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -882,7 +882,7 @@ Sets the network selection mode. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -916,7 +916,7 @@ radio.setNetworkSelectionMode(networkSelectionModeOptions, (err: BusinessError) 
         console.error(`setNetworkSelectionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNetworkSelectionMode success.`);
+    console.info(`setNetworkSelectionMode success.`);
 });
 ```
 
@@ -946,7 +946,7 @@ Sets the network selection mode. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -976,7 +976,7 @@ let networkSelectionModeOptions: radio.NetworkSelectionModeOptions = {
     resumeSelection: true
 }
 radio.setNetworkSelectionMode(networkSelectionModeOptions).then(() => {
-    console.log(`setNetworkSelectionMode success.`);
+    console.info(`setNetworkSelectionMode success.`);
 }).catch((err: BusinessError) => {
     console.error(`setNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1003,7 +1003,7 @@ Obtains network search information of the SIM card in the specified slot. This A
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1025,7 +1025,7 @@ radio.getNetworkSearchInformation(0, (err: BusinessError, data: radio.NetworkSea
         console.error(`getNetworkSearchInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkSearchInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSearchInformation success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1055,7 +1055,7 @@ Obtains network search information of the SIM card in the specified slot. This A
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1073,7 +1073,7 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.getNetworkSearchInformation(0).then((data: radio.NetworkSearchResult) => {
-    console.log(`getNetworkSearchInformation success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSearchInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNetworkSearchInformation failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1101,7 +1101,7 @@ Obtains the NR option mode of the SIM card. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1122,7 +1122,7 @@ radio.getNrOptionMode((err: BusinessError, data: radio.NrOptionMode) => {
         console.error(`getNrOptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNrOptionMode success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionMode success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1150,7 +1150,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1172,7 +1172,7 @@ radio.getNrOptionMode(slotId, (err: BusinessError, data: radio.NrOptionMode) => 
         console.error(`getNrOptionModecallback failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNrOptionModecallback success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionModecallback success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1205,7 +1205,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1223,7 +1223,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNrOptionMode(slotId).then((data: radio.NrOptionMode) => {
-    console.log(`getNrOptionMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNrOptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1249,7 +1249,7 @@ Turns on the radio function. This API uses an asynchronous callback to return th
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1271,7 +1271,7 @@ radio.turnOnRadio((err: BusinessError) => {
         console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 });
 ```
 
@@ -1297,7 +1297,7 @@ Enables the radio service for the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1320,7 +1320,7 @@ radio.turnOnRadio(slotId, (err: BusinessError) => {
         console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 });
 ```
 
@@ -1351,7 +1351,7 @@ Turns on the radio function for the SIM card in the specified slot. This API use
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1370,7 +1370,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.turnOnRadio(slotId).then(() => {
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 }).catch((err: BusinessError) => {
     console.error(`turnOnRadio failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1396,7 +1396,7 @@ Turns off the radio function. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1418,7 +1418,7 @@ radio.turnOffRadio((err: BusinessError) => {
         console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
 });
 ```
 
@@ -1444,7 +1444,7 @@ Disables the radio service for the SIM card in the specified slot. This API uses
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1467,7 +1467,7 @@ radio.turnOffRadio(slotId, (err: BusinessError) => {
         console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
 });
 ```
 
@@ -1498,7 +1498,7 @@ Turns off the radio function for the SIM card in the specified slot. This API us
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1517,7 +1517,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.turnOffRadio(slotId).then(() => {
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
 }).catch((err: BusinessError) => {
     console.error(`turnOffRadio failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1545,7 +1545,7 @@ Sets the preferred network of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1569,7 +1569,7 @@ radio.setPreferredNetwork(slotId, mode, (err: BusinessError) => {
         console.error(`setPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setPreferredNetwork success.`);
+    console.info(`setPreferredNetwork success.`);
 });
 ```
 
@@ -1600,7 +1600,7 @@ Sets the preferred network of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1620,7 +1620,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let mode: radio.PreferredNetworkMode = radio.PreferredNetworkMode.PREFERRED_NETWORK_MODE_GSM;
 radio.setPreferredNetwork(slotId, mode).then(() => {
-    console.log(`setPreferredNetwork success.`);
+    console.info(`setPreferredNetwork success.`);
 }).catch((err: BusinessError) => {
     console.error(`setPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1647,7 +1647,7 @@ Obtains the preferred network of the SIM card in the specified slot. This API us
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1670,7 +1670,7 @@ radio.getPreferredNetwork(slotId, (err: BusinessError, data: radio.PreferredNetw
         console.error(`getPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getPreferredNetwork success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getPreferredNetwork success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1700,7 +1700,7 @@ Obtains the preferred network of the SIM card in the specified slot. This API us
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1719,7 +1719,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getPreferredNetwork(slotId).then((data: radio.PreferredNetworkMode) => {
-    console.log(`getPreferredNetwork success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getPreferredNetwork success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1747,7 +1747,7 @@ Obtains the IMS registration status of the specified IMS service type for the SI
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1771,7 +1771,7 @@ radio.getImsRegInfo(slotId, mode, (err: BusinessError, data: radio.ImsRegInfo) =
         console.error(`getImsRegInfo failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getImsRegInfo success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getImsRegInfo success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1802,7 +1802,7 @@ Obtains the IMS registration status of the specified IMS service type for the SI
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1822,7 +1822,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.getImsRegInfo(slotId, mode).then((data: radio.ImsRegInfo) => {
-    console.log(`getImsRegInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getImsRegInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getImsRegInfo failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1851,7 +1851,7 @@ Enables listening for **imsRegStateChange** events of the SIM card in the specif
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1869,7 +1869,7 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.on('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
-    console.log(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+    console.info(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1896,7 +1896,7 @@ Disables listening for **imsRegStateChange** events of the SIM card in the speci
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1914,7 +1914,7 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.off('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
-    console.log(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+    console.info(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1940,7 +1940,7 @@ Obtains the device baseband version of the SIM card in the specified slot. This 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1963,7 +1963,7 @@ radio.getBasebandVersion(slotId, (err: BusinessError, data: string) => {
         console.error(`getBasebandVersion failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getBasebandVersion success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getBasebandVersion success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1994,7 +1994,7 @@ Obtains the device baseband version of the SIM card in the specified slot. This 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2013,7 +2013,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getBasebandVersion(slotId).then((data: string) => {
-    console.log(`getBasebandVersion success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getBasebandVersion success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getBasebandVersion failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2042,7 +2042,7 @@ Sets the NR mode of the SIM card in the specified slot. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2066,7 +2066,7 @@ radio.setNROptionMode(slotId, mode, (err: BusinessError) => {
         console.error(`setNROptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNROptionMode success.`);
+    console.info(`setNROptionMode success.`);
 });
 ```
 
@@ -2098,7 +2098,7 @@ Sets the NR mode of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                     |
 | -------- | -------------------------------------------- |
@@ -2118,7 +2118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let mode: radio.NROptionMode = radio.NROptionMode.NR_OPTION_NSA_ONLY;
 radio.setNROptionMode(slotId, mode).then(() => {
-    console.log(`setNROptionMode success`);
+    console.info(`setNROptionMode success`);
 }).catch((err: BusinessError) => {
     console.error(`setNROptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2144,7 +2144,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2166,7 +2166,7 @@ radio.getNROptionMode(slotId, (err: BusinessError, data: radio.NROptionMode) => 
         console.error(`getNROptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNROptionMode success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNROptionMode success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2194,7 +2194,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2212,7 +2212,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNROptionMode(slotId).then((data: radio.NROptionMode) => {
-    console.log(`getNROptionMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNROptionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNROptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2241,7 +2241,7 @@ Obtains the network capability of the SIM card in the specified slot. This API u
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2265,7 +2265,7 @@ radio.getNetworkCapability(slotId, type, (err: BusinessError, data: radio.Networ
         console.error(`getNetworkCapability failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkCapability success, callback: err->${JSON.stringify(err)}`);
+    console.info(`getNetworkCapability success, callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2297,7 +2297,7 @@ Obtains the network capability of the SIM card in the specified slot. This API u
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2317,7 +2317,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
 radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityState) => {
-    console.log(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2326,8 +2326,7 @@ radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityStat
 
 ## radio.setNetworkCapability<sup>10+</sup>
 
-setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState,
-      callback: AsyncCallback\<void\>\): void
+setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState, callback: AsyncCallback\<void\>\): void
 
 Sets the network capability of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
@@ -2348,7 +2347,7 @@ Sets the network capability of the SIM card in the specified slot. This API uses
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2373,7 +2372,7 @@ radio.setNetworkCapability(slotId, type, state, (err: BusinessError) => {
         console.error(`setNetworkCapability failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNetworkCapability success.`);
+    console.info(`setNetworkCapability success.`);
 });
 ```
 
@@ -2406,7 +2405,7 @@ Sets the network capability of the SIM card in the specified slot. This API uses
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2427,7 +2426,7 @@ let slotId: number = 0;
 let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
 let state: radio.NetworkCapabilityState = radio.NetworkCapabilityState.SERVICE_CAPABILITY_ON;
 radio.setNetworkCapability(slotId, type, state).then(() => {
-    console.log(`setNetworkCapability success`);
+    console.info(`setNetworkCapability success`);
 }).catch((err: BusinessError) => {
     console.error(`setNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2459,7 +2458,7 @@ Restores the radio service to factory settings. This API uses a promise to retur
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2478,7 +2477,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.factoryReset(slotId).then(() => {
-    console.log(`factoryReset success`);
+    console.info(`factoryReset success`);
 }).catch((err: BusinessError) => {
     console.error(`factoryReset failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2505,7 +2504,7 @@ Obtains the software version of the SIM card in the specified slot.
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2522,7 +2521,148 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 ```ts
 let slotId: number = 0;
 let data: string = radio.getIMEISV(slotId);
-console.log(`IMEISV is:` + data);
+console.info(`IMEISV is:` + data);
+```
+
+## radio.isManualNetworkScanning<sup>23+</sup>
+
+isManualNetworkScanning\(slotId: number\): Promise\<boolean\>
+
+Obtains the manual network scanning status. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+
+**Return value**
+
+| Type              | Description                                     |
+| ------------------ | ---------------------------------------- |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that manual network scanning is in progress, and **false** indicates that manual network scanning is complete.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+radio.isManualNetworkScanning(0).then((state: boolean) => {
+    console.info(`isManualNetworkScanning success, state->${JSON.stringify(state)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isManualNetworkScanning failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+## radio.startManualNetworkScan<sup>23+</sup>
+
+startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
+
+Starts manual network scanning. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+| callback | AsyncCallback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | Yes  | Callback used to return the network scanning result.    |
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+## radio.stopManualNetworkScan<sup>23+</sup>
+
+stopManualNetworkScan\(slotId: number\): Promise\<void\>
+
+Stops manual network scanning. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+
+**Return value**
+
+| Type           | Description                   |
+| --------------- | ----------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
+    radio.stopManualNetworkScan(0);
+});
 ```
 
 ## PreferredNetworkMode<sup>8+</sup>
@@ -2576,11 +2716,11 @@ Defines the cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name             |                  Type                  | Mandatory|                           Description                              |
-| ----------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |                           
-| isCamped          | boolean                                 |  Yes | Cell status.<br>**System API**: This is a system API.<br>The value **true** indicates a camped cell, and the value **false** indicates a non-camped cell.         |
-| timeStamp         | number                                  |  Yes | Timestamp when cell information is obtained.<br>**System API**: This is a system API.   |                              
-| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  Yes | CDMA cell information\|GSM cell information\|LTE cell information\|NR cell information\|TD-SCDMA cell information\|WCDMA.<br>**System API**: This is a system API.|
+| Name             |                  Type                  | Read-Only|Optional|                           Description                              |
+| ----------------- | --------------------------------------- | ----|---- | ------------------------------------------------------------ |                           
+| isCamped          | boolean                                 |  No |No| Cell status.<br>**System API**: This is a system API.<br>The value **true** indicates a camped cell, and the value **false** indicates a non-camped cell.         |
+| timeStamp         | number                                  |  No | No|Timestamp when cell information is obtained.<br>**System API**: This is a system API.   |                              
+| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  No|No | CDMA cell information\|GSM cell information\|LTE cell information\|NR cell information\|TD-SCDMA cell information\|WCDMA cell information.<br>**System API**: This is a system API.|
 
 ## CdmaCellInformation<sup>8+</sup>
 
@@ -2590,13 +2730,13 @@ Defines the CDMA cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name     | Type  | Mandatory| Description        |
-| --------- | ------ | ---- | ------------ |
-| baseId    | number |  Yes | Base station ID.    |
-| latitude  | number |  Yes | Latitude.      |
-| longitude | number |  Yes | Longitude.      |
-| nid       | number |  Yes | Network ID.|
-| sid       | number |  Yes | System ID.|
+| Name     | Type  | Read-Only|Optional| Description        |
+| --------- | ------ | ---- | ---- |------------ |
+| baseId    | number |  No| No| Base station ID.    |
+| latitude  | number |  No | No| Latitude.      |
+| longitude | number |  No|No | Longitude.      |
+| nid       | number |  No|No| Network ID.|
+| sid       | number |  No|No| System ID.|
 
 ## GsmCellInformation<sup>8+</sup>
 
@@ -2606,14 +2746,14 @@ Defines the GSM cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name  | Type  | Mandatory| Description                |
-| ------ | ------ | ---- | -------------------- |
-| lac    | number |  Yes | Location area code.        |
-| cellId | number |  Yes | Cell ID.            |
-| arfcn  | number |  Yes | Absolute radio frequency channel number.|
-| bsic   | number |  Yes | Base station ID.        |
-| mcc    | string |  Yes | Mobile country code.        |
-| mnc    | string |  Yes | Mobile network code.          |
+| Name  | Type  | Read-Only| Optional| Description                |
+| ------ | ------ | ---- | ---- | -------------------- |
+| lac    | number |  No | No|Location area code.        |
+| cellId | number |  No | No|Cell ID.            |
+| arfcn  | number |  No |No| Absolute radio frequency channel number.|
+| bsic   | number |  No |No| Base station ID.        |
+| mcc    | string |  No |No| Mobile country code.        |
+| mnc    | string |  No |No| Mobile network code.          |
 
 ## LteCellInformation<sup>8+</sup>
 
@@ -2623,16 +2763,16 @@ LTE cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name         | Type   | Mandatory| Description                   |
-| ------------- | ------- | ---- | ----------------------- |
-| cgi           | number  |  Yes | Cell global identification.         |
-| pci           | number  |  Yes | Physical cell ID.         |
-| tac           | number  |  Yes | Tracking area code.         |
-| earfcn        | number  |  Yes | Absolute radio frequency channel number.   |
-| bandwidth     | number  |  Yes | Bandwidth.                 |
-| mcc           | string  |  Yes | Mobile country code.           |
-| mnc           | string  |  Yes | Mobile network code.             |
-| isSupportEndc | boolean |  Yes | Whether New Radio Dual Connectivity (NR-DC) is supported.<br>The value **true** indicates that NR-DC is supported, and the value **false** indicates the opposite.|
+| Name         | Type   |  Read-Only| Optional | Description                   |
+| ------------- | ------- | ---- | ---- | ----------------------- |
+| cgi           | number  |  No | No|Cell global identification.         |
+| pci           | number  |  No | No|Physical cell ID.         |
+| tac           | number  |  No | No|Tracking area code.         |
+| earfcn        | number  |  No | No| Absolute radio frequency channel number.   |
+| bandwidth     | number   |  No | No| Bandwidth.                 |
+| mcc           | string   |  No | No| Mobile country code.           |
+| mnc           | string   |  No | No|Mobile network code.             |
+| isSupportEndc | boolean  |  No |  No| Whether New Radio Dual Connectivity (NR-DC) is supported.<br>The value **true** indicates that NR-DC is supported, and the value **false** indicates the opposite.|
 
 ## NrCellInformation<sup>8+</sup>
 
@@ -2642,14 +2782,14 @@ Defines the 5G NR cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name   | Type  | Mandatory| Description            |
-| ------- | ------ | ---- | ---------------- |
-| nrArfcn | number |  Yes | 5G frequency number.      |
-| pci     | number |  Yes | Physical cell ID.  |
-| tac     | number |  Yes | Tracking area code.  |
-| nci     | number |  Yes | 5G network cell ID.|
-| mcc     | string |  Yes | Mobile country code.    |
-| mnc     | string |  Yes | Mobile network code.      |
+| Name   | Type   |  Read-Only| Optional | Description            |
+| ------- | ------ | ---- | ---- |---------------- |
+| nrArfcn | number |  No | No| 5G frequency number.      |
+| pci     | number  |  No | No|Physical cell ID.  |
+| tac     | number |  No | No| Tracking area code.  |
+| nci     | number |  No | No| 5G network cell ID.|
+| mcc     | string |  No | No| Mobile country code.    |
+| mnc     | string |  No | No| Mobile network code.      |
 
 ## TdscdmaCellInformation<sup>8+</sup>
 
@@ -2659,14 +2799,14 @@ Defines the TD-SCDMA cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name  | Type  | Mandatory| Description        |
-| ------ | ------ | ---- | ------------ |
-| lac    | number |  Yes | Location area code.|
-| cellId | number |  Yes | Cell ID.    |
-| cpid   | number |  Yes | Cell parameter ID.|
-| uarfcn | number |  Yes | Absolute radio frequency number.|
-| mcc    | string |  Yes | Mobile country code.|
-| mnc    | string |  Yes | Mobile network code.  |
+| Name  | Type  |  Read-Only| Optional | Description        |
+| ------ | ------ | ---- | ---- |------------ |
+| lac    | number |  No | No|Location area code.|
+| cellId | number |  No | No|Cell ID.    |
+| cpid   | number  |  No | No| Cell parameter ID.|
+| uarfcn | number  |  No | No| Absolute radio frequency number.|
+| mcc    | string |  No | No|Mobile country code.|
+| mnc    | string |  No | No|Mobile network code.  |
 
 ## WcdmaCellInformation<sup>8+</sup>
 
@@ -2676,14 +2816,14 @@ Defines the WCDMA cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name  | Type  | Mandatory| Description        |
-| ------ | ------ | ---- | ------------ |
-| lac    | number |  Yes | Location area code.|
-| cellId | number |  Yes | Cell ID.    |
-| psc    | number |  Yes | Primary scrambling code.    |
-| uarfcn | number |  Yes | Absolute radio frequency number.|
-| mcc    | string |  Yes | Mobile country code.|
-| mnc    | string |  Yes | Mobile network code.  |
+| Name  | Type  |  Read-Only| Optional | Description        |
+| ------ | ------  | ---- | ---- |------------ |
+| lac    | number |  No | No|Location area code.|
+| cellId | number |  No | No| Cell ID.    |
+| psc    | number |  No | No|Primary scrambling code.    |
+| uarfcn | number |  No | No|Absolute radio frequency number.|
+| mcc    | string |  No | No|Mobile country code.|
+| mnc    | string |  No | No| Mobile network code.  |
 
 ## NrOptionMode<sup>(deprecated)</sup>
 
@@ -2858,3 +2998,16 @@ Defines the network capability switch status.
 | -----------------------| ---- | ---------- |
 | SERVICE_CAPABILITY_OFF | 0    | The network capability is disabled.|
 | SERVICE_CAPABILITY_ON  | 1    | The network capability is enabled.|
+
+## NetworkSearchRealTimeResult<sup>23+</sup>
+
+Returns the result of manual network scanning.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+| Name              |                    Type                      | Mandatory|                 Description                  |
+| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
+| networkInfos    | Array<[NetworkInformation](#networkinformation)\> |  Yes | List of scanning results containing available network information.|
+| isFinish        | boolean     |  Yes | Whether network scanning has finished.<br>**true**: yes; **false**: no.                |

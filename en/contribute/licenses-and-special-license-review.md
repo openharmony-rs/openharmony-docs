@@ -12,7 +12,7 @@ This document applies only to the code distributed in the OpenHarmony community.
 
 OpenHarmony is an open-source project launched by the OpenAtom Foundation. The purpose of this project is to build an open, distributed operating system (OS) framework for smart IoT devices in the full-scenario, full-connectivity, and full-intelligence era. 
 
-The OpenHarmony project is hosted on the website https://gitee.com/openharmony.
+The OpenHarmony project is hosted on the website https://gitcode.com/openharmony.
 
 Code contributed: A contributor commits copyrighted code to the OpenHarmony project, and the project further distributes the code on the hosted website.
 

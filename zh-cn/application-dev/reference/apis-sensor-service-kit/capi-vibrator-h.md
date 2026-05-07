@@ -2,13 +2,13 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
-为您提供标准的开放api，用于控制马达振动的启停。
+为您提供标准的开放API，用于控制马达振动的启停。
 
 **引用文件：** <sensors/vibrator.h>
 
@@ -51,13 +51,13 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t duration | - 振动时长，单位：毫秒。 |
-| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) attribute | - 振动属性，请参考VibrateAttribute。 |
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) attribute | - 振动属性，请参考[VibrateAttribute](js-apis-vibrator.md#vibrateattribute9)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。 |
 
 ### OH_Vibrator_PlayVibrationCustom()
 
@@ -84,7 +84,7 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。 |
 
 ### OH_Vibrator_Cancel()
 
@@ -104,4 +104,4 @@ int32_t OH_Vibrator_Cancel()
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。 |

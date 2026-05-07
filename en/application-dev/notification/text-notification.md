@@ -28,8 +28,10 @@ The following table describes the APIs for notification publishing. You specify 
 ## How to Develop
 
 1. Import the module.
+
+   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
-   ```ts
+   ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -40,51 +42,57 @@ The following table describes the APIs for notification publishing. You specify 
 
 2. Create a **NotificationRequest** object and publish a progress notification.
    - A normal text notification consists of the **title**, **text**, and **additionalText** fields. For details, see [NotificationBasicContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationbasiccontent).
+
+     <!-- @[pub_plaintext_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
      
-      ```ts
-      let notificationRequest: notificationManager.NotificationRequest = {
-        id: 1,
-        content: {
-          notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT, // Basic notification
-          normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText',
-          }
-        }
-      };
-      notificationManager.publish(notificationRequest, (err: BusinessError) => {
-        if (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
-      });
-      ```
-
-
+     ``` TypeScript
+     let notificationRequest: notificationManager.NotificationRequest = {
+       id: 1,
+       content: {
+         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT, // Basic notification
+         normal: {
+           title: 'test_title',
+           text: 'test_text',
+           additionalText: 'test_additionalText',
+         }
+       }
+     };
+     notificationManager.publish(notificationRequest, (err: BusinessError) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+     });
+     ```
+     
    - In addition to the fields in the normal text notification, the multi-line text notification provides the **lines**, **briefText**, and **longTitle** fields. For details, see [NotificationMultiLineContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationmultilinecontent).
+
+     <!-- @[pub_multi_line_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
      
-      ```ts
-      let notificationRequest: notificationManager.NotificationRequest = {
-        id: 3,
-        content: {
-          notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE, // Multi-line text notification
-          multiLine: {
-            title: 'test_title',
-            text: 'test_text',
-            briefText: 'test_briefText',
-            longTitle: 'test_longTitle',
-            lines: ['line_01', 'line_02', 'line_03'],
-          }
-        }
-      };
-      // Publish the notification.
-      notificationManager.publish(notificationRequest, (err: BusinessError) => {
-        if (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
-      });
-      ```
+     ``` TypeScript
+     let notificationRequest: notificationManager.NotificationRequest = {
+       id: 3,
+       content: {
+         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE, // Multi-line text notification
+         multiLine: {
+           title: 'test_multi_line_title',
+           text: 'test_text',
+           briefText: 'test_briefText',
+           longTitle: 'test_longTitle',
+           lines: ['line_01', 'line_02', 'line_03'],
+         }
+       }
+     };
+     // Publish the notification.
+     notificationManager.publish(notificationRequest, (err: BusinessError) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+     });
+     ```
+        

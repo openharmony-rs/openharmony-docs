@@ -4,7 +4,7 @@
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 In addition to using ArkTS for development, you can also use Node-API to implement cross-language interaction between ArkTS and C/C++ (native).
 

@@ -10,7 +10,7 @@
 The peer-to-peer (P2P) mode provides a point-to-point connection between devices in a WLAN. It enables the direct establishment of a TCP/IP connection between two stations (STAs) without the involvement of an access point (AP).
 
 ## When to Use
-You can use the APIs provided by the **wifiManager** module to:
+You can use the APIs provided to:
 
 - Create or remove a P2P group.
 - Set up a P2P connection.
@@ -48,7 +48,7 @@ The following table describes the APIs used in this topic.
 2. Enable Wi-Fi on the device.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Create or remove a P2P group.
-   <!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+   <!-- @[createGroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
    
    ``` TypeScript
    async createGroup() {
@@ -76,7 +76,7 @@ The following table describes the APIs used in this topic.
 
    // Create a P2P group. To use the current device as the group owner (GO), set:
    // netId: The value -1 means to create a temporary P2P group. When a device in the group is to be connected next time, GO negotiation and WPS key negotiation must be performed again.
-   // The value -2 means to create a persistent group. The device in the group can be reconnected without GO negotiation or WPS key negotiation.
+   // netId: The value -2 means to create a persistent group. The device in the group can be reconnected without GO negotiation or WPS key negotiation.
 
    let recvP2pPersistentGroupChangeFunc = () => {
      console.info("p2p persistent group change receive event");

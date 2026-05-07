@@ -7,6 +7,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_GuidelineOption ArkUI_GuidelineOption
+```
+
 ## Overview
 
 Defines the ID, direction, and position of a guideline (reference line in the **RelativeContainer** component).

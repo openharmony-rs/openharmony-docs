@@ -33,8 +33,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKeyAgreement **ctx)](#oh_cryptokeyagreement_create) | 根据给定的算法名称创建密钥协商实例。 |
-| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)](#oh_cryptokeyagreement_generatesecret) | 生成密钥协商的秘密值。 |
+| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKeyAgreement **ctx)](#oh_cryptokeyagreement_create) | 根据给定的算法名称创建密钥协商实例。<br> 注意：创建的资源必须通过[OH_CryptoKeyAgreement_Destroy](capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)](#oh_cryptokeyagreement_generatesecret) | 生成密钥协商的秘密值。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放secret内存。 |
 | [void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)](#oh_cryptokeyagreement_destroy) | 销毁密钥协商实例。 |
 
 ## 函数说明
@@ -47,10 +47,9 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 
 **描述**
 
-根据给定的算法名称创建密钥协商实例。
+根据给定的算法名称创建密钥协商实例。<br> 注意：创建的资源必须通过[OH_CryptoKeyAgreement_Destroy](capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_destroy)销毁。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -68,15 +67,14 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 ### OH_CryptoKeyAgreement_GenerateSecret()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey,OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)
+OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)
 ```
 
 **描述**
 
-生成密钥协商的秘密值。
+生成密钥协商的秘密值。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放secret内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -104,7 +102,6 @@ void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)
 销毁密钥协商实例。
 
 **起始版本：** 20
-
 
 **参数：**
 

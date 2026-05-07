@@ -26,7 +26,7 @@ setVisible(visible: boolean): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar默认隐藏，变为悬浮按钮，通过该接口无法改变menuBar的可见性。
+> 从API version 12开始，原子化服务menuBar默认隐藏并以悬浮按钮替代。**在原子化服务中调用setVisible()时，visible参数将被忽略，无法实现menuBar的显示或隐藏。**
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -54,7 +54,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setVisible(false);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -72,7 +72,7 @@ setBackgroundColor(color:Nullable<Color | number | string>): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的背景默认隐藏，通过该接口无法改变menuBar的背景颜色。
+> 从API version 12开始，原子化服务menuBar背景默认隐藏。**在原子化服务中调用setBackgroundColor()时，color参数将被忽略，无法设置menuBar的背景颜色。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -99,7 +99,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setBackgroundColor(0x88888888);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -117,7 +117,7 @@ setTitleContent(content:string): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的标题默认隐藏，通过该接口无法改变menuBar的标题内容。
+> 从API version 12开始，原子化服务menuBar标题默认隐藏。**在原子化服务中调用setTitleContent()时，content参数将被忽略，无法设置menuBar的标题内容。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -144,7 +144,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setTitleContent('text2');
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -162,7 +162,7 @@ setTitleFontStyle(font:FontStyle):void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的标题默认隐藏，通过该接口无法改变menuBar的字体样式。
+> 从API version 12开始，原子化服务menuBar标题默认隐藏。**在原子化服务中调用setTitleFontStyle()时，font参数将被忽略，无法设置menuBar标题的字体样式，例如斜体显示。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -189,7 +189,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setTitleFontStyle(FontStyle.Normal);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -207,7 +207,7 @@ setIconColor(color:Nullable<Color | number | string>): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar默认隐藏，悬浮按钮图标不予用户设置，通过该接口无法改变menuBar的图标颜色。
+> 从API version 12开始，原子化服务menuBar默认隐藏并以悬浮按钮替代。**在原子化服务中调用setIconColor()时，color参数将被忽略，无法设置menuBar图标颜色。**
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -235,7 +235,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setIconColor(0x12345678);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -281,12 +281,58 @@ struct Index {
         let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
         if (currentBar != undefined) {
           let rect = currentBar.getBarRect();
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully. x:'
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully. x:'
             + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
         } else {
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar failed.');
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
         }
       })
+  }
+}
+```
+
+## onBarRectChange
+
+onBarRectChange(callback: Callback\<Frame\>): void
+
+当原子化服务AtomicServiceMenuBar（右上角菜单功能胶囊）的大小或位置发生变化时，触发注册的回调，返回AtomicServiceMenuBar最新的布局信息。该布局信息包含了AtomicServiceMenuBar的大小和位置。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | ------- | ------- | ------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<[Frame](./js-apis-arkui-graphics.md#frame)> | 是 | AtomicServiceBar布局变化时的回调，返回变化后的布局信息。 |
+
+**示例：**
+
+```ts
+import { AtomicServiceBar, UIContext, Frame } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear() : void {
+    let uiContext: UIContext = this.getUIContext();
+    let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+    if (currentBar != undefined) {
+      currentBar.onBarRectChange((rect: Frame) => {
+        hilog.info(0x0000, 'testTag', 'trigger onBarRectChange callback success. X: %{public}d, Y: %{public}d, Width: %{public}d, height: %{public}d.', rect.x, rect.y, rect.width, rect.height);
+      });
+    } else {
+      hilog.info(0x0000, 'testTag', 'set onBarRectChange callback failed.');
+    }
+  }
+  build() {
+    Text('hello world')
   }
 }
 ```

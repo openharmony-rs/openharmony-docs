@@ -402,7 +402,7 @@ Checks whether animation effects are used when an ability is started.
 | Name| Description|
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | Pointer to an AbilityRuntime_StartOptions object.|
-| bool &withAnimation | Check result for whether animation effects are used.<br>**true** if used, **false** otherwise.|
+| bool &withAnimation | Whether animation effects are used.<br>**true** if used, **false** otherwise. |
 
 **Returns**
 
@@ -878,7 +878,7 @@ Obtains the visibility of the window and dock bar icons when the ability is star
 | Name| Description|
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | Pointer to the StartOptions struct.|
-| [bilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | Visibility. For details about the available options, see **AbilityRuntime_StartVisibility**.|
+| [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | Visibility. For details about the available options, see **AbilityRuntime_StartVisibility**.|
 
 **Returns**
 
@@ -955,7 +955,7 @@ void demo()
     OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
 
-    // Create a Pixelmap instance.
+    // Create a PixelMap instance.
     OH_PixelmapNative *startWindowIcon = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &startWindowIcon);
     if (errCode != IMAGE_SUCCESS) {

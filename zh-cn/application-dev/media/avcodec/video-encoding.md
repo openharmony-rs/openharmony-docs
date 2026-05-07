@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成视频编码，即将未压缩的视频数据压缩成视频码流。
 
-<!--RP3--><!--RP3End-->
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 当前支持的编码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
@@ -46,8 +46,6 @@
     - Buffer模式下，开发者通过OH_VideoEncoder_PushInputBuffer接口输入数据；Surface模式下，开发者应在编码器就绪前调用OH_VideoEncoder_GetSurface接口，获取OHNativeWindow用于传递视频数据。
     - Buffer模式下，开发者通过OH_AVBuffer中的attr传入结束flag，编码器读取到尾帧后，停止编码；Surface模式下，需要调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入流结束。
 
-4. Surface模式的数据流转性能优于Buffer模式。
-
 两种模式的开发步骤详细说明请参考：[Surface模式](#surface模式)和[Buffer模式](#buffer模式)。
 
 ## 状态机调用关系
@@ -77,7 +75,8 @@
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
+详细的API说明请参考[native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
+
 如下为视频编码调用关系图：
 
 - 虚线表示可选。
@@ -235,8 +234,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     ```c++
-    // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
-    // 只能创建硬件编码器。
+    // 通过MIME TYPE创建编码器。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
@@ -386,7 +384,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PROFILE, profile);
-    //只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
+    // 只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
     if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CQ)) {
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_QUALITY, quality);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_SQR)) {
@@ -394,7 +392,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
         OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_MAX_BITRATE, maxBitRate);
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_SQR_FACTOR, sqrFactor);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR) ||
-               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR)){
+               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR) ||
+               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY)){
         OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_BITRATE, bitRate);
     }
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, rateMode);
@@ -476,10 +475,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     <!--RP8End-->
 
 10. 写入编码图像。
+
     在之前的第6步中，开发者已经对OH_VideoEncoder_GetSurface接口返回的OHNativeWindow*类型变量进行配置。因为编码所需的数据，由配置的surface进行持续地输入，所以开发者无需对OnNeedInputBuffer回调函数进行处理，也无需使用OH_VideoEncoder_PushInputBuffer接口输入数据。
     <!--RP13--><!--RP13End-->
 
 11. （可选）调用OH_VideoEncoder_PushInputParameter()通知编码器随帧参数配置输入完成。
+
     在之前的第4步中，开发者已经注册随帧通路回调。
 
     以下示例中：
@@ -667,8 +668,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     ```c++
-    // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
-    // 涉及创建多路编解码器时，优先创建硬件编码器实例，硬件资源不够时再创建软件编码器实例。
+    // 通过MIME TYPE创建编码器。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
@@ -876,6 +876,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     info.offset = 0;
     // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     info.pts = 0;
+    // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
+    info.flags = 0;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
         // 异常处理。
@@ -944,12 +946,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     uint8_t* src = new uint8_t[srcRect.hStride * srcRect.wStride * 3 / 2]; // 源内存区域的指针。
     uint8_t* dstTemp = dst;
     uint8_t* srcTemp = src;
-    rect.height = ((rect.height + 1) / 2)  * 2 // 避免height为奇数；
-    rect.width = ((rect.width + 1) / 2)  * 2 // 避免width为奇数；
+    rect.height = ((rect.height + 1) / 2)  * 2; // 避免height为奇数。
+    rect.width = ((rect.width + 1) / 2)  * 2; // 避免width为奇数。
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {
-        //将源数据的一行数据复制到目标数据的一行中。
+        // 将源数据的一行数据复制到目标数据的一行中。
         memcpy(dstTemp, srcTemp, rect.width);
         // 更新源数据和目标数据的指针，进行下一行的复制。每更新一次源数据和目标数据的指针都向下移动一个wStride。
         dstTemp += dstRect.wStride;
@@ -974,6 +976,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     硬件编码在处理buffer数据时（推送数据前），需要开发者拷贝宽、高对齐后的图像数据到输入回调的AVbuffer中。
+
     一般需要获取数据的宽、高、跨距、像素格式来保证编码输入数据被正确的处理。
 
     具体实现请参考：[Buffer模式](#buffer模式)的步骤3-调用OH_VideoEncoder_RegisterCallback接口设置回调函数来获取数据的宽、高、跨距、像素格式。
@@ -1012,6 +1015,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
 10. 调用OH_VideoEncoder_FreeOutputBuffer()释放编码帧。
+
     与Surface模式相同，此处不再赘述。
 
     ```c++

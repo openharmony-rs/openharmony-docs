@@ -4,13 +4,15 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @hu-zhiqiong-->
 
 流转管理入口中设备选择模块所需的过滤参数，可以作为[startContinuationDeviceManager](js-apis-continuation-continuationManager.md#continuationmanagerstartcontinuationdevicemanagerdeprecated)的入参。
 
 > **说明：**
 > 
 > 本模块首批接口从API version 8开始支持，从API version 22开始废弃，建议使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## ContinuationExtraParams<sup>(deprecated)</sup>
 
@@ -21,6 +23,8 @@
 > 从API version 22开始废弃，建议使用[devicebasicinfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)代替。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Ability.DistributedAbilityManager
 

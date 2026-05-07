@@ -2,9 +2,9 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->
-<!--Designer: @hufeng20-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @HelloCrease-->
 
 由于不同包类型的用途及构建流程的差异，开发者对不同包类型使用混淆有不同的注意事项。本文对[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)和[HSP](../quick-start/in-app-hsp.md)三种包类型分别提供建议，帮助开发者高效使用混淆。
 
@@ -57,7 +57,7 @@
 
 1. HAR包的开发者需充分了解[三种混淆配置文件](bytecode-obfuscation-guide.md#三种混淆配置文件)以及[混淆规则的合并策略](bytecode-obfuscation.md#混淆规则合并策略)，以及在被HAP包使用时的[HAP包混淆建议](#hap包混淆建议)中的注意事项，确保被应用依赖时本模块所有功能正常。
 
-2. 由于HAR包会影响使用它的主模块的混淆流程，**无论HAR包本身是否开启混淆，都应该配置consumer-rules.txt，来保证主模块在开启任意混淆的情况下，HAR包内部实现的功能都保持正常**。
+2. 由于HAR包会影响使用它的主模块的混淆流程，**无论HAR包本身是否开启混淆，都应该配置[consumer-rules.txt](bytecode-obfuscation-guide.md#三种混淆配置文件)，来保证主模块在开启任意混淆的情况下，HAR包内部实现的功能都保持正常**。
 
 3. 由于consumer配置的传递性，**HAR包开发者不应该在其中配置开启某种混淆的能力，只应该配置保留某个白名单的规则，并且为减少对依赖方的影响范围，只建议使用`-keep-global-name`和`-keep-property-name`两种白名单配置能力。**
 
@@ -82,7 +82,7 @@
 > 当被其他模块依赖时，有以下两点需要注意：
 >
 > * ArkGuard会在使用方（如HAP）混淆时收集本发布态HAR包的export导出名称及其相关属性等名称到不混淆名单中。
-> * ArkGuard会在使用方（如HAP）混淆时收集本发布态HAR包的obfuscation.txt文件中的白名单，但不会继续收集本HAR包依赖的HAR包（四方库）中的obfuscation.txt文件的白名单（这是由于在构建三方库时，已收集过四方库的名单）。因此，**若发布态HAR包依赖其他HAR包，需要固定其他HAR包的版本号，不应配置自动匹配最新版本。** 否则当四方库升级后，若白名单发生变更，则不会在HAP中生效，易引起稳定性问题。
+> * ArkGuard会在使用方（如HAP）混淆时收集本发布态HAR包的obfuscation.txt文件中的白名单，但不会继续收集本HAR包依赖的HAR包（四方库）中的obfuscation.txt文件的白名单（这是由于在构建三方库时，已收集过四方库的名单）。因此，**若发布态HAR包依赖其他HAR包，应锁定其版本号，避免采用动态版本依赖机制。** 否则当四方库升级后，若白名单发生变更，则不会在HAP中生效，易引起稳定性问题。
 
 ### 发布态字节码HAR包
 
@@ -110,4 +110,4 @@
 
 > **说明**
 >
-> HSP生成obfuscation.txt的规则来源，仅来自于当前模块的consumer-rules.txt文件，不包含依赖模块的consumer-rules.txt文件或obfuscation.txt文件。
+> HSP生成obfuscation.txt的规则来源，仅来自当前模块的consumer-rules.txt文件，不包含依赖模块的consumer-rules.txt文件或obfuscation.txt文件。

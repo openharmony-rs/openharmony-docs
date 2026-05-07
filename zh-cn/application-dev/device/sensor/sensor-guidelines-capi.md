@@ -2,15 +2,15 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 场景介绍
 
 当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。
 
-详细的接口介绍请参考[Sensor接口](../../reference/apis-sensor-service-kit/capi-sensor.md)。
+详细的接口介绍请参考[Sensor](../../reference/apis-sensor-service-kit/capi-sensor.md)。
 
 ## 函数说明
 
@@ -18,7 +18,7 @@
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)     | 获取设备上所有传感器的信息。                                 |
 | OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_SubscriptionAttribute *attribute, const Sensor_Subscriber *subscriber) | 订阅传感器数据。系统将以指定的频率向用户上报传感器数据。<br/>订阅加速度传感器，需要申请ohos.permission.ACCELEROMETER权限；<br/>订阅陀螺仪传感器，需要申请ohos.permission.GYROSCOPE权限；<br/>订阅计步器相关传感器时，需要申请ohos.permission.ACTIVITY_MOTION权限；<br/>订阅与健康相关的传感器时，比如心率传感器需要申请ohos.permission.READ_HEALTH_DATA权限，否则订阅失败;<br/>订阅其余传感器不需要申请权限。 |
-| OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Sensor_Subscriber *subscriber) | 取消订阅传感器数据。<br/>取消订阅加速度计传感器，需要申请ohos.permission.ACCELEROMETER权限； <br/>取消订阅陀螺仪传感器，需要申请ohos.permission.GYROSCOPE权限； <br/>取消订阅计步器相关传感器时，需要申请ohos.permission.ACTIVITY_MOTION权限；<br/>取消订阅与健康相关的传感器时，需要申请ohos.permission.READ_HEALTH_DATA权限，否则取消订阅失败。 <br/>取消订阅其余传感器不需要申请权限。 |
+| OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Sensor_Subscriber *subscriber) | 取消订阅传感器数据。<br/>取消订阅加速度传感器，需要申请ohos.permission.ACCELEROMETER权限； <br/>取消订阅陀螺仪传感器，需要申请ohos.permission.GYROSCOPE权限； <br/>取消订阅计步器相关传感器时，需要申请ohos.permission.ACTIVITY_MOTION权限；<br/>取消订阅与健康相关的传感器时，需要申请ohos.permission.READ_HEALTH_DATA权限，否则取消订阅失败。 <br/>取消订阅其余传感器不需要申请权限。 |
 | OH_Sensor_CreateInfos(uint32_t count)                        | 用给定的数字创建一个实例数组，请参考[Sensor_Info](../../reference/apis-sensor-service-kit/capi-sensor-sensor-info.md)。 |
 | OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count) | 销毁实例数组并回收内存，请参考[Sensor_Info](../../reference/apis-sensor-service-kit/capi-sensor-sensor-info.md)。 |
 | OH_SensorInfo_GetName(Sensor_Info *sensor, char *sensorName, uint32_t *length) | 获取传感器名称。                                             |
@@ -52,7 +52,7 @@
 
 2. 配置加速度传感器权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-   <!-- @[sensor_capi_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/module.json5) --> 
+   <!-- @[sensor_capi_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/module.json5) --> 
    
    ``` JSON5
    "requestPermissions": [
@@ -72,7 +72,7 @@
 
 4. 在oh_sensor_capi.cpp文件中编码，首先导入模块。
 
-   <!-- @[sensor_capi_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
    
    ``` C++
    #include "sensors/oh_sensor.h"
@@ -83,7 +83,7 @@
 
 5. 定义常量。
 
-   <!-- @[sensor_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
    
    ``` C++
    const int SENSOR_LOG_DOMAIN = 0xD002700;
@@ -99,7 +99,7 @@
 
 6. 定义一个回调函数用来接收传感器数据。
 
-   <!-- @[sensor_capi_define_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_define_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) -->
    
    ``` C++
    // 定义回调函数
@@ -113,21 +113,21 @@
        // 获取传感器数据的时间戳。
        int32_t ret = OH_SensorEvent_GetTimestamp(event, &timestamp);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get timestamp is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get timestamp failed");
            return;
        }
        Sensor_Type sensorType;
        // 获取传感器类型。
        ret = OH_SensorEvent_GetType(event, &sensorType);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type failed");
            return;
        }
        Sensor_Accuracy accuracy = SENSOR_ACCURACY_UNRELIABLE;
        // 获取传感器数据的精度。
        ret = OH_SensorEvent_GetAccuracy(event, &accuracy);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor accuracy is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor accuracy failed");
            return;
        }
        float *data = nullptr;
@@ -135,7 +135,7 @@
        // 获取传感器数据。
        ret = OH_SensorEvent_GetData(event, &data, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor data is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor data failed");
            return;
        }
        if (data == nullptr) {
@@ -152,7 +152,7 @@
 
 7. 获取设备上所有传感器的信息。  
 
-   <!-- @[sensor_capi_get_sensors_info_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_get_sensors_info_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
    
    ``` C++
    static int32_t GetSensorInfo(Sensor_Info *sensorInfoTemp)
@@ -162,7 +162,7 @@
        // 获取传感器名称。
        int32_t ret = OH_SensorInfo_GetName(sensorInfoTemp, sensorName, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor name is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor name failed");
            return ret;
        }
        char vendorName[SENSOR_NAME_LENGTH_MAX] = {};
@@ -170,35 +170,35 @@
        // 获取传感器的厂商名称。
        ret = OH_SensorInfo_GetVendorName(sensorInfoTemp, vendorName, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor vender name is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor vendor name failed");
            return ret;
        }
        Sensor_Type sensorType;
        // 获取传感器类型。
        ret = OH_SensorInfo_GetType(sensorInfoTemp, &sensorType);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type failed");
            return ret;
        }
        float resolution = INVALID_RESOLUTION;
        // 获取传感器分辨率。
        ret = OH_SensorInfo_GetResolution(sensorInfoTemp, &resolution);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor resolution is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor resolution failed");
            return ret;
        }
        int64_t minSamplePeriod = INVALID_VALUE;
        // 获取传感器的最小数据上报间隔。
        ret = OH_SensorInfo_GetMinSamplingInterval(sensorInfoTemp, &minSamplePeriod);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor min sampling interval is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor min sampling interval failed");
            return ret;
        }
        int64_t maxSamplePeriod = INVALID_VALUE;
        // 获取传感器的最大数据上报间隔时间。
        ret = OH_SensorInfo_GetMaxSamplingInterval(sensorInfoTemp, &maxSamplePeriod);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor max sampling interval is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor max sampling interval failed");
        }
        return ret;
    }
@@ -209,19 +209,19 @@
        // 获取设备上所有传感器的个数。
        int32_t ret = OH_Sensor_GetInfos(nullptr, &count);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor count is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor count failed");
            return nullptr;
        }
        // 用给定的数字创建一个实例数组。
        Sensor_Info **sensors = OH_Sensor_CreateInfos(count);
        if (sensors == nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create sensorInfo array is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create sensorInfo array failed");
            return nullptr;
        }
        // 获取设备上所有传感器的信息。
        ret = OH_Sensor_GetInfos(sensors, &count);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get all sensor info is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get all sensor info failed");
            return nullptr;
        }
        for (uint32_t i = 0; i < count; ++i) {
@@ -236,7 +236,7 @@
        // 销毁实例数组并回收内存。
        ret = OH_Sensor_DestroyInfos(sensors, count);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "destroy sensor info is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "destroy sensor info failed");
            return nullptr;
        }
        return nullptr;
@@ -245,7 +245,7 @@
 
 8. 订阅和取消订阅传感器数据。
 
-   <!-- @[sensor_capi_subscriber_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_subscriber_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
    
    ``` C++
    static napi_value Subscriber(napi_env env, napi_callback_info info)
@@ -310,7 +310,7 @@
 
 9. 在Init函数中补充接口。
 
-   <!-- @[sensor_capi_init_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_init_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
    
    ``` C++
    EXTERN_C_START
@@ -328,7 +328,7 @@
 
 10. 在types/libentry路径下index.d.ts文件中引入Napi接口。
 
-    <!-- @[sensor_capi_dependency_napi_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+    <!-- @[sensor_capi_dependency_napi_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
     
     ``` TypeScript
     export const getSensorInfos: () => object;
@@ -337,7 +337,7 @@
 
 11. 编写程序入口调用代码。
 
-    <!-- @[sensor_capi_index_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorCapiSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[sensor_capi_index_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -359,6 +359,6 @@
                 // ...
               } catch (error) {
                 let e: BusinessError = error as BusinessError;
-                hilog.error(DOMAIN, 'testTag', `Failed to invoke getSensorInfos. Code: ${e.code}, message: ${e.message}`);
+                hilog.error(DOMAIN, 'testTag', `Failed to invoke subscriber. Code: ${e.code}, message: ${e.message}`);
               }
     ```

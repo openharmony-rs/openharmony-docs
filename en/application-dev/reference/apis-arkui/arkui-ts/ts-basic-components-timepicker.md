@@ -44,40 +44,38 @@ Describes the parameters of the time picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                           | Read-Only| Optional| Description                                                        |
+| Name                | Type                                           | Read Only| Optional| Description                                                        |
 | -------------------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | selected             | Date                                            | No  | Yes  | Time of the selected item.<br>Default value: current system time<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11)| No  | Yes  | Time format.<br>Default value: **TimePickerFormat.HOUR_MINUTE**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | start<sup>18+</sup>  | Date                                            | No  | Yes  | Start time of the time picker.<br>Default value: **Date(0, 0, 0, 0, 0, 0)**<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | end<sup>18+</sup>    | Date                                            | No  | Yes  | End time of the time picker.<br>Default value: **Date(0, 0, 0, 23, 59, 59)**.<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
->  **NOTE**
->
->  - Property modifications made to **TimePickerOptions** during the **TimePicker** scrolling process may not take effect.
->
->  - The **Date** object is used to handle dates and time. It can be used in the following ways:
->
->  **Method 1**: new Date ()
->
->  Obtains the current system date and time.
->
->  **Method 2**: new Date(value: number | string)
->
->  | Name | Type | Mandatory | Description |
->  | ------- | ------ | ---- | ------ |
->  | value   | number \| string  | Yes | Date format.<br>**number**: number of milliseconds since 00:00:00 on January 1, 1970.<br>**string**: date string in formats such as 2025-02 2025-02-20 08:00:00 or 2025-02 2025-02-20T08:00:00.|
->
->  **Method 3**: new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
->
->  | Name | Type | Mandatory | Description |
->  | --------| ------ | ---- | ------ |
->  | year        | number | Yes   | Year. Example: **2025**.|
->  | monthIndex  | number | Yes   | Month index, for example, **2** for March.|
->  | date        | number | No   | Day of the month, for example, **10**. (Required if **hours** is set.) |
->  | hours       | number | No   | Hour, for example, **15**. (Required if **minutes** is set.) |
->  | minutes     | number | No   | Minute, for example, **20**. (Required if **seconds** is set.) |
->  | seconds     | number | No   | Second, for example, **20**. (Required if **ms** is set.) |
->  | ms          | number | No   | Millisecond, for example, **10**.|
+Property modifications made to **TimePickerOptions** during the **TimePicker** scrolling process may not take effect.
+
+The **Date** object is used to handle dates and time. It can be used in the following ways:
+
+**Method 1**: new Date()
+
+Obtains the current system date and time.
+
+**Method 2**: new Date(value: number | string)
+
+| Name  | Type  | Mandatory| Description  |
+| ------- | ------ | ---- | ------ |
+| value   | number&nbsp;\|&nbsp;string  | Yes| Date format.<br>**number**: number of milliseconds since 00:00:00 on January 1, 1970.<br>**string**: date string in formats such as 2025-02-20 08:00:00 or 2025-02-20T08:00:00.|
+
+**Method 3**: new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
+
+| Name  | Type  | Mandatory| Description  |
+| --------| ------ | ---- | ------ |
+| year        | number | Yes  | Year, for example, **2025**.|
+| monthIndex  | number | Yes  | Month index, for example, **2** for March.|
+| date        | number | No  | Date, for example, **10** (if **hours** is set, **date** cannot be omitted).|
+| hours       | number | No  | Hour, for example, **15** (if **minutes** is set, **hours** cannot be omitted).|
+| minutes     | number | No  | Minute, for example, **20** (if **seconds** is set, **minutes** cannot be omitted).|
+| seconds     | number | No  | Second, for example, **20** (if **ms** is set, **seconds** cannot be omitted).|
+| ms          | number | No  | Millisecond, for example, **10**.|
 
 **Handling in the case of date configuration exceptions**
 
@@ -100,8 +98,8 @@ Enumerates time display formats of the time picker.
 
 | Name              | Value| Description                    |
 | ------------------ | - | ------------------------ |
-| HOUR_MINUTE        | - | Time format displaying hours and minutes.      |
-| HOUR_MINUTE_SECOND | - | Time format displaying hours, minutes, and seconds.|
+| HOUR_MINUTE        | 0 | Time format displaying hours and minutes.      |
+| HOUR_MINUTE_SECOND | 1 | Time format displaying hours, minutes, and seconds.|
 
 ## Attributes
 
@@ -111,7 +109,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 useMilitaryTime(value: boolean)
 
-Sets whether to display the time in 24-hour format. The 12-hour format is used by default.
+Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -121,13 +119,13 @@ Sets whether to display the time in 24-hour format. The 12-hour format is used b
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>Default value: **false**.|
+| value  | boolean | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.|
 
 ### useMilitaryTime<sup>18+</sup>
 
 useMilitaryTime(isMilitaryTime: Optional\<boolean>)
 
-Sets whether to display the time in 24-hour format. The 12-hour format is used by default. Compared with [useMilitaryTime](#usemilitarytime), this API supports the **undefined** type for the **isMilitaryTime** parameter.
+Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default. Compared with [useMilitaryTime](#usemilitarytime), this API supports the **undefined** type for the **isMilitaryTime** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -137,7 +135,7 @@ Sets whether to display the time in 24-hour format. The 12-hour format is used b
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>Default value: **false**.<br>If the value of **isMilitaryTime** is **undefined**, the default value is used.|
+| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>When the value is **undefined**, the system time format is used by default.|
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -173,7 +171,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -183,7 +181,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 textStyle(value: PickerTextStyle)
 
-Text color, font size, and font weight of candidate items (the first item immediately above or below the selected item).
+Sets the text color, font size, and font weight of candidate items (the item immediately adjacent to the selected item, above or below).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -203,7 +201,7 @@ Text color, font size, and font weight of candidate items (the first item immedi
 
 textStyle(style: Optional\<PickerTextStyle>)
 
-Sets the text color, font size, and font weight of candidate items (the first item immediately above or below the selected item). Compared with [textStyle<sup>10+</sup>](#textstyle10), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of candidate items (the item immediately adjacent to the selected item, above or below). Compared with [textStyle<sup>10+</sup>](#textstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -213,7 +211,7 @@ Sets the text color, font size, and font weight of candidate items (the first it
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -253,7 +251,7 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Font color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Font color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### loop<sup>11+</sup>
 
@@ -285,7 +283,7 @@ Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop1
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used.|
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used.|
 
 ### dateTimeOptions<sup>12+</sup>
 
@@ -317,13 +315,23 @@ Sets whether to display a leading zero for the hours, minutes, and seconds. Comp
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[DateTimeOptions](#datetimeoptions12)> | Yes  | Whether to display a leading zero for the hours, minutes, and seconds. Currently only the configuration of the **hour**, **minute**, and **second** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
+| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DateTimeOptions](#datetimeoptions12)> | Yes  | Whether to display a leading zero for the hours, minutes, and seconds. Currently only the configuration of the **hour**, **minute**, and **second** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
 
 ### enableHapticFeedback<sup>12+</sup>
 
 enableHapticFeedback(enable: boolean)
 
 Sets whether to enable haptic feedback.
+
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
+
+``` json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 >**NOTE**
 >
@@ -339,23 +347,22 @@ Sets whether to enable haptic feedback.
 | ------ | --------------------------------------------- | ----- |-------------------------------------------------------------------------------------|
 | enable  | boolean | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
 
->  **NOTE**
->
->  To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
-
 ### enableHapticFeedback<sup>18+</sup>
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
 Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12), this API supports the **undefined** type for the **enable** parameter.
 
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
+
+``` json
+"requestPermissions": [
+  {
+    "name": "ohos.permission.VIBRATE",
+  }
+]
+```
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -364,24 +371,13 @@ Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If the value of **enable** is **undefined**, the default value is used.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
-
->  **NOTE**
->
->  To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If the value of **enable** is **undefined**, the default value is used.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
 
 ### enableCascade<sup>18+</sup>
 
 enableCascade(enabled: boolean)
 
-Sets whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.
+Sets whether the AM/PM indicator automatically switches based on the hour value. Only takes effect when [useMilitaryTime](#usemilitarytime) is set to **false**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -391,7 +387,7 @@ Sets whether the AM/PM indicator automatically switches based on the hour value.
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enabled | boolean | Yes  | Whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.<br>- **true**: The AM/PM indicator automatically switches based on the hour value.<br>- **false**: The AM/PM indicator remains static regardless of hour changes.<br>Default value: **false**.<br>When **enabled** is set to **true**, it only takes effect if the **loop** parameter is also **true**.|
+| enabled | boolean | Yes  | Sets whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.<br>- **true**: The AM/PM indicator automatically switches based on the hour value.<br>- **false**: The AM/PM indicator remains static regardless of hour changes.<br>Default value: **false**.<br>When **enabled** is set to **true**, it only takes effect if the **loop** parameter is also **true**.|
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -406,7 +402,7 @@ Sets the sensitivity to the digital crown rotation.
 
 | Name  | Type                                    | Mandatory  | Description                     |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**                   |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**                   |
 
 >  **NOTE**
 >
@@ -418,7 +414,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onChange
 
-onChange(callback: (value: TimePickerResult ) =&gt; void)
+onChange(callback:&nbsp;(value:&nbsp;TimePickerResult )&nbsp;=&gt;&nbsp;void)
 
 Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables.
 
@@ -438,7 +434,7 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 onChange(callback: Optional\<OnTimePickerChangeCallback>)
 
-Triggered when the time options in the TimePicker rest on the selected position after scrolling. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), the **callback** parameter supports the **undefined** type.
+Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
 This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead.
 
@@ -450,7 +446,7 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnTimePickerChangeCallback](#ontimepickerchangecallback18)> | Yes  | Callback invoked when a time option is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnTimePickerChangeCallback](#ontimepickerchangecallback18)> | Yes  | Callback invoked when a time option is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ### onEnterSelectedArea<sup>18+</sup>
 
@@ -512,7 +508,7 @@ Describes a time in 24-hour format.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type  | Read-Only| Optional| Description                               |
+| Name                | Type  | Read Only| Optional| Description                               |
 | -------------------- | ------ | ---- | ---- | ----------------------------------- |
 | hour                 | number | No  | No  | Hour portion of the selected time.<br>Value range: [0-23]|
 | minute               | number | No  | No  | Minute portion of the selected time.<br>Value range: [0-59]|
@@ -522,7 +518,7 @@ Describes a time in 24-hour format.
 
 ### Example 1: Setting the Text Style
 
-This example demonstrates how to configure [disappearTextStyle](#disappeartextstyle10), [textStyle](#textstyle10), and [selectedTextStyle](#selectedtextstyle10) to customize the text style in a time picker.
+This example demonstrates how to customize the text style in a time picker using [disappearTextStyle](#disappeartextstyle10), [textStyle](#textstyle10), and [selectedTextStyle](#selectedtextstyle10).
 
 ```ts
 // xxx.ets
@@ -728,6 +724,8 @@ struct TimePickerExample {
 ### Example 7: Enabling the AM/PM Indicator to Automatically Switch Based on the Hour Value in 12-hour Format
 
 This example demonstrates how to enable the AM/PM indicator to automatically switch based on the hour value in 12-hour format using [enableCascade](#enablecascade18) and [loop](#loop11).
+
+The **enableCascade** API is added since API version 18.
 
 ```ts
 // xxx.ets

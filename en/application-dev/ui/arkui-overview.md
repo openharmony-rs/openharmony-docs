@@ -1,4 +1,4 @@
-# Introduction to ArkUI
+# About This Kit
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->

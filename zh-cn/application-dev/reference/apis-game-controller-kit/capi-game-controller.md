@@ -111,7 +111,7 @@ GameController模块提供游戏控制器功能的API接口。
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_rightbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向右按键事件的监听回调。 | 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_upbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向上按键事件的监听回调。 | 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_upbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向上按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_downbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向下按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_downbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向下按键事件的监听回调。 | 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_downbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向下按键事件的监听回调。 | 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_RegisterAxisInputMonitor](#oh_gamepad_dpad_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册方向按键轴事件的监听回调。 | 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_UnregisterAxisInputMonitor](#oh_gamepad_dpad_unregisteraxisinputmonitor) (void) | 取消注册方向按键轴事件的监听回调。 | 
@@ -152,7 +152,7 @@ GameController模块提供游戏控制器功能的API接口。
 ### GameController_ErrorCode
 
 ```c
-typedef enum GameController_ErrorCodeGameController_ErrorCode
+typedef enum GameController_ErrorCode GameController_ErrorCode
 ```
 
 **描述**
@@ -165,7 +165,7 @@ typedef enum GameController_ErrorCodeGameController_ErrorCode
 ### GameDevice_AllDeviceInfos
 
 ```c
-typedef struct GameDevice_AllDeviceInfosGameDevice_AllDeviceInfos
+typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos
 ```
 
 **描述**
@@ -178,7 +178,7 @@ typedef struct GameDevice_AllDeviceInfosGameDevice_AllDeviceInfos
 ### GameDevice_DeviceEvent
 
 ```c
-typedef struct GameDevice_DeviceEventGameDevice_DeviceEvent
+typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent
 ```
 
 **描述**
@@ -191,7 +191,7 @@ typedef struct GameDevice_DeviceEventGameDevice_DeviceEvent
 ### GameDevice_DeviceInfo
 
 ```c
-typedef struct GameDevice_DeviceInfoGameDevice_DeviceInfo
+typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo
 ```
 
 **描述**
@@ -223,7 +223,7 @@ typedef void(*GameDevice_DeviceMonitorCallback) (const struct GameDevice_DeviceE
 ### GameDevice_DeviceType
 
 ```c
-typedef enum GameDevice_DeviceTypeGameDevice_DeviceType
+typedef enum GameDevice_DeviceType GameDevice_DeviceType
 ```
 
 **描述**
@@ -236,7 +236,7 @@ typedef enum GameDevice_DeviceTypeGameDevice_DeviceType
 ### GameDevice_StatusChangedType
 
 ```c
-typedef enum GameDevice_StatusChangedTypeGameDevice_StatusChangedType
+typedef enum GameDevice_StatusChangedType GameDevice_StatusChangedType
 ```
 
 **描述**
@@ -249,7 +249,7 @@ typedef enum GameDevice_StatusChangedTypeGameDevice_StatusChangedType
 ### GamePad_AxisEvent
 
 ```c
-typedef struct GamePad_AxisEventGamePad_AxisEvent
+typedef struct GamePad_AxisEvent GamePad_AxisEvent
 ```
 
 **描述**
@@ -281,7 +281,7 @@ typedef void(*GamePad_AxisInputMonitorCallback) (const struct GamePad_AxisEvent 
 ### GamePad_AxisSourceType
 
 ```c
-typedef enum GamePad_AxisSourceType
+typedef enum GamePad_AxisSourceType GamePad_AxisSourceType
 ```
 
 **描述**
@@ -294,7 +294,7 @@ typedef enum GamePad_AxisSourceType
 ### GamePad_Button_ActionType
 
 ```c
-typedef enum GamePad_Button_ActionTypeGamePad_Button_ActionType
+typedef enum GamePad_Button_ActionType GamePad_Button_ActionType
 ```
 
 **描述**
@@ -307,7 +307,7 @@ typedef enum GamePad_Button_ActionTypeGamePad_Button_ActionType
 ### GamePad_ButtonEvent
 
 ```c
-typedef struct GamePad_ButtonEventGamePad_ButtonEvent
+typedef struct GamePad_ButtonEvent GamePad_ButtonEvent
 ```
 
 **描述**
@@ -339,7 +339,7 @@ typedef void(*GamePad_ButtonInputMonitorCallback) (const struct GamePad_ButtonEv
 ### GamePad_PressedButton
 
 ```c
-typedef struct GamePad_PressedButtonGamePad_PressedButton
+typedef struct GamePad_PressedButton GamePad_PressedButton
 ```
 
 **描述**

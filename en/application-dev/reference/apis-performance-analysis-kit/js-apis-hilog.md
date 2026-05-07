@@ -5,7 +5,7 @@
 <!--Owner: @liuyifeifei;@buzhenwang-->
 <!--Designer: @shenchenkai-->
 <!--Tester: @liyang2235-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
 
@@ -97,7 +97,7 @@ hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
 <!--RP3-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  D     hello World <private>
 ```
 <!--RP3End-->
@@ -132,7 +132,7 @@ hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
 <!--RP4-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I     hello World <private>
 ```
 <!--RP4End-->
@@ -167,7 +167,7 @@ hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
 <!--RP5-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```
 <!--RP5End-->
@@ -202,7 +202,7 @@ hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
 <!--RP6-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  E     hello World <private>
 ```
 <!--RP6End-->
@@ -237,7 +237,7 @@ hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
 <!--RP7-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```
 <!--RP7End-->
@@ -286,7 +286,7 @@ After the minimum log level of the process is set to **DEBUG**, the fourth log d
 
 <!--RP1-->
 The log result is as follows:
-```
+```text
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
@@ -352,7 +352,7 @@ When the minimum log level of the process is set to **DEBUG** and the **PREFER_C
 
 <!--RP2-->
 The log result is as follows:
-```
+```text
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 2
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
@@ -398,7 +398,7 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 
 **Log result**:
 <!--RP8-->
-```
+```text
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null

@@ -17,11 +17,7 @@
       - [ArkTS卡片界面开发概述](arkts-ui-widget-page-overview.md)
       - [ArkTS卡片为组件添加动效](arkts-ui-widget-page-animation.md)
       - [ArkTS卡片使用画布组件绘制自定义图形](arkts-ui-widget-page-custom-drawing.md)
-      - [ArkTS卡片界面适配深浅色模式](arkts-ui-widget-dark-light-color-adapt.md)
       - [ArkTS卡片使用自定义字体](arkts-ui-widget-load-custom-font.md)
-      <!--Del-->
-      - [ArkTS卡片模糊提亮和玻璃材质适配（仅对系统应用开放）](arkts-ui-widget-visual-effect-sys.md)
-      <!--DelEnd-->
     - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
       - [ArkTS卡片页面刷新概述](arkts-ui-widget-interaction-overview.md)
       - [ArkTS卡片主动刷新](arkts-ui-widget-active-refresh.md)
@@ -29,6 +25,7 @@
       <!--Del-->
       - [卡片代理刷新（仅对系统应用开放）](arkts-ui-widget-update-by-proxy-sys.md)
       <!--DelEnd-->
+      <!--RP3--><!--RP3End-->
       - [刷新本地图片和网络图片](arkts-ui-widget-image-update.md)
       - [根据卡片状态刷新不同内容](arkts-ui-widget-update-by-status.md)
     - ArkTS卡片页面交互<!--arkts-ui-widget-event-->
@@ -39,11 +36,11 @@
       - [通过router或call事件刷新卡片内容](arkts-ui-widget-event-uiability.md)
     - ArkTS卡片编辑<!--arkts-ui-widget-edit-->
       - [ArkTS卡片编辑概述](arkts-ui-widget-event-formeditextensionability-overview.md)
-      - [卡片编辑开发指导](arkts-ui-widget-event-formeditextensionability.md)
     - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
       - [应用内拉起卡片管理加桌](arkts-ui-widget-open-formmanager.md)
     <!--RP1--><!--RP1End-->
     <!--RP2--><!--RP2End-->
+    <!--RP4--><!--RP4End-->
   <!--Del--> 
   - [ArkTS卡片使用方开发指导（仅对系统应用开放）](widget-host-development-guide-sys.md)
   <!--DelEnd-->
@@ -55,8 +52,8 @@
       - [场景动效类型互动卡片开发指导](arkts-ui-liveform-sceneanimation-development.md)
       <!--Del-->
       - [场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)
-  - [ArkTS卡片适配常见问题](arkts-ui-widget-adapt-faq.md)
       <!--DelEnd-->
+  - [ArkTS卡片适配常见问题](arkts-ui-widget-adapt-faq.md)
 - JS卡片开发<!--form-js-ui-->
   - [JS卡片概述](js-ui-widget-overview.md)
   - [JS卡片开发指导（Stage模型）](js-ui-widget-development.md)

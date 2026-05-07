@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIServiceExtensionContext模块是[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
@@ -165,8 +165,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 
 ## UIServiceExtensionContext.startAbilityByType
 
-startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;,
-    abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
+startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;, abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
 
 按目标ability的类型启动[UIAbility](js-apis-app-ability-uiAbility.md)或[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。仅支持处于前台的应用调用。使用Promise异步回调。
 
@@ -306,6 +305,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 16000006   | Cross-user operations are not allowed.         |
 | 16000008   | The crowdtesting application expires.        |
 | 16000011   | The context does not exist.         |
+| 16000012 | The application is controlled. |
 | 16000013   | The application is controlled by EDM.       |
 | 16000050   | Internal error.        |
 | 16000053   | The ability is not on the top of the UI.        |

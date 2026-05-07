@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -25,7 +25,7 @@ add(attributes: AssetMap): Promise\<void>
 
 新增一条关键资产。使用Promise异步回调。
 
-设置[IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限。
+设置[Tag.IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -45,9 +45,9 @@ add(attributes: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 201      | The caller doesn't have the permission.                    |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
@@ -92,7 +92,7 @@ addSync(attributes: AssetMap): void
 
 新增一条关键资产，使用同步方式返回结果。
 
-如果要设置[IS_PERSISTENT](#tag)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限。
+如果要设置[Tag.IS_PERSISTENT](#tag)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -106,9 +106,9 @@ addSync(attributes: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 201      | The caller doesn't have the permission.                    |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
@@ -145,6 +145,83 @@ attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
 asset.addSync(attr);
 ```
 
+## asset.batchAdd
+
+batchAdd(attributesArray: Array\<AssetMap>): Promise\<BatchResult>
+
+批量新增关键资产。使用Promise异步回调。
+
+设置[Tag.IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+
+批量新增的关键资产必须具有相同的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性。
+
+批量新增的关键资产数量最大值为100。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名     | 类型     | 必填 | 说明                                                         |
+| ---------- | -------- | ---- | ------------------------------------------------------------ |
+| attributesArray | Array\<[AssetMap](#assetmap)> | 是   | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。 |
+
+**返回值：**
+
+| 类型          | 说明                    |
+| ------------- | ----------------------- |
+| Promise\<[BatchResult](#batchresult)> | Promise对象，返回批量操作结果，包含失败关键资产的错误信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+
+| 错误码ID | 错误信息                                                    |
+| -------- | ---------------------------------------------------------- |
+| 24000001 | The ASSET service is unavailable.                          |
+| 24000005 | The screen lock status does not match.                         |
+| 24000006 | Insufficient memory.                                       |
+| 24000007 | The asset is corrupted.                                    |
+| 24000008 | The database operation failed.                          |
+| 24000009 | The cryptography operation failed.                      |
+| 24000010 | IPC failed.                                |
+| 24000011 | Calling the Bundle Manager service failed. |
+| 24000012 | Calling the OS Account service failed.     |
+| 24000013 | Calling the Access Token service failed.   |
+| 24000014 | The file operation failed.                           |
+| 24000015 | Getting the system time failed.            |
+| 24000019 | Each value of [Tag.GROUP_ID](#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](#tag) in the array is not consistent. |
+
+**示例：**
+
+```typescript
+import { asset } from '@kit.AssetStoreKit';
+import { util } from '@kit.ArkTS';
+
+function stringToArray(str: string): Uint8Array {
+  let textEncoder = new util.TextEncoder();
+  return textEncoder.encodeInto(str);
+}
+
+let attributesArray: Array<asset.AssetMap> = [];
+let attr1: asset.AssetMap = new Map();
+attr1.set(asset.Tag.SECRET, stringToArray('demo_pwd1'));
+attr1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+attr1.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+attributesArray.push(attr1);
+
+let attr2: asset.AssetMap = new Map();
+attr2.set(asset.Tag.SECRET, stringToArray('demo_pwd2'));
+attr2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+attr2.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+attributesArray.push(attr2);
+
+asset.batchAdd(attributesArray).then((res: asset.BatchResult) => {
+  console.info(`Succeeded in batch adding Asset, failedCount: ${res.failedCount}`);
+});
+```
+
 ## asset.remove
 
 remove(query: AssetMap): Promise\<void>
@@ -169,9 +246,9 @@ remove(query: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -221,9 +298,9 @@ removeSync(query: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -253,6 +330,74 @@ query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 asset.removeSync(query);
 ```
 
+## asset.batchRemove
+
+batchRemove(assetsToBeRemoved: Array\<AssetMap>): Promise\<void>
+
+批量删除符合条件的关键资产。使用Promise异步回调。
+
+批量删除的关键资产必须具有相同的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性。
+
+批量删除的关键资产数量最大值为100。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名     | 类型     | 必填 | 说明                                                         |
+| ---------- | -------- | ---- | ------------------------------------------------------------ |
+| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。 |
+
+**返回值：**
+
+| 类型          | 说明                    |
+| ------------- | ----------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+
+| 错误码ID | 错误信息                                                    |
+| -------- | ---------------------------------------------------------- |
+| 24000001 | The ASSET service is unavailable.                          |
+| 24000006 | Insufficient memory.                                       |
+| 24000007 | The asset is corrupted.                                    |
+| 24000008 | The database operation failed.                          |
+| 24000010 | IPC failed.                                |
+| 24000011 | Calling the Bundle Manager service failed. |
+| 24000012 | Calling the OS Account service failed.     |
+| 24000013 | Calling the Access Token service failed.   |
+| 24000015 | Getting the system time failed.            |
+| 24000019 | Each value of [Tag.GROUP_ID](#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](#tag) in the array is not consistent. |
+
+**示例：**
+
+```typescript
+import { asset } from '@kit.AssetStoreKit';
+import { util } from '@kit.ArkTS';
+
+function stringToArray(str: string): Uint8Array {
+  let textEncoder = new util.TextEncoder();
+  return textEncoder.encodeInto(str);
+}
+
+let assetsToBeRemoved: Array<asset.AssetMap> = [];
+let query1: asset.AssetMap = new Map();
+query1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+assetsToBeRemoved.push(query1);
+
+let query2: asset.AssetMap = new Map();
+query2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+assetsToBeRemoved.push(query2);
+
+asset.batchRemove(assetsToBeRemoved).then(() => {
+  console.info(`Succeeded in batch removing Asset.`);
+});
+```
+
 ## asset.update
 
 update(query: AssetMap, attributesToUpdate: AssetMap): Promise\<void>
@@ -278,9 +423,9 @@ update(query: AssetMap, attributesToUpdate: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -335,9 +480,9 @@ updateSync(query: AssetMap, attributesToUpdate: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -371,6 +516,81 @@ attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
 asset.updateSync(query, attrsToUpdate);
 ```
 
+## asset.batchUpdate
+
+batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>): Promise\<BatchResult>
+
+批量更新符合条件的关键资产。使用Promise异步回调。
+
+批量更新的关键资产必须具有相同的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性。
+
+批量更新的关键资产数量最大值为100。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+**参数：**
+
+| 参数名             | 类型     | 必填 | 说明                                                         |
+| ------------------ | -------- | ---- | ------------------------------------------------------------ |
+| sourceAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的搜索条件数组。 |
+| destAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的属性集合数组。 |
+
+**返回值：**
+
+| 类型          | 说明                    |
+| ------------- | ----------------------- |
+| Promise\<[BatchResult](#batchresult)> | Promise对象，返回批量操作结果，包含失败关键资产的错误信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+
+| 错误码ID | 错误信息                                                    |
+| -------- | ---------------------------------------------------------- |
+| 24000001 | The ASSET service is unavailable.                          |
+| 24000006 | Insufficient memory.                                       |
+| 24000007 | The asset is corrupted.                                    |
+| 24000008 | The database operation failed.                          |
+| 24000010 | IPC failed.                                |
+| 24000011 | Calling the Bundle Manager service failed. |
+| 24000012 | Calling the OS Account service failed.     |
+| 24000015 | Getting the system time failed.            |
+| 24000019 | Each value of [Tag.GROUP_ID](#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](#tag) in the array is not consistent. |
+
+**示例：**
+
+```typescript
+import { asset } from '@kit.AssetStoreKit';
+import { util } from '@kit.ArkTS';
+
+function stringToArray(str: string): Uint8Array {
+  let textEncoder = new util.TextEncoder();
+  return textEncoder.encodeInto(str);
+}
+
+let srcAttrs: Array<asset.AssetMap> = [];
+let srcAttr1: asset.AssetMap = new Map();
+srcAttr1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+srcAttrs.push(srcAttr1);
+let srcAttr2: asset.AssetMap = new Map();
+srcAttr2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+srcAttrs.push(srcAttr2);
+
+let destAttrs: Array<asset.AssetMap> = [];
+let destAttr1: asset.AssetMap = new Map();
+destAttr1.set(asset.Tag.SECRET, stringToArray('demo_pwd_new1'));
+destAttrs.push(destAttr1);
+let destAttr2: asset.AssetMap = new Map();
+destAttr2.set(asset.Tag.SECRET, stringToArray('demo_pwd_new2'));
+destAttrs.push(destAttr2);
+
+asset.batchUpdate(srcAttrs, destAttrs).then((res: asset.BatchResult) => {
+  console.info(`Succeeded in batch updating Asset, failedCount: ${res.failedCount}`);
+});
+```
+
 ## asset.preQuery
 
 preQuery(query: AssetMap): Promise\<Uint8Array>
@@ -395,9 +615,9 @@ preQuery(query: AssetMap): Promise\<Uint8Array>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                     |
+| 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
@@ -428,7 +648,7 @@ function stringToArray(str: string): Uint8Array {
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 asset.preQuery(query).then((challenge: Uint8Array) => {
-  console.info(`Succeeded in pre-querying Asset.`);
+  console.info(`Succeeded in pre-querying Asset, the challenge is: `, challenge);
 });
 ```
 
@@ -456,9 +676,9 @@ preQuerySync(query: AssetMap): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                     |
+| 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
@@ -518,9 +738,9 @@ query(query: AssetMap): Promise\<Array\<AssetMap>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -588,9 +808,9 @@ querySync(query: AssetMap): Array\<AssetMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -655,9 +875,9 @@ postQuery(handle: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -698,9 +918,9 @@ postQuerySync(handle: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -745,7 +965,7 @@ querySyncResult(query: AssetMap): Promise\<SyncResult>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息                                                   |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000006 | Insufficient memory.                                       |
@@ -816,7 +1036,7 @@ asset.querySyncResult(query).then((res: asset.SyncResult) => {
 | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | TagType.BYTES &#124; 0x36 | 关键资产附属的本地信息，内容由业务自定义且**无完整性保护**，该项信息不会进行同步。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | TagType.BYTES &#124; 0x37 | 关键资产附属的本地信息，内容由业务自定义且**无完整性保护**，该项信息不会进行同步。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | RETURN_TYPE               | TagType.NUMBER &#124; 0x40 | 关键资产查询返回的结果类型。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
-| RETURN_LIMIT              | TagType.NUMBER &#124; 0x41                      | 关键资产查询返回的结果数量。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
+| RETURN_LIMIT              | TagType.NUMBER &#124; 0x41                      | 关键资产查询返回的结果的最大数量。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
 | RETURN_OFFSET             | TagType.NUMBER &#124; 0x42   | 关键资产查询返回的结果偏移量。<br>**说明：** 用于分批查询场景，指定从第几个开始返回。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                 |
 | RETURN_ORDERED_BY         | TagType.NUMBER &#124; 0x43 | 关键资产查询返回的结果排序依据，仅支持按照附属信息排序。<br>**说明：** 默认按照关键资产新增的顺序返回。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | CONFLICT_RESOLUTION       | TagType.NUMBER &#124; 0x44 | 新增关键资产时的冲突（如：别名相同）处理策略。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                             |
@@ -958,6 +1178,33 @@ type AssetMap = Map\<Tag, Value>
 | totalCount | number    | 是 | 是 |  触发同步的关键资产总数。 |
 | failedCount | number    | 是 | 是 |  关键资产同步失败的数量。 |
 
+## BatchErrInfo
+
+批量操作中单个关键资产的错误信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称        | 类型   | 只读 | 可选 |说明               |
+| ----------- | ---- | ---- | ---- | ------------------ |
+| index   | number    | 否 | 否 | 关键资产的索引。 |
+| errCode | number    | 否 | 否 | 批量操作的错误码。 |
+| message | string    | 否 | 否 | 批量操作的错误信息。 |
+
+## BatchResult
+
+[batchAdd](#assetbatchadd)、[batchUpdate](#assetbatchupdate)和[batchRemove](#assetbatchremove)批量操作的结果。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+| 名称        | 类型   | 只读 | 可选 |说明               |
+| ----------- | ---- | ---- | ---- | ------------------ |
+| failedCount   | number    | 否 | 否 | 批量操作的失败数量，0表示全部成功。 |
+| failedErrorInfos | Array\<[BatchErrInfo](#batcherrinfo)>    | 否 | 否 | 批量操作中失败的关键资产的错误信息数组，全部成功时为空数组。 |
+
 ## ErrorCode
 
 表示错误码的枚举。
@@ -972,7 +1219,7 @@ type AssetMap = Map\<Tag, Value>
 | SERVICE_UNAVAILABLE | 24000001    |关键资产服务不可用。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | NOT_FOUND | 24000002    |未找到关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | DUPLICATED | 24000003    |关键资产已存在。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| ACCESS_DENIED | 24000004    |拒绝访问关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| ACCESS_DENIED | 24000004    |访问被拒绝。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | STATUS_MISMATCH | 24000005    |锁屏状态不匹配。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | OUT_OF_MEMORY | 24000006    |系统内存不足。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | DATA_CORRUPTED | 24000007    |关键资产损坏。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
@@ -980,10 +1227,11 @@ type AssetMap = Map\<Tag, Value>
 | CRYPTO_ERROR | 24000009   |算法库操作失败。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | IPC_ERROR | 24000010   |进程通信错误。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | BMS_ERROR | 24000011   |包管理服务异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| ACCOUNT_ERROR | 24000012   |账号系统异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| ACCOUNT_ERROR | 24000012   |账号系统服务异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | ACCESS_TOKEN_ERROR | 24000013   |访问控制服务异常。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | FILE_OPERATION_ERROR | 24000014   |文件操作失败。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | GET_SYSTEM_TIME_ERROR | 24000015   |获取系统时间失败。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | LIMIT_EXCEEDED | 24000016   |缓存数量超限。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | UNSUPPORTED | 24000017   |该子功能不支持。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | PARAM_VERIFICATION_FAILED<sup>20+</sup> | 24000018   |参数校验失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| INCONSISTENT_ATTRIBUTE | 24000019   |属性值不一致。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。|

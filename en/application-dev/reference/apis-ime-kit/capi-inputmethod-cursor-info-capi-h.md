@@ -1,7 +1,7 @@
 # inputmethod_cursor_info_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -65,7 +65,7 @@ Creates an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) 
 
 | Type| Description|
 | -- | -- |
-| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | If the operation is successful, a pointer to the created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance is returned.<br>  If the operation failed, **NULL** is returned, which may be caused by insufficient application address space.|
+| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | If the operation is successful, a pointer to the created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance is returned.<br> If the operation fails, **NULL** is returned. This may occur when the application's address space is exhausted.|
 
 ### OH_CursorInfo_Destroy()
 

@@ -5,26 +5,25 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
 任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。为了更好地定位和分析问题，开发者可以利用[任务执行超时检测](apptask-timeout-guidelines.md#任务执行超时检测)机制，根据生成的[日志规格](apptask-timeout-guidelines.md#日志规格)，主动分析任务执行超时的执行情况。
 
-## 检测原理
+本文面向开发者介绍任务执行超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅任务执行超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-详见[任务执行超时检测原理](apptask-timeout-guidelines.md#检测原理)。
+- [订阅任务执行超时事件（ArkTS）](hiappevent-watcher-apphicollie-events-arkts.md)。
 
-## 接口说明
-
-开发者可以通过HiAppEvent提供接口订阅任务执行超时事件“EVENT_APP_HICOLLIE”，系统检测到任务执行超时后，会抓取维测信息通过HiAppEvent将任务执行超时回调给应用进程。
-
-- [订阅任务执行超时事件（ArkTS）](hiappevent-watcher-apphicollie-events-arkts.md)
-- [订阅任务执行超时事件（C/C++）](hiappevent-watcher-apphicollie-events-ndk.md)
+- [订阅任务执行超时事件（C/C++）](hiappevent-watcher-apphicollie-events-ndk.md)。
 
 > **说明：**
 >
-> 任务执行超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+> 任务执行超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，不支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
+## 检测原理
+
+详见[任务执行超时检测原理](apptask-timeout-guidelines.md#任务执行超时检测)。
 
 ## 事件字段说明
 
@@ -47,6 +46,7 @@
 | memory | object | 内存信息，详见memory属性。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
 | log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
 
 ### exception字段说明
 

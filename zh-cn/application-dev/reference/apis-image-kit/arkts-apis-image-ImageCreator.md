@@ -2,11 +2,11 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-ImageCreator类，用于请求图像数据区域，并开放给应用编译图像数据的能力。
+ImageCreator类，作为图片的生产者，用于将图片写入到Surface中。
 
 在调用以下方法前需要先通过[image.createImageCreator](arkts-apis-image-f.md#imagecreateimagecreator11)创建ImageCreator实例，ImageCreator不支持多线程。
 

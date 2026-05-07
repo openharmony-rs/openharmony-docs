@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -34,7 +34,7 @@
 
 现有状态管理V1版本无法实现对嵌套类对象属性变化的直接观测。
 
-<!-- @[Observed_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/Limitations.ets) -->
+<!-- @[Observed_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/Limitations.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -69,6 +69,7 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
+            // 嵌套类对象属性变化无法观测
             this.father.son.age++;
           })
       }
@@ -82,7 +83,7 @@ struct Index {
 
 在上述代码中，点击Text组件增加age的值时，不会触发UI刷新。原因在于现有的状态管理框架无法观测到嵌套类中属性age的值变化。V1版本的解决方案是使用[\@ObjectLink装饰器](arkts-observed-and-objectlink.md)与自定义组件来实现观测。
 
-<!-- @[Realize_Observation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/RealizeObservation.ets) -->
+<!-- @[Realize_Observation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/RealizeObservation.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -107,6 +108,7 @@ class Son {
 
 @Component
 struct Child {
+  // @Observed对象与@ObjectLink一起使用，实现对嵌套类对象属性的观测能力
   @ObjectLink son: Son;
 
   build() {
@@ -499,6 +501,7 @@ struct Page {
 ### 继承类场景
 
 \@Trace支持在类的继承场景中使用，无论是在基类还是继承类中，只有被\@Trace装饰的属性才具有被观测变化的能力。
+
 以下例子中，声明class GrandFather、Father、Uncle、Son、Cousin，继承关系如下图。
 
 ![arkts-old-state-management](figures/arkts-new-observed-and-track-extend-sample.png)
@@ -506,7 +509,7 @@ struct Page {
 
 创建类Son和类Cousin的实例，点击Button('change Son age')和Button('change Cousin age')可以触发UI的刷新。
 
-<!-- @[Inheritance_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets) -->
+<!-- @[Inheritance_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -516,6 +519,7 @@ const TAG = 'ArktsObservedV2AndTrace';
 
 @ObservedV2
 class GrandFather {
+  // 被@Trace装饰的属性具有被观测变化的能力
   @Trace public age: number = 0;
 
   constructor(age: number) {
@@ -589,9 +593,10 @@ struct Index {
 ### \@Trace装饰基础类型的数组
 
 \@Trace装饰数组时，使用支持的API能够观测到变化。支持的API见[观察变化](#观察变化)。
+
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
-<!-- @[Decoration_Foundation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets) -->
+<!-- @[Decoration_Foundation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets) --> 
 
 ``` TypeScript
 let nextId: number = 0;
@@ -642,6 +647,8 @@ struct Index {
           .fontSize(40)
       })
 
+      // numberArr是@Trace装饰的数组
+      // 使用数组API操作numberArr时，可以观测到对应的变化
       Button('push')
         .onClick(() => {
           this.arr.numberArr.push(50);
@@ -661,7 +668,6 @@ struct Index {
         .onClick(() => {
           this.arr.numberArr.splice(1, 0, 60);
         })
-
 
       Button('unshift')
         .onClick(() => {
@@ -698,13 +704,14 @@ struct Index {
 * \@Trace装饰对象数组personList以及Person类中的age属性，因此当personList、age改变时均可以观测到变化。
 * 点击Text组件更改age时，Text组件会刷新。
 
-<!-- @[Decorative_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorativeObject.ets) -->
+<!-- @[Decorative_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorativeObject.ets) --> 
 
 ``` TypeScript
 let nextId: number = 0;
 
 @ObservedV2
 class Person {
+  // @Trace装饰Person类中的age属性，使age可以被观测
   @Trace public age: number = 0;
 
   constructor(age: number) {
@@ -769,7 +776,7 @@ struct Index {
 * 被\@Trace装饰的Map类型属性可以观测到调用API带来的变化，包括 set、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberMap被\@Trace装饰，点击Button('init map')对memberMap赋值也可以观测到变化。
 
-<!-- @[Decoration_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationMap.ets) -->
+<!-- @[Decoration_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationMap.ets) --> 
 
 ``` TypeScript
 @ObservedV2
@@ -792,6 +799,7 @@ struct MapSample {
             .fontSize(30)
           Divider()
         })
+        // 被@Trace装饰的Map类型属性可以观测到调用API带来的变化
         Button('init map')
           .onClick(() => {
             this.info.memberMap = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
@@ -825,7 +833,7 @@ struct MapSample {
 * 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add、clear和delete。
 * 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观测到变化。
 
-<!-- @[Decoration_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationSet.ets) -->
+<!-- @[Decoration_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationSet.ets) --> 
 
 ``` TypeScript
 @ObservedV2
@@ -846,6 +854,7 @@ struct SetSample {
             .fontSize(30)
           Divider()
         })
+        // 被@Trace装饰的Set类型属性可以观测到调用API带来的变化
         Button('init set')
           .onClick(() => {
             this.info.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -876,7 +885,7 @@ struct SetSample {
 * \@Trace装饰的Date类型属性可以观测调用API带来的变化，包括 setFullYear、setMonth、setDate、setHours、setMinutes、setSeconds、setMilliseconds、setTime、setUTCFullYear、setUTCMonth、setUTCDate、setUTCHours、setUTCMinutes、setUTCSeconds、setUTCMilliseconds。
 * 因为Info类被\@ObservedV2装饰且属性selectedDate被\@Trace装饰，点击Button('set selectedDate to 2023-07-08')对selectedDate赋值也可以观测到变化。
 
-<!-- @[Decorate_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorateDate.ets) -->
+<!-- @[Decorate_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorateDate.ets) --> 
 
 ``` TypeScript
 @ObservedV2
@@ -891,6 +900,7 @@ struct DateSample {
 
   build() {
     Column() {
+      // @Trace装饰的Date类型属性可以观测调用API带来的变化
       Button('set selectedDate to 2023-07-08')
         .margin(10)
         .onClick(() => {

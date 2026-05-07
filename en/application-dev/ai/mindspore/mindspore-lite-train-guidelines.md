@@ -225,7 +225,7 @@ The development process consists of the following main steps:
     )
     ```
 
-   - To use ohos-sdk for cross compilation, you need to set the native toolchain path for the CMake tool as follows: `-DCMAKE_TOOLCHAIN_FILE="/xxx/native/build/cmake/ohos.toolchain.cmake"`.
+   - To use ohos-sdk for cross compilation, you need to set the native toolchain path for the CMake tool as follows: **-DCMAKE_TOOLCHAIN_FILE="/xxx/native/build/cmake/ohos.toolchain.cmake"**.
 
    - Start cross compilation. When running the compilation command, set **OHOS_NDK** to the native toolchain path.
       ```shell
@@ -270,7 +270,7 @@ The development process consists of the following main steps:
 ```c
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include <string>
 #include "mindspore/model.h"
 
 int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
@@ -484,7 +484,8 @@ int TrainDemo(int argc, const char **argv) {
   OH_AI_ContextDestroy(&context);
 
   // Use The Exported Model to predict
-  char *exported_model = strcat(export_infer_model, ".ms");
+  std::string temp_path = std::string(export_infer_model) + ".ms";
+  const char *exported_model = temp_path.c_str();
   ret = ModelPredict(exported_model);
   if (ret != OH_AI_STATUS_SUCCESS) {
     printf("Exported Model to predict failed, ret: %d.\n", ret);

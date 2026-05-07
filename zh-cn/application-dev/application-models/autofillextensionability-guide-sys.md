@@ -5,7 +5,7 @@
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -50,7 +50,7 @@
 
    在AppScope/[app.json5配置文件](../quick-start/app-configuration-file.md)中把bundleName设定为："com.ohos.passwordbox"，例如：
 
-   ```json
+   ```json5
    "app": {
      "bundleName": "com.ohos.passwordbox",
       // ...
@@ -61,7 +61,7 @@
 
    在entry/src/main/[module.json5配置文件](../quick-start/module-configuration-file.md)中配置AutoFillAbility，例如：
 
-   ```json
+   ```json5
    "extensionAbilities": [
       {
         "name": "AutoFillAbility",
@@ -304,7 +304,7 @@
 
 ### 实现情景化自动填充功能
 
-情景化自动填充的具体类型可参考[自动填充类型的定义](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
+情景化自动填充的具体类型可参考[AutoFillType](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
 
 开发者在实现情景化自动填充服务时，需要在DevEco Studio工程中手动新建一个SmartAutoFillExtensionAbility，具体步骤如下。
 
@@ -312,7 +312,7 @@
 
    在AppScope/[app.json5配置文件](../quick-start/app-configuration-file.md)中把bundleName设定为："com.ohos.textautofill"，例如：
 
-   ```json
+   ```json5
    "app": {
      "bundleName": "com.ohos.textautofill",
       // ...
@@ -323,7 +323,7 @@
 
    在entry/src/main/[module.json5配置文件](../quick-start/module-configuration-file.md)中配置AutoFillAbility，例如：
 
-   ```json
+   ```json5
    "extensionAbilities": [
       {
          "name": "AutoFillAbility",

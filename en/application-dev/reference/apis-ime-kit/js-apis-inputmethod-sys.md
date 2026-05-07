@@ -1,7 +1,7 @@
 # @ohos.inputMethod (Input Method Framework) (System API)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -247,6 +247,55 @@ let result: boolean = inputMethod.getSetting().isPanelShown(info);
 console.info('Succeeded in querying isPanelShown, result: ' + result);
 ```
 
+### isPanelShown<sup>23+</sup>
+
+isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
+
+Checks whether the input method panel of a specified type is shown on a specified screen.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+| Name   | Type                                                 | Mandatory| Description              |
+| --------- | ----------------------------------------------------- | ---- | ------------------ |
+| panelInfo | [PanelInfo](./js-apis-inputmethod-panel.md#panelinfo) |  Yes | Information about the input method panel.|
+| displayId | number | Yes| Display ID.|
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| boolean | Whether the input method panel is shown.<br>- The value **true** means that the input method panel is shown.<br>- The value **false** means that the input method panel is hidden.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 202      | not system application.  |
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+
+let displayId: number = 10;
+let info: PanelInfo = {
+  type: PanelType.SOFT_KEYBOARD,
+  flag: PanelFlag.FLAG_FIXED
+}
+
+let result: boolean = inputMethod.getSetting().isPanelShown(info, displayId);
+console.info('Succeeded in querying isPanelShown, result: ' + result);
+```
+
 ### enableInputMethod<sup>20+</sup>
 
 enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState): Promise&lt;void&gt;
@@ -308,4 +357,209 @@ function enableInputMethodSafely() {
 }
 
 enableInputMethodSafely();
+```
+
+### getCursorInfo
+
+getCursorInfo(userId?: number): CursorInfo
+
+Obtains the cursor information of a specified user. If the edit box does not notify the input method service of the cursor information, all attribute values returned are **0**.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | userId |  number | No| User ID.<br>If the caller is not an application of user 0, the value of this parameter is the user ID of the caller by default.<br> If the caller is an application of user 0, the value of this parameter is the foreground user ID of the main screen.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| [CursorInfo](js-apis-inputmethod.md#cursorinfo10) | Cursor information of the specified user.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800003 | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo();
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getDefaultInputMethodAbility
+
+getDefaultInputMethodAbility(): InputMethodProperty
+
+Obtains the default input method capabilities. To optimize performance, the returned **InputMethodProperty** object ensures that only the `name` and `id` attributes that uniquely identify the input method capability are correct. Other attributes may be empty.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | Default input method attributes. Only the `name` and `id` attributes are guaranteed to be correct. Other attributes may be empty.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+try {
+  const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility();
+  console.info('Succeeded in getting default input method ability, name: ' + defaultAbility.name + ', id: ' + defaultAbility.id);
+} catch (err) {
+  console.error(`Failed to getDefaultInputMethodAbility. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## InputMethodController
+
+A control class that encapsulates APIs for input method management, which can only be invoked after an **InputMethodController** instance is obtained via [getController](./js-apis-inputmethod.md#inputmethodgetcontroller9).
+
+### showSoftKeyboard<sup>23+</sup>
+
+showSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+Shows the soft keyboard on a specified screen. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to show the soft keyboard only when the edit box is focused.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | number | Yes  | Display ID.|
+
+**Return value**
+
+| Type          | Description                    |
+| -------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                            |
+| -------- | -------------------------------------- |
+| 201      | permissions check fails.  |
+| 202      | not system application.  |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 20;
+inputMethod.getController().showSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in showing softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### hideSoftKeyboard<sup>23+</sup>
+
+hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+Hides the soft keyboard on a specified screen. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to hide the soft keyboard only when the edit box is focused.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | number | Yes  | Display ID.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                            |
+| -------- | -------------------------------------- |
+| 201      | permissions check fails.  |
+| 202      | not system application.  |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 30;
+inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in hiding softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
 ```

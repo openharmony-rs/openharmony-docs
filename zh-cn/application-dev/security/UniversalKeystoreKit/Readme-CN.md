@@ -19,8 +19,8 @@
       - [密钥导入介绍及算法规格](huks-key-import-overview.md)
       - [明文导入密钥(ArkTS)](huks-import-key-in-plaintext-arkts.md)
       - [明文导入密钥(C/C++)](huks-import-key-in-plaintext-ndk.md)
-      - [加密导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
-      - [加密导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
+      - [安全导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
+      - [安全导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
       - [数字信封导入密钥(ArkTS)](huks-import-envelop-key-arkts.md)
       - [数字信封导入密钥(C/C++)](huks-import-envelop-key-ndk.md)
   - 密钥使用<!--huks-key-use-->
@@ -56,6 +56,7 @@
     - [密钥证明介绍及算法规格](huks-key-attestation-overview.md)
     - [匿名密钥证明(ArkTS)](huks-key-anon-attestation-arkts.md)
     - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)
+    - [离线匿名密钥证明(ArkTS)](huks-offline-anon-attestation-arkts.md)<!--RP3--><!--RP3End-->
     <!--Del-->
     - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](huks-key-attestation-arkts-sys.md)
     - [非匿名密钥证明(仅对系统应用开放)(C/C++)](huks-key-attestation-ndk-sys.md)
@@ -88,7 +89,14 @@
     - [注册/注销Provider(C/C++)](huks-extension-registration-and-unregistration-ndk.md)
   - 资源管理<!--huks-resource-management-->
     - [资源管理介绍及规格](huks-resource-management-overview.md)
+    - [获取资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)
+    - [打开资源/关闭资源(ArkTS)](huks-open-close-resource-arkts.md)
     - [打开资源/关闭资源(C/C++)](huks-open-close-resource-ndk.md)
+  - 密钥管理<!--huks-extension-key-management-->
+    - [密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)
+    - [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
+    - [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
+    - [公钥导出(ArkTS)](huks-extension-key-export-arkts.md)
   - UkeyPIN码认证管理<!--huks-ukey-pin-authentication-management-->
     - [UkeyPIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)
     <!--Del-->
@@ -96,6 +104,7 @@
     <!--DelEnd-->
     - [查询认证状态(ArkTS)](huks-query-authentication-status-arkts.md)
     - [查询认证状态(C/C++)](huks-query-authentication-status-ndk.md)
+    - [清除PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)
   - 签名/验签<!--huks-ukey-signing-signature-verification-->
     - [签名/验签介绍及算法规格](huks-ukey-signing-signature-verification-overview.md)
     - [签名/验签(ArkTS)](huks-ukey-signing-signature-verification-arkts.md)
@@ -104,6 +113,7 @@
     - [通用查询介绍及规格](huks-ukey-general-query-overview.md)
     - [通用查询(ArkTS)](huks-ukey-general-query-arkts.md)
     - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
+  - [Ukey流程示例指导](huks-ukey-best-dev.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
+    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->

@@ -1,8 +1,8 @@
 # UI开发（ArkTS声明式开发范式）概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -53,6 +53,7 @@
   - 语言编译器和运行时的优化：统一字节码、高效FFI（Foreign Function Interface）、AOT（Ahead Of Time）、引擎极小化、类型优化等。
 
 - 生态容易快速推进
+
   能够借力主流语言生态快速推进，语言相对中立友好，有相应的标准组织可以逐步演进。
 
 
@@ -66,24 +67,29 @@
 
 
 - **声明式UI前端**
+
   提供了UI开发范式的基础语言规范，并提供内置的UI组件、布局和动画，提供了多种状态管理机制，为应用开发者提供一系列接口支持。
 
 - **语言运行时**
+
   选用方舟语言运行时，提供了针对UI范式语法的解析能力、跨语言调用支持的能力和TS语言高性能运行环境。
 
 - **声明式UI后端引擎**
+
   后端引擎提供了兼容不同开发范式的UI渲染管线，提供多种基础组件、布局计算、动效、交互事件，提供了状态管理和绘制能力。
 
 - **渲染引擎**
+
   提供了高效的绘制能力，将渲染管线收集的渲染指令，绘制到屏幕的能力。
 
 - **平台适配层**
+
   提供了对系统平台的抽象接口，具备接入不同系统的能力，如系统渲染管线、生命周期调度等。
 
 
 ## 开发流程
 
-使用UI开发框架开发应用时，主要涉及如下开发过程。
+使用UI开发框架开发应用时，主要涉及以下开发过程。
 
 | 任务          | 简介                                  | 相关指导                                     |
 | ----------- | ----------------------------------- | ---------------------------------------- |
@@ -93,16 +99,15 @@
 | 列表与网格 | 介绍了几种列表与网格组件的使用方法。 | -&nbsp;[列表与网格](arkts-list-grid-development-overview.md) |
 | 使用文本 | 介绍了输入框、富文本和属性字符串等文本组件的使用方法。                | -&nbsp;[文本显示](arkts-common-components-text-display.md) <br/>- [文本输入](arkts-common-components-text-input.md)<br/>- [富文本](arkts-common-components-richeditor.md)<br/>- [图标小符号](arkts-common-components-symbol.md)<br/>- [属性字符串](arkts-styled-string.md)|
 | 媒体展示 | 介绍了几种媒体展示组件的使用方法。 | -&nbsp;[显示图片 (Image)](arkts-graphics-display.md)<br/>-&nbsp;[视频播放 (Video)](arkts-common-components-video-player.md)<br/>-&nbsp;[创建轮播 (Swiper)](arkts-layout-development-create-looping.md)<br/>-&nbsp;[创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md) |
-| 表单选择 | 介绍了几种常用表单选择组件的使用方法。 | -&nbsp;[表单与选择组件](arkts-forms-overview.md) |
+| 按钮与选择 | 介绍了几种常用按钮与选择组件的使用方法。 | -&nbsp;[按钮与选择组件](arkts-forms-overview.md) |
 | 添加组件 | 介绍了XComponent和Progress组件的使用方法。 | -&nbsp;[自定义渲染 (XComponent)](napi-xcomponent-guidelines.md)<br/>-&nbsp;[进度条 (Progress)](arkts-common-components-progress-indicator.md) |
 | 使用弹窗 | 介绍了弹窗的应用场景与使用方法。 | -&nbsp;[使用弹出框](arkts-base-dialog-overview.md)<br/>-&nbsp;[菜单](arkts-menu-overview.md)<br/>-&nbsp;[气泡提示](arkts-popup-overview.md)<br/>-&nbsp;[绑定模态页面](arkts-modal-overview.md)<br/>-&nbsp;[即时反馈](arkts-create-toast.md)<br/>-&nbsp;[设置浮层](arkts-create-overlaymanager.md) |
-| 显示图形        | 介绍了如何显示图片、绘制自定义几何图形以及使用画布绘制自定义图形。   | -&nbsp;[几何图形](arkts-geometric-shape-drawing.md)<br/>-&nbsp;[画布](arkts-drawing-customization-on-canvas.md) |
-| 几何图形 | 介绍了如何绘制几何图形。 | -&nbsp;[几何图形绘制](arkts-shape-overview.md) |
+| 显示图形        | 介绍了如何显示图片、绘制自定义几何图形以及使用画布绘制自定义图形。   | -&nbsp;[几何图形](arkts-shape-overview.md)<br/>-&nbsp;[画布](arkts-drawing-customization-on-canvas.md) |
 | 添加交互响应 | 介绍了交互基础机制、输入设备与事件和手势响应的能力。 | -&nbsp;[交互基础机制](arkts-interaction-basic-principles.md)<br/>-&nbsp;[输入设备与事件](arkts-interaction-development-guide-raw-input-event.md)<br/>-&nbsp;[手势响应](arkts-interaction-development-guide-support-gesture.md) |
 | 使用动画        | 介绍了组件和页面使用动画的典型场景。                  | - [属性动画](arkts-attribute-animation-overview.md)<br>- [转场动画](arkts-transition-overview.md)<br>- [粒子动画](arkts-particle-animation.md)<br>- [组件动画](arkts-component-animation.md)<br>- [动画曲线](arkts-traditional-curve.md)<br>- [动画衔接](arkts-animation-smoothing.md)<br>- [动画效果](arkts-blur-effect.md)<br>- [帧动画](arkts-animator.md) |
 | 使用自定义能力        | 介绍了自定义能力的基本概念和如何使用自定义能力。       | -&nbsp;[自定义组合](arkts-user-defined-composition.md)<br/>-&nbsp;[自定义节点](arkts-user-defined-node.md)<br/>-&nbsp;[自定义扩展](arkts-user-defined-modifier.md)|
 | UI国际化        | 介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局。       | -&nbsp;[UI国际化](arkts-internationalization.md) |
-| 无障碍与适老化      | 介绍了无障碍和适老化的使用场景和使用方法。   | -&nbsp;[支持无障碍](arkts-universal-attributes-accessibility.md)<br/>-&nbsp;[支持适老化](arkui-support-for-aging-adaptation.md) |
+| 无障碍与适老化      | 介绍了无障碍和适老化的使用场景和使用方法。   | <!--RP1-->-&nbsp;[支持无障碍](arkts-universal-attributes-accessibility.md)<br/>-&nbsp;<!--RP1End-->[支持适老化](arkui-support-for-aging-adaptation.md) |
 | 主题设置       | 介绍了应用级和页面级的主题设置能力。       | -&nbsp;[应用深浅色适配](ui-dark-light-color-adaptation.md)<br/>-&nbsp;[设置应用内主题换肤](theme_skinning.md) |
 | UI系统场景化能力 | 介绍了如何使用UIContext中对应的接口获取与实例绑定的对象，以及全屏方式拉起原子化服务的方法。 | -&nbsp;[使用UI上下文接口操作界面](arkts-global-interface.md)<br/>- [全屏启动原子化服务组件](arkts-FullScreenComponent.md) |
 

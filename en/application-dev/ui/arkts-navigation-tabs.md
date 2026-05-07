@@ -1,9 +1,9 @@
 # Using Tabs (Tabs)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -11,7 +11,7 @@ When there is a large amount of page information, to enable the user to focus on
 
 ## Basic Layout
 
-  The **Tabs** component consists of two parts: [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) and [TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar). **TabContent** is the content page, and **TabBar** is the navigation tab bar. The following figure shows the page structure. The layout varies according to the navigation type. In bottom navigation, top navigation, and side navigation, the navigation tab bar is located at the bottom, top, and edge, respectively.
+The **Tabs** component consists of two parts: [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) and [TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar). **TabContent** is the content page, and **TabBar** is the navigation tab bar. The following figure shows the page structure. The layout varies according to the navigation type. In bottom navigation, top navigation, and side navigation, the navigation tab bar is located at the bottom, top, and edge, respectively.
 
   **Figure 1** Tabs component layout 
 
@@ -169,8 +169,8 @@ To implement the side navigation bar, set the [vertical](../reference/apis-arkui
 
 ## Restricting the Scrolling of the Navigation Bar
 
-  By default, the navigation bar is scrollable. On some pages that require multi-level classification of content, for example, when both bottom navigation and top navigation are used, the scroll effect of the bottom navigation bar may conflict with that of the top navigation bar. In this case, the scrolling of the bottom navigation bar needs to be restricted to improve user experience.
-  
+By default, the navigation bar is scrollable. On some pages that require multi-level classification of content, for example, when both bottom navigation and top navigation are used, the scroll effect of the bottom navigation bar may conflict with that of the top navigation bar. In this case, the scrolling of the bottom navigation bar needs to be restricted to improve user experience.
+
   **Figure 6** Restricting the scrolling of the bottom navigation bar 
 
 ![restricted-navigation](figures/restricted-navigation.gif)
@@ -422,19 +422,19 @@ To enable switching between content pages and tabs without swiping, you can pass
                   this.currentIndex = (this.currentIndex + 1) % 4;
                 })
 
-              Button('Change Index via Controller').width('50%').margin({ top: 20 })
+              Button('changeIndex').width('50%').margin({ top: 20 })
                 .onClick(() => {
                   let index = (this.currentIndex + 1) % 4;
                   this.controller.changeIndex(index);
                 })
 ```
-  
+
   **Figure 12** Switching to a specific tab page   
 
 ![Switching to a Specified Tab Page](figures/TabsChange.gif)
 
 You can use the [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12) API of the **Tabs** component to customize the interception callback. The interception callback function is called when a new page is about to be displayed. If the callback returns **true**, the tab can switch to the new page. If the callback returns **false**, the tab cannot switch to the new page and will remain on the current page.
-  
+
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
@@ -452,7 +452,7 @@ You can use the [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-contai
   **Figure 13** Customizing the page switching interception event
 
 ![TabsChange3](figures/TabsChange3.gif)
-<!--Del-->
+
 ## Supporting Aging-Friendly Design
 
 In aging-friendly scenarios with large font sizes, the bottom tab bar offers a dialog box with large fonts for content display. When the component detects a large font setting, it constructs a long-press dialog box based on the configured text and icons. After the user long-presses the tab bar and then swipes in the dialog box to switch to the next tab, the dialog box updates with content of the new tab. Upon releasing, the dialog box closes and the UI switches to the corresponding tab page.
@@ -463,6 +463,7 @@ In aging-friendly scenarios with large font sizes, the bottom tab bar offers a d
 
 **Figure 14** Displaying an aging-friendly dialog box by long-pressing the bottom tab bar in an aging-friendly scenario
 
+<!--RP2-->
 ![Aging-Friendly Design](figures/tabs11.png)
 
 <!-- @[age_friendly_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets) -->
@@ -623,7 +624,7 @@ export struct AgeFriendlyTabs {
   }
 }
 ```
-<!--DelEnd-->
+<!--RP2End-->
 
 ## Controlling the Number of Cached Pages
 
@@ -723,3 +724,4 @@ Based on the preceding example code, the caching behavior in different scenarios
 
    ![cachedMaxCount4](figures/cachedMaxCount4.png)
 
+<!--RP1--><!--RP1End-->

@@ -86,35 +86,35 @@ RSA 算法加解密。
 export default {
   rsa() {
     cipher.rsa({
-      //加密。
+      // 加密。
       action: 'encrypt',
-      //待加密的文本内容。
+      // 待加密的文本内容。
       text: 'hello',
-      //base64编码后的加密公钥。
+      // base64编码后的加密公钥。
       key:
      'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCx414QSP3RsYWYzf9mkBMiBAXo\n' +
      '6S7Lpva1fKlcuVxjoFC1iMnzD4mC0uiL4k5MNi43J64c7dbqi3qAJjdAtuwQ6NZJ\n' +
      '+Enz0RzmVFh/4yk6lmqRzuEFQqhQqSZzaLq6sq2N2G0Sv2Xl3sLvqAfe2HNm2oBw\n' +
      'jBpApTJ3TeneOo6Z5QIDAQAB',
       success: function(data) {
-        console.log(`handling success:${data.text}`);
+        console.info(`handling success:${data.text}`);
       },
       fail: function(data, code) {
-        console.log(`### cipher.rsa encrypt fail ### ${code}:${data}`);
+        console.error(`### cipher.rsa encrypt fail ### ${code}:${data}`);
       },
       complete: function() {
-        console.log(`operation complete!`);
+        console.info(`operation complete!`);
       }
       });
       cipher.rsa({
-        //解密：
+        // 解密：
         action: 'decrypt',
-        //待解密的内容，是base64编码后的一段二进制值，解密后是文本内容“hello”。
+        // 待解密的内容，是base64编码后的一段二进制值，解密后是文本内容“hello”。
         text:
        'EPeCFPib6ayKbA0M6oSywARvFZ8dFYfjQv3nY8ikZGtS9UHq2sLPvAfpeIzggSiCxqbWeCftP1XQ\n' +
        'Sa+jEpzFlT1qoSTunBbrYzugPTajIJDTg6R1IRsF/J+mmakn0POVPvi4jCo9wqavB324Bx0Wipnc\n' +
        'EU5WO0oBHo5l4x6dTpU=',
-         //base64编码后的解密私钥。
+         // base64编码后的解密私钥。
          key:
         'MIICXgIBAAKBgQCx414QSP3RsYWYzf9mkBMiBAXo6S7Lpva1fKlcuVxjoFC1iMnz\n' +
         'D4mC0uiL4k5MNi43J64c7dbqi3qAJjdAtuwQ6NZJ+Enz0RzmVFh/4yk6lmqRzuEF\n' +
@@ -130,13 +130,13 @@ export default {
         'M9TORIgdH8MjIbWsGnndAkEAw9yURDaorE8IYPLF2IEn09g1uzvWPs3phDb6smVx\n' +
         '8GfqIdUNf+aCG5TZK/kXBF1sqcsi7jXMAf4jBlejVbSVZg==',
          success: function(data) {
-           console.log(`handling success:${data.text}`);
+           console.info(`handling success:${data.text}`);
          },
          fail: function(data, code) {
-           console.log(`### cipher.rsa decrypt fail ### ${code}:${data}`);
+           console.error(`### cipher.rsa decrypt fail ### ${code}:${data}`);
          },
          complete: function() {
-           console.log(`operation complete!`);
+           console.info(`operation complete!`);
          }
        });
    }
@@ -164,43 +164,43 @@ AES 算法加解密。
 export default {
   aes() {
     cipher.aes({
-      //加密。
+      // 加密。
       action: 'encrypt',
-      //待加密的文本内容。
+      // 待加密的文本内容。
       text: 'hello',
-      //base64编码后的密钥。
+      // base64编码后的密钥。
       key: 'NDM5Qjk2UjAzMEE0NzVCRjlFMkQwQkVGOFc1NkM1QkQ=',
       transformation: 'AES/CBC/PKCS5Padding',
       ivOffset: '0',
       ivLen: '16',
       success: function(data) {
-        console.log(`handling success:${data.text}`);
+        console.info(`handling success:${data.text}`);
         },
       fail: function(data, code) {
-        console.log(`### cipher.aes encrypt fail ### ${code}:${data}`);
+        console.error(`### cipher.aes encrypt fail ### ${code}:${data}`);
         },
       complete: function() {
-        console.log(`operation complete!`);
+        console.info(`operation complete!`);
       }
     });
     cipher.aes({
-      //解密：
+      // 解密：
       action: 'decrypt',
-      //待解密的内容，是base64编码后的一段二进制值。
+      // 待解密的内容，是base64编码后的一段二进制值。
       text: '1o0kf2HXwLxHkSh5W5NhzA==',
-       //base64编码后的密钥。
+       // base64编码后的密钥。
        key: 'NDM5Qjk2UjAzMEE0NzVCRjlFMkQwQkVGOFc1NkM1QkQ=',
        transformation: 'AES/CBC/PKCS5Padding',
        ivOffset: '0',
        ivLen: '16',
        success: function(data) {
-         console.log(`handling success:${data.text}`);
+         console.info(`handling success:${data.text}`);
         },
        fail: function(data, code) {
-         console.log(`### cipher.aes decrypt fail ### ${code}:${data}`);
+         console.error(`### cipher.aes decrypt fail ### ${code}:${data}`);
        },
        complete: function() {
-         console.log(`operation complete!`);
+         console.info(`operation complete!`);
         }
      });
   }

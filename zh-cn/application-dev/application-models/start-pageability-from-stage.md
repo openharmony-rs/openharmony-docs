@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本小节介绍[Stage模型](ability-terminology.md#stage模型)的两种应用组件如何启动[FA模型](ability-terminology.md#fa模型)的PageAbility组件。
 
@@ -32,11 +32,10 @@ struct Page_StartFAModel {
 
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -50,11 +49,8 @@ struct Page_StartFAModel {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -86,7 +82,7 @@ struct Page_StartFAModel {
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -105,11 +101,8 @@ struct Page_StartFAModel {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```

@@ -30,6 +30,7 @@
 
 **表2** **deviceConfig设备对象内部结构说明**
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | process | 标识应用或Ability的进程名。如果在deviceConfig标签下配置了process标签，则应用的所有Ability运行在此进程中。如果在abilities标签下为某个Ability配置了process标签，则该Ability运行在此进程中。该标签最大长度为31。 | 字符串 | 可缺省，缺省值为空。 |
@@ -53,7 +54,7 @@
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| domainSettings | 标识自定义网域范围的安全配置，支持多层嵌套。一个domainSettings对象中可嵌套更小网域范围的domainSettings对象。 | 对象类型 | 可缺省，缺省为空。 |
+| domainSettings | 标识自定义域名范围的安全配置，支持多层嵌套。一个domainSettings对象中可嵌套更小域名范围的domainSettings对象。 | 对象类型 | 可缺省，缺省为空。 |
 
 ## domainSettings对象内部结构
 
@@ -61,8 +62,8 @@
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| cleartextPermitted | 标识自定义网域范围内是否允许明文流量传输。cleartextTraffic和securityConfig同时存在时，以cleartextPermitted的值为准。<br/>-&nbsp;true：允许明文流量传输。<br/>-&nbsp;false：拒绝明文流量传输。 | 布尔类型 | 可缺省，缺省值为false。 |
-| domains | 标识域名配置信息，包含两个参数：subdomains和name。<br/>-&nbsp;subdomains：表示是否包含子域名。取值为"true"时，表示该规则将与相应网域及所有子网域（包括子网域的子网域）匹配；取值为"false"时，规则仅适用于精确匹配项。<br/>-&nbsp;name：表示域名名称，为字符串类型。 | 对象数组 | 可缺省，缺省值为空。 |
+| cleartextPermitted | 标识自定义域名范围内是否允许明文流量传输。cleartextTraffic和securityConfig同时存在时，以cleartextPermitted的值为准。<br/>-&nbsp;true：允许明文流量传输。<br/>-&nbsp;false：拒绝明文流量传输。 | 布尔类型 | 可缺省，缺省值为false。 |
+| domains | 标识域名配置信息，包含两个参数：subdomains和name。<br/>-&nbsp;subdomains：表示是否包含子域名。取值为"true"时，表示该规则将与相应域名及所有子域名（包括子域名的子域名）匹配；取值为"false"时，规则仅适用于精确匹配项。<br/>-&nbsp;name：表示域名名称，为字符串类型。 | 对象数组 | 可缺省，缺省值为空。 |
 
 以下是deviceConfig的示例：
 

@@ -72,7 +72,7 @@ mode(mode: NavRouteMode)
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 13开始废弃，无替代接口。
+> 从API version 10开始支持，从API version 13开始废弃，建议使用[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -86,9 +86,7 @@ mode(mode: NavRouteMode)
 
 ## RouteInfo<sup>(deprecated)</sup>对象说明
 
-> **说明：**
->
-> 从API version 10开始支持，从API version 13开始废弃，建议使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)和[navDestination](ts-basic-components-navigation.md#navdestination10)替代。
+路由信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -96,10 +94,12 @@ mode(mode: NavRouteMode)
 
 | 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
 | -------------------- | ------------------------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| name             | string            | 否   | 否   | 点击NavRouter跳转到的NavDestination页面的名称。 |
-| param             | unknown            | 否   | 是   | 点击NavRouter跳转到NavDestination页面时，传递的参数。 |
+| name             | string            | 否   | 否   | 点击NavRouter跳转到的NavDestination页面的名称。<br/>**说明：**<br/>从API version 10开始支持，从API version 13开始废弃，建议使用[name](ts-basic-components-navigation.md#属性-1)替代。 |
+| param             | unknown            | 否   | 是   | 点击NavRouter跳转到NavDestination页面时，传递的参数。<br/>**说明：**<br/>从API version 10开始支持，从API version 13开始废弃，建议使用[param](ts-basic-components-navigation.md#属性-1)替代。 |
 
 ## NavRouteMode<sup>(deprecated)</sup>枚举说明
+
+路由模式。
 
 > **说明：**
 >
@@ -125,7 +125,7 @@ onStateChange(callback: (isActivated: boolean) => void)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 13开始废弃，无替代接口。
+> 从API version 9开始支持，从API version 13开始废弃，建议使用[onShown](ts-basic-components-navdestination.md#onshown10)和[onHidden](ts-basic-components-navdestination.md#onhidden10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

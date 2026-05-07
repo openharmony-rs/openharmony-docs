@@ -100,7 +100,61 @@ struct example {
   }
 }
 ```
+## uiEffect.createHdrDarkenBlender
 
+createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, number, number]): HdrDarkenBlender
+
+创建[HdrDarkenBlender](#hdrdarkenblender)实例用于HDR图层的压暗混合效果。
+
+**起始版本：**  26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名               | 类型                        | 必填  | 说明                                                              |
+| ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default                       |
+| grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。   |
+
+**返回值：**
+
+| 类型                                   | 说明                       |
+| ---------------------------------------- | ------------------------- |
+| [HdrDarkenBlender](#hdrdarkenblender) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401  | CreateHdrDarkenBlender failed, parameter is null or undefined. |
+
+**示例：**
+```ts
+let blender : uiEffect.HdrDarkenBlender = 
+  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]) 
+@Entry 
+@Component 
+struct example { 
+  build() { 
+    RelativeContainer() { 
+      Stack(){ 
+          Text("TextWord") 
+          Image($r("app.media.screenshot")) 
+            .width("100%") 
+            .height("100%") 
+            .advancedBlendMode(blender) 
+      } 
+    } 
+  } 
+}
+```
 ## Filter
 Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
 
@@ -258,8 +312,8 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | number         | 是   | 模糊半径，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12对象说明)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| value  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -328,8 +382,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import { common2D } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -342,7 +395,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -458,7 +511,7 @@ struct Index {
     blue: 1,
     alpha: 1
   }
-  @State lightIntentsity2: number = 1
+  @State lightIntensity2: number = 1
 
   build() {
     Column() {
@@ -467,7 +520,7 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntentsity2))
+          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntensity2))
       }
       .width('100%')
       .height('55%')
@@ -661,44 +714,6 @@ struct MaskDispersion {
 }
 ```
 
-### hdrBrightnessRatio<sup>20+</sup>
-hdrBrightnessRatio(ratio: number): Filter
-
-为组件内容添加HDR（高动态范围成像）提亮效果。不建议嵌套使用，强行嵌套使用可能造成过曝现象。
-
-提亮效果需要开启HDR渲染管线才能生效，某些场景下即使尝试触发HDR渲染管线也无法开启HDR，例如：设备硬件规格不支持HDR。
-
-设备当前支持最大提亮倍数为设备当前的最大亮度除以设备SDR参考白亮度得到的值。
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-| 参数名         | 类型                  | 必填 | 说明                       |
-| ------------- | --------------------- | ---- | ------------------------- |
-| ratio  | number         | 是   | 提亮倍数，取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，不做任何处理；当值大于1.0时，会尝试触发HDR渲染管线，设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。|
-
-**返回值：**
-
-| 类型              | 说明                               |
-| ----------------- | --------------------------------- |
-| [Filter](#filter) | 返回挂载了HDR提亮效果的Filter。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 202 | Permission verification failed. A non-system application calls a system API. |
-
-**示例：**
-
-```ts
-filter.hdrBrightnessRatio(2.0)
-```
-
 ### maskTransition<sup>20+</sup>
 maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 
@@ -746,10 +761,10 @@ struct Index {
   @State rippleMaskRadius: number = 0.1
   build() {
     Stack() {
-      //转场前页面
+      // 转场前页面
       Image($r("app.media.before")).width("100%").height("100%")
         if (this.enterNewPage){
-          //转场后页面
+          // 转场后页面
           Column().width("100%").height("100%").backgroundImage($r("app.media.after"))
             .backgroundFilter(uiEffect.createFilter()
               .maskTransition(
@@ -857,7 +872,7 @@ variableRadiusBlur(radius: number, radiusMap: Mask): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| radius  | number         | 是   | 最大模糊半径，该值越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| radius  | number         | 是   | 最大模糊半径，单位为px，该值越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
 | radiusMap  |  [Mask](#mask20)    | 是   | 代表模糊程度的Mask对象。|
 
 **返回值：**
@@ -892,6 +907,140 @@ struct VariableRadiusBlurExample {
         .height("100%")
         .backgroundFilter(uiEffect.createFilter().variableRadiusBlur(64, this.maskExample))
     }
+  }
+}
+```
+
+### heatDistortion
+
+heatDistortion(param: HeatDistortionEffectParam): Filter
+
+应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| param | [HeatDistortionEffectParam](#heatdistortioneffectparam) | 是 | 热浪扭曲效果的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [Filter](#filter) | 返回添加了热浪扭曲效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct HeatDistortionExample {
+  @State intensity: number = 0.8;
+  @State noiseScale: number = 2.0;
+  @State riseWeight: number = 0.5;
+  @State progress: number = 0.3;
+
+  build() {
+    Stack() {
+      Image($r('app.media.test'))
+        .width('100%')
+        .height('100%')
+        .foregroundFilter(uiEffect.createFilter().heatDistortion({
+          intensity: this.intensity,
+          noiseScale: this.noiseScale,
+          riseWeight: this.riseWeight,
+          progress: this.progress
+        }))
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### blurBubblesRise
+
+blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter
+
+应用模糊气泡上升效果到图像，模拟气泡在液体中上升的梦幻模糊扭曲效果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| param | [BlurBubblesRiseEffectParam](#blurbubblesriseeffectparam) | 是 | 模糊气泡上升效果的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [Filter](#filter) | 返回添加了模糊气泡上升效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct BlurBubblesRiseExample {
+  private context: Context | undefined = this.getUIContext().getHostContext();
+  @State blurIntensity: number = 0.8;
+  @State mixStrength: number = 0.6;
+  @State progress: number = 0.5;
+  @State maskImage: image.PixelMap | null = null;
+
+  aboutToAppear() {
+    if (this.context) {
+      this.getImagePixelMap(this.context)
+    }
+  }
+
+  getImagePixelMap(context: Context) {
+    let resourceMgr = context.resourceManager;
+    resourceMgr?.getMediaContent($r('app.media.drawBlurMask').id)
+      .then((val: Uint8Array) => {
+        let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength)
+        let imageSource: image.ImageSource = image.createImageSource(buffer);
+        imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
+          this.maskImage = pixelmap as PixelMap;
+        })
+      })
+  }
+
+  build() {
+    Stack() {
+      Image($r('app.media.test'))
+        .width('100%')
+        .height('100%')
+        .foregroundFilter(uiEffect.createFilter().blurBubblesRise({
+          blurIntensity: this.blurIntensity,
+          mixStrength: this.mixStrength,
+          progress: this.progress,
+          maskImage: this.maskImage
+        }))
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -1012,8 +1161,8 @@ struct Index {
   @State color1:common2D.Color = {
     red:1,green:1,blue:1,alpha:1
   }
-  @State lightIntentsity1:number = 1
-  @State bordrwidth:number = 20
+  @State lightIntensity1:number = 1
+  @State borderWidth:number = 20
 
   build() {
     Column() {
@@ -1026,8 +1175,8 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntentsity1,
-            this.bordrwidth))
+          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntensity1,
+            this.borderWidth))
       }
       .width('100%')
       .height('55%')
@@ -1108,9 +1257,99 @@ struct ColorGradientExample {
 }
 ```
 
+### liquidMaterial<sup>22+</sup>
+
+liquidMaterial(param: LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask, brightnessParam?: BrightnessParam): VisualEffect
+
+此方法为组件添加材质效果。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名          | 类型                                                      | 必填 | 说明                                                         |
+| --------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| param           | [LiquidMaterialEffectParam](#liquidmaterialeffectparam22) | 是   | 材质所需相关变量，用于控制材质显示，包含材质开关、折射系数、反射系数和扰动系数。 |
+| useEffectMask   | [Mask](#mask20)                                           | 是   | 声明是否使用模糊缓存。使用createUseEffectMask(true)创建的Mask实例使用模糊缓存；使用createUseEffectMask(false)创建的Mask实例不使用模糊缓存。 |
+| distortMask     | [Mask](#mask20)                                           | 否   | 材质扰动效果需要的扰动纹理，由使用pixelMap创建Mask实例时的图片纹理决定。<br>当材质的扰动系数不为0时，需要为材质扰动预先设置一张纹理，否则无扰动效果。<br>当材质的扰动系数为0或者此参数不填时，无扰动效果。 |
+| brightnessParam | [BrightnessParam](#brightnessparam22)                     | 否   | 为材质增加提亮效果。默认不添加提亮效果。                     |
+
+**返回值：**
+
+| 类型                          | 说明                             |
+| ----------------------------- | -------------------------------- |
+| [VisualEffect](#visualeffect) | 返回具有材质效果的VisualEffect。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State distortProgress: number = 0.;
+  @State rippleProgress: number = 0.;
+  @State distortFactor: number = 0.;
+  @State materialFactor: number = 1.;
+  @State refractionFactor: number = 1.;
+  @State reflectionFactor: number = 1.;
+  @State tintColorR: number = 1.;
+  @State tintColorG: number = 1.;
+  @State tintColorB: number = 1.;
+  @State tintColorA: number = 1.;
+
+  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+    let effect: uiEffect.VisualEffect = uiEffect.createEffect();
+    effect.liquidMaterial({
+      enable: true,
+      distortProgress : this.distortProgress,
+      rippleProgress: this.rippleProgress,
+      distortFactor: this.distortFactor,
+      materialFactor : this.materialFactor,
+      refractionFactor : this.refractionFactor,
+      reflectionFactor: this.reflectionFactor,
+      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      ripplePosition: undefined,
+    },
+      uiEffect.Mask.createUseEffectMask(true),
+      );
+    return effect;
+  }
+
+  build() {
+    Stack() {
+      EffectComponent() {
+        Column()
+          .position({ x: 200 + 'px', y: 200 + 'px' })
+          .height(553 + 'px')
+          .width(553 + 'px')
+          .borderRadius(12)
+          .visualEffect(this.GetMaterialVisualEffect())
+      }
+      .backgroundEffect({
+        radius: 15,
+      }, { disableSystemAdaptation: true })
+      .width("100%").height("100%").align(Alignment.Center)
+    }
+    .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
+    .width("100%").height("100%").align(Alignment.Center)
+  }
+}
+```
+
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender
+type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 混合器类型，用于描述混合效果。
 
@@ -1122,6 +1361,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
+| [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1150,6 +1390,24 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 
 **系统接口：** 此接口为系统接口。
 
+## HdrDarkenBlender
+
+支持HDR的压暗混合器，用于将压暗效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过[createHdrDarkenBlender](#uieffectcreatehdrdarkenblender)创建一个HdrDarkenBlender实例。
+
+**起始版本：**  26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称  | 类型   | 只读 | 可选 | 说明                                     |
+| ----- | ------ | ---- | ---- | ---------------------------------------- |
+| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default |
+| grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。|
+
+
 ## Color<sup>20+</sup>
 
 RGBA格式的颜色描述。
@@ -1162,6 +1420,42 @@ RGBA格式的颜色描述。
 | green | number | 是   | 是   | 颜色的G分量（绿色）。值大于等于0，当值小于0时无效。|
 | blue  | number | 是   | 是   | 颜色的B分量（蓝色）。值大于等于0，当值小于0时无效。 |
 | alpha | number | 是   | 是   | 颜色的A分量（透明度）。值大于等于0，当值小于0时无效。 |
+
+## LiquidMaterialEffectParam<sup>22+</sup>
+
+材质的各项参数及其用途的详细说明。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称             | 类型                             | 只读 | 可选 | 说明                                                         |
+| ---------------- | -------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| enable           | boolean                          | 否   | 否   | 是否开启材质效果。 true表示开启材质效果，false表示关闭材质效果。 |
+| distortProgress  | number                           | 否   | 否   | 扰动效果进度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。0表示开始扰动，1表示结束扰动。 |
+| distortFactor    | number                           | 否   | 否   | 扰动效果系数。值大于等于0，值小于0时表示无扰动效果。         |
+| rippleProgress   | number                           | 否   | 否   | 水波效果进度。值大于等于0，值小于0时表示无水波效果。         |
+| ripplePosition   | Array<[number, number]>          | 否   | 是   | 水波效果作用的位置。数组中每个位置包含x和y两个维度，最多支持10个位置坐标传入。传入超出10个位置坐标则整体无效。 |
+| refractionFactor | number                           | 否   | 否   | 折射效果系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无折射效果，值越大折射强度越高。 |
+| reflectionFactor | number                           | 否   | 否   | 反射系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无反射效果，值越大反射强度越高。 |
+| materialFactor   | number                           | 否   | 否   | 材质系数。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。值为0表示无材质效果，使用叠加颜色填充，值越大材质效果越明显。 |
+| tintColor        | [number, number, number, number] | 否   | 否   | 材质叠加的颜色，四个变量分别对应RGBA。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。 |
+
+## BrightnessParam<sup>22+</sup>
+
+材质提亮参数的详细说明。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称          | 类型                     | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| rate          | number                   | 否   | 否   | 灰度调整线性系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| lightUpDegree | number                   | 否   | 否   | 灰度调整比例。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| cubicCoeff    | number                   | 否   | 否   | 灰度调整三阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| quadCoeff     | number                   | 否   | 否   | 灰度调整二阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| saturation    | number                   | 否   | 否   | 提亮基准饱和度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大基准饱和度越高。 |
+| posRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
+| negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
+| fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
+
 
 ## Mask<sup>20+</sup>
 Mask效果类，作为[Filter](#filter)以及[VisualEffect](#visualeffect)的输入使用。
@@ -1271,9 +1565,119 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   }
   let mask = uiEffect.Mask.createPixelMapMask(pixelMap, srcRect, dstRect, fillColor);
 }).catch((error: BusinessError)=>{
-  console.error('Failed to create pixelmap. code is ${error.code}, message is ${error.message}');
+  console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
 })
 ```
+
+### createPixelMapMask<sup>22+</sup>
+
+static createPixelMapMask(pixelMap: image.PixelMap): Mask
+
+通过输入的pixelMap创建[Mask](#mask20)实例。该接口不会对传入的pixelMap进行缩放处理。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[图片开发指导](../../media/image/image-overview.md)。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+| --------------- | ------------------------ |
+| [Mask](#mask20) | 返回具有pixelMap的Mask。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @State distortProgress: number = 0.;
+  @State rippleProgress: number = 0.;
+  @State distortFactor: number = 0.;
+  @State materialFactor: number = 1.;
+  @State refractionFactor: number = 1.;
+  @State reflectionFactor: number = 1.;
+  @State tintColorR: number = 1.;
+  @State tintColorG: number = 1.;
+  @State tintColorB: number = 1.;
+  @State tintColorA: number = 1.;
+  @State pixelMapDistort: image.PixelMap | undefined = this.getPixelMap();
+
+  private getPixelMap(): image.PixelMap | undefined {
+    try {
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      // this path should be created in local
+      const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
+      const imageSource: image.ImageSource = image.createImageSource(path);
+      if (!imageSource) {
+        return undefined;
+      }
+      const pixelMap: image.PixelMap = imageSource.createPixelMapSync();
+      imageSource.release();
+      return pixelMap;
+    } catch (err) {
+      return undefined;
+    }
+  }
+
+  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+    let effect: uiEffect.VisualEffect = uiEffect.createEffect();
+    effect.liquidMaterial({
+      enable: true,
+      distortProgress : this.distortProgress,
+      rippleProgress: this.rippleProgress,
+      distortFactor: this.distortFactor,
+      materialFactor : this.materialFactor,
+      refractionFactor : this.refractionFactor,
+      reflectionFactor: this.reflectionFactor,
+      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      ripplePosition: undefined,
+    },
+      uiEffect.Mask.createUseEffectMask(true),
+      uiEffect.Mask.createPixelMapMask(this.pixelMapDistort), // createImageMask使用示例
+      );
+    return effect;
+  }
+
+  build() {
+    Stack() {
+      EffectComponent() {
+        Column()
+          .position({ x: 200 + 'px', y: 200 + 'px' })
+          .height(553 + 'px')
+          .width(553 + 'px')
+          .borderRadius(12)
+          .visualEffect(this.GetMaterialVisualEffect())
+      }
+      .backgroundEffect({
+        radius: 15,
+      }, { disableSystemAdaptation: true })
+      .width("100%").height("100%").align(Alignment.Center)
+    }
+    .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat) // the image should be created in local
+    .width("100%").height("100%").align(Alignment.Center)
+  }
+}
+```
+
 ### createRadialGradientMask<sup>20+</sup>
 static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
 
@@ -1308,7 +1712,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1316,7 +1720,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1369,7 +1773,7 @@ let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1
 struct WaveGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1379,6 +1783,94 @@ struct WaveGradientMaskExample {
   }
 }
 ```
+### createUseEffectMask<sup>22+</sup>
+
+static createUseEffectMask(useEffect: boolean): Mask
+
+创建并设置[Mask](#mask20)实例是否使用模糊缓存。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名    | 类型    | 必填 | 说明                                                         |
+| --------- | ------- | ---- | ------------------------------------------------------------ |
+| useEffect | boolean | 是   | 标记是否使用模糊缓存。值为true，表示使用，会正常显示模糊效果；值为false，表示不使用，不显示模糊效果。 |
+
+**返回值：**
+
+| 类型            | 说明                             |
+| --------------- | -------------------------------- |
+| [Mask](#mask20) | 返回是否使用模糊缓存标记的Mask。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State distortProgress: number = 0.;
+  @State rippleProgress: number = 0.;
+  @State distortFactor: number = 0.;
+  @State materialFactor: number = 1.;
+  @State refractionFactor: number = 1.;
+  @State reflectionFactor: number = 1.;
+  @State tintColorR: number = 1.;
+  @State tintColorG: number = 1.;
+  @State tintColorB: number = 1.;
+  @State tintColorA: number = 1.;
+
+  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+    let effect: uiEffect.VisualEffect = uiEffect.createEffect();
+    effect.liquidMaterial({
+        enable: true,
+        distortProgress : this.distortProgress,
+        rippleProgress: this.rippleProgress,
+        distortFactor: this.distortFactor,
+        materialFactor : this.materialFactor,
+        refractionFactor : this.refractionFactor,
+        reflectionFactor: this.reflectionFactor,
+        tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+        ripplePosition: undefined,
+      },
+      uiEffect.Mask.createUseEffectMask(true), // useEffectMask使用示例
+    );
+    return effect;
+  }
+
+  build() {
+    Stack() {
+      EffectComponent() {
+        Column()
+          .position({ x: 200 + 'px', y: 200 + 'px' })
+          .height(553 + 'px')
+          .width(553 + 'px')
+          .borderRadius(12)
+          .visualEffect(this.GetMaterialVisualEffect())
+      }
+      .backgroundEffect({
+        radius: 15,
+      }, { disableSystemAdaptation: true })
+      .width("100%").height("100%").align(Alignment.Center)
+    }
+    .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
+    .width("100%").height("100%").align(Alignment.Center)
+  }
+}
+```
+
 ## BrightnessBlenderParam
 BrightnessBlender参数列表。
 
@@ -1396,3 +1888,41 @@ BrightnessBlender参数列表。
 | positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+
+## HeatDistortionEffectParam
+
+热浪扭曲效果的参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| intensity | number | 否 | 否 | 热浪扭曲的强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无扭曲，1表示最大扭曲程度。 |
+| noiseScale | number | 否 | 否 | 热浪扭曲的噪声缩放，控制噪声纹理的细度。<br/>取值范围[0.1, 5.0]，超出边界会在实现时自动截断。<br/>值越大，噪声纹理越细腻。 |
+| riseWeight | number | 否 | 否 | 热浪扭曲的上升权重，控制气泡的上升速度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>值越大，向上运动越明显。 |
+| progress | number | 否 | 否 | 热浪扭曲的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
+
+## BlurBubblesRiseEffectParam
+
+模糊气泡上升效果的参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| blurIntensity | number | 否 | 否 | 模糊气泡上升效果的高斯模糊强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无模糊，1表示最大模糊程度。 |
+| mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应原图，1对应模糊后的图像。 |
+| progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
+| maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br/>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |

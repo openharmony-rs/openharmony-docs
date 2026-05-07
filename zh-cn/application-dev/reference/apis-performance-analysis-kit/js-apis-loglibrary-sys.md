@@ -3,9 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @BruceZong-->
-<!--Designer: @gcw_qzKyUhyU-->
+<!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供了获取各类系统维测日志的能力。
 
@@ -70,10 +70,10 @@ list(logType: string): LogEntry[]
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let logObj = logLibrary.list('HILOG');
-    // do something here.
+  let logObj = logLibrary.list('HILOG');
+  // do something here.
 } catch (error) {
-    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+  console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
 }
 ```
 
@@ -119,16 +119,19 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    logLibrary.copy('HILOG', 'hiapplogcat-1.zip', ''
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, ''
     ).then(
-        (val) => {
-            // do something here.
-        }
+      (val) => {
+        // do something here.
+      }
     ).catch(
-        (err: BusinessError) => {
-            // do something here.
-        }
+      (err: BusinessError) => {
+        // do something here.
+      }
     )
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
 }
@@ -170,13 +173,16 @@ copy(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-    logLibrary.copy('HILOG', 'hiapplogcat-1.zip', 'dir1', (error, val) => {
-        if (val === undefined) {
-            // copy failed.
-        } else {
-            // copy success.
-        }
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, 'dir1', (error, val) => {
+      if (val === undefined) {
+        // copy failed.
+      } else {
+        // copy success.
+      }
     });
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
 }
@@ -224,16 +230,19 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    logLibrary.move('FAULTLOG', 'fault_log_test.zip', ''
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.move('FAULTLOG', logObj[0].name, ''
     ).then(
-        (val) => {
-            // do something here.
-        }
+      (val) => {
+        // do something here.
+      }
     ).catch(
-        (err: BusinessError) => {
-            // do something here.
-        }
+      (err: BusinessError) => {
+        // do something here.
+      }
     )
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
 }
@@ -275,13 +284,16 @@ move(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-    logLibrary.move('FAULTLOG', 'fault_log_test.zip', 'dir1/dir2', (error, val) => {
-        if (val === undefined) {
-            // move failed.
-        } else {
-            // move success.
-        }
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.move('FAULTLOG', logObj[0].name, 'dir1/dir2', (error, val) => {
+      if (val === undefined) {
+        // move failed.
+      } else {
+        // move success.
+      }
     });
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
 }
@@ -321,7 +333,10 @@ remove(logType: string, logName: string): void
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-  logLibrary.remove('FAULTLOG', 'fault_log_test.zip');
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.remove('FAULTLOG', logObj[0].name);
+  }
 } catch (error) {
   console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
 }

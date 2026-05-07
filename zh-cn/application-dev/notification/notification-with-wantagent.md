@@ -1,9 +1,8 @@
 # 为通知添加行为意图
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -47,7 +46,7 @@
    <!-- @[create_launch_uiability_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
-   let wantAgentObj: WantAgent; // 用于保存创建成功的wantAgent对象，后续使用其完成触发的动作。
+   let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的wantAgent对象，后续使用其完成触发的动作。
    
    // 通过WantAgentInfo的operationType设置动作类型
    let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -73,7 +72,7 @@
    <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
-   let wantAgentObj: WantAgent; // 用于保存创建成功的WantAgent对象，后续使用其完成触发的动作。
+   let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的WantAgent对象，后续使用其完成触发的动作。
    
    // 通过WantAgentInfo的operationType设置动作类型
    let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -124,7 +123,7 @@
      title: 'open_the_app',
      // wantAgentObj使用前需要保证已被赋值（即步骤3执行完成）
      // 通知按钮的WantAgent
-     wantAgent: wantAgentObj
+     wantAgent: wantAgentObj!
    };
    
    // 构造NotificationRequest对象
@@ -139,7 +138,7 @@
      },
      id: 6,
      // 通知消息的WantAgent
-     wantAgent: wantAgentObj,
+     wantAgent: wantAgentObj!,
      // 通知按钮
      actionButtons: [actionButton],
    };

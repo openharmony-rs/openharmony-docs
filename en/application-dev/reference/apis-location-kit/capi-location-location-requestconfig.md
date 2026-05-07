@@ -6,6 +6,10 @@
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
 
+```c
+typedef struct Location_RequestConfig Location_RequestConfig
+```
+
 ## Overview
 
 Defines the struct for the location request configuration.

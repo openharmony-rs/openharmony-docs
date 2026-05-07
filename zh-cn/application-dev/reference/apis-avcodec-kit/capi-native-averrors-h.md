@@ -1,5 +1,4 @@
 # native_averrors.h
-
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xushubo; @chennotfound-->
@@ -75,7 +74,10 @@ enum OH_AVErrCode
 | AV_ERR_IO_SSL_CONNECT_FAIL = 5411009 |  由于未携带服务器证书、证书无效或过期导致客户端验证失败。<br>**起始版本：** 14 |
 | AV_ERR_IO_SSL_SERVER_CERT_UNTRUSTED = 5411010 |  SSL服务器证书不受信任。<br>**起始版本：** 14 |
 | AV_ERR_IO_UNSUPPORTED_REQUEST = 5411011 |  网络协议不支持该请求。<br>**起始版本：** 14 |
+| AV_ERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012 |  不允许HTTP明文访问。<br>**起始版本：** 23 |
 | AV_ERR_STREAM_CHANGED = 5410005 | 同步模式下流格式发生变更。可以通过调用接口[OH_VideoEncoder_GetOutputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription)（视频编码）、[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)（视频解码）、[OH_AudioCodec_GetOutputDescription](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_getoutputdescription)（音频编解码）来获取更新后流的配置信息。<br>**起始版本：** 20 |
 | AV_ERR_TRY_AGAIN_LATER = 5410006 |  同步模式下临时缓冲区查询失败，建议等待短暂间隔后重试操作。<br>**起始版本：** 20 |
+| AV_ERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003 |  该媒体源或者当前设备不支持超分。<br>**起始版本：** 23 |
+| AV_ERR_SUPER_RESOLUTION_NOT_ENABLED = 5410004 |  未使能超分。<br>**起始版本：** 23 |
 
 

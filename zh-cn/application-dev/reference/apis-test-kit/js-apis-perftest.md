@@ -81,7 +81,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 > **说明**
 >
 > 属性actionCode和resetCode的入参类型为回调函数"Callback\<boolean>"。在代码段中需要主动调用此回调函数，通知框架代码段执行完成，否则会导致代码段执行超时。
-> 其中，回调函数的参数为boolean类型，true代表代码段执行符合预期，false代码段执行不符合预期。[代码示例](#create)。
+> 其中，回调函数的参数为boolean类型，true代表代码段执行符合预期，false代表代码段执行不符合预期。[代码示例](#create)。
 
 ## PerfMeasureResult
 

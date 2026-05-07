@@ -1,9 +1,9 @@
-# 关键资产存储服务(ASSET)错误码
+# 关键资产存储服务错误码
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -58,7 +58,7 @@ The asset already exists.
 1. 先调用[asset.remove](js-apis-asset.md#assetremove)删除同别名的关键资产，再调用[asset.add](js-apis-asset.md#assetadd)重新写入。
 2. 调用[asset.add](js-apis-asset.md#assetadd)时，指定参数asset.Tag.CONFLICT_RESOLUTION的值为asset.ConflictResolution.OVERWRITE。
 
-## 24000004 拒绝访问关键资产
+## 24000004 访问被拒绝
 
 **错误信息**
 
@@ -178,7 +178,7 @@ Calling the Bundle Manager service failed.
 
 查看错误信息，排查包管理服务异常原因。
 
-## 24000012 账号系统异常
+## 24000012 账号系统服务异常
 
 **错误信息**
 
@@ -276,3 +276,17 @@ Parameter verify failed.
 **处理步骤**
 
 根据错误信息，调整API参数，并重新调用接口。
+
+## 24000019 属性值不一致
+
+**错误信息**
+
+Each value of [Tag.GROUP_ID](js-apis-asset.md#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](js-apis-asset.md#tag) in the array is not consistent.
+
+**可能原因**
+
+批量操作时，数组中每个关键资产的GROUP_ID和REQUIRE_ATTR_ENCRYPTED属性值不一致。
+
+**处理步骤**
+
+确保批量操作数组中所有关键资产的GROUP_ID和REQUIRE_ATTR_ENCRYPTED属性值一致，然后重新调用接口。

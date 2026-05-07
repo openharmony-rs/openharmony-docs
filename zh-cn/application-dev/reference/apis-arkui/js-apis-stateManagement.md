@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926; @liwenzhen3; @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -51,8 +51,8 @@ static&nbsp;connect\<T extends object\>( </br >
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是   | 指定的类型，若未指定key，则使用type的name作为key。 |
-| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 指定的key，或者是获取默认值的构造器。 |
-| defaultCreator | StorageDefaultCreator\<T\> | 否   | 获取默认值的构造器。 |
+| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 指定的key，或者是获取默认值的构造器。默认值为undefined。 |
+| defaultCreator | StorageDefaultCreator\<T\> | 否   | 获取默认值的构造器。默认值为undefined。 |
 
 >**说明：**
 >
@@ -104,7 +104,7 @@ static&nbsp;remove\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithAr
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| keyOrType | string \| TypeConstructorWithArgs\<T\> | 是   | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
+| keyOrType | string \| [TypeConstructorWithArgs](#typeconstructorwithargst)\<T\> | 是   | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
 
 >**说明：**
 >
@@ -162,7 +162,7 @@ const keys: Array<string> = AppStorageV2.keys();
 
 static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefined
 
-将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果globalConnect的是\@ObservedV2对象，该对象\@Trace属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用PersistenceV2.save接口手动存储。
+将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果globalConnect的是[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用[PersistenceV2.save](#save)接口手动存储。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +205,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 <!--code_no_check-->
 ```ts
-import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2, Type } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
 @ObservedV2
@@ -245,26 +245,29 @@ const p3: Sample = PersistenceV2.globalConnect({
 
 ```
 ### globalConnect<sup>23+</sup>
- static globalConnect\<T extends CollectionType<S\>, S extends object\>(
-  type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\>
-  ): T | undefined
 
-将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
+static globalConnect\<T extends CollectionType<S\>, S extends object\>( </br >
+  &nbsp;&nbsp;&nbsp;&nbsp;type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\> </br >
+): T | undefined
+
+将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18)|  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。 当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator。且集合项类型S必须与defaultSubCreator的返回类型相同。|
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。<br/>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|  
 
-当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。
-当`globalConnnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
+当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。<br/>当`globalConnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
 
+<!--code_no_check-->
 ```typescript
 class ClassA {
   propA: number;
@@ -302,17 +305,17 @@ import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
 struct Page1 {
   // globalConnect支持持久化Map类型的数据
   @Local map: Map<number, number> = PersistenceV2.globalConnect({
-    type: Map<number, number>, defaultCreator: () => new Map<number, number>();
+    type: Map<number, number>, defaultCreator: () => new Map<number, number>()
   })!
   output: string[] = [];
 
-  // 启动应用，第一次进入，展示restoredMapSize = 0, is instanceof Map True, get[0]=undefined, get[1]=undefined, get[2]=undefined
-  // 杀掉应用，第二次进入，展示restoredMapSize = 1, is instanceof Map True, get[0]=0, get[1]=undefined, get[2]=undefined
-  // 杀掉应用，第三次进入，展示restoredMapSize = 2, is instanceof Map True, get[0]=0, get[1]=1, get[2]=undefined
-  // 杀掉应用，第四次进入，展示restoredMapSize = 3, is instanceof Map True, get[0]=0, get[1]=1, get[2]=2
+  // 启动应用，第一次进入，展示restored Map.size=0, map.get(0)=undefined, map.get(1)=undefined, map.get(2)=undefined
+  // 关闭应用，第二次进入，展示restored Map.size=1, map.get(0)=0, map.get(1)=undefined, map.get(2)=undefined
+  // 关闭应用，第三次进入，展示restored Map.size=2, map.get(0)=0, map.get(1)=1, map.get(2)=undefined
+  // 关闭应用，第四次进入，展示restored Map.size=3, map.get(0)=0, map.get(1)=1, map.get(2)=2
   aboutToAppear(): void {
     const restoredMapSize = this.map.size;
-    this.output.push(`restored Map .size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)},  map.get(2)=${this.map.get(2)}`);
+    this.output.push(`restored Map.size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)}, map.get(2)=${this.map.get(2)}`);
     this.map.set(restoredMapSize, restoredMapSize);
     // 需要手工持久化
     PersistenceV2.save('Map');
@@ -343,7 +346,7 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| keyOrType | string \| TypeConstructorWithArgs\<T\> | 是   | 需要持久化的key；如果指定的是type类型，持久化的key为type的name。 |
+| keyOrType | string \| [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是   | 需要持久化的key；如果指定的是type类型，持久化的key为type的name。 |
 
 >**说明：**
 >
@@ -385,7 +388,7 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| callback | PersistenceErrorCallback \| undefined  | 是   | 持久化失败时调用。 |
+| callback | [PersistenceErrorCallback](#persistenceerrorcallback) \| undefined  | 是   | 持久化失败时调用。 |
 
 **示例：**
 
@@ -406,23 +409,108 @@ globalConnect参数类型。
 
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
-|type        | TypeConstructorWithArgs\<T\>   |否   |否   |指定的类型。         |
+|type        | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst)   |否   |否   |指定的类型。         |
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
-|defaultCreator   | StorageDefaultCreator\<T\>   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
-|areaMode      | contextConstant.AreaMode   |否   |是    |加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。 |
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
+|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。 |
 
 ## ConnectOptionsCollections<sup>23+</sup>
 
-[globalConnect](#globalconnect23)接口参数类型, 当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
+[globalConnect](#globalconnect23)接口参数类型，ConnectOptionsCollections继承自[ConnectOptions](#connectoptions18)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
-|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |否   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
-|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |否   |否   |用于持久化用户自定义class类集合 (如`Array<ClassA>`)，使用该集合项默认构造函数。如果`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。 |
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`，不提供默认创建器，会导致无法持久化容器类型数据。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。如果提供defaultSubCreator，没有提供defaultCreator，会导致持久化失败。 |
+|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |否   |是   |使用该集合项默认构造函数，用于持久化容器类数据。如果defaultSubCreator返回的是`undefined`或`null`，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
+
+如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
+
+**示例：**
+<!--code_no_check-->
+```typescript
+class ClassA {
+  propA: number;
+  // ...
+}
+
+@ComponentV2
+struct Page {
+  // StorageDefaultCreator<T>默认创建器为`() => UIUtils.makeObserved(new Array<ClassA>())`, 其中`T`的类型是指`Array<ClassA>`
+  // StorageDefaultCreator<S> 默认创建器为`() =>UIUtils.makeObserved(new ClassA())`，其中，`S`的类型是指`ClassA`
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
+    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
+    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+  })!
+  // ...
+}
+```
+
+当`StorageDefaultCreator<S>`返回值为`undefined`或`null`时，持久化会失败。当`StorageDefaultCreator<S>`直接设置为`undefined`或`null`时,状态管理框架会按照原始的类型（如`Object`类型）进行持久化，但是会丢失`class`对象中的方法。在如下示例中，`StorageDefaultCreator<S>`直接被设置为`undefined`或`null`时，持久化过程中`ClassA`对象中的`report`方法将被丢失。
+
+```typescript
+import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class ClassA {
+  @Trace public propA: string = '';
+  @Trace public propB: string = '';
+
+  public report(): string {
+    return `${this.propA} - ${this.propB}`;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Comp {
+  // 持久化顶层数据类型为`Array<ClassA>`的数据。
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // defaultSubCreator的返回的值被设置为`undefined`或`null` (defaultSubCreator: () => undefined)，持久化失败。
+    // defaultSubCreator被直接设置为`undefined`或`null` (defaultSubCreator: undefined))，持久化会丢失`ClassA`中的方法。
+    defaultSubCreator: undefined
+  })!;
+
+  aboutToAppear(): void {
+    if (this.arr.length) {
+      // 步骤3：再次进入应用，持久化过程中丢失`ClassA中`的方法，当调用`ClassA`对象中的`report`方法，会报`undefined is not callable`的错误。
+      hilog.info(0xFF00, 'testTag', '%{public}s', this.arr[0].report());
+    }
+  }
+  build() {
+    Column() {
+      Repeat(this.arr)
+        .each(ri => {
+          Row() {
+            Text(`propA '${ri.item.propA}'`)
+            Text(`propB '${ri.item.propB}'`)
+            Text(`report?.() '${ri.item.report?.()}'`)
+          }
+        })
+      // 步骤1：点击'add item'，显示`propA 'a' propB 'b'report?.'a' - 'b'`。
+      // 步骤2：关闭应用。
+      Button('add item')
+        .onClick(() => {
+          let temp: ClassA = new ClassA();
+          temp.propA = 'a';
+          temp.propB = 'b';
+          this.arr.push(temp);
+        })
+    }
+  }
+}
+```
 
 ## CollectionType<sup>23+</sup>
 
@@ -435,11 +523,65 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：**
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-| CollectionType\<S\>    | [Array, Map, Set, collection.Array, collection.Map及collection.Set](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)的联合类型。 |
+| Array\<S\>     | 表示值类型为Array类型。 |
+| Map\<string \| number, S\>     | 表示值类型为Map类型。 |
+|Set\<S\>     | 表示值类型为Set类型。 |
+|[collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<S\>     | 表示值类型为collections.Array类型。 |
+|[collections.Map](../apis-arkts/arkts-apis-arkts-collections-Map.md)\<string \| number, S\>     | 表示值类型为collections.Map类型。 |
+|[collections.Set](../apis-arkts/arkts-apis-arkts-collections-Set.md)\<S\>     | 表示值类型为collections.Set类型。 |
+
+## ObservedResult<sup>23+</sup>
+
+对象是否可被观察的结果。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读  |可选 | 说明     |
+| ------ | ---- | ---- | ---- | ------------ |
+| isObserved | boolean  | 否 |  否   | 对象是否可被观察。<br/>true：表示是可被观察对象。<br/>false：表示不是可被观察对象。 |
+| reason | string  | 否 | 否   | 对象是否可被观察的原因。<br/>不可被观察原因：对象本身是不可被观察的。<br/>可被观察原因或使用场景：<br/> 1. V1对象被[@Observed](./../../ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](#makev1observed19)方法转换的。 <br/> 2. V1对象被[@Observed](./../../ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](#makev1observed19)方法转换的，但对象没有被UI组件使用。 <br/> 3. V1对象被[enableV2Compatibility](#enablev2compatibility19)方法转换后传入V2组件。 <br/> 4. V1对象被[enableV2Compatibility](#enablev2compatibility19)方法转换后传入V2组件，但没有被V2组件使用。 <br/> 5. V2对象是被[@ObservedV2/@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的。<br/> 6. V2对象是被[makeObserved](#makeobserved)方法转换的。 <br/> 7. V2对象属于Array/Map/Set/Date类型。 <br/> 8. V2对象是被[@ObservedV2/@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的，但对象没有被UI组件使用。 <br/> 9. V2对象是被[makeObserved](#makeobserved)方法转换的，但没有被UI组件使用。 <br/> 10. V2对象属于Array/Map/Set/Date类型，但没有被UI组件使用。 |
+| decoratorInfo | Array\<[DecoratorInfo](#decoratorinfo23)\>  | 否 | 否   | 对象可被观察时，数组中内容为对象关联的装饰器和组件信息。对象不可被观察时，此数组为空。 |
+
+## DecoratorInfo<sup>23+</sup>
+
+可被观察对象关联的装饰器和组件信息。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读  | 可选 | 说明     |
+| ------ | ---- | ---- |---- | ------------ |
+| decoratorName | string  | 否 | 否   | 当对象是V1对象时，值是对象关联的装饰器名称。<br/> 当V1对象使用[@Track](./../../ui/state-management/arkts-track.md)时，值为：'@Track'。<br/> 当V2对象使用[@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md)时，值为：'@Trace'。<br/> 当V2对象使用[makeObserved](#makeobserved)时，值为：'MakeObserved'。<br/> 当V2对象使用[enableV2Compatibility](#enablev2compatibility19)时，值为：'EnableV2Compatible'。 <br/> 当V2对象使用built-in类型数据时，值为：'ProxyObservedV2'。 |
+| stateVariableName | string  | 否 | 否   | 被装饰器装饰的属性名称。 |
+| owningComponentOrClassName | string  | 否 | 否   | V1对象返回被使用的组件名称。<br/> V1对象有属性使用[@Track](./../../ui/state-management/arkts-track.md)装饰器时返回对象名称。<br/> V2对象返回对象名称。 |
+| owningComponentId | number  | 否 | 否   | V1对象返回被使用的组件id。<br/> **V1对象有属性使用[@Track](./../../ui/state-management/arkts-track.md)装饰器时和V2对象返回的是对象名称，无组件id，返回-1。** |
+| dependentInfo | Array<[ElementInfo](#elementinfo23)>  | 否 | 否   | 使用该可观察对象的组件信息。若对象没有用在任何UI上，则返回空数组。 |
+
+## ElementInfo<sup>23+</sup>
+
+可被观察对象关联的组件信息，包含系统组件和自定义组件。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读  | 可选 | 说明     |
+| ------ | ---- | ---- |---- | ------------ |
+| elementName | string  | 否 | 否   | 组件的名称。 |
+| elementId | number  | 否 | 否   | 组件的ID。 |
 
 ## UIUtils
 
@@ -492,6 +634,189 @@ struct Index {
   }
 }
 ```
+
+### getLifecycle<sup>23+</sup>
+
+static getLifecycle\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentLifecycle
+
+getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明     |
+| ------ | ---- | ---- | ------------ |
+| customComponent | T    | 是   | 自定义组件实例。 |
+
+**返回值：**
+
+| 类型 | 说明                                             |
+| ---- | ------------------------------------------------ |
+| [CustomComponentLifecycle](./arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycle)    | 自定义组件的生命周期实例。 |
+
+**示例：**
+
+```ts
+import { UIUtils, ComponentAppear } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State lifecycleState: number = -1;
+
+  @ComponentAppear
+  myAppear() {
+    // UIUtils.getLifecycle获得自定义组件的生命周期实例，getCurrentState查询自定义组件当前生命周期。
+    // 预期查询到的生命周期为CustomComponentLifecycleState.APPEARED = 1。
+    this.lifecycleState = UIUtils.getLifecycle(this).getCurrentState();
+  }
+
+  build() {
+    Text(`${this.lifecycleState}`)
+  }
+}
+```
+
+### canBeObserved<sup>23+</sup>
+
+static canBeObserved\<T extends object\>(source: T): ObservedResult
+
+判断数据对象是否为可观察对象，并返回观察结果。详见[canBeObserved接口：判断对象是否为可被观察对象](../../ui/state-management/arkts-new-canBeObserved.md)。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明     |
+| ------ | ---- | ---- | ------------ |
+| source | T    | 是   | 输入一个数据对象，判断其是否可被观察。支持Array、Map、Set和Date类型数据。</br>具体使用规则，详见[canBeObserved接口：判断对象是否为可被观察对象](../../ui/state-management/arkts-new-canBeObserved.md)。 |
+
+**返回值：**
+
+| 类型 | 说明     |
+| ---- | ------------ |
+| [ObservedResult](#observedresult23)  | 返回对象是否可被观察的结果。 |
+
+**示例：**
+
+``` ts
+import { UIUtils } from '@kit.ArkUI';
+import { DecoratorInfo, ElementInfo } from '@ohos.arkui.StateManagement';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'CanBeObserved';
+
+class Student {
+  public name?: string;
+
+  constructor(name?: string) {
+    this.name = name ?? '';
+  }
+
+  // 在对象中提供判断该对象是否为可被观察对象的方法
+  test(): void {
+    const result = UIUtils.canBeObserved(this);
+    // 对象是否可被观察
+    const isObserved = result.isObserved;
+    hilog.info(0x00, TAG, `isObserved: ${JSON.stringify(isObserved)}`);
+    // 对象是否可被观察的原因
+    const reason = result.reason;
+    hilog.info(0x00, TAG, `reason: ${reason}`);
+    // 对象可被观察时，对象关联的装饰器信息
+    const decoratorInfoArr = result.decoratorInfo;
+    decoratorInfoArr.forEach((decorator: DecoratorInfo) => {
+      // 装饰器名称
+      const decoratorName = decorator.decoratorName;
+      hilog.info(0x00, TAG, `decoratorName: ${decoratorName}`);
+      // 装饰器装饰的属性名称
+      const stateVariableName = decorator.stateVariableName;
+      hilog.info(0x00, TAG, `stateVariableName: ${stateVariableName}`);
+      // 装饰器所在的组件名称
+      const owningName = decorator.owningComponentOrClassName;
+      hilog.info(0x00, TAG, `owningComponentOrClassName: ${owningName}`);
+      // 装饰器所在的组件id
+      const owningId = decorator.owningComponentId;
+      hilog.info(0x00, TAG, `owningComponentId: ${owningId}`);
+      // 装饰器关联的组件信息
+      const dependentInfo = decorator.dependentInfo;
+      dependentInfo.forEach((elementInfo: ElementInfo) => {
+        // 装饰器关联的组件名称
+        const eleName = elementInfo.elementName;
+        hilog.info(0x00, TAG, `elementName: ${eleName}`);
+        // 装饰器关联的组件id
+        const eleId = elementInfo.elementId;
+        hilog.info(0x00, TAG, `elementId: ${eleId}`);
+      })
+    })
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State student: Student = new Student('LiMei');
+
+  build() {
+    Column({ space: 20 }) {
+      Classroom({ student: this.student })
+      Home({ student: this.student })
+      Button('test')
+        .onClick(() => {
+          // 开发者可以在任意页面中使用接口来判断当前对象是否为可被观察对象
+          this.student.test();
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+@Component
+export struct Classroom {
+  @State student: Student = new Student();
+
+  build() {
+    Column() {
+      Text('Classroom ' + this.student.name)
+      School({ student: this.student })
+    }
+  }
+}
+
+@Component
+export struct Home {
+  @State student: Student = new Student();
+
+  build() {
+    Column() {
+      Text('Home ' + this.student.name)
+    }
+  }
+}
+
+@Component
+export struct School {
+  @State student: Student = new Student();
+
+  build() {
+    Column() {
+      Text('School ' + this.student.name)
+    }
+  }
+}
+```
+
 ### makeObserved
 
 static makeObserved\<T extends object\>(source: T): T
@@ -506,7 +831,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。</br>支持Array、Map、Set和Date。</br>支持collection.Array, collection.Set和collection.Map。</br>具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../ui/state-management/arkts-new-makeObserved.md)。 |
+| source | T    | 是   | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。</br>支持Array、Map、Set和Date。</br>支持collections.Array, collections.Set和collections.Map。</br>具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../ui/state-management/arkts-new-makeObserved.md)。 |
 
 **返回值：**
 
@@ -548,7 +873,7 @@ struct Index {
 
 static enableV2Compatibility\<T extends object\>(source: T): T
 
-使V1的状态变量能够在\@ComponentV2中观察，主要应用于状态管理V1、V2混用场景。详见[状态管理V1V2混用文档](../../ui/state-management/arkts-v1-v2-mixusage.md)。
+使V1的状态变量能够在\@ComponentV2中观察，主要应用于状态管理V1、V2混用场景。详见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -613,7 +938,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 将不可观察的对象包装成状态管理V1可观察的对象，其能力等同于@Observed，可初始化@ObjectLink。
 
-该接口可搭配[enableV2Compatibility](#enablev2compatibility19)应用于状态管理V1和V2混用场景，详见[状态管理V1V2混用文档](../../ui/state-management/arkts-v1-v2-mixusage.md)。
+该接口可搭配[enableV2Compatibility](#enablev2compatibility19)应用于状态管理V1和V2混用场景，详见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -680,7 +1005,7 @@ struct Child {
 ### makeBinding<sup>20+</sup>
 static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 
-创建只读的单向数据绑定实例，用于构建\@Builder函数中参数类型为`Binding`的对应实参。
+创建只读的单向数据绑定实例，用于构建[\@Builder](../../ui/state-management/arkts-builder.md)函数中参数类型为`Binding`的对应实参。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -828,7 +1153,7 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 | target | object | 是   | 目标对象，仅支持[\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)和[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。</br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | path | string \| string[]    | 是   | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。</br>仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | monitorCallback | [MonitorCallback](#monitorcallback20)   | 是   | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。</br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| options | [MonitorOptions](#monitoroptions20)   | 否   | 监听函数的配置项，具体可见[MonitorOptions](#monitoroptions20)。 |
+| options | [MonitorOptions](#monitoroptions20)   | 否   | 监听函数的配置项，具体可见[MonitorOptions](#monitoroptions20)。默认为异步回调。 |
 
 
 **错误码：**
@@ -937,7 +1262,7 @@ class ObservedClass {
   }
 
   constructor() {
-    // 给当前ObservedClass的实例this添加对属性name的监听回调this.onChange，且当前监听回调是同步监听
+    // 给当前ObservedClass的实例this添加对属性age的监听回调this.onChange，且当前监听回调是同步监听
     UIUtils.addMonitor(this, 'age', this.onChange);
   }
 }
@@ -1170,6 +1495,90 @@ struct Index {
 }
 ```
 
+### getCustomComponentContext
+
+getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentContext
+
+返回给定@Component(V1)或@ComponentV2的[CustomComponentContext](#customcomponentcontext)。使用它来访问组件的复用池。有关复用池的详细信息，请参阅[全局复用池：集中化的组件回收与复用](../../ui/state-management/arkts-global-reuse-pool.md)。
+
+**起始版本：** 26.0.0
+
+**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                 | 必填 |  说明              |
+| ------- | ------------------------------------ | ---- | -------------------------------------------------- |
+| customComponent  | T | 是   | 要获取其上下文的@Component或@ComponentV2实例。 |
+
+**返回值：**
+
+| 类型                                              | 说明                          |
+| ------------------------------------------------- | ---------------------------- |
+| [CustomComponentContext](#customcomponentcontext)  | 给定组件实例的上下文对象。     |
+
+**示例：**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  aboutToRecycle() {
+    console.info('ReusableChild aboutToRecycle');
+  }
+  aboutToReuse() {
+    console.info('ReusableChild aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ 
+  reusePool: 'shared', // 声明共享全局复用池
+  poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild 
+  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
+})
+struct Index {
+  @Local showChild: boolean = true;
+
+  inspectPool() {
+    // 获取此组件的CustomComponentContext
+    const context = UIUtils.getCustomComponentContext(this);
+    // 通过上下文访问复用池。
+    const pool = context.getReusePool();
+    if (pool) {
+      const info = pool.getReusableInfo(ReusableChild);
+      if (info && !Array.isArray(info)) {
+        console.info(`ReusableChild 在池中: count=${info.count}, maxCount=${info.maxCount}`);
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Button('切换子组件')
+        .onClick(() => { 
+          this.showChild = !this.showChild;
+        })
+      Button('检查池')
+        .onClick(() => {
+          this.inspectPool();
+        })
+      if (this.showChild) {
+        ReusableChild()
+      }
+    }
+  }
+}
+```
+
 ## TaskCallback<sup>22+</sup>
 
 type TaskCallback = () => T
@@ -1188,7 +1597,7 @@ type TaskCallback = () => T
 
 ## MonitorOptions<sup>20+</sup>
 
-[addMonitor](#addmonitor20)的可选参数，用于配置回调类型。
+[addMonitor](#addmonitor20)的可选参数，用于配置回调类型以及是否使能通配符能力。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1197,6 +1606,7 @@ type TaskCallback = () => T
 | 名称 | 类型 | 只读 | 可选 | 说明     |
 | ------ | ---- | ---- | ---- | ------------ |
 |isSynchronous|boolean|否|是|配置当前回调函数否是为同步回调。true为同步回调。默认值为false，即异步回调。|
+|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
@@ -1323,7 +1733,7 @@ struct SampleComp {
 
 ## PersistenceErrorCallback
 
-type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown', message: string) => void
+type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown', message: string, oldValue?: string) => void
 
 持久化失败时返回错误原因的回调。
 
@@ -1338,6 +1748,7 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 | key | string    | 是   | 出错的键值。   |
 |reason| 'quota' \| 'serialization' \| 'unknown'    | 是   | 出错的原因类型。   |
 | message | string    | 是   | 出错的更多消息。   |
+| oldValue | string    | 否   | 反序列化失败时，返回的旧的存储于磁盘的序列化数据。<br> **起始版本：** 26.0.0。   |
 
 **示例：**
 
@@ -1358,9 +1769,9 @@ export class Sample {
 }
 
 // 接受序列化失败的回调
-// PersistenceErrorCallback 指的是 (key: string, reason: string, msg: string) => {console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);}
-PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+// PersistenceErrorCallback 指的是 (key: string, reason: string, msg: string, oldValue?: string) => {console.error(`error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);}
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);
 });
 
 @Entry
@@ -1441,7 +1852,7 @@ struct Index {
 
 type TypeDecorator = \<T\>(type: TypeConstructor\<T\>) => PropertyDecorator
 
-属性装饰器。
+属性装饰器，用于装饰嵌套类中属于自定义class类的属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1495,6 +1906,27 @@ struct Index {
 }
 ```
 
+在使用@Type装饰嵌套类属性时，仅支持自定义class类型，传入其他类型会持久化失败。
+<!--code_no_check-->
+```ts
+@ObservedV2
+class SampleChild {
+  @Trace id: number = 0;
+  count: number = 10;
+}
+
+@ObservedV2
+class Sample {
+  // 建议用法，装饰自定义Sample类中的sampleChild属性，其类型为SampleChild类型
+  @Type(SampleChild)
+  @Trace sampleChild: SampleChild = new SampleChild();
+
+  // 不建议用法，装饰的嵌套类属性类型是Array<number>
+  @Type(Array<number>)
+  @Trace value: Array<Array<number>> = new Array();
+}
+```
+
 ## GetterCallback<sup>20+</sup>
 
 type GetterCallback\<T\> = () => T
@@ -1514,7 +1946,7 @@ type GetterCallback\<T\> = () => T
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1566,7 +1998,7 @@ type SetterCallback\<T\> = (newValue: T) => void
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
@@ -1624,7 +2056,7 @@ get value(): T
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1695,7 +2127,7 @@ get value(): T
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
@@ -1726,6 +2158,356 @@ struct CompV2 {
             this.number2 = val;
           }) // SetterCallback 必须提供，否则触发时会造成运行时错误
       )
+    }
+  }
+}
+```
+
+## CustomComponentContext
+
+`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例。
+
+**起始版本：** 26.0.0
+
+### getReusePool
+
+getReusePool(): IReusePool | undefined
+
+返回该自定义组件拥有的全局复用池。如果组件没有通过`reusePool`和`poolAccepts`配置复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
+
+**起始版本：** 26.0.0
+
+**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                   |  说明                          |
+| -------------------------------------- | ------------------------------------------------ |
+| [IReusePool](#ireusepool) \| undefined | 此组件的复用池（如果已配置）；否则为 `undefined`。 |
+
+**示例：**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+struct PoolOwner {
+  checkPool() {
+    const context = UIUtils.getCustomComponentContext(this);
+    const pool = context.getReusePool();
+    if (pool) {
+      console.info('已配置复用池');
+    } else {
+      console.info('此组件上没有复用池');
+    }
+  }
+
+  build() {
+    Column() {
+      ReusableChild()
+    }
+  }
+}
+```
+
+## IReusePool
+
+`IReusePool` 接口提供自定义组件上的全局复用池的相关功能。
+
+**起始版本：** 26.0.0
+
+### getReusableInfo
+
+getReusableInfo(reusableComp: Function, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+
+检索此复用池中给定可复用组件类型的回收实例信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名        | 类型                                 | 必填 |  说明            |
+| ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
+| reusableComp | Function | 是   | 要查询的可复用自定义组件的名称。|
+| reuseId      | string   | 否   | 可选的reuseId用于过滤结果。如果指定，则仅返回此特定reuseId复用池的信息。默认值是undefined，返回所有reuseId复用池信息。   |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [IReusableInfo](#ireusableinfo) \| [IReusableInfo](#ireusableinfo)[] \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+
+**示例：**
+
+```ts
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  aboutToRecycle() {
+    console.info('ReusableChild aboutToRecycle');
+  }
+  aboutToReuse() {
+    console.info('ReusableChild aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+struct PoolOwner {
+  @Local showChild: boolean = true;
+
+  inspectPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    if (!pool) {
+      return;
+    }
+
+    // 查询池接受的组件类型。
+    const info = pool.getReusableInfo(ReusableChild);
+    if (info === undefined) {
+      console.info('ReusableChild 不被此池接受');
+    } else if (Array.isArray(info)) {
+      // 使用了多个 reuseId 桶。
+      info.forEach((item: IReusableInfo, i: number) => {
+        console.info(`[${i}] reuseId=${item.reuseId}, count=${item.count}, maxCount=${item.maxCount}`);
+      });
+    } else {
+      // 单个条目（未使用 reuseId，或查询了特定的 reuseId）。
+      console.info(`count=${info.count}, maxCount=${info.maxCount}`);
+    }
+
+    // 查询特定的 reuseId — 始终返回单个 IReusableInfo。
+    const bucketInfo = pool.getReusableInfo(ReusableChild, 1) as IReusableInfo;
+    console.info(`reuseId 'myId': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
+  }
+
+  build() {
+    Column() {
+      Button('切换子组件')
+        .onClick(() => {
+          this.showChild = !this.showChild;
+        })
+      Button('检查池')
+        .onClick(() => this.inspectPool())
+      if (this.showChild) {
+        ReusableChild()
+      }
+    }
+  }
+}
+```
+
+### preRender
+
+preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
+
+预创建@Reusable/@ReusableV2组件并将它们放入此复用池中。
+
+**起始版本：** 26.0.0
+
+**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                 | 必填 |  说明                            |
+| ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
+| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`n`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
+| n   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
+
+**返回值：**
+
+| 类型 | 说明  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Promise\<void\> | 当空闲任务成功完成时解析的Promise。Promise对象无返回结果。|
+
+> **说明：**
+>
+> 1. `preRender`仅将池配置为接受的组件放入池中。预渲染池不接受的组件会立即创建并销毁。
+>
+> 2. 预渲染期间不会从池中复用组件；池仅接受新创建的实例。
+>
+> 3. @Builder函数执行完整的深度渲染，包括嵌套的子组件。
+
+**示例：**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableComponent {
+  @Require @Param param: number;
+
+  aboutToAppear() {
+    console.info('ReusableComponent aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableComponent aboutToReuse');
+  }
+
+  build() {
+    Column() {
+      Text(`ReusableComponent ${this.param}`)
+    }
+  }
+}
+
+@Builder 
+function preRenderBuilder() {
+  ReusableComponent({ param: 0 })
+}
+
+@Entry
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
+struct Index {
+  @Local onUIFullyLoaded: boolean = false;
+
+  aboutToAppear() {
+    // 获取池并调度预渲染。
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    // 预加载preRenderBuilder内的复用组件到当前的全局服用池中，执行一次preRenderBuilder。
+    pool!.preRender(wrapBuilder(preRenderBuilder), 1)
+      .then(() => {
+        this.onUIFullyLoaded = true;
+      });
+  }
+
+  build() {
+    Column() {
+      CompA({ showFullUI: this.onUIFullyLoaded })
+    }
+  }
+}
+
+@ComponentV2
+struct CompA {
+  @Require @Param showFullUI: boolean;
+  @Local param: number = 8;
+
+  build() {
+    if (this.showFullUI) {
+      // 这将从池中复用预渲染的实例。
+      ReusableComponent({ param: this.param })
+    }
+  }
+}
+```
+
+## IReusableInfo
+
+`IReusableInfo`接口提供有关复用池管理的可复用组件的当前数量和数量上限的信息。
+
+### 属性
+
+**起始版本：** 26.0.0
+
+**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型   | 只读 | 可选 |  说明                               |
+| -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| count    | number | 是   | 否   | 池中当前回收的组件数。如果设置了`reuseId`，则`count`指的是具有此特定reuseId的组件数。                                   |
+| maxCount | number | 否   | 否   | 池中允许的最大回收组件数。如果设置了`reuseId`，则`maxCount`指的是具有此特定reuseId的组件数。将此设置为小于当前`count`的值会导致框架异步清除多余组件。在延迟期间，`count`可能暂时超过`maxCount`。默认值：100，最大值：200。 |
+| reuseId  | string | 是   | 是   | 回收组件时指定的reuseId。如果组件没有使用reuseId回收，则此属性为`undefined`。                                 |
+
+**示例：**
+
+```ts
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct TestChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`TestChild [${this.label}] aboutToAppear`);
+  }
+  aboutToReuse() {
+    console.info(`TestChild [${this.label}] aboutToReuse`);
+  }
+  aboutToRecycle() {
+    console.info(`TestChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToDisappear() {
+    console.info(`TestChild [${this.label}] aboutToDisappear`);
+  }
+
+  build() {
+    Text(`子组件: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
+struct PoolOwner {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  controlPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    if (!pool) {
+      return;
+    }
+
+    // 查询所有回收的 TestChild 实例。
+    const info = pool.getReusableInfo(TestChild);
+    if (info && !Array.isArray(info)) {
+      console.info(`TestChild: count=${info.count}, maxCount=${info.maxCount}`);
+      // 将缓存限制为 5 个组件。
+      info.maxCount = 5;
+    }
+
+    // 通过将 maxCount 设置为 0 来清除特定的 reuseId 桶。
+    const bucketB = pool.getReusableInfo(TestChild, 2) as IReusableInfo;
+    if (bucketB) {
+      bucketB.maxCount = 0; // 仅驱逐 'B' reuseId 桶。
+    }
+  }
+
+  build() {
+    Column() {
+      Button('切换 A')
+        .onClick(() => {
+          this.showA = !this.showA;
+        })
+      Button('切换 B')
+        .onClick(() => {
+          this.showB = !this.showB;
+        })
+      Button('控制池')
+        .onClick(() => this.controlPool())
+      if (this.showA) {
+        TestChild({ label: 'A' })
+          .reuse({ reuseId: () => '1' })
+      }
+      if (this.showB) {
+        TestChild({ label: 'B' })
+          .reuse({ reuseId: () => '2' })
+      }
     }
   }
 }

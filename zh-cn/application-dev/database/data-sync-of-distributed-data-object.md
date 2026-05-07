@@ -15,7 +15,7 @@
 
 分布式数据对象即实现了对“变量”的“全局”访问。向应用开发者提供内存对象的创建、查询、删除、修改、订阅等基本数据对象的管理能力，同时具备分布式能力。为开发者在分布式应用场景下提供简单易用的JS接口，轻松实现多设备间同应用的数据协同，同时设备间可以监听对象的状态和数据变更。满足超级终端场景下，相同应用多设备间的数据对象协同需求。与传统方式相比，分布式数据对象大大减少了开发者的工作量。
 
-目前<!--RP2-->分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现的多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)场景中使用。<!--RP2End-->
+目前<!--RP2-->分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用。<!--RP2End-->
 
 ## 基本概念
 
@@ -41,7 +41,7 @@
 
 ### JS对象型存储与封装机制
 
-- 为每个分布式数据对象实例创建一个内存数据库，通过SessionId标识，每个应用程序创建的内存数据库相互隔离。
+- 为每个分布式数据对象实例创建一个内存数据库，通过sessionId标识，每个应用程序创建的内存数据库相互隔离。
 
 - 在分布式数据对象实例化的时候，（递归）遍历对象所有属性，使用“Object.defineProperty”定义所有属性的set和get方法，set和get中分别对应数据库一条记录的put和get操作，Key对应属性名，Value对应属性值。
 
@@ -51,14 +51,14 @@
 
 | 分布式对象实例 | 对象实例 | 属性名称 | 属性值 | 
 | -------- | -------- | -------- | -------- |
-| 分布式内存数据库 | 一个数据库（sessionID标识） | 一条数据库记录的key | 一条数据库记录的value | 
+| 分布式内存数据库 | 一个数据库（sessionId标识） | 一条数据库记录的key | 一条数据库记录的value | 
 
 
 ### 跨设备同步和数据变更通知机制
 
-分布式数据对象，最重要的功能就是对象之间的数据同步。可信组网内的设备可以在本地创建分布式数据对象，并设置sessionID。不同设备上的分布式数据对象，通过设置相同的sessionID，建立对象之间的同步关系。
+分布式数据对象，最重要的功能就是对象之间的数据同步。可信组网内的设备可以在本地创建分布式数据对象，并设置sessionId。不同设备上的分布式数据对象，通过设置相同的sessionId，建立对象之间的同步关系。
 
-如下图所示，设备A和设备B上的“分布式数据对象1”，其sessionID均为session1，这两个对象建立了session1的同步关系。
+如下图所示，设备A和设备B上的“分布式数据对象1”，其sessionId均为session1，这两个对象建立了session1的同步关系。
 
   **图2** 对象的同步关系  
 
@@ -95,7 +95,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ### 对象持久化缓存机制
 
-分布式对象主要运行在应用程序的进程空间。当调用分布式对象持久化接口时，通过分布式数据库对对象进行持久化和同步，进程退出后数据也不会丢失。
+分布式对象主要运行在应用程序的进程空间。当调用分布式对象持久化接口时，通过分布式数据库对对象进行持久化和同步，进程退出后数据也不会丢失。分布式数据库会自动实现同步，可调用[on('change')](../reference/apis-arkdata/js-apis-data-distributedobject.md#onchange20)监听数据变更。
 
 该场景是分布式对象的扩展场景，主要用于以下情况：
 
@@ -113,13 +113,13 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ## 约束限制
 <!--RP5-->
-- 目前分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现的多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)场景中使用。跨端迁移场景下，每个分布式数据对象大小不超过150KB；多端协同场景下，每个分布式数据对象大小不超过500KB。
+- 目前分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用。跨端迁移场景下，每个分布式数据对象大小不超过150KB；多端协同场景下，每个分布式数据对象大小不超过500KB。
 
 - 当前跨设备接续能力支持以下两种场景的​​Ability跨端迁移​​
   - [支持同应用中不同Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用中不同ability跨端迁移)
   - [支持同应用不同BundleName的Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用不同bundlename的ability跨端迁移)
 <!--RP5End-->
-- 分布式数据对象的数据同步发生在同一个应用程序下，且同sessionID之间。
+- 分布式数据对象的数据同步发生在同一个应用程序下，且同sessionId之间。
 
 - 设备A修改1KB数据，设备B收到变更通知，50ms内完成。
 
@@ -133,7 +133,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ## 接口说明
 
-以下是分布式对象跨设备数据同步功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[分布式数据对象](../reference/apis-arkdata/js-apis-data-distributedobject.md)。
+以下是分布式对象跨设备数据同步功能的相关接口，更多接口及使用方式请见[分布式数据对象](../reference/apis-arkdata/js-apis-data-distributedobject.md)。
 
 
 
@@ -195,174 +195,6 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 > - API version 20版本之前不支持资产类型数组，如果要迁移多个文件，在业务数据中定义多条资产数据来记录。从API version 20开始，支持资产类型数组的同步。
 >
 > - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
-
-<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
-
-``` TypeScript
-import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
-import { distributedDataObject } from '@kit.ArkData';
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { JSON } from '@kit.ArkTS';
-import hilog from '@ohos.hilog';
-
-// 业务数据定义
-class Data {
-  public title: string | undefined;
-  public text: string | undefined;
-
-  constructor(title: string | undefined, text: string | undefined) {
-    this.title = title;
-    this.text = text;
-  }
-}
-
-const DOMAIN: number = 0x0000;
-const TAG: string = '[DistributedDataObject]';
-
-let sessionId: string;
-let caller: Caller;
-let dataObject: distributedDataObject.DataObject;
-const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
-  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
-}
-
-export default class EntryAbility extends UIAbility {
-  // 1. 调用端调用startAbilityByCall接口拉起对端Ability
-  callRemote() {
-    if (caller) {
-      hilog.error(DOMAIN, TAG, 'call remote already');
-      return;
-    }
-
-    // 1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId
-    sessionId = distributedDataObject.genSessionId();
-    hilog.info(DOMAIN, TAG, `gen sessionId: ${sessionId}`);
-    let deviceId = getRemoteDeviceId();
-    if (deviceId === '') {
-      hilog.warn(DOMAIN, TAG, 'no remote device');
-      return;
-    }
-    hilog.info(DOMAIN, TAG, `get remote deviceId: ${deviceId}`);
-
-    // 1.2 组装want，并将sessionId放入want
-    let want: Want = {
-      bundleName: 'com.example.collaboration',
-      abilityName: 'EntryAbility',
-      deviceId: deviceId,
-      parameters: {
-        'ohos.aafwk.param.callAbilityToForeground': true, // 前台启动，非必须
-        'distributedSessionId': sessionId
-      }
-    }
-    try {
-      // 1.3 调用startAbilityByCall接口拉起对端Ability
-      this.context.startAbilityByCall(want).then((res) => {
-        if (!res) {
-          hilog.error(DOMAIN, TAG, 'startAbilityByCall failed');
-        }
-        caller = res;
-      })
-    } catch (e) {
-      let err = e as BusinessError;
-      hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
-    }
-  }
-
-  // 2. 拉起对端Ability后创建分布式数据对象
-  createDataObject() {
-    if (!caller) {
-      hilog.error(DOMAIN, TAG, 'call remote first');
-      return;
-    }
-    if (dataObject) {
-      hilog.error(DOMAIN, TAG, 'create dataObject already');
-      return;
-    }
-
-    // 2.1 创建分布式数据对象实例
-    let data = new Data('The title', 'The text');
-    dataObject = distributedDataObject.create(this.context, data);
-
-    // 2.2 注册数据变更监听
-    dataObject.on('change', changeCallBack);
-    // 2.3 设置同步sessionId加入组网
-    dataObject.setSessionId(sessionId);
-  }
-
-  // 3. 被调用端被拉起后创建和恢复分布式数据对象
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (want.parameters && want.parameters.distributedSessionId) {
-      // 3.1 创建分布式数据对象实例
-      let data = new Data(undefined, undefined);
-      dataObject = distributedDataObject.create(this.context, data);
-
-      // 3.2 注册数据变更监听
-      dataObject.on('change', changeCallBack);
-      // 3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网
-      let sessionId = want.parameters.distributedSessionId as string;
-      hilog.info(DOMAIN, TAG, `onCreate get sessionId: ${sessionId}`);
-      dataObject.setSessionId(sessionId);
-    }
-  }
-}
-
-// 获取可信组网中的设备
-function getRemoteDeviceId() {
-  let deviceId = '';
-  try {
-    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
-    let devices = deviceManager.getAvailableDeviceListSync();
-    if (devices[0] && devices[0].networkId) {
-      deviceId = devices[0].networkId;
-    }
-  } catch (e) {
-    let err = e as BusinessError;
-    hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
-  }
-  return deviceId;
-}
-
-```
-               
-
-### 在多端协同中使用分布式数据对象
-
-1. 调用端调用startAbilityByCall接口拉起对端Ability：
-
-    1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId。
-
-    1.2 组装want，并将sessionId放入want。
-
-    1.3 调用startAbilityByCall接口拉起对端Ability。
-
-2. 调用端拉起对端Ability后创建分布式数据对象并加入组网：
-
-   2.1 创建分布式数据对象实例。
-
-   2.2 注册数据变更监听。
-
-   2.3 设置同步sessionId加入组网。
-
-3. 被调用端被拉起后创建和恢复分布式数据对象：
-
-   3.1 创建分布式数据对象实例。
-
-   3.2 注册数据变更监听。
-
-   3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网。
-
-> **说明：**
->
-> - 暂时只支持<!--RP3-->在[跨设备Call调用实现的多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)中使用分布式数据对象进行数据同步。<!--RP3End-->
->
-> - 跨设备Call调用实现的多端协同开发<!--RP4-->需要申请`ohos.permission.DISTRIBUTED_DATASYNC`权限和配置单实例启动标签，详见跨设备Call调用实现的多端协同的[开发步骤](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。<!--RP4End-->
->
-> - wantParam中的"sessionId"字段可能被其他服务占用，建议自定义一个key存取sessionId。
->
-> - 使用分布式设备管理获取对端设备networkId详见[设备信息查询开发指导](../distributedservice/devicemanager-guidelines.md#设备信息查询开发指导)。
-
- 示例代码如下：
 
 <!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
 
@@ -530,7 +362,173 @@ export default class EntryAbility extends UIAbility {
     dataObject.setSessionId(sessionId);
   }
 }
+```
+               
 
+### 在多端协同中使用分布式数据对象
+
+1. 调用端调用startAbilityByCall接口拉起对端Ability：
+
+    1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId。
+
+    1.2 组装want，并将sessionId放入want。
+
+    1.3 调用startAbilityByCall接口拉起对端Ability。
+
+2. 调用端拉起对端Ability后创建分布式数据对象并加入组网：
+
+   2.1 创建分布式数据对象实例。
+
+   2.2 注册数据变更监听。
+
+   2.3 设置同步sessionId加入组网。
+
+3. 被调用端被拉起后创建和恢复分布式数据对象：
+
+   3.1 创建分布式数据对象实例。
+
+   3.2 注册数据变更监听。
+
+   3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网。
+
+> **说明：**
+>
+> - 暂时只支持在[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用分布式数据对象进行数据同步。
+>
+> - 跨设备Call调用实现的多端协同开发需要申请`ohos.permission.DISTRIBUTED_DATASYNC`权限和配置单实例启动标签，详见[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)。
+>
+> - wantParam中的"sessionId"字段可能被其他服务占用，建议自定义一个key存取sessionId。
+>
+> - 使用分布式设备管理获取对端设备networkId详见[设备信息查询开发指导](../distributedservice/devicemanager-guidelines.md#设备信息查询开发指导)。
+
+ 示例代码如下：
+
+<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+
+``` TypeScript
+import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { distributedDataObject } from '@kit.ArkData';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 业务数据定义
+class Data {
+  public title: string | undefined;
+  public text: string | undefined;
+
+  constructor(title: string | undefined, text: string | undefined) {
+    this.title = title;
+    this.text = text;
+  }
+}
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[DistributedDataObject]';
+
+let sessionId: string;
+let caller: Caller;
+let dataObject: distributedDataObject.DataObject;
+const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
+}
+
+export default class EntryAbility extends UIAbility {
+  // 1. 调用端调用startAbilityByCall接口拉起对端Ability
+  callRemote() {
+    if (caller) {
+      hilog.error(DOMAIN, TAG, 'call remote already');
+      return;
+    }
+
+    // 1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId
+    sessionId = distributedDataObject.genSessionId();
+    hilog.info(DOMAIN, TAG, `gen sessionId: ${sessionId}`);
+    let deviceId = getRemoteDeviceId();
+    if (deviceId === '') {
+      hilog.warn(DOMAIN, TAG, 'no remote device');
+      return;
+    }
+    hilog.info(DOMAIN, TAG, `get remote deviceId: ${deviceId}`);
+
+    // 1.2 组装want，并将sessionId放入want
+    let want: Want = {
+      bundleName: 'com.example.collaboration',
+      abilityName: 'EntryAbility',
+      deviceId: deviceId,
+      parameters: {
+        'ohos.aafwk.param.callAbilityToForeground': true, // 前台启动，非必须
+        'distributedSessionId': sessionId
+      }
+    }
+    try {
+      // 1.3 调用startAbilityByCall接口拉起对端Ability
+      this.context.startAbilityByCall(want).then((res) => {
+        if (!res) {
+          hilog.error(DOMAIN, TAG, 'startAbilityByCall failed');
+        }
+        caller = res;
+      })
+    } catch (e) {
+      let err = e as BusinessError;
+      hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+    }
+  }
+
+  // 2. 拉起对端Ability后创建分布式数据对象
+  createDataObject() {
+    if (!caller) {
+      hilog.error(DOMAIN, TAG, 'call remote first');
+      return;
+    }
+    if (dataObject) {
+      hilog.error(DOMAIN, TAG, 'create dataObject already');
+      return;
+    }
+
+    // 2.1 创建分布式数据对象实例
+    let data = new Data('The title', 'The text');
+    dataObject = distributedDataObject.create(this.context, data);
+
+    // 2.2 注册数据变更监听
+    dataObject.on('change', changeCallBack);
+    // 2.3 设置同步sessionId加入组网
+    dataObject.setSessionId(sessionId);
+  }
+
+  // 3. 被调用端被拉起后创建和恢复分布式数据对象
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    if (want.parameters && want.parameters.distributedSessionId) {
+      // 3.1 创建分布式数据对象实例
+      let data = new Data(undefined, undefined);
+      dataObject = distributedDataObject.create(this.context, data);
+
+      // 3.2 注册数据变更监听
+      dataObject.on('change', changeCallBack);
+      // 3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网
+      let sessionId = want.parameters.distributedSessionId as string;
+      hilog.info(DOMAIN, TAG, `onCreate get sessionId: ${sessionId}`);
+      dataObject.setSessionId(sessionId);
+    }
+  }
+}
+
+// 获取可信组网中的设备
+function getRemoteDeviceId() {
+  let deviceId = '';
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
+    let devices = deviceManager.getAvailableDeviceListSync();
+    if (devices[0] && devices[0].networkId) {
+      deviceId = devices[0].networkId;
+    }
+  } catch (e) {
+    let err = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+  }
+  return deviceId;
+}
 ```
 
 ## 相关实例

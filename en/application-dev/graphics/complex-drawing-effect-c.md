@@ -360,9 +360,11 @@ The image filter can be implemented based on the pen or brush. For details about
 Currently, only the following two types of image filters are supported:
 
 - Image filter based on the color filter
+
   You can use the **OH_Drawing_ImageFilterCreateFromColorFilter()** API to implement this type of image filter. This API takes two parameters: **colorFilter** and **input**. That is, the effect of the color filter is superimposed on the image filter. **input** can be empty, which means that only the color filter effect is added.
 
 - Image filter with a given blur effect
+
   You can call **OH_Drawing_ImageFilterCreateBlur()** to create a blur filter. The API takes four parameters, which are the blur standard deviation on the X axis, blur standard deviation on the Y axis, tiling mode, and image filter (**input**).
 
   The final effect is to blur the input image filter **input**. That is, the filter effect can be superimposed. **input** can be empty, which means that only the blur effect is added.

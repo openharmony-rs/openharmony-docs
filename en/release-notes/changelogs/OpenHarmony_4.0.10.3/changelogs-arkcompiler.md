@@ -24,4 +24,4 @@ ArkTS syntax validation is added to the compilation process.
 
 Modify code that does not comply with the ArkTS syntax rules. For details about the error reporting rules and modification, see [TypeScript to ArkTS Cookbook](../../../application-dev/quick-start/typescript-to-arkts-migration-guide.md).
 
-For details about the ArkTS language, see [Introduction to ArkTS](../../../application-dev/quick-start/introduction-to-arkts.md).
+For details about the ArkTS language, see [About This Kit](../../../application-dev/quick-start/introduction-to-arkts.md).

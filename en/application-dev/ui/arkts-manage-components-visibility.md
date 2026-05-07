@@ -571,6 +571,7 @@ The component has entered the screen but the callback is not triggered, or the v
 - Check whether the parent component has the **clip** attribute set; clipping may cause deviations in visible area calculation.
 - Consider the impact of component opacity: Even with opacity of 0, the area is still counted in the visible ratio.
 - Use **nodeRenderState** listening for cross-validation.
+- Set [measureFromViewport](./../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange22) to **true** for validation.
 
 ### Performance Degradation Due to High-frequency Callbacks
 
@@ -591,3 +592,4 @@ The UI stutters during scrolling, and logs show that visibility callbacks are be
 - Replace the **nodeRenderState** listener with the more efficient **onVisibleAreaApproximateChange** API.
 - Apply the listener to a parent container that stays on screen longer.
 - Remove listeners that are no longer needed by using the **off** API.
+<!--no_check-->

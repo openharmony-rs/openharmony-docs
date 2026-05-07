@@ -1,9 +1,8 @@
 # Notification Kit（用户通知服务）<!--notification-kit-->
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -14,6 +13,7 @@
 - 发布通知<!--publish-notification-->
   - [发布文本类型通知](text-notification.md)
   - [发布进度条类型通知](progress-bar-notification.md)
+  - [为通知添加自定义铃声](notification-customized-ringtone.md)
   <!--Del-->
   - [发布实况窗类型通知（仅对系统应用开放）](live-view-notification-sys.md)
   <!--DelEnd-->
@@ -32,3 +32,5 @@
 - 通知订阅扩展能力<!--notification-subscriber-extension-->
   - [通知订阅扩展能力概述](notification-subscriber-extension-ability.md)
   - [通知订阅扩展能力开发步骤](notification-subscriber-extension-ability-development-steps.md)
+<!--RP1--><!--RP1End-->
+<!--RP2--><!--RP2End-->

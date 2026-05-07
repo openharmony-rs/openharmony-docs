@@ -5,7 +5,7 @@
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义启动Ability参数，可以作为入参，调用[startAbility](js-apis-ability-featureAbility.md#featureabilitystartability)启动指定的Ability。
 
@@ -59,7 +59,7 @@ try {
         if (error && error.code !== 0) {
             console.error(`startAbility fail, error: ${JSON.stringify(error)}`);
         } else {
-            console.log(`startAbility success, data: ${JSON.stringify(data)}`);
+            console.info(`startAbility success, data: ${JSON.stringify(data)}`);
         }
     });
 } catch(error) {

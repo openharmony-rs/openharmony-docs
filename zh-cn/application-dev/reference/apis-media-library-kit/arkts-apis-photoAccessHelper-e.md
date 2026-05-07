@@ -64,7 +64,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | --------| ---- | ------------|
 | USER                | 0    | 用户相册。   |
 | SYSTEM              | 1024 | 系统预置相册。 |
-| SOURCE<sup>22+</sup>| 2048 | 由应用创建的相册。 |
+| SOURCE<sup>23+</sup>| 2048 | 由应用创建的相册。 |
 
 ## AlbumSubtype
 
@@ -78,7 +78,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | FAVORITE        | 1025       | 收藏夹。 |
 | VIDEO  | 1026       | 视频相册。|
 | IMAGE<sup>12+</sup>               | 1031       | 图片相册。|
-| SOURCE\_GENERIC<sup>22+</sup>     | 2049       | 来源相册。|
+| SOURCE\_GENERIC<sup>23+</sup>     | 2049       | 来源相册。|
 | ANY    | 2147483647 | 任意相册。|
 
 ## PositionType<sup>16+</sup>
@@ -103,7 +103,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | 文件uri。<br>**注意：**<br>查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
 | PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
-| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
+| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]。<br>- 文件主名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
 | SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
 | DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。         |
 | DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳（单位：秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -129,6 +129,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。 |
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。|
 | CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间。 |
+| LOCAL_ASSET_SIZE | 'local_asset_size' | 本地文件的实际大小。<br>- 该属性仅表示本地文件大小，默认值为0表示纯云文件或尚未识别的本地文件大小。<br>- 当本地文件为动态照片且模式发生变化时，该属性会发生变化。例如：当图库中的动态照片处于“关闭动态”状态时，该属性仅表示封面帧大小。<br>**起始版本：** 26.0.0<br> ​**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AlbumKeys
 
@@ -140,7 +141,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | 相册uri。                                                   |
 | ALBUM_NAME    | 'album_name'          | 相册名字。                                                   |
-| ALBUM_LPATH<sup>22+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
+| ALBUM_LPATH<sup>23+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
 | CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册的更改时间。                                                   |
 
 ## ResourceType<sup>11+</sup>
@@ -359,6 +360,35 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
 | MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |
 
+## SceneType<sup>23+</sup>
+
+枚举，动态照片播放的场景。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| GRID_TO_PHOTO_BROWSER   | 0      | 从宫格点击进入大图。 |
+| PHOTO_BROWSER_SWIPE | 1    | 在大图场景左右滑动。 |
+
+## PlayMode<sup>23+</sup>
+
+枚举，是否支持动态照片自动播放。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| DEFAULT   | 0      | 不支持动态照片自动播放。 |
+| AUTO_PLAY | 1    | 支持动态照片自动播放。 |
 
 ## VideoMode<sup>22+</sup>
 
@@ -397,3 +427,86 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | END_WRAP    | 12   | 用于向谓词添加英文右括号，相当于数据库查询语句的")"，必须和英文左括号一起使用。无需传入field和value。 |
 | BETWEEN    | 13   | 匹配指定范围内的字段。<br>包含两端边界值，为左闭右闭区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
 | NOT_BETWEEN    | 14   | 匹配超出指定范围内的字段。<br>不包含两端边界值，为左开右开区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
+
+## GridLevel<sup>23+</sup>
+    
+枚举类型，用于设置拉起picker后的宫格列数档位。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+    
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| SPACIOUS |  0 |  宽松宫格档位。该挡位为标准宫格的列数减1。|
+| STANDARD |  1 |  标准宫格档位。不同设备尺寸对应的标准宫格列数各不相同，当未配置标准宫格列数时，系统将使用默认列数。|
+| COMPACT |  2 |  紧密宫格档位。该挡位为标准宫格的列数加1。 |
+
+## GridPinchModeType<sup>23+</sup>
+    
+枚举，宫格捏合模式类型。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+    
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操纵。|
+
+
+## AvailabilityStatus
+
+枚举，媒体库可用性状态。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| AVAILABLE |  'available' |  媒体库可用。 |
+| UNAVAILABLE |  'unavailable' |  媒体库不可用。 |
+
+## MediaAssetPermissionState
+
+枚举，媒体库资产读权限状态。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| URI_FORMAT_ERROR | 0 | URI格式错误或非媒体库URI。|
+| FILE_NOT_EXIST | 1 | 资产不存在。资产可能被隐藏、放入回收站或被永久删除。|
+| READ_PERMISSION | 2 | 应用在获取资产时有读权限。 |
+| NO_READ_PERMISSION | 3 | 应用在获取资产时没有读权限。 |
+
+## PreferredCompatibleMode
+
+枚举，根据配置的资产兼容性执行转码。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  根据配置的资产兼容性功能执行转码。|
+| CURRENT |  1 |  不进行转码。资产将以其原始格式返回。|
+| COMPATIBLE |  2 |  所有资产都被转码为最广泛兼容的格式(如JPEG)。|

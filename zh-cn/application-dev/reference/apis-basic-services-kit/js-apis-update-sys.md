@@ -4,15 +4,17 @@
 <!--Owner: @RainyDay_005; @huangsiping3-->
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 升级范围：升级整个系统，包括内置资源和预置应用，不包括三方应用。
 
-升级类型：SD卡升级、在线升级。
+升级类型：SD卡升级、在线升级、恢复出厂升级。
 
 - SD卡升级依赖升级包和SD卡安装。
 
 - 在线升级依赖设备厂商部署的用于管理升级包的服务器。服务器由设备厂商部署，IP由调用者传入，请求的request接口是固定的，由设备厂商开发。
+
+- 恢复出厂升级对象提供恢复出厂相关接口。
 
 > **说明：**
 >
@@ -31,6 +33,8 @@ import { update } from '@kit.BasicServicesKit';
 getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 获取在线升级对象。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -58,17 +62,17 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 ```ts
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ## update.getRestorer
@@ -76,6 +80,8 @@ try {
 getRestorer(): Restorer
 
 获取恢复出厂设置对象。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -109,6 +115,8 @@ getLocalUpdater(): LocalUpdater
 
 获取本地升级对象。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **返回值：**
@@ -137,11 +145,15 @@ try {
 
 ## Updater
 
+提供系统在线更新功能的工具类。
+
 ### checkNewVersion
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 检查新版本信息。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -168,9 +180,21 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
-      console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
-    });
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
+  console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
+});
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### checkNewVersion
@@ -178,6 +202,8 @@ updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
 checkNewVersion(): Promise\<CheckResult>
 
 检查新版本信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -204,15 +230,26 @@ checkNewVersion(): Promise\<CheckResult>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.checkNewVersion()
-      .then((result: update.CheckResult) => {
-        console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
-        // 版本摘要信息
-        console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
-      })
-      .catch((err: BusinessError)=>{
-        console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
-      });
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion().then((result: update.CheckResult) => {
+    console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
+    // 版本摘要信息
+    console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
+    }).catch((err: BusinessError)=>{
+      console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
+    });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+
 ```
 
 ###  getNewVersionInfo
@@ -220,6 +257,8 @@ updater.checkNewVersion()
 getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 获取新版本信息。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -245,11 +284,22 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
-      console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-      console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getNewVersionInfo
@@ -257,6 +307,8 @@ updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
 getNewVersionInfo(): Promise\<NewVersionInfo>
 
 获取新版本信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -282,13 +334,24 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
     console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
     console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
-}).catch((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
-});
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getNewVersionDescription
@@ -296,6 +359,8 @@ updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
 获取新版本描述文件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -336,11 +401,22 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
+    console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getNewVersionDescription
@@ -348,6 +424,8 @@ updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((in
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
 获取新版本描述文件。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -393,11 +471,24 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
+    .then((info: Array<update.ComponentDescription>)=> {
+    console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getCurrentVersionInfo
@@ -405,6 +496,8 @@ updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((in
 getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 获取当前版本信息。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -431,11 +524,23 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
-  console.info(`info osVersion = ${info?.osVersion}`);
-  console.info(`info deviceName = ${info?.deviceName}`);
-  console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info?.osVersion}`);
+    console.info(`info deviceName = ${info?.deviceName}`);
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getCurrentVersionInfo
@@ -443,6 +548,8 @@ updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionIn
 getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 获取当前版本信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -468,14 +575,25 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
-  console.info(`info osVersion = ${info.osVersion}`);
-  console.info(`info deviceName = ${info.deviceName}`);
-  console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info.osVersion}`);
+    console.info(`info deviceName = ${info.deviceName}`);
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getCurrentVersionDescription
@@ -483,6 +601,8 @@ updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
 获取当前版本描述文件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -515,10 +635,22 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
-updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
-  console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
-  console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
+    console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getCurrentVersionDescription
@@ -526,6 +658,8 @@ updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
 获取当前版本描述文件。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -563,11 +697,23 @@ const descriptionOptions: update.DescriptionOptions = {
   format: update.DescriptionFormat.STANDARD, // 标准格式
   language: "zh-cn" // 中文
 };
-updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
-  console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
+    console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getTaskInfo
@@ -575,6 +721,8 @@ updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<updat
 getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 获取升级任务信息。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -601,9 +749,21 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
-  console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getTaskInfo
@@ -611,6 +771,8 @@ updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
 getTaskInfo(): Promise\<TaskInfo>
 
 获取升级任务信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -637,11 +799,23 @@ getTaskInfo(): Promise\<TaskInfo>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.getTaskInfo().then((info: update.TaskInfo) => {
-  console.info(`getTaskInfo isexistTask= ${info.existTask}`);
-}).catch((err: BusinessError) => {
-  console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo().then((info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info.existTask}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  download
@@ -649,6 +823,8 @@ updater.getTaskInfo().then((info: update.TaskInfo) => {
 download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions, callback: AsyncCallback\<void>): void
 
 下载新版本。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -688,9 +864,21 @@ const downloadOptions: update.DownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
   order: update.Order.DOWNLOAD // 下载
 };
-updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
-  console.info(`download error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
+    console.info(`download error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### download
@@ -698,6 +886,8 @@ updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
 download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions): Promise\<void>
 
 下载新版本。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -742,11 +932,23 @@ const downloadOptions: update.DownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
    order: update.Order.DOWNLOAD // 下载
 };
-updater.download(versionDigestInfo, downloadOptions).then(() => {
-  console.info(`download start`);
-}).catch((err: BusinessError) => {
-  console.error(`download error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions).then(() => {
+    console.info(`download start`);
+  }).catch((err: BusinessError) => {
+    console.error(`download error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  resumeDownload
@@ -754,6 +956,8 @@ updater.download(versionDigestInfo, downloadOptions).then(() => {
 resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: ResumeDownloadOptions, callback: AsyncCallback\<void>): void
 
 恢复下载新版本。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -792,9 +996,21 @@ const versionDigestInfo : update.VersionDigestInfo= {
 const resumeDownloadOptions : update.ResumeDownloadOptions= {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
-updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
-  console.info(`resumeDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
+    console.info(`resumeDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### resumeDownload
@@ -802,6 +1018,8 @@ updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessE
 resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: ResumeDownloadOptions): Promise\<void>
 
 恢复下载新版本。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -845,11 +1063,23 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const resumeDownloadOptions: update.ResumeDownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
-updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
-  console.info(`resumeDownload start`);
-}).catch((err: BusinessError) => {
-  console.error(`resumeDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
+    console.info(`resumeDownload start`);
+  }).catch((err: BusinessError) => {
+    console.error(`resumeDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  pauseDownload
@@ -857,6 +1087,8 @@ updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
 pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseDownloadOptions, callback: AsyncCallback\<void>): void
 
 暂停下载新版本。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -895,9 +1127,21 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
-updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
-  console.info(`pauseDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
+    console.info(`pauseDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### pauseDownload
@@ -905,6 +1149,8 @@ updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessErr
 pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseDownloadOptions): Promise\<void>
 
 暂停下载新版本。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -948,11 +1194,23 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
-updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
-  console.info(`pauseDownload`);
-}).catch((err: BusinessError)  => {
-  console.error(`pauseDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
+    console.info(`pauseDownload`);
+  }).catch((err: BusinessError)  => {
+    console.error(`pauseDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  upgrade
@@ -960,6 +1218,8 @@ updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
 upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, callback: AsyncCallback\<void>): void
 
 升级新版本。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -998,9 +1258,21 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
-updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
-  console.info(`upgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
+    console.info(`upgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### upgrade
@@ -1008,6 +1280,8 @@ updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
 upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): Promise\<void>
 
 升级新版本。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1051,18 +1325,32 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
-updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
-  console.info(`upgrade start`);
-}).catch((err: BusinessError) => {
-  console.error(`upgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
+    console.info(`upgrade start`);
+  }).catch((err: BusinessError) => {
+    console.error(`upgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  clearError
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, callback: AsyncCallback\<void>): void
 
-清除异常状态。使用callback异步回调。
+清除异常状态，版本下载、安装异常时，清理升级包文件及升级状态。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1101,16 +1389,30 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
-updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
-  console.info(`clearError error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
+    console.info(`clearError error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### clearError
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Promise\<void>
 
-清除异常状态。使用Promise异步回调。
+清除异常状态，版本下载、安装异常时，清理升级包文件及升级状态。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1121,7 +1423,7 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 | 参数名               | 类型                                      | 必填   | 说明     |
 | ----------------- | --------------------------------------- | ---- | ------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息。 |
-| clearOptions      | [ClearOptions](#clearoptions)           | 是    | 更新选项。   |
+| clearOptions      | [ClearOptions](#clearoptions)           | 是    | 清除选项。   |
 
 **返回值：**
 
@@ -1154,11 +1456,23 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
-updater.clearError(versionDigestInfo, clearOptions).then(() => {
-  console.info(`clearError success`);
-}).catch((err: BusinessError) => {
-  console.error(`clearError error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions).then(() => {
+    console.info(`clearError success`);
+  }).catch((err: BusinessError) => {
+    console.error(`clearError error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getUpgradePolicy
@@ -1166,6 +1480,8 @@ updater.clearError(versionDigestInfo, clearOptions).then(() => {
 getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 获取升级策略信息。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1191,11 +1507,22 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
-  console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
-  console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getUpgradePolicy
@@ -1203,6 +1530,8 @@ updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
 getUpgradePolicy(): Promise\<UpgradePolicy>
 
 获取升级策略。通过promise方式作为异步方法。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1228,13 +1557,24 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
-  console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
-  console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
-}).catch((err: BusinessError)  => {
-  console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
+  }).catch((err: BusinessError)  => {
+    console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### setUpgradePolicy
@@ -1242,6 +1582,8 @@ updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
 setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 设置升级策略。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1252,7 +1594,7 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 | 参数名      | 类型                              | 必填   | 说明            |
 | -------- | ------------------------------- | ---- | ------------- |
 | policy   | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略。          |
-| callback | AsyncCallback\<void>            | 是    | 回调函数，返回设置结果对象。 |
+| callback | AsyncCallback\<void>            | 是    | 回调函数。当设置升级策略成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1274,9 +1616,21 @@ const policy: update.UpgradePolicy = {
   autoUpgradeStrategy: false,
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
-updater.setUpgradePolicy(policy, (err: BusinessError) => {
-  console.info(`setUpgradePolicy result: ${err}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy, (err: BusinessError) => {
+    console.info(`setUpgradePolicy result: ${err}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### setUpgradePolicy
@@ -1284,6 +1638,8 @@ updater.setUpgradePolicy(policy, (err: BusinessError) => {
 setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 设置升级策略。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1321,11 +1677,23 @@ const policy: update.UpgradePolicy = {
   autoUpgradeStrategy: false,
   autoUpgradePeriods: [ { start: 120, end: 240 } ] // 自动升级时间段，用分钟表示
 };
-updater.setUpgradePolicy(policy).then(() => {
-  console.info(`setUpgradePolicy success`);
-}).catch((err: BusinessError) => {
-  console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy).then(() => {
+    console.info(`setUpgradePolicy success`);
+  }).catch((err: BusinessError) => {
+    console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  terminateUpgrade
@@ -1333,6 +1701,8 @@ updater.setUpgradePolicy(policy).then(() => {
 terminateUpgrade(callback: AsyncCallback\<void>): void
 
 终止升级。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1358,10 +1728,21 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.terminateUpgrade((err: BusinessError) => {
-  console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade((err: BusinessError) => {
+    console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### terminateUpgrade
@@ -1369,6 +1750,8 @@ updater.terminateUpgrade((err: BusinessError) => {
 terminateUpgrade(): Promise\<void>
 
 终止升级。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1394,12 +1777,23 @@ terminateUpgrade(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.terminateUpgrade().then(() => {
-  console.info(`terminateUpgrade success`);
-}).catch((err: BusinessError) => {
-  console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade().then(() => {
+    console.info(`terminateUpgrade success`);
+  }).catch((err: BusinessError) => {
+    console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### on
@@ -1407,6 +1801,8 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 注册事件监听。使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -1414,7 +1810,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 是    | 事件回调。 |
 
 **错误码**：
 
@@ -1431,10 +1827,21 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
   extraInfo: ""
 };
-
-updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info(`updater on ${JSON.stringify(eventInfo)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater on ${JSON.stringify(eventInfo)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### off
@@ -1442,6 +1849,8 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 取消注册事件监听。使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -1449,7 +1858,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 否    | 事件回调。 |
 
 **错误码**：
 
@@ -1466,19 +1875,34 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
   extraInfo: ""
 };
-
-updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info(`updater off ${JSON.stringify(eventInfo)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater off ${JSON.stringify(eventInfo)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ## Restorer
+
+提供设备恢复出厂设置功能的工具类。
 
 ### factoryReset
 
 factoryReset(callback: AsyncCallback\<void>): void
 
-恢复出厂设置。使用callback异步回调。
+清除用户数据分区。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1503,16 +1927,23 @@ factoryReset(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-restorer.factoryReset((err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
-});
+try {
+  let restorer = update.getRestorer();
+  restorer.factoryReset((err) => {
+    console.info(`factoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 ```
 
 ### factoryReset
 
 factoryReset(): Promise\<void>
 
-恢复出厂设置。使用Promise异步回调。
+清除用户数据分区。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1522,7 +1953,7 @@ factoryReset(): Promise\<void>
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。当恢复出厂执行失败时，有回调；执行成功无回调。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1538,19 +1969,25 @@ factoryReset(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-restorer.factoryReset().then(() => {
-  console.info(`factoryReset success`);
-}).catch((err: BusinessError) => {
-  console.error(`factoryReset error ${JSON.stringify(err)}`);
-});
+try {
+  let restorer = update.getRestorer();
+  restorer.factoryReset().then(() => {
+    console.info(`factoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`factoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 ```
 
 ### forceFactoryReset<sup>23+</sup>
 
 forceFactoryReset(): Promise\<void>
 
-强制恢复出厂设置。使用Promise异步回调。
+清除用户数据分区，同步清除文件秘钥。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1560,7 +1997,119 @@ forceFactoryReset(): Promise\<void>
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  restorer.forceFactoryReset().then(() => {
+    console.info(`forceFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+### deepFactoryReset
+
+deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
+
+通过覆写等方式，深度清除用户数据分区、操作系统分区。使用 Promise 异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+**需要权限**：ohos.permission.FACTORY_RESET
+
+**参数：**
+
+| 参数名                | 类型                                       | 必填   | 说明             |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 恢复出厂设置策略。         |
+
+**返回值：**
+
+| 类型             | 说明                         |
+| -------------- | -------------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  let factoryResetStrategy: update.FactoryResetStrategy = {
+    scope: update.FactoryResetScope.DATA,
+    strategy: "deepFactoryReset test"
+  };
+  restorer.deepFactoryReset(factoryResetStrategy).then(() => {
+    console.info(`deepFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+### getDeepFactoryResetInfo
+
+getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<FactoryResetInfo>
+
+获取深度恢复出厂设置信息。使用 Promise 异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+**需要权限**：ohos.permission.FACTORY_RESET
+
+**参数：**
+
+| 参数名                | 类型                                       | 必填   | 说明             |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是 | 恢复出厂设置策略。         |
+
+**返回值：**
+
+| 类型                              | 说明                  |
+| ------------------------------- | ------------------- |
+| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回深度恢复出厂设置信息。 |
 
 **错误码**：
 
@@ -1577,20 +2126,33 @@ forceFactoryReset(): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-restorer.forceFactoryReset().then(() => {
-  console.info(`forceFactoryReset success`);
-}).catch((err: BusinessError) => {
-  console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
-});
+let factoryResetStrategy: update.FactoryResetStrategy = {
+  scope: update.FactoryResetScope.DATA,
+  strategy: "deepFactoryReset"
+};
+try {
+  let restorer = update.getRestorer();
+  restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
+    console.info(`getDeepFactoryResetInfo success`);
+  }).catch((err: BusinessError) => {
+    console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 ```
 
 ## LocalUpdater
+
+提供本地固件更新功能的工具类。
 
 ### verifyUpgradePackage
 
 verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: AsyncCallback\<void>): void
 
 校验升级包。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1602,7 +2164,7 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 | ----------- | --------------------------- | ---- | ---------------- |
 | upgradeFile | [UpgradeFile](#upgradefile) | 是    | 升级文件。             |
 | certsFile   | string                      | 是    | 证书文件路径。           |
-| callback    | AsyncCallback\<void>        | 是    | 回调函数，返回升级包校验结果对象。 |
+| callback    | AsyncCallback\<void>        | 是    | 回调函数。当校验成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1623,9 +2185,14 @@ const upgradeFile: update.UpgradeFile = {
   filePath: "path" // 本地升级包路径
 };
 
-localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
-});
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "certFilePath", (err) => {
+    console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### verifyUpgradePackage
@@ -1633,6 +2200,8 @@ localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
 verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void>
 
 校验升级包。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1649,7 +2218,7 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 
 | 类型             | 说明                     |
 | -------------- | ---------------------- |
-| Promise\<void> | Promise对象，返回升级包校验结果对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1671,17 +2240,26 @@ const upgradeFile: update.UpgradeFile = {
   fileType: update.ComponentType.OTA, // OTA包
   filePath: "path" // 本地升级包路径
 };
-localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath").then(() => {
-  console.info(`verifyUpgradePackage success`);
-}).catch((err: BusinessError) => {
-  console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
-});
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "certFilePath").then(() => {
+    console.info(`verifyUpgradePackage success`);
+  }).catch((err: BusinessError) => {
+    console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### applyNewVersion
-applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
+
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void>): void
 
 安装升级包。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1691,7 +2269,7 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: Asyn
 
 | 参数名         | 类型                                 | 必填   | 说明                                      |
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFile | Array<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
 | callback    | AsyncCallback\<void>               | 是    | 回调函数。当安装升级包执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1713,20 +2291,33 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
   filePath: "path" // 本地升级包路径
 }];
 
-localUpdater.applyNewVersion(upgradeFiles, (err) => {
-  console.info(`applyNewVersion error ${JSON.stringify(err)}`);
-});
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles, (err) => {
+    console.info(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### applyNewVersion
 
-applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void>
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>): Promise\<void>
 
 安装升级包。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
+
+**参数：**
+
+| 参数名         | 类型                                 | 必填   | 说明                                      |
+| ----------- | ---------------------------------- | ---- | --------------------------------------- |
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
 
 **返回值：**
 
@@ -1754,11 +2345,17 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
   fileType: update.ComponentType.OTA, // OTA包
   filePath: "path" // 本地升级包路径
 }];
-localUpdater.applyNewVersion(upgradeFiles).then(() => {
-  console.info(`applyNewVersion success`);
-}).catch((err: BusinessError) => {
-  console.error(`applyNewVersion error ${JSON.stringify(err)}`);
-});
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles).then(() => {
+    console.info(`applyNewVersion success`);
+  }).catch((err: BusinessError) => {
+    console.error(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### on
@@ -1766,6 +2363,8 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 注册事件监听。使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -1773,7 +2372,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 是    | 事件回调。 |
 
 **错误码**：
 
@@ -1795,7 +2394,12 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
   console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
-localUpdater.on(eventClassifyInfo, onTaskUpdate);
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.on(eventClassifyInfo, onTaskUpdate);
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### off
@@ -1803,6 +2407,8 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 取消注册事件监听。使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -1810,7 +2416,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 否    | 事件回调。 |
 
 **错误码**：
 
@@ -1832,12 +2438,19 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
   console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
-localUpdater.off(eventClassifyInfo, onTaskUpdate);
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.off(eventClassifyInfo, onTaskUpdate);
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ## UpgradeInfo
 
 升级信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1850,6 +2463,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 升级业务类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称      | 类型                                | 只读 | 可选 |  说明   |
@@ -1861,16 +2476,20 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 搜包结果。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                | 类型                              | 只读 | 可选 | 说明     |
 | ----------------- | --------------------------------- | ---- | ---- | ------ |
-| isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>ture表示有新版本，false表示没有新版本。|
+| isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>true表示有新版本，false表示没有新版本。|
 | newVersionInfo    | [NewVersionInfo](#newversioninfo) | 否 | 否 | 新版本数据。  |
 
 ## NewVersionInfo
 
 新版本数据。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1883,6 +2502,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 版本摘要。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称            | 类型   | 只读 | 可选 | 说明   |
@@ -1893,6 +2514,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 版本组件。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                                | 只读 | 可选 | 说明       |
@@ -1902,14 +2525,16 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | upgradeAction   | [UpgradeAction](#upgradeaction)     | 否 | 否 | 升级方式。     |
 | displayVersion  | string                              | 否 | 否 | 显示版本号。    |
 | innerVersion    | string                              | 否 | 否 | 版本号。      |
-| size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
+| size            | int                              | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
-| otaMode<sup>22+</sup> | [OtaMode](#otamode22)                 | 否 | 是 | 升级模式。     |
+| otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | 否 | 是 | 升级模式。     |
 
 ## DescriptionOptions
 
 描述文件选项。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1922,6 +2547,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 组件描述文件。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
@@ -1933,6 +2560,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 版本描述文件信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
@@ -1943,6 +2572,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 ## CurrentVersionInfo
 
 当前版本信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1956,6 +2587,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 下载选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                | 只读 | 可选   | 说明   |
@@ -1967,6 +2600,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 恢复下载选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                | 只读 | 可选 | 说明   |
@@ -1977,15 +2612,19 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 暂停下载选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                | 类型 | 只读 | 可选 | 说明       |
 | ----------------- | ---- | ---- |---- | -------- |
-| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。<br>ture表示允许自动恢复，false表示不允许。 |
+| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。<br>true表示允许自动恢复，false表示不允许。 |
 
 ## UpgradeOptions
 
 升级选项。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1997,6 +2636,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 清除异常选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称     | 类型                            | 只读 | 可选 | 说明   |
@@ -2007,39 +2648,47 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 升级策略。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                  | 类型                                    | 只读 | 可选 | 说明      |
 | ------------------- | --------------------------------------- | ---- | ---- | ------- |
-| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。 <br>ture表示可自动下载，false表示不可自动下载。 |
-| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>ture表示可自动升级，false表示不可自动升级。 |
+| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。 <br>true表示可自动下载，false表示不可自动下载。 |
+| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>true表示可自动升级，false表示不可自动升级。 |
 | autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 否 | 否  | 自动升级时间段。 |
 
 ## UpgradePeriod
 
 升级时间段。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称    | 类型   | 只读 | 可选 | 说明 |
 | ----- | ------ | ---- | ---- | ---- |
-| start | number | 否 | 否 | 开始时间。 |
-| end   | number | 否 | 否 | 结束时间。 |
+| start | int | 否 | 否 | 开始时间。 |
+| end   | int | 否 | 否 | 结束时间。 |
 
 ## TaskInfo
 
 任务信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 类型                  | 只读 | 可选 | 说明 |
 | --------- | --------------------- | ---- | ------ |------ |
-| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>ture表示存在，false表示不存在。 |
+| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>true表示存在，false表示不存在。 |
 | taskBody  | [TaskBody](#taskbody) | 否 | 否 | 任务数据。   |
 
 ## EventInfo
 
 事件信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2052,15 +2701,17 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 任务数据。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                | 类型                                     | 只读 | 可选 | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- | ---- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 |  否    | 版本摘要。 |
 | status            | [UpgradeStatus](#upgradestatus)          | 否 |  否    | 升级状态。 |
-| subStatus         | number                                   | 否 |  否    | 子状态。  |
-| progress          | number                                   | 否 |  否    | 进度。   |
-| installMode       | number                                   | 否 |  否    | 安装模式。 |
+| subStatus         | int                                   | 否 |  否    | 子状态。  |
+| progress          | int                                   | 否 |  否    | 进度。   |
+| installMode       | int                                   | 否 |  否    | 安装模式。 |
 | errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 |  否    | 错误信息。 |
 | versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否    | 版本组件。 |
 
@@ -2068,16 +2719,20 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 错误信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型   | 只读 | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ---- |
-| errorCode    | number | 否 | 否  | 错误码。  |
+| errorCode    | int | 否 | 否  | 错误码。  |
 | errorMessage | string | 否 | 否  | 错误描述。 |
 
 ## EventClassifyInfo
 
 事件信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2090,6 +2745,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 升级文件。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
@@ -2097,11 +2754,63 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
 | filePath | string                          | 否    | 否 | 文件路径。 |
 
-## UpgradeTaskCallback
+## FactoryResetStrategy
+
+恢复出厂设置策略。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称       | 类型                            | 只读 | 可选 | 说明   |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| scope | [FactoryResetScope](#factoryresetscope) | 否    | 否 | 重置范围。|
+| strategy | string                          | 否    | 否 | 重置策略。 |
+
+## FactoryResetInfo
+
+恢复出厂设置信息。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称       | 类型                            | 只读 | 可选 | 说明   |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| duration | int                          | 否    | 否 | 恢复出厂设置所需持续时间。 |
+
+## FactoryResetScope
+
+恢复出厂设置范围。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称           | 值  | 说明   |
+| ------------- | ---- | ---- |
+| DATA | 1    | 用户数据。|
+| DATA_AND_OS | 2    | 用户数据和操作系统。|
+
+## UpgradeTaskCallback<sup>23+</sup>
 
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2113,6 +2822,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 设备厂家。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称    | 值      | 说明   |
@@ -2122,6 +2833,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## BusinessSubType
 
 升级类型。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2133,6 +2846,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 组件类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称  | 值  | 说明   |
@@ -2142,6 +2857,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## UpgradeAction
 
 升级方式。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2154,6 +2871,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 生效模式。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 值  | 说明   |
@@ -2162,9 +2881,11 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
 
-## OtaMode<sup>22+</sup>
+## OtaMode<sup>20+</sup>
 
 升级模式。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2179,6 +2900,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称     | 值  | 说明   |
@@ -2190,6 +2913,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件格式。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 值  | 说明   |
@@ -2200,6 +2925,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## NetType
 
 网络类型。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2215,6 +2942,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级指令。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                  | 值  | 说明    |
@@ -2228,6 +2957,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## UpgradeStatus
 
 升级状态。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2248,6 +2979,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称   | 值        | 说明   |
@@ -2257,6 +2990,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## EventId
 
 事件ID。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 

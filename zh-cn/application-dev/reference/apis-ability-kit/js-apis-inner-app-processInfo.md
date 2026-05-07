@@ -5,7 +5,7 @@
 <!--Owner: @xialiangwei-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义进程信息，可以通过[getProcessInfo](js-apis-inner-app-context.md#contextgetprocessinfo7)获取当前Ability运行的进程信息。
 
@@ -38,7 +38,7 @@ context.getProcessInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getProcessInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getProcessInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getProcessInfo success, data: ${JSON.stringify(data)}`);
         let pid = data.pid;
         let processName = data.processName;
     }

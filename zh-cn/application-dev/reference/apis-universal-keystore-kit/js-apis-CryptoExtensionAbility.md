@@ -35,6 +35,8 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 [HuksCryptoExtensionResult](#hukscryptoextensionresult)中的resultCode枚举值。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 | 名称 | 值 | 说明 |
@@ -57,7 +59,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | 名称 | 类型    | 只读 | 可选 | 说明  |
 | ------ | --------- | ---- | ---- | ------ |
 | purpose    | [certificateManager.CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)  | 否   | 否   | 表示证书链对应密钥的使用类型。 |
-| resourceId  | string | 否   | 否   | 资源ID。 |
+| resourceId  | string | 否   | 否   | 资源ID。JSON格式，能够映射到Ukey中的某个资源。 |
 | cert  | Uint8Array | 否   | 否   | 证书。 |
 
 ## HuksCryptoExtensionResult
@@ -68,13 +70,14 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 | 名称 | 类型  | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ------ |
-| resultCode  | int | 否   | 否   | 返回值的错误码。 |
+| resultCode  | number | 否   | 否   | 返回值的错误码。 |
 | handle  | string | 否   | 是   | 资源句柄。 |
-| authState  | int | 否   | 是   | 认证状态。 |
-| retryCount  | int | 否   | 是   | 重试次数。 |
+| authState  | number | 否   | 是   | 认证状态。 |
+| retryCount  | number | 否   | 是   | 重试次数。 |
 | certs  | Array<[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)> | 否   | 是   | 证书。 |
-| property  | Array<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
-| outData  | int | 否   | 是   | 返回的数据。 |
+| property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
+| outData  | Uint8Array | 否   | 是   | 返回的数据。 |
+| resourceId | string | 否 | 是 | 返回的资源ID。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CryptoExtensionAbility.onOpenResource
 
@@ -89,13 +92,13 @@ onOpenResource(resourceId: string, params: Array\<huksExternalCrypto.HuksExterna
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | --------- | ---- | -------- |
 | resourceId | string | 是   | 资源ID。 |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---------- | ----------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，handle携带资源句柄信息。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，handle携带资源句柄信息。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -111,7 +114,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -129,13 +132,13 @@ onCloseResource(handle: string, params: Array\<huksExternalCrypto.HuksExternalCr
 | 参数名   | 类型 | 必填 | 说明  |
 | -------- | ------ | ---- | ------ |
 | handle | string | 是   | 会话句柄。  |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是 | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是 | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ----------- | ------------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示关闭资源成功。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示关闭资源成功。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -150,7 +153,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -169,13 +172,13 @@ onGetProperty(handle: string, propertyId: string, params: Array\<huksExternalCry
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 资源句柄。 |
 | propertyId | string | 是   | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，要业务针对接口名适配。 |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是 | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是 | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
 | 类型    | 说明   |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，HuksCryptoExtensionResult的property成员非空，包含获取到的属性，由[HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，HuksCryptoExtensionResult的property成员非空，包含获取到的属性，由[HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800003 Ukey PIN码未认证。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>34800007 Ukey PIN码被锁。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -192,7 +195,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -210,7 +213,7 @@ onAuthUkeyPin(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryp
 | 参数名   | 类型   | 必填 | 说明   |
 | ------ | ------ | ---- | ------- |
 | handle | string  | 是   | 资源句柄。   |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
@@ -232,7 +235,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -250,7 +253,7 @@ onGetUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksExte
 | 参数名   | 类型  | 必填 | 说明   |
 | -------- | ------- | ---- | -------|
 | handle | string | 是   | 资源句柄。 |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
@@ -272,7 +275,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -290,7 +293,7 @@ onClearUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksEx
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ----- | ---- | ------|
 | handle  | string | 是   | 会话句柄。 |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
@@ -310,7 +313,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -328,7 +331,7 @@ onInitSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExte
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ----- | ---- | ------- |
 | handle | string                      | 是   | 资源句柄。|
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
@@ -349,14 +352,14 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
 
 ## CryptoExtensionAbility.onUpdateSession
 
-onUpdateSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
+onUpdateSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式密钥会话更新数据操作。使用Promise异步回调。
 
@@ -366,14 +369,14 @@ onUpdateSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoEx
 
 | 参数名   | 类型  | 必填 | 说明 |
 | -------- | ----- | ---- | ------|
-| handle | string | 是   | 资源句柄。   |
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| initHandle | string | 是   | 资源句柄。   |
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --------- | ---------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800003 Ukey PIN码未认证。<br>34800004 句柄不存在。<br>34800007 Ukey PIN码被锁。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800003 Ukey PIN码未认证。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>34800007 Ukey PIN码被锁。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -389,14 +392,14 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
 
 ## CryptoExtensionAbility.onFinishSession
 
-onFinishSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
+onFinishSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式密钥会话结束操作。使用Promise异步回调。
 
@@ -406,14 +409,14 @@ onFinishSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoEx
 
 | 参数名   | 类型 | 必填 | 说明  |
 | -------- | -------- | ---- | --------- |
-| handle | string  | 是   | 资源句柄。 |
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份可通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，还包括算法参数（算法类型、填充模式等）。 |
+| initHandle | string  | 是   | 资源句柄。 |
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份可通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，还包括算法参数（算法类型、填充模式等）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ------- | ---------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800003 Ukey PIN码未认证。<br>34800004 句柄不存在。<br>34800007 Ukey PIN码被锁。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800003 Ukey PIN码未认证。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>34800007 Ukey PIN码被锁。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -429,7 +432,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -447,13 +450,13 @@ onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksE
 | 参数名   | 类型  | 必填 | 说明 |
 | -------- | ---------- | ---- | --------- |
 | resourceId | string | 是   | 资源ID。会附带在[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)中。 |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)>  | 否   | 操作属性。默认获取签名类型的证书，也可以通过参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag)指定获取证书类型，支持的类型包括签名验签、加解密等。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)>  | 否   | 操作属性。默认获取签名类型的证书，也可以通过参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag)指定获取证书类型，支持的类型包括签名验签、加解密等。 |
 
 **返回值：**
 
 | 类型  | 说明  |
 | ---------- | --------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，certs成员非空，包含获取的单本证书。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，certs成员非空，包含获取的单本证书。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -470,7 +473,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -487,7 +490,7 @@ onEnumCertificates(params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>):
 
 | 参数名   | 类型 | 必填 | 说明   |
 | -------- | -----| ---- | ---------- |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)>  | 否   | 操作属性。默认获取签名类型的[证书](../../security/DeviceCertificateKit/certManager-overview.md)，也可以通过参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag)指定获取证书类型，支持的类型包括签名验签、加解密等。 |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)>  | 否   | 操作属性。默认获取签名类型的[证书](../../security/DeviceCertificateKit/certManager-overview.md)，也可以通过参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag)指定获取证书类型，支持的类型包括签名验签、加解密等。 |
 
 **返回值：**
 
@@ -510,7 +513,272 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
+  }
+}
+```
+
+## CryptoExtensionAbility.onGetResourceId
+
+onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]):Promise&lt;HuksCryptoExtensionResult&gt;
+
+获取外部扩展设备内的资源ID。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明 |
+| -------- | --------- | ---- | -------- |
+| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 是   | 获取资源ID所需的属性参数。必选TAG包括：[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（厂商自定义的资源信息）、[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---------- | ----------- |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，resourceId携带资源ID信息。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      resourceId: "test resourceId"
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+```
+
+## CryptoExtensionAbility.onImportCertificate
+
+onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise&lt;HuksCryptoExtensionResult&gt;
+
+导入指定资源句柄的证书。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ----- | ---- | ------|
+| handle | string | 是   | 导入证书的资源句柄。 |
+| certInfo | [HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo) | 是   | 待导入的证书信息。需指定证书类型（purpose）。 |
+| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 否 | 导入证书所需的属性参数。 |
+
+**返回值：**
+
+| 类型    | 说明   |
+| -------- | -----------|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示导入证书成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
+  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo,
+      params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+```
+
+## CryptoExtensionAbility.onGenerateKeyItem
+
+onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise&lt;HuksCryptoExtensionResult&gt;
+
+用于在扩展设备内生成密钥对。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ----- | ---- | ------|
+| handle | string | 是   | 待生成密钥的资源句柄。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 密钥生成操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
+
+**返回值：**
+
+| 类型    | 说明   |
+| -------- | -----------|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示生成密钥成功。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+
+**示例：**
+
+```ts
+import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数
+    let algorithm: huks.HuksKeyAlg | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value as huks.HuksKeyAlg;
+    let keySize: huks.HuksKeySize | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value as huks.HuksKeySize;
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入参数，设置默认值
+    if (algorithm === undefined) {
+      algorithm = huks.HuksKeyAlg.HUKS_ALG_RSA; // 默认RSA算法
+    }
+    if (keySize === undefined) {
+      keySize = huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048; // 默认2048位
+    }
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN; // 默认签名用途
+    }
+
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+```
+
+## CryptoExtensionAbility.onExportKeyItem
+
+onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise&lt;HuksCryptoExtensionResult&gt;
+
+用于导出指定密钥的公钥。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ----- | ---- | ------|
+| handle | string | 是   | 待导出公钥的资源句柄。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导出公钥操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
+
+**返回值：**
+
+| 类型    | 说明   |
+| -------- | -----------|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，outData携带导出的公钥数据。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+
+**示例：**
+
+```ts
+import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数，推荐传入密钥用途
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入用途参数，设置默认值（推荐默认签名用途）
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN;
+    }
+
+    let pubKey: Uint8Array = new Uint8Array(1024);
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0,
+      outData: pubKey
+    };
+
+    // ...
+    return Promise.resolve(result);
+  }
+}
+```
+
+## CryptoExtensionAbility.onImportWrappedKeyItem
+
+onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[], wrappedKey: Uint8Array): Promise&lt;HuksCryptoExtensionResult&gt;
+
+用于导入加密封装的密钥对。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ----- | ---- | ------|
+| handle | string | 是   | 待导入密钥的资源句柄。 |
+| wrappedHandle | string | 是   | 用于解封导入密钥的密钥资源句柄。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导入封装密钥操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
+| wrappedKey | Uint8Array | 是   | 封装密钥数据，格式由密钥扩展定义。 |
+
+**返回值：**
+
+| 类型    | 说明   |
+| -------- | -----------|
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示导入密钥成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 Ukey不存在。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+
+**示例：**
+
+```ts
+import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+
+export default class CryptoExtension extends CryptoExtensionAbility {
+  onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[],
+      wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数
+    let algorithm: huks.HuksKeyAlg | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value as huks.HuksKeyAlg;
+    let keySize: huks.HuksKeySize | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value as huks.HuksKeySize;
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入参数，设置默认值
+    if (algorithm === undefined) {
+      algorithm = huks.HuksKeyAlg.HUKS_ALG_RSA;
+    }
+    if (keySize === undefined) {
+      keySize = huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048;
+    }
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT;
+    }
+
+    const result: HuksCryptoExtensionResult = {
+      resultCode: 0
+    };
+
+    // ...
+    return Promise.resolve(result);
   }
 }
 ```

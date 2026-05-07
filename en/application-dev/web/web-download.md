@@ -100,6 +100,7 @@ HTML file to be downloaded:
 ## Initiating a Download Task
 
 Call [startDownload()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#startdownload11) to initiate a download task.
+
 For a download initiated by it, the **Web** component works out the referrer based on the currently displayed URL and its own default referrer policy.
 
 In the following example, click setDownloadDelegate to register a listening class with the web, and then click startDownload to initiate a download task. The download task notifies the app of the download progress through DownloadDelegate.
@@ -355,7 +356,7 @@ Download the task information persistence utility file.
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';
-import fileStream from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 const helper = new util.Base64Helper();
 
@@ -385,7 +386,7 @@ export namespace  DownloadUtil {
 
   export function fileExists(filePath: string): boolean {
     try {
-      return fileStream.accessSync(filePath);
+      return fs.accessSync(filePath);
     } catch (error) {
       return false;
     }
@@ -393,19 +394,19 @@ export namespace  DownloadUtil {
 
   export function mkDirectorySync(directoryPath: string, recursion?: boolean): void {
     try {
-      fileStream.mkdirSync(directoryPath, recursion ?? false);
+      fs.mkdirSync(directoryPath, recursion ?? false);
     } catch (error) {
       console.error(`mk dir error. err message: ${error.message}, err code: ${error.code}`);
     }
   }
 
   export function writeToFileSync(dir: string, fileName: string, msg: string): void {
-    let file = fileStream.openSync(dir + '/' + fileName, fileStream.OpenMode.WRITE_ONLY | fileStream.OpenMode.CREATE);
-    fileStream.writeSync(file.fd, msg);
+    let file = fs.openSync(dir + '/' + fileName, fs.OpenMode.WRITE_ONLY | fs.OpenMode.CREATE);
+    fs.writeSync(file.fd, msg);
   }
 
   export function readFileSync(dir: string, fileName: string): string {
-    return fileStream.readTextSync(dir + '/' + fileName);
+    return fs.readTextSync(dir + '/' + fileName);
   }
 
 }

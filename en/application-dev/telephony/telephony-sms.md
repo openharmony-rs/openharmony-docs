@@ -56,7 +56,8 @@ Typical development scenarios are as follows:
    - To send SMS messages, call the **sendShortMessage** API and declare the **ohos.permission.SEND\_MESSAGES** permission. The permission is of the **system\_basic** level.
    - To set the SMSC address, call the** setSmscAddr** API and declare the **ohos.permission.SET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
    - To obtain the SMSC address, call the** getSmscAddr** API and declare the **ohos.permission.GET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
-   Before requesting the permission, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+  
+     Before requesting the permission, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 2. Import the required modules.
 
 3. Send an SMS message.
@@ -161,7 +162,7 @@ Through the SMS protocol, you can create a hyperlink pointing to the SMS recipie
 
 The standard SMS protocol format is as follows:
 
-```
+```txt
 sms:106XXXXXXXXXX?body=SMS message content
 ```
 
@@ -176,7 +177,7 @@ sms:106XXXXXXXXXX?body=SMS message content
 
 Hyperlinks on web pages must comply with the SMS protocol. The sample code is as follows:
 
-```
+```txt
 <a href="sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9">Send Message</a>;
 ```
 
@@ -218,3 +219,9 @@ struct Index {
   }
 }
 ```
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the SMS service:
+
+- [SMS Service (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Telephony/Message)

@@ -27,8 +27,8 @@
 
 | 名称                                                           | typedef关键字 | 描述                                |
 |--------------------------------------------------------------|------------|-----------------------------------|
-| [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) | void*      | MindSpore Lite的上下文信息的指针，该指针会指向Context。 |
-| [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)   | void*          | MindSpore Lite的运行设备信息的指针。                                  |
+| [OH_AI_ContextHandle](capi-mindspore-oh-ai-contexthandle.md) | void*      | MindSpore Lite上下文信息的指针，该指针会指向Context。 |
+| [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)   | void*          | MindSpore Lite运行设备信息的指针。                                  |
 
 ### 函数
 
@@ -877,7 +877,7 @@ OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandl
 
 获取NNRt任务优先级，仅NNRt设备可用。
 
-**起始版本：** 22
+**起始版本：** 23
 
 
 **参数：**

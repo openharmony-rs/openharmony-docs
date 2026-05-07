@@ -6,7 +6,7 @@
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
-- [Introduction to ArkData](data-mgmt-overview.md)
+- [About This Kit](data-mgmt-overview.md)
 - Unified Data Definition<!--uniform-data-definition-->
   - [Unified Data Definition Overview](unified-data-definition-overview.md)
   - [UTDs (ArkTS)](uniform-data-type-descriptors.md)
@@ -39,7 +39,7 @@
   - [Database Encryption (C/C++)](native-data-encryption.md)
   - [Access Control by Device and Data Level (ArkTS)](access-control-by-device-and-data-level.md)
   - [Access Control by Device and Data Level (C/C++)](native-access-control-by-device-and-data-level.md)
-  - [Using an EL5 Database (ArkTS)](encrypted_estore_guidelines.md)
+  - [Using an EL5 Database (ArkTS)](encrypted-estore-guidelines.md)
 - Cross-Application Data Sharing<!--cross-app-data-share-->
   - [Overview of Cross-Application Data Sharing](data-share-overview.md)
   - One-to-Many Data Sharing<!--one-to-many-data-share-->
@@ -52,6 +52,8 @@
     - [Sharing Data via Unified Data Channels (ArkTS)](unified-data-channels.md)
     - [Sharing Data via Unified Data Channels (C/C++)](unified-data-channels-c.md)
 - [Application Data Vectorization (ArkTS)](aip-data-intelligence-embedding.md)
+<!--RP2-->
+<!--RP2End-->
 - [SQLite Debugging Tool](sqlite-database-debug-tool.md)
 - [ArkData Glossary](data-terminology.md)
 - [ArkData FAQs](data-faq.md)

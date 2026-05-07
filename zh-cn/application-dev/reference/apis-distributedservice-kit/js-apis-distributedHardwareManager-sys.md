@@ -5,6 +5,7 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+
 分布式硬件管理模块提供控制分布式硬件的能力，包括暂停、恢复和停止被控端分布式硬件业务。
 
 > **说明：**
@@ -40,7 +41,7 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 | 名称          | 值   | 说明                         |
 | :------------ | ---- | ---------------------------- |
-| ALL           | 0    | 表示所有分布式应用。         |
+| ALL           | 0    | 表示所有分布式硬件。         |
 | CAMERA        | 1    | 表示分布式相机。             |
 | SCREEN        | 8    | 表示分布式屏幕。             |
 | MODEM_MIC     | 256  | 表示分布式移动通话的麦克风。 |

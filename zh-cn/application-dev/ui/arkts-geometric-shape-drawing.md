@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。具体用法请参考[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
+绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，包含所有绘制组件的通用属性。具体用法请参考[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
 
 
 ## 创建绘制组件
@@ -88,7 +88,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column() {
         // 画一个宽高都为75的圆
-        // $r('app.string.OriginalSizeCircle')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.OriginalSizeCircle')替换为实际资源文件，在本示例中该资源文件的value值为"原始尺寸Circle组件"
         Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
         Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
   
@@ -97,7 +97,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为75的viewPort。
             // 用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高放大两倍。
-            // $r('app.string.EnlargedCircle')需要替换为开发者所需的资源文件
+            // 请将$r('app.string.EnlargedCircle')替换为实际资源文件，在本示例中该资源文件的value值为"shape内放大的Circle组件"
             Text($r('app.string.EnlargedCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
@@ -113,7 +113,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为300的viewPort。
             // 用一个绿色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高缩小两倍。
-            // $r('app.string.ShrunkCircle')需要替换为开发者所需的资源文件
+            // 请将$r('app.string.ShrunkCircle')替换为实际资源文件，在本示例中该资源文件的value值为"Shape内缩小的Circle组件"
             Text($r('app.string.ShrunkCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
@@ -275,7 +275,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - 通过[strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
-  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
+
+  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
+  
+  strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   
@@ -306,10 +309,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
-  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
-  //开启抗锯齿
+  // 开启抗锯齿
   Circle()
     .width(150)
     .height(200)
@@ -320,10 +323,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![无标题](figures/无标题.png)
 
-  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
-  //关闭抗锯齿
+  // 关闭抗锯齿
   Circle()
     .width(150)
     .height(200)
@@ -403,8 +406,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
   
     aboutToAppear(): void {
-      // 'common/image/image.png'需要替换为开发者所需的图像资源文件
-      let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+      // 'resources/base/media/image.png'需要替换为开发者所需的图像资源文件
+      let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
       ctx.drawImage(img, 0, 0, 100, 100);
       this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
     }
@@ -416,8 +419,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .width(150)
           .height(150)
           .onClick(() => {
-            // 'common/image/image.png'需要替换为开发者所需的图像资源文件
-            let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+            // 'resources/base/media/image.png'需要替换为开发者所需的图像资源文件
+            let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
             ctx.drawImage(img, 0, 0, 100, 100);
             this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
             this.myNodeController.rebuild();
@@ -544,7 +547,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   >
   > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
 
-  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -552,9 +555,9 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆
         Circle({ width: 150, height: 150 })
-        //绘制一个直径为150、线条为红色虚线的圆环
+        // 绘制一个直径为150、线条为红色虚线的圆环
         Circle()
           .width(150)
           .height(200)
@@ -574,10 +577,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 >  **说明：**
 >
-> [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
+> [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
-  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -586,7 +589,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column({ space: 10 }) {
         // ...
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆
         Circle()
           .width(150)
           .height(200)

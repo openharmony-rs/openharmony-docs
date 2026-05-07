@@ -1,7 +1,7 @@
 # JSVM-API 支持的数据类型和接口
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -173,6 +173,14 @@ typedef enum {
     JSVM_COMPILE_COMPILE_PROFILE,
     /** switch for source map support. */
     JSVM_COMPILE_ENABLE_SOURCE_MAP,
+    /** background deserialize code cache result.
+     * @since 24
+     */
+    JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT,
+    /** whether the code cache is rejected.
+     * @since 24
+     */
+    JSVM_COMPILE_CODE_CACHE_REJECTED,
 } JSVM_CompileOptionId;
 ```
 
@@ -464,7 +472,9 @@ static void LowGCFrequencyInit(bool &vmInit) {
 执行结果：
 
 使用以上三个接口可以分别初始化具备不同特性的 VM 平台。初始化之后，可以创建 VM 实例，并执行 JavaScript 脚本。
+
 相比 NormalInit 接口，LowGCFrequencyInit 接口初始化的VM平台 GC 触发频次更低。
+
 相比 NormalInit 接口，LowMemoryInit 接口初始化的VM平台内存占用更少。
 
 **创建 VM 实例**
@@ -1499,7 +1509,7 @@ static JSVM_Value CallFunction(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_ValueType valuetype;
     JSVM_CALL(OH_JSVM_Typeof(env, args[0], &valuetype));
     if (valuetype != JSVM_ValueType::JSVM_FUNCTION) {
-        OH_LOG_ERROR(LOG_APP, "Wrong type of argment. Expects a function.");
+        OH_LOG_ERROR(LOG_APP, "Wrong type of argument. Expects a function.");
         return nullptr;
     }
 
@@ -2002,9 +2012,9 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     OH_JSVM_DeleteProperty(env, instanceValue, jsIndex, &result1);
 
     // 3. 作为函数的回调
-    JSVM_Value gloablObj = nullptr;
-    OH_JSVM_GetGlobal(env, &gloablObj);
-    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance", instanceValue);
+    JSVM_Value globalObj = nullptr;
+    OH_JSVM_GetGlobal(env, &globalObj);
+    OH_JSVM_SetNamedProperty(env, globalObj, "myTestInstance", instanceValue);
     OH_LOG_INFO(LOG_APP, "set property on global object");
     std::string innerSourcecodestr = R"(
     {
@@ -2489,7 +2499,7 @@ napi_value close_JSVM_environment(napi_env env1, napi_callback_info info)
     return result;
 }
 
-//清除和释放与实例相关联的内存资源
+// 清除和释放与实例相关联的内存资源
 void InstanceFinalizeCallback(JSVM_Env env, void *finalizeData, void *finalizeHint)
 {
     if (finalizeData) {
@@ -2508,17 +2518,17 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
     }
     size_t argc = 1;
     napi_value args[1] = {nullptr};
-    //用于获取回调函数参数
+    // 用于获取回调函数参数
     napi_get_cb_info(env1, info, &argc, args , nullptr, nullptr);
     napi_valuetype valuetype0;
     napi_typeof(env1, args[0], &valuetype0);
     int32_t tmp = 0;
     napi_get_value_int32(env1, args[0], &tmp);
     instanceData->value = tmp;
-    //将获得的参数与当前运行的JSVM环境关联起来
+    // 将获得的参数与当前运行的JSVM环境关联起来
     OH_JSVM_SetInstanceData(env, instanceData, InstanceFinalizeCallback, nullptr);
     InstanceData *resData = nullptr;
-    //获取与当前运行的JSVM环境相关联的数据
+    // 获取与当前运行的JSVM环境相关联的数据
     OH_JSVM_GetInstanceData(env, (void **)&resData);
     napi_value result;
     napi_create_uint32(env1, resData->value, &result);
@@ -2539,4 +2549,18 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
 |OH_JSVM_PerformMicrotaskCheckpoint| 执行任务队列里的微任务 |
 
 场景示例：
+
 [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute_tasks.md)
+
+### 后台反序列化
+
+**场景介绍**
+
+后台反序列化允许在后台线程中异步反序列化代码缓存，通过减少同步反序列化时间提升应用启动性能。
+
+**接口说明**
+
+| 接口 | 功能说明 |
+| -------- | -------- |
+| OH_JSVM_BackgroundDeserialize | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
+| OH_JSVM_ReleaseDeserializeResult | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|

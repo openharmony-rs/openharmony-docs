@@ -1,10 +1,10 @@
 # @ohos.file.cloudDiskManager (Cloud Disk Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 This module enables the File Manager to obtain the sync root information registered by third-party cloud disks.
 
@@ -72,7 +72,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
-Obtains the registered sync root information. This API uses a promise to return the result.
+Obtains information about all registered sync roots. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -97,7 +97,7 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | 801 | Device not supported. |
 | 34400003 | IPC communication failed. |
 | 34400014  | Temporary failure, Retry is recommended (e.g., network issues). |
-| 34400015  | Cloud disk not allowed on this device.|
+| 34400015  | Cloud disk is not allowed on this device.|
 
 **Example**
 

@@ -369,7 +369,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
   ![en-us_image_0000001511580876](figures/en-us_image_0000001511580876.png)
 
-- **ItemAlign.Stretch**: The child elements are stretched along the cross axis. If no constraints are set, the child elements are stretched to fill the size of the container on the cross axis.
+- **ItemAlign.Stretch**: The child elements are stretched along the cross axis. If no constraints are set, the child elements are stretched to fill the size of the container on the cross axis. The items in the flex container are stretched and padded along the cross axis. If the container is a flex container and [FlexWrap](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#flexwrap) is set to **FlexWrap.Wrap** or **FlexWrap.WrapReverse**, the items are stretched to align with the item that has the longest cross axis size in the current row or column. In other cases, the items are stretched to the container size regardless of whether their size is set.
 
 
   <!-- @[FlexItemAlignStretch_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStretch.ets) -->
@@ -487,10 +487,10 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 - **FlexAlign.End**: The child elements are aligned toward the end edge of the cross axis in the container.
 
 
-  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
+  <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
   
   ``` TypeScript
-  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
+  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
     Text('2').width('60%').height(20).backgroundColor('#D2B48C')
     Text('3').width('40%').height(20).backgroundColor('#D2B48C')
@@ -507,10 +507,10 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 - **FlexAlign.SpaceBetween**: The child elements are evenly distributed within the container along the cross axis. The first and last child elements are aligned with the edges of the container.
 
 
-  <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
+  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
   
   ``` TypeScript
-  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
+  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
     Text('2').width('60%').height(20).backgroundColor('#D2B48C')
     Text('3').width('40%').height(20).backgroundColor('#D2B48C')

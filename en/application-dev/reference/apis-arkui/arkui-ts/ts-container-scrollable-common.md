@@ -51,7 +51,7 @@ Sets the scrollbar color.
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color) \| number \| string | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
 
 **Return value**
 
@@ -73,7 +73,7 @@ Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollba
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color) \| number \| string \| [Resource](ts-types.md#resource) | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Scrollbar color.<br>Default value: **'\#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
 
 **Return value**
 
@@ -95,7 +95,7 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | number \| string | Yes  | Scrollbar width.<br>Default value: **4**<br>Unit: vp<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Scrollbar width.<br>Default value: **4**<br>Unit: vp<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar.|
 
 **Return value**
 
@@ -118,7 +118,7 @@ Sets the effect used when the scroll boundary is reached.
 | Name               | Type                                             | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | [EdgeEffect](ts-appendix-enums.md#edgeeffect)     | Yes  | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.None** for the **Grid**, **Scroll**, and **WaterFlow** components and **EdgeEffect.Spring** for the **List** component|
-| options | [EdgeEffectOptions](#edgeeffectoptions11) | No  | Whether edge effects are enabled when content is smaller than component size, and effective edges. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value:<br>**List**, **Grid**, and **WaterFlow** components: { alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END }, **Scroll** component: { alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END }.|
+| options | [EdgeEffectOptions](#edgeeffectoptions11) | No  | Whether edge effects are enabled when content is smaller than component size, and effective edges. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value:<br>For the **List**, **Grid**, and **WaterFlow** components, the default value is **{ alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END}**. For the **Scroll** component, the default value is **{ alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END}**.|
 
 **Return value**
 
@@ -184,7 +184,7 @@ Sets the friction coefficient. It applies only to gestures in the scrolling area
 
 | Name| Type                                                | Mandatory| Description                                                     |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | number \| [Resource](ts-types.md#resource) | Yes  | Friction coefficient.<br>Default value: 0.6 for non-wearable devices and 0.9 for wearable devices.<br>Since API version 11, the default value for non-wearable devices is **0.7**.<br>Since API version 12, the default value for non-wearable devices is **0.75**.<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
+| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Friction coefficient.<br>Default value: **0.6** for non-wearable devices and **0.9** for wearable devices.<br>Since API version 11, the default value for non-wearable devices is **0.7**.<br>Since API version 12, the default value for non-wearable devices is **0.75**.<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
 
 **Return value**
 
@@ -196,7 +196,17 @@ Sets the friction coefficient. It applies only to gestures in the scrolling area
 
 flingSpeedLimit(speedLimit: number): T
 
-Sets the maximum initial velocity at the start of the fling animation that occurs after gesture-driven scrolling ends.
+Sets the maximum initial speed for inertial animation after a fling gesture.
+
+> **NOTE**
+>
+> - Inertial animation is the effect that the scrolling content continues to scroll and gradually decelerates and stops after the finger quickly flings and leaves the screen. It is also called inertial scrolling.
+>
+> - Inertial animation is triggered when the finger quickly flings and leaves the screen, or when the [fling](ts-container-scroll.md#fling12) method is called.
+>
+> - Inertial animation is not generated when the mouse wheel or keyboard arrow keys are used to scroll, or when the [scrollTo](ts-container-scroll.md#scrollto) method is used to scroll to a specified position.
+>
+> - If the inertial animation is triggered by the [fling](ts-container-scroll.md#fling12) method, the **flingSpeedLimit** setting does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -206,7 +216,7 @@ Sets the maximum initial velocity at the start of the fling animation that occur
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
-| speedLimit | number | Yes  | Maximum initial velocity at the start of the fling animation.<br>Default value: **9000**<br>Unit: vp/s<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
+| speedLimit | number | Yes  | Maximum initial speed for inertial animation.<br>Default value: **9000**<br>Unit: vp/s<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
 
 **Return value**
 
@@ -222,11 +232,11 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 
 > **NOTE**
 > 
-> The **fadingEdge** effect is implemented by configuring the [overlay](ts-universal-attributes-overlay.md#overlay) and [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attributes (parameter values: **BlendMode.SRC_OVER and BlendApplyType.OFFSCREEN**). When **fadingEdge** is enabled, it overrides the **overlay()** and **blendMode()** attributes of the original component.
+> The **fadingEdge** effect is implemented by configuring the [overlay](ts-universal-attributes-overlay.md#overlay) and [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attributes (parameter values: **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When the **fadingEdge** effect takes effect, the **.overlay()** and **.blendMode()** attributes of the original component are overwritten. As a result, the screenshot APIs of the current component and its child components cannot capture the correct image. APIs that require screen capture: [blur](ts-universal-attributes-image-effect.md#blur), [linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12), [brightness](ts-universal-attributes-image-effect.md#brightness), [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect), [grayscale](ts-universal-attributes-image-effect.md#grayscale), [saturate](ts-universal-attributes-image-effect.md#saturate), [contrast](ts-universal-attributes-image-effect.md#contrast), [invert](ts-universal-attributes-image-effect.md#invert), [sepia](ts-universal-attributes-image-effect.md#sepia), [hueRotate](ts-universal-attributes-image-effect.md#huerotate), [colorBlend](ts-universal-attributes-image-effect.md#colorblend), [lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12), [pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12), [blendMode](ts-universal-attributes-image-effect.md#blendmode11) and [backgroundBrightness](ts-universal-attributes-background.md#backgroundbrightness12).
 >
-> When **fadingEdge** is enabled, avoid setting background-related attributes on the component with **fadingEdge**, as this may interfere with the fade effect.
+> When **fadingEdge** is enabled, avoid setting [background](ts-universal-attributes-background.md#background10)-related attributes on the component with **fadingEdge**, as this may interfere with the fade effect.
 >
-> When **fadingEdge** is enabled, the component is clipped to its boundaries. If **clip** is set to **false** for the component, this setting is ignored.
+> With **fadingEdge** set to **true**, the component is clipped to the boundary, and setting the component's [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute to **false** will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -236,8 +246,8 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enabled | Optional&lt;boolean&gt;                           | Yes  | Whether to enable the edge fading effect. **true** to enable, **false** otherwise.<br>Default value: **false**.|
-| options | [FadingEdgeOptions](#fadingedgeoptions14) | No  | Object defining edge fading effect properties, such as the fading edge length.<br>If the value is less than 0, the default value is used. The default length is 32 vp.<br>If the value exceeds half the height of the container, it is adjusted to exactly half the height of the container.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;                           | Yes  | Whether to enable the edge fading effect. **true** to enable, **false** otherwise.<br>Default value: **false**.|
+| options | [FadingEdgeOptions](#fadingedgeoptions14)  | No  | Object defining edge fading effect properties, such as the fading edge length.<br>If the value is less than 0, undefined, or not set, the default value is used. The default length is 32 vp.<br>If the value exceeds half the height of the container, it is adjusted to exactly half the height of the container.|
 
 **Return value**
 
@@ -259,7 +269,7 @@ Sets the content clipping area for this scrollable component.
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| clip | [ContentClipMode](#contentclipmode14) \| [RectShape](../js-apis-arkui-shape.md#rectshape)   | Yes  | Clipping to apply, which is effective only for the content (that is, child components) of the scrollable component, not the background. When a custom rectangular area is passed through **RectShape**, only width, height, and [offset](../js-apis-arkui-shape.md#offset) relative to the component's upper left corner are supported, and rounded corners are not supported.<br></div>Default value: The default value for **Grid** and **Scroll** is **ContentClipMode.BOUNDARY**, and the default value for **List** and **WaterFlow** is **ContentClipMode.CONTENT_ONLY**.|
+| clip | [ContentClipMode](#contentclipmode14)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)  | Yes  | Clipping to apply, which is effective only for the content (that is, child components) of the scrollable component, not the background. When a custom rectangular area is passed through **RectShape**, only width, height, and [offset](../js-apis-arkui-shape.md#offset) relative to the component's upper left corner are supported, and rounded corners are not supported.<br></div>Default value: The default value for **Grid** and **Scroll** is **ContentClipMode.BOUNDARY**, and the default value for **List** and **WaterFlow** is **ContentClipMode.CONTENT_ONLY**.|
 
 **Return value**
 
@@ -313,6 +323,34 @@ Sets the margin of the scrollbar. The margin is calculated from the offset dista
 | --- | -------------- |
 | T | Current scrollable component.|
 
+### autoAdjustScrollBarMargin
+
+autoAdjustScrollBarMargin(enable: boolean | undefined): T
+
+Sets whether to automatically adjust the margin of the scrollbar. By default, the margin is not automatically adjusted.
+
+When the automatic margin adjustment feature is enabled, the scrolling direction of the scrollbar avoids the [padding](ts-universal-attributes-size.md#padding), [safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14) and [contentStartOffset](#contentstartoffset22)/[contentEndOffset](#contentendoffset22) areas of the component. If the [scrollBarMargin](#scrollbarmargin20) attribute is set, this feature does not take effect. If the sum of the horizontal [padding](ts-universal-attributes-size.md#padding), [safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14), [contentStartOffset](#contentstartoffset22) and [contentEndOffset](#contentendoffset22) values is greater than the width of the component, or the sum of the vertical values is greater than the height of the component, the scrollbar is not displayed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                 |
+| ------ | ------- | ---- | ------------------------------------- |
+| enable  | boolean&nbsp;\|&nbsp;undefined  | Yes  | Whether to automatically adjust the margin.<br>**true**: yes.<br>**false**: no.<br>**undefined**: no.|
+
+**Return value**
+
+| Type| Description          |
+| --- | -------------- |
+| T | Current component.|
+
 ### digitalCrownSensitivity<sup>18+</sup>
 
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
@@ -329,7 +367,7 @@ A component must have focus to receive [crown events](ts-universal-events-crown.
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensitivity | [Optional&lt;CrownSensitivity&gt;](ts-appendix-enums.md#crownsensitivity18) | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
 
 **Return value**
 
@@ -384,6 +422,34 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 | Type| Description          |
 | --- | -------------- |
 | T | Current scrollable component.|
+
+
+### enableScrollWithMouse
+
+enableScrollWithMouse(enabled: boolean | undefined): T
+
+Sets whether to support scrolling by dragging with the left mouse button pressed. If this API is not called, scrolling by dragging with the left mouse button pressed is not supported by default.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                         |
+| ------ | ------ | ---- | --------------------------------------------- |
+| enabled  | boolean \| undefined | Yes  | Whether to support scrolling by dragging with the left mouse button pressed.<br>**true**: yes.<br>**false**: no.<br>**undefined**: no.|
+
+**Return value**
+
+| Type| Description          |
+| --- | -------------- |
+| T | Current component.|
 
 ## Events
 
@@ -499,6 +565,12 @@ Triggered when the scrollable component is about to scroll.
 
 The callback provides the amount of offset that is about to be scrolled in the current frame, along with the current scroll status and the source of the scrolling operation. The offset provided in the callback is the calculated intended scrolling offset, not the final actual scrolling offset. You can specify the intended scrolling offset for the scrollable component through the return value of this callback. The parameter type of the [onWillScroll](./ts-container-scroll.md#onwillscroll12) API of the [Scroll](./ts-container-scroll.md) component is [ScrollOnWillScrollCallback](./ts-container-scroll.md#scrollonwillscrollcallback12).
 
+>**NOTE**
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 14.
+>
+> - When [ScrollEdge](ts-container-scroll.md#scrolledge) and [ScrollToIndex](ts-container-scroll.md#scrolltoindex) without animation are called, **onWillScroll** is not triggered.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -507,7 +579,7 @@ The callback provides the amount of offset that is about to be scrolled in the c
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------|
-| handler | Optional&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | Yes| Callback triggered when the scrollable component is about to scroll.|
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | Yes| Callback triggered when the scrollable component is about to scroll.|
 
 **Return value**
 
@@ -515,16 +587,15 @@ The callback provides the amount of offset that is about to be scrolled in the c
 | --- | -------------- |
 | T | Current scrollable component.|
 
-> **NOTE**
-> 
-> onWillScroll is not triggered when ScrollEdge and ScrollToIndex without animation are called.
-
-
 ### onDidScroll<sup>12+</sup> 
 
 onDidScroll(handler: OnScrollCallback): T
 
 Triggered when the scrollable component scrolls. The return value is the offset amount by which the list has scrolled and the current scroll state.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 14.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -550,9 +621,9 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 Triggered when the scrollable component scrolls.
 
-This API is available since API version 11.
-
-This API is deprecated since API version 12. For the **Scroll** component, the **onScroll** event is triggered before layout calculations, and you are advised to use [onWillScroll](#onwillscroll12) instead. For the **List**, Grid, and **WaterFlow** components, the **onScroll** event is triggered after layout calculations, and you are advised to use [onDidScroll](#ondidscroll12) instead.
+> **NOTE**
+>
+> This API is supported since API version 11 and deprecated since API version 12. If the **onScroll** events of the [List](ts-container-list.md), [Grid](ts-container-grid.md), and [WaterFlow](ts-container-waterflow.md) components are triggered after the layout, you are advised to use [onDidScroll](#ondidscroll12) instead. If the **onScroll** event of the [Scroll](ts-container-scroll.md) component is triggered before the layout, you are advised to use [onWillScroll](#onwillscroll12) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -646,7 +717,13 @@ Triggered when dragging of the scrollable component ends.
 
 onWillStartFling(handler: VoidCallback): T
 
-Triggered when the scrollable component is about to initiate a fling animation.
+Triggered when the scrollable component is about to initiate an inertial animation.
+
+> **NOTE**
+>
+> - If the inertial animation is triggered by the [fling](ts-container-scroll.md#fling12) method, **onWillStartFling** is not triggered.
+>
+> - For details about the triggering scenarios of the inertial animation, see the description of [flingSpeedLimit](#flingspeedlimit11).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 21.
 
@@ -658,7 +735,7 @@ Triggered when the scrollable component is about to initiate a fling animation.
 
 | Name | Type                                       | Mandatory| Description                        |
 | ------- | ------------------------------------------ | ---- | ---------------------------- |
-| handler | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback invoked when the scrollable component is about to initiate a fling animation.|
+| handler | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback invoked when the scrollable component is about to initiate an inertial animation.|
 
 **Return value**
 
@@ -670,7 +747,7 @@ Triggered when the scrollable component is about to initiate a fling animation.
 
 onDidStopFling(handler: VoidCallback): T
 
-Triggered when the fling animation of the scrollable component ends. It is not triggered if the fling is interrupted by a new swipe gesture.
+Triggered when the inertial animation of the scrollable component ends. It is not triggered if the animation is interrupted by a new swipe gesture.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 21.
 
@@ -682,7 +759,7 @@ Triggered when the fling animation of the scrollable component ends. It is not t
 
 | Name | Type                                       | Mandatory| Description                        |
 | ------- | ------------------------------------------ | ---- | ---------------------------- |
-| handler | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback invoked when the fling animation of the scrollable component ends.|
+| handler | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback invoked when the inertial animation of the scrollable component ends.|
 
 **Return value**
 
@@ -724,7 +801,7 @@ Implements an object used to configure the [edgeEffect](#edgeeffect11) attribute
 
 | Name  | Type | Read-Only| Optional| Description             |
 | ----- | ------| ------- | -- | ----------------- |
-| alwaysEnabled | boolean | No| No| Whether to enable the scroll effect when the component content is smaller than the component itself. **true** to enable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| alwaysEnabled | boolean | No| No| Whether to enable the scroll effect when the component content is smaller than the component itself. **true** to enable, **false** otherwise. The default value is **false** for the [List](ts-container-list.md), [Grid](ts-container-grid.md), and [WaterFlow](ts-container-waterflow.md) components, and **true** for the [Scroll](ts-container-scroll.md) component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | effectEdge<sup>18+</sup> | number | No| Yes| Edge where the edge effect is applied.<br>With **[EffectEdge](#effectedge18).START**, the edge effect is applied to the start edge only. With **[EffectEdge](#effectedge18).END**, the edge effect is applied to the end edge only.<br>The default value is [EffectEdge](#effectedge18).START \| [EffectEdge](#effectedge18).END, which means that the edge effect is applied to both the start and end edges. If an invalid value is set, the edge effect is applied to both the start and end edges.<br>To disable the effect on both edges, set **edgeEffect** to **EdgeEffect.None**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## FadingEdgeOptions<sup>14+</sup>
@@ -738,6 +815,21 @@ Implements an object used to configure the [fadingEdge](#fadingedge14) attribute
 | Name          | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
 | fadingEdgeLength | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Length of the fading edge.|
+
+## EditModeOptions<sup>23+</sup>
+
+Sets attributes of the **List** or **Grid** component in edit mode.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name          | Type                                                        | Read-Only| Optional| Description                                                        |
+| ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
+| enableGatherSelectedItemsAnimation | boolean | No  | Yes| Whether to enable the multi-selection gather animation. If this parameter is set to **true**, the gather animation is enabled. If this parameter is set to **false**, the gather animation is disabled.<br>The multi-selection gather animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on **GridItem** or **ListItem**, **responseType** is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to **MenuPreviewMode.IMAGE** or **CustomBuilder**.<br>If [drag events](ts-universal-events-drag-drop.md) are set on **GridItem** or **ListItem**, whether to enable the gather animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.|
+| onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | No  | Yes| Callback triggered to obtain the number of selected items when the animation for gathering selected items upon long press is about to start.<br>If this parameter is omitted, the number of selected items within the display range of the **Grid** or **List** component is used as the badge for the menu preview image shown after the animation for gathering selected items upon long press.|
 
 ## EffectEdge<sup>18+</sup>
 
@@ -774,7 +866,7 @@ The figure below illustrates the clipping areas corresponding to each enumeratio
 
 type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
 
-Callback triggered when the scrollable component is about to scroll.
+Triggered when the scrollable component is about to scroll.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -792,13 +884,13 @@ Callback triggered when the scrollable component is about to scroll.
 
 | Type                         | Description                                 |
 | ----------------------------- | ------------------------------------ |
-| void \| [ScrollResult](#scrollresult12) |  Returns a **ScrollResult** object if the scrollable component scrolls by the developer-specified offset relative to the previous frame; returns no **ScrollResult** object if the component scrolls by the offset specified by **scrollOffset** in the callback.<br>Value range: (-∞, +∞)|
+| void \| [ScrollResult](#scrollresult12)|  Returns a **ScrollResult** object if the scrollable component scrolls by the developer-specified offset relative to the previous frame; returns no **ScrollResult** object if the component scrolls by the offset specified by **scrollOffset** in the callback.<br>Value range: (-∞, +∞)|
 
 ## OnScrollCallback<sup>12+</sup>
 
 type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
-Callback triggered when the scrollable component scrolls.
+Triggered when the scrollable component scrolls.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -812,6 +904,47 @@ Callback triggered when the scrollable component scrolls.
 | ------ | ------ | ------ | ------|
 | scrollOffset | number | Yes| Offset relative to the previous frame. The offset is positive when the scrollable component is scrolled up and negative when it is scrolled down.<br>Unit: vp|
 | scrollState | [ScrollState](ts-container-list.md#scrollstate)| Yes| Current scroll state.|
+
+## OnItemDragStartCallback<sup>23+</sup>
+
+type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder
+
+Called when a list or grid element starts to be dragged.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name   | Type                                                     | Mandatory| Description                  |
+| --------- | --------------------------------------------------------- | ---- | ---------------------- |
+| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.        |
+| itemIndex | number                                                    | Yes  | Index of the dragged element.|
+
+**Return value**
+
+| Type                         | Description                                 |
+| ----------------------------- | ------------------------------------ |
+| [CustomBuilder](ts-types.md#custombuilder8) |  Returns a **CustomBuilder** object for constructing the drag preview of the dragged element. If **void** is returned, the drag operation cannot be performed.|
+
+## OnGetPreviewBadgeCallback<sup>23+</sup>
+
+type OnGetPreviewBadgeCallback = () => boolean | number
+
+Called to obtain the number of selected items when the animation for gathering selected items upon long press is about to start.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                         | Description                                 |
+| ----------------------------- | ------------------------------------  |
+| boolean \| number |  Whether to display a badge showing the count of selected items on the menu preview image after the animation for gathering selected items upon long press is played, or the specific number to display.<br>**true**: The number of selected items in a **Grid** or **List** component will be displayed as the badge. **false**: The badge is not displayed.<br>If a number is returned, it will be displayed as the badge by default. Value range: [0, 2<sup>31</sup>-1]. If the value is out of the range, it is treated as **true**.<br>If a floating-point number is returned, it is rounded down.|
 
 ## ScrollResult<sup>12+</sup>
 
@@ -829,7 +962,7 @@ Implements a return value object of the [OnWillScrollCallback](#onwillscrollcall
 
 Provides the size information of the child components of the **List** or **ListItemGroup** component along the main axis. This object only supports one-to-one binding to the **List** or **ListItemGroup** component.
 
-**NOTE**
+> **NOTE**
 >
 > - The main axis size information must match the actual main axis size of the child components. When child components' main axis sizes change or components are added or removed, the **ChildrenMainSize** object methods must be invoked to notify the **List** or **ListItemGroup** component.
 
@@ -978,7 +1111,7 @@ If the input parameter of an API is **undefined**, the corresponding event callb
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void>  \| undefined | Yes  | Callback for the **onReachStart** event.|
+| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | Yes  | Callback for the **onReachStart** event.|
 
 ### setOnReachEnd<sup>19+</sup>
 
@@ -996,7 +1129,7 @@ If the input parameter is **undefined**, the event callback is reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void>  \| undefined | Yes  | Callback for the **onReachEnd** event.|
+| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | Yes  | Callback for the **onReachEnd** event.|
 
 
 ### setOnScrollStart<sup>19+</sup>
@@ -1015,7 +1148,7 @@ If the input parameter is **undefined**, the event callback is reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void>  \|  undefined | Yes  | Callback for the **onScrollStart** event.|
+| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp; undefined | Yes  | Callback for the **onScrollStart** event.|
 
 
 ### setOnScrollStop<sup>19+</sup>
@@ -1034,7 +1167,7 @@ If the input parameter is **undefined**, the event callback is reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void>  \| undefined | Yes  | Callback for the **onScrollStop** event.|
+| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | Yes  | Callback for the **onScrollStop** event.|
 
 ### setOnScrollFrameBegin<sup>19+</sup>
 
@@ -1052,7 +1185,7 @@ If the input parameter is **undefined**, the event callback is reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnScrollFrameBeginCallback](./ts-container-scroll.md#onscrollframebegincallback18) \| undefined | Yes  | Callback for the **onScrollFrameBegin** event.|
+| callback  | [OnScrollFrameBeginCallback](./ts-container-scroll.md#onscrollframebegincallback18)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onScrollFrameBegin** event.|
 
 
 ## OnWillStopDraggingCallback<sup>20+</sup>
@@ -1089,12 +1222,12 @@ Defines the callback invoked when the scrollable component stops being dragged.
 
 | Name    | Type   | Mandatory| Description                                                                             |
 | --------  | ------- | ---- | -------------------------------------------------------------------------------- |
-| willFling | boolean | Yes  | Whether a fling animation will follow. **true**: A fling animation will occur. **false**: No fling animation will occur.|
+| willFling | boolean | Yes  | Whether an inertial animation will follow. **true**: An inertial animation will follow. **false**: No inertial animation will follow.|
 
 ## Example
 
 ### Example 1: Implementing Gesture-based Scrolling
-This example configures the **enableScrollInteraction** attribute to enable gesture-based scrolling in a vertical list, with index callbacks triggered during page transitions.
+This example configures the [enableScrollInteraction](ts-container-scrollable-common.md#enablescrollinteraction11) attribute to enable gesture-based scrolling in a vertical list, with index callbacks triggered during page transitions.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
@@ -1163,7 +1296,7 @@ struct ListExample {
 ![en-us_image_0000001174264378](figures/en-us_image_0000001174264378.gif)
 
 ### Example 2: Setting Edge Fading
-This example demonstrates how to use **fadingEdge** to implement a **List** component with an edge fading effect and set the length of the fading edge.
+This example demonstrates how to use [fadingEdge](ts-container-scrollable-common.md#fadingedge14) to implement a [List](ts-container-list.md) component with an edge fading effect and set the length of the fading edge.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
@@ -1208,9 +1341,8 @@ struct ListExample {
 ![fadingEdge_list](figures/fadingEdge_list.gif)
 
 ### Example 3: Setting the Clipping Region
-This example demonstrates how to use the **clipContent** attribute to modify the clipping region of the component's content layer.
+This example demonstrates how to use the [clipContent](ts-container-scrollable-common.md#clipcontent14) attribute to modify the clipping region of the component's content layer.
 
-<!--code_no_check-->
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1241,7 +1373,7 @@ struct ScrollExample {
       .scrollBar(BarState.Off)
       .friction(0.6)
       .width(300)
-      .height("50%")
+      .height('50%')
       .padding(10)
       .safeAreaPadding(LengthMetrics.vp(10))
       .initialOffset({ yOffset: 80 })

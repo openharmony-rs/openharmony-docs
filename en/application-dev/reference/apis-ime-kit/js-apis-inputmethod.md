@@ -1,7 +1,7 @@
 # @ohos.inputMethod (Input Method Framework)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -35,6 +35,7 @@ Describes the input method application attributes.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | name<sup>9+</sup>  | string | Yes| No| Mandatory. Name of the input method package.|
@@ -338,6 +339,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
+// For details, see the parameter description of **InputMethodSubtype**.
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -407,6 +409,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
+// For details, see the parameter description of **InputMethodSubtype**.
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -793,6 +796,7 @@ Describes the attributes of the edit box, including the text input type and Ente
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | textInputType  | [TextInputType](#textinputtype10) | No| No| Enumerates the text input types.|
@@ -806,12 +810,13 @@ Describes the configuration of the edit box.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | inputAttribute  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
 | cursorInfo  | [CursorInfo](#cursorinfo10) | No| Yes| Cursor information.|
 | selection  | [Range](#range10) | No| Yes| Text selection range.|
-| windowId  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| windowId  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 | newEditBox<sup>20+</sup> | boolean | No| Yes| Whether the edit box is new. The value **true** means the edit box is new; the value **false** means the opposite.|
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | No| Yes| Whether to capitalize the first letter in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.|
 
@@ -827,6 +832,7 @@ Represents the cursor information.
 | top  | number | No| No| Vertical coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
 | width  | number | No| No| Width of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
 | height  | number | No| No| Height of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
+| displayId  | number | No| Yes| ID of the monitor where the cursor is located.<br>**Since**: 26.0.0|
 
 ## Range<sup>10+</sup>
 
@@ -862,6 +868,7 @@ Describes the window information of the input method keyboard.
 | top  | number | No| No| Vertical coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
 | width  | number | No| No| Width of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
 | height  | number | No| No| Height of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
+| displayId<sup>23+</sup> | number | No| Yes| ID of the display where the soft keyboard window is located.<br>**Model restriction**: This parameter can be used only in the stage model.|
 
 ## EnabledState<sup>15+</sup>
 
@@ -894,11 +901,11 @@ Represents a custom communication object.
 
 > **NOTE**
 >
-> - You can register this object to receive custom communication data sent by the input method application. When the custom communication data is received, the [onMessage](#onmessage15) callback in this object is triggered.
+> You can register this object to receive custom communication data sent by the input method application. When the custom communication data is received, the [onMessage](#onmessage15) callback in this object is triggered.
 >
-> - This object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
+> This object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
 >
-> - If this object is unregistered, its [onTerminated](#onterminated15) callback will be triggered.
+> If this object is unregistered, its [onTerminated](#onterminated15) callback will be triggered.
 
 ### onMessage<sup>15+</sup>
 
@@ -908,9 +915,9 @@ Receives custom data sent by the input method application.
 
 > **NOTE**
 >
-> - This callback is triggered when the registered MeesageHandler receives custom communication data sent by the input method application.
+> This callback is triggered when the registered MeesageHandler receives custom communication data sent by the input method application.
 >
-> - The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
+> The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -931,7 +938,7 @@ let messageHandler: inputMethod.MessageHandler = {
     console.info('OnTerminated.');
   },
   onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-    console.info('recv message.');
+    console.info(`recv message, msg: ${msgId}, msgParam: ${JSON.stringify(msgParam)}`);
   }
 };
 inputMethodController.recvMessage(messageHandler);
@@ -945,9 +952,9 @@ Listens for MessageHandler termination.
 
 > **NOTE**
 >
-> - When an application registers a new MessageHandler object, the **OnTerminated** callback of the previous registered MessageHandler object is triggered.
+> When an application registers a new MessageHandler object, the **OnTerminated** callback of the previous registered MessageHandler object is triggered.
 >
-> - When an application unregisters a MessageHandler object, the **OnTerminated** callback of the current registered MessageHandler object is triggered.
+> When an application unregisters a MessageHandler object, the **OnTerminated** callback of the current registered MessageHandler object is triggered.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -961,7 +968,7 @@ let messageHandler: inputMethod.MessageHandler = {
     console.info('OnTerminated.');
   },
   onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-    console.info('recv message.');
+    console.info(`recv message, msg: ${msgId}, msgParam: ${JSON.stringify(msgParam)}`);
   }
 };
 inputMethodController.recvMessage(messageHandler);
@@ -994,6 +1001,19 @@ Enumerates the reasons for attachment failure.
 | IME_ABNORMAL  | 1 |The input method application is abnormal.|
 | SERVICE_ABNORMAL  | 2 |The input method framework service is abnormal.|
 
+## AttachOptions<sup>23+</sup>
+
+Defines additional options for binding an input method.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+| Name| Type| Read-only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | No| Yes|Reason for requesting the keyboard.|
+| showKeyboard | boolean | No| Yes| Whether to start the input method keyboard after the self-drawing component is attached to the input method.<br>- **true** means to start the input method keyboard.<br>- **false** means not to start the input method keyboard.|
+
 ## InputMethodController
 
 In the following API examples, you must first use [getController](#inputmethodgetcontroller9) to obtain an **InputMethodController** instance, and then call the APIs using the obtained instance.
@@ -1006,9 +1026,9 @@ Attaches a self-drawing component to the input method. This API uses an asynchro
 
 > **NOTE**
 >
-> - An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
 >
-> - If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1057,9 +1077,9 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 
 > **NOTE**
 >
-> - An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
 >
-> - If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1111,9 +1131,9 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 
 > **NOTE**
 >
-> - An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
 >
-> - If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1154,6 +1174,63 @@ let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
 let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
 
 inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### attachWithUIContext<sup>23+</sup>
+
+attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
+
+Attaches a self-drawing component to the input method. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+|  Name |    Type |   Mandatory  |   Description  |
+| -------- | -------- | -------- | -------- |
+| uiContext | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | Yes| **UIContext** instance.|
+| textConfig | [TextConfig](#textconfig10) | Yes| Configuration of the edit box.|
+| attachOptions | [AttachOptions](#attachoptions23) | No| Additional options for binding.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                              |
+| -------- | -------------------------------------- |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
+
+let uiContext: UIContext | undefined = UIContext.getCallingScopeUIContext();
+let inputAttribute: inputMethod.InputAttribute = {
+  textInputType: inputMethod.TextInputType.TEXT,
+  enterKeyType: inputMethod.EnterKeyType.GO
+}
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+let attachOptions: inputMethod.AttachOptions = { showKeyboard: true };
+inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOptions).then(() => {
   console.info('Succeeded in attaching inputMethod.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
@@ -1338,9 +1415,9 @@ Exits the text editing mode. This API uses an asynchronous callback to return th
 
 > **NOTE**
 >
-> - If the soft keyboard is displayed when this API is called, it will be hidden.
+> If the soft keyboard is displayed when this API is called, it will be hidden.
 >
-> - Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput10) again to reenter the text editing mode.
+> Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput10) again to reenter the text editing mode.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1382,9 +1459,9 @@ Exits the text editing mode. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - If the soft keyboard is displayed when this API is called, it will be hidden.
+> If the soft keyboard is displayed when this API is called, it will be hidden.
 >
-> - Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput10) again to reenter the text editing mode.
+> Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput10) again to reenter the text editing mode.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2117,9 +2194,9 @@ Sends the custom communication to the input method application. This API uses a 
 
 > **NOTE**
 >
-> - This API can be called only when the edit box is attached to the input method and enter the edit mode, and the input method application is in full experience mode.
+> This API can be called only when the edit box is attached to the input method and enter the edit mode, and the input method application is in full experience mode.
 >
-> - The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
+> The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2171,9 +2248,9 @@ Registers or unregisters MessageHandler.
 
 > **NOTE**
 >
-> - The [MessageHandler](#messagehandler15) object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
+> The [MessageHandler](#messagehandler15) object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
 >
-> - If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered.
+> If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2218,9 +2295,9 @@ Ends this input session. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 > 
-> - This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
 > 
-> - This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession](#stopinputsession9) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession](#stopinputsession9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2256,9 +2333,9 @@ Ends this input session. This API uses a promise to return the result.
 
 > **NOTE**
 > 
-> - This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
 > 
-> - This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession](#stopinputsession9) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession](#stopinputsession9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2646,7 +2723,7 @@ Disables listening for the cursor movement event of the input method.
 | Name | Type   | Mandatory| Description |
 | ------ | ------ | ---- | ---- |
 | type   | string | Yes  | Listening type. The value is fixed at **'moveCursor'**.|
-| callback | (direction: [Direction<sup>10+</sup>](#direction10)) => void | No| Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | (direction: [Direction](#direction10)) => void | No| Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Example**
 
@@ -3452,9 +3529,9 @@ Obtains a list of activated or deactivated input methods. This API uses an async
 
 > **NOTE**
 > 
-> - An activated input method refers to an input method that is enabled. The default input method is enabled by default. Other input methods can be enabled or disabled as needed.
+> An activated input method refers to an input method that is enabled. The default input method is enabled by default. Other input methods can be enabled or disabled as needed.
 > 
-> - The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
+> The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3497,9 +3574,9 @@ Obtains a list of activated or deactivated input methods. This API uses a promis
 
 > **NOTE**
 > 
-> - An activated input method refers to an input method that is enabled. The default input method is enabled by default. Other input methods can be enabled or disabled as needed.
+> An activated input method refers to an input method that is enabled. The default input method is enabled by default. Other input methods can be enabled or disabled as needed.
 > 
-> - The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
+> The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3546,9 +3623,9 @@ Obtains a list of activated or deactivated input methods. This API returns the r
 
 > **NOTE**
 >
-> - An activated input method refers to an input method that is enabled. The default input method is enabled by default. Other input methods can be enabled or disabled as needed.
+> An activated input method refers to an input method that is enabled. The default input method is enabled by default. Other input methods can be enabled or disabled as needed.
 >
-> - The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
+> The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3596,7 +3673,7 @@ Obtains a list of all input methods. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -3688,7 +3765,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 Displays a dialog box for selecting an input method. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3732,7 +3809,7 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3836,7 +3913,7 @@ Displays a dialog box for selecting an input method. This API uses an asynchrono
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3868,7 +3945,7 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3906,7 +3983,7 @@ Obtains the input method state. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |

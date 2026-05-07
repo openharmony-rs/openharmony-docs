@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 应用配置文件中定义的快捷方式信息，[FA模型](../../application-models/ability-terminology.md#fa模型)配置在[config.json](../../quick-start/application-configuration-file-overview-fa.md)文件中进行配置，[Stage模型](../../application-models/ability-terminology.md#stage模型)配置在开发视图的resources/base/profile下面定义配置文件即可。
 
@@ -14,7 +14,7 @@
 >
 > 从API version 9开始，该模块不再维护。建议使用[bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)替代。
 
-## ShortcutInfo<sup>(deprecated)<sup>
+## ShortcutInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >
@@ -24,13 +24,13 @@
 
 | 名称                    | 类型                                       | 只读 | 可选 | 说明                         |
 | ----------------------- | ------------------------------------------ | ---- | ---- | ---------------------------- |
-| id                      | string                                     | 是   | 否   | 快捷方式所属应用程序的Id。     |
+| id                      | string                                     | 是   | 否   | 快捷方式所属应用程序的ID。     |
 | bundleName              | string                                     | 是   | 否   | 包含该快捷方式的Bundle名称。 |
 | hostAbility             | string                                     | 是   | 否   | 快捷方式的本地Ability信息。    |
 | icon                    | string                                     | 是   | 否   | 快捷方式的图标。               |
-| iconId<sup>8+</sup>     | number                                     | 是   | 否   | 快捷方式的图标Id。             |
+| iconId<sup>8+</sup>     | number                                     | 是   | 否   | 快捷方式的图标ID。             |
 | label                   | string                                     | 是   | 否   | 快捷方式的名称。               |
-| labelId<sup>8+</sup>    | number                                     | 是   | 否   | 快捷方式的名称Id。             |
+| labelId<sup>8+</sup>    | number                                     | 是   | 否   | 快捷方式的名称ID。             |
 | disableMessage          | string                                     | 是   | 否   | 快捷方式的禁用消息。           |
 | wants                   | Array&lt;<!--Del-->[<!--DelEnd-->ShortcutWant<!--Del-->](js-apis-bundle-ShortcutInfo-sys.md#shortcutwantdeprecated)<!--DelEnd-->&gt; | 是   | 否   | 快捷方式意图列表。         |
 | isStatic                | boolean                                    | 是   | 是   | 快捷方式是否为静态，取值为true表示是静态的快捷方式，取值为false表示不是静态的快捷方式。          |

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 应用配置文件中定义的快捷方式信息，[FA模型](../../application-models/ability-terminology.md#fa模型)配置在[config.json](../../quick-start/application-configuration-file-overview-fa.md)文件中进行配置，Stage模型在开发视图的resources/base/profile下面定义配置文件即可。
 
@@ -16,7 +16,7 @@
 > 
 > 本模块为系统接口。
 
-## ShortcutWant<sup>(deprecated)<sup>
+## ShortcutWant<sup>(deprecated)</sup>
 
 > **说明：**
 >

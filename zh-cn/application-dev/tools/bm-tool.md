@@ -57,7 +57,7 @@ bm help
 ## 安装命令（install）
 
 ```bash
-bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] [-d]
+bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] [-d] [-g]
 ```
 
   **安装命令参数列表**
@@ -68,10 +68,11 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | -h | 帮助信息。 |
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
-| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
+| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。从API version 24开始，当指定目录时，路径目录下可以存在多个同包名、不同模块名的HSP。API version 23及之前版本，路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 | -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。从API version 23开始支持。 |
+| -g | 可选参数，安装签名证书类型为debug的应用时自动授予[user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)权限。<br>仅对[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)下的签名证书类型为debug的应用生效。可以通过<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中的type字段查看签名证书类型。<br>签名证书类型为debug的应用更新为签名证书类型为release的应用时取消已授予的[user_grant](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[manual_settings](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)权限。从API version 24开始支持。 |
 
 
 示例：
@@ -92,6 +93,8 @@ bm install -p /data/local/tmp/hapPath/
 bm install -p /data/local/tmp/ohos.app.hap -w 180
 # 设备已安装了一个高版本的应用，覆盖安装一个同包名低版本的hap
 bm install -p /data/local/tmp/ohos.app.hap -d
+# 安装签名证书类型为debug的应用时自动授予user_grant权限和manual_settings权限
+bm install -p /data/local/tmp/ohos.app.hap -g
 ```
 
 ## 卸载命令（uninstall）
@@ -611,7 +614,7 @@ HAP/HSP包没有签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
-方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置appWithSignedPkg为true，保证APP里的HAP/HSP有签名。
+方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置[packOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)的appWithSignedPkg属性为true，保证APP里的HAP/HSP有签名。
 
 ### 9568321 签名文件解析失败
 **错误信息**
@@ -837,7 +840,9 @@ error: install parse profile prop check error.
             ```
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
+
        ![示例图](figures/zh-cn_image_0000001635641893.png)
+
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
         ```shell
@@ -881,7 +886,16 @@ error: Failed to install the HAP or HSP because the dependent module does not ex
 场景二：依赖的HSP与HAP不在同一工程内：
 
 在安装HAP前，使用[bm install](#安装命令install)命令安装依赖的HSP。
-  
+
+场景三：依赖集成态HSP：
+
+如果依赖集成态HSP，通过hdc工具安装应用时，需要同时或提前安装集成态HSP编译后的包。是否依赖集成态HSP，可以通过如下方法查询：
+
+DevEco Studio自动安装运行应用时，查看`Run`中的日志，如果存在`remote_hsp`目录，说明依赖集成态HSP，`remote_hsp`目录下的HSP文件就是集成态HSP编译后的包。
+
+![示例图](figures/remote_hsp.png)
+
+
 ### 9568259 安装解析配置文件缺少字段
 **错误信息**
 
@@ -1175,7 +1189,7 @@ error: install failed due to insufficient disk memory.
 
 **处理步骤**
 
-查看设备存储空间并清理，保证满足安装所需空间，再重试安装应用。
+查看应用安装的设备存储空间并清理，保证满足安装所需空间，再重试安装应用。模拟器上存储空间清理之后仍然失败，请尝试创建新的模拟器设备，并设置更大的存储空间，详情请参考[创建新的模拟器](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-emulator-create#section1764055173710)。
 <!--RP4-->
 ```bash
 # 查看磁盘空间使用情况
@@ -1607,7 +1621,7 @@ error: install verification failed.
 
 **可能原因**
 
-校验唯一标识[appIdentifier](./../quick-start/common_problem_of_application.md#什么是appidentifier)不一样，导致安装失败。
+校验唯一标识[appIdentifier](./../quick-start/common-problem-of-application.md#什么是appidentifier)不一样，导致安装失败。
 
 **处理步骤**
 
@@ -2127,6 +2141,7 @@ error: install version not compatible.
 **可能原因**
 
 当前安装HSP的版本信息与已安装HAP的版本信息不匹配。
+
 安装HSP时会做如下校验：
 1. bundleName和HAP的一致。
 2. version和HAP的一致。
@@ -2572,8 +2587,7 @@ error: Failed to install the HAP because an enterprise normal/MDM bundle cannot 
 
 **可能原因**
 
-当前设备不允许安装<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。
-Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
+当前设备不允许安装<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
 
 **处理步骤**
 
@@ -2709,6 +2723,7 @@ error: check syscap filed and device type is not supported.
 
 **错误描述**
 
+<!--RP12-->
 应用配置的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)不支持安装。
 
 **可能原因**
@@ -2717,7 +2732,7 @@ error: check syscap filed and device type is not supported.
 
 **处理步骤**
 
-调整正确的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)。
+调整正确的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)。<!--RP12End-->
 
 ### 9568415 禁止安装签名证书为debug或者配置文件debug为true的加密应用
 **错误信息**
@@ -2765,12 +2780,19 @@ error: bundle cannot be installed because the appId is not same with preinstalle
 
 **可能原因**
 
-安装应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->与已卸载的预置应用都不一致。
+虽然已卸载预置应用，但在安装新应用之前，系统仍会先安装预置应用包，随后再安装新应用包。这是因为预置应用的安装签名信息中的密钥和<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->，与新安装的应用对应信息不一致。
 
 **处理步骤**
 
-方法一：重新签名，保证应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->任意一个与预置应用的一致。
-方法二：修改安装应用的[bundleName](../quick-start/app-configuration-file.md#配置文件标签)，确保与预置应用的不一致。
+方法一：重新签名。
+
+通过重新签名，确保应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->至少有一项与预置应用保持一致。
+
+<!--RP11--><!--RP11End-->
+
+方法二：更换bundleName。
+
+修改安装应用的[bundleName](../quick-start/app-configuration-file.md#配置文件标签)，确保与预置应用的bundleName不一致。
 
 ### 9568418 应用设置了卸载处置规则，不允许直接卸载
 **错误信息**
@@ -2852,7 +2874,8 @@ error: Failed to install the HAP because the device is unauthorized, make sure t
 **处理步骤**
 
 <!--RP6-->
-<!--RP6End-->重新[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+重新[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+<!--RP6End-->
 
 
 ### 9568380 卸载系统应用失败
@@ -2912,7 +2935,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 }
 ``` 
 
-### 9568433 应用缺少ohos.permission.SUPPORT_PLUGIN权限
+### 9568433 应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限
 **错误信息**
 
 error: Failed to install the plugin because host application check permission failed.
@@ -2923,7 +2946,7 @@ error: Failed to install the plugin because host application check permission fa
 
 **可能原因**
 
-应用缺少ohos.permission.SUPPORT_PLUGIN权限。
+应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 **处理步骤**
 
@@ -3402,10 +3425,47 @@ APP包签名不正确或没有签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
+
+### 9568449 二进制文件校验失败
+**错误信息**
+
+error: check bin file failed.
+
+**错误描述**
+
+用户安装应用时，二进制文件校验失败。
+
+**可能原因**
+
+1. 在应用的module.json5配置文件中配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)，但是应用未配置解压模式。
+2. 该设备不支持安装配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)的应用。
+
+**处理步骤**
+
+1. 配置应用为解压模式，即在应用的[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true。
+2. 更换为PC/2in1设备。
+
+### 9568450 安装失败，应用包需为签名证书类型为debug的应用
+**错误信息**
+
+error: Failed to install because the bundle must be debug type.
+
+**错误描述**
+
+应用包需为签名证书类型为debug的应用。
+
+**可能原因**
+
+[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)下使用[-g参数](#安装命令install)授权签名证书类型为非debug的应用。可以通过<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中的type字段来查看签名证书类型。
+
+**处理步骤**
+
+使用debug类型证书对应用重新签名。
+
 <!--Del-->
 ## 常见问题
 
-### 1. 预置系统应用已经卸载，重新安装应用时在特定场景下会报错：降级安装或者签名信息不一致
+### 预置系统应用已经卸载，重新安装应用时在特定场景下会报错：降级安装或者签名信息不一致
 
 **问题描述**
 

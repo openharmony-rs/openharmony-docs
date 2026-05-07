@@ -27,7 +27,7 @@ This module implements virtual private network (VPN) management, such as startin
 import { vpnExtension } from '@kit.NetworkKit';
 ```
 
-## LinkAddress<sup>11+</sup>
+## LinkAddress
 type LinkAddress = connection.LinkAddress
 
 Defines the network link address information.
@@ -38,7 +38,7 @@ Defines the network link address information.
 | ------ | ------------------------------------------------------------ |
 | [connection.LinkAddress](./js-apis-net-connection.md#linkaddress) | Network link address information.|
 
-## RouteInfo<sup>11+</sup>
+## RouteInfo
 type RouteInfo = connection.RouteInfo
 
 Defines the network route information.
@@ -49,7 +49,7 @@ Defines the network route information.
 | ------ | ------------------------------------------------------------ |
 | [connection.RouteInfo](./js-apis-net-connection.md#routeinfo) | Network route information.|
 
-## VpnExtensionContext<sup>11+</sup>
+## VpnExtensionContext
 type VpnExtensionContext = _VpnExtensionContext
 
 Defines the VPN extension context. It allows access to serviceExtension-specific resources.
@@ -101,8 +101,9 @@ For details about the error codes, see [Ability Error Codes](../apis-ability-kit
 Stage model:
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -119,13 +120,18 @@ struct Index {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize(50)
+          .fontSize(40)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
-        }.width('100%')
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
+      }.width('100%')
     }.height('100%')
   }
 }
@@ -171,8 +177,9 @@ For details about the error codes, see [Ability Error Codes](../apis-ability-kit
 Stage model:
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -191,19 +198,137 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
         Button('Stop Extension').onClick(() => {
           console.info("btn end")
-          vpnExtension.stopVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.stopVpnExtensionAbility(want).then(() => {
+            console.info('stopVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('stopVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
 
-        }.width('100%')
+      }.width('100%')
     }.height('100%')
   }
 }
+```
+
+## vpnExtension.createVpnObserver
+
+createVpnObserver(): VpnObserver
+
+Creates a VPN observer object. It is used to listen for VPN-related events.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetManager.Vpn
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                           | Description                   |
+| :------------------------------ | :---------------------- |
+| [VpnObserver](#vpnobserver) | VPN observer object.|
+
+**Example**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+```
+
+## VpnObserver
+
+Defines a VPN observer object. It is used to listen for VPN-related events. Before calling **VpnObserver** APIs, you need to create a VPN connection object by calling [vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver).
+
+### onAuthorizationResult
+
+onAuthorizationResult(callback: Callback\<boolean\>): void
+
+Registers a listener for the user authorization result. The authorization result is displayed in a dialog box after [startVpnExtensionAbility](#vpnextensionstartvpnextensionability) is called. The notification is sent only when the user taps the dialog box, and only the result of the current VPN is received. If you do not need to listen for the authorization result, call [offAuthorizationResult](#offauthorizationresult) to cancel the registration.
+
+>**NOTE**
+>
+>If this API is called multiple times, only the last callback takes effect.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetManager.Vpn
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback\<boolean\> |Yes  | Callback used to return the user authorization result. The value **true** indicates that the user agrees to the authorization, and the value **false** indicates the opposite.|
+
+**Example**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+vpnObserver.onAuthorizationResult((result: boolean) => {
+  if (result) {
+    console.info('VPN authorization succeeded');
+  } else {
+    console.error('VPN authorization failed');
+  }
+});
+```
+
+### offAuthorizationResult
+
+offAuthorizationResult(callback?: Callback\<boolean\>): void
+
+Unregisters a listener for the user authorization result.
+
+>**NOTE**
+>
+>If you have called [onAuthorizationResult](#onauthorizationresult) multiple times to register listeners and want to unregister the listener, you need to pass the callback passed in the last call or pass no parameter.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetManager.Vpn
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback\<boolean\> | No  | Listener callback used to return the user authorization result.<br>If this parameter is passed, the specified listener is unregistered. If no parameter is passed, all registered listeners are unregistered.|
+
+**Example**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+
+let callback = (result: boolean) => {
+  console.info('Authorization result: ' + result);
+};
+// Register a listener.
+vpnObserver.onAuthorizationResult(callback);
+
+// Unregister a specified listener.
+vpnObserver.offAuthorizationResult(callback);
+
+// Unregister all registered listeners.
+vpnObserver.offAuthorizationResult();
 ```
 
 ## vpnExtension.createVpnConnection
@@ -266,6 +391,10 @@ create(config: VpnConfig): Promise\<number\>
 
 Creates a VPN based on the specified configuration. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the VPN and clear resources when the VPN is not needed.
+
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
 **Parameters**
@@ -308,6 +437,13 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
     console.info("vpn createVpnConnection: " + JSON.stringify(vpnConnection));
     this.SetupVpn();
+    
+    // If no VPN is required, call destroy() to destroy the VPN and clear resources.
+    vpnConnection.destroy().then(() => {
+      console.info("destroy success.");
+    }).catch((error : BusinessError) => {
+      console.error(`destroy fail. Code:${error.code}, message:${error.message}`);
+    });
   }
   SetupVpn() {
         class Address {
@@ -478,7 +614,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 destroy(vpnId: string): Promise\<void\>
   
-Destroys a VPN network based on the specified VPN ID. This API uses a promise to return the result.
+Destroys a VPN based on the specified VPN ID. This API uses a promise to return the result.
   
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
@@ -531,6 +667,10 @@ generateVpnId(): Promise\<string\>
 Generates a unique VPN ID. This API uses a promise to return the result.
 
 To use the multi-VPN capability of the system, you need to call this API to generate a VPN ID and configure it in **VpnConfig**.
+
+>**NOTE**
+>
+>Currently, the multi-VPN capability of the system supports only IPv4.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
@@ -617,16 +757,17 @@ Defines the VPN configuration.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
+<!--Table: 19%; 20%; 8%; 8%; 45%-->
 | Name            | Type                                     | Read-only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs. A maximum of 64 IP addresses are supported.                                 |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs. Before API version 23, a maximum of 64 IP addresses are supported. Starting from API version 23, a maximum of 2000 IP addresses are supported.                                 |
 | vpnId<sup>20+</sup>           | string | No| Yes| Unique VPN ID.| 
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | No | Yes| Routes of vNICs. Currently, a maximum of 1024 routes can be configured.                 |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | No | Yes| Route information of the vNIC. Before API version 23, a maximum of 1024 routes can be configured. Starting from API version 23, a maximum of 10,000 routes can be configured.                 |
 | dnsAddresses        | Array\<string\>                                                 | No | Yes| IP address of the DNS server. After the IP address is configured, when the VPN is active and proxy-enabled applications access the Internet, the configured DNS server will be used for DNS queries.                                   |
 | searchDomains       | Array\<string\>                                                | No | Yes| List of DNS search domains.                                    |
 | mtu                 | number                                                         | No | Yes| Maximum transmission unit (MTU), in bytes. The value range is [576,1500].              |
-| isIPv4Accepted      | boolean                                                         | No | Yes| Whether IPv4 is supported. The value **true** indicates that the IPv4 is supported, and the value **false** indicates the opposite. The default value is **true**. |
-| isIPv6Accepted      | boolean                                                         | No | Yes| Whether IPV6 is supported. The value **true** indicates that the IPV6 is supported, and the value **false** indicates the opposite. The default value is **false**.|
+| isIPv4Accepted      | boolean                                                         | No | Yes| Whether IPv4 is supported. The value **true** indicates that the IPv4 is supported, and the value **false** indicates the opposite. The default value is **true**.<br>Note: If the IPv4 is supported, you need to configure IPv4 addresses in **addresses**. |
+| isIPv6Accepted      | boolean                                                         | No | Yes| Whether IPv6 is supported. The value **true** indicates that the IPV6 is supported, and the value **false** indicates the opposite. The default value is **false**.<br>Note: If the IPv6 is supported, you need to configure IPv6 addresses in **addresses**. |
 | isInternal          | boolean                                                         | No | Yes| Whether the built-in VPN is supported. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite. The default value is **false**.|
 | isBlocking          | boolean                                                        | No | Yes| Whether the blocking mode is used. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite. The default value is **false**.      |
 | trustedApplications | Array\<string\>                                                | No | Yes| List of trusted applications, which are represented by package names of the string type. After such a list is configured, only the applications in the list can be proxied by the VPN according to the specified **routes**.<br>**Note**: Configure either **trustedApplications** or **blockedApplications** as they are mutually exclusive.                        |

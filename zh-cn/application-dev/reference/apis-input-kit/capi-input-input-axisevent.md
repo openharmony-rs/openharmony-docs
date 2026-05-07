@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ```c
 typedef struct Input_AxisEvent Input_AxisEvent
@@ -25,5 +25,5 @@ typedef struct Input_AxisEvent Input_AxisEvent
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) | 创建轴事件对象。 |
+| [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) | 创建轴事件对象。通过调用[OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent)销毁轴事件对象。 |
 | [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent) | 销毁轴事件对象。 |

@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 Want是对象间信息传递的载体，可以用于应用组件间的信息传递。Want的使用场景之一是作为startAbility的参数，其包含了指定的启动目标，以及启动时需携带的相关数据，如bundleName和abilityName字段分别指明目标Ability所在应用Bundle名称以及对应包内的Ability名称。当Ability A需要启动Ability B并传入一些数据时，可使用Want作为载体将这些数据传递给Ability B。
 
@@ -133,34 +133,33 @@ import Want from '@ohos.application.Want';
         ```
     * 文件描述符（FD）
         ```ts
-        import fs from '@ohos.file.fs';
+        import fileIo from '@ohos.file.fs';
         import Want from '@ohos.application.Want';
         import { BusinessError } from '@ohos.base';
         import AbilityConstant from '@ohos.app.ability.AbilityConstant';
         import UIAbility from '@ohos.app.ability.UIAbility';
 
-
         let fd: number = 0;
         try {
-        fd = fs.openSync('/data/storage/el2/base/haps/pic.png').fd;
-        } catch(e) {
-        console.error(`openSync fail: ${JSON.stringify(e)}`);
+            fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+        } catch (e) {
+            console.error(`OpenSync failed, error code: ${e.code}, error msg: ${e.message}.`);
         }
         let want: Want = {
-        deviceId: '', // deviceId为空表示本设备
-        bundleName: 'com.example.myapplication',
-        abilityName: 'EntryAbility',
-        parameters: {
-            'keyFd':{'type':'FD', 'value':fd}
-        }
+            deviceId: '', // deviceId为空表示本设备
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility',
+            parameters: {
+                'keyFd': { 'type': 'FD', 'value': fd }
+            }
         };
 
-        class MyAbility extends UIAbility{
-        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
-            this.context.startAbility(want, (error: BusinessError) => {
-            // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
-            console.error(`error.code = ${error.code}`);
-            });
-        }
+        class MyAbility extends UIAbility {
+            onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+                this.context.startAbility(want, (error: BusinessError) => {
+                    // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+                    console.error(`StartAbility failed, error.code: ${error.code}, err msg: ${error.message}.`);
+                });
+            }
         }
         ```

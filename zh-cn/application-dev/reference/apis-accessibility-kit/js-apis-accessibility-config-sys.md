@@ -93,7 +93,7 @@ let name: string = 'com.ohos.example/axExtension';
 let capability: accessibility.Capability[] = ['retrieve'];
 
 config.enableAbility(name, capability).then(() => {
-  console.info(`Succeeded  in enable ability, name is ${name}, capability is ${capability}`);
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
@@ -145,7 +145,7 @@ config.enableAbility(name, capability, (err: BusinessError) => {
     console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`); 
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`); 
 });
 ```
 
@@ -203,7 +203,7 @@ let connectCallback: config.ConnectCallback = {
 }
 
 config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
-  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`);
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
@@ -253,7 +253,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name).then(() => {
-  console.info(`Succeeded in disable ability, name is ${name}`);
+  console.info(`Succeeded in disabling ability, name is ${name}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
 })
@@ -299,10 +299,10 @@ let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name, (err: BusinessError) => {
   if (err) {
-    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in disable, name is ${name}`);
+  console.info(`Succeeded in disabling, name is ${name}`);
 });
 ```
 
@@ -549,7 +549,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let value: boolean = true;
 
 config.highContrastText.set(value).then(() => {
-  console.info(`Succeeded in set highContrastText value is ${value}`);
+  console.info(`succeeded in setting highContrastText value is ${value}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
 });
@@ -597,7 +597,7 @@ config.highContrastText.set(value, (err: BusinessError) => {
     console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in set highContrastText, value is ${value}`);
+  console.info(`succeeded in setting highContrastText, value is ${value}`);
 });
 ```
 
@@ -633,7 +633,7 @@ import { config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 config.highContrastText.get().then((data: boolean) => {
-  console.info(`Succeeded in get highContrastText, data is ${data}`);
+  console.info(`succeeded in getting highContrastText, data is ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
 });
@@ -674,7 +674,7 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
     console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get highContrastText, data is ${data}`);
+  console.info(`succeeded in getting highContrastText, data is ${data}`);
 });
 ```
 
@@ -786,6 +786,7 @@ type OnDisconnectCallback = () => void
 ## DaltonizationColorFilter
 
 用于不同弱视类型的校正颜色滤镜。  
+
 颜色滤镜功能开启时（[daltonizationState](#属性)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](#属性)设置为false)，显示为正常类型<sup>11+</sup>。
 
 **系统接口**：此接口为系统接口。
@@ -816,6 +817,7 @@ type OnDisconnectCallback = () => void
 ## RepeatClickInterval<sup>11+</sup>
 
 用于不同时间间隔的忽略重复点击。  
+
 忽略重复点击功能开启时（[ignoreRepeatClick](#属性)设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时（[ignoreRepeatClick](#属性)设置为false)，显示为正常类型。
 
 **系统接口**：此接口为系统接口。

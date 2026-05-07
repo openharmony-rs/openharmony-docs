@@ -44,15 +44,14 @@ SideBarContainer( type?: SideBarContainerType )
 
 容器内侧边栏样式枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- |-------- |
-| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于minContentWidth + minSideBarWidth，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
-| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 |
-| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth+minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth+minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
+| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于[minContentWidth](#mincontentwidth10) + [minSideBarWidth](#minsidebarwidth)，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| DISPLACE | 3 | 侧边栏和内容区并列显示，内容区超出部分移出组件外。侧边栏展开时，内容区显示灰色蒙层（颜色为#33000000）并被禁用事件，点击内容区可收起侧边栏。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -284,10 +283,10 @@ Embed场景下，增大组件尺寸时仅增大内容区的尺寸。
 
 当缩小侧边栏的尺寸至minSideBarWidth后，继续缩小组件尺寸时，
 
-- 如果autoHide属性为false，则会保持侧边栏宽度minSideBarWidth和内容区宽度minContentWidth不变，但内容区会被截断显示；
+- 如果[autoHide](#autohide9)属性为false，则会保持侧边栏宽度[minSideBarWidth](#minsidebarwidth)和内容区宽度minContentWidth不变，但内容区会被截断显示；
 - 如果autoHide属性为true，则会优先隐藏侧边栏，然后继续缩小至内容区宽度minContentWidth后，内容区宽度保持不变，但内容区会被截断显示。
 
-minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
+minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -298,6 +297,39 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 | 参数名 | 类型                                 | 必填 | 说明                                                         |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [Dimension](ts-types.md#dimension10) | 是   | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>单位：vp |
+
+### showSideBarWithGesture
+
+showSideBarWithGesture(value: boolean)
+
+设置是否支持通过手势滑动来显示或隐藏侧边栏。未通过该接口设置时，不支持通过手势滑动显示或隐藏侧边栏。
+
+> **说明：** 
+>
+> - 手势滑动生效范围为侧边栏+内容区（不含分割线），滑动距离达到100vp时改变侧边栏显示或隐藏状态，最大可滑动距离等于侧边栏宽度。
+>
+> - 当侧边栏位于容器左侧时：
+>   - 侧边栏隐藏时可向右滑动展开侧边栏。
+>   - 侧边栏显示时可向左滑动关闭侧边栏。
+>
+> - 当侧边栏位于容器右侧时：
+>   - 侧边栏隐藏时可向左滑动展开侧边栏。
+>   - 侧边栏显示时可向右滑动关闭侧边栏。
+>
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型                                 | 必填 | 说明                                                         |
+| ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | boolean | 是   | 设置是否支持通过手势滑动显示或隐藏侧边栏。<br/>true：支持通过手势滑动显示或隐藏侧边栏。<br/>false：不支持通过手势滑动显示或隐藏侧边栏。 |
 
 ## ButtonStyle对象说明
 
@@ -313,7 +345,7 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 | top | number | 否 | 是 | 设置侧边栏控制按钮距离容器上界限的间距。<br/>默认值：48vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 | width | number | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 | height | number | 否 | 是 | 设置侧边栏控制按钮的高度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞) |
-| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18对象说明) | 否 | 是 | 设置侧边栏控制按钮的图标。 |
+| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18对象说明) | 否 | 是 | 设置侧边栏控制按钮的图标。<br/>资源获取错误以及未设置该属性时，使用默认图标。 |
 
 ## ButtonIconOptions<sup>18+</sup>对象说明
 
@@ -333,10 +365,6 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 | hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏隐藏时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
 | switching<sup>8+</sup> | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是   | 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
-> **说明：**
->
-> 资源获取错误时，使用默认图标。
-
 ## SideBarPosition<sup>9+</sup>枚举说明
 
 侧边栏显示位置。
@@ -345,10 +373,10 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Start | 侧边栏位于容器左侧。 |
-| End | 侧边栏位于容器右侧。 |
+| 名称 | 值 | 说明 |
+| -------- | ---- | -------- |
+| Start | 0 | 侧边栏位于容器左侧。 |
+| End | 1 | 侧边栏位于容器右侧。 |
 
 ## DividerStyle<sup>10+</sup>对象说明
 
@@ -360,18 +388,18 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 
 | 名称        | 类型      | 只读 | 可选 | 说明                                     |
 | ----------- | ------------- | ---- | ---- | ---------------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)        | 否 | 否   | 分割线的线宽。<br/>默认值：1vp。<br/>取值范围：[0, +∞)。<br/>**说明**：<br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
+| strokeWidth | [Length](ts-types.md#length)        | 否 | 否   | 分割线的线宽。<br/>默认值：1vp<br/>单位：vp<br/>取值范围：[0, +∞)。<br/>**说明**：<br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
 | color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#000000，3%   |
-| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0。<br/>取值范围：[0, +∞)。 |
-| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0。<br/>取值范围：[0, +∞)。 |
+| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
+| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 >  **说明：** 
 >
 >  针对侧边栏子组件设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效。
 >  针对侧边栏内容区设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
 >
->  当showSideBar属性未设置时，依据组件大小进行自动显示：
+>  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
 >
->  - 小于minSideBarWidth + minContentWidth：默认不显示侧边栏。
+>  - 小于[minSideBarWidth](#minsidebarwidth) + [minContentWidth](#mincontentwidth10)：默认不显示侧边栏。
 >  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
 
 ## 事件
@@ -386,11 +414,9 @@ onChange(callback: (value: boolean) =&gt; void)
 
 触发该事件的条件：
 
-1、showSideBar属性值变换时；
-
-2、showSideBar属性自适应行为变化时；
-
-3、分割线拖拽触发autoHide时。
+1. showSideBar属性值变换时。
+2. showSideBar属性自适应行为变化时。
+3. 分割线拖拽触发[autoHide](#autohide9)时。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -412,6 +438,7 @@ onChange(callback: (value: boolean) =&gt; void)
 @Entry
 @Component
 struct SideBarContainerExample {
+  // $r("app.media.icon")需要替换为开发者所需的图像资源文件。
   normalIcon: Resource = $r("app.media.icon");
   selectedIcon: Resource = $r("app.media.icon");
   @State arr: number[] = [1, 2, 3];
@@ -444,6 +471,7 @@ struct SideBarContainerExample {
     }
     .controlButton({
       icons: {
+        // $r('app.media.drawer')需要替换为开发者所需的图像资源文件。
         hidden: $r('app.media.drawer'),
         shown: $r('app.media.drawer'),
         switching: $r('app.media.drawer')

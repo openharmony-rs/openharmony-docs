@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [Function Flow Runtime Kit概述](ffrt-overview.md)
 - [Function Flow Runtime并发范式](ffrt-concurrency-paradigm.md)

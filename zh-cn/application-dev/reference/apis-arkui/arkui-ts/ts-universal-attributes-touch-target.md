@@ -19,7 +19,7 @@
 
 responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-设置一个或多个触摸热区。
+设置一个或多个触摸热区。从API版本26.0.0开始，未主动设置时[Button](./ts-basic-components-button.md)、[Button模式的Toggle](./ts-basic-components-toggle.md)、[Select](./ts-basic-components-select.md)、[Chip](./ohos-arkui-advanced-Chip.md)和[ChipGroup](./ohos-arkui-advanced-ChipGroup.md)组件的触摸热区默认最小高度从28vp变更为32vp。该变更仅影响触摸命中范围，不影响组件实际显示高度。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -152,20 +152,35 @@ struct TouchTargetExample {
   build() {
     Column({ space: 20 }) {
       Text("{x:0,y:0,width:'50%',height:'100%'}")
-      // 热区宽度为按钮的一半，点击右侧无响应
+      // 热区宽度为按钮的一半，点击button1右半部无响应
       Button("button1")
-        .responseRegion({ x: 0, y: 0, width: '50%', height: '100%' })
+        .responseRegion({
+          x: 0,
+          y: 0,
+          width: '50%',
+          height: '100%'
+        })
         .onClick(() => {
           this.text = 'button1 clicked'
         })
 
       // 为一个组件添加多个热区
       Text("[{x:'100%',y:0,width:'50%',height:'100%'}," +
-      "\n{ x: 0, y: 0, width: '50%', height: '100%' }]")
+        "\n{ x: 0, y: 0, width: '50%', height: '100%' }]")
       Button("button2")
         .responseRegion([
-          { x: '100%', y: 0, width: '50%', height: '100%' }, // 第一个热区宽度为按钮的一半，点击按钮右侧宽度一半区域，点击事件生效
-          { x: 0, y: 0, width: '50%', height: '100%' } // 第二个热区宽度为按钮的一半，点击button2左半边，点击事件生效
+          {
+            x: '100%',
+            y: 0,
+            width: '50%',
+            height: '100%'
+          }, // 第一个热区宽度为按钮的一半，且右移一个按钮宽度，点击button2右边按钮宽度一半的区域，点击事件生效
+          {
+            x: 0,
+            y: 0,
+            width: '50%',
+            height: '100%'
+          }// 第二个热区宽度为按钮的一半，点击button2左半部，点击事件生效
         ])
         .onClick(() => {
           this.text = 'button2 clicked'
@@ -173,7 +188,12 @@ struct TouchTargetExample {
       // 热区大小为整个按钮，且下移一个按钮高度，点击button3下方按钮大小区域，点击事件生效
       Text("{x:0,y:'100%',width:'100%',height:'100%'}")
       Button("button3")
-        .responseRegion({ x: 0, y: '100%', width: '100%', height: '100%' })
+        .responseRegion({
+          x: 0,
+          y: '100%',
+          width: '100%',
+          height: '100%'
+        })
         .onClick(() => {
           this.text = 'button3 clicked'
         })
@@ -204,7 +224,7 @@ struct TouchTargetExample {
   build() {
     Column({ space: 20 }) {
       Text("left part of button1")
-      // 热区宽度为按钮的一半，点击右侧无响应
+      // 热区宽度为按钮的一半，点击button1右半部无响应
       Button("button1")
         .responseRegionList([{
           x: LengthMetrics.vp(0),

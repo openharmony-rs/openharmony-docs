@@ -10,6 +10,7 @@
 The network connection management module provides basic network capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.net.connection (Network Connection Management)](js-apis-net-connection.md).
 
@@ -24,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-Obtains the global HTTP proxy configuration of the network. This API uses an asynchronous callback to return the result.
+Obtains the global network proxy configuration information. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -61,7 +62,7 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 
 getGlobalHttpProxy(): Promise\<HttpProxy>;
 
-Obtains the global HTTP proxy configuration of the network. This API uses a promise to return the result.
+Obtains the global network proxy configuration information. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -98,7 +99,7 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 
-Sets the global HTTP proxy configuration of the network. This API uses an asynchronous callback to return the result.
+Sets the global network HTTP proxy configuration information. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -150,7 +151,7 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
 
-Sets the global HTTP proxy configuration of the network. This API uses a promise to return the result.
+Sets the global network HTTP proxy configuration information. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -244,7 +245,7 @@ connection.enableAirplaneMode((error: BusinessError) => {
 
 enableAirplaneMode(): Promise\<void>
 
-Enables the airplane mode. This API uses a promise to return the result.
+Enables airplane mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -281,7 +282,7 @@ connection.enableAirplaneMode().then((error: void) => {
 
 disableAirplaneMode(callback: AsyncCallback\<void>): void
 
-Disables the airplane mode. This API uses an asynchronous callback to return the result.
+Disables airplane mode. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -320,7 +321,7 @@ connection.disableAirplaneMode((error: BusinessError) => {
 
 disableAirplaneMode(): Promise\<void>
 
-Disables the airplane mode. This API uses a promise to return the result.
+Disables airplane mode. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -358,7 +359,7 @@ connection.disableAirplaneMode().then((error: void) => {
 
 factoryReset(): Promise\<void\>
 
-Resets the network settings to factory defaults. This API uses a promise to return the result.
+Resets the network settings to the factory defaults. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -473,6 +474,12 @@ Obtains the current proxy mode. This API uses a promise to return the result.
 |---------------------------| ------------------------ |
 | Promise\<[ProxyMode](#proxymode20)\> | Promise used to return the current proxy mode.|
 
+**Error codes**
+
+| ID| Error Message                       |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 202     | Non-system applications use system APIs.              |
 
 **Example**
 
@@ -484,5 +491,254 @@ connection.getProxyMode().then(mode => {
     console.info("Current proxy mode:", mode);
 }).catch((error: BusinessError) => {
     console.error("Error getting proxy mode:", error);
+});
+```
+
+## connection.createVlanInterface<sup>23+</sup>
+
+createVlanInterface(ifName: string, vlanId: number): Promise\<void\>
+
+Creates a virtual local area network (VLAN) with specified **vlanId** on a specified Ethernet NIC. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- Currently, this API supports only the PC. For other device types, the error code 2100002 is returned when this API is called.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.CONNECTIVITY_INTERNAL
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | Yes| NIC name.|
+| vlanId | number | Yes| VLAN ID. The value range is [0, 4094].|
+
+**Return value**
+
+| Type| Description|
+| -------- | ------------------------ |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**Example**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+connection.createVlanInterface(ifName, vlanId).then(() => {
+  console.info(`Create vlan success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create vlan. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.destroyVlanInterface<sup>23+</sup>
+
+destroyVlanInterface(ifName: string, vlanId: number): Promise\<void\>
+
+Deletes a VLAN specified by **vlanId** from a specified Ethernet NIC. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- Currently, this API supports only the PC. For other device types, the error code 2100002 is returned when this API is called.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.CONNECTIVITY_INTERNAL
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | Yes| NIC name.|
+| vlanId | number | Yes| VLAN ID. The value range is [0, 4094].|
+
+**Return value**
+
+| Type| Description|
+| -------- | ------------------------ |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**Example**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+connection.destroyVlanInterface(ifName, vlanId).then(() => {
+  console.info(`Destroy vlan success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to destroy vlan. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.addVlanIp<sup>23+</sup>
+
+addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
+
+Adds a specified IP address and subnet mask for the VLAN specified by **vlanId** on an Ethernet NIC. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- Currently, this API supports only the PC. For other device types, the error code 2100002 is returned when this API is called.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.CONNECTIVITY_INTERNAL
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | Yes| NIC name.|
+| vlanId | number | Yes| VLAN ID. The value range is [0, 4094].|
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | Yes| Network link information.|
+
+**Return value**
+
+| Type| Description|
+| -------- | ------------------------ |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**Example**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.addVlanIp(ifName, vlanId, address).then(() => {
+  console.info(`Add vlan ip success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to add vlan ip. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.deleteVlanIp<sup>23+</sup>
+
+deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
+
+Deletes the configured IP address and subnet mask from the VLAN specified by **vlanId** on an Ethernet NIC. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- Currently, this API supports only the PC. For other device types, the error code 2100002 is returned when this API is called.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.CONNECTIVITY_INTERNAL
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | Yes| NIC name.|
+| vlanId | number | Yes| VLAN ID. The value range is [0, 4094].|
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | Yes| Network link information.|
+
+**Return value**
+
+| Type| Description|
+| -------- | ------------------------ |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+| 2100401 | The input ip address not found. |
+
+**Example**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.deleteVlanIp(ifName, vlanId, address).then(() => {
+  console.info(`Delete vlan ip success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to delete vlan ip. Code:${error.code}, message:${error.message}`);
 });
 ```

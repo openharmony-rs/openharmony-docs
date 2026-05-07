@@ -1,8 +1,8 @@
 # 接入ArkTS页面
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -150,6 +150,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 |    |——napi_init.cpp 与index.d.ts对应的桥接方法对接Native侧的定义处。
 |    |——NativeEntry.cpp 桥接方法的Native侧实现。
 |    |——NativeEntry.h 桥接方法的Native侧定义。
+|    |——NativeModule.h 提供获取ArkUI在Native侧模块的封装接口。
 |    |——CMakeLists.txt C语言库引用文件。
 |    |——ArkUIBaseNode.h 节点封装扩展类。
 |    |——ArkUINode.h 节点封装扩展类。
@@ -212,6 +213,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     ```
 
 2. 使用Native模板创建工程，并在Native侧提供Node-API的桥接方法，实现ArkTS侧的NativeNode模块接口。
+
    接口声明。
 
     <!-- @[Cpp_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/Index.d.ts) -->
@@ -325,10 +327,9 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     // NativeEntry.cpp
     
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
-    #include "NormalTextListExample.h"
+    #include "NormalNodeExample.h"
     
     namespace NativeModule {
     
@@ -344,11 +345,11 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
     
-        // 创建文本列表
-        auto list = CreateTextListExample();
+        // 创建组件节点
+        auto node = CreateExample();
     
         // 保持Native侧对象到管理类中，维护生命周期。
-        NativeEntry::GetInstance()->SetRootNode(list);
+        NativeEntry::GetInstance()->SetRootNode(node);
         return nullptr;
     }
     
@@ -541,6 +542,48 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
         }
+        void SetMargin(float top, float right, float bottom, float left)
+        {
+            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
+            ArkUI_AttributeItem item = {value, 4};
+            nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
+        }
+        void SetPadding(float top, float right, float bottom, float left)
+        {
+            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
+            ArkUI_AttributeItem item = {value, 4};
+            nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
+        }
+        void SetBorderWidth(float width)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = width}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
+        }
+        void SetBorderColor(uint32_t color)
+        {
+            ArkUI_NumberValue value[] = {{.u32 = color}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
+        }
+        void SetBorderRadius(float radius)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = radius}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+        }
+        void SetOpacity(float opacity)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = opacity}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_OPACITY, &item);
+        }
+        void SetScale(float x, float y)
+        {
+            ArkUI_NumberValue value[] = {{x}, {y}};
+            ArkUI_AttributeItem item = {value, 2};
+            nativeModule_->setAttribute(handle_, NODE_SCALE, &item);
+        }
     
     protected:
         // 组件树操作的实现类对接。
@@ -682,7 +725,6 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     #include "ArkUIListItemNode.h"
     #include "ArkUIListNode.h"
     #include "ArkUITextNode.h"
-    #include <hilog/log.h>
     
     namespace NativeModule {
     
@@ -696,7 +738,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         list->SetScrollBarState(true);
         const int itemCount = 30;
         const int fontSizes = 16;
-        const int screenWidth = 300;
+        const float screenWidth = 1;
         const int defaultHeight = 100;
         // 2：创建ListItem子组件并挂载到List上。
         for (int32_t i = 0; i < itemCount; ++i) {
@@ -704,9 +746,9 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             auto textNode = std::make_shared<ArkUITextNode>();
             textNode->SetTextContent(std::to_string(i));
             textNode->SetFontSize(fontSizes);
-            textNode->SetFontColor(0xFFff00ff);
+            textNode->SetFontColor(0xFF000000);
             textNode->SetPercentWidth(1);
-            textNode->SetWidth(screenWidth);
+            textNode->SetPercentWidth(screenWidth);
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);
             textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);

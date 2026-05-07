@@ -1,4 +1,10 @@
 # native_vsync.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @opasser-->
+<!--Designer: @opasser-->
+<!--Tester: @zhouhuan31-->
+<!--Adviser: @ge-yafang-->
 
 ## Purpose
 
@@ -9,6 +15,8 @@ This file declares the functions for obtaining and using native virtual synchron
 **File to include**: <native_vsync/native_vsync.h>
 
 **Library**: libnative_vsync.so
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 9
 
@@ -41,7 +49,7 @@ This file declares the functions for obtaining and using native virtual synchron
 
 ### OH_NativeVSync_FrameCallback()
 
-```
+```c
 typedef void (*OH_NativeVSync_FrameCallback)(long long timestamp, void *data)
 ```
 
@@ -63,7 +71,7 @@ Defines the pointer to a VSync callback function.
 
 ### OH_NativeVSync_Create()
 
-```
+```c
 OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 ```
 
@@ -91,7 +99,7 @@ Creates an **OH_NativeVSync** instance. A new **OH_NativeVSync** instance is cre
 
 ### OH_NativeVSync_Create_ForAssociatedWindow()
 
-```
+```c
 OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, const char* name, unsigned int length)
 ```
 
@@ -120,7 +128,7 @@ Creates an **OH_NativeVSync** instance to bind with a window. A new **OH_NativeV
 
 ### OH_NativeVSync_Destroy()
 
-```
+```c
 void OH_NativeVSync_Destroy(OH_NativeVSync* nativeVsync)
 ```
 
@@ -141,7 +149,7 @@ Destroys an **OH_NativeVSync** instance.<br>Once the **OH_NativeVSync** pointer 
 
 ### OH_NativeVSync_RequestFrame()
 
-```
+```c
 int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)
 ```
 
@@ -170,7 +178,7 @@ Requests the next VSync signal. When the signal arrives, a callback function is 
 
 ### OH_NativeVSync_RequestFrameWithMultiCallback()
 
-```
+```c
 int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)
 ```
 
@@ -199,7 +207,7 @@ Requests the next VSync signal. When the signal arrives, a callback function is 
 
 ### OH_NativeVSync_GetPeriod()
 
-```
+```c
 int OH_NativeVSync_GetPeriod(OH_NativeVSync* nativeVsync, long long* period)
 ```
 
@@ -227,7 +235,7 @@ Obtains the VSync period.<br>The VSync period is refreshed only when the **OH_Na
 
 ### OH_NativeVSync_DVSyncSwitch()
 
-```
+```c
 int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)
 ```
 
@@ -255,7 +263,7 @@ Enables DVSync to improve the smoothness of self-drawing animations.<br>DVSync, 
 
 ### OH_NativeVSync_SetExpectedFrameRateRange()
 
-```
+```c
 int OH_NativeVSync_SetExpectedFrameRateRange(OH_NativeVSync* nativeVsync, OH_NativeVSync_ExpectedRateRange* range)
 ```
 

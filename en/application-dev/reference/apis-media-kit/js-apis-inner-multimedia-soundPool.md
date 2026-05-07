@@ -8,7 +8,7 @@
 
 The module provides APIs for loading, unloading, playing, and stopping playing sounds, setting the volume, and setting the number of loops.
 
-Before using these APIs, you must call [media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10) to create a SoundPool instance.
+Before using these APIs, you must call [media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10) to create a **SoundPool** instance.
 
 > **NOTE**
 >
@@ -31,11 +31,11 @@ These parameters are used to control the playback volume, number of loops, and p
 
 | Name           | Type                                    | Read-Only| Optional| Description                                                        |
 | --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
-| loop | number   | No| Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.<br>The default value is **0**, indicating that the content is played only once.                  |
+| loop | number   | No| Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.<br>The default value is **0**, indicating that the content is played only once.<br>If this parameter is set to a floating-point number, only the integer part is used.                  |
 | rate | number    | No| Yes | Playback rate. For details, see [AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8). Default value: **0**|
-| leftVolume  | number | No| Yes | Volume of the left channel. The value range is (0.0, 1.0). Default value: **1.0**                                   |
-| rightVolume | number  | No| Yes | Volume of the right channel. The value range is (0.0, 1.0). (Currently, the volume cannot be set separately for the left and right channels. The volume set for the left channel is used.) Default value: **1.0**|
-| priority  | number  | No| Yes | Playback priority. The value **0** means the lowest priority. A larger value indicates a higher priority. The value is an integer greater than or equal to 0. Default value: **0**     |
+| leftVolume  | number | No| Yes | Volume of the left channel. The value range is [0.0, 1.0], and the default value is **1.0**.<br> When the volume exceeds the boundary value, the boundary value is automatically used.                      |
+| rightVolume | number  | No| Yes | Volume of the right channel. (Currently, the volume cannot be set separately for the left and right channels. The volume set for the left channel is used.) The value range is [0.0, 1.0], and the default value is **1.0**.<br> When the volume exceeds the boundary value, the boundary value is automatically used.|
+| priority  | number  | No| Yes | Priority for playing an audio stream. The value **0** indicates the lowest priority. A larger value indicates a higher priority.<br> The playback priority is determined by comparing the values. The value must be an integer greater than or equal to 0. The default value is **0**.<br> If this parameter is set to a negative value, it is automatically set to 0. If this parameter is set to a floating point number, only the integer part is used.    |
 
 ## ErrorType<sup>20+</sup>
 
@@ -67,25 +67,28 @@ Implements a sound pool that provides APIs for loading, unloading, playing, and 
 
 > **NOTE**
 >
-> When using the SoundPool instance, you are advised to register the following callbacks to proactively obtain status changes:
-> - [on('loadComplete')](#onloadcomplete): listens for the event indicating that the resource loading is finished.
-> - [on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18): listens for the event indicating that the playback is finished and returns the stream ID of the audio that finishes playing.
-> - [on('playFinished')](#onplayfinished): listens for the event indicating that the playback is finished.
-> - [on('error')](#onerror): listens for error events.
-> - [on('errorOccurred')](#onerroroccurred20): listens for error events and returns [errorInfo](#errorinfo20).
+> - When using the SoundPool instance, you are advised to register the following callbacks to proactively obtain status changes:
+>   - [on('loadComplete')](#onloadcomplete): listens for the event indicating that the resource loading is finished. You are advised to listen for this callback to ensure that the audio is played after being loaded.
+>   - [on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18): listens for the event indicating that the playback is finished and returns the stream ID of the audio that finishes playing.
+>   - [on('playFinished')](#onplayfinished): listens for the event indicating that the playback is finished.
+>   - [on('error')](#onerror): listens for error events.
+>   - [on('errorOccurred')](#onerroroccurred20): listens for error events and returns [errorInfo](#errorinfo20).
+> - Currently, SoundPool does not support audio focus policies such as background playback and audio interruption, or skipping the silent frames at the beginning and end of an audio file. For details about low-latency playback using SoundPool, see [Using SoundPool to Play Short Sounds (ArkTS)](../../media/media/using-soundpool-for-playback.md).
 
 ### load
 
 load(uri: string, callback: AsyncCallback\<number>): void
 
-Loads a sound. This API uses an asynchronous callback to obtain the sound ID. The input parameter **uri** is a string starting with fd://, which is generated based on the file descriptor (FD) obtained.
+Loads a sound. This API uses an asynchronous callback to return the result.
+
+This API uses an asynchronous callback to obtain the resource ID. The input parameter URL is a string starting with **fd://**, which is generated based on the file descriptor (FD) obtained.
+
 This API cannot be used to load resources in the **rawfile** directory. Instead, use [load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2) or [load(fd: number, offset: number, length: number): Promise\<number>](#load-3).
 
->**NOTE**
+> **NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
-> Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
+> - After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
+> - Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -93,7 +96,7 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 
 | Name  | Type                                  | Mandatory| Description                                 |
 | -------- | -------------------------------------- | ---- | ------------------------------------- |
-| uri   | string | Yes  | URI of the audio file to load. Generally, the URI starts with fd://.|
+| uri   | string | Yes  | URI of the audio file to load. Generally, the URI starts with **fd://**.|
 | callback | AsyncCallback\<number>                   | Yes  | Callback used to return the sound ID. A valid value must be greater than 0.|
 
 **Error codes**
@@ -122,11 +125,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let uri:string = "";
     let file: fileIo.File;
     // Obtain the URI starting with fd://.
@@ -136,12 +139,12 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       uri = 'fd://' + (file.fd).toString();
       soundPool.load(uri, (error: BusinessError, soundId_: number) => {
         if (error) {
-          console.error(`Failed to load soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+          console.error(`Failed to load soundPool: Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`Succeeded in loading soundPool` + JSON.stringify(soundId_));
         }
       });
-    }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
+    }); // '/test_01.mp3' here is only an example. Replace it with the actual URI.
   }
 });
 ```
@@ -150,14 +153,16 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(uri: string): Promise\<number>
 
-Loads a sound. This API uses a promise to obtain the sound ID. The input parameter **uri** is a starting with fd://, which is generated based on the FD obtained.
+Loads a sound. This API uses a promise to return the result.
+
+This API uses a promise to obtain the resource ID. The input parameter URL is a string starting with **fd://**, which is generated based on the file descriptor (FD) obtained.
+
 This API cannot be used to load resources in the **rawfile** directory. Instead, use [load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2) or [load(fd: number, offset: number, length: number): Promise\<number>](#load-3).
 
->**NOTE**
+> **NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
->Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
+> - After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
+> - Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -165,7 +170,7 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 
 | Name| Type                                  | Mandatory| Description                      |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| uri | string | Yes  | URI of the audio file to load. Generally, the URI starts with fd://.|
+| uri | string | Yes  | URI of the audio file to load. Generally, the URI starts with **fd://**.|
 
 **Return value**
 
@@ -199,11 +204,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let uri:string = "";
     let soundID: number = 0;
     let file: fileIo.File;
@@ -216,9 +221,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading uri');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundPool and catch error is ' + err.message);
+        console.error('Failed to load soundPool. Code: ${err.code}, message: ${err.message}');
       });
-    }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
+    }); // '/test_01.mp3' here is only an example. Replace it with the actual URI.
   }
 });
 ```
@@ -227,13 +232,14 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void
 
-Loads a sound. This API uses an asynchronous callback to obtain the sound ID. The input parameter **fd** can be manually input or automatically obtained by reading the embedded resource of the application.
+Loads a sound. This API uses an asynchronous callback to return the result.
+
+This API uses an asynchronous callback to obtain the resource ID. For the input parameter, resource information can be passed in manually or acquired automatically by reading the application's built-in resources.
 
 >**NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
-> Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
+> - After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
+> - Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -256,7 +262,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | 5400103  | I/O error. Return by callback. |
 | 5400105  | Service died. Return by callback.       |
 
-**Example 1:**
+**Example 1**
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -272,11 +278,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // Obtain the size through fileIo.stat().
@@ -288,13 +294,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize, (error: BusinessError, soundId_: number) => {
         if (error) {
-          console.error(`Failed to load soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+          console.error(`Failed to load soundPool: Code: ${error.code}, message: ${error.message}`);
         } else {
           soundID = soundId_;
           console.info('Succeeded in loading soundId:' + soundId_);
         }
       });
-    }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
+    }); // '/test_01.mp3' here is only an example. Replace it with the actual URI.
   }
 });
 ```
@@ -316,7 +322,7 @@ function create(context: Context) {
   let soundID: number = 0;
   media.createSoundPool(5, audioRendererInfo, async (error: BusinessError, soundPool_: media.SoundPool) => {
     if (error) {
-      console.error(`Failed to createSoundPool`);
+      console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
       return;
     } else {
       soundPool = soundPool_;
@@ -325,7 +331,7 @@ function create(context: Context) {
       let fileDescriptor = await context.resourceManager.getRawFd('test_01.mp3');
       soundPool.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length, (error: BusinessError, soundId_: number) => {
         if (error) {
-          console.error(`Failed to load soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+          console.error(`Failed to load soundPool. Code: ${error.code}, message: ${error.message}`);
         } else {
           soundID = soundId_;
           console.info('Succeeded in loading soundId:' + soundId_);
@@ -340,13 +346,14 @@ function create(context: Context) {
 
 load(fd: number, offset: number, length: number): Promise\<number>
 
-Loads a sound. This API uses a promise to obtain the sound ID. The input parameter **fd** can be manually input or automatically obtained by reading the embedded resource of the application.
+Loads a sound. This API uses a promise to return the result.
 
->**NOTE**
+This API uses a promise to obtain the resource ID. For the input parameter, resource information can be passed in manually or acquired automatically by reading the application's built-in resources.
+
+> **NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
-> Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
+> - After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
+> - Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -374,7 +381,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | 5400103  | I/O error. Return by promise. |
 | 5400105  | Service died. Return by promise. |
 
-**Example 1:**
+**Example 1**
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -390,11 +397,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // Obtain the size through fileIo.stat().
@@ -408,7 +415,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool and catch error is ' + err.message);
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     });
   }
@@ -433,18 +440,18 @@ function create(context: Context) {
   let soundID: number = 0;
   media.createSoundPool(5, audioRendererInfo, async (error: BusinessError, soundPool_: media.SoundPool) => {
     if (error) {
-      console.error(`Failed to createSoundPool`);
+      console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
       return;
     } else {
       soundPool = soundPool_;
-      console.info(`Succeeded in createSoundPool`);
+      console.info(`Succeeded in creating SoundPool`);
       // The test_01.mp3 file is an audio file in the rawfile directory.
       let fileDescriptor = await context.resourceManager.getRawFd('test_01.mp3');
       soundPool.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length).then((soundId: number) => {
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool and catch error is ' + err.message);
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     }
   });
@@ -469,7 +476,7 @@ Plays a sound and obtains the stream ID. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -492,7 +499,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -535,7 +542,7 @@ Plays a sound using default parameters and obtains the stream ID. This API uses 
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -558,11 +565,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let soundID: number = 0;
     let streamID: number = 0;
     soundPool.play(soundID,  (error: BusinessError, streamId: number) => {
@@ -600,7 +607,7 @@ Plays a sound and obtains the stream ID. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -623,11 +630,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
@@ -642,7 +649,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       console.info('Succeeded in playing soundpool');
       streamID = streamId;
     },(err: BusinessError) => {
-      console.error('Failed to play soundpool and catch error is ' + err.message);
+      console.error('Failed to play soundpool. Code: ${err.code}, message: ${err.message}');
     });
   }
 });
@@ -652,7 +659,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 stop(streamID: number, callback: AsyncCallback\<void>): void
 
-Stops playing a sound. This API uses an asynchronous callback to return the result.
+Stops audio playback. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -661,11 +668,11 @@ Stops playing a sound. This API uses an asynchronous callback to return the resu
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -688,7 +695,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -711,7 +718,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 stop(streamID: number): Promise\<void>
 
-Stops playing a sound. This API uses a promise to return the result.
+Stops audio playback. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -729,7 +736,7 @@ Stops playing a sound. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -752,7 +759,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -762,7 +769,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.stop(streamID).then(() => {
       console.info('Succeeded in stopping soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to stop soundpool and catch error is ' + err.message);
+      console.error('Failed to stop soundpool Code: ${err.code}, message: ${err.message}');
     });
   }
 });
@@ -772,7 +779,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
 
-Sets the loop mode for an audio stream. This API uses an asynchronous callback to return the result.
+Sets the loop mode. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -782,11 +789,11 @@ Sets the loop mode for an audio stream. This API uses an asynchronous callback t
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
 | loop | number | Yes  | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -809,7 +816,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -821,7 +828,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to setLoop soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setLoopping soundpool, streamID:' + streamID);
+        console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
       }
     });
   }
@@ -833,7 +840,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setLoop(streamID: number, loop: number): Promise\<void>
 
-Sets the loop mode for an audio stream. This API uses a promise to return the result.
+Sets the loop mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -852,7 +859,7 @@ Sets the loop mode for an audio stream. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -875,7 +882,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -884,9 +891,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // Call play() to obtain the stream ID.
     // Set the number of loops to 1.
     soundPool.setLoop(streamID, 1).then(() => {
-      console.info('Succeeded in setLoopping soundpool, streamID:' + streamID);
+      console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
     }).catch((err: BusinessError) => {
-      console.error('Failed to setLoop soundPool and catch error is ' + err.message);
+      console.error(`Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -906,11 +913,11 @@ Sets the priority for an audio stream. This API uses an asynchronous callback to
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
 | priority | number | Yes  | Priority. The value **0** means the lowest priority. The value is an integer greater than or equal to 0.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -933,11 +940,11 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     // Call play() to obtain the stream ID.
     // Set the priority to 1.
@@ -945,7 +952,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to setPriority soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setPriority soundpool, streamID:' + streamID);
+        console.info('Succeeded in setting Priority soundpool, streamID:' + streamID);
       }
     });
   }
@@ -975,7 +982,7 @@ Sets the priority for an audio stream. This API uses a promise to return the res
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -998,19 +1005,19 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     // Call play() to obtain the stream ID.
     // Set the priority to 1.
 
     soundPool.setPriority(streamID, 1).then(() => {
-      console.info('Succeeded in setPriority soundpool');
+      console.info('Succeeded in setting Priority soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setPriority soundPool and catch error is ' + err.message);
+      console.error('Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}');
     });
   }
 });
@@ -1030,11 +1037,11 @@ Sets the playback rate for an audio stream. This API uses an asynchronous callba
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
 | rate | [audio.AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8) | Yes  | Playback rate.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1057,19 +1064,19 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool.  Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     let selectedAudioRendererRate: audio.AudioRendererRate = audio.AudioRendererRate.RENDER_RATE_NORMAL; // The sound is played at the original frequency.
     // Call play() to obtain the stream ID.
     soundPool.setRate(streamID, selectedAudioRendererRate, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to setRate soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
+        console.error(`Failed to set Rate soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setRate success, streamID:' + streamID);
+        console.info('Succeeded in setting Rate, streamID:' + streamID);
       }
     })
   }
@@ -1099,7 +1106,7 @@ Sets the playback rate for an audio stream. This API uses a promise to return th
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1122,18 +1129,18 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool.  Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
-    console.info(`Succeeded in createSoundPool`);
+    console.info(`Succeeded in creating SoundPool`);
     let streamID: number = 0;
     let selectedAudioRendererRate: audio.AudioRendererRate = audio.AudioRendererRate.RENDER_RATE_NORMAL; // The sound is played at the original frequency.
     // Call play() to obtain the stream ID.
     soundPool.setRate(streamID, selectedAudioRendererRate).then(() => {
-      console.info('Succeeded in setRate soundpool');
+      console.info('Succeeded in setting Rate soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setRate soundpool and catch error is ' + err.message);
+      console.error(`Failed to set Rate. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1153,13 +1160,13 @@ Sets the volume for an audio stream. This API uses an asynchronous callback to r
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| leftVolume | number | Yes  | Volume of the left channel. The value ranges from 0.0 to 1.0.|
-| rightVolume | number | Yes  | Volume of the right channel. The value ranges from 0.0 to 1.0. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| leftVolume | number | Yes  | Volume of the left channel. The value range is [0.0, 1.0].|
+| rightVolume | number | Yes  | Volume of the right channel. The value range is [0.0, 1.0]. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1182,7 +1189,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool`);
+    console.error(`Failed to create SoundPool.  Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -1194,7 +1201,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to setVolume soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setVolume soundpool, streamID:' + streamID);
+        console.info('Succeeded in setting Volume soundpool, streamID:' + streamID);
       }
     })
   }
@@ -1214,8 +1221,8 @@ Sets the volume for an audio stream. This API uses a promise to return the resul
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| leftVolume | number | Yes  | Volume of the left channel. The value ranges from 0.0 to 1.0.|
-| rightVolume | number | Yes  | Volume of the right channel. The value ranges from 0.0 to 1.0. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
+| leftVolume | number | Yes  | Volume of the left channel. The value range is [0.0, 1.0].|
+| rightVolume | number | Yes  | Volume of the right channel. The value range is [0.0, 1.0]. Currently, setting the volume for the right channel does not take effect. The volume set for the left channel is used.|
 
 **Return value**
 
@@ -1225,7 +1232,7 @@ Sets the volume for an audio stream. This API uses a promise to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
@@ -1265,6 +1272,48 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 });
 ```
 
+### setInterruptMode<sup>23+</sup>
+
+setInterruptMode(interruptMode: media.SoundInterruptMode): void
+
+Sets the interruption mode of the audio files with the same ID during playback. After the **SoundPool** is created, this API is valid only when the **Play** function of the **SoundPool** is called for the first time. You can set the interruption mode for multiple times. If the interruption mode is not set, the [SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23) mode is used by default. That is, if the former audio file is not completely played, the latter audio file with the same ID interrupts the former audio file.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.SoundPool
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                       |
+| -------- | ---------------------- | ---- | --------------------------- |
+| interruptMode | [media.SoundInterruptMode](arkts-apis-media-e.md#soundinterruptmode23) | Yes  | Interruption mode of the audio files with the same ID during playback, which is obtained through the **media.SoundInterruptMode** enum.|
+
+**Example**
+
+```js
+import { media } from '@kit.MediaKit';
+
+// Create a SoundPool instance.
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    // Selects mode 1: concurrent playback of audio files with the same ID.
+    soundPool.setInterruptMode(media.SoundInterruptMode.NO_INTERRUPT);
+    // Select mode 2: the latter audio file with the same ID interrupts the former audio file.
+    soundPool.setInterruptMode(media.SoundInterruptMode.SAME_SOUND_INTERRUPT);
+  }
+});
+```
+
 ### unload
 
 unload(soundID: number, callback: AsyncCallback\<void>): void
@@ -1278,7 +1327,7 @@ Unloads a sound. This API uses an asynchronous callback to return the result.
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | soundID | number | Yes  | Sound ID, which is obtained by calling **load()**.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1316,7 +1365,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to unload soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succceeded in unload soundPool');
+        console.info('Succeeded in unload soundPool');
       }
     })
   }
@@ -1377,7 +1426,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // Call load() to obtain the sound ID.
 
     soundPool.unload(soundID).then(() => {
-      console.info('Succceeded in unload soundPool');
+      console.info('Succeeded in unload soundPool');
     }, (err: BusinessError) => {
       console.error('Failed to unload soundPool and catch error is ' + err.message);
     });
@@ -1389,7 +1438,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 release(callback: AsyncCallback\<void>): void
 
-Releases this SoundPool instance. This API uses an asynchronous callback to return the result.
+Releases a **SoundPool** instance. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1397,7 +1446,7 @@ Releases this SoundPool instance. This API uses an asynchronous callback to retu
 
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1442,7 +1491,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 release(): Promise\<void>
 
-Releases this SoundPool instance. This API uses a promise to return the result.
+Releases a **SoundPool** instance. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1494,7 +1543,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'loadComplete', callback: Callback\<number>): void
 
-Subscribes to events indicating that a sound finishes loading.
+Subscribes to events indicating that a sound finishes loading. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1503,7 +1552,7 @@ Subscribes to events indicating that a sound finishes loading.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'loadComplete'** in this case. This event is triggered when a sound is loaded.|
-| callback | Callback\<number> | Yes  | ID of the sound that has been loaded.                              |
+| callback | Callback\<number> | Yes  | Callback used to return the ID of the resource that has been loaded.                              |
 
 **Example**
 
@@ -1577,7 +1626,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
-Subscribes to events indicating the completion of audio playback and returns the stream ID of the audio that finishes playing.
+Subscribes to events indicating the completion of audio playback and returns the stream ID of the audio that finishes playing. This API uses an asynchronous callback to return the result.
 
 When only [on('playFinished')](#onplayfinished) or [on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18) is subscribed to, the registered callback is triggered when the audio playback is complete.
 
@@ -1590,7 +1639,7 @@ When both [on('playFinished')](#onplayfinished) and [on('playFinishedWithStreamI
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'playFinishedWithStreamId'** in this case. This event is triggered when an audio stream finishes playing, and the stream ID is returned.|
-| callback | Callback\<number> | Yes  |  Callback used to return the result. Stream ID of the audio that finishes playing.  |
+| callback | Callback\<number> | Yes  |  Callback used to return the stream ID of the audio that has finished playing.  |
 
 **Example**
 
@@ -1662,7 +1711,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: me
 
 on(type: 'playFinished', callback: Callback\<void>): void
 
-Subscribes to events indicating that a sound finishes playing.
+Subscribes to events indicating that a sound finishes playing. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1745,7 +1794,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to error events of this SoundPool instance. This event is used only for error prompt.
+Subscribes to error events of a [SoundPool](#soundpool) instance. This event is used only for error prompt. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1788,7 +1837,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 off(type: 'error'): void
 
-Unsubscribes from error events of this SoundPool instance.
+Unsubscribes from error events of a SoundPool instance.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1827,7 +1876,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 
-Subscribes to error events of this [SoundPool](#soundpool) instance and returns [ErrorInfo](#errorinfo20) that contains the error code, error stage, resource ID, and audio stream ID.
+Subscribes to error events of a [SoundPool](#soundpool) instance and returns [ErrorInfo](#errorinfo20) that contains the error code, error stage, resource ID, and audio stream ID. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1873,7 +1922,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
  off(type: 'errorOccurred', callback?: Callback\<ErrorInfo>): void
 
-Unsubscribes from error events of this SoundPool instance.
+Unsubscribes from error events of a SoundPool instance.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1882,7 +1931,7 @@ Unsubscribes from error events of this SoundPool instance.
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | Yes  | Event type, which is **'errorOccurred'** in this case.|
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | No  | Callback used to return [ErrorInfo](#errorinfo20).|
+| callback | Callback\<[ErrorInfo](#errorinfo20)> | No  | Callback used to return [ErrorInfo](#errorinfo20) if an error occurs during the use of the player. If the callback is not set, no related information is provided.|
 
 **Example**
 

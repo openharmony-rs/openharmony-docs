@@ -134,7 +134,7 @@
 
   ![zh-cn_image_0000001562700425](figures/zh-cn_image_0000001562700425.png)
 
-- FlexWrap. Wrap：换行，每一行子元素按照主轴方向排列。
+- FlexWrap.Wrap：换行，每一行子元素按照主轴方向排列。
 
 
   <!-- @[FlexWrapWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrap.ets) -->
@@ -152,7 +152,7 @@
 
   ![zh-cn_image_0000001511740468](figures/zh-cn_image_0000001511740468.png)
 
-- FlexWrap. WrapReverse：换行，每一行子元素按照主轴反方向排列。
+- FlexWrap.WrapReverse：换行，每一行子元素按照主轴反方向排列。
 
 
   <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
@@ -173,7 +173,7 @@
 
 ## 主轴对齐方式
 
-通过justifyContent参数设置子元素在主轴方向的对齐方式。
+通过[justifyContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)参数设置子元素在主轴方向的对齐方式。
 
 ![flex-spindle-alignment](figures/flex-spindle-alignment.png)
 
@@ -369,7 +369,7 @@
 
   ![zh-cn_image_0000001511580876](figures/zh-cn_image_0000001511580876.png)
 
-- ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。
+- ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置[FlexWrap](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#flexwrap)为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行或列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。
 
 
   <!-- @[FlexItemAlignStretch_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStretch.ets) -->
@@ -487,10 +487,10 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 - FlexAlign.End：子元素各行与交叉轴终点对齐。
 
 
-  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
+  <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
   
   ``` TypeScript
-  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
+  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
     Text('2').width('60%').height(20).backgroundColor('#D2B48C')
     Text('3').width('40%').height(20).backgroundColor('#D2B48C')
@@ -507,10 +507,10 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 - FlexAlign.SpaceBetween：子元素各行与交叉轴两端对齐，各行间垂直间距平均分布。
 
 
-  <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
+  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
   
   ``` TypeScript
-  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
+  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
     Text('2').width('60%').height(20).backgroundColor('#D2B48C')
     Text('3').width('40%').height(20).backgroundColor('#D2B48C')
@@ -582,7 +582,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
     Text('flexBasis("auto")'+' width("40%")')
       .width('40%')
-      .flexBasis('auto')//设置width以及flexBasis值auto，使用width的值
+      .flexBasis('auto')// 设置width以及flexBasis值auto，使用width的值
       .height(100)
       .backgroundColor('#D2B48C')
   

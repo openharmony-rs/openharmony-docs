@@ -8,8 +8,6 @@
 
 The **TextTimer** component displays timing information and is controlled in text format.
 
-The time updates stop when the component is invisible. The component's visibility is determined by the value of **ratios** in the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event callback: If the value is greater than 0, the component is visible.
-
 >  **NOTE**
 >
 > This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
@@ -32,11 +30,11 @@ TextTimer(options?: TextTimerOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [TextTimerOptions](#texttimeroptions)| No| Parameters of the **TextTimer** component.|
+| options |  [TextTimerOptions](#texttimeroptions)| No| Parameters of the **TextTimer** component. The default value is inherited from [TextTimerOptions](#texttimeroptions).|
 
 ## TextTimerOptions
 
-Options used to build the TextTimer component.
+Sets the options used to build the **TextTimer** component.
 
 **Widget capability**: Since API version 10, this API is supported in ArkTS widgets.
 
@@ -46,7 +44,7 @@ Options used to build the TextTimer component.
 
 | Name  | Type    | Read-Only| Optional| Description                  |
 | ----------- | -------- | -------- | -------- | -------- |
-| isCountDown | boolean  | No | Yes | Whether the timer is a countdown. The value **true** means that the timer counts down (for example, from 30 seconds to 0 seconds), and **false** means that the timer counts up (for example, from 0 seconds to 30 seconds).<br>Default value: **false**|
+| isCountDown | boolean  | No | Yes | Countdown switch.<br>**true**: The timer counts down (for example, from 30 seconds to 0 seconds).<br>**false**: The timer counts up (for example, from 0 seconds to 30 seconds).<br>Default value: **false**|
 | count       | number   | No | Yes | Timer duration, in milliseconds. It is effective only when **isCountDown** is **true**. The maximum value is 86400000 ms (24 hours). If 0 < **count** < 86400000, **count** is the initial value of the timer. Otherwise, the default value is used as the initial value.<br>Default value: **60000**|
 | controller  | [TextTimerController](#texttimercontroller) | No| Yes| **TextTimer** controller.|
 
@@ -58,9 +56,9 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 format(value: string)
 
-Sets the custom format. The value must contain at least one of the following keywords: **HH**, mm, **ss**, and **SS**. If the date format is yy, MM, or dd, the default value is used.
+Sets the custom format. The value must contain at least one of the following keywords: **HH**, **mm**, **ss**, and **SS**. If the date format is yy, MM, or dd, the default value is used.
 
-The timer update frequency is in the minimum unit of format. For example, if format is set to HH:mm, the update frequency is one minute.
+The timer update frequency is in the minimum unit of **format**. For example, if **format** is set to **'HH:mm'**, the update frequency is one minute.
 
 **Widget capability**: Since API version 10, this API is supported in ArkTS widgets.
 
@@ -72,7 +70,7 @@ The timer update frequency is in the minimum unit of format. For example, if for
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | string | Yes  | Custom format<br>Default value: **'HH:mm:ss.SS'**|
+| value  | string | Yes  | Custom date display format.<br>Default value: **'HH:mm:ss.SS'**|
 
 
 ### fontColor
@@ -91,7 +89,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value on wearable devices: **'#c5ffffff'**, indicating that the text is displayed in white.<br>Default value on other devices: **'#e6182431'**, indicating that the text is displayed in black.|
 
 ### fontSize
 
@@ -109,7 +107,7 @@ Sets the font size.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. The value cannot be a percentage.|
+| value  | [Length](ts-types.md#length) | Yes  | Font size. When the value is of the number type in Length, the unit is fp. The default font size is 16 fp. When the value is of the string type in Length:<br>- If the string does not start with a digit, it is treated as 0 fp.<br>- If the string starts with a digit and contains characters other than [pixel units](ts-pixel-units.md) (such as letters or special characters), the leading numeric part is extracted as the value and the unit is fp. For example, the value **"abc"** is treated as **0fp**, **"10vp"** is treated as **10vp**, and **"10vp11abc"** is treated as **10fp**. The value cannot be a percentage.|
 
 ### fontStyle
 
@@ -127,13 +125,13 @@ Sets the font style.
 
 | Name| Type                                       | Mandatory| Description                                   |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.<br>Default value: **FontStyle.Normal**|
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style, for example, italic.<br>Default value: **FontStyle.Normal**|
 
 ### fontWeight
 
 fontWeight(value: number | FontWeight | ResourceStr)
 
-Sets the font weight. If the value is too large, the text in different fonts may be truncated.
+Sets the font weight of the text. If the value is too large, the text in different fonts may be truncated.
 
 **Widget capability**: Since API version 10, this API is supported in ArkTS widgets.
 
@@ -145,7 +143,7 @@ Sets the font weight. If the value is too large, the text in different fonts may
 
 | Name| Type | Mandatory| Description     |
 | ------ | ---------- | ------ | ----------------- |
-| value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Font width of the text. The value range of the number type is [100, 900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is 400. The [ResourceStr] (ts-types.md#resourcestr) type supports only the string of the number type, for example, 400, bold, bolder, lighter, regular, and medium, corresponds to the corresponding enumerated values in FontWeight.<br>Default value: **FontWeight.Normal**<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font width of the text. The value range of the number type is [100,&nbsp;900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is **400**. The [ResourceStr](ts-types.md#resourcestr) type supports only strings of the number type, such as **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, corresponding to the enums in **FontWeight**.<br>Default value: **FontWeight.Normal**<br>The Resource type is supported since API version 20.|
 
 ### fontFamily
 
@@ -183,7 +181,7 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Text shadow.|
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Parameters of the text shadow effect, including the color, blur radius, and offset.|
 
 ### contentModifier<sup>12+</sup>
 
@@ -199,16 +197,15 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<TextTimerConfiguration>](#texttimerconfiguration12) | Yes  | Content modifier to apply to the **TextTimer** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<TextTimerConfiguration>](#texttimerconfiguration12) | Yes  | Content modifier to apply to the **TextTimer** component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 ## Events
 
 ### onTimer
 
-onTimer(event: (utc: number, elapsedTime: number) =&gt; void)
+onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-This event is triggered when the time text changes. This event is not triggered when the screen is locked or the application is running in the background.
-When high-precision formats (such as **SSS** or **SS**) are used, the callback interval may vary.
+Event triggered when the time text changes. This event is not triggered when the screen is locked or the application is running in the background. When high-precision [format](#format)s (such as **SS**) are used, the callback interval may vary.
 
 **Widget capability**: Since API version 10, this API is supported in ArkTS widgets.
 
@@ -225,7 +222,7 @@ When high-precision formats (such as **SSS** or **SS**) are used, the callback i
 
 ## TextTimerController
 
-Implements a controller for controlling the **TextTimer** component. A **TextTimer** component can only be bound to one controller, and the relevant commands can only be called after the component has been created.
+Defines the controller for controlling the **TextTimer** component. A **TextTimer** component can only be bound to one controller, and the relevant commands can only be called after the component has been created. A **TextTimerController** can control only the last **TextTimer** component bound to it.
 
 **Widget capability**: Since API version 10, this API is supported in ArkTS widgets.
 
@@ -233,7 +230,7 @@ Implements a controller for controlling the **TextTimer** component. A **TextTim
 
 ### Objects to Import
 
-```
+``` ts
 textTimerController: TextTimerController = new TextTimerController();
 ```
 
@@ -287,7 +284,7 @@ Resets the timer.
 
 ## TextTimerConfiguration<sup>12+</sup>
 
-Defines the configuration of the TextTimer used by the ContentModifier API.
+Defines the **TextTimer** configuration used by the **ContentModifier** API.
 
 You need a custom class to implement the **ContentModifier** API.
 
@@ -298,14 +295,14 @@ You need a custom class to implement the **ContentModifier** API.
 | Name| Type   |  Read-Only |  Optional  |  Description             |
 | ------ | ------ | ------ | ------ |-------------------------------- |
 | count | number | No| No| Timer duration, in milliseconds. It is effective only when **isCountDown** is **true**. The maximum value is 86400000 ms (24 hours). If the value is between 0 and 86,400,000, it is used as the initial countdown time. Otherwise, the default value is used as the initial countdown time.<br> Default value: **60000**|
-| isCountDown | boolean| No| No| Whether the timer is a countdown. The value **true** means that the timer counts down (for example, from 30 seconds to 0 seconds), and **false** means that the timer counts up (for example, from 0 seconds to 30 seconds).<br> Default value: **false**|
-| started | boolean | No| No| Whether the timer has already started. Default value: false, indicating that timing has not started.|
+| isCountDown | boolean| No| No| Whether the timer is a countdown.<br>**true**: The timer counts down, e.g., from 30s to 0s. **false**: The timer counts up, e.g., from 0s to 30s.<br> Default value: **false**|
+| started | boolean | No| No| Whether the timer has already started.<br>**true**: The timer has started. **false**: The timer has not started.<br>Default value: **false**|
 | elapsedTime | number | No| No|Elapsed time of the timer, in the minimum unit of the format.|
 
 ## Example
 ### Example 1: Implementing a Text Timer with Start, Pause, and Reset Buttons
 
-This example demonstrates the basic usage of the **TextTimer** component, setting the timer display format using the **format** attribute.
+This example demonstrates the basic usage of the **TextTimer** component, setting the timer display format using the [format](#format) attribute.
 
 Users can start, pause, and reset the timer by clicking the **start**, **pause**, and **reset** buttons.
 
@@ -324,16 +321,16 @@ struct TextTimerExample {
         .fontColor(Color.Black)
         .fontSize(50)
         .onTimer((utc: number, elapsedTime: number) => {
-          console.info('textTimer notCountDown utc is: ' + utc + ', elapsedTime: ' + elapsedTime)
+          console.info('textTimer notCountDown utc is: ' + utc + ', elapsedTime: ' + elapsedTime);
         })
       Row() {
-        Button("start").onClick(() => {
+        Button('start').onClick(() => {
           this.textTimerController.start();
         })
-        Button("pause").onClick(() => {
+        Button('pause').onClick(() => {
           this.textTimerController.pause();
         })
-        Button("reset").onClick(() => {
+        Button('reset').onClick(() => {
           this.textTimerController.reset();
         })
       }
@@ -347,7 +344,7 @@ struct TextTimerExample {
 
 ### Example 2: Setting the Text Shadow Style
 
-In this example, the [textShadow](#textshadow11) attribute is used to set the text shadow style of the timer.
+This example shows how to set the text shadow style for the timer using the [textShadow](#textshadow11) attribute.
 
 ``` ts
 // xxx.ets
@@ -412,13 +409,13 @@ function buildTextTimer(config: TextTimerConfiguration) {
       Circle({ width: 150, height: 150 })
         .fill(config.started ? (config.isCountDown ? 0xFF232323 : 0xFF717171) : 0xFF929292)
       Column() {
-        Text(config.isCountDown ? "Countdown" : "Count-up").fontColor(Color.White)
+        Text(config.isCountDown ? 'Countdown' : 'Count-up').fontColor(Color.White)
         Text(
-          (config.isCountDown ? "Remaining" : "Elapsed") + (config.isCountDown ?
-            (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + "/" +
+          (config.isCountDown ? 'Remaining ' : 'Elapsed ') + (config.isCountDown ?
+            (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + '/' +
             (config.count / 1000).toFixed(0)
             : ((config.elapsedTime / 100).toFixed(0))
-          ) + "s"
+          ) + 's'
         ).fontColor(Color.White)
       }
     }
@@ -448,15 +445,15 @@ struct Index {
             console.info('textTimer onTimer utc is: ' + utc + ', elapsedTime: ' + elapsedTime);
           })
         Row() {
-          Button("start").onClick(() => {
+          Button('start').onClick(() => {
             this.countDownTextTimerController.start();
             this.countUpTextTimerController.start();
           }).margin(10)
-          Button("pause").onClick(() => {
+          Button('pause').onClick(() => {
             this.countDownTextTimerController.pause();
             this.countUpTextTimerController.pause();
           }).margin(10)
-          Button("reset").onClick(() => {
+          Button('reset').onClick(() => {
             this.countDownTextTimerController.reset();
             this.countUpTextTimerController.reset();
           }).margin(10)
@@ -466,7 +463,7 @@ struct Index {
   }
 }
 ```
-
+![text_timer_content_modifier](figures/text_timer_content_modifier.gif)
 
 ### Example 4: Enabling the Timer to Start Immediately After Creation
 
@@ -495,7 +492,64 @@ struct TextTimerStart {
           this.textTimerController.start();
         })
     }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 ![text_timer_auto_start](figures/text_timer_auto_start.gif)
+
+### Example 5: Setting the Text Style
+
+This example shows text effects in different styles using the [fontColor](#fontcolor), [fontSize](#fontsize), [fontStyle](#fontstyle), [fontWeight](#fontweight) and [fontFamily](#fontfamily) attributes.
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct demo {
+  textTimerController: TextTimerController = new TextTimerController();
+  @State format: string = 'HH:mm:ss.SS';
+  @State countValue: number = 5025678;
+
+  build() {
+    Column({ space: 10 }) {
+      Text ('Set the font color').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontColor(Color.Blue)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontColor(Color.Gray)
+
+      Text ('Set the font size').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontSize(10)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontSize(30)
+
+      Text ('Set the font style').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontStyle(FontStyle.Normal)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontStyle(FontStyle.Italic)
+
+      Text ('Set the font weight').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontWeight(FontWeight.Lighter)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontWeight(FontWeight.Bolder)
+
+      Text ('Set the font family').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontFamily('HMOS Color Emoji')
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontFamily('HarmonyOS Sans')
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![](figures/text_timer_example_font_setting.png)

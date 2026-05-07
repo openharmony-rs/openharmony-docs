@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **NOTE**
 >
@@ -21,20 +21,23 @@ Bytecode obfuscation and source code obfuscation cannot be enabled at the same t
 Since API version 20, the bytecode obfuscation capability has been integrated into the system. You can enable it in DevEco Studio as follows:
 
 * Enabling the obfuscation switch
-    To enable obfuscation, set the **enable** field to **true** under **arkOptions.obfuscation.ruleOptions** in the **build-profile.json5** file of your module.
+    To enable obfuscation, set the `enable` field to **true** under `arkOptions.obfuscation.ruleOptions` in the `build-profile.json5` file of your module.
 
-    ```txt
+    <!-- @[set_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->    
+    
+    ``` JSON5
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
-          "enable": true,
-          "files": ["./obfuscation-rules.txt"]
-        }
+          "enable": true, // Enable the obfuscation switch.
+          "files": ["./obfuscation-rules.txt"] // Specify the obfuscation rule file, which takes effect when the current module is compiled.
+        },
+        // ...
       }
-    }
+    },
     ```
 
-    To configure obfuscation options, manually edit the **obfuscation-rules.txt** file specified in the **files** field. Enable the following obfuscation options:
+    To configure obfuscation options, manually edit the `obfuscation-rules.txt` file specified in the **files** field. Enable the following obfuscation options:
 
     ```txt
     -enable-bytecode-obfuscation # Activates bytecode obfuscation when enabled.
@@ -46,7 +49,7 @@ Since API version 20, the bytecode obfuscation capability has been integrated in
     > Bytecode HAR files will not be re-obfuscated during integration.
 
 * Configuring obfuscation rules
-    Enabling the bytecode obfuscation switch activates the default settings, which include obfuscation of functions and classes that are not in the top-level scope. To enable additional obfuscation features, customize the **obfuscation-rules.txt** file specified in the **files** field. Note that the default values in this file may vary across different versions of DevEco Studio.
+    Enabling the bytecode obfuscation switch activates the default settings, which include obfuscation of functions and classes that are not in the top-level scope. To enable additional obfuscation features, customize the `obfuscation-rules.txt` file specified in the `files` field. Note that the default values in this file may vary across different versions of DevEco Studio.
     For example, in DevEco Studio of version 5.0.3.600 and later, the obfuscation configuration file is as follows, which indicates that property name obfuscation, top-level scope name obfuscation, file name obfuscation, and imported/exported name obfuscation are enabled.
 
     ```txt
@@ -56,7 +59,7 @@ Since API version 20, the bytecode obfuscation capability has been integrated in
     -enable-export-obfuscation
     ```
 
-    You can also add comments to the obfuscation rule file by prefixing lines with the # symbol. For example:
+    You can also add comments to the obfuscation rule file by prefixing lines with the `#` symbol. For example:
 
     ```txt
     # options:
@@ -71,7 +74,7 @@ Since API version 20, the bytecode obfuscation capability has been integrated in
 
     > **NOTE**
     >
-    > By default, obfuscation is disabled for new projects. If you want to enable obfuscation, set the **ruleOptions.enable** field in the **build-profile.json5** file of the module to **true**. If required, enable the **-enable-bytecode-obfuscation** and **-enable-bytecode-obfuscation-debugging** options in the **obfuscation-rules.txt** file. By default, the following four recommended obfuscation options are enabled in the **obfuscation-rules.txt** file:** -enable-property-obfuscation**, **-enable-toplevel-obfuscation**, **-enable-filename-obfuscation**, and **-enable-export-obfuscation**. You can customize the obfuscation settings as needed.
+    > By default, obfuscation is disabled for new projects. If you want to enable obfuscation, set the `ruleOptions.enable` field in the `build-profile.json5` file of the module to `true`. If required, enable the `-enable-bytecode-obfuscation` and `-enable-bytecode-obfuscation-debugging` options in the `obfuscation-rules.txt` file. By default, the following four recommended obfuscation options are enabled in the `obfuscation-rules.txt` file: `-enable-property-obfuscation`, `-enable-toplevel-obfuscation`, `-enable-filename-obfuscation`, and `-enable-export-obfuscation`. You can customize the obfuscation settings as needed.
 
 * Specifying release compilation
     Currently, bytecode obfuscation is supported only for release builds, not for debug builds. This means that obfuscation will only be applied when a module is compiled in release mode, not in debug mode. You can view and modify the build mode by referring to [Specifying a Build Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).
@@ -83,25 +86,27 @@ Since API version 20, the bytecode obfuscation capability has been integrated in
 ### Obfuscation Configuration Files
 
 * `obfuscation-rules.txt`
-    For HAP, HAR, and HSP modules, the **arkOptions.obfuscation.ruleOptions.files** field in the **build-profile.json5** file specifies obfuscation rules applied during module compilation. A default **obfuscation-rules.txt** file is created when a new project is set up.
+    For HAP, HAR, and HSP modules, the `arkOptions.obfuscation.ruleOptions.files` field in the `build-profile.json5` file specifies obfuscation rules applied during module compilation. A default `obfuscation-rules.txt` file is created when a new project is set up.
 
 * `consumer-rules.txt`
-    For HAR and HSP modules, an additional **arkOptions.obfuscation.consumerFiles** field is available in the **build-profile.json5** file. This field specifies obfuscation rules that should be applied when this package is depended upon in other modules. A default **consumer-rules.txt** file is created when a new HAR or HSP module is set up. The key difference between **consumer-rules.txt** and **obfuscation-rules.txt** is as follows: **obfuscation-rules.txt** applies to the compilation of the current module, whereas **consumer-rules.txt** applies to the compilation of other modules that depend on the current module.
+    For HAR and HSP modules, an additional `arkOptions.obfuscation.consumerFiles` field is available in the `build-profile.json5` file. This field specifies obfuscation rules that should be applied when this package is depended upon in other modules. A default `consumer-rules.txt` file is created when a new HAR or HSP module is set up. The key difference between `consumer-rules.txt` and `obfuscation-rules.txt` is as follows: `obfuscation-rules.txt` applies to the compilation of the current module, whereas `consumer-rules.txt` applies to the compilation of other modules that depend on the current module.
 
-    ```txt
+    <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->      
+    
+    ``` JSON5
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
-          "enable": true,
-          "files": ["./obfuscation-rules.txt"]
+          "enable": true, // Enable the obfuscation switch.
+          "files": ["./obfuscation-rules.txt"] // Specify the obfuscation rule file, which takes effect when the current module is compiled.
         },
-        "consumerFiles": ["./consumer-rules.txt"]
+        "consumerFiles": ["./consumer-rules.txt"] // Specify the obfuscation rule file, which takes effect when other modules that depend on the current module are compiled.
       }
-    }
+    },
     ```
 
 * `obfuscation.txt`
-    Unlike the above two files, **obfuscation.txt** is automatically generated based on **consumer-rules.txt** and the obfuscation rules of dependent modules during HAR or HSP compilation. It exists as a compilation product within the released HAR or HSP package and used to apply obfuscation rules when other applications use this package. For details about the generation and logic of **obfuscation.txt**, see [Obfuscation Rule Merging Strategies](bytecode-obfuscation.md#obfuscation-rule-merging-strategies).
+    Unlike the above two files, `obfuscation.txt` is automatically generated based on `consumer-rules.txt` and the obfuscation rules of dependent modules during HAR or HSP compilation. It exists as a compilation product within the released HAR or HSP package and used to apply obfuscation rules when other applications use this package. For details about the generation and logic of `obfuscation.txt`, see [Obfuscation Rule Merging Strategies](bytecode-obfuscation.md#obfuscation-rule-merging-strategies).
 
     > **NOTE**
     >
@@ -121,23 +126,27 @@ The following table summarizes the differences between these configuration files
 2. After the preceding option is enabled, configure `-enable-property-obfuscation`.
     1. If the code statically defines properties but dynamically accesses them (or vice versa), use `-keep-property-name` to retain the property names. Example:
 
-        ```ts
-       // file.ts
-       // Static definition, dynamic access: The property name is static during object definition, but is accessed by dynamically constructing the property name (usually using string concatenation).
-       const obj = {
-  	 		staticName: 5  // Static definition
-	   };
-	   const fieldName = 'static' + 'Name';  // Dynamic construction of the property name
-	   console.info(obj[fieldName]);  // Use square bracket notation to dynamically access the property.
+        <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+        
+        ``` TypeScript
+        // file.ts
+        // Static definition, dynamic access: The property name is static during object definition, but is accessed by dynamically constructing the property name (usually using string concatenation).
+        const obj001 = {
+          staticName: 5  // Static definition
+        };
+        const fieldName = 'static' + 'Name';  // Dynamic construction of the property name
+        console.info(obj001[fieldName]);  // Use square bracket notation to dynamically access the property.
         ```
 
-        ```ts
-       // file.ts
-       // Dynamic definition, static access: The property name is determined during object definition through a dynamic expression, but is statically accessed using dot notation (assuming that you know the result of the property name).
-       const obj1 = {
- 			['dynamic' + 'Name']: 5  // Dynamic definition
-	   };
-	   console.info(obj1.dynamicName + '');// Use dot notation to statically access the property.
+        <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+        
+        ``` TypeScript
+        // file.ts
+        // Dynamic definition, static access: The property name is determined during object definition through a dynamic expression, but is statically accessed using dot notation (assuming that you know the result of the property name).
+        const obj002 = {
+          ['dynamic' + 'Name']: 5  // Dynamic definition
+        };
+        console.info(obj002.dynamicName + '');// Use dot notation to statically access the property.
         ```
 
     2. If the code uses dot notation to access fields not defined in ArkTS/TS/JS code (for example, native so libraries, fixed JSON files, or database fields):

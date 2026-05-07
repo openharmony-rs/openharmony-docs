@@ -7,15 +7,17 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-> **说明：**
->
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 给第三方应用提供webSocket客户端和服务端服务器，实现客户端与服务端的双向连接。
 
 客户端：使用WebSocket建立服务器与客户端的双向连接，需要先通过[createWebSocket](#websocketcreatewebsocket)方法创建[WebSocket](#websocket)对象，然后通过[connect](#connect)方法连接到服务器。当连接成功后，客户端会收到[open](#onopen)事件的回调，之后客户端就可以通过[send](#send)方法与服务器进行通信。当服务器发信息给客户端时，客户端会收到[message](#onmessage)事件的回调。当客户端想要取消此连接时，通过调用[close](#close)方法主动断开连接后，客户端会收到[close](#onclose)事件的回调。若在上述任一过程中发生错误，客户端会收到[error](#onerror)事件的回调。
 
 服务端：（从API version 23开始支持全设备使用，之前仅支持TV设备使用）使用WebSocket建立服务器与客户端的双向连接，需要先通过[createWebSocketServer](#websocketcreatewebsocketserver19)方法创建[WebSocketServer](#websocketserver19)对象，然后通过[start](#start19)方法启动服务器，监听客户端的申请建链的消息。当连接成功后，服务端会收到[connect](#onconnect19)事件的回调，之后服务端可以通过[send](#send19)方法与客户端进行通信，或者通过[listAllConnections](#listallconnections19)方法列举出当前与服务端建链的所有客户端信息。当客户端给服务端发消息时，服务端会收到[messageReceive](#onmessagereceive19)事件回调。当服务端想断开与某个客户端的连接时，可以通过调用[close](#close19)方法主动断开与某个客户端的连接，之后服务端会收到[close](#onclose19)事件的回调。当服务端想停止service时，可以调用[stop](#stop19)方法。若在上述任一过程中发生错误，服务端会收到[error](#onerror19)事件的回调。
+
+
+> **说明：**
+>
+> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 
 ## 导入模块
 
@@ -53,11 +55,10 @@ let ws: webSocket.WebSocket = webSocket.createWebSocket();
 
 connect(url: string, callback: AsyncCallback\<boolean\>): void
 
-根据URL地址，建立一个WebSocket连接，使用callback方式作为异步方法。
+根据URL地址，建立一个WebSocket连接，使用callback异步回调。
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -69,7 +70,7 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。从API15开始，URL地址长度限制由1024修改为2048。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。从API version 26开始，URL地址长度限制由2048修改为8196。
 
 **参数：**
 
@@ -114,11 +115,9 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
 
 connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<boolean\>): void
 
-根据URL地址，建立一个WebSocket连接，使用callback方式作为异步方法。
+根据URL地址，建立一个WebSocket连接，使用callback异步回调。
 
 > **说明：**
->
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -130,7 +129,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。从API version 26开始，URL地址长度限制由2048修改为8196。
 
 **参数：**
 
@@ -160,6 +159,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 示例1：
 let ws = webSocket.createWebSocket();
 let options: webSocket.WebSocketRequestOptions | undefined;
 if (options !=undefined) {
@@ -178,6 +178,21 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
     console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
   }
 });
+
+// 示例2：
+let url = "ws://"
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions = {
+  minSupportTlsProtocol: webSocket.TlsProtocol.TLS_V_1_1
+};
+ws.connect(url, options, (err: BusinessError, value: Object) => {
+  if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+
 ```
 
 ### connect
@@ -188,8 +203,6 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
->
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
@@ -198,9 +211,9 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
->**注意：** 
+> **注意：** 
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。从API version 26开始，URL地址长度限制由2048修改为8196。
 
 **参数：**
 
@@ -248,7 +261,7 @@ promise.then((value: boolean) => {
 
 send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
-通过WebSocket连接发送数据，使用callback方式作为异步方法。
+通过WebSocket连接发送数据，使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -379,7 +392,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 
 close(callback: AsyncCallback\<boolean\>): void
 
-关闭WebSocket连接，使用callback方式作为异步方法。
+关闭WebSocket连接，使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -422,7 +435,7 @@ ws.close((err: BusinessError) => {
 
 close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 
-根据参数options，关闭WebSocket连接，使用callback方式作为异步方法。
+根据参数options，关闭WebSocket连接，使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -524,7 +537,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-订阅WebSocket的打开事件，使用callback方式作为异步方法。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect)发起连接请求前调用。
+订阅WebSocket的打开事件，使用callback异步回调。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect)发起连接请求前调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -557,7 +570,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 
 off(type: 'open', callback?: AsyncCallback\<Object\>): void
 
-取消订阅WebSocket的打开事件，使用callback方式作为异步方法。
+取消订阅WebSocket的打开事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -597,7 +610,7 @@ ws.off('open', callback1);
 
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
 
-订阅WebSocket的接收服务器消息事件，使用callback方式作为异步方法。
+订阅WebSocket的接收服务器消息事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -630,7 +643,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 
 off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
-取消订阅WebSocket的接收服务器消息事件，使用callback方式作为异步方法。
+取消订阅WebSocket的接收服务器消息事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -661,7 +674,7 @@ ws.off('message');
 
 on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
 
-订阅WebSocket的关闭事件，使用callback方式作为异步方法。
+订阅WebSocket的关闭事件，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -690,7 +703,7 @@ ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
 
 off(type: 'close', callback?: AsyncCallback\<CloseResult\>): void
 
-取消订阅WebSocket的关闭事件，使用callback方式作为异步方法。
+取消订阅WebSocket的关闭事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -720,7 +733,9 @@ ws.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅WebSocket的Error事件，使用callback方式作为异步方法。
+订阅WebSocket的Error事件，使用callback异步回调。
+
+关于[error](#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101。状态码表示协议从HTTP切换为WebSocket协议（触发open回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -749,7 +764,7 @@ ws.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅WebSocket的Error事件，使用callback方式作为异步方法。
+取消订阅WebSocket的Error事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -779,7 +794,7 @@ ws.off('error');
 
 on(type: 'dataEnd', callback: Callback\<void\>): void
 
-订阅WebSocket的数据接收结束事件，使用callback方式作为异步方法。
+订阅WebSocket的数据接收结束事件，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -805,7 +820,7 @@ ws.on('dataEnd', () => {
 
 off(type: 'dataEnd', callback?: Callback\<void\>): void
 
-取消订阅WebSocket的数据接收结束事件，使用callback方式作为异步方法。
+取消订阅WebSocket的数据接收结束事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -833,7 +848,7 @@ ws.off('dataEnd');
 
 on(type: 'headerReceive', callback: Callback\<ResponseHeaders\>): void
 
-订阅HTTP Response Header事件，使用callback方式作为异步方法。
+订阅HTTP Response Header事件，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -859,7 +874,7 @@ ws.on('headerReceive', (data) => {
 
 off(type: 'headerReceive', callback?: Callback\<ResponseHeaders\>): void
 
-取消订阅HTTP Response Header事件，使用callback方式作为异步方法。
+取消订阅HTTP Response Header事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -919,7 +934,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误码说明参见[webSocket错误码](errorcode-net-webSocket.md)。
+> 在多次调用该接口时，应避免监听同一端口。
 
 **需要权限**: ohos.permission.INTERNET
 
@@ -947,6 +962,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
+| 2302007   | Websocket port already occupied.           |
 | 2302999   | Websocket other unknown error.             |
 
 **示例：**
@@ -1058,6 +1074,10 @@ listAllConnections(): WebSocketConnection[]
 **需要权限**: ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetStack 
+
+>**说明：**
+>
+>该接口为异步调用，返回结果需通过await关键字等待异步操作完成，以确保正确获取到所有客户端连接信息。
 
 **返回值：**
 | 类型                                        | 说明                         |
@@ -1240,7 +1260,7 @@ localServer.stop().then((success: boolean) => {
 
 on(type: 'connect', callback: Callback\<WebSocketConnection\>): void
 
-订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback方式作为异步方法。
+订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1267,7 +1287,7 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 
 off(type: 'connect', callback?: Callback\<WebSocketConnection\>): void
 
-取消订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback方式作为异步方法。
+取消订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback异步回调。
 
 > **说明：**
 >
@@ -1296,7 +1316,7 @@ localServer.off('connect');
 
 on(type: 'messageReceive', callback: Callback\<WebSocketMessage\>): void
 
-订阅WebSocketServer的接收客户端消息的事件，使用callback方式作为异步方法。
+订阅WebSocketServer的接收客户端消息的事件，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1323,7 +1343,7 @@ localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
 
 off(type: 'messageReceive', callback?: Callback\<WebSocketMessage\>): void
 
-取消订阅WebSocketServer的接收到客户端消息事件，使用callback方式作为异步方法。
+取消订阅WebSocketServer的接收到客户端消息事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -1352,7 +1372,7 @@ localServer.off('messageReceive');
 
 on(type: 'close', callback: ClientConnectionCloseCallback): void
 
-订阅WebSocketServer的关闭事件，使用callback方式作为异步方法。
+订阅WebSocketServer的关闭事件，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1379,7 +1399,7 @@ localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeR
 
 off(type: 'close', callback?: ClientConnectionCloseCallback): void
 
-取消订阅WebSocketServer的关闭事件，使用callback方式作为异步方法。
+取消订阅WebSocketServer的关闭事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -1408,7 +1428,7 @@ localServer.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅WebSocketServer的Error事件，使用callback方式作为异步方法。
+订阅WebSocketServer的Error事件，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1435,7 +1455,7 @@ wsServer.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅WebSocketServer的Error事件，使用callback方式作为异步方法。
+取消订阅WebSocketServer的Error事件，使用callback异步回调。
 
 > **说明：**
 >
@@ -1476,6 +1496,7 @@ localServer.off('error');
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
 | pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
 | pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
+| minSupportTlsProtocol<sup>26+</sup> | [TlsProtocol](#tlsprotocol26) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1529,9 +1550,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 | reason | string | 否   |否 |原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 服务器发送的响应头。
 
@@ -1579,7 +1599,7 @@ type HttpProxy = connection.HttpProxy
 | serverPort | number | 否   | 否   | 服务端监听的端口号。                   |
 | serverCert | [ServerCert](#servercert19) | 否  | 是   | 指定服务端证书的信息，包括服务端证书文件路径和服务端证书的私钥文件路径。 |
 | protocol   | string | 否   | 是   | 自定义协议。 |
-| maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当到达最大数时，服务端拒绝新连接。默认最大数量为10。 |
+| maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当达到最大数时，服务端拒绝新连接。默认最大数量为10。 |
 | maxConnectionsForOneClient | number | 否 | 否   | 单个客户端的最大连接数。默认最大数量为10。 |
 
 ## ServerCert<sup>19+</sup>
@@ -1628,3 +1648,16 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 | ---------------- | -------------------  | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | 是 | 客户端信息，包括客户端的ip地址和端口号port。             |
 | closeReason | [CloseResult](#closeresult10)  | 是 | 关闭WebSocket连接时，订阅close事件得到的关闭结果。 |
+
+## TlsProtocol<sup>26+</sup>
+
+TLS协议类型。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+|            名称         | 值   | 说明        |
+| :----------------------- | :---- | :---------- |
+| TLS_V_1_0 | 0    | TLS版本号1.0。  |
+| TLS_V_1_1  | 1    | TLS版本号1.1。 |
+| TLS_V_1_2 | 2    | TLS版本号1.2。 |
+| TLS_V_1_3 | 3    | TLS版本号1.3。 |

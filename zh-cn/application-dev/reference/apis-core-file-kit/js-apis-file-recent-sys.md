@@ -1,10 +1,10 @@
 # @ohos.file.recent (最近访问列表)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供最近访问列表插入、移除、查询等常用能力。
 
@@ -13,6 +13,7 @@
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 > - 当前只支持文件管理器调用。
+> - 本模块接口从API version 23开始废弃。不建议使用以下接口。
 
 ## 导入模块
 
@@ -138,5 +139,5 @@ listFile(): Array\<FileInfo>
 | fileName | string | 是 | 否 | 文件名。 |
 | mode | number | 是 | 否 | [文件权限信息](js-apis-file-fs.md#stat)。 |
 | size | number | 是 | 否 |  文件的大小（单位：字节）。 |
-| mtime | number | 是 | 否 |  文件的修改时间。 |
-| ctime | number | 是 | 否 |  文件的创建时间。 |
+| mtime | number | 是 | 否 |  文件的修改时间。自1970年1月1日起至目标时间的毫秒数。 |
+| ctime | number | 是 | 否 |  文件的创建时间。自1970年1月1日起至目标时间的秒数。|

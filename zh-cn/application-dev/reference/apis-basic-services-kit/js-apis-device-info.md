@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
-<!--Designer: @liveery-->
+<!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
@@ -39,7 +39,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br/>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。<br/>示例：TAS-AL00 |
 | softwareModel | string | 是 | 内部软件子型号。<br/>示例：<!--RP5-->TAS-AL00<!--RP5End--> |
 | hardwareModel | string | 是 | 硬件版本号。<br/>示例：<!--RP6-->TASA00CVN1<!--RP6End--> |
-| hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br/>**说明**：<br/>从API version 6 开始支持，从API version 9 开始废弃，建议使用[syscap能力](../syscap.md)替代。<br/>示例：default |
+| hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br/>**说明**：<br/>从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](../syscap.md)替代。<br/>示例：default |
 | serial | string | 是 | 设备序列号SN(Serial Number)。<br/>**说明**：可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业定制应用申请) <br/>示例：序列号随设备差异 |
 | bootloaderVersion | string | 是 | Bootloader版本号。<br/>示例：bootloader |
 | abiList | string | 是 | 应用二进制接口（Abi）。<br/>示例：arm64-v8a |
@@ -47,12 +47,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | displayVersion | string | 是 | 产品版本。<br/>示例：<!--RP8-->XXX X.X.X.X<!--RP8End--> |
 | incrementalVersion | string | 是 | 差异版本号。<br/>示例：default |
 | osReleaseType | string | 是 | 系统的发布类型，取值为：<br/>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br/>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br/>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。<br/>示例：<!--RP9-->Canary/Beta/Release<!--RP9End--> |
-| osFullName | string | 是 | 系统版本，版本格式OpenHarmony-x.x.x.x,x为数值。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
+| osFullName | string | 是 | 系统版本，版本格式<!--RP12-->OpenHarmony-x.x.x.x,x为数值。<!--RP12End--><br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
 | majorVersion | number | 是 | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者解析osFullName获取。<br/>示例：5 |
 | seniorVersion | number | 是 | Senior版本号，随局部架构、重大特性增加，值为osFullName中的第二位数值，建议直接使用deviceInfo.seniorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 |
 | featureVersion | number | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 |
 | buildVersion | number | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1 |
-| sdkApiVersion | number | 是 | 系统软件API版本。<br/>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。<br/>示例：12 |
+| sdkApiVersion | number | 是 | 系统软件API版本。<br/>**原子化服务API**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：12 |
+| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。**从** API 26 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。<br/>示例：0 |
+| sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。**从** API 26 版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/>**起始版本**：26.0.0<br/>**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。<br/>示例：0 |
 | firstApiVersion | number | 是 | 首个版本系统软件API版本。<br/>示例：3 |
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。<br/>示例：wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog |
 | buildType | string | 是 | 构建类型。<br/>示例：default |
@@ -60,17 +62,27 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | buildHost | string | 是 | 构建主机。<br/>示例：default |
 | buildTime | string | 是 | 构建时间。<br/>示例：default |
 | buildRootHash | string | 是 | 构建版本Hash。<br/>示例：default |
-| udid<sup>7+</sup> | string | 是 | 设备Udid。<br/>**说明**：数据长度为65字节。可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业定制应用申请)<br/>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  |
+| udid<sup>7+</sup> | string | 是 | 设备Udid。<br/>**说明**：数据长度为65字节。可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请)<br/>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  |
 | distributionOSName<sup>10+</sup> | string | 是 | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony |
 | distributionOSVersion<sup>10+</sup> | string | 是 | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--><br/>示例：5.0.0  |
 | distributionOSApiVersion<sup>10+</sup> | number| 是 | 发行版系统api版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：50001 |
 | distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统api版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 |
 | distributionOSReleaseType<sup>10+</sup> | string | 是 | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：Release |
-| ODID<sup>12+</sup> | string | 是 |开发者匿名设备标识符。<br/>**ODID值会在以下场景重新生成**：<br/>手机恢复出厂设置。<br/>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br/>**ODID生成规则**：<br/>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br/>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br/>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br/>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br/>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br/>**说明**：数据长度为37字节。<br/>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX |
-| diskSN<sup>15+</sup> | string | 是 | 硬盘序列号。<br/> **说明** ：该字段只能在2in1上设备进行查询，其他设备查询结果为空。<br/> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO <br/> 示例：2502EM400567 |
+| ODID<sup>12+</sup> | string | 是 |开发者匿名设备标识符。<br/>**ODID值会在以下场景重新生成**：<br/>手机恢复出厂设置。<br/>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br/>**ODID生成规则**：<br/>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br/>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br/>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br/>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br/>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br/>**说明**：数据长度为37字节(包含结束符)。<br/>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX |
+| diskSN<sup>15+</sup> | string | 是 | 硬盘序列号。<br/> **说明** ：该字段只能在2in1设备进行查询，其他设备查询结果为空。<br/> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO <br/> 示例：2502EM400567 |
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 |
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号<br/> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 |
+| deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/> 示例：gold<br/> **起始版本**：26.0.0 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[deviceInfo错误码](errorcode-device-info.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 14700103 | Permission verification failed. System permission operation permission denied |
+| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
 **示例**
 
@@ -164,6 +176,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     // 输出结果：the value of the sdkApiVersion is :12
     console.info('the value of the deviceInfo sdkApiVersion is :' + sdkApiVersionInfo);
 
+   let sdkMinorApiVersionInfo: number = deviceInfo.sdkMinorApiVersion;
+    // 输出结果：the value of the sdk Minor ApiVersion is :0
+    console.info('the value of the deviceInfo sdkMinorApiVersion is :' + sdkMinorApiVersionInfo);
+
+   let sdkPatchApiVersionInfo: number = deviceInfo.sdkPatchApiVersion;
+    // 输出结果：the value of the sdk Patch ApiVersion is :0
+    console.info('the value of the deviceInfo sdkPatchApiVersion is :' + sdkPatchApiVersionInfo);
+
     let firstApiVersionInfo: number = deviceInfo.firstApiVersion;
     // 输出结果：the value of the firstApiVersion is :3
     console.info('the value of the deviceInfo firstApiVersion is :' + firstApiVersionInfo);
@@ -235,6 +255,9 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     // 输出结果：the value of the bootCount is :100
     console.info('the value of the deviceInfo bootCount is :' + bootCount);
 
+    let deviceColor: string = deviceInfo.deviceColor;
+    // 输出结果：the value of the deviceColor is :blue
+    console.info('the value of the deviceColor is :' + deviceColor);
 ```
 
 ## PerformanceClassLevel<sup>19+</sup>
@@ -298,3 +321,52 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     // 输出结果：the value of the DeviceTypes is :car
     console.info('the value of the DeviceTypes is :' + deviceTypesInfoCar);
 ```
+
+
+## apiAvailable
+
+apiAvailable(version: string | number): boolean;
+<!--RP13-->
+检查指定的API版本在当前设备上是否可用。<br/>
+此方法提供跨不同OpenHarmony/分布式操作系统版本的兼容性检查。它会根据输入格式和API版本范围自动选择合适的版本检查方法。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口Stage模型和FA模型下皆可使用。
+
+**系统能力**：SystemCapability.Startup.SystemInfo
+
+**参数：**
+
+| 参数名    | 类型                                      | 必填 | 说明                               |
+| --------- | ----------------------------------------- | ---- | ---------------------------------- |
+| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。|
+
+**示例：**
+
+```ts
+import { deviceInfo } from '@kit.BasicServicesKit';
+
+// Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
+if (deviceInfo.apiAvailable("26.0.0")) {
+   ...
+}
+
+
+// Check API 5.0.1 (Distribution OS version, API 26-)
+if (deviceInfo.apiAvailable("5.0.1")) {
+   ...
+}
+
+
+import { deviceInfo } from '@kit.BasicServicesKit';
+
+// Check API 13 (OpenHarmony SDK version, API 26-)
+if (deviceInfo.apiAvailable(13)) {
+   ...
+}
+
+```
+<!--RP13End-->

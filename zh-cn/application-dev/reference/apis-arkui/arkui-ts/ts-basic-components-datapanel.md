@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
 
 ## 子组件
@@ -65,8 +67,8 @@ DataPanel(options: DataPanelOptions)
 
 | 名称 | 值 | 说明 |
 | -------| - | ------------ |
-| Line   | - | 线型数据面板。 |
-| Circle | - | 环形数据面板。 |
+| Line   | 0 | 线型数据面板。 |
+| Circle | 4 | 环形数据面板。 |
 
 
 ## 属性
@@ -105,7 +107,7 @@ valueColors(value: Array<ResourceColor | LinearGradient>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。 |
+| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。默认渐变色，其九段数据段默认颜色：[{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }]、[{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }]、[{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }]、[{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }]、[{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }]、[{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }]、[{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }]、[{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }]、[{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }] |
 
 ### trackBackgroundColor<sup>10+</sup>
 
@@ -169,7 +171,7 @@ contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 
 ## DataPanelShadowOptions<sup>10+</sup>对象说明
@@ -226,7 +228,7 @@ constructor(colorStops: ColorStop[])
 
 | 名称  | 类型    |    只读    |    可选   |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| values | number[] | 否 | 否 | 当前DataPanel的数据值。<br>取值范围：[0, 9]，若数据值小于0，则置为0。 |
+| values | number[] | 否 | 否 | 当前DataPanel的数据值。<br>数组长度范围是[0, 9]。<br>**说明：**<br/>如果数组长度大于9，则取前9项。|
 | maxValue | number | 否 | 否 | DataPanel显示的最大值。<br/>默认值：100。<br>**说明：** <br/>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
 
 ## 示例

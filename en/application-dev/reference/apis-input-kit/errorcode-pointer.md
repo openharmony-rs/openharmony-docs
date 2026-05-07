@@ -5,11 +5,11 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> - This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 26500001 Invalid Window ID
 
@@ -41,7 +41,7 @@ Internal error of the multimodal input service.
 
 **Possible Causes**
 
-Unexpected errors, such as memory allocation failure, busy thread, and abnormal service exit, occur.
+Unexpected errors occurred, such as memory allocation failure, busy thread, and service execution.
 
 **Solution**
 

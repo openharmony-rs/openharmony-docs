@@ -14,13 +14,13 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 
 > **说明：**
 >
->- 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[API参考](../reference/apis-network-kit/js-apis-net-vpnExtension.md)。
->- 完整的JS API说明以及示例代码请参考：[VPN扩展应用API](../reference/apis-network-kit/js-apis-net-vpnExtension.md)。
+>- 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[@ohos.net.vpnExtension (VPN增强管理)](../reference/apis-network-kit/js-apis-net-vpnExtension.md)。
+>- 完整的JS API说明以及示例代码请参考：[@ohos.net.vpnExtension (VPN增强管理)](../reference/apis-network-kit/js-apis-net-vpnExtension.md)。
 >- 使用该功能需要[ohos.permission.INTERNET](../security/AccessToken/permissions-for-all.md#ohospermissioninternet)权限。
 
 ## VPN应用的显示体验
 
-借助系统提供的VPN Extension接口开发者可以构建支持不同协议的VPN服务。OpenHarmony系统提供了界面 (UI) 使用户可以了解当前VPN应用服务的启动和连接：
+借助系统提供的[VPN Extension](../reference/apis-network-kit/js-apis-net-vpnExtension.md)接口开发者可以构建支持不同协议的VPN服务。OpenHarmony系统提供了界面 (UI) 使用户可以了解当前VPN应用服务的启动和连接：
 
 - 在VPN应用首次启动连接之前，系统会显示VPN连接授权对话框。该对话框会提示用户是否信任该VPN应用并接受VPN连接请求。
 - 当VPN启动连接成功时，状态栏显示一个VPN (钥匙) 图标以提醒用户VPN处于连接状态。
@@ -132,14 +132,15 @@ struct StartVpn {
 
 您可参考如下示例：
 
-<!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+<!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
+
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
-<!-- @[stop_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+<!-- @[stop_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
 
 ``` TypeScript
 const TITLE_FONT_SIZE = 35; // 标题字体大小
@@ -157,35 +158,35 @@ let want: Want = {
 struct StopVpn {
   @State message: string = 'VPN';
 
-// ···
+  // ...
   build() {
     Row() {
       Column() {
-        // ···
+        // ...
         Text(this.message)
           .fontSize(TITLE_FONT_SIZE)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Client');
           })
-        // ···
+        // ...
         Button('Start Extension').onClick(() => {
           vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16);
+        }).width('70%').fontSize(20).margin(16);
         Button($r('app.string.stop_vpnExt'))
           .onClick(() => {
             try {
               hilog.info(0x0000, 'testTag', 'btn end')
               vpnExtension.stopVpnExtensionAbility(want)
-            // ···
+              // ...
             } catch (err) {
-            // ···
+              // ...
               hilog.error(0x0000, 'testTag', 'developTag', 'stop vpnExt Fail %{public}s', JSON.stringify(err) ?? '');
             }
 
           })
           .width('70%')
-        // ···
+          // ...
           .fontSize(BUTTON_FONT_SIZE)
           .margin(BUTTON_MARGIN)
       }.width('100%');
@@ -196,21 +197,21 @@ struct StopVpn {
 
 stopVpnExtensionAbility后，您的VPN Extension Ability的[onDestroy](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityondestroy)方法将被调用，您可在此时destroy vpn连接。
 
-<!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+<!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
 
 ``` TypeScript
-private context = getContext(this) as common.VpnExtensionContext;
+private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
 
 Destroy() {
   hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy');
-  // ···
+  // ...
   this.vpnConnection.destroy().then(() => {
     hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy Success');
-  // ···
+    // ...
   }).catch((err: Error) => {
      hilog.error(0x0000, 'testTag', 'developTag', 'vpn Destroy Failed: %{public}s', JSON.stringify(err) ?? '');
-  // ···
+    // ...
   })
 }
 ```
@@ -221,24 +222,23 @@ Destroy() {
 
 可参考如下示例：
 
-<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) -->
+<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) --> 
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
-// ···
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+// ...
 export class VpnTest extends VpnExtensionAbility {
   public vpnId: string = '';
-// ···
+  // ...
   getVpnId() {
-    // ···
+    // ...
       let vpnConnection = vpnExtension.createVpnConnection(this.context);
       vpnConnection?.generateVpnId().then((data) => {
         if (data) {
           this.vpnId = data;
         }
       });
-    // ···
+    // ...
   }
 };
 ```
@@ -247,26 +247,24 @@ export class VpnTest extends VpnExtensionAbility {
 
 若需断开VPN，可参考如下示例：
 
-<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) -->
+<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) --> 
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// ···
+// ...
 export class VpnTest extends VpnExtensionAbility {
   public vpnId: string = 'test_vpn_id';
   public vpnConnection: vpnExtension.VpnConnection | undefined;
-// ···
+  // ...
   destroy() {
-    // ···
+    // ...
       this.vpnConnection = vpnExtension.createVpnConnection(this.context);
       hilog.info(0x0000, 'testTag', 'create success');
       this.vpnConnection?.destroy(this.vpnId);
-    // ···
+      // ...
   }
 };
-
 ```
 
 ## 服务生命周期
@@ -278,6 +276,7 @@ export class VpnTest extends VpnExtensionAbility {
 
 ## VPN Config参数说明
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称       | 类型                                       | 只读 |可选| 说明          |
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
 | addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的IP地址。                                          |
@@ -294,7 +293,8 @@ export class VpnTest extends VpnExtensionAbility {
 
 **示例：**
 
-<!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
+<!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
+
 ``` TypeScript
 import { vpnExtension } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
@@ -342,14 +342,15 @@ let vpnConfig: vpnExtension.VpnConfig = {
 }
 ```
 
-<!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
+<!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
 
 ``` TypeScript
-let context = getContext(this) as common.VpnExtensionContext;
+let context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 let vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
 // 创建 VPN 连接并应用配置
 vpnConnection.create(vpnConfig).then((data) => {
   hilog.info(0x0000, 'testTag', 'vpn create ' + JSON.stringify(data));
+  // ...
 })
 ```
 

@@ -56,7 +56,7 @@
 
    - 通过系统资源实现
 
-     开发者可直接使用的[系统预置资源](../quick-start/resource-categories-and-access.md#系统资源)，即分层参数，同一资源ID在设备类型、深浅色等不同配置下有不同的取值。通过使用系统资源，不同的开发者可以开发出具有相同视觉风格的应用，不需要自定义两份颜色资源，在深浅色模式下也会自动切换成不同的颜色值。例如，开发者可调用系统资源中的文本主要配色来定义应用内文本颜色。
+     开发者可直接使用的[系统预置资源](../quick-start/resource-categories-and-access.md#访问系统资源)，即分层参数，同一资源ID在设备类型、深浅色等不同配置下有不同的取值。通过使用系统资源，不同的开发者可以开发出具有相同视觉风格的应用，不需要自定义两份颜色资源，在深浅色模式下也会自动切换成不同的颜色值。例如，开发者可调用系统资源中的文本主要配色来定义应用内文本颜色。
 
      ```ts
      Text('使用系统定义配色')
@@ -101,11 +101,11 @@
         value.updateConfiguration();
       })
     }
-    // ···
+    // ...
       aboutToAppear(): void {
-        // ···
+        // ...
             this.getUIContext()?.postFrameCallback(new MyFrameCallback());
-        // ···
+        // ...
       }
     ```
 
@@ -119,7 +119,7 @@
     
     ``` TypeScript
     onCreate(): void {
-      // ···
+      // ...
       AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
     }
     ```
@@ -150,13 +150,13 @@
     
     ``` TypeScript
     aboutToAppear(): void {
-      // ···
+      // ...
       if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
         // 当前为浅色模式，资源初始化逻辑
-      // ···
+        // ...
       } else {
         // 当前为深色模式，资源初始化逻辑
-      // ···
+        // ...
       }
     }
     ```
@@ -432,7 +432,8 @@ onCreate(): void {
 
 > **说明：**
 >
-> 反色能力需在[优化深浅色模式切换开销](#优化深浅色模式切换开销)使用的前提下使用。
+> - 反色能力需在[优化深浅色模式切换开销](#优化深浅色模式切换开销)使用的前提下使用。
+> - 跨进程场景如果想使用反色能力，需要[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)和对应UIExtensionAbility的宿主同时适配。UIExtensionAbility的宿主相关接口请参考[@ohos.arkui.uiExtension (uiExtension)](../reference/apis-arkui/js-apis-arkui-uiExtension.md)。
 
 1. 使用反色能力。
 

@@ -66,13 +66,13 @@ JS FA应用的JS模块(entry/src/main/js/module)的典型开发目录结构如�
 
 | 格式   | 支持版本                     | 支持的文件类型 |
 | ---- | ------------------------ | ------- |
-| BMP  | API&nbsp;Version&nbsp;4+ | .bmp    |
-| JPEG | API&nbsp;Version&nbsp;4+ | .jpg    |
-| PNG  | API&nbsp;Version&nbsp;4+ | .png    |
+| BMP  | API&nbsp;version&nbsp;4+ | .bmp    |
+| JPEG | API&nbsp;version&nbsp;4+ | .jpg    |
+| PNG  | API&nbsp;version&nbsp;4+ | .png    |
 
 ## 存储目录定义
 
-从API Version 5开始，[image](js-lite-components-basic-image.md)组件支持应用私有目录内的图片资源访问。
+从API version 5开始，[image](js-lite-components-basic-image.md)组件支持应用私有目录内的图片资源访问。
 
 | 目录类型   | 路径前缀            | 访问可见性  | 说明                          |
 | ------ | --------------- | ------ | --------------------------- |

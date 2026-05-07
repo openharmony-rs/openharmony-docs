@@ -1,13 +1,13 @@
 # @system.notification (通知消息)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 > **说明：**
-> - 从API Version 7 开始，该接口不再维护，推荐使用新接口[`@ohos.notification`](js-apis-notification.md)。
+> - 从API Version 7 开始，该接口不再维护，推荐使用新接口[@ohos.notification (Notification模块)](js-apis-notification.md)。
 > 
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 

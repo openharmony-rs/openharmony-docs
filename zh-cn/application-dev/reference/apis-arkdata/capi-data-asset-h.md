@@ -180,7 +180,7 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| int64_t createTime | 表示要设置的创建时间。 |
+| int64_t createTime | 表示要设置的创建时间。无特定单位。开发者可自行指定。 |
 
 **返回：**
 
@@ -206,7 +206,7 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| int64_t modifyTime | 表示要设置的最后修改的时间。 |
+| int64_t modifyTime | 表示要设置的最后修改的时间。无特定单位。开发者可自行指定。 |
 
 **返回：**
 
@@ -232,7 +232,7 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| size_t size | 表示要设置的占用空间的大小。 |
+| size_t size | 表示要设置的占用空间的大小（单位为字节（Byte），取值为非负整数）。 |
 
 **返回：**
 
@@ -365,7 +365,7 @@ int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| int64_t *createTime | 参数是输出参数，资产类型数据的创建时间会以int64_t形式写入该变量。 |
+| int64_t *createTime | 参数是输出参数，资产类型数据的创建时间会以int64_t形式写入该变量。无特定单位。开发者可自行指定。 |
 
 **返回：**
 
@@ -395,7 +395,7 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| int64_t *modifyTime | 参数是输出参数，资产类型数据的最后修改时间会以int64_t形式写入该变量。 |
+| int64_t *modifyTime | 参数是输出参数，资产类型数据的最后修改时间会以int64_t形式写入该变量。无特定单位。开发者可自行指定。 |
 
 **返回：**
 
@@ -471,7 +471,7 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。 |
+| [Data_Asset](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyOne](#oh_data_asset_destroyone)接口释放内存。 |
 
 ### OH_Data_Asset_DestroyOne()
 
@@ -520,7 +520,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。 |
+| [Data_Asset](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。<br>使用完成后，必须通过[OH_Data_Asset_DestroyMultiple](#oh_data_asset_destroymultiple)接口释放内存。 |
 
 ### OH_Data_Asset_DestroyMultiple()
 

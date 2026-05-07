@@ -1,10 +1,10 @@
 # ArkGuard混淆常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @HelloCrease-->
 
 ## 如何排查功能异常
 
@@ -38,6 +38,7 @@
 若出现预期外的混淆效果，检查是否由于依赖的本地模块或三方库开启了某些混淆选项。
 
 示例：
+
 假设当前模块未配置`-compact`，但混淆的中间产物中代码都被压缩成一行，可按照以下步骤排查混淆选项：
 
 1. 查看当前模块的oh-package.json5中的dependencies，此字段记录了当前模块的依赖信息。
@@ -70,21 +71,25 @@
 
 示例代码如下：
 
-```ts
-// 示例JSON文件结构（test.json）：
+<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 示例JSON文件结构（ImportJson.json）：
 /*
 {
   "jsonObj": {
     "jsonProperty": "value"
   }
 }
-*/
+ */
 
 // 混淆前
-import jsonData from "./testjson";
-
+import jsonData from './ImportJson.json';
+// ...
 let jsonProp = jsonData.jsonObj.jsonProperty;
+```
 
+```ts
 // 混淆后
 import jsonData from "./test.json";
 
@@ -93,11 +98,11 @@ let jsonProp = jsonData.i.j;
 
 **问题原因**
 
-开启属性混淆后，源码会被混淆，但json文件不会。源码中通过`jsonData.i`访问属性时，由于属性名称已经被混淆，json数据中并不存在对应的字段，导致获取的值为`undefined`。
+开启属性混淆后，源码会被混淆，但JSON文件不会。源码中通过`jsonData.i`访问属性时，由于属性名称已经被混淆，JSON数据中并不存在对应的字段，导致获取的值为`undefined`。
 
 **解决方案**
 
-将json文件中的字段配置到属性白名单中。示例如下：
+将JSON文件中的字段配置到属性白名单中。示例如下：
 
 ```text
 -keep-property-name
@@ -120,17 +125,23 @@ jsonProperty
 
 示例代码如下：
 
-```ts
+<!-- @[export_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportNs.ts) -->
+
+``` TypeScript
 // 混淆前
-// export.ts
+// ExportNs.ts
 export namespace NS {
-  export function foo() {}
+  export function foo() { }
 }
+```
 
+<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 // import.ts
-import { NS } from './export';
-
-NS.foo();
+import { NS } from './ExportNs';
+  // ...
+  NS.foo();
 ```
 
 ```ts
@@ -174,18 +185,26 @@ foo
 
 示例代码如下：
 
-```ts
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportUtils.ts) -->
+
+``` TypeScript
 // 混淆前
-// utils.ts
-export function addNum(a: number, b: number): number {
+// ExportUtils.ts
+export function add(a: number, b: number): number {
   return a + b;
 }
+```
 
+<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 // main.ts
 async function loadAndUseAdd() {
+  let result: number = 0;
   try {
-    const mathUtils = await import('./utils');
-    const result = mathUtils.addNum(2, 3);
+    const mathUtils = await import('./ExportUtils');
+    result = mathUtils.add(2, 3);
+    console.info(`result = ${result}`);
   } catch (error) {
     console.error('Failure reason:', error);
   }
@@ -242,17 +261,21 @@ addNum
 
 示例代码如下：
 
-```ts
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 // src/main/cpp/types/libentry/Index.d.ts
 export const addNum: (a: number, b: number) => number;
 ```
 
-```ts
+<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 // example.ets
 // 混淆前
 import testNapi from 'libentry.so';
-
-testNapi.addNum();
+  // ...
+  let sun = testNapi.addNum(1, 2);
 ```
 
 ```ts
@@ -288,16 +311,23 @@ addNum
 ```
 
 示例代码如下：
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets) -->
 
-```ts
+``` TypeScript
 // 混淆前
 // hsp模块
-export function addNum() {}
+export function addNum(a: number, b: number) {
+  return a + b;
+}
+```
 
+<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 // entry模块
-import { addNum } from 'hsp';
+import { addNum } from 'sharedlibrary';
 
-addNum();
+addNum(1, 2);
 ```
 
 ```ts
@@ -306,7 +336,7 @@ addNum();
 export function b() {}
 
 // entry模块
-import { n } from '@normalized:N&myhsp&&myhsp/Index&';
+import { n } from '@normalized:N&sharedlibrary&&sharedlibrary/Index&';
 
 n();
 ```
@@ -347,17 +377,19 @@ addNum
 
 示例代码如下：
 
-```ts
+<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 // 混淆前
 import { Want } from '@kit.AbilityKit';
-
-let petalMapWant: Want = {
-  bundleName: 'com.example.myapplication',
-  uri: 'maps://',
-  parameters: {
-    linkSource: 'com.other.app'
+  // ...
+  let petalMapWant: Want = {
+    bundleName: 'com.example.myapplication',
+    uri: 'maps://',
+    parameters: {
+      linkSource: 'com.other.app'
+    }
   }
-}
 ```
 
 ```ts
@@ -402,25 +434,31 @@ linkSource
 
 示例代码如下：
 
-```ts
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileInside.ts) -->
+
+``` TypeScript
 // 混淆前
-// file1.ts
+// FileInside.ts
 export interface MyInfo {
   age: number;
   address: {
     city1: string;
   }
 }
+```
 
-// file2.ts
-import { MyInfo } from './file1';
+<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
-const person: MyInfo = {
-  age: 20,
-  address: {
-    city1: "shanghai"
+``` TypeScript
+// FileOutside.ts
+import { MyInfo } from './FileInside';
+  // ...
+  const person: MyInfo = {
+    age: 20,
+    address: {
+      city1: 'shanghai'
+    }
   }
-}
 ```
 
 ```ts
@@ -452,12 +490,14 @@ const person: MyInfo = {
 
 方案一：使用`interface`定义该属性的类型，并使用`export`进行导出，这样该属性将被自动加入到属性白名单中。示例如下：
 
-```ts
-// file1.ts
+<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileOutside.ts) -->
+
+``` TypeScript
+// FileOutside.ts
 export interface AddressType {
-  city1: string;
+  city1: string
 }
-export interface MyInfo {
+export interface MyInfo2 {
   age: number;
   address: AddressType;
 }
@@ -499,13 +539,14 @@ person["m"] = 20;
 从API version 18开始，主模块默认不会被三方库的混淆规则所影响，因此不会有这种情况。但如果API version低于18，可参考以下两种解决方案。
 
 方案一：确认依赖的远程HAR包的`obfuscation.txt`文件中是否配置了`-enable-string-property-obfuscation`选项。若配置了则会影响主模块，需将其关闭。参考[排查非预期的混淆能力](source-obfuscation-questions.md#排查非预期的混淆能力)。
+
 方案二：若工程复杂无法找到配置了该混淆选项的远程HAR包，可以将属性名直接配置到白名单中。
 
 ### 数据库相关的字段被混淆后导致功能异常
 
 **问题现象**
 
-Hilog日志中报错信息为：`table Account has no column named a23 in 'INSERT INTO Account(a23)'`。
+HiLog日志中报错信息为：`table Account has no column named a23 in 'INSERT INTO Account(a23)'`。
 
 **问题原因**
 

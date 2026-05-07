@@ -117,6 +117,7 @@ type PromptActionCommonState = promptAction.CommonState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                           | 类型                                     | 只读 | 可选 | 说明                                     |
 | ----------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
 | builder                       | [CustomDialog](../../../ui/arkts-common-components-custom-dialog.md) | 否   | 否   | 自定义弹窗内容构造器。<br/>**说明：** <br/>若builder构造器使用回调函数作为入参，请注意使用this绑定问题，如builder: custombuilder({ callback: ()=> {...}})。<br/>若在builder中监听数据变化可以使用@Link或@Consume，而其他方式如@Prop、@ObjectLink不适用此场景。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -145,7 +146,7 @@ type PromptActionCommonState = promptAction.CommonState
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidMode<sup>12+</sup> | [KeyboardAvoidMode](ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明) | 否 | 是 | 用于设置弹窗是否在拉起软键盘时进行自动避让。<br/>默认值：KeyboardAvoidMode.DEFAULT<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 <br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭弹窗时，onWillDisappear在onDidAppear前生效。<br/>4.弹窗入场动效未完成时彻底关闭弹窗，动效打断，onDidAppear不会触发。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
@@ -153,10 +154,11 @@ type PromptActionCommonState = promptAction.CommonState
 | onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidDistance<sup>15+</sup>       | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是  | 弹窗避让键盘后，和键盘之间的距离。<br />**说明：**<br />- 默认值：16vp。<br />- 默认单位：vp。<br />- 当且仅当keyboardAvoidMode属性设置为DEFAULT时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelMode<sup>15+</sup>       | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否   | 是  | 设置弹窗显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY。<br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
-| levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的[节点 uniqueId](../js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的[节点UniqueID](../js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | focusable<sup>19+</sup>       | boolean | 否   | 是  | 设置弹窗是否获取焦点。值为true表示获取焦点，值为false表示不获取焦点。<br />默认值：true <br />**说明：**<br />只有弹出覆盖在当前窗口之上的弹窗才可以获取焦点。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。不同的材质具有不同的效果，可以影响弹窗的背景色、边框、阴影等视觉属性。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 >
@@ -336,7 +338,7 @@ struct CustomDialogUser {
 
 ### 示例2（可在主窗外弹出的弹窗）
 
-在2in1设备上设置showInSubWindow为true时，可以弹出在主窗外显示的弹窗。
+在2in1设备上设置[showInSubWindow](#customdialogcontrolleroptions对象说明)为true时，可以弹出在主窗外显示的弹窗。
 
 ```ts
 // xxx.ets
@@ -476,8 +478,8 @@ struct CustomDialogUser {
     width: 300,
     height: 200,
     borderWidth: 1,
-    borderStyle: BorderStyle.Dashed,//使用borderStyle属性，需要和borderWidth属性一起使用
-    borderColor: Color.Blue,//使用borderColor属性，需要和borderWidth属性一起使用
+    borderStyle: BorderStyle.Dashed,// 使用borderStyle属性，需要和borderWidth属性一起使用
+    borderColor: Color.Blue,// 使用borderColor属性，需要和borderWidth属性一起使用
     backgroundColor: Color.White,
     shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}),
   })
@@ -609,7 +611,9 @@ struct CustomDialogUser {
 
 ### 示例5（获取弹窗的状态）
 
-该示例实现了在CustomDialogController中调用getState获取弹窗当前状态。
+该示例实现了在[CustomDialogController](#customdialogcontroller)中调用[getState](#getstate20)获取弹窗当前状态。
+
+从API version 20开始，在CustomDialogController中新增了getState接口。
 
 ```ts
 // xxx.ets
@@ -668,7 +672,7 @@ struct CustomDialogUser {
 
 ### 示例6（使用@Link和@Consume监听数据变化）
 
-该示例使用@Link和@Consume实现页面与弹窗内数据的双向绑定。
+该示例使用[@Link](../../../ui/state-management/arkts-link.md)和[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)实现页面与弹窗内数据的双向绑定。
 
 ```ts
 @CustomDialog
@@ -771,7 +775,7 @@ struct CustomDialogUser {
 
 ### 示例7（自定义带loading的弹窗）
 
-该示例使用maskColor，maskRect和LoadingProgress，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
+该示例使用[maskColor](#customdialogcontrolleroptions对象说明)，[maskRect](#customdialogcontrolleroptions对象说明)和[LoadingProgress](ts-basic-components-loadingprogress.md)，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -821,10 +825,10 @@ struct CustomDialogUser {
         this.number++;
       })
       Button("show loading dialog").onClick(() => {
-        //获取窗口对象
+        // 获取窗口对象
         let windowClass = window.getLastWindow(this.getUIContext().getHostContext());
         windowClass.then(window => {
-          //获取窗口信息，设置maskRect
+          // 获取窗口信息，设置maskRect
           let properties = window.getWindowProperties();
           let maskRect = {
             x: this.getUIContext().px2vp(properties.windowRect.left + 150),
@@ -875,7 +879,9 @@ struct CustomDialogUser {
 
 ### 示例8（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
 
-该示例通过监听键盘变化，调整布局margin的bottom，实现与使用keyboardAvoidDistance调整弹窗与软键盘的间距一样的效果。
+该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的[bottom](ts-types.md#margin)，实现与使用[keyboardAvoidDistance](#customdialogcontrolleroptions对象说明)调整弹窗与软键盘的间距一样的效果。
+
+从API version 15开始，在CustomDialogControllerOptions中新增了keyboardAvoidDistance属性。
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -1011,7 +1017,9 @@ struct CustomDialogUser {
 
 ### 示例9（弹窗生命周期）
 
-该示例展示了弹窗生命周期的相关接口的使用方法。
+该示例为弹窗配置生命周期回调。
+
+从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性。
 
 ```ts
 // xxx.ets
@@ -1106,7 +1114,7 @@ struct Example3 {
 
 ### 示例10（不同customStyle下的弹窗示例）
 
-该示例是在对齐方式为DialogAlignment.Bottom时，展示customStyle不同值下，弹窗内容与安全区域的效果。
+该示例是在对齐方式为[DialogAlignment.Bottom](#customdialogcontrolleroptions对象说明)时，展示[customStyle](#customdialogcontrolleroptions对象说明)不同值下，弹窗内容与安全区域的效果。
 
 ```ts
 @CustomDialog
@@ -1191,7 +1199,9 @@ struct CustomDialogUser {
 
 ### 示例11（自定义背景模糊效果参数）
 
-从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#customdialogcontrolleroptions对象说明)，实现自定义背景模糊效果。
+该示例通过配置[backgroundBlurStyleOptions](#customdialogcontrolleroptions对象说明)，实现自定义背景模糊效果。
+
+从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 @CustomDialog
@@ -1251,7 +1261,9 @@ struct CustomDialogUser {
 
 ### 示例12（自定义背景效果参数）
 
-从API version 19开始，该示例通过配置[backgroundEffect](#customdialogcontrolleroptions对象说明)，实现自定义背景效果。
+该示例通过配置[backgroundEffect](#customdialogcontrolleroptions对象说明)，实现自定义背景效果。
+
+从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了backgroundEffect属性。
 
 ```ts
 @CustomDialog

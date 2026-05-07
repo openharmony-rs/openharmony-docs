@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -52,7 +52,7 @@
 
 | 名称 | 参数 | 描述 |
 | -------- | -------- | -------- |
-| refresh | {&nbsp;refreshing:&nbsp;refreshingValue&nbsp;} | 下拉刷新状态变化时触发。可能值：<br/>-&nbsp;false：当前处于下拉刷新过程中。<br/>-&nbsp;true：当前未处于下拉刷新过程中。 |
+| refresh | {&nbsp;refreshing:&nbsp;refreshingValue&nbsp;} | 下拉刷新状态变化时触发。可能值：<br/>-&nbsp;true：当前处于下拉刷新中状态。<br/>-&nbsp;false：当前未处于下拉刷新中状态。 |
 | pulldown | {&nbsp;state:&nbsp;string&nbsp;} | 下拉开始和松手时触发。可能值：<br/>-&nbsp;start：表示开始下拉。<br/>-&nbsp;end：表示结束下拉。 |
 
 

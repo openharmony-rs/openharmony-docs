@@ -1,8 +1,8 @@
 # @ohos.util.PlainArray (非线性容器PlainArray)  
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -700,7 +700,7 @@ plainArray.forEach((value: string, index: number) => {
 ```
 
 ```ts
-// 不建议在forEach中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在forEach中使用add、remove、removeAt方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let plainArray = new PlainArray<string>();
 for(let i = 0; i < 10; i++) {
   plainArray.add(i,"123");

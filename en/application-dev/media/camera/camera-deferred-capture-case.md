@@ -365,6 +365,11 @@ struct Index {
   private uiContext: UIContext = this.getUIContext();
   private context: Context | undefined = this.uiContext.getHostContext();
   private cameraPermission: Permissions = 'ohos.permission.CAMERA'; // For details about how to request permissions, see the instructions provided at the beginning of this topic.
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.mXComponentController
+  }
+
 
   async requestPermissionsFn(): Promise<void> {
     let atManager = abilityAccessCtrl.createAtManager();
@@ -386,11 +391,7 @@ struct Index {
     Column() {
       Column() {
         if (this.isShow) {
-          XComponent({
-            id: 'componentId',
-            type: XComponentType.SURFACE,
-            controller: this.mXComponentController
-          })
+          XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             if (this.context) {

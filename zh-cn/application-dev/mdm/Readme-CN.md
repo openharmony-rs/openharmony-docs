@@ -1,12 +1,14 @@
 # MDM Kit（企业设备管理）<!--mdm-kit-->
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - [MDM Kit简介](mdm-kit-intro.md)
 - [MDM Kit开发指南](mdm-kit-guide.md)
+- [应用模型](mdm-kit-application-model.md)
+- [多应用管控](mdm-kit-multi-mdm.md)
 - [EnterpriseAdminExtensionAbility开发指南](mdm-kit-admin.md)<!--RP1--><!--RP1End-->
 - [MDM Kit术语](mdm-kit-term.md)

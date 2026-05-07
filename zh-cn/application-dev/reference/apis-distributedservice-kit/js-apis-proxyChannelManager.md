@@ -4,7 +4,7 @@
 <!--Owner: @huangkai71-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 软总线具备常驻运行能力，可为跨设备通信提供稳定可靠的底层通道。本模块基于软总线进程开发，支持手机与穿戴设备间高效的数据互通，可为用户提供无缝的设备互联体验。使用场景：手机侧APP与手表侧APP协同时，当手机APP不在前台被使用，手机应用的下行消息经由通知服务器，通过代理模块发送给手表侧。模块核心功能包括：代理通道管理、数据路由管理、 应用状态感知和唤醒、链路状态监听。
 
@@ -19,6 +19,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> **模型约束**：此接口仅可在Stage模型下使用
 
 ## 导入模块
 
@@ -44,6 +46,8 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -63,6 +67,7 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because bluetooth proxy function has been trimmed.[since 26.0.0] |
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
 | 32390006 | Parameter error.|
@@ -85,8 +90,8 @@ struct Index {
         .onClick(() => {
           let channelInfo: proxyChannelManager.ChannelInfo = {
             linkType: proxyChannelManager.LinkType.LINK_BR,
-            peerDevAddr: "xx:xx:xx:xx:xx:xx", //穿戴设备蓝牙mac
-            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", //穿戴侧监听的uuid
+            peerDevAddr: "xx:xx:xx:xx:xx:xx", // 穿戴设备蓝牙mac
+            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 穿戴侧监听的uuid
           };
           // 以下为使用 try/catch 判断
           try {
@@ -120,6 +125,8 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -133,6 +140,7 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because bluetooth proxy function has been trimmed.[since 26.0.0] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -177,6 +185,8 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -197,6 +207,7 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because bluetooth proxy function has been trimmed.[since 26.0.0] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -246,6 +257,8 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -306,6 +319,8 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -362,6 +377,8 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -421,6 +438,8 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 

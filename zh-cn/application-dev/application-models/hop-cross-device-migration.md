@@ -46,6 +46,9 @@
 
 为了获得最佳体验，使用`wantParam`传输的数据需要控制在100KB以下。
 
+<!--RP1-->
+<!--RP1End-->
+
 ## 开发步骤
 
 1. 在[module.json5配置文件](../quick-start/module-configuration-file.md)的abilities标签中配置跨端迁移标签`continuable`。
@@ -53,11 +56,9 @@
    ```json
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
-           "continuable": true, // 配置UIAbility支持迁移
+           "continuable": true,
          }
        ]
      }
@@ -259,11 +260,11 @@
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 // 点击该按钮时，将应用设置为可迁移状态
@@ -275,11 +276,11 @@
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -377,29 +378,23 @@ export default class MigrationAbility extends UIAbility {
    > continueType标签类型为字符串数组，如果配置了多个字段，当前仅第一个字段会生效。
 
 ```json
-   // 设备A
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
            "name": "Ability-deviceA",
-           "continueType": ['continueType1'], // continueType标签配置
+           "continueType": ['continueType1'],
          }
        ]
      }
    }
 
-   // 设备B
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
            "name": "Ability-deviceB",
-           "continueType": ['continueType1'], // 与设备A相同的continueType标签
+           "continueType": ['continueType1'],
          }
        ]
      }
@@ -422,16 +417,13 @@ export default class MigrationAbility extends UIAbility {
    不同BundleName的相同应用在设备A和设备B之间相互迁移，设备A应用的BundleName为com.demo.example1，设备B应用的BundleName为com.demo.example2。
 
 ```JSON
-// 在设备A的应用配置文件中，continueBundleName字段配置包含设备B上应用的BundleName。
 {
   "module": {
-    // ···
     "abilities": [
       {
         "name": "EntryAbility",
-        // ···
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example2"], // continueBundleName标签配置，com.demo.example2为设备B上应用的BundleName。
+        "continueBundleName": ["com.demo.example2"],
        
       }
     ]
@@ -441,16 +433,13 @@ export default class MigrationAbility extends UIAbility {
 ```
 
 ```JSON
-// 在设备B的应用配置文件中，continueBundleName字段配置包含设备A上应用的BundleName。
 {
   "module": {
-    // ···
     "abilities": [
       {
         "name": "EntryAbility",
-        // ···
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example1"], // continueBundleName标签配置，com.demo.example1为设备A上应用的BundleName。
+        "continueBundleName": ["com.demo.example1"],
        
       }
     ]
@@ -466,12 +455,10 @@ export default class MigrationAbility extends UIAbility {
    ```json
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
            "name": "EntryAbility"
-           "continueType": ['EntryAbility_ContinueQuickStart'], // 如果已经配置了continueType标签，可以在该标签值后添加'_ContinueQuickStart'后缀；如果没有配置continueType标签，可以使用AbilityName + '_ContinueQuickStart'作为continueType标签实现快速拉起目标应用
+           "continueType": ['EntryAbility_ContinueQuickStart'],
          }
        ]
      }
@@ -515,8 +502,8 @@ export default class MigrationAbility extends UIAbility {
 
     // 1.已配置快速拉起功能，应用立即启动时触发应用生命周期回调
     if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
-      //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-      //可处理应用自定义跳转、时序等问题
+      // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+      // 可处理应用自定义跳转、时序等问题
       // ...
     }
   }
@@ -526,8 +513,8 @@ export default class MigrationAbility extends UIAbility {
       
     // 1.已配置快速拉起功能，应用立即启动时触发应用生命周期回调
     if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
-      //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-      //可处理应用自定义跳转、时序等问题
+      // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+      // 可处理应用自定义跳转、时序等问题
       // ...
     }
       
@@ -840,7 +827,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 import { distributedDataObject, commonType } from '@kit.ArkData';
 import { fileIo, fileUri } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -1034,7 +1021,7 @@ export default class MigrationAbility extends UIAbility {
   d_object?: distributedDataObject.DataObject;
 
   // 该函数用于将资产数组转为Record
-  GetAssetsWapper(assets: commonType.Assets): Record<string, commonType.Asset> {
+  GetAssetsWrapper(assets: commonType.Assets): Record<string, commonType.Asset> {
     let wrapper: Record<string, commonType.Asset> = {}
     let num: number = assets.length;
     for (let i: number = 0; i < num; i++) {
@@ -1071,7 +1058,7 @@ export default class MigrationAbility extends UIAbility {
     assets.push(attachment2);
 
     // 将资产数组转为Record Object，并用于创建分布式数据对象
-    let assetsWrapper: Object = this.GetAssetsWapper(assets);
+    let assetsWrapper: Object = this.GetAssetsWrapper(assets);
     let source: SourceObject = new SourceObject("jack", assetsWrapper);
     this.d_object = distributedDataObject.create(this.context, source);
 
@@ -1102,16 +1089,18 @@ export default class MigrationAbility extends UIAbility {
             ![hop-cross-device-migration](figures/hop-cross-device-migration1.png)
 
         2. 自动签名，编译安装。
-        ​DevEco的自动签名模板默认签名权限为`normal`级。而本应用所需`ohos.permission.MANAGE_MISSIONS`权限为`system_core`级别。自动生成的签名无法获得足够的权限，所以需要将权限升级为`system_core`级别，然后签名。
-            1. 将Sdk目录下的`openharmony\api版本 (如：10)\toolchains\lib\UnsignedReleasedProfileTemplate.json`文件中的`"apl":"normal"`改为`"apl":"system_core"`。
 
-            2. 点击 **file->Project Structure**。
+           ​DevEco的自动签名模板默认签名权限为`normal`级。而本应用所需`ohos.permission.MANAGE_MISSIONS`权限为`system_core`级别。自动生成的签名无法获得足够的权限，所以需要将权限升级为`system_core`级别，然后签名。
+        
+           a. 将Sdk目录下的`openharmony\api版本 (如：10)\toolchains\lib\UnsignedReleasedProfileTemplate.json`文件中的`"apl":"normal"`改为`"apl":"system_core"`。
 
-                ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
+           b. 点击 **file->Project Structure**。
 
-            3. 点击 **Signing Configs**  点击 **OK**。
+              ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
 
-                ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
+           c. 点击 **Signing Configs**  点击 **OK**。
+
+              ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
 
         3. 连接开发板运行生成demo。
 

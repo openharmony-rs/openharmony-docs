@@ -35,7 +35,7 @@ RowSplit()
 
 > **说明：**
 >
-> RowSplit组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+> RowSplit组件[形状裁剪](ts-universal-attributes-sharp-clipping.md)的默认值为true。
 
 ### resizeable
 

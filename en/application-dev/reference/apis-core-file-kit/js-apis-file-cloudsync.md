@@ -1,12 +1,12 @@
 # @ohos.file.cloudSync (Device-Cloud Sync)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
+<!--Tester: @zsyztt-->
+<!--Adviser: @jinqiuheng-->
 
-The **cloudSync** module provides the device-cloud synchronization capabilities for applications. You can use the APIs to start or stop device-cloud synchronization and start or stop the download of images.
+The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
 
 > **NOTE**
 >
@@ -42,7 +42,7 @@ Enumerates the device-cloud sync errors.
 
 - In the current phase, **NETWORK_UNAVAILABLE** is returned only when the mobile data network and Wi-Fi are unavailable. If the mobile data network is available, the synchronization can be performed normally.
 - During the sync process, if the battery level is lower than 10% in non-charging scenarios, **BATTERY_LEVEL_LOW** will be return when the current upload is complete.
-- When sync is being triggered, if the battery level is lower than 10% in non-charging scenarios, sync is not allowed and an error code will be returned by **start()**.
+- When sync is being triggered, if the battery level is lower than 10% in non-charging scenarios, sync is not allowed.
 - If the cloud space is insufficient when a file is uploaded, the upload will fail and there is no such a file in the cloud.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -129,7 +129,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let fileSync = new cloudSync.FileSync()
 ```
 
-### on<sup>12+</sup>
+### on('progress')<sup>12+</sup>
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
@@ -142,7 +142,7 @@ Registers a listener for the device-cloud sync progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | Callback\<[SyncProgress](#syncprogress12)> | Yes  | Callback used to return the sync progress information.|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | Yes  | Callback used to return the sync progress.|
 
 **Error codes**
 
@@ -158,13 +158,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let fileSync = new cloudSync.FileSync();
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
 ```
 
-### off<sup>12+</sup>
+### off('progress')<sup>12+</sup>
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
@@ -194,7 +194,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -236,7 +236,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -260,7 +260,7 @@ Starts device-cloud sync of a file. This API uses an asynchronous callback to re
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to start device-cloud sync.|
 
 **Error codes**
 
@@ -304,7 +304,7 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -343,7 +343,7 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to stop device-cloud sync.|
 
 **Error codes**
 
@@ -382,7 +382,7 @@ Obtains the last sync time. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;number&gt; | Promise used to return the last sync time obtained.|
+| Promise&lt;number&gt; | Promise used to return the last sync time.|
 
 **Error codes**
 
@@ -402,7 +402,7 @@ let fileSync = new cloudSync.FileSync();
 
 fileSync.getLastSyncTime().then((timeStamp: number) => {
   let date = new Date(timeStamp);
-  console.info("get last sync time successfully:"+ date);
+  console.info("get last sync time successfully: "+ date);
 }).catch((err: BusinessError) => {
   console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -421,7 +421,7 @@ Obtains the last sync time. This API uses an asynchronous callback to return the
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the last sync time obtained.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to obtain the last sync time.|
 
 **Error codes**
 
@@ -444,7 +444,7 @@ fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
     console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
   } else {
     let date = new Date(timeStamp);
-    console.info("get last sync time successfully:"+ date);
+    console.info("get last sync time successfully: "+ date);
   }
 });
 ```
@@ -477,7 +477,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let fileCache = new cloudSync.CloudFileCache();
 ```
 
-### on<sup>11+</sup>
+### on('progress')<sup>11+</sup>
 
 on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
@@ -490,7 +490,7 @@ Registers a listener for the download progress of a file from the Drive Kit.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event. The value is **progress**, which indicates the download progress event of a cloud file.|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | Yes  | Callback for the download progress event of a file from the Drive Kit.|
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | Yes  | Callback used to return the file download progress.|
 
 **Error codes**
 
@@ -519,7 +519,7 @@ try {
 }
 ```
 
-### on<sup>20+</sup>
+### on('batchDownload')<sup>20+</sup>
 
 on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): void
 
@@ -532,7 +532,7 @@ Registers a listener for the batch download of a file from the Drive Kit.
 | Name  | Type                                                             | Mandatory| Description                                                         |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
 | event    | string                                                            | Yes  | Event type. The value is **'batchDownload'**, indicating the batch download event.|
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | Yes  | Callback for the batch download event of a file from the Drive Kit.                               |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | Yes  | Callback used to return the download progress of a file.                               |
 
 **Error codes**
 
@@ -566,7 +566,7 @@ try {
 }
 ```
 
-### off<sup>11+</sup>
+### off('progress')<sup>11+</sup>
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
@@ -579,7 +579,7 @@ Removes the specified callback from the device-cloud file cache progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | No  | Callback for the download progress event of a file from the Drive Kit. If this parameter is not specified, this API unregisters all callbacks for the download progress event.|
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | No  | Callback used to return the file download progress. If this parameter is not specified, this API unregisters all callbacks for the download progress event.|
 
 **Error codes**
 
@@ -610,11 +610,11 @@ try {
 }
 ```
 
-### off<sup>20+</sup>
+### off('batchDownload')<sup>20+</sup>
 
 off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
-Removes the listener added via the [on](#on20) API for file batch downloads.
+Removes the listener added via the [on](#onbatchdownload20) API for file batch downloads.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -623,7 +623,7 @@ Removes the listener added via the [on](#on20) API for file batch downloads.
 | Name  | Type                                                             | Mandatory| Description                                                                                                   |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | event    | string                                                            | Yes  | Event type. The value is **'batchDownload'**, indicating the batch download event.                                      |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | No  | Callback for the batch download of a file from the Drive Kit. If this parameter is set, the specified callback will be canceled; otherwise, all currently subscribed callbacks of the same event type will be canceled.|
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | No  | Callback used to return the download progress of a file. If this parameter is set, the specified callback will be canceled; otherwise, all currently subscribed callbacks of the same event type will be canceled.|
 
 **Error codes**
 
@@ -657,7 +657,7 @@ try {
 
 start(uri: string): Promise&lt;void&gt;
 
-Starts to download a file from the Drive Kit to the local device. This API uses a promise to return the result.
+Starts downloading a file from the Drive Kit to the local device. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -671,7 +671,7 @@ Starts to download a file from the Drive Kit to the local device. This API uses 
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -697,7 +697,7 @@ let uri = fileUri.getUriFromPath(path);
 
 try {
   fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state:" + pg.state);
+    console.info("download state: " + pg.state);
   });
 } catch (e) {
   const error = e as BusinessError;
@@ -715,7 +715,7 @@ fileCache.start(uri).then(() => {
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Starts to download a file from the Drive Kit to the local device. This API uses an asynchronous callback to return the result.
+Starts downloading a file from the Drive Kit to the local device. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -724,7 +724,7 @@ Starts to download a file from the Drive Kit to the local device. This API uses 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  | URI of the file to download.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to start downloading a cloud file asynchronously.|
 
 **Error codes**
 
@@ -836,7 +836,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -881,7 +881,7 @@ When **stop()** is called, the current file download process terminates, and dow
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  | URI of the file to download.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to stop downloading a cloud file asynchronously.|
 
 **Error codes**
 
@@ -1186,7 +1186,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
 
-Subscribes to the change of a file.
+Subscribes to the change of a file. The callback returns the changed data.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1219,9 +1219,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    //file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    //file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1264,9 +1264,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    //file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    //file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1310,7 +1310,7 @@ Represents the historical version information of the device-cloud file when the 
 
 | Name    | Type  | Read-Only| Optional| Description|
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | No  | No  | Time when the file content is modified.|
+| editedTime | number | No  | No  | File content modification timestamp, in milliseconds.|
 | fileSize | number | No  | No  | File size in bytes.|
 | versionId | string | No  | No  | File version.|
 | originalFileName | string | No  | No  | File name of the current version.|
@@ -1342,7 +1342,7 @@ Represents the download state and progress information of historical version fil
 | Name| Type| Read-Only| Optional| Description|
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | No  | No  | Download state of the cloud file of the selected version.|
-| progress | number | No  | No  | Download progress.|
+| progress | number | No  | No  | Download progress, in percentage.|
 | errType | [DownloadErrorType](#downloaderrortype11) | No  | No  | Type of the error that occurs when the download fails.|
 
 ## FileVersion<sup>20+</sup>
@@ -1406,7 +1406,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
@@ -1436,7 +1436,7 @@ fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync
 
 downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt;): Promise&lt;string&gt;
 
-Obtains the content of a file of a specified version based on the version number. You can download a file of a specified version from the cloud to a temporary local path. The application determines whether to replace the original file with the temporary file, or retain or delete the temporary file. This API uses a promise to return the result.
+Obtains the content of a file of a specified version based on the version number. You can download a file of a specified version from the cloud to a temporary local path. The application determines whether to replace the original file with the temporary file, or retain or delete the temporary file. The callback returns the file download progress, and the promise returns the URI of the temporary file of an earlier version.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1446,7 +1446,7 @@ Obtains the content of a file of a specified version based on the version number
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  |  File URI.|
 | versionId | string | Yes| Version ID of a file. The format is returned by the [gethistoryversionlist](#gethistoryversionlist20) API.|
-| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | Yes| Callback for download progress.|
+| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | Yes| Callback used to return the download progress.|
 
 **Return value**
 
@@ -1534,7 +1534,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
-| 22400007 | Version file not exist. |
+| 22400007 | The version file specified to replace the original file does not exist. |
 
 **Example**
 
@@ -1568,7 +1568,7 @@ fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: stri
 fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
   console.info("replace file with history version success.");
 }).catch((err: BusinessError) => {
-  console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
+  console.error("replace file with history version failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 
@@ -1578,7 +1578,7 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 Obtains the version conflict flag of a local file. This API uses a promise to return the result. This API takes effect only when the application is configured for manual conflict resolution. Otherwise, conflicts are automatically resolved during synchronization, and the return value will be **false**.
 
-Once the application is configured for manual conflict resolution, calling this API returns whether the current local file conflicts with the cloud file. The application then prompts the user to handle the conflict. After the conflict is resolved, you need to call the [clearfileconflict](#clearfileconflict20) method to clear the conflict flag and synchronize the file to the cloud.
+Once the application is configured for manual conflict resolution, calling this API returns whether the current local file conflicts with the cloud file. The application then prompts the user to handle the conflict. After the conflict is resolved, you need to call the [clearFileConflict](#clearfileconflict20) method to clear the conflict flag and synchronize the file to the cloud.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1716,10 +1716,10 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900004  | Interrupted system call. |
 | 13900010  | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 13900020  | Invalid argument. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 13900031  | Function not implemented. |
 | 14000002  | Invalid URI. |
-| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. |
+| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 

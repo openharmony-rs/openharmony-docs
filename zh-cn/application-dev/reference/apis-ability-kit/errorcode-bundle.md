@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -147,11 +147,13 @@ Failed to install the HAP because the HAP fails to be parsed.
 1. HAP的格式不是zip格式。
 2. HAP的配置文件不满足json格式。
 3. HAP的配置文件缺少必要的字段。
+4. HAP中配置了可执行二进制文件（即module.json5中配置了[executableBinaryPaths标签](../../quick-start/module-configuration-file.md#executablebinarypaths标签)），但是没有配置解压模式，或当前设备不支持安装配置了该标签的HAP。
 
 **处理步骤**<br/>
 1. 确认hap的格式是zip。
 2. 确认hap的配置文件满足[配置文件json格式](../../quick-start/application-configuration-file-overview-stage.md)。
 3. 检查DevEco Studio编译hap时是否有错误提示，缺省字段时会有相应的报错。
+4. 配置应用为解压模式，即在应用的[module.json5配置文件](../../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true；或更换为PC/2in1设备。
 
 ## 17700011 签名校验失败导致应用安装失败
 
@@ -188,8 +190,8 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 3. HAP的大小超过最大限制4G。
 
 **处理步骤**<br/>
-1. 确认hap是否存在。
-2. 查看hap的可执行权限，是否可读。
+1. 确认HAP是否存在。
+2. 查看HAP的可执行权限，是否可读。
 3. 查看HAP的大小是否超过4G。
 
 ## 17700015 多个HAP配置信息不同导致应用安装失败
@@ -201,10 +203,10 @@ Failed to install the HAPs because they have different configuration information
 调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，多个HAP配置信息不同导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>
-多个hap包中配置文件中app标签下面的字段信息不一致。
+多个HAP包中配置文件中app标签下面的字段信息或者签名信息不一致。
 
 **处理步骤**<br/>
-确认多个HAP中配置文件app下面的字段是否一致。
+确认多个HAP中配置文件app下面的字段是否一致或者检查工程的[signingConfigs](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section153288223224)配置是否一样。
 
 ## 17700016 系统磁盘空间不足导致应用安装失败
 
@@ -242,7 +244,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-    ![示例图](figures/hap_verisonCode.PNG)
+    ![示例图](figures/hap_versionCode.PNG)
 
 3. 对于已安装的签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，具体参数配置可参考[InstallParam](js-apis-installer-sys.md#installparam)中parameters描述。
 
@@ -704,8 +706,7 @@ Failed to install the HAP because an enterprise normal/MDM bundle cannot be inst
 当前设备禁止安装企业MDM应用或普通企业应用。
 
 **可能原因**<br/>
-当前设备不允许安装[Profile签名文件](../../security/app-provision-structure.md)>中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。
-Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
+当前设备不允许安装[Profile签名文件](../../security/app-provision-structure.md)>中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
 
 **处理步骤**<br/>
 更换Profile签名文件中的类型。
@@ -850,7 +851,7 @@ The specified application cannot be uninstalled.
 
 **处理步骤**<br/>
 1. 查看应用提示的无法卸载的具体原因，并进行相应操作。
-2. 检查指定的应用是否具有不可卸载特权。
+2. 检查指定的应用是否具有不可卸载特权。<!--DelEnd-->
 
 ## 17700061 指定的应用分身索引无效
 
@@ -862,14 +863,15 @@ The appIndex is invalid.
 
 **可能原因**<br/>
 1. 分身索引超出允许的范围。
-2. 应用没有该索引的分身。
-3. 创建应用分身时，该索引已存在。
+2. 应用没有该索引的分身。<!--Del-->
+3. 创建应用分身时，该索引已存在。<!--DelEnd-->
 
 **处理步骤**<br/>
-1. 检查索引是否再允许范围内。
-2. 检查应用是否有该索引的分身。
-3. 检查是否调用createAppClone，且该索引的应用分身是否已存在。
+1. 检查索引是否在允许范围内。
+2. 检查应用是否有该索引的分身。<!--Del-->
+3. 检查是否调用createAppClone，且该索引的应用分身是否已存在。<!--DelEnd-->
 
+<!--Del-->
 ## 17700062 应用设置了卸载处置规则，不允许直接卸载
 
 **错误信息**<br/>
@@ -1470,6 +1472,6 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 ```
 
 **处理步骤**<br/>
-请检查shortcutInfo列表中，是否有不同的bundleName和appInndex组合。
+请检查shortcutInfo列表中，是否有不同的bundleName和appIndex组合。
 
 <!--DelEnd-->

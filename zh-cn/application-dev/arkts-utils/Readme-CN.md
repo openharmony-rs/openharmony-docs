@@ -1,10 +1,10 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @flyingwolf-->
+<!--Owner: @flyingwolf; @wang_zhaoyong-->
 <!--Designer: @flyingwolf-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng; @ge-yafang-->
 
 - [ArkTS简介](arkts-overview.md)
 - ArkTS基础类库<!--arkts-utils-->
@@ -20,6 +20,7 @@
     - [容器类库概述](container-overview.md)
     - [线性容器](linear-container.md)
     - [非线性容器](nonlinear-container.md)
+  - [基础库常见问题](commonlibrary-faq.md)
 - ArkTS并发<!--arkts-concurrency-->
   - [并发概述](concurrency-overview.md)
   - [异步并发](async-concurrency-overview.md)
@@ -80,6 +81,7 @@
       - [自定义Native Transferable对象的多线程操作场景](napi-coerce-to-native-binding-object.md)
       - [自定义Native Sendable对象的多线程操作场景](napi-define-sendable-object.md)
       - [Worker常驻线程通过TaskPool进行多任务并发处理](worker-and-taskpool.md)
+      - [Sendable对象改造实践](sendable-trans-guide.md)
   - [并发常见问题](concurrency-faq.md)
 - [ArkTS跨语言交互](arkts-cross-language-interaction.md)
 - ArkTS运行时<!--arkts-runtime-->

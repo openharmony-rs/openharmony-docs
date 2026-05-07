@@ -14,7 +14,7 @@
 hiprofiler provides the performance profiling capabilities for you to analyze memory and performance issues.
 
 
-Its overall architecture comprises the profiling data display page on the PC and performance profiling service on the device. The services on the PC and device use the C/S model, and the profiling data on the PC is displayed on the [DevEco Studio](https://cbg.huawei.com/#/group/ipd/DevEcoToolsList) and [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host) web page. The device program consists of multiple parts that run in the system environment. The **hiprofilerd** process communicates with DevEco Studio to provide profiling services. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, plugins such as nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory have been implemented, providing comprehensive profiling capabilities for CPU, GPU, memory, and power consumption.
+Its overall architecture comprises the profiling data display page on the PC and performance profiling service on the device. The PC and device services use the C/S model. The profiling data on the PC is displayed on the [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install) and [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases) pages. The device program consists of multiple parts that run in the system environment. The **hiprofilerd** process communicates with DevEco Studio to provide profiling services. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, plugins such as nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory have been implemented, providing comprehensive profiling capabilities for CPU, GPU, memory, and power consumption.
 
 
 
@@ -125,7 +125,7 @@ Download the generated trace file to the local PC by running the **hdc file recv
 | [xpower plugin](#xpower-plugin)| Obtains the power consumption information of a process.| - |
 | [memory plugin](#memory-plugin)| Obtains the memory usage of a process, primarily the data from its **smaps** node.| - |
 | [diskio plugin](#diskio-plugin)| Obtains the disk space usage of a process.| - |
-| network profiler | Obtains the detailed HTTP request information of a process through process logging.| Only [applications signed by the debug certificate](#applications-signed-by-the-debug-certificate) can be collected.|
+| [network profiler](#network-profiler)| Obtains the detailed HTTP/HTTPS request information of a process through process logging.| Only [applications signed by the debug certificate](#applications-signed-by-the-debug-certificate) can be collected.|
 | [network plugin](#network-plugin)| Obtains the network traffic statistics of a process.| - |
 | [hisysevent plugin](#hisysevent-plugin)| Obtains the HiSysEvent event data by running the HiSysEvent commands.| - |
 | [hidump plugin](#hidump-plugin)| Obtains the related data by running the SP_daemon commands.| - |
@@ -166,12 +166,13 @@ Obtains the call stack information of heap memory allocations (by the **malloc**
 | -------- | -------- | -------- | -------- |
 | fp_unwind | bool | Whether to enable stack unwinding in fp mode. The value **true** means to enable stack unwinding in fp mode.<br>The value **false** means to enable stack unwinding in dwarf mode.| The stack unwinding in fp mode is implemented by using the x29 register, in which the function fp always points to the parent function (caller) fp. After stack unwinding, the profiling service calculates the relative PC based on the instruction pointer (IP) and searches for the corresponding mapping in maps for symbolization.<br>Due to increasingly aggressive compiler optimizations, register reuse and disabled fp can cause stack unwinding in fp mode to fail. In mixed stacks, the fp alone cannot capture all frames, so dwarf is required for more accurate stack rewinding.<br>The stack unwinding in dwarf mode is to search for the corresponding mapping information in the map table based on the PC register. The performance of dwarf is worse than that of fp because the call stack is parsed level by level in dwarf mode.<br>Note: fp stack unwinding does not support profiling for non-AArch64 devices.| 
 | statistics_interval | int | Statistics interval, in seconds. Stacks in a statistics interval are summarized.| The statistics stack capture mode is provided to implement long-term lightweight collection. If profiling performance is a priority and you only need call counts and total stack size, use statistics mode.| 
-| startup_mode | bool | Whether to capture the memory during process startup. By default, the memory during process startup is not captured.| This parameter records the heap memory allocation information during the period from when the process is started by AppSpawn to when the profiling ends. If a system-ability (SA) service is captured, locate the name (for example, **sa_main**) of the process that launches it in the corresponding .cfg file and add that name to this parameter.| 
+| process_name | string | Name of the process for which memory profiling is to be performed.| The value must be the same as the process name in the **/proc/** node.| 
+| startup_mode | bool | Whether to capture the memory during process startup. By default, the memory during process startup is not captured.| This parameter records the heap memory allocation information during the period from the start of process incubation to the end of optimization.| 
 | js_stack_report | int | Whether to enable cross-language stack unwinding.<br>The value **0** means not to capture the JS stack.<br>The value **1** means to capture the JS stack.| This parameter provides the cross-language stack unwinding feature for the Ark environment.| 
 | malloc_free_matching_interval | int | Matching interval, in seconds. **malloc** and **free** are matched within the interval. If matched, the stack is not flushed to the disk.| Within the matching interval, the allocated and released call stacks are not recorded, reducing the overhead of the stack capture service process. If this parameter is set to a value greater than 0, **statistics_interval** cannot be set to **true**.| 
 | offline_symbolization | bool | Whether to enable offline symbolization.<br>The value **true** means to enable offline symbolization;<br>the value **false** means the opposite.| When offline symbolization is used, the operation of matching symbols based on IP is performed on SmartPerf, reducing process freezes during profiling. However, since the offline symbol table is written into the trace file, the trace file generated under offline symbolization is larger in size than that under online symbolization.|
 | sample_interval | int | Sampling size.| When this parameter is set, the sampling mode is enabled. In sampling mode, malloc allocations smaller than the sampling size are accounted for probabilistically. The larger the call-stack allocation size, the more frequently it occurs and the greater its chance of being sampled.| 
-| restrace_tag | string | Type of the GPU memory to be captured.| This parameter can be added repeatedly. Currently, this parameter can only be set to **RES_GPU_VK**, **RES_GPU_GLES_BUFFER**, **RES_GPU_GLES_IMAGE**, **RES_GPU_CL_BUFFER**, or **RES_GPU_CL_IMAGE**, which are used to specify the GPU memory allocation stack of Vulkan, OpenGLES, OpenCL, image, and buffer types.<br>Note: This parameter is supported since API version 21.|
+| restrace_tag | string | Type of the GPU memory to be captured.| This parameter can be added repeatedly. Currently, this parameter can only be set to **RES_GPU_VK**, **RES_GPU_GLES_BUFFER**, **RES_GPU_GLES_IMAGE**, **RES_GPU_CL_BUFFER**, or **RES_GPU_CL_IMAGE**, which are used to specify the GPU memory allocation stack of Vulkan, OpenGL ES, OpenCL, image, and buffer types.<br>Note: This parameter is supported since API version 21.|
 
 **Result analysis**
 
@@ -355,6 +356,7 @@ This command reads the basic memory statistics of the system. After the command 
 ![memory_001](figures/memory_001.png)
 
 Use DevEco Studio to obtain the memory data.
+
 ![en-us_image_0000002357083514](figures/en-us_image_0000002357083514.png)
 
 You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **Memory** to use the **memory plugin** feature of the profiler. The preceding figure shows the process smaps memory information in the selected time range.
@@ -557,7 +559,7 @@ This command captures information about all hisystem event subscriptions. After 
 
 ### network-plugin
  
-Obtain the network upload and download data.
+Obtains the network upload and download data, and collects statistics on network traffic and connection status provided by the network management module.
 
 **Parameters**
 
@@ -613,6 +615,28 @@ This command captures network data of the entire device. After the command is ex
 
 ![network_001.png](figures/network_001.png)
 
+### network profiler
+ 
+Obtains the network request information of a process, and records each HTTP request as a data point.
+
+**Parameters**
+
+| Name| Type| Description| Mandatory| Details| 
+| -------- | -------- | -------- | -------- | -------- |
+| pid | int32 | Process ID.| No| Used to obtain the network data of a specified process. Multiple parameters can be passed in. If this parameter is not specified, the network data of the entire device is captured.|
+| startup_process_name | string | Name of the process to start.| No| This parameter must be specified for capturing network data of a specified process.|
+| restart_process_name | string | Name of the process to restart.| No| This parameter must be specified for capturing network data of a specified process after the process restarts.|
+| clock_id | int | Clock type.| Yes| **1**: BOOTTIME, which indicates the monotonically increasing time (including NTP adjustment) after the system starts.<br> **2**: REALTIME, which indicates the adjustable system real time.<br>**3**: REALTIME_COARSE, which indicates the low-precision real time.<br>**4**: MONOTONIC, which indicates the monotonically increasing time without NTP adjustment.<br>**5**: MONOTONIC_COARSE, which indicates the low-precision monotonically increasing time.<br>**6**: MONOTONIC_RAW, which indicates the hardware raw monotonically increasing time.|
+| smb_pages | int | Number of shared memory pages.| Yes| Size of the shared memory established between the hiprofiler_plugins process and the profiled process. The recommended value is 16384 pages, that is, 16384 × 4096 = 67108864 bytes (64 MB).|
+| flush_interval | int |  Disk flush interval.| No| A disk flush is triggered every **flush_interval** network requests, optimizing the I/O efficiency.<br>The default value is **1**.|
+| block | bool | Whether to enable the block mode.| No| **true**: Enable the block mode when the shared memory is full, which may affect the performance.<br> **false**: Discard the excess data when the shared memory is full.<br>The default value is **false**.|
+
+
+**Result analysis**
+
+Currently, SmartPerf does not support trace data parsing of this plugin. To analyze network data, use the NetWork feature of DevEco Studio Profiler. The reference is as follows:
+
+[Network Diagnosis: Network](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-profiler-network)
 
 ## Common Commands
 
@@ -739,6 +763,46 @@ CONFIG
 ```
 The **malloc_disable** parameter is used in the command to filter the native heap stack data. If the **restrace_tag** parameter does not contain **RES_GPU_CL_IMAGE**, the GPU memory allocation stack of the OpenCL image type is not captured.
 
+
+Since API version 23, the call stack of **napi_ref** created by a specified process can be captured, and weak references are not captured.
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 30 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 20
+  pid: 11237
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+  }
+}
+CONFIG
+```
+
 ## FAQs
 
 ### What should I do if an exception occurs during profiling?
@@ -783,6 +847,7 @@ When the **hiprofiler_cmd** command is executed, and the fp or dwarf stack unwin
 **Possible Causes and Solution**
 
 You can change the **config** parameter in the **hiprofiler_cmd** command as follows:
+
  
  - Decrease the values of **max_stack_depth** and **max_js_stack_depth** to reduce the stack unwinding depth and the collection of call stack information.
  - Increase the value of **smb_pages** to increase the shared memory size for profiling data transmission. The default value is 16384 pages, that is, 16384 × 4096 = 67108864 bytes (64 MB). You can change the value to 128 MB.

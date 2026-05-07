@@ -87,7 +87,7 @@
            onpause='pauseCallback' onfinish='finishCallback' onerror='errorCallback'
            onseeking='seekingCallback' onseeked='seekedCallback'
            ontimeupdate='timeupdateCallback'
-           style="object-fit: fill; width: 80%; height: 400px;"
+           style="object-fit: fill; width: 100%; height: 900px;"
            onclick="change_start_pause">
     </video>
 </div>
@@ -146,3 +146,4 @@ export default {
 }
 ```
 
+![zh-cn_gif_js_media_video](figures/zh-cn_gif_js_media_video.gif)

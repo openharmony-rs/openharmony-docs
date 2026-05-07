@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -35,11 +35,9 @@
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let resNumber = UIUtils.getTarget(2); //非对象类型入参，编译时报错
+  let resNumber = UIUtils.getTarget(2); // 非对象类型入参，编译时报错
   let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   ```
-  
-  <!-- @[ApplicationLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewOne.ets) -->
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -263,8 +261,6 @@ struct GetBeforeAgent {
 状态管理V2装饰器会为装饰的变量生成getter和setter方法，同时为原有变量名添加"\_\_ob\_"的前缀。出于性能考虑，getTarget接口不会对V2装饰器生成的前缀进行处理，因此向getTarget接口传入\@ObservedV2装饰的类对象实例时，返回的对象依旧为对象本身，且被\@Trace装饰的属性名仍有"\_\_ob\_"前缀。
 
 该前缀会导致某些NAPI接口无法按预期处理对象的属性，以下面的对象为例，目前已知影响的NAPI接口如下：
-
-<!-- @[ModelViewTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewTwo.ets) -->
 
 ``` TypeScript
 @ObservedV2

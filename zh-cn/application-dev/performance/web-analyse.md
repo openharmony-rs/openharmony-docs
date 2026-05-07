@@ -1,5 +1,12 @@
 # Web性能问题分析案例
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 如下图所示，下方字块在点击后，经过一定的时间，才开始动画，实际经过延迟很大。  
 图一 场景动画  
 ![alt text](./figures/web-analyse-0.gif)  
@@ -19,7 +26,7 @@
 
 响应时延类问题首先确认响应起止点，确定这一段区域在哪里，大概是在干什么。
 
-1. 确认起点：如果为点击触发，则首先先找到应用侧的ispatchTouchEvent Type = 1，如图二红线所示：
+1. 确认起点：如果为点击触发，则首先先找到应用侧的DispatchTouchEvent Type = 1，如图二红线所示：
 
     图二 Trace起点
 
@@ -130,18 +137,18 @@ trace特点：网络区域每一阶段网络请求完成后都会对应执行js�
 图十：Web网页整体加载流程   
 ![alt text](./figures/web-analyse-6.png)
 
-| Web网页加载流程拆解 | 关键Trace |  
-| --- | --- |  
-| 点击事件 | 最后一个DispatchTouchEvent到组件初始化前 | 
-| web组件初始化 | NWebImpl\|CreateNWeb到导航流程前 | 
-| 导航流程 | NavigationControllorImpl::LoadURLWithParams 到 NavigationBodyLoader::OnStartLoadingResponseBody结束 |
-| DOM&CSS解析 | CSSParserImpl::parseStyleShee和ParseHTML解析，扣除HTMLDocumentParser::RunScriptsForPausedTreeBuilder |
-| JS编译+执行 | EvaluateScript 和 v8.callFunction |
-| 等待网络资源下载 | render主线程ThrottlingURLLoader::OnReceiveResponse前的空闲（粗略算上大段的空白就行） |
-| 点击响应结束点 | NotifyFrameSwapped，UnloadOldFrame/第一个SkiaOutputSurfaceImplOnGpu::SwapBuffers |
-| 绘制 | ThreadProxy::BeginMaiFrame扣除v8执行 |
-| 光栅化&合成 | 从ProxyImpl::NotifyReadyToCommitOnImpl开始到SwapBuffers结束 |
-| 完成时延结束 | 最后一个SkiaOutputSurfaceImplOnGpu::SwapBuffers |
+| Web网页加载流程拆解 | 关键Trace                                                                                          |  
+| --- |--------------------------------------------------------------------------------------------------|  
+| 点击事件 | 最后一个DispatchTouchEvent到组件初始化前                                                                    | 
+| web组件初始化 | NWebImpl\|CreateNWeb到导航流程前                                                                       | 
+| 导航流程 | NavigationControllerImpl::LoadURLWithParams 到 NavigationBodyLoader::OnStartLoadingResponseBody结束 |
+| DOM&CSS解析 | CSSParserImpl::parseStyleShee和ParseHTML解析，扣除HTMLDocumentParser::RunScriptsForPausedTreeBuilder   |
+| JS编译+执行 | EvaluateScript 和 v8.callFunction                                                                 |
+| 等待网络资源下载 | render主线程ThrottlingURLLoader::OnReceiveResponse前的空闲（粗略算上大段的空白就行）                                 |
+| 点击响应结束点 | NotifyFrameSwapped，UnloadOldFrame/第一个SkiaOutputSurfaceImplOnGpu::SwapBuffers                     |
+| 绘制 | ThreadProxy::BeginMaiFrame扣除v8执行                                                                 |
+| 光栅化&合成 | 从ProxyImpl::NotifyReadyToCommitOnImpl开始到SwapBuffers结束                                            |
+| 完成时延结束 | 最后一个SkiaOutputSurfaceImplOnGpu::SwapBuffers                                                      |
 
 
 ## 总结

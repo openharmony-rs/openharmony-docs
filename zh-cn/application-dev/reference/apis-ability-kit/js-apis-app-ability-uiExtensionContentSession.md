@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c; @xuzhihao666-->
 <!--Designer: @xhz-sz-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIExtensionContentSession是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)组件的界面操作类，提供页面加载、设置宿主应用（UIExtensionAbility组件的拉起方）窗口隐私模式等功能。当宿主应用拉起指定的UIExtensionAbility组件时，系统创建UIExtensionContentSession对象，并通过[onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)回调传递给开发者。一个UIExtensionAbility组件对应一个UIExtensionContentSession对象，每个UIExtensionAbility组件的UIExtensionContentSession对象之间互不影响。
 
@@ -518,8 +518,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>): void
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>): void
 
 通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持处于前台的应用调用。
 
@@ -581,8 +580,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback): Promise\<void>
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback): Promise\<void>
 
 通过type隐式启动UIExtensionAbility组件。使用Promise异步回调。仅支持处于前台的应用调用。
 

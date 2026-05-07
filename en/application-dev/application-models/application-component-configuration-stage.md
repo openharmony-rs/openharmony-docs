@@ -14,7 +14,7 @@ The bundle name is specified by the **bundleName** field in the [app.json5 file]
 
 ## Configuring the Application Icon and Label
 
-Application icons and labels are usually configured together. They correspond to the **icon** and **label** fields in the [app.json5 file](../quick-start/app-configuration-file.md) and [module.json5 file](../quick-start/module-configuration-file.md). Starting from DevEco Studio 5.0.3.800 and later, the **icon** and **label** fields in the **module.json5** file are no longer mandatory. However, they are mandatory in the **app.json5** file. Therefore, they can be omitted in the **module.json5** file. There is a priority and effectiveness strategy for the **icon** and **label** fields in both the **app.json5** and **module.json5** files. For details [Configuration Priority and Build Policy](../quick-start/layered-image.md#configuration-priority-and-build-policy).
+Application icons and labels are usually configured together. They correspond to the **icon** and **label** fields in the [app.json5 file](../quick-start/app-configuration-file.md) and [module.json5 file](../quick-start/module-configuration-file.md). Starting from DevEco Studio 5.0.3.800 and later, the **icon** and **label** fields in the **module.json5** file are no longer mandatory. However, they are mandatory in the **app.json5** file. Therefore, they can be omitted in the **module.json5** file. There is a priority and effectiveness strategy for the **icon** and **label** fields in both the **app.json5** and **module.json5** files. For details, please refer to [Configuration Priority and Build Policy](../quick-start/layered-image.md#configuration-priority-and-build-policy).
 
 ## Configuring Application Version Declaration
 

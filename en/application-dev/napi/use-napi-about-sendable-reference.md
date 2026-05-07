@@ -11,7 +11,7 @@ OpenHarmony APIs provide the capability of sharing strong references across ArkT
 
 ## When to Use
 
-You can use the **napi_create_strong_sendable_reference** API to create a Sendable strong reference to a Sendable ArkTS object, use the **napi_get_strong_sendable_reference_value** API to obtain the referenced ArkTS object, and use the **napi_delete_strong_sendable_reference** API to delete the Sendable strong reference. These operations can be performed in the same ArkTS thread or different ArkTS threads.
+You can use the [napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference) API to create a Sendable strong reference to a Sendable ArkTS object, use the [napi_get_strong_sendable_reference_value](../reference/native-lib/napi.md#napi_get_strong_sendable_reference_value) API to obtain the referenced ArkTS object, and use the [napi_delete_strong_sendable_reference](../reference/native-lib/napi.md#napi_delete_strong_sendable_reference) API to delete the Sendable strong reference. These operations can be performed in the same ArkTS thread or different ArkTS threads.
 
 ## Available APIs
 
@@ -322,4 +322,5 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
 1. **napi_sendable_ref** can be created only for [Sendable objects](../arkts-utils/arkts-sendable.md#sendable-data-types).
 2. **napi_sendable_ref** can be used across ArkTS threads. When performing multithreaded operations, the caller must manage the release timing to avoid issues related to using after release.
 3. Within the same process, a maximum of 51200 **napi_sendable_ref** instances can coexist.
-4. Do not forcibly convert **napi_ref** or **napi_strong_ref** into **napi_sendable_ref**. **napi_delete_strong_sendable_reference** and **napi_get_strong_sendable_reference_value** accept only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
+4. **napi_sendable_ref** is different from other reference types. Therefore, you cannot forcibly convert **napi_ref** or **napi_strong_ref** to **napi_sendable_ref**. **napi_delete_strong_sendable_reference** and **napi_get_strong_sendable_reference_value** accept only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
+5. When using the **napi_create_strong_sendable_reference**, **napi_get_strong_sendable_reference_value**, and **napi_delete_strong_sendable_reference** APIs, ensure that the input **env** parameter is the ArkTS thread environment object of the current API. Otherwise, [multithreading safety issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) may occur.

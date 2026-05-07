@@ -15,7 +15,7 @@ VideoEncoder模块提供用于视频编码的接口。
 - [视频编码](../../media/avcodec/video-encoding.md)
 - [时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md)
 
-**系统能力：** SystemCapability.Multimedia.VideoEncoder
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 

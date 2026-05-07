@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 InsightIntentDecorator模块提供了几类意图装饰器，用于装饰类或方法。开发者可以[使用装饰器开发意图](../../application-models/insight-intent-decorator-development.md), 将应用的功能定义为意图，并集成到智能问答、智能搜索、智能推荐等AI入口。
 
@@ -346,7 +346,7 @@ export class ClassForFuncDemo {
 
 > **说明**
 >
-> - 如果使用该装饰器接入标注意图，必须实现标准意图Json Schema中定义的所有必选参数且类型匹配。
+> - 如果使用该装饰器接入标准意图，必须实现标准意图Json Schema中定义的所有必选参数且类型匹配。
 > - 如果创建自定义意图，必须实现parameters字段中定义的所有必选参数且类型匹配。
 > - 被装饰的类需要使用export default导出。类的属性仅支持基础类型或意图实体，返回值仅支持意图实体。
 

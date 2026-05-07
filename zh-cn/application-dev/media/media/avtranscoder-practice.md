@@ -38,6 +38,8 @@
    ```ts
    // 创建Worker对象。
    private workerInstance?: worker.ThreadWorker;
+   @State currentProgress: number = 0;
+   
    this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
 
    // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
@@ -78,7 +80,7 @@
    ```ts
    import { sendableContextManager } from '@kit.AbilityKit';
 
-   //发送的参数必须加上@Sendable标注。
+   // 发送的参数必须加上@Sendable标注。
    @Sendable
    export class SendableObject {
      constructor(sendableContext: sendableContextManager.SendableContext, data: string = '') {
@@ -125,7 +127,7 @@
      sendableObject.getSendableContext() as sendableContextManager.SendableContext;
    const context: common.Context =
      sendableContextManager.convertToContext(sendableContext) as common.Context;
-   //执行转码逻辑。
+   // 执行转码逻辑。
    await doSome(context);
    // 向主线程发送消息。
    workerPort.postMessage('start end');
@@ -141,13 +143,13 @@
        // 转码完成回调函数。
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
-         fs.closeSync(transcoder.fdDst); // 关闭fdDst。
+         fileIo.closeSync(transcoder.fdDst); // 关闭fdDst。
          await transcoder?.release()
          workerPort.postMessage('complete');
        })
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
-         fs.closeSync(transcoder.fdDst);
+         fileIo.closeSync(transcoder.fdDst);
          await transcoder?.release();
        })
        // 转码进度更新回调函数。
@@ -165,7 +167,7 @@
        }
        // 设置输出文件路径，context.filesDir为应用的沙箱路径。
        let fdPath = context.filesDir + "/" + "VID_" + Date.parse(new Date().toString()) + ".mp4";
-       let file = fs.openSync(fdPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+       let file = fileIo.openSync(fdPath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
        let fd = file.fd;
        console.info(`file fd ${fd}`);
        transcoder.fdDst = file.fd;
@@ -190,7 +192,7 @@
    // 转码完成回调函数。
    transcoder.on('complete', async () => {
      console.info(`transcode complete`);
-     fs.closeSync(transcoder.fdDst); // 关闭fdDst。
+     fileIo.closeSync(transcoder.fdDst); // 关闭fdDst。
      await transcoder?.release()
      workerPort.postMessage('complete');
    })
@@ -219,7 +221,7 @@
 参考以下示例，使用worker线程的方式来实现异步线程进行转码。
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder)，并将示例工程的资源复制到对应目录。
-    ```
+    ```txt
     AsyncTranscoder
     entry/build-profile.json5 (配置字段信息将Worker线程文件打包到应用)
     entry/src/main/ets/

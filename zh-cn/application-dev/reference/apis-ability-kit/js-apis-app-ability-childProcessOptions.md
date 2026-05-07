@@ -4,7 +4,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 子进程的启动配置选项。通过[childProcessManager](js-apis-app-ability-childProcessManager.md)启动子进程时，可以通过ChildProcessOptions配置子进程启动选项。
 
@@ -42,13 +42,14 @@ export default class DemoProcess extends ChildProcess {
   onStart(args?: ChildProcessArgs) {
     let entryParams = args?.entryParams;
     let fd = args?.fds?.key1;
-    //子进程代码逻辑
+    // 子进程代码逻辑
   }
 }
 ```
 
 主进程部分：
 
+<!--code_no_check-->
 ```ts
 // 使用childProcessManager.startArkChildProcess方法启动子进程:
 // entry/src/main/ets/pages/Index.ets

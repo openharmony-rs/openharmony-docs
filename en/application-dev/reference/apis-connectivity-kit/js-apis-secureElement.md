@@ -13,7 +13,7 @@ The instances of the following types are mentioned in this topic:
 
 | Type   | Description                                          |
 | ------- | ---------------------------------------------- |
-| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned.|
+| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22.|
 | Session | Session created on an SE **Reader** instance.|
 | Channel | Channel set up by a **Session** instance. The channel can be a basic channel or a logical channel.  |
 
@@ -66,7 +66,7 @@ The returned **SEService** instance is available only when **true** is returned 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message|
 | ------- | -------|
@@ -115,7 +115,7 @@ The **SEService** object is available only when [isConnected](#seserviceisconnec
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -163,7 +163,7 @@ Call this API to register a callback after you use [omapi.newSEService](#omapine
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -190,7 +190,7 @@ Disables listening for service status change events.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -261,7 +261,7 @@ Obtains available SE readers, which include all the SEs on the device.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -310,7 +310,7 @@ Checks whether this SE service is connected.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -350,7 +350,7 @@ Releases all SE resources allocated to this SE service. After that, [isConnected
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -391,7 +391,7 @@ Obtains the version of the Open Mobile API (OMAPI) specification used.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -418,7 +418,7 @@ try {
 ```
 ## Reader
 
-A Reader instance indicates the SEs supported by a device. If eSE, SIM, and SIM2 are supported, three instances will be returned. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
+Obtains the SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
 
 ### Reader.getName
 
@@ -436,7 +436,7 @@ Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** 
 
 **Error codes**
 
-For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
+For details about error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -478,7 +478,7 @@ Checks whether the SE corresponding to this reader is available.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -521,7 +521,7 @@ Opens a session to connect to an SE in this reader. Multiple sessions can be ope
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -564,7 +564,7 @@ Closes all sessions opened on this reader. All channels opened by these sessions
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -624,7 +624,7 @@ Obtains the reader that provides this session.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -677,7 +677,7 @@ Obtains the Answer to Reset (ATR) of this SE. If the ATR of this SE is not avail
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -713,7 +713,7 @@ Closes the session with the SE. All channels opened by this session will be clos
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -754,7 +754,7 @@ Checks whether this session is closed.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -789,7 +789,7 @@ Closes all channels opened on this session.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -836,7 +836,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -894,7 +894,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -960,7 +960,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1020,7 +1020,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1086,7 +1086,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1144,7 +1144,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1210,7 +1210,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1270,7 +1270,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1333,7 +1333,7 @@ Obtains the session used to open this channel.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1368,7 +1368,7 @@ Closes this channel.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1407,7 +1407,7 @@ Checks whether this channel is a basic channel.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1447,7 +1447,7 @@ Checks whether this channel is closed.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1487,7 +1487,7 @@ Obtains the response data including the status word of **SELECT Applet**.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1529,11 +1529,11 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses a promise to 
 
 | **Type**| **Description**      |
 | -------- | -------------- |
-| Promise\<number[]> | Promise used to return the response received, in a number array.|
+| Promise\<number[]> | Promise used to return the response received, in a number array. If the chip captures an unknown exception, an all zero value is returned.|
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1556,6 +1556,7 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
 try {
     seChannel.transmit(cmdData).then((response) => {
+        // If the chip captures an unknown exception, an all zero value is returned for response.
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'transmit error = %{public}s.', JSON.stringify(error));
@@ -1578,11 +1579,11 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses an asynchrono
 | **Name**| **Type**               | **Mandatory**| **Description**                             |
 | ---------- | ----------------------- | ------ | ------------------------------------- |
 | command    | number[]                | Yes     | APDU data to send.|
-| callback   | AsyncCallback\<number[]> | Yes     | Callback used to return the response received, in a number array. |
+| callback   | AsyncCallback\<number[]> | Yes     | Callback used to return the response received, in a number array. If the chip captures an unknown exception, an all zero value is returned.|
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1608,6 +1609,7 @@ try {
     if (error) {
         hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
     } else {
+        // If the chip captures an unknown exception, an all zero value is returned for response.
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }
     });

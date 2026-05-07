@@ -20,9 +20,9 @@ Describes an audio and video file asset. It is used to specify a particular asse
 
 | Name  | Type  | Read-Only| Optional | Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| fd     | number | No | No | Resource handle, which is obtained by calling [resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9) or [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).   |
-| offset | number | No | Yes | Resource offset, which needs to be entered based on the preset asset information. The default value is **0**. An invalid value causes a failure to parse audio and video assets.|
-| length | number | No | Yes | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse audio and video assets.|
+| fd     | number | No | No | Resource handle, which is obtained by calling [resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9) or [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).   |
+| offset | number | No | Yes | Resource offset.<br>The value ranges from 0 to the size of the audio/video file to be played. The default value is **0**. The value needs to be entered based on the preset resource information. An invalid value causes a failure to parse audio and video resources.|
+| length | number | No | Yes | Resource length.<br>The value ranges from 0 to the size of the audio or video file to be played. The default value is the number of remaining bytes starting from the offset in the file. The value needs to be entered based on the preset resource information. An invalid value causes a failure to parse audio and video resources.|
 
 ## AVDataSrcDescriptor<sup>10+</sup>
 
@@ -84,7 +84,7 @@ import { media } from '@kit.MediaKit';
 
 function printfItemDescription(obj: media.MediaDescription, key: string) {
   let property: Object = obj[key];
-  console.info('audio key is ' + key); // Specify a key. For details about the keys, see MediaDescriptionKey.
+  console.info('audio key is ' + key); // Obtain the value of the key. For details about the keys, see MediaDescriptionKey.
   console.info('audio value is ' + property); // Obtain the value of the key. The value can be any type. For details about the types, see MediaDescriptionKey.
 }
 
@@ -147,7 +147,7 @@ Describes the audio and video recording profile.
 | Name            | Type                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | audioBitrate     | number                                       | No  | Yes  | Audio encoding bit rate. This parameter is mandatory for audio recording.<br>Supported bit rate ranges:<br>- Range [32000, 500000] for the AAC encoding format.<br>- 64000 for the G.711 μ-law encoding format.<br>- Range [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000] for the MP3 encoding format.<br>When the MP3 encoding format is used, the mapping between the sample rate and bit rate is as follows:<br>- When the sample rate is lower than 16 kHZ, the bit rate range is [8000 - 64000].<br>- When the sample rate ranges from 16 kHz to 32 kHz, the bit rate range is [8000, 160000].<br>- When the sample rate is greater than 32 kHz, the bit rate range is [32000, 320000].<br>- Range [4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200] for the AMR-NB encoding format.<br>- Range [6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850] for the AMR-WB encoding format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 8] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
+| audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 2] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Audio encoding format. This parameter is mandatory for audio recording.<br>Currently, AUDIO_AAC, AUDIO_MP3, AUDIO_G711MU, AUDIO_AMR_NB, and AUDIO_AMR_WB are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
 | aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | No  | Yes  | Extended audio encoding format. The default value is **AAC_LC**.<br>Currently, the following formats are supported: **AAC_LC**, **AAC_HE**, and **AAC_HE_V2**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.    |
 | audioSampleRate  | number                                       | No  | Yes  | Audio sample rate. This parameter is mandatory for audio recording.<br>Supported sample rate ranges:<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000] for the AAC encoding format.<br>- 8000 for the G.711 μ-law encoding format.<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000] for the MP3 encoding format.<br>- 8000 for the AMR-NB encoding format.<br>- 16000 for the AMR-WB encoding format.<br>Variable bit rate. The bit rate is for reference only.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -167,7 +167,7 @@ The following table lists the audio parameters. For details about each parameter
 
 |Encoding Format|Container Format|Sample Rate|Bit Rate|Audio Channel Count|
 |----|----|----|----|----|
-|AUDIO_AAC|MP4, M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-8]|
+|AUDIO_AAC|MP4, M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-2]|
 |AUDIO_MP3|MP3|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]|<br>- When the sample rate is lower than 16000, the bit rate range is [8000, 16000, 32000, 40000, 48000, 56000, 64000].<br>- When the sample rate ranges from 16000 to 32000, the bit rate range is [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000].<br>- When the sample rate is greater than 32000, the bit rate range is [32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000].|[1-2]|
 |AUDIO_G711MU|WAV|[8000]|[64000]|[1]|
 |AUDIO_AMR_NB<sup>18+</sup> |AMR|[8000]|[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]|[1]|
@@ -262,6 +262,7 @@ Defines the audio and video metadata.
 | location<sup>12+</sup> | [Location](#location) | No| Yes| Geographical location of the media asset.|
 | customInfo<sup>12+</sup> | Record<string, string> | No| Yes| Custom key-value mappings obtained from **moov.meta.list**.|
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. This property cannot be set for the AVRecorder.|
+| encoder | string | No| Yes| Identifier of the software, hardware, and settings used for encoding. This property cannot be set for the AVRecorder.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
 
 ### MediaDescriptionKey<sup>8+</sup> Values Supported by AVMetadata.tracks
 
@@ -291,8 +292,8 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 | Name  | Type  | Read-Only| Optional| Description                                                                           |
 |--------|--------|------|------|---------------------------------------------------------------------------------|
-| width  | number | No  | Yes  | Width of the thumbnail. The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
-| height | number | No  | Yes  | Height of the thumbnail. The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
 
 ## OutputSize<sup>20+</sup>
 
@@ -302,8 +303,23 @@ Describes the output size of the video thumbnail fetched.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | No  | Yes  | Width of the thumbnail.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
-| height | number | No  | Yes  | Height of the thumbnail.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+
+## FrameInfo<sup>23+</sup>
+
+Describes the return value of the operation for obtaining video thumbnails in batches, including the time point for requesting frame extraction, actual time point for frame extraction, format of thumbnails output from the video, and result of obtaining a single thumbnail.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| Name  | Type  | Read-Only| Optional| Description                                                                           |
+|--------|--------|------|------|---------------------------------------------------------------------------------|
+| requestedTimeUs  | number | No  | No  | Time point for requesting frame extraction.|
+| actualTimeUs | number | No  | Yes  | Actual time point for frame extraction.|
+| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | Yes  | Format of the thumbnail output from the video.|
+| result | [FetchResult](arkts-apis-media-e.md#fetchresult23) | No  | No  | Result of the task for obtaining a single thumbnail. For example, the task is successful, failed, or canceled.|
 
 ## MediaStream<sup>19+</sup>
 
@@ -337,7 +353,8 @@ Defines a media data loader, which needs to be implemented by applications.
 **Example**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
+import { media } from '@kit.MediaKit';
 
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
 let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
@@ -385,13 +402,13 @@ Describes the playback strategy.
 | preferredHeight | number | No  | Yes  | Preferred height, in px. The value is an integer greater than 0, for example, 1920.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredBufferDuration | number | No  | Yes  | Preferred buffer duration, in seconds. The value range is [1, 20].<br>For details, see [Minimizing Stuttering in Online Video Playback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-online-video-playback-lags-practice).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredHdr | boolean | No  | Yes  | Whether HDR is preferred. **true** if preferred, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableSuperResolution<sup>18+</sup> | boolean | No  | Yes  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 x 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| enableSuperResolution<sup>18+</sup> | boolean | No  | Yes  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 × 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | showFirstFrameOnPrepare<sup>17+</sup> | boolean | No  | Yes  | Whether to show the first frame after **prepare** is called. **true** to show, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | No  | Yes  | Type of the media to mute.<br>From API version 12 to 19, only **MediaType.MEDIA_TYPE_AUD** can be set. Starting from API version 20, **MediaType.MEDIA_TYPE_VID** is added.|
 | preferredAudioLanguage<sup>13+</sup> | string | No  | Yes  | Preferred audio track language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | preferredSubtitleLanguage<sup>13+</sup> | string | No  | Yes  | Preferred subtitle language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | preferredBufferDurationForPlaying<sup>18+</sup> | number | No  | Yes  | Preferred buffer duration for playback, in seconds. The playback starts once the buffering time exceeds this value. The value range is [0, 20].<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| thresholdForAutoQuickPlay<sup>18+</sup> | number | No  | Yes  | Thread for starting smart frame catching, in seconds. The value must be greater than or equal to 2s and greater than **preferredBufferDurationForPlaying**. The default value is 5s.<br>You can use the playback strategy to maintain the real-time quality of live streams by adjusting the smart frame-catch threshold. For FLV live streams, you can set this parameter based on service requirements. This parameter is not supported for non-FLV live streams yet. Fluctuations in network conditions can cause the player to build up a lot of data over time. The player periodically checks the gap between the current playback time and the timestamp of the latest frame in the cache. If this gap is too big, the player starts catching up at 1.2x speed. The [speedDone](arkts-apis-media-AVPlayer.md#onspeeddone9) event is invoked with a value of 100, indicating that smart frame catching has started successfully. Once the gap falls below **preferredBufferDurationForPlaying**, the player stops catching up and resumes the normal playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| thresholdForAutoQuickPlay<sup>18+</sup> | number | No  | Yes  | Thread for starting smart frame catching, in seconds. The value must be greater than or equal to 2s and greater than **preferredBufferDurationForPlaying**. The default value is 5s.<br>You can use the playback strategy to maintain the real-time quality of live streams by adjusting the smart frame-catch threshold. For FLV live streams, you can set this parameter based on service requirements. This parameter is not supported for non-FLV live streams yet. Fluctuations in network conditions can cause the player to build up a lot of data over time. The player periodically checks the gap between the current playback time and the timestamp of the latest frame in the cache. If this gap is too big, the player starts catching up at 1.2x speed. The [on('speedDone')](arkts-apis-media-AVPlayer.md#onspeeddone9) event will call back a specific value of **100**, indicating that the smart frame catching feature is enabled successfully. Once the gap falls below **preferredBufferDurationForPlaying**, the player stops catching up and resumes the normal playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | keepDecodingOnMute<sup>20+</sup>  | boolean | No  | Yes  | Whether the decoder continues to run when the video media is muted, which helps in quickly opening the media. Currently, this feature is available only for videos. The default value is **false**, indicating that the decoder stops running when the media is muted, reducing power consumption.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## AVScreenCaptureStrategy<sup>20+</sup>
@@ -402,8 +419,10 @@ Describes the screen capture strategy.
 
 | Name                 | Type   | Read-Only| Optional| Description                |
 | --------------------- | ------- | --- | --- | -------------------- |
-| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call.|
+| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call. The value **true** means to keep screen capture during a cellular call, and **false** means the opposite. The default value is **false**.|
 | enableBFrame | boolean | No| Yes| Whether to enable B-frame encoding for screen capture. **true** to enable, **false** otherwise. The default value is **false**.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.|
+| privacyMaskMode<sup>23+</sup> | number | No| Yes| Mask mode for privacy windows during screen capture.<br> - **0**: Full-screen mask mode for privacy windows. The default value is **0**.<br> - **1**: Window mask mode for privacy windows.<br> - If this parameter is set to other values, an error is returned.<br> **Model restriction**: This API can be used only in the stage model.|
+| enablePause | boolean | No| Yes| Whether screen capture can be paused.<br>**true**: yes; **false**: no. The default value is **false**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
@@ -414,10 +433,10 @@ Defines the screen capture parameters.
 | Name             | Type                                                        | Read-Only| Optional| Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | fd                | number                                                       | No  | No  | FD of the file output.                                          |
-| frameWidth        | number                                                       | No  | Yes  | Video width, in px. The default value varies according to the display in use.|
-| frameHeight       | number                                                       | No  | Yes  | Video height, in px. The default value varies according to the display in use.|
-| videoBitrate      | number                                                       | No  | Yes  | Video bit rate. The default value is **10000000**.                            |
-| audioSampleRate   | number                                                       | No  | Yes  | Audio sample rate. This value is used for both internal capture and external capture (using microphones). Only **48000** (default value) and **16000** are supported.|
+| frameWidth        | number                                                       | No  | Yes  | Width of the screen recording video, in pixels.<br>The default screen width varies depending on the screen.|
+| frameHeight       | number                                                       | No  | Yes  | Height of the screen recording video, in pixels.<br>The default screen height varies depending on the screen.|
+| videoBitrate      | number                                                       | No  | Yes  | Bit rate of the screen recording video.<br>The default value is **10000000**.                           |
+| audioSampleRate   | number                                                       | No  | Yes  | Audio sampling rate of the screen recording.<br>This value is used for both the system sound and microphone. Only **48000** (default) and **16000** are supported.|
 | audioChannelCount | number                                                       | No  | Yes  | Audio channel count. This value is used for both internal capture and external capture (using microphones). Only **1** and **2** (default) are supported.|
 | audioBitrate      | number                                                       | No  | Yes  | Audio bit rate. This value is used for both internal capture and external capture (using microphones). The default value is **96000**.|
 | preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | No  | Yes  | Encoding and container format used. The default value is **SCREEN_RECORD_PRESET_H264_AAC_MP4**.|
@@ -425,10 +444,55 @@ Defines the screen capture parameters.
 | fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| No  | Yes  | Video fill mode during screen capture.|
 | strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| No  | Yes  | Screen capture strategy.|
 
+## AVMetricsEvent<sup>23+</sup>
+
+Describes the information about a metric event.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | No  | No  | Type of the metric event.<br>**Model restriction**: This API can be used only in the stage model.|
+| timeStamp | number | No  | No  | System time when an event occurs.|
+| playbackPosition | number | No  | No  | Playback position when an event occurs.|
+| details | Record\<string, Object> | No  | No  | Detailed information about an event. The information contained in an event varies according to the event type.<br>The information includes the stalling duration (**duration**: number) and the media type (**media**: [MediaType](arkts-apis-media-e.md#mediatype8)) of the stalling.<br>**Model restriction**: This API can be used only in the stage model.|
+
+## VideoSize<sup>24+</sup>
+
+Describes the video size.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| width  | number | No  | Yes  | Video resolution width.<br>The value must be a positive integer (greater than 0).|
+| height | number | No  | Yes  | Video resolution height.<br>The value must be a positive integer (greater than 0).|
+
+## TrackSelectionFilter<sup>24+</sup>
+
+Describes the track selection filter.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| maxVideoBitrate | number | No  | Yes  | Maximum bit rate of the video, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| minVideoBitrate | number | No  | Yes  | Minimum bit rate of the video, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| maxVideoFrameRate | number | No  | Yes  | Maximum frame rate of the video, in Hz.<br>The value must be a positive integer (greater than 0).|
+| minVideoFrameRate | number | No  | Yes  | Minimum frame rate of the video, in Hz.<br>The value must be a positive integer (greater than 0).|
+| maxVideoResolution | [VideoSize](#videosize24) | No  | Yes  | Maximum resolution of the video.|
+| minVideoResolution | [VideoSize](#videosize24) | No  | Yes  | Minimum resolution of the video.|
+| preferredVideoMimeTypes | Array\<string> | No  | Yes  | Preferred MIME types of the video track, sorted by priority. An empty value indicates that any type is accepted.|
+| maxAudioBitrate | number | No  | Yes  | Maximum bit rate of the audio, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| minAudioBitrate | number | No  | Yes  | Minimum bit rate of the audio, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| maxAudioChannels | number | No  | Yes  | Maximum number of audio channels.<br>The value must be a positive integer (greater than 0).|
+| preferredAudioMimeTypes | Array\<string> | No  | Yes  | Preferred MIME type of the audio track, sorted by priority. An empty value indicates that any type is acceptable.|
+| preferredAudioLanguages | Array\<string> | No  | Yes  | Preferred languages of the audio track, sorted by priority. The value is a language tag that complies with the IETF BCP 47 criterion. An empty value indicates that any language is accepted.|
+| preferredSubtitleLanguages | Array\<string> | No  | Yes  | Preferred languages of the subtitle track, sorted by priority. The value is a language tag that complies with the IETF BCP 47 criterion. An empty value indicates that any language is accepted.|
+
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorderConfig](#avrecorderconfig9) instead.
 
 Describes audio recording configurations.

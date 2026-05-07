@@ -19,9 +19,9 @@
   - [@ohos.net.vpn (VPN管理)](js-apis-net-vpn.md)
   - [@ohos.net.webSocket (WebSocket连接)](js-apis-webSocket.md)
   - [@ohos.net.netFirewall (网络防火墙)](js-apis-net-netfirewall.md)
-  - [@ohos.net.networkSecurity (Network Security)](js-apis-networkSecurity.md)
+  - [@ohos.net.networkSecurity (网络安全校验)](js-apis-networkSecurity.md)
   - [@ohos.net.eap (扩展认证)](js-apis-net-eap.md)
-  - [@ohos.app.ability.VpnExtensionAbility(三方VPN能力)](js-apis-VpnExtensionAbility.md)
+  - [@ohos.app.ability.VpnExtensionAbility (三方VPN能力)](js-apis-VpnExtensionAbility.md)
   - [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md)
   <!--Del-->
   - [@ohos.net.connection (网络连接管理)（系统接口）](js-apis-net-connection-sys.md)
@@ -31,7 +31,7 @@
   - [@ohos.net.statistics (流量管理)（系统接口）](js-apis-net-statistics-sys.md)
   - [@ohos.net.vpn (VPN管理)（系统接口）](js-apis-net-vpn-sys.md)
   - [@ohos.net.vpnExtension (VPN增强管理)（系统接口）](js-apis-net-vpnExtension-sys.md)
-  - [@ohos.net.netFirewall (网络防火墙)（系统接口）](js-apis-net-netfirewall-sys.md)
+  - [@ohos.net.netFirewall (网络防火墙)(系统接口)](js-apis-net-netfirewall-sys.md)
   <!--DelEnd-->
 - C API<!--network-c-->
   - 模块<!--network-module-->
@@ -46,6 +46,8 @@
     - [net_websocket_type.h](capi-net-websocket-type-h.md)
     - [net_http.h](capi-net-http-h.md)
     - [net_http_type.h](capi-net-http-type-h.md)
+    - [http_interceptor.h](capi-net-http-interceptor-h.md)
+    - [http_interceptor_type.h](capi-net-http-interceptor-type-h.md)
   - 结构体<!--network-struct-->
     - [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md)
     - [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)
@@ -81,6 +83,10 @@
     - [Http_Request](capi-netstack-http-request.md)
     - [Http_EventsHandler](capi-netstack-http-eventshandler.md)
     - [Http_Headers](capi-netstack-http-headers.md)
+    - [OH_Http_Interceptor_Headers](capi-netstack-http-interceptor-headers.md)
+    - [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md)
+    - [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md)
+    - [OH_Http_Interceptor](capi-netstack-http-interceptor.md)
 - 已停止维护的接口<!--network-arkts-dep-->
   - [@system.network (网络状态)](js-apis-system-network.md)
   - [@system.fetch (数据请求)](js-apis-system-fetch.md)
@@ -96,5 +102,6 @@
   - [MDNS错误码](errorcode-net-mdns.md)
   - [流量管理错误码](errorcode-net-statistics.md)
   - [VPN错误码](errorcode-net-vpn.md)
-  - [NetworkSecurity错误码](errorcode-net-networkSecurity.md)
+  - [网络安全校验错误码](errorcode-net-networkSecurity.md)
   - [内核错误码](errorcode-kernel.md)
+  - [防火墙错误码](errorcode-net-netfirewall.md)

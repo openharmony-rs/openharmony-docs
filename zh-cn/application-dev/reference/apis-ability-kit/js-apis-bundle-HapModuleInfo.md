@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 Hap模块信息，未做特殊说明的属性，均通过[bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated)获取。
 
@@ -14,7 +14,7 @@ Hap模块信息，未做特殊说明的属性，均通过[bundle.getBundleInfo](
 > 
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md)替代。
 
-## HapModuleInfo<sup>(deprecated)<sup>
+## HapModuleInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >

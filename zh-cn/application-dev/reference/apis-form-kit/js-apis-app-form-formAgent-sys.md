@@ -23,7 +23,7 @@ import { formAgent } from '@kit.FormKit';
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
-请求发布一张卡片到使用方，使用callbck异步回调。使用方通常为桌面。
+请求发布一张卡片到使用方，使用callback异步回调。使用方通常为桌面。
 
 **需要权限：** ohos.permission.AGENT_REQUIRE_FORM
 
@@ -73,7 +73,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.info(`formAgent requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -135,7 +135,7 @@ let want: Want = {
 };
 try {
   formAgent.requestPublishForm(want).then((data: string) => {
-    console.info(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

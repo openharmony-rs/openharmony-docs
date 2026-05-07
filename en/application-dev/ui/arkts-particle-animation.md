@@ -44,7 +44,7 @@ struct ParticleExample {
 
 ## Implementing a Particle Emitter
 
-A particle emitter in particle animation is primarily used to define the initial properties (such as type, position, and color), of particles, control the rate of particle emission, and manage the lifecycle of the particles. You can update the position of the emitter by adjusting the emitter position, emission rate, and emission window size using the [emitter](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitter12) API.
+A particle emitter in particle animation is primarily used to define the initial properties (such as type and position), of particles, control the rate of particle emission, and manage the lifecycle of the particles. You can update the position of the emitter by adjusting the emitter position, emission rate, and emission window size using the [emitter](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitter12) API.
 
 ```ts
 // ...
@@ -82,7 +82,7 @@ color: {
 
 ## Setting the Particle Lifetime
 
-The lifetime of a particle, from creation to expiration, is used to specify how long a particle exists. Use the [lifetime](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitteroptions) and [lifetimeRange](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitteroptions) properties to define the particle lifetime.
+The lifetime of a particle, from creation to expiration, is used to specify how long a particle exists. Use the **lifetime** and **lifetimeRange** properties of [EmitterParticleOptions](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitterparticleoptions18) to define the particle lifetime.
 
 ```ts
 // ...

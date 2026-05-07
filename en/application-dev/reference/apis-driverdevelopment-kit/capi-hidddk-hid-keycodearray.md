@@ -1,10 +1,14 @@
 # Hid_KeyCodeArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
+```
 
 ## Overview
 
@@ -23,4 +27,4 @@ Defines a struct for the key code array.
 | Name| Description|
 | -- | -- |
 | Hid_KeyCode* hidKeyCode | Key code array.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|

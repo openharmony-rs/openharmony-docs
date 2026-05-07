@@ -1,7 +1,7 @@
 # Notification Kit（用户通知服务）<!--notification-api-->
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -40,7 +40,7 @@
     <!--DelEnd-->
   - 已停止维护的接口<!--notification-arkts-dep-->
     - [@ohos.notification (Notification模块)](js-apis-notification.md)
-    - [@system.notification (Notification模块)](js-apis-system-notification.md)
+    - [@system.notification (通知消息)](js-apis-system-notification.md)
     <!--Del-->
     - [@ohos.notification (Notification模块)(系统接口)](js-apis-notification-sys.md)
     <!--DelEnd-->

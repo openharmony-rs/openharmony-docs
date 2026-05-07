@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Scalable Vector Graphics (SVG) is an XML-based vector image format for describing two-dimensional graphics. The **Image** component supports a subset of the SVG 1.1 specification. The following tags and attributes are supported.
+Scalable Vector Graphics (SVG) is an XML-based vector image format for describing two-dimensional graphics. The [Image](./ts-basic-components-image.md) component supports a subset of the SVG 1.1 specification. The following tags and attributes are supported.
 
 ## Basic Shapes
 
@@ -14,24 +14,23 @@ Basic shape elements include the following: \<rect\>, \<circle\>, \<ellipse\>, \
 
 >  **NOTE**
 >
->  Basic tags support the following universal attributes:
->  id, fill, fill-rule, fill-opacity, stroke, stroke-dasharray, stroke-dashoffset, stroke-opacity, stroke-width, stroke-linecap, stroke-linejoin, stroke-miterlimit, opacity, transform, clip-path, and clip-rule. The **transform** attribute supports translation only.
+>  Basic tags support the following [universal attributes](../arkui-js/js-components-svg-common-attributes.md): id, fill, fill-rule, fill-opacity, stroke, stroke-dasharray, stroke-dashoffset, stroke-opacity, stroke-width, stroke-linecap, stroke-linejoin, stroke-miterlimit, opacity, transform, clip-path, and clip-rule. The **transform** attribute supports only translation.
 >
->  Starting from API version 21, when the **Image** component's [supportSvg2](./ts-basic-components-image.md#supportsvg221) attribute is set to **true**, the **transform** attribute supports translation, rotation, scaling, skewing, and matrix transformations. For details, see [Enhanced SVG Tag Parsing](ts-image-svg2-capabilities.md).
+>  Starting from API version 21, when the [supportSvg2](./ts-basic-components-image.md#supportsvg221) attribute of the [Image](./ts-basic-components-image.md) component is set to **true**, the **transform** attribute supports translation, rotation, scaling, skewing, and matrix transformations. For details, see [Enhanced SVG Tag Parsing](ts-image-svg2-capabilities.md).
 
 | Element| Description| Unique Attribute|
 | :-------- | :-------- | :-------- |
 | \<rect\> | Rectangle| **x**: x-axis offset.<br>**y**: y-axis offset.<br>**width**: width.<br>**height**: height.<br>**rx**: corner radius on the x-axis.<br>**ry**: corner radius on the y-axis.|
-| \<circle\> | Circle| **cx**: X coordinate of the circle center.<br> **cy**: Y coordinate of the circle center.<br> **r**: radius of the circle.|  |
-| \<ellipse\> | Ellipse| **cx**: X coordinate.<br> **cy**: Y coordinate.<br> **rx**: x-axis radius.<br> **ry**: y-axis radius.|  |
-| \<line\> | Line| **x1**: X coordinate of the start point.<br> **y1**: Y coordinate of the start point.<br> **x2**: X coordinate of the end point.<br> **y2**: Y coordinate of the end point.|  |
-| \<polyline\> | Polyline| **points**: vertex coordinates.|  |
-| \<polygon\> | Polygon| **points**: vertex coordinates.|  |
-| \<path\> | Path| **d**: path.|  |
+| \<circle\> | Circle| **cx**: X coordinate of the circle center.<br> **cy**: Y coordinate of the circle center.<br> **r**: radius of the circle.|
+| \<ellipse\> | Ellipse| **cx**: X coordinate.<br> **cy**: Y coordinate.<br> **rx**: x-axis radius.<br> **ry**: y-axis radius.|
+| \<line\> | Line| **x1**: X coordinate of the start point.<br> **y1**: Y coordinate of the start point.<br> **x2**: X coordinate of the end point.<br> **y2**: Y coordinate of the end point.|
+| \<polyline\> | Polyline| **points**: vertex coordinates.|
+| \<polygon\> | Polygon| **points**: vertex coordinates.|
+| \<path\> | Path| **d**: path.|
 
 Example: SVG basic shapes with universal attributes
 
-```
+```xml
 <!-- svg01.svg -->
 <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" style="background:#f0f0f0">
     <!-- 1. <rect> Rectangle -->
@@ -156,7 +155,7 @@ Clipping elements include the following: \<clippath\>.
 
 ### Patterns
 
-Pattern elements include the following: \<pattern\>.
+Pattern elements include the following: \<pattern\>
 | Element| Description| Unique Attribute|
 | :-------- | :-------- | :-------- |
 | \<pattern\> | Defines a fill pattern.| **x**: x-axis offset of the fill area.<br>**y**: y-axis offset of the fill area.<br>**width**: width of the fill area.<br>**height**: height of the fill area.|
@@ -181,24 +180,27 @@ The image elements include the following: \<image\>.
 ## Animation
 
 Animation elements include the following: \<animate\> and \<animateTransform\>.
+
+>**NOTE**
+>
+> Currently, only single-element attribute or transformation animations are supported. Nested animations between elements are unavailable.
+
 | Element| Description| Unique Attribute|
 | :-------- | :-------- | :-------- |
-| \<animate\> | Defines a property animation.| **attributeName**: animatable property; values: (cx\| cy \| r \| fill \| stroke \| fill-opacity \| stroke-opacity \| stroke-miterlimit)<br>**begin**: animation start time.<br> **dur**: animation duration.<br>**from**: start value.<br>**to**: end value.<br>**fill**: end state of the animation.<br> **calcMode**: interpolation.<br>**keyTimes**: start time of the keyframe animation. The value is a semicolon-separated list of values ranging from 0 to 1, for example, **0;0.3;0.8;1**. **keyTimes**, **keySplines**, and **values** are combined to set the key frame animation. The number of values defined for **keyTimes** is the same as that for **values**. The number of values defined for **keySplines** is the number of values defined for **keyTimes** minus 1.<br> **values**: change value of a group of animations. The format is value1;value2;value3.<br> **keySplines**: a set of Bezier control points corresponding to **keyTimes** values. It defines the easing curves between keyframes, with each curve separated by semicolons (;). Each curve is specified using four values: x1 y1 x2 y2 representing the two control points of the cubic Bezier curve. Example: **0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1**.|
-| \<animateTransform\> | Defines a transformation animation.| **attributeName**: animatable attribute; value: **transform**<br>**type**: transformation type; values: (translate \| scale \| rotate \| skewX \| skewY);<br>**begin**: animation start time.<br> **dur**: animation duration.<br>**from**: start value.<br>**to**: end value.<br>**fill**: end state of the animation.<br> **calcMode**: interpolation.<br>**keyTimes**: start time of the keyframe animation. The value is a semicolon-separated list of values ranging from 0 to 1, for example, **0;0.3;0.8;1**. **keyTimes**, **keySplines**, and **values** are combined to set the key frame animation. The number of values defined for **keyTimes** is the same as that for **values**. The number of values defined for **keySplines** is the number of values defined for **keyTimes** minus 1.<br> **values**: change value of a group of animations. The format is value1;value2;value3.<br> **keySplines**: a set of Bezier control points corresponding to **keyTimes** values. It defines the easing curves between keyframes, with each curve separated by semicolons (;). Each curve is specified using four values: x1 y1 x2 y2 representing the two control points of the cubic Bezier curve. Example: **0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1**.|
+| \<animate\> | Defines a property animation.| **attributeName**: animation property; values: (cx\| cy \| r \| fill \| stroke \| fill-opacity \| stroke-opacity \| stroke-miterlimit)<br>**begin**: animation start time.<br> **dur**: animation duration.<br>**from**: start value.<br>**to**: end value.<br>**fill**: end state of the animation.<br> **calcMode**: interpolation.<br>**keyTimes**: start time of the keyframe animation. The value is a semicolon-separated list of values ranging from 0 to 1, for example, **0;0.3;0.8;1**. **keyTimes**, **keySplines**, and **values** are combined to set the key frame animation. The number of values defined for **keyTimes** is the same as that for **values**. The number of values defined for **keySplines** is the number of values defined for **keyTimes** minus 1.<br> **values**: change value of a group of animations. The format is value1;value2;value3.<br> **keySplines**: a set of Bezier control points corresponding to **keyTimes** values. It defines the easing curves between keyframes, with each curve separated by semicolons (;). Each curve is specified using four values: x1 y1 x2 y2 representing the two control points of the cubic Bezier curve. Example: **0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1**.|
+| \<animateTransform\> | Defines a transformation animation.| **attributeName**: animation property, which is set to **transform**<br>**type**: transformation type; values: (translate \| scale \| rotate \| skewX \| skewY);<br>**begin**: animation start time.<br> **dur**: animation duration.<br>**from**: start value.<br>**to**: end value.<br>**fill**: end state of the animation.<br> **calcMode**: interpolation.<br>**keyTimes**: start time of the keyframe animation. The value is a semicolon-separated list of values ranging from 0 to 1, for example, **0;0.3;0.8;1**. **keyTimes**, **keySplines**, and **values** are combined to set the key frame animation. The number of values defined for **keyTimes** is the same as that for **values**. The number of values defined for **keySplines** is the number of values defined for **keyTimes** minus 1.<br> **values**: change value of a group of animations. The format is value1;value2;value3.<br> **keySplines**: a set of Bezier control points corresponding to **keyTimes** values. It defines the easing curves between keyframes, with each curve separated by semicolons (;). Each curve is specified using four values: x1 y1 x2 y2 representing the two control points of the cubic Bezier curve. Example: **0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1**.|
 
-Note: Currently, only single-element attribute or transformation animations are supported. Nested animations between elements are not available.
 ## Other Elements
 
-Additional structural and grouping elements include the following:
-\<svg\>, \<g\>, \<use\>, and \<defs\>.
+In addition to the tags that identify graphics and images, the following tags are supported: \<svg\>, \<g\>, \<use\>, and \<defs\>.
+
+>**NOTE** 
+> 
+> Supported color formats include: **#rgb**, **#rrggbb**, **rgb()**, **rgba()**, and common color keywords (red, black, blue, and more).
 
 | Element| Description| Unique Attribute| Universal Attribute|
 | :-------- | :-------- | :-------- | :-------- |
 | \<svg\> | Defines an SVG segment.| **x**: x-axis offset.<br> **y**: y-axis offset.<br> **width**: width.<br>**height**: height.<br> **viewBox**: viewport.| fill, fill-rule, fill-opacity, stroke, stroke-dasharray, stroke-dashoffset, stroke-opacity, stroke-width, stroke-linecap, stroke-linejoin, stroke-miterlimit, transform|
 | \<g\> | Groups elements.| **x**: x-axis offset.<br> **y**: y-axis offset.<br> **width**: width.<br> **height**: height.| fill, fill-rule, fill-opacity, stroke, stroke-dasharray, stroke-dashoffset, stroke-opacity, stroke-width, stroke-linecap, stroke-linejoin, stroke-miterlimit, transform|
-| \<use\> | Reuses existing elements.| **x**: x-axis offset.<br> **y**: y-axis offset.<br>**href**: target element.| fill, fill-rule, fill-opacity, stroke, stroke-dasharray, stroke-dashoffset, stroke-opacity, stroke-width, stroke-linecap, stroke-linejoin, stroke-miterlimit, transform|
-| \<defs\> | Defines reusable objects.| | |
-
->**NOTE** 
-> 
-> Supported color formats include: **#rgb**, **#rrggbb**, **rgb()**, **rgba()**, and common color keywords (red, black, blue, and more).
+| \<use\> | Reuses existing elements.| **x**: x-axis offset.<br> **y**: y-axis offset.<br> **href**: target element.| fill, fill-rule, fill-opacity, stroke, stroke-dasharray, stroke-dashoffset, stroke-opacity, stroke-width, stroke-linecap, stroke-linejoin, stroke-miterlimit, transform|
+| \<defs\> | Defines reusable objects.|No specific attribute.|fill, fill-rule, fill-opacity, stroke, stroke-dasharray, stroke-dashoffset, stroke-opacity, stroke-width, stroke-linecap, stroke-linejoin, stroke-miterlimit, transform|

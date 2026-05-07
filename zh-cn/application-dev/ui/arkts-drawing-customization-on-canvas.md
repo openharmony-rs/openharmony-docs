@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
+[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)提供画布组件，用于自定义绘制图形，开发者使用[CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象和[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
 
 
 ## 使用画布组件绘制自定义图形
@@ -24,20 +24,20 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
 @Entry
 @Component
 struct CanvasExample1 {
-  //用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿，true表明开启抗锯齿。
+  // 用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿，true表明开启抗锯齿。
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
-  //用来创建CanvasRenderingContext2D对象，通过在canvas中调用CanvasRenderingContext2D对象来绘制。
+  // 用来创建CanvasRenderingContext2D对象，通过在canvas中调用CanvasRenderingContext2D对象来绘制。
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      //在canvas中调用CanvasRenderingContext2D对象。
+      // 在canvas中调用CanvasRenderingContext2D对象。
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          //可以在这里绘制内容。
+          // 可以在这里绘制内容。
           this.context.strokeRect(50, 50, 200, 150);
         })
     }
@@ -51,8 +51,8 @@ struct CanvasExample1 {
   ![2023022793003](figures/2023022793003.jpg)
 
 - 离屏绘制是指将需要绘制的内容先绘制在缓存区，再将其转换成图片，一次性绘制到Canvas上，加快了绘制速度。过程为：
-  1. 通过transferToImageBitmap方法将离屏画布最近渲染的图像创建为一个ImageBitmap对象。
-  2. 通过CanvasRenderingContext2D对象的transferFromImageBitmap方法显示给定的ImageBitmap对象。
+  1. 通过[transferToImageBitmap](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#transfertoimagebitmap)方法将离屏画布最近渲染的图像创建为一个[ImageBitmap](../reference/apis-arkui/arkui-ts/ts-components-canvas-imagebitmap.md)对象。
+  2. 通过[CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象的[transferFromImageBitmap](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#transferfromimagebitmap)方法显示给定的ImageBitmap对象。
 
     具体使用参考[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)对象。
 
@@ -63,10 +63,10 @@ struct CanvasExample1 {
 @Entry
 @Component
 struct CanvasExample2 {
-  //用来配置CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。true表明开启抗锯齿
+  // 用来配置CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。true表明开启抗锯齿
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  //用来创建OffscreenCanvas对象，width为离屏画布的宽度，height为离屏画布的高度。通过在canvas中调用OffscreenCanvasRenderingContext2D对象来绘制。
+  // 用来创建OffscreenCanvas对象，width为离屏画布的宽度，height为离屏画布的高度。通过在canvas中调用OffscreenCanvasRenderingContext2D对象来绘制。
   private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
@@ -77,9 +77,9 @@ struct CanvasExample2 {
         .backgroundColor('#F5DC62')
         .onReady(() => {
           let offContext = this.offCanvas.getContext('2d', this.settings);
-          //可以在这里绘制内容
+          // 可以在这里绘制内容
           offContext.strokeRect(50, 50, 200, 150);
-          //将离屏绘制渲染的图像在普通画布上显示
+          // 将离屏绘制渲染的图像在普通画布上显示
           let image = this.offCanvas.transferToImageBitmap();
           this.context.transferFromImageBitmap(image);
         })
@@ -134,7 +134,7 @@ Canvas(this.context)
 
 ## 画布组件绘制方式
 
-在Canvas组件生命周期接口onReady()调用之后，开发者可以直接使用canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2d对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
+在Canvas组件的事件回调[onReady](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md#onready)()被调用之后，开发者可以直接使用Canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
 
 - 通过CanvasRenderingContext2D对象直接调用相关API进行绘制。
 
@@ -157,7 +157,7 @@ Canvas(this.context)
 
   ![2023022793719(1)](figures/2023022793719.jpg)
 
-- 先单独定义path2d对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的stroke接口或者fill接口进行绘制，具体使用可以参考[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象。
+- 先单独定义path2D对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的[stroke](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#stroke-1)接口或者[fill](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#fill-1)接口进行绘制，具体使用可以参考[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象。
 
 
 <!-- @[definePath2d_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -183,10 +183,11 @@ Canvas(this.context2)
 OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供了大量的属性和方法，可以用来绘制文本、图形，处理像素等，是Canvas组件的核心。常用接口有[fill](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#fill)（对封闭路径进行填充）、[clip](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#clip)（设置当前路径为剪切路径）、[stroke](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroke)（进行边框绘制操作）等等，同时提供了[fillStyle](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#fillstyle)（指定绘制的填充色）、[globalAlpha](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#globalalpha)（设置透明度）与[strokeStyle](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#strokestyle)（设置描边的颜色）等属性修改绘制内容的样式。将通过以下几个方面简单介绍画布组件常见使用方法：
 
 - 绘制基础形状。
+
   可以通过[arc](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#arc)（绘制弧线路径）、 [ellipse](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#ellipse)（绘制一个椭圆）、[rect](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#rect)（创建矩形路径）等接口绘制基础形状。
 
 
-<!-- @[CanvasComponentBasicShapes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentBasicShapes.ets) -->
+  <!-- @[CanvasComponentBasicShapes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentBasicShapes.ets) -->
 
 ``` TypeScript
 Canvas(this.context)
@@ -194,15 +195,15 @@ Canvas(this.context)
   .height('100%')
   .backgroundColor('#F5DC62')
   .onReady(() => {
-    //绘制矩形
+    // 绘制矩形
     this.context.beginPath();
     this.context.rect(100, 50, 100, 100);
     this.context.stroke();
-    //绘制圆形
+    // 绘制圆形
     this.context.beginPath();
     this.context.arc(150, 250, 50, 0, 6.28);
     this.context.stroke();
-    //绘制椭圆
+    // 绘制椭圆
     this.context.beginPath();
     this.context.ellipse(150, 450, 50, 100, Math.PI * 0.25, Math.PI * 0, Math.PI * 2);
     this.context.stroke();
@@ -310,8 +311,8 @@ struct CustomFont {
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          //加载自定义字体
           let fontCollection = text.FontCollection.getGlobalInstance();
+          // 加载rawfile目录下的自定义字体文件customFont.ttf
           fontCollection.loadFontSync('customFont', $rawfile('customFont.ttf'));
           this.context.font = '30vp customFont';
           this.context.fillText('Hello World!', 20, 50);
@@ -385,13 +386,13 @@ Canvas(this.context)
   .height('100%')
   .backgroundColor('#F5DC62')
   .onReady(() => {
-    //创建一个径向渐变色的CanvasGradient对象
+    // 创建一个径向渐变色的CanvasGradient对象
     let grad = this.context.createRadialGradient(200, 200, 50, 200, 200, 200);
-    //为CanvasGradient对象设置渐变断点值，包括偏移和颜色
+    // 为CanvasGradient对象设置渐变断点值，包括偏移和颜色
     grad.addColorStop(0.0, '#E87361');
     grad.addColorStop(0.5, '#FFFFF0');
     grad.addColorStop(1.0, '#BDDB69');
-    //用CanvasGradient对象填充矩形
+    // 用CanvasGradient对象填充矩形
     this.context.fillStyle = grad;
     this.context.fillRect(0, 0, 400, 400);
   })
@@ -402,7 +403,7 @@ Canvas(this.context)
 
 ## 使用状态变量驱动画布刷新
 
-可以使用状态变量来驱动Canvas刷新，将变化的数据通过@Watch监听，并绑定自定义的draw()方法。当数据刷新时，@Watch绑定的方法会执行绘制逻辑，使Canvas刷新。
+可以使用状态变量来驱动Canvas刷新，将变化的数据通过[@Watch](state-management/arkts-watch.md)监听，并绑定自定义的draw()方法。当数据刷新时，@Watch绑定的方法会执行绘制逻辑，使Canvas刷新。
 
 
 <!-- @[canvasContentUpdate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentUpdate.ets) -->

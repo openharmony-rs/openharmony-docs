@@ -31,11 +31,11 @@ uinput <option> <command> <arg> ...
 | -T       | --touch    | 注入触摸事件。  |
 | -P       | --touchpad | 注入触控板事件。|
 | -?       | --help     | 帮助命令。      | 
-| enable_key_status | enable_key_status | [修饰键状态管理](#修饰键状态管理)。| 
+| enable_key_status | enable_key_status | [控制注入的修饰键状态](#控制注入的修饰键状态)。| 
 
 > **说明：**
 >
-> 命令中与坐标相关的参数，单位均为[px(屏幕物理像素单位)](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)。
+> 命令中与坐标相关的参数，单位均为px[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)。
 
 ## 帮助命令
 
@@ -232,7 +232,7 @@ uinput -M -c 0 -i 500 -c 0
 ### 查询鼠标光标信息
 查询当前鼠标光标信息。
 
-如果鼠标光标处于显示状态，将输出鼠标光标显示状态及[鼠标光标样式](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。若传入`filePath`参数且鼠标光标为第三方自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
+如果鼠标光标处于显示状态，将输出鼠标光标显示状态及[PointerStyle](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。若传入`filePath`参数且鼠标光标为应用自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
 
 **命令**
 ```bash
@@ -256,7 +256,7 @@ uinput -M -q /data/local/tmp/testfile
 模拟键盘按键输入。
 
 ### 键盘按键按下事件
-模拟键盘按下按键，建议与键盘按键抬起事件搭配使用，确保事件闭环。keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘按下按键，建议与键盘按键抬起事件搭配使用，确保事件闭环。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -265,7 +265,7 @@ uinput --keyboard --down <keyCode>
 ```
 
 ### 键盘按键抬起事件
-模拟键盘抬起按键，必须与键盘按键按下事件搭配使用，确保事件闭环。keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘抬起按键，必须与键盘按键按下事件搭配使用，确保事件闭环。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -280,7 +280,7 @@ uinput -K -d 2017 -u 2017
 ```
 
 ### 键盘按键长按事件
-模拟键盘按下一个按键并保持设定的时长后抬起，无需再次注入键盘按键抬起事件。长按期间不会重复注入按键按下事件。keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘按下一个按键并保持设定的时长后抬起，无需再次注入键盘按键抬起事件。长按期间不会重复注入按键按下事件。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -297,7 +297,7 @@ uinput -K -l 2017 6000
 ```
 
 ### 键盘按键持续输入事件
-模拟键盘按下一个按键并在设定的时长内持续输入按下事件后抬起，无需再次注入键盘按键抬起事件。长按期间会重复注入按键按下事件。keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘按下一个按键并在设定的时长内持续输入按下事件后抬起，无需再次注入键盘按键抬起事件。长按期间会重复注入按键按下事件。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -345,46 +345,46 @@ uinput --keyboard --text <text>
 uinput -K -t Hello,World!
 ```
 
-## 修饰键状态管理
+## 控制注入的修饰键状态
 
-启动或禁用键盘事件修饰键状态管理，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+从API version 22开始，支持启用或禁用控制注入的修饰键状态能力，支持的修饰键包括：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
-### 启动修饰键状态管理
+### 启用控制注入的修饰键状态能力
 
-启动修饰键状态管理并设置维持时间。需要与uinput键盘按键按下事件配合使用，启动后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
+启用控制注入的修饰键状态能力并设置维持时间。需要与uinput键盘按键按下事件配合使用，启用后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
 
 **命令**
 ```bash
 uinput enable_key_status <enable> [duration]
 
-# <enable> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
-# [duration] 修饰键状态管理持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
+# <enable> 控制注入的修饰键状态能力，取值为1或0，取值为1表示启用控制注入的修饰键状态能力，0表示禁用控制注入的修饰键状态能力。
+# [duration] 控制注入的修饰键状态持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
 ```
 
 **使用示例**
 ```bash
-# 启动修饰键状态管理，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
+# 启用控制注入的修饰键状态能力，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
 uinput enable_key_status 1
 uinput -K -d 2047
 
-# 启动修饰键状态管理并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
+# 启用控制注入的修饰键状态能力并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
 uinput enable_key_status 1 5
 uinput -K -d 2047
 ```
 
-### 禁用修饰键状态管理
+### 禁用控制注入的修饰键状态能力
 
-禁用修饰键状态管理功能，直到下次启用恢复该功能。
+禁用控制注入的修饰键状态能力，直到下次启用恢复该能力。
 
 **命令**
 ```bash
-# <enable> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
+# <enable> 控制注入的修饰键状态能力，取值为1或0，取值为1表示启用控制注入的修饰键状态能力，0表示禁用控制注入的修饰键状态能力。
 uinput enable_key_status <enable>
 ```
 
 **使用示例**
 ```bash
-# 禁用修饰键状态管理。
+# 禁用控制注入的修饰键状态能力。
 uinput enable_key_status 0
 ```
 

@@ -38,7 +38,7 @@ Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (s
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the device to pair, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to pair, for example, XX:XX:XX:XX:XX:XX.|
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a remote device.<br>- If the Bluetooth Classic (BR/EDR) or Bluetooth Low Energy (BLE) mode is used, pass in **TRANSPORT_BR_EDR** or **TRANSPORT_LE**.<br>- If you are not sure which transport mode is used, pass in **TRANSPORT_DUAL**<sup>20+</sup> or **TRANSPORT_UNKNOWN**<sup>20+</sup>. The Bluetooth subsystem will decide the transport mode based on the actual situation.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
@@ -91,7 +91,7 @@ Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (s
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the device to pair, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to pair, for example, XX:XX:XX:XX:XX:XX.|
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a remote device.<br>- If the Bluetooth Classic (BR/EDR) or Bluetooth Low Energy (BLE) mode is used, pass in **TRANSPORT_BR_EDR** or **TRANSPORT_LE**.<br>- If you are not sure which transport mode is used, pass in **TRANSPORT_DUAL**<sup>20+</sup> or **TRANSPORT_UNKNOWN**<sup>20+</sup>. The Bluetooth subsystem will decide the transport mode based on the actual situation.|
 
 **Return value**
@@ -146,7 +146,7 @@ Cancels a paired device. This API uses an asynchronous callback to return the re
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -194,7 +194,7 @@ Cancels a paired device. This API uses a promise to return the result.
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
@@ -250,7 +250,7 @@ Cancels the pairing of a device. This API uses an asynchronous callback to retur
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -295,7 +295,7 @@ Cancels the pairing of a device. This API uses a promise to return the result.
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
@@ -439,7 +439,7 @@ Disconnects all connected profiles for a remote device. This API uses an asynchr
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the target remote device, for example, XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to disconnect, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -490,7 +490,7 @@ Disconnects all connected profiles for a remote device. This API uses a promise 
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the target remote device, for example, XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to disconnect, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
@@ -748,7 +748,7 @@ Updates cloud devices in Bluetooth settings. This API uses a promise to return t
 
 | Name   | Type     | Mandatory  | Description                              |
 | ------ | ------- | ---- | -------------------------------- |
-| trustedPairedDevices   | [TrustedPairedDevices](#trustedpaireddevices15)  | Yes   | Cloud device list. |  
+| trustedPairedDevices   | [TrustedPairedDevices](#trustedpaireddevices15)  | Yes   | Cloud device list. |
 
 **Return value**
 
@@ -814,6 +814,135 @@ try {
 ```
 
 
+## connection.pairDeviceOutOfBand<sup>23+</sup>
+
+pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
+
+Initiates pairing with the peer Bluetooth device through the out-of-band (OOB) communication mechanism. This API uses a promise to return the result.
+
+- You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange).
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type    | Mandatory  | Description                                 |
+| -------- | ------ | ---- | ----------------------------------- |
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a peer device.<br>- If BR/EDR is used, pass **TRANSPORT_BR_EDR**. If BLE is used, pass **TRANSPORT_LE**. Other [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) types are not supported.|
+| p192Data | [OobData](#oobdata23) \| null | Yes   | OOB data used during pairing. P-192 is an elliptic curve algorithm with a 192-bit key length. It was widely used in legacy pairing schemes of Bluetooth 4.1 and earlier versions.<br>- If this value is not used, pass null.<br>- At least one of **p192Data** and **p256Data** must be passed. If both of them are passed, **p256Data** takes effect whereas **p192Data** does not.|
+| p256Data | [OobData](#oobdata23) \| null | Yes   | OOB data used during pairing. P-256 is an elliptic curve algorithm with a 256-bit key length. It has been the core of secure connections since Bluetooth 4.2. Compared with P-192 OOB data, P-256 OOB data has stronger anti-attack capability and confidentiality. **p256Data** is recommended unless the device needs to be compatible with Bluetooth 4.1 or earlier.<br>- If this value is not used, pass null.<br>- At least one of **p192Data** and **p256Data** must be passed. If both of them are passed, **p256Data** takes effect whereas **p192Data** does not.|
+
+**Return value**
+
+| Type                 | Description           |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+import { common } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let transport: connection.BluetoothTransport = connection.BluetoothTransport.TRANSPORT_LE;
+    let addressInfo: common.BluetoothAddress = {
+        "address": "11:22:33:44:55:66",
+        "addressType": common.BluetoothAddressType.REAL, // The value must be an actual MAC address.
+        "rawAddressType": common.BluetoothRawAddressType.RANDOM
+    };
+    let confirmHash: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]);
+    let randomHash: Uint8Array = new Uint8Array([0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11]);
+    let oobData: connection.OobData = {
+        "deviceId": addressInfo,
+        "confirmationHash": confirmHash,
+        "randomizerHash": randomHash,
+        "deviceName": "testName",
+        "deviceRole": connection.DeviceRole.DEVICE_ROLE_PERIPHERAL_ONLY
+    }
+    connection.pairDeviceOutOfBand(transport, null, oobData).then(() => {
+        console.info('pairDeviceOufOfBand');
+    }, (err: BusinessError) => {
+        console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.generateLocalOobData<sup>23+</sup>
+
+generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
+
+Obtains the out-of-band (OOB) communication data of the local device. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type    | Mandatory  | Description                                 |
+| -------- | ------ | ---- | ----------------------------------- |
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a peer device.<br>- If BR/EDR is used, pass **TRANSPORT_BR_EDR**. If BLE is used, pass **TRANSPORT_LE**. Other [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) types are not supported.|
+
+**Return value**
+
+| Type                 | Description           |
+| ------------------- | ------------- |
+| Promise&lt;[OobData](#oobdata23)&gt; | Promise used to return the OOB data of the local device.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let transport: connection.BluetoothTransport = connection.BluetoothTransport.TRANSPORT_LE;
+    connection.generateLocalOobData(transport).then((oobData: connection.OobData) => {
+        console.info(`generateLocalOobData: ${JSON.stringify(oobData)}`);
+    }, (err: BusinessError) => {
+        console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
 ## PinRequiredParam
 
 Represents the pairing request parameters.
@@ -870,14 +999,14 @@ Enumerates the custom types of a remote Bluetooth device.
 
 | Name                              | Value   | Description             |
 | -------------------------------- | ------ | --------------- |
-| DEVICE_TYPE_DEFAULT<sup>12+</sup> | 0 | Default device type, which is the same as the original type.<br>This is a system API.|
-| DEVICE_TYPE_CAR<sup>12+</sup>  | 1 | Car.<br>This is a system API. |
-| DEVICE_TYPE_HEADSET<sup>12+</sup>  | 2 | Headset.<br>This is a system API. |
-| DEVICE_TYPE_HEARING<sup>12+</sup>   | 3 | Hearing aid.<br>This is a system API. |
-| DEVICE_TYPE_GLASSES<sup>12+</sup>    | 4 | Glasses. <br>This is a system API. |
-| DEVICE_TYPE_WATCH<sup>12+</sup>     | 5 | Watch.<br>This is a system API. |
-| DEVICE_TYPE_SPEAKER<sup>12+</sup>     | 6 | Speaker.<br>This is a system API. |
-| DEVICE_TYPE_OTHERS<sup>12+</sup>     | 7 | Other device.<br>This is a system API. |
+| DEVICE_TYPE_DEFAULT | 0 | Default device type, which is the same as the original type.<br>This is a system API.|
+| DEVICE_TYPE_CAR  | 1 | Car.<br>This is a system API. |
+| DEVICE_TYPE_HEADSET  | 2 | Headset.<br>This is a system API. |
+| DEVICE_TYPE_HEARING   | 3 | Hearing aid.<br>This is a system API. |
+| DEVICE_TYPE_GLASSES    | 4 | Glasses. <br>This is a system API. |
+| DEVICE_TYPE_WATCH     | 5 | Watch.<br>This is a system API. |
+| DEVICE_TYPE_SPEAKER     | 6 | Speaker.<br>This is a system API. |
+| DEVICE_TYPE_OTHERS     | 7 | Other device.<br>This is a system API. |
 
 
 ## BatteryInfo<sup>12+</sup>
@@ -905,6 +1034,7 @@ Enumerates control types.
 | VIBRATE | 1 | Vibration|
 | FLASH | 2 | Flash|
 | LOCK | 3 | Lock|
+| ERASE | 4 | Erase|
 
 
 ## ControlTypeValue<sup>15+</sup>
@@ -975,3 +1105,39 @@ Defines the cloud device information.
 | deviceNameTime  | number | No   | No   | Device name modification time.  |
 | secureAdvertisingInfo  | ArrayBuffer | No   | No   | Device advertising information.  |
 | pairState  | number | No   | No   | Device pairing status.  |
+
+## OobData<sup>23+</sup>
+
+Represents the data object used for OOB pairing.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name      | Type  | Read-Only  | Optional  | Description         |
+| -------- | ------ | ---- | ---- | ----------- |
+| deviceId  | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No   | No   | Address information of the Bluetooth device.<br>- When **OobData** is used, the **address**, **addressType**, and **rawAddressType** parameters in [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) are mandatory, and **addressType** must be set to **REAL**.|
+| confirmationHash | Uint8Array | No| No| Confirmation hash, which contains 16 bytes.|
+| randomizerHash | Uint8Array | No| Yes| Random hash, which contains 16 bytes. If this parameter is not set, the default value is all 0s.|
+| deviceName | string | No| Yes| Bluetooth device name. If this parameter is not set, the default value is an empty string.|
+| deviceRole | [DeviceRole](#devicerole23) | No| Yes| Bluetooth device role during connection. If this parameter is not set, the default value is **DEVICE_ROLE_PERIPHERAL_ONLY**.|
+
+
+## DeviceRole<sup>23+</sup>
+
+Enumerates Bluetooth device roles during connection.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name          | Value  | Description                |
+| -------------- | ---- | -------------------- |
+| DEVICE_ROLE_PERIPHERAL_ONLY       | 0    | The Bluetooth device can only be used as a peripheral device.|
+| DEVICE_ROLE_CENTRAL_ONLY      | 1    | The Bluetooth device can only be used as a central device.|
+| DEVICE_ROLE_BOTH_PREFER_PERIPHERAL | 2    | The Bluetooth device can be used as a central device or a peripheral device, but it is preferentially used as a peripheral device.|
+| DEVICE_ROLE_BOTH_PREFER_CENTRAL | 3    |  The Bluetooth device can be used as a central device or a peripheral device, but it is preferentially used as a central device. |

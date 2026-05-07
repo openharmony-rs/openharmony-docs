@@ -194,237 +194,255 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 
 * ArkTS code:
 
-  ```javascript
-  // entry/src/main/ets/pages/Index.ets
-  import testNapi from 'libentry.so'
-  import web_webview from '@ohos.web.webview';
-  import { BusinessError } from '@ohos.base';
-
+  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import testNapi from 'libentry.so';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
   @Entry
   @Component
   struct Index {
     @State webTag: string = 'postMessage';
-    controller: web_webview.WebviewController = new web_webview.WebviewController(this.webTag);
+    controller: webview.WebviewController = new webview.WebviewController(this.webTag);
     @State h5Log: string = 'Display received message send from HTML';
-
+  
     aboutToAppear() {
-      web_webview.WebviewController.setWebDebuggingAccess(true);
-      // Initialize the NDK API of the Web component.
+      webview.WebviewController.setWebDebuggingAccess(true);
+      // Initialize the web Native Development Kit.
       testNapi.nativeWebInit(this.webTag);
     }
-
-    aboutToDisappear() {
-      console.error("aboutToDisappear");
+  
+    aboutToDisAppear() {
+      console.error('aboutToDisAppear');
     }
-
+  
     build() {
       Scroll() {
         Column({ space: 10 }) {
           // Display the content received by the HTML5 page.
-          Text("The message received by the HTML5 page from the application")
+          Text('H5_Side_Message_Display_From_App')
           TextArea({text: this.h5Log})
-            .id("log_area")
-            .width("100%")
+            .id('log_area')
+            .width('100%')
             .height(100)
             .border({ width: 1 })
-          Text("Button on the application")
+          Text('App_Side_Button')
           Row() {
             Button('createNoControllerTagPort')
-              .id("create_no_tag_btn")
+              .id('create_no_tag_btn')
               .onClick(() => {
                 try {
-                  testNapi.createWebMessagePorts("noTag");
+                  testNapi.createWebMessagePorts('noTag');
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
             Button('createPort')
-              .id("create_port_btn")
+              .id('create_port_btn')
               .onClick(() => {
                 try {
                   testNapi.createWebMessagePorts(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
           }
-
+  
           Row({ space: 10 }) {
-
+  
             Button('setHandler')
-              .id("set_handler_btn")
+              .id('set_handler_btn')
               .onClick(() => {
                 try {
                   testNapi.setMessageEventHandler(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
-
+  
             Button('setHandlerThread')
-              .id("set_handler_thread_btn")
+              .id('set_handler_thread_btn')
               .onClick(() => {
                 try {
                   testNapi.setMessageEventHandlerThread(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
           }
-
+  
           Row({ space: 10 }) {
             Button('SendString')
-              .id("send_string_btn")
+              .id('send_string_btn')
               .onClick(() => {
                 try {
-                  this.h5Log = ""
+                  this.h5Log = ''
                   testNapi.postMessage(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
             Button('SendStringThread')
-              .id("send_string_thread_btn")
+              .id('send_string_thread_btn')
               .onClick(() => {
                 try {
-                  this.h5Log = ""
+                  this.h5Log = ''
                   testNapi.postMessageThread(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
           }
-
+  
           Row({ space: 10 }) {
             Button('SendBuffer')
-              .id("send_buffer_btn")
+              .id('send_buffer_btn')
               .onClick(() => {
                 try {
-                  this.h5Log = ""
+                  this.h5Log = ''
                   testNapi.postBufferMessage(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
             Button('SendNone')
-              .id("send_none_btn")
+              .id('send_none_btn')
               .onClick(() => {
                 try {
-                  this.h5Log = ""
+                  this.h5Log = ''
                   testNapi.postNoneMessage(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
           }
-
+  
           Row({ space: 10 }) {
-
+  
             Button('closePort')
-              .id("close_port_btn")
+              .id('close_port_btn')
               .onClick(() => {
                 try {
                   testNapi.closeMessagePort(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
             Button('destroyNullPort')
-              .id("destroy_null_btn")
+              .id('destroy_null_btn')
               .onClick(() => {
                 try {
                   testNapi.destroyNullMessagePort(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
             Button('destroyPort')
-              .id("destroy_port_btn")
+              .id('destroy_port_btn')
               .onClick(() => {
                 try {
                   testNapi.destroyMessagePort(this.webTag);
                 } catch (error) {
-                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  console.error(
+                    `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 }
               })
           }
-          .width("100%")
+          .width('100%')
           .padding(10)
           .border({ width: 1 })
-
+  
           Column({ space: 10 }) {
-            Text("The Send button on the HTML5 page")
+            Text('H5_Side_Send_Button')
             Row({ space: 10 }) {
               Button('H5String')
-                .id("h5_send_string_btn")
+                .id('h5_send_string_btn')
                 .onClick(() => {
                   try {
-                    this.controller.runJavaScript("for(var i = 0; i < 2000; i++) postStringToApp()")
+                    this.controller.runJavaScript('for(var i = 0; i < 2000; i++) postStringToApp()');
                   } catch (error) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   }
                 })
               Button('H5Buffer')
-                .id("h5_send_buffer_btn")
+                .id('h5_send_buffer_btn')
                 .onClick(() => {
                   try {
-                    this.controller.runJavaScript("postBufferToApp()")
+                    this.controller.runJavaScript('postBufferToApp()');
                   } catch (error) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   }
                 })
               Button('H5Number')
-                .id("h5_send_number_btn")
+                .id('h5_send_number_btn')
                 .onClick(() => {
                   try {
-                    this.controller.runJavaScript("postNumberToApp()")
+                    this.controller.runJavaScript('postNumberToApp()');
                   } catch (error) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   }
                 })
             }
-
+  
             Row({ space: 10 }) {
               Button('H5Json')
-                .id("h5_send_json_btn")
+                .id('h5_send_json_btn')
                 .onClick(() => {
                   try {
-                    this.controller.runJavaScript("postJsonToApp()")
+                    this.controller.runJavaScript('postJsonToApp()');
                   } catch (error) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   }
                 })
               Button('H5Array')
-                .id("h5_send_array_btn")
+                .id('h5_send_array_btn')
                 .onClick(() => {
                   try {
-                    this.controller.runJavaScript("postArrayStringToApp()")
+                    this.controller.runJavaScript('postArrayStringToApp()');
                   } catch (error) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   }
                 })
               Button('H5Object')
-                .id("h5_send_object_btn")
+                .id('h5_send_object_btn')
                 .onClick(() => {
                   try {
-                    this.controller.runJavaScript("postObjectToApp()")
+                    this.controller.runJavaScript('postObjectToApp()');
                   } catch (error) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(
+                      `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   }
                 })
             }
           }
-          .width("100%")
+          .width('100%')
           .margin(10)
           .padding(10)
           .border({ width: 1 })
-
+  
           Web({ src: $rawfile('index.html'), controller: this.controller })
             .onConsole((event) => {
               if (event) {
-                let msg = event.message.getMessage()
-                if (msg.startsWith("H5")) {
-                  this.h5Log = event.message.getMessage() + "\n" + this.h5Log
+                let msg = event.message.getMessage();
+                if (msg.startsWith('H5')) {
+                  this.h5Log = event.message.getMessage() + '\n' + this.h5Log;
                 }
               }
               return false;
@@ -443,6 +461,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
   <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/types/libentry5/Index.d.ts) -->
   
   ``` TypeScript
+  // entry5/src/main/cpp/types/libentry5/index.d.ts
   export const nativeWebInit: (webName: string) => void;
   export const createWebMessagePorts: (webName: string) => void;
   export const postMessage: (webName: string) => void;
@@ -488,45 +507,46 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 
 * Node-API layer code
 
-  ```c++
-  // entry/src/main/cpp/hello.cpp
+  <!-- @[the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/hello.cpp) -->
+  
+  ``` C++
   #include "napi/native_api.h"
-  #include <bits/alltypes.h>
-  #include <memory>
   #include <string>
-  #include <sys/types.h>
-  #include <iostream>
-  #include <map>
   #include "hilog/log.h"
   #include "web/arkweb_interface.h"
   #include <thread>
-
+  
   constexpr unsigned int LOG_PRINT_DOMAIN = 0xFF00;
   ArkWeb_ControllerAPI *controller = nullptr;
-
+  
   ArkWeb_WebMessagePortAPI *webMessagePort = nullptr;
   ArkWeb_WebMessageAPI *webMessage = nullptr;
-  size_t web_message_port_size = 0;
+  size_t g_webMessagePortSize = 0;
   ArkWeb_WebMessagePortPtr *g_web_message_port_arr = nullptr;
-
-  static void WebMessagePortCallback(const char *webTag, const ArkWeb_WebMessagePortPtr port,
-                                    const ArkWeb_WebMessagePtr message, void *userData) {
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                  "ndk WebMesagePortCallback webTag:%{public}s,messageType:%{public}d", webTag,
-                  webMessage->getType(message));
+  
+  static void WebMessagePortCallback(
+      const char *webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void *userData)
+  {
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit WebMessagePortCallback webTag:%{public}s,messageType:%{public}d",
+          webTag, webMessage->getType(message));
       size_t len = 0;
       void *back = webMessage->getData(message, &len);
       if (webMessage->getType(message) == ArkWeb_WebMessageType::ARKWEB_STRING) {
-          OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                      "ndk WebMesagePortCallback message:%{public}s,messageSize:%{public}d", back, len);
+          OH_LOG_Print(
+              LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+              "Native Development Kit WebMessagePortCallback message:%{public}s,messageSize:%{public}d", back, len);
       } else if (webMessage->getType(message) == ArkWeb_WebMessageType::ARKWEB_BUFFER) {
-          OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                      "ndk WebMesagePortCallback messageSize:%{public}d", len);
+          OH_LOG_Print(
+              LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+              "Native Development Kit WebMessagePortCallback messageSize:%{public}d", len);
       }
   }
-
-  static napi_value NativeWebInit(napi_env env, napi_callback_info info) {
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit start");
+  
+  static napi_value NativeWebInit(napi_env env, napi_callback_info info)
+  {
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit NativeWebInit start");
       size_t argc = 1;
       napi_value args[1] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -536,68 +556,79 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit NativeWebInit webTag:%{public}s", webTagValue);
+  
       controller = reinterpret_cast<ArkWeb_ControllerAPI *>(OH_ArkWeb_GetNativeAPI(ARKWEB_NATIVE_CONTROLLER));
       if (controller)
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "get ArkWeb_ControllerAPI success");
-
+  
       webMessagePort =
           reinterpret_cast<ArkWeb_WebMessagePortAPI *>(OH_ArkWeb_GetNativeAPI(ARKWEB_NATIVE_WEB_MESSAGE_PORT));
       if (webMessagePort)
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "get ArkWeb_WebMessagePortAPI success");
-
+  
       webMessage = reinterpret_cast<ArkWeb_WebMessageAPI *>(OH_ArkWeb_GetNativeAPI(ARKWEB_NATIVE_WEB_MESSAGE));
       if (webMessage)
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "get ArkWeb_WebMessageAPI success");
-
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit end");
+  
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit NativeWebInit end");
       delete[] webTagValue;
       return nullptr;
   }
-
-  static napi_value createWebMessagePorts(napi_env env, napi_callback_info info) {
+  
+  static napi_value createWebMessagePorts(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Initialize the ports.
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk createWebMessagePorts begin");
-      g_web_message_port_arr = controller->createWebMessagePorts(webTagValue, &web_message_port_size);
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit createWebMessagePorts begin");
+      g_web_message_port_arr = controller->createWebMessagePorts(webTagValue, &g_webMessagePortSize);
       // Send one of the ports to the HTML page.
       ArkWeb_ErrorCode code =
           controller->postWebMessage(webTagValue, "init_web_messageport", g_web_message_port_arr, 1, "*");
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postWebMessage ArkWeb_ErrorCode:%{public}d", code);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                  "ndk createWebMessagePorts end, web message port size:%{public}d", web_message_port_size);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit postWebMessage ArkWeb_ErrorCode:%{public}d", code);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit createWebMessagePorts end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-
-  static napi_value postMessage(napi_env env, napi_callback_info info) {
+  
+  static napi_value postMessage(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Send a message.
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage begin");
-
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit postMessage begin");
+  
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -607,41 +638,48 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       std::string str = "send string from native";
       webMessage->setData(message, (void *)str.c_str(), str.length() + 1);
       ArkWeb_ErrorCode code = webMessagePort->postMessage(g_web_message_port_arr[1], webTagValue, message);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage ArkWeb_ErrorCode:%{public}d", code);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit postMessage ArkWeb_ErrorCode:%{public}d", code);
       webMessage->destroyWebMessage(&message);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage end, web message port size:%{public}d",
-                  web_message_port_size);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit postMessage end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-
-
+  
+  
   // Send a message in the thread.
-  void sendMessage(const char *webTag, const ArkWeb_WebMessagePtr message) {
+  void sendMessage(const char *webTag, const ArkWeb_WebMessagePtr message)
+  {
       // Send the message for 1000 times.
       for (int i = 0; i < 1000; i++) {
           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "sendMessage in thread %{public}d", i);
           if (g_web_message_port_arr && webTag && message) {
-            webMessagePort->postMessage(g_web_message_port_arr[1], webTag, message);
+                  webMessagePort->postMessage(g_web_message_port_arr[1], webTag, message);
           }
       }
   }
-  static napi_value postMessageThread(napi_env env, napi_callback_info info) {
+  static napi_value postMessageThread(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Construct a message.
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage begin");
-
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit postMessage begin");
+  
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -652,12 +690,12 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       webMessage->setData(message, (void *)str.c_str(), str.length() + 1);
       const int numThreads = 5;
       std::thread threads[numThreads];
-
+  
       // Create the threads.
       for (int i = 0; i < numThreads; ++i) {
           threads[i] = std::thread(sendMessage, webTagValue, message);
       }
-
+  
       // Wait until all threads are detached.
       for (int i = 0; i < numThreads; ++i) {
           threads[i].detach();
@@ -665,56 +703,66 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       delete[] webTagValue;
       return nullptr;
   }
-
+  
   // Register a callback in the thread.
-  void setHandler(const char *webTag) {
+  void SetHandler(const char *webTag)
+  {
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "setMessageEventHandler in thread");
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTag, WebMessagePortCallback, NULL);
   }
-
-  static napi_value setMessageEventHandlerThread(napi_env env, napi_callback_info info) {
+  
+  static napi_value setMessageEventHandlerThread(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Register a callback.
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk SetMessageEventHandler begin");
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit SetMessageEventHandler begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
       }
-      std::thread thread(setHandler, webTagValue);
+      std::thread thread(SetHandler, webTagValue);
       thread.detach();
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTagValue, WebMessagePortCallback, NULL);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                  "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-  static napi_value postNoneMessage(napi_env env, napi_callback_info info) {
+  static napi_value postNoneMessage(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
+          "ArkWeb", "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Send a message.
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage begin");
-
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit starts sending messages");
+  
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -725,28 +773,32 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       webMessage->setData(message, (void *)str.c_str(), str.length() + 1);
       webMessagePort->postMessage(g_web_message_port_arr[1], webTagValue, message);
       webMessage->destroyWebMessage(&message);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage end, web message port size:%{public}d",
-                  web_message_port_size);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit postMessage end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-
-  static napi_value postBufferMessage(napi_env env, napi_callback_info info) {
+  
+  static napi_value postBufferMessage(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Send a message.
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage begin");
-
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit postMessage begin");
+  
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -754,120 +806,137 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       ArkWeb_WebMessagePtr message1 = webMessage->createWebMessage();
       webMessage->setType(message1, ArkWeb_WebMessageType::ARKWEB_BUFFER);
       std::string str1 = "send buffer from native";
-      webMessage->setData(message1, (void *)str1.c_str(), str1.length());
+      webMessage->setData(message1, (void *)str1.c_str(), str1.length()+1);
       webMessagePort->postMessage(g_web_message_port_arr[1], webTagValue, message1);
       webMessage->destroyWebMessage(&message1);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage end, web message port size:%{public}d",
-                  web_message_port_size);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit postMessage end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-
-  static napi_value setMessageEventHandler(napi_env env, napi_callback_info info) {
+  
+  static napi_value setMessageEventHandler(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Register a callback.
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
       }
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTagValue, WebMessagePortCallback, NULL);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                  "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-
-  static napi_value closeMessagePort(napi_env env, napi_callback_info info) {
+  
+  static napi_value closeMessagePort(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Disable the port by calling close() and then destroyWebMessagePorts().
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
       }
       webMessagePort->close(g_web_message_port_arr[0], webTagValue);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                  "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
       controller->refresh(webTagValue);
       delete[] webTagValue;
       return nullptr;
   }
-
-  static napi_value destroyMessagePort(napi_env env, napi_callback_info info) {
+  
+  static napi_value destroyMessagePort(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Release the memory by calling close() and then destroyWebMessagePorts().
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
       }
-      controller->destroyWebMessagePorts(&g_web_message_port_arr, web_message_port_size);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                  "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-
-  static napi_value destroyNullMessagePort(napi_env env, napi_callback_info info) {
+  
+  static napi_value destroyNullMessagePort(napi_env env, napi_callback_info info)
+  {
       size_t argc = 2;
       napi_value args[2] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+  
       // Obtain the first parameter webTag.
       size_t webTagSize = 0;
       napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk Refresh webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit Refresh webTag:%{public}s", webTagValue);
+  
       // Release the memory by calling close() and then destroyWebMessagePorts().
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk SetMessageEventHandler begin");
-
-      controller->destroyWebMessagePorts(&g_web_message_port_arr, web_message_port_size);
-
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-                  "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+  
+      controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
+  
+      OH_LOG_Print(
+          LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
-
+  
   EXTERN_C_START
-  static napi_value Init(napi_env env, napi_value exports) {
+  static napi_value Init(napi_env env, napi_value exports)
+  {
       napi_property_descriptor desc[] = {
           {"nativeWebInit", nullptr, NativeWebInit, nullptr, nullptr, nullptr, napi_default, nullptr},
           {"createWebMessagePorts", nullptr, createWebMessagePorts, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -878,15 +947,15 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
           {"closeMessagePort", nullptr, closeMessagePort, nullptr, nullptr, nullptr, napi_default, nullptr},
           {"destroyMessagePort", nullptr, destroyMessagePort, nullptr, nullptr, nullptr, napi_default, nullptr},
           {"postMessageThread", nullptr, postMessageThread, nullptr, nullptr, nullptr, napi_default, nullptr},
-          {"setMessageEventHandlerThread", nullptr, setMessageEventHandlerThread, nullptr, nullptr, nullptr, napi_default,
-          nullptr},
+          {"setMessageEventHandlerThread", nullptr, setMessageEventHandlerThread, nullptr, nullptr, nullptr,
+              napi_default, nullptr},
           {"destroyNullMessagePort", nullptr, destroyNullMessagePort, nullptr, nullptr, nullptr, napi_default, nullptr},
       };
       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
       return exports;
   }
   EXTERN_C_END
-
+  
   static napi_module demoModule = {
       .nm_version = 1,
       .nm_flags = 0,
@@ -896,6 +965,6 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       .nm_priv = ((void *)0),
       .reserved = {0},
   };
-
+  
   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
   ```

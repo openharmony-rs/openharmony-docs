@@ -101,7 +101,7 @@ Defines the APIs, data structs, and enums for accessing the UDMF.
 | [int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)](#oh_udmfproperty_setshareoption) | - | Sets the [Udmf_ShareOption](capi-udmf-h.md#udmf_shareoption) for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
 | [int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)](#oh_udmfproperty_setextrasintparam) | - | Sets the extra integer parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
 | [int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)](#oh_udmfproperty_setextrasstringparam) | - | Sets the extra string parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [OH_UdmfOptions* OH_UdmfOptions_Create()](#oh_udmfoptions_create) | - | Creates an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
+| [OH_UdmfOptions* OH_UdmfOptions_Create()](#oh_udmfoptions_create) | - | Creates an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. If this pointer is no longer required, use [OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy) to destroy it. Otherwise, memory leaks may occur.|
 | [void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)](#oh_udmfoptions_destroy) | - | Destroys an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
 | [const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)](#oh_udmfoptions_getkey) | - | Obtains the key (unique identifier) from an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
 | [int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)](#oh_udmfoptions_setkey) | - | Sets the key (unique identifier) in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
@@ -1797,7 +1797,7 @@ OH_UdmfOptions* OH_UdmfOptions_Create()
 
 **Description**
 
-Creates an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.
+Creates an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. If this pointer is no longer required, use [OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy) to destroy it. Otherwise, memory leaks may occur.
 
 **Since**: 20
 

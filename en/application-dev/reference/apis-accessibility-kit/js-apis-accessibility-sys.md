@@ -32,8 +32,8 @@ Enumerates accessibility event types.
 
 | Name                    | Value                   |Description|
 | ---------------------------------------- | ---- | ---------------------- |
-| TYPE_ACCESSIBILITY_FOCUS                 | 0    | Event of gaining accessibility focus.            |
-| TYPE_ACCESSIBILITY_FOCUS_CLEAR           | 1    | Event of clearing accessibility focus.            |
+| TYPE_ACCESSIBILITY_FOCUS                 | 0    | Event of gaining an accessibility focus.            |
+| TYPE_ACCESSIBILITY_FOCUS_CLEAR           | 1    | Event of clearing an accessibility focus.            |
 | TYPE_CLICK                               | 2    | Event of clicking a component.               |
 | TYPE_LONG_CLICK                          | 3    | Event of long pressing a component.             |
 | TYPE_SELECT                              | 4    | Event of selecting a component.               |
@@ -63,7 +63,7 @@ Enumerates accessibility event types.
 | TYPE_PAGE_OPEN  |28| Event of opening a page.|
 | TYPE_PAGE_CLOSE  |29| Event of closing a page.|
 | TYPE_SWIPE_LEFT           |30| Event indicating the swipe-left gesture.   |
-| TYPE_SWIPE_LEFT_THEN_RIGHT  |31| 	Event indicating the swipe-left-then-right gesture.|
+| TYPE_SWIPE_LEFT_THEN_RIGHT  |31|  Event indicating the swipe-left-then-right gesture.|
 | TYPE_SWIPE_LEFT_THEN_UP     |32| Event indicating the swipe-left-then-up gesture.|
 | TYPE_SWIPE_LEFT_THEN_DOWN   |33| Event indicating the swipe-left-then-down gesture.|
 | TYPE_SWIPE_RIGHT          |34| Event indicating the swipe-right gesture.   |
@@ -79,7 +79,7 @@ Enumerates accessibility event types.
 | TYPE_SWIPE_DOWN_THEN_RIGHT  |44| Event indicating the swipe-down-then-right gesture.|
 | TYPE_SWIPE_DOWN_THEN_UP     |45| Event indicating the swipe-down-then-up gesture.|
 | TYPE_TWO_FINGER_SINGLE_TAP   |46| Event indicating the two-finger single-tap gesture.|
-| TYPE_TWO_FINGER_DOUBLE_TAP   |47| 	Event indicating the two-finger double-tap gesture.|
+| TYPE_TWO_FINGER_DOUBLE_TAP   |47|  Event indicating the two-finger double-tap gesture.|
 | TYPE_TWO_FINGER_DOUBLE_TAP_AND_HOLD      | 48   | Event indicating the two-finger double-tap-and-hold gesture.         |
 | TYPE_TWO_FINGER_TRIPLE_TAP   |49| Event indicating the two-finger triple-tap gesture.|
 | TYPE_TWO_FINGER_TRIPLE_TAP_AND_HOLD      | 50   | Event indicating the two-finger triple-tap-and-hold gesture.         |
@@ -95,12 +95,13 @@ Enumerates accessibility event types.
 | TYPE_FOUR_FINGER_TRIPLE_TAP_AND_HOLD     | 60   | Event indicating the four-finger triple-tap-and-hold gesture.         |
 | TYPE_THREE_FINGER_SWIPE_UP   |61| Event indicating the three-finger swipe-up gesture.|
 | TYPE_THREE_FINGER_SWIPE_DOWN  |62| Event indicating the three-finger swipe-down gesture.|
-| TYPE_THREE_FINGER_SWIPE_LEFT  |63| 	Event indicating the three-finger swipe-left gesture.|
+| TYPE_THREE_FINGER_SWIPE_LEFT  |63|  Event indicating the three-finger swipe-left gesture.|
 | TYPE_THREE_FINGER_SWIPE_RIGHT  |64| Event indicating the three-finger swipe-right gesture.|
 | TYPE_FOUR_FINGER_SWIPE_UP    |65| Event indicating the four-finger swipe-up gesture.|
 | TYPE_FOUR_FINGER_SWIPE_DOWN  |66| Event indicating the four-finger swipe-down gesture.|
 | TYPE_FOUR_FINGER_SWIPE_LEFT  |67| Event indicating the four-finger swipe-left gesture.|
 | TYPE_FOUR_FINGER_SWIPE_RIGHT  |68| Event indicating the four-finger swipe-right gesture.|
+| TYPE_PAGE_ACTIVE<sup>23+</sup> |69| Event indicating the page is active.|
 
 ## AccessibilityAction
 
@@ -116,13 +117,13 @@ Accessibility node elements are UI components that support accessibility actions
 | -------------------------- | ---- | ------------------------ |
 | ACCESSIBILITY_FOCUS        | 0    | Gain an accessibility focus.              |
 | CLEAR_ACCESSIBILITY_FOCUS | 1    | Clear an accessibility focus.              |
-| FOCUS                      | 2    | Gain the focus for a component.               |
-| CLEAR_FOCUS                | 3    | Clear the focus for a component.               |
+| FOCUS                      | 2    | Gain a focus for a component.               |
+| CLEAR_FOCUS                | 3    | Clear a focus for a component.               |
 | CLICK                      | 4    | Click a component.                 |
 | LONG_CLICK                 | 5    | Long press a component.               |
 | CUT                        | 6    | Cut the content of a component.               |
 | COPY                       | 7    | Copy the content of a component.                |
-| PASTE                      | 8    | Paste content to a component.               |
+| PASTE                      | 8    | Paste the content into a component.               |
 | SELECT                     | 9    | Select a component.                  |
 | SET_TEXT                   | 10   | Set the text of a component.              |
 | SCROLL_FORWARD             | 11   | Scroll a component forward.                |
@@ -134,7 +135,7 @@ Accessibility node elements are UI components that support accessibility actions
 | RECENT_TASK                | 17   | Open a recent task.                 |
 | NOTIFICATION_CENTER        | 18   | Open the notification center.                 |
 | CONTROL_CENTER             | 19   | Open the control center.                 |
-| SPAN_CLICK                 | 20   | Click a part of a text.            |
+| SPAN_CLICK                 | 20   | Click a text span.            |
 
 ## FocusMoveResultCode<sup>23+</sup>
 

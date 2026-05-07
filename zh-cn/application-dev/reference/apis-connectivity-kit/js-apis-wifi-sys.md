@@ -268,7 +268,7 @@ try {
 
 connectToNetwork(networkId: number): boolean
 
-连接到指定网络。
+应用使用该接口连接到热点。
 
 **系统接口：** 此接口为系统接口。
 
@@ -397,7 +397,7 @@ try {
 | 名称 | 类型 | 可读 | 可写 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | 是 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| chload | number | 是 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 |
+| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 |
 | snr | number | 是 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 |
 | suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
 
@@ -911,7 +911,7 @@ try {
 | **名称** | **类型** | **可读** | **可写** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8。 |
-| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytype) | 是 | 否 | 加密类型。 |
+| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | 是 | 否 | 加密类型。 |
 | band | number | 是 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
 | preSharedKey | string | 是 | 否 | 热点的密钥。 |
 | maxConn | number | 是 | 否 | 最大设备连接数。 |

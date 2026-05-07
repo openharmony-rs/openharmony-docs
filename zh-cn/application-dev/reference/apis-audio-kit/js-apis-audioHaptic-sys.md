@@ -12,6 +12,8 @@
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+**设备行为差异：** 若设备无振动器件，将不会产生振动效果。
+
 ## 导入模块
 
 ```ts
@@ -104,7 +106,7 @@ enableHapticsInSilentMode(enable: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID  | 错误信息                             |
 |---------|-----------------------------------|
@@ -141,11 +143,11 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise对象，无返回结果。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
@@ -193,11 +195,11 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise对象，无返回结果。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|

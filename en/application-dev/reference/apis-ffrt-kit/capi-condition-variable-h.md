@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -38,7 +38,7 @@ The **condition_variable.h** file declares the condition variable APIs in C.
 
 ### ffrt_cond_init()
 
-```
+```c
 FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 ```
 
@@ -47,7 +47,6 @@ FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 Initializes a condition variable.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -64,7 +63,7 @@ Initializes a condition variable.
 
 ### ffrt_cond_signal()
 
-```
+```c
 FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 ```
 
@@ -73,7 +72,6 @@ FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 Unblocks at least one of the threads that are blocked on a condition variable.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -89,7 +87,7 @@ Unblocks at least one of the threads that are blocked on a condition variable.
 
 ### ffrt_cond_broadcast()
 
-```
+```c
 FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 ```
 
@@ -98,7 +96,6 @@ FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 Unblocks all threads currently blocked on a condition variable.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -114,7 +111,7 @@ Unblocks all threads currently blocked on a condition variable.
 
 ### ffrt_cond_wait()
 
-```
+```c
 FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 ```
 
@@ -123,7 +120,6 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 Blocks the calling thread on a condition variable.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -140,7 +136,7 @@ Blocks the calling thread on a condition variable.
 
 ### ffrt_cond_timedwait()
 
-```
+```c
 FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const struct timespec* time_point)
 ```
 
@@ -149,7 +145,6 @@ FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const
 Blocks the calling thread on a condition variable for a given duration. If **ffrt_cond_signal** or **ffrt_cond_broadcast** is not called to unblock the thread when the maximum wait time is reached, the thread is automatically unblocked.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -167,7 +162,7 @@ Blocks the calling thread on a condition variable for a given duration. If **ffr
 
 ### ffrt_cond_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 ```
 
@@ -176,7 +171,6 @@ FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 Destroys a condition variable.
 
 **Since**: 10
-
 
 **Parameters**
 

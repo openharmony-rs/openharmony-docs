@@ -4,13 +4,15 @@
 <!--Owner: @wangke25-->
 <!--Designer: @bubble_mao; @zhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+
+<!--deprecated_code_no_check-->
 
 ## 使用读写权限打开picker返回的uri失败(API 10)
 
 **问题现象**
 
-开发者调用picker接口保存文件返回uri，调用fs.openSync()接口打开该文件时传入了读写权限：fs.OpenMode.READ_WRITE，无法正常打开文件
+开发者调用picker接口保存文件返回uri，调用fileIo.openSync()接口打开该文件时传入了读写权限：fileIo.OpenMode.READ_WRITE，无法正常打开文件
 
 **原因分析**
 
@@ -21,7 +23,7 @@
 当前保存文件时，请使用只写方式打开文件uri：
 
 ```ts
-fs.openSync(uri, fs.OpenMode.WRITE_ONLY)
+fileIo.openSync(uri, fs.OpenMode.WRITE_ONLY)
 ```
 
 后续文件选择器打开或保存文件时返回uri将授予读写权限，开发者根据需要进行文件打开与编辑。
@@ -48,7 +50,7 @@ fs.openSync(uri, fs.OpenMode.WRITE_ONLY)
 
 **解决措施**
 
-可以通过调用函数fs.open来实现，open(path: string, mode?: number)，指定第二个参数mode为fs.OpenMode.CREATE，表示若文件不存在，则创建文件。
+可以通过调用函数fileIo.open来实现，open(path: string, mode?: number)，指定第二个参数mode为fileIo.OpenMode.CREATE，表示若文件不存在，则创建文件。
 
 
 ## 如何解决文件的中文乱码问题(API 9)
@@ -59,24 +61,24 @@ fs.openSync(uri, fs.OpenMode.WRITE_ONLY)
 
 ```ts
 let filePath = getContext(this).filesDir + "/test0.txt";
-let stream = fs.createStreamSync(filePath, "r+");
+let stream = fileIo.createStreamSync(filePath, "r+");
 let buffer = new ArrayBuffer(4096)
 let readOut = stream.readSync(buffer);
 let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true })
 let readString = textDecoder.decodeWithStream(new Uint8Array(buffer), { stream: false });
-console.log("读取的文件内容：" + readString);
+console.info("读取的文件内容：" + readString);
 ```
 
 
-## “datashare://”路径使用fs.open可以打开，但使用fs.copyFile会报错(API 9)
+## “datashare://”路径使用fileIo.open可以打开，但使用fileIo.copyFile会报错(API 9)
 
 **解决措施**
 
 copyfile不支持uri，可以先使用open接口打开datashare uri后，拿到fd后再调用copyfile接口。
 
 ```ts
-let file = fs.openSync("datashare://...")
-fs.copyFile(file.fd, 'dstPath', 0).then(() => {
+let file = fileIo.openSync("datashare://...")
+fileIo.copyFile(file.fd, 'dstPath', 0).then(() => {
   console.info('copyFile success')
 }).catch((err) => {
   console.info("copy file failed with error message: " + err.message + ", error code: " + err.code);
@@ -90,7 +92,7 @@ fs.copyFile(file.fd, 'dstPath', 0).then(() => {
 
 可以通过以下步骤来完成：
 
-1. 使用fs.openSyn获取json文件的fd。
+1. 使用fileIo.openSyn获取json文件的fd。
 
    ```ts
    import fs from '@ohos.file.fs';
@@ -98,7 +100,7 @@ fs.copyFile(file.fd, 'dstPath', 0).then(() => {
    let fd = sanFile.fd;
    ```
 
-2. 通过fs.readSync读取json文件内容。
+2. 通过fileIo.readSync读取json文件内容。
 
    ```ts
    // 4096为缓存区大小，可根据读取文件大小自定义
@@ -136,8 +138,8 @@ fs的具体使用可以参考：[@ohos.file.fs](../reference/apis-core-file-kit/
 
 **解决措施**
 
-通过fs.createWatcher，可注册监听回调，从而监听文件或者目录的变化。
+通过fileIo.createWatcher，可注册监听回调，从而监听文件或者目录的变化。
 
 **参考链接：**  
 
-[@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md#fscreatewatcher10)
+[@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewatcher10)

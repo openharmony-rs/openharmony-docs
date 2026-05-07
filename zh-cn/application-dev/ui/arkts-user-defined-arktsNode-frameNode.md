@@ -1,8 +1,8 @@
 # 自定义组件节点 (FrameNode)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -198,8 +198,7 @@ class MyNodeController extends NodeController {
         hilog.info(0x0000, `${TEST_TAG} appendChild success`, 'success');
       }
     } catch (err) {
-      console.error(TEST_TAG + ' appendChild fail : ' + (err as BusinessError).code + ' : ' +
-      (err as BusinessError).message);
+      console.error(`${TEST_TAG} appendChild fail : ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
     }
   }
 }
@@ -216,7 +215,8 @@ struct Index {
       List({ space: 20, initialIndex: 0 }) {
         ListItem() {
           Column({ space: 5 }) {
-            /* 请将$r('app.string.Verify_The_Child_Node_Function_Of_FrameNode')替换为实际资源文件，
+            /**
+             * 请将$r('app.string.Verify_The_Child_Node_Function_Of_FrameNode')替换为实际资源文件，
              * 在本示例中该资源文件的value值为"验证FrameNode子节点的增、删、改功能"
              */
             Text($r('app.string.Verify_The_Child_Node_Function_Of_FrameNode'))
@@ -228,7 +228,8 @@ struct Index {
                 // 对FrameNode节点进行增、删、改操作，正常实现。
                 this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
               })
-            /* 请将$r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode')替换为实际资源文件，
+            /**
+             * 请将$r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode')替换为实际资源文件，
              * 在本示例中该资源文件的value值为"对BuilderNode中的代理节点进行操作"
              */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode'))
@@ -239,7 +240,8 @@ struct Index {
                 this.myNodeController.operationFrameNodeWithFrameNode
                 (this.myNodeController?.buttonNode?.getFrameNode());
               })
-            /* 请将$r('app.string.Operate_On_Proxy_Nodes_In_System_Components')替换为实际资源文件，
+            /**
+             * 请将$r('app.string.Operate_On_Proxy_Nodes_In_System_Components')替换为实际资源文件，
              * 在本示例中该资源文件的value值为"对系统组件中的代理节点进行操作"
              */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components'))
@@ -254,7 +256,8 @@ struct Index {
 
         ListItem() {
           Column({ space: 5 }) {
-            /* 请将$r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes')替换为实际资源文件，
+            /**
+             * 请将$r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes')替换为实际资源文件，
              * 在本示例中该资源文件的value值为"验证FrameNode添加子节点的特殊场景"
              */
             Text($r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes'))
@@ -302,7 +305,8 @@ struct Index {
                   this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
                 }, 2000)
               })
-            /* 请将$r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again')替换为实际资源文件，
+            /**
+             * 请将$r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again')替换为实际资源文件，
              * 在本示例中该资源文件的value值为"对BuilderNode中的代理节点进行操作"
              */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again'))
@@ -313,7 +317,8 @@ struct Index {
                 this.result =
                   this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
               })
-            /* 请将$r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again')替换为实际资源文件，
+            /**
+             * 请将$r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again')替换为实际资源文件，
              * 在本示例中该资源文件的value值为"对系统组件中的代理节点进行操作"
              */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again'))
@@ -647,7 +652,6 @@ struct Index {
 <!-- @[frameNodeDraw_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDraw.ets) --> 
 
 ``` TypeScript
-
 import { DrawContext, FrameNode, NodeController, Position, Size, UIContext, LayoutConstraint } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -691,7 +695,7 @@ class MyFrameNode extends FrameNode {
   // 重写布局测量方法
   onMeasure(constraint: LayoutConstraint): void {
     let sizeRes: Size = { width: this.uiContext.vp2px(100), height: this.uiContext.vp2px(100) };
-    
+
     // 遍历所有子节点，计算总尺寸
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
@@ -716,7 +720,7 @@ class MyFrameNode extends FrameNode {
           y: this.uiContext.vp2px(this.offsetY)
         });
         let layoutPosition = child.getLayoutPosition();
-        hilog.info(0x0000, `child position: ${JSON.stringify(layoutPosition)}`, 'isClicked');
+        hilog.info(0x0000, 'testTag', `child position: ${JSON.stringify(layoutPosition)}`);
       }
     }
     this.setLayoutPosition(position);
@@ -781,7 +785,7 @@ struct Index {
             this.nodeController?.rootNode?.addWidth();
             this.nodeController?.rootNode?.invalidate();
           })
-        
+
         // 触发布局更新
         Button('UpdateLayout')
           .onClick(() => {
@@ -1307,11 +1311,11 @@ struct TestComponent {
   }
 
   aboutToAppear() {
-    console.error(TEST_TAG + ' aboutToAppear');
+    console.info(`${TEST_TAG} aboutToAppear`);
   }
 
   aboutToDisappear() {
-    console.error(TEST_TAG + ' aboutToDisappear');
+    console.info(`${TEST_TAG} aboutToDisappear`);
   }
 }
 
@@ -1639,7 +1643,9 @@ class MyNodeAdapterController extends NodeController {
 @Component
 struct Index {
   adapterController: MyNodeAdapterController = new MyNodeAdapterController();
-
+  aboutToDisappear(): void {
+    this.adapterController.nodeAdapter?.dispose();
+  }
   build() {
     Column() {
       Text('ListNode Adapter');
@@ -1769,8 +1775,7 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // 写法2：listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // 写法2：listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     })
   }
 
@@ -1978,7 +1983,6 @@ struct Index {
 <!-- @[frameNodeCanvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
 
 ``` TypeScript
-
 import { NodeController, UIContext, DrawContext, FrameNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -2118,7 +2122,6 @@ struct Index {
 从API version 21开始，通过使用frameNode的[invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21)方法，可以在当前帧触发节点更新，避免组件切换过程中出现闪烁。
 
 ```ts
- //index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义NodeAdapter控制器
@@ -2218,7 +2221,6 @@ struct ListNodeTest {
 从API version 23开始，通过使用FrameNode的[isInRenderState](../reference/apis-arkui/js-apis-arkui-frameNode.md#isinrenderstate23)方法，判断FrameNode节点是否处于渲染状态。
 
 ```ts
- //index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -2236,9 +2238,9 @@ struct Index {
     }
     let isOnRenderTree = buttonNode!.isInRenderState();
     if (isOnRenderTree) {
-      hilog.info(1,'frameNode', 'is on render tree');
+      hilog.info(1, 'frameNode', 'is on render tree');
     } else {
-      hilog.info(1,'frameNode', 'is not no render tree');
+      hilog.info(1, 'frameNode', 'is not no render tree');
     }
   }
 
@@ -2267,13 +2269,13 @@ struct Index {
         let textNode8 = this.getUIContext().getFrameNodeById("hello8");
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
-          hilog.info(1,'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
+          hilog.info(1, 'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
           isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
-          hilog.info(1,'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
+          hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
     }

@@ -40,7 +40,7 @@
 | SOURCE_TYPE_MIC | 适用于普通录音。|
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup> | 适用于语音识别。 |
 | SOURCE_TYPE_PLAYBACK_CAPTURE | （API12已废弃）适用于录制其他应用送到系统中播放的原始音频数据。<br>AudioKit不再提供内录接口，请通过[录屏接口AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture.md)进行内录。 |
-| SOURCE_TYPE_VOICE_COMMUNICATION | 适用于VoIP语音通话。 |
+| SOURCE_TYPE_VOICE_COMMUNICATION | 适用于VoIP语音通话，能够增强人声录制，同时抑制环境音等其他非人声。 |
 | SOURCE_TYPE_VOICE_MESSAGE | 适用于录制语音短消息。 |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup> | 适用于相机录像。 |
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup> | 适用于获取麦克风采集到的纯净音频数据（系统不做任何算法处理）。 |
@@ -67,7 +67,7 @@
 
 音频流类型在音频焦点管理中扮演着关键角色，不同类型的音频流具有不同的默认优先级和处理方式。
 
-当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点和音频会话介绍](audio-playback-concurrency.md)。
+当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点介绍](audio-playback-concurrency.md)。
 
 此处仅说明常见的音频流类型影响音频焦点的表现，其他类型可参考[系统默认焦点策略表](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-audio-focus-management#section17923135513547)。
 
@@ -93,7 +93,7 @@
 
 - 闹铃（Alarm）类型音频流的默认输出设备为扬声器‌。若先连接蓝牙耳机，再开始播放Alarm音频，则扬声器和蓝牙耳机会同时播放。
 
-若默认的输入/输出设备不符合使用诉求，应用也可以调用相关接口主动修改。应用[使用AudioRenderer开发音频播放功能](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口，设置默认发声设备。
+若默认的输入/输出设备不符合使用诉求，应用也可以调用相关接口主动修改。应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口，设置默认发声设备。
 
 ## 设置音频流类型
 
@@ -101,17 +101,17 @@
 
 常见的设置播放音频流类型的方法有：
 
-- **[使用AudioRenderer开发音频播放功能](using-audiorenderer-for-playback.md)**：
+- **[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)**：
 
    可以在调用[createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)以获取音频渲染器时，传入对应的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)。
 
    createAudioRenderer的参数options类型为AudioRendererOptions，包含AudioRendererInfo渲染器信息，使用AudioRendererInfo.usage可指定StreamUsage音频流类型。
 
-- **[使用OHAudio开发音频播放功能](using-ohaudio-for-playback.md)**：
+- **[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)**：
   
   可以在调用[OH_AudioStreamBuilder_SetRendererInfo](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinfo)接口时，传入对应的[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)指定音频流类型。
 
-- **[使用AVPlayer开发音频播放功能(ArkTS)](../media/using-avplayer-for-playback.md)**：
+- **[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)**：
   
   可以通过设置AVPlayer的[属性](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)audioRendererInfo来实现。AVPlayer.audioRendererInfo的类型为audio.AudioRendererInfo。使用AudioRendererInfo.usage可指定[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)音频流类型。
 
@@ -120,27 +120,27 @@
   >
   > 如果应用未主动设置该属性，AVPlayer将进行默认处理。当媒体源包含视频时，usage的默认值为STREAM_USAGE_MOVIE；否则，usage的默认值为STREAM_USAGE_MUSIC。
 
-- **[使用AVPlayer开发音频播放功能(C/C++)](../media/using-ndk-avplayer-for-playback.md)**：
+- **[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)**：
   
   可以在调用[OH_AVPlayer_SetAudioRendererInfo](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiorendererinfo)接口时，传入对应的[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)指定音频流类型。
 
-- **[使用SoundPool开发音频播放功能](../media/using-soundpool-for-playback.md)**：
+- **[使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)**：
   
   可以在调用[createSoundPool](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10)接口时，传入对应的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)指定音频流类型。
 
 常见的设置录制音频流类型的方法有：
 
-- **[使用AudioCapturer开发音频录制功能](using-audiocapturer-for-recording.md)**：
+- **[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)**：
   
   可以在调用[createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8)接口时，传入对应的[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
 
    createAudioCapturer的参数options类型为AudioCapturerOptions，包含AudioCapturerInfo采集器信息，使用AudioCapturerInfo.source可指定SourceType音源类型。
 
-- **[使用OHAudio开发音频录制功能](using-ohaudio-for-recording.md)**：
+- **[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)**：
   
   可以在调用[OH_AudioStreamBuilder_SetCapturerInfo](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerinfo)接口时，传入对应的[OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)指定音源类型。
 
-- **[使用AVRecorder开发音频录制功能](../media/using-avrecorder-for-recording.md)**：
+- **[使用AVRecorder录制音频(ArkTS)](../media/using-avrecorder-for-recording.md)**：
   
   可以在调用[AVRecorder.prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1)接口时，传入对应的[AudioSourceType](../../reference/apis-media-kit/arkts-apis-media-e.md#audiosourcetype9)。
 

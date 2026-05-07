@@ -10,7 +10,7 @@
 
 For third-party frameworks that lack an inherent rendering environment, leveraging the system's basic rendering and animation capabilities is crucial. Such frameworks often have their own mechanisms for front-end parsing, layout management, and event handling. As a result, the universal attributes and events associated with [FrameNode](./arkts-user-defined-arktsNode-frameNode.md) may be redundant for these frameworks, potentially causing duplicate work in managing layout and event logic.
 
-This is where [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) becomes beneficial. **RenderNode** is a streamlined render node designed to offer rendering-specific features. It allows for setting of basic rendering properties and provides the capability to dynamically add and remove nodes and to implement custom drawing. These can be used to provide third-party frameworks with essential rendering and animation capabilities.
+This is where [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) becomes beneficial. **RenderNode** is a streamlined render node designed to offer rendering-specific features. It allows for setting of basic rendering attributes and provides the capability to dynamically add and remove nodes and to implement custom drawing. These can be used to provide third-party frameworks with essential rendering and animation capabilities.
 
 ## Creating and Removing Nodes
 
@@ -24,7 +24,7 @@ With **RenderNode**, you can add, delete, query, and modify nodes, thereby chang
 >
 > - The subtree structure obtained through queries in **RenderNode** is constructed based on the parameters passed through the APIs of **RenderNode**.
 >
-> - To integrate a RenderNode with the system for display, you need to mount the RenderNode obtained from a FrameNode onto the component tree.
+> - To integrate a **RenderNode** with the system for display, you need to mount the **RenderNode** obtained from a **FrameNode** onto the component tree.
 
 <!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) -->
 
@@ -78,7 +78,7 @@ export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController)
           .width(200)
@@ -97,23 +97,22 @@ export struct OperationNodeTree {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
-## Setting and Obtaining Rendering-related Properties
+## Setting and Obtaining Rendering-related Attributes
 
-In **RenderNode**, you can set rendering-related properties, including the following: [backgroundColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor), [clipToFrame](../reference/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe), [opacity](../reference/apis-arkui/js-apis-arkui-renderNode.md#opacity), [size](../reference/apis-arkui/js-apis-arkui-renderNode.md#size), [position](../reference/apis-arkui/js-apis-arkui-renderNode.md#position), [frame](../reference/apis-arkui/js-apis-arkui-renderNode.md#frame), [pivot](../reference/apis-arkui/js-apis-arkui-renderNode.md#pivot), [scale](../reference/apis-arkui/js-apis-arkui-renderNode.md#scale), [translation](../reference/apis-arkui/js-apis-arkui-renderNode.md#translation), [rotation](../reference/apis-arkui/js-apis-arkui-renderNode.md#rotation), [transform](../reference/apis-arkui/js-apis-arkui-renderNode.md#transform), [shadowColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor), [shadowOffset](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset), [shadowAlpha](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha), [shadowElevation](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation), [shadowRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowradius), [borderStyle](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12), [borderWidth](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12), [borderColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12), [borderRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderradius12), [shapeMask](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapemask12), [shapeClip](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12), [markNodeGroup](../reference/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12). For details about the supported attributes, see [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md).
+In **RenderNode**, you can set rendering-related attributes, including the following: [backgroundColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor), [clipToFrame](../reference/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe), [opacity](../reference/apis-arkui/js-apis-arkui-renderNode.md#opacity), [size](../reference/apis-arkui/js-apis-arkui-renderNode.md#size), [position](../reference/apis-arkui/js-apis-arkui-renderNode.md#position), [frame](../reference/apis-arkui/js-apis-arkui-renderNode.md#frame), [pivot](../reference/apis-arkui/js-apis-arkui-renderNode.md#pivot), [scale](../reference/apis-arkui/js-apis-arkui-renderNode.md#scale), [translation](../reference/apis-arkui/js-apis-arkui-renderNode.md#translation), [rotation](../reference/apis-arkui/js-apis-arkui-renderNode.md#rotation), [transform](../reference/apis-arkui/js-apis-arkui-renderNode.md#transform), [shadowColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor), [shadowOffset](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset), [shadowAlpha](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha), [shadowElevation](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation), [shadowRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowradius), [borderStyle](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12), [borderWidth](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12), [borderColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12), [borderRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderradius12), [shapeMask](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapemask12), [shapeClip](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12), [markNodeGroup](../reference/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12). For details about the supported attributes, see [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md).
 
 > **NOTE**
 > 
-> - The properties obtained from a query in **RenderNode** are the values that have been explicitly set.
+> - The attributes obtained from a query in **RenderNode** are the values that have been explicitly set.
 > 
 > - If no parameters are provided or if the provided parameters are invalid, the query will return the default values.
 >
-> - Avoid modifying RenderNodes in a BuilderNode. In **BuilderNode**, how properties are applied and updated is governed by the state management system, independently of manual intervention. Be aware that setting the same **RenderNode** property in both BuilderNode and FrameNode could lead to unexpected behavior.
+> - Avoid modifying RenderNodes in a BuilderNode. In **BuilderNode**, how attributes are applied and updated is governed by the state management system, independently of manual intervention. Be aware that setting the same **RenderNode** attribute in both **BuilderNode** and **FrameNode** could lead to unexpected behavior.
 
 <!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
 
@@ -398,7 +397,7 @@ export struct CustomDraw {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width('100%');
@@ -411,10 +410,9 @@ export struct CustomDraw {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## Adjusting the Transformation Matrix of the Custom Drawing Canvas
@@ -553,7 +551,7 @@ export struct CustomDrawCanvas {
   myNodeController1: MyNodeController1 = new MyNodeController1();
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
           NodeContainer(this.myNodeController)
@@ -568,10 +566,9 @@ export struct CustomDrawCanvas {
         .width('45%');
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ![RenderNode-canvas](./figures/renderNode-canvas.png)
@@ -739,20 +736,19 @@ export struct CustomDrawCanvasNative {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## Setting the Label
 
-You can use the [label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12) API to assign labels for RenderNodes. This makes it easier to distinguish between nodes under node **Inspector**.
+You can use the [label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12) API to assign labels for **RenderNode**s. This makes it easier to distinguish between nodes under node **Inspector**.
 
 <!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
 
@@ -792,7 +788,7 @@ export struct SetLabel {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width(300)
@@ -800,15 +796,14 @@ export struct SetLabel {
           .backgroundColor(Color.Gray);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## Checking RenderNode Reference Status
 
-Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values.
+Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. In the ArkUI framework, frontend nodes are created at the ArkTS code level and are responsible for interacting with developers. Backend nodes are entity nodes maintained at the bottom layer of the ArkUI framework and are responsible for processing specific logic.
 
 Since API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20) API to check whether a **RenderNode** object has released its reference to backend entity nodes. This enables verification of node validity before operations to prevent potential issues.
 
@@ -857,7 +852,7 @@ export struct CheckRanderNodeDisposed {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column({ space: 4 }) {
         NodeContainer(this.myNodeController);
         Button('RenderNode dispose')
@@ -879,8 +874,7 @@ export struct CheckRanderNodeDisposed {
       .width('100%')
       .height('100%');
 
-    // ···
+      // ...
   }
 }
-
 ```

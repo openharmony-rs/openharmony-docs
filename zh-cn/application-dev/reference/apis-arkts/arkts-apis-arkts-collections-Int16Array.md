@@ -119,8 +119,8 @@ constructor(elements: Iterable\<number>)
 ```ts
 // 从一个Iterable构造对象
 let set: Set<number> = new Set<number>([1, 2, 3]);
-let array: collections.Int16Array = new collections.Int16Array(set);
 // Int16Array [1, 2, 3]
+let array: collections.Int16Array = new collections.Int16Array(set);
 ```
 
 ## constructor
@@ -273,24 +273,21 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 **示例：**
 
 ```ts
-// 例1 从一个对象创建
+// 例1 从一个对象创建，Int16Array [0, 1, 2, 3, 4]
 let array: collections.Int16Array = collections.Int16Array.from<number>(
   { length: 5 }, (v: Object, k: number) => k);
-// Int16Array [0, 1, 2, 3, 4]
 ```
 
 ```ts
-// 例2 从一个字符数组创建
+// 例2 从一个字符数组创建，Int16Array [1, 3, 5]
 let array: collections.Int16Array = collections.Int16Array.from<string>(
   ["1", "3", "5"], (v: string, k: number) => parseInt(v));
-// Int16Array [1, 3, 5]
 ```
 
 ```ts
-// 例3 从一个字符串创建
+// 例3 从一个字符串创建，Int16Array [1, 2, 3, 4, 5]
 let array: collections.Int16Array = collections.Int16Array.from<string>(
   "12345", (v: string, k: number) => parseInt(v));
-// Int16Array [1, 2, 3, 4, 5]
 ```
 
 ## from
@@ -327,16 +324,16 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 ```ts
 // 例1 不指定映射函数
 let set: Set<number> = new Set<number>([1, 2, 3]);
-let array: collections.Int16Array = collections.Int16Array.from(set);
 // Int16Array [1, 2, 3]
+let array: collections.Int16Array = collections.Int16Array.from(set);
 ```
 
 ```ts
 // 例2 指定映射函数
 let set: Set<number> = new Set<number>([1, 2, 3]);
+// Int16Array [1, 3, 5]
 let array: collections.Int16Array = collections.Int16Array.from(
   set, (v: number, k: number) => v + k);
-// Int16Array [1, 3, 5]
 ```
 
 ## of<sup>18+</sup>
@@ -353,7 +350,7 @@ static of(...items: number[]): Int16Array
 
 | 参数名    | 类型          | 必填 | 说明                            |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | number[] | 否   | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 否   | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -480,8 +477,8 @@ copyWithin(target: number, start: number, end?: number): Int16Array
 
 ```ts
 let array: collections.Int16Array = collections.Int16Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
-let copied: collections.Int16Array = array.copyWithin(3, 1, 3);
 // Int16Array [1, 2, 3, 2, 3, 6, 7, 8]
+let copied: collections.Int16Array = array.copyWithin(3, 1, 3);
 ```
 
 ## some
@@ -639,8 +636,8 @@ filter(predicate: TypedArrayPredicateFn\<number, Int16Array>): Int16Array
 
 ```ts
 let array: collections.Int16Array = collections.Int16Array.from([0, 1, 2, 3, 4]);
-let filtered: collections.Int16Array = array.filter((element: number) => element % 2 == 0);
 // Int16Array [0, 2, 4]
+let filtered: collections.Int16Array = array.filter((element: number) => element % 2 == 0);
 ```
 
 ## find
@@ -949,8 +946,8 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int16Array>): numbe
 
 ```ts
 let array: collections.Int16Array = collections.Int16Array.from([1, 2, 3, 4, 5]);
-let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value);
 // reducedValue == 15
+let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value);
 ```
 
 ## reduceRight<sup>18+</sup>
@@ -1028,8 +1025,8 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int16Array>, initia
 
 ```ts
 let array: collections.Int16Array = collections.Int16Array.from([1, 2, 3, 4, 5]);
-let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value, 1);
 // reducedValue == 16
+let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value, 1);
 ```
 
 ## reduceRight<sup>18+</sup>
@@ -1108,8 +1105,8 @@ reduce\<U>(callbackFn: TypedArrayReduceCallback\<U, number, Int16Array>, initial
 
 ```ts
 let array: collections.Int16Array = collections.Int16Array.from([1, 2, 3, 4, 5]);
-let reducedValue: string = array.reduce<string>((accumulator: string, value: number) => accumulator + value, "initialValue");
 // reducedValue == initialValue12345
+let reducedValue: string = array.reduce<string>((accumulator: string, value: number) => accumulator + value, "initialValue");
 ```
 
 ## reverse

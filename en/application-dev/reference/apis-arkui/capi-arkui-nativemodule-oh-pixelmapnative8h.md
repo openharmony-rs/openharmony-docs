@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct OH_PixelmapNative* OH_PixelmapNativeHandle
+```
+
 ## Overview
 
 Defines a struct for the pointer to an **OH_PixelmapNative** object.

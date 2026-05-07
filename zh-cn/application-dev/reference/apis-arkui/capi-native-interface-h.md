@@ -1,8 +1,8 @@
 # native_interface.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -19,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[NativeNodeInterfaceSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NativeNodeInterfaceSample)<!--RP1End-->
 
 ## 汇总
 
@@ -91,12 +93,12 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | 返回native接口抽象指针，在转化为具体类型后进行使用。 |
+| void* | 返回native接口抽象指针，在转换为具体类型后进行使用。 |
 
 ### OH_ArkUI_GetModuleInterface()
 
 ```c
-OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
+#define OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                     \
 do {                                                                                                 \
         void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
         if (anyNativeAPI) {                                                                          \
@@ -112,4 +114,20 @@ do {                                                                            
 
 **起始版本：** 12
 
+### OH_ArkUI_NativeModule_GetErrorMessage()
 
+```c
+const char* OH_ArkUI_NativeModule_GetErrorMessage()
+```
+
+**描述：**
+
+获取最新一次的报错信息，包括错误码、方法名称和错误原因。错误码相关信息请参考[ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode)。当其他接口返回错误码时，会保存对应的错误信息，通过此接口可获取当前存储的错误信息。返回的字符串是由系统创建的线程局部全局字符串，不得修改其内容。如需任何编辑，请自行创建字符串内容的拷贝副本。该接口返回的信息可能随版本演进而变化，仅用于输出以辅助分析与故障排查，不应作为逻辑判断依据。返回的报错信息无需手动释放。
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| const char* | 最新一次的报错信息，包括错误码、方法名称和错误原因。 |
