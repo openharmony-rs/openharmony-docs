@@ -26,7 +26,7 @@
 
 openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise&lt;void&gt;
 
-打开一个支持层级配置的浮层，浮层中的内容由开发者传入的组件内容（content字段）决定，使用Promise异步回调。
+打开一个支持层级配置的浮层，浮层中的内容由开发者传入的组件内容（content字段）决定。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -38,16 +38,16 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 
 **参数：**
 
-| 参数名     | 类型                                       | 只读   | 可选    | 说明          |
-| ------- | ---------------------------------------- | ------ | ------ | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | 否| 否    | 浮层的显示内容，在OverlayManager的新节点上添加此内容节点。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
-| options | [OrderOverlayOptions](#orderoverlayoptions) | 否 | 是    | 浮层的层级配置选项。 |
+| 参数名     | 类型                                       | 必填    | 说明          |
+| ------- | ---------------------------------------- | ------ | ----------- |
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | 是    | 浮层的显示内容，在OverlayManager的新节点上添加此内容节点。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
+| options | [OrderOverlayOptions](#orderoverlayoptions) | 否    | 浮层的层级配置选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -55,7 +55,7 @@ openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Prom
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 103307 | The overlay cannot be opened due to the system popup-up window. |
+| 103307 | The overlay cannot be opened due to the system pop-up window. |
 
 **示例：**
 
