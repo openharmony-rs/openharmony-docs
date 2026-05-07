@@ -162,7 +162,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 如何实现或判断窗口沉浸式布局
 
-[沉浸式布局](window-terminology.md#沉浸式布局)是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
+[沉浸式布局](immersive-window-feature.md#沉浸式布局)是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
 
 非[自由窗口](window-terminology.md#自由窗口)可以通过调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置沉浸式布局；自由窗口可以通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。
 

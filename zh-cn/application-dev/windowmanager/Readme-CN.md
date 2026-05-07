@@ -15,8 +15,8 @@
 <!--DelEnd-->
 - 窗口模式<!--window-status-->
   - 自由窗口<!--freeform-window-->
-   - [自由窗口简介](freeform-window-overview.md)
-   - [应用适配自由窗口](application-adaptation-freeform-window.md)
+    - [自由窗口简介](freeform-window-overview.md)
+    - [应用适配自由窗口](application-adaptation-freeform-window.md)
 - 窗口基础能力<!--window-basic-capabilities-->
   - 窗口旋转<!--rotation-->
     - [窗口旋转](window-rotation.md)
@@ -25,8 +25,8 @@
   - [窗口层级](window-zorder-guide.md)
   - [窗口沉浸式](immersive-window-feature.md)
 - 其他开发场景<!--other-scenarios-->
-  - [截图与隐私模式](screenshot-and-privacy-mode.md)
-  - [控制亮度与常亮](brightness-control.md)
+  - [截图与隐私模式 (ArkTS)](screenshot-and-privacy-mode.md)
+  - [控制亮度与常亮 (ArkTS)](brightness-control.md)
   - [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
   <!--RP1-->
   <!--RP1End-->

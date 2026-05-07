@@ -1,4 +1,4 @@
-# 控制亮度与常亮
+# 控制亮度与常亮 (ArkTS)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
@@ -33,7 +33,7 @@
 
 ## 控制窗口常亮
 
-控制窗口常亮指通过调用[setWindowKeepScreenOn()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9-1)接口设置当前窗口位于前台时当前设备的屏幕是否为常亮状态。当前台存在已设置为常亮的窗口时，设备的超时自动熄屏能力将被禁用。在异源虚拟屏上不生效。
+控制窗口常亮指通过调用[setWindowKeepScreenOn()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9-1)接口设置当前窗口位于前台时设备的屏幕是否为常亮状态。当前台存在已设置为常亮的窗口时，设备的超时自动熄屏能力将被禁用。在异源虚拟屏上不生效。
 
 建议在明确且有必要保持窗口常亮的场景下使用，例如导航、视频播放、绘画、游戏等。在无屏幕交互、纯音频播放或其他无需持续点亮屏幕的场景下，不建议设置窗口常亮。
 
@@ -41,7 +41,7 @@
 
 > **说明：**
 > 
-> 此类场景下长时间保持屏幕常亮，可能导致设备功耗增加、续航下降，并存在烧屏风险，影响用户体验和设备使用寿命。
+> 此类场景下长时间保持屏幕常亮，可能增加设备功耗并影响续航。建议结合业务需要合理控制常亮时长，以保障用户体验。
 
 示例代码如下：
 
@@ -50,274 +50,140 @@ import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-
 const DOMAIN = 0x0000;
-
 
 @Entry
 @Component
 struct Index {
   @State brightnessValue: number = 0.5;
   @State keepScreenOn: boolean = false;
-  @State statusText: string = 'Tap a control to adjust window brightness or keep-screen-on.';
-  @State logText: string = 'ready\n';
-  private currentWindow?: window.Window = undefined;
+  @State statusText: string = 'Adjust window brightness or keep-screen-on.';
 
+  private currentWindow?: window.Window = undefined;
 
   aboutToAppear(): void {
     void this.initWindow();
   }
 
-
-  private appendLog(message: string): void {
-    const line = `${Date.now()}: ${message}`;
-    this.logText += `${line}\n`;
-    hilog.info(DOMAIN, 'windowBrightness', line);
-  }
-
-
+  // 获取当前应用窗口，后续通过 Window 对象设置窗口亮度和常亮状态。
   private async initWindow(): Promise<void> {
     try {
       const hostContext = this.getUIContext().getHostContext();
       if (!hostContext) {
         throw new Error('Host context is unavailable.');
       }
+
       const context = hostContext as common.UIAbilityContext;
       this.currentWindow = await window.getLastWindow(context);
+
       const windowId = this.currentWindow.getWindowProperties().id;
       this.statusText = `window ready, id=${windowId}`;
-      this.appendLog(this.statusText);
+      hilog.info(DOMAIN, 'windowBrightness', this.statusText);
     } catch (err) {
       this.statusText = `initWindow failed: ${JSON.stringify(err)}`;
-      this.appendLog(this.statusText);
+      hilog.error(DOMAIN, 'windowBrightness', this.statusText);
     }
   }
 
-
+  // 调用接口前确认窗口对象已初始化。
   private async ensureWindow(): Promise<boolean> {
     if (!this.currentWindow) {
       await this.initWindow();
     }
+
     if (!this.currentWindow) {
       this.statusText = 'current window is unavailable.';
-      this.appendLog(this.statusText);
       return false;
     }
+
     return true;
   }
 
-
-  // 设置窗口亮度
-  private async applyBrightness(value: number): Promise<void> {
+  // 设置当前窗口亮度，取值范围为 0 到 1；传入 -1 可恢复为系统屏幕亮度。
+  private async applyBrightness(): Promise<void> {
     if (!await this.ensureWindow()) {
       return;
     }
 
-
     try {
-      this.brightnessValue = value;
-      await this.currentWindow!.setWindowBrightness(value);
-      this.statusText = `setWindowBrightness(${value.toFixed(2)}) success`;
-      this.appendLog(this.statusText);
+      await this.currentWindow!.setWindowBrightness(this.brightnessValue);
+      this.statusText = `setWindowBrightness(${this.brightnessValue.toFixed(2)}) success`;
+      hilog.info(DOMAIN, 'windowBrightness', this.statusText);
     } catch (err) {
       this.statusText = `setWindowBrightness failed: ${JSON.stringify(err)}`;
-      this.appendLog(this.statusText);
+      hilog.error(DOMAIN, 'windowBrightness', this.statusText);
     }
   }
 
-
-  // 设置当前窗口是否保持常亮
+  // 设置当前窗口在前台时是否保持屏幕常亮。
   private async applyKeepScreenOn(value: boolean): Promise<void> {
     if (!await this.ensureWindow()) {
       return;
     }
 
-
     try {
       this.keepScreenOn = value;
       await this.currentWindow!.setWindowKeepScreenOn(value);
       this.statusText = `setWindowKeepScreenOn(${value}) success`;
-      this.appendLog(this.statusText);
+      hilog.info(DOMAIN, 'windowBrightness', this.statusText);
     } catch (err) {
       this.statusText = `setWindowKeepScreenOn failed: ${JSON.stringify(err)}`;
-      this.appendLog(this.statusText);
+      hilog.error(DOMAIN, 'windowBrightness', this.statusText);
     }
   }
 
-
   build() {
-    Scroll() {
-      Column({ space: 16 }) {
-        Column({ space: 8 }) {
-          Text('Window Brightness Sample')
-            .fontSize(26)
-            .fontWeight(FontWeight.Bold)
-            .width('100%')
-            .textAlign(TextAlign.Start)
-
-
-          Text('Use setWindowBrightness to control brightness and setWindowKeepScreenOn to control screen-on behavior.')
-            .fontSize(14)
-            .fontColor('#666666')
-            .width('100%')
-            .textAlign(TextAlign.Start)
-        }
+    Column({ space: 16 }) {
+      Text('Brightness and Keep Screen On')
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
         .width('100%')
+        .textAlign(TextAlign.Start)
 
+      Text(`Brightness: ${this.brightnessValue.toFixed(2)}`)
+        .width('100%')
+        .fontSize(16)
+        .textAlign(TextAlign.Start)
 
-        Column({ space: 12 }) {
-          Text('Brightness')
-            .fontSize(18)
-            .fontWeight(FontWeight.Medium)
-            .width('100%')
-            .textAlign(TextAlign.Start)
+      Slider({
+        value: this.brightnessValue,
+        min: 0,
+        max: 1,
+        step: 0.01
+      })
+        .width('100%')
+        .showTips(true)
+        .onChange((value: number) => {
+          this.brightnessValue = value;
+        })
 
+      Button('Apply Brightness')
+        .width('100%')
+        .onClick(() => {
+          void this.applyBrightness();
+        })
 
-          Text(`Current value: ${this.brightnessValue.toFixed(2)}`)
-            .fontSize(16)
-            .width('100%')
-            .textAlign(TextAlign.Start)
+      Row() {
+        Text(`Keep screen on: ${this.keepScreenOn}`)
+          .layoutWeight(1)
+          .fontSize(16)
 
-
-          Slider({
-            value: this.brightnessValue,
-            min: 0,
-            max: 1,
-            step: 0.01
+        Toggle({ type: ToggleType.Switch, isOn: this.keepScreenOn })
+          .onChange((value: boolean) => {
+            void this.applyKeepScreenOn(value);
           })
-            .width('100%')
-            .showTips(true)
-            .onChange((value: number) => {
-              this.brightnessValue = value;
-            })
-
-
-          Button('Apply Brightness')
-            .width('100%')
-            .onClick(() => {
-              void this.applyBrightness(this.brightnessValue);
-            })
-
-
-          Row({ space: 8 }) {
-            Button('0.2')
-              .layoutWeight(1)
-              .onClick(() => {
-                void this.applyBrightness(0.2);
-              })
-
-
-            Button('0.5')
-              .layoutWeight(1)
-              .backgroundColor('#0A7A5A')
-              .onClick(() => {
-                void this.applyBrightness(0.5);
-              })
-
-
-            Button('1.0')
-              .layoutWeight(1)
-              .backgroundColor('#AD5C00')
-              .onClick(() => {
-                void this.applyBrightness(1.0);
-              })
-          }
-          .width('100%')
-        }
-        .width('100%')
-        .padding(16)
-        .backgroundColor('#F8F4ED')
-        .borderRadius(20)
-
-
-        Column({ space: 12 }) {
-          Text('Keep Screen On')
-            .fontSize(18)
-            .fontWeight(FontWeight.Medium)
-            .width('100%')
-            .textAlign(TextAlign.Start)
-
-
-          Row() {
-            Text(`Enabled: ${this.keepScreenOn}`)
-              .layoutWeight(1)
-              .fontSize(16)
-
-
-            Toggle({ type: ToggleType.Switch, isOn: this.keepScreenOn })
-              .onChange((value: boolean) => {
-                void this.applyKeepScreenOn(value);
-              })
-          }
-          .width('100%')
-
-
-          Row({ space: 8 }) {
-            Button('Keep On')
-              .layoutWeight(1)
-              .onClick(() => {
-                void this.applyKeepScreenOn(true);
-              })
-
-
-            Button('Allow Sleep')
-              .layoutWeight(1)
-              .backgroundColor('#6D4CC2')
-              .onClick(() => {
-                void this.applyKeepScreenOn(false);
-              })
-          }
-          .width('100%')
-        }
-        .width('100%')
-        .padding(16)
-        .backgroundColor('#EDF3FB')
-        .borderRadius(20)
-
-
-        Column({ space: 8 }) {
-          Text('Status')
-            .fontSize(18)
-            .fontWeight(FontWeight.Medium)
-            .width('100%')
-            .textAlign(TextAlign.Start)
-
-
-          Text(this.statusText)
-            .width('100%')
-            .fontSize(14)
-            .textAlign(TextAlign.Start)
-        }
-        .width('100%')
-        .padding(16)
-        .backgroundColor('#F6F4EE')
-        .borderRadius(20)
-
-
-        Column({ space: 8 }) {
-          Text('Log')
-            .fontSize(18)
-            .fontWeight(FontWeight.Medium)
-            .width('100%')
-            .textAlign(TextAlign.Start)
-
-
-          Text(this.logText)
-            .width('100%')
-            .fontSize(12)
-            .textAlign(TextAlign.Start)
-        }
-        .width('100%')
-        .padding(16)
-        .backgroundColor('#EEF3F8')
-        .borderRadius(20)
       }
       .width('100%')
-      .padding(20)
-      .alignItems(HorizontalAlign.Start)
+
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .textAlign(TextAlign.Start)
     }
     .width('100%')
     .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Start)
   }
 }
 ```

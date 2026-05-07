@@ -95,12 +95,6 @@
 
 部分Tablet设备上，可通过下拉控制中心，点击“电脑模式”按钮开启电脑模式。
 
-## 沉浸式布局
-
-[沉浸式布局](immersive-window-feature.md)是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
-
-多设备场景下不同窗口形态的沉浸式开发与实现可以参考[窗口沉浸式最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive)。
-
 ## 全局坐标系
 
 全局坐标系是指在设备连接[扩展屏](../displaymanager/display-terminology.md#扩展屏)（多物理屏幕）的场景下，以主屏幕左上角为原点(0, 0)，屏幕右侧为x轴正方向，屏幕下侧为y轴正方向，对窗口、指针等对象的位置进行统一描述的坐标体系。
