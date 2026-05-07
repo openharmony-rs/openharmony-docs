@@ -298,3 +298,33 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
   // 取消该事件的所有监听。
   audioSessionManager.off('currentOutputDeviceChanged');
 ```
+
+<!--Del-->
+### 获取活跃输出设备信息（仅对系统应用开放）
+
+从API版本26.0.0开始，使用[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/js-apis-audio-sys.md#getactiveoutputdevicedescriptors)方法，可以获取当前音频设备场景下的活跃输出设备描述符。
+
+> **说明：**
+>
+> 该接口返回的激活设备跟系统的[音频设备选择策略](../../reference/apis-audio-kit/arkts-apis-audio-e.md#AudioStreamDeviceChangeReason11)有关。
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function getActiveOutputDeviceDescriptors() {
+  audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting active output device descriptors, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    for (let i = 0; i < audioDeviceDescriptors.length; i++) {
+      console.info(`Active Device ${i} - id: ${audioDeviceDescriptors[i].id}`);
+      console.info(`Active Device ${i} - name: ${audioDeviceDescriptors[i].name}`);
+      console.info(`Active Device ${i} - type: ${audioDeviceDescriptors[i].deviceType}`);
+      console.info(`Active Device ${i} - role: ${audioDeviceDescriptors[i].deviceRole}`);
+      console.info(`Active Device ${i} - address: ${audioDeviceDescriptors[i].address}`);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get active output device descriptors. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+<!--DelEnd-->
