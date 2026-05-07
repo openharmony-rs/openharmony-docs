@@ -151,7 +151,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -214,7 +214,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -287,7 +287,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -352,7 +352,7 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -415,7 +415,7 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -479,7 +479,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -543,7 +543,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -608,7 +608,7 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
