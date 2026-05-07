@@ -645,15 +645,15 @@ struct PageFiveShareChange {
 
 ``` TypeScript
 let localStorageOne: LocalStorage = new LocalStorage();
-localStorageOne.setOrCreate('propA', 'propA');
+localStorageOne.setOrCreate('PropA', 'propA');
 
 let localStorageTwo: LocalStorage = new LocalStorage();
-localStorageTwo.setOrCreate('propB', 'propB');
+localStorageTwo.setOrCreate('PropB', 'propB');
 
 @Entry(localStorageOne)
 @Component
 struct TestIndex {
-  // 'PropA'，和localStorageOne中'propA'的双向同步
+  // 变量propA和localStorageOne中'PropA'双向同步
   @LocalStorageLink('PropA') propA: string = 'Hello World';
   @State count: number = 0;
 
@@ -663,7 +663,7 @@ struct TestIndex {
         Text(this.propA)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        // 使用LocalStorage 实例localStorageTwo
+        // 使用LocalStorage实例localStorageTwo
         ChildSix({ count: this.count }, localStorageTwo)
       }
       .width('100%')
@@ -676,7 +676,7 @@ struct TestIndex {
 @Component
 struct ChildSix {
   @Link count: number;
-  //  'Hello World'和localStorageTwo中'propB'的双向同步，如果localStorageTwo中没有'propB'，则使用默认值'Hello World'
+  // 变量propB和localStorageTwo中'PropB'双向同步。如果localStorageTwo中没有'PropB'，则使用默认值'Hello World'
   @LocalStorageLink('PropB') propB: string = 'Hello World';
 
   build() {
@@ -693,15 +693,15 @@ struct ChildSix {
    
    ``` TypeScript
    let localStorageInstance: LocalStorage = new LocalStorage();
-   localStorageInstance.setOrCreate('propA', 'propA');
+   localStorageInstance.setOrCreate('PropA', 'propA');
    
    let localStorageChange: LocalStorage = new LocalStorage();
-   localStorageChange.setOrCreate('propB', 'propB');
+   localStorageChange.setOrCreate('PropB', 'propB');
    
    @Entry(localStorageInstance)
    @Component
    struct Index {
-     // 'PropA'，和localStorageInstance中'PropA'的双向同步
+     // 变量propA和localStorageInstance中'PropA'双向同步
      @LocalStorageLink('PropA') propA: string = 'Hello World';
      @State count: number = 0;
    
@@ -711,7 +711,7 @@ struct ChildSix {
            Text(this.propA)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
-           // 使用LocalStorage 实例localStorageChange
+           // 使用LocalStorage实例localStorageChange
            ChildOne(localStorageChange)
          }
          .width('100%')
@@ -737,15 +737,15 @@ struct ChildSix {
    
    ``` TypeScript
    let localStorageBOne: LocalStorage = new LocalStorage();
-   localStorageBOne.setOrCreate('propA', 'propA');
+   localStorageBOne.setOrCreate('PropA', 'propA');
    
    let localStorageBTwo: LocalStorage = new LocalStorage();
-   localStorageBTwo.setOrCreate('propB', 'propB');
+   localStorageBTwo.setOrCreate('PropB', 'propB');
    
    @Entry(localStorageBOne)
    @Component
    struct PageSixLocalStorageB {
-     // 'PropA'，和localStorageBOne中'propA'的双向同步
+     // 变量propA和localStorageBOne中'PropA'双向同步
      @LocalStorageLink('PropA') propA: string = 'Hello World';
      @State count: number = 0;
    
@@ -755,7 +755,7 @@ struct ChildSix {
            Text(this.propA)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
-           // 使用LocalStorage 实例localStorageBTwo
+           // 使用LocalStorage实例localStorageBTwo
            Child({}, localStorageBTwo)
          }
          .width('100%')
@@ -767,7 +767,7 @@ struct ChildSix {
    @Component
    struct Child {
      @State count: number = 5;
-     // 'Hello World'，和localStorageBTwo中'propB'的双向同步，如果localStorageBTwo中没有'propB'，则使用默认值'Hello World'
+     // 变量propB和localStorageBTwo中'PropB'双向同步。如果localStorageBTwo中没有'PropB'，则使用默认值'Hello World'
      @LocalStorageLink('PropB') propB: string = 'Hello World';
    
      build() {
@@ -798,13 +798,13 @@ struct ChildSix {
 
 ``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
-localStorageA.setOrCreate('propA', 'propA');
+localStorageA.setOrCreate('PropA', 'propA');
 
 let localStorageB: LocalStorage = new LocalStorage();
-localStorageB.setOrCreate('propB', 'propB');
+localStorageB.setOrCreate('PropB', 'propB');
 
 let localStorageC: LocalStorage = new LocalStorage();
-localStorageC.setOrCreate('propC', 'propC');
+localStorageC.setOrCreate('PropC', 'propC');
 
 @Entry
 @Component
@@ -852,7 +852,7 @@ struct PageOneStack {
     NavDestination() {
       Column() {
         NavigationContentMsgStack()
-        // 显示绑定的LocalStorage中PropA的值'PropA'
+        // 显示绑定的LocalStorage中'PropA'对应的值'propA'
         Text(`${this.propA}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -879,7 +879,7 @@ struct PageTwoStack {
     NavDestination() {
       Column() {
         NavigationContentMsgStack()
-        // 如果绑定的LocalStorage中没有PropB,显示本地初始化的值 'Hello World'
+        // 如果绑定的LocalStorage中没有'PropB',显示本地初始化的值'Hello World'
         Text(`${this.propB}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -908,7 +908,7 @@ struct PageThreeStack {
       Column() {
         NavigationContentMsgStack()
 
-        // 如果绑定的LocalStorage中没有PropC,显示本地初始化的值 'pageThreeStack'
+        // 如果绑定的LocalStorage中没有'PropC',显示本地初始化的值'pageThreeStack'
         Text(`${this.propC}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
