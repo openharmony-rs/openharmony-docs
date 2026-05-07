@@ -95,6 +95,37 @@
    ArkTS-Sta示例：
    <!-- @[display_sync_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySyncSta/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
 
+   ``` TypeScript
+   CreateDisplaySyncSlow() {
+     let range : ExpectedFrameRateRange = {
+       expected: 30,
+       min: 0,
+       max: 120
+     };
+ 
+     // 创建DisplaySync实例
+     this.backDisplaySyncSlow = displaySync.create();
+     // 设置DisplaySync期望的帧率
+     this.backDisplaySyncSlow?.setExpectedFrameRateRange(range);
+     let draw30 = (intervalInfo: displaySync.IntervalInfo) => {
+       if (this.isBigger_30) {
+         this.drawFirstSize += 1;
+         if (this.drawFirstSize > 150) {
+           this.isBigger_30 = false;
+         }
+       } else {
+         this.drawFirstSize -= 1;
+         if (this.drawFirstSize < 25) {
+           this.isBigger_30 = true;
+         }
+       }
+     };
+ 
+     // 注册订阅函数
+     this.backDisplaySyncSlow?.onFrame(draw30);
+   }
+   ```
+
 5. 开始每帧回调。
    ArkTS-Dyn示例：
    <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
@@ -124,8 +155,37 @@
      .height(40)
      .shadow(ShadowStyle.OUTER_DEFAULT_LG)
    ```
+
    ArkTS-Sta示例：
-  <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySyncSta/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySyncSta/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+
+   ``` TypeScript
+   Button('Start')
+     .id('CustomDrawStart')
+     .fontSize(14)
+     .fontWeight(500)
+     .margin({ bottom: 10, left: 5 })
+     .fontColor(Color.White)
+     .onClick((e: ClickEvent): void => {
+       if (this.backDisplaySyncSlow == undefined) {
+         this.CreateDisplaySyncSlow();
+       }
+       if (this.backDisplaySyncFast == undefined) {
+         this.CreateDisplaySyncFast();
+       }
+       if (this.backDisplaySyncSlow) {
+         // 开始每帧回调
+         this.backDisplaySyncSlow?.start();
+       }
+       if (this.backDisplaySyncFast) {
+         // 开始每帧回调
+         this.backDisplaySyncFast?.start();
+       }
+     })
+     .width('20%')
+     .height(40)
+     .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   ```
 
    > **说明：**
    >
@@ -135,18 +195,82 @@
    
    ``` TypeScript
    aboutToDisappear() {
+     let draw30 = (intervalInfo: displaySync.IntervalInfo) => {
+       if (this.isBigger_30) {
+         this.drawFirstSize += 1;
+         if (this.drawFirstSize > 150) {
+           this.isBigger_30 = false;
+         }
+       } else {
+         this.drawFirstSize -= 1;
+         if (this.drawFirstSize < 25) {
+           this.isBigger_30 = true;
+         }
+       }
+     };
+ 
      if (this.backDisplaySyncSlow) {
+       // 取消订阅函数
+       this.backDisplaySyncSlow.off("frame", draw30);
        this.backDisplaySyncSlow.stop();
        this.backDisplaySyncSlow = undefined;
      }
+ 
      if (this.backDisplaySyncFast) {
        this.backDisplaySyncFast.stop();
        this.backDisplaySyncFast = undefined;
      }
    }
    ```
+
    ArkTS-Sta示例：
    <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySyncSta/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+
+   ``` TypeScript
+   aboutToDisappear() {
+     let draw30 = (intervalInfo: displaySync.IntervalInfo) => {
+       if (this.isBigger_30) {
+         this.drawFirstSize += 1;
+         if (this.drawFirstSize > 150) {
+           this.isBigger_30 = false;
+         }
+       } else {
+         this.drawFirstSize -= 1;
+         if (this.drawFirstSize < 25) {
+           this.isBigger_30 = true;
+         }
+       }
+     };
+ 
+     if (this.backDisplaySyncSlow) {
+       // 取消订阅函数
+       this.backDisplaySyncSlow?.offFrame(draw30);
+       this.backDisplaySyncSlow?.stop();
+       this.backDisplaySyncSlow = undefined;
+     }
+ 
+     let draw60 = (intervalInfo: displaySync.IntervalInfo) => {
+       if (this.isBigger_60) {
+         this.drawSecondSize += 1;
+         if (this.drawSecondSize > 150) {
+           this.isBigger_60 = false;
+         }
+       } else {
+         this.drawSecondSize -= 1;
+         if (this.drawSecondSize < 25) {
+           this.isBigger_60 = true;
+         }
+       }
+     };
+ 
+     if (this.backDisplaySyncFast) {
+       // 取消订阅函数
+       this.backDisplaySyncFast?.offFrame(draw60);
+       this.backDisplaySyncFast?.stop();
+       this.backDisplaySyncFast = undefined;
+     }
+   }
+   ```
 
 6. 结束每帧回调。
    ArkTS-Dyn示例：
@@ -171,8 +295,31 @@
      .height(40)
      .shadow(ShadowStyle.OUTER_DEFAULT_LG)
    ```
+
    ArkTS-Sta示例：
    <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySyncSta/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+
+   ``` TypeScript
+  Button('Stop')
+     .id('CustomDrawStop')
+     .fontSize(14)
+     .fontWeight(500)
+     .margin({ bottom: 10, left: 5 })
+     .fontColor(Color.White)
+     .onClick((e: ClickEvent): void => {
+       if (this.backDisplaySyncSlow) {
+         // 停止每帧回调
+         this.backDisplaySyncSlow?.stop();
+       }
+       if (this.backDisplaySyncFast) {
+         // 停止每帧回调
+         this.backDisplaySyncFast?.stop();
+       }
+     })
+     .width('20%')
+     .height(40)
+     .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   ```
 
 <!--RP1-->
 ## 相关实例
