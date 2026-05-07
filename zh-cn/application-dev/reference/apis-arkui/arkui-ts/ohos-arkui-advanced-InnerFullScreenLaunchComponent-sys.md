@@ -54,7 +54,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
   
 > **说明：**
 >
-> - 从API版本26.0.0开始，原子化服务通过手势侧滑退出支持触发onTerminated回调。
+> 从API版本26.0.0开始，原子化服务通过手势侧滑退出触发onTerminated回调。
 
 ## LaunchController
 
