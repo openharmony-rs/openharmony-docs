@@ -10537,7 +10537,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":54,
 						"name":"nested_scrolling",
 						"start_line":16
 					}
@@ -29087,7 +29087,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":84,
 						"name":"web_textMenuItem",
 						"start_line":15
 					}
@@ -51266,7 +51266,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":84,
 						"name":"web_textMenuItem",
 						"start_line":15
 					}
