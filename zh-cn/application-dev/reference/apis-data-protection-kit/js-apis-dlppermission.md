@@ -1810,7 +1810,7 @@ dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) 
 });
 ```
 
-## dlpPermission.closeOpenedEnterpriseDlpFiles<sup>26+</sup>
+## dlpPermission.closeOpenedEnterpriseDlpFiles
 
 closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt;
 
