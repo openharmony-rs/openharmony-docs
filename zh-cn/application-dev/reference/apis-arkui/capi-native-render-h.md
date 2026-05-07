@@ -3177,7 +3177,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleO
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)指针，要设置模糊半径的目标模糊样式的指针。 |
-| float radius | 要设置的模糊半径。取值范围：(0, +∞)。单位：px。模糊半径用于控制模糊的密度，即半径越大，模糊处理的密度越大。设置0即表示不进行模糊处理。对于背景模糊处理，半径达到80，即可实现良好的磨砂玻璃效果。应避免使用超过200像素的模糊半径，否则将导致性能下降。 |
+| float radius | 要设置的模糊半径。取值范围：[0, +∞)。单位：px。模糊半径用于控制模糊的密度，即半径越大，模糊处理的密度越大。设置0即表示不进行模糊处理。对于背景模糊处理，半径达到80，即可实现良好的磨砂玻璃效果。应避免使用超过200像素的模糊半径，否则将导致性能下降。 |
 
 **返回：**
 
