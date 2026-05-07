@@ -27,9 +27,9 @@
 
 ### 界面元素构成
 
-典型全屏应用窗口包括系统界面元素和应用界面。其中系统界面元素包含状态栏和导航区域<!--RP1-->（根据用户设置可表现为导航条或三键导航）<!--RP1End-->，通常在[沉浸式布局](#沉浸式布局)下称为避让区域，避让区域之外的区域称为安全区域。
+典型全屏应用窗口包括系统界面元素和应用界面。其中系统界面元素包含状态栏和导航区域，通常在[沉浸式布局](#沉浸式布局)下称为避让区域，避让区域之外的区域称为安全区域。
 
-![zh-cn_image_0000002525256976](figures/zh-cn_image_0000002563117344.png)
+![zh-cn_image_0000002525256976](figures/zh-cn_image_0000002563117344.png)                                                                                                                                       
 
 ### 沉浸式布局
 
@@ -174,34 +174,34 @@ interface Rect {
 
 2. 调用[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
 
-   ```ts
-   // EntryAbility.ets
-   import { window } from '@kit.ArkUI';
-   import { UIAbility } from '@kit.AbilityKit';
+  ```ts
+  // EntryAbility.ets
+  import { window } from '@kit.ArkUI';
+  import { UIAbility } from '@kit.AbilityKit';
+  
+  export default class EntryAbility extends UIAbility {
+    // ...
    
-   export default class EntryAbility extends UIAbility {
-     // ...
-    
-     onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', async (err) => {
-         if (err.code) {
-           return;
-         }
-   
-         try {
-           // 获取应用主窗口
-           const mainWindow: window.Window = windowStage.getMainWindowSync();
-           //设置窗口进入沉浸式布局
-           await mainWindow.setWindowLayoutFullScreen(true); 
-           // 设置状态栏隐藏
-           mainWindow.setSpecificSystemBarEnabled('status', false); 
-         } catch (e) {
-           console.error(`Failed to set status bar to invisible`);
-         }
-       });
-     }
-   }
-   ```
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', async (err) => {
+        if (err.code) {
+          return;
+        }
+  
+        try {
+          // 获取应用主窗口
+          const mainWindow: window.Window = windowStage.getMainWindowSync();
+          // 设置窗口进入沉浸式布局
+          await mainWindow.setWindowLayoutFullScreen(true); 
+          // 设置状态栏隐藏
+          mainWindow.setSpecificSystemBarEnabled('status', false); 
+        } catch (e) {
+          console.error(`Failed to set status bar to invisible`);
+        }
+      });
+    }
+  }
+  ```
 
 
 ## 适配沉浸式布局实现沉浸式效果
@@ -215,84 +215,84 @@ interface Rect {
 1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。
 
 ```ts
-   private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
-     try {
-       this.mainWindow = windowStage.getMainWindowSync();
-       AppStorage.setOrCreate('mainWindow', this.mainWindow);
-       await this.mainWindow.setWindowLayoutFullScreen(true);
-       this.initSafeArea(this.mainWindow);
-       this.mainWindow.on('avoidAreaChange', (option) => {
-         switch (option.type) {
-           case window.AvoidAreaType.TYPE_SYSTEM: {
-             const topHeight = Math.max(option.area.topRect.height, AppStorage.get<number>('topAvoidHeight') ?? 0);
-             AppStorage.setOrCreate('topAvoidHeight', topHeight);
-             break;
-           }
-           case window.AvoidAreaType.TYPE_CUTOUT: {
-             this.handleCutoutAvoidArea(option.area);
-             break;
-           }
-           case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
-             const bottomHeight = Math.max(option.area.bottomRect.height, AppStorage.get<number>('bottomAvoidHeight') ?? 0);
-             AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
-             break;
-           }
-           default: {
-             break;
-           }
-         }
-       });
-     } catch (err) {
-       hilog.error(DOMAIN, 'testTag', 'Failed to initialize avoid area listener. Cause: %{public}s', JSON.stringify(err));
-     }
-   }
-   ```
+private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
+  try {
+    this.mainWindow = windowStage.getMainWindowSync();
+    AppStorage.setOrCreate('mainWindow', this.mainWindow);
+    await this.mainWindow.setWindowLayoutFullScreen(true);
+    this.initSafeArea(this.mainWindow);
+    this.mainWindow.on('avoidAreaChange', (option) => {
+      switch (option.type) {
+        case window.AvoidAreaType.TYPE_SYSTEM: {
+          const topHeight = Math.max(option.area.topRect.height, AppStorage.get<number>(opAvoidHeight') ?? 0);
+          AppStorage.setOrCreate('topAvoidHeight', topHeight);
+          break;
+        }
+        case window.AvoidAreaType.TYPE_CUTOUT: {
+          this.handleCutoutAvoidArea(option.area);
+          break;
+        }
+        case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
+          const bottomHeight = Math.max(option.area.bottomRect.height, AppStorage.get<number>(ottomAvoidHeight') ?? 0);
+          AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  } catch (err) {
+    hilog.error(DOMAIN, 'testTag', 'Failed to initialize avoid area listener. Cause: %{public}s', JN.stringify(err));
+  }
+}
+```
 
 2. 使用[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取当前窗口避让区域（此处以状态栏、底部导航区域为例）。
 
-   ```ts
-   private initSafeArea(win: window.Window): void {
-     try {
-       const systemAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-       const navigationAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-       const cutoutAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
-   
-       AppStorage.setOrCreate('topAvoidHeight', systemAvoidArea.topRect.height);
-       AppStorage.setOrCreate('bottomAvoidHeight', navigationAvoidArea.bottomRect.height);
-       AppStorage.setOrCreate('leftAvoidWidth', 0);
-       AppStorage.setOrCreate('rightAvoidWidth', 0);
-       this.handleCutoutAvoidArea(cutoutAvoidArea);
-     } catch (err) {
-       hilog.error(DOMAIN, 'testTag', 'Failed to init safe area. Cause: %{public}s', JSON.stringify(err));
-     }
-   }
-   ```
+```ts
+private initSafeArea(win: window.Window): void {
+  try {
+    const systemAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
+    const navigationAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
+    const cutoutAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
+
+    AppStorage.setOrCreate('topAvoidHeight', systemAvoidArea.topRect.height);
+    AppStorage.setOrCreate('bottomAvoidHeight', navigationAvoidArea.bottomRect.height);
+    AppStorage.setOrCreate('leftAvoidWidth', 0);
+    AppStorage.setOrCreate('rightAvoidWidth', 0);
+    this.handleCutoutAvoidArea(cutoutAvoidArea);
+  } catch (err) {
+    hilog.error(DOMAIN, 'testTag', 'Failed to init safe area. Cause: %{public}s', JSON.stringify(err));
+  }
+}
+```
 
 3. 使用[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听避让区域的动态变化，在避让区域更新时同时更新应用内布局。
 
-   ```ts
-   this.mainWindow.on('avoidAreaChange', (option) => {
-     switch (option.type) {
-       case window.AvoidAreaType.TYPE_SYSTEM: {
-         const topHeight = Math.max(option.area.topRect.height, AppStorage.get<number>('topAvoidHeight') ?? 0);
-         AppStorage.setOrCreate('topAvoidHeight', topHeight);
-         break;
-       }
-       case window.AvoidAreaType.TYPE_CUTOUT: {
-         this.handleCutoutAvoidArea(option.area);
-         break;
-       }
-       case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
-         const bottomHeight = Math.max(option.area.bottomRect.height, AppStorage.get<number>('bottomAvoidHeight') ?? 0);
-         AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
-         break;
-       }
-       default: {
-         break;
-       }
+ ```ts
+ this.mainWindow.on('avoidAreaChange', (option) => {
+   switch (option.type) {
+     case window.AvoidAreaType.TYPE_SYSTEM: {
+       const topHeight = Math.max(option.area.topRect.height, AppStorage.get<number>('topAvoidHeight') ?? 0);
+       AppStorage.setOrCreate('topAvoidHeight', topHeight);
+       break;
      }
-   });
-   ```
+     case window.AvoidAreaType.TYPE_CUTOUT: {
+       this.handleCutoutAvoidArea(option.area);
+       break;
+     }
+     case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
+       const bottomHeight = Math.max(option.area.bottomRect.height, AppStorage.get<number>(bottomAvoidHeight') ?? 0);
+       AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
+       break;
+     }
+     default: {
+       break;
+     }
+   }
+ });
+ ```
 
    常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
 
@@ -306,7 +306,7 @@ interface Rect {
 
    ```ts
    // Index.ets
-   //顶部避让区域
+   // 顶部避让区域
    Row() {
      Text('Top Container')
        .fontSize(40)
@@ -320,7 +320,7 @@ interface Rect {
      left: this.getUIContext().px2vp(this.leftAvoidWidth),
      right: this.getUIContext().px2vp(this.rightAvoidWidth)
    })
-   //底部避让区域
+   // 底部避让区域
      Row() {
        Text('Bottom Container')
          .fontSize(40)
@@ -339,22 +339,22 @@ interface Rect {
    另外，开发者可以根据需要对挖孔区域进行避让，示例代码如下：
 
    ```ts
-     private handleCutoutAvoidArea(cutoutAvoidArea: window.AvoidArea): void {
-       if (cutoutAvoidArea.topRect.height > 0) {
-         const topHeight = Math.max(AppStorage.get<number>('topAvoidHeight') ?? 0, cutoutAvoidArea.topRect.height);
-         AppStorage.setOrCreate('topAvoidHeight', topHeight);
-       }
-       if (cutoutAvoidArea.bottomRect.height > 0) {
-         const bottomHeight = Math.max(AppStorage.get<number>('bottomAvoidHeight') ?? 0, cutoutAvoidArea.bottomRect.height);
-         AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
-       }
-       if (cutoutAvoidArea.leftRect.width > 0) {
-         AppStorage.setOrCreate('leftAvoidWidth', cutoutAvoidArea.leftRect.width);
-       }
-       if (cutoutAvoidArea.rightRect.width > 0) {
-         AppStorage.setOrCreate('rightAvoidWidth', cutoutAvoidArea.rightRect.width);
-       }
+   private handleCutoutAvoidArea(cutoutAvoidArea: window.AvoidArea): void {
+     if (cutoutAvoidArea.topRect.height > 0) {
+       const topHeight = Math.max(AppStorage.get<number>('topAvoidHeight') ?? 0, cututAvoidArea.topRect.height);
+       AppStorage.setOrCreate('topAvoidHeight', topHeight);
      }
+     if (cutoutAvoidArea.bottomRect.height > 0) {
+       const bottomHeight = Math.max(AppStorage.get<number>('bottomAvoidHeight') ?? 0, cututAvoidArea.bottomRect.height);
+       AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
+     }
+     if (cutoutAvoidArea.leftRect.width > 0) {
+       AppStorage.setOrCreate('leftAvoidWidth', cutoutAvoidArea.leftRect.width);
+     }
+     if (cutoutAvoidArea.rightRect.width > 0) {
+       AppStorage.setOrCreate('rightAvoidWidth', cutoutAvoidArea.rightRect.width);
+     }
+   }
    ```
   
 ![zh-cn_image_0000002536554368](figures/image.png) 
