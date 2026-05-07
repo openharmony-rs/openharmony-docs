@@ -3151,6 +3151,26 @@
 						"end_line":215,
 						"name":"onclick_error_Handler",
 						"start_line":211
+					},
+					{
+						"end_line":28,
+						"name":"freeze_handler_h",
+						"start_line":25
+					},
+					{
+						"end_line":119,
+						"name":"test_timeout_handlers",
+						"start_line":112
+					},
+					{
+						"end_line":127,
+						"name":"test_freeze_handlers",
+						"start_line":121
+					},
+					{
+						"end_line":243,
+						"name":"onclick_freeze_Handler",
+						"start_line":239
 					}
 				]
 			},
@@ -3171,6 +3191,26 @@
 						"end_line":28,
 						"name":"second_error_handler",
 						"start_line":1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstFreezeHandler.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"first_freeze_handler",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondFreezeHandler.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"second_freeze_handler",
+						"start_line":16
 					}
 				]
 			}
