@@ -437,8 +437,6 @@ Invalid displayId.
 
 ## 12800023 指定的用户不存在
 
-**起始版本：** 26.0.0
-
 **错误信息**
 
 The specified user does not exist.
@@ -456,8 +454,6 @@ The specified user does not exist.
 开发者可以通过系统用户管理接口确认用户ID的有效性，或检查传入的userId参数是否正确。
 
 ## 12800024 指定的用户未在前台
-
-**起始版本：** 26.0.0
 
 **错误信息**
 
@@ -477,8 +473,6 @@ The specified user is not in the foreground.
 
 ## 12800025 跨用户操作被拒绝
 
-**起始版本：** 26.0.0
-
 **错误信息**
 
 Cross-user operation denied. Only user 0 applications are authorized for this operation.
@@ -496,8 +490,6 @@ Cross-user operation denied. Only user 0 applications are authorized for this op
 确保只有用户0的应用才调用此类跨用户操作接口。
 <!--Del-->
 ## 12800026 输入法系统面板错误
-
-**起始版本：** 26.0.0
 
 **错误信息**
 
