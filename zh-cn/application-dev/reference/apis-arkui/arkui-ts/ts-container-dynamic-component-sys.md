@@ -21,7 +21,11 @@ DynamicComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）
 
 ## 接口
 
-DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
+### DynamicComponent<sup>26+</sup>
+
+ArkTS-Dyn: DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
+
+ArkTS-Sta: DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 创建DynamicComponent组件，用于显示Worker线程中运行的Abc UI。
 
@@ -50,9 +54,10 @@ DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
-| worker | [Worker](../../apis-arkts/js-apis-worker.md) | 否 | 否 | 运行Abc的Worker。 |
+| worker | ArkTS-Dyn: [Worker](../../apis-arkts/js-apis-worker.md)<br/>ArkTS-Sta: EAWorker \| undefined | 否 | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是 | 运行Abc的Worker。 |
 | backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false。 |
 | allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false。 |
+| allowOccupied<sup>26+</sup> | boolean | 否 | 是 | 是否允许DynamicComponent占用键盘避让区域。<br/>true：允许占用键盘避让区域；false：不允许占用键盘避让区域。<br/>默认值：false。<br/>**说明：** 仅ArkTS-Sta支持此参数。 |
 
 ## 属性
 
@@ -64,7 +69,9 @@ DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 ### onError
 
-onError(callback: ErrorCallback): DynamicComponentAttribute
+ArkTS-Dyn: onError(callback: ErrorCallback): DynamicComponentAttribute
+
+ArkTS-Sta: onError(callback: ErrorCallback\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> | undefined): DynamicComponentAttribute
 
 DynamicComponent运行过程中发生异常时触发该回调（不包含与DynamicAbility断连场景）。
 
@@ -78,4 +85,4 @@ DynamicComponent运行过程中发生异常时触发该回调（不包含与Dyna
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息。 |
+| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> \| undefined | 是 | 回调函数，入参用于接收异常信息。<br/>ArkTS-Sta模式下可不传。 |
