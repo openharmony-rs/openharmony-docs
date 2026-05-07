@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-[Media Library Kit](../photoAccessHelper-overview.md)（媒体文件管理服务）提供了媒体资源的管理能力，开发者可以访问和管理相册中的媒体信息。针对不同的媒体资源类型，系统会提供相应的判断方式，本文档特提供了相关示例方法以便开发者使用。
+[Media Library Kit](../photoAccessHelper-overview.md)（媒体文件管理服务）提供了媒体资源的管理能力，开发者可以访问和管理相册中的媒体信息。针对不同的媒体资源类型，系统会提供相应的判断方式，本文档提供了相关示例方法以便开发者使用。
 
 ## 使用mimeType字段来判断资源类型
 
@@ -25,7 +25,7 @@ function getMediaTypeByMimeType(mimeType: string): string {
   } else if (mimeType.startsWith('image/')) {
     return 'image';
   }
-  return 'unKnown';
+  return 'unknown';
 }
 ```
 
