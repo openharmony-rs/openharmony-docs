@@ -136,7 +136,7 @@
    <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   //添加点击事件，触发TestHiCollieTimerNdk方法。
+   // 添加点击事件，触发TestHiCollieTimerNdk方法。
    Button('TestHiCollieTimerNdk')
      .type(ButtonType.Capsule)
      .margin({
