@@ -35,7 +35,7 @@
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  export struct WordBreakd {
+  struct WordBreakd {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -90,7 +90,7 @@
   
   @Entry
   @Component
-  export struct HeightAdaptivePolicy {
+  struct HeightAdaptivePolicy {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -170,7 +170,7 @@
   
   @Entry
   @Component
-  export struct LengthMetric {
+  struct LengthMetric {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -278,7 +278,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  export struct DisplayedTogether {
+  struct DisplayedTogether {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -393,7 +393,7 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
   ``` TypeScript
   @Entry
   @Component
-  export struct TextLong {
+  struct TextLong {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -429,7 +429,7 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
   ``` TypeScript
   @Entry
   @Component
-  export struct TextLongTow {
+  struct TextLongTow {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
