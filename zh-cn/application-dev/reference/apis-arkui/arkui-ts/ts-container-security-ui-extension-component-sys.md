@@ -212,7 +212,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 **错误码：**
 
-以上错误码的详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
+以下错误码的详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
