@@ -52,7 +52,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | isTransferringCaller | boolean | 否 | 是 | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。</br> 默认值：false |
 | placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。 |
-| dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI。 |
+| dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。<br/>默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI |
 
 ## SecurityDpiFollowStrategy
 
