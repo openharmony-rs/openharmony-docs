@@ -1919,6 +1919,54 @@ attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModi
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | modifier | AttributeModifier\<[SelectAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | Select组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
+### menuBackgroundBlurStyleOptions
+
+ArkTS-Dyn: menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurStyleOptions>)
+
+ArkTS-Sta: menuBackgroundBlurStyleOptions(blurStyle: BackgroundBlurStyleOptions | undefined)
+
+设置Select组件的背景模糊效果。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| blurStyle  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)><br/>ArkTS-Sta: [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) \| undefined | 是   | 设置Select组件的背景模糊效果。<br/>当blurStyle的值为undefined时，恢复默认值，默认值请参考BackgroundBlurStyleOptions类型说明。 |
+
+### menuBackgroundEffect
+
+ArkTS-Dyn: menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
+
+ArkTS-Sta: menuBackgroundEffect(effect: BackgroundEffectOptions | undefined)
+
+设置Select组件的背景属性。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名  | 类型                                                         | 必填 | 说明                                       |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| effect | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)><br/>ArkTS-Sta: [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) \| undefined | 是   | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。<br/>当effect的值为undefined时，恢复默认值，默认值请参考BackgroundEffectOptions类型说明。 |
+
 ## ArrowPosition<sup>10+</sup>枚举说明
 
 箭头的位置。
