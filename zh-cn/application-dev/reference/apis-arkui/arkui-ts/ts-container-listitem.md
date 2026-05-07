@@ -433,7 +433,11 @@ struct ListItemExample2 {
     Row() {
       Button('Delete').margin('4vp')
       Button('Set').margin('4vp').onClick(() => {
-        this.scroller.closeAllSwipeActions();
+        try {
+          this.scroller.closeAllSwipeActions();
+        } catch (error) {
+          console.info('Failed to close all swipe actions:', error);
+        }
       })
     }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
   }

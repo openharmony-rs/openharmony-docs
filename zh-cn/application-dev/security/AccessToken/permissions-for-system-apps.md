@@ -5936,3 +5936,17 @@
 **支持设备**：General
 
 **起始版本**：26.0.0
+
+## ohos.permission.MANAGE_AOD
+
+通过API调用AOD Service，触发进入或退出AOD、状态管理等接口时，需要校验该权限。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
