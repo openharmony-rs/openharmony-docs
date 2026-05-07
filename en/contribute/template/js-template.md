@@ -25,16 +25,92 @@ For a property or interface table, if a tag has the same value for all the items
 
 | d.ts Tag| Description| Document Field|
 | ---------- | ---- | ------- |
-| @since | Version description| 1. Use the greater-than sign (>) followed by a space to indent the description about the initial version of the module. Unless otherwise marked, all APIs in the module have the same initial version.<br>2. When introducing an API to an existing module, use the `<sup>` tag to mark its earliest version. The format is `<sup>versionNumber+</sup>`, for example, `<sup>7+</sup>`.  <br>  <br> When introducing a property to an existing module, suffix the `<sup>` tag to the new property name, for example, `newProperty<sup>7+</sup>`.<br>When introducing a method to an existing module, suffix the `<sup>` tag to the method name, for example, `sim.getSimIccId<sup>7+</sup>`. The same rule applies to new interfaces, classes, and enums.<br>Due to the rectification of anonymous objects, the version number of the outer element of some APIs is later than that of the inner element. To avoid any confusion for developers, a uniform explanation should be added in the **Interface Description** section: To standardize the definition of anonymous objects, the element definitions have been modified in API version *XX*. The initial version information of the historical anonymous objects has been retained, which may result in the outer element's @since version number being later than the inner element's version number. However, this does not affect the use of the API.|
-| @deprecated | Deprecated description| Do not delete the deprecated content from the document. Instead, suffix `deprecated` as a superscript to the content, and use the greater-than sign (>) to introduce the initial version and deprecated version.<br>Example: abandonmentMethod<sup>(deprecated)</sup><br>> **NOTE**<br>> This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead.<br>If the content within the table is deprecated, you do not need to use reference syntax. Just explain it directly in the body text. Examples:<br> **Note**: This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead.|
+| @since | Version description| Each module and API must have an initial version description.<br>**Since API version 26.0.0:**<br>APIs use three-segment version numbers. Do not use superscript tags for the initial version of an API. In the module or API description, use the fixed sentence `**Since:** 26.0.0`. Place it on the first line below the description.<br>**Before API version 26.0.0:**<br>1. Use the greater-than sign (>) to describe the initial version of an API. If an API does not have an initial version marker, it uses the same initial version as the module by default.<br>2. For APIs added to an existing module, use the `<sup>` tag to mark the corresponding version. The format is `<sup>versionNumber+</sup>`, for example, `<sup>7+</sup>`.<br>Example: If a module exists in API version 6 and a property is added in API version 7, suffix the property with the marker, for example, `newAttribute<sup>7+</sup>`.<br>If a method is added, suffix the method title with the marker, for example, `sim.getSimIccId<sup>7+</sup>`. The same rule applies to interfaces, classes, and enums.<br>**Special case to note**: Due to the rectification of anonymous objects, the version number of the outer element of some APIs may be later than that of the inner element. To avoid confusion for developers, add the following explanation to the **Interface Description** section for such APIs: To standardize the definition of anonymous objects, the element definitions have been modified in API version *XX*. The initial version information of the historical anonymous objects has been retained, which may result in the outer element's @since version number being later than the inner element's version number. However, this does not affect the use of the API. |
+| @deprecated | Deprecated description| Do not delete deprecated content. Instead, mark it with the superscript `(deprecated)`.<br>**Since API version 26.0.0:**<br>Use fixed sentences in the module or API description. Place the deprecated version on the line after the initial version. Example:<br>Method description.<br>**Since:** 26.0.0<br>**Deprecated since:** x.0.0<br>**Substitutes:** [newMethod]\(#newmethod)<br>**Before API version 26.0.0:**<br>Use the greater-than sign (>) to describe both the initial version and deprecated version.<br>Example: abandonmentMethod<sup>(deprecated)</sup><br>> **NOTE**<br>> This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead.<br>If the content within a table is deprecated, you do not need to use reference syntax. Describe it directly in the body text. Example:<br> **Note**: This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead. |
 | @FAModelOnly / @StageModelOnly | Model restriction description| **Model restriction**: This API can be used only in the FA model.<br> **Model restriction**: This API can be used only in the stage model.|
-| @form | Widget capability description| **Widget capability**: Since API version *x*, this feature is supported in ArkTS widgets.|
-| @atomicservice | Atomic service description| **Atomic service API**: This API can be used in atomic services since API version *x*.|
+| @form | Widget capability description| **Since API version 26.0.0:**<br>**Widget capability**: This API can be used in ArkTS widgets since version *x*.<br>**Before API version 26.0.0:**<br>**Widget capability**: This API can be used in ArkTS widgets since API version *x*. |
+| @atomicservice | Atomic service description| **Since API version 26.0.0:**<br>**Atomic service API**: This API can be used in atomic services since version *x*.<br>**Before API version 26.0.0:**<br>**Atomic service API**: This API can be used in atomic services since API version *x*. |
 | @systemapi | System API description| **System API**: This is a system API.|
-| @syscap | System capability description| **System capability**: SystemCapability.*A.B*|  1. If only one permission is required for using the API, use the following format:<br>    **Required permissions**: ohos.permission.examplePermission<br>2. If multiple permissions are required for using the API, provide the permissions with **and** or **or** in the following format:<br>    **Required permissions**: ohos.permission.examplePermissionA and ohos.permission.examplePermissionB<br>    **Required permissions**: ohos.permission.examplePermissionA or ohos.permission.examplePermissionB|
-| @permission | Permission description|  1. If only one permission is required for using the API, use the following format:<br>    **Required permissions**: ohos.permission.examplePermission<br>2. If multiple permissions are required for using the API, provide the permissions with **and** or **or** in the following format:<br>    **Required permissions**: ohos.permission.examplePermissionA and ohos.permission.examplePermissionB<br>    **Required permissions**: ohos.permission.examplePermissionA or ohos.permission.examplePermissionB<br>3. When there is a version change involved, follow the current version's permission requirement after **Required permissions**, and describe the historical version's permission requirement in a new line as a list. Example:<br>**Required permissions**: ohos.permission.A<br>- ohos.permission.A and ohos.permission.B for API x-(y-1)<br>- ohos.permission.A from API y<br>4. When permissions are required only in certain fixed scenarios, follow the @permission in the .d.ts file consistently after **Required permissions**, and then supplement with a situation description. There are two types of situations. When the situation is relatively simple, use parentheses to add a description. When the situation is more complex, use a new line for the description.<br>Example 1:<br> **Required permissions**: ohos.permission.A (required only when the window type is **AA**.)<br>Example 2:<br> **Required permissions**: ohos.permission.A<br>- When the application is in situation xx, ohos.permission.B is also required.<br>- When the application is in situation yy, no permission is required.|
+| @syscap | System capability description| **System capability**: SystemCapability.xxx.xxx |
+| @permission | Permission description| 1. If only one permission is required, use the following format:<br>    **Required permissions**: ohos.permission.xxxx<br>2. If multiple permissions are required, separate them with **and** or **or** in the following format:<br>    **Required permissions**: ohos.permission.A and ohos.permission.B<br>    **Required permissions**: ohos.permission.A or ohos.permission.B<br>3. When permission requirements vary by version, describe them in a list based on the actual requirements of each version, with later versions listed first. Example:<br>**Required permissions**:<br>- API version y+: ohos.permission.B<br>- API version x-(y-1): ohos.permission.A<br>4. If permissions are required only in certain fixed scenarios, keep the permission after **Required permissions** consistent with @permission in the **d.ts** file, and then add the scenario description. There are two cases: If the scenario is simple, add the description in parentheses. If the scenario is complex, describe it on new lines.<br>Example 1:<br> **Required permissions**: ohos.permission.A (required only when the created window type is AA)<br>Example 2:<br> **Required permissions**: ohos.permission.A<br>- When the application is in situation xx, ohos.permission.B must also be requested.<br>- When the application is in situation yy, no permission needs to be requested. |
 | @extends | Inheritance|  If the tag is carried or the extends relationship exists but the tag is not carried, clearly state the following information: *ExampleA* inherits from *ExampleB* (provide the link of *ExampleB*).|
-| @DecoratorName| Decorator| If a class, interface, or property is annotated with a decorator, the relevant description must clearly indicate "Decorator: @DecoratorName", for example, **Decorator**: @Sendable.|
+| @DecoratorName| Decorator type| If a class, interface, or property is annotated with a decorator, the relevant description must clearly indicate "**Decorator**: @DecoratorName", for example, **Decorator**: @Sendable. |
+
+## Writing Requirements for System APIs and Public APIs
+
+To support the release of both the Full SDK and Public SDK, API reference documents for System APIs and Public APIs must be written in different Markdown files.
+
+Depending on whether the API definition file of a module contains system APIs, the module can fall into one of the following three cases:
+
+* [The entire module is a public API](#the-entire-module-is-a-public-api)
+* [The entire module is a system API](#the-entire-module-is-a-system-api)
+* [A module contains both system APIs and public APIs](#a-module-contains-both-system-apis-and-public-apis)
+
+> **Tip: How do I determine which case applies?**
+
+> Use the [d.ts file of the module](https://gitcode.com/openharmony/interface_sdk-js/tree/master/api) as the reference:
+>
+> - If the entire module does not contain the `@systemapi` tag, the entire module is a public API.
+> - If the entire module is annotated with the `@systemapi` tag, the entire module is a system API.
+>   Sometimes the entire module is not annotated with the `@systemapi` tag, but every API in the module is annotated with `@systemapi`. In this case, the entire module is very likely to be a system API, but you still need to confirm with the API designer. If the tag is missing from the module, submit an issue for handling.
+> - Most other cases indicate that the module contains both system APIs and public APIs.
+
+### The Entire Module Is a Public API
+
+No special requirements.
+
+### The Entire Module Is a System API
+
+1. **File name**: End the file name with `-sys.md`, for example, `xxx-sys.md`.
+2. **Document title**: Use `# @ohos.xxx (xxx) (System API)`.
+
+> **NOTE**
+>
+> - Use English parentheses.
+> - For a guide corresponding to system APIs, use `# @ohos.xxx (xxx) (for System Applications Only)` as the title.
+
+3. **Module description**: Add `This module provides system APIs.` to the module description.
+    Example:
+
+    API description xxxxx.
+
+    > **NOTE**
+    >
+    > The APIs of this module are system APIs.
+
+### A Module Contains Both System APIs and Public APIs
+
+1. **File location**: Place the system API file and public API file in the same folder.
+2. **File name**: Add `-sys.md` to the public API file name to form the system API file name, that is, name it `xxx-sys.md`.
+3. **Document title**: Use `# @ohos.xxx (xxx) (System API)`.
+4. **Module description**: Add `This page contains only system APIs of this module. For other public APIs, see [xxx](js-apis-xxx.md).` to the module description.
+
+    Example:
+
+    API description xxxxx.
+
+    > **NOTE**
+    >
+    > This page contains only system APIs of this module. For other public APIs, see [@ohos.app.ability.common (Ability Common Module)](js-apis-app-ability-common.md).
+
+### Other Notes
+
+1. In the Readme file, place the system API files after the public API files, and use the `<!--Del--><!--DelEnd-->` deletion tags.
+
+    Example:
+
+    ```md
+    // Readme-EN.md
+
+    - [@ohos.app.ability.Ability (Ability)](js-apis-app-ability-ability.md)
+    - [@ohos.app.ability.AbilityConstant (Ability Constants)](js-apis-app-ability-abilityConstant.md)
+    <!--Del-->
+    - [@ohos.app.ability.AbilityConstant (Ability Constants)(System API)](js-apis-app-ability-abilityConstant-sys.md)
+    - [@ohos.app.ability.application (Application)(System API)](js-apis-app-ability-application-sys.md)
+    <!--DelEnd-->
+    ```
+
+2. System API files can link to public API files, but public API files must not link to system API files. Otherwise, broken links will occur when public documents are released.
 
 The following describes the instructions for writing a specific API reference document.
 
@@ -46,7 +122,9 @@ The following describes the instructions for writing a specific API reference do
 >
 > - **Document title**: Use phrases that summarize the module functionalities. Examples: **Ability** and **SIM Card Management**
 > - **Heading levels**: Use the document title as the level-1 heading, which is prefixed with `#` followed by a space. Use the properties, functions, classes, interfaces, enums, and types under the namespace as level-2 headings, which are prefixed with `##` followed by a space. Use the properties and functions under classes as level-3 headings, which are prefixed with `###` followed by a space.
-> - **Initial version description**: Use the greater-than symbol (**>**) to indent the description about the initial version of the module. Use a line break after **NOTE**.<br>Place the version description after the module description. A module has only one initial version.<br>Use the following sentence: "The initial APIs of this module are supported since API version *x*. Newly added APIs will be marked with a superscript to indicate their earliest API version." Change ***x*** to the actual version number.
+> - **Initial version description**: Place the version description after the module description. A module has only one initial version.<br>Use the standard sentence "`**Since:** x`". Change *x* to the actual version number.
+>
+>    For the sentence patterns used before API version 26.0.0, see the description of @since in [Mappings Between d.ts Tags and Document Fields](#mappings-between-dts-tags-and-document-fields).
 
 Describe the module from its functionalities, use cases, and recommendations in this section. 
 
@@ -80,9 +158,7 @@ You are advised to use **ArrayList** when elements in a container need to be fre
 
 
 
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+**Since:** 26.0.0
 
 ## Modules to Import
 
@@ -114,13 +190,13 @@ import { call } from '@kit.TelephonyKit';
 >
 > - For an optional property, if only fixed fields are supported, describe them. A property defined with a question mark (?) is optional.
 >
-> - If a property is annotated with a decorator, the relevant description must clearly indicate "Decorator".
+> - If a property is annotated with a decorator, the relevant description must clearly indicate "Decorator type".
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 | Name            | Type                                     | Read Only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| pluggedType      | [BatteryPluggedType]\(#batterypluggedtype) | Yes  | No  | Charger type of the current device.<br>**Decorator**: @Trance            |
+| pluggedType      | [BatteryPluggedType]\(#batterypluggedtype) | Yes  | No  | Charger type of the current device.<br>**Decorator:** @Trance           |
 | isBatteryPresent | boolean                                   | Yes  | No  | Whether the battery is supported or present.|
 
 ## Constants
@@ -131,7 +207,7 @@ import { call } from '@kit.TelephonyKit';
 > - Some constants are used to define read-only variables and have no values. In this case, the table contains four columns: Name, Type, Read Only, and Description.
 > - If a property is of a custom type, create a link to the corresponding interface or enum.
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 | Name            | Type                               |  Value     | Description                                      |
 | ---------------- | -----------------------------------| -------- | ------------------------------------------ |
@@ -171,17 +247,19 @@ Provide the method call mode in the following format: (keyword, if available) me
 
 Describe the method. For details, see the fourth and fifth points in "Writing Instructions" above.
 
+**Since:** 26.0.0
+
 **Model restriction**: This API can be used only in the FA model. (Delete this part if it is not involved.)
 
 **System API**: This is a system API. (Delete this part if it is not involved.)
 
-**Required permissions**: ohos.permission.examplePermission (Delete this part if no permission is involved.)
+**Required permissions**: ohos.permission.xxx (Delete this part if no permission is involved.)
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 **Parameters** (This part is optional. Delete it if there is no parameter.)
 
-| Name      | Type                                         | Mandatory| Description                                                        |
+| Name | Type                                         | Mandatory| Description                                                        |
 | ------------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | parameterOne | number \| string \| [CustomType](#classinterface) | Yes  | The parameter description must include the meaning and purpose of the parameter, the scenarios in which the parameter is used, suggestions for selection, and relationships between parameters.<br>The parameter value description must include the value range, unit, default value, principles for selection, or recommended value. If the boundary value involves restrictions/exceptions, describe the specific scenario. If there is a fixed format, provide a format example, especially for URIs.<br>Provide a link for each custom parameter type.|
 | callback     | Callback\<Array<[CustomType](#classinterface)>>   | No  | Describe the parameter. For an optional parameter, describe the consequences if it is not specified.<br>Example: If this parameter is not set, this method unsubscribes from all callbacks corresponding to **type**.<br>For details about how to write callback methods, see item 14 in "General Writing Instructions."|
@@ -237,13 +315,15 @@ Provide the method name in the following format: (`static` if it is a static met
 
 Describe the method. For details, see the fourth and fifth points in "Writing Instructions" under [Methods](#methods).
 
+**Since:** 26.0.0
+
 **Model restriction**: This API can be used only in the FA model. (Delete this part if it is not involved.)
 
 **System API**: This is a system API. (Delete this part if it is not involved.)
 
-**Required permissions**: ohos.permission.examplePermission (Delete this part if no permission is involved.)
+**Required permissions**: ohos.permission.xxx (Delete this part if no permission is involved.)
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 **Parameters** (This part is optional. Delete it if there is no parameter.)
 
@@ -286,11 +366,11 @@ Describe the method. For details, see the fourth and fifth points in "Writing In
 > - If the class or interface contains both properties and methods, write the properties above the methods. Write their actual names in separate level-3 headings.
 >    If the API contains only properties, you do not need to create a level-3 heading. Instead, use a table to display the properties.
 >
-> - If a property is annotated with a decorator, the relevant description must clearly indicate "Decorator".
+> - If a class or interface is annotated with a decorator, the relevant description must clearly indicate "Decorator type".
 
 Describe the class or interface. If there are usage restrictions, describe them as well, for example, whether there is a prerequisite and whether an instance needs to be created by using any method.
 
-**Decorator**: @Sendable
+**Decorator type**: @Sendable
 
 ### Properties
 
@@ -317,7 +397,9 @@ Describe the class or interface. If there are usage restrictions, describe them 
 
 Provide a brief description of the enum type. Example: Enumerates the charger types.
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 | Name| Value  | Description                      |
 | ---- | ---- | -------------------------- |
@@ -347,7 +429,9 @@ Provide a brief description of the type. Example: Enumerates the value types.
 
 Provide the logic for obtaining the actual value of this type. Example: The value type is the union set or intersection set in the following table.
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 | Type     | Description                         |
 | -----------| ---------------------------- |
@@ -361,7 +445,9 @@ Provide the logic for obtaining the actual value of this type. Example: The valu
 
 (Provide the definition of the type here.) type Xxx\<Aaa, Bbb> = (param1: number, param2: string) => Interface1
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 **Parameters** (This part is optional. Delete it if there is no parameter.)
 
@@ -382,7 +468,9 @@ Provide the logic for obtaining the actual value of this type. Example: The valu
 
 *Provide the specific definition form of type here: type Xxx = { aaa: string; bbb?: number; }*
 
-**System capability**: SystemCapability.*A.B* (This part is mandatory.)
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
 
 | Name  | Type                                | Mandatory| Description                                                        |
@@ -466,6 +554,7 @@ This API has known issues. For details, see "Known Issues" (linked to the known 
 
 | Change Description                                                                | Date        |
 | ----------------------------------------------------------------------- | ------------ |
+| Added the writing method for three-segment version descriptions in API version 26.0.0 and later. | 2026/03/20 |
 | Revised the description of the @deprecated tag and added the writing method in the table.| 2025/12/03 |
 | Added the writing method of classes, interfaces, and properties modified with decorators.| 2025/09/19|
 | Added the "FAQs for API Reference Writing" section to provide the API reference writing method and common problems in special scenarios.| 2025/07/22|
