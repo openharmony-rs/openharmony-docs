@@ -171,6 +171,9 @@ interface Rect {
 
 1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。  
 
+
+2. 调用[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
+
    ```ts
    // EntryAbility.ets
    import { window } from '@kit.ArkUI';
@@ -187,36 +190,9 @@ interface Rect {
    
          try {
            // 获取应用主窗口
-           const mainWindow: window.Window = windowStage.getMainWindowSync(); 
+           const mainWindow: window.Window = windowStage.getMainWindowSync();
            //设置窗口进入沉浸式布局
-           await mainWindow.setWindowLayoutFullScreen(true);
-         } catch (e) {
-           console.error(`Failed to set window layout fullscreen`);
-         }
-       });
-     }
-   }
-   ```
-
-2. 调用[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
-
-   ```ts
-   // EntryAbility.ets
-   import { window } from '@kit.ArkUI';
-   import { UIAbility } from '@kit.AbilityKit';
-   
-   export default class EntryAbility extends UIAbility {
-     // ...
-    
-     onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', (err) => {
-         if (err.code) {
-           return;
-         }
-   
-         try {
-           // 获取应用主窗口
-           const mainWindow: window.Window = windowStage.getMainWindowSync(); 
+           await mainWindow.setWindowLayoutFullScreen(true); 
            // 设置状态栏隐藏
            mainWindow.setSpecificSystemBarEnabled('status', false); 
          } catch (e) {
