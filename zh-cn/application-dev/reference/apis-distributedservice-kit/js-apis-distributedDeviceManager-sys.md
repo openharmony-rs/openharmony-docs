@@ -35,7 +35,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -49,7 +49,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -66,7 +66,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -84,7 +84,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -103,7 +103,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -146,7 +146,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -166,7 +166,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -188,7 +188,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -207,7 +207,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -234,7 +234,7 @@ ArkTS-Sta: replyUiAction(action: int, actionResult: string): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -320,7 +320,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -383,7 +383,7 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -432,7 +432,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -482,7 +482,7 @@ offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -526,7 +526,7 @@ ArkTS-Sta: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): voi
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -596,7 +596,7 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -658,7 +658,7 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -738,7 +738,7 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -810,7 +810,7 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -892,7 +892,7 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -977,7 +977,7 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1063,7 +1063,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1127,7 +1127,7 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 24
 
@@ -1195,7 +1195,7 @@ restoreLocalDeviceName(): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 24
 
@@ -1239,7 +1239,7 @@ restoreLocalDeivceName(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
