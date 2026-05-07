@@ -21,7 +21,7 @@ DynamicComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）
 
 ## 接口
 
-DynamicComponent(options: DynamicOptions)
+DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 创建DynamicComponent组件，用于显示Worker线程中运行的Abc UI。
 
@@ -64,7 +64,7 @@ DynamicComponent(options: DynamicOptions)
 
 ### onError
 
-onError(callback: ErrorCallback)
+onError(callback: ErrorCallback): DynamicComponentAttribute
 
 DynamicComponent运行过程中发生异常时触发该回调（不包含与DynamicAbility断连场景）。
 
