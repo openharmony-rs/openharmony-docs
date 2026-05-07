@@ -40,6 +40,7 @@
       - [AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)
       - [录屏常见问题](avscreencapture-faqs.md)
     - [使用AVScreenCapture录屏写文件(C/C++)](using-avscreencapture-for-file.md)
+    - [使用AVScreenCapture窗口级录屏写文件(C/C++)](using-avscreencapture-for-file-with-window.md)
     - [屏幕录制支持矩形区域录制(C/C++)](video-supports-rectangular-area-recording.md)
   - 媒体信息查询<!--media-info-c-->
     - [使用AVMetadataExtractor获取元数据(C/C++)](using-ndk-avmetadataextractor-for-media.md)
