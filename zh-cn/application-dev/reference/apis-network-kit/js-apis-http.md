@@ -1336,7 +1336,7 @@ httpRequest.off("dataSendProgress");
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) | 否 | 是 | 支持传输客户端证书。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | dnsOverHttps<sup>11+</sup> | string | 否 | 是 | 设置使用HTTPS协议的服务器进行DNS解析。<br />- 参数必须根据以下格式进行URL编码："https:// host:port/path"。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | dnsServers<sup>11+</sup> | Array\<string\> | 否 | 是 | 设置指定的DNS服务器进行DNS解析。<br />- 最多可以设置3个DNS解析服务器。如果有3个以上，只取前3个。<br />- 服务器必须是IPV4或者IPV6地址。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| maxLimit<sup>11+</sup>   | number   | 否 | 是 | 响应消息的最大字节限制。<br />默认值为5\*1024\*1024，以字节为单位。最大值为100\*1024\*1024，以字节为单位。<br />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| maxLimit<sup>11+</sup>   | number   | 否 | 是 | 响应消息的最大字节限制。<br />默认值为5\*1024\*1024，以B为单位。最大值为100\*1024\*1024，以B为单位。<br />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | multiFormDataList<sup>11+</sup> | Array<[MultiFormData](#multiformdata11)> | 否 | 是 | 当'content-Type'为'multipart/form-data'时，则上传该字段定义的数据字段表单列表。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | certificatePinning<sup>12+</sup> | [CertificatePinning](#certificatepinning12) \| CertificatePinning[] | 否 | 是 | 支持动态设置证书锁定配置，可以传入单个或多个证书PIN码。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | addressFamily<sup>15+</sup> | [AddressFamily](#addressfamily15) | 否 | 是 | 支持解析目标域名时限定地址类型。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -1448,7 +1448,7 @@ request方法回调函数的返回值类型。
 
 ## PerformanceTiming<sup>11+</sup>
 
-性能打点(单位：毫秒)。
+性能打点(单位：ms)。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1497,8 +1497,8 @@ HTTP请求交互的详细信息。
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-|  receiveSize        | number | 否   | 否  | 已接收的数据量（单位：字节）。   |
-| totalSize| number | 否   | 否 | 总共要接收的数据量（单位：字节）。 |
+|  receiveSize        | number | 否   | 否  | 已接收的数据量（单位：B）。   |
+| totalSize| number | 否   | 否 | 总共要接收的数据量（单位：B）。 |
 
 ## DataSendProgressInfo<sup>11+</sup>
 
@@ -1512,8 +1512,8 @@ HTTP请求交互的详细信息。
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| sendSize        | number | 否   | 否  | 每次发送的数据量(单位：字节)。  |
-| totalSize | number | 否   | 否 | 总共要发送的数据量(单位：字节)。 |
+| sendSize        | number | 否   | 否  | 每次发送的数据量(单位：B)。  |
+| totalSize | number | 否   | 否 | 总共要发送的数据量(单位：B)。 |
 
 ## MultiFormData<sup>11+</sup>
 
@@ -1585,7 +1585,7 @@ let httpResponseCache = http.createHttpResponseCache();
 
 - **`no-store`**：表示不允许缓存资源，每次请求都必须从服务器获取资源。
 
-- **`max-age`**：指定缓存的最大时间(以秒为单位)。例如，`Cache-Control: max-age=3600`表示缓存的有效期为1小时。
+- **`max-age`**：指定缓存的最大时间(以s为单位)。例如，`Cache-Control: max-age=3600`表示缓存的有效期为1小时。
 
 - **`public`**：表明响应可以被任何对象(包括：发送请求的客户端，代理服务器等)缓存。
 
