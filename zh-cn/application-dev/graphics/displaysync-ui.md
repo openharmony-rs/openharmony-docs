@@ -63,7 +63,7 @@
    > 订阅函数运行于UI主线程，故涉及UI线程的耗时操作不应运行于订阅函数中，以免影响性能。
 
    ArkTS-Dyn示例：
-   <!-- @[display_sync_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    CreateDisplaySyncSlow() {
@@ -129,7 +129,7 @@
 5. 开始每帧回调。
 
    ArkTS-Dyn示例：
-   <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    Button('Start')
@@ -193,31 +193,14 @@
    > 创建的DisplaySync实例在start使能后需要aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
 
    ArkTS-Dyn示例：
-   <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    aboutToDisappear() {
-     let draw30 = (intervalInfo: displaySync.IntervalInfo) => {
-       if (this.isBigger_30) {
-         this.drawFirstSize += 1;
-         if (this.drawFirstSize > 150) {
-           this.isBigger_30 = false;
-         }
-       } else {
-         this.drawFirstSize -= 1;
-         if (this.drawFirstSize < 25) {
-           this.isBigger_30 = true;
-         }
-       }
-     };
- 
      if (this.backDisplaySyncSlow) {
-       // 取消订阅函数
-       this.backDisplaySyncSlow.off("frame", draw30);
        this.backDisplaySyncSlow.stop();
        this.backDisplaySyncSlow = undefined;
      }
- 
      if (this.backDisplaySyncFast) {
        this.backDisplaySyncFast.stop();
        this.backDisplaySyncFast = undefined;
@@ -277,7 +260,7 @@
 6. 结束每帧回调。
 
    ArkTS-Dyn示例：
-   <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
    
    ``` TypeScript
    Button('Stop')
@@ -327,6 +310,6 @@
 <!--RP1-->
 ## 相关实例
 
-- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySync)
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySync)
 - [DisplaySync (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySyncSta)
 <!--RP1End-->
