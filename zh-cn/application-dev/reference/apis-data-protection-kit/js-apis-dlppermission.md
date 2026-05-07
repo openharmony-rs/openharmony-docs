@@ -1505,7 +1505,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4MB，超出此范围返回null。 |
-| options<sup>26+</sup> | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 是 | 企业DLP文件的查询选项。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 是 | 企业DLP文件的查询选项。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1737,9 +1737,11 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.DlpConnManager.unregisterPlugin();
 ```
 
-## DlpFileQueryOptions<sup>26+</sup>
+## DlpFileQueryOptions
 
 表示企业DLP文件的查询选项。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1747,9 +1749,9 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| classificationLabel | string | 否 | 是 | 表示企业DLP文件的用户定义分类标签。最大为255字节。 |
+| classificationLabel | string | 否 | 是 | 表示企业DLP文件的用户定义分类标签。单位为byte，最大长度为255字节。 |
 
-## dlpPermission.queryOpenedEnterpriseDlpFiles<sup>26+</sup>
+## dlpPermission.queryOpenedEnterpriseDlpFiles
 
 queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -1759,7 +1761,8 @@ queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&l
 >
 > - 该接口仅能查询调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件，无法查询其他应用生成的企业DLP文件。
 > - 相同分类标签的只读企业DLP文件在同一个沙箱中打开。如果一个沙箱中打开了多个相同标签的只读企业DLP文件，则查询结果返回所有该沙箱打开过文件的URI（包括手动关闭的文件）。
-> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则查询所有标签的所有企业DLP文件。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1771,13 +1774,13 @@ queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。未指定时查询所有企业DLP文件。|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。<br>若参数未指定或为空字符串，则查询所有企业DLP文件。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回已打开的目标企业DLP文件的URI列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回已打开的目标企业DLP文件的URI列表。 |
 
 **错误码：**
 
@@ -1815,8 +1818,9 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 >**说明：**
 >
-> - 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件。
-> - 如果未指定**options**，或**options**中的**classificationLabel**未指定或为空字符串，则关闭所有企业DLP文件。
+> 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件。
+  
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1828,13 +1832,13 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。未指定时关闭所有企业DLP文件。|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。<br>若参数未指定或为空字符串，则关闭所有企业DLP文件。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
