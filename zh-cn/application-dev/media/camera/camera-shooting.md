@@ -34,20 +34,23 @@
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)创建拍照输出流。
 
    <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   ```ts
-   function getPhotoOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
-     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
-     if (!photoProfilesArray || photoProfilesArray.length === 0) {
-       console.error("photoProfilesArray is null or []");
-     }
-     let photoOutput: camera.PhotoOutput | undefined = undefined;
-     try {
-       photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to createPhotoOutput. error: ${err}`);
-     }
-     return photoOutput;
+   
+   ``` TypeScript
+     getPhotoOutput(cameraManager: camera.CameraManager,
+       cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
+       let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
+       if (!photoProfilesArray || photoProfilesArray.length === 0) {
+         console.error('photoProfilesArray is null or []');
+       }
+       let photoOutput: camera.PhotoOutput | undefined = undefined;
+       try {
+         this.photoProfileObj = photoProfilesArray[0]
+         photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to createPhotoOutput. error: ${err}`);
+       }
+       return photoOutput;
    }
    ```
 
