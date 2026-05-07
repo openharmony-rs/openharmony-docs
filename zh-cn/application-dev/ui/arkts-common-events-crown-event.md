@@ -24,7 +24,7 @@
 >
 >  - 组件对表冠事件的接收受自身获焦状态影响，接收到BEGIN后，如果失焦，则无法继续再接收到后续的UPDATE和END。
 
-当组件需要获取旋转角度等信息时，可以通过onDigitalCrown接收表冠事件来获得上报信息。以下以Text组件为例，介绍表冠事件开发的基本步骤及开发过程中需要注意的事项。
+当组件需要获取旋转角度等信息时，可以通过[onDigitalCrown](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#ondigitalcrown)接收表冠事件来获得上报信息。以下以[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件为例，介绍表冠事件开发的基本步骤及开发过程中需要注意的事项。
 
 1. 组件获焦
 
