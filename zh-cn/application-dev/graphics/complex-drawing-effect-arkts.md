@@ -35,16 +35,6 @@
    import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI';
    import { common2D, drawing } from '@kit.ArkGraphics2D';
    ```
-   ArkTS-Sta示例：
-
-   <!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
-
-   ``` TypeScript
-   import { DrawContext, FrameNode, NodeController, RenderNode, UIContext, Entry, Component, Row, Column, Button, NodeContainer, FlexAlign } from '@kit.ArkUI';
-   import { common2D, drawing } from '@kit.ArkGraphics2D';
-   ```
-
-   ArkTS-Dyn示例：
 
    <!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
@@ -72,7 +62,15 @@
      canvas.detachBrush();
    }
    ```
+
    ArkTS-Sta示例：
+
+   <!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+
+   ``` TypeScript
+   import { DrawContext, FrameNode, NodeController, RenderNode, UIContext, Entry, Component, Row, Column, Button, NodeContainer, FlexAlign } from '@kit.ArkUI';
+   import { common2D, drawing } from '@kit.ArkGraphics2D';
+   ```
 
    <!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw_sta/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
