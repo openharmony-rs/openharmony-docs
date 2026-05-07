@@ -8,6 +8,10 @@ makeObserved接口可以将[Array](#makeobserved与array配合使用)、[Map](#m
 
 由makeObserved转换的数据，即使不使用状态变量装饰器，也能观察其内部属性变化。
 
+从API版本26.0.0开始，makeObserved支持通过重载参数`allowDeep`控制观察深度。不传`allowDeep`时，与原有定义保持一致，为深度观察；传入`true`时，同样为深度观察；传入`false`时，仅观察一层属性变化，不继续观察嵌套对象属性的变化。
+
+对于built-in类型（Array、Map、Set、Date），从API版本26.0.0开始，开发者也可以直接使用[ObservedArray/ObservedMap/ObservedSet/ObservedDate](./arkts-static-new-observed-built-in-types.md)创建可观察实例。
+
 在静态语言上下文中使用时，需要导入[UIUtils](../../reference/apis-arkui/js-apis-stateManagement-static.md#uiutils)工具：
 
 ```ts
@@ -24,6 +28,14 @@ makeObserved支持以下类型的变量：
 - interface字面量
 
 ### 观察变化
+
+- makeObserved支持以下调用方式：
+
+  | 调用方式 | 观察能力 |
+  | -------- | -------- |
+  | `UIUtils.makeObserved(source)` | 默认为深度观察。 |
+  | `UIUtils.makeObserved(source, true)` | 深度观察。 |
+  | `UIUtils.makeObserved(source, false)` | 一层观察，仅观察第一层属性变化。 |
 
 - makeObserved传入Array、Map、Set、Date类型的实例时，可以观察其API带来的变化。
 
@@ -59,29 +71,68 @@ makeObserved支持以下类型的变量：
   }
   ```
 
-- makeObserved支持观察嵌套场景。
+- 从API版本26.0.0开始，不设置`allowDeep`参数，或将其设置为`true`时，makeObserved支持观察嵌套场景。
 
   ```ts
   'use static'
-  
+
   import { ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
-  interface Info {
+
+  export interface Info {
     name: string;
     age: number;
   }
-  interface Person {
+
+  export interface Person {
     info: Info;
   }
+
   @Entry
   @Component
   struct Index {
-    person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25} as Info} as Person) as Person;
+    person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person) as Person;
+
     build() {
       Column() {
         Text(`info.name: ${this.person.info.name}`)
           .onClick((e: ClickEvent) => {
             this.person.info.name = 'Tom'; // 支持观察嵌套场景
           })
+      }
+    }
+  }
+  ```
+
+- 从API版本26.0.0开始，当`allowDeep`为`false`时，makeObserved仅观察一层属性变化，嵌套属性变化不触发刷新。
+
+  ```ts
+  'use static'
+
+  import { Button, ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
+
+  export interface Info {
+    name: string;
+    age: number;
+  }
+
+  export interface Person {
+    info: Info;
+  }
+
+  @Entry
+  @Component
+  struct Index {
+    person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person, false) as Person;
+
+    build() {
+      Column() {
+        Text(`info.name: ${this.person.info.name}`)
+        Button('change name').onClick((e: ClickEvent) => {
+          this.person.info.name = 'Tom'; // 不触发刷新，属于第二层属性变化
+        })
+        Button('replace info').onClick((e: ClickEvent) => {
+          this.person.info = { name: 'Tom', age: 25 } as Info; // 触发刷新，属于第一层属性变化
+        })
       }
     }
   }
