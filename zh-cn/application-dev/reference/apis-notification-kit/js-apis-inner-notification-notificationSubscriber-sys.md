@@ -1017,6 +1017,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | reason          | ArkTS-Dyn:number <br/>ArkTS-Sta:int                                | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
 | vibrationValues | ArkTS-Dyn:Array\<number\> <br/>ArkTS-Sta:Array\<long\>               | 是  | 是  | 通知震动。 |
+| voiceContent | [VoiceContent](#voicecontent)                                              | 是  | 是  | 通知语音播报内容。 <br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0|
 
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
@@ -1089,6 +1090,21 @@ type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminder
 | instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。<br>从API version 12开始支持，从API version 15开始废弃，建议使用替代。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：12  |
 | appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。 <br/> **ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：23 |
 
+## VoiceContent
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 名称            | 类型                                                                 | 只读 | 可选 | 说明     |
+| --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
+| textContent | string                                             | 是  | 是  | 文本语音播报内容。 |
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
