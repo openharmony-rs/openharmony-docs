@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-鸿蒙为开发者提供了多种获取媒体资源的方式，同样也对应了多种媒体资源类型的判断方式，本文档提供了相应的示例方法。
+[Media Library Kit](../photoAccessHelper-overview.md)（媒体文件管理服务）提供了媒体资源的管理能力，开发者可以访问和管理相册中的媒体信息。针对不同的媒体资源类型，系统提供了相应的判断方式，本文档提供了相关示例方法。
 
 ## 使用mimeType字段来判断资源类型
 
