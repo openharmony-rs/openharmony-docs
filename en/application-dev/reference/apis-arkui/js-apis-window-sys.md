@@ -204,7 +204,7 @@ Describes the translation parameters.
 
 ## StartAnimationSystemParams<sup>20+</sup>
 
-Start animation configuration. This API works only for full-screen applications.
+Describes the start animation configuration. This API works only for full-screen applications.
 
 The configuration does not take effect for inter-application transitions, where the default animation of the system is used.
 
@@ -890,7 +890,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -955,7 +955,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -3414,7 +3414,7 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
 Sets the background color of the main window container for both when it has focus and when it does not. In the stage model, you need to call this API after [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9).
 
-The background color you set here covers the entire window, including both the title bar and the content area. If you also use [setWindowBackgroundColor()](arkts-apis-window-Window.md#setwindowbackgroundcolor9), the content area shows the window background color, whereas the title bar shows the container background color.
+The background color you set here covers the entire window, including both the title bar and the content area. The background color of the content area follows the system color mode (light/dark) by default. When both this API and [setWindowBackgroundColor()](arkts-apis-window-Window.md#setwindowbackgroundcolor9) are used to set the background color, the content area displays the window background color, while the title bar displays the window container background color.
 
 **System API**: This is a system API.
 

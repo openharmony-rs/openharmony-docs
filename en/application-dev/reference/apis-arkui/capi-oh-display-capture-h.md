@@ -40,7 +40,9 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 Takes a screenshot of the entire screen. This function can be used to capture a full-screen screenshot on the specified display.
 
-**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+**Required permissions**
+- API version 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 14 to 21: **ohos.permission.CUSTOM_SCREEN_CAPTURE**
 
 **Since**: 14
 

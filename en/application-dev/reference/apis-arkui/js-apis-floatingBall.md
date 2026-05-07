@@ -49,7 +49,7 @@ Creates a floating ball controller. This API uses a promise to return the result
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on tablets in non-desktop mode and phones, but returns error code 801 on other devices and tablets in desktop mode.
 
 **Parameters**
 

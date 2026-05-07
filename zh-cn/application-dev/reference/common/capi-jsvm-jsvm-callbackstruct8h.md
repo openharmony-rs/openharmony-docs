@@ -10,12 +10,12 @@
 typedef JSVM_CallbackStruct* JSVM_Callback
 ```
 
-## 概述
+## Overview
 
-用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。
+Defines the pointer types of the native functions provided by user. These functions are exposed to JavaScript via JSVM-API.
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)

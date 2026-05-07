@@ -305,11 +305,12 @@ If the input parameter is **-1**, the window brightness reverts to the system br
 
 When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
 
-> **NOTE**
-> - For non-2-in-1 devices: if a window has custom brightness, Control Panel cannot change the system brightness.
-> - For 2-in-1 devices:
->   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
->   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
+**Device behavior differences**
+- For TVs: This API does not take effect or report an error.
+- For non-2-in-1 devices (excluding TVs): When the window's brightness setting is active, adjusting the system screen brightness from the Control Panel does not take effect.
+- For 2-in-1 devices:
+  - Before OpenHarmony 5.0.2, when the screen brightness set by a window is active, adjusting the system screen brightness from the Control Panel or a shortcut key does not take effect.
+  - Since OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
 
 **Since**: 15
 
@@ -451,8 +452,8 @@ Obtains the layout information array of all windows visible on a display. The la
 | Parameter| Description|
 | -- | -- |
 | int64_t displayId | ID of the display. You can obtain a valid display ID by calling the ArkTS API [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) on the window object|
-| [WindowManager_Rect](capi-windowmanager-rect.md)** windowLayoutInfoList | Double pointer to the layout information array of all windows visible.|
-| size_t* windowLayoutInfoSize | Pointer to the length of the layout information array.|
+| [WindowManager_Rect](capi-windowmanager-rect.md)** windowLayoutInfoList | Double pointer to the layout information array of all windows visible. This parameter is used as an output parameter.|
+| size_t* windowLayoutInfoSize | Pointer to the length of the layout information array. This parameter is used as an output parameter.|
 
 **Return value**
 
@@ -525,8 +526,8 @@ Obtains the information about all main windows.
 
 | Parameter| Description|
 | -- | -- |
-| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)** infoList | Double pointer to the main window information list.|
-| size_t* mainWindowInfoSize | Pointer to the size of the main window information list.|
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)** infoList | Double pointer to the main window information list. This parameter is used as an output parameter.|
+| size_t* mainWindowInfoSize | Pointer to the size of the main window information list. This parameter is used as an output parameter.|
 
 **Return value**
 
@@ -568,7 +569,7 @@ Defines the callback used for receiving the main window screenshot list.
 
 | Parameter| Description|
 | -- | -- |
-| [const OH_PixelmapNative](capi-struct.md)** snapshotPixelMapList | Double pointer to the window screenshot list.|
+| [const OH_PixelmapNative](capi-struct.md)** snapshotPixelMapList | Double pointer to the list of window screenshots.|
 |  size_t snapshotListSize | Size of the window screenshot list.|
 
 ### OH_WindowManager_GetMainWindowSnapshot()

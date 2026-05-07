@@ -10,13 +10,12 @@
 typedef struct JSVM_Data__* JSVM_Data
 ```
 
-## 概述
+## Overview
 
-表示一个 JavaScript Data。
+JavaScript Data.
 
-**起始版本：** 18
+**Since**: 18
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
-
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)

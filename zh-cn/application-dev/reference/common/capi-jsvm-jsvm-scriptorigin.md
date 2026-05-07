@@ -10,23 +10,23 @@
 typedef struct {...} JSVM_ScriptOrigin
 ```
 
-## 概述
+## Overview
 
-某段JavaScript代码的原始信息，如sourceMap路径、源文件名、源文件中的起始行/列号等。
+Defines the original information about a JavaScript code segment, such as the source map path, source file name, and start line/column number in the source file.
 
-**起始版本：** 12
+**Since**: 12
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| const char* sourceMapUrl | Sourcemap 路径。 |
-| const char* resourceName | 源文件名。 |
-| size_t resourceLineOffset | 这段代码在源文件中的起始行号。 |
-| size_t resourceColumnOffset | 这段代码在源文件中的起始列号。 |
+| const char* sourceMapUrl | Source map path.|
+| const char* resourceName | Source file name.|
+| size_t resourceLineOffset | Start line number of the code segment in the source file.|
+| size_t resourceColumnOffset | Start column number of the code segment in the source file.|

@@ -10,22 +10,21 @@
 typedef struct {...} JSVM_TypeTag
 ```
 
-## 概述
+## Overview
 
-类型标记，存储为两个无符号64位整数的128位值。作为一个UUID，通过它，JavaScript对象可以是"tagged"，以确保它们的类型保持不变。
+Defines the type tag, which is stored as a 128-bit value of two unsigned 64-bit integers. As a UUID, it can tag JavaScript objects to ensure that their types remain unchanged.
 
-**起始版本：** 11
+**Since**: 11
 
-**相关模块：** [JSVM](capi-jsvm.md)
+**Related module**: [JSVM](capi-jsvm.md)
 
-**所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
+**Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 
-## 汇总
+## Summary
 
-### 成员变量
+### Member Variables
 
-| 名称 | 描述   |
+| Name| Description  |
 |----|------|
-| uint64_t lower   | 低64位 |
-| uint64_t upper   | 高64位 |
-
+| uint64_t lower   | Lower 64 bits.|
+| uint64_t upper   | Upper 64 bits.|
