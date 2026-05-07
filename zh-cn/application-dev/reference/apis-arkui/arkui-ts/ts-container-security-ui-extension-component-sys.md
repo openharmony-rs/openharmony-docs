@@ -222,7 +222,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 ### on('asyncReceiverRegister')
 
-on(type: 'asyncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>): void
+on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 订阅被拉起的Ability发生异步注册的回调。使用callback异步回调。
 
@@ -237,11 +237,11 @@ on(type: 'asyncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，代表订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
+| callback | Callback\<[UIExtensionProxy]\> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
 
 ### on('syncReceiverRegister')
 
-on(type: 'syncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>): void
+on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 订阅被拉起的Ability发生同步注册的回调。
 
@@ -256,11 +256,11 @@ on(type: 'syncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
+| callback | Callback\<UIExtensionProxy\> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
 
 ### off('asyncReceiverRegister')
 
-off(type: 'asyncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\>): void
+off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 取消订阅被拉起的Ability发生异步注册的回调。
 
@@ -275,11 +275,11 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，取消订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。非空代表取消订阅异步对应回调。 |
+| callback | Callback\<UIExtensionProxy\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。非空代表取消订阅异步对应回调。 |
 
 ### off('syncReceiverRegister')
 
-off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\>): void
+off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 取消订阅被拉起的Ability发生同步注册后触发的回调。
 
@@ -294,7 +294,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，取消订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<[SecurityUIExtensionProxy](#UIExtensionProxy)\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
+| callback | Callback\<UIExtensionProxy\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
 
 ## 示例
 
