@@ -7,6 +7,7 @@
 ## 问题原因
 
 为了保护用户图片中的隐私信息，应用在读取图片时，媒体文件管理服务（[Media Library Kit](../photoAccessHelper-overview.md)）会对图片进行脱敏（抹除图片EXIF中敏感字段信息）处理，因此在图片使用过程中会出现地理位置丢失的情况。
+
 > **注意：**
 >
 > 去隐私处理仅针对图片，视频不提供去隐私能力。
@@ -16,6 +17,7 @@
 应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的去隐私级别变为不进行脱敏，应用即可正常获取图片所有敏感信息。
 
 **示例**
+
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
@@ -54,6 +56,7 @@ export struct Scene1 {
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context): Promise<string> {
   try {
+    // 获取图片uri
 	let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOption: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
@@ -62,9 +65,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
       await phAccessHelper.getAssets(fetchOption);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    // 通过图片uri打开图片
     let file: fs.File = fs.openSync(photoAsset.uri, fs.OpenMode.READ_ONLY);
     const imageSourceObj = image.createImageSource(file.fd);
     console.info("getImagePropertySync");
+    // 获取图片中的维度信息
     let latitude = imageSourceObj.getImagePropertySync(image.PropertyKey.GPS_LATITUDE);
     return latitude;
   } catch (err) {
@@ -76,7 +81,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## 附录
 
-地理位置信息字段说明，具体字段说明和使用方式请参考[PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
+地理位置信息字段说明，具体字段说明和使用方式请参考Image Kit中的[PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
+
 | 名称  |  说明 |
 | ----- | ---- |
 | GPSLatitude | 图片纬度。 |
