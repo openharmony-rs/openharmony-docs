@@ -390,6 +390,28 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+``` TypeScript
+'use static'
+
+import { Entry, Component, Web, Column, SafeAreaType, SafeAreaEdge } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }
+  }
+}
+```
 
 与其他Web组件行为的交互场景：
 
