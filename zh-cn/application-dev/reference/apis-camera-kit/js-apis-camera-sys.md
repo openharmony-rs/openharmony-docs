@@ -2399,6 +2399,18 @@ function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
 }
 ```
 
+## ExposureMode
+
+枚举，曝光模式。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                           | 值   | 说明      |
+| ----------------------------- |-----|---------|
+| EXPOSURE_MODE_MANUAL<sup>12+</sup>          | 3   | 手动曝光模式。 |
+
 ## TripodStatus<sup>13+</sup>
 
 枚举，脚架状态枚举。
