@@ -1505,7 +1505,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4MB，超出此范围返回null。 |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 是 | 企业DLP文件的查询选项。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1774,7 +1774,7 @@ queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。<br>若参数未指定或为空字符串，则查询所有企业DLP文件。|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 企业DLP文件的查询选项。<br>若参数未指定或为空字符串，则查询所有企业DLP文件。|
 
 **返回值：**
 
@@ -1832,7 +1832,7 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | 否 | 企业DLP文件的查询选项。<br>若参数未指定或为空字符串，则关闭所有企业DLP文件。|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 企业DLP文件的查询选项。<br>若参数未指定或为空字符串，则关闭所有企业DLP文件。|
 
 **返回值：**
 
