@@ -498,6 +498,7 @@
         - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component-static.md)
         - [@ComponentV2:自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2-static.md)
         - [@Entry：页面入口](arkui-ts/ts-custom-component-decorator-entry-static.md)
+        - [@CustomLayout：自定义布局](arkui-ts/ts-custom-component-decorator-customlayout.md)
       - 组件扩展装饰器
         - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-static.md)
         - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-static.md)
