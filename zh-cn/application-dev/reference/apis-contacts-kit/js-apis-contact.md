@@ -37,7 +37,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)         | 是   | 联系人信息。                                                 |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。     |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。当添加联系人成功，err为undefined，data为返回添加的联系人id；否则为错误对象。     |
 
 **错误码：**
 
@@ -96,7 +96,7 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 | 参数名   | 类型                        | 必填 | 说明                                                     |
 | -------- | --------------------------- | ---- | -------------------------------------------------------- |
 | contact  | [Contact](#contact)         | 是   | 联系人信息。                                             |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。当添加联系人成功，err为undefined，data为返回添加的联系人id；否则为错误对象。 |
 
 **示例：**
 
@@ -244,7 +244,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | key      | string                    | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。            |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。     |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当删除联系人成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
 
@@ -298,7 +298,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
 | key      | string                    | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当删除联系人成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -430,7 +430,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当更新联系人成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
 
@@ -456,7 +456,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
     contact.updateContact(context, {
-      id: data[0].id,  // 选择联系人的id。
+      id: data[0].id, // 选择联系人的id。
       name: {
         fullName: 'xxx'
       },
@@ -492,7 +492,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
 | contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当更新联系人成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -505,7 +505,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
     // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
-      id: data[0].id,  // 选择联系人的id。
+      id: data[0].id, // 选择联系人的id。
       name: {
         fullName: 'xxx'
       },
@@ -539,7 +539,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | context  | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                         |
-| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
+| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当更新联系人成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
 
@@ -564,7 +564,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
     // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
-      id: data[0].id,  // 选择联系人的id。
+      id: data[0].id, // 选择联系人的id。
       name: {
         fullName: 'xxx'
       },
@@ -603,7 +603,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 | -------- | --------------------------------------- | ---- | ------------------------------------ |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                   |
-| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当更新联系人成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -615,7 +615,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
     contact.updateContact({
-      id: data[0].id,  // 选择联系人的id。
+      id: data[0].id, // 选择联系人的id。
       name: {
         fullName: 'xxx'
       },
@@ -680,7 +680,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
     // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let promise = contact.updateContact(context, {
-      id: data[0].id,  // 选择联系人的id。
+      id: data[0].id, // 选择联系人的id。
       name: {
         fullName: 'xxx'
       },
@@ -731,7 +731,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
     let promise = contact.updateContact({
-      id: data[0].id,  // 选择联系人的id。
+      id: data[0].id, // 选择联系人的id。
       name: {
         fullName: 'xxx'
       },
@@ -1110,7 +1110,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。     |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询“我的名片”成功，err为undefined，data为获取到的“我的名片”；否则为错误对象。     |
 
 **错误码：**
 
@@ -1161,7 +1161,7 @@ queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
 | 参数名   | 类型                                     | 必填 | 说明                                                     |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------- |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询“我的名片”成功，err为undefined，data为获取到的“我的名片”；否则为错误对象。 |
 
 **示例：**
 
@@ -1195,7 +1195,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                    |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。     |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询“我的名片”成功，err为undefined，data为获取到的“我的名片”；否则为错误对象。     |
 
 **错误码：**
 
@@ -1249,7 +1249,7 @@ queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): v
 | 参数名   | 类型                                     | 必填 | 说明                                                     |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------- |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                       |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询“我的名片”成功，err为undefined，data为获取到的“我的名片”；否则为错误对象。 |
 
 **示例：**
 
@@ -1377,7 +1377,7 @@ selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当调用选择联系人接口成功，err为undefined，data为选择的联系人数组；否则为错误对象。 |
 
 **示例：**
 
@@ -1439,7 +1439,7 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当调用选择联系人接口成功，err为undefined，data为选择的联系人数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -1509,7 +1509,7 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
 | options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当调用选择联系人接口成功，err为undefined，data为选择的联系人数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -1595,7 +1595,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                       |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。   |
 
 **错误码：**
 
@@ -1647,7 +1647,7 @@ queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                     |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。 |
 
 **示例：**
 
@@ -1682,7 +1682,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                      |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。   |
 
 **错误码：**
 
@@ -1708,8 +1708,8 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contact. Code: ${err.code}, message: ${err.message}`);
@@ -1739,7 +1739,7 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                    |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                     |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。 |
 
 **示例：**
 
@@ -1778,7 +1778,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                       |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                       |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。   |
 
 **错误码：**
 
@@ -1833,7 +1833,7 @@ queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                     |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                        |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。 |
 
 **示例：**
 
@@ -1871,7 +1871,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                       |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。   |
 
 **错误码：**
 
@@ -1897,8 +1897,8 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -1931,7 +1931,7 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                     |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则默认使用系统联系人应用查询。                                     |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，当该参数为空时，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                         |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询的联系人对象；否则为错误对象。 |
 
 **示例：**
 
@@ -2003,8 +2003,8 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContact(context, 'xxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
@@ -2074,7 +2074,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2125,7 +2125,7 @@ queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2159,7 +2159,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2215,7 +2215,7 @@ queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2253,7 +2253,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2307,7 +2307,7 @@ queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Cont
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2344,7 +2344,7 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2403,7 +2403,7 @@ queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2545,7 +2545,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。              |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2597,7 +2597,7 @@ queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。              |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2632,7 +2632,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                   |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2658,8 +2658,8 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts By PhoneNumber. Code: ${err.code}, message: ${err.message}`);
@@ -2689,7 +2689,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                        |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2728,7 +2728,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                  |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                          |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2783,7 +2783,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2820,7 +2820,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则默认使用系统联系人应用查询。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -2846,8 +2846,8 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -2880,7 +2880,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则默认使用系统联系人应用查询。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果该参数为空，则查询联系人的所有属性字段。                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2951,8 +2951,8 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
@@ -3022,7 +3022,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -3074,7 +3074,7 @@ queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3108,7 +3108,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -3134,8 +3134,8 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts By Email. Code: ${err.code}, message: ${err.message}`);
@@ -3165,7 +3165,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空默认使用系统联系人应用查询。                                        |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3203,7 +3203,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -3258,7 +3258,7 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3295,7 +3295,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -3321,8 +3321,8 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
   }, (err: BusinessError, data) => {
@@ -3355,7 +3355,7 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
 | attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3425,8 +3425,8 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
-    bundleName: "",
-    displayName: ""
+    bundleName: '',
+    displayName: ''
   }, {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
   });
@@ -3495,7 +3495,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。当查询联系人的群组成功，err为undefined，data为查询到的群组对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -3544,7 +3544,7 @@ queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。当查询联系人的群组成功，err为undefined，data为查询到的群组对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3577,7 +3577,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。当查询联系人的群组成功，err为undefined，data为查询到的群组对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -3633,7 +3633,7 @@ queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。当查询联系人的群组成功，err为undefined，data为查询到的群组对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3764,7 +3764,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 | 参数名   | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。当查询创建联系人的应用信息类成功，err为undefined，data为查询到的创建联系人应用信息的对象数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -3815,7 +3815,7 @@ queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。当查询创建联系人的应用信息类成功，err为undefined，data为查询到的创建联系人应用信息的对象数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3928,7 +3928,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id       | number                      | 是   | 联系人对象的id属性，是联系人对象在数据库中的唯一标识符。                                         |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当查询联系人的key成功，err为undefined，data为查询到的联系人对应的key；否则为错误对象。 |
 
 **错误码：**
 
@@ -3980,7 +3980,7 @@ queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当查询联系人的key成功，err为undefined，data为查询到的联系人对应的key；否则为错误对象。 |
 
 **示例：**
 
@@ -4014,7 +4014,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 | context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
 | holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则使用系统联系人应用查询。                                        |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当查询联系人的key成功，err为undefined，data为查询到的联系人对应的key；否则为错误对象。 |
 
 **错误码：**
 
@@ -4071,7 +4071,7 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
 | holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则使用系统联系人应用查询。                                        |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当查询联系人的key成功，err为undefined，data为查询到的联系人对应的key；否则为错误对象。 |
 
 **示例：**
 
@@ -4333,7 +4333,7 @@ saveToExistingContactViaUI(context: Context, contact: Contact): Promise&lt;numbe
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | 801       | The specified SystemCapability name was not found. |
 | 16700001       | General error. |
-| 16700101       | Failed to get value to contacts data. |
+| 16700101       | Failed to get value from contacts data. |
 | 16700102       | Failed to set value to contacts data. |
 | 16700103       | User cancel. |
 
