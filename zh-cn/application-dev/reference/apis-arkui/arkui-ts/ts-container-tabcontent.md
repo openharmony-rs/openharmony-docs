@@ -32,7 +32,7 @@ TabContent()
 
 创建TabContent页签和内容。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +54,7 @@ tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 
 设置的内容超出tabBar页签时进行裁切。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +80,7 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 >  
 >  - 底部页签/侧边页签（[BottomTabBarStyle](#bottomtabbarstyle9)）样式：无下划线和背板效果，页签样式通常为图标+文字的组合方式。切换页签时默认无动画跳转效果。底部页签通常用于应用主导航（如首页、发现、推荐）。侧边页签适用于宽屏场景，可设置vertical(true)启用纵向布局，让页签在侧边显示，默认左侧显示。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,7 +172,7 @@ attributeModifier(modifier: AttributeModifier\<TabContentAttribute> | AttributeM
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<TabContentAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<TabContentAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>TabContentAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## TabBarOptions<sup>18+</sup>对象说明
 
@@ -192,8 +192,8 @@ attributeModifier(modifier: AttributeModifier\<TabContentAttribute> | AttributeM
 
 | 名称 | 类型         | 只读 | 可选 | 说明 |
 | -------- | -------- | --- | ----- | -------- |
-| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。未设置时不显示图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
-| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。未设置时不显示文字。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。未设置时不显示图片。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
+| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。未设置时不显示文字。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -205,7 +205,7 @@ constructor(content: ResourceStr)
 
 SubTabBarStyle的构造函数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,7 +271,7 @@ static of(content: ResourceStr): SubTabBarStyle
 
 SubTabBarStyle的静态构造函数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -355,7 +355,7 @@ indicator(value: IndicatorStyle): SubTabBarStyle
 
 设置选中子页签的下划线风格。子页签的下划线风格仅在水平模式下有效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -467,7 +467,7 @@ selectedMode(value: SelectedMode): SubTabBarStyle
 
 设置选中子页签的显示方式。子页签的显示方式仅在水平模式下有效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -493,7 +493,7 @@ board(value: BoardStyle): SubTabBarStyle
 
 设置选中子页签的背板风格。子页签的背板风格仅在水平模式下有效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -519,7 +519,7 @@ labelStyle(value: LabelStyle): SubTabBarStyle
 
 设置子页签的label文本和字体的样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -573,7 +573,7 @@ padding(value: Padding | Dimension): SubTabBarStyle
 
 设置子页签的内边距属性（不支持百分比设置）。使用Dimension时，四个方向内边距同时生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -649,7 +649,7 @@ id(value: string): SubTabBarStyle
 
 下划线风格对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -725,7 +725,7 @@ type DrawableDescriptor = DrawableDescriptor
 
 选中子页签的显示模式枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -742,7 +742,7 @@ type DrawableDescriptor = DrawableDescriptor
 
 背板风格对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -762,12 +762,12 @@ label文本和字体的样式对象。
 
 | 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否 | 是   | 设置label文本超长时的显示方式。默认值是省略号截断。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
-| maxLines             | number                                                       | 否 | 是   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过textOverflow来指定截断方式。默认值是1。<br/>取值范围：[1, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否 | 是   | 设置label文本最小显示字号（不支持百分比设置）。需配合maxFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：(0, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否 | 是   | 设置label文本最大显示字号（不支持百分比设置）。需配合minFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：[minFontSize, +∞)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
-| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否 | 是   | 设置Label文本自适应高度的方式。默认值是最大行数优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
-| font                 | [Font](ts-types.md#font)                                     | 否 | 是  | 设置label文本字体样式。<br/>当页签为子页签时，默认值是字体大小16.0fp、字体类型'HarmonyOS Sans'，字体风格正常，选中时字重中等，未选中时字重正常。<br/>当页签为底部页签时，默认值是字体大小10.0fp、字体类型'HarmonyOS Sans'，字体风格正常，字重中等。<br/>从API version 12开始，底部页签内容左右排布时默认字体大小为12.0fp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否 | 是   | 设置label文本超长时的显示方式。默认值是省略号截断。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| maxLines             | number                                                       | 否 | 是   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过textOverflow来指定截断方式。默认值是1。<br/>取值范围：[1, +∞)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否 | 是   | 设置label文本最小显示字号（不支持百分比设置）。需配合maxFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：(0, +∞)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否 | 是   | 设置label文本最大显示字号（不支持百分比设置）。需配合minFontSize以及maxLines或布局大小限制使用。自适应文本大小生效后，font.size不生效。默认值是0.0fp，即默认自适应文本大小不生效。<br/>取值范围：[minFontSize, +∞)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否 | 是   | 设置Label文本自适应高度的方式。默认值是最大行数优先。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| font                 | [Font](ts-types.md#font)                                     | 否 | 是  | 设置label文本字体样式。<br/>当页签为子页签时，默认值是字体大小16.0fp、字体类型'HarmonyOS Sans'，字体风格正常，选中时字重中等，未选中时字重正常。<br/>当页签为底部页签时，默认值是字体大小10.0fp、字体类型'HarmonyOS Sans'，字体风格正常，字重中等。<br/>从API version 12开始，底部页签内容左右排布时默认字体大小为12.0fp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
 | unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置label文本字体未选中时的颜色。<br/>默认值：#99182431 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12|
 | selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置label文本字体选中时的颜色。<br/>默认值：#FF007DFF <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12|
 
@@ -802,7 +802,7 @@ constructor(icon: ResourceStr | TabBarSymbol, text: ResourceStr)
 
 BottomTabBarStyle的构造函数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -823,7 +823,7 @@ static of(icon: ResourceStr | TabBarSymbol, text: ResourceStr): BottomTabBarStyl
 
 BottomTabBarStyle的静态构造函数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -850,7 +850,7 @@ padding(value: Padding | Dimension | LocalizedPadding): BottomTabBarStyle
 
 设置底部页签的内边距属性（不支持百分比设置）。使用Dimension时，四个方向内边距同时生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -876,7 +876,7 @@ verticalAlign(value: VerticalAlign): BottomTabBarStyle
 
 设置底部页签的图片、文字在垂直方向上的对齐格式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -902,7 +902,7 @@ layoutMode(value: LayoutMode): BottomTabBarStyle
 
 设置底部页签的图片、文字排布的方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -928,7 +928,7 @@ symmetricExtensible(value: boolean): BottomTabBarStyle
 
 设置底部页签的图片、文字是否可以对称借用左右底部页签的空余位置中的最小值，仅fixed水平模式下在底部页签之间有效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -954,7 +954,7 @@ labelStyle(value: LabelStyle): BottomTabBarStyle
 
 设置底部页签的label文本和字体的样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1089,7 +1089,7 @@ get normal(): SymbolGlyphModifier
 
 | 类型 | 说明 |
 | ------ | ---- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | symbol图标在普通态样式。 |
+| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | symbol图标在普通态样式。 |
 
 set normal(normal: SymbolGlyphModifier)
 
@@ -1107,7 +1107,7 @@ set normal(normal: SymbolGlyphModifier)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 是 | symbol图标在普通态样式。<br/>默认值：fontColor：#66182431，renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY，fontSize：24vp |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 是 | symbol图标在普通态样式。<br/>默认值：fontColor：#66182431，renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY，fontSize：24vp |
 
 ### selected<sup>23+</sup>
 
@@ -1127,7 +1127,7 @@ get selected(): SymbolGlyphModifier | undefined
 
 | 类型 | 说明 |
 | ------ | ---- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | symbol图标在选中态样式。<br/>值为undefined时，无样式。 |
+| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| undefined | symbol图标在选中态样式。<br/>值为undefined时，无样式。 |
 
 set selected(selected: SymbolGlyphModifier | undefined)
 
@@ -1145,13 +1145,13 @@ set selected(selected: SymbolGlyphModifier | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是 | symbol图标在选中态样式。<br/>默认值：fontColor：#ff007dff，renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY，fontSize：24vp<br/>取值为undefined时，按默认值处理。 |
+| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| undefined | 是 | symbol图标在选中态样式。<br/>默认值：fontColor：#ff007dff，renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY，fontSize：24vp<br/>取值为undefined时，按默认值处理。 |
 
 ## LayoutMode<sup>10+</sup>枚举说明
 
 页签内容排布方式枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -27,7 +27,7 @@ on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo
 
 监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -245,7 +245,7 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 
 取消监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -272,7 +272,7 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 
 通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的id监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,7 +353,7 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 
 取消通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的id监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -381,7 +381,7 @@ on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback:
 
 通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的状态变化，uniqueId可通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -474,7 +474,7 @@ off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback
 
 取消通过[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId监听[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的变化。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1524,7 +1524,7 @@ on(type: 'navDestinationSwitch', callback: Callback\<observer.NavDestinationSwit
 
 监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1629,7 +1629,7 @@ off(type: 'navDestinationSwitch', callback?: Callback\<observer.NavDestinationSw
 
 取消监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1676,7 +1676,7 @@ on(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitchO
 
 通过监听选项监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1784,7 +1784,7 @@ off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitch
 
 取消通过监听选项监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2085,7 +2085,7 @@ on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): voi
 
 监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。相比[on('tabChange')](#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2186,7 +2186,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): v
 
 取消监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2233,7 +2233,7 @@ on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callba
 
 通过[Tabs](arkui-ts/ts-container-tabs.md)组件的id监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。相比[on('tabChange')](#ontabchange22-1)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2336,7 +2336,7 @@ off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Call
 
 取消通过[Tabs](arkui-ts/ts-container-tabs.md)组件的id监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2385,7 +2385,7 @@ on(type: 'tabChange', callback: Callback\<observer.TabContentInfo\>): void
 
 监听[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件，支持多个[Tabs](arkui-ts/ts-container-tabs.md)组件的监听。相比[on('tabContentUpdate')](#ontabcontentupdate12)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2509,7 +2509,7 @@ off(type: 'tabChange', callback?: Callback\<observer.TabContentInfo\>): void
 
 取消监听所有的[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2556,7 +2556,7 @@ on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback\<obse
 
 监听指定[Tabs](arkui-ts/ts-container-tabs.md)组件的页签切换事件。相比[on('tabContentUpdate')](#ontabcontentupdate12-1)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2679,7 +2679,7 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 
 取消监听指定[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3643,13 +3643,13 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.Wind
 
 参考[on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22)接口示例。
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3711,15 +3711,19 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 取消监听Swiper内容的切换事件。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3729,17 +3733,21 @@ offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate23)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate22)接口示例。
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
 
 通过Swiper组件的id监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3801,15 +3809,19 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
 
 取消通过Swiper组件id监听的Swiper内容切换事件。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -3820,7 +3832,7 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<Sw
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate23-1)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate22-1)接口示例。
 
 ## onRouterPageSizeChange<sup>23+</sup>
 

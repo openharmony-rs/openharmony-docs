@@ -1234,9 +1234,9 @@ type Nullable\<T> = T | undefined
 
 表示鼠标滚轮翻页模式。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -1438,7 +1438,7 @@ type Nullable\<T> = T | undefined
 
 设置标题栏的推荐高度。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1446,10 +1446,10 @@ type Nullable\<T> = T | undefined
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称          | 说明                         |
-| ----------- | -------------------------- |
-| MainOnly    | 只有主标题时，标题栏的推荐高度（56vp）。      |
-| MainWithSub | 同时有主标题和副标题时，标题栏的推荐高度（82vp）。 |
+| 名称          | 值 |说明                         |
+| ----------- | ----| -------------------------- |
+| MainOnly    | 0 | 只有主标题时，标题栏的推荐高度（56vp）。      |
+| MainWithSub | 1 | 同时有主标题和副标题时，标题栏的推荐高度（82vp）。 |
 
 ## TransitionType
 
