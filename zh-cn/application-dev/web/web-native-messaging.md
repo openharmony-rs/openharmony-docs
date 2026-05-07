@@ -209,7 +209,7 @@ function sendMessageToNative() {
 3. 在MyWebNativeMessageExtAbility.ets文件中，增加导入[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)的依赖包，自定义类继承WebNativeMessagingExtensionAbility组件并实现生命周期回调。
 
    ArkTS-Dyn示例：
-   <!-- @[web_native_messaging_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/ExtensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
+   <!-- @[web_native_messaging_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/WebExtension/ExtensionApp/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
    
    ``` TypeScript
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
@@ -389,7 +389,7 @@ function sendMessageToNative() {
 
    ArkTS-Dyn示例：
    
-   <!-- @[web_native_messaging_get_manifest_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_native_messaging_get_manifest_data](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { dataShare } from '@kit.ArkData';
@@ -518,7 +518,7 @@ function sendMessageToNative() {
 
    ArkTS-Dyn示例：
    
-   <!-- @[web_native_messaging_connect_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_native_messaging_connect_native](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { UIAbility, Want, common } from '@kit.AbilityKit';
@@ -614,7 +614,7 @@ function sendMessageToNative() {
 
    ArkTS-Dyn示例：
    
-   <!-- @[web_native_messaging_disconnect_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_native_messaging_disconnect_native](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/WebExtension/ExtensionBrowser/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'

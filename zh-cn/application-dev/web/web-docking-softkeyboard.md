@@ -96,7 +96,7 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[show_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ShowTextInput.ets) -->
+<!-- @[show_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ShowTextInput.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -369,7 +369,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 
 ArkTS-Dyn示例：
 
-<!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
+<!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
