@@ -1392,7 +1392,7 @@ ArkTS-Sta: type GcStats = Record&lt;string, long&gt;
 
 | 类型      | 说明                          |
 | -----------| ---------------------------- |
-| Record&lt;string, number&gt;     | 用于存储GC统计信息的键值对。包含以下键值信息：<br/>"ark.gc.gc-count"：当前线程的GC次数。<br/>"ark.gc.gc-time"：当前线程触发的GC总耗时，以ms为单位。<br/>"ark.gc.gc-bytes-allocated"：当前线程Ark虚拟机已分配的内存大小，以B为单位。<br/>"ark.gc.gc-bytes-freed"：当前线程GC成功回收的内存，以B为单位。<br/> "ark.gc.fullgc-longtime-count "：当前线程超长fullGC次数。    |
+| Record&lt;string, number&gt;     | 用于存储GC统计信息的键值对。包含以下键值信息：<br/>"ark.gc.gc-count"：当前线程的GC次数。<br/>"ark.gc.gc-time"：当前线程触发的GC总耗时，以ms为单位。<br/>"ark.gc.gc-bytes-allocated"：当前线程Ark虚拟机已分配的内存大小，以B为单位。<br/>"ark.gc.gc-bytes-freed"：当前线程GC成功回收的内存，以B为单位。<br/> "ark.gc.fullgc-longtime-count"：当前线程超长fullGC次数。    |
 
 ## JsRawHeapTrimLevel<sup>20+</sup>
 
