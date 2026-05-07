@@ -189,16 +189,13 @@
 - 通过注册固定的frameStart回调函数获取监听录像开始结果，videoOutput创建成功时即可监听，录像第一次曝光时触发，有该事件返回结果则认为录像开始。
 
    <!-- @[camera_video_frameStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  ```ts
-  function onVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
-    videoOutput.on('frameStart', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info('Video frame started');
-    });
-  }
-  ```
+   
+   ``` TypeScript
+   previewOutput.on('frameStart', (): void => {
+     Logger.debug(TAG, 'Preview frame started');
+     AppStorage.setOrCreate('frameStart', ++this.frameStartFlag);
+   });
+   ```
 
 - 通过注册固定的frameEnd回调函数获取监听录像结束结果，videoOutput创建成功时即可监听，录像完成最后一帧时触发，有该事件返回结果则认为录像流已结束。
 
