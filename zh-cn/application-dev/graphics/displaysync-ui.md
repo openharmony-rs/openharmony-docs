@@ -249,23 +249,8 @@
        this.backDisplaySyncSlow = undefined;
      }
  
-     let draw60 = (intervalInfo: displaySync.IntervalInfo) => {
-       if (this.isBigger_60) {
-         this.drawSecondSize += 1;
-         if (this.drawSecondSize > 150) {
-           this.isBigger_60 = false;
-         }
-       } else {
-         this.drawSecondSize -= 1;
-         if (this.drawSecondSize < 25) {
-           this.isBigger_60 = true;
-         }
-       }
-     };
- 
      if (this.backDisplaySyncFast) {
        // 取消订阅函数
-       this.backDisplaySyncFast?.offFrame(draw60);
        this.backDisplaySyncFast?.stop();
        this.backDisplaySyncFast = undefined;
      }
