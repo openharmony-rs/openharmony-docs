@@ -30,7 +30,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 ## DistributedExtensionContext.connectServiceExtensionAbility
 
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 连接远端ServiceExtensionAbility。
 
@@ -49,7 +49,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 返回连接ID，后续通过该ID断开连接。该ID由connectServiceExtensionAbility返回时分配，为递增数字。 |
+| long | 返回连接ID，后续通过该ID断开连接。该ID由connectServiceExtensionAbility返回时分配，为递增数字。 |
 
 **错误码：**
 
@@ -78,7 +78,7 @@ import { Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let connectionId: number = -1;
+let connectionId: long = -1;
 
 export default class DistributedExtension extends DistributedExtensionAbility {
     try {
@@ -95,7 +95,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 ## DistributedExtensionContext.disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number): Promise\<void\>
+disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 断开与远端ServiceExtensionAbility的连接。使用Promise异步回调。
 
@@ -107,7 +107,7 @@ disconnectServiceExtensionAbility(connection: number): Promise\<void\>
 
 | 参数名     | 类型   | 必填 | 说明                                                     |
 | ---------- | ------ | ---- | -------------------------------------------------------- |
-| connection | number | 是   | 连接ID，即connectServiceExtensionAbility返回的number值。 |
+| connection | long | 是   | 连接ID，即connectServiceExtensionAbility返回的long值。 |
 
 **返回值：**
 
@@ -132,7 +132,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 
 // connectionId为connectServiceExtensionAbility返回的连接ID
-let connectionId: number = -1;
+let connectionId: long = -1;
 
 export default class DistributedExtension extends DistributedExtensionAbility {
   disconnectRemoteService() {
