@@ -95,11 +95,10 @@ struct OverlayExample {
           this.uiContext, wrapBuilder<[Params]>(builderText),
           new Params(this.message, { x: 0, y: 110 })
         );
-        let options: OrderOverlayOptions = {
+        this.overlayNode.openOrderOverlay(componentContent, {
           levelOrder: LevelOrder.clamp(100),
           levelMode: LevelMode.OVERLAY
-        };
-        this.overlayNode.openOrderOverlay(componentContent, options);
+        });
       })
     }
     .width('100%')
@@ -124,7 +123,7 @@ struct OverlayExample {
 | -------- | -------- | -------- |--------| -------- |
 | levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 是 | 浮层的显示顺序。 |
 | levelMode | [LevelMode](js-apis-promptAction.md#levelmode15枚举说明) | 否 | 是 | 浮层的显示模式。 |
-| levelUniqueId | int | 否 | 是 | 路由或导航页面中任意节点的uniqueId，uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。需大于等于0。 |
+| levelUniqueId | number | 否 | 是 | 路由或导航页面中任意节点的uniqueId，uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。需大于等于0。 |
 
 ## addComponentContent<sup>12+</sup>
 
