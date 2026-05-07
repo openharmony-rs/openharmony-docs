@@ -241,7 +241,21 @@
          }
        }
      };
- 
+
+     let draw60 = (intervalInfo: displaySync.IntervalInfo) => {
+       if (this.isBigger_60) {
+         this.drawSecondSize += 1;
+         if (this.drawSecondSize > 150) {
+           this.isBigger_60 = false;
+         }
+       } else {
+         this.drawSecondSize -= 1;
+         if (this.drawSecondSize < 25) {
+           this.isBigger_60 = true;
+         }
+       }
+     };
+
      if (this.backDisplaySyncSlow) {
        // 取消订阅函数
        this.backDisplaySyncSlow?.offFrame(draw30);
@@ -251,6 +265,7 @@
  
      if (this.backDisplaySyncFast) {
        // 取消订阅函数
+       this.backDisplaySyncFast?.offFrame(draw60);
        this.backDisplaySyncFast?.stop();
        this.backDisplaySyncFast = undefined;
      }
@@ -286,25 +301,25 @@
    <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySyncSta/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
 
    ``` TypeScript
-  Button('Stop')
-     .id('CustomDrawStop')
-     .fontSize(14)
-     .fontWeight(500)
-     .margin({ bottom: 10, left: 5 })
-     .fontColor(Color.White)
-     .onClick((e: ClickEvent): void => {
-       if (this.backDisplaySyncSlow) {
-         // 停止每帧回调
-         this.backDisplaySyncSlow?.stop();
-       }
-       if (this.backDisplaySyncFast) {
-         // 停止每帧回调
-         this.backDisplaySyncFast?.stop();
-       }
-     })
-     .width('20%')
-     .height(40)
-     .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   Button('Stop')
+      .id('CustomDrawStop')
+      .fontSize(14)
+      .fontWeight(500)
+      .margin({ bottom: 10, left: 5 })
+      .fontColor(Color.White)
+      .onClick((e: ClickEvent): void => {
+        if (this.backDisplaySyncSlow) {
+          // 停止每帧回调
+          this.backDisplaySyncSlow?.stop();
+        }
+        if (this.backDisplaySyncFast) {
+          // 停止每帧回调
+          this.backDisplaySyncFast?.stop();
+        }
+      })
+      .width('20%')
+      .height(40)
+      .shadow(ShadowStyle.OUTER_DEFAULT_LG)
    ```
 
 <!--RP1-->
