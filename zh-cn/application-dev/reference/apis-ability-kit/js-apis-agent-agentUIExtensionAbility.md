@@ -18,6 +18,8 @@ AgentUIExtensionAbility继承自[UIExtensionAbility](js-apis-app-ability-uiExten
 > 本模块首批接口从API version 24 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
+>
+> 本模块接口不支持在[har](../../quick-start/har-package.md)包中使用。
 
 ## 约束限制
 
