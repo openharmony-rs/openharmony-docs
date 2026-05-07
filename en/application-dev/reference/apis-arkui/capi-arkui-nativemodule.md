@@ -1,14 +1,14 @@
 # ArkUI_NativeModule
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Provides drag and drop APIs of ArkUI on the native side. For details, see [Implementing Unified Drag and Drop](../../ui/ndk-drag-event.md).
+Provides drag and drop APIs of ArkUI on the native side. For details, see [Drag Event](../../ui/ndk-drag-event.md).
 
 Provides the general key event APIs of ArkUI on the native side.
 

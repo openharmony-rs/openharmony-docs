@@ -4,7 +4,7 @@
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 AbilityRunningInfo是记录Ability运行信息和状态的数据结构，通过[getAbilityRunningInfos](js-apis-app-ability-abilityManager.md#abilitymanagergetabilityrunninginfos14)方法获取。
 > **说明：**
 > 

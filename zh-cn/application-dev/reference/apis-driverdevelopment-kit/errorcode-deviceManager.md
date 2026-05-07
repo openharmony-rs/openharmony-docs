@@ -1,7 +1,7 @@
 # 驱动错误码
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -82,8 +82,8 @@ There is no binding relationship.
 
 **可能原因**
 
-在未调用或调用 `bindDriverWithDeviceId` 接口失败的情况下，调用 `unbindDriverWithDeviceId` 接口。
+在未调用或调用[bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)接口失败的情况下，调用[unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口。
 
 **处理步骤**
 
-请按照接口调用顺序，先调用 `bindDriverWithDeviceId` 接口，并确认调用成功的情况下，调用 `unbindDriverWithDeviceId` 接口。
+请按照接口调用顺序，先调用[bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)接口，并确认调用成功的情况下，调用[unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口。

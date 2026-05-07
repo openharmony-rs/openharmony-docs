@@ -1,8 +1,8 @@
 # native_node_napi.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -40,7 +40,7 @@ Provides the APIs used to convert [FrameNode](js-apis-arkui-frameNode.md) on the
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationid) | Obtains the ID of the **NavDestination** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)](#oh_arkui_getnavdestinationstate) | Obtains the state of the **NavDestination** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getnavdestinationindex) | Obtains the index of the **NavDestination** component where the specified node is located in the navigation stack.|
-| [napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)](#oh_arkui_getnavdestinationparam) | Obtains the parameters of the **NavDestination** component where the specified node is located.|
+| [napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)](#oh_arkui_getnavdestinationparam) | Obtains the parameter of the **NavDestination** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getrouterpageindex) | Obtains the index of the page where the specified node is located in the page stack for routing.|
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagename) | Obtains the name of the page where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagepath) | Obtains the path to the page where the specified node is located.|
@@ -400,7 +400,7 @@ napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 **Description**
 
 
-Obtains the parameters of the **NavDestination** component where the specified node is located.
+Obtains the parameter of the **NavDestination** component where the specified node is located.
 
 **Since**: 12
 

@@ -104,8 +104,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Multimedia.Image.ImagePacker
 - SystemCapability.Multimedia.Image.ImageReceiver
 - SystemCapability.Multimedia.ImageEffect.Core
-- SystemCapability.Multimedia.MediaLibrary.Core
-- SystemCapability.Multimedia.MediaLibrary.DistributedCore
 - SystemCapability.Multimedia.SystemSound.Core
 - SystemCapability.Telephony.CoreService
 - SystemCapability.Telephony.CallManager
@@ -192,7 +190,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.AbilityCore
 - SystemCapability.Ability.AbilityRuntime.Mission
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
 - SystemCapability.Ability.Form
 - SystemCapability.Ability.DistributedAbilityManager
 - SystemCapability.Applications.CalendarData

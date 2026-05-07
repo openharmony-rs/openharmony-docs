@@ -1,9 +1,9 @@
 # @ohos.file.volumeManager (卷管理)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @ning-jingyou-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供卷设备、磁盘设备查询和管理的相关功能：包括查询卷设备信息，对卷设备的挂载卸载、对磁盘设备分区以及卷设备的格式化等功能。
@@ -695,7 +695,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 **返回值：**
 
   | 类型                      | 说明                       |
-   | --------------------- | ----------------------- |
+  | --------------------- | ----------------------- |
   | Promise&lt;void&gt;   | 无返回结果的Promise对象。              |
 
 **错误码：**

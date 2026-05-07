@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
@@ -158,7 +158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let fileSync = new cloudSync.FileSync();
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -194,7 +194,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -236,7 +236,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -402,7 +402,7 @@ let fileSync = new cloudSync.FileSync();
 
 fileSync.getLastSyncTime().then((timeStamp: number) => {
   let date = new Date(timeStamp);
-  console.info("get last sync time successfully:"+ date);
+  console.info("get last sync time successfully: "+ date);
 }).catch((err: BusinessError) => {
   console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -444,7 +444,7 @@ fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
     console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
   } else {
     let date = new Date(timeStamp);
-    console.info("get last sync time successfully:"+ date);
+    console.info("get last sync time successfully: "+ date);
   }
 });
 ```
@@ -697,7 +697,7 @@ let uri = fileUri.getUriFromPath(path);
 
 try {
   fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state:" + pg.state);
+    console.info("download state: " + pg.state);
   });
 } catch (e) {
   const error = e as BusinessError;
@@ -1219,9 +1219,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    // file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    // file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1264,9 +1264,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    // file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    // file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1568,7 +1568,7 @@ fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: stri
 fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
   console.info("replace file with history version success.");
 }).catch((err: BusinessError) => {
-  console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
+  console.error("replace file with history version failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 

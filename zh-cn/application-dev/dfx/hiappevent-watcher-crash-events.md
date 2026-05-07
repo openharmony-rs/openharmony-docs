@@ -76,7 +76,7 @@ let configParams: Record<string, hiAppEvent.ParamType> = {
 };
 ```
 
-以32位系统为例，参考[订阅崩溃事件（ArkTS）开发步骤](hiappevent-watcher-crash-events-arkts.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃日志内容。日志中打印如下使能的配置参数列表：
+以64位系统为例，参考[订阅崩溃事件（ArkTS）开发步骤](hiappevent-watcher-crash-events-arkts.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃日志内容。日志中打印如下使能的配置参数列表：
 
 ```text
 ...

@@ -60,7 +60,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| NOT_SPECIFIED<sup>18+</sup>  | 0      | 未指定用户。 |
+| NOT_SPECIFIED<sup>18+</sup>  | 0      | 不指定使用范围。 |
 | CURRENT_USER | 1      | 当前用户。 |
 | GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。 |
 
@@ -137,7 +137,7 @@ USB证书凭据授权请求信息。
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-表示拉起证书管理对话框，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理对话框，显示相应的页面。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -193,7 +193,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -264,7 +264,7 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理删除证书向导，显示相应的页面。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -311,7 +311,7 @@ import { UIContext } from '@kit.ArkUI';
 
 /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
-/* certificateType为证书类型，此处赋值CA_CERT，即安装CA证书 */
+/* certificateType为证书类型，此处赋值CA_CERT，即删除CA证书 */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certUri为业务安装证书返回的唯一标识符，此处仅为示例 */
 let certUri: string = "test";
@@ -330,7 +330,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。
+表示拉起证书管理对话框显示证书的详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -397,7 +397,7 @@ try {
 
 openAuthorizeDialog(context: common.Context): Promise\<string>
 
-打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise方式异步返回结果。
+打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 

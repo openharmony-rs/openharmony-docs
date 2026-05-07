@@ -1960,7 +1960,7 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
@@ -2003,7 +2003,7 @@ getData(): Promise&lt;PasteData&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 
 **示例：**
 
@@ -2539,7 +2539,7 @@ getDataSync(): PasteData
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 
 **示例：**
 

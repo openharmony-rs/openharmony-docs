@@ -568,7 +568,7 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 | -- | ----- | -- | --------------------------------------------- |
 | x | number | 是 | 窗口在x轴方向移动的值，值为正表示右移，单位为px，该参数应该为整数，非整数输入将向下取整。 |
 | y | number | 是 | 窗口在y轴方向移动的值，值为正表示下移，单位为px，该参数应该为整数，非整数输入将向下取整。 |
-| moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，未设置将默认保持为当前屏幕。 |
+| moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，仅支持主屏和扩展屏，未设置将默认保持为当前屏幕。 |
 
 **返回值：**
 
@@ -695,7 +695,7 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 | -- | ----- | -- | --------------------------------------------- |
 | x | number | 是 | 表示以目标屏幕左上角为起点，窗口在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
 | y | number | 是 | 表示以目标屏幕左上角为起点，窗口在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
-| moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，未设置将默认保持为当前屏幕。 |
+| moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，仅支持主屏和扩展屏，未设置将默认保持为当前屏幕。 |
 
 **返回值：**
 
@@ -803,7 +803,7 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 
 将相对于当前窗口左上角的坐标转换为相对于主屏幕左上角的全局坐标。
 
-不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的悬浮窗场景。
+不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -848,7 +848,7 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 
 将相对于主屏幕左上角的全局坐标转换为相对于当前窗口左上角的坐标。
 
-不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的悬浮窗场景。
+不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -856,8 +856,8 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| globalDisplayX | number | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
-| globalDisplayY | number | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
+| globalDisplayX | number | 是 | 表示以当前主屏幕左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
+| globalDisplayY | number | 是 | 表示以当前主屏幕左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -1161,7 +1161,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 设置主窗口容器在焦点态和非焦点态时的背景色。在Stage模型下，该接口需在调用[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)后使用。
 
-窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。当同时使用该接口和[setWindowBackgroundColor()](#setwindowbackgroundcolor9)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
+窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](#setwindowbackgroundcolor9)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1459,7 +1459,7 @@ export default class EntryAbility extends UIAbility {
 
 isSystemAvoidAreaEnabled(): boolean
 
-获取悬浮窗、模态窗或WindowType为系统类型的窗口是否可以获取窗口内容的避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
+获取全局悬浮窗、模态窗或WindowType为系统类型的窗口是否可以获取窗口内容的避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2338,11 +2338,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅支持主窗口调用且生效，其他窗口类型调用后不生效。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，支持主窗口和WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口调用且生效，其他窗口类型调用后不生效。当系统窗口调用setPreferredOrientation接口时，若存在层级更高的窗口设置了显示方向，那么本次调用不会立即生效。此时，设置的显示方向会被记录，当不存在有更高层级且设置了显示方向的窗口时，将还原最后一次的方向请求。当WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口设置显示方向且生效时，会将前台应用退至后台。
+设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。非主窗口调用后不生效不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2412,11 +2408,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅支持主窗口调用且生效，其他窗口类型调用后不生效。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，支持主窗口和WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口调用且生效，其他窗口类型调用后不生效。当系统窗口调用setPreferredOrientation接口时，若存在层级更高的窗口设置了显示方向，那么本次调用不会立即生效。此时，设置的显示方向会被记录，当不存在有更高层级且设置了显示方向的窗口时，将还原最后一次的方向请求。当WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口设置显示方向且生效时，会将前台应用退至后台。
+设置主窗口的显示方向属性，使用Promise异步回调。非主窗口调用后不生效不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4173,7 +4165,8 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 开启本窗口可见状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
-- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+- 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4262,7 +4255,8 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
-- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+- 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5899,7 +5893,9 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下生效，在其他设备中返回801错误码。
+**设备行为差异：**
+- 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -5978,13 +5974,14 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
-> **说明：**
-> - 针对非2in1设备：
->   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
->   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
-> - 针对2in1设备：
->   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
->   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+**设备行为差异：**
+- 针对TV设备：当前接口不生效也不报错。
+- 针对非2in1设备（不包含TV设备）：
+  - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
+  - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
+- 针对2in1设备：
+  - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6063,13 +6060,14 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
-> **说明：**
-> - 针对非2in1设备：
->   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
->   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
-> - 针对2in1设备：
->   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
->   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+**设备行为差异：**
+- 针对TV设备：当前接口不生效也不报错。
+- 针对非2in1设备（不包含TV设备）：
+  - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
+  - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
+- 针对2in1设备：
+  - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -7549,7 +7547,7 @@ struct Float {
           return;
         }
         windowClass = data;
-        console.info(`succedded in creating the window. Data: ${JSON.stringify(data)}`);
+        console.info(`succeeded in creating the window. Data: ${JSON.stringify(data)}`);
         windowClass.resize(500, 1600).then(() => {
           console.info('Succeeded in changing the window size.');
         }).catch((err: BusinessError) => {
@@ -7839,6 +7837,8 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
+
+异形窗口蒙层设置不会影响窗口可见状态(可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)或[on('occlusionStateChanged')](arkts-apis-window-Window.md#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
 
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。窗口被销毁场景下错误码返回401。
 
@@ -8615,7 +8615,7 @@ try {
 
 createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;Window&gt;
 
-创建主窗口、子窗口或悬浮窗下的子窗口，使用Promise异步回调。
+创建主窗口、子窗口或全局悬浮窗下的子窗口，使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8676,7 +8676,7 @@ try {
 
 setParentWindow(windowId: number): Promise&lt;void&gt;
 
-更改子窗口的父窗口，该父窗口仅支持同进程下的主窗口、子窗口或悬浮窗，使用Promise异步回调。
+更改子窗口的父窗口，该父窗口仅支持同进程下的主窗口、子窗口或全局悬浮窗，使用Promise异步回调。
 
 如果该子窗口处于获焦状态，且新的父窗口处于前台，则会抬升父窗口的层级。
 
@@ -9911,7 +9911,7 @@ try {
 
 setWindowShadowRadius(radius: number): void
 
-设置子窗或悬浮窗窗口边缘阴影的模糊半径。
+设置子窗或全局悬浮窗窗口边缘阴影的模糊半径。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9954,7 +9954,7 @@ try {
 
 setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
-设置子窗或悬浮窗的圆角半径值，使用Promise异步回调。
+设置子窗或全局悬浮窗的圆角半径值，使用Promise异步回调。
 
 圆角半径值过大将会导致三键（最大化、最小化、关闭按钮）位置被裁切，且会导致热区不易识别，请根据窗口大小设置合适的圆角半径值。
 
@@ -10016,7 +10016,7 @@ try {
 
 getWindowCornerRadius(): number
 
-该接口用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
+该接口用于获取子窗或全局悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
@@ -11424,7 +11424,7 @@ promise.then((data) => {
 
 ## getAvoidArea<sup>(deprecated)</sup>
 
-getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), callback: AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt;): void
+getAvoidArea(type: AvoidAreaType, callback: AsyncCallback&lt;AvoidArea&gt;): void
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 
@@ -11468,7 +11468,7 @@ windowClass.getAvoidArea(type, (err: BusinessError, data) => {
 
 ## getAvoidArea<sup>(deprecated)</sup>
 
-getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)): Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt;
+getAvoidArea(type: AvoidAreaType): Promise&lt;AvoidArea&gt;
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 

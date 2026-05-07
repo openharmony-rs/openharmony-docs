@@ -3219,7 +3219,7 @@ lseek(fd: number, offset: number, whence?: WhenceType): number
   ```ts
   let filePath = pathDir + "/test.txt";
   let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  let offset = fileIo.lseek(file.fd, 5, fileIo.WhenceType.SEEK_SET)；
+  let offset = fileIo.lseek(file.fd, 5, fileIo.WhenceType.SEEK_SET);
   console.info(`Succeeded in seeking, the current offset is at ${offset}`);
   fileIo.closeSync(file);
   ```
@@ -5489,11 +5489,9 @@ getParent(): string
 **示例：**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
   let filePath = pathDir + "/test.txt";
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-  console.info(`Succeeded in getting parent path, the parent path is: ${file.getParent(}`);
+  console.info(`Succeeded in getting parent path, the parent path is: ${file.getParent()}`);
   fileIo.closeSync(file);
   ```
 

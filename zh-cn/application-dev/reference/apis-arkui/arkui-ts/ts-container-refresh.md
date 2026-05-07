@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
  可以进行页面下拉操作并显示刷新动效的容器组件。 
@@ -49,6 +49,7 @@ Refresh(value: RefreshOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型                                      | 只读   | 可选 | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | 否    | 否 | 组件当前是否处于刷新中状态。true表示处于刷新中状态，false表示未处于刷新中状态。<br/>默认值：false<br/>该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -270,7 +271,7 @@ struct RefreshExample {
         .scrollBar(BarState.Off)
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -333,7 +334,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(96)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -408,7 +409,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(64)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -502,7 +503,7 @@ struct RefreshExample {
         this.params.refreshStatus = refreshStatus;
         // 更新自定义组件内容。
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -587,7 +588,7 @@ struct RefreshExample {
         this.ratio = 1 - Math.pow((offset / this.maxRefreshingHeight), 3);
       })
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -741,7 +742,7 @@ struct RefreshExample {
       }
       .maxPullDownDistance(150)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus)
+        console.info('Refresh onStateChange state is ' + refreshStatus)
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value)
@@ -814,7 +815,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .pullDownRatio(this.ratio)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -876,7 +877,7 @@ struct RefreshExample {
         )
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -976,7 +977,7 @@ struct RefreshExample {
         this.refreshStatus = refreshStatus;
         this.params.refreshStatus = refreshStatus;
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {

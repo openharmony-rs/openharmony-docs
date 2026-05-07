@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
-<!--Designer: @lightningHo-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @liujiang077-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -321,6 +321,7 @@ private:
 #ifndef MYAPPLICATION_CREATENODE_H
 #define MYAPPLICATION_CREATENODE_H
 
+// 封装的ArkUINode对象，参考接入ArkTS页面指导文档。
 #include "ArkUINode.h"
 
 #include <js_native_api.h>
@@ -376,6 +377,7 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 #include <cstdint>
 #include <hilog/log.h>
 #include <map>
+#include <string>
 #include <thread>
 #include <napi/native_api.h>
 #include <arkui/native_node_napi.h>

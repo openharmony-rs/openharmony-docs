@@ -98,8 +98,8 @@ Represents additional information about a data record.
 | Name      | Type           | Read-Only| Optional| Description                |
 | ---------- | --------------- | ---- | ---- | ------------------ |
 | id         | string          | Yes  | No  | ID generated when data is inserted.|
-| createTime | number          | Yes  | No  | Time when a row of data is created.  |
-| modifyTime | number          | Yes  | No  | Time when a row of data is modified.  |
+| createTime | number          | Yes  | No  | Time when a row of data is created, in ms.  |
+| modifyTime | number          | Yes  | No  | Time when a row of data is modified, in ms.  |
 | operation  | [Flag](#flag)   | Yes  | No  | Operation performed.|
 
 ## CloudType
@@ -897,7 +897,7 @@ Subscribes to data. This API uses a promise to return the result.
 | Name        | Type                                                      | Mandatory| Description                                                  |
 | -------------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------ |
 | subInfo        | Record&lt;string, Array&lt;[Database](#database)&gt;&gt; | Yes  | Data to be subscribed to, in KV pairs of the application bundle name and database information.|
-| expirationTime | number                                                     | Yes  | Subscription expiration time.                                    |
+| expirationTime | number                                                     | Yes  | Subscription expiration time, in ms.                                    |
 
 **Return value**
 

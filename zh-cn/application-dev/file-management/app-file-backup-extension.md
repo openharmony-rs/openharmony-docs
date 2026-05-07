@@ -2,8 +2,8 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 应用接入数据备份恢复需要通过BackupExtensionAbility实现。
@@ -216,8 +216,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
    - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
-
-3. **includes支持的路径清单列表如下：**
+2. **includes支持的路径清单列表如下：**
 
    ```json
    {

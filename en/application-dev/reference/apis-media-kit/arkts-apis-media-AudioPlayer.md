@@ -39,7 +39,6 @@ play(): void
 Starts to play an audio asset. This API can be called only after the **'dataLoad'** event is triggered.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.play](arkts-apis-media-AVPlayer.md#play9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -60,7 +59,6 @@ pause(): void
 Pauses audio playback.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.pause](arkts-apis-media-AVPlayer.md#pause9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -81,7 +79,6 @@ stop(): void
 Stops audio playback.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.stop](arkts-apis-media-AVPlayer.md#stop9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -102,7 +99,6 @@ reset(): void
 Resets the audio asset to be played.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [AVPlayer.reset](arkts-apis-media-AVPlayer.md#reset9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -123,7 +119,6 @@ seek(timeMs: number): void
 Seeks to the specified playback position.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.seek](arkts-apis-media-AVPlayer.md#seek9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -144,7 +139,7 @@ audioPlayer.on('timeUpdate', (seekDoneTime: number) => {    // Set the 'timeUpda
   }
   console.info('Succeeded in seek. seekDoneTime: ' + seekDoneTime);
 });
-audioPlayer.seek(30000); // Seek to 30000 ms.
+audioPlayer.seek(30000);    // Seek to 30000 ms.
 ```
 
 ## setVolume<sup>(deprecated)</sup>
@@ -154,7 +149,6 @@ setVolume(vol: number): void
 Sets the volume.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.setVolume](arkts-apis-media-AVPlayer.md#setvolume9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -181,7 +175,6 @@ release(): void
 Releases the audio playback resources.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.release](arkts-apis-media-AVPlayer.md#release9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -200,7 +193,6 @@ getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 Obtains the audio track information. It can be called only after the **'dataLoad'** event is triggered. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.getTrackDescription](arkts-apis-media-AVPlayer.md#gettrackdescription9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -232,7 +224,6 @@ getTrackDescription(): Promise\<Array\<MediaDescription>>
 Obtains the audio track information. It can be called only after the **'dataLoad'** event is triggered. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.getTrackDescription](arkts-apis-media-AVPlayer.md#gettrackdescription9-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -262,7 +253,6 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 Subscribes to the audio buffering update event. This API works only under online playback.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.on('bufferingUpdate')](arkts-apis-media-AVPlayer.md#onbufferingupdate9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -290,7 +280,6 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 Subscribes to the audio playback events.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.on('stateChange')](arkts-apis-media-AVPlayer.md#onstatechange9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -299,13 +288,13 @@ Subscribes to the audio playback events.
 
 | Name  | Type      | Mandatory| Description                                                        |
 | -------- | ---------- | ---- | ------------------------------------------------------------ |
-| type     | string     | Yes  | Event type. The following events are supported:<br>- 'play': triggered when the [play()](#playdeprecated) API is called and audio playback starts.<br>- 'pause': triggered when the [pause()](#pausedeprecated) API is called and audio playback is paused.<br>- 'stop': triggered when the [stop()](#stopdeprecated) API is called and audio playback stops.<br>- 'reset': triggered when the [reset()](#resetdeprecated) API is called and audio playback is reset.<br>- 'dataLoad': triggered when the audio data is loaded, that is, when the **src** property is configured.<br>- 'finish': triggered when the audio playback is finished.<br>- 'volumeChange': triggered when the [setVolume()](#setvolumedeprecated) API is called and the playback volume is changed.|
+| type     | string     | Yes  | Type of the playback event to listen for. The following events are supported: **play**, **pause**, **stop**, **reset**, **dataLoad**, **finish**, and **volumeChange**.<br>- 'play': triggered when the [play()](#playdeprecated) API is called and audio playback starts.<br>- 'pause': triggered when the [pause()](#pausedeprecated) API is called and audio playback is paused.<br>- 'stop': triggered when the [stop()](#stopdeprecated) API is called and audio playback stops.<br>- 'reset': triggered when the [reset()](#resetdeprecated) API is called and audio playback is reset.<br>- 'dataLoad': triggered when the audio data is loaded, that is, when the **src** property is configured.<br>- 'finish': triggered when the audio playback is finished.<br>- 'volumeChange': triggered when the [setVolume()](#setvolumedeprecated) API is called and the playback volume is changed.|
 | callback | () => void | Yes  | Callback invoked when the event is triggered.                                          |
 
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioPlayer: media.AudioPlayer = media.createAudioPlayer();  // Create an AudioPlayer instance.
@@ -350,7 +339,7 @@ audioPlayer.on('error', (error: BusinessError) => {  // Set the 'error' event ca
 let fdPath = 'fd://';
 // The stream in the path can be pushed to the device by running the "hdc file send D:\xxx\01.mp3 /data/accounts/account_0/appdata" command.
 let path = '/data/accounts/account_0/appdata/ohos.xxx.xxx.xxx/01.mp3';
-fs.open(path).then((file) => {
+fileIo.open(path).then((file) => {
   fdPath = fdPath + '' + file.fd;
   console.info('Succeeded in opening fd, fd is' + fdPath);
   audioPlayer.src = fdPath;  // Set the src property and trigger the 'dataLoad' event callback.
@@ -368,7 +357,6 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 Subscribes to the **'timeUpdate'** event. This event is reported every second when the audio playback is in progress.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.on('timeUpdate')](arkts-apis-media-AVPlayer.md#ontimeupdate9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -400,7 +388,6 @@ on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 Subscribes to the audio interruption event. For details, see [audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9).
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 9. You are advised to use [AVPlayer.on('audioInterrupt')](arkts-apis-media-AVPlayer.md#onaudiointerrupt9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -429,7 +416,6 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to audio playback error events. After an error event is reported, you must handle the event and exit the playback.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVPlayer.on('error')](arkts-apis-media-AVPlayer.md#onerror9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -449,5 +435,5 @@ import { BusinessError } from '@kit.BasicServicesKit';
 audioPlayer.on('error', (error: BusinessError) => {  // Set the 'error' event callback.
   console.error(`audio error called, error: ${error}`);
 });
-audioPlayer.setVolume(3); // Set volume to an invalid value to trigger the 'error' event.
+audioPlayer.setVolume(3);  // Set volume to an invalid value to trigger the 'error' event.
 ```

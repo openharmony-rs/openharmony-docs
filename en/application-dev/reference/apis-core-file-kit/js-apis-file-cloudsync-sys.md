@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
@@ -115,7 +115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let gallerySync = new cloudSync.GallerySync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("gallery sync state: " + pg.state + "error type:" + pg.error);
+  console.info("gallery sync state: " + pg.state + "error type: " + pg.error);
 }
 
 gallerySync.on('progress', callback);
@@ -493,7 +493,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let download = new cloudSync.Download();
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state:" + pg.state);
+    console.info("download state: " + pg.state);
 });
 
 download.off('progress');
@@ -544,7 +544,7 @@ let download = new cloudSync.Download();
 let uri: string = "file:///media/Photo/1";
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-  console.info("download state:" + pg.state);
+  console.info("download state: " + pg.state);
 });
 
 download.start(uri).then(() => {
@@ -948,7 +948,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error:" + JSON.stringify(error));
+  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
 }
 ```
 
@@ -1063,7 +1063,7 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-    console.info("optimize space progress:" + data.progress);
+    console.info("optimize space progress: " + data.progress);
   }
 }
 cloudSync.startOptimizeSpace(para, callback).then(() => {
@@ -1106,7 +1106,7 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
     console.info("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-    console.info("optimize space progress:" + data.progress);
+    console.info("optimize space progress: " + data.progress);
   }
 }
 cloudSync.startOptimizeSpace(para, callback);

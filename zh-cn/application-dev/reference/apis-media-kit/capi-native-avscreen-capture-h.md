@@ -277,7 +277,7 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t *fence | 用于同步的显示相关参数信息。 |
-| int64_t *timestamp | 视频帧的时间戳。 |
+| int64_t *timestamp | 视频帧的时间戳。单位为纳秒（ns）。 |
 | [struct OH_Rect](capi-avscreencapture-oh-rect.md) *region | 视频显示相关的坐标信息。 |
 
 **返回：**
@@ -540,6 +540,10 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。
 
+> **说明：**
+>
+> 从API version 20开始，支持折叠PC/2in1设备。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 12
@@ -704,8 +708,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t width | 录屏屏幕的宽度。 |
-| int32_t height | 录屏屏幕的高度。 |
+| int32_t width | 录屏屏幕的宽度。单位为像素（px）。 |
+| int32_t height | 录屏屏幕的高度。单位为像素（px）。|
 
 **返回：**
 
@@ -760,7 +764,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t frameRate | 录屏的最大帧率。 |
+| int32_t frameRate | 录屏的最大帧率。单位为帧率（FPS）。 |
 
 **返回：**
 
