@@ -46,7 +46,7 @@
 | 证书验证     | 设置跳过SSL证书校验                     | 可以设置跳过SSL证书校验流程。 | API version 18    |
 | 证书验证     | 设置证书校验的版本和加密套件             | 自定义证书校验版本和加密套件。 |  API version 18  |
 | 证书验证     | 设置安全连接期间的服务器身份验证配置信息        | 设置安全连接期间的服务器身份验证配置。 |  API version 18   |
-| 代理设置     | 设置SOCKS5代理        | 设置SOCKS5代理，默认不使用SOCKS5代理，若正确配置了[Socks5Proxy](../reference/apis-network-kit/js-apis-net-connection.md#socks5proxy)自定义SOCKS5代理，则HttpProxy不生效。 |  API version 26   |
+| 代理设置     | 设置SOCKS5代理        | 设置SOCKS5代理，默认不使用SOCKS5代理，若正确配置了[Socks5Proxy](../reference/apis-network-kit/js-apis-net-connection.md#socks5proxy)自定义SOCKS5代理，则HttpProxy不生效。 |  API version 26.0.0   |
 
 ## 发起HTTP数据请求
 
