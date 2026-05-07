@@ -36,8 +36,9 @@
     - [Byte](arkts-sta-byte.md)
     - [Char](arkts-sta-char.md)
     - [Int](arkts-sta-int.md)
+    - [ConcurrentQueue (并发队列)](arkts-sta-concurrentqueue.md)
     - [ConcurrentSet (并发集合)](arkts-sta-concurrentset.md)
-    - [ConcurrentHashMap](arkts-sta-concurrenthashmap.md)
+    - [ConcurrentHashMap (并发哈希表)](arkts-sta-concurrenthashmap.md)
     - [Deepcopy (深拷贝)](arkts-sta-deepcopy.md)
 - Atomics
     - [Atomics模块描述](arkts-sta-atomics-overview.md)

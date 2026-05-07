@@ -4,7 +4,9 @@ ConcurrentSet\<T>是一个多线程并发安全的集合类，支持并发读取
 
 > **说明：**
 >
-> 本模块仅适用于ArkTS-Sta。
+> - 本模块仅适用于ArkTS-Sta。
+>
+> - 泛型参数`T`需为非空类型，不能将`null`或`undefined`作为集合元素。通过构造函数初始化时，传入的元素也不能为`null`或`undefined`。
 
 ## 属性
 
@@ -100,7 +102,7 @@ add(val: T): this
 
 | 参数名 | 类型 | 必填 | 说明                     |
 | :----- | :--- | :--- | :----------------------- |
-| val    | T    | 是   | 需要添加到集合中的元素。 |
+| val    | T    | 是   | 需要添加到集合中的元素，不能为`null`或`undefined`。 |
 
 **返回值：**
 
@@ -190,7 +192,7 @@ clear(): void
 
 ```typescript
 let arrValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-let concurrentSet: containers.ConcurrentSet<string> = new containers.ConcurrentSet<string>();
+let concurrentSet: containers.ConcurrentSet<string> = new containers.ConcurrentSet<string>(arrValues);
 let beforeClearSize = concurrentSet.size; //10
 concurrentSet.clear();
 let afterClearSize = concurrentSet.size; //0
