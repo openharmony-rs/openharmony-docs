@@ -43,12 +43,13 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 用于构造SecurityUIExtensionComponent时传递参数。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isTransferringCaller | boolean | 否 | 是 | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。</br> 默认值：false |
