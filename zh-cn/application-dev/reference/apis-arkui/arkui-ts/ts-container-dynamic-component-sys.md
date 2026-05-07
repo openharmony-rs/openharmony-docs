@@ -25,9 +25,9 @@ DynamicComponent(options: DynamicOptions)
 
 创建DynamicComponent组件，用于显示Worker线程中运行的Abc UI。
 
-**系统接口：** 此接口为系统接口。
+**起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,9 +41,9 @@ DynamicComponent(options: DynamicOptions)
 
 用于在DynamicComponent构造时传递参数。
 
-**系统接口：** 此接口为系统接口。
+**起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,8 +51,8 @@ DynamicComponent(options: DynamicOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
 | worker | [Worker](../../apis-arkts/js-apis-worker.md) | 否 | 否 | 运行Abc的Worker。 |
-| backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。 |
-| allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。 |
+| backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false。 |
+| allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false。 |
 
 ## 属性
 
@@ -68,9 +68,9 @@ onError(callback: ErrorCallback)
 
 DynamicComponent运行过程中发生异常时触发该回调（不包含与DynamicAbility断连场景）。
 
-**系统接口：** 此接口为系统接口。
+**起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
