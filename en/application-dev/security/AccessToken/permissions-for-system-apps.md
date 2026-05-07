@@ -5964,3 +5964,31 @@ Allows a system application to generate integrity protection credentials for sen
 **Supported devices**: general devices
 
 **Since**: 26.0.0
+
+## ohos.permission.QUERY_CLI_TOOL
+
+Allows a system application to query CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.EXEC_CLI_TOOL
+
+Allows a system application to run CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
