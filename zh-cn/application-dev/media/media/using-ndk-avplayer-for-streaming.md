@@ -81,10 +81,10 @@
 
 9. 视频播控：包含播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_play)、暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_pause)、跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seek)、停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_stop)等操作。
 
-10. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_reset)重置资源，AVPlayer重新进入[初始](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_IDLE）状态，允许更换资源URL。
+10. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_reset)重置资源，AVPlayer重新进入[空闲](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_IDLE）状态，允许更换资源URL。
 
 
-11. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release)销毁实例，AVPlayer进入[空闲](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_RELEASED）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用闪退等情况。
+11. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release)销毁实例，AVPlayer进入[释放](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_RELEASED）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用闪退等情况。
 
 ## 运行完整示例
 
