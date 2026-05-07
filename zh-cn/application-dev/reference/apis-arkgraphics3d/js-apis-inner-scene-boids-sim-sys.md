@@ -9,11 +9,13 @@
 本模块提供3D图形中群组模拟动画的类型及操作方法。群组模拟动画是通过分离、对齐、凝聚等规则驱动群体中的个体，使其展现出类似自然界中鸟群、鱼群运动特征的计算机动画方法。
 
 > **说明：** 
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块接口为系统接口。
 > - 使用本模块的接口前，需先通过[RenderContext.loadPlugin](js-apis-inner-scene.md#loadplugin20)加载群组模拟插件[BoidsSimPlugin](#boidssimplugin)。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -26,8 +28,8 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 群组模拟参数，用于配置每个个体的行为属性。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -65,8 +67,8 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 引力场参数，用于配置场景中的引力场。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -81,8 +83,8 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 斥力场参数，用于配置场景中的斥力场。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -103,8 +105,8 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 ### 属性
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -120,8 +122,8 @@ play(): void
 
 开始或恢复群组模拟。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -142,8 +144,8 @@ pause(): void
 
 暂停群组模拟。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -164,8 +166,8 @@ stop(): void
 
 停止群组模拟并重置状态。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -186,8 +188,8 @@ addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
 在指定结点上添加群组行为组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -230,8 +232,8 @@ setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
 更新指定结点上的群组行为组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -264,8 +266,8 @@ addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 在指定结点上添加引力场组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -303,8 +305,8 @@ setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 更新指定结点上的引力场组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -332,8 +334,8 @@ addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 
 在指定结点上添加斥力场组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -371,8 +373,8 @@ setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 
 更新指定结点上的斥力场组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -400,8 +402,8 @@ getBoidsSimComponent(node: Node): BoidsSimParameters \| null
 
 获取指定结点上的群组行为参数。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -435,8 +437,8 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters \| null
 
 获取指定结点上的引力场参数。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -470,8 +472,8 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters \| null
 
 获取指定结点上的斥力场参数。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -505,8 +507,8 @@ removeBoidsSimComponent(node: Node): void
 
 移除指定结点上的群组行为组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -532,8 +534,8 @@ removeBoidsSimGravityComponent(node: Node): void
 
 移除指定结点上的引力场组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -559,8 +561,8 @@ removeBoidsSimRepulsionComponent(node: Node): void
 
 移除指定结点上的斥力场组件。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -584,8 +586,8 @@ function removeBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
 
 群组模拟插件，提供静态方法用于获取群组模拟世界。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -597,8 +599,8 @@ static getDefaultBoidsSimWorld(scene: Scene): BoidsSimWorld \| null
 
 获取与指定场景关联的群组模拟世界实例。
 
-**ArkTS-Dyn起始版本：** 26
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
