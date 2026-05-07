@@ -256,7 +256,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<UIExtensionProxy\> | 是 | 回调函数。扩展Ability注册[setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setReceiveDataForResultCallback)后触发的回调。 |
+| callback | Callback\<UIExtensionProxy\> | 是 | 回调函数。扩展Ability注册[setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedataforresultcallback)后触发的回调。 |
 
 ### off('asyncReceiverRegister')
 
@@ -303,6 +303,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
 
 @Entry
 @Component
@@ -328,7 +329,7 @@ struct Index {
         .height('90%').backgroundColor(Color.Green)
         .onError((error: BusinessError) => {
           this.message = 'Error： ' + JSON.stringify(error);
-          console.log(this.message);
+          hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
         })
 
       Button("bottom")
