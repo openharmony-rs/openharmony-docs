@@ -61,6 +61,7 @@ import { screenshot } from '@kit.ArkUI';
 | -------- | -------- | -------- |
 | CANONICAL | 0 | 表示根据标准HDR参数生成HDR截图。|
 | LOCAL | 1 | 表示根据当前显示效果生成HDR截图。|
+
 ## Size
 
 表示截取图像的大小。
