@@ -32,6 +32,8 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
+**系统接口：** 此接口为系统接口。
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -79,6 +81,8 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**系统接口：** 此接口为系统接口。
 
 **参数：** 
 
