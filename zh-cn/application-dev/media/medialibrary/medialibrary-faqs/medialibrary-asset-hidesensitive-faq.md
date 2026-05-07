@@ -10,8 +10,9 @@
 > **注意：**
 >
 > 去隐私处理仅针对图片，视频不提供去隐私能力。
-
 ## 解决措施
+
+应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的去隐私级别变为不进行脱敏，应用即可正常获取图片所有敏感信息。
 应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的去隐私级别变为不进行脱敏，应用即可正常获取图片所有敏感信息。
 
 **示例**
