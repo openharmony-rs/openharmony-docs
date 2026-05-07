@@ -238,20 +238,20 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 值            | 说明                                                         |
+| 名称                     | 值            |说明                                                         |
 | ------------------------ | ------------- | ------------------------------------------------------------ |
-| Black                    | 0x000000      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png) |
-| Blue                     | 0x0000ff      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png) |
-| Brown                    | 0xa52a2a      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png) |
-| Gray                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Grey                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Green                    | 0x008000      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png) |
-| Orange                   | 0xffa500      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png) |
-| Pink                     | 0xffc0cb      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png) |
-| Red                      | 0xff0000      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png) |
-| White                    | 0xffffff      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png) |
-| Yellow                   | 0xffff00      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png) |
-| Transparent<sup>9+</sup> | rgba(0,0,0,0) | 透明色                                                       |
+| Black                    | ArkTS-Dyn: 0x000000<br/>ArkTS-Sta: '#FF000000'      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Blue                     | ArkTS-Dyn: 0x0000ff<br/>ArkTS-Sta: '#FF0000FF'      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Brown                    | ArkTS-Dyn: 0xa52a2a<br/>ArkTS-Sta: '#FFA52A2A'      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Gray                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Grey                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Green                    | ArkTS-Dyn: 0x008000<br/>ArkTS-Sta: '#FF008000'      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Orange                   | ArkTS-Dyn: 0xffa500<br/>ArkTS-Sta: '#FFFFA500'      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Pink                     | ArkTS-Dyn: 0xffc0cb<br/>ArkTS-Sta: '#FFFFC0CB'      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Red                      | ArkTS-Dyn: 0xff0000<br/>ArkTS-Sta: '#FFFF0000'      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| White                    | ArkTS-Dyn: 0xffffff<br/>ArkTS-Sta: '#FFFFFFFF'      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Yellow                   | ArkTS-Dyn: 0xffff00<br/>ArkTS-Sta: '#FFFFFF00'      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Transparent<sup>9+</sup> | ArkTS-Dyn: rgba(0,0,0,0)<br/>ArkTS-Sta: '#00000000' | 透明色<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                       |
 
 ## ColorSpace<sup>20+</sup>
 
@@ -1098,6 +1098,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值 | 说明                             |
 | ------ | --- | ------------------------------ |
 | SELF_ONLY   | 0 | 只自身滚动，不与父组件联动。  |
@@ -1210,6 +1214,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
@@ -1396,6 +1404,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 说明                         |
 | ----------- | -------------------------- |
