@@ -145,6 +145,7 @@ SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其具体配�
 
 该示例展示了文本绑定不同触发方式的自定义文本选择菜单的效果。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SelectionMenu,
@@ -311,6 +312,7 @@ struct Index {
     editorMenuOptions: this.editorMenuOptions,
     expandedMenuOptions: this.expandedMenuOptions,
     controller: this.controller,
+    // “剪切”事件回调
     onCut: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -322,6 +324,7 @@ struct Index {
         })
       }
     },
+    // “粘贴”事件回调
     onPaste: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -333,6 +336,7 @@ struct Index {
         })
       }
     },
+    // “复制”事件回调
     onCopy: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -344,6 +348,7 @@ struct Index {
         })
       }
     },
+    // “全选”事件回调
     onSelectAll: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -362,6 +367,7 @@ struct Index {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
         Text('A').fontSize(15)
+        // 通过滑动滑动条调节选中文本的字体大小
         Slider({ value: this.textSize, step: 10, style: SliderStyle.InSet })
           .width(210)
           .onChange((value: number, mode: SliderChangeMode) => {
@@ -467,6 +473,338 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Builder, Component, Entry, State, Button, ClickEvent, Color, Column, DecorationStyleInterface, EditorMenuOptions, ExpandedMenuOptions,
+  EditorEventInfo, Flex, FlexAlign, FontStyle, FontWeight, ItemAlign, Text, TextDecorationType, TextStyle, $r, RichEditor, RichEditorController,
+  RichEditorOptions, RichEditorResponseType, RichEditorSpanType, RichEditorTextStyle, RichEditorTextSpanResult, RichEditorImageSpanResult, RichEditorSelection,
+  RichEditorUpdateTextSpanStyleOptions, SelectionMenu, SelectionMenuOptions, ShadowStyle, Slider, SliderStyle, SliderChangeMode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State message: string = 'Hello world';
+  @State textSize: double = 30;
+  @State fontWeight: FontWeight = FontWeight.Normal;
+  @State start: int = -1;
+  @State end: int = -1;
+  @State colorTransparent: Color = Color.Transparent;
+  @State textStyle: RichEditorTextStyle = {} as RichEditorTextStyle;
+  private editorMenuOptions: Array<EditorMenuOptions> =
+    [
+      {
+        // $r('app.media.ic_notepad_textbold')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.ic_notepad_textbold'), action: () => {
+        if (this.controller) {
+          let selection = this.controller.getSelection();
+          let spans = selection?.spans;
+          spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+            if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+              let span = item as RichEditorTextSpanResult;
+              this.textStyle = span.textStyle as RichEditorTextStyle;
+              let start = span.offsetInSpan[0];
+              let end = span.offsetInSpan[1];
+              let offset = span.spanPosition.spanRange[0];
+              if (this.textStyle.fontWeight != 11) {
+                this.textStyle.fontWeight = FontWeight.Bolder;
+              } else {
+                this.textStyle.fontWeight = FontWeight.Normal;
+              }
+              this.controller.updateSpanStyle({
+                start: offset + start,
+                end: offset + end,
+                textStyle: this.textStyle
+              } as RichEditorUpdateTextSpanStyleOptions)
+            }
+          })
+        }
+      }
+      },
+      {
+        // $r('app.media.ic_notepad_texttilt')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.ic_notepad_texttilt'), action: () => {
+        if (this.controller) {
+          let selection = this.controller.getSelection();
+          let spans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult> | undefined = selection?.spans;
+          spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+            if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+              let span = item as RichEditorTextSpanResult;
+              this.textStyle = span.textStyle as RichEditorTextStyle;
+              let start = span.offsetInSpan[0];
+              let end = span.offsetInSpan[1];
+              let offset = span.spanPosition.spanRange[0];
+              if (this.textStyle.fontStyle == FontStyle.Italic) {
+                this.textStyle.fontStyle = FontStyle.Normal;
+              } else {
+                this.textStyle.fontStyle = FontStyle.Italic;
+              }
+              this.controller.updateSpanStyle({
+                start: offset + start,
+                end: offset + end,
+                textStyle: this.textStyle
+              } as RichEditorUpdateTextSpanStyleOptions)
+            }
+          })
+        }
+      }
+      },
+      {
+        // $r('app.media.ic_notepad_underline')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.ic_notepad_underline'),
+        action: () => {
+          if (this.controller) {
+            let selection = this.controller.getSelection();
+            let spans = selection?.spans;
+            spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+              if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+                let span = item as RichEditorTextSpanResult;
+                this.textStyle = span.textStyle as RichEditorTextStyle;
+                let start = span.offsetInSpan[0];
+                let end = span.offsetInSpan[1];
+                let offset = span.spanPosition.spanRange[0];
+                if (this.textStyle.decoration) {
+                  let decoration: DecorationStyleInterface = this.textStyle.decoration as DecorationStyleInterface;
+                  if (this.textStyle.decoration?.type == TextDecorationType.Underline) {
+                    decoration.type = TextDecorationType.None;
+                    this.textStyle.decoration = decoration;
+                  } else {
+                    decoration.type = TextDecorationType.Underline;
+                    this.textStyle.decoration = decoration;
+                  }
+                } else {
+                  this.textStyle.decoration = { type: TextDecorationType.Underline, color: Color.Black }
+                }
+                this.controller.updateSpanStyle({
+                  start: offset + start,
+                  end: offset + end,
+                  textStyle: this.textStyle
+                } as RichEditorUpdateTextSpanStyleOptions)
+              }
+            })
+          }
+        }
+      },
+      {
+        // $r('app.media.ic_notepad_fontsize')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.ic_notepad_fontsize'), action: () => {
+      }, builder: (): void => this.sliderPanel()
+      },
+      {
+        // $r('app.media.ic_notepad_textcolor')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.ic_notepad_textcolor'), action: () => {
+        if (this.controller) {
+          let selection = this.controller.getSelection();
+          let spans = selection?.spans;
+          spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+            if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+              let span = item as RichEditorTextSpanResult;
+              this.textStyle = span.textStyle as RichEditorTextStyle;
+              let start = span.offsetInSpan[0];
+              let end = span.offsetInSpan[1];
+              let offset = span.spanPosition.spanRange[0];
+              if (this.textStyle.fontColor == Color.Orange || this.textStyle.fontColor == '#FFFFA500') {
+                this.textStyle.fontColor = Color.Black;
+              } else {
+                this.textStyle.fontColor = Color.Orange;
+              }
+              this.controller.updateSpanStyle({
+                start: offset + start,
+                end: offset + end,
+                textStyle: this.textStyle
+              } as RichEditorUpdateTextSpanStyleOptions)
+            }
+          })
+        }
+      }
+      }];
+  private expandedMenuOptions: Array<ExpandedMenuOptions> =
+    [{
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      startIcon: $r('app.media.startIcon'), content: '词典', action: () => {
+      }
+    }, {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      startIcon: $r('app.media.startIcon'), content: '翻译', action: () => {
+      }
+    }, {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      startIcon: $r('app.media.startIcon'), content: '搜索', action: () => {
+      }
+    }];
+  private expandedMenuOptions1: Array<ExpandedMenuOptions> = [];
+  private selectionMenuOptions: SelectionMenuOptions = {
+    editorMenuOptions: this.editorMenuOptions,
+    expandedMenuOptions: this.expandedMenuOptions,
+    controller: this.controller,
+    // “剪切”事件回调
+    onCut: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onCut: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    },
+    // “粘贴”事件回调
+    onPaste: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onPaste: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    },
+    // “复制”事件回调
+    onCopy: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onCopy: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    },
+    // “全选”事件回调
+    onSelectAll: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onSelectAll: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    }
+  };
+  private selectionMenuOptions2: SelectionMenuOptions = {
+    editorMenuOptions: this.editorMenuOptions,
+    expandedMenuOptions: this.expandedMenuOptions1,
+    controller: this.controller
+  };
+  private selectionMenuOptions3: SelectionMenuOptions = {
+    editorMenuOptions: this.editorMenuOptions,
+    expandedMenuOptions: this.expandedMenuOptions,
+    controller: this.controller
+  };
+
+  @Builder
+  sliderPanel() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+        Text('A').fontSize(15)
+        // 通过滑动滑动条调节选中文本的字体大小
+        Slider({ value: this.textSize, step: 10, style: SliderStyle.InSet })
+          .width(210)
+          .onChange((value: double, mode: SliderChangeMode) => {
+            if (this.controller) {
+              let selection = this.controller.getSelection();
+              if (mode == SliderChangeMode.End) {
+                if (this.textSize == undefined) {
+                  this.textSize = 0;
+                }
+                let spans = selection?.spans;
+                spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+                  if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+                    this.textSize = Math.max(this.textSize, (item as RichEditorTextSpanResult).textStyle.fontSize);
+                  }
+                })
+              }
+              if (mode == SliderChangeMode.Moving || mode == SliderChangeMode.Click) {
+                this.start = selection ? selection.selection[0] : -1;
+                this.end = selection ? selection.selection[1] : -1;
+                this.textSize = value;
+                this.controller.updateSpanStyle({
+                  start: this.start,
+                  end: this.end,
+                  textStyle: { fontSize: this.textSize }
+                } as RichEditorUpdateTextSpanStyleOptions)
+              }
+            }
+          })
+        Text('A').fontSize(20).fontWeight(FontWeight.Medium)
+      }.borderRadius($r('sys.float.ohos_id_corner_radius_card'))
+    }
+    .shadow(ShadowStyle.OUTER_DEFAULT_MD)
+    .backgroundColor(Color.White)
+    .borderRadius($r('sys.float.ohos_id_corner_radius_card'))
+    .padding(15)
+    .height(48)
+  }
+
+  @Builder
+  MyMenu() {
+    Column() {
+      SelectionMenu(this.selectionMenuOptions)
+    }
+    .width(256)
+    .backgroundColor(Color.Transparent)
+  }
+
+  @Builder
+  MyMenu2() {
+    Column() {
+      SelectionMenu(this.selectionMenuOptions2)
+    }
+    .width(256)
+    .backgroundColor(Color.Transparent)
+  }
+
+  @Builder
+  MyMenu3() {
+    Column() {
+      SelectionMenu(this.selectionMenuOptions3)
+    }
+    .width(256)
+    .backgroundColor(Color.Transparent)
+  }
+
+  build() {
+    Column() {
+      Button('SetSelection')
+        .onClick((event: ClickEvent) => {
+          if (this.controller) {
+            this.controller.setSelection(0, 2);
+          }
+        })
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.message, { style: { fontColor: Color.Orange, fontSize: 30 } });
+          this.controller.addTextSpan(this.message, { style: { fontColor: Color.Black, fontSize: 25 } });
+        })
+        .onSelect((value: RichEditorSelection) => {
+          if (value.selection[0] == -1 && value.selection[1] == -1) {
+            return;
+          }
+          this.start = value.selection[0];
+          this.end = value.selection[1];
+        })
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu3, RichEditorResponseType.RIGHT_CLICK)
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu2, RichEditorResponseType.SELECT)
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .width(200)
+        .height(200)
+        .margin(10)
+    }
+  }
+}
+```
 > **说明：**
 >
 > 系统暂未预置加粗、斜体等图标，示例代码使用本地资源图标，开发者使用时需自行替换editorMenuOptions中icon项的资源。
@@ -477,6 +815,7 @@ struct Index {
 
 从API version 11开始，该示例通过设置[EditorMenuOptions](#editormenuoptions)的属性symbolStyle，展示了自定义Symbol类型图标。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SelectionMenu,
@@ -646,6 +985,7 @@ struct Index {
     editorMenuOptions: this.editorMenuOptions,
     expandedMenuOptions: this.expandedMenuOptions,
     controller: this.controller,
+    // “剪切”事件回调
     onCut: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -657,6 +997,7 @@ struct Index {
         })
       }
     },
+    // “粘贴”事件回调
     onPaste: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -668,6 +1009,7 @@ struct Index {
         })
       }
     },
+    // “复制”事件回调
     onCopy: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -679,6 +1021,7 @@ struct Index {
         })
       }
     },
+    // “全选”事件回调
     onSelectAll: (event?: EditorEventInfo) => {
       if (event && event.content) {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
@@ -697,6 +1040,7 @@ struct Index {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
         Text('A').fontSize(15)
+        // 通过滑动滑动条调节选中文本的字体大小
         Slider({ value: this.textSize, step: 10, style: SliderStyle.InSet })
           .width(210)
           .onChange((value: number, mode: SliderChangeMode) => {
@@ -793,6 +1137,339 @@ struct Index {
         })
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu3(), RichEditorResponseType.RIGHT_CLICK)
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu2(), RichEditorResponseType.SELECT)
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .width(200)
+        .height(200)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Builder, Component, Entry, State, Button, ClickEvent, Color, Column, DecorationStyleInterface, EditorMenuOptions, ExpandedMenuOptions,
+  EditorEventInfo, Flex, FlexAlign, FontStyle, FontWeight, ItemAlign, Text, TextDecorationType, TextStyle, $r, RichEditor, RichEditorController,
+  RichEditorOptions, RichEditorResponseType, RichEditorSpanType, RichEditorTextStyle, RichEditorTextSpanResult, RichEditorImageSpanResult, RichEditorSelection,
+  RichEditorUpdateTextSpanStyleOptions, SelectionMenu, SelectionMenuOptions, ShadowStyle, Slider, SliderStyle, SliderChangeMode, SymbolGlyphModifier } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State message: string = 'Hello world';
+  @State textSize: double = 30;
+  @State fontWeight: FontWeight = FontWeight.Normal;
+  @State start: int = -1;
+  @State end: int = -1;
+  @State colorTransparent: Color = Color.Transparent;
+  @State textStyle: RichEditorTextStyle = {} as RichEditorTextStyle;
+  private editorMenuOptions: Array<EditorMenuOptions> =
+    [
+      {
+        icon: $r('sys.media.wifi_router_fill'),
+        symbolStyle: new SymbolGlyphModifier($r('sys.symbol.save')),
+        action: () => {
+          if (this.controller) {
+            let selection = this.controller.getSelection();
+            let spans = selection?.spans;
+            spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+              if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+                let span = item as RichEditorTextSpanResult;
+                this.textStyle = span.textStyle as RichEditorTextStyle;
+                let start = span.offsetInSpan[0];
+                let end = span.offsetInSpan[1];
+                let offset = span.spanPosition.spanRange[0];
+                if (this.textStyle.fontWeight != 11) {
+                  this.textStyle.fontWeight = FontWeight.Bolder;
+                } else {
+                  this.textStyle.fontWeight = FontWeight.Normal;
+                }
+                this.controller.updateSpanStyle({
+                  start: offset + start,
+                  end: offset + end,
+                  textStyle: this.textStyle
+                } as RichEditorUpdateTextSpanStyleOptions)
+              }
+            })
+          }
+        }
+      },
+      {
+        icon: $r('sys.media.save_button_picture'),
+        symbolStyle: new SymbolGlyphModifier($r('sys.symbol.camera')),
+        action: () => {
+          if (this.controller) {
+            let selection = this.controller.getSelection();
+            let spans = selection?.spans;
+            spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+              if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+                let span = item as RichEditorTextSpanResult;
+                this.textStyle = span.textStyle as RichEditorTextStyle;
+                let start = span.offsetInSpan[0];
+                let end = span.offsetInSpan[1];
+                let offset = span.spanPosition.spanRange[0];
+                if (this.textStyle.fontStyle == FontStyle.Italic) {
+                  this.textStyle.fontStyle = FontStyle.Normal;
+                } else {
+                  this.textStyle.fontStyle = FontStyle.Italic;
+                }
+                this.controller.updateSpanStyle({
+                  start: offset + start,
+                  end: offset + end,
+                  textStyle: this.textStyle
+                } as RichEditorUpdateTextSpanStyleOptions)
+              }
+            })
+          }
+        }
+      },
+      {
+        icon: $r('sys.media.waveform_folder_fill'),
+        symbolStyle: new SymbolGlyphModifier($r('sys.symbol.car')),
+        action: () => {
+          if (this.controller) {
+            let selection = this.controller.getSelection();
+            let spans = selection?.spans;
+            spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+              if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+                let span = item as RichEditorTextSpanResult;
+                this.textStyle = span.textStyle as RichEditorTextStyle;
+                let start = span.offsetInSpan[0];
+                let end = span.offsetInSpan[1];
+                let offset = span.spanPosition.spanRange[0];
+                if (this.textStyle.decoration) {
+                  let decoration: DecorationStyleInterface = this.textStyle.decoration as DecorationStyleInterface;
+                  if (this.textStyle.decoration?.type == TextDecorationType.Underline) {
+                    decoration.type = TextDecorationType.None;
+                    this.textStyle.decoration = decoration;
+                  } else {
+                    decoration.type = TextDecorationType.Underline;
+                    this.textStyle.decoration = decoration;
+                  }
+                } else {
+                  this.textStyle.decoration = { type: TextDecorationType.Underline, color: Color.Black }
+                }
+                this.controller.updateSpanStyle({
+                  start: offset + start,
+                  end: offset + end,
+                  textStyle: this.textStyle
+                } as RichEditorUpdateTextSpanStyleOptions)
+              }
+            })
+          }
+        }
+      },
+      {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+        icon: $r('app.media.app_icon'), action: () => {
+      }, builder: (): void => this.sliderPanel()
+      },
+      {
+        icon: $r('sys.media.thermometer_fill'), action: () => {
+        if (this.controller) {
+          let selection = this.controller.getSelection();
+          let spans = selection?.spans;
+          spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+            if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+              let span = item as RichEditorTextSpanResult;
+              this.textStyle = span.textStyle as RichEditorTextStyle;
+              let start = span.offsetInSpan[0];
+              let end = span.offsetInSpan[1];
+              let offset = span.spanPosition.spanRange[0];
+              if (this.textStyle.fontColor == Color.Orange || this.textStyle.fontColor == '#FFFFA500') {
+                this.textStyle.fontColor = Color.Black;
+              } else {
+                this.textStyle.fontColor = Color.Orange;
+              }
+              this.controller.updateSpanStyle({
+                start: offset + start,
+                end: offset + end,
+                textStyle: this.textStyle
+              } as RichEditorUpdateTextSpanStyleOptions)
+            }
+          })
+        }
+      }
+      }];
+  private expandedMenuOptions: Array<ExpandedMenuOptions> =
+    [{
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      startIcon: $r('app.media.startIcon'), content: '词典', action: () => {
+      }
+    }, {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      startIcon: $r('app.media.startIcon'), content: '翻译', action: () => {
+      }
+    }, {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      startIcon: $r('app.media.startIcon'), content: '搜索', action: () => {
+      }
+    }];
+  private expandedMenuOptions1: Array<ExpandedMenuOptions> = [];
+  private editorMenuOptions1: Array<EditorMenuOptions> = [];
+  private selectionMenuOptions: SelectionMenuOptions = {
+    editorMenuOptions: this.editorMenuOptions,
+    expandedMenuOptions: this.expandedMenuOptions,
+    controller: this.controller,
+    // “剪切”事件回调
+    onCut: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onCut: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    },
+    // “粘贴”事件回调
+    onPaste: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onPaste: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    },
+    // “复制”事件回调
+    onCopy: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onCopy: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    },
+    // “全选”事件回调
+    onSelectAll: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content?.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+          if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            hilog.info(0x0000, 'testTag', `test onSelectAll: ${span.value}`);
+            hilog.info(0x0000, 'testTag', `test start: ${span.offsetInSpan[0]} end: ${span.offsetInSpan[1]}`);
+          }
+        })
+      }
+    }
+  };
+  private selectionMenuOptions2: SelectionMenuOptions = {
+    editorMenuOptions: this.editorMenuOptions,
+    expandedMenuOptions: this.expandedMenuOptions1,
+    controller: this.controller
+  };
+  private selectionMenuOptions3: SelectionMenuOptions = {
+    editorMenuOptions: this.editorMenuOptions1,
+    expandedMenuOptions: this.expandedMenuOptions,
+    controller: this.controller
+  };
+
+  @Builder
+  sliderPanel() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+        Text('A').fontSize(15)
+        // 通过滑动滑动条调节选中文本的字体大小
+        Slider({ value: this.textSize, step: 10, style: SliderStyle.InSet })
+          .width(210)
+          .onChange((value: double, mode: SliderChangeMode) => {
+            if (this.controller) {
+              let selection = this.controller.getSelection();
+              if (mode == SliderChangeMode.End) {
+                if (this.textSize == undefined) {
+                  this.textSize = 0;
+                }
+                let spans = selection?.spans;
+                spans?.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index: int) => {
+                  if (typeof (item as RichEditorTextSpanResult) != 'undefined') {
+                    this.textSize = Math.max(this.textSize, (item as RichEditorTextSpanResult).textStyle.fontSize);
+                  }
+                })
+              }
+              if (mode == SliderChangeMode.Moving || mode == SliderChangeMode.Click) {
+                this.start = selection ? selection.selection[0] : -1;
+                this.end = selection ? selection.selection[1] : -1;
+                this.textSize = value;
+                this.controller.updateSpanStyle({
+                  start: this.start,
+                  end: this.end,
+                  textStyle: { fontSize: this.textSize }
+                } as RichEditorUpdateTextSpanStyleOptions)
+              }
+            }
+          })
+        Text('A').fontSize(20).fontWeight(FontWeight.Medium)
+      }.borderRadius($r('sys.float.ohos_id_corner_radius_card'))
+    }
+    .shadow(ShadowStyle.OUTER_DEFAULT_MD)
+    .backgroundColor(Color.White)
+    .borderRadius($r('sys.float.ohos_id_corner_radius_card'))
+    .padding(15)
+    .height(48)
+  }
+
+  @Builder
+  MyMenu() {
+    Column() {
+      SelectionMenu(this.selectionMenuOptions)
+    }
+    .width(256)
+    .backgroundColor(Color.Transparent)
+  }
+
+  @Builder
+  MyMenu2() {
+    Column() {
+      SelectionMenu(this.selectionMenuOptions2)
+    }
+    .width(256)
+    .backgroundColor(Color.Transparent)
+  }
+
+  @Builder
+  MyMenu3() {
+    Column() {
+      SelectionMenu(this.selectionMenuOptions3)
+    }
+    .width(256)
+    .backgroundColor(Color.Transparent)
+  }
+
+  build() {
+    Column() {
+      Button('SetSelection')
+        .onClick((event: ClickEvent) => {
+          if (this.controller) {
+            this.controller.setSelection(0, 2);
+          }
+        })
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.message, { style: { fontColor: Color.Orange, fontSize: 30 } });
+          this.controller.addTextSpan(this.message, { style: { fontColor: Color.Black, fontSize: 25 } });
+        })
+        .onSelect((value: RichEditorSelection) => {
+          if (value.selection[0] == -1 && value.selection[1] == -1) {
+            return;
+          }
+          this.start = value.selection[0];
+          this.end = value.selection[1];
+        })
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu3, RichEditorResponseType.RIGHT_CLICK)
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu2, RichEditorResponseType.SELECT)
         .borderWidth(1)
         .borderColor(Color.Red)
         .width(200)
