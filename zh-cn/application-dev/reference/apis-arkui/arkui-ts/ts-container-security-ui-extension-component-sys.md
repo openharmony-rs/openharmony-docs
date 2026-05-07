@@ -105,7 +105,7 @@ UIExtensionAbility连接完成时触发的回调，使用callback异步回调。
 
 ArkTS-Dyn: onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>)
 
-ArkTS-Sta: onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\>\> | undefined)
+ArkTS-Sta: onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, RecordData\>\> | undefined)
 
 收到被拉起的Ability发送的数据时触发的回调。
 
@@ -119,7 +119,7 @@ ArkTS-Sta: onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\>\> \| undefined | 是 | 回调函数，返回收到的来自对端Ability的数据。<br/>ArkTS-Sta模式下可不传。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, RecordData\>\> \| undefined | 是 | 回调函数，返回收到的来自对端Ability的数据。<br/>ArkTS-Sta模式下可不传。 |
 
 ### onError
 
@@ -184,7 +184,7 @@ ArkTS-Sta: onTerminated(callback: [Callback](../../apis-basic-services-kit/js-ap
 
 ArkTS-Dyn: send(data: Record\<string, Object\>): void
 
-ArkTS-Sta: send(data: Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\>): void
+ArkTS-Sta: send(data: Record\<string, RecordData\>): void
 
 用于在双方建立连接成功后，向组件使用方被拉起的Ability发送数据，提供异步发送能力。
 
@@ -198,13 +198,13 @@ ArkTS-Sta: send(data: Record\<string, [RecordData](../../apis-basic-services-kit
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\> | 是 | 异步发送给被拉起的扩展Ability的数据。 |
+| data | ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, RecordData\> | 是 | 异步发送给被拉起的扩展Ability的数据。 |
 
 ### sendSync
 
 ArkTS-Dyn: sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
-ArkTS-Sta: sendSync(data: Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\>): Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\>
+ArkTS-Sta: sendSync(data: Record\<string, RecordData\>): Record\<string, RecordData\>
 
 用于在双方建立连接成功后，向组件使用方被拉起的Ability发送数据，提供同步发送能力。
 
@@ -218,13 +218,13 @@ ArkTS-Sta: sendSync(data: Record\<string, [RecordData](../../apis-basic-services
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\> | 是 | 同步发送给被拉起的扩展Ability的数据。 |
+| data | ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, RecordData\> | 是 | 同步发送给被拉起的扩展Ability的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, [RecordData](../../apis-basic-services-kit/js-apis-base.md#recorddata)\> | 扩展Ability返回的数据。 |
+| ArkTS-Dyn: Record\<string, Object\><br/>ArkTS-Sta: Record\<string, RecordData\> | 扩展Ability返回的数据。 |
 
 **错误码：**
 
