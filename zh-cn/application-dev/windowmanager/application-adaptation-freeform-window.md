@@ -344,7 +344,7 @@
 
 - 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
 
-- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](window-terminology.md#沉浸式布局)。
+- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
 
 **窗口三键**是指窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。
 

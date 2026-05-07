@@ -114,7 +114,7 @@
 
 窗口内容的避让区域。
 
-窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)对应的AvoidArea做窗口内容避让。
+窗口内容做[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)对应的AvoidArea做窗口内容避让。
 
 在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。
 
@@ -138,7 +138,7 @@
 
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
-以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时需关注。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -249,7 +249,7 @@
 | drawableRect<sup>11+</sup>            | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 否   | 窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口左上顶点计算。在Stage模型下，需要在调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)加载页面内容后获取该属性。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | type<sup>7+</sup>                     | [WindowType](arkts-apis-window-e.md#windowtype7) | 否   | 否   | 窗口类型。<br/>当前存在主窗使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | isFullScreen                          | boolean                   | 否   | 否   |在满足isLayoutFullScreen为true的条件下如果隐藏了状态栏，返回值为true，其他情况下均返回false。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isLayoutFullScreen<sup>7+</sup>       | boolean                   | 否   | 否   | 对于子窗，如果设置了[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，返回值为true。<br/>对于主窗，如果设置了[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。<br/>其他情况下均返回false<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| isLayoutFullScreen<sup>7+</sup>       | boolean                   | 否   | 否   | 对于子窗，如果设置了[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，返回值为true。<br/>对于主窗，如果设置了[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)且处于全屏模式，返回值为true。<br/>其他情况下均返回false<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | focusable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可获焦。true表示可获焦；false表示不可获焦。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | touchable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可触摸。true表示可触摸；false表示不可触摸。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | brightness                            | number                    | 否   | 否   | 窗口亮度。通过[setWindowBrightness()](arkts-apis-window-Window.md#setwindowbrightness9)设置窗口的亮度值。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]或-1.0，其取值1.0时表示最大亮度，取值-1.0时，表示亮度跟随系统。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1.0。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|

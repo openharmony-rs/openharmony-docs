@@ -30,7 +30,7 @@
 
 窗口内容的避让区域的类型枚举。
 
-窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
+窗口内容做[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
 
 | 名称                             | 值   | 说明                                                         |
 | -------------------------------- | ---- | ------------------------------------------------------------ |

@@ -49,7 +49,8 @@
 
 窗口截图主要提供单窗口截图、多窗口截图。通过对应监听能力可以在窗口截图时，接收到截图监听回调。
 
-- 单窗口截图：可通过调用[snapshot()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9-1)/[snapshotSync()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotsync20)接口对当前窗口进行截图。  
+### 单窗口截图
+可通过调用[snapshot()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9-1)/[snapshotSync()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotsync20)接口对当前窗口进行截图。  
 
   ```ts
   import { window } from '@kit.ArkUI';
@@ -260,7 +261,8 @@
   }
   ```
 
-- 多窗口截图：可通过调用[getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21)接口，针对一个或多个主窗（通过windowId指定）进行截图。  
+### 多窗口截图
+可通过调用[getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21)接口，针对一个或多个主窗（通过windowId指定）进行截图。  
 
   ```ts
   import { window } from '@kit.ArkUI';
@@ -444,184 +446,184 @@
 
 - 长截屏/滚动截屏：用于获取超出单屏范围的连续内容，适用于长页面、长列表等完整截取场景。  
 
-  ```ts
-  import { display, screenshot } from '@kit.ArkUI';
-  import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { image } from '@kit.ImageKit';
-  
-  const DOMAIN = 0x0000;
-  
-  @Entry
-  @Component
-  struct Index {
-    @State statusText: string = 'Tap a button to run the screenshot sample.';
-    @State displayIdText: string = '0';
-    @State displayInfoText: string = '-';
-    @State pickRectText: string = '-';
-    @State imageWidth: number = 0;
-    @State imageHeight: number = 0;
-    @State previewPixelMap?: image.PixelMap = undefined;
-  
-    aboutToAppear(): void {
-      this.initDisplayInfo();
-    }
-  
-    // 获取当前设备可用的 displayId，供 screenshot.capture 使用。
-    private async initDisplayInfo(): Promise<void> {
-      try {
-        const defaultDisplay = display.getDefaultDisplaySync();
-        this.displayIdText = `${defaultDisplay.id}`;
-  
-        const displays = await display.getAllDisplays();
-        this.displayInfoText = displays.map((item) => `${item.id}`).join(', ');
-        this.statusText = `available displayIds=${this.displayInfoText}`;
-      } catch (err) {
-        this.statusText = `init display info failed: ${JSON.stringify(err)}`;
-        hilog.error(DOMAIN, 'screenshotSample', this.statusText);
-      }
-    }
-  
-    // screenshot.capture 需要使用 ohos.permission.CUSTOM_SCREEN_CAPTURE 权限。
-    private async requestCapturePermission(): Promise<boolean> {
-      try {
-        const hostContext = this.getUIContext().getHostContext();
-        if (!hostContext) {
-          this.statusText = 'permission request failed: hostContext is unavailable';
-          return false;
-        }
-  
-        const context = hostContext as common.UIAbilityContext;
-        const atManager = abilityAccessCtrl.createAtManager();
-        const result = await atManager.requestPermissionsFromUser(context, [
-          'ohos.permission.CUSTOM_SCREEN_CAPTURE' as Permissions
-        ]);
-  
-        const granted = result.authResults.length > 0 && result.authResults[0] === 0;
-        this.statusText = `permission granted=${granted}`;
-        return granted;
-      } catch (err) {
-        this.statusText = `permission request failed: ${JSON.stringify(err)}`;
-        return false;
-      }
-    }
-  
-    // 将截图结果展示到页面中，并读取 PixelMap 宽高。
-    private updatePreview(pixelMap: image.PixelMap, source: string): void {
-      this.previewPixelMap = pixelMap;
-  
-      try {
-        const imageInfo = pixelMap.getImageInfoSync();
-        this.imageWidth = imageInfo.size.width;
-        this.imageHeight = imageInfo.size.height;
-        this.statusText = `${source} success, size=${this.imageWidth}x${this.imageHeight}`;
-      } catch (err) {
-        this.imageWidth = 0;
-        this.imageHeight = 0;
-        this.statusText = `${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`;
-      }
-  
-      hilog.info(DOMAIN, 'screenshotSample', this.statusText);
-    }
-  
-    // 通过手势框选屏幕区域，仅支持主屏区域截图。
-    private async pickScreenArea(): Promise<void> {
-      try {
-        const result = await screenshot.pick();
-        this.pickRectText = `left=${result.pickRect.left}, top=${result.pickRect.top}, width=${result.pickRect.width},   height=${result.pickRect.height}`;
-        this.updatePreview(result.pixelMap, 'screenshot.pick');
-      } catch (err) {
-        this.statusText = `screenshot.pick failed: ${JSON.stringify(err)}`;
-        hilog.error(DOMAIN, 'screenshotSample', this.statusText);
-      }
-    }
-  
-    // 根据 displayId 截取对应屏幕的全屏内容。
-    private async captureByDisplayId(): Promise<void> {
-      const granted = await this.requestCapturePermission();
-      if (!granted) {
-        this.statusText = 'CUSTOM_SCREEN_CAPTURE permission denied or unavailable.';
-        return;
-      }
-  
-      try {
-        const displayId = Number.parseInt(this.displayIdText, 10);
-        if (Number.isNaN(displayId) || displayId < 0) {
-          throw new Error(`Invalid displayId: ${this.displayIdText}`);
-        }
-  
-        const pixelMap = await screenshot.capture({ displayId });
-        this.updatePreview(pixelMap, `screenshot.capture(displayId=${displayId})`);
-      } catch (err) {
-        this.statusText = `screenshot.capture failed: ${JSON.stringify(err)}`;
-        hilog.error(DOMAIN, 'screenshotSample', this.statusText);
-      }
-    }
-  
-    build() {
-      Column({ space: 16 }) {
-        Text('Screen Screenshot Sample')
-          .fontSize(24)
-          .fontWeight(FontWeight.Bold)
-          .width('100%')
-          .textAlign(TextAlign.Start)
-  
-        Text(`Available displayIds: ${this.displayInfoText}`)
-          .width('100%')
-          .fontSize(12)
-          .fontColor('#666666')
-          .textAlign(TextAlign.Start)
-  
-        TextInput({ text: this.displayIdText, placeholder: 'Input displayId' })
-          .width('100%')
-          .onChange((value: string) => {
-            this.displayIdText = value;
-          })
-  
-        Button('screenshot.pick')
-          .width('100%')
-          .onClick(() => {
-            void this.pickScreenArea();
-          })
-  
-        Button('screenshot.capture')
-          .width('100%')
-          .onClick(() => {
-            void this.captureByDisplayId();
-          })
-  
-        Text(`Last pickRect: ${this.pickRectText}`)
-          .width('100%')
-          .fontSize(12)
-          .fontColor('#666666')
-          .textAlign(TextAlign.Start)
-  
-        Text(this.statusText)
-          .width('100%')
-          .fontSize(14)
-          .textAlign(TextAlign.Start)
-  
-        if (this.previewPixelMap) {
-          Text(`Preview size: ${this.imageWidth} x ${this.imageHeight}`)
-            .width('100%')
-            .fontSize(12)
-            .fontColor('#666666')
-            .textAlign(TextAlign.Start)
-  
-          Image(this.previewPixelMap)
-            .width('100%')
-            .height(360)
-            .objectFit(ImageFit.Contain)
-            .backgroundColor('#F3F3F3')
-        }
-      }
-      .width('100%')
-      .height('100%')
-      .padding(20)
-      .alignItems(HorizontalAlign.Start)
+```ts
+import { display, screenshot } from '@kit.ArkUI';
+import { common, abilityAccessCtrl, Permissions } from 'kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State statusText: string = 'Tap a button to run the screenshot smple.';
+  @State displayIdText: string = '0';
+  @State displayInfoText: string = '-';
+  @State pickRectText: string = '-';
+  @State imageWidth: number = 0;
+  @State imageHeight: number = 0;
+  @State previewPixelMap?: image.PixelMap = undefined;
+
+  aboutToAppear(): void {
+    this.initDisplayInfo();
+  }
+
+  // 获取当前设备可用的 displayId，供 screenshot.capture 使用。
+  private async initDisplayInfo(): Promise<void> {
+    try {
+      const defaultDisplay = display.getDefaultDisplaySync();
+      this.displayIdText = `${defaultDisplay.id}`;
+
+      const displays = await display.getAllDisplays();
+      this.displayInfoText = displays.map((item) => `{item.id}`).join(', ');
+      this.statusText = `available dsplayIds=${this.displayInfoText}`;
+    } catch (err) {
+      this.statusText = `init display info failed: $JSON.stringify(err)}`;
+      hilog.error(DOMAIN, 'screenshotSample', this.statusText);
     }
   }
-  ```
+
+  // screenshot.capture 需要使用 ohos.permission.CUSTOM_SCREEN_CAPTURE 限。
+  private async requestCapturePermission(): Promise<boolean> {
+    try {
+      const hostContext = this.getUIContext().getHostContext();
+      if (!hostContext) {
+        this.statusText = 'permission request failed: hostContext is uavailable';
+        return false;
+      }
+
+      const context = hostContext as common.UIAbilityContext;
+      const atManager = abilityAccessCtrl.createAtManager();
+      const result = await aManager.requestPermissionsFromUser(context, [
+        'ohos.permission.CUSTOM_SCREEN_CAPTURE' as Permissions
+      ]);
+
+      const granted = result.authResults.length > 0 && rsult.authResults[0] === 0;
+      this.statusText = `permission granted=${granted}`;
+      return granted;
+    } catch (err) {
+      this.statusText = `permission request failed: $JSON.stringify(err)}`;
+      return false;
+    }
+  }
+
+  // 将截图结果展示到页面中，并读取 PixelMap 宽高。
+  private updatePreview(pixelMap: image.PixelMap, source: string): vid {
+    this.previewPixelMap = pixelMap;
+
+    try {
+      const imageInfo = pixelMap.getImageInfoSync();
+      this.imageWidth = imageInfo.size.width;
+      this.imageHeight = imageInfo.size.height;
+      this.statusText = `${source} success, sze=${this.imageWidth}x${this.imageHeight}`;
+    } catch (err) {
+      this.imageWidth = 0;
+      this.imageHeight = 0;
+      this.statusText = `${source} success, but getImageInfoSync filed: ${JSON.stringify(err)}`;
+    }
+
+    hilog.info(DOMAIN, 'screenshotSample', this.statusText);
+  }
+
+  // 通过手势框选屏幕区域，仅支持主屏区域截图。
+  private async pickScreenArea(): Promise<void> {
+    try {
+      const result = await screenshot.pick();
+      this.pickRectText = `left=${result.pickRect.left}, tp=${result.pickRect.top}, width=${result.pickRect.width},   hight=${result.pickRect.height}`;
+      this.updatePreview(result.pixelMap, 'screenshot.pick');
+    } catch (err) {
+      this.statusText = `screenshot.pick failed: $JSON.stringify(err)}`;
+      hilog.error(DOMAIN, 'screenshotSample', this.statusText);
+    }
+  }
+
+  // 根据 displayId 截取对应屏幕的全屏内容。
+  private async captureByDisplayId(): Promise<void> {
+    const granted = await this.requestCapturePermission();
+    if (!granted) {
+      this.statusText = 'CUSTOM_SCREEN_CAPTURE permission denied or uavailable.';
+      return;
+    }
+
+    try {
+      const displayId = Number.parseInt(this.displayIdText, 10);
+      if (Number.isNaN(displayId) || displayId < 0) {
+        throw new Error(`Invalid displayId: ${this.displayIdText}`);
+      }
+
+      const pixelMap = await screenshot.capture({ displayId });
+      this.updatePreview(pixelMap, `creenshot.capture(displayId=${displayId})`);
+    } catch (err) {
+      this.statusText = `screenshot.capture failed: $JSON.stringify(err)}`;
+      hilog.error(DOMAIN, 'screenshotSample', this.statusText);
+    }
+  }
+
+  build() {
+    Column({ space: 16 }) {
+      Text('Screen Screenshot Sample')
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
+        .width('100%')
+        .textAlign(TextAlign.Start)
+
+      Text(`Available displayIds: ${this.displayInfoText}`)
+        .width('100%')
+        .fontSize(12)
+        .fontColor('#666666')
+        .textAlign(TextAlign.Start)
+
+      TextInput({ text: this.displayIdText, placeholder: 'Input dsplayId' })
+        .width('100%')
+        .onChange((value: string) => {
+          this.displayIdText = value;
+        })
+
+      Button('screenshot.pick')
+        .width('100%')
+        .onClick(() => {
+          void this.pickScreenArea();
+        })
+
+      Button('screenshot.capture')
+        .width('100%')
+        .onClick(() => {
+          void this.captureByDisplayId();
+        })
+
+      Text(`Last pickRect: ${this.pickRectText}`)
+        .width('100%')
+        .fontSize(12)
+        .fontColor('#666666')
+        .textAlign(TextAlign.Start)
+
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .textAlign(TextAlign.Start)
+
+      if (this.previewPixelMap) {
+        Text(`Preview size: ${this.imageWidth} x $this.imageHeight}`)
+          .width('100%')
+          .fontSize(12)
+          .fontColor('#666666')
+          .textAlign(TextAlign.Start)
+
+        Image(this.previewPixelMap)
+          .width('100%')
+          .height(360)
+          .objectFit(ImageFit.Contain)
+          .backgroundColor('#F3F3F3')
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Start)
+  }
+}
+```
 
 ## 组件截图
 
