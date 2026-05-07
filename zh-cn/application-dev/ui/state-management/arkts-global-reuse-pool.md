@@ -214,7 +214,7 @@ struct ReusableComponent { // 复用组件
 
 ## 接口说明
 
-有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅[状态管理API参考](../../reference/apis-arkui/js-apis-stateManagement.md)。
+有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅[@ohos.arkui.StateManagement (状态管理)](../../reference/apis-arkui/js-apis-stateManagement.md)。
 
 以下接口可用于全局复用池：
 
@@ -723,7 +723,7 @@ struct PoolOwner {
   @Local showB: boolean = true;
   @Local showC: boolean = true;
 
-  purgeReuseId(id: number) {
+  purgeReuseId(id: string) {
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     const info = pool?.getReusableInfo(TestChild, id) as IReusableInfo;
     if (info) {
@@ -746,7 +746,7 @@ struct PoolOwner {
           this.showC = !this.showC;
         })
       Button('仅清除 B')
-        .onClick(() => this.purgeReuseId(2))
+        .onClick(() => this.purgeReuseId('B'))
 
       if (this.showA) {
         TestChild({ label: 'A' })
@@ -1047,7 +1047,7 @@ struct Index {
   aboutToAppear() {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
-    pool!.preRender(wrapBuilder(preRenderBuilder), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
       .then(() => {
         this.onUIFullyLoaded = true;
       });
