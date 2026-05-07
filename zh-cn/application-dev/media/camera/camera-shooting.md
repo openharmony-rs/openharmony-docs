@@ -457,16 +457,15 @@
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
    <!-- @[capture_ready](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  ```ts
-  function onPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
-    photoOutput.on('captureReady', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info(`photo capture ready`);
-    });
-  }
-  ```
+   
+   ``` TypeScript
+   photoOutput.on('captureReady', (err: BusinessError) => {
+     if (err !== undefined && err.code !== 0) {
+       return;
+     }
+     console.info(`photo capture ready`);
+   });
+   ```
 
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
