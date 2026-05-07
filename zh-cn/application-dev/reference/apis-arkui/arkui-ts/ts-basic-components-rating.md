@@ -300,7 +300,7 @@ attributeModifier(modifier: AttributeModifier\<RatingAttribute> | AttributeModif
 
 | 参数名   | 类型                                                                                    | 必填 | 说明                                                     |
 | -------- | -------------------------------------------------------------------------------------- | ---- | -------------------------------------------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[RatingAttribute](ts-basic-components-rating.md#属性)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | Rating组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[RatingAttribute](ts-basic-components-rating.md)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[通用属性](./ts-component-general-attributes.md)\> \| undefined | 是   | Rating组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ## 事件
 
@@ -425,7 +425,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
 
@@ -448,7 +448,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
 

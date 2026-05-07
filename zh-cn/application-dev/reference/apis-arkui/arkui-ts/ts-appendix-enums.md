@@ -373,6 +373,23 @@
 | DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
+## DialogDisplayMode<sup>24+</sup>
+
+弹窗的显示模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称         | 值 | 说明                       |
+| ------------ | -- | -------------------------- |
+| SCREEN_BASED | 0  | 基于屏幕显示弹窗。         |
+| WINDOW_BASED | 1  | 基于应用窗口显示弹窗。     |
+
 ## Direction
 
 定义元素水平布局的方向。
@@ -1170,20 +1187,20 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 说明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| Left                     | 气泡提示位于组件左侧，与组件左侧中心对齐。                   |
-| Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
-| Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
-| Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
-| LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
-| LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
-| RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
-| RightBottom<sup>9+</sup> | 气泡提示位于组件右侧，与组件下侧边缘对齐。                   |
+| 名称                     | 值 | 说明                                                         |
+| ------------------------ | -- | ------------------------------------------------------------ |
+| Left                     | 0 | 气泡提示位于组件左侧，与组件左侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                  |
+| Right                    | 1 | 气泡提示位于组件右侧，与组件右侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                  |
+| Top                      | 2 | 气泡提示位于组件上侧，与组件上侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                   |
+| Bottom                   | 3 | 气泡提示位于组件下侧，与组件下侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                   |
+| TopLeft                  | 4 | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| TopRight                 | 5 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| BottomLeft               | 6 | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| BottomRight              | 7 | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| LeftTop<sup>9+</sup>     | 8 | 气泡提示位于组件左侧，与组件上侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| LeftBottom<sup>9+</sup>  | 9 | 气泡提示位于组件左侧，与组件下侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| RightTop<sup>9+</sup>    | 10 | 气泡提示位于组件右侧，与组件上侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| RightBottom<sup>9+</sup> | 11 | 气泡提示位于组件右侧，与组件下侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
 
 ## PixelRoundCalcPolicy<sup>11+</sup>
 
@@ -1281,10 +1298,14 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 说明            |
-| ---------- | ------------- |
-| LongPress  | 通过长按触发菜单弹出。   |
-| RightClick | 通过鼠标右键点击触发菜单弹出。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称         | 值 | 说明            |
+| ---------- | -- | ------------- |
+| LongPress  | 1 | 通过长按触发菜单弹出。   |
+| RightClick | 0 | 通过鼠标右键点击触发菜单弹出。 |
 
 ## RenderFit<sup>10+</sup>
 
@@ -1561,10 +1582,16 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    |  说明                   |
-| ------  | -------------------- |
-| TARGET | Tips跟随目标物。 |
-| CURSOR | Tips跟随鼠标。 |
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称    | 值 | 说明                   |
+| ------  | -- | -------------------- |
+| TARGET | 0 | Tips跟随目标物。 |
+| CURSOR | 1 | Tips跟随鼠标。 |
 
 ## VerticalAlign
 
