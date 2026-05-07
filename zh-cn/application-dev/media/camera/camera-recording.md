@@ -31,23 +31,15 @@
    系统提供的media接口可以创建一个录像[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)实例，通过该实例的[getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9)方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
 
    <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   ```ts
-   async function getVideoSurfaceId(aVRecorderConfig: media.AVRecorderConfig): Promise<string | undefined> {  // aVRecorderConfig可参考步骤3.创建录像输出流。
-     let avRecorder: media.AVRecorder | undefined = undefined;
-     let videoSurfaceId: string | undefined = undefined;
-     try {
-       avRecorder = await media.createAVRecorder();
-       if (avRecorder === undefined) {
-         return videoSurfaceId;
-       }
-       await avRecorder.prepare(aVRecorderConfig);
-       videoSurfaceId = await avRecorder.getInputSurface();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`createAVRecorder call failed. error code: ${err.code}`);
-     }
-     return videoSurfaceId;
+   
+   ``` TypeScript
+   this.avRecorder = await this.createAVRecorder();
+   if (this.avRecorder === undefined) {
+     Logger.error(TAG, 'Failed to create the avRecorder.');
+     return;
    }
+   await this.prepareAVRecorder();
+   let videoSurfaceId = await this.avRecorder.getInputSurface();
    ```
 
 3. 创建录像输出流。
