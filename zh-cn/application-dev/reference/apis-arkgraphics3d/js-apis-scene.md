@@ -41,3 +41,9 @@
 [ScenePostProcessSettings](js-apis-inner-scene-post-process-settings.md)：本模块提供3D图形中的色调映射等图像后处理方法。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## SceneBoidsSim
+
+[SceneBoidsSim](js-apis-inner-scene-boids-sim-sys.md)：本模块提供3D图形中群组模拟动画的类型及操作方法。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
