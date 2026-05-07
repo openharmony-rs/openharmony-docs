@@ -2515,6 +2515,10 @@ print.startPrint(printJobData).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DOCUMENT_FORMAT_AUTO | 0 | 表示自动检测格式。 |
@@ -2532,6 +2536,10 @@ print.startPrint(printJobData).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | FILE_DESCRIPTOR | 0 | 表示文件数据。 |
@@ -2544,6 +2552,10 @@ print.startPrint(printJobData).then(() => {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -2574,6 +2586,10 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -2589,6 +2605,10 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -2603,6 +2623,10 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -2615,6 +2639,10 @@ print.startPrint(printJobData).then(() => {
 定义打印分辨率的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **属性：**
 
@@ -2629,6 +2657,10 @@ print.startPrint(printJobData).then(() => {
 定义打印能力的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **属性：**
 
@@ -2647,6 +2679,10 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -2664,6 +2700,10 @@ print.startPrint(printJobData).then(() => {
 定义打印任务的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **属性：**
 
@@ -2860,6 +2900,10 @@ print.updatePrinterInformation(printerInformation).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -2875,6 +2919,10 @@ print.updatePrinterInformation(printerInformation).then(() => {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **属性：**
 

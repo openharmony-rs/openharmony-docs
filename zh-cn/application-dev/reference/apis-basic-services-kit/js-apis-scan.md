@@ -32,21 +32,21 @@ import { scan } from '@kit.BasicServicesKit';
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
-| SCAN_ERROR_NO_PERMISSION | 201 | 无权限。 |
-| SCAN_ERROR_NOT_SYSTEM_APPLICATION | 202 | 非系统应用。 |
-| SCAN_ERROR_INVALID_PARAMETER | 401 | 无效参数。 |
-| SCAN_ERROR_GENERIC_FAILURE | 13100001 | 通用失败。 |
-| SCAN_ERROR_RPC_FAILURE | 13100002 | RPC失败。 |
-| SCAN_ERROR_SERVER_FAILURE | 13100003 | 服务失败。 |
-| SCAN_ERROR_UNSUPPORTED | 13100004 | 不支持的操作。 |
-| SCAN_ERROR_CANCELED | 13100005 | 操作取消。 |
-| SCAN_ERROR_DEVICE_BUSY | 13100006 | 设备忙。 |
-| SCAN_ERROR_INVALID | 13100007 | 无效操作。 |
-| SCAN_ERROR_JAMMED | 13100008 | 卡纸。 |
-| SCAN_ERROR_NO_DOCS | 13100009 | 缺纸。 |
-| SCAN_ERROR_COVER_OPEN | 13100010 | 盖子打开。 |
-| SCAN_ERROR_IO_ERROR | 13100011 | I/O错误。 |
-| SCAN_ERROR_NO_MEMORY | 13100012 | 内存不足。 |
+| SCAN_ERROR_NO_PERMISSION | 201 | 无权限。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_NOT_SYSTEM_APPLICATION | 202 | 非系统应用。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_INVALID_PARAMETER | 401 | 无效参数。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_GENERIC_FAILURE | 13100001 | 通用失败。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_RPC_FAILURE | 13100002 | RPC失败。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_SERVER_FAILURE | 13100003 | 服务失败。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_UNSUPPORTED | 13100004 | 不支持的操作。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_CANCELED | 13100005 | 操作取消。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_DEVICE_BUSY | 13100006 | 设备忙。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_INVALID | 13100007 | 无效操作。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_JAMMED | 13100008 | 卡纸。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_NO_DOCS | 13100009 | 缺纸。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_COVER_OPEN | 13100010 | 盖子打开。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_IO_ERROR | 13100011 | I/O错误。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_ERROR_NO_MEMORY | 13100012 | 内存不足。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## ConstraintType
 
@@ -60,10 +60,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
-| SCAN_CONSTRAINT_NONE | 0 | 无限制。 |
-| SCAN_CONSTRAINT_RANGE | 1 | 范围限制。 |
-| SCAN_CONSTRAINT_WORD_LIST | 2 | 数字列表。 |
-| SCAN_CONSTRAINT_STRING_LIST | 3 | 字符串列表。 |
+| SCAN_CONSTRAINT_NONE | 0 | 无限制。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_CONSTRAINT_RANGE | 1 | 范围限制。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_CONSTRAINT_WORD_LIST | 2 | 数字列表。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_CONSTRAINT_STRING_LIST | 3 | 字符串列表。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## PhysicalUnit
 
@@ -77,13 +77,13 @@ import { scan } from '@kit.BasicServicesKit';
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
-| SCAN_UNIT_NONE | 0 | 无单位。 |
-| SCAN_UNIT_PIXEL | 1 | 像素单位。 |
-| SCAN_UNIT_BIT | 2 | 位单位。 |
-| SCAN_UNIT_MM | 3 | 毫米单位。 |
-| SCAN_UNIT_DPI | 4 | DPI单位。 |
-| SCAN_UNIT_PERCENT | 5 | 百分比单位。 |
-| SCAN_UNIT_MICROSECOND | 6 | 微秒单位。 |
+| SCAN_UNIT_NONE | 0 | 无单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_UNIT_PIXEL | 1 | 像素单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_UNIT_BIT | 2 | 位单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_UNIT_MM | 3 | 毫米单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_UNIT_DPI | 4 | DPI单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_UNIT_PERCENT | 5 | 百分比单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_UNIT_MICROSECOND | 6 | 微秒单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## OptionValueType
 
@@ -97,10 +97,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
-| SCAN_TYPE_BOOL | 0 | 布尔类型。 |
-| SCAN_TYPE_INT | 1 | 整数类型。 |
-| SCAN_TYPE_FIXED | 2 | 定点数类型。 |
-| SCAN_TYPE_STRING | 3 | 字符串类型。 |
+| SCAN_TYPE_BOOL | 0 | 布尔类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_TYPE_INT | 1 | 整数类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_TYPE_FIXED | 2 | 定点数类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| SCAN_TYPE_STRING | 3 | 字符串类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## ScannerSyncMode
 
@@ -114,8 +114,8 @@ import { scan } from '@kit.BasicServicesKit';
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
-| UPDATE_STR | 'update' | 更新码，表示扫描仪id的变化。 |
-| DELETE_STR | 'delete' | 删除码，表示扫描仪掉线。 |
+| UPDATE_STR | 'update' | 更新码，表示扫描仪id的变化。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| DELETE_STR | 'delete' | 删除码，表示扫描仪掉线。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## ScannerDiscoveryMode
 
@@ -129,8 +129,8 @@ import { scan } from '@kit.BasicServicesKit';
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
-| TCP_STR | 'TCP' | 网络扫描仪的发现模式。 |
-| USB_STR | 'USB' | USB扫描仪的发现模式。 |
+| TCP_STR | 'TCP' | 网络扫描仪的发现模式。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| USB_STR | 'USB' | USB扫描仪的发现模式。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## Range
 
@@ -145,9 +145,9 @@ import { scan } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| minValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最小值。 |
-| maxValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最大值。 |
-| quantValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的量化值。 |
+| minValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最小值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| maxValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最大值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| quantValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的量化值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## ScannerParameter
 
@@ -162,16 +162,16 @@ import { scan } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| optionName | string | 否 | 否 | 选项名称。 |
-| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 选项索引。 |
-| optionTitle | string | 否 | 否 | 选项标题。 |
-| optionDesc | string | 否 | 否 | 选项描述。 |
-| optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。 |
-| optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。 |
-| optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型。 |
-| optionConstraintString | string[] | 否 | 是 | 选项字符串约束。 |
-| optionConstraintInt | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 选项整数约束。 |
-| optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束。 |
+| optionName | string | 否 | 否 | 选项名称。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 选项索引。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionTitle | string | 否 | 否 | 选项标题。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionDesc | string | 否 | 否 | 选项描述。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionConstraintString | string[] | 否 | 是 | 选项字符串约束。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionConstraintInt | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 选项整数约束。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## ScannerOptionValue
 
@@ -179,13 +179,17 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型。 |
-| numValue | number | 否 | 是 | 数值。 |
-| strValue | string | 否 | 是 | 字符串值。 |
-| boolValue | boolean | 否 | 是 | 布尔值。 |
+| valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| numValue | number | 否 | 是 | 数值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| strValue | string | 否 | 是 | 字符串值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| boolValue | boolean | 否 | 是 | 布尔值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## PictureScanProgress
 
@@ -193,12 +197,16 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| progress | number | 否 | 否 | 当前进度百分比，范围从0~100。单位：百分比。 |
-| pictureFd | number | 否 | 否 | 扫描图片的文件描述符。 |
-| isFinal | boolean | 否 | 否 | 是否是本次扫描的最后一张图片。true表示是最后一张图片，false表示不是最后一张图片。 |
+| progress | number | 否 | 否 | 当前进度百分比，范围从0~100。单位：百分比。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| pictureFd | number | 否 | 否 | 扫描图片的文件描述符。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| isFinal | boolean | 否 | 否 | 是否是本次扫描的最后一张图片。true表示是最后一张图片，false表示不是最后一张图片。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## ScannerDevice
 
@@ -206,15 +214,19 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| scannerId | string | 否 | 否 | 扫描仪的唯一标识符。 |
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式。 |
-| uniqueId | string | 否 | 否 | 扫描仪的唯一ID。 |
-| manufacturer | string | 否 | 否 | 扫描仪的制造商。 |
-| model | string | 否 | 否 | 扫描仪的型号。 |
-| deviceName | string | 否 | 否 | 扫描仪的设备名称。 |
+| scannerId | string | 否 | 否 | 扫描仪的唯一标识符。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| uniqueId | string | 否 | 否 | 扫描仪的唯一ID。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| manufacturer | string | 否 | 否 | 扫描仪的制造商。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| model | string | 否 | 否 | 扫描仪的型号。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| deviceName | string | 否 | 否 | 扫描仪的设备名称。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## ScannerSyncDevice
 
@@ -222,14 +234,18 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| scannerId | string | 否 | 否 | 扫描仪ID。 |
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 发现模式。 |
-| uniqueId | string | 否 | 否 | 唯一ID。 |
-| syncMode | [ScannerSyncMode](#scannersyncmode) | 否 | 否 | 同步模式。 |
-| oldScannerId | string | 否 | 是 | 旧的扫描仪ID，仅在syncMode为"update"时有效。 |
+| scannerId | string | 否 | 否 | 扫描仪ID。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 发现模式。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| uniqueId | string | 否 | 否 | 唯一ID。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| syncMode | [ScannerSyncMode](#scannersyncmode) | 否 | 否 | 同步模式。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| oldScannerId | string | 否 | 是 | 旧的扫描仪ID，仅在syncMode为"update"时有效。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
 
 ## scan.init
 
@@ -240,6 +256,10 @@ init(): Promise&lt;void&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 | **类型** | **说明** |
@@ -275,6 +295,10 @@ exit(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
@@ -309,6 +333,10 @@ startScannerDiscovery(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
@@ -342,6 +370,10 @@ openScanner(scannerId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -383,6 +415,10 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -422,6 +458,10 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |

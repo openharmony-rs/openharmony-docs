@@ -28,6 +28,10 @@ import { print } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
