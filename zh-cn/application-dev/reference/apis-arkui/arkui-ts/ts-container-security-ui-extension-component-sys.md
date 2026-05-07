@@ -298,7 +298,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\
 
 ## 示例
 
-### 示例（SecurityUIExtensionComponent基础使用）
+### 示例1（SecurityUIExtensionComponent基础使用）
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
