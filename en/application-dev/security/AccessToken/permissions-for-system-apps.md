@@ -5895,6 +5895,20 @@ Allows an application to enable the outdoor exploration service to provide the a
 
 **Since**: 26.0.0
 
+## ohos.permission.ACCESS_INTIMATE_RELATION_INFO
+
+Allows an application to obtain information about close contacts and open the close contact page.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
 ## ohos.permission.QUERY_TOOL_PERMISSIONS
 
 Allows a system application to query the permissions required for running a CLI or skill.
