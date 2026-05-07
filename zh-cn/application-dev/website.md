@@ -3291,7 +3291,6 @@
           - [PluginComponent (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md)
           - [UIExtensionComponent (系统接口)](reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)
           - [UnionEffectContainer (系统接口)](reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md)
-          - [DynamicComponent (系统接口)](reference/apis-arkui/arkui-ts/ts-container-dynamic-component-sys.md)
         <!--DelEnd-->
         - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
           <!--Del-->
