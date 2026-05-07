@@ -273,6 +273,7 @@
    ```
 
 6. 结束每帧回调。
+
    ArkTS-Dyn示例：
    <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
    
