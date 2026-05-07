@@ -190,7 +190,7 @@ import { call } from '@kit.TelephonyKit';
 >
 > - For an optional property, if only fixed fields are supported, describe them. A property defined with a question mark (?) is optional.
 >
-> - If a property is annotated with a decorator, the relevant description must clearly indicate "Decorator type".
+> - If a property is annotated with a decorator, the relevant description must clearly indicate "Decorator".
 
 **System capability**: SystemCapability.xxx.xxx (This part is mandatory.)
 
@@ -366,11 +366,11 @@ Describe the method. For details, see the fourth and fifth points in "Writing In
 > - If the class or interface contains both properties and methods, write the properties above the methods. Write their actual names in separate level-3 headings.
 >    If the API contains only properties, you do not need to create a level-3 heading. Instead, use a table to display the properties.
 >
-> - If a class or interface is annotated with a decorator, the relevant description must clearly indicate "Decorator type".
+> - If a class or interface is annotated with a decorator, the relevant description must clearly indicate "Decorator".
 
 Describe the class or interface. If there are usage restrictions, describe them as well, for example, whether there is a prerequisite and whether an instance needs to be created by using any method.
 
-**Decorator type**: @Sendable
+**Decorator:** @Sendable
 
 ### Properties
 
