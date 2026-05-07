@@ -328,7 +328,7 @@ struct Index {
         .width('90%')
         .height('90%').backgroundColor(Color.Green)
         .onError((error: BusinessError) => {
-          this.message = 'Error： ' + JSON.stringify(error);
+          this.message = 'Error: ' + JSON.stringify(error);
           hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
         })
 
