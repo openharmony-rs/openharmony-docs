@@ -31600,6 +31600,11 @@
 						"end_line":152,
 						"name":"packToFile_imageSource",
 						"start_line":140
+					},
+					{
+						"end_line":22,
+						"name":"create_copyData",
+						"start_line":20
 					}
 				]
 			}
