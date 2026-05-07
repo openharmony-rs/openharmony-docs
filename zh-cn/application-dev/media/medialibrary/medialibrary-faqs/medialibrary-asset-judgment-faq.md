@@ -1,4 +1,4 @@
-# 如何正确判断媒体资源
+# 如何正确判断媒体资源类型
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @TristanMVP-->
