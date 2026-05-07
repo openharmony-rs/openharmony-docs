@@ -223,7 +223,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 on(type: 'asyncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>): void
 
-订阅被拉起的Ability发生异步注册的回调。
+订阅被拉起的Ability发生异步注册的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
