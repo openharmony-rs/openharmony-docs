@@ -379,5 +379,5 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | 智能手表智感窗按键长按。 |
 | KEYCODE_DIV<sup>20+</sup> | 3220 | 智能手表左按键。 |
 | KEYCODE_XKEY | 3232 | 自定义快捷键。<br/>**起始版本：** 26.0.0 |
-| KEYCODE_FINGERPRINT_SLIDE_UP | 3233 | 智控键上滑。<br/>**起始版本：** 26.0.0 |
-| KEYCODE_FINGERPRINT_SLIDE_DOWN | 3234 | 智控键下滑。<br/>**起始版本：** 26.0.0 |
+| KEYCODE_FINGERPRINT_SLIDE_UP | 3233 | 智控键上滑。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| KEYCODE_FINGERPRINT_SLIDE_DOWN | 3234 | 智控键下滑。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
