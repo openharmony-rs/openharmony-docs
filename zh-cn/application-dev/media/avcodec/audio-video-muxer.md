@@ -344,7 +344,6 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据封装)。
 
 1. 添加头文件。
-   <!-- @[FlvMuxer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
    #include <multimedia/player_framework/native_avmuxer.h>
@@ -355,7 +354,6 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```
 
 2. 调用OH_AVMuxer_Create()创建封装器实例对象。
-   <!-- @[FlvMuxer_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
    // 以读写方式创建fd。
@@ -397,7 +395,6 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
 5. 添加音频轨（仅支持添加一个音频轨）。
 
    **添加AAC音频轨**
-   <!-- @[FlvMuxer_addAacTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    > **说明：**
    >
@@ -419,7 +416,6 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
 <!--RP3--><!--RP3End-->
 
 6. 添加视频轨（仅支持添加一个视频轨）。
-   <!-- @[FlvMuxer_addVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    > **说明：**
    >
@@ -447,7 +443,6 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```
 
 7. 调用OH_AVMuxer_Start()开始封装。
-   <!-- @[FlvMuxer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
    // 调用start，写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
@@ -457,7 +452,6 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```
 
 8. 调用OH_AVMuxer_WriteSampleBuffer()，写入封装数据。
-   <!-- @[FlvMuxer_writeSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    封装数据包括视频、音频数据。
 
@@ -485,7 +479,6 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```
 
 9. 调用OH_AVMuxer_Stop()，停止封装。
-   <!-- @[FlvMuxer_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
    // 调用stop，写封装文件尾。stop后不能写入媒体数据。
@@ -496,7 +489,6 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```
 
 10. 调用OH_AVMuxer_Destroy()销毁实例，释放资源。
-    <!-- @[FlvMuxer_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
     注意不能重复销毁，否则将会导致程序崩溃。
 
