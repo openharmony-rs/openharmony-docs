@@ -8,6 +8,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## HdrMetadataValue<sup>12+</sup>
@@ -17,6 +18,10 @@ type HdrMetadataValue = HdrMetadataType | HdrStaticMetadata | ArrayBuffer | HdrG
 PixelMap使用的HDR元数据值类型，和[HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)关键字相对应。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                | 说明                                            |
 | ------------------- | ----------------------------------------------- |
