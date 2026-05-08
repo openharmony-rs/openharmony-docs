@@ -40,7 +40,7 @@
      avMetadataExtractor.fdSrc = await context.resourceManager.getRawFd('test.mp3');
      ```
      <br>ArkTS-Sta:
-     <!-- @[flash_black_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[flash_black_component](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
      
      ```ts
      import media from '@ohos.multimedia.media';
