@@ -92,7 +92,7 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 ​
 ```
 
-### 存在`()` 或者 `#` 删除
+### 存在`()` 或者 `#` 则删除
 
 ```markdown
 AbilityStage拥有[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)
