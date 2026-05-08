@@ -5390,7 +5390,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets",
 				"functions":[
 					{
-						"end_line":197,
+						"end_line":199,
 						"name":"enterprise_admin_extension_ability",
 						"start_line":27
 					}
@@ -5430,7 +5430,7 @@
 						"start_line":17
 					},
 					{
-						"end_line":115,
+						"end_line":112,
 						"name":"set_disallowed_policy_wifi",
 						"start_line":16
 					}
