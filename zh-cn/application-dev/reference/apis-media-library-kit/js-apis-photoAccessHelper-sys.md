@@ -9066,6 +9066,80 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### operateAttribute
+
+operateAttribute(operation: AlbumOperation): void
+
+设置相册属性。设置操作需通过[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| operation | [AlbumOperation](#albumoperation) | 是 | 需要执行的相册属性设置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values or operation is incorrect. |
+| 23800201 | Unsupported operation type. It is recommended to check the logs.<br>Possible causes:<br>1. Unsupported AlbumAttribute for the album.<br>2. Unsupported AlbumOperationType for the AlbumAttribute.<br>3. Other operation limit. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('operateAttributeDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER,
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      return;
+    }
+
+    let operation: photoAccessHelper.AlbumOperation = {
+      attr: photoAccessHelper.AlbumAttribute.NICK_NAME_ATTR,
+      type: photoAccessHelper.AlbumOperationType.UPDATE,
+      values: ['newNickname']
+    };
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest =
+      new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.operateAttribute(operation);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('operateAttribute successfully');
+  } catch (err) {
+    console.error(`operateAttribute failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### moveAssets<sup>11+</sup>
 
 moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
@@ -12828,6 +12902,53 @@ async function example(context: Context) {
 | UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | 相册同步状态。<br>**系统接口**：此接口为系统接口。            |
 | HIDDEN<sup>23+</sup>     | 'hidden'      | 相册为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
 | FILE_HIDDEN     | 'file_hidden'      | 文件管理中文件夹的隐藏状态。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
+
+## AlbumAttribute
+
+枚举，相册的属性类型。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| NICK_NAME_ATTR | 'nickname' | 相册昵称。<br>**系统接口**：此接口为系统接口。 |
+| IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。<br>**系统接口**：此接口为系统接口。 |
+
+## AlbumOperationType
+
+枚举，设置相册属性的操作类型。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| ADD | 'add' | 对相册属性的新增操作。<br>**系统接口**：此接口为系统接口。 |
+| REMOVE | 'remove' | 对相册属性的移除操作。<br>**系统接口**：此接口为系统接口。 |
+| UPDATE | 'update' | 对相册属性的更新操作。<br>**系统接口**：此接口为系统接口。 |
+
+## AlbumOperation
+
+相册操作信息。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。<br>**系统接口**：此接口为系统接口。|
+| type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。<br>**系统接口**：此接口为系统接口。 |
+| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20；数组中的每个字符串长度不超过500个字符。<br>**系统接口**：此接口为系统接口。|
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 

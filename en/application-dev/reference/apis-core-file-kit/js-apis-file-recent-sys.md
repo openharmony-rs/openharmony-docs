@@ -1,9 +1,9 @@
 # @ohos.file.recent (Latest Access List) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **file.recent** module provides APIs for managing the list of recently accessed files.

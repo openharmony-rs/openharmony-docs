@@ -1,9 +1,9 @@
 # WithTheme
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色。
@@ -12,7 +12,7 @@ WithTheme组件用于设置应用局部页面自定义主题风格，可设置�
 >
 > 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> WithTheme支持的系统组件如下：[TextInput](./ts-basic-components-textinput.md)、[Search](./ts-basic-components-search.md)、[Button](./ts-basic-components-button.md)、[Badge](./ts-container-badge.md)、[Swiper](./ts-container-swiper.md)、[Text](./ts-basic-components-text.md)、[Select](./ts-basic-components-select.md)、[Menu](./ts-basic-components-menu.md)、[TimePicker](./ts-basic-components-timepicker.md)、[DatePicker](./ts-basic-components-datepicker.md)、[TextPicker](./ts-basic-components-textpicker.md)、[Checkbox](./ts-basic-components-checkbox.md)、[CheckboxGroup](./ts-basic-components-checkboxgroup.md)、[Radio](./ts-basic-components-radio.md)、[Slider](./ts-basic-components-slider.md)、[Progress](./ts-basic-components-progress.md)、[QRCode](./ts-basic-components-qrcode.md)、[Toggle](./ts-basic-components-toggle.md)、[PatternLock](./ts-basic-components-patternlock.md)、[Divider](./ts-basic-components-divider.md)。从API版本26.0.0开始，新增[CalendarPicker](./ts-basic-components-calendarpicker.md)、[UIPickerComponent](./ts-container-ui-picker-component.md)、[TextArea](./ts-basic-components-textarea.md)、[属性字符串](./ts-universal-styled-string.md)、[Gauge](./ts-basic-components-gauge.md)、[DataPanel](./ts-basic-components-datapanel.md)、[RichEditor](./ts-basic-components-richeditor.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[Image](./ts-basic-components-image.md)、[ImageAnimator](./ts-basic-components-imageanimator.md)。
+> WithTheme支持的系统组件如下：[TextInput](./ts-basic-components-textinput.md)、[Search](./ts-basic-components-search.md)、[Button](./ts-basic-components-button.md)、[Badge](./ts-container-badge.md)、[Swiper](./ts-container-swiper.md)、[Text](./ts-basic-components-text.md)、[Select](./ts-basic-components-select.md)、[Menu](./ts-basic-components-menu.md)、[TimePicker](./ts-basic-components-timepicker.md)、[DatePicker](./ts-basic-components-datepicker.md)、[TextPicker](./ts-basic-components-textpicker.md)、[Checkbox](./ts-basic-components-checkbox.md)、[CheckboxGroup](./ts-basic-components-checkboxgroup.md)、[Radio](./ts-basic-components-radio.md)、[Slider](./ts-basic-components-slider.md)、[Progress](./ts-basic-components-progress.md)、[QRCode](./ts-basic-components-qrcode.md)、[Toggle](./ts-basic-components-toggle.md)、[TextClock](./ts-basic-components-textclock.md)、[PatternLock](./ts-basic-components-patternlock.md)、[Divider](./ts-basic-components-divider.md)。从API版本26.0.0开始，新增[CalendarPicker](./ts-basic-components-calendarpicker.md)、[UIPickerComponent](./ts-container-ui-picker-component.md)、[TextArea](./ts-basic-components-textarea.md)、[属性字符串](./ts-universal-styled-string.md)、[Gauge](./ts-basic-components-gauge.md)、[DataPanel](./ts-basic-components-datapanel.md)、[RichEditor](./ts-basic-components-richeditor.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[Image](./ts-basic-components-image.md)、[ImageAnimator](./ts-basic-components-imageanimator.md)、[Counter](./ts-container-counter.md)、[BindSheet](./ts-universal-attributes-sheet-transition.md)、[LoadingProgress](./ts-basic-components-loadingprogress.md)。
 >
 > WithTheme相关使用指导请参考[设置应用内主题换肤](../../../ui/theme_skinning.md)。
 

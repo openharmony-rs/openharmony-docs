@@ -248,6 +248,8 @@ import { window } from '@kit.ArkUI';
 | currentLayoutMode             | string               | 否   | 是   | 子窗当前布局模式，用于控制应用定制的UI效果。若不传，则默认为空字符串。|
 | parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | 否   | 是   | 父窗大小变化的回调。绑定后立即回调一次，后续父窗大小变化时通知。默认不传，无法收到父窗大小变化通知。|
 | parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | 否   | 是   | 父窗模式变化的回调。绑定后立即回调一次，后续父窗模式变化时通知。默认不传，无法收到父窗模式变化通知。|
+| isIntersectedWidthLimit | boolean | 否 | 是 | 子窗与绑定主窗的宽度是否互相限制。<br>true表示子窗与绑定主窗的宽度不能超过两个窗口宽度限制的交集；若两者宽度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的宽度受全部窗口宽度限制的交集约束。<br>false表示子窗与绑定主窗的宽度不会互相限制。<br>默认为false。 |
+| isIntersectedHeightLimit | boolean | 否 | 是 | 子窗与绑定主窗的高度是否互相限制。<br>true表示子窗与绑定主窗的高度不能超过两个窗口高度限制的交集；若两者高度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的高度受全部窗口高度限制的交集约束。<br>false表示子窗与绑定主窗的高度不会互相限制。<br>默认为false。 |
 
 ## WindowLayoutMode<sup>(deprecated)</sup>
 
@@ -1257,6 +1259,8 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 创建一个子窗，并绑定父窗。使用Promise异步回调。
 
+仅支持主窗口作为绑定的父窗。
+
 子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。
 
 建议在父窗销毁后主动销毁创建的子窗。
@@ -1293,7 +1297,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
 | 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
 | 1300003 | This window manager service works abnormally. |
-| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
+| 1300009 | The parent window is invalid. Possible cause: 1. The parent window does not exist or has been destroyed. 2. Invalid window type. Only main windows are supported.|
 
 **示例：**
 
@@ -1891,6 +1895,8 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+
 > **说明：**
 >
 > - 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。
@@ -1905,7 +1911,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错。
 
 **参数：**
 
@@ -1964,7 +1970,9 @@ export default class EntryAbility extends UIAbility {
           },
           parentWindowStatusChangeCallback:(type: window.WindowStatusType) => {
             console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
-          }
+          },
+          isIntersectedWidthLimit: true,
+          isIntersectedHeightLimit: true
         }
         subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
           console.info("Succeeded in attaching to the main window");
@@ -1985,6 +1993,8 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+
 > **说明：**
 >
 > - 子窗调用接口时需保持子窗处于协同状态。
@@ -1999,7 +2009,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错。
 
 **返回值：**
 
@@ -2432,6 +2442,8 @@ setSnapshotSkip(isSkip: boolean): void
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
+**示例：**
+
 ```ts
 let isSkip: boolean = true;
 try {
@@ -2840,6 +2852,8 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -3056,6 +3070,8 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -3130,6 +3146,8 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
+
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3375,6 +3393,8 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 通常来说，点击一个子窗口，会将该子窗口显示到最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上方，而是保持不变。
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
+
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3965,7 +3985,9 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
+设置标题栏上的最大化、最小化、分屏按钮是否可见。
+
+仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口，其他窗口调用时将返回1300004错误码。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 

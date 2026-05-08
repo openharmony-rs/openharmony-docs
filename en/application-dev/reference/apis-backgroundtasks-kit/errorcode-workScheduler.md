@@ -58,7 +58,7 @@ System service operation failed.
 
 **Description**
 
-This error code is reported when the client process fails to obtain the system service.
+This error code is reported when the client process fails to request the system service.
 
 **Possible Causes**
 
