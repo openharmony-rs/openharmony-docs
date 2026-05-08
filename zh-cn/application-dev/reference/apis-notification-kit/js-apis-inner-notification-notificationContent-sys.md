@@ -10,13 +10,18 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationContent](./js-apis-inner-notification-notificationContent.md)。
 
 ## NotificationContent
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
@@ -30,9 +35,13 @@
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。默认为空。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）   |
+| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。默认为空。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23   |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
@@ -44,12 +53,12 @@
 
 | 名称           | 类型                                                                | 只读| 可选 | 说明                                                  |
 | -------------- | ------------------------------------------------------------------ | --- | --- | ------------------------------------------------------|
-| status         | [LiveViewStatus](#liveviewstatus11)                                | 否  | 否  | 通知状态。                  |
-| version        | number                                                             | 否  | 是  | 通知版本号（如果数据库存储版本号为0xffffffff，则本次更新和结束不校验版本号大小，否则需要校验本次版本号>数据库存储版本号）。不填默认为0xffffffff。|
-| extraInfo      | Record<string, Object\>                                               | 否  | 是  | 实况通知附加内容。默认为空。           |
-| pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。默认为空。|
-| isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。     |
-| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。默认为空。      |
+| status         | [LiveViewStatus](#liveviewstatus11)                                | 否  | 否  | 通知状态。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                  |
+| version        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                             | 否  | 是  | 通知版本号（如果数据库存储版本号为0xffffffff，则本次更新和结束不校验版本号大小，否则需要校验本次版本号>数据库存储版本号）。不填默认为0xffffffff。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
+| extraInfo      | Record<string, Object\>                                               | 否  | 是  | 实况通知附加内容。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23           |
+| pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
+| isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23     |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。默认为空。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23       |
 
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
@@ -57,6 +66,10 @@
 描述系统实况窗通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
 
 **系统接口**：此接口为系统接口。
 
@@ -75,9 +88,9 @@
 
 | 名称                  |  类型                         | 只读 | 可选 | 说明                              |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
-| content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的拓展文本。默认为空。                   |
-| time<sup>18+</sup> | number                       |  否  |  是  | 即时任务类实况胶囊展示时长（单位：秒）。默认值为0。   |
-| capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 即时任务类实况胶囊的按钮（最多支持2个）。默认为空。      |
+| content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的拓展文本。默认为空。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                   |
+| time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长（单位：秒）。默认值为0。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
+| capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 即时任务类实况胶囊的按钮（最多支持2个）。默认为空。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23      |
 
 ## LiveViewStatus<sup>11+</sup>
 
@@ -89,12 +102,12 @@
 
 | 名称                         | 值 |   说明   |
 | ---------------------------- |----|----------|
-| LIVE_VIEW_CREATE             | 0  | 创建     |
-| LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新 |
-| LIVE_VIEW_END                | 2  | 结束     |
-| LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新 |
-| LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | 条件触发创建<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | 条件触发结束<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| LIVE_VIEW_CREATE             | 0  | 创建<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23     |
+| LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| LIVE_VIEW_END                | 2  | 结束<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23     |
+| LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | 条件触发创建<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | 条件触发结束<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## NotificationIconButton<sup>18+</sup>
 
@@ -103,6 +116,10 @@
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
 
 | 名称          | 类型                    | 只读 | 可选 | 说明                                      |
 | ------------ | ----------------------- | ---- | ---- | ---------------------------------------- |
@@ -121,6 +138,10 @@ type IconType = Resource | image.PixelMap
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
+
 | 类型                                                             | 说明                              |
 | ---------------------------------------------------------------- | -------------------------------- |
 | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)          | 表示值类型为图片资源。             |
@@ -134,6 +155,10 @@ type IconType = Resource | image.PixelMap
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                         | 值 |   说明   |
 | ---------------------------- |----|----------|
 | LIVE_VIEW_ACTIVITY           | 0  | 实时活动类（进度类）系统实况 |
@@ -143,6 +168,10 @@ type IconType = Resource | image.PixelMap
 ## NotificationMultiLineContent
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 类型    | 只读 | 可选 | 说明                             |
 | -------------- | ------ | ---- | --- | -------------------------------- |
