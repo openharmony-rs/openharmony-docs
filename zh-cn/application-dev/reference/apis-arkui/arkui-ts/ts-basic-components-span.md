@@ -103,7 +103,7 @@ ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
 | 参数名 | 类型     | 必填 |  说明   |
 | ------ | ------- | ---- | -------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
 
 ### textCase
 
@@ -127,7 +127,7 @@ ArkTS-Sta: textCase(value: TextCase | undefined)
 
 | 参数名 | 类型   | 必填 | 说明   |
 | ------ | ------- | ---- | ------- |
-| value  | ArkTS-Dyn: [TextCase](ts-appendix-enums.md#textcase)<br/>ArkTS-Sta: [TextCase](ts-appendix-enums.md#textcase) \| undefined | 是   | 文本大小写。<br/>默认值：TextCase.Normal |
+| value  | ArkTS-Dyn: [TextCase](ts-appendix-enums.md#textcase)<br/>ArkTS-Sta: [TextCase](ts-appendix-enums.md#textcase) \| undefined | 是   | 文本大小写。<br/>默认值：TextCase.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### fontColor
 
@@ -151,7 +151,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br/>默认值：'#e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br/>默认值：'#e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' <br/>取值为undefined时，按默认值处理。|
 
 ### fontSize
 
@@ -175,7 +175,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br/>Wearable设备上默认值为：15fp |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br/>Wearable设备上默认值为：15fp <br/>取值为undefined时，按默认值处理。|
 
 ### fontStyle
 
@@ -199,7 +199,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle)<br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
+| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle)<br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined | 是   | 字体样式。<br/>默认值：FontStyle.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### fontWeight
 
@@ -270,7 +270,7 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。<br>默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。<br>默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。<br/>取值为undefined时，按默认值处理。|
 
 > **说明：**
 >
@@ -283,6 +283,8 @@ ArkTS-Dyn: lineHeight(value: Length)
 ArkTS-Sta: lineHeight(value: Length | undefined)
 
 设置文本行高。
+
+设置值不大于0时，不限制文本行高，自适应字体大小。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
