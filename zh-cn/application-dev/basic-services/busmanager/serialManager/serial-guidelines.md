@@ -177,14 +177,22 @@
 4. 注册数据接收回调，监听串口数据。
 
    <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 注册数据接收回调，当串口收到数据时会触发该回调
-   port.onDataRead((data: Uint8Array) => {
-     console.info(`Received data length: ${data.length}`);
-     console.info(`Received data: ${Array.from(data).map(b => b.toString(16).padStart(2, '0')).join(' ')}`);
-
-   });
+   try {
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     this.dataCallback = (data: Uint8Array) => {
+       console.info(`${TAG} onDataRead: ${Array.from(data).join(', ')}`);
+     };
+     this.port.onDataRead(this.dataCallback);
+     console.info(`${TAG} onDataRead registered`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} onDataRead failed, code: ${e.code}, message: ${e.message}`);
+   }
    ```
 
 5. 通过串口写入数据。
