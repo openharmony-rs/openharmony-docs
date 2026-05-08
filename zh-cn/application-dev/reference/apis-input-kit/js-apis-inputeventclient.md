@@ -63,7 +63,7 @@ struct Index {
         .onClick(() => {
           inputEventClient.createKeyboardController()
             .then(keyboardController => {
-              console.info('Keyboard controller created successfully');
+              console.info('Succeeded in creating keyboard controller');
             })
             .catch(error => {
               console.error(`Failed to create keyboard controller, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -120,7 +120,7 @@ struct Index {
         .onClick(() => {
           inputEventClient.createMouseController()
             .then(mouseController => {
-              console.info('Mouse controller created successfully');
+              console.info('Succeeded in creating mouse controller');
             })
             .catch(error => {
               console.error(`Failed to create mouse controller, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -194,7 +194,7 @@ struct Index {
               return keyboardController.pressKey(KeyCode.KEYCODE_A);
             })
             .then(() => {
-              console.info('Key pressed successfully');
+              console.info('Succeeded in pressing key');
             })
             .catch(error => {
               console.error(`Failed to press key, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -263,7 +263,7 @@ struct Index {
               return keyboardController.releaseKey(KeyCode.KEYCODE_A);
             })
             .then(() => {
-              console.info('Key released successfully');
+              console.info('Succeeded in releasing key');
             })
             .catch(error => {
               console.error(`Failed to release key, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -340,7 +340,7 @@ struct Index {
               return mouseController.moveTo(0, 100, 200);
             })
             .then(() => {
-              console.info('Mouse moved successfully');
+              console.info('Succeeded in moving mouse');
             })
             .catch(error => {
               console.error(`Failed to move mouse, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -409,7 +409,7 @@ struct Index {
               return mouseController.releaseButton(Button.LEFT);
             })
             .then(() => {
-              console.info('Mouse button released successfully');
+              console.info('Succeeded in releasing mouse button');
             })
             .catch(error => {
               console.error(`Failed to release mouse button, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -478,7 +478,7 @@ struct Index {
               return mouseController.releaseButton(Button.LEFT);
             })
             .then(() => {
-              console.info('Mouse button released successfully');
+              console.info('Succeeded in releasing mouse button');
             })
             .catch(error => {
               console.error(`Failed to release mouse button, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -548,7 +548,7 @@ struct Index {
               return mouseController.endAxis(Axis.SCROLL_VERTICAL);
             })
             .then(() => {
-              console.info('Axis event ended successfully');
+              console.info('Succeeded in ending axis event');
             })
             .catch(error => {
               console.error(`Failed to end axis event, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -621,7 +621,7 @@ struct Index {
               return mouseController.endAxis(Axis.SCROLL_VERTICAL);
             })
             .then(() => {
-              console.info('Axis event ended successfully');
+              console.info('Succeeded in ending axis event');
             })
             .catch(error => {
               console.error(`Failed to end axis event, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -693,7 +693,7 @@ struct Index {
               return mouseController.endAxis(Axis.SCROLL_VERTICAL);
             })
             .then(() => {
-              console.info('Axis event ended successfully');
+              console.info('Succeeded in ending axis event');
             })
             .catch(error => {
               console.error(`Failed to end axis event, error: ${JSON.stringify(error, [`code`, `message`])}`);
