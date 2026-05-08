@@ -7701,7 +7701,7 @@ recover(): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The window does not support floating mode. |
 
 **示例：**
 
@@ -7768,7 +7768,7 @@ recover(snapshotAnimationConfig: WindowSnapshotAnimationConfig): Promise&lt;void
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The window does not support floating mode. |
 | 1300003 | This window manager service works abnormally. |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
