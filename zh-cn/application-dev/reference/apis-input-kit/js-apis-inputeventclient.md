@@ -111,6 +111,7 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -182,6 +183,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 ```js
 import { inputEventClient, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -200,7 +202,7 @@ struct Index {
             .then(() => {
               console.info('Succeeded in releasing key');
             })
-            .catch(error => {
+            .catch((error: BusinessError) => {
               console.error(`Failed to release key. Code: ${error.code}, message: ${error.message}.`);
             });
         })
@@ -304,6 +306,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -319,7 +322,7 @@ struct Index {
             .then(() => {
               console.info('Succeeded in moving mouse');
             })
-            .catch(error => {
+            .catch((error: BusinessError) => {
               console.error(`Failed to move mouse. Code: ${error.code}, message: ${error.message}.`);
             });
         })
@@ -370,6 +373,7 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 ```js
 import { inputEventClient, Button } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -388,7 +392,7 @@ struct Index {
             .then(() => {
               console.info('Succeeded in releasing mouse button');
             })
-            .catch(error => {
+            .catch((error: BusinessError) => {
               console.error(`Failed to release mouse button. Code: ${error.code}, message: ${error.message}.`);
             });
         })
@@ -482,6 +486,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 ```js
 import { inputEventClient, Axis } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -503,7 +508,7 @@ struct Index {
             .then(() => {
               console.info('Succeeded in ending axis event');
             })
-            .catch(error => {
+            .catch((error: BusinessError) => {
               console.error(`Failed to end axis event. Code: ${error.code}, message: ${error.message}.`);
             });
         })
