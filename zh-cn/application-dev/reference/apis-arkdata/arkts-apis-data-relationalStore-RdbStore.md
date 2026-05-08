@@ -3130,7 +3130,7 @@ queryByStep(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;ResultSe
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | 是   | 指定要执行的SQL语句。<br>无特殊字符或长度限制<br>必须使用有效的SQL语句。否则在使用ResultSet时可能会抛出错误码。                                        |
+| sql      | string                               | 是   | 指定要执行的SQL语句。<br>不能为空字符串。<br>必须使用有效的SQL语句。否则在使用ResultSet时可能会抛出错误码。                                        |
 | bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。默认值为空数组。 |
 
 **返回值**：
