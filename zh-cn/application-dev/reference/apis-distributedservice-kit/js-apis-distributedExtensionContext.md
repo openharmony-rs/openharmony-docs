@@ -38,6 +38,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
@@ -132,6 +134,8 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**起始版本：** 26.0.0
 
 **参数：**
 
