@@ -4381,12 +4381,13 @@ getTextStyle(): TextStyle
 
 | 类型                   |说明                                   |
 | ---------------------- | ------------------------------------- |
-| [TextStyle](#textstyle)  | 该排版单元的文本样式。 |
+| [TextStyle](#textstyle)  | 该排版单元的文本样式。<br>**注意事项：**<br>1、`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>2、`textstyle.ellipsis`和`textstyle.ellipsisMode`为段落属性，不支持通过[Run.getTextStyle()](#getTextStyle)获取，应使用[Paragraph.getParagraphStyle()](#getParagraphStyle)。 |
 
 **示例：**
 
 ```ts
 import { text } from "@kit.ArkGraphics2D"
+import { common2D } from '@kit.ArkGraphics2D'
 import { JSON } from "@kit.ArkTS";
 
 function textFunc() {
@@ -4411,6 +4412,10 @@ function textFunc() {
       const run = runs[j];
       const runStyle = run.getTextStyle();
       console.info(`print line [${i}] run [${j}] textStyle: ${JSON.stringify(runStyle)}`);
+      if (runStyle?.color != undefined && typeof runStyle?.color == 'number') {
+        let textColor: common2D.Color = numberToRGBA(runStyle?.color);
+        console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+      }
     }
   }
 }
@@ -4426,6 +4431,14 @@ struct Index {
     }
   }
 }
+
+ function numberToRGBA(colorNum: number): common2D.Color {
+ 	   const alpha = (colorNum >>> 24) & 0xFF;
+ 	   const red = (colorNum >>> 16) & 0xFF;
+ 	   const green = (colorNum >>> 8) & 0xFF;
+ 	   const blue = colorNum & 0xFF;
+ 	   return { alpha: alpha, red: red, green: green, blue: blue };
+ 	 }
 ```
 
 ## TextTab<sup>18+</sup>
