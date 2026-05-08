@@ -4374,18 +4374,21 @@ setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatib
 phAccessHelper的创建方法请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例用法。
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function setPreferredCompatibleMode(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   bundleName: string,
   preferredCompatibleMode: photoAccessHelper.PreferredCompatibleMode
 ): Promise<void> {
-  try {
-    await phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The setPreferredCompatibleMode call failed. error code: ${err.code}`);
-  }
+  console.info('setPreferredCompatibleModeDemo');
+  phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode)
+    .then(() => {
+      console.info('setPreferredCompatibleMode successfully');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`The setPreferredCompatibleMode call failed. error: ${err.code}, ${err.message}`);
+    });
 }
 ```
 
@@ -4430,17 +4433,22 @@ getPreferredCompatibleMode(bundleName: string): Promise\<PreferredCompatibleMode
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function getPreferredCompatibleMode(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   bundleName: string
 ): Promise<photoAccessHelper.PreferredCompatibleMode> {
+  console.info('getPreferredCompatibleModeDemo');
   let mode: photoAccessHelper.PreferredCompatibleMode = photoAccessHelper.PreferredCompatibleMode.DEFAULT;
-  try {
-    mode = await phAccessHelper.getPreferredCompatibleMode(bundleName);
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`The getPreferredCompatibleMode call failed. error code: ${err.code}`);
-  }
+  await phAccessHelper.getPreferredCompatibleMode(bundleName)
+    .then((result: photoAccessHelper.PreferredCompatibleMode) => {
+      mode = result;
+      console.info('getPreferredCompatibleMode successfully');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`The getPreferredCompatibleMode call failed. error: ${err.code}, ${err.message}`);
+    });
   return mode;
 }
 ```
