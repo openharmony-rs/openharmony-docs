@@ -8,9 +8,9 @@
 
 DistributedExtensionContext模块是DistributedExtensionAbility的上下文环境，继承自ExtensionContext。
 
+ **起始版本：** 26.0.0。
+
 > **说明：**
->
-> **起始版本：** 26.0.0。
 >
 > 本模块接口仅可在Stage模型下使用。
 
