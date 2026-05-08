@@ -18,7 +18,7 @@
 
 状态管理框架会对class、Date、Map、Set、Array类型的原始对象添加代理，用于观测属性变化与API调用。这一层代理会使得变量类型改变，在类型判断、NAPI调用等场景，会由于类型并非原始对象的类型产生预料之外的结果。
 
-- 使用getTarget接口需要导入UIUtils工具。
+- 使用getTarget接口需要导入[UIUtils](../../reference/apis-arkui/js-apis-stateManagement.md#uiutils)工具。
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
@@ -38,8 +38,6 @@
   let resNumber = UIUtils.getTarget(2); // 非对象类型入参，编译时报错
   let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   ```
-  
-  <!-- @[ApplicationLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewOne.ets) -->
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -263,8 +261,6 @@ struct GetBeforeAgent {
 状态管理V2装饰器会为装饰的变量生成getter和setter方法，同时为原有变量名添加"\_\_ob\_"的前缀。出于性能考虑，getTarget接口不会对V2装饰器生成的前缀进行处理，因此向getTarget接口传入\@ObservedV2装饰的类对象实例时，返回的对象依旧为对象本身，且被\@Trace装饰的属性名仍有"\_\_ob\_"前缀。
 
 该前缀会导致某些NAPI接口无法按预期处理对象的属性，以下面的对象为例，目前已知影响的NAPI接口如下：
-
-<!-- @[ModelViewTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewTwo.ets) -->
 
 ``` TypeScript
 @ObservedV2

@@ -119,8 +119,8 @@ useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): t
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| useEffect  | boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false |
-| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT |
+| useEffect  | boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false<br/>当useEffect的值为undefined时，恢复为无应用模板的效果。 |
+| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT<br/>当effectType的值为undefined时，恢复为无应用模板的效果。 |
 
 **返回值：**
 

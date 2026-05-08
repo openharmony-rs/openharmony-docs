@@ -261,12 +261,17 @@ ArkTS-Sta示例：
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+import { RecordData } from '@ohos.base';
 
 let title: Record<string, RecordData> = { "title": "title" }
 let properties = new unifiedDataChannel.UnifiedDataProperties();
 properties.extras = title;
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+properties.uriAuthorizationPolicies = [
+  // 从API 26.0.0版本开始，支持uri授权策略
+  unifiedDataChannel.UriPermission.WRITE
+];
 properties.getDelayData = ((type: string) => {
   if (type == 'general.plain-text') {
     let plainTextDetails: Record<string, string> = {
@@ -685,8 +690,7 @@ ArkTS-Sta示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText
-uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent: 'This is a plain text example',
   textAbstract: 'This is a text abstract'
@@ -747,7 +751,6 @@ ArkTS-Sta示例：
 
 ```ts
 function parseSummary(summary: unifiedDataChannel.Summary) {
-  let summary: unifiedDataChannel.Summary = new unifiedDataChannel.Summary;
   console.info(`summary : ${JSON.stringify(summary.summary)}`);
   console.info(`totalSize: ${summary.totalSize}`);
   console.info(`overview : ${JSON.stringify(summary.overview)}`);
@@ -1577,8 +1580,8 @@ export default class EntryAbility extends UIAbility {
     let pathDir = context.filesDir;
     let file = new unifiedDataChannel.File();
     file.details = {
-        name: 'test',
-        type: 'txt'
+      'name': 'test',
+      'type': 'txt'
     };
     let filePath = pathDir + '/test.txt';
     file.uri = fileUri.getUriFromPath(filePath);
@@ -2524,10 +2527,6 @@ try {
     }
     let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      key: key
-    }
-    let plainTextUpdate: uniformDataStruct.PlainText = {
-      uniformDataType: 'general.plain-text',
       textContent: 'This is plainText textContent for update',
       textAbstract: 'This is a text abstract'
     }
@@ -2673,10 +2672,11 @@ try {
         console.info(`updateData success`);
       })
       .catch((updateErr) => {
-        hilog.error(domain, tag, TAG + `updateData fail: ${JSON.stringify(updateErr)}`);
+        console.error(`updateData fail: ${JSON.stringify(updateErr)}`);
       });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+  }).catch((err) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`Failed to insert data. code is ${error.code}, message is ${error.message} `);
   });
 } catch (err) {
   let error: BusinessError = err as BusinessError;
@@ -3236,7 +3236,7 @@ let details: Record<string, string> = {
 let plainTextObj: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent: 'The weather is very good today',
-  abstract: 'The weather is very good today',
+  textAbstract: 'The weather is very good today',
   details: details
 }
 let htmlObj: uniformDataStruct.HTML = {

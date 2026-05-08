@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)。
@@ -66,7 +66,7 @@ ArkTS-Sta: enableNestedScroll(enabled: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| enabled  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否执行嵌套滚动。设置为true执行嵌套滚动，设置为false不嵌套滚动。 <br/>默认值：false |
+| enabled  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否执行嵌套滚动。设置为true执行嵌套滚动，设置为false不嵌套滚动。 <br/>默认值：false <br/>取值为undefined时，按默认值处理。|
 
 >  **说明：**
 >

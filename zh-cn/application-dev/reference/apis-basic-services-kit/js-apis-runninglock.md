@@ -5,27 +5,38 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块为RunningLock锁相关操作的接口，提供使能接近光亮灭屏或者设备熄屏后阻止进入睡眠的能力，包括创建、查询、持锁、释放锁等操作，类型详情见[RunningLockType](#runninglocktype)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
-```js
+ArkTS-Dyn示例：
+```ts
 import {runningLock} from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import runningLock from '@ohos.runningLock';
 ```
 
 ## runningLock.isSupported<sup>9+</sup>
 
 isSupported(type: RunningLockType): boolean
 
-**方法介绍：** 查询系统是否支持该类型的锁。
+查询系统是否支持该类型的锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -49,7 +60,7 @@ isSupported(type: RunningLockType): boolean
 
 **示例：**
 
-```js
+```ts
 try {
     let isSupported = runningLock.isSupported(runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL);
     console.info('BACKGROUND type supported: ' + isSupported);
@@ -62,9 +73,13 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-**方法介绍：** 创建RunningLock锁。使用callback异步回调。
+创建RunningLock锁。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -87,10 +102,20 @@ create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLo
 
 **示例：**
 
-```js
-
+ArkTS-Dyn示例：
+```ts
 runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
     if (typeof err === 'undefined') {
+        console.info('created running lock: ' + lock);
+    } else {
+        console.error('create running lock failed, err: ' + err);
+    }
+});
+```
+ArkTS-Sta示例：
+```ts
+runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error | null, lock: runningLock.RunningLock | undefined) => {
+    if (!err) {
         console.info('created running lock: ' + lock);
     } else {
         console.error('create running lock failed, err: ' + err);
@@ -102,9 +127,13 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-**方法介绍：** 创建RunningLock锁。使用Promise异步回调。
+创建RunningLock锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -132,7 +161,7 @@ create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
 **示例：**
 
-```js
+```ts
 
 runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
 .then((lock: runningLock.RunningLock) => {
@@ -149,7 +178,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
-**方法介绍：** 查询系统是否支持该类型的锁。使用callback异步回调。
+查询系统是否支持该类型的锁。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -162,7 +191,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 **示例：**
 
-```js
+```ts
 runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (err: Error, data: boolean) => {
     if (typeof err === 'undefined') {
         console.info('BACKGROUND lock support status: ' + data);
@@ -178,7 +207,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
-**方法介绍：** 查询系统是否支持该类型的锁。使用Promise异步回调。
+查询系统是否支持该类型的锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -196,7 +225,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 **示例：**
 
-```js
+```ts
 runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 .then((data: boolean) => {
     console.info('BACKGROUND lock support status: ' + data);
@@ -212,7 +241,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
-**方法介绍：** 创建RunningLock锁。使用callback异步回调。
+创建RunningLock锁。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -228,7 +257,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 **示例：**
 
-```js
+```ts
 runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: Error, lock: runningLock.RunningLock) => {
     if (typeof err === 'undefined') {
         console.info('created running lock: ' + lock);
@@ -244,7 +273,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
-**方法介绍：** 创建RunningLock锁。使用Promise异步回调。
+创建RunningLock锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -265,7 +294,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 **示例：**
 
-```js
+```ts
 runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
 .then((lock: runningLock.RunningLock) => {
     console.info('created running lock: ' + lock);
@@ -281,11 +310,17 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ### hold<sup>9+</sup>
 
-hold(timeout: number): void
+ArkTS-Dyn: hold(timeout: number): void
 
-**方法介绍：** 锁定和持有RunningLock。
+ArkTS-Sta: hold(timeout: int): void
+
+锁定和持有RunningLock。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -293,7 +328,7 @@ hold(timeout: number): void
 
 | 参数名  | 类型   | 必填 | 说明                                      |
 | ------- | ------ | ---- | ----------------------------------------- |
-| timeout | number | 是   | 锁定和持有RunningLock的时长，单位：毫秒。<br>该参数必须为数字类型：<br>**-1**：永久持锁，需要主动释放。<br>**0**：默认3s后超时释放。<br>**>0**：按传入值超时释放。|
+| timeout | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 锁定和持有RunningLock的时长，单位：毫秒。<br>该参数必须为数字类型：<br>**-1**：永久持锁，需要主动释放。<br>**0**：默认3s后超时释放。<br>**>0**：按传入值超时释放。|
 
 **错误码：**
 
@@ -309,19 +344,19 @@ hold(timeout: number): void
 ```ts
 // RunningLockTest.ets
 class RunningLockTest {
-    public static recordLock: runningLock.RunningLock;
+    public static recordLock: runningLock.RunningLock | undefined;
 
     public static holdRunningLock(): void {
         if (RunningLockTest.recordLock) {
-            RunningLockTest.recordLock.hold(500);
+            RunningLockTest.recordLock!.hold(500);
             console.info('hold running lock success');
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error | null, lock: runningLock.RunningLock | undefined) => {
+                if (!err) {
                     console.info('create running lock: ' + lock);
-                    RunningLockTest.recordLock = lock;
+                    RunningLockTest.recordLock = lock!;
                     try {
-                        lock.hold(500);
+                        lock!.hold(500);
                         console.info('hold running lock success');
                     } catch(err) {
                         console.error('hold running lock failed, err: ' + err);
@@ -339,9 +374,13 @@ class RunningLockTest {
 
 unhold(): void
 
-**方法介绍：** 释放RunningLock锁。
+释放RunningLock锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
 
 **需要权限：** ohos.permission.RUNNING_LOCK
 
@@ -359,19 +398,21 @@ unhold(): void
 ```ts
 // RunningLockTest.ets
 class RunningLockTest {
-    public static recordLock: runningLock.RunningLock;
+    public static recordLock: runningLock.RunningLock | undefined;
 
     public static unholdRunningLock(): void {
         if (RunningLockTest.recordLock) {
-            RunningLockTest.recordLock.unhold();
+            RunningLockTest.recordLock!.unhold();
             console.info('unhold running lock success');
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error | null, lock: runningLock.RunningLock | undefined) => {
+                if (!err) {
                     console.info('create running lock: ' + lock);
-                    RunningLockTest.recordLock = lock;
+                    RunningLockTest.recordLock = lock!;
                     try {
-                        lock.unhold();
+                        lock!.hold(500);
+                        // Finish other tasks before unhold lock.
+                        lock!.unhold();
                         console.info('unhold running lock success');
                     } catch(err) {
                         console.error('unhold running lock failed, err: ' + err);
@@ -389,9 +430,13 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-**方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
+查询当前RunningLock是持有状态还是释放状态。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -404,18 +449,18 @@ isHolding(): boolean
 ```ts
 // RunningLockTest.ets
 class RunningLockTest {
-    public static recordLock: runningLock.RunningLock;
+    public static recordLock: runningLock.RunningLock | undefined;
 
     public static isHoldingRunningLock(): void {
         if (RunningLockTest.recordLock) {
-            let isHolding = RunningLockTest.recordLock.isHolding();
+            let isHolding = RunningLockTest.recordLock!.isHolding();
             console.info('check running lock holding status: ' + isHolding);
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error | null, lock: runningLock.RunningLock | undefined) => {
+                if (!err) {
                     console.info('create running lock: ' + lock);
-                    RunningLockTest.recordLock = lock;
-                    let isHolding = lock.isHolding();
+                    RunningLockTest.recordLock = lock!;
+                    let isHolding = lock!.isHolding();
                     console.info('check running lock holding status: ' + isHolding);
                 } else {
                     console.error('create running lock failed, err: ' + err);
@@ -432,7 +477,7 @@ lock(timeout: number): void
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.hold](#hold9)替代。
 
-**方法介绍：** 锁定和持有RunningLock。
+锁定和持有RunningLock。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -446,7 +491,7 @@ lock(timeout: number): void
 
 **示例：**
 
-```js
+```ts
 runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
 .then((lock: runningLock.RunningLock) => {
     lock.lock(500);
@@ -463,7 +508,7 @@ unlock(): void
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.unhold](#unhold9)替代。
 
-**方法介绍：** 释放RunningLock锁。
+释放RunningLock锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -471,7 +516,7 @@ unlock(): void
 
 **示例：**
 
-```js
+```ts
 runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
 .then((lock: runningLock.RunningLock) => {
     lock.unlock();
@@ -488,7 +533,7 @@ isUsed(): boolean
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.isHolding](#isholding9)替代。
 
-**方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
+查询当前RunningLock是持有状态还是释放状态。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -499,7 +544,7 @@ isUsed(): boolean
 
 **示例：**
 
-```js
+```ts
 runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
 .then((lock: runningLock.RunningLock) => {
     let isUsed = lock.isUsed();
@@ -518,6 +563,6 @@ RunningLock锁的类型。
 
 | 名称                              | 值   | 说明                                                         |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
-| PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。  |
-| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。注意：不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[进入强制睡眠公共事件](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。|
+| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。<br/>**ArkTS-Dyn起始版本：**7<br/>**ArkTS-Sta起始版本：**23 |
+| PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。<br/>**ArkTS-Dyn起始版本：**7<br/>**ArkTS-Sta起始版本：**23  |
+| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。注意：不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[进入强制睡眠公共事件](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。<br/>**ArkTS-Dyn起始版本：**23<br/>**ArkTS-Sta起始版本：**23|

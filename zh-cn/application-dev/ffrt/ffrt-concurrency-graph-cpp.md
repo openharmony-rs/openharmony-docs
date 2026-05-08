@@ -167,7 +167,7 @@ int FibCppExec()
     int y;
     Fib(FIB_NUM, y);
     std::cout << "Fibonacci(5) is " << y << std::endl;
-    OH_LOG_INFO(LOG_APP, "Fibonacci(5) is %{pubilc}d", y);
+    OH_LOG_INFO(LOG_APP, "Fibonacci(5) is %{public}d", y);
     return y;
 }
 ```

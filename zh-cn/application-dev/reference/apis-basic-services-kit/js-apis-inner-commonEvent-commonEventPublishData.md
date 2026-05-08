@@ -1,9 +1,8 @@
 # CommonEventPublishData
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -11,13 +10,18 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 如果不加限制，任何应用都可以订阅公共事件并读取相关信息，应避免在公共事件中携带敏感信息。通过本模块的subscriberPermissions和bundleName参数，可以限制公共事件接收方的范围。
 
 ## 属性
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                  | 类型                 | 只读 | 可选 | 说明                         |
 | --------------------- | -------------------- | ---- | ---- | ---------------------------- |

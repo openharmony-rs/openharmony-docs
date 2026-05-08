@@ -10,7 +10,7 @@
 >
 > 从API version 23开始，支持该装饰器。
 
-\@Provide和\@Consume配套使用，用于状态管理V1中，实现跨组件层级的双向同步。@Consume修饰的变量作为数据消费方，获取数据源的数据。
+[\@Provide](./ts-state-management-provide-static.md)和\@Consume配套使用，用于状态管理V1中，实现跨组件层级的双向同步。@Consume修饰的变量作为数据消费方，获取数据源的数据。
 
 在ArkTS-Sta中使用时，开发指南参考：[\@Provide装饰器和\@Consume装饰器：与后代组件双向同步（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-provide-and-consume.md)。
 

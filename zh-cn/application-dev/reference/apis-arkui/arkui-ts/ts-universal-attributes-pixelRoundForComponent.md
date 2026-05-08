@@ -10,11 +10,15 @@
 
 >  **说明：**
 >
->  本模块从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## pixelRound
 
-pixelRound(value: PixelRoundPolicy): T
+ArkTS-Dyn: pixelRound(value: PixelRoundPolicy): T
+
+ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 
 指定当前组件在指定方向上的像素取整对齐方式，某方向不设置时默认在该方向进行四舍五入取整。
 
@@ -36,17 +40,21 @@ pixelRound(value: PixelRoundPolicy): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value | [PixelRoundPolicy](#pixelroundpolicy) | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。|
+| value | ArkTS-Dyn: [PixelRoundPolicy](#pixelroundpolicy)<br/>ArkTS-Sta: [PixelRoundPolicy](#pixelroundpolicy) \| undefined | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。<br/>取值为undefined时，与不设置表现一致。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## PixelRoundPolicy
 
@@ -78,6 +86,8 @@ pixelRound(value: PixelRoundPolicy): T
 ## 示例
 
 当父组件出现1px的缝隙时，应利用pixelRound来指导布局调整。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 @Entry
@@ -122,6 +132,57 @@ struct PixelRoundExample {
         .height('100%')
         .backgroundColor('#ffe5e5e5')
     }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Blank, Column, Row, Button, Color, PixelRoundCalcPolicy  } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct PixelRoundExample {
+  @State curWidth : number = 300;
+
+  build() {
+    Column() {
+      Button(){
+        Text(this.curWidth.toString())
+      }
+      .onClick((): void => {
+        this.curWidth += 0.1;
+      })
+      .height(200)
+      .width(200)
+      .backgroundColor('rgb(213, 213, 213)')
+
+      Blank().height(20)
+
+      Row() {
+        Row() {
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Yellow)
+        .pixelRound({
+          start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+          end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+        })
+      }
+      .width(this.curWidth.toString() + 'px')
+      .height('300.6px')
+      .backgroundColor(Color.Red)
+      .pixelRound({
+        start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+        end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+      })
+    }
+    .width("100%")
+    .height('100%')
+    .backgroundColor('#ffe5e5e5')
+  }
 }
 ```
 

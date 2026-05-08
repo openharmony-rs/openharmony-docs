@@ -961,6 +961,8 @@ ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 
 手指信息类型。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选| 说明 |
@@ -975,6 +977,30 @@ ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 | hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否  |  是     |表示事件是由左手点击还是右手点击触发。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是     |相对于全局屏幕的左上角的X坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是     |相对于全局屏幕的左上角的Y坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+
+### getCurrentLocalPosition
+
+ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
+ 
+ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
+
+获取手指位置相对于当前组件实时位置的左上角坐标。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 获取手指位置相对于当前组件实时位置的左上角坐标。|
 
 ## GestureType
 

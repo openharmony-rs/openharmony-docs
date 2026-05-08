@@ -1,7 +1,7 @@
 # 自定义组件生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926; @huyisuo-->
+<!--Owner: @jiyujia926; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -50,7 +50,7 @@
 
 ## 自定义组件的删除
 
-例如if组件的分支改变或ForEach循环渲染中数组的个数改变，组件将被移除：
+例如if组件的分支改变或[ForEach](../rendering-control/arkts-rendering-control-foreach.md)循环渲染中数组的个数改变，组件将被移除：
 
 1. 在删除组件之前，将调用其aboutToDisappear生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 

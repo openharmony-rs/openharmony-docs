@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
@@ -27,6 +29,10 @@ attributeModifier(modifier: AttributeModifier\<T>): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -62,6 +68,10 @@ applyNormalAttribute?(instance: T): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                                                                                                         |
@@ -77,6 +87,10 @@ applyPressedAttribute?(instance: T): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -94,6 +108,10 @@ applyFocusedAttribute?(instance: T): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                                                                                                         |
@@ -109,6 +127,10 @@ applyDisabledAttribute?(instance: T): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -127,6 +149,10 @@ applySelectedAttribute?(instance: T): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -286,6 +312,8 @@ CommonModifier、ColumnModifier、ColumnSplitModifier、RowModifier、RowSplitMo
 
 该示例通过Button绑定Modifier实现了点击切换背景颜色的效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 // 设置Button组件属性的自定义AttributeModifier
@@ -322,11 +350,52 @@ struct attributeDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, ButtonAttribute } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  public isDark: boolean = false;
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    if (this.isDark) {
+      instance.backgroundColor(Color.Black);
+    } else {
+      instance.backgroundColor(Color.Red);
+    }
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+          .onClick((e: ClickEvent) => {
+            this.modifier.isDark = !this.modifier.isDark;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![attributeModifier_ifelse](figures/attributeModifier_ifelse.gif)
 
 ### 示例2（组件绑定Modifier实现按压态效果）
 
 该示例通过Button绑定Modifier实现了按压态的效果。如果配合状态管理V2使用，详情见：[Modifier与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#modifier)。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -359,6 +428,39 @@ struct attributePressedDemo {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier,
+  ButtonAttribute } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  applyPressedAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+}
+
+@Entry
+@Component
+struct attributePressedDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 ![attributeModifier_ifelse](figures/attributeModifier_ifelse.gif)
 
 ### 示例3（自定义Modifier不支持感知@State装饰的状态数据变化）
@@ -488,8 +590,54 @@ struct Index {
 
 该示例通过Button绑定Modifier实现了组件在获得焦点时的样式效果。点击Button2后，Button会显示获得焦点后的样式。
 
+ArkTS-Dyn示例：
+
 ```ts
 // 设置Button组件属性的自定义AttributeModifier
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Blue);
+  }
+  applyFocusedAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Green);
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+  @State isDisable: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+          .enabled(this.isDisable)
+          .id("app")
+        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
+        Button("Button2")
+          .onClick(() => {
+            this.getUIContext().getFocusController().activate(true);
+            this.getUIContext().getFocusController().requestFocus("app");
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, ButtonAttribute,
+  Divider } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
   applyNormalAttribute(instance: ButtonAttribute): void {
@@ -533,8 +681,48 @@ struct attributeDemo {
 
 该示例通过Button绑定Modifier实现了组件禁用时的样式效果。点击Button2后，Button会显示禁用状态的样式。
 
+ArkTS-Dyn示例：
+
 ```ts
 // 设置Button组件属性的自定义AttributeModifier
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyDisabledAttribute(instance: ButtonAttribute): void {
+    instance.width(200);
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+  @State isDisable: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+          .enabled(this.isDisable)
+        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
+        Button("Button2")
+          .onClick(() => {
+            this.isDisable = !this.isDisable;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, ButtonAttribute,
+  Divider } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyDisabledAttribute(instance: ButtonAttribute): void {
     instance.width(200);
@@ -572,6 +760,8 @@ struct attributeDemo {
 
 该示例通过Radio绑定Modifier实现了展示组件选中时样式的效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 // 设置Radio组件属性的自定义AttributeModifier
 class MyRadioModifier implements AttributeModifier<RadioAttribute> {
@@ -579,6 +769,51 @@ class MyRadioModifier implements AttributeModifier<RadioAttribute> {
     instance.backgroundColor(Color.Blue);
   }
 
+  applySelectedAttribute(instance: RadioAttribute): void {
+    instance.backgroundColor(Color.Red);
+    instance.borderWidth(2);
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyRadioModifier = new MyRadioModifier();
+  @State value: boolean = false;
+  @State value2: boolean = false;
+
+  build() {
+    Row() {
+      Column() {
+        Radio({ value: 'Radio1', group: 'radioGroup1' })
+          .checked(this.value)
+          .height(50)
+          .width(50)
+          .borderWidth(0)
+          .borderRadius(30)
+          .onClick(() => {
+            this.value = !this.value;
+          })
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, RadioAttribute,
+  Radio } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyRadioModifier implements AttributeModifier<RadioAttribute> {
+  applyNormalAttribute(instance: RadioAttribute): void {
+    instance.backgroundColor(Color.Blue);
+  }
   applySelectedAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Red);
     instance.borderWidth(2);
@@ -664,3 +899,41 @@ struct ChildComponent {
 ```
 
 ![attributeModifier_common](figures/attributeModifier_common.gif)
+
+## Attribute支持范围
+
+未在表格中列举的属性默认为支持。
+
+**表1** CommonAttribute属性接口支持例外范围
+
+| 属性                     | 支持情况 | 告警信息                  | 备注                                      |
+| ------------------------ | -------- | ------------------------- | ----------------------------------------- |
+| accessibilityChecked     | 不支持   | is not callable           | -                                         |
+| accessibilitySelected    | 不支持   | is not callable           | -                                         |
+| accessibilityTextHint    | 不支持   | is not callable           | -                                         |
+| accessibilityVirtualNode | 不支持   | is not callable           | 不支持入参为CustomBuilder。               |
+| animation                | 不支持   | Method not implemented.   | 不支持animation相关属性。                 |
+| attributeModifier        | 不支持   | -                         | attributeModifier不支持嵌套使用，不生效。 |
+| background               | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
+| backgroundFilter         | 不支持   | is not callable           | -                                         |
+| bindContentCover         | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
+| bindContextMenu          | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
+| bindPopup                | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
+| bindSheet                | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
+| chainWeight              | 不支持   | is not callable           | -                                         |
+| compositingFilter        | 不支持   | is not callable           | -                                         |
+| drawModifier             | 不支持   | is not callable           | 不支持modifier相关的属性。                |
+| foregroundFilter         | 不支持   | is not callable           | -                                         |
+| freeze                   | 不支持   | is not callable           | -                                         |
+| gesture                  | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
+| gestureModifier          | 不支持   | is not callable           | 不支持modifier相关的属性。                |
+| onAccessibilityHover     | 不支持   | is not callable           | -                                         |
+| onDragStart              | 不支持   | Method not implemented.   | 不支持返回值为CustomBuilder。             |
+| parallelGesture          | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
+| priorityGesture          | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
+| reuseId                  | 不支持   | Method not implemented.   | -                                         |
+| stateStyles              | 不支持   | Method not implemented.   | 不支持stateStyles相关的属性。             |
+| useSizeType              | 不支持   | Method not implemented.   | 不支持已废弃属性。                        |
+| visualEffect             | 不支持   | is not callable           | -                                         |
+| bindMenu                 | 部分支持 | -                         | 不支持入参为CustomBuilder。               |
+| dragPreview              | 部分支持 | Builder is not supported. | 不支持入参为CustomBuilder。               |

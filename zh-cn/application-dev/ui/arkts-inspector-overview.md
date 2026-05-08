@@ -20,9 +20,9 @@ inspector针对UI组件的布局或绘制送显完成，还提供了注册与取
 
 3. 不支持获取组件的方法、事件。
 
-## UIContext查询组件树和组件信息能力
+## UIContext查询组件树和组件信息能力（ArkTS-Dyn）
 
-ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)获取组件树及组件属性，通过[getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)获取指定的组件及其子组件的属性。支持设置过滤条件进行查询。
+ArkUI提供@ohos.arkui.UIContext([UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md))扩展能力，通过[getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)获取组件树及组件属性，通过[getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)获取指定的组件及其子组件的属性。支持设置过滤条件进行查询。
 
 下述示例，展示了getFilteredInspectorTree和getFilteredInspectorTreeById的基本用法。
 
@@ -53,6 +53,7 @@ struct ComponentPage {
         .id('TEXT')
       Button('content').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
+        // 获取组件树中包含content属性的组件信息
         let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
         hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
@@ -60,6 +61,7 @@ struct ComponentPage {
       })
       Button('isLayoutInspector').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
+        // 获取组件树中包含isLayoutInspector属性的组件信息
         let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
         hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
@@ -68,6 +70,7 @@ struct ComponentPage {
       Button('getFilteredInspectorTreeById').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         try {
+          // 根据组件id获取指定组件及其子组件的属性
           let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['id', 'src']);
           hilog.info(0x0000,`result1: ${inspectorStr}`, 'result1');
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
@@ -94,6 +97,8 @@ struct ComponentPage {
 
 下述示例，展示了布局回调的基本用法。
 
+ArkTS-Dyn示例：
+
 <!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
 
 ``` TypeScript
@@ -118,6 +123,7 @@ struct ImageExample {
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
+// 创建组件观察者，监听指定id组件的布局和绘制事件
   listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
   listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
 
@@ -138,6 +144,7 @@ struct ImageExample {
     let offFuncDraw = onDrawComplete; // 绑定当前js对象
     let offFuncDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
 
+    // 注册布局完成、绘制完成、子组件绘制完成回调
     this.listenerForImage.on('layout', funcLayout);
     this.listenerForImage.on('draw', funcDraw);
     this.listenerForRow.on('drawChildren', funcDrawChildren);
@@ -150,6 +157,56 @@ struct ImageExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+``` TypeScript
+'use static'
+import type inspector from '@ohos.arkui.inspector';
+import {
+  Column, Row, Flex, FlexDirection, ItemAlign, Image, $r, Text, Component, Entry
+} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row() {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+      }
+    }.height(320).width(360)
+  }
+
+  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      // 补充待实现的功能
+    }
+    let onDrawComplete: () => void = (): void => {
+      // 补充待实现的功能
+    }
+    let FuncLayout = onLayoutComplete // 绑定当前js对象
+    let FuncDraw = onDrawComplete // 绑定当前js对象
+    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
+    let OffFuncDraw = onDrawComplete // 绑定当前js对象
+
+    this.listener.onLayout(FuncLayout)
+    this.listener.onDraw(FuncDraw)
+
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.offLayout(OffFuncLayout)
+    // this.listener.offDraw(OffFuncDraw)
+  }
+}
+```
+
 ## 组件标识属性的扩展能力
 
 通过getInspectorByKey、getInspectorTree、sendEventByKey提供组件标识属性扩展能力，具体如下：
@@ -158,6 +215,8 @@ struct ImageExample {
 - [sendEventByKey](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#sendeventbykey9)，给指定id的组件发送事件。
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
+
+ArkTS-Dyn示例：
 
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
@@ -174,14 +233,17 @@ struct ComponentPage {
           hilog.info(0x0000,`Text is clicked`, 'isClicked');
         })
       Button('getInspectorByKey').onClick(() => {
+        // 获取指定id的组件的所有属性
         let result = getInspectorByKey('TEXT');
         hilog.info(0x0000,`result is ${result}`, 'result');
       })
       Button('getInspectorTree').onClick(() => {
+        // 获取组件树及组件属性
         let result = getInspectorTree();
         hilog.info(0x0000,`result is ${JSON.stringify(result)}`, 'result');
       })
       Button('sendEventByKey').onClick(() => {
+        // 给指定id的组件发送事件
         sendEventByKey('TEXT', 10, '');
       })
     }
@@ -190,4 +252,57 @@ struct ComponentPage {
   }
 }
 
+```
+
+ArkTS-Sta示例：
+
+``` TypeScript
+'use static'
+import {
+  Text, Button, Column, Component, ClickEvent, Entry, $r, Row, Builder
+} from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+import { RecordData } from '@ohos.base';
+
+@Entry
+@Component
+struct ComponentPage {
+  private listener: inspector.ComponentObserver | undefined = undefined;
+
+  build() {
+    Column() {
+      Text("Hello World")
+        .fontSize(20)
+        .id("TEXT")
+        .onClick(() => {
+          console.info(`Text is clicked`);
+        })
+      Button('getInspectorByKey')
+        .onClick(
+          (ev: ClickEvent) => {
+            console.info(0x0000, 'testTag', "begin getInspectorByKey");
+            let res = inspector.getInspectorByKey("TEXT1");
+            console.info(0x0000, 'testTag', res);
+          }
+        )
+      Button('getInspectorTree').onClick(
+        (ev: ClickEvent) => {
+          console.info(0x0000, 'testTag', "begin getInspectorTree");
+          let res: RecordData = inspector.getInspectorTree();
+          console.info(0x0000, 'testTag', JSON.stringify(res));
+        }
+      )
+      Button('sendEventByKey')
+        .onClick((ev: ClickEvent) => {
+          console.info(0x0000, 'testTag', "begin sendEventByKey");
+          // TEXT3 is clicked 会被打印。
+          inspector.sendEventByKey("TEXT3", 10, "");
+        }
+        )
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```

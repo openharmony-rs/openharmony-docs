@@ -131,7 +131,19 @@
 场景1：不配置cryptoParam属性，此时会使用默认的加密配置进行数据库的加密/解密。
 
 
+ArkTS-Dyn示例：
 <!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+
+``` TypeScript
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+```
+
+ArkTS-Sta示例：
+<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -143,6 +155,7 @@ import { common } from '@kit.AbilityKit';
 
 
 
+ArkTS-Dyn示例：
 <!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
@@ -164,10 +177,34 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
+try {
+  const STORE_CONFIG: relationalStore.StoreConfig = {
+    name: 'RdbTest.db',
+    securityLevel: relationalStore.SecurityLevel.S3,
+    encrypt: true
+  };
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  hilog.info(DOMAIN, 'Encryption', 'Succeeded in getting RdbStore.');
+} catch (err) {
+  hilog.error(DOMAIN, 'Encryption', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+}
+```
 
 
 场景2：配置cryptoParam属性，此时会使用开发者自定义的密钥和算法参数进行数据库的加密/解密。
 
+ArkTS-Dyn示例：
 <!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
@@ -213,6 +250,53 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+// 初始化需要使用的密钥，示例中使用硬编码密钥仅用于演示目的， 实际应用中应使用安全的密钥管理服务
+let key = new Uint8Array(32);
+for (let i = 0; i < 32; i++) {
+  key[i] = i;
+}
+
+// 初始化加密算法
+const CRYPTO_PARAM: relationalStore.CryptoParam = {
+  encryptionKey: key, // 必选参数，使用指定的密钥打开加密数据库。为空则由数据库负责生成并保存密钥，并使用生成的密钥打开数据库文件。
+  iterationCount: 25000, // 可选参数，迭代次数。迭代次数必须大于零。不指定或等于零则使用默认值10000和默认加密算法。
+  encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC, // 可选参数，加密/解密算法。如不指定，默认算法为AES_256_GCM。
+  hmacAlgo: relationalStore.HmacAlgo.SHA256, // 可选参数，HMAC算法。如不指定，默认值为SHA256。
+  kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512, // 可选参数，KDF算法。如不指定，默认值和HMAC算法相等。
+  cryptoPageSize: 2048 // 可选参数，加密/解密时使用的页大小。必须为1024到65536范围内的整数并且为2的幂。如不指定，默认值为1024。
+}
+
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: 'encrypted.db',
+  securityLevel: relationalStore.SecurityLevel.S3,
+  encrypt: true,
+  cryptoParam: CRYPTO_PARAM
+}
+
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  if (store == null) {
+    hilog.error(DOMAIN, 'Encryption', 'Failed to get RdbStore.');
+  } else {
+    hilog.info(DOMAIN, 'Encryption', 'Succeeded in getting RdbStore.');
+  }
+  // 调用完后需要将密钥清零
+  CRYPTO_PARAM.encryptionKey.fill(0);
+  key.fill(0);
+} catch (err) {
+  hilog.error(DOMAIN, 'Encryption', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+}
+```
 
 
 如果开发者不关心加密使用的算法及参数，则无需配置cryptoParam属性，使用默认加密配置即可。当开发者需要自定义加密配置，或需要打开非默认配置的加密数据库时，则需要配置cryptoParam属性。

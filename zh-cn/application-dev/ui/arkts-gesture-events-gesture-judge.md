@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 手势冲突是指多个手势识别器在同一组件或重叠区域同时识别时产生竞争，导致识别结果不符合预期。常见冲突场景包括：
-- 同一组件上的多手势（如按钮同时添加点击与长按手势）。
+- 同一组件上的多手势（如按钮同时添加[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)与[LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md)）。
 - 父子组件的同类型手势识别器。
 - 系统默认手势与自定义手势（如[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)滑动手势与子组件点击手势冲突）。
 
@@ -28,7 +28,7 @@
 |[onGestureJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#ongesturejudgebegin)|用于手势拦截，是通用事件。在手势满足系统触发阈值场景下，回调给应用判断是否拦截手势。|
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截、获取手势识别器和设置手势识别器开闭状态。是onGestureJudgeBegin接口的能力扩展，可以代替onGestureJudgeBegin接口。<br>获取手势识别器时，会获取一次交互中手势响应链上的所有手势识别器，以及当前即将触发成功的手势识别器，此时可以设置手势的激活状态。|
 
-以下示例中，Image和Stack两个组件位于同一区域。长按Stack组件的上半部分可触发挂载在Stack组件上的长按手势，长按Stack组件的下半部分则会响应Image组件的拖拽操作。
+以下示例中，[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)和[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)两个组件位于同一区域。长按Stack组件的上半部分可触发挂载在Stack组件上的长按手势，长按Stack组件的下半部分则会响应Image组件的拖拽操作。
 
 **图2** 示例图
 
@@ -175,13 +175,13 @@
 
 手势并行动态控制的前提是手势识别成功，如果手势不成功则不会产生手势回调响应。
 
-1. 业务手势作业流：指真正触发UI变化的业务手势，比如使页面滚动的PanGesture，触发点击的TapGesture等。
+1. 业务手势作业流：指真正触发UI变化的业务手势，比如使页面滚动的[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)，触发点击的[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)等。
 
-2. 监听手势作业流：指在监听手势运行的过程中，应根据上下文的业务状态变化动态控制手势识别器的开闭，例如判断组件嵌套滚动过程中是否已滑至边缘。这一监听事件可借助一个使用[并行手势绑定方式](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)的PanGesture实现，或者采用Touch事件来完成。
+2. 监听手势作业流：指在监听手势运行的过程中，应根据上下文的业务状态变化动态控制手势识别器的开闭，例如判断组件嵌套滚动过程中是否已滑至边缘。这一监听事件可借助一个使用[并行手势绑定方式](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)的PanGesture实现，或者采用[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)来完成。
 
 3. 设置手势并行：此步骤并非必需，典型场景是在嵌套滚动中，设置外部组件的滚动手势与内部的滚动手势并行。
 
-4. 动态开闭手势：指通过手势识别器的setEnabled方法，控制手势是否响应用户回调。
+4. 动态开闭手势：指通过手势识别器的[setEnabled](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#setenabled12)方法，控制手势是否响应用户回调。
 
 手势并行动态控制涉及以下接口。
 
@@ -191,7 +191,7 @@
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截，获取手势识别器，初始化手势识别器开闭状态。|
 |[parallelGesture](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)|可使开发者定义的手势，与比他优先级高的手势并行。|
 
-以下示例是两个Scroll组件的嵌套滚动场景，使用手势控制的api去控制外部组件和内部组件的嵌套滚动联动。
+以下示例是两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景，使用手势控制的API去控制外部组件和内部组件的嵌套滚动联动。
 
 1. 使用shouldBuiltInRecognizerParallelWith接口设置外部Scroll组件的PanGesture手势与内部Scroll组件的PanGesture手势并行。
 
@@ -502,7 +502,7 @@
 - 上下滑动：调节亮度。
 - 左右滑动：调整进度。
 
-其内部下方的Slider组件（progress_layer）未绑定长按手势，导致用户长按Slider时会触发父容器的快进手势，不符合预期。
+其内部下方的[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)组件（progress_layer）未绑定长按手势，导致用户长按Slider时会触发父容器的快进手势，不符合预期。
 
 解决方案：在Slider上注册onTouchTestDone回调，通过该回调禁用非Slider组件的手势识别器，即可解决冲突。
 

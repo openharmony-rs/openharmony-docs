@@ -15,13 +15,13 @@ reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## reuse
 
-ArkTS-Dyn: reuse(options: ReuseOptions)
+ArkTS-Dyn: reuse(options: ReuseOptions): T
 
-ArkTS-Sta: reuse(options: ReuseOptions | undefined)
+ArkTS-Sta: reuse(options: ReuseOptions | undefined): this
 
 复用选项，用于设置V2自定义组件的复用选项。
 
@@ -47,7 +47,7 @@ ArkTS-Sta: reuse(options: ReuseOptions | undefined)
 
 | 类型                          | 说明                                           |
 | ----------------------------|---------------------------------------------- |
-|   T |   返回当前组件。 |
+|   ArkTS-Dyn: T <br/> ArkTS-Sta: this |   返回当前组件。 |
 
 ## ReuseOptions
 

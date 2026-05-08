@@ -39,7 +39,9 @@ import { ComponentContent, ReactiveComponentContent } from '@kit.ArkUI';
 
 ### constructor
 
-constructor(uiContext: UIContext, builder: WrappedBuilder\<[]>)
+ArkTS-Dyn: constructor(uiContext: UIContext, builder: WrappedBuilder\<[]>)
+
+ArkTS-Sta: constructor(uiContext: UIContext, builder: WrappedBuilder\<CustomBuilder>)
 
 ComponentContent的构造函数。
 
@@ -47,16 +49,22 @@ ComponentContent的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需要的UI上下文。 |
-| builder  | [WrappedBuilder\<[]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装不带参builder函数的WrappedBuilder对象。 |
+| builder  | ArkTS-Dyn: [WrappedBuilder\<[]>](../../ui/state-management/arkts-wrapBuilder.md)<br>ArkTS-Sta: [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)\<[CustomBuilder](./arkui-ts/ts-types.md#custombuildertt23)> | 是   |   封装不带参builder函数的WrappedBuilder对象。 |
 
 ### constructor
 
-constructor(uiContext: UIContext, builder: WrappedBuilder\<[T]>, args: T)
+ArkTS-Dyn: constructor(uiContext: UIContext, builder: WrappedBuilder\<[T]>, args: T)
+
+ArkTS-Sta: constructor(uiContext: UIContext, builder: WrappedBuilder\<CustomBuilderT\<T>>, args: T)
 
 ComponentContent的构造函数。
 
@@ -64,17 +72,23 @@ ComponentContent的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需要的UI上下文。 |
-| builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参builder函数的WrappedBuilder对象。 |
+| builder  | ArkTS-Dyn: [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md)<br>ArkTS-Sta: [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)\<[CustomBuilder](./arkui-ts/ts-types.md#custombuildertt23)> | 是   |   封装带参builder函数的WrappedBuilder对象。 |
 | args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数。 |
 
 ### constructor
 
-  constructor(uiContext: UIContext, builder: WrappedBuilder\<[T]>, args: T, options: BuildOptions)
+ArkTS-Dyn: constructor(uiContext: UIContext, builder: WrappedBuilder\<[T]>, args: T, options: BuildOptions)
+
+ArkTS-Sta: constructor(uiContext: UIContext, builder: WrappedBuilder\<CustomBuilderT\<T>>, args: T, options: BuildOptions)
 
 ComponentContent的构造函数。
 
@@ -82,16 +96,23 @@ ComponentContent的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需要的UI上下文。 |
-| builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参builder函数的WrappedBuilder对象。 |
+| builder  | ArkTS-Dyn: [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md)<br>ArkTS-Sta: [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)\<[CustomBuilder](./arkui-ts/ts-types.md#custombuildertt23)> | 是   |   封装带参builder函数的WrappedBuilder对象。 |
 | args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数。 |
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)                                                    | 是   |  build的配置参数，判断是否支持@Builder中嵌套@Builder的行为。                                         |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ``` ts
 import { ComponentContent, NodeContent, typeNode } from "@kit.ArkUI";
 
@@ -150,6 +171,48 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+``` ts
+import { Text, Column, Component, UIContext, Builder, Entry, Row, wrapBuilder, FontWeight, ContentSlot, Button, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { NodeContent, FrameNode, ComponentContent } from '@ohos.arkui.node';
+
+@Builder
+function buildText() {
+  Column() {
+    Text('HELLO')
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private content: NodeContent = new NodeContent();
+
+  build() {
+    Row() {
+      Column() {
+        Button('addComponentContent')
+          .onClick((event: ClickEvent) => {
+            let frameNode: FrameNode = new FrameNode(this.getUIContext());
+            frameNode.addComponentContent(new ComponentContent(this.getUIContext(), wrapBuilder(buildText)));
+            this.content.addFrameNode(frameNode);
+          })
+        ContentSlot(this.content)
+      }
+      .id('column')
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![](figures/ReactiveComponentContent_constructor.gif)
 
 ### update
@@ -231,6 +294,10 @@ reuse(param?: Object): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
@@ -247,6 +314,10 @@ recycle(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 ```ts
 import { NodeContent, typeNode, ComponentContent } from "@kit.ArkUI";
@@ -609,6 +680,10 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：** 
 
 ```ts
@@ -681,6 +756,10 @@ updateConfiguration(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 > **说明：**
 >
@@ -797,6 +876,10 @@ isDisposed(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型    | 说明               |
@@ -891,7 +974,11 @@ inheritFreezeOptions(enabled: boolean): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1088,6 +1175,111 @@ struct TextBuilder {
 ```
 
 ![](figures/component_content_inheritFreezeOptions.gif)
+
+### isTransferred<sup>24+</sup>
+isTransferred(): boolean
+
+判断ComponentContent是否通过transfer.transferStatic或者transfer.transferDynamic方法创建。如果通过上述两个接口创建，则不支持以下方法：[update](#update)，[dispose](#dispose)，[updateConfiguration](#updateconfiguration)，[inheritFreezeOptions](#inheritfreezeoptions20)。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型                | 说明                                                                    |
+| ------------------ | ----------------------------------------------------------------------- |
+| boolean | 返回ComponentContent是否通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>true：ComponentContent通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>false：ComponentContent不通过transfer.transferStatic或transfer.transferDynamic方法创建。|
+
+**示例：** 
+
+关于transfer的具体用法，请参阅@ohos.transfer (系统对象转换工具)。以下示例介绍通过在ArkTS-Dyn中引用ArkTS-Sta创建的ComponentContent对象，显示Text文本。
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynComponentContent的方法。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  import { Text, Column, FontWeight, wrapBuilder, UIContext } from '@ohos.arkui.component';
+  import { ComponentContent } from '@ohos.arkui.node';
+  import transfer from '@ohos.transfer';
+
+  @Builder
+  function buildText() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  export function createComponentContent(context: Object): Any {
+    let contextSta = transfer.transferStatic(context, 'ArkUI.UIContext');
+    let componentContentSta = new ComponentContent(contextSta as UIContext, wrapBuilder(buildText));
+    // 给转换接口传入静态的ComponentContent，创建动态的ComponentContent。
+    let componentContentDyn = transfer.transferDynamic(componentContentSta, 'ArkUI.ComponentContent');
+    return componentContentDyn;
+  }
+  ```
+
+- 在ArkTS-Dyn主模块中引入ArkTS-Sta创建CompoonentContent对象的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { ComponentContent, NodeContent, FrameNode, UIContext } from '@kit.ArkUI';
+  import { createComponentContent } from 'library';
+
+  // 调用静态侧接口createComponentContent，返回从静态转换动态的ComponentContent对象。
+  export function ComponentContentTransferDynamic(uiContext: UIContext): ComponentContent<object> {
+    let componentContentDyn = createComponentContent(uiContext) as ComponentContent<object>;
+    return componentContentDyn;
+  }
+
+  @Entry
+  @Component
+  struct Index {
+    @State isTransfered: string = '';
+    @State isDisposed: string = '';
+    private content: NodeContent = new NodeContent();
+    private componentContent: ComponentContent<object> | null = null;
+
+    build() {
+      Column({ space: 5 }) {
+        Text(`isTransfer: ${this.isTransfered}`)
+        Text(`isDisposed: ${this.isDisposed}`)
+        // 添加转换后的ComponentContent类型的组件内容至frameNode中。
+        Button('addComponentContent')
+          .onClick(() => {
+            let frameNode = new FrameNode(this.getUIContext());
+            this.componentContent = ComponentContentTransferDynamic(this.getUIContext());
+            frameNode.addComponentContent(this.componentContent);
+            this.content.addFrameNode(frameNode);
+          })
+        // 查询当前ComponentContent是否通过转换接口创建。
+        Button('isTransfered')
+          .onClick(() => {
+            this.isTransfered += this.componentContent?.isTransferred().toString();
+          })
+        // 查询当前ComponentContent是否已解除与后端实体节点的引用关系。
+        Button('isDisposed')
+          .onClick(() => {
+            this.isDisposed += ' before: ' + this.componentContent?.isDisposed().toString();
+            this.componentContent?.dispose();
+            this.isDisposed += ' after: ' + this.componentContent?.isDisposed().toString();
+          })
+        ContentSlot(this.content)
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+![](figures/isTransferred.gif)
 
 ## ReactiveComponentContent<sup>22+</sup>
 

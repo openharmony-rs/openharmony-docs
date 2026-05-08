@@ -4,7 +4,7 @@
 
 ## 使用@ObjectLink代替@Prop减少不必要的深拷贝
 
-在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用@Prop装饰器会增加组件创建时间并影响性能，此时建议改用@ObjectLink。
+在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用[@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md)装饰器会增加组件创建时间并影响性能，此时建议改用[@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md)。
 
 【反例】
 
@@ -46,7 +46,7 @@ struct Parent {
 }
 ```
 
-在以上示例中，PropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据，带来性能开销，而\@ObjectLink是比\@Link和\@Prop更优的选择。
+在以上示例中，PropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据，带来性能开销，而\@ObjectLink是比[@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md)和\@Prop更优的选择。
 
 【正例】
 
@@ -148,7 +148,7 @@ struct MyComponent {
 
 【正例】
 
-解决此问题，需用\@State装饰realStateArr和realState成员变量。解决后就不再需要变量needsUpdate。
+解决此问题，需用[\@State](arkts-state.md)装饰realStateArr和realState成员变量。解决后就不再需要变量needsUpdate。
 
 ```ts
 @Entry
@@ -243,7 +243,7 @@ struct Page {
 }
 ```
 
-在上面的示例中，状态变量this.translateObj.translateX被用在多个同级的子组件下，当this.translateObj.translateX变化时，会导致所有关联它的组件一起刷新，但实际上由于这些组件的变化是相同的，因此可以将这个属性绑定到他们共同的父组件上，来实现减少组件的刷新数量。经过分析，所有的子组件其实都处于Page下的Column中，因此将所有子组件相同的translate属性统一到Column上，来实现精准控制状态变量关联的组件数。
+在上面的示例中，状态变量this.translateObj.translateX被用在多个同级的子组件下，当this.translateObj.translateX变化时，会导致所有关联它的组件一起刷新，但实际上由于这些组件的变化是相同的，因此可以将这个属性绑定到他们共同的父组件上，来实现减少组件的刷新数量。经过分析，所有的子组件其实都处于Page下的[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)中，因此将所有子组件相同的[translate](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)属性统一到Column上，来实现精准控制状态变量关联的组件数。
 
 【正例】
 

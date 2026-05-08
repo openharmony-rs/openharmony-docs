@@ -8,7 +8,7 @@ makeObserved接口可以将[Array](#makeobserved与array配合使用)、[Map](#m
 
 由makeObserved转换的数据，即使不使用状态变量装饰器，也能观察其内部属性变化。
 
-在静态语言上下文中使用时，需要导入UIUtils工具：
+在静态语言上下文中使用时，需要导入[UIUtils](../../reference/apis-arkui/js-apis-stateManagement-static.md#uiutils)工具：
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';

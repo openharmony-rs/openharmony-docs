@@ -5,7 +5,7 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 PageAbility相关的能力通过featureAbility提供，启动本地Ability通过featureAbility中的startAbility接口实现。
 

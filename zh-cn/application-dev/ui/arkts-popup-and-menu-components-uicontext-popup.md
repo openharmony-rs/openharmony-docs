@@ -37,7 +37,7 @@
     new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
   ```
    
-   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
+   如果在[wrapBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder-static.md)中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
    
   <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   

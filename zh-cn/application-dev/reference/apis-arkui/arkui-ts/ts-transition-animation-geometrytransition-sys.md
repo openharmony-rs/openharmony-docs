@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 从API version 7开始支持，从API version 10开始生效。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > [geometryTransition](ts-transition-animation-geometrytransition.md)必须配合[animateTo](ts-explicit-animation.md)使用才有动画效果，动效时长、曲线跟随[animateTo](ts-explicit-animation.md)中的配置，不支持[animation](ts-animatorproperty.md)隐式动画。
@@ -24,7 +26,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | -------- | ---- | ---- | --------------------------------------------------------------------- |
-| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | 否   | 是 | <br>决定共享元素动画过程中in/out组件在组件树上层级位置的移动策略，默认值：TransitionHierarchyStrategy.ADAPTIVE。<br>实际影响绑定的in/out组件相对其他组件的前后重叠关系，常规情况下慎重修改。<br>建议在发现共享元素动画过程中出现组件前后重叠关系错误时需要调整再设置此参数。<br>**系统接口：** 此接口为系统接口。|
+| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | 否   | 是 | <br>决定共享元素动画过程中in/out组件在组件树上层级位置的移动策略，默认值：TransitionHierarchyStrategy.ADAPTIVE。<br>实际影响绑定的in/out组件相对其他组件的前后重叠关系，常规情况下慎重修改。<br>建议在发现共享元素动画过程中出现组件前后重叠关系错误时需要调整再设置此参数。<br>**系统接口：** 此接口为系统接口。<br>ArkTS-Dyn起始版本：12<br>ArkTS-Sta起始版本： 23|
 
 ## TransitionHierarchyStrategy<sup>12+</sup>
 共享元素动画过程中in/out组件层级位置移动策略枚举。
@@ -32,6 +34,10 @@
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明 |
 | ------ | - | ---- |

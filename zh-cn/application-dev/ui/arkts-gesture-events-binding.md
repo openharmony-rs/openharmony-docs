@@ -22,7 +22,7 @@
 
 gesture为通用的一种手势绑定方法，可以将手势绑定到对应的组件上。
 
-例如，可以将点击手势TapGesture通过gesture方法将手势绑定到Text组件上。
+例如，可以将点击手势[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)通过gesture方法将手势绑定到[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件上。
 
 
   <!-- @[regular_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/Gesture.ets) -->

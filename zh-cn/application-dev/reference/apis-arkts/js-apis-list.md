@@ -1,8 +1,8 @@
 # @ohos.util.List (线性容器List)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 

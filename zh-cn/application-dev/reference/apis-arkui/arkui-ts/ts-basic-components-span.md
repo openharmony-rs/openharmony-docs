@@ -73,7 +73,7 @@ ArkTS-Sta: decoration(value: DecorationStyleInterface | undefined)
 
 | 参数名 | 类型      | 必填 | 说明     |
 | ------ | -------- | ---- | -------------- |
-| value  | ArkTS-Dyn: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface)<br/>ArkTS-Sta: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) \| undefined | 是   | 文本装饰线样式对象。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**说明：** <br/>style参数不支持卡片能力。 |
+| value  | ArkTS-Dyn: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface)<br/>ArkTS-Sta: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) \| undefined | 是   | 文本装饰线样式对象。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**说明：** <br/>style参数不支持卡片能力。<br/>取值undefined时，按默认值处理。 |
 
 >  **说明：**
 >
@@ -103,7 +103,7 @@ ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
 | 参数名 | 类型     | 必填 |  说明   |
 | ------ | ------- | ---- | -------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### textCase
 
@@ -151,7 +151,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br/>默认值：'e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br/>默认值：'#e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
 
 ### fontSize
 
@@ -296,7 +296,7 @@ ArkTS-Sta: lineHeight(value: Length | undefined)
 
 | 参数名 | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为fp。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为[fp](ts-pixel-units.md)。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。<br/>取值为undefined时，使用默认行高高度。|
 
 ### font<sup>10+</sup>
 
@@ -318,7 +318,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 文本样式。 |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 文本样式。 <br/>默认值继承[Font](ts-types.md#font)<br/>取值为undefined时，按默认值处理。|
 
 ### font<sup>24+</sup>
 
@@ -359,7 +359,31 @@ ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----- | ---- | --- |
-| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br/>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> \| undefined | 是   | 文字阴影效果。 |
+| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br/>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> \| undefined | 是   | 文字阴影效果。<br/>默认值继承[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) <br/>取值为undefined时，按默认值处理。|
+
+### fontVariations
+
+ArkTS-Dyn: fontVariations(fontVariations: Array&lt;FontVariation&gt;)
+
+ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined)
+
+设置可变字体的属性。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                          | 必填 | 说明                                          |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| fontVariations | ArkTS-Dyn: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; <br/>ArkTS-Sta: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; \| undefined | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。<br/>设置为undefined时的效果等同于未设置fontVariations属性时的效果。<br/>fontVariations属性的优先级高于[fontWeight](#fontweight24)。 |
 
 ## 事件
 
@@ -730,3 +754,65 @@ struct SpanExample {
 ```
 
 ![SpanBaselineOffset](figures/SpanBaselineOffset.png)
+
+### 示例5（设置文本可变字体的属性）
+
+该示例通过[fontVariations](#fontvariations)属性设置可变字体的属性。
+
+从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SpanExample {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text() {
+        Span('Hello World !')
+          // wght代表可变字体的字重属性
+          .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      }
+
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, State, Text, Column, Component, Button, ClickEvent, Span } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text() {
+        Span('Hello World !')
+          // wght代表可变字体的字重属性
+          .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      }
+
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
+![SpanFontVariations](figures/FontVariations.gif)

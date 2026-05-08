@@ -19,6 +19,8 @@
 应用可以通过[onAlert](../reference/apis-arkweb/arkts-basic-components-web-events.md#onalert)事件监听网页`alert`方法，并创建合适的弹框。
 
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
+    
+    ArkTS-Dyn示例：
     <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) --> 
     
     ``` TypeScript
@@ -59,6 +61,67 @@
       }
     }
     ```
+
+    ArkTS-Sta示例：
+    <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) --> 
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import {
+      Entry,
+      Text,
+      TextInput,
+      Web,
+      OnAlertEvent,
+      JsResult,
+      $rawfile,
+      Column,
+      Row,
+      Component,
+      UIContext,
+      Button,
+      ClickEvent,
+      AlertDialogParamWithConfirm
+    } from '@ohos.arkui.component'
+    import { State } from '@ohos.arkui.stateManagement'
+    import { webview } from '@kit.ArkWeb';
+
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+      uiContext: UIContext = this.getUIContext();
+
+      build() {
+        Row() {
+          Web({ src: $rawfile('test.html'), controller: this.webviewController })
+            .onAlert((event: OnAlertEvent) => {
+              if (event) {
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
+                let alertOption: AlertDialogParamWithConfirm = {
+                  title: 'Warning',
+                  message: event.message,
+                  confirm: {
+                    value: 'confirm',
+                    action: () => {
+                      console.info('Alert confirmed.');
+                      event.result.handleConfirm();
+                    }
+                  },
+                  cancel: () => {
+                    event.result.handleCancel();
+                  }
+                }
+                this.uiContext.showAlertDialog(alertOption)
+              }
+              return true;
+            })
+        }
+      }
+    }
+    ```
+
   加载的HTML。
   ```html
   <!-- test.html -->
@@ -90,6 +153,8 @@
   ```
 
 - 用[CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
+
+    ArkTS-Dyn示例：
     <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
     
     ``` TypeScript
@@ -141,6 +206,77 @@
       }
     }
     ```
+
+    ArkTS-Sta示例：
+    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
+    ``` TypeScript
+    import { AlertDialog } from '@ohos.arkui.advanced.Dialog';
+    import {
+      Entry,
+      Text,
+      TextInput,
+      OnAlertEvent,
+      Web,
+      JsResult,
+      $rawfile,
+      Column,
+      Component,
+      Button,
+      ButtonRole,
+      ClickEvent,
+      CustomDialogController,
+      AlertDialogParamWithConfirm
+    } from '@ohos.arkui.component'
+    import { State } from '@ohos.arkui.stateManagement'
+    import { webview } from '@kit.ArkWeb';
+
+    @Entry
+    @Component
+    struct AlertDialogPage {
+      @State message: string = 'Hello World';
+      @State title: string = 'Hello World';
+      @State subtitle: string = '';
+      @State result: JsResult | null = null;
+      webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+      dialogControllerAlert: CustomDialogController = new CustomDialogController({
+        builder: AlertDialog({
+          primaryTitle: this.title,
+          secondaryTitle: this.subtitle,
+          content: this.message,
+          primaryButton: {
+            value: 'confirm',
+            role: ButtonRole.ERROR,
+            action: () => {
+              console.info('Callback when the second button is clicked');
+              this.result?.handleConfirm();
+            }
+          },
+        }),
+        onWillDismiss: () => {
+          this.result?.handleCancel();
+          this.dialogControllerAlert.close();
+        }
+      })
+
+      build() {
+        Column() {
+          Web({ src: $rawfile('alert.html'), controller: this.webviewController })
+            .onAlert((event: OnAlertEvent): boolean => {
+              if (event) {
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
+                this.title = 'Warning';
+                this.message = event.message;
+                this.result = event.result;
+                this.dialogControllerAlert.open();
+              }
+              return true;
+            })
+        }
+      }
+    }
+    ```
+
   加载的html。
   ```html
   <!-- alert.html -->
@@ -184,6 +320,8 @@
 应用可以通过[onConfirm](../reference/apis-arkweb/arkts-basic-components-web-events.md#onconfirm)事件监听网页`confirm`方法，并创建合适的弹框。
 
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
+
+    ArkTS-Dyn示例：
     <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) -->
     
     ``` TypeScript
@@ -230,6 +368,64 @@
     }
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) -->
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import {
+      Entry,
+      Web,
+      OnConfirmEvent,
+      $rawfile,
+      Column,
+      Component,
+      UIContext,
+      AlertDialogParamWithButtons
+    } from '@ohos.arkui.component'
+    import { State } from '@ohos.arkui.stateManagement'
+
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+      uiContext: UIContext = this.getUIContext();
+
+      build() {
+        Column() {
+          Web({ src: $rawfile('test.html'), controller: this.webviewController })
+            .onConfirm((event: OnConfirmEvent): boolean => {
+              if (event) {
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
+                let alertDialogOptions: AlertDialogParamWithButtons = {
+                  title: 'Confirm',
+                  message: event.message,
+                  primaryButton: {
+                    value: 'cancel',
+                    action: () => {
+                      event.result.handleCancel();
+                    }
+                  },
+                  secondaryButton: {
+                    value: 'ok',
+                    action: () => {
+                      event.result.handleConfirm();
+                    }
+                  },
+                  cancel: () => {
+                    event.result.handleCancel();
+                  }
+                }
+                this.uiContext.showAlertDialog(alertDialogOptions)
+              }
+              return true;
+            })
+        }
+      }
+    }
+    ```
+
   加载的html。
   ```html
   <!-- test.html -->
@@ -265,6 +461,8 @@
 
 - 用[CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog)创建弹框。
     <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
+
+    ArkTS-Dyn示例：
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -334,6 +532,89 @@
       }
     }
     ```
+
+    ArkTS-Sta示例：
+    <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import { ConfirmDialog } from '@ohos.arkui.advanced.Dialog';
+    import {
+      Entry,
+      Web,
+      OnConfirmEvent,
+      $rawfile,
+      Column,
+      Component,
+      JsResult,
+      CustomDialogController
+    } from '@ohos.arkui.component'
+    import { State } from '@ohos.arkui.stateManagement'
+
+    @Entry
+    @Component
+    struct DialogConfirmDialog {
+      @State message: string = 'Hello World';
+      @State title: string = 'Hello World';
+      @State result: JsResult | null = null;
+      webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+      isChecked: boolean = false;
+      dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
+        builder: ConfirmDialog({
+          title: this.title,
+          content: this.message,
+          // 勾选框选中状态
+          isChecked: this.isChecked,
+          // 勾选框说明文本
+          checkTips: 'No further prompts after prohibition',
+          primaryButton: {
+            value: 'prohibited',
+            action: () => {
+              this.result?.handleCancel();
+            },
+          },
+          secondaryButton: {
+            value: 'allow',
+            action: () => {
+              this.isChecked = false;
+              console.info('Callback when the second button is clicked');
+              this.result?.handleConfirm();
+            }
+          },
+          onCheckedChange: (checked) => {
+            this.isChecked = checked;
+            console.info('Callback when the checkbox is clicked');
+          },
+        }),
+        onWillDismiss: () => {
+          this.result?.handleCancel();
+          this.dialogControllerCheckBox.close();
+        },
+        autoCancel: true
+      })
+
+      build() {
+        Column() {
+          Web({ src: $rawfile('confirm.html'), controller: this.webviewController })
+            .onConfirm((event) => {
+              if (event) {
+                if (this.isChecked) {
+                  event.result.handleCancel();
+                } else {
+                  console.info('event.url:' + event.url);
+                  console.info('event.message:' + event.message);
+                  this.title = 'Confirm';
+                  this.message = event.message;
+                  this.result = event.result;
+                  this.dialogControllerCheckBox.open();
+                }
+              }
+              return true;
+            })
+        }
+      }
+    }
+    ```
+
   加载的html。
   ```html
   <!-- confirm.html -->
@@ -381,6 +662,8 @@
 应用可以通过[onPrompt](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprompt9)事件监听网页`prompt`方法，并创建合适的弹框。
 
 - 用[CustomDialog-CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12)创建弹框。
+
+    ArkTS-Dyn示例：
     <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) -->
     
     ``` TypeScript
@@ -459,6 +742,102 @@
       }
     }
     ```
+
+    ArkTS-Sta示例：
+    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) -->
+    ``` TypeScript
+    import { CustomContentDialog } from '@ohos.arkui.advanced.Dialog';
+    import {
+      Entry,
+      Text,
+      TextInput,
+      Web,
+      JsResult,
+      OnPromptEvent,
+      $rawfile,
+      Column,
+      Component,
+      Button,
+      ClickEvent,
+      ButtonStyleMode,
+      CustomDialogController
+    } from '@ohos.arkui.component'
+    import { State } from '@ohos.arkui.stateManagement'
+    import { webview } from '@kit.ArkWeb';
+
+    @Entry
+    @Component
+    struct PromptDialog {
+      @State message: string = 'Hello World';
+      @State title: string = 'Hello World';
+      @State result: JsResult | null = null;
+      promptResult: string = '';
+      webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+
+      // 自定义弹出框的内容区
+      @Builder
+      buildContent(): void {
+        Column() {
+          Text(this.message)
+          TextInput()
+            .onChange((value) => {
+              this.promptResult = value;
+            })
+            .defaultFocus(true)
+        }
+        .width('100%')
+      }
+      dialogController: CustomDialogController = new CustomDialogController({
+        builder: CustomContentDialog({
+          primaryTitle: this.title,
+          contentBuilder: () => {
+            this.buildContent();
+          },
+          buttons: [
+            {
+              value: 'cancel',
+              buttonStyle: ButtonStyleMode.TEXTUAL,
+              action: () => {
+                console.info('Callback when the button is clicked');
+                this.result?.handleCancel();
+              }
+            },
+            {
+              value: 'confirm',
+              buttonStyle: ButtonStyleMode.TEXTUAL,
+              action: () => {
+                this.result?.handlePromptConfirm(this.promptResult);
+              }
+            }
+          ],
+        }),
+        onWillDismiss: () => {
+          this.result?.handleCancel();
+          this.dialogController.close();
+        }
+      })
+
+      build() {
+        Column() {
+          Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
+            .onPrompt((event: OnPromptEvent): boolean => {
+              if (event) {
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
+                console.info('event.value:' + event.value);
+                this.title = 'Prompt';
+                this.message = event.message;
+                this.promptResult = event.value;
+                this.result = event.result;
+                this.dialogController.open();
+              }
+              return true;
+            })
+        }
+      }
+    }
+    ```
+
   加载的html。
   ```html
   <!-- prompt.html -->

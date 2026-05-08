@@ -1,11 +1,11 @@
-﻿# AgentExtensionContext (智能体扩展组件上下文)
+# AgentExtensionContext (智能体扩展组件上下文)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AgentExtensionContext模块是[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 

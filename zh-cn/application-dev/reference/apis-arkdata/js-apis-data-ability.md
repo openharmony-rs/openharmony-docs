@@ -121,7 +121,7 @@ notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 beginWrap(): DataAbilityPredicates
 
-在谓词中添加左括号。此方法类似于SQL语句的“(”，需要与endWrap一起使用。
+在谓词中添加左括号。此方法类似于SQL语句的“(”，需要与[endWrap](#endwrap)一起使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -146,7 +146,7 @@ beginWrap(): DataAbilityPredicates
 
 endWrap(): DataAbilityPredicates
 
-在谓词中添加右括号。此方法类似于SQL语句的“)”，需要和beginWrap一起使用。
+在谓词中添加右括号。此方法类似于SQL语句的“)”，需要和[beginWrap](#beginwrap)一起使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -246,7 +246,7 @@ beginsWith(field: string, value: string): DataAbilityPredicates
 
 配置谓词以匹配数据类型为string且值以指定字符串开头的字段。
 
-此方法类似于SQL语句的“%”。
+此方法类似于SQL语句的“value%”。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -275,7 +275,7 @@ endsWith(field: string, value: string): DataAbilityPredicates
 
 配置谓词以匹配数据类型为string且值以指定字符串结尾的字段。
 
-此方法类似于SQL语句的“%”。
+此方法类似于SQL语句的“%value”。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -294,7 +294,7 @@ endsWith(field: string, value: string): DataAbilityPredicates
 
 **示例：**
 
-  ```
+  ```js
   dataAbilityPredicates.endsWith("NAME", "se")
   ```
 
@@ -680,7 +680,7 @@ limitAs(value: number): DataAbilityPredicates
 
 offsetAs(rowOffset: number): DataAbilityPredicates
 
-设置谓词查询结果的起始位置。需要同步调用limitAs接口指定查询数量，否则无查询结果。查询指定偏移位置后的所有行时，limitAs接口需传入参数-1。
+设置谓词查询结果的起始位置。需要同步调用[limitAs](#limitas)接口指定查询数量，否则无查询结果。查询指定偏移位置后的所有行时，[limitAs](#limitas)接口需传入参数-1。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -790,7 +790,7 @@ export default class EntryAbility extends UIAbility {
     let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()
     dataAbilityPredicates.indexedBy("SALARY_INDEX")
 
-    //  ...
+    // ...
   }
 }
 ```

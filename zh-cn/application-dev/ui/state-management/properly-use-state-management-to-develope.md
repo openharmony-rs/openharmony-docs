@@ -6,7 +6,7 @@
 
 ### 将简单属性数组合并成对象数组
 
-在开发过程中，我们经常会需要设置多个组件的同一种属性，比如Text组件的内容、组件的宽度、高度等样式信息等。将这些属性保存在一个数组中，配合ForEach进行使用是一种简单且方便的方法。
+在开发过程中，我们经常会需要设置多个组件的同一种属性，比如[Text](../arkts-common-components-text-display.md)组件的内容、组件的宽度、高度等样式信息等。将这些属性保存在一个数组中，配合[ForEach](../rendering-control/arkts-rendering-control-foreach.md)进行使用是一种简单且方便的方法。
 
 ```typescript
 @Entry
@@ -90,7 +90,7 @@ struct Index {
 
 页面内通过ForEach显示了20条信息，当点击某一条信息中age的Text组件时，可以通过日志发现其他的19条信息中age的Text组件也进行了刷新(这体现在日志上，所有的age的Text组件都打出了日志)，但实际上其他19条信息的age的数值并没有改变，也就是说其他19个Text组件并不需要刷新。
 
-这是因为当前状态管理的一个特性。假设存在一个被@State修饰的number类型的数组Num[]，其中有20个元素，值分别为0到19。这20个元素分别绑定了一个Text组件，当改变其中一个元素，例如第0号元素的值从0改成1，除了0号元素绑定的Text组件会刷新之外，其他的19个Text组件也会刷新，即使1到19号元素的值并没有改变。
+这是因为当前状态管理的一个特性。假设存在一个被[@State](./arkts-state.md)修饰的number类型的数组Num[]，其中有20个元素，值分别为0到19。这20个元素分别绑定了一个Text组件，当改变其中一个元素，例如第0号元素的值从0改成1，除了0号元素绑定的Text组件会刷新之外，其他的19个Text组件也会刷新，即使1到19号元素的值并没有改变。
 
 这个特性普遍的出现在简单类型数组的场景中，当数组中的元素够多时，会对UI的刷新性能有很大的负面影响。这种“不需要刷新的组件被刷新”的现象即是“冗余刷新”，当“冗余刷新”的节点过多时，UI的刷新效率会大幅度降低，因此需要减少“冗余刷新”，也就是做到**精准控制组件的更新范围**。
 
@@ -597,10 +597,10 @@ struct Page {
 修改后的代码将原来的大类中的十五个属性拆成了八个小类，并且在绑定的组件上也做了相应的适配。属性拆分遵循以下几点原则：
 
 - 只作用在同一个组件上的多个属性可以被拆分进同一个新类，即示例中的NeedRenderImage。适用于组件经常被不关联的属性改变而引起刷新的场景，这个时候就要考虑拆分属性，或者重新考虑ViewModel设计是否合理。
-- 经常被同时使用的属性可以被拆分进同一个新类，即示例中的NeedRenderScale、NeedRenderTranslate、NeedRenderPos、NeedRenderSize。适用于属性经常成对出现，或者被作用在同一个样式上的情况，例如.translate、.position、.scale等（这些样式通常会接收一个对象作为参数）。
-- 可能被用在多个组件上或相对较独立的属性应该被单独拆分进一个新类，即示例中的NeedRenderAlpha，NeedRenderBorderRadius、NeedRenderFontSize。适用于一个属性作用在多个组件上或者与其他属性没有联系的情况，例如.opacity、.borderRadius等（这些样式通常相对独立）。
+- 经常被同时使用的属性可以被拆分进同一个新类，即示例中的NeedRenderScale、NeedRenderTranslate、NeedRenderPos、NeedRenderSize。适用于属性经常成对出现，或者被作用在同一个样式上的情况，例如[.translate](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)、[.position](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[.scale](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)等（这些样式通常会接收一个对象作为参数）。
+- 可能被用在多个组件上或相对较独立的属性应该被单独拆分进一个新类，即示例中的NeedRenderAlpha，NeedRenderBorderRadius、NeedRenderFontSize。适用于一个属性作用在多个组件上或者与其他属性没有联系的情况，例如[.opacity](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity)、[.borderRadius](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)等（这些样式通常相对独立）。
 
-属性拆分的原理和属性合并类似，都是在嵌套场景下，状态管理无法观测二层以上的属性变化，所以不会因为二层的数据变化导致一层关联的其他属性被刷新，同时利用@Observed和@ObjectLink在父子节点间传递二层的对象，从而在子组件中正常的观测二层的数据变化，实现精准刷新。<!--Del-->关于属性拆分的详细内容，可以查看[精准控制组件的更新范围](../../performance/precisely-control-render-scope.md)。<!--DelEnd-->
+属性拆分的原理和属性合并类似，都是在嵌套场景下，状态管理无法观测二层以上的属性变化，所以不会因为二层的数据变化导致一层关联的其他属性被刷新，同时利用[@Observed](./arkts-observed-and-objectlink.md)和[@ObjectLink](./arkts-observed-and-objectlink.md)在父子节点间传递二层的对象，从而在子组件中正常的观测二层的数据变化，实现精准刷新。<!--Del-->关于属性拆分的详细内容，可以查看[精准控制组件的更新范围](../../performance/precisely-control-render-scope.md)。<!--DelEnd-->
 
 使用@Track装饰器则无需做属性拆分，也能达到同样控制组件更新范围的作用。
 
@@ -1224,7 +1224,7 @@ struct MyComponent {
 
 ![properly-use-state-management-to-develope-7](figures/properly-use-state-management-to-develope-7.gif)
 
-可以观察到在点击更改message之后，图片“闪烁”了一下，同时输出了组件的onAppear日志，这说明组件进行了重建。这是因为在更改message之后，导致LazyForEach中这一项的key值发生了变化，使得LazyForEach在reloadData的时候将这一项ListItem进行了重建。Text组件仅仅更改显示的内容却发生了重建，而不是更新。而尽管Image组件没有需要重新绘制的内容，但是因为触发LazyForEach的重建，会使得同样位于ListItem下的Image组件重新创建。
+可以观察到在点击更改message之后，图片“闪烁”了一下，同时输出了组件的[onAppear](../../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)日志，这说明组件进行了重建。这是因为在更改message之后，导致LazyForEach中这一项的key值发生了变化，使得LazyForEach在reloadData的时候将这一项[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)进行了重建。Text组件仅仅更改显示的内容却发生了重建，而不是更新。而尽管[Image组件](../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)没有需要重新绘制的内容，但是因为触发LazyForEach的重建，会使得同样位于ListItem下的Image组件重新创建。
 
 当前LazyForEach与状态变量都能触发UI的刷新，两者的性能开销是不一样的。使用LazyForEach刷新会对组件进行重建，如果包含了多个组件，则会产生比较大的性能开销。使用状态变量刷新会对组件进行刷新，具体到状态变量关联的组件上，相对于LazyForEach的重建来说，范围更小更精确。因此，推荐使用状态变量来触发LazyForEach中的组件刷新，这就需要使用自定义组件。
 

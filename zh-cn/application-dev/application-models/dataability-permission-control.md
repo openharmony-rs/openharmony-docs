@@ -4,7 +4,7 @@
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 DataAbility提供数据服务，并不是所有的Ability都有权限读写它，DataAbility有一套权限控制机制来保证数据安全。分为静态权限控制和动态权限控制两部分。

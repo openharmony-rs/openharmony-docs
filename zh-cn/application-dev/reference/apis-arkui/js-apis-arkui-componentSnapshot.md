@@ -565,70 +565,47 @@ getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
 ArkTS-Dyn示例：
 
 ```ts
-import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
-
-class MyNodeController extends NodeController {
-  public node: FrameNode | null = null;
-  public imageNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.node = new FrameNode(uiContext);
-    this.node.commonAttribute.width('100%').height('100%');
-
-    let image = typeNode.createNode(uiContext, 'Image');
-    image.initialize($r('app.media.startIcon')).width('100%').height('100%').autoResize(true);
-    this.imageNode = image;
-
-    this.node.appendChild(image);
-    return this.node;
-  }
-}
-
-const SNAPSHOT_NODE_WIDTH = 2000000;
-const SNAPSHOT_NODE_HEIGHT = 200;
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct SnapshotExample {
-  private myNodeController: MyNodeController = new MyNodeController();
+struct SnapshotColorModeExample {
   @State pixmap: image.PixelMap | undefined = undefined;
 
   build() {
     Column() {
-      Column() {
+      Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        NodeContainer(this.myNodeController).width(SNAPSHOT_NODE_WIDTH).height(SNAPSHOT_NODE_HEIGHT).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
 
-      Button("UniqueId get snapshot")
+      Button("click to generate UI snapshot")
         .onClick(() => {
-          try {
-            let componentSnapshot = this.getUIContext().getComponentSnapshot();
-            // 检查尺寸限制
-            let limitation = componentSnapshot.getSizeLimitation();
-            console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-            // 验证节点尺寸是否符合最大尺寸限制
-            if (limitation.maxWidth > SNAPSHOT_NODE_WIDTH && limitation.maxHeight > SNAPSHOT_NODE_HEIGHT) {
-              this.getUIContext()
-                .getComponentSnapshot()
-                .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
-                  { scale: 2, waitUntilRenderFinished: true })
-                .then((pixmap: image.PixelMap) => {
-                  this.pixmap = pixmap;
-                })
-                .catch((err: Error) => {
-                  console.error(`error: ${err}`);
-                })
-            } else {
-              console.info(`The screenshot size is too big, exceeding the GPU limitation`);
-            }
-          } catch (error) {
-            console.error(`UniqueId get snapshot Error: ${JSON.stringify(error)}`);
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`error: ${JSON.stringify(error)}`)
+                return;
+              }
+              this.pixmap = pixmap
+            })
           }
         }).margin(10)
     }
+    .width('100%')
+    .height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 }
@@ -637,22 +614,52 @@ struct SnapshotExample {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Button } from '@kit.ArkUI';
+import { Entry, Image, $r, Row, HorizontalAlign, Column, Component, Button, Color } from '@kit.ArkUI';
+import { BusinessError } from '@ohos.base';
+import { State } from '@ohos.arkui.stateManagement';
+import image from '@ohos.multimedia.image';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct Index {
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
   build() {
-    Column(undefined) {
-      Button("获取截图尺寸限制")
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
         .onClick(() => {
           let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
           let limitation = componentSnapshot.getSizeLimitation();
           console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-        })
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get('root', (error: BusinessError|null, pixmap: image.PixelMap|undefined) => {
+              if (pixmap) {
+                this.pixmap = pixmap
+              } else {
+                console.error('error: ' + JSON.stringify(error))
+                return;
+              }
+            })
+          }
+        }).margin(10)
     }
     .width('100%')
     .height('100%')
+    .alignItems(HorizontalAlign.Center)
   }
 }
 ```

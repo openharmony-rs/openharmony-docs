@@ -57,7 +57,7 @@ export class MyClassA { // 定义动态@Observed装饰的类并导出
 ```
 
 ### 在ArkTS-Sta中使用ArkTS-Dyn的@Observed装饰的类
-ArkTS-Dyn中@Observed装饰的数据被ArkTS-Sta的状态管理V1相关装饰器使用时支持整体监听和一层监听，状态管理V1相关装饰器包括@State，@Link，@PropRef，@Provide，@Consume，@LocalStorageLink，@StroageLink，@LocalStoragePropRef，@StoragePropRef，@ObjectLink。下面以@State装饰器为示例，展示在ArkTS-Sta中使用ArkTS-Dyn的@Observed装饰的类的用法。
+ArkTS-Dyn中@Observed装饰的数据被ArkTS-Sta的状态管理V1相关装饰器使用时支持整体监听和一层监听，状态管理V1相关装饰器包括[@State](../ui/state-management-static/arkts-static-state.md)，[@Link](../ui/state-management-static/arkts-static-link.md)，[@PropRef](../ui/state-management-static/arkts-static-propref.md)，[@Provide](../ui/state-management-static/arkts-static-provide-and-consume.md)，[@Consume](../ui/state-management-static/arkts-static-provide-and-consume.md)，[@LocalStorageLink](../ui/state-management-static/arkts-static-localstorage.md#localstoragelink)，[@StroageLink](../ui/state-management-static/arkts-static-appstorage.md#storagelink)，[@LocalStoragePropRef](../ui/state-management-static/arkts-static-localstorage.md#localstoragepropref)，[@StoragePropRef](../ui/state-management-static/arkts-static-appstorage.md#storagepropref)，[@ObjectLink](../ui/state-management-static/arkts-static-observed-and-objectlink.md)。下面以@State装饰器为示例，展示在ArkTS-Sta中使用ArkTS-Dyn的@Observed装饰的类的用法。
 - 在ArkTS-Dyn子模块`dynamic_module`的`Index.ets`文件中导出动态@Observed装饰的数据。
 
 ```TypeScript

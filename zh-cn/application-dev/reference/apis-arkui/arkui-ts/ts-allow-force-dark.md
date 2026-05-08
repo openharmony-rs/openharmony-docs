@@ -1,9 +1,9 @@
 # 禁用反色能力
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @demon_coffee-->
-<!--Tester: @demon_coffee-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 设置组件是否使用反色能力，反色能力是在深浅色切换时自动对颜色值进行反色或变换，开发者可以通过主动设置不启用反色算法，以保持在深浅色切换时的原有逻辑。
@@ -24,7 +24,7 @@ ArkTS-Sta: allowForceDark(value: boolean): this
 
 > **说明：**
 >
-> - 当组件主动设置不使用反色能力时，组件及其所有子组件均不使用反色能力，不受父组件或祖先组件主动设置使用反色能力的影响。
+> - 当组件主动设置不使用反色能力时，该组件及其所有子组件均不启用反色能力，不受父组件、祖先组件以及自身子组件的反色配置影响。
 >
 > - 该接口仅在开启了反色能力的情况下生效，开启反色能力可参考[利用反色能力快速适配深色模式](../../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。
 

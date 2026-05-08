@@ -89,6 +89,8 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
 用于点击手势获取点击位置坐标。
 
+### 属性
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -103,6 +105,30 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 | displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
 | globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+
+### getCurrentLocalPosition
+
+ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
+ 
+ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
+
+获取点击位置相对于当前组件实时位置的左上角坐标。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 获取点击位置相对于当前组件实时位置的左上角坐标。|
 
 ## 示例
 
@@ -182,4 +208,75 @@ struct TapGestureExample {
 ```
 ![TapGestureExample](figures/tapGestureExample.png)
 
+### 示例3（获取组件实时位置）
 
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .gesture(
+          TapGesture({ count: 1 })
+            .onAction((event: GestureEvent) => {
+              if (event) {
+                this.textOffsetY = -200;
+                setTimeout(() => {
+                  let localPos: Coordinate2D | undefined = event?.tapLocation?.getCurrentLocalPosition?.();
+                  this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x ?? 0}\n  y: ${localPos?.y ?? 0}`;
+                }, 2000);
+              }
+            })
+        )
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Button, State, Column, Component, Gesture, TapGesture, GestureEvent, Coordinate2D, TranslateOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY } as TranslateOptions)
+        .gesture(
+          TapGesture({ count: 1 })
+            .onAction((event: GestureEvent) => {
+              if (event) {
+                this.textOffsetY = -200;
+                setTimeout(() => {
+                  let localPos: Coordinate2D | undefined = event?.tapLocation?.getCurrentLocalPosition();
+                  this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x ?? 0}\n  y: ${localPos?.y ?? 0}`;
+                }, 2000);
+              }
+            })
+        )
+
+      Text(this.positionText)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![tap](figures/localPosition2.gif)

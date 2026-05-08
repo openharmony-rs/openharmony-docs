@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-从API version 22开始，支持在ArkTS-Dyn中获取ArkTS-Sta中的帧动画对象AnimateResult，能调用帧动画对象的控制接口，包括[play](../reference/apis-arkui/js-apis-animator.md#play)、[pause](../reference/apis-arkui/js-apis-animator.md#pause)、[finish](../reference/apis-arkui/js-apis-animator.md#finish)、[cancle](../reference/apis-arkui/js-apis-animator.md#cancel)。不建议对从ArkTS-Sta获取的AnimateResult对象调用[reset](../reference/apis-arkui/js-apis-animator.md#reset9)接口。在ArkTS-Sta互操作场景下，导出ArkTS-Sta的接口，在ArkTS-Dyn的页面中直接调用。
+从API version 22开始，支持在ArkTS-Dyn中通过[createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)获取ArkTS-Sta中的帧动画对象[AnimateResult](../reference/apis-arkui/js-apis-animator.md#animatorresult)，能调用帧动画对象的控制接口，包括[play](../reference/apis-arkui/js-apis-animator.md#play)、[pause](../reference/apis-arkui/js-apis-animator.md#pause)、[finish](../reference/apis-arkui/js-apis-animator.md#finish)、[cancle](../reference/apis-arkui/js-apis-animator.md#cancel)。不建议对从ArkTS-Sta获取的[AnimateResult](../reference/apis-arkui/js-apis-animator.md#animatorresult)对象调用[reset](../reference/apis-arkui/js-apis-animator.md#reset9)接口。在ArkTS-Sta互操作场景下，导出ArkTS-Sta的接口，在ArkTS-Dyn的页面中直接调用。
 
 完整示例结构如下所示。
 

@@ -273,6 +273,7 @@
 
 手动备份：通过调用[backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口实现数据库手动备份。示例如下：
 
+ArkTS-Dyn示例：
 <!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
@@ -284,8 +285,19 @@ import { UIContext } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 ```
 
+ArkTS-Sta示例：
+<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
+``` TypeScript
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+```
 
+ArkTS-Dyn示例：
 <!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
@@ -318,6 +330,44 @@ try {
   hilog.info(DOMAIN, 'BackupAndRestore', `Succeeded in backing up RdbStore.`);
 } catch (e) {
   const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+
+``` TypeScript
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
+let store: relationalStore.RdbStore | undefined = undefined;
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: 'RdbTest.db',
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (err) {
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code},message:${err.message}`);
+}
+
+if (!store) {
+  return;
+}
+
+try {
+  /**
+   * "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。
+   * 也可指定绝对路径："/data/storage/el2/database/Backup.db"，文件路径需要存在，不会自动创建目录。
+   */
+  await store.backup('Backup.db');
+  hilog.info(DOMAIN, 'BackupAndRestore', `Succeeded in backing up RdbStore.`);
+} catch (err) {
   hilog.error(DOMAIN, 'BackupAndRestore', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
@@ -369,6 +419,7 @@ export default class EntryAbility extends UIAbility {
 
 若数据库异常前未配置StoreConfig中的allowRebuild或allowRebuild配置为false，则需将其配置为true再次进行开库。具体示例如下：
 
+ArkTS-Dyn示例：
 <!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
@@ -390,6 +441,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
+try {
+  const STORE_CONFIG: relationalStore.StoreConfig = {
+    name: 'RdbTest.db',
+    securityLevel: relationalStore.SecurityLevel.S3,
+    allowRebuild: true
+  };
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (err) {
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+}
+```
 
 
 
@@ -407,7 +481,41 @@ try {
 
 1. 抛出数据库异常错误码。
 
+    ArkTS-Dyn示例：
     <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+    if (store != undefined) {
+      (store as relationalStore.RdbStore).query(predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES'])
+        .then((result: relationalStore.ResultSet) => {
+          let resultSet = result;
+          try {
+            /* ...
+               业务的增删改逻辑
+               ...
+             */
+            // 抛出异常
+            if (resultSet?.rowCount == -1) {
+              resultSet?.isColumnNull(0);
+            }
+            // todo resultSet.goToFirstRow()等其它接口也会抛异常
+            while (resultSet.goToNextRow()) {
+              hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(resultSet.getRow()));
+            }
+            resultSet.close();
+          } catch (err) {
+            if (err.code === 14800011) {
+              // 执行下文的步骤，即关闭结果集之后进行数据的恢复
+            }
+            hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
+          }
+        })
+    }
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -443,7 +551,25 @@ try {
 
 2. 关闭所有打开着的结果集。
 
+    ArkTS-Dyn示例：
     <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let resultSets: relationalStore.ResultSet[] = []
+    // 使用resultSet.close()方法关闭所有打开着的结果集
+    for (let resultSet of resultSets) {
+      try {
+        resultSet.close();
+      } catch (e) {
+        if (e.code !== 14800014) {
+          hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+        }
+      }
+    }
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let resultSets: relationalStore.ResultSet[] = []
@@ -464,6 +590,7 @@ try {
 
 3. 调用restore接口恢复数据。
 
+    ArkTS-Dyn示例：
     <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
@@ -499,6 +626,48 @@ try {
       hilog.info(DOMAIN, 'BackupAndRestore', 'Restore from backup success.');
     } catch (e) {
       const err = e as BusinessError;
+      hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+    }
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let store: relationalStore.RdbStore | undefined = undefined;
+    /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+    const context = uiContext.getHostContext();
+    if (context === undefined) {
+      return;
+    }
+    let STORE_CONFIG: relationalStore.StoreConfig = {
+      name: 'RdbTest.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      allowRebuild: true
+    }
+    try {
+      /**
+       * "Backup.db"为备份数据库文件名，默认在当前 store 所在路径下查找备份文件 Backup.db。
+       * 如在备份时指定了绝对路径："/data/storage/el2/database/Backup.db", 需要传入绝对路径。
+       */
+      let backupFilePath = context.databaseDir + '/rdb/Backup.db';
+      const backupExist: boolean = await fileIo.access(backupFilePath);
+      if (!backupExist) {
+        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup does not exist.');
+        // todo 开库建表
+        // todo 自行生成数据
+        return;
+      }
+    } catch (e) {
+      hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+    }
+    
+    try {
+      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+      // 调用restore接口恢复数据
+      await store.restore('Backup.db');
+      hilog.info(DOMAIN, 'BackupAndRestore', 'Restore from backup success.');
+    } catch (err) {
       hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
     }
     ```

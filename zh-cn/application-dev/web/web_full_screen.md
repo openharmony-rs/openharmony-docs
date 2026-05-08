@@ -19,6 +19,7 @@ Web组件可通过[onFullScreenEnter](../reference/apis-arkweb/arkts-basic-compo
 
 可见性[visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)是ArkUI提供的组件通用属性。开发者可通过设置组件属性visibility的不同值，控制组件的显隐状态。
 
+ArkTS-Dyn示例：
 <!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -63,3 +64,75 @@ struct ShortWebPage {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+'use static'
+
+import { $rawfile, State, Web, FullScreenEnterEvent, FullScreenExitHandler, Visibility, Text, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct ShortWebPage {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State marginTop: number = 100;
+  @State isVisible: boolean = true; // 自定义标志位isVisible，来控制是否需要显示组件
+  private handler: FullScreenExitHandler = new FullScreenExitHandler();
+
+  build() {
+    Column() {
+      Text('TextTextTextText')
+        .width('100%')
+        .height(this.marginTop)
+        .backgroundColor('#e1dede') // 当isVisible标志位为true的时候，组件状态为可见，否则组件状态为不可见，不参与布局、不进行占位
+        .visibility(this.isVisible ? Visibility.Visible :
+          Visibility.None)
+      Web({
+        src: $rawfile('FullScreen.html'), // 示例网址
+        controller: this.controller
+      })
+        .onFullScreenEnter((event: FullScreenEnterEvent): void => {
+          console.info('onFullScreenEnter...');
+          // 当全屏的时候，isVisible标志位为false，组件状态为不可见，不参与布局、不进行占位
+          this.isVisible = false;
+          this.handler = event.handler;
+        })
+        .onFullScreenExit((): void => {
+          console.info("onFullScreenExit...")
+          if (this.handler) {
+            this.handler.exitFullScreen();
+            // 当退出全屏的时候，isVisible标志位为true，组件状态为可见
+            this.isVisible = true;
+          }
+        })
+        .width('100%')
+        .height('100%')
+        .zIndex(10)
+        .zoomAccess(true)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+- 前端页面示例。
+
+  ```html
+  <!-- FullScreen.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="UTF-8">
+      <title>视频播放</title>
+  </head>
+  <body>
+      <video 
+          src="https://xxx.xxx/.mp4" 
+          controls 
+          autoplay 
+          style="width: 100%; max-width: 800px;"
+      ></video>
+  </body>
+  </html>
+  ```

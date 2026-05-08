@@ -25,7 +25,7 @@ import { Link } from '@kit.ArkUI';
 
 - 当装饰的数据类型为boolean、string、number时，可以同步观察到数值的变化，示例请参考[装饰简单类型变量](#装饰简单类型变量)。
 
-- 当装饰的数据类型为class或者Object时，对对象属性的观测需要借助\@Observed与\@Track实现，单独的\@Link无法再观测对象的属性变化，仅能观测对象整体的赋值。
+- 当装饰的数据类型为class或者Object时，对对象属性的观测需要借助[@Observed](./arkts-static-observed-and-objectlink.md)与[@Track](./arkts-static-track.md)实现，单独的\@Link无法再观测对象的属性变化，仅能观测对象整体的赋值。
 
 - 当装饰的对象是Array时，可以观察到数组添加、删除、更新数组单元的变化，示例请参考[装饰数组类型变量](#装饰数组类型变量)。
 

@@ -213,6 +213,10 @@ utd.json5文件需要在类型为entry的HAP中配置。
           return;
         }
         let typeObj1 = uniformTypeDescriptor.getTypeDescriptor(typeIds1[0]);
+        if (!typeObj1) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj1.typeId}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj1.belongingToTypes}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj1.description}`);
@@ -226,6 +230,10 @@ utd.json5文件需要在类型为entry的HAP中配置。
           return;
         }
         let typeObj2 = uniformTypeDescriptor.getTypeDescriptor(typeIds2[0]);
+        if (!typeObj2) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj2.typeId}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj2.belongingToTypes}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj2.description}`);
@@ -243,6 +251,10 @@ utd.json5文件需要在类型为entry的HAP中配置。
           let ret = typeObj1.belongsTo('general.audio');
           hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: + ${ret}`);
           let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
+          if (!mediaTypeObj) {
+            hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+            return;
+          }
           // 确认是否存在归属关系
           ret = mediaTypeObj.isHigherLevelType('general.audio');
           hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: + ${ret}`);
@@ -280,6 +292,10 @@ utd.json5文件需要在类型为entry的HAP中配置。
       for (let typeId of typeIds) {
         // 3.根据UTD数据类型查询对应的MIMEType列表。
         let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        if (!typeObj) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         let mimeTypes = typeObj.mimeTypes;
         hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${mimeTypes}`);
       }
@@ -315,6 +331,10 @@ utd.json5文件需要在类型为entry的HAP中配置。
       for (let typeId of typeIds) {
         // 3. 根据UTD数据类型查询对应的文件后缀列表
         let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        if (!typeObj) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         let filenameExtensions = typeObj.filenameExtensions;
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${filenameExtensions}`);
       }

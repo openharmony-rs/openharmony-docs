@@ -38,8 +38,8 @@ ArkTS-Sta: keyboardShortcut(value: string | FunctionKey | undefined, keys: Array
 
 | 参数名   | 类型                                  | 必填   | 说明                                     |
 | ----- | ------------------------------------- | ---- | ---------------------------------------- |
-| value |  ArkTS-Dyn: string \| [FunctionKey](ts-appendix-enums.md#functionkey10)<br/> ArkTS-Sta: string \| [FunctionKey](ts-appendix-enums.md#functionkey10) \| undefined | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10)。<br />空字符串意为取消快捷键绑定。<br/> |
-| keys  | ArkTS-Dyn: Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)><br/> ArkTS-Sta: Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> \| undefined | 是 | 热键组合。<br />仅当value为[FunctionKey](ts-appendix-enums.md#functionkey10)的情况下keys的值可以为空。<br/> |
+| value |  ArkTS-Dyn: string \| [FunctionKey](ts-appendix-enums.md#functionkey10)<br/> ArkTS-Sta: string \| [FunctionKey](ts-appendix-enums.md#functionkey10) \| undefined | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10)。<br/>空字符串意为取消快捷键绑定。<br/>传入undefined意为取消快捷键绑定。 |
+| keys  | ArkTS-Dyn: Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)><br/> ArkTS-Sta: Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> \| undefined | 是 | 热键组合。<br />仅当value为[FunctionKey](ts-appendix-enums.md#functionkey10)的情况下keys的值可以为空。<br/>传入undefined意为取消快捷键绑定。 |
 | action  | () => void    | 否    | 组合快捷键触发成功后的自定义事件回调。<br/>                               |
 
 **返回值：**

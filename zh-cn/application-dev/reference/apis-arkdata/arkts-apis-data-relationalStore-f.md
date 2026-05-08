@@ -87,7 +87,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.getRdbStore(context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
+relationalStore.getRdbStore(context, STORE_CONFIG, (err, rdbStore) => {
   if (err) {
     console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -114,7 +114,7 @@ class EntryAbility extends UIAbility {
       securityLevel: relationalStore.SecurityLevel.S3
     };
 
-    relationalStore.getRdbStore(this.context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
+    relationalStore.getRdbStore(this.context, STORE_CONFIG, (err, rdbStore) => {
       if (err) {
         console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -366,7 +366,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 
-relationalStore.deleteRdbStore(context, "RdbTest.db", (err: BusinessError) => {
+relationalStore.deleteRdbStore(context, "RdbTest.db", (err) => {
   if (err) {
     console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -386,7 +386,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err: BusinessError) => {
+    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err) => {
       if (err) {
         console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -615,7 +615,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.deleteRdbStore(context, STORE_CONFIG, (err: BusinessError) => {
+relationalStore.deleteRdbStore(context, STORE_CONFIG, (err) => {
   if (err) {
     console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -639,7 +639,7 @@ class EntryAbility extends UIAbility {
       name: "RdbTest.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
-    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err: BusinessError) => {
+    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err) => {
       if (err) {
         console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -772,7 +772,7 @@ import { relationalStore } from '@kit.ArkData';
 
 let store: relationalStore.RdbStore | undefined = undefined;
 export default class EntryAbility extends UIAbility {
-  async onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     let supported = relationalStore.isVectorSupported();
     if (supported) {
       // 支持向量数据库
@@ -784,10 +784,14 @@ export default class EntryAbility extends UIAbility {
       };
       try {
         const context = this.context.getApplicationContext().createAreaModeContext(contextConstant.AreaMode.EL3);
-        const rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-        console.info('Get RdbStore successfully.');
-        store = rdbStore;
-        // 成功获取到 rdbStore 后执行后续操作
+        relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+          store = rdbStore;
+          console.info('Get RdbStore successfully.');
+          // 成功获取到 rdbStore 后执行后续操作
+        }).catch((err: Error) => {
+          let businessError = err as BusinessError;
+          console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
+        });
       } catch (error) {
         const err = error as BusinessError;
         console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
@@ -897,10 +901,10 @@ const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
 ArkTS-Sta示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
-  name: "Logitech",
-  age: 18 as long,
-  sex: "man",
-  desc: "asserter"
+  'name': "Logitech",
+  'age': 18 as long,
+  'sex': "man",
+  'desc': "asserter"
 };
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
   "USER",
@@ -965,10 +969,10 @@ const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(
 ArkTS-Sta示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
-  name: "Logitech",
-  age: 18 as long,
-  sex: "man",
-  desc: "asserter"
+  'name': "Logitech",
+  'age': 18 as long,
+  'sex': "man",
+  'desc': "asserter"
 };
 const predicates = new relationalStore.RdbPredicates("users");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(

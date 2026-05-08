@@ -1,6 +1,6 @@
 # @ReusableV2：组件复用V2
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰\@ComponentV2装饰的自定义组件，达成组件复用的效果。开发指南参考：[\@ReusableV2装饰器：组件复用](../../../ui/state-management-static/arkts-static-new-reusableV2.md)。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./ts-custom-component-decorator-componentv2-static.md)装饰的自定义组件，达成组件复用的效果。开发指南参考：[\@ReusableV2装饰器：组件复用](../../../ui/state-management-static/arkts-static-new-reusableV2.md)。
 
 > **说明：**
 >

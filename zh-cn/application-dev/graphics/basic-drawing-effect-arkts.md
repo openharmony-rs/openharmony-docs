@@ -36,7 +36,6 @@
 1. 创建画刷Brush对象。
 
    <!-- @[arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
-   
    ``` TypeScript
    // 设置画刷
    const brush = new drawing.Brush();

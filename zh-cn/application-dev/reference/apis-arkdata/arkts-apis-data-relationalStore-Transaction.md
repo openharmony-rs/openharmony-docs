@@ -34,31 +34,29 @@ import { window } from '@kit.ArkUI';
 let store: relationalStore.RdbStore | undefined = undefined;
 
 export default class EntryAbility extends UIAbility {
-  async onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     const STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3
     };
 
-    try {
-      const rdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
+    relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
       store = rdbStore;
       console.info('Get RdbStore successfully.');
-    } catch (error) {
-      const err = error as BusinessError;
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-    }
-
-    if (store != undefined) {
-      await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT, ASSETDATA ASSET, ASSETSDATA ASSETS, FLOATARRAY floatvector(128))');
-      store.createTransaction().then(async (transaction: relationalStore.Transaction) => {
-        console.info(`createTransaction success`);
-        // 成功获取到事务对象后执行后续操作
-      }).catch((err: Error) => {
-        let businessError = err as BusinessError;
-        console.error(`createTransaction failed, code is ${businessError.code},message is ${businessError.message}`);
-      });
-    }
+      if (store != undefined) {
+        await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT, ASSETDATA ASSET, ASSETSDATA ASSETS, FLOATARRAY floatvector(128))');
+        store!.createTransaction().then(async (transaction: relationalStore.Transaction) => {
+          console.info(`createTransaction success`);
+          // 成功获取到事务对象后执行后续操作
+        }).catch((err: Error) => {
+          let businessError = err as BusinessError;
+          console.error(`createTransaction failed, code is ${businessError.code},message is ${businessError.message}`);
+        });
+      }
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
+    });
   }
 }
 ```
@@ -108,7 +106,7 @@ commit(): Promise&lt;void&gt;
 ```ts
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       await transaction.execute('CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, age INTEGER, salary REAL)');
       await transaction.commit();
@@ -163,7 +161,7 @@ rollback(): Promise&lt;void&gt;
 ```ts
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       await transaction.execute('DELETE FROM TEST WHERE age = ? OR age = ?', ['18', '20']);
       await transaction.commit();
@@ -244,7 +242,7 @@ const valueBucket1: relationalStore.ValuesBucket = {
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const rowId = await transaction.insert('EMPLOYEE', valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
       await transaction.commit();
@@ -272,7 +270,7 @@ const valueBucket1: relationalStore.ValuesBucket = {
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const rowId = await transaction.insert('EMPLOYEE', valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
       await transaction.commit();
@@ -356,7 +354,7 @@ const valueBucket2: relationalStore.ValuesBucket = {
 };
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let rowId: number = transaction.insertSync(
         'EMPLOYEE',
@@ -386,7 +384,7 @@ const valueBucket2: relationalStore.ValuesBucket = {
 };
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let rowId: long = transaction.insertSync(
         'EMPLOYEE',
@@ -485,7 +483,7 @@ const valueBucket5: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket3, valueBucket4, valueBucket5);
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const insertNum = await transaction.batchInsert('EMPLOYEE', valueBuckets);
       await transaction.commit();
@@ -526,7 +524,7 @@ const valueBucket5: relationalStore.ValuesBucket = {
 let valueBuckets = new Array<relationalStore.ValuesBucket>(valueBucket3, valueBucket4, valueBucket5);
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const insertNum = await transaction.batchInsert('EMPLOYEE', valueBuckets);
       await transaction.commit();
@@ -622,7 +620,7 @@ const valueBucket8: relationalStore.ValuesBucket = {
 let valueBuckets2 = new Array(valueBucket6, valueBucket7, valueBucket8);
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let insertNum: number = (transaction as relationalStore.Transaction).batchInsertSync('EMPLOYEE', valueBuckets2);
       await transaction.commit();
@@ -663,7 +661,7 @@ const valueBucket8: relationalStore.ValuesBucket = {
 let valueBuckets2 = new Array<relationalStore.ValuesBucket>(valueBucket6, valueBucket7, valueBucket8);
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let insertNum: long = (transaction as relationalStore.Transaction).batchInsertSync('EMPLOYEE', valueBuckets2);
       await transaction.commit();
@@ -768,7 +766,7 @@ let valueBuckets3 = new Array(valueBucket9, valueBucketA, valueBucketB);
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const insertNum = await transaction.batchInsertWithConflictResolution(
         'EMPLOYEE',
@@ -814,7 +812,7 @@ let valueBuckets3 = new Array<relationalStore.ValuesBucket>(valueBucket9, valueB
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const insertNum = await transaction.batchInsertWithConflictResolution(
         'EMPLOYEE',
@@ -922,7 +920,7 @@ const valueBucketE: relationalStore.ValuesBucket = {
 let valueBuckets4 = new Array(valueBucketC, valueBucketD, valueBucketE);
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const insertNum = transaction.batchInsertWithConflictResolutionSync(
         'EMPLOYEE',
@@ -967,7 +965,7 @@ const valueBucketE: relationalStore.ValuesBucket = {
 let valueBuckets4 = new Array<relationalStore.ValuesBucket>(valueBucketC, valueBucketD, valueBucketE);
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const insertNum = transaction.batchInsertWithConflictResolutionSync(
         'EMPLOYEE',
@@ -1255,7 +1253,7 @@ predicates.equalTo('NAME', 'Lisa');
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const rows = await transaction.update(valueBucketF, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
       await transaction.commit();
@@ -1285,7 +1283,7 @@ predicates.equalTo('NAME', 'Lisa');
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const rows = await transaction.update(valueBucketF, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
       await transaction.commit();
@@ -1367,7 +1365,7 @@ predicates1.equalTo('NAME', 'Lisa');
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let rows = transaction.updateSync(valueBucketG, predicates1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
       await transaction.commit();
@@ -1397,7 +1395,7 @@ predicates1.equalTo('NAME', 'Lisa');
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let rows = transaction.updateSync(valueBucketG, predicates1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
       await transaction.commit();
@@ -1672,7 +1670,7 @@ predicates2.equalTo('NAME', 'Lisa');
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const rows = await transaction.delete(predicates2);
       await transaction.commit();
@@ -1744,7 +1742,7 @@ let predicates3 = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates3.equalTo('NAME', 'Lisa');
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let rows = transaction.deleteSync(predicates3);
       await transaction.commit();
@@ -1994,7 +1992,7 @@ predicates4.equalTo('NAME', 'Rose');
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const resultSet = await transaction.query(predicates4, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -2072,7 +2070,7 @@ predicates5.equalTo('NAME', 'Rose');
 
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let resultSet = transaction!.querySync(predicates5, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -2147,7 +2145,7 @@ querySql(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 ```ts
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const resultSet = await transaction.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -2222,7 +2220,7 @@ querySqlSync(sql: string, args?: Array&lt;ValueType&gt;): ResultSet
 ```ts
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       let resultSet = transaction!.querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -2292,7 +2290,7 @@ async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
   predicates.equalTo("NAME", "Rose");
   if (store != undefined) {
     try {
-      const transaction = await store.createTransaction();
+      const transaction = await store!.createTransaction();
       let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = await transaction.queryWithoutRowCount(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
@@ -2367,7 +2365,7 @@ async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore)
   predicates.equalTo("NAME", "Rose");
   if (store != undefined) {
     try {
-      const transaction = await store.createTransaction();
+      const transaction = await store!.createTransaction();
       let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = transaction.queryWithoutRowCountSync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
@@ -2441,7 +2439,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) {
   if (store != undefined) {
     try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = await transaction.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
@@ -2515,7 +2513,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;): Lit
 async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbStore) {
   if (store != undefined) {
     try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = transaction.querySqlWithoutRowCountSync('select * from EMPLOYEE where name = ?', ["Rose"]);
@@ -2608,7 +2606,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 ```ts
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       // 删除表中所有数据
       const SQL_DELETE_TABLE = 'DELETE FROM EMPLOYEE';
@@ -2689,7 +2687,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 // 删除表中所有数据
 if (store != undefined) {
   try {
-    const transaction = await store.createTransaction();
+    const transaction = await store!.createTransaction();
     try {
       const SQL_DELETE_TABLE = 'DELETE FROM EMPLOYEE';
       let data = transaction.executeSync(SQL_DELETE_TABLE);

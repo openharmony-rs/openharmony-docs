@@ -16,7 +16,7 @@
 ## 需要权限
 若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-<!-- @[web_createpdf_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/module.json5) -->
+<!-- @[web_createpdf_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/module.json5) -->
 
 ``` JSON5
 "requestPermissions": [
@@ -29,9 +29,9 @@
 ## callback方式保存PDF
 通过callback方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
 
-<!-- @[web_createpdf_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets) -->
-
 ArkTS-Dyn示例：
+<!-- @[web_createpdf_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets) -->
+
 ``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -87,6 +87,8 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
+<!-- @[web_createpdf_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets) -->
+
 ``` TypeScript
 // xxx.ets
 'use static'
@@ -147,9 +149,9 @@ struct Index {
 ## Promise方式保存PDF
 通过Promise方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
 
-<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
-
 ArkTS-Dyn示例：
+<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
+
 ``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -204,6 +206,8 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
+<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
+
 ``` TypeScript
 // xxx.ets
 'use static'

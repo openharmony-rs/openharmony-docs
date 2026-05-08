@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ShareExtensionAbility继承自[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)，为开发者提供接入分享详情页能力。
 

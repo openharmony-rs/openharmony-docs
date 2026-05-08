@@ -60,7 +60,7 @@ foregroundEffect(options: ForegroundEffectOptions | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| options | [ForegroundEffectOptions](#foregroundeffectoptions12) \| undefined | 是   | 设置组件前景属性包括：模糊半径。 |
+| options | [ForegroundEffectOptions](#foregroundeffectoptions12) \| undefined | 是   | 设置组件前景属性包括：模糊半径。当options的值为undefined时，模糊不生效。 |
 
 **返回值：**
 

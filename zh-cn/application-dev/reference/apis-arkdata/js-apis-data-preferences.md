@@ -28,7 +28,7 @@ import { preferences } from '@kit.ArkData';
 
 ## 常量
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -48,7 +48,7 @@ getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Prefer
 
 获取Preferences实例，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -61,7 +61,7 @@ getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Prefer
 | 参数名   | 类型                                             | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | context  | Context            | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                                 |
-| name     | string                                           | 是   | Preferences实例的名称。                                      |
+| name     | string                                           | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | 是   | 回调函数。当获取Preferences实例成功，err为undefined，返回Preferences实例；否则err为错误对象。 |
 
 **错误码：**
@@ -124,7 +124,7 @@ getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 
 获取Preferences实例，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -137,7 +137,7 @@ getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **返回值：**
 
@@ -204,7 +204,7 @@ getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Pr
 
 获取Preferences实例，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -286,7 +286,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 获取Preferences实例，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -371,7 +371,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 获取Preferences实例，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -446,7 +446,7 @@ deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;voi
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -459,7 +459,7 @@ deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;voi
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
 | context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
-| name     | string                                | 是   | Preferences实例的名称。                              |
+| name     | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -523,7 +523,7 @@ deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -536,7 +536,7 @@ deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **返回值：**
 
@@ -603,7 +603,7 @@ deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -686,7 +686,7 @@ deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -773,7 +773,7 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -786,7 +786,7 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
 | context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
-| name     | string                                | 是   | Preferences实例的名称。                              |
+| name     | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -850,7 +850,7 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -863,7 +863,7 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **返回值：**
 
@@ -930,7 +930,7 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -943,7 +943,7 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **错误码：**
 
@@ -991,7 +991,7 @@ removePreferencesFromCache(context: Context, options: Options, callback: AsyncCa
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1073,7 +1073,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1158,7 +1158,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1215,7 +1215,7 @@ class EntryAbility extends UIAbility {
 ## StorageType<sup>18+</sup>
 Preferences的存储模式枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1240,7 +1240,7 @@ isStorageTypeSupported(type: StorageType): boolean
 
 判断当前平台是否支持传入的存储模式，此为同步接口。如果当前平台支持传入的存储模式时，该接口返回true；反之，返回false。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1288,9 +1288,9 @@ Preferences实例配置选项。
 
 | 名称        | 类型   | 只读 | 可选| 说明                                                         |
 | ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
-| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                   |
-| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
+| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                   |
+| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
 
 
 ## Preferences
@@ -1306,7 +1306,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback&lt;ValueType&gt;):
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1351,7 +1351,7 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1400,7 +1400,7 @@ getSync(key: string, defValue: ValueType): ValueType
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1442,7 +1442,7 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 获取缓存的Preferences实例中的所有键值数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1495,7 +1495,7 @@ getAll(): Promise&lt;Object&gt;
 
 获取缓存的Preferences实例中的所有键值数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1545,7 +1545,7 @@ getAllSync(): Object
 
 获取缓存的Preferences实例中的所有键值数据，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1595,7 +1595,7 @@ put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
   >
   > 当对应的键已经存在时，put()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1647,7 +1647,7 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
   >
   > 当对应的键已经存在时，put()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1703,7 +1703,7 @@ putSync(key: string, value: ValueType): void
   >
   > 当对应的键已经存在时，putSync()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1740,7 +1740,7 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 检查缓存的Preferences实例中是否包含指定Key的存储键值对，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1789,7 +1789,7 @@ has(key: string): Promise&lt;boolean&gt;
 
 检查缓存的Preferences实例中是否包含指定Key的存储键值对，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1842,7 +1842,7 @@ hasSync(key: string): boolean
 
 检查缓存的Preferences实例中是否包含指定Key的存储键值对，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1889,7 +1889,7 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1934,7 +1934,7 @@ delete(key: string): Promise&lt;void&gt;
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1983,7 +1983,7 @@ deleteSync(key: string): void
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2024,7 +2024,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
   >
   > 只在XML存储模式下使用，在GSKV存储模式下无需调用，因为当选择该模式时首选项对数据的操作会实时落盘。Preferences存储模式可见[存储模式说明](../../database/data-persistence-by-preferences.md#存储模式说明)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2073,7 +2073,7 @@ flush(): Promise&lt;void&gt;
   >
   > 只在XML存储模式下使用，在GSKV存储模式下无需调用，因为当选择该模式时首选项对数据的操作会实时落盘。Preferences存储模式可见[存储模式说明](../../database/data-persistence-by-preferences.md#存储模式说明)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2118,7 +2118,7 @@ flushSync(): void
   >
   > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2146,7 +2146,7 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2189,7 +2189,7 @@ clear(): Promise&lt;void&gt;
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2230,7 +2230,7 @@ clearSync(): void
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2256,7 +2256,7 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onChange](#onchange23)。
 
@@ -2366,7 +2366,7 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onMultiProcessChange](#onmultiprocesschange23)。
 
@@ -2478,7 +2478,7 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onDataChange](#ondatachange23)。
 
@@ -2592,7 +2592,7 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offChange](#offchange23)。
 
@@ -2694,7 +2694,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offMultiProcessChange](#offmultiprocesschange23)。
 
@@ -2796,7 +2796,7 @@ off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Recor
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offDataChange](#offdatachange23)。
 
@@ -2928,7 +2928,7 @@ ArkTS-Sta: type ValueType = long | double | string | boolean | Array\<long> | Ar
 
 表示支持的值类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 

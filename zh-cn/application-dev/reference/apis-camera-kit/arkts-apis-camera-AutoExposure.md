@@ -391,15 +391,11 @@ onExposureStateChange(callback: Callback\<ExposureState\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError, exposureState: camera.ExposureState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
+function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function registerPhotoOutputCaptureStart(captureSession: camera.captureSession): void {
+function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
   captureSession.onExposureStateChange(callback);
 }
 ```
@@ -429,19 +425,15 @@ offExposureStateChange(callback?: Callback\<ExposureState\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError, exposureState: camera.ExposureState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
+function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function unregisterPhotoOutputCaptureStart(captureSession: camera.captureSession): void {
+function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange(callback);
 }
 
-function unregisterPhotoOutputCaptureStartWithOutParam(captureSession: camera.captureSession): void {
+function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange();
 }
 ```

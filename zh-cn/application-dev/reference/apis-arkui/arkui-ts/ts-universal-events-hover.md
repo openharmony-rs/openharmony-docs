@@ -36,7 +36,7 @@ ArkTS-Sta: onHover(event: ((isHover: boolean, event: HoverEvent) => void) | unde
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event  | ArkTS-Dyn: (isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void<br/> ArkTS-Sta: ((isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void) \| undefined  | 是   | 鼠标的状态信息。<br />event表示设置阻塞事件冒泡属性，并获取鼠标或手写笔悬浮的位置坐标，从API version 11开始支持。<br />isHover表示鼠标或手写笔是否悬浮在组件上，进入时为true，&nbsp;离开时为false。 |
+| event  | ArkTS-Dyn: (isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void<br/> ArkTS-Sta: ((isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void) \| undefined  | 是   | 鼠标的状态信息。<br />event表示设置阻塞事件冒泡属性，并获取鼠标或手写笔悬浮的位置坐标，从API version 11开始支持。<br />isHover表示鼠标或手写笔是否悬浮在组件上，进入时为true，&nbsp;离开时为false。<br/>传入undefined时无效果。 |
 
 **返回值：**
 
@@ -64,7 +64,7 @@ ArkTS-Sta: onHoverMove(event: Callback&lt;HoverEvent&gt; | undefined): this
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | ArkTS-Dyn: Callback\<[HoverEvent](#hoverevent10对象说明)> <br/>ArkTS-Sta: Callback\<[HoverEvent](#hoverevent10对象说明)> \|&nbsp;undefined | 是   |设置阻塞事件冒泡属性，并获取手写笔悬浮的位置坐标。         |
+| event | ArkTS-Dyn: Callback\<[HoverEvent](#hoverevent10对象说明)> <br/>ArkTS-Sta: Callback\<[HoverEvent](#hoverevent10对象说明)> \|&nbsp;undefined | 是   |设置阻塞事件冒泡属性，并获取手写笔悬浮的位置坐标。<br/>传入undefined时无效果。         |
 
 **返回值：**
 

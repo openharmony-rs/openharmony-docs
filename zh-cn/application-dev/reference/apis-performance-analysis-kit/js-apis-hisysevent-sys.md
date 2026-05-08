@@ -11,6 +11,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 
@@ -26,6 +27,10 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | FAULT | 1 | 错误事件类型。 |
@@ -39,12 +44,16 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | domain | string | 否 | 否 | 事件领域。 |
 | name | string | 否 | 否 | 事件名称。 |
 | eventType | [EventType](#eventtype) | 否 | 否 | 事件类型。 |
-| params | object | 否 | 是 | 事件参数。 |
+| params | ArkTS-Dyn: object<br> ArkTS-Sta: Record<string, boolean \| int \| double \| string \| bigint \| boolean[] \| int[] \| double[] \| string[] \| bigint[]>| 否 | 是 | 事件参数。 |
 
 
 ## hiSysEvent.write
@@ -54,6 +63,10 @@ write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 系统事件打点方法，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用callback方式作为异步回调。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -80,6 +93,7 @@ write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -106,6 +120,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let customizedParams: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> = {
+    'PID': 487,
+    'UID': 103,
+    'PACKAGE_NAME': "com.ohos.hisysevent.test",
+    'PROCESS_NAME': "syseventservice",
+    'MSG': "no msg."
+  };
+  let eventInfo: hiSysEvent.SysEventInfo = {
+    domain: "RELIABILITY",
+    name: "STACK",
+    eventType: hiSysEvent.EventType.FAULT,
+    params: customizedParams
+  };
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
+    // do something here.
+  });
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+```
 
 ## hiSysEvent.write
 
@@ -114,6 +154,10 @@ write(info: SysEventInfo): Promise&lt;void&gt;
 系统事件打点方法，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用promise方式作为异步回调。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -145,6 +189,7 @@ write(info: SysEventInfo): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -177,11 +222,48 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let customizedParams: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> = {
+    'PID': 487,
+    'UID': 103,
+    'PACKAGE_NAME': "com.ohos.hisysevent.test",
+    'PROCESS_NAME': "syseventservice",
+    'MSG': "no msg."
+  };
+  let eventInfo: hiSysEvent.SysEventInfo = {
+    domain: "RELIABILITY",
+    name: "STACK",
+    eventType: hiSysEvent.EventType.FAULT,
+    params: customizedParams
+  };
+  hiSysEvent.write(eventInfo).then(
+    () => {
+      // do something here.
+    }
+  ).catch(
+    (err: BusinessError) => {
+      console.error(`error code: ${err.code}, error msg: ${err.message}`);
+    }
+  );
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+```
+
 ## RuleType
 
 匹配规则类型枚举。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -194,6 +276,10 @@ try {
 系统事件订阅规则对象接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -208,11 +294,15 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | rules | [WatchRule](#watchrule)[] | 否 | 否 | 订阅对象数组，每个订阅者对象包含多个订阅规则。 |
-| onEvent | function | 否 | 否 | 订阅事件的回调方法(info: [SysEventInfo](#syseventinfo)) => void。 |
-| onServiceDied | function | 否 | 否 | 系统事件服务关闭的回调方法() => void。 |
+| onEvent | (info: [SysEventInfo](#syseventinfo)) => void | 否 | 否 | 订阅事件的回调方法。 |
+| onServiceDied | () => void | 否 | 否 | 系统事件服务关闭的回调方法。 |
 
 ## hiSysEvent.addWatcher
 
@@ -223,6 +313,10 @@ addWatcher(watcher: Watcher): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -280,6 +374,10 @@ removeWatcher(watcher: Watcher): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明  |
@@ -334,11 +432,11 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| beginTime | number | 否 | 否 | 查询的系统事件起始时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。 |
-| endTime | number | 否 | 否 | 查询的系统事件结束时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。 |
-| maxEvents | number | 否 | 否 | 查询的系统事件最多条数。 |
-| fromSeq<sup>10+</sup> | number | 否 | 是 | 查询的系统事件起始序列号，默认值为-1。 |
-| toSeq<sup>10+</sup> | number | 否 | 是 | 查询的系统事件结束序列号，默认值为-1。 |
+| beginTime |  ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 查询的系统事件起始时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数）。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| endTime |  ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 查询的系统事件结束时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| maxEvents |  ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 查询的系统事件最多条数。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| fromSeq<sup>10+</sup> |  ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 查询的系统事件起始序列号，默认值为-1。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23 |
+| toSeq<sup>10+</sup> |  ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 查询的系统事件结束序列号，默认值为-1。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23 |
 
 ## QueryRule 
 
@@ -348,9 +446,9 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| domain | string | 否 | 否 | 查询包含的事件领域。 |
-| names | string[] | 否 | 否 | 查询所包含的多个事件名称，每个查询规则对象包含多个系统事件名称。 |
-| condition<sup>10+</sup> | string | 否 | 是 | 事件的额外参数条件，格式：{"version":"V1","condition":{"and":[{"param":"参数","op":"操作符","value":"比较值"}]}}。<br>参数：指定事件参数的键值。<br>操作符支持：=、!=、<、<=、>和>=。<br>支持在“and”数组中配置多个条件，查询结果取交集。 |
+| domain | string | 否 | 否 | 查询包含的事件领域。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| names | string[] | 否 | 否 | 查询所包含的多个事件名称，每个查询规则对象包含多个系统事件名称。 <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
+| condition<sup>10+</sup> | string | 否 | 是 | 事件的额外参数条件，格式：{"version":"V1","condition":{"and":[{"param":"参数","op":"操作符","value":"比较值"}]}}。<br>参数：指定事件参数的键值。<br>操作符支持：=、!=、<、<=、>和>=。<br>支持在“and”数组中配置多个条件，查询结果取交集。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23 |
 
 ## Querier
 
@@ -358,10 +456,14 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| onQuery | function | 否 | 否 | 返回查询到的系统事件的回调方法(infos: [SysEventInfo](#syseventinfo)[]) => void。 |
-| onComplete | function | 否 | 否 | 查询结果统计的回调方法(reason: number, total: number) => void。 |
+| onQuery | (infos: [SysEventInfo](#syseventinfo)[]) => void | 否 | 否 | 返回查询到的系统事件的回调方法。 |
+| onComplete | ArkTS-Dyn: (reason: number, total: number) => void<br> ArkTS-Sta: (reason: int, total: int) => void | 否 | 否 | 查询结果统计的回调方法。 |
 
 ## hiSysEvent.query
 
@@ -372,6 +474,10 @@ query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -397,6 +503,7 @@ query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -443,15 +550,68 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let customizedParams: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> = {
+    'PID': 487,
+    'UID': 103,
+    'PACKAGE_NAME': "com.ohos.hisysevent.test",
+    'PROCESS_NAME': "syseventservice",
+    'MSG': "no msg."
+  };
+  let eventInfo: hiSysEvent.SysEventInfo = {
+    domain: "RELIABILITY",
+    name: "STACK",
+    eventType: hiSysEvent.EventType.FAULT,
+    params: customizedParams
+  };
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
+    // do something here.
+  });
+
+  let queryArg: hiSysEvent.QueryArg = {
+    beginTime: -1,
+    endTime: -1,
+    maxEvents: 5,
+  };
+  let queryRules: hiSysEvent.QueryRule[] = [{
+    domain: "RELIABILITY",
+    names: ["STACK"],
+    condition: '{"version":"V1","condition":{"and":[{"param":"PID","op":"=","value":487},{"param":"PROCESS_NAME","op":"=","value":"syseventservice"}]}}'
+  } as hiSysEvent.QueryRule];
+  let querier: hiSysEvent.Querier = {
+    onQuery: (infos: hiSysEvent.SysEventInfo[]) => {
+      // do something here.
+    },
+    onComplete: (reason: int, total: int) => {
+      // do something here.
+    }
+  };
+  hiSysEvent.query(queryArg, queryRules, querier);
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+```
+
 ## hiSysEvent.exportSysEvents<sup>10+</sup>
 
-exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
+ArkTS-Dyn: exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
+
+ArkTS-Sta: exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): long
 
 批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -464,7 +624,7 @@ exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 接口调用时间戳。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 接口调用时间戳。 |
 
 **错误码：**
 
@@ -481,6 +641,7 @@ exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
@@ -533,15 +694,74 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let customizedParams: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> = {
+    'PID': 487,
+    'UID': 103,
+    'PACKAGE_NAME': "com.ohos.hisysevent.test",
+    'PROCESS_NAME': "syseventservice",
+    'MSG': "no msg."
+  };
+  let eventInfo: hiSysEvent.SysEventInfo = {
+    domain: "RELIABILITY",
+    name: "STACK",
+    eventType: hiSysEvent.EventType.FAULT,
+    params: customizedParams
+  };
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
+    // do something here.
+  });
+
+  let queryArg: hiSysEvent.QueryArg = {
+    beginTime: -1,
+    endTime: -1,
+    maxEvents: 1,
+  };
+  let queryRules: hiSysEvent.QueryRule[] = [{
+    domain: "RELIABILITY",
+    names: ["STACK"],
+  } as hiSysEvent.QueryRule];
+  let time = hiSysEvent.exportSysEvents(queryArg, queryRules);
+  console.info(`receive export task time is : ${time}`);
+
+  // 延迟读取本次导出的事件
+  setTimeout(() => {
+    let eventDir = '/data/storage/el2/base/cache/hiview/event';
+    let filenames = fileIo.listFileSync(eventDir);
+    for (let i = 0; i < filenames.length; i++) {
+      if (filenames[i].indexOf(time.toString()) != -1) {
+        let res = fileIo.readTextSync(eventDir + '/' + filenames[i]);
+        let events: string = JSON.parse('[' + res.slice(0, res.length - 1) + ']');
+        console.info("read file end, events is :" + JSON.stringify(events));
+      }
+    }
+  }, 10000);
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+```
+
 ## hiSysEvent.subscribe<sup>10+</sup>
 
-subscribe(rules: QueryRule[]): number
+ArkTS-Dyn: subscribe(rules: QueryRule[]): number
+
+ArkTS-Sta: subscribe(rules: QueryRule[]): long
 
 订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -553,7 +773,7 @@ subscribe(rules: QueryRule[]): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 接口调用时间戳。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 接口调用时间戳。 |
 
 **错误码：**
 
@@ -569,6 +789,7 @@ subscribe(rules: QueryRule[]): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
@@ -617,6 +838,55 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let rules: hiSysEvent.QueryRule[] = [{
+    domain: "RELIABILITY",
+    names: ["STACK"],
+  } as hiSysEvent.QueryRule,
+  {
+    domain: "BUNDLE_MANAGER",
+    names: ["BUNDLE_UNINSTALL"],
+  } as hiSysEvent.QueryRule];
+  hiSysEvent.subscribe(rules);
+
+  let customizedParams: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> = {
+    'PID': 487,
+    'UID': 103,
+    'PACKAGE_NAME': "com.ohos.hisysevent.test",
+    'PROCESS_NAME': "syseventservice",
+    'MSG': "no msg."
+  };
+  let eventInfo: hiSysEvent.SysEventInfo = {
+    domain: "RELIABILITY",
+    name: "STACK",
+    eventType: hiSysEvent.EventType.FAULT,
+    params: customizedParams
+  };
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
+    // do something here.
+  });
+
+  // 延迟读取订阅的事件
+  setTimeout(() => {
+    let eventDir = '/data/storage/el2/base/cache/hiview/event';
+    let filenames = fileIo.listFileSync(eventDir);
+    for (let i = 0; i < filenames.length; i++) {
+      let res = fileIo.readTextSync(eventDir + '/' + filenames[i]);
+      let events: string = JSON.parse('[' + res.slice(0, res.length - 1) + ']');
+      console.info("read file end, events is :" + JSON.stringify(events));
+    }
+  }, 10000);
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+```
+
 ## hiSysEvent.unsubscribe<sup>10+</sup>
 
 unsubscribe(): void
@@ -626,6 +896,10 @@ unsubscribe(): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 

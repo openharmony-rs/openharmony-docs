@@ -195,7 +195,7 @@ ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined | null)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                  |
 | ------ | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) <br/>ArkTS-Sta: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) \|&nbsp;undefined \|&nbsp;null | 是   | 投影样式。<br/>**说明：** <br/>设置为null或者undefined时，不开启投影。 |
+| value  | ArkTS-Dyn: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) <br/>ArkTS-Sta: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) \|&nbsp;undefined \|&nbsp;null | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。<br/>设置undefined时恢复默认投影样式。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -217,7 +217,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<DataPanelConfiguration> | 
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn:  [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> \|&nbsp;undefined | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn:  [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> \|&nbsp;undefined | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示为默认内容。 |
 
 
 ## DataPanelShadowOptions<sup>10+</sup>对象说明
@@ -278,7 +278,7 @@ constructor(colorStops: ColorStop[])
 
 ## DataPanelConfiguration<sup>12+</sup>对象说明
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

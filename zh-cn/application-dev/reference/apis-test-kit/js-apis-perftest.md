@@ -27,7 +27,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 框架支持采集的性能指标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.PerfTest
 
@@ -74,7 +74,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 性能测试执行策略。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.PerfTest
 
@@ -100,7 +100,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 性能指标对应测量结果数据。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.PerfTest
 
@@ -127,7 +127,7 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 静态方法，构造一个PerfTest对象，并返回该对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.PerfTest
 
@@ -193,7 +193,7 @@ run(): Promise\<void>
 
 运行性能测试，迭代执行测试代码段并采集性能数据，使用Promise回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.PerfTest
 
@@ -247,7 +247,7 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 获取指定性能指标的测量数据。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.PerfTest
 
@@ -308,7 +308,7 @@ destroy(): void
 
 销毁PerfTest对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.PerfTest
 

@@ -5317,7 +5317,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env,const uint8_t *wa
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmBytecode 参数为空，或传入的数据长度参数无效。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmBytecode 参数为空，或传入的数据长度参数无效。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
 
 ### OH_JSVM_CompileWasmFunction()
 
@@ -5345,7 +5345,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env,JSVM_Value wasm
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmModule 参数为空，或 wasmModule 不是一个真正的 WebAssembly 模块。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示函数索引越界，或编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmModule 参数为空，或 wasmModule 不是一个真正的 WebAssembly 模块。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示函数索引越界，或编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
 
 ### OH_JSVM_IsWasmModuleObject()
 
@@ -5400,7 +5400,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env,JSVM_Value wasmModu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示缓存生成失败。<br>         [JSVM_JIT_MODE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示当前环境没有 JIT 权限支持。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示缓存生成失败。 |
 
 ### OH_JSVM_ReleaseCache()
 

@@ -10,6 +10,8 @@ NodeController用于实现自定义节点的创建、显示、更新等操作的
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - NodeController对象不支持使用JSON序列化。
@@ -44,6 +46,10 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
@@ -58,7 +64,9 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 
 ### aboutToAppear
 
-aboutToAppear?(): void
+ArkTs-Dyn: aboutToAppear?(): void
+
+ArkTs-Sta: aboutToAppear(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载显示后触发此回调。
 
@@ -70,9 +78,15 @@ aboutToAppear?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ### aboutToDisappear
 
-aboutToDisappear?(): void
+ArkTs-Dyn: aboutToDisappear?(): void
+
+ArkTs-Sta: aboutToDisappear(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)销毁时触发此回调。
 
@@ -84,9 +98,15 @@ aboutToDisappear?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ### onAttach<sup>18+</sup>
 
-onAttach?(): void
+ArkTs-Dyn: onAttach?(): void
+
+ArkTs-Sta: onAttach(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载至主节点树时触发此回调。
 
@@ -98,9 +118,15 @@ onAttach?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 ### onDetach<sup>18+</sup>
 
-onDetach?(): void
+ArkTs-Dyn: onDetach?(): void
+
+ArkTs-Sta: onDetach(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)从主节点树卸载时触发此回调。
 
@@ -112,9 +138,15 @@ onDetach?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 ### onWillBind<sup>18+</sup>
 
-onWillBind?(containerId: number): void
+ArkTS-Dyn: onWillBind?(containerId: number): void
+
+ArkTS-Sta: onWillBind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定前触发此回调。
 
@@ -122,15 +154,21 @@ onWillBind?(containerId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定。|
 
 ### onWillUnbind<sup>18+</sup>
 
-onWillUnbind?(containerId: number): void
+ArkTS-Dyn: onWillUnbind?(containerId: number): void
+
+ArkTS-Sta: onWillUnbind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑前触发此回调。
 
@@ -138,15 +176,21 @@ onWillUnbind?(containerId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑。|
 
 ### onBind<sup>18+</sup>
 
-onBind?(containerId: number): void
+ArkTS-Dyn: onBind?(containerId: number): void
+
+ArkTS-Sta: onBind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定后触发此回调。
 
@@ -154,21 +198,31 @@ onBind?(containerId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定完成。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定完成。|
 
 ### onUnbind<sup>18+</sup>
 
-onUnbind?(containerId: number): void
+ArkTS-Dyn: onUnbind?(containerId: number): void
+
+ArkTS-Sta: onUnbind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑后触发此回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -178,13 +232,19 @@ onUnbind?(containerId: number): void
 
 ### aboutToResize
 
-aboutToResize?(size: Size): void
+ArkTs-Dyn: aboutToResize?(size: Size): void
+
+ArkTs-Sta: aboutToResize(size: Size): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)布局的时候触发此回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -194,13 +254,19 @@ aboutToResize?(size: Size): void
 
 ### onTouchEvent
 
-onTouchEvent?(event: TouchEvent): void
+ArkTs-Dyn: onTouchEvent?(event: TouchEvent): void
+
+ArkTs-Sta: onTouchEvent(event: TouchEvent): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)收到Touch事件时触发此回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -217,6 +283,10 @@ rebuild(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 > **说明：**
 > 由于rebuild方法为应用主动调用的方法，且该操作与UI相关。需要开发者自行保证调用该接口时UI上下文有效，即与绑定的NodeContainer保持UI上下文一致。

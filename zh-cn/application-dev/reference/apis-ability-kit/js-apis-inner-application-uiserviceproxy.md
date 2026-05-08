@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIServiceProxy提供代理能力，可以从UIServiceExtension客户端发送数据到服务端。
 

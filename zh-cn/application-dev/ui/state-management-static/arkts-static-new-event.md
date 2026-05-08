@@ -68,6 +68,7 @@ struct Index {
       Child({
         title: this.title,
         fontColor: this.fontColor,
+        // Child修改父组件变量，更新父组件传给子组件Child的title和fontColor
         changeFactory: (type: number) => {
           if (type == 1) {
             this.title = 'Title One';
@@ -122,6 +123,7 @@ struct Child {
       Text(`Child index: ${this.index}`)
         .onClick((e: ClickEvent) => {
           this.changeIndex(20);
+          // 从父组件将变化同步回子组件的不是立刻生效
           console.info(`after changeIndex ${this.index}`);
         })
     }
@@ -138,6 +140,7 @@ struct Index {
         index: this.index,
         changeIndex: (val: number) => {
           this.index = val;
+          // 使用changeIndex修改父组件的值立刻生效，index的值已经修改
           console.info(`in changeIndex ${this.index}`);
         }
       })

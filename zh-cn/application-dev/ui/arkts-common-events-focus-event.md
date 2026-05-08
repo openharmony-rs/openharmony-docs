@@ -14,7 +14,7 @@
 
 - 焦点：指向当前应用界面上唯一的一个可交互元素，当用户使用键盘、电视遥控器、车机摇杆/旋钮等非指向性输入设备与应用程序进行间接交互时，基于焦点的导航和交互是重要的输入手段。
 - 焦点链：在应用的组件树形结构中，当一个组件获得焦点时，从根节点到该组件节点的整条路径上的所有节点都会处于焦点状态，形成一条连续的焦点链。
-- 走焦：指焦点在应用内的组件之间转移的行为。这一过程对用户是透明的，但开发者可以通过监听onFocus（焦点获取）和onBlur（焦点失去）事件来捕捉这些变化。关于走焦的具体方式和规则，详见[走焦规范](#走焦规范)。
+- 走焦：指焦点在应用内的组件之间转移的行为。这一过程对用户是透明的，但开发者可以通过监听[onFocus](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)（焦点获取）和[onBlur](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)（焦点失去）事件来捕捉这些变化。关于走焦的具体方式和规则，详见[走焦规范](#走焦规范)。
 
 
 **焦点激活态**
@@ -79,7 +79,7 @@ export struct FocusActiveExample {
 
 **层级页面**
 
-层级页面是焦点框架中特定容器组件的统称，涵盖Page、Dialog、SheetPage、ModalPage、Menu、Popup、NavBar、NavDestination等。这些组件通常具有以下关键特性：
+层级页面是焦点框架中特定容器组件的统称，涵盖Page、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[SheetPage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[ModalPage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
 
 - 视觉层级独立性：从视觉呈现上看，这些组件独立于其他页面内容，并通常位于其上方，形成视觉上的层级差异。
 - 焦点跟随：此类组件在首次创建并展示之后，会立即将应用内焦点抢占。
@@ -89,7 +89,7 @@ export struct FocusActiveExample {
 
 > **说明：**
 >
-> Popup组件在focusable属性（组件属性，非通用属性）为false的时候，不会有第2条特性。
+> [Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)组件在focusable属性（组件属性，非通用属性）为false的时候，不会有第2条特性。
 >
 > NavBar、NavDestination没有第3条特性，对于它们的走焦范围，是与它们的首个父层级页面相同的。
 
@@ -97,7 +97,7 @@ export struct FocusActiveExample {
 
 根容器是[层级页面](#基础概念)内的概念，当某个[层级页面](#基础概念)首次创建并展示时，根据[层级页面](#基础概念)的特性，焦点会立即被该[层级页面](#基础概念)抢占。此时，该[层级页面](#基础概念)所在焦点链的末端节点将成为默认焦点，而这个默认焦点通常位于该[层级页面](#基础概念)的根容器上。
 
-在缺省状态下，[层级页面](#基础概念)的默认焦点位于其根容器上，但开发者可以通过defaultFocus属性来自定义这一行为。
+在缺省状态下，[层级页面](#基础概念)的默认焦点位于其根容器上，但开发者可以通过[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)属性来自定义这一行为。
 
 当焦点位于根容器时，首次按下Tab键不仅会使焦点进入激活状态，还会根据[焦点传递规则](#焦点传递规则)进行传递。
 
@@ -190,7 +190,7 @@ export struct FocusTransferExample {
 **主动走焦**
 
 
-指开发者/用户主观行为导致的焦点移动，包括：使用外接键盘的按键走焦（Tab键/Shift+Tab键/方向键）、使用requestFocus申请焦点、clearFocus清除焦点、focusOnTouch点击申请焦点等接口导致的焦点转移。
+指开发者/用户主观行为导致的焦点移动，包括：使用外接键盘的按键走焦（Tab键/Shift+Tab键/方向键）、使用[requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12)申请焦点、[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)清除焦点、[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)点击申请焦点等接口导致的焦点转移。
 
 
 - 按键走焦
@@ -230,7 +230,7 @@ export struct FocusTransferExample {
 目前会被动走焦的机制有：
 
 - 组件删除：当处于焦点状态的组件被删除时，焦点框架首先尝试将焦点转移到相邻的兄弟组件上，遵循先向后再向前的顺序。若所有兄弟组件均不可获焦，则焦点将释放，并通知其父组件进行焦点处理。
-- 属性变更：若将处于焦点状态的组件的focusable或enabled属性设置为false，或者将visibility属性设置为不可见，系统将自动转移焦点至其他可获焦组件，转移方式与1中相同。
+- 属性变更：若将处于焦点状态的组件的[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)或[enabled](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)属性设置为false，或者将[visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)属性设置为不可见，系统将自动转移焦点至其他可获焦组件，转移方式与1中相同。
 - [层级页面](#基础概念)切换：当发生[层级页面](#基础概念)切换时，如从一个[层级页面](#基础概念)跳转到另一个[层级页面](#基础概念)，当前[层级页面](#基础概念)的焦点将自动释放，新[层级页面](#基础概念)可能会根据预设逻辑自动获得焦点。
 - Web组件初始化：对于Web组件，当其被创建时，若其设计需要立即获得焦点（如某些弹出框或输入框），则可能触发焦点转移至该Web组件，其行为属于组件自身的行为逻辑，不属于焦点框架的规格范围。
 
@@ -243,7 +243,7 @@ export struct FocusTransferExample {
 **线性走焦算法**
 
 
-线性走焦算法是默认的走焦策略，它基于容器中子节点在节点树中的挂载顺序进行走焦，常用于单方向布局的容器，如Row、Column和Flex容器。运行规则如下：
+线性走焦算法是默认的走焦策略，它基于容器中子节点在节点树中的挂载顺序进行走焦，常用于单方向布局的容器，如[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)和[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)容器。运行规则如下：
 
 
 - 顺序依赖：走焦顺序完全基于子节点在节点树中的挂载顺序，与它们在界面上的实际布局位置无关。
@@ -563,9 +563,9 @@ focusable(value: boolean)
 
 按照组件的获焦能力可大致分为三类：
 
-- 默认可获焦的组件，通常是有交互行为的组件，例如Button、Checkbox、TextInput组件，此类组件无需设置任何属性，默认即可获焦。
+- 默认可获焦的组件，通常是有交互行为的组件，例如[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)、[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件，此类组件无需设置任何属性，默认即可获焦。
 
-- 有获焦能力，但默认不可获焦的组件，典型的是Text、Image组件，此类组件缺省情况下无法获焦，若需要使其获焦，可使用通用属性focusable(true)使能。对于没有配置focusable属性，有获焦能力但默认不可获焦的组件，例如没有可获焦子组件的容器组件，为其配置onClick或是单指单击的Tap手势，该组件会隐式地成为可获焦组件。如果其focusable属性被设置为false，即使配置了上述事件，该组件依然不可获焦。
+- 有获焦能力，但默认不可获焦的组件，典型的是[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件，此类组件缺省情况下无法获焦，若需要使其获焦，可使用通用属性focusable(true)使能。对于没有配置focusable属性，有获焦能力但默认不可获焦的组件，例如没有可获焦子组件的容器组件，为其配置[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)或是单指单击的[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)手势，该组件会隐式地成为可获焦组件。如果其focusable属性被设置为false，即使配置了上述事件，该组件依然不可获焦。
 
 - 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如[Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)、[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)、[Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)组件，此类组件即使使用focusable属性也无法使其可获焦。
 
@@ -938,9 +938,9 @@ export struct FocusScopePriorityPrevious {
 
 **整体获焦与非整体获焦**
 
-- 整体获焦是[层级页面](#基础概念)/容器自身作为焦点链的叶节点获焦，获焦后再把焦点链叶节点转移到子孙组件。例如，[层级页面](#基础概念)切换、Navigation组件中的路由切换、焦点组走焦、容器组件主动调用requestFocusById等。
+- 整体获焦是[层级页面](#基础概念)/容器自身作为焦点链的叶节点获焦，获焦后再把焦点链叶节点转移到子孙组件。例如，[层级页面](#基础概念)切换、[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)组件中的路由切换、焦点组走焦、容器组件主动调用[requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12)等。
 
-- 非整体获焦是某个组件作为焦点链叶节点获焦，导致其祖先节点跟着获焦。例如TextInput组件主动获取焦点、Tab键在非焦点组场景下走焦等。
+- 非整体获焦是某个组件作为焦点链叶节点获焦，导致其祖先节点跟着获焦。例如[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件主动获取焦点、Tab键在非焦点组场景下走焦等。
 
 **整体获焦的焦点链形成**
 
@@ -1527,17 +1527,17 @@ export struct FocusScopeIdExample {
 
 ## 焦点与按键事件
 
-当组件获焦且存在点击事件（`onClick`）或单指单击事件（`TapGesture`）时，回车和空格会触发对应的事件回调。
+当组件获焦且存在点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）或单指单击事件（[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)）时，回车和空格会触发对应的事件回调。
 
 > **说明：**
 >
-> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
+> - 点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）或单指单击事件（[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
 >
-> - 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
+> - 按键事件（[onKeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)）默认冒泡传递，即同时会触发父组件的按键事件回调。
 >
-> - 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
+> - 组件同时存在点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）和按键事件（[onKeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)），在回车、空格触发时，两者都会响应。
 >
-> - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（`onClick`）。
+> - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）。
 
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
    

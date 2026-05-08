@@ -2,10 +2,10 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @huipeizi-->
+<!--Owner: @HelloCrease-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本章节介绍拉起系统应用的方式，以及支持跳转系统应用的能力清单。
 
@@ -46,7 +46,7 @@
     - 拉起日历权限设置弹窗
  
 
-- **通知管理：** 当应用通过[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)接口拉起通知授权弹框时，如果用户拒绝授权，将无法使用该接口再次拉起弹框，需要调用[openNotificationSettings()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettings13)接口，支持拉起通知管理弹窗。
+- **通知管理：** 当应用通过[requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)接口拉起通知授权弹框时，如果用户拒绝授权，将无法使用该接口再次拉起弹框，需要调用[openNotificationSettingsWithResult()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult)接口，支持拉起通知管理弹窗。
 - **网络管理：** 当应用需要通过WLAN连接网络时，可以通过[openNetworkManagerSettings()](../reference/apis-basic-services-kit/js-apis-settings.md#settingsopennetworkmanagersettings18)接口拉起WLAN设置弹窗。
 
 

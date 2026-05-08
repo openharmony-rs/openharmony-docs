@@ -1,8 +1,8 @@
 # @ohos.notificationManager (NotificationManager模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -6642,6 +6642,80 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
   console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
 }).catch((err: BusinessError):void => {
   console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
+```
+
+## notificationManager.snoozeNotification
+
+ArkTS-Dyn: snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
+
+ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\>
+
+通知稍后提醒。此接口允许设置通知在指定时间间隔后再次发出提醒。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| hashCode   | string | 是  | 需要设置稍后提醒通知的唯一标识。 |
+| delayTime   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 稍后提醒的时间间隔，单位：秒。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600007 | The notification does not exist. |
+| 1600028 | This notification is not supported. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 此处应改为开发者需要设定稍后提醒通知的唯一标识
+let hashCode: string = "hashCode";
+let delayTime: number = 60;
+notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
+  console.info("snoozeNotification success.")
+}).catch((err: BusinessError):void => {
+  console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+ArkTS-Sta示例：
+```ts
+// 此处应改为开发者需要设定稍后提醒通知的唯一标识
+let hashCode: string = "hashCode";
+let delayTime: number = 60;
+notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
+  console.info("snoozeNotification success.")
+}).catch((err: Error):void => {
+  console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 

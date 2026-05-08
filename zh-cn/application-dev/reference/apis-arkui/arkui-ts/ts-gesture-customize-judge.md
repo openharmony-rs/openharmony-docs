@@ -23,6 +23,10 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 
 为组件绑定自定义手势判定回调。当手势即将成功时，触发用户定义的回调获取结果。
 
+>  **说明：**
+>
+>  在Text组件中使用该接口时，不支持对点击事件进行自定义手势判定。 
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

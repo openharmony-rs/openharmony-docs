@@ -5,7 +5,7 @@
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIAbilityContext是需要保存状态的[UIAbility](js-apis-app-ability-uiAbility.md)所对应的context，继承自[Context](js-apis-inner-application-context.md)，提供UIAbility的相关配置信息以及操作UIAbility和ServiceExtensionAbility的方法，如启动UIAbility，停止当前UIAbilityContext所属的UIAbility，启动、停止、连接、断开连接ServiceExtensionAbility等。
 
@@ -2265,6 +2265,139 @@ export default class EntryAbility extends UIAbility {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
       console.error(`requestModalUIExtension failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### requestModalUIExtensionWithAccount
+
+ArkTS-Dyn: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise\<void>
+
+ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<void>
+
+请求为指定用户在指定前台应用上拉起对应类型的UIExtensionAbility。前台应用通过want.parameters中的bundleName指定，若未指定前台应用、bundleName指定的应用未在前台或指定的前台应用的bundleName不正确，则在系统界面上直接拉起UIExtensionAbility。拉起的UIExtensionAbility由want中的bundleName、abilityName和moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置其类型。此操作仅支持在主线程调用，并以Promise形式提供异步回调。
+
+在前台应用拉起UIExtensionAbility之前，必须确保该应用已完成页面初始化，否则将导致拉起失败、并出现"uiContent is nullptr"的报错信息。应用可通过监听页面加载状态判断拉起UIExtensionAbility的时机，页面初始化成功后会出现关键日志信息"UIContentImpl: focus again"。
+
+**系统接口**：此接口为系统接口。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| accountId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23)接口获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground.|
+
+ArkTS-Dyn示例：
+
+```ts
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'com.example.myapplication.UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    // 账号ID说明：
+    // 1. 示例固定值 100
+    // 2. 可通过系统账号管理接口getForegroundOsAccountLocalId(displayId: number) 获取指定逻辑屏上运行的前台系统账号ID
+    let accountId = 100;
+
+    try {
+      this.context.requestModalUIExtensionWithAccount(want, accountId)
+        .then(() => {
+          // 执行正常业务
+          console.info('requestModalUIExtensionWithAccount succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtensionWithAccount failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { common, Want, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base'
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'com.example.myapplication.UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    // 账号ID说明：
+    // 1. 示例固定值 100
+    // 2. 可通过系统账号管理接口getForegroundOsAccountLocalId(displayId: number) 获取指定逻辑屏上运行的前台系统账号ID
+    let accountId = 100;
+
+    try {
+      this.context.requestModalUIExtensionWithAccount(want, accountId)
+        .then(() => {
+          // 执行正常业务
+          console.info('requestModalUIExtensionWithAccount succeed');
+        })
+        .catch((err: BusinessError<void>): void => {
+          // 处理业务逻辑错误
+          console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtensionWithAccount failed, code is ${code}, message is ${message}`);
     }
   }
 }

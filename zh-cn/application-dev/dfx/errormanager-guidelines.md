@@ -15,7 +15,7 @@
 
 > **说明：**
 >
-> 如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
+> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
 
 ## 接口说明
 

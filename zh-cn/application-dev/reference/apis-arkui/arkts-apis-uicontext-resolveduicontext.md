@@ -21,6 +21,10 @@ ResolvedUIContext实例对象。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
 | strategy      | [ResolveStrategy](./arkts-apis-uicontext-e.md#resolvestrategy22) | 否   | 否   | [UIContext](arkts-apis-uicontext-uicontext.md)的解析策略。             |

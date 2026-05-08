@@ -40,12 +40,14 @@ httpRequest.on('headersReceive', (header: Object) => {
   console.info('header: ' + JSON.stringify(header));
 });
 
-httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定。
+httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。
   "EXAMPLE_URL",
   {
     method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET。
-    // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
-    extraData: 'data to send',
+    // 推荐使用body字段传递请求体内容，具体格式与服务端协商确定。
+    body: 'data to send', // 自API 26开始支持。
+    // 推荐使用queryParams字段传递URL参数。可传string或对象。
+    queryParams: { scene: 'demo', tag: ['a', 'b'] }, // 自API 26开始支持。
     expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
     usingCache: true, // 可选，默认为true。
     priority: 1, // 可选，默认为1。
@@ -160,7 +162,7 @@ createHttp(): HttpRequest
 
 | 类型        | 说明                                                         |
 | :---------- | :----------------------------------------------------------- |
-| HttpRequest | 返回一个HttpRequest对象，里面包括request、requestInStream、requestSync、destroy、on和off方法。 |
+| HttpRequest | 返回一个HttpRequest对象，里面包括request、requestInStream、requestSync、enableAutoCookie、destroy、on和off方法。 |
 
 **示例：**
 
@@ -343,8 +345,10 @@ class Header {
 let httpRequest = http.createHttp();
 let options: http.HttpRequestOptions = {
     method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET。
-    // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
-    extraData: 'data to send',
+    // 推荐使用body字段传递请求体内容，具体格式与服务端协商确定。
+    body: 'data to send', // 自API 26开始支持。
+    // 推荐使用queryParams字段传递URL参数。可传string或对象。
+    queryParams: { scene: 'request-demo', page: 1 }, // 自API 26开始支持。
     expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
     usingCache: true, // 可选，默认为true。
     priority: 1, // 可选，默认为1。
@@ -648,7 +652,7 @@ let httpRequest = http.createHttp();
 let options: http.HttpRequestOptions = {
     method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET。
     // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
-    extraData: 'data to send',
+    extraData: 'data to send', // 自API version 26开始，推荐使用body字段传递请求体内容，具体格式与服务端协商确定。
     expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
     usingCache: true, // 可选，默认为true。
     priority: 1, // 可选，默认为1。
@@ -878,6 +882,58 @@ try {
   console.error('error:' + JSON.stringify(err));
 }
 httpRequest.destroy();
+```
+
+### enableAutoCookie
+
+enableAutoCookie(enable: boolean): void
+
+设置是否自动携带和共享Cookie，用于在同一个HttpRequest实例的多次请求之间自动复用服务端下发的Cookie。
+
+> **说明：**
+>
+> (1) 默认值为false，表示默认不自动携带Cookie。<br>
+> (2) 当配置由false切换为true后，会在后续调用request接口发起请求时生效，并自动共享Cookie。<br>
+> (3) 当配置由true切换为false时，会清空当前实例内保存的Cookie共享状态。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | ------- | ---- | ----------------------------------------------- |
+| enable | boolean | 是 | 是否自动携带Cookie。true表示开启，false表示关闭。 |
+
+**示例：**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+let httpRequest = http.createHttp();
+let url = "EXAMPLE_URL"; // 访问url，需要开发者根据实际场景自行定义。
+
+// 开启自动Cookie共享。
+httpRequest.enableAutoCookie(true);
+
+httpRequest.request(url, {
+  method: http.RequestMethod.GET
+}).then((data: http.HttpResponse) => {
+  console.info('first request code:' + data.responseCode);
+  // 后续请求将自动复用该实例保存的Cookie。
+  return httpRequest.request(url, { method: http.RequestMethod.GET });
+}).then((data: http.HttpResponse) => {
+  console.info('second request code:' + data.responseCode);
+}).catch((err: Error) => {
+  console.error('error:' + JSON.stringify(err));
+}).finally(() => {
+  httpRequest.destroy();
+});
 ```
 
 ### on("headerReceive")<sup>(deprecated)</sup>
@@ -1266,7 +1322,9 @@ httpRequest.off("dataSendProgress");
 | 名称         | 类型                                          | 只读 | 可选 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | -------------- | --------------------------------------------- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | method         | [RequestMethod](#requestmethod)               | 否  | 是  | 请求方式，默认为GET。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| extraData      | string \| Object \| ArrayBuffer | 否  | 是  | 发送请求的额外数据，默认无此字段。<br />**说明：** 没有额外数据时，避免添加该参数；若必须添加，请填写undefined或者null，避免直接传入"。<br />1. 当HTTP请求为POST、PUT、DELETE等方法时，此字段为HTTP请求的content，以UTF-8编码形式作为请求体。<br />示例如下：<br />  (1) 当'content-Type'为'application/x-www-form-urlencoded'时，请求提交的信息主体数据必须在key和value进行URL转码后（encodeURIComponent/encodeURI），按照键值对"key1=value1&key2=value2&key3=value3"的方式进行编码，该字段对应的类型通常为String。<br />(2) 当'content-Type'为'text/xml'时，该字段对应的类型通常为String。<br />(3) 当'content-Type'为'application/json'时，该字段对应的类型通常为Object。<br />(4) 当'content-Type'为'application/octet-stream'时，该字段对应的类型通常为ArrayBuffer。<br />(5) 当'content-Type'为'multipart/form-data'且需上传的字段为文件时，该字段对应的类型通常为ArrayBuffer。<br>以上信息仅供参考，并可能根据具体情况有所不同。<br />2. 当HTTP请求为GET、OPTIONS、TRACE、CONNECT等方法时，此字段为HTTP请求参数的补充。开发者需传入Encode编码后的string类型参数，Object类型的参数无需预编码，参数内容会拼接到URL中进行发送。ArrayBuffer类型的参数不会做拼接处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| extraData      | string \| Object \| ArrayBuffer | 否  | 是  | 发送请求的额外数据，默认无此字段。自API version 26开始，建议优先使用body和queryParams字段。<br />**说明：** 没有额外数据时，避免添加该参数；若必须添加，请填写undefined或者null，避免直接传入"。<br />1. 当HTTP请求为POST、PUT、DELETE等方法时，此字段为HTTP请求的content，以UTF-8编码形式作为请求体。<br />示例如下：<br />  (1) 当'content-Type'为'application/x-www-form-urlencoded'时，请求提交的信息主体数据必须在key和value进行URL转码后（encodeURIComponent/encodeURI），按照键值对"key1=value1&key2=value2&key3=value3"的方式进行编码，该字段对应的类型通常为String。<br />(2) 当'content-Type'为'text/xml'时，该字段对应的类型通常为String。<br />(3) 当'content-Type'为'application/json'时，该字段对应的类型通常为Object。<br />(4) 当'content-Type'为'application/octet-stream'时，该字段对应的类型通常为ArrayBuffer。<br />(5) 当'content-Type'为'multipart/form-data'且需上传的字段为文件时，该字段对应的类型通常为ArrayBuffer。<br>以上信息仅供参考，并可能根据具体情况有所不同。<br />2. 当HTTP请求为GET、OPTIONS、TRACE、CONNECT等方法时，此字段为HTTP请求参数的补充。开发者需传入Encode编码后的string类型参数，Object类型的参数无需预编码，参数内容会拼接到URL中进行发送。ArrayBuffer类型的参数不会做拼接处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| body | string \| Object \| ArrayBuffer | 否 | 是 | HTTP请求体内容。设置该字段后，框架会优先将该字段作为请求体发送。<br/>- 支持string、Object、ArrayBuffer三种类型：string按原值发送，Object会序列化后发送，ArrayBuffer按二进制发送。<br/>- 当body与extraData同时配置时，body优先，extraData会被忽略。<br/>- 可与任意请求方法搭配使用，用于显式指定请求体。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| queryParams | string \| [QueryParamObject](#queryparamobject) | 否 | 是 | 附加到URL中的请求参数。<br/>- 支持string和QueryParamObject两种形式：string会按原样拼接到URL（不重复编码）；QueryParamObject会由系统自动编码并序列化。<br/>- 使用string时不需要携带前导`?`，多个参数用`&`分隔。<br/>- 当queryParams与extraData同时配置时，queryParams优先，extraData中的URL参数补充逻辑会被忽略。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | expectDataType<sup>9+</sup>  | [HttpDataType](#httpdatatype9)  | 否  | 是  | 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。当指定其类型为Object时，最大长度为65536字符数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | usingCache<sup>9+</sup>      | boolean                         | 否  | 是  | 是否使用缓存，true表示请求时优先读取缓存，false表示不使用缓存；默认为true，请求时优先读取缓存。缓存跟随当前进程生效，新缓存会替换旧缓存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | priority<sup>9+</sup>        | number                          | 否  | 是  | HTTP/HTTPS请求并发优先级，值越大优先级越高，范围[1,1000]，默认为1。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -1763,6 +1821,45 @@ type HttpProxy = connection.HttpProxy
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | connection.HttpProxy | 网络代理配置信息。     |
+
+## QueryParamValue
+
+type QueryParamValue = string \| number \| boolean \| null \| undefined
+
+QueryParamObject中允许使用的单个参数值类型。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| ---------------- | --------------------------- |
+| string \| number \| boolean \| null \| undefined | query参数单值类型。number和boolean会先转为字符串再参与编码；null和undefined会按仅key不带`=`值的形式序列化。 |
+
+## QueryParamObject
+
+type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
+
+用于构造URL查询参数的键值对象类型。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+> **说明：**
+>
+> (1) 每个属性名作为QueryParamObject参数的key，对应属性值可以是单个QueryParamValue，也可以是QueryParamValue数组。<br>
+> (2) 数组会展开为同名多参数，例如`{ tag: ['a', 'b'] }`会序列化为`tag=a&tag=b`。<br>
+> (3) key和value由系统自动进行URL编码，开发者应传入原始未编码内容。<br>
+> (4) 如需严格控制参数顺序或重复键顺序，建议直接使用queryParams的string形式。
 
 ## AddressFamily<sup>15+</sup>
 

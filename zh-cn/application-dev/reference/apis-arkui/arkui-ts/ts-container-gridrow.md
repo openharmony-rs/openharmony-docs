@@ -12,7 +12,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -21,6 +23,9 @@
 
 
 ## 接口
+
+### GridRow
+
 GridRow(option?: GridRowOptions)
 
 栅格行布局容器。
@@ -31,10 +36,38 @@ GridRow(option?: GridRowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[GridRow](#gridrow23)。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
+
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
 | option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
+
+### GridRow<sup>23+</sup>
+
+GridRow(option?: GridRowOptions，content_?: CustomBuilder)
+
+栅格行布局容器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[GridRow](#gridrow-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 |类型|必填|说明|
+|-----|-----|----|----|
+| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
+| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 容器。 |
 
 ## GridRowOptions对象说明
 
@@ -45,6 +78,10 @@ GridRow(option?: GridRowOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -62,6 +99,10 @@ GridRow(option?: GridRowOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -96,6 +137,10 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | xs  | number | 否   | 是   | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
@@ -115,6 +160,10 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
@@ -133,6 +182,10 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -158,10 +211,14 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| WindowSize | 以窗口为参照。 |
-| ComponentSize | 以容器为参照。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| WindowSize | 0 | 以窗口为参照。 |
+| ComponentSize | 1 | 以容器为参照。 |
 
 ## GridRowDirection枚举说明
 
@@ -183,6 +240,10 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值   | 说明 |
 | -------- | ---- | -------- |
 | Row | 0 | 栅格元素按照行方向排列。 |
@@ -194,7 +255,9 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 ### alignItems<sup>10+</sup>
 
-alignItems(value: ItemAlign)
+ArkTS-Dyn: alignItems(value: ItemAlign)
+
+ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 
 设置GridRow中的GridCol垂直主轴方向对齐方式。GridCol本身也可通过alignSelf([ItemAlign](ts-appendix-enums.md#itemalign))设置自身对齐方式。当上述两种对齐方式都设置时，以GridCol自身设置为准。
 
@@ -204,12 +267,37 @@ alignItems(value: ItemAlign)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ItemAlign](ts-appendix-enums.md#itemalign) | 是   | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start <br />非法值：按默认值处理。<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。 |
+| value  | ArkTS-Dyn: [ItemAlign](ts-appendix-enums.md#itemalign)<br/>ArkTS-Sta: [ItemAlign](ts-appendix-enums.md#itemalign) \| undefined | 是   | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start <br />非法值：按默认值处理。<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。<br/>取值为undefined时，按默认值处理。 |
 
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<GridRowAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridRow组件的属性。<br/>取值为undefined时，按默认值处理。 |
 
 ## 事件
 
@@ -217,7 +305,9 @@ alignItems(value: ItemAlign)
 
 ### onBreakpointChange
 
-onBreakpointChange(callback: (breakpoints: string) => void)
+ArkTS-Dyn: onBreakpointChange(callback: (breakpoints: string) => void)
+
+ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefined): this
 
 断点发生变化时触发回调。
 
@@ -231,17 +321,23 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明   |
 | ----- | ------ | ---- | ---------------------------------------- |
-|callback| (breakpoints: string) => void |是|breakpoints取值为`"xs"`、`"sm"`、`"md"`、`"lg"`、`"xl"`、`"xxl"`。|
+| callback | ArkTS-Dyn: (breakpoints: string) => void<br/>ArkTS-Sta: ((breakpoints: string) => void) \| undefined |是|breakpoints取值为`"xs"`、`"sm"`、`"md"`、`"lg"`、`"xl"`、`"xxl"`。<br/>取值为undefined时，不使用回调函数。|
 
 ## 示例
 
 ### 示例1（栅格布局的基本用法）
 
 本示例展示GridRow组件的基本用法。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -270,6 +366,42 @@ struct GridRowExample {
         this.currentBp = breakpoint
       })
     }.width('80%').margin({ left: 10, top: 5, bottom: 5 }).height(200)
+    .border({ color: '#880606', width: 2 })
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, GridRow, GridCol, Column, Row,  GridRowDirection, BreakpointsReference, Margin, Color, ForEach} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+@Entry
+@Component
+struct GridRowExample {
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    Column() {
+      GridRow({
+        columns: 5,
+        gutter: { x: 5, y: 10 },
+        breakpoints: { value: ["400vp", "600vp", "800vp"],
+          reference: BreakpointsReference.WindowSize },
+        direction: GridRowDirection.Row
+      }) {
+        ForEach(this.bgColors, (color: Color) => {
+          GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 }, offset: 0, order: 0 }) {
+            Row().width("100%").height("20vp")
+          }.borderColor(color).borderWidth(2)
+        })
+      }.width("100%").height("100%")
+      .onBreakpointChange((breakpoint: string): void  => {
+        this.currentBp = breakpoint
+      })
+    }.width('80%').margin({ left: 10, top: 5, bottom: 5 } as Margin).height(200)
     .border({ color: '#880606', width: 2 })
   }
 }

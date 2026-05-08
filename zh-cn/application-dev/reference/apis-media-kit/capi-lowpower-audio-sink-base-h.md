@@ -83,7 +83,7 @@ LowPowerAudioSink进度更新时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | 指向OH_LowPowerAudioSink实例的指针。 |
-| int64_t currentPosition | 返回服务当前播放的进度值。 |
+| int64_t currentPosition | 返回服务当前播放的进度值。单位为毫秒。 |
 | void* userData | 用户自定义数据。 |
 
 ### OH_LowPowerAudioSink_OnDataNeeded()

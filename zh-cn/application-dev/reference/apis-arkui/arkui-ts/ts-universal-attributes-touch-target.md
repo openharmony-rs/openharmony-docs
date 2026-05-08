@@ -23,7 +23,7 @@ ArkTS-Dyn: responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 ArkTS-Sta: responseRegion(value: Array&lt;Rectangle&gt; | Rectangle | undefined): this
 
-设置一个或多个触摸热区。
+设置一个或多个触摸热区。从API版本26.0.0开始，未主动设置时[Button](./ts-basic-components-button.md)、[Button模式的Toggle](./ts-basic-components-toggle.md)、[Select](./ts-basic-components-select.md)、[Chip](./ohos-arkui-advanced-Chip.md)和[ChipGroup](./ohos-arkui-advanced-ChipGroup.md)组件的触摸热区默认最小高度从28vp变更为32vp。该变更仅影响触摸命中范围，不影响组件实际显示高度。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

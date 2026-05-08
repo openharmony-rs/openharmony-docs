@@ -24,6 +24,11 @@
 
 - [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle)：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该装饰器装饰的函数。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
 
+从API版本26.0.0开始，提供激活与非激活态切换的生命周期装饰器：
+
+- [\@ComponentActive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive)：当自定义组件从非激活态切换为激活态时触发。自定义组件在创建后默认为激活态。
+- [\@ComponentInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive)：当自定义组件从激活态切换为非激活态时触发。
+
 自定义组件生命周期受状态机限制，流程如下图所示。
 
 ![custom-component-lifecycle-demo1](../state-management/figures/customcomponent-lifecycle-new-state.png)
@@ -65,6 +70,7 @@
   }
   ```
 - 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)
+- @ComponentActive和@ComponentInactive从API版本26.0.0起可用，用于监听组件的激活状态变化，不受状态机约束。它们独立于状态机工作：当组件由非激活转为激活状态（例如应用从后台切回前台、页面重新显示时），会触发@ComponentActive装饰的函数；反之，当组件从激活转为非激活状态（例如应用退至后台、页面隐藏或组件预创建进入缓存池时），则调用@ComponentInactive装饰的函数，目前激活和非激活生命周期支持场景见[监听自定义组件激活与非激活状态](#监听自定义组件激活与非激活状态)。
 
 ## 使用场景
 
@@ -507,6 +513,258 @@ Column() {
   unRegisterObserver(UIUtils.getLifecycle(this));
 })
 ```
+
+### 监听自定义组件激活与非激活状态
+
+从API版本26.0.0开始，支持使用@ComponentActive和@ComponentInactive监听组件激活与非激活状态的切换。组件激活/非激活并不等同于其可见性。自定义组件从激活状态转变为非激活状态时，触发@ComponentInactive装饰的方法；自定义组件从非激活状态转变为激活状态时，触发@ComponentActive装饰的方法。自定义组件激活和非激活状态切换当前包括以下场景：
+
+
+- [组件回收复用](../../ui/state-management/arkts-reusable.md)：进入复用池的组件为非激活状态，从复用池上树的组件为激活状态。在可复用组件从缓存中重新添加到节点树或被回收时，可以通过`@ComponentActive`和`@ComponentInactive`装饰器监听组件的激活状态变化。其中，@ComponentActive触发时机晚于`@ComponentRecycle`和`aboutToRecycle`，`@ComponentInactive`触发时机晚于`@ComponentReuse`和`aboutToReuse`。
+
+- [Router](../../ui/arkts-router-to-navigation.md)：当前栈顶页面为激活状态，非栈顶不可见页面为非激活状态。页面每次隐藏时触发onPageHide，页面中的自定义组件从激活状态变为非激活状态，触发`@ComponentInactive`装饰的方法；页面每次显示时触发onPageShow，页面中的自定义组件从非激活状态变为激活状态，触发`@ComponentActive`装饰的方法。同理，息屏时页面也会触发onPageHide，页面中的自定义组件从激活状态变为非激活状态，触发`@ComponentInactive`装饰的方法；亮屏时页面会触发onPageShow，页面中的自定义组件会触发`@ComponentActive`装饰的方法。
+
+- [Tabs](../../ui/arkts-navigation-tabs.md)：只有当前显示的`TabContent`中的自定义组件处于激活状态，其余则为非激活状态。需要注意`TabContent`会懒创建子组件，第一次切换到`TabContent`时，`TabContent`中的组件开始创建。当`TabContent`中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当`TabContent`中的自定义组件从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- [LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)：仅当前显示的LazyForEach中的自定义组件为激活状态，而缓存节点的组件则为非激活状态。在懒加载场景下，当数据项进入或离开可视区域时，组件会触发激活状态变化。进入可视区域的自定义组件触发`@ComponentActive`装饰的方法；离开可视区域和进入预加载区域的自定义组件触发`@ComponentInactive`装饰的方法。
+
+- [BuilderNode](../../ui/arkts-user-defined-arktsNode-builderNode.md)：BuilderNode会打断BuilderNode上层自定义组件激活和非激活状态传递给BuilderNode内的自定义组件的行为。当BuilderNode的inheritFreezeOptions设置为true时，BuilderNode中自定义组件可以继承BuilderNode上层自定义组件的激活和非激活状态。当BuilderNode中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- [Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md)：Repeat组件在渲染数据项时，屏上的RepeatItem中的自定义组件为激活状态，而离开屏上的RepeatItem中的组件为非激活状态。当RepeatItem中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)：Swiper轮播组件当前显示页面中的自定义组件为激活状态，而非当前显示的缓存页面中的组件为非激活状态。当Swiper中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- [Navigation](../../ui/arkts-navigation-introduction.md)：当前栈顶页面为激活状态，非栈顶不可见页面为非激活状态。当导航组件中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- [Scroll](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md)和[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)：在滚动容器中，所有子组件在初始创建时都会完成构建，没有预加载机制，所有子组件都是激活状态。在ForEach循环渲染场景中，所有数据项对应的节点在初始创建时都会一次性构建完成，所有子组件都是激活状态。当数据项进入或离开可视区域时，不会触发数据项中自定义组件的`@ComponentActive`和`@ComponentInactive`装饰的方法。
+
+- 组件混用：在多个支持激活状态的场景组合使用时，`@ComponentActive`和`@ComponentInactive`会根据实际组件的激活状态变化而触发。例如Navigation和TabContent混用时，当Navigation页面切换或Tab标签切换，都会触发相应组件的激活/非激活回调。
+
+以下示例展示了Navigation和TabContent混用场景下，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机：
+
+```ts
+'use static'
+ 
+ import { BarMode, BarPosition, ComponentActive, ComponentInactive, Builder, Button, ButtonType, Color, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Margin, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Require, TabContent, Tabs, TabsController, Text } from '@kit.ArkUI';
+ 
+ @ComponentV2
+ struct ChildOfParamComponent {
+   @Require @Param child_val: int;
+   // 处于激活状态的ChildOfParamComponent才可以立刻触发@Monitor
+   @Monitor(['child_val']) onMessageUpdated(m: IMonitor) {
+     console.info(`Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+   }
+ 
+   build() {
+     Column() {
+       Text(`Child Param： ${this.child_val}`)
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct ParamComponent {
+   @Require @Param val: int;
+   // 处于激活状态的ParamComponent才可以立刻触发@Monitor
+   @Monitor(['val']) onMessageUpdated(m: IMonitor) {
+     console.info(`Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+   }
+   @ComponentActive
+   myActive() {
+     // 从非激活态切换至激活态时触发
+     console.info(`ParamComponent myActive, val: ${this.val}`);
+   }
+   @ComponentInactive
+   myInactive() {
+     // 从激活态切换至非激活态时触发
+     console.info(`ParamComponent myInactive, val: ${this.val}`);
+   }
+   build() {
+     Column() {
+       Text(`val： ${this.val}`)
+       ChildOfParamComponent({child_val: this.val})
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct DelayComponent {
+   @Require @Param delayVal1: int;
+   // 处于激活状态的DelayComponent才可以立刻触发@Monitor
+   @Monitor(['delayVal1']) onMessageUpdated(m: IMonitor) {
+     console.info(`Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+   }
+   @ComponentActive
+   myActive() {
+     // 从非激活态切换至激活态时触发
+     console.info(`DelayComponent myActive, val: ${this.delayVal1}`);
+   }
+   @ComponentInactive
+   myInactive() {
+     // 从激活态切换至非激活态时触发
+     console.info(`DelayComponent myInactive, val: ${this.delayVal1}`);
+   }
+   build() {
+     Column() {
+       Text(`Delay Param： ${this.delayVal1}`);
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct TabsComponent {
+   private controller: TabsController = new TabsController();
+   @Local tabState: int = 47;
+ 
+   // 监听tabState的变化
+   @Monitor(['tabState']) onMessageUpdated(m: IMonitor) {
+     console.info(`Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+   }
+ 
+   build() {
+     Column() {
+       Button(`Incr state ${this.tabState}`)
+         .fontSize(25)
+         .onClick(() => {
+           console.info('Button increment state value');
+           this.tabState = this.tabState + 1;
+         })
+ 
+       // 定义Tabs组件
+       Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller}) {
+         TabContent() {
+           ParamComponent({val: this.tabState})
+         }
+         .tabBar('Update')
+         TabContent() {
+           DelayComponent({delayVal1: this.tabState})
+         }
+         .tabBar('DelayUpdate')
+       }
+       .vertical(false)
+       .scrollable(true)
+       .barMode(BarMode.Fixed)
+       .barWidth(400)
+       .barHeight(150)
+       .animationDuration(400)
+       .width('100%')
+       .height(200)
+       .backgroundColor(0xF5F5F5)
+     }
+   }
+ }
+ 
+ @Entry
+ @ComponentV2
+ struct MyNavigationTestStack {
+   @Provider('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+ 
+   @Builder
+   PageMap(name: string) {
+     if (name === 'pageOne') {
+       PageOneStack()
+     } else if (name === 'pageTwo') {
+       PageTwoStack()
+     }
+   }
+ 
+   build() {
+     Column() {
+       Navigation(this.pageInfo) {
+         Column() {
+           Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+             .width('80%')
+             .height(40)
+             .margin(20)
+             .onClick(() => {
+               // 跳转到pageOne
+               let info: NavPathInfo = new NavPathInfo('pageOne', undefined);
+               this.pageInfo.pushPath(info);
+             })
+         }
+       }
+       .title('NavIndex')
+       .navDestination(this.PageMap)
+       .mode(NavigationMode.Stack)
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct PageOneStack {
+   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+ 
+   build() {
+     NavDestination() {
+       Column() {
+         TabsComponent();
+ 
+         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+           .width('80%')
+           .height(40)
+           .margin(20)
+           .onClick(() => {
+             // 跳转到pageTwo
+             let info: NavPathInfo = new NavPathInfo('pageTwo', undefined);
+             this.pageInfo.pushPath(info);
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+     .title('pageOne')
+   }
+ }
+ 
+ @ComponentV2
+ struct PageTwoStack {
+   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+ 
+   build() {
+     NavDestination() {
+       Column() {
+         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+           .width('80%')
+           .height(40)
+           .margin(20)
+           .onClick(() => {
+             // 返回上一个页面后仅解冻可见的TabContent
+             this.pageInfo.pop();
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+     .title('pageTwo')
+   }
+ }
+```
+
+上述代码建议按以下步骤执行。
+
+1. 点击Next Page跳转到PageOne。
+
+   无日志输出，ParamComponent组件已创建并处于激活状态。
+
+2. 点击DelayUpdate，Update下的自定义组件ParamComponent触发@ComponentInactive。
+   ```text
+   ParamComponent myInactive, val: 47
+   ```
+
+3. 点击Update，DelayUpdate下的自定义组件DelayComponent触发@ComponentInactive，Update下的自定义组件ParamComponent触发@ComponentActive。
+   ```text
+   ParamComponent myActive, val: 47
+   DelayComponent myInactive, val: 47
+   ```
+
+4. 点击Next Page，Update下的自定义组件ParamComponent触发@ComponentInactive。
+   ```text
+   ParamComponent myInactive, val: 47
+   ```
+
+5. 点击Back Page，Update下的自定义组件ParamComponent触发@ComponentActive。
+   ```text
+   ParamComponent myActive, val: 47
+   ```
 
 ## 生命周期回调函数的区别
 

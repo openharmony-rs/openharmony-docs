@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-浮层（OverlayManager）用于在页面（Page）之上展示自定义的UI内容，位于Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等组件之下，展示范围为当前窗口的安全区内，适用于常驻悬浮等场景。
+浮层（OverlayManager）用于在页面（Page）之上展示自定义的UI内容，位于[Dialog](arkts-common-components-custom-dialog.md)、[Popup](arkts-popup-and-menu-components-popup.md)、[Menu](arkts-popup-and-menu-components-menu.md)、[BindSheet](arkts-sheet-page.md)、[BindContentCover](arkts-contentcover-page.md)和[Toast](arkts-create-toast.md)等组件之下，展示范围为当前窗口的安全区内，适用于常驻悬浮等场景。
 
 ![image](figures/overlayManager.png)
 

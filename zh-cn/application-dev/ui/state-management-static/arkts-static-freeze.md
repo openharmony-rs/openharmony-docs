@@ -7,9 +7,9 @@ V1自定义组件冻结支持场景为：
 1. [页面路由](../../reference/apis-arkui/js-apis-router.md)：当前栈顶页面为active状态，非栈顶不可见页面为inactive状态。
 2. [TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)：只有当前显示的TabContent中的自定义组件处于active状态，其余则为inactive。
 3. [LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)：仅当前显示的LazyForEach中的自定义组件为active状态，而缓存节点的组件则为inactive状态。
-4. [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)：当前显示的NavDestination中的自定义组件为active状态，而其他未显示的NavDestination组件则为inactive状态。 
+4. [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)：当前显示的[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)中的自定义组件为active状态，而其他未显示的NavDestination组件则为inactive状态。 
 5. 组件复用：进入复用池的组件为inactive状态，从复用池上树的节点为active状态。
-6. 混用场景：对于以上场景的组合使用，例如TabContent下面使用LazyForEach，切换Tab时，只有LazyForEach的屏上节点会被设置为active状态，其余则为inactive状态。
+6. 混用场景：对于以上场景的组合使用，例如TabContent下面使用LazyForEach，切换[Tab](../../reference/apis-arkui/arkui-ts/ts-container-tabs.md)时，只有LazyForEach的屏上节点会被设置为active状态，其余则为inactive状态。
 
 > **说明：**
 >
@@ -21,9 +21,9 @@ V1自定义组件冻结支持场景为：
 
 > **说明：**
 >
-> 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
+> 本示例使用了[router](../../reference/apis-arkui/arkts-apis-uicontext-router.md)进行页面跳转，建议开发者使用组件导航([Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md))代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
 
-当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+当页面1调用[router.pushUrl](../../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl)接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
 
 图示如下：
 
@@ -119,7 +119,7 @@ struct Page2 {
 
 ## TabContent
 
-对Tabs中当前不可见的TabContent进行冻结，修改状态变量不会触发冻结组件的更新。
+对[Tabs](../../reference/apis-arkui/arkui-ts/ts-container-tabs.md)中当前不可见的[TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)进行冻结，修改状态变量不会触发冻结组件的更新。
 
 需要注意的是：在首次渲染的时候，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
 
@@ -332,9 +332,9 @@ struct FreezeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。
+1.点击`change message`更改message的值，当前正在显示的[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。
 
-2.List区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
+2.[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
 3.再次点击`change message`更改message的值，仅有当前显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。
 
@@ -691,9 +691,9 @@ class TestDataSource extends BasicDataSource<string> {
 1. 滑动到index为14的位置，当前屏幕上可见区域内有15个`ChildComponent`。
 2. 在滑动过程中：
     - 列表上端的`ChildComponent`滑出可视区域外，此时先进入LazyForEach的缓存区域内，被设置inactive。在滑出LazyForEach缓存区域外后，因为标记了组件复用，所以并不会被析构，而是会进入复用池，此时再次被设置inactive。
-    - 列表下端LazyForEach的缓存节点会进入List范围内，此时会试图请求创建新的节点进入LazyForEach的缓存，发现有可复用的节点时，从复用池中拿出已有节点，触发aboutToReuse生命周期回调，此时因为节点进入的是LazyForEach的缓存区域，所以其状态依旧是inactive。
+    - 列表下端LazyForEach的缓存节点会进入List范围内，此时会试图请求创建新的节点进入LazyForEach的缓存，发现有可复用的节点时，从复用池中拿出已有节点，触发[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，此时因为节点进入的是LazyForEach的缓存区域，所以其状态依旧是inactive。
 3. 点击`change desc`，触发`Page`的成员变量`desc`的变化：
-    - `desc`是\@State装饰的，其变化会通知给其子组件`ChildComponent`\@Link装饰的`desc`。
+    - `desc`是[\@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state-static.md)装饰的，其变化会通知给其子组件`ChildComponent`[\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link-static.md)装饰的`desc`。
     - 非可视区域内的`ChildComponent`是inactive状态，且开启了组件冻结，所以这次变化只触发可视区域内的15个节点的`@Watch('descChange')`回调，并只刷新对应可视区域内的15个节点。LazyForEach和复用池中的节点并不会刷新，也不会触发\@Watch回调。
     
 

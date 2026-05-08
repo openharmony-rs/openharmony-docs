@@ -1,8 +1,8 @@
 # 使用AVMetadataExtractor提取音视频元数据信息(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 

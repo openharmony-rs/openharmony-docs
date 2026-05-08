@@ -17,18 +17,18 @@
 
 ## 限制条件
 
-1. V1装饰器不能和[@ObservedV2](./arkts-new-observedV2-and-trace.md)一起使用。因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
+1. V1装饰器不能和[@ObservedV2](./arkts-new-observedV2-and-trace.md)一起使用。因为\@ObservedV2/[@Trace](./arkts-new-observedV2-and-trace.md)有自己独立的观察能力，不仅可以在[@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
 
 2. V2->V1，V1不支持用装饰器接收\@ObservedV2装饰的class，否则编译报错。
 
-3. V1中[@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[@Link初始化规则示意图](./arkts-link.md#变量的传递访问规则说明)。因为V1中[@Link](./arkts-link.md)仅能和V1状态变量建立双向同步关系，而V2中如果想实现双向同步，可以使用\@Param、\@Event，具体例子见[@Link -> @Param/@Event迁移场景](./arkts-v1-v2-migration-inner-component.md#link---paramevent)。
+3. V1中[@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[@Link初始化规则示意图](./arkts-link.md#变量的传递访问规则说明)。因为V1中[@Link](./arkts-link.md)仅能和V1状态变量建立双向同步关系，而V2中如果想实现双向同步，可以使用[\@Param](./arkts-new-param.md)、[\@Event](./arkts-new-event.md)，具体例子见[@Link -> @Param/@Event迁移场景](./arkts-v1-v2-migration-inner-component.md#link---paramevent)。
 
 
 ## 新增接口
 
 ### makeV1Observed
 
-[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)将不可观察的对象包装成状态管理V1可观察的对象，能力等同于\@Observed，其返回值可初始化\@ObjectLink。
+[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)将不可观察的对象包装成状态管理V1可观察的对象，能力等同于[@Observed](./arkts-observed-and-objectlink.md)，其返回值可初始化[@ObjectLink](./arkts-observed-and-objectlink.md)。
 
 > **说明：**
 > 
@@ -594,7 +594,7 @@ struct CompV2 {
 
 ### 传递内置类型（V2->V1）
 
-如果在V2中定义\@Local arr: Array\<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]))，由于用了\@Local装饰器V2可以观察属性的变化。但是没有调用enableV2Compatibility和makeV1Observed，V1无法观察属性的变化。所以正确做法调用UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())，使V1中可以观察属性的变化。
+如果在V2中定义\@Local arr: Array\<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]))，由于用了[\@Local](./arkts-new-local.md)装饰器V2可以观察属性的变化。但是没有调用enableV2Compatibility和makeV1Observed，V1无法观察属性的变化。所以正确做法调用UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())，使V1中可以观察属性的变化。
 
 <!-- @[state_mixed_scene_built_type_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1Recommend.ets) -->
 

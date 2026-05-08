@@ -1,10 +1,11 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
@@ -98,6 +99,34 @@
         - [!!语法：双向绑定](state-management/arkts-new-binding.md)
       - 静态ArkTS<!--arkts-ui-syntactic-sugar-static-->
         - [$$()语法：系统组件双向同步](state-management/arkts-two-way-sync-static.md)
+    - 静态ArkTS的状态管理<!--arkts-state-management-v1-static-->
+      - 状态管理（V1）<!--arkts-state-management-v1-->
+        - 管理组件拥有的状态<!--arkts-component-state-management-->
+          - [\@State装饰器：组件内状态](state-management-static/arkts-static-state.md)
+          - [\@PropRef装饰器：父子单向同步](state-management-static/arkts-static-propref.md)
+          - [\@Link装饰器：父子双向同步](state-management-static/arkts-static-link.md)
+          - [\@Provide装饰器和\@Consume装饰器：与后代组件双向同步](state-management-static/arkts-static-provide-and-consume.md)
+          - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management-static/arkts-static-observed-and-objectlink.md)
+          - [\@Watch装饰器：状态变量更改通知](state-management-static/arkts-static-watch.md)
+        - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
+          - [\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
+        - 管理应用拥有的状态<!--arkts-application-state-management-->
+          - [LocalStorage：页面级UI状态存储](state-management-static/arkts-static-localstorage.md)
+          - [AppStorage：应用全局的UI状态存储](state-management-static/arkts-static-appstorage.md)
+          - [PersistentStorage：持久化存储UI状态](state-management-static/arkts-static-persiststorage.md)
+          - [Environment：设备环境查询](state-management-static/arkts-static-environment.md)
+      - 状态管理（V2）<!--arkts-state-management-v2-->
+        - 管理组件拥有的状态<!--arkts-component-state-management-v2-->
+          - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
+          - [\@Param装饰器：组件外部输入](state-management-static/arkts-static-new-param.md)
+            - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
+          - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
+          - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
+          - [\@Env：环境变量](state-management-static/arkts-static-new-env.md)
+        - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
+          - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
+          - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
+          - [\@SyncMonitor装饰器：状态变量修改同步监听](state-management-static/arkts-static-new-syncmonitor.md)
     - 状态管理V1-V2迁移指导<!--arkts-v1-v2-guide-->
       - [V1-V2迁移概述](state-management/arkts-v1-v2-migration.md)
       - 状态管理V1向V2迁移场景<!--arkts-state-management-v1-v2-migration-guide-->
@@ -123,6 +152,8 @@
     - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
     - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
     - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
+  - 渲染控制（ArkTS-Sta）<!--arkts-rendering-control-static-->
+    - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量](arkts-env-system-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
@@ -257,6 +288,7 @@
       - [自定义组件节点 (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
+      - [自定义声明式节点 (BuilderNode)(ArkTS-Sta)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
       - [设置自定义节点跨语言属性](arkts-user-defined-arktsNode-crossLanguage.md)
     - 自定义绘制<!--arkts-draw-->
       - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
@@ -425,6 +457,8 @@
   - [UI预览](ui-ide-previewer.md)
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
+    - [UI并行化创建组件树（ArkTS-Sta）](ui-parallel-components.md)
+    - [BuilderNode并行化构建和更新节点树（ArkTS-Sta）](ui-parallel-buildernode.md)
   - UI开发常见问题<!--ui-development-faq-->
     - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)

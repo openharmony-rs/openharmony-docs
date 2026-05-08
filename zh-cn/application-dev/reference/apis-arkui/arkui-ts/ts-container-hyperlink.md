@@ -40,7 +40,7 @@ ArkTS-Sta: Hyperlink(address: string | Resource | undefined, content?: string | 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| address | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/> ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \|&nbsp; undefined| 是 | Hyperlink组件跳转的网页。 |
+| address | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/> ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \|&nbsp; undefined| 是 | Hyperlink组件跳转的网页。<br/>取值为undefined时，按无跳转链接地址处理。 |
 | content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | Hyperlink组件中超链接显示文本。<br/>默认值：''。若不传该参数且组件内无子组件时，默认显示address参数值链接地址。<br/>**说明：** <br/>组件内有子组件时，不显示超链接文本。 |
 
 ## 属性
@@ -67,7 +67,7 @@ ArkTS-Sta: color(value: Color | int | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 超链接文本的颜色。<br/><!--RP1-->默认值：'#ff007dff'，显示为蓝色。<!--RP1End-->|
+| value  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 超链接文本的颜色。<br/><!--RP1-->默认值：'#ff007dff'，显示为蓝色。<!--RP1End--><br/>取值为undefined时，按默认值处理。|
 
 ## 示例
 

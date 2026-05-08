@@ -559,7 +559,30 @@ struct Index {
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中有数据，使用该接口将数据迁移到E类数据库。
 
+**ArkTS-Dyn示例：**
+
 <!-- @[rdb_Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ts) -->
+
+``` TypeScript
+import { relationalStore } from '@kit.ArkData';
+
+export class Mover {
+  async move(eStore: relationalStore.RdbStore, cStore: relationalStore.RdbStore) {
+    if (eStore != null && cStore != null) {
+      let predicates = new relationalStore.RdbPredicates('employee');
+      let resultSet = await cStore.query(predicates);
+      while (resultSet.goToNextRow()) {
+        let bucket = resultSet.getRow();
+        await eStore.insert('employee', bucket);
+      }
+    }
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+<!-- @[rdb_Mover](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -581,6 +604,8 @@ export class Mover {
 ### Store
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。其中StoreInfo类用于存储获取数据库相关信息。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
 
@@ -684,10 +709,116 @@ export class Store {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Store.ets) -->
+
+``` TypeScript
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Context } from '@kit.AbilityKit';
+
+export class StoreInfo {
+  public context: Context | null = null;
+  public config: relationalStore.StoreConfig | null = null;
+  public storeId: string = '';
+}
+
+let id = 1 as long;
+const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)';
+
+
+export class Store {
+  async getECStore(storeInfo: StoreInfo): Promise<relationalStore.RdbStore | null> {
+    let rdbStore: relationalStore.RdbStore | null = null;
+    try {
+      rdbStore = await relationalStore.getRdbStore(storeInfo.context!, storeInfo.config!);
+      if (rdbStore.version == 0) {
+        await rdbStore.executeSql(SQL_CREATE_TABLE);
+        console.info(`ECDB_Encry succeeded in getting Store ：${storeInfo.storeId}`);
+        rdbStore.version = 1;
+      }
+    } catch (e) {
+      let error = e as BusinessError;
+      console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+    }
+    return rdbStore;
+  }
+
+  async putOnedata(rdbStore: relationalStore.RdbStore) {
+    if (rdbStore != undefined) {
+      const valueBucket: relationalStore.ValuesBucket = {
+        'ID': id++,
+        'NAME': 'Lisa',
+        'AGE': 18 as long,
+        'SALARY': 100.5,
+        'CODES': new Uint8Array([1, 2, 3, 4, 5]),
+      };
+      try {
+        await rdbStore.insert('EMPLOYEE', valueBucket);
+        console.info(`ECDB_Encry insert success`);
+      } catch (e) {
+        let error = e as BusinessError;
+        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+      }
+    }
+  }
+
+  async getDataNum(rdbStore: relationalStore.RdbStore) {
+    if (rdbStore != undefined) {
+      try {
+        let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+        let resultSet = await rdbStore.query(predicates);
+        let count = resultSet.rowCount;
+        console.info(`ECDB_Encry getdatanum success count : ${count}`);
+      } catch (e) {
+        let error = e as BusinessError;
+        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+      }
+    }
+  }
+
+  async deleteAlldata(rdbStore: relationalStore.RdbStore) {
+    if (rdbStore != undefined) {
+      try {
+        let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+        predicates.equalTo('AGE', 18 as long);
+        await rdbStore.delete(predicates);
+        console.info(`ECDB_Encry delete Success`);
+      } catch (e) {
+        let error = e as BusinessError;
+        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+      }
+    }
+  }
+
+  async updateOnedata(rdbStore: relationalStore.RdbStore) {
+    if (rdbStore != undefined) {
+      try {
+        let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+        predicates.equalTo('NAME', 'Lisa');
+        const valueBucket: relationalStore.ValuesBucket = {
+          'NAME': 'Anna',
+          'SALARY': 100.5,
+          'CODES': new Uint8Array([1, 2, 3, 4, 5]),
+        };
+        await rdbStore.update(valueBucket, predicates);
+        console.info(`ECDB_Encry update success`);
+      } catch (e) {
+        let error = e as BusinessError;
+        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+      }
+    }
+  }
+}
+```
+
 
 ### SecretKeyObserver
 
 该类提供了获取当前密钥状态的接口，在密钥销毁后，关闭E类数据库。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ts) -->
 
@@ -732,10 +863,57 @@ export class SecretKeyObserver {
 export let lockObserve = new SecretKeyObserver();
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ets) -->
+
+``` TypeScript
+import { ECStoreManager } from './ECStoreManager';
+
+export enum SecretStatus {
+  Lock,
+  UnLock
+}
+
+export class SecretKeyObserver {
+  onLock(): void {
+    this.lockStatus = SecretStatus.Lock;
+    this.storeManager.closeEStore();
+  }
+
+  onUnLock(): void {
+    this.lockStatus = SecretStatus.UnLock;
+  }
+
+  getCurrentStatus(): Double {
+    return this.lockStatus;
+  }
+
+  initialize(storeManager: ECStoreManager): void {
+    this.storeManager = storeManager;
+  }
+
+  updateLockStatus(code: Double) {
+    if (this.lockStatus === SecretStatus.Lock) {
+      this.onLock();
+    } else {
+      this.lockStatus = code;
+    }
+  }
+
+  private lockStatus: Double = SecretStatus.UnLock;
+  private storeManager: ECStoreManager = new ECStoreManager();
+}
+
+export let lockObserve = new SecretKeyObserver();
+```
+
 
 ### ECStoreManager
 
 ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配置数据库信息、配置迁移函数的信息，可根据密钥状态为应用提供相应的数据库句柄，并提供了关闭E类数据库、数据迁移完成后销毁C类数据库等接口。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ts) -->
 
@@ -811,9 +989,87 @@ export class ECStoreManager {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ets) -->
+
+``` TypeScript
+import { relationalStore } from '@kit.ArkData';
+import { Mover } from './Mover';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { StoreInfo, Store } from './Store';
+import { SecretStatus } from './SecretKeyObserver';
+
+let store = new Store();
+
+export class ECStoreManager {
+  config(cInfo: StoreInfo, other: StoreInfo): void {
+    this.cInfo = cInfo;
+    this.eInfo = other;
+  }
+
+  configDataMover(mover: Mover): void {
+    this.mover = mover;
+  }
+
+  async getCurrentStore(screenStatus: Double): Promise<relationalStore.RdbStore | null> {
+    if (screenStatus === SecretStatus.UnLock) {
+      try {
+        this.eStore = await store.getECStore(this.eInfo!);
+      } catch (e) {
+        let error = e as BusinessError;
+        console.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+      }
+      // 解锁状态 获取e类库
+      if (this.needMove) {
+        if (this.eStore != undefined && this.cStore != undefined) {
+          this.mover!.move(this.eStore!, this.cStore!);
+          console.info(`ECDB_Encry cstore data move to estore success`);
+        }
+        this.deleteCStore();
+        this.needMove = false;
+      }
+      return this.eStore;
+    } else {
+      // 加锁状态 获取c类库
+      this.needMove = true;
+      try {
+        this.cStore = await store.getECStore(this.cInfo!);
+      } catch (e) {
+        let error = e as BusinessError;
+        console.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+      }
+      return this.cStore;
+    }
+  }
+
+  closeEStore(): void {
+    this.eStore = null;
+  }
+
+  async deleteCStore() {
+    try {
+      await relationalStore.deleteRdbStore(this.cInfo!.context!, this.cInfo!.storeId!)
+    } catch (e) {
+      let error = e as BusinessError;
+      console.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+    }
+  }
+
+  private eStore: relationalStore.RdbStore | null = null;
+  private cStore: relationalStore.RdbStore | null = null;
+  private cInfo: StoreInfo | null = null;
+  private eInfo: StoreInfo | null = null;
+  private needMove: boolean = false;
+  private mover: Mover | null = null;
+}
+```
+
 ### EntryAbility
 
 模拟在应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -927,9 +1183,140 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
+import { relationalStore } from '@kit.ArkData';
+import { ECStoreManager } from '../encryptedEStoreGuidelines/ECStoreManager';
+import { StoreInfo } from '../encryptedEStoreGuidelines/Store';
+import { Mover } from '../encryptedEStoreGuidelines/Mover';
+import { SecretKeyObserver } from '../encryptedEStoreGuidelines/SecretKeyObserver';
+import { commonEventManager } from '@kit.BasicServicesKit';
+import { application, contextConstant } from '@kit.AbilityKit';
+
+const DOMAIN = 0x0000;
+
+export let storeManager = new ECStoreManager();
+
+export let e_secretKeyObserver = new SecretKeyObserver();
+
+let mover = new Mover();
+let subscriber: commonEventManager.CommonEventSubscriber | undefined;
+
+export function createCB(err: BusinessError | null,
+  commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined) {
+  if (!err) {
+    console.info('ECDB_Encrypt createSubscriber');
+    subscriber = commonEventSubscriber;
+    if (subscriber !== undefined) {
+      try {
+        commonEventManager.subscribe(subscriber!,
+          (err: BusinessError | null, data: commonEventManager.CommonEventData | undefined) => {
+            if (err) {
+              console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+            } else {
+              if (data !== undefined && data.code !== undefined) {
+                console.info(`ECDB_Encrypt SubscribeCB ${data.code}`);
+                e_secretKeyObserver.updateLockStatus(data.code!);
+              }
+            }
+          });
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+      }
+    }
+  } else {
+    console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+
+let cInfo: StoreInfo | null = null;
+let eInfo: StoreInfo | null = null;
+
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onCreate');
+    let cContext = this.context;
+    cInfo = {
+      context: cContext,
+      config: {
+        name: 'cstore.db',
+        securityLevel: relationalStore.SecurityLevel.S3,
+      },
+      storeId: 'cstore.db'
+    };
+    application.createModuleContext(this.context, 'entry').then((eContext) => {
+      eContext.area = contextConstant.AreaMode.EL5;
+      eInfo = {
+        context: eContext,
+        config: {
+          name: 'estore.db',
+          securityLevel: relationalStore.SecurityLevel.S3,
+        },
+        storeId: 'estore.db',
+      };
+      // 监听COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED事件 code == 1解锁状态，code==0加锁状态
+      console.info('ECDB_Encry store area : estore:' + eContext.area + ',cstore' + cContext.area);
+      try {
+        commonEventManager.createSubscriber({
+          events: ['COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED']
+        }, createCB);
+        console.info('ECDB_Encry success subscribe');
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+      }
+      storeManager.config(cInfo!, eInfo!);
+      storeManager.configDataMover(mover);
+      e_secretKeyObserver.initialize(storeManager);
+    });
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent entering');
+      if (err?.code) {
+        hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
+        return;
+      }
+      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok');
+    });
+  }
+
+  onDestroy(): Promise<void> | undefined {
+    hilog.info(0x0000, 'testTag EntryAbility', '%{public}s', 'TestAbility onDestroy');
+    return undefined
+  }
+
+  onWindowStageDestroy() {
+    hilog.info(0x0000, 'testTag EntryAbility', '%{public}s', 'TestAbility onWindowStageDestroy');
+  }
+
+  onForeground() {
+    hilog.info(0x0000, 'testTag EntryAbility', '%{public}s', 'TestAbility onForeground');
+  }
+
+  onBackground() {
+    hilog.info(0x0000, 'testTag EntryAbility', '%{public}s', 'TestAbility onBackground');
+  }
+}
+```
+
 ### Index按键事件
 
 使用Button按钮，通过点击按钮来模拟应用操作数据库，如插入数据、删除数据、更新数据和获取数据数量的操作等，展示数据库基本的增删改查能力。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->
 
@@ -1015,6 +1402,145 @@ struct Index {
           .onClick(async (event: ClickEvent) => {
             let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
             storeOption.updateOnedata(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+<!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Text,
+  TextAttribute,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  FontWeight,
+  AlignRuleOption,
+  VerticalAlign,
+  HorizontalAlign,
+  ButtonType,
+  State,
+  UIContext,
+  Row
+} from '@kit.ArkUI'
+import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';
+import { relationalStore } from '@kit.ArkData';
+import { Store } from './Store';
+
+let storeOption = new Store();
+let lockStatus: number = 1;
+
+async function putData() {
+  let store: relationalStore.RdbStore | null =
+    await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+  storeOption.putOnedata(store!);
+}
+
+async function getData() {
+  let store: relationalStore.RdbStore | null =
+    await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+  storeOption.getDataNum(store!);
+}
+
+async function deleteData() {
+  let store: relationalStore.RdbStore | null =
+    await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+  storeOption.deleteAlldata(store!);
+}
+
+async function updateData() {
+  let store: relationalStore.RdbStore | null =
+    await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+  storeOption.updateOnedata(store!);
+}
+@Entry
+@Component
+struct Index {
+  @State message: string = '';
+
+  build() {
+    Row() {
+      Column() {
+        Button('加锁/解锁')
+          .onClick((event: ClickEvent) => {
+            if (lockStatus) {
+              e_secretKeyObserver.onLock();
+              lockStatus = 0;
+            } else {
+              e_secretKeyObserver.onUnLock();
+              lockStatus = 1;
+            }
+            lockStatus ? this.message = '解锁' : this.message = '加锁';
+          })
+          .margin('5')
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Button('store type')
+          .onClick(() => {
+            e_secretKeyObserver.getCurrentStatus() ? this.message = 'estore' : this.message = 'cstore';
+            console.info(`ECDB_Encry current store : ${this.message}`);
+          })
+          .margin('5')
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Button('put')
+          .onClick(() => {
+            putData();
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Button('Get')
+          .onClick(() => {
+            getData();
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Button('delete')
+          .onClick(() => {
+            deleteData();
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Button('update')
+          .onClick(() => {
+            updateData();
           })
           .margin(5)
           .backgroundColor('#0D9FFB')

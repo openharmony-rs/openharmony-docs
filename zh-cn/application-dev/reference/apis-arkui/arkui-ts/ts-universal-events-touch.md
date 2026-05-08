@@ -94,6 +94,8 @@ ArkTS-Sta: getHistoricalPoints(): Array&lt;HistoricalPoint&gt; | undefined
 
 ## TouchObject
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                              | 只读 | 可选          | 说明                                  |
@@ -116,6 +118,30 @@ ArkTS-Sta: getHistoricalPoints(): Array&lt;HistoricalPoint&gt; | undefined
 | globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
+### getCurrentLocalPosition
+
+ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
+ 
+ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
+
+获取触摸位置相对于当前组件实时位置的左上角坐标。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 获取触摸位置相对于当前组件实时位置的左上角坐标。|
+
 ## HistoricalPoint<sup>10+</sup>对象说明
 
 历史点信息。
@@ -136,6 +162,8 @@ ArkTS-Sta: getHistoricalPoints(): Array&lt;HistoricalPoint&gt; | undefined
 | timestamp   | ArkTS-Dyn: number<br/>ArkTS-Sta: long                              | 否 | 否 | 历史点对应触摸事件的时间戳，表示触发事件时距离系统启动的时间间隔。<br>单位：ns           |
 
 ## 示例
+
+### 示例1（获取触摸事件相关参数）
 
 该示例中，按钮设置触摸事件，在点击按钮时可获取事件的相关参数。
 
@@ -218,3 +246,68 @@ struct TouchExample {
 ```
 
 ![touch](figures/touch.gif)
+
+### 示例2（获取组件实时位置）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.touches[0].getCurrentLocalPosition?.();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Button, State, Column, Component, TouchEvent, Coordinate2D, TranslateOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY } as TranslateOptions)
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.touches[0].getCurrentLocalPosition();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+![touch](figures/localPosition2.gif)

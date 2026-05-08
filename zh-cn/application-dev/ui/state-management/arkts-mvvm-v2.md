@@ -842,7 +842,7 @@ JSON文件存放在src/main/resources/rawfile/defaultTasks.json路径下。
 
 ### 添加\@Builder，实现自定义构建函数
 
-随着应用功能逐步扩展，代码中的某些UI元素开始重复，不仅增加了代码量，也让维护变得复杂。为解决此问题，建议使用\@Builder装饰器，将重复的UI组件抽象为独立的构建方法，便于复用和代码模块化。
+随着应用功能逐步扩展，代码中的某些UI元素开始重复，不仅增加了代码量，也让维护变得复杂。为解决此问题，建议使用[\@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md)装饰器，将重复的UI组件抽象为独立的构建方法，便于复用和代码模块化。
 
 在示例10中，通过使用\@Builder定义的ActionButton方法，实现了按钮文字、样式和点击事件的统一管理，提高了代码的简洁性和可维护性。同时优化了界面组件的布局和样式，包括间距、颜色和尺寸等视觉元素，最终呈现出一个功能完善且界面简洁美观的待办事项应用。
 
@@ -1060,7 +1060,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
 - TaskListModel：任务的集合，提供从本地加载任务数据的功能。
 
-  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->     
+  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->      
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -1070,6 +1070,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
   const DOMAIN = 0x0000;
   
+  // Model层：TaskListModel负责加载任务列表
   export default class TaskListModel {
     public tasks: TaskModel[] = [];
   

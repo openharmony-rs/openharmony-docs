@@ -1,7 +1,7 @@
 # @ohos.multimedia.avInputCastPicker (录音设备选择组件)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -62,7 +62,7 @@ type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate) | 是 | 设备列表状态。 |
+| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11) | 是 | 设备列表状态。 |
 
 ## 事件
 

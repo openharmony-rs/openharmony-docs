@@ -1,7 +1,7 @@
 # 使用TaskPool执行多个耗时任务
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -71,7 +71,7 @@
      let tmpLength = (ret as IconItemSource[][]).length
      for (let i = 0; i < tmpLength; i++) {
        for (let j = 0; j < ret[i].length; j++) {
-         if (ret[i] && ret[i][j]) {
+         if (ret[i][j]) {
            iconItemSourceList.push(ret[i][j]);
          }
        }

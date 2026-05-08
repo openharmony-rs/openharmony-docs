@@ -61,7 +61,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    }
    ```
    
-3. 初始化另一自定义弹出框内容区，其中包含一个Text组件和一个按钮，该按钮通过外部传递的弹出框控制器用于关闭弹出框，并且该内容区还包含前一个自定义弹出框内容区。
+3. 初始化另一自定义弹出框内容区，其中包含一个[Text](../reference/apis-arkui/arkui-js/js-components-basic-text.md)组件和一个[按钮](../reference/apis-arkui/arkui-js/js-components-basic-button.md)，该按钮通过外部传递的弹出框控制器用于关闭弹出框，并且该内容区还包含前一个自定义弹出框内容区。
 
    <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
    

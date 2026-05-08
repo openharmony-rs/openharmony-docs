@@ -1,8 +1,8 @@
 # Buffer与FastBuffer
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -33,6 +33,10 @@ Buffer模块的核心功能包括：
 Buffer模块各接口使用详见：[@ohos.buffer](../reference/apis-arkts/js-apis-buffer.md)。
 
 ## FastBuffer
+
+> **说明：**
+>
+> - FastBuffer仅适用于ArkTS-Dyn。
 
 FastBuffer是一种高性能二进制数据容器，专为固定长度字节序列的存储与处理设计，相比Buffer，它在效率和读写速度上具有显著优势。
 

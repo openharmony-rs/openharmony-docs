@@ -74,6 +74,8 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 
 ### 示例代码
 
+ArkTS-Dyn示例：
+
 <!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
 
 ``` TypeScript
@@ -112,6 +114,48 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
   }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@ohos.base'
+import hilog from '@ohos.hilog'
+import pasteboard from '@ohos.pasteboard'
+// ...
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ...
+  export async function setPlainData(content: string): Promise<void> {
+    try {
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
+      await systemPasteboard.setData(pasteData);
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Set data to pasteboard successfully');
+    } catch (err) {
+      let error = err as BusinessError;
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set data to pasteboard, error:' + error);
+    }
+  }
+  export async function getPlainData(type: string): Promise<string> {
+    try {
+      // 从系统剪贴板中读取数据
+      let data = await systemPasteboard.getData();
+      // 从剪贴板数据中获取条目数量
+      let recordCount = data.getRecordCount();
+      // 从剪贴板数据中获取对应条目信息
+      let result = '';
+      for (let i = 0; i < recordCount; i++) {
+        let record = data.getRecord(i).toPlainText();
+        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
+        result = record;
+      }
+      return result;
+    } catch (err) {
+      let error = err as BusinessError;
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get data from pasteboard, error:' + error);
+      return '';
+    }
+  }
+```
 
 ## 使用统一数据类型进行复制粘贴
 
@@ -129,6 +173,8 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 | [getUnifiedDataSync(): unifiedDataChannel.UnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddatasync12) | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。                  |
 
 ### 示例代码
+
+ArkTS-Dyn示例：
 
 <!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
 
@@ -173,6 +219,55 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
   }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@ohos.base'
+import hilog from '@ohos.hilog'
+import pasteboard from '@ohos.pasteboard'
+import unifiedDataChannel from '@ohos.data.unifiedDataChannel'
+import uniformDataStruct from '@ohos.data.uniformDataStruct'
+import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor'
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ...
+  // 1.构造一条PlainText数据
+export async function handleUniformData() {
+    let plainText: uniformDataStruct.PlainText = {
+      uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
+      textContent: 'PLAINTEXT_CONTENT',
+      textAbstract: 'PLAINTEXT_ABSTRACT',
+    }
+
+    let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+    let data = new unifiedDataChannel.UnifiedData();
+    data.addRecord(record);
+    // 2.向系统剪贴板中存入一条PlainText数据
+    systemPasteboard.setUnifiedData(data).then(() => {
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
+      // 存入成功，处理正常场景
+    }).catch((err) => {
+      let error = err as BusinessError;
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set UnifiedData. Cause: ' + error.message);
+      // 处理异常场景
+    });
+    // 3.从系统剪贴板中读取这条text数据
+    systemPasteboard.getUnifiedData().then((data: unifiedDataChannel.UnifiedData) => {
+      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+      for (let j = 0; j < records.length; j++) {
+        if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT as string) {
+          let text = records[j].getValue() as uniformDataStruct.PlainText;
+          hilog.info(0xFF00, '[Sample_pasteboard]', `${j + 1}.${text.textContent}`);
+        }
+      }
+    }).catch((err) => {
+      let error = err as BusinessError;
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get UnifiedData. Cause: ' + error.message);
+      // 处理异常场景
+    });
+  }
+```
 
 <!--RP1-->
 <!--RP1End-->

@@ -1,8 +1,8 @@
 # ArkUI瀑布流渲染场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 

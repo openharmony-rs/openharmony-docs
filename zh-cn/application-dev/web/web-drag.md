@@ -41,6 +41,7 @@ ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽
 
 由于ArkTS侧的onDrop方法会早于H5中放置事件的处理方法（H5示例中的droppable.addEventListener('drop')）执行，若在onDrop方法中进行页面跳转等操作，将导致H5中的drop方法无法正确执行，产生不符合预期的结果。因此，应建立双向通信机制，在H5中的drop方法执行完毕后，通知ArkTS侧执行相应的业务逻辑，以确保业务逻辑的预期执行。
 
+ArkTS-Dyn示例：
 <!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) --> 
 
 ``` TypeScript
@@ -91,6 +92,68 @@ struct DragDrop {
             }
           }
           return true
+        })
+    }
+
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) --> 
+
+``` TypeScript
+import { $rawfile, Column, Component, Entry, Web } from '@ohos.arkui.component';
+import webview from '@ohos.web.webview';
+import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
+import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { State } from '@ohos.arkui.stateManagement';
+import { DragEvent } from '@ohos.arkui.dragController'
+
+@Entry
+@Component
+struct DragDrop {
+  private controller: webview.WebviewController = new webview.WebviewController(undefined)
+  @State ports: Array<webview.WebMessagePort> = new Array<webview.WebMessagePort>();
+  @State dragData: Array<unifiedDataChannel.UnifiedRecord> = new Array<unifiedDataChannel.UnifiedRecord>();
+
+  build() {
+    Column() {
+      Web({
+        src: $rawfile('drag.html'),
+        controller: this.controller,
+      }).onPageEnd((event) => {
+        // 注册通信端口
+        this.ports = this.controller.createWebMessagePorts();
+        this.ports[1].onMessageEvent((result: webview.WebMessage) => {
+          // ArkTS收到html传来的数据后的处理，可以先打日志确认下消息，双端的消息格式可以自己约定，能唯一识别就行
+          console.info('ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
+          // 这里添加result中消息接收到后的处理,可进行耗时任务
+        });
+        console.info('ETS postMessage set h5port ');
+        // 完成通信端口注册后，向前端发送注册完成消息，完成双向的端口绑定
+        this.controller.postMessage('__init_port__', [this.ports[0]], '*');
+      })// onDrop 可做简单逻辑，例如暂存一些关键数据
+        .onDrop((dragEvent: DragEvent) => {
+          console.info('ETS onDrop!')
+          let data: unifiedDataChannel.UnifiedData | undefined = dragEvent.getData();
+          if(!data) {
+            return;
+          }
+          let uriArr: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+          if (!uriArr || uriArr.length <= 0) {
+            return;
+          }
+          // 可以遍历records取数据暂存，或者以其他方式暂存数据
+          for (let i = 0; i < uriArr.length; ++i) {
+            if (uriArr[i].getType() == string(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+              let plainText = uriArr[i] as unifiedDataChannel.PlainText;
+              if (plainText.textContent) {
+                console.info('plainText.textContent: ', plainText.textContent);
+              }
+            }
+          }
+          return;
         })
     }
 
@@ -216,6 +279,7 @@ H5示例:
 ### 为什么H5设置的拖拽事件没有触发？
 请检查相关CSS资源是否正常设置，因为有些网页UA做了判断，针对特定设备的UA才会进行CSS样式设置。可以考虑在Web组件设置自定义UA解决这种问题，例如：
 
+ArkTS-Dyn示例：
 <!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
 
 ``` TypeScript
@@ -229,6 +293,32 @@ struct Index {
     Column() {
       Web({
         src: 'example.com',
+        controller: this.webController,
+      }).onControllerAttached(() => {
+        // 特定UA
+        let customUA = 'android'
+        this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA)
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
+
+``` TypeScript
+import { Column, Component, Entry, Web } from '@ohos.arkui.component';
+import webview from '@ohos.web.webview';
+
+@Entry
+@Component
+struct Index {
+  private webController: webview.WebviewController = new webview.WebviewController(undefined)
+  build(){
+    Column() {
+      Web({
+        src: 'https://www.example.com',
         controller: this.webController,
       }).onControllerAttached(() => {
         // 特定UA
@@ -355,8 +445,7 @@ html示例2:
 
 ![runJs-forbid-drag](figures/runJs-forbid-drag.gif)
 
-ArkTS示例:
-
+ArkTS-Dyn示例：
 <!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
 
 ``` TypeScript
@@ -366,6 +455,61 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct Index {
   webViewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('w3cDemoPage')
+        .onClick(() => {
+          this.webViewController.loadUrl($rawfile('w3c-forbid.html'));
+        })
+      Button('runJsDemoPage')
+        .onClick(() => {
+          this.webViewController.loadUrl($rawfile('runJs-forbid.html'));
+        })
+      Button('runJsForbidDrag')
+        .onClick(() => {
+          try {
+            // 使用runJavaScriptExt执行脚本添加dragstart事件监听器去禁用拖拽
+            this.webViewController.runJavaScriptExt(
+              'window.addEventListener(\'dragstart\', (ev) => {\n' +
+                'ev.preventDefault();\n' +
+                '});',
+              (error, result) => {
+                if (error) {
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  return;
+                }
+              });
+          } catch (resError) {
+            console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+          }
+        })
+      Web({
+        src: $rawfile('w3c-forbid.html'),
+        controller: this.webViewController
+      })
+        .domStorageAccess(true)
+        .javaScriptAccess(true)
+        .fileAccess(true)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
+
+``` TypeScript
+import webview from '@ohos.web.webview';
+import { Button, $rawfile, Column, Component, Entry, Web } from '@ohos.arkui.component';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct Index {
+  webViewController: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {

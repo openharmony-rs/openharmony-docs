@@ -20,7 +20,7 @@
 
 ![zh-cn_image_0000001562352677](figures/zh-cn_image_0000001562352677.png)
 
-- View(UI)：UI渲染，指将build方法内的UI描述和\@Builder装饰的方法内的UI描述映射到界面。
+- View(UI)：UI渲染，指将build方法内的UI描述和[\@Builder](./arkts-builder.md)装饰的方法内的UI描述映射到界面。
 
 - State：状态，指驱动UI更新的数据。通过触发组件的事件方法，改变状态数据。状态数据的改变，引起UI的重新渲染。
 

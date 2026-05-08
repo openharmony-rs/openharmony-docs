@@ -1,11 +1,14 @@
 # XML转换
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
+> **说明：**
+>
+> - XML转换仅适用于ArkTS-Dyn。
 
 将XML文本转换为JavaScript对象，便于处理和操作数据，适用于JavaScript应用程序。
 

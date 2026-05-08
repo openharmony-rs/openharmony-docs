@@ -35,6 +35,7 @@ import { Local, Monitor, IMonitor } from '@ohos.arkui.stateManagement';
 struct Index {
   @Local message: string = 'Hello World';
   @Local name: string = 'Tom';
+  // 监听message、name的变化
   @Monitor(['message', 'name'])
   onStrChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
@@ -47,6 +48,7 @@ struct Index {
       Text(`name: ${this.name}`)
       Button('change string')
         .onClick((e: ClickEvent) => {
+          // 修改message、name的值
           this.message += '!';
           this.name = 'Jack';
         })
@@ -96,8 +98,8 @@ import { ObservedV2, Trace, Monitor, IMonitor, Entry, ComponentV2, Local, Column
 @ObservedV2
 class Info {
   @Trace name: string = 'Tom';
-  @Trace age: number = 25;
-  @Trace height: number = 175;
+  @Trace age: int = 25;
+  @Trace height: int = 175;
   @Monitor(['name']) // 监听一个变量
   onNameChange(monitor: IMonitor) {
     // 未指定value的入参时，默认使用dirty中的第一个路径作为入参
@@ -107,7 +109,7 @@ class Info {
   onRecordChange(monitor: IMonitor) {
     // 指定value的入参时，将返回入参路径path对应的变量变化值信息
     monitor.dirty.forEach((path: string) => {
-      console.info(`path: ${path} change from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}`);
+      console.info(`path: ${path} change from ${monitor.value<int>(path)?.before} to ${monitor.value<int>(path)?.now}`);
     })
   }
 }
@@ -200,13 +202,13 @@ import { UIUtils, IMonitorDecoratedVariable, IMonitor, MonitorValueCallback, Ent
 @Entry
 @ComponentV2
 struct Page {
-  @Local array: number[] = [0, 1, 2];
+  @Local array: int[] = [0, 1, 2];
   monitor?: IMonitorDecoratedVariable;
 
   aboutToAppear() {
     // 将数组的每个元素包装为 MonitorValueCallback
-    const valueCallback: MonitorValueCallback[] = this.array.map((_: number, index: number): MonitorValueCallback => (
-      () => this.array[Double.toInt(index)]
+    const valueCallback: MonitorValueCallback[] = this.array.map((_: int, index: int): MonitorValueCallback => (
+      () => this.array[index]
     ));
     this.monitor = UIUtils.addMonitor(valueCallback, this.onChange);
   }
@@ -220,8 +222,8 @@ struct Page {
       Text(`Array: ${this.array}`)
       Button('Increase value')
         .onClick(() => {
-          this.array.forEach((value: number, index: number) => {
-            this.array[Double.toInt(index)] = value + 1;
+          this.array.forEach((value: int, index: int) => {
+            this.array[index] = value + 1;
           })
         })
     }
@@ -253,7 +255,7 @@ import { UIUtils, IMonitorDecoratedVariable, IMonitor, MonitorCallback, Entry, C
 @Entry
 @ComponentV2
 struct Page {
-  @Local value: number = 0;
+  @Local value: int = 0;
   monitor?: IMonitorDecoratedVariable;
 
   aboutToAppear() {
@@ -301,12 +303,12 @@ import { UIUtils, IMonitorDecoratedVariable, IMonitor, Entry, ComponentV2, Local
 @Entry
 @ComponentV2
 struct Page {
-  @Local array: number[] = [0, 1, 2];
+  @Local array: int[] = [0, 1, 2];
   monitor?: IMonitorDecoratedVariable;
 
   aboutToAppear() {
-    const valueCallback = this.array.map((_: number, index: number): (() => Any) => (
-      () => this.array[Double.toInt(index)]
+    const valueCallback = this.array.map((_: int, index: int): (() => Any) => (
+      () => this.array[index]
     ));
     this.monitor = UIUtils.addMonitor(valueCallback, this.onChange);
   }
@@ -320,8 +322,8 @@ struct Page {
       Text(`Array: ${this.array}`)
       Button('Increase value')
         .onClick(() => {
-          this.array.forEach((value: number, index: number) => {
-            this.array[Double.toInt(index)] = value + 1;
+          this.array.forEach((value: int, index: int) => {
+            this.array[index] = value + 1;
           });
         })
       Button('Show paths')
@@ -350,7 +352,7 @@ import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2
 @Entry
 @ComponentV2
 struct Page {
-  @Local value: number = 0;
+  @Local value: int = 0;
   monitor?: IMonitorDecoratedVariable;
 
   aboutToAppear() {
@@ -361,7 +363,7 @@ struct Page {
 
   onChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
-      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}.`);
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<int>(path)?.before} to ${monitor.value<int>(path)?.now}.`);
     });
   }
 

@@ -23,8 +23,10 @@
   - [ROI视频编码](video-encoding-ROI.md)
   - [视频解码](video-decoding.md)
   - [视频解码同步模式](synchronous-video-decoding.md)
-  - [创建视频解码器和NativeWindow初始化并行](parallel-decoding-nativeWindow.md)
   - [视频可变帧率](video-variable-refreshrate.md)<!--RP1--><!--RP1End-->
 - 媒体数据封装与解析<!--file-muxing-demuxing-->
   - [媒体数据封装](audio-video-muxer.md)
-  - [媒体数据解析](audio-video-demuxer.md)
+  - [媒体数据解析](audio-video-demuxer.md)<!--RP2--><!--RP2End-->
+- AVCodec Kit常见问题<!--file-avcodec-kit-faq-->
+  - [创建视频解码器和NativeWindow初始化并行](parallel-decoding-nativeWindow.md)
+  - [视频编解码宽高、跨距与裁剪信息说明](video-dimension-guide.md)

@@ -1,8 +1,8 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -69,6 +69,7 @@
     - [@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)
     - [getContext](js-apis-getContext.md)
     - [postCardAction](js-apis-postCardAction.md)
+    - [@ohos.arkui.Parallelize (UI并行化创建)](js-apis-arkui-Parallelize.md)
     <!--Del-->
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](js-apis-arkui-drawableDescriptor-sys.md)
     - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)
@@ -82,7 +83,8 @@
     - [@ohos.arkui.uiMaterial (系统材质)(系统接口)](arkts-apis-uimaterial-sys.md)
     <!--DelEnd-->
     - arkui<!--ui-interface-arkui-->
-      - [BuilderNode](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Dyn)](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Sta)](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
@@ -290,6 +292,7 @@
     - [WaterFlow](arkui-ts/ts-container-waterflow.md)
     - [FlowItem](arkui-ts/ts-container-flowitem.md)
     - [LazyVGridLayout](arkui-ts/ts-container-lazyvgridlayout.md)
+    - [LazyVWaterFlowLayout](arkui-ts/ts-container-lazyvwaterflowlayout.md)
     - [ScrollBar](arkui-ts/ts-basic-components-scrollbar.md)
     - [Refresh](arkui-ts/ts-container-refresh.md)
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
@@ -495,6 +498,7 @@
         - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component-static.md)
         - [@ComponentV2:自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2-static.md)
         - [@Entry：页面入口](arkui-ts/ts-custom-component-decorator-entry-static.md)
+        - [@CustomLayout：自定义布局](arkui-ts/ts-custom-component-decorator-customlayout.md)
       - 组件扩展装饰器
         - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-static.md)
         - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-static.md)
@@ -528,6 +532,7 @@
     - [FullScreenLaunchComponent](arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md)
     - [GridObjectSortComponent](arkui-ts/ohos-arkui-advanced-GridObjectSortComponent.md)
     - [Popup](arkui-ts/ohos-arkui-advanced-Popup.md)
+    - [PopupV2](arkui-ts/ohos-arkui-advanced-PopupV2.md)
     - [ProgressButton](arkui-ts/ohos-arkui-advanced-ProgressButton.md)
     - [ProgressButtonV2](arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md)
     - [SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)
@@ -552,9 +557,13 @@
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
-    - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
-    - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
-    - [Repeat](arkui-ts/ts-rendering-control-repeat.md)
+    - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
+    - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
+    - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)
+    - [LazyForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-lazyforeach.md)
+    - [LazyForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-lazyforeach-sta.md)
+    - [Repeat (ArkTS-Dyn)](arkui-ts/ts-rendering-control-repeat.md)
+    - [Repeat (ArkTS-Sta)](arkui-ts/ts-rendering-control-repeat-sta.md)
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
@@ -849,6 +858,7 @@
     - [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md)
     - [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md)
     - [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)
+    - [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)
     - [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)
     - [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)
     - [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md)
@@ -888,6 +898,7 @@
     - [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md)
     - [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md)
     - [ArkUI_RenderNodeMaskOption](capi-arkui-nativemodule-arkui-rendernodemaskoption.md)
+    - [ArkUI_RenderBlurStyleOption](capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)
     - [ArkUI_RoundRectShapeOption](capi-arkui-nativemodule-arkui-roundrectshapeoption.md)
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)

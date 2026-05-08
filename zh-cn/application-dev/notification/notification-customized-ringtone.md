@@ -1,9 +1,8 @@
 # 为通知添加自定义铃声
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -35,8 +34,7 @@
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { contextConstant, common } from '@kit.AbilityKit';
-    import fs from '@ohos.file.fs';
-    import fileUri from '@ohos.file.fileuri';
+    import { fileIo as fs, fileUri } from '@kit.CoreFileKit';
     
     const TAG: string = '[SpecifiedCustomizedRingtone]';
     const DOMAIN_NUMBER: number = 0xFF00;
@@ -102,7 +100,7 @@
     ``` TypeScript
     // 获取沙箱文件uri
     let sandboxFileUri: string = fileUri.getUriFromPath(sandboxFilePath)
-    let soundFile: string = 'uri::' + sandboxFileUri; // 必须以uri::开头, 且路径中不能包含'../'和'/..'
+    let soundFile: string = 'uri::' + sandboxFileUri; // 必须以uri::开头，且路径中不能包含'../'和'/..'
     ```
 3. 发布携带自定义铃声的通知。
 
@@ -124,7 +122,7 @@
     }
     
     notificationManager.publish(notificationRequest).then(() => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing notification.`);
+      hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
     }).catch((err: BusinessError) => {
       hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
     });

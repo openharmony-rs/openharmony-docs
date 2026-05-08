@@ -50,6 +50,10 @@ plus(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
@@ -72,6 +76,10 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
@@ -86,7 +94,9 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 ### multiply
 
-multiply(scale: number): AnimatableArithmetic\<T\>
+ArkTS-Dyn: multiply(scale: number): AnimatableArithmetic\<T\>
+
+ArkTS-Sta: multiply(scale: double): AnimatableArithmetic\<T\>
 
 定义该数据类型的乘法运算规则。
 
@@ -94,11 +104,15 @@ multiply(scale: number): AnimatableArithmetic\<T\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| scale | number | 是    | 乘法运算的系数。                           |
+| scale |  ArkTS-Dyn: number <br> ArkTS-Sta: double | 是    | 乘法运算的系数。                           |
 
 **返回值：**
 
@@ -115,6 +129,10 @@ equals(rhs: AnimatableArithmetic\<T\>): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -49,7 +49,7 @@ BuilderNode对象为一个模板类，需要在创建的时候指定类型。该
 
 > **说明：**
 >
-> 无状态的UI方法全局@Builder最多拥有一个根节点。
+> 无状态的UI方法全局[@Builder](./state-management/arkts-builder.md)最多拥有一个根节点。
 >
 > build方法中对应的@Builder支持一个参数作为入参。
 >

@@ -15,7 +15,7 @@ Popup属性可绑定在组件上显示气泡弹窗提示，设置弹窗内容、
 
 ## 文本提示气泡
 
-文本提示气泡常用于展示带有文本的信息提示，适用于无交互的场景。Popup属性需绑定组件，当bindPopup属性的参数show为true时，会弹出气泡提示。
+文本提示气泡常用于展示带有文本的信息提示，适用于无交互的场景。Popup属性需绑定组件，当[bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)属性的参数show为true时，会弹出气泡提示。
 
 在Button组件上绑定Popup属性，每次点击Button按钮时，handlePopup会切换布尔值。当值为true时，触发bindPopup弹出气泡。
 
@@ -216,7 +216,7 @@ export struct AnimationPopupExample {
 
 ## 自定义气泡
 
-开发者可以使用[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)的builder创建自定义气泡，\@Builder中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
+开发者可以使用[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)的builder创建自定义气泡，[@Builder](./state-management/arkts-builder.md)中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
 
 <!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
 
@@ -321,7 +321,7 @@ export struct StylePopupExample {
 
 ## 气泡避让软键盘
 
-当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中keyboardAvoidMode属性的值为KeyboardAvoidMode.DEFAULT，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
+当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中keyboardAvoidMode属性的值为[KeyboardAvoidMode.DEFAULT](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明)，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
 
 <!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
 
@@ -372,7 +372,7 @@ export struct AvoidSoftKeyboardPopupExample {
 
 ## 设置气泡内的多态效果
 
-目前使用@Builder自定义气泡内容时，默认不支持多态样式，可以使用@Component新建一个组件实现按下气泡中的内容时背景变色。
+目前使用[@Builder](./state-management/arkts-builder.md)自定义气泡内容时，默认不支持多态样式，可以使用[@Component](state-management/arkts-create-custom-components.md#component)新建一个组件实现按下气泡中的内容时背景变色。
 
 <!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
 
