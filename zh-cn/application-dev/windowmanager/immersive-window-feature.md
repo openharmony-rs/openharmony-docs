@@ -84,7 +84,7 @@
   | -------- | -------- |
   | ![no-immersive](figures/no-immersive.png)  | ![immersive](figures/immersive.png) |
 
-- 自由窗口状态下，可通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口装饰栏显隐，当标装饰栏隐藏时，窗口处于沉浸式布局。  
+- 自由窗口状态下，可通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。  
 
   ```ts
   // EntryAbility.ets
