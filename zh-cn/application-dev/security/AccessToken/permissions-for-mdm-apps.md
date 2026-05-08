@@ -824,3 +824,20 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_VPN
+
+允许MDM应用默认拥有VPN接入权限。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：24

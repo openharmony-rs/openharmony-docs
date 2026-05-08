@@ -724,3 +724,18 @@ Allows an enterprise MDM application to activate itself.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_VPN
+
+Allows an MDM application to possess the VPN access permission by default.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 24
