@@ -3361,11 +3361,15 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 });
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 设置设备是否支持分布式通知。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3433,11 +3437,15 @@ let enable: boolean = true;
 notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
 设置设备是否支持分布式通知。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3504,11 +3512,15 @@ notificationManager.setDistributedEnable(enable).then(() => {
 });
 ```
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
 设置指定应用是否支持分布式通知。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3585,11 +3597,15 @@ let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
 ```
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
 设置指定应用是否支持分布式通知。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3665,11 +3681,15 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
 根据应用的包获取应用程序是否支持分布式通知。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3743,11 +3763,15 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 查询指定应用是否支持分布式通知。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3820,11 +3844,15 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 });
 ```
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 获取通知的提醒方式。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3888,11 +3916,15 @@ let getDeviceRemindTypeCallback = (err: BusinessError | null, data: notification
 notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
 ```
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 获取通知的提醒方式。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5023,13 +5055,17 @@ notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
 });
 ```
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
 
 ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, callback: AsyncCallback\<void\>): void
 
 设置是否将通知同步到未安装应用程序的设备(callback形式)。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5102,13 +5138,17 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null): 
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
 ```
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
 
 ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): Promise\<void>
 
 设置是否将通知同步到未安装应用程序的设备(Promise形式)。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5180,13 +5220,17 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 });
 ```
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<boolean>): void
 
 ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCallback\<boolean>): void
 
 获取同步通知到未安装应用程序设备的开关是否开启(callback形式)。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5253,13 +5297,17 @@ let getSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null, d
 notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotificationEnabledWithoutAppCallback);
 ```
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 获取同步通知到未安装应用程序设备的开关是否开启(Promise形式)。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
