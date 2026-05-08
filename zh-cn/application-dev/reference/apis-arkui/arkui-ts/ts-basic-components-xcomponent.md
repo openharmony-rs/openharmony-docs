@@ -241,7 +241,7 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false<br/>ArkTS-Sta模式下可不传，不传时使用默认值false。 |
 
   > **说明：**
   >
@@ -267,7 +267,7 @@ ArkTS-Sta: enableSecure(isSecure: boolean | undefined)
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| isSecure | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启隐私图层模式。<br/>true：开启隐私图层模式；false：关闭隐私图层模式。<br/>默认值：false |
+| isSecure | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启隐私图层模式。<br/>true：开启隐私图层模式；false：关闭隐私图层模式。<br/>默认值：false。<br/>ArkTS-Sta模式下可不传，不传时使用默认值false。 |
 
   > **说明：**
   >
@@ -328,7 +328,7 @@ ArkTS-Sta: hdrBrightness(brightness: double | undefined, type?: HdrType)
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | ArkTS-Dyn: number <br/>ArkTS-Sta: double \| undefined | 是  | HDR视频的亮度。取值范围为0.0到1.0。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。|
+| brightness | ArkTS-Dyn: number <br/>ArkTS-Sta: double \| undefined | 是  | HDR视频的亮度。取值范围为0.0到1.0。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。<br/>默认值：1.0。<br/>ArkTS-Sta模式下可不传，不传时使用默认值1.0。|
 | type | [HdrType](#hdrtype24枚举说明) | 否   | 播放HDR视频时的HDR类型。<br/>默认值: HdrType.DEFAULT|
 
 ## HdrType<sup>24+</sup>枚举说明
@@ -376,7 +376,7 @@ ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent持有的Surface创建后回调事件。 |
+| callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent持有的Surface创建后回调事件。<br/>ArkTS-Sta模式下可不传。 |
 
 ### onDestroy
 
@@ -398,7 +398,7 @@ ArkTS-Sta: onDestroy(event: VoidCallback | undefined)
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| event | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent销毁后回调事件。 |
+| event | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent销毁后回调事件。<br/>ArkTS-Sta模式下可不传。 |
 
 ## OnNativeLoadCallback<sup>18+</sup>
 
@@ -931,7 +931,7 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 <!--RP1-->
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)。
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。
 <!--RP1End-->
 
 ```ts
@@ -1063,7 +1063,7 @@ struct XComponentExample {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
 
 ```ts
 // xxx.ets
@@ -1222,7 +1222,7 @@ struct Index {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
 
 ```ts
 // xxx.ets

@@ -86,6 +86,7 @@
 | PNG_METADATA | 19    | PNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | JFIF_METADATA | 20    | JFIF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | TIFF_METADATA | 21    | TIFF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| XMP_METADATA | 22    | XMP图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | AVIS_METADATA | 23    | AVIS图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## ScaleMode<sup>9+</sup>
@@ -742,3 +743,22 @@
 | SOFT   | 2    | 柔焦模式。 |
 | MONO   | 3    | 黑白模式。 |
 
+## XMPTagType
+
+枚举，XMP标签类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称            | 值   | 说明                                                                 |
+| --------------- | ---- | ------------------------------------------------------------------- |
+| UNKNOWN         | 0    | 未知类型。                                                           |
+| STRING          | 1    | 字符串类型。                                                         |
+| UNORDERED_ARRAY | 2    | 无序数组类型。序列化时，此类型在XMP元数据中的格式为\<rdf:Bag>。          |
+| ORDERED_ARRAY   | 3    | 有序数组类型。序列化时，此类型在XMP元数据中的格式为\<rdf:Seq>。          |
+| ALTERNATE_ARRAY | 4    | 备选数组类型。序列化时，此类型在XMP元数据中的格式为\<rdf:Alt>。          |
+| ALTERNATE_TEXT  | 5    | 多语言文本类型。序列化时，此类型为XMP格式的xml:lang限定符组成的备选数组。 |
+| STRUCTURE       | 6    | 结构体类型。不同于数组元素，结构体字段可以属于不同的命名空间。            |
