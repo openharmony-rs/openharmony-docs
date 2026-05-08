@@ -198,16 +198,19 @@
 5. 通过串口写入数据。
 
    <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 向串口写入数据
    try {
-     let writeData: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05]);
-     let writeLen: number = await port.write(writeData, 1000);
-     console.info('Write success, length: ' + writeLen);
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to write data: ${JSON.stringify(e)}`);
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     const data = new Uint8Array([0x48, 0x65, 0x6C, 0x6C, 0x6F]);
+     const writeLen = await this.port.write(data);
+     console.info(`${TAG} write success, length: ${writeLen}`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} write failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
