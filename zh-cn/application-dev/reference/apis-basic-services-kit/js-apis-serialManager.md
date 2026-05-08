@@ -130,7 +130,9 @@ function hasSerialRight() {
 
 ## serialManager.requestSerialRight
 
-requestSerialRight(portId: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: requestSerialRight(portId: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。
 
@@ -178,7 +180,7 @@ function requestSerialRight() {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -458,7 +460,9 @@ function setAttribute() {
 
 ## serialManager.read
 
-read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+ArkTS-Dyn: read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 从串口设备异步读取数据。使用Promise异步回调。
 
@@ -468,15 +472,15 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
 | 类型                    | 说明             |
 |-----------------------|----------------|
-| Promise&lt;number&gt; | Promise对象，返回读取数据长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回读取数据长度。 |
 
 **错误码：**
 
@@ -510,7 +514,7 @@ function read() {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -535,7 +539,7 @@ function read() {
 
   // 异步读取
   let readBuffer: Uint8Array = new Uint8Array(64);
-  serialManager.read(portId, readBuffer, 2000).then((size: number) => {
+  serialManager.read(portId, readBuffer, 2000).then((size: int) => {
     console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
   }).catch((error: Error) => {
     console.error('read usbSerial error, ' + JSON.stringify(error));
@@ -639,7 +643,9 @@ function readSync() {
 
 ## serialManager.write
 
-write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+ArkTS-Dyn: write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 向串口设备异步写数据，每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。
 
@@ -649,15 +655,15 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
 
 **返回值：**
 
 | 类型                    | 说明          |
 |-----------------------|-------------|
-| Promise&lt;number&gt; | Promise对象，返回写入数据长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
 
 **错误码：**
 
@@ -692,7 +698,7 @@ function write() {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -717,7 +723,7 @@ function write() {
 
   // 异步写入
   let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-  serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
+  serialManager.write(portId, writeBuffer, 2000).then((size: int) => {
     console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
   }).catch((error: Error) => {
     console.error('write usbSerial error, ' + JSON.stringify(error));
