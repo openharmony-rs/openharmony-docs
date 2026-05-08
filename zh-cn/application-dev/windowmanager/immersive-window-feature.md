@@ -225,7 +225,7 @@ private async initializeMainWindow(windowStage: window.WindowStage): Promise<voi
 }
 ```
 
-2.
+2.获取和监听窗口避让区域可以通过使用接口或使用响应式环境变量装饰器来实现
 ### 使用接口实现
 使用[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取当前窗口避让区域（此处以状态栏、底部导航区域为例）。使用[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听避让区域的动态变化，在避让区域更新时同时更新应用内布局。
 
