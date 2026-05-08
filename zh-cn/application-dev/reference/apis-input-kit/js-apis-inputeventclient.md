@@ -256,7 +256,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 1. 鼠标按键只能在抬起状态下被按下。
 2. 鼠标按键只能在被按下后才能抬起。
-3. 有效的轴事件序列必须先开始，包含零个或多个更新，然后结束。
+3. 有效的轴事件序列必须先调用 beginAxis 开始事件，然后调用零次或多次 updateAxis 更新事件，最后调用 endAxis 结束事件。
 4. 同一时间只能有一个进行中的轴事件序列。
 
 ### moveTo
