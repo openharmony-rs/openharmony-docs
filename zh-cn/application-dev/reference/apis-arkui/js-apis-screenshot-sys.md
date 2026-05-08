@@ -49,18 +49,18 @@ import { screenshot } from '@kit.ArkUI';
 | displayId | number        | 否 | 是   | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 |
 | isNotificationNeeded| boolean        | 否 | 是   | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。   |
 | isCaptureFullOfScreen | boolean        | 否 | 是   | 表示是否截取当前物理屏上所有DisplayId对应的逻辑屏。对于一个物理屏上有多个DisplayId的场景，true表示截取整个物理屏，false表示只截取DisplayId所在区域的逻辑屏。默认值为false。 |
-| displayIntent<sup>24+</sup> | [DisplayIntentType](#displayintenttype-24)        | 否 | 是   | 表示截取图像的显示意图类型。CANONICAL表示截图以标准显示属性进行渲染。LOCAL表示截图以本地显示属性进行渲染。默认值为CANONICAL。 |
+| displayIntent<sup>24+</sup> | [DisplayIntentType](#displayintenttype-24)        | 否 | 是   | 表示截取图像的渲染方式。CANONICAL表示截图以标准显示属性进行渲染。LOCAL表示截图以本地显示属性进行渲染。默认值为CANONICAL。 |
 
 ## DisplayIntentType <sup>24+</sup>
 
-截取图像的显示意图类型枚举。
+截取图像的渲染方式枚举。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CANONICAL | 0 | 表示指定截图以标准显示属性进行渲染，以优化在HDR显示器上的输出效果。|
-| LOCAL | 1 | 表示指定截图以本地显示属性进行渲染，以优化在捕获显示器上的显示效果。|
+| LOCAL | 1 |表示指定截图以当前显示属性进行渲染，以优化在被截图的显示器上的显示效果。|
 
 ## Size
 
