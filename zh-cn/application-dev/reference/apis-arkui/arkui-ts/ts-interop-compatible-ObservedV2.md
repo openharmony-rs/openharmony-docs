@@ -1,4 +1,4 @@
-# enableCompatibleObservedV2ForStatic\<T\> (ArkTS-Sta)
+# enableCompatibleObservedV2ForStatic (ArkTS-Sta)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

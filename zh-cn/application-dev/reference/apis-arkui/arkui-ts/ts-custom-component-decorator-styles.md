@@ -1,4 +1,4 @@
-# @Styles: 组件重用样式
+# @Styles：组件重用样式
 
 \@Styles装饰器可以将多条样式设置提炼成一个方法，直接在组件声明的位置调用。通过\@Styles装饰器可以快速定义并复用自定义样式。开发指南参考：[\@Styles装饰器：定义组件重用样式](../../../ui/state-management/arkts-style.md)。
 

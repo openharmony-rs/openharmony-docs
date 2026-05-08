@@ -1,4 +1,10 @@
-# @ohos.arkui.stateManagement (状态管理)
+# @ohos.arkui.stateManagement (状态管理) (ArkTS-Sta)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926; @liwenzhen3-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 状态管理模块提供了应用程序动态刷新、UI数据存储、使能数据观察等能力。
 
