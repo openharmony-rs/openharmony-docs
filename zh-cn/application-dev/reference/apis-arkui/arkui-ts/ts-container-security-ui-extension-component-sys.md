@@ -26,7 +26,7 @@ ArkTS-Dyn: SecurityUIExtensionComponent(want: [Want](../../apis-ability-kit/js-a
 
 ArkTS-Sta: SecurityUIExtensionComponent(want: [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want), options?: [SecurityUIExtensionOptions](#securityuiextensionoptions)): SecurityUIExtensionComponentAttribute
 
-创建SecurityUIExtensionComponent组件，用于嵌入显示远程UIExtensionAbility提供的UI。
+创建SecurityUIExtensionComponent组件，用于嵌入显示远程[UIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)提供的UI。
 
 **起始版本：** 26.0.0
 
