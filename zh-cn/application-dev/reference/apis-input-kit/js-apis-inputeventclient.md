@@ -53,6 +53,7 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -65,7 +66,7 @@ struct Index {
             .then(keyboardController => {
               console.info('Succeeded in creating keyboard controller');
             })
-            .catch(error => {
+            .catch((error: BusinessError) => {
               console.error(`Failed to create keyboard controller. Code: ${error.code}, message: ${error.message}.`);
             });
         })
