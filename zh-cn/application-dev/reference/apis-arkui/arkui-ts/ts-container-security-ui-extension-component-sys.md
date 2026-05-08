@@ -49,7 +49,7 @@ SecurityUIExtensionComponent(want: [Want](../../apis-ability-kit/js-apis-app-abi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26
+**起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
