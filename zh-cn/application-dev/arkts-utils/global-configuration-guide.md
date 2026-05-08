@@ -1,7 +1,7 @@
 # 全局配置项功能场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -132,7 +132,7 @@
                  try {
                    config.login(this.input);
                  } catch (e) {
-                   console.info('login failed');
+                   console.error('login failed');
                  }
                }
              })
@@ -150,7 +150,7 @@
                  try {
                    config.logout();
                  } catch (e) {
-                   console.info('logout failed');
+                   console.error('logout failed');
                  }
                }
              })

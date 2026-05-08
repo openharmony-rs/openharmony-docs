@@ -67,7 +67,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported.[since 26] |
+| 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>Applicable versions: 26.0.0+|
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
 | 32390006 | Parameter error.|
@@ -140,7 +140,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported.[since 26] |
+| 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>Applicable versions: 26.0.0+|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -207,7 +207,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported.[since 26] |
+| 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>Applicable versions: 26.0.0+|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
