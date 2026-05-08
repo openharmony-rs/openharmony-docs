@@ -88,7 +88,7 @@ DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 onError(callback: ErrorCallback): DynamicComponentAttribute
 
-DynamicComponent运行过程中发生异常时触发该回调（不包含与DynamicAbility断连场景）。
+DynamicComponent运行过程中发生异常时触发该回调。
 
 **起始版本：** 26.0.0
 
