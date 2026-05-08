@@ -39,13 +39,13 @@ class calc {
 
 **为什么要使用它们？**
 1. 极致性能：对于图像处理、复杂数学运算、物理引擎等计算密集型任务，C++的执行效率远高于脚本语言。
-2. 复用既有库：可以直接调用已有的C/C++三方库（如 OpenCV、FFmpeg 等），无需用ArkTS重写。
+2. 复用既有库：可以直接调用已有的C/C++三方库（如OpenCV、FFmpeg等），无需用ArkTS重写。
 3. 访问系统底层：某些底层硬件接口或操作系统特定的API只能通过C/C++访问。
 
 **它们是如何工作的？**
 1. 声明：在ArkTS中通过native关键字告诉编译器：“这个函数我先写在这，但它的代码在别处”。
 2. 加载：通过loadLibrary加载编译好的.so动态链接库。
-3. 绑定（Binding）：这是最关键的一步，程序运行期间需要将ArkTS的函数名与C++中的函数指针进行一一对应。ANI提供的 `Bind` 系列API执行这种“映射”操作。
+3. 绑定（Binding）：这是最关键的一步，程序运行期间需要将ArkTS的函数名与C++中的函数指针进行一一对应。ANI提供的`Bind`系列API执行这种“映射”操作。
 4. 执行：当你在ArkTS中调用该函数时，虚拟机（VM）会暂停当前的脚本执行，跳转到对应的C++代码中运行，完成后再带回结果。
 
 **绑定native函数的过程涉及几个关键步骤：**
@@ -94,7 +94,7 @@ void nativeNamespaceFunction(ani_env* env, ...);
 ### 1.1.2 绑定类中的方法
 
 下面的代码展示如何将ArkTS中声明的native method与对应的C++实现绑定。
-为了保证在使用`Class_BindNativeMethods`的时候有正确的函数签名，可以先对 ABC 文件进行反汇编。
+为了保证在使用`Class_BindNativeMethods`的时候有正确的函数签名，可以先对ABC文件进行反汇编。
 
 **ArkTS代码**：
 ```ts
@@ -261,8 +261,8 @@ function foo(a: int, b: int = 3): void
 
 ### 1.2 类加载失败诊断
 
-`FindClass`失败时可能会返回错误码`ANI_PENDING_ERROR`，意味着在加载对应class的时候抛出了error。这种情况通常是由于使用了损坏的或不兼容的 ABC 文件所导致：
-* 使用了旧版本的 ABC 文件与较新的 etsstdlib.abc 不兼容。
+`FindClass`失败时可能会返回错误码`ANI_PENDING_ERROR`，意味着在加载对应class的时候抛出了error。这种情况通常是由于使用了损坏的或不兼容的ABC文件所导致：
+* 使用了旧版本的ABC文件与较新的etsstdlib.abc不兼容。
 * 运行时新版本包含了不兼容的改动，需要重新编译托管代码。
 
 通常会抛出`LinkerUnresolvedClassError`异常，在托管代码的堆栈跟踪中可见：
@@ -277,7 +277,7 @@ at std.core.LinkerUnresolvedClassError.<ctor> (<unknown>:36)
 ---
 ### 1.2.1 `loadLibrary`用法
 
-ArkTS 1.2使用模块和类的延迟初始化。在实践中，这意味着静态块和 top 级语句仅在第一次访问作为类或模块一部分定义的实体之前执行。考虑以下示例：
+ArkTS 1.2使用模块和类的延迟初始化。在实践中，这意味着静态块和top级语句仅在第一次访问作为类或模块一部分定义的实体之前执行。考虑以下示例：
 
 ```ts
 loadLibrary("libraryName")
@@ -287,7 +287,7 @@ export function foo(): void {
 }
 native function fooImpl(arg: int): void
 ```
-这里`loadLibrary`作为 top 级语句添加，因此它将在第一次调用`foo`或`fooImpl`之前执行。
+这里`loadLibrary`作为top级语句添加，因此它将在第一次调用`foo`或`fooImpl`之前执行。
 
 ### 1.2.2 设备缺少ABC加载
 
@@ -312,8 +312,8 @@ hdc file send bootpath.json /system/framework/bootpath.json
 
 ## 2 名称修饰符（Mangling）规则
 
-**Mangling** 是对 ArkTS/ETS 中的类型与函数签名进行编码的规则，用于在运行时唯一标识一个方法，包括区分函数的重载。
-Mangling 结果是一段字符串，拼接了参数类型和返回类型的编码。
+**Mangling** 是对ArkTS/ETS中的类型与函数签名进行编码的规则，用于在运行时唯一标识一个方法，包括区分函数的重载。
+Mangling结果是一段字符串，拼接了参数类型和返回类型的编码。
 基本格式如下：
 
 ```
@@ -330,7 +330,7 @@ class method{
 }
 ```
 
-对应的 ANI 调用：
+对应的ANI调用：
 ```cpp
 // number -> double -> 'd'
 Object_CallMethodByName_Int(obj, "toInt", "d:i", &result);
@@ -346,7 +346,7 @@ Object_CallMethodByName_Int(obj, "toInt", "C{std.core.String}:i", &result);
 
 ### 2.2.1 原始值类型（Primitive Types）
 
-| ArkTS 类型 | mangling | ANI C 类型     |
+| ArkTS类型 | mangling | ANI C类型     |
 |------------|------|---------------|
 | `boolean`  | `z`  | `ani_boolean` |
 | `byte`     | `b`  | `ani_byte`    |
@@ -359,35 +359,35 @@ Object_CallMethodByName_Int(obj, "toInt", "C{std.core.String}:i", &result);
 | `number`   | `d`  | `ani_double`  |
 
 > 注意
-> - ArkTS 中的 `number` 是 `double` 的别名
-> - 仅在**非泛型、非可选、非 union** 情况下直接使用原始编码，否则会装箱成 `C{std.core.<类型名>}`
+> - ArkTS中的`number`是`double`的别名
+> - 仅在 **非泛型、非可选、非union** 情况下直接使用原始编码，否则会装箱成`C{std.core.<类型名>}`
 
 ### 2.2.2 特殊值类型
 
-| ArkTS 类型   | 编码 | 说明                                  |
+| ArkTS类型   | 编码 | 说明                                  |
 |--------------|------|---------------------------------------|
-| `undefined`  | `U`  | 独立类型时表示 Any，在 union 中会被移除 |
+| `undefined`  | `U`  | 独立类型时表示Any，在union中会被移除 |
 | `null`       | `C{std.core.Null}` | 运行时唯一实例类型                 |
 
 ---
 
 ### 2.3 引用类型Mangling
 
-| ArkTS 类型示例               | mangling格式                     | 说明                       |
+| ArkTS类型示例               | mangling格式                     | 说明                       |
 |------------------------------|------------------------------|----------------------------|
-| `class CustomCls`            | `C{example.CustomCls}`       | 类或接口，`C{}` 包含运行时全名 |
+| `class CustomCls`            | `C{example.CustomCls}`       | 类或接口，`C{}`包含运行时全名 |
 | `interface CustomIface`      | `C{example.CustomIface}`     | 同上                       |
 | `string`                     | `C{std.core.String}`         | 标准库类型                 |
-| `bigint`                     | `C{std.core.BigInt}`         | std.core 标准库类型        |
-| `Array`                      | `C{std.core.Array}`          | std.core 标准库类型        |
-| `Partial<T>`                 | `P{RuntimeName}`             | Partial 类型               |
+| `bigint`                     | `C{std.core.BigInt}`         | std.core标准库类型        |
+| `Array`                      | `C{std.core.Array}`          | std.core标准库类型        |
+| `Partial<T>`                 | `P{RuntimeName}`             | Partial类型               |
 | `FixedArray<double>`         | `A{d}`                       | 固定数组，元素用类型编码表示 |
 | `()=>void`                   | `C{std.core.Function0}`      | 函数对象，数字为必需参数个数 |
 | `(...args: double[])=>void`  | `C{std.core.FunctionR0}`     | 带剩余参数的函数对象        |
 
 ### 2.3.1 数组类型
 
-据ArkTS 规范的`3.16.1 Resizeble Array Types`的描述，`T[]`和`Array<T>`表示的是相同的类型。因此，它们在底层都会被等价转换为`C{std.core.Array}`
+据ArkTS规范的`3.16.1 Resizeble Array Types`的描述，`T[]`和`Array<T>`表示的是相同的类型。因此，它们在底层都会被等价转换为`C{std.core.Array}`
 
 ```ts
 function foo(a: string[], b: Array<Int>): void  // "C{std.core.Array}C{std.core.Array}:"
@@ -395,7 +395,7 @@ function foo(a: string[], b: Array<Int>): void  // "C{std.core.Array}C{std.core.
 
 ### 2.3.2 固定数组类型
 
-| ArkTS 数组 | Mangling |
+| ArkTS数组 | Mangling |
 |-------------------------------|-------------------------|
 | `FixedArray<int>`             | `A{i}`                  |
 | `FixedArray<FixedArray<int>>` | `A{A{i}}`               |
@@ -411,17 +411,17 @@ function foo(a: string[], b: Array<Int>): void  // "C{std.core.Array}C{std.core.
 X{ <Mangling1> <Mangling2> ... }
 ```
 规则：
-1. `undefined` 在运行时 union 表示中移除
+1. `undefined`在运行时union表示中移除
 2. 值类型会自动装箱成对应类类型
 3. 泛型类型替换为其约束
-4. 各 constituent type 按 **编码字典序** 排序
+4. 各constituent type按**编码字典序**排序
 
 **例子1：**
 ```ts
 type tsType = string | number | undefined
 ```
 步骤：
-1. 去除 `undefined` → `string | number`
+1. 去除`undefined` → `string | number`
 2. `number` → `C{std.core.Double}`
 3. 排序 → `"X{C{std.core.Double}C{std.core.String}}"`
 
@@ -444,9 +444,9 @@ const char *T3 = "X{A{X{C{app.I1}C{app.I2}}}C{std.core.Array}C{app.I1}C{app.I2}}
 ### 2.5 主要Mangling规则
 
 1. **分隔参数和返回类型**
-    - 使用 `:` 来分隔参数和返回类型，例如 `dd:i`（两个双精度浮点数，返回整数）。
+    - 使用`:`来分隔参数和返回类型，例如`dd:i`（两个双精度浮点数，返回整数）。
 
-2. **无参数的 `void` 返回类型**
+2. **无参数的`void`返回类型**
     - 无参数：`:`
     - 如果没有参数，参数部分可以省略，但返回类型是必需的。
 
@@ -456,10 +456,10 @@ const char *T3 = "X{A{X{C{app.I1}C{app.I2}}}C{std.core.Array}C{app.I1}C{app.I2}}
 
 4. **数组格式**
     - 一维数组：`A{元素类型}`
-    - 多维数组：每增加一维就嵌套一个 `A`，例如 `A{A{I}}`
+    - 多维数组：每增加一维就嵌套一个`A`，例如`A{A{I}}`
 
 5. **泛型类型**
-    - 映射到类型约束。默认类型约束是 `Object | null | undefined`，在签名中对应 `C{std.core.Object}`
+    - 映射到类型约束。默认类型约束是`Object | null | undefined`，在签名中对应`C{std.core.Object}`
     - 不会直接影响Mangling
 
 6. **可选参数（装箱）**
@@ -469,8 +469,8 @@ const char *T3 = "X{A{X{C{app.I1}C{app.I2}}}C{std.core.Array}C{app.I1}C{app.I2}}
     - 非基本类型的可选类型保持不变
 
 7. **函数作为参数**
-    - 使用 `C{std.core.FunctionN}`，其中 `N` 是参数数量
-    - 使用 `C{std.core.FunctionRN}`，其中 `R` 表示函数带有剩余参数
+    - 使用`C{std.core.FunctionN}`，其中`N`是参数数量
+    - 使用`C{std.core.FunctionRN}`，其中`R`表示函数带有剩余参数
 
 ---
 
@@ -520,16 +520,16 @@ typedef float    ani_float;    // 单精度浮点型    ETS声明：float
 typedef double   ani_double;   // 双精度浮点型    ETS声明：double/number
 ```
 
-`number` 是 `double` 类型的别名。
+`number`是`double`类型的别名。
 
-> 由于 `ani_boolean` 是 `uint8_t` 而非 `bool`，所以不能直接使用 `cout` 或别的 C++ 流 API 进行打印。在输出之前，需要将其转换为 `int` 类型。
+> 由于`ani_boolean`是`uint8_t`而非`bool`，所以不能直接使用`cout`或别的C++ 流API进行打印。在输出之前，需要将其转换为`int`类型。
 
 ### 3.2 扩展类型
 
 | 类型定义 | 描述 | 补充说明 |
 | ------------------- | ------------------------- | ----------------------------------------------- |
 | `ani_ref`           | ani`object`的基类型        |                                                 |
-| `ani_object`        | 任何非基本类型             | 不包括像 `ani_int` 这样的基本类型                 |
+| `ani_object`        | 任何非基本类型             | 不包括像`ani_int`这样的基本类型                 |
 | `ani_error`         | `Error`                   |                                                 |
 | `ani_fn_object`     | `Function/()=>void`       |                                                 |
 | `ani_arraybuffer`   | `ArrayBuffer`             |                                                 |
@@ -538,13 +538,13 @@ typedef double   ani_double;   // 双精度浮点型    ETS声明：double/numbe
 | `ani_array`         | `T[]`                     | 等价于`Array<T>`                                 |
 
 
-如果函数参数期望的是 `ani_ref` 或 `ani_object`，需要传递一个 `ani_int` 类型的值，则需要将其装箱为 `ani_ref`。请参阅[4.1节](#411-装箱类型)。
+如果函数参数期望的是`ani_ref`或`ani_object`，需要传递一个`ani_int`类型的值，则需要将其装箱为`ani_ref`。请参阅[4.1节](#411-装箱类型)。
 
 ### 3.3 类型转换
 
-如果以下继承链上的类型存在父子关系，则可以使用 `static_cast` 进行转换。此链之外的类型不能转换为 `ani_ref` 或 `ani_object`。一个典型的例子是 `ani_method`。
+如果以下继承链上的类型存在父子关系，则可以使用`static_cast`进行转换。此链之外的类型不能转换为`ani_ref`或`ani_object`。一个典型的例子是`ani_method`。
 
-然而，这种转换必须确保该类型在 ETS 运行时层是可用的。例如，将一个 `ani_string` 转换为 `ani_ref` 后，再尝试将其当作 `ani_array` 使用，将会导致运行时崩溃。
+然而，这种转换必须确保该类型在ETS运行时层是可用的。例如，将一个`ani_string`转换为`ani_ref`后，再尝试将其当作`ani_array`使用，将会导致运行时崩溃。
 
 ```
 ani_ref
@@ -573,15 +573,15 @@ ani_ref
 │       ├── ani_fixedarray_double
 │       └── ani_fixedarray_ref
 ```
-例如 `auto str = static_cast<ani_string>(string_ref);`
+例如`auto str = static_cast<ani_string>(string_ref);`
 
-- 如何将 `ani_int` / `ani_double` 等基本类型转换为 `ani_ref`？
+- 如何将`ani_int` / `ani_double`等基本类型转换为`ani_ref`？
 
 请参考[第4.1节](#411-装箱类型)中的“装箱”过程。
 
 ### 3.4 类型识别：Object_InstanceOf
 
-参数中的 `ani_object` 代表所有类型。如果存在像 `A | B` 这样的联合类型参数，则必须使用 `Object_InstanceOf` 来识别实际类型。
+参数中的`ani_object`代表所有类型。如果存在像`A | B`这样的联合类型参数，则必须使用`Object_InstanceOf`来识别实际类型。
 
 ```ts
 type DataType = string | ArrayBuffer | FixedArray<int> | FixedArray<string>
@@ -641,12 +641,12 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
 
 ### 4.1 基本类型
 
-- 从语言层面来看，ArkTS 1.2 仅包含基本类型的装箱版本。
+- 从语言层面来看，ArkTS 1.2仅包含基本类型的装箱版本。
 - 从运行时角度来看，当基本类型被指定为非泛型参数、返回值或字段类型时，会使用基本类型进行优化。
 
 ### 4.1.1 装箱类型
 
-| ANI 基本类型 | 装箱类 | Mangling  | 绑定/ANI 类型 | 说明 |
+| ANI基本类型 | 装箱类 | Mangling  | 绑定/ANI类型 | 说明 |
 | ------------------ | ----------- | --------------------- | ---------------- | ------------------- |
 |   `ani_boolean`    | `Boolean`   | `C{std.core.Boolean}` | `ani_object`     | Boxed boolean       |
 |   `ani_byte`       | `Byte`      | `C{std.core.Byte}`    | `ani_object`     | Boxed byte          |
@@ -661,19 +661,19 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
 
 可以参考[第5.1节](#51-查询标准类的方法)来查询这些装箱类型及其对应模块的方法。
 
-如果函数参数的名称修饰（mangling）是 `C{std.core.Object}`，则它只接受类实例。例如，`Array<T>` 方法 `$_set(i: int, val: T): void` 的Mangling为 `iC{std.core.Object}:`，其中第二个参数必须是类实例。
+如果函数参数的名称修饰（mangling）是`C{std.core.Object}`，则它只接受类实例。例如，`Array<T>`方法`$_set(i: int, val: T): void`的Mangling为`iC{std.core.Object}:`，其中第二个参数必须是类实例。
 
-在这种情况下，基本类型的值（如 `int` 或 `double`）需要进行装箱（转换为 `Int` 或 `Double`）。根据第3.3节，得到的 `ani_object` 也可以转换为 `ani_ref` 以满足函数要求。
+在这种情况下，基本类型的值（如`int`或`double`）需要进行装箱（转换为`Int`或`Double`）。根据第3.3节，得到的`ani_object`也可以转换为`ani_ref`以满足函数要求。
 
-同样，`A{C{std.core.Object}}` 表示类实例的固定数组。
+同样，`A{C{std.core.Object}}`表示类实例的固定数组。
 
 ### 4.1.2 装箱
 
 目的：
 1. 满足函数参数类型要求。
-2. 将基本类型的值转换为类实例（例如，将 `ani_int` 转换为 `ani_object`）。
+2. 将基本类型的值转换为类实例（例如，将`ani_int`转换为`ani_object`）。
 
-在托管代码中，对于可选参数，装箱操作会自动进行。省略可选基本类型的值默认为 `undefined`。在原生（native）代码中，必须显式传递参数。
+在托管代码中，对于可选参数，装箱操作会自动进行。省略可选基本类型的值默认为`undefined`。在原生（native）代码中，必须显式传递参数。
 
 **快速装箱接口：**
 
@@ -681,7 +681,7 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
 | --- | --- |
 | `Primitive_Box_<Type>` | 将ANI基本数据类型装箱为对应的类对象 |
 
-其中 `<Type>` 为待装箱的数据类型。
+其中`<Type>`为待装箱的数据类型。
 
 示例：
 
@@ -701,7 +701,7 @@ ani_object createDouble(ani_env *env)
 
 **传统装箱方式：**
 
-通过 `Object_New` 接口创建 `std.core.<Type>` 的类对象。
+通过`Object_New`接口创建`std.core.<Type>`的类对象。
 
 示例：
 
@@ -725,7 +725,7 @@ ani_object createDouble(ani_env *env)
 }
 ```
 
-你可以通过 `Class_FindMethod` 的 `signature` 参数来选择所需的构造函数重载版本。
+你可以通过`Class_FindMethod`的`signature`参数来选择所需的构造函数重载版本。
 
 ### 4.1.3 拆箱
 
@@ -741,17 +741,17 @@ ani_object createDouble(ani_env *env)
 ani_double doubleVal {};
 env->Primitive_Unbox_Double(doubleObj, &doubleVal);
 ```
-开发者需要保证传入的装箱对象类型与调用的拆箱接口类型一致，如传入 `Double` 类型装箱对象则调用 `Primitive_Unbox_Double` 接口。
+开发者需要保证传入的装箱对象类型与调用的拆箱接口类型一致，如传入`Double`类型装箱对象则调用`Primitive_Unbox_Double`接口。
 
 **传统拆箱方式：**
 
-使用 `to<Type>` 方法来提取基本类型的值，其中 `<Type>` 为对应的数据类型：
+使用`to<Type>`方法来提取基本类型的值，其中`<Type>`为对应的数据类型：
 
 ```cpp
 Object_CallMethodByName_Double(boxed_double_obj, "toDouble", ":d", &unboxed_value)
 ```
 
-`Double` 由装箱对象的返回类型决定。Mangling `:d` 表示返回一个 `double` 类型的值。
+`Double`由装箱对象的返回类型决定。Mangling `:d`表示返回一个`double`类型的值。
 
 示例：
 ```ts
@@ -771,10 +771,10 @@ void HandleDataImpl(ani_env *env, ani_object param)
 
 - 除了`FixedArray`外，所有泛型类型在运行时都会被擦除。
 - 在字节码中，类型参数会被编译为其类型约束。
-- 默认的类型约束是 `Object | null | undefined`。
+- 默认的类型约束是`Object | null | undefined`。
 - 基本类型作为类型参数使用时总是会被装箱。
 
-| ArkTS 类型 | 示例 | Mangling | 绑定/ANI 类型 | 补充说明 |
+| ArkTS类型 | 示例 | Mangling | 绑定/ANI类型 | 补充说明 |
 | -------------------- | ----------------- | --------------------------------------- | -------------------- | ----------------------------------- |
 | `(a: T, b: R): void` | `f(1, "str")`     | `C{std.core.Object}C{std.core.Object}:` | `ani_object`         |                                     |
 | `Array<T>`           | `Array<int>`      | `C{std.core.Array}`                     | `ani_object`         |                                     |
@@ -782,7 +782,7 @@ void HandleDataImpl(ani_env *env, ani_object param)
 
 ### 4.3 联合类型
 
-联合类型会被编译为组件的 _最小上界_，在 ANI 中对应 `ani_object`。最常见的情况是该类型为 `C{std.core.Object}`，但并非总是如此：如公共Interface为最小上界，类型为`C{some_module.I}`
+联合类型会被编译为组件的 _最小上界_，在ANI中对应`ani_object`。最常见的情况是该类型为`C{std.core.Object}`，但并非总是如此：如公共Interface为最小上界，类型为`C{some_module.I}`
 
 ```ts
 interface I {}
@@ -790,27 +790,27 @@ class C implements I {}
 function foo(arg: C | I): void  // Mangling: "X{C{some_module.I}C{some_module.C}}:"
 ```
 
-> 可选参数 `arg?: T` 始终等同于 `arg: T | undefined`，可以在[ArkTS 语言规范](#参考索引)`第4.8.4 Optional Parameters`中查看
+> 可选参数`arg?: T`始终等同于`arg: T | undefined`，可以在[ArkTS语言规范](#参考索引)`第4.8.4 Optional Parameters`中查看
 
 由于联合类型用引用表示，基本类型的值必须装箱后才能作为联合类型的一部分使用。
 
-| ETS 类型 | Mangling | 绑定/ANI 类型 | 补充说明 |
+| ETS类型 | Mangling | 绑定/ANI类型 | 补充说明 |
 | -------------------- | -------------------- | ---------------- | ---------------------- |
 | `a: double | string` | `X{C{std.core.Double}C{std.core.String}}` | `ani_object`     | 基本类型需要装箱        |
 
 **参数处理**：
 
-使用 `Object_InstanceOf` 来确定参数的实际类型并进行相应处理。请参阅[3.4 类型识别：Object_InstanceOf](#34-类型识别object_instanceof)
+使用`Object_InstanceOf`来确定参数的实际类型并进行相应处理。请参阅[3.4类型识别：Object_InstanceOf](#34-类型识别object_instanceof)
 
 ### 4.4 可选参数
 
 **Mangling**：
-1. 像 `int`、`double` 这样的基本类型会被装箱为 `Int`、`Double` 等。
+1. 像`int`、`double`这样的基本类型会被装箱为`Int`、`Double`等。
 2. 非基本类型保留其原始的Mangling。
-3. 所有可选参数都被视为包含 `undefined` 的联合类型（请参阅[ArkTS 语言规范](#参考索引) `第4.8.4 可选参数`）。
-4. 对于带有可选参数的构造函数，`.abc` 文件中存在重载构造函数。
+3. 所有可选参数都被视为包含`undefined`的联合类型（请参阅[ArkTS语言规范](#参考索引) `第4.8.4可选参数`）。
+4. 对于带有可选参数的构造函数，`.abc`文件中存在重载构造函数。
 
-| ETS 类型 | Mangling | 绑定/ANI 类型 | 补充说明 |
+| ETS类型 | Mangling | 绑定/ANI类型 | 补充说明 |
 | ------------------- | ---------------------- | ------------------ | ---------- |
 | `a: int`            | `i`                    | `ani_int`          |            |
 | `a?: int`           | `C{std.core.Int}`      | `ani_object`       | 装箱       |
@@ -821,7 +821,41 @@ function foo(arg: C | I): void  // Mangling: "X{C{some_module.I}C{some_module.C}
 
 **参数处理**：
 
-如果参数是包含 `undefined` 类型的联合类型，在原生（native）代码中访问该参数之前，必须检查它是否为 `undefined`：
+在托管代码中，可选参数可以省略；例如对`foo(arg?: T)`的调用`foo()`，编译器会按等价于调用`foo(undefined)`的语义处理。
+
+但在原生（native）代码中调用带有可选参数的函数或方法时，必须显式传递对应位置的参数；如果希望表达“该可选参数未传值”，需要显式传递`undefined`。
+
+使用示例：
+
+```ts
+class C {
+    checkOptionalString(z?: string): int {
+        if (z == undefined) {
+            return 5;
+        }
+        return 4;
+    }
+}
+```
+
+```cpp
+ani_method method {};
+env->Class_FindMethod(cls, "checkOptionalString", "C{std.core.String}:i", &method);
+
+// 1. 显式传undefined，等价于托管代码中“省略该可选参数”
+ani_ref undef {};
+env->GetUndefined(&undef);
+
+ani_int result {};
+env->Object_CallMethod_Int(obj, method, &result, undef); // obj是C的实例对象
+
+// 2. 显式传实际值
+ani_string str {};
+env->String_NewUTF8("hello", 5, &str);
+env->Object_CallMethod_Int(obj, method, &result, str);
+```
+
+如果参数是包含`undefined`类型的联合类型，在原生（native）代码中访问该参数之前，必须检查它是否为`undefined`：
 
 
 ```cpp
@@ -852,7 +886,7 @@ function foo(a: boolean, b: boolean = false): void {}
 
 ### 4.6 可变/剩余 参数
 
-可变参数是 ArkTS 中的语法糖，它将参数收集到一个数组中。
+可变参数是ArkTS中的语法糖，它将参数收集到一个数组中。
 
 ```ts
 // 签名："iA{i}:"
@@ -863,7 +897,7 @@ function foo(a: int, ...b: int[]): void
 
 ### 5.1 查询标准类的方法
 
-在 [stdlib](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/) 路径下查找所需的标准库函数。如果不确定要查询哪个类，可以反汇编 `etsstdlib.abc` 文件来确认类名和编译后的签名。
+在 [stdlib](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/) 路径下查找所需的标准库函数。如果不确定要查询哪个类，可以反汇编`etsstdlib.abc`文件来确认类名和编译后的签名。
 
 在 [ArrayBuffer.ets](https://gitcode.com/openharmony/arkcompiler_runtime_core/tree/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/std/core/ArrayBuffer.ets) 中找到 “class ArrayBuffer” 与对应的`constructor`。
 
@@ -879,25 +913,25 @@ export class ArrayBuffer extends Buffer
 ```
 
 从上述代码片段中，可以发现：
-1. 有两个构造函数。ANI识别的函数名为 `<ctor>`。第一个构造函数的mangling可以写成 `iC{std.core.Int}:`。**切勿使用`nullptr`代替构造函数签名** - 重载的methods需要通过函数签名进行区分。
-2. 名为 `isView` 的方法，参数为 `Object`，返回类型为 `boolean`。它的mangling是 `C{std.core.Object}:z`。
-3. 一个 `byteLength` 属性。
+1. 有两个构造函数。ANI识别的函数名为`<ctor>`。第一个构造函数的mangling可以写成`iC{std.core.Int}:`。**切勿使用`nullptr`代替构造函数签名** - 重载的methods需要通过函数签名进行区分。
+2. 名为`isView`的方法，参数为`Object`，返回类型为`boolean`。它的mangling是`C{std.core.Object}:z`。
+3. 一个`byteLength`属性。
 
 
 ### 5.2 查询非标准类的方法
-一个典型的例子是 枚举（enums）。ArkTS 前端在编译过程中会为枚举生成特殊的类来支持其功能。
+一个典型的例子是 枚举（enums）。ArkTS前端在编译过程中会为枚举生成特殊的类来支持其功能。
 
 这些枚举类中生成的方法和字段属于实现细节（implementation-defined），因此不可以直接访问它们，以避免因版本变化或内部结构调整导致程序出错。
 
-相反，ArkTS 提供了专门的 ANI 接口来安全地操作枚举，例如[枚举](#14-枚举)：
+相反，ArkTS提供了专门的ANI接口来安全地操作枚举，例如[枚举](#14-枚举)：
 
 - `Enum_GetEnumItemByName`：通过名称获取枚举
 - `EnumItem_GetValue_String`：获取枚举项的字符串值
 
 ### 5.3 创建类实例
-1. 使用 `FindClass` 定位类。
-2. 使用 `Class_FindMethod`，通过正确的mangling查找所需的构造函数。
-3. 使用 `Object_New` 创建对象。
+1. 使用`FindClass`定位类。
+2. 使用`Class_FindMethod`，通过正确的mangling查找所需的构造函数。
+3. 使用`Object_New`创建对象。
 
 ### 5.3.1 示例
 ```ts
@@ -931,8 +965,8 @@ ani_method ctor2 {};
 env->Class_FindMethod(cls, "<ctor>", "dd:", &ctor2);
 ```
 
-- mangling `ii:` 与 `constructor(x: int, y: int)` 匹配；
-- mangling `dd:` 与 `constructor(x: double, y: double)` 匹配。
+- mangling `ii:`与`constructor(x: int, y: int)`匹配；
+- mangling `dd:`与`constructor(x: double, y: double)`匹配。
 
 **永远不要使用nullptr代替构造函数签名**。这样做会使native代码容易出错，因为如果在托管代码中添加新的重载，原本依赖特定签名的native调用可能会意外失效或行为异常。
 
@@ -945,19 +979,19 @@ env->Object_New(cls, ctor2, &obj2, static_cast<ani_double>(1), static_cast<ani_d
 ```
 
 在这里：
-- `obj1` 是使用 `constructor(x: int, y: int)` 创建的。
-- `obj2` 是使用 `constructor(x: double, y: double)` 创建的。
+- `obj1`是使用`constructor(x: int, y: int)`创建的。
+- `obj2`是使用`constructor(x: double, y: double)`创建的。
 
 ### 5.3.2 创建ArkTS标准库类的实例
-1. `FindClass`：在 `arkcompiler/runtime_core/static_core/plugins/ets/stdlib` 下定位类。文件会声明包名，通常是 `std.core` 或 `escompat`，mangling将是 `std.core.<ClassName>` 或 `escompat.<ClassName>`。
+1. `FindClass`：在`arkcompiler/runtime_core/static_core/plugins/ets/stdlib`下定位类。文件会声明包名，通常是`std.core`或`escompat`，mangling将是`std.core.<ClassName>`或`escompat.<ClassName>`。
 2. `Class_FindMethod`：通过mangling识别目标构造函数。
 3. `Object_New`：调用此函数创建实例。
 
-> **注意**：在ANI中，以下类型**不能**使用 `Object_New` 创建：
+> **注意**：在ANI中，以下类型**不能**使用`Object_New`创建：
 - 接口类型
 - 抽象类
 - 字符串 (`ani_string`) —— 必须使用专门的ANI创建函数
-- `FixedArray<T>` 类型 —— 必须使用专门的ANI数组创建函数
+- `FixedArray<T>`类型 —— 必须使用专门的ANI数组创建函数
 
 ## 6 接口和类
 在ANI中，接口不能直接实例化。必须在类中实现它们（类实现接口）后才能使用。
@@ -965,13 +999,13 @@ env->Object_New(cls, ctor2, &obj2, static_cast<ani_double>(1), static_cast<ani_d
 
 ```ts
 interface PointI {
-    x: int // property - 默认生成 getter & setter
-    y: int // property - 默认生成 getter & setter
+    x: int // property - 默认生成getter & setter
+    y: int // property - 默认生成getter & setter
 }
 class Point implements PointI {
-    x: int // property - 默认生成 getter & setter
-    y: int // property - 默认生成 getter & setter
-    z: int // field    - 无默认的 getter & setter
+    x: int // property - 默认生成getter & setter
+    y: int // property - 默认生成getter & setter
+    z: int // field    - 无默认的getter & setter
 }
 ```
 
@@ -992,19 +1026,19 @@ env->Object_New(clsPoint, ctorPoint, &objPoint);    // 成功
 let p: PointI = { x: 1, y: 1 };
 ```
 
-前端会自动生成一个实现了 PointI 接口的类。
-不过，该类的对象属性访问实际上是通过编译器自动生成的 `getter` 和 `setter` 方法实现的，而不是直接访问字段。
+前端会自动生成一个实现了PointI接口的类。
+不过，该类的对象属性访问实际上是通过编译器自动生成的`getter`和`setter`方法实现的，而不是直接访问字段。
 
 ### 6.1 属性和字段
 
-- **属性**：带有 `get/set` 方法声明。
-- **字段**：没有 `get/set` 方法的属性。
+- **属性**：带有`get/set`方法声明。
+- **字段**：没有`get/set`方法的属性。
 - 接口中的所有属性在实现类中都会变成属性。
 
 > **在ANI中不要混淆属性和字段函数！**
 例如：
-- `Class_FindField` 不能用于属性。
-- `Object_GetPropertyByName_Boolean` 不能用于字段。
+- `Class_FindField`不能用于属性。
+- `Object_GetPropertyByName_Boolean`不能用于字段。
 
 ```ts
 interface PointI {
@@ -1025,7 +1059,7 @@ class Point implements PointI {
 | `Object_GetPropertyByName_<Type>` | get | 以原始类型检索属性 |
 | `Object_SetPropertyByName_<Type>` | set | 使用原始类型设置属性 |
 
-如果属性是引用类型，则使用 `_Ref` 后缀。
+如果属性是引用类型，则使用`_Ref`后缀。
 
 **示例:**
 
@@ -1106,7 +1140,7 @@ void ModifyPersonImpl(ani_env *env, ani_object person)
 
 ### 6.3 调用方法
 
-使用 `Object_CallMethod_<Type>`，其中`<Type>`表示返回类型。
+使用`Object_CallMethod_<Type>`，其中`<Type>`表示返回类型。
 
 **示例:**
 
@@ -1141,7 +1175,7 @@ static void NativeFuncImpl(ani_env *env, ani_object obj) {
 ```
 ### 6.4 可选方法作为可选参数
 
-ArkTS 1.2 不直接支持可选方法，可使用可选函数参数代替。
+ArkTS 1.2不直接支持可选方法，可使用可选函数参数代替。
 
 **示例:**
 ```ts
@@ -1177,20 +1211,20 @@ ani_double CallOptionalFnImpl(ani_env *env, ani_object opt, ani_double val1, ani
 
 示例：[ani_wrap_native_ptr.ets](https://gitee.com/LeechyLiang/ani_cookbook/blob/master/ani_wrap_native_ptr/ani_wrap_native_ptr.ets)
 
-## 7 回调函数/ Lambda 函数对象
+## 7 回调函数/Lambda函数对象
 
 函数对象和回调示例：[ani_fn_object/ani_fn_object.ets · LeechyLiang/ani_cookbook](https://gitee.com/LeechyLiang/ani_cookbook/blob/master/ani_fn_object/ani_fn_object.ets)
 ```cpp
 ani_status FunctionalObject_Call(ani_env *env, ani_fn_object fn, ani_size argc, ani_ref *argv, ani_ref *result)
 ```
 
-此函数要求参数以 `ani_ref` 数组形式传入。
+此函数要求参数以`ani_ref`数组形式传入。
 注意：函数对象（`functional object`）始终接受并返回装箱（boxed）的基本类型。这意味着如果你的参数是基本类型，例如`int`或者`double`，需要先将它们转换为对应的装箱类型（如`Int`,`Double`）,然后将这些对象传入数组中，并作为指针出传入。
 
 **示例:**
 
 ```cpp
-ani_object createDouble(ani_double doubleVal) { ... } // 返回一个 Double 实例，实现见第 4.1.2 节
+ani_object createDouble(ani_double doubleVal) { ... } // 返回一个Double实例，实现见第4.1.2节
 ```
 
 ```cpp
@@ -1207,15 +1241,15 @@ env->FunctionalObject_Call(show_every, ani_size(2), vec.data(), &result);
 > [! Warning] **潜在问题**
 > 在异步上下文中抛出异常可能会导致程序冻结且无法正常结束。
 > 若配置了执行超时，最终可能会自动崩溃。
-> 尝试在 `.then` 之后添加 `.catch` 并拒绝该对象，看是否能解决问题。
+> 尝试在`.then`之后添加`.catch`并拒绝该对象，看是否能解决问题。
 
-ArkTS 1.2 原生支持多任务并发，与 ArkTS 1.0 (JS) 的单线程事件循环模型有很大不同。因此，ANI 的设计鼓励将异步流程的编排放在 ArkTS 层，而不是像 NAPI 那样在 Native 层管理异步任务。
+ArkTS 1.2原生支持多任务并发，与ArkTS 1.0(JS)的单线程事件循环模型有很大不同。因此，ANI的设计鼓励将异步流程的编排放在ArkTS层，而不是像NAPI那样在Native层管理异步任务。
 
 ### NAPI 异步模式回顾
 
-NAPI 通过 `napi_create_async_work` 在 Native 层创建任务，该任务包含两部分：
-1.  `execute` 回调：在 Worker 线程执行耗时操作。
-2.  `complete` 回调：在 `execute` 完成后，回到主线程（事件循环）执行，用于处理结果并 resolve/reject Promise。
+NAPI通过`napi_create_async_work`在Native层创建任务，该任务包含两部分：
+1.  `execute`回调：在Worker线程执行耗时操作。
+2.  `complete`回调：在`execute`完成后，回到主线程（事件循环）执行，用于处理结果并resolve/reject Promise。
 
 ```mermaid
 sequenceDiagram
@@ -1245,26 +1279,26 @@ sequenceDiagram
 
 ### ANI 异步模式推荐方案
 
-在 ANI 中，推荐的模式是将异步编排放在 ArkTS 层，利用其语言特性 (`taskpool`, `Promise`) 来完成。
+在ANI中，推荐的模式是将异步编排放在ArkTS层，利用其语言特性 (`taskpool`, `Promise`) 来完成。
 
-1.  **ArkTS 层:**
-    *   在对外暴露的 `Promise` 接口内部, 创建一个新的 `Promise` 实例.
-    *   使用 `taskpool.execute()` 将耗时的 Native 方法调用放入工作线程执行.
-    *   在 `taskpool` 返回的 Promise 的 `.then()` 中, 根据 Native 方法的执行结果, 调用 `resolve` 或 `reject` 来完成最外层的 Promise.
+1.  **ArkTS层:**
+    *   在对外暴露的`Promise`接口内部, 创建一个新的`Promise`实例.
+    *   使用`taskpool.execute()`将耗时的Native方法调用放入工作线程执行.
+    *   在`taskpool`返回的Promise的`.then()`中, 根据Native方法的执行结果, 调用`resolve`或`reject`来完成最外层的Promise.
 
     ```ts
     import taskpool from '@ohos.taskpool';
 
     class MyService {
-        // Native 方法本身是同步的
+        // Native方法本身是同步的
         private native heavyTask(param: string): boolean;
 
         public async heavyTaskPromise(param: string): Promise<boolean> {
             return new Promise((resolve, reject) => {
-                // 使用 taskpool 将 native 调用放入工作线程
+                // 使用taskpool将native调用放入工作线程
                 taskpool.execute(this.heavyTask, param).then(result => {
-                    // .then() 中的代码在主线程执行
-                    // result 是 native 方法的返回值 (装箱后)
+                    // .then()中的代码在主线程执行
+                    // result是native方法的返回值 (装箱后)
                     let success = (result as Boolean).valueOf();
                     if (success) {
                         resolve(true);
@@ -1281,21 +1315,21 @@ sequenceDiagram
     }
     ```
 
-2.  **Native 层:**
+2.  **Native层:**
     *   只负责实现核心的、**同步的**耗时操作 (`heavyTask`).
-    *   无需关心线程管理和 Promise 的状态变更, 大大简化了 Native 层的逻辑.
+    *   无需关心线程管理和Promise的状态变更, 大大简化了Native层的逻辑.
 
-**实现 `AsyncCallback` 接口的方案:**
-逻辑类似, 在 `taskpool.execute(...).then()` 中调用用户传入的 `callback` 函数即可.
+**实现`AsyncCallback`接口的方案:**
+逻辑类似, 在`taskpool.execute(...).then()`中调用用户传入的`callback`函数即可.
 
 ## 9 生命周期管理
 
 ### 9.1 References生命周期
 
-所有在 C++ native 侧创建的对象都是局部引用（_local references_）。这意味着：
+所有在C++ native侧创建的对象都是局部引用（_local references_）。这意味着：
 - 它们的生命周期仅在当前调用上下文中有效；
-- 一旦退出当前 native 调用，它们可能会被垃圾回收器回收；
-- 即使你将这些引用存储到全局 C++ 对象中，也不能保证其在下次使用时仍然有效。
+- 一旦退出当前native调用，它们可能会被垃圾回收器回收；
+- 即使你将这些引用存储到全局C++对象中，也不能保证其在下次使用时仍然有效。
 **以下示例展示了将局部引用（_local reference_）错误地保存到全局变量中可能导致的问题：**
 
 ```cpp
@@ -1309,7 +1343,7 @@ void NativeFuncImpl(ani_env* env, ani_object param) {
     g_obj = newObj; // Local reference leakage, will cause UB
 }
 ```
-如果你需要创建在多次 native 函数调用之间持久存在的全局引用，可以使用`GlobalReference_Create`：
+如果你需要创建在多次native函数调用之间持久存在的全局引用，可以使用`GlobalReference_Create`：
 
 ```cpp
 ani_ref g_obj;
@@ -1333,11 +1367,11 @@ void OnExitImpl(ani_env *env) {
 - 当`global reference`不再被使用时，必须使用`GlobalReference_Delete`删除。避免内存耗尽。
 
 ### 9.2 Native线程回调中的引用管理
-在纯 Native 线程（非 Virtual Machine (VM) 调用的线程，例如定时器、传感器回调、网络线程）中触发回调时，没有 VM 自动管理的栈帧（Stack Frame）。
+在纯Native线程（非Virtual Machine (VM)调用的线程，例如定时器、传感器回调、网络线程）中触发回调时，没有VM自动管理的栈帧（Stack Frame）。
 
 这意味着：
 + 没有自动回收：在该线程中创建的任何局部引用（Local Reference），在函数返回后不会自动释放。
-+ 引用表溢出风险：如果不手动释放，这些引用会一直累积，直到线程销毁或达到引用表上限（导致 Crash）。
++ 引用表溢出风险：如果不手动释放，这些引用会一直累积，直到线程销毁或达到引用表上限（导致Crash）。
 
 **以下常见操作会产生局部引用：**
 + 创建新对象 (Object_New)
@@ -1348,12 +1382,12 @@ void OnExitImpl(ani_env *env) {
 
 **错误示范：**
 
-以下代码模拟了一个传感器数据回调。虽然逻辑看似简单，但由于未释放 ani_object data，每次回调都会泄漏一个引用，运行一段时间后必然崩溃。
+以下代码模拟了一个传感器数据回调。虽然逻辑看似简单，但由于未释放ani_object data，每次回调都会泄漏一个引用，运行一段时间后必然崩溃。
 
 ```cpp
-// 假设这是一个通过 pthread 或 std::thread 运行的后台工作函数
+// 假设这是一个通过pthread或std::thread运行的后台工作函数
 void BackgroundWorkerThread(ani_vm* vm) {
-    // 1. 线程挂载：Env 的生命周期从此开始
+    // 1. 线程挂载：Env的生命周期从此开始
     ani_env *env {nullptr};
     ani_option interopEnabled {"--interop=disable", nullptr};
     ani_options aniArgs {1, &interopEnabled};
@@ -1363,7 +1397,7 @@ void BackgroundWorkerThread(ani_vm* vm) {
     // 模拟一个长期的任务循环（例如：监听网络、传感器、渲染循环）
     while (g_isRunning) {
         // 危险操作：在此函数内新建了对象，但以为函数返回就会自动释放
-        // 实际上，因为线程没有 Detach，这些对象一直堆积在 env 的引用表中
+        // 实际上，因为线程没有Detach，这些对象一直堆积在env的引用表中
         HandleOneDataPacket(env); 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
@@ -1378,17 +1412,17 @@ void HandleOneDataPacket(ani_env* env) {
     ani_object data;
     if (env->Object_New(cls, ctor, &data) != ANI_OK) return;
 
-    // 回调 ArkTS 层
+    // 回调ArkTS层
     env->Object_CallMethod_Void(callback, method, data);
 
-    // 【错误】：没有手动 Delete。
-    // 当前场景为Native->Native回调没有手动 Delete是错误的，而在 ArkTS->Native 场景下，这里不需要 delete。
-    // 但在 BackgroundWorkerThread 中，这个 data 对象会一直存活！
+    // 【错误】：没有手动Delete。
+    // 当前场景为Native->Native回调没有手动Delete是错误的，而在ArkTS->Native场景下，这里不需要delete。
+    // 但在BackgroundWorkerThread中，这个data对象会一直存活！
 }
 ```
 **正确示范：** 
 
-使用 LocalScope 管理作用域。为了避免手动管理每个对象的麻烦，并确保安全，推荐在循环体内部或处理函数的入口/出口使用 CreateLocalScope 和 DestroyLocalScope。
+使用LocalScope管理作用域。为了避免手动管理每个对象的麻烦，并确保安全，推荐在循环体内部或处理函数的入口/出口使用CreateLocalScope和DestroyLocalScope。
 
 ```cpp
 void BackgroundWorkerThread(ani_vm* vm) {
@@ -1403,7 +1437,7 @@ void BackgroundWorkerThread(ani_vm* vm) {
         // 这样可以确保每次循环结束，产生的所有引用（无论多少）都会被清空
         env->CreateLocalScope(16); 
 
-        // 执行具体的业务逻辑（里面可能创建了 object, string, array 等）
+        // 执行具体的业务逻辑（里面可能创建了object, string, array等）
         HandleOneDataPacket(env);
 
         // 弹栈：一次性销毁本次循环中创建的所有局部引用
@@ -1417,15 +1451,15 @@ void BackgroundWorkerThread(ani_vm* vm) {
 ```
 
 ### 9.3 VM 和 env 生命周期
-- `ani_vm` 在应用启动时创建，其生命周期与应用相同。
-- 每个 `ani_env` 与协程一一对应。在 native 函数调用期间，可以保证 `ani_env` 是有效的。
+- `ani_vm`在应用启动时创建，其生命周期与应用相同。
+- 每个`ani_env`与协程一一对应。在native函数调用期间，可以保证`ani_env`是有效的。
 
-**`ani_env` 只能在其创建的线程中使用。**
-当协程结束时，`ani_env` 会被销毁，成为悬空指针。
+**`ani_env`只能在其创建的线程中使用。**
+当协程结束时，`ani_env`会被销毁，成为悬空指针。
 
-**解决方案：**使用 `AttachCurrentThread`
+**解决方案：** 使用`AttachCurrentThread`
 
-从 `env` 获取 `vm`：
+从`env`获取`vm`：
 ```cpp
 ani_vm *vm = nullptr;
 env_->GetVM(&vm);
@@ -1437,20 +1471,10 @@ env_->GetVM(&vm);
 ani_env *env = nullptr;
 ani_options aniArgs {0, nullptr};
 auto status = vm_->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
-// env 可正常使用，用于 native 调用 ArkTS 对象
+// env可正常使用，用于native调用ArkTS对象
 ```
 
-对于interop模式：
-
-```cpp
-ani_env *env {nullptr};
-ani_option interopEnabled {"--interop=enable", nullptr};
-ani_options aniArgs {1, &interopEnabled};
-auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
-// env 可用于 JS ↔ ArkTS 互操作的线程
-```
-
-2. 若线程已附加到 VM，则使用 `GetEnv`：
+2. 若线程已附加到VM，则使用`GetEnv`：
 ```cpp
 ani_env *env;
 auto status = vm->GetEnv(ANI_VERSION_1, &env);
@@ -1458,38 +1482,123 @@ auto status = vm->GetEnv(ANI_VERSION_1, &env);
 
 3. 线程结束时主动分离
 ```cpp
-env->DetachCurrentThread();
+vm->DetachCurrentThread();
 ```
 
 > 注意：
 > 1. 只有通过`AttachCurrentThread`绑定的线程才可以调用`DetachCurrentThread`。
-> 2. 使用 `AttachCurrentThread` 绑定的线程通常没有稳定的 ArkTS 类加载上下文，因此不建议在该线程中直接调用 `FindClass`、`FindModule`、`FindNamespace`、`FindEnum` 等依赖上下文查找的接口。ArkTS 运行时会优先根据当前 ArkTS 栈帧所属类的类加载上下文执行查找，而通过 `AttachCurrentThread` 附加的 native 线程通常没有 ArkTS 栈帧，因此往往缺少应用代码对应的类加载上下文。
+> 2. 使用`AttachCurrentThread`绑定的线程通常没有稳定的ArkTS类加载上下文，因此不建议在该线程中直接调用`FindClass`、`FindModule`、`FindNamespace`、`FindEnum`等依赖上下文查找的接口。ArkTS运行时会优先根据当前ArkTS栈帧所属类的类加载上下文执行查找，而通过`AttachCurrentThread`附加的native线程通常没有ArkTS栈帧，因此往往缺少应用代码对应的类加载上下文。
 >    
->    ArkTS 运行时中的类加载上下文主要包括以下两类：
->    - `boot context`：对应 boot panda files 中的类型，主要包括系统启动阶段已加载的 ETS 标准库和运行时基础类型，例如 `std.core.String`、`std.core.Object` 等。对于子线程，这部分内容通常可见，因此查找系统库类型通常可以成功。
->    - 应用侧 `ClassLinkerContext`：用于加载 HAP/ABC 中的应用自定义代码，例如业务类、模块、命名空间和枚举。native 线程仅通过 `AttachCurrentThread` 附加时，由于没有 ArkTS 调用栈，通常无法自动定位到这部分上下文，因此查找应用自定义类、枚举、模块或命名空间时通常会失败。
+>    ArkTS运行时中的类加载上下文主要包括以下两类：
+>    - `boot context`：对应boot panda files中的类型，主要包括系统启动阶段已加载的ETS标准库和运行时基础类型，例如`std.core.String`、`std.core.Object`等。对于子线程，这部分内容通常可见，因此查找系统库类型通常可以成功。
+>    - 应用侧`ClassLinkerContext`：用于加载HAP/ABC中的应用自定义代码，例如业务类、模块、命名空间和枚举。native线程仅通过`AttachCurrentThread`附加时，由于没有ArkTS调用栈，通常无法自动定位到这部分上下文，因此查找应用自定义类、枚举、模块或命名空间时通常会失败。
 >
->    如果子线程需要使用这些对象，建议在已有 ArkTS 调用栈的线程中先完成查找，并通过 `GlobalReference` 将所需的 `class`、`module`、`namespace`、`enum` 或实例对象传递给子线程复用，而不是在子线程中重新执行上下文相关查找。
+>    如果子线程需要使用这些对象，建议在已有ArkTS调用栈的线程中先完成查找，并通过`GlobalReference`将所需的`class`、`module`、`namespace`、`enum`或实例对象传递给子线程复用，而不是在子线程中重新执行上下文相关查找。
+
+**ani_options参数**
+
+`ANI_CreateVM`和`AttachCurrentThread`的入参`ani_options`本质上是一个`ani_option { option, extra }`数组：
+
+- `option`用来填写参数本身，例如`--verify:ani`，或者`--ext:log-level=info`等。
+- `extra`用来给少数特殊参数补充额外数据；如果该参数不需要额外数据，就传`nullptr`。
+
+1. 对`ANI_CreateVM`而言，`ani_options`是VM初始化的统一配置入口。
+
+`ANI_CreateVM`可直接识别的参数如下：
+
+| 参数 | `extra` | 含义 |
+| ---- | ---- | ---- |
+| `--logger` | 必须为日志回调函数地址，不能为`nullptr` | 注册ANI日志回调 |
+| `--verify:ani` | `nullptr` | 开启ANI verify模式。发现开发者误用ANI API时，按verify规则做校验和上报；并且走`FATAL`级别报错直接终止当前调用。 |
+| `--verify:ani:workround:`<br>`no_crash_if_invalid_usage` | `nullptr` | 开启ANI verify模式。开发者误用ANI API时，如果release实现中有对应错误码则按`ERROR`级别上报；不直接`FATAL`，而是继续走底层release实现。 |
+| `--ext:interop` | `extra`可为外部`napi_env`，也可为`nullptr` | 创建VM时初始化interop上下文 |
+
+如果使用`--logger`，需要先定义一个日志回调函数，再把该函数地址通过`extra`传入。例如：
+
+```cpp
+void MyLogger(FILE *stream, int logLevel, const char *component, const char *message)
+{
+    fprintf(stream, "[%s] level=%d %s\n", component, logLevel, message);
+}
+```
+
+```cpp
+ani_option loggerOpt {"--logger", reinterpret_cast<void *>(MyLogger)};
+```
+
+除了上表这些特殊参数，`ANI_CreateVM`还可以传其他`--ext:*`扩展参数。它们会在去掉`--ext:`前缀后，继续交给logger / runtime / compiler选项解析器处理。常见示例：
+
+- `--ext:boot-panda-files=/path/to/etsstdlib.abc`：指定VM启动时加载的boot panda files，例如ETS标准库abc文件。
+- `--ext:gc-type=g1-gc`：指定垃圾回收器类型。
+
+示例：
+
+```cpp
+std::array vmOptions {
+    ani_option {"--ext:boot-panda-files=/path/to/etsstdlib.abc", nullptr},
+    ani_option {"--verify:ani", nullptr},
+    ani_option {"--ext:log-level=info", nullptr},
+};
+
+ani_options createVmArgs {vmOptions.size(), vmOptions.data()};
+ani_vm *vm = nullptr;
+ani_status status = ANI_CreateVM(&createVmArgs, ANI_VERSION_1, &vm);
+```
+
+2. 对`AttachCurrentThread`而言，`ani_options`用于描述当前线程如何附加到VM。
+
+当前只支持以下线程附加参数决定是否启用interop：
+
+| 参数 | `extra` | 含义 |
+| ---- | ---- | ---- |
+| `--interop=enable` | 可为外部`napi_env`，也可为`nullptr` | 为当前附加线程启用interop |
+| `--interop=disable` | 通常为`nullptr` | 显式关闭interop |
+
+使用示例：
+
+```cpp
+ani_env *env {nullptr};
+ani_option interopEnabled {"--interop=enable", nullptr};
+ani_options aniArgs {1, &interopEnabled};
+auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+// env可用于JS ↔ ArkTS互操作的线程
+```
+
+如果调用方已经提前创建了外部JS Env，也可以通过`extra`传入：
+
+```cpp
+ani_env *env {nullptr};
+void *externalJsEnv = GetExternalJsEnv();
+ani_option interopEnabled {"--interop=enable", externalJsEnv};
+ani_options aniArgs {1, &interopEnabled};
+auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+```
+
+- 普通native线程调用`AttachCurrentThread`时`ani_options`通常直接传`nullptr`即可，默认不启用interop。
+
+> 注意：
+> 1. `ANI_CreateVM`的初始化选项，不应直接复用到`AttachCurrentThread`。不建议向`AttachCurrentThread`传`--logger`、`--verify:ani`、`--ext:interop`或其他`--ext:*`选项。
+> 2. `ANI_CreateVM`中启用interop初始化使用的是`--ext:interop`，而`AttachCurrentThread`中使用的是`--interop=enable` / `--interop=disable`。两者名称相近，但作用阶段不同，不能混用。
 
 ## 10 多线程
 
-在 ArkTS 的 ANI（Ark Native Interface）中，Promise 类型的创建与管理有专门的接口支持，用于在 native 层与异步 JS/ArkTS 场景交互。
+在ArkTS的ANI（Ark Native Interface）中，Promise类型的创建与管理有专门的接口支持，用于在native层与异步JS/ArkTS场景交互。
 ```cpp
 ani_status Promise_New(ani_env *env, ani_resolver *result_resolver, ani_object *result_promise);
 ani_status PromiseResolver_Resolve(ani_env *env, ani_resolver resolver, ani_ref resolution);
 ani_status PromiseResolver_Reject(ani_env *env, ani_resolver resolver, ani_error rejection);
 ```
 
-除此之外用户可以通过以下两种方式在程序中使用多线程与 ArkTS 协作：
-- 自行创建一个 native 线程，在线程内调用 `AttachCurrentThread` 附加到 ArkTS 虚拟机，获得 ani_env；
-- 使用语言层 API - e.g. [taskpool](https://gitee.com/openharmony/arkcompiler_runtime_core/blob/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/escompat/taskpool.ets).
+除此之外用户可以通过以下两种方式在程序中使用多线程与ArkTS协作：
+- 自行创建一个native线程，在线程内调用`AttachCurrentThread`附加到ArkTS虚拟机，获得ani_env；
+- 使用语言层API - e.g. [taskpool](https://gitee.com/openharmony/arkcompiler_runtime_core/blob/OpenHarmony_feature_20250702/static_core/plugins/ets/stdlib/escompat/taskpool.ets).
 
-**注意：`ani_env` 无法跨线程使用**。在lambda 或者 thread function中捕获`ani_env`会导致空指针异常。
+**注意：`ani_env`无法跨线程使用**。在lambda或者thread function中捕获`ani_env`会导致空指针异常。
 参考[第九章](#9-生命周期管理)
 
 **建议：**
 - 定义一个在其他线程上执行的lambda表达式时，**捕获`ani_vm`而不是`ani_env`**。
-- 参考[9.3 vm 和 env 生命周期](#93-vm-和-env-生命周期)正确使用`AttachCurrenThread`和`GetEnv`。
+- 参考[9.3 vm和env生命周期](#93-vm-和-env-生命周期)正确使用`AttachCurrentThread`和`GetEnv`。
 
 ## 11 可变长度数组：Array<T> 和 T[]
 
@@ -1525,7 +1634,7 @@ ani_array CreateEscompatArray(const std::vector<ani_double> &numbers)
 ## 12 定长数组
 
 定长数组是一种特殊类型，其元素类型在编译阶段不会被擦除 - 意味着`FixedArray<int>`和`FixedArray<double>`在字节码和语言层面是不兼容的。编译器会为不同的元素生成不同的底层结构，因此在native层需要使用**类型匹配的API进行操作**
-如 `FixedArray_*`系列API
+如`FixedArray_*`系列API
 
 
 ```cpp
@@ -1548,7 +1657,7 @@ ani_fixedarray_double CreateFixedArray(const std::vector<ani_double> &numbers)
 ```
 
 ## 13 ArrayBuffer
-`ArrayBuffer` 类型支持两个主要接口：`CreateArrayBuffer` 和 `ArrayBuffer_GetInfo`。
+`ArrayBuffer`类型支持两个主要接口：`CreateArrayBuffer`和`ArrayBuffer_GetInfo`。
 
 **示例:**
 
@@ -1572,7 +1681,7 @@ function main() {
 ```
 
 ```cpp
-// 不是 ani_array
+// 不是ani_array
 static void HandleDataImpl(ani_env *env, ani_object obj, ani_arraybuffer arraybuffer) {
     void *resultData;
     ani_size resultSize;
@@ -1598,7 +1707,7 @@ EnumItem_GetName
 EnumItem_GetIndex
 ```
 
-| 标识符 | ANI 类型 | Mangling  |
+| 标识符 | ANI类型 | Mangling  |
 | ------------- | -------------- | --------------------- |
 | `COLOR`       | `ani_enum`     | `E{moduleName.COLOR}` |
 | `COLOR.Blue`  | `ani_enum_item`| `C{std.core.Object}`  |
@@ -1613,7 +1722,7 @@ Mangling：`C{escompat.Error}`
 
 若要抛出自定义错误，需继承该基类。
 
-> 注意：系统声明的 `BussinessError` 可能会与 native 构造函数产生绑定冲突。
+> 注意：系统声明的`BussinessError`可能会与native构造函数产生绑定冲突。
 
 **示例：**
 
@@ -1650,15 +1759,15 @@ try {
 }
 ```
 
-2. 异步情况：使用 `.catch()`
+2. 异步情况：使用`.catch()`
 
 ## 16 字符串 String
   
  **注意**: 
  
- 在“非VerifyANI”模式下，为了性能不验证编码。调用者有责任确保传入的是合法UTF-8/UTF-16字符。传入非法数据构建的ani_string，ANI不保证转换回 c_str时内容的正确性，但不会导致 ANI 自身崩溃。
+ 在“非VerifyANI”模式下，为了性能不验证编码。调用者有责任确保传入的是合法UTF-8/UTF-16字符。传入非法数据构建的ani_string，ANI不保证转换回c_str时内容的正确性，但不会导致ANI自身崩溃。
 
-### 16.1 将 `std::string` 转换为 `ani_string`
+### 16.1 将`std::string`转换为`ani_string`
 ```cpp
 std::optional<ani_string> ANIUtils_StdStringToANIString(ani_env *env, std::string str) {
     ani_string result_string{};
@@ -1669,7 +1778,7 @@ std::optional<ani_string> ANIUtils_StdStringToANIString(ani_env *env, std::strin
 }
 ```
 
-### 16.2 将 `ani_string` 转换为 `std::string`
+### 16.2 将`ani_string`转换为`std::string`
 ```cpp
 std::string ANIUtils_ANIStringToStdString(ani_env *env, ani_string ani_str) {
     ani_size sz {};
@@ -1724,8 +1833,8 @@ ANI_EXPORT ani_status ANI_Constructor(ani_vm *vm, uint32_t *result) {
 ```
 
 ## 18 其余容器类的使用
-1. 运用 `FindClass` 依据名称定位目标容器类。
-2. 借助 `Class_FindMethod` + `Object_CallMethod` 或者 `Object_CallMethodByName` 来调用内置方法。
+1. 运用`FindClass`依据名称定位目标容器类。
+2. 借助`Class_FindMethod` + `Object_CallMethod`或者`Object_CallMethodByName`来调用内置方法。
 3. 按需转换参数和返回值类型。对于复杂类型，可通过方法调用提取基本类型。
 
 ### 18.1 Record ：`Lescompat/Record;`
@@ -1793,14 +1902,14 @@ void callWithTupleImpl(ani_env *env, ani_tuple_value tuple) {
 
 目前ArkTS-Sta支持三种Native调用模式：
 - @ani.unsafe.Direct ：最轻量，不允许传递托管对象，也不进行协程状态切换。这意味着调用时不需要处理垃圾回收相关的问题，也不需要通知运行时进入“本地代码执行”状态，因此开销最小。在@ani.unsafe.Direct注解模式下的native函数不允许任何涉及ArkTS-Sta对象的操作（包括但不限于创建、销毁、返回），仅用于涉及基础类型的纯粹数值计算；
-- @ani.unsafe.Quick ：允许传递托管对象，但仍不切换协程状态。这可能意味着对象引用可以直接传递，但运行时不需要标记当前协程处于本地代码中（可能影响 GC 或调试）；
-- 默认模式（无注解）：完整的托管-本地边界处理，包括协程状态切换，以便正确管理 GC 根和异常。
+- @ani.unsafe.Quick ：允许传递托管对象，但仍不切换协程状态。这可能意味着对象引用可以直接传递，但运行时不需要标记当前协程处于本地代码中（可能影响GC或调试）；
+- 默认模式（无注解）：完整的托管-本地边界处理，包括协程状态切换，以便正确管理GC根和异常。
 
 **注解不能使用的场景：**
 
 一个native接口运行时间很长或者涉及读文件、联网相关的操作，不可以使用这两个注解。
 
-**@ani.unsafe.Direct 示例代码：**
+**@ani.unsafe.Direct示例代码：**
 ```cpp
 // ets侧 @ani.unsafe.Direct绑定方法
 @ani.unsafe.Direct
@@ -1815,7 +1924,7 @@ static ani_boolean aniToCppBooleanE2EOneParamWithParse([[maybe_unused]] ani_env 
 }
 ```
 
-**@ani.unsafe.Quick 示例代码：**
+**@ani.unsafe.Quick示例代码：**
 ```cpp
 // ets侧 @ani.unsafe.Quick绑定方法
 @ani.unsafe.Quick
@@ -1860,31 +1969,31 @@ typedef enum {
 | `ANI_ERROR`              | 1     | 通用Error                  | 需要进一步调查                      |
 | `ANI_INVALID_ARGS`       | 2     | 无效参数                   | 参数中可能存在空指针                |
 | `ANI_INVALID_TYPE`       | 3     | 类型无效                   |  返回值不匹配                       |
-| `ANI_INVALID_DESCRIPTOR` | 4     | 描述符无效                 | Mangling 问题                     |
+| `ANI_INVALID_DESCRIPTOR` | 4     | 描述符无效                 | Mangling问题                     |
 | `ANI_INCORRECT_REF`      | 5     | 引用不正确                 |                                   |
-| `ANI_PENDING_ERROR`      | 6     | ArkTS 中抛出异常           | ArkTS-level error                 |
+| `ANI_PENDING_ERROR`      | 6     | ArkTS中抛出异常           | ArkTS-level error                 |
 | `ANI_NOT_FOUND`          | 7     | 未找到                     | FindXXX failed                    |
-| `ANI_ALREADY_BINDED`     | 8     | 已绑定                     | 重复的 native 绑定                 |
+| `ANI_ALREADY_BINDED`     | 8     | 已绑定                     | 重复的native绑定                 |
 | `ANI_OUT_OF_REF`         | 9     | 引用超出范围               | 数组越界                           |
 | `ANI_OUT_OF_MEMORY`      | 10    | 内存不足                   |                                   |
 | `ANI_OUT_OF_RANGE`       | 11    | 超出范围                   |                                   |
 | `ANI_BUFFER_TO_SMALL`    | 12    |  缓冲区过小                |                                   |
-| `ANI_INVALID_VERSION`    | 13    | 版本无效                   | 常见于 VM 创建时                   |
-| `ANI_AMBIGUOUS`          | 14    | 存在歧义                   | 避免在签名中使用 nullptr            |
+| `ANI_INVALID_VERSION`    | 13    | 版本无效                   | 常见于VM创建时                   |
+| `ANI_AMBIGUOUS`          | 14    | 存在歧义                   | 避免在签名中使用nullptr            |
 
-### 20.1 错误码 2：`ANI_INVALID_ARGS`
-这表明的某个参数是非法的 `nullptr`。
+### 20.1 错误码2：`ANI_INVALID_ARGS`
+这表明的某个参数是非法的`nullptr`。
 示例：
 ```cpp
 Object_CallMethodByName_Boolean(nullptr, ...);
 ```
 
-### 20.2 错误码 6：`ANI_PENDING_ERROR`
-该错误码表示在执行当前的 ANI 操作期间，ArkTS 运行时（VM）内部抛出了一个异常，且该异常尚未被 C++ 侧/ArkTS侧捕获或处理。这通常对应于 ArkTS 代码中的 throw new Error(...)，或者运行时错误（如类型不匹配、访问未定义属性等）。
+### 20.2 错误码6：`ANI_PENDING_ERROR`
+该错误码表示在执行当前的ANI操作期间，ArkTS运行时（VM）内部抛出了一个异常，且该异常尚未被C++ 侧/ArkTS侧捕获或处理。这通常对应于ArkTS代码中的throw new Error(...)，或者运行时错误（如类型不匹配、访问未定义属性等）。
   
-  当 `ANI_PENDING_ERROR` 发生时，该 `ani_env` 处于“异常挂起”状态。在此状态被清除之前，绝大多数后续的 ANI 函数调用都会直接失败（通常也返回` ANI_PENDING_ERROR`），而不会执行任何实际操作。
+  当`ANI_PENDING_ERROR`发生时，该`ani_env`处于“异常挂起”状态。在此状态被清除之前，绝大多数后续的ANI函数调用都会直接失败（通常也返回`ANI_PENDING_ERROR`），而不会执行任何实际操作。
   
-**注意** ：必须先清除异常，才能继续调用其他 ANI 接口。可使用以下代码捕获并描述该异常：
+**注意**：必须先清除异常，才能继续调用其他ANI接口。可使用以下代码捕获并描述该异常：
 
 ```cpp
 // Code that causes error...
@@ -1901,42 +2010,42 @@ std::string output = buffer.str();
 ```
 该异常同样可以在ArkTS侧被捕获
   ```typescript
-  // ArkTS 代码
+  // ArkTS代码
 
 try {
     // 调用可能存在出现未处理异常的函数
     nativeLib.triggerException();
 } catch (e) {
-    // 这里会捕获到 Error 传递的消息
+    // 这里会捕获到Error传递的消息
     console.error("Caught an exception from Native side!");
     console.error("Error Message: " + e.message);
 }
   ```
 
-### 20.3 错误码 7：`ANI_NOT_FOUND`
-要确保 `.d.ets` 和 `.ets` 文件完全一致。否则，native 方法在设备上可能总是失败。
+### 20.3 错误码7：`ANI_NOT_FOUND`
+要确保`.d.ets`和`.ets`文件完全一致。否则，native方法在设备上可能总是失败。
 ```ts
-// .d.ets 文件
+// .d.ets文件
 class A {
     foo(i: int): void // 不匹配
 }
 
-// .ets 文件
+// .ets文件
 class A {
     foo(): void // 不匹配
 }
 ```
 
-### 20.4 错误码 14：`ANI_AMBIGUOUS`
+### 20.4 错误码14：`ANI_AMBIGUOUS`
 
-当存在重载且在 mangling 中使用 `nullptr` 时会出现此错误：
+当存在重载且在mangling中使用`nullptr`时会出现此错误：
 
 ```cpp
-// .ets 文件
+// .ets文件
 function foo(i: int): void;
 function foo(d: number): void;
 
-// .cpp 文件
+// .cpp文件
 FindMethod(cls, "foo", nullptr, &method); // 错误
 FindMethod(cls, "foo", "d:", &method);   // 正确
 ```
