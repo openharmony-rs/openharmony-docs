@@ -167,12 +167,13 @@
 | [OH_ArkUI_TextEditorChangeEvent* OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent(ArkUI_NodeEvent* event)](#oh_arkui_nodeevent_gettexteditoronwillchangeevent) | - | 获取组件事件中的TextEditor组件文本内容变化数据。 |
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNode, ArkUI_IntOffset localPosition, ArkUI_IntOffset* windowPosition)](#oh_arkui_nativemodule_convertpositiontowindow) | - | 将点的坐标从目标节点的坐标系转换至当前窗口的坐标系。|
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetNode, ArkUI_IntOffset windowPosition, ArkUI_IntOffset* localPosition)](#oh_arkui_nativemodule_convertpositionfromwindow) | - | 将点的坐标从当前窗口的坐标系转换至目标节点的坐标系。 |
-| [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | 启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。 |
+| [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | 启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](./capi-native-node-h-nodeattributetype-navigationrelatedcomponents.md#node_swiper_disable_swipe)。 |
 | [int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* isConsumedOffset)](#oh_arkui_swiper_fakedragby) | - | 通过设置Swiper节点的偏移量模拟拖拽效果。该接口调用前，必须先调用[OH_ArkUI_Swiper_StartFakeDrag](capi-native-node-h.md#oh_arkui_swiper_startfakedrag)启动模拟拖拽。 |
 | [int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_stopfakedrag) | - | 停止对Swiper节点的模拟拖拽。 |
 | [int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)](#oh_arkui_swiper_isfakedragging) | - | 获取Swiper节点的模拟拖拽状态。 |
 | [int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_swiper_showprevious) | - | 显示Swiper节点的上一页。 |
 | [int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_swiper_shownext) | - | 显示Swiper节点的下一页。 |
+| [int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)](#oh_arkui_nativemodule_atomicservicemenubarsetvisible) | - | 设置菜单栏的可见性。 |
 | [int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)](#oh_arkui_nativemodule_getpagerootnodehandlebycontext) | - | 获得指定的UIContext对应窗口中的页面根节点。 |
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | 注册组件尺寸与区域变化的监听事件。可在任意时机对有效的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)组件节点调用该函数。新注册的回调会替换该事件此前已注册的回调，并从下一帧开始生效。当回调不再需要时，请调用[OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent)进行注销。否则，回调会在节点释放时自动注销。 |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) | - | 解除组件上的尺寸与区域变化监听回调绑定。 |
@@ -222,7 +223,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_SLIDER = 17 | 滑动条组件。                               |
 | ARKUI_NODE_RADIO = 18 | 单选框。                                 |
 | ARKUI_NODE_IMAGE_ANIMATOR = 19 | 帧动画组件。                               |
-| ARKUI_NODE_XCOMPONENT_TEXTURE | TEXTURE类型XComponent。<br>**起始版本：** 18 |
+| ARKUI_NODE_XCOMPONENT_TEXTURE = 20 | TEXTURE类型XComponent。<br>**起始版本：** 18 |
 | ARKUI_NODE_CHECKBOX_GROUP = 21 | 复选框组。<br>**起始版本：** 15                |
 | ARKUI_NODE_TEXT_EDITOR = 22 | 文本编辑器。<br>**起始版本：** 24 |
 | ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | 堆叠容器。                                |
@@ -277,7 +278,7 @@ enum ArkUI_NodeAttributeType
 | [文本输入类组件相关属性](./capi-native-node-h-nodeattributetype-textinputcategory.md) | 定义ArkUI在Native侧可以设置的文本输入类组件相关属性样式集合，包含TextInput组件属性设置。 |
 | [富文本类组件相关属性](./capi-native-node-h-nodeattributetype-richeditor.md) | 定义ArkUI在Native侧可以设置的富文本类组件相关属性样式集合，包含TextEditor组件属性设置。 |
 | [图类组件相关属性](./capi-native-node-h-nodeattributetype-image.md) | 定义ArkUI在Native侧可以设置的图类组件相关属性样式集合，包含Image和ImageAnimator组件属性设置。 |
-| [X-Component组件相关属性](./capi-native-node-h-nodeattributetype-xcomponent.md) | 定义ArkUI在Native侧可以设置的XComponent组件相关属性集合。 |
+| [ArkUI_NodeAttributeType（XComponent组件相关属性）](./capi-native-node-h-nodeattributetype-xcomponent.md) | 定义ArkUI在Native侧可以设置的XComponent组件相关属性集合。 |
 | [EmbeddedComponent组件相关属性](./capi-native-node-h-nodeattributetype-embeddedcomponent.md) | 定义ArkUI在Native侧可以设置的EmbeddedComponent组件相关属性样式集合。 |
 | [其他](./capi-native-node-h-nodeattributetype-other.md) | 定义ArkUI在Native侧可以设置的其他属性样式集合，包含组件交互、获焦、离屏渲染和点击距离等属性设置。 |
 
@@ -3446,7 +3447,7 @@ int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 
 **描述**
 
-启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。
+启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](./capi-native-node-h-nodeattributetype-navigationrelatedcomponents.md#node_swiper_disable_swipe)。
 
 **起始版本：** 23
 
@@ -3587,6 +3588,31 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
+### OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible()
+
+```c
+int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)
+```
+
+**描述**
+
+设置菜单栏的可见性。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | ArkUI上下文句柄，指定的ArkUI容器上下文。 |
+| bool visible | 菜单栏是否可见。true表示菜单栏可见，false表示菜单栏不可见。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) 实例异常（uiContext为空指针、无法通过uiContext获取容器、uiContext不属于原子化服务）。 |
+
 ### OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext()
 
 ```c
@@ -3604,7 +3630,7 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | UI实例对象指针。 |
-| [ArkUI_NodeHandle*](capi-arkui-nativemodule-arkui-node8h.md) rootNode | 目标根节点的句柄。如果上下文对应的页面没有根节点，则所指向的值将被设置为null。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* rootNode | 目标根节点的句柄。如果上下文对应的页面没有根节点，则所指向的值将被设置为null。 |
 
 **返回：**
 
