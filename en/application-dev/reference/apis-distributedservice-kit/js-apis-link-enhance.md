@@ -51,7 +51,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because the linkEnhance function has been trimmed |
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>Applicable versions: 26.0.0+|
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -107,7 +107,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because the linkEnhance function has been trimmed |
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>Applicable versions: 26.0.0+|
 | 32390206 | Invalid parameter.  |
 
 **Example**
