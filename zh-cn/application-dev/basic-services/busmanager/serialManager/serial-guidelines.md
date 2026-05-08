@@ -248,7 +248,11 @@
      let e = error as BusinessError;
      console.error(`Failed to set RTS: ${JSON.stringify(e)}`);
    }
+   ```
 
+   <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
    // 获取CTS信号状态
    try {
      let cts: boolean = await port.getCts();
@@ -257,6 +261,11 @@
      let e = error as BusinessError;
      console.error(`Failed to get CTS: ${JSON.stringify(e)}`);
    }
+   ```
+
+   <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
 
    // 发送break信号
    try {
