@@ -13113,13 +13113,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/ets/pages/Index.ets",
-				"functions":[
-					{
-						"end_line":114,
-						"name":"xcomponent_index",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/napi_init.cpp",
@@ -13222,6 +13216,65 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets",
+				"functions":[
+					{
+						"end_line":129,
+						"name":"av_player_create_xcomponent",
+						"start_line":127
+					},
+					{
+						"end_line":43,
+						"name":"av_player_xcomponent_controller",
+						"start_line":25
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/avplayertool/AVPlayerController.ets",
+				"functions":[
+					{
+						"end_line":177,
+						"name":"av_player_init",
+						"start_line":42
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSXComponent/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":114,
+						"name":"xcomponent_index",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets",
 				"functions":[
 					{
 						"end_line":118,
@@ -13236,7 +13289,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp",
 				"functions":[
 					{
 						"end_line":671,
@@ -13281,7 +13334,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets",
 				"functions":[
 					{
 						"end_line":220,
@@ -13291,7 +13344,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets",
 				"functions":[
 					{
 						"end_line":107,
@@ -13301,7 +13354,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets",
 				"functions":[
 					{
 						"end_line":59,
@@ -13311,7 +13364,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp",
 				"functions":[
 					{
 						"end_line":411,
@@ -13319,34 +13372,9 @@
 						"start_line":388
 					},
 					{
-						"end_line":392,
+						"end_line":409,
 						"name":"native_xcomponent_declarative_register_event",
-						"start_line":379
-					}
-				]
-			},
-			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets",
-				"functions":[
-					{
-						"end_line":129,
-						"name":"av_player_create_xcomponent",
-						"start_line":127
-					},
-					{
-						"end_line":43,
-						"name":"av_player_xcomponent_controller",
-						"start_line":25
-					}
-				]
-			},
-			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/avplayertool/AVPlayerController.ets",
-				"functions":[
-					{
-						"end_line":177,
-						"name":"av_player_init",
-						"start_line":42
+						"start_line":396
 					}
 				]
 			}
