@@ -396,26 +396,6 @@ interface Rect {
             left: this.avoidAreasVp.cutout.leftRect.width,
             right: this.avoidAreasVp.cutout.rightRect.width
           })
-          // 避让内容区挖孔区域
-          Scroll() {
-            Column({ space: 12 }) {
-              Row() {
-                Text(this.text)
-                  .fontSize(20)
-              }
-              Divider()
-            }
-            .width('100%')
-          }
-          .backgroundColor(Color.White)
-          .padding(20)
-          .borderRadius(15)
-          .width('80%')
-          .margin({
-            left: this.avoidAreasVp.cutout.leftRect.width,
-            right: this.avoidAreasVp.cutout.rightRect.width
-          })
-          .layoutWeight(1)
           // 避让底部和挖孔区域
           Row() {
             Text('Bottom Container')
@@ -433,16 +413,6 @@ interface Rect {
             right: this.avoidAreasVp.cutout.rightRect.width
           })
         }
-        .width('100%')
-        .height('100%')
-        .padding({
-          // 避让页面整体挖孔区域
-          left: this.avoidAreasVp.cutout.leftRect.width,
-          right: this.avoidAreasVp.cutout.rightRect.width
-        })
-        .alignItems(HorizontalAlign.Center)
-        .backgroundColor('#d5d5d5')
-        .justifyContent(FlexAlign.SpaceBetween)
       }
       ```
 
