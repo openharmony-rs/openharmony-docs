@@ -20,7 +20,7 @@ Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-
 
 ArkTS-Dyn示例：
 
-<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 
 ``` TypeScript
 // 主窗口Ability
