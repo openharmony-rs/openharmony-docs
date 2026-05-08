@@ -115,7 +115,7 @@ import { formInfo } from '@kit.FormKit';
 | 名称        | 类型   | 必填         |说明         |
 | ----------- | ---- | ------------ |------------ |
 | bundleName<sup>12+</sup>    | string    |否    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedDimensions<sup>12+</sup> | Array&lt;number&gt; |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的的整数的数组，其中数值5已经废弃。  |
+| supportedDimensions<sup>12+</sup> | Array&lt;number&gt; |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的的整数的数组，数值5从API version 9开始支持，从API version 20开始废弃。<br>具体规格参考 [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension)。  |
 | supportedShapes<sup>12+</sup>  | Array&lt;number&gt; |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 只有1和2两个值。1代表方形，2代表圆形。   |
 
 ## FormLocation<sup>12+</sup>
@@ -231,6 +231,7 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | 否 | 否  | 场景动效 extensionAbility 名称，如卡片提供方LiveFormExtensionAbility名称。                                     |
 | disabledDesktopBehaviors | string | 否 | 是  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，不同行为通过 \| 拼接，例如SWIPE_DESKTOP\|PULL_DOWN_SEARCH。缺省表示不禁用任何行为。 |
+| triggerTypes    | Array&lt;[SceneAnimationTriggerType](#sceneanimationtriggertype)&gt;      | 否    | 是     | 场景动效卡片触发类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
@@ -252,7 +253,7 @@ import { formInfo } from '@kit.FormKit';
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 
@@ -392,3 +393,19 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
     return true;
   };
 ```
+
+## SceneAnimationTriggerType
+
+场景动效卡片触发类型枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称        |  值   | 说明         |
+| ----------- | ---- | ------------ |
+| SHAKE | 1   | 摇一摇。 |

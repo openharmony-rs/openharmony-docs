@@ -134,5 +134,17 @@ bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 
 uid是系统中用于[应用沙箱](../security/AccessToken/access-token-overview.md#应用沙箱)隔离的唯一标识符，它分配给每个应用进程，确保应用在运行时相互隔离（如文件系统，内存空间等）。
 
-uid的生成算法为：uid = userId * 200000 + (bundleId % 200000)。其中%表示取模运算，计算bundleId除以200000的余数。userId表示应用需要安装的用户编号，可以通过[getOsAccountLocalId接口](../reference/apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。bundleId表示应用的唯一编号，取值范围为10000到65535的整数。
+uid的生成算法为：uid = userId * 200000 + (bundleId % 200000)。其中%表示取模运算，计算bundleId除以200000的余数。userId表示应用需要安装的用户编号，可以通过[getOsAccountLocalId接口](../reference/apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。bundleId表示应用的唯一编号，取值范围为10000到65535的整数，仅系统内部使用，可以通过uid和userId反算获取<!--Del-->，也可以通过[getBundleIdForUid](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getbundleidforuid9)获取<!--DelEnd-->。
 
+## 如何获取应用的uid
+
+* 通过[bm工具](../tools/bm-tool.md)获取。
+
+```shell
+hdc shell
+# 需将ohos.app.hap.myapplication替换为实际应用的包名
+bm dump -n ohos.app.hap.myapplication |grep uid
+```
+![alt text](figures/get_uid.png)
+
+* 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，示例代码可以参考[如何获取应用信息中的appId](#如何获取应用信息中的appid)，取值方式为bundleInfo.appInfo.uid。

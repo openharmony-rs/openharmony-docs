@@ -5,7 +5,7 @@
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义应用前后台状态监听。
 

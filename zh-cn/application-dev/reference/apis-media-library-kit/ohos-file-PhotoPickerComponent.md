@@ -106,7 +106,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
-| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度，透明度范围为0到1的数值，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -256,7 +256,7 @@ private isOnClickedNotify: boolean = false;
     onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
         return true;
     };
-    // 当一个宫格被点击时，代码会验证该宫格对应 URI是否有效，如无效，则忽略。
+    // 当一个宫格被点击时，代码会验证该宫格对应URI是否有效，如无效，则忽略。
     // 然后，会检查 clickedUris 中否已存在该URI的记录。如没有，则创建一条记录并将 isSelected 属性设置为 true。
     // 如果记录存在，则将该记录的 isSelected 属性更新为 true。
     // 数据保存完成后点击“setClickResult”按钮，会调用addData(SET_ITEM_CLICK_RESULT)将对应宫格设置为选中状态。
@@ -690,7 +690,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | height   | number                | 否 | 是   | 图片、视频的高（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
-| duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| duration   | number                | 否 | 是   | 视频的持续时间（单位：毫秒）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BURST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
@@ -828,7 +828,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| backgroundOpacity<sup>24+</sup>         | number                         | 否   | 是 | 支持配置picker背景透明度，透明度范围为0到1的数值，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 
 ## PickerError<sup>23+</sup>
 

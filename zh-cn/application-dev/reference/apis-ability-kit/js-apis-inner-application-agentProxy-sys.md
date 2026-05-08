@@ -5,7 +5,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AgentProxy用于从客户端向[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端发送数据或安全认证请求。
 

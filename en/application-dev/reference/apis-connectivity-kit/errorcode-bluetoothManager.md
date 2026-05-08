@@ -231,6 +231,42 @@ The user rejects the preprocessing operation.
 
 Perform the preprocessing operation again.
 
+## 2900015 Parameter Format Inconsistent with Specifications
+
+**Error Message**
+
+Parameter format mismatch with specification.
+
+**Description**
+
+The parameter format is inconsistent with the specifications.
+
+**Possible Causes**
+
+For example, the parameter length does not meet the specifications, or lowercase letters are passed for a parameter that should use uppercase letters.
+
+**Solution**
+
+Check whether the parameter format complies with the specifications.
+
+## 2900016 Device Not Paired
+
+**Error Message**
+
+Device unpaired.
+
+**Description**
+
+The device is not paired.
+
+**Possible Causes**
+
+The queried address is not paired with the device.
+
+**Solution**
+
+On the Bluetooth settings screen, check whether the device is paired.
+
 ## 2900099
 
 **Error Message**
@@ -243,7 +279,9 @@ The operation failed.
 
 **Possible Causes**
 
-The profile is not supported by the device.
+Common error code for Bluetooth API calling failures. The possible causes are as follows:
+1. The prerequisites for calling the API are not met.
+2. The specified virtual address does not exist.
 
 **Solution**
 
@@ -365,7 +403,7 @@ The connection is not authenticated.
 
 **Description**
 
-This error code is reported if characteristic or descriptor read and write operations requiring authentication is performed when the GATT connection is not authenticated. Whether authentication is required for the operation is subject to the permission of the characteristic or descriptor on the server.
+This error code is reported if characteristic or descriptor read and write operations requiring authentication is performed when the GATT connection is not authenticated. Whether encryption is required for the operation is subject to the permission of the characteristic or descriptor on the server.
 
 **Possible Causes**
 
