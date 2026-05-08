@@ -36383,12 +36383,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
 				"functions":[
 					{
-						"end_line":497,
+						"end_line":493,
 						"name":"check_renderstate",
 						"start_line":28
 					},
 					{
-						"end_line":514,
+						"end_line":510,
 						"name":"regist_listeningrendererchange",
 						"start_line":29
 					},
@@ -36398,7 +36398,7 @@
 						"start_line":30
 					},
 					{
-						"end_line":527,
+						"end_line":523,
 						"name":"regist_renderchangechallback",
 						"start_line":31
 					},
@@ -36408,7 +36408,7 @@
 						"start_line":531
 					},
 					{
-						"end_line":551,
+						"end_line":547,
 						"name":"get_allstreaminfo",
 						"start_line":32
 					}
@@ -36598,17 +36598,17 @@
 						"start_line":24
 					},
 					{
-						"end_line":465,
+						"end_line":464,
 						"name":"check_isspacesoundon",
 						"start_line":25
 					},
 					{
-						"end_line":481,
+						"end_line":477,
 						"name":"regist_spacesoundcallback",
 						"start_line":26
 					},
 					{
-						"end_line":488,
+						"end_line":484,
 						"name":"unregist_spacesoundcallback",
 						"start_line":27
 					}
