@@ -413,7 +413,8 @@ NODE_SWIPER_PREV_MARGIN = 1001015
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 前边距数值，单位为vp。.value[1].i32：是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
+| .value[0].f32 | 前边距数值，单位为vp。 |
+| .value[1].i32 | 是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
 
 ## NODE_SWIPER_NEXT_MARGIN
 
@@ -438,7 +439,8 @@ NODE_SWIPER_NEXT_MARGIN = 1001016
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 后边距数值，单位为vp。.value[1].i32：是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
+| .value[0].f32 | 后边距数值，单位为vp。 |
+| .value[1].i32 | 是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
 
 ## NODE_SWIPER_INDICATOR
 
