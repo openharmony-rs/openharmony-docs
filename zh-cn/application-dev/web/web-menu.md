@@ -54,7 +54,7 @@ struct WebComponent {
     items.unshift(customItem2); // 在选项列表前添加选项
     for (let i = 0; i < 5; i++) {
       items.push(customItem1); // 重复添加选项，以便支持显示更多菜单
- 	}
+    }
     return items;
   }
 
@@ -129,7 +129,7 @@ struct WebComponent {
     items.unshift(customItem2); // 在选项列表前添加选项
     for (let i = 0; i < 5; i++) {
       items.push(customItem1); // 重复添加选项，以便支持显示更多菜单
- 	}
+    }
     return items;
   }
 
