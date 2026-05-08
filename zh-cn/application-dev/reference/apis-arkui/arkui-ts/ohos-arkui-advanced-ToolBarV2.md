@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件仅可在Stage模型下使用。
@@ -32,7 +34,9 @@ import { ToolBarV2 } from '@kit.ArkUI';
 
 ## ToolBarV2
 
-ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+ArkTS-Dyn: ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+
+ArkTS-Sta: ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: int, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
 
 工具栏。
 
@@ -44,10 +48,14 @@ ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                   | 类型                                                               | 必填 | 装饰器类型               | 说明                                                           |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
 | toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | 是  | @Param<br/>@Require | 工具栏列表。                                                       |
-| activatedIndex    | number                                                           | 否  | @Param              | 激活态的子项。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
+| activatedIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 否  | @Param              | 激活态的子项。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
 | dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br />默认不生效。                         |
 | toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br />默认不生效。 |
 
@@ -57,13 +65,17 @@ ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 **装饰器类型：**@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-### 属性
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
 | ---------------------------- | ----------------------------------------------- | -- | -- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -87,6 +99,10 @@ ToolBarV2Item的构造函数。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                            | 必填 | 说明       |
@@ -103,6 +119,10 @@ ToolBarV2Item的构造函数。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                       | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
 |:-------------------------| :---------------------------------------------- |:---|:---|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | content                  | [ToolBarV2ItemText](#toolbarv2itemtext)         | 否  | 否  | 工具栏子项的文本。                                                                                                                                                                                                           |
@@ -115,7 +135,9 @@ ToolBarV2Item的构造函数。
 
 ## ToolBarV2ItemAction
 
-type ToolBarV2ItemAction = (index: number) => void
+ArkTS-Dyn: type ToolBarV2ItemAction = (index: number) => void
+
+ArkTS-Sta: type ToolBarV2ItemAction = (index: int) => void
 
 工具栏子项点击事件回调类型。
 
@@ -125,11 +147,15 @@ type ToolBarV2ItemAction = (index: number) => void
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明 |
 |:------|:-------|:---|----|
-| index | number | 是  |工具栏子项点击事件的回调。<br /> -index: 表示触发事件的工具栏子项索引。    |
+| index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  |工具栏子项点击事件的回调。<br /> -index: 表示触发事件的工具栏子项索引。    |
 
 ## ToolBarV2ItemText
 
@@ -142,6 +168,10 @@ type ToolBarV2ItemAction = (index: number) => void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -163,6 +193,10 @@ ToolBarV2ItemText的构造函数。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明         |
@@ -178,6 +212,10 @@ ToolBarV2ItemText的构造函数。
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                                          | 只读 | 可选 | 说明                                                       |
 | :------------------ |:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
@@ -196,6 +234,10 @@ ToolBarV2ItemText的构造函数。
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -217,6 +259,10 @@ ToolBarV2ItemImage的构造函数。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明         |
@@ -232,6 +278,10 @@ ToolBarV2ItemImage的构造函数。
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
@@ -251,6 +301,10 @@ type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                            | 说明            |
 |:----------------------------------------------| :------------ |
 | [ToolBarV2ItemImage](#toolbarv2itemimage)     | 用于定义普通图标。     |
@@ -266,6 +320,10 @@ ToolBarV2Modifier提供设置工具栏高度(height)、背景色(backgroundColor
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 ### backgroundColor
 
 backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
@@ -278,6 +336,10 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -303,6 +365,10 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                            | 必填 | 说明                                                                  |
@@ -325,6 +391,10 @@ height(height: LengthMetrics): ToolBarV2Modifier
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -350,6 +420,10 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型      | 必填 | 说明                                                     |
@@ -372,6 +446,10 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值 | 说明              |
 | -------- | - | --------------- |
 | ENABLE   | 1 | 工具栏子项为正常可点击状态。  |
@@ -389,6 +467,10 @@ ToolBarV2SymbolGlyph定义Symbol图标的属性。
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -409,6 +491,10 @@ ToolBarV2SymbolGlyph的构造函数。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                        | 必填 | 说明          |
@@ -425,6 +511,10 @@ ToolBarV2SymbolGlyphOptions定义图标的属性。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                                                                   | 只读 | 可选 | 说明                                                                                   |
 | --------- | -------------------------------------------------------------------- | -- | -- | ------------------------------------------------------------------------------------ |
 | normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 否  | 工具栏symbol图标普通态样式。   |
@@ -436,6 +526,7 @@ ToolBarV2SymbolGlyphOptions定义图标的属性。
 
 该示例展示了工具栏子项state属性分别设置ENABLE、DISABLE、ACTIVATE状态的不同显示效果。
 
+ArkTS-Dyn示例：
 ```ts
 import { ToolBarV2ItemImage, ToolBarV2ItemState, ToolBarV2ItemText, ToolBarV2Item, ToolBarV2 } from '@kit.ArkUI';
 
@@ -546,6 +637,126 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, Column, Stack, Alignment, $r, Row, Local } from '@kit.ArkUI';
+import {
+  ToolBarV2ItemImage, ToolBarV2ItemState, ToolBarV2ItemText, ToolBarV2Item, ToolBarV2
+} from '@ohos.arkui.advanced.ToolBarV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local toolbarList: ToolBarV2Item[] = []
+
+  aboutToAppear() {
+    this.toolbarList.push(new ToolBarV2Item({
+      content: new ToolBarV2ItemText(
+        {
+          text: '剪贴我是超超超超超超超超超长样式'
+        }
+      ),
+      icon: new ToolBarV2ItemImage({
+        // 系统分享图片资源
+        src: $r('sys.media.ohos_ic_public_share')
+      }),
+      action: () => {
+      },
+    }))
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText(
+          {
+            text: '拷贝'
+          }
+        ),
+        icon: new ToolBarV2ItemImage({
+          // 系统复制图片资源
+          src: $r('sys.media.ohos_ic_public_copy')
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.DISABLE
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText(
+          {
+            text: '粘贴'
+          }
+        ),
+        icon: new ToolBarV2ItemImage({
+          // 系统粘贴图片资源
+          src: $r('sys.media.ohos_ic_public_paste')
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.ACTIVATE
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText(
+          {
+            text: '全选'
+          }
+        ),
+        icon: new ToolBarV2ItemImage({
+          // 系统全选图片资源
+          src: $r('sys.media.ohos_ic_public_select_all')
+        }),
+        action: () => {
+        },
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText(
+          {
+            text: '分享'
+          }
+        ),
+        icon: new ToolBarV2ItemImage({
+          // 系统分享图片资源
+          src: $r('sys.media.ohos_ic_public_share')
+        }),
+        action: () => {
+        },
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText(
+          {
+            text: '分享'
+          }
+        ),
+        icon: new ToolBarV2ItemImage({
+          // 系统分享图片资源
+          src: $r('sys.media.ohos_ic_public_share')
+        }),
+        action: () => {
+        },
+      })
+    )
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBarV2({
+            activatedIndex: 2,
+            toolBarList: this.toolbarList,
+          })
+        }
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+  }
+}
+```
 
 ![zh-cn\_image\_toolbar\_example01](figures/zh-cn_image_toolbar_example01.png)
 
@@ -553,6 +764,7 @@ struct Index {
 
 该示例通过设置属性ToolBarV2Modifier自定义工具栏高度、背景色、按压效果等样式。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SymbolGlyphModifier,
@@ -678,6 +890,135 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Stack, Alignment, $r, Row, ColorMetrics, Color, LengthMetrics, SymbolGlyphModifier, Local
+} from '@kit.ArkUI';
+import { DividerModifier } from '@ohos.arkui.modifier';
+import {
+  ToolBarV2ItemImage, ToolBarV2ItemState, ToolBarV2ItemText, ToolBarV2Item, ToolBarV2, ToolBarV2Modifier,
+  ToolBarV2SymbolGlyph
+} from '@ohos.arkui.advanced.ToolBarV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local toolbarList: ToolBarV2Item[] = [];
+  private toolBarModifier: ToolBarV2Modifier =
+    new ToolBarV2Modifier().height(LengthMetrics.vp(52))
+      .backgroundColor(ColorMetrics.resourceColor(Color.Transparent))
+      .stateEffect(false);
+  @Local dividerModifier: DividerModifier = new DividerModifier().height(0);
+
+  aboutToAppear() {
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: 'Long long long long long long long long text',
+          // 系统主标题颜色资源
+          activatedColor: ColorMetrics.resourceColor($r('sys.color.font_primary'))
+        }),
+        icon: new ToolBarV2SymbolGlyph({
+          // 系统星型符号资源
+          normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Green]),
+          // 系统星型符号资源
+          activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Red]),
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.ACTIVATE,
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: 'Copy',
+          activatedColor: ColorMetrics.resourceColor('#ffec5d5d')
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统复制图片资源
+          src: $r('sys.media.ohos_ic_public_copy'),
+          color: ColorMetrics.resourceColor('#ff18cb53'),
+          activatedColor: ColorMetrics.resourceColor('#ffec5d5d'),
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.DISABLE,
+      }))
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: 'Paste',
+          color: ColorMetrics.resourceColor('#ff18cb53')
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统粘贴图片资源
+          src: $r('sys.media.ohos_ic_public_paste'),
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.ACTIVATE,
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: 'All',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统全选图片资源
+          src: $r('sys.media.ohos_ic_public_select_all'),
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.ACTIVATE,
+      }))
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '分享',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统分享图片资源
+          src: $r('sys.media.ohos_ic_public_share'),
+        }),
+        action: () => {
+        },
+      }))
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '分享',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统分享图片资源
+          src: $r('sys.media.ohos_ic_public_share'),
+        }),
+        action: () => {
+        },
+      })
+    )
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBarV2({
+            toolBarModifier: this.toolBarModifier,
+            dividerModifier: this.dividerModifier,
+            activatedIndex: 0,
+            toolBarList: this.toolbarList,
+          })
+            .height(52)
+        }
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+  }
+}
+```
 
 ![zh-cn\_image\_toolbar\_example02](figures/zh-cn_image_toolbar_example02.png)
 
@@ -685,6 +1026,7 @@ struct Index {
 
 该示例通过设置工具栏子项属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   DividerModifier,
@@ -793,7 +1135,130 @@ struct Index {
           ToolBarV2({
             toolBarModifier: this.toolBarModifier,
             dividerModifier: this.dividerModifier,
-            activatedIndex: 0,
+            activatedIndex: 2,
+            toolBarList: this.toolbarList,
+          })
+            .height(52)
+        }
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Stack, Alignment, $r, Row, ColorMetrics, Color, LengthMetrics, SymbolGlyphModifier, Local
+} from '@kit.ArkUI';
+import { DividerModifier } from '@ohos.arkui.modifier';
+import {
+  ToolBarV2ItemImage, ToolBarV2ItemState, ToolBarV2ItemText, ToolBarV2Item, ToolBarV2, ToolBarV2Modifier,
+  ToolBarV2SymbolGlyph
+} from '@ohos.arkui.advanced.ToolBarV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local toolbarList: ToolBarV2Item[] = [];
+  private toolBarModifier: ToolBarV2Modifier =
+    new ToolBarV2Modifier().height(LengthMetrics.vp(52))
+      .backgroundColor(ColorMetrics.resourceColor(Color.Transparent))
+      .stateEffect(false);
+  @Local dividerModifier: DividerModifier = new DividerModifier().height(0);
+
+  aboutToAppear() {
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '剪贴我是超超超超超超超超超长样式',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统分享图片资源
+          src: $r('sys.media.ohos_ic_public_share')
+        }),
+        action: () => {
+        },
+        accessibilityText: '剪贴', // 该项屏幕朗读播报文本为‘剪贴’
+        accessibilityDescription: '单指双击即可剪贴', // 该项屏幕朗读播报描述为'单指双击即可剪贴'
+        accessibilityLevel: 'yes'  // 该项可被无障碍屏幕朗读聚焦
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '拷贝',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统复制图片资源
+          src: $r('sys.media.ohos_ic_public_copy'),
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.DISABLE,
+        accessibilityLevel: 'no'  // 该项将无法被无障碍屏幕朗读聚焦
+      }))
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '粘贴',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统粘贴图片资源
+          src: $r('sys.media.ohos_ic_public_paste'),
+        }),
+        action: () => {
+        },
+        state: ToolBarV2ItemState.ACTIVATE,
+      })
+    )
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '全选',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统全选图片资源
+          src: $r('sys.media.ohos_ic_public_select_all'),
+        }),
+        action: () => {
+        },
+      }))
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '分享',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统分享图片资源
+          src: $r('sys.media.ohos_ic_public_share'),
+        }),
+        action: () => {
+        },
+      }))
+    this.toolbarList.push(
+      new ToolBarV2Item({
+        content: new ToolBarV2ItemText({
+          text: '分享',
+        }),
+        icon: new ToolBarV2ItemImage({
+          // 系统分享图片资源
+          src: $r('sys.media.ohos_ic_public_share'),
+        }),
+        action: () => {
+        },
+      })
+    )
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBarV2({
+            toolBarModifier: this.toolBarModifier,
+            dividerModifier: this.dividerModifier,
+            activatedIndex: 2,
             toolBarList: this.toolbarList,
           })
             .height(52)

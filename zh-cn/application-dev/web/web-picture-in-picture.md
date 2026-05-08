@@ -33,7 +33,7 @@ Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Pic
 <button id="togglePipButton">开启画中画</button>
 ```
 
-HTMLVideoElement接口提供的requestPictureInPicture()方法请求启动画中画，如果系统支持画中画能力，则会以画中画模式显示视频。
+HTMLVideoElement接口提供的requestPictureInPicture()方法请求进入画中画，如果系统支持画中画能力，则会以画中画模式显示视频。
 
 ```js
 togglePipButton.addEventListener("click", async () => {
@@ -65,7 +65,7 @@ try {
 
 ## 监听画中画事件
 
-当用户启动画中画模式播放视频时，会显示一个浮动窗口用于播放视频。系统规定每次只能播放一个画中画视频。
+当用户进入画中画模式播放视频时，会显示一个浮动窗口用于播放视频。系统规定每次只能播放一个画中画视频。
 
 HTMLVideoElement的enterpictureinpicture事件在HTMLVideoElement成功进入画中画模式时触发，而HTMLVideoElement的leavepictureinpicture事件在HTMLVideoElement成功退出画中画模式时触发。
 
@@ -102,6 +102,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * 应用侧ets代码。
 
+  ArkTS-Dyn示例：
   <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
 
   ``` TypeScript
@@ -121,7 +122,30 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
   }
   ```
 
-* 前端页面html代码。
+  ArkTS-Sta示例：
+  <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
+
+  ``` TypeScript
+  'use static'
+
+  import { $rawfile, State, Web, Resource, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct Index {
+    @State videoSrc: Resource = $rawfile('PictureInPicture.html');
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({src: this.videoSrc, controller: this.controller})
+      }
+    }
+  }
+  ```
+
+* 前端页面HTML代码。
 
   ```html
   <!-- PictureInPicture.html -->

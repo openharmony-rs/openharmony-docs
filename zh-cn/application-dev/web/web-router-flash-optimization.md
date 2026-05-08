@@ -33,9 +33,61 @@
 
 以下为设置Web组件背景色的接口示例（示例中将Web组件背景色设置为灰色，若不设置，Web组件背景色默认为白色）：
 
-  <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
+ ArkTS-Dyn示例：
 
-  ``` TypeScript
-  Web({ src: $rawfile('xxx.html'),  controller: this.webController})
+  <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
+
+``` TypeScript
+import webview from '@ohos.web.webview';
+@Entry
+@Component
+struct FixingPageFlickering {
+  webController: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: $rawfile('xxx.html'),  controller: this.webController})
+        .backgroundColor(Color.Gray)
+        .width('100%')
+        .height('100%')
+        .onPageEnd(() => {
+          // 页面加载完成时的回调
+          console.info('Web page loaded completely');
+        })
+    }
+    .width('100%')
+    .height('100%')
     .backgroundColor(Color.Gray)
-  ```
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+  <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/BackgroundColor/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+'use static'
+import { $rawfile, Web, Column, Component, Entry, Color } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("xxx.html"), controller: this.controller })
+        .backgroundColor(Color.Gray)
+        .width('100%')
+        .height('100%')
+        .onPageEnd(() => {
+          // 页面加载完成时的回调
+          console.info('Web page loaded completely');
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```

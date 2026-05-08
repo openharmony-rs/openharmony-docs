@@ -11,7 +11,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 13开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 13开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,6 +23,10 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ## CertificateDialogPageType
 
 表示证书管理对话框的页面类型。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -44,11 +49,11 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CA_CERT | 1      | CA证书。 |
-| CREDENTIAL_USER<sup>22+</sup> | 2      | 用户公共凭据。 |
-| CREDENTIAL_APP<sup>22+</sup> | 3      | 应用私有凭据。 |
-| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB凭据。 |
-| CREDENTIAL_SYSTEM<sup>23+</sup> | 5      | 系统凭据。 |
+| CA_CERT | 1      | CA证书。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_USER<sup>22+</sup> | 2      | 用户公共凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_APP<sup>22+</sup> | 3      | 应用私有凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_SYSTEM<sup>23+</sup> | 5      | 系统凭据。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertificateScope<sup>14+</sup>
 
@@ -60,9 +65,9 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| NOT_SPECIFIED<sup>18+</sup>  | 0      | 未指定用户。 |
-| CURRENT_USER | 1      | 当前用户。 |
-| GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。 |
+| NOT_SPECIFIED<sup>18+</sup>  | 0      | 不指定使用范围。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| CURRENT_USER | 1      | 当前用户。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 
 
 ## CertificateDialogErrorCode
@@ -75,17 +80,21 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。 |
-| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示调用接口时用户取消操作。 |
-| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。 |
-| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。 |
-| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示调用接口时不符合设备安全策略。 |
-| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示调用接口时参数校验失败。<br>例如：参数格式不正确、参数范围无效 |
-| ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。 |
+| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。<br/>**ArkTS-Dyn起始版本**：13<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示调用接口时用户取消操作。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示调用接口时不符合设备安全策略。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示调用接口时参数校验失败。<br>例如：参数格式不正确、参数范围无效<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertificateDialogProperty<sup>18+</sup>
 
 表示证书管理对话框的属性。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -98,6 +107,10 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 ## CertReference<sup>22+</sup>
 
 表示证书凭据的引用信息。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -112,6 +125,10 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 USB证书凭据授权请求信息。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -123,6 +140,10 @@ USB证书凭据授权请求信息。
 ## AuthorizeRequest<sup>22+</sup>
 
 证书授权请求信息。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -140,7 +161,11 @@ USB证书凭据授权请求信息。
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-表示拉起证书管理对话框，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理对话框，显示相应的页面。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -185,7 +210,8 @@ let pageType: certificateManagerDialog.CertificateDialogPageType = certificateMa
 try {
   certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
     console.info('Succeeded in opening certificate manager dialog.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -196,7 +222,11 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -229,10 +259,11 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>**适用版本**：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the installation operation.     |
 | 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
-| 29700004 | The API is not supported on this device.     |
+| 29700004 | To ensure user security, the current device does not support this API. When certType is set to CA_CERT, this API can be invoked only on 2in1 devices. This error code is returned on other devices. |
 | 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
 
 **示例**：
@@ -255,7 +286,8 @@ let caCert: Uint8Array = new Uint8Array([
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
     console.info('Succeeded in opening install certificate');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -267,7 +299,11 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理删除证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -314,14 +350,15 @@ import { UIContext } from '@kit.ArkUI';
 
 /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
-/* certificateType为证书类型，此处赋值CA_CERT，即安装CA证书 */
+/* certificateType为证书类型，此处赋值CA_CERT，即删除CA证书 */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certUri为业务安装证书返回的唯一标识符，此处仅为示例 */
 let certUri: string = "test";
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
     console.info('Succeeded in opening uninstall certificate');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -333,7 +370,11 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理对话框显示证书的详情。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -388,7 +429,8 @@ let property: certificateManagerDialog.CertificateDialogProperty = {
 try {
   certificateManagerDialog.openCertificateDetailDialog(context, caCert, property).then(() => {
     console.info('Succeeded opening certificate detail dialog.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open certificate detail dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -400,7 +442,11 @@ try {
 
 openAuthorizeDialog(context: common.Context): Promise\<string>
 
-打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise方式异步返回结果。
+打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -428,6 +474,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>**适用版本**：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
@@ -441,14 +488,15 @@ import { UIContext } from '@kit.ArkUI';
 /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
-    certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
+    console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to authorize certificate. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to authorize certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## certificateManagerDialog.openAuthorizeDialog<sup>22+</sup>
@@ -456,6 +504,10 @@ try {
 openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest): Promise\<CertReference>
 
 打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户为应用程序授权证书，可授权的证书类型包括应用私有凭据、用户公共凭据和USB凭据。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -508,15 +560,16 @@ let certTypes: Array<certificateManagerDialog.CertificateType> = [
 let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
 let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
 try {
-    certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
-      let reference = certReference;
-      console.info(`Succeeded in opening authorize dialog.`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
+    let reference = certReference;
+    console.info(`Succeeded in opening authorize dialog.`)
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## certificateManagerDialog.openUkeyAuthDialog<sup>22+</sup>
@@ -524,6 +577,10 @@ try {
 openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
 
 打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户可以输入PIN码授权USB证书凭据。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -572,14 +629,15 @@ let context: common.Context = new UIContext().getHostContext() as common.Context
 let keyUri: string = "test"
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
 try {
-    certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Succeeded in opening ukey authorization dialog`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
+    console.info(`Succeeded in opening ukey authorization dialog`)
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -589,11 +647,13 @@ supportsCACertDialog(): boolean
 
 判断设备是否支持打开CA证书管理对话框。
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -618,7 +678,7 @@ try {
   let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
   console.info(`Succeeded in checking whether the device supports CA dialog.`)
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

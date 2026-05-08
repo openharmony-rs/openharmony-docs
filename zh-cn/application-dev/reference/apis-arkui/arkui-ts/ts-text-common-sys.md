@@ -16,7 +16,7 @@
 
 ## TextContentControllerBase
 
-TextInput、TextArea、Search的基础控制器。
+TextInput、TextArea、Search组件的基础控制器。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

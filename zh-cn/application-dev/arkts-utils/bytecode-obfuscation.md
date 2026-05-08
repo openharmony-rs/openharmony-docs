@@ -1,10 +1,10 @@
 # ArkGuard字节码混淆原理及功能
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao; @Graceunderpressure-->
-<!--Designer: @hufeng20-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 术语清单
 

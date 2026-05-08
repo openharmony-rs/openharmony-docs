@@ -1,9 +1,9 @@
 # Repeat：可复用的循环渲染
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
 > **说明：**
@@ -510,8 +510,8 @@ struct RepeatLazyLoadingSync {
 
 > **说明：** 
 >
-> - 此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件`cachedCount > 0`，否则将会导致渲染异常。
-> - 若与Swiper-Loop模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
+> - 此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount) > 0，否则将会导致渲染异常。
+> - 若与[Swiper-Loop](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#loop)模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
 > - 开发者需要关注内存消耗情况，避免因数据持续加载而导致内存过量消耗。
 
 <!-- @[repeat_lazy_loading_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading3.ets) -->

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-@AnimatableExtend装饰器用于自定义可动画的属性方法，该装饰器内定义的函数在动画过程中会被逐帧调用，直到动画结束。该装饰器的常见用途有：
+@AnimatableExtend装饰器用于自定义可动画的属性方法，在这个属性方法中修改组件不可动画的属性。该装饰器内定义的函数在动画过程中会被逐帧调用，直到动画结束，详细开发指导可参考[\@AnimatableExtend](../../../ui/state-management/arkts-animatable-extend.md)。该装饰器的常见用途有：
 
 1. 使不可动画属性变为可动画属性，自定义数据运算规则使得属性能进行插值运算得到中间结果，再由动画驱动属性从起点值逐渐过渡到终点值。
 
@@ -18,7 +18,7 @@
 
 >  **说明：**
 >
->  该装饰器从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该装饰器从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 语法
 
@@ -50,6 +50,10 @@ plus(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
@@ -72,6 +76,10 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
@@ -86,7 +94,9 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 ### multiply
 
-multiply(scale: number): AnimatableArithmetic\<T\>
+ArkTS-Dyn: multiply(scale: number): AnimatableArithmetic\<T\>
+
+ArkTS-Sta: multiply(scale: double): AnimatableArithmetic\<T\>
 
 定义该数据类型的乘法运算规则。
 
@@ -94,11 +104,15 @@ multiply(scale: number): AnimatableArithmetic\<T\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| scale | number | 是    | 乘法运算的系数。                           |
+| scale |  ArkTS-Dyn: number <br> ArkTS-Sta: double | 是    | 乘法运算的系数。                           |
 
 **返回值：**
 
@@ -115,6 +129,10 @@ equals(rhs: AnimatableArithmetic\<T\>): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

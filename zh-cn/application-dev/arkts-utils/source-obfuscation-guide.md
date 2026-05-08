@@ -1,10 +1,10 @@
 # ArkGuard混淆开启指南
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 开启源码混淆
 

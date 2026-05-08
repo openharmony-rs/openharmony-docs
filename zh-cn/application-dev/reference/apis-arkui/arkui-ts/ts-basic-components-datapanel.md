@@ -10,6 +10,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
@@ -32,6 +34,10 @@ DataPanel(options: DataPanelOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -50,9 +56,9 @@ DataPanel(options: DataPanelOptions)
 
 | 名称            | 类型   | 只读 | 可选 | 说明 |
 | ----------------- | -------- | ----- | -------- | -------- |
-| values            | number[]   | 否   | 否  | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
-| max               | number     | 否   | 是   |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100 |
-| type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle |
+| values            | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[]   | 否   | 否  | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否   | 是   |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
 
 
 ## DataPanelType<sup>8+</sup>枚举说明
@@ -64,6 +70,10 @@ DataPanel(options: DataPanelOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------| - | ------------ |
@@ -77,7 +87,9 @@ DataPanel(options: DataPanelOptions)
 
 ### closeEffect
 
-closeEffect(value: boolean)
+ArkTS-Dyn: closeEffect(value: boolean)
+
+ArkTS-Sta: closeEffect(value: boolean | undefined)
 
 设置是否关闭数据占比图表旋转动效和投影效果。若未设置[trackShadow](#trackshadow10)属性，则由该属性控制投影效果的开关，开启投影的效果为投影的默认效果。若设置了trackShadow属性，则由trackShadow属性值控制投影效果的开关。
 
@@ -87,15 +99,21 @@ closeEffect(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------- | ---- | ------------------------------------------------------ |
-| value  | boolean | 是   | 关闭数据占比图表旋转动效和投影效果。<br/>默认值：false，false表示开启数据占比图表旋转动效和投影效果，true表示关闭数据占比图表旋转动效和投影效果。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 关闭数据占比图表旋转动效和投影效果。<br/>默认值：false，false表示开启数据占比图表旋转动效和投影效果，true表示关闭数据占比图表旋转动效和投影效果。设置undefined时恢复默认值。 |
 
 ### valueColors<sup>10+</sup>
 
-valueColors(value: Array<ResourceColor | LinearGradient>)
+ArkTS-Dyn: valueColors(value: Array<ResourceColor | LinearGradient>)
+
+ArkTS-Sta: valueColors(value: Array<ResourceColor | LinearGradient> | undefined)
 
 设置各数据段颜色。
 
@@ -103,15 +121,21 @@ valueColors(value: Array<ResourceColor | LinearGradient>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。默认渐变色，其九段数据段默认颜色：[{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }]、[{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }]、[{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }]、[{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }]、[{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }]、[{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }]、[{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }]、[{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }]、[{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }] |
+| value  | ArkTS-Dyn: Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> <br/>ArkTS-Sta: Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> \|&nbsp;undefined | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。默认渐变色，其九段数据段默认颜色：[{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }]、[{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }]、[{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }]、[{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }]、[{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }]、[{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }]、[{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }]、[{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }]、[{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }]<br/>设置undefined时恢复默认值。 |
 
 ### trackBackgroundColor<sup>10+</sup>
 
-trackBackgroundColor(value: ResourceColor)
+ArkTS-Dyn: trackBackgroundColor(value: ResourceColor)
+
+ArkTS-Sta: trackBackgroundColor(value: ResourceColor | undefined)
 
 设置底板颜色。
 
@@ -119,15 +143,21 @@ trackBackgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 底板颜色。<br/>默认值：'#08182431'，格式为十六进制ARGB值，前两位代表透明度。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|&nbsp;undefined | 是   | 底板颜色。<br/>默认值：'#08182431'，格式为十六进制ARGB值，前两位代表透明度。设置undefined时恢复默认值。 |
 
 ### strokeWidth<sup>10+</sup>
 
-strokeWidth(value: Length)
+ArkTS-Dyn: strokeWidth(value: Length)
+
+ArkTS-Sta: strokeWidth(value: Length | undefined)
 
 设置圆环粗细。数据面板的类型为DataPanelType.Line时该属性不生效。
 
@@ -135,15 +165,21 @@ strokeWidth(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value | [Length](ts-types.md#length) | 是 | 圆环粗细。<br/>默认值：24<br/>单位：vp<br/>设置字符串类型参数时，如果不指定单位，默认单位为px，例如'10'，等同于'10px'。<br/>**说明：**<br/>设置小于0的值时，按默认值显示。<br/>请合理设置圆环粗细，当value大于圆环半径时，圆环粗细会自动设置为圆环半径的12%。如果value过大，圆环可能会消失。 |
+| value | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: [Length](ts-types.md#length) \|&nbsp;undefined | 是 | 圆环粗细。<br/>默认值：24<br/>单位：vp<br/>设置字符串类型参数时，如果不指定单位，默认单位为px，例如'10'，等同于'10px'。<br/>**说明：**<br/>设置小于0的值时，按默认值显示。<br/>设置undefined时恢复默认值。<br/>请合理设置圆环粗细，当value大于圆环半径时，圆环粗细会自动设置为圆环半径的12%。如果value过大，圆环可能会消失。 |
 
 ### trackShadow<sup>10+</sup>
 
-trackShadow(value: DataPanelShadowOptions)
+ArkTS-Dyn: trackShadow(value: DataPanelShadowOptions)
+
+ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined | null)
 
 设置投影样式。
 
@@ -151,15 +187,21 @@ trackShadow(value: DataPanelShadowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                  |
 | ------ | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。 |
+| value  | ArkTS-Dyn: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) <br/>ArkTS-Sta: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) \|&nbsp;undefined \|&nbsp;null | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。<br/>设置undefined时恢复默认投影样式。 |
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<DataPanelConfiguration> | undefined)
 
 定制DataPanel内容区的方法。
 
@@ -167,11 +209,15 @@ contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn:  [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12对象说明)> \|&nbsp;undefined | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示为默认内容。 |
 
 
 ## DataPanelShadowOptions<sup>10+</sup>对象说明
@@ -181,6 +227,10 @@ DataPanelShadowOptions继承自[MultiShadowOptions](ts-information-display-commo
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
@@ -198,6 +248,10 @@ constructor(colorStops: ColorStop[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名         | 类型 | 必填 | 说明 |
@@ -213,6 +267,10 @@ constructor(colorStops: ColorStop[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 否 | 渐变色断点处的颜色值。|
@@ -220,16 +278,20 @@ constructor(colorStops: ColorStop[])
 
 ## DataPanelConfiguration<sup>12+</sup>对象说明
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型    |    只读    |    可选   |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| values | number[] | 否 | 否 | 当前DataPanel的数据值。<br>数组长度范围是[0, 9]。<br>**说明：**<br/>如果数组长度大于9，则取前9项。|
-| maxValue | number | 否 | 否 | DataPanel显示的最大值。<br/>默认值：100。<br>**说明：** <br/>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
+| values | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[] | 否 | 否 | 当前DataPanel的数据值。<br>取值范围：[0, 9]，若数据值小于0，则置为0。<br>**说明：**<br/>如果数组长度大于9，则取前9项。|
+| maxValue | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | DataPanel显示的最大值。<br/>默认值：100。<br>**说明：** <br/>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
 
 ## 示例
 

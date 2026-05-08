@@ -1,9 +1,9 @@
 # @ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)
 
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @xubo85-->
-<!--Designer: @comicchang; @wang-luyu4-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -11,7 +11,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅支持ArkTS-Dyn。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,7 +23,7 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ## ISendable
 type ISendable = lang.ISendable
 
-ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必须的方法和属性。
+为与当前模块的接口规范保持一致，重新定义了ISendable类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

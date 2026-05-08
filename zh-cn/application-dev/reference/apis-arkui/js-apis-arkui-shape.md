@@ -11,7 +11,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -31,6 +33,10 @@ import { CircleShape, EllipseShape, PathShape, RectShape } from "@kit.ArkUI";
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### constructor
 
 constructor(options?: ShapeSize)
@@ -43,11 +49,11 @@ constructor(options?: ShapeSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**参数：** 
 
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | 否 | 形状的大小。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| options | [ShapeSize](#shapesize) | 否 | 是  | 形状的大小。 |
 
 ## EllipseShape
 
@@ -61,6 +67,10 @@ constructor(options?: ShapeSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### constructor
 
 constructor(options?: ShapeSize)
@@ -73,11 +83,15 @@ constructor(options?: ShapeSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS-Dyn起始版本：** 12
 
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | 否 | 形状的大小。 |
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| options | [ShapeSize](#shapesize) | 否 | 是  | 形状的大小。 |
 
 ## PathShape
 
@@ -91,6 +105,10 @@ constructor(options?: ShapeSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### constructor
 
 constructor(options?: PathShapeOptions)
@@ -103,11 +121,15 @@ constructor(options?: PathShapeOptions)
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS-Dyn起始版本：** 12
 
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [PathShapeOptions](#pathshapeoptions) | 否 | 路径参数。 |
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| options | [PathShapeOptions](#pathshapeoptions) | 否 | 是  | 路径参数。 |
 
 ### commands
 
@@ -121,6 +143,12 @@ commands(commands: string): PathShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[commands<sup>23+</sup>](#commands23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
@@ -132,6 +160,32 @@ commands(commands: string): PathShape
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [PathShape](#pathshape) | 返回PathShape对象。 |
+
+### commands<sup>23+</sup>
+
+commands(commands: string): this
+
+设置路径的绘制指令。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[commands](#commands)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| commands | string | 是 | 路径的绘制指令。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 ## RectShape
 
@@ -145,6 +199,10 @@ commands(commands: string): PathShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### constructor
 
 constructor(options?: RectShapeOptions | RoundRectShapeOptions)
@@ -156,6 +214,10 @@ constructor(options?: RectShapeOptions | RoundRectShapeOptions)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -175,17 +237,49 @@ radiusWidth(rWidth: number | string): RectShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[radiusWidth<sup>23+</sup>](#radiuswidth23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 | 
+| rWidth | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 | 
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [RectShape](#rectshape) | 返回RectShape对象。 |
+
+### radiusWidth<sup>23+</sup>
+
+radiusWidth(rWidth: double | string): this
+
+设置矩形形状圆角半径的宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[radiusWidth](#radiuswidth)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| rWidth | double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 | 
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 ### radiusHeight
 
@@ -199,17 +293,49 @@ radiusHeight(rHeight: number | string): RectShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[radiusHeight<sup>23+</sup>](#radiusheight23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rHeight | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| rHeight | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的高度。 <br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [RectShape](#rectshape) | 返回RectShape对象。 |
+
+### radiusHeight<sup>23+</sup>
+
+radiusHeight(rHeight: double | string): this
+
+设置矩形形状圆角半径的宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[radiusHeight](#radiusheight)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| rWidth | double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 | 
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 ### radius
 
@@ -223,17 +349,49 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[radius<sup>23+</sup>](#radius23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [RectShape](#rectshape) | 返回RectShape对象。 |
+
+### radius<sup>23+</sup>
+
+radius(radius: double | string | Array<double &nbsp;\|&nbsp; string>): this
+
+设置矩形形状的圆角半径。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[radius](#radius)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| radius | double &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<double &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 
 ## ShapeSize
@@ -246,10 +404,14 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
-| ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| width | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
-| height | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| width | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 形状的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| height | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 形状的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 ## PathShapeOptions
 
@@ -261,8 +423,12 @@ PathShape的构造函数参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
-| ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
 | commands | string | 否 | 是 | 绘制路径的指令。更多说明请参考commands支持的[绘制命令](./arkui-ts/ts-drawing-components-path.md#commands)。 |
 
 ## RectShapeOptions
@@ -277,9 +443,13 @@ RectShape 的构造函数参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
-| ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 否 | 是 | 矩形形状的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| radius | ArkTS-Dyn: number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string><br/>ArkTS-Sta: double &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<double &nbsp;\|&nbsp; string> | 否 | 是 | 矩形形状的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 ## RoundRectShapeOptions
 
@@ -293,10 +463,14 @@ RectShape 带有半径的构造函数参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
-| ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| radiusWidth | number &nbsp;\|&nbsp; string | 否 | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
-| radiusHeight | number &nbsp;\|&nbsp; string | 否 | 是 | 矩形形状圆角半径的高度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| radiusWidth | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| radiusHeight | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 矩形形状圆角半径的高度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 ## BaseShape
 
@@ -307,6 +481,10 @@ RectShape 带有半径的构造函数参数。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 ### width
 
@@ -320,6 +498,12 @@ width(width: Length): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[width<sup>23+</sup>](#width23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
@@ -331,6 +515,32 @@ width(width: Length): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前对象。 |
+
+### width<sup>23+</sup>
+
+width(width: Length): this
+
+设置形状的宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[width](#width)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| width | [Length](arkui-ts/ts-types.md#length) | 是 | 形状的宽度。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 ### height
 
@@ -344,6 +554,12 @@ height(height: Length): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[height<sup>23+</sup>](#height23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
@@ -355,6 +571,32 @@ height(height: Length): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前对象。 |
+
+### height<sup>23+</sup>
+
+height(height: Length): this
+
+设置形状的高度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[height](#height)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| height | [Length](arkui-ts/ts-types.md#length) | 是 | 形状的高度。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 ### size
 
@@ -368,6 +610,12 @@ size(size: SizeOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[size<sup>23+</sup>](#size23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
@@ -379,6 +627,32 @@ size(size: SizeOptions): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前对象。 |
+
+### size<sup>23+</sup>
+
+size(size: SizeOptions): this
+
+设置形状的大小。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[size](#size)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                                                                 |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| size | [SizeOptions](arkui-ts/ts-types.md#sizeoptions) | 是 | 形状的大小。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 ## CommonShapeMethod
 
@@ -402,6 +676,12 @@ offset(offset: Position): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offset<sup>23+</sup>](#offset23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
@@ -413,6 +693,32 @@ offset(offset: Position): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前对象。 |
+
+### offset<sup>23+</sup>
+
+offset(offset: Position): this
+
+设置相对于组件布局位置的坐标偏移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[offset](#offset)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| offset | [Position](arkui-ts/ts-types.md#position) | 是 | 相对于组件布局位置的坐标偏移。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前对象。 |
 
 
 ### fill
@@ -427,6 +733,10 @@ fill(color: ResourceColor): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
@@ -439,10 +749,37 @@ fill(color: ResourceColor): T
 | ------ | ------------------------ |
 | T | 返回当前对象。 |
 
+### fill<sup>23+</sup>
+
+fill(color: ResourceColor): this
+
+设置形状的填充区域的透明度，黑色表示完全透明，白色表示完全不透明。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[fill](#fill)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名         | 类型                                               | 必填 | 说明                                         |
+| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
+| color | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 是 | 形状的填充区域的透明度，黑色表示完全透明，白色表示完全不透明。 |
+
+**返回值：**
+
+| 类型   | 说明                                         |
+| ------ | ------------------------ |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ### position
 
-position(position: Position): T
+ArkTS-Dyn: position(position: Position): T
+
+ArkTS-Sta: position(position: Position): this
 
 设置形状的位置。
 
@@ -451,6 +788,10 @@ position(position: Position): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -462,7 +803,7 @@ position(position: Position): T
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## 示例
 

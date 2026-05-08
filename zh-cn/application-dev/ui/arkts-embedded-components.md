@@ -30,7 +30,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 应用范围
 
-  EmbeddedComponent组件只能在UIAbility中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
+  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
 
 - 属性限制
 
@@ -38,7 +38,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
   
   不支持如下与宽高相关的属性：
   
-  "constraintSize"、"aspectRatio"、"layoutWeight"、"flexBasis"、"flexGrow"和"flexShrink"。
+  "[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)"、"[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)"、"[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)"、"[flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)"、"[flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)"和"[flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)"。
 
 - 事件调用
 
@@ -55,6 +55,8 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 加载项首页是EmbeddedComponent组件的宿主页面，负责加载和展示嵌入式UI扩展能力的内容。以下是一个完整的加载项首页实现示例：
 
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
+
+ArkTS-Dyn示例：
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -91,6 +93,44 @@ export struct Embedded {
 }
 ```
 
+ArkTS-Sta示例：
+
+``` TypeScript
+'use static'
+
+import { Want } from '@kit.AbilityKit';
+import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Component, Column, Row, Text, EmbeddedType, EmbeddedComponent } from '@ohos.arkui.component';
+
+@Entry
+@Component
+export struct Embedded {
+  @State message: string = 'Message: ';
+  private want: Want = {
+    bundleName: 'com.samples.uiextensionandaccessibility',
+    abilityName: 'ExampleEmbeddedAbility',
+  };
+  build() {
+    Row() {
+      Column(undefined) {
+        Text(this.message).fontSize(30)
+        EmbeddedComponent(this.want)
+          .width('100%')
+          .height('90%')
+          .onTerminated((info) => {
+            this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
+          })
+          .onError((error) => {
+            this.message = `Error: code = ${error.code}`;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionAbility目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionAbility/目录中。
 
 在实现加载项首页时，开发者需要注意以下几点：
@@ -116,6 +156,8 @@ export struct Embedded {
 提供方应用是指提供嵌入式UI扩展能力的应用。以下是提供方应用生命周期实现的代码示例：
 
 <!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
+
+ArkTS-Dyn示例：
 
 ``` TypeScript
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -156,27 +198,69 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
+
+ArkTS-Sta示例：
+
+``` TypeScript
+'use static'
+import type { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import hilog from '@ohos.hilog';
+
+const TAG: string = '[ExampleEmbeddedAbility]'
+
+export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
+  onCreate() {
+    hilog.info(0x0000, TAG, 'onCreate');
+  }
+
+  onForeground() {
+    hilog.info(0x0000, TAG, 'onForeground');
+  }
+
+  onBackground() {
+    hilog.info(0x0000, TAG, 'onBackground');
+  }
+
+  onDestroy() {
+    hilog.info(0x0000, TAG, 'onDestroy');
+  }
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    hilog.info(0x0000, TAG, 'onSessionCreate, want: %{public}s', JSON.stringify(want));
+    let param: Record<string, UIExtensionContentSession> = {
+      'session': session
+    };
+    let storage: LocalStorage = new LocalStorage(param);
+    // 加载 Extension.ets 页面内容
+    session.loadContent('pages/EmbeddedComponent/Extension', storage);
+  }
+
+  onSessionDestroy(session: UIExtensionContentSession) {
+    hilog.info(0x0000, TAG, 'onSessionDestroy');
+  }
+}
+```
 关键实现说明：
 
 - 生命周期阶段
 
-  onCreate → onForeground：组件初始化到可见的完整流程；
+  [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：组件初始化到可见的完整流程；
 
-  onBackground → onForeground：前后台切换时的状态迁移；
+  [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → onForeground：前后台切换时的状态迁移；
 
-  onDestroy：组件被宿主主动销毁时的资源回收点。
+  [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：组件被宿主主动销毁时的资源回收点。
 
 - 会话管理
 
-  onSessionCreate：创建独立存储上下文并加载UI界面；
+  [onSessionCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)：创建独立存储上下文并加载UI界面；
 
-  onSessionDestroy：处理会话结束时（如用户主动关闭）的清理操作。
+  [onSessionDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessiondestroy)：处理会话结束时（如用户主动关闭）的清理操作。
 
 - 上下文传递
 
-  通过LocalStorage实现UIExtensionContentSession的跨组件传递；
+  通过[LocalStorage](../ui/state-management/arkts-localstorage.md)实现[UIExtensionContentSession](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)的跨组件传递；
 
-  使用loadContent方法绑定ArkTS页面与扩展能力上下文。
+  使用[loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法绑定ArkTS页面与扩展能力上下文。
 
 **入口页面** 
 
@@ -184,10 +268,45 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
 
+ArkTS-Dyn示例：
+
 ``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
 @Entry()
+@Component
+struct Extension {
+  @State message: string = 'EmbeddedUIExtensionAbility Index';
+  private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      Button('terminateSelfWithResult').fontSize(20).onClick(() => {
+        // 点击按钮后调用terminateSelfWithResult退出
+        this.session?.terminateSelfWithResult({
+          resultCode: 1,
+          want: {
+            bundleName: 'com.samples.uiextensionandaccessibility',
+            abilityName: 'ExampleEmbeddedAbility',
+          }
+        });
+      })
+    }.width('100%').height('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` TypeScript
+'use static'
+import type { UIExtensionContentSession } from '@kit.AbilityKit';
+import { Column, Text, Button, Component, Entry, FontWeight } from '@ohos.arkui.component';
+
+@Entry
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';

@@ -1,7 +1,7 @@
 # 创建自定义组件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926; @huyisuo-->
+<!--Owner: @jiyujia926; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -51,7 +51,7 @@ struct HelloComponent {
 
 可以在其他自定义组件的`build()`函数中多次创建`HelloComponent`，以实现自定义组件的重用。
 
-<!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->
+<!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -59,6 +59,7 @@ struct HelloComponent {
 struct ParentComponent {
   build() {
     Column() {
+      // 多次创建HelloComponent，实现自定义组件的重用
       Text('ArkUI message')
       HelloComponent({ message: 'Hello World!' })
       Divider()
@@ -99,7 +100,7 @@ struct ParentComponent {
   >
   > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
   >
-  > 从API version 10开始，\@Entry可以接受一个可选的[LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)参数或者一个可选的EntryOptions<sup>10+</sup>参数。
+  > 从API version 10开始，\@Entry可以接受一个可选的[LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)参数或者一个可选的[EntryOptions<sup>10+</sup>](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#)参数。
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
@@ -306,7 +307,7 @@ struct ParentComponent {
 
 以下示例代码将父组件中的函数传递给子组件，并在子组件中调用。
 
-<!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  -->
+<!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  --> 
 
 ``` TypeScript
 @Entry
@@ -320,6 +321,7 @@ struct Parent {
   build() {
     Column() {
       Text(`${this.cnt}`)
+      // 父组件中的函数传递给子组件
       Son({ submitArrow: this.submit })
     }
   }
@@ -348,7 +350,7 @@ struct Son {
 
 所有在build()函数中声明的语句统称为UI描述，UI描述需要遵循以下规则：
 
-- \@Entry装饰的自定义组件，其build()函数下的根节点唯一且必要，且必须为容器组件，其中ForEach禁止作为根节点。
+- \@Entry装饰的自定义组件，其build()函数下的根节点唯一且必要，且必须为[容器组件](../arkts-layout-development-overview.md)，其中[ForEach](../rendering-control/arkts-rendering-control-foreach.md)禁止作为根节点。
   \@Component装饰的自定义组件，其build()函数下的根节点唯一且必要，可以为非容器组件，其中ForEach禁止作为根节点。
 
   <!-- @[build_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentBuild.ets) -->
@@ -384,7 +386,7 @@ struct Son {
   }
   ```
 
-- 不允许在UI描述里直接使用console.info，但允许在方法或者函数里使用，反例如下。
+- 不允许在UI描述里直接使用[console.info](../../reference/common/js-apis-logs.md#consoleinfo)，但允许在方法或者函数里使用，反例如下。
 
   ```ts
   build() {
@@ -404,7 +406,7 @@ struct Son {
   }
   ```
 
-- 不允许调用没有用\@Builder装饰的方法，允许系统组件的参数是TS方法的返回值。
+- 不允许调用没有用[\@Builder](arkts-builder.md)装饰的方法，允许系统组件的参数是TS方法的返回值。
 
   ```ts
   @Component
@@ -509,7 +511,7 @@ struct Son {
   ```
 
 
-- 不允许直接改变状态变量，反例如下。
+- 不允许直接改变[状态变量](arkts-state.md)，反例如下。
 
   ```ts
   @Component
@@ -540,10 +542,10 @@ struct Son {
 
   ![zh-cn_image_0000001651365257](figures/zh-cn_image_0000001651365257.png)
 
-  所以，不能在自定义组件的build()或\@Builder方法里直接改变状态变量，这可能会造成循环渲染的风险。Text('${this.count++}')在全量更新或最小化更新会产生不同的影响：
+  所以，不能在自定义组件的build()或\@Builder方法里直接改变状态变量，这可能会造成循环渲染的风险。[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)('${this.count++}')在全量更新或最小化更新会产生不同的影响：
 
   - 全量更新（API8及以前版本）： ArkUI可能会陷入一个无限的重渲染的循环里，因为Text组件的每一次渲染都会改变应用的状态，就会再引起下一轮渲染的开启。 当 this.columnColor 更改时，都会执行整个build构建函数，因此，Text(`${this.count++}`)绑定的文本也会更改，每次重新渲染Text(`${this.count++}`)，又会使this.count状态变量更新，导致新一轮的build执行，从而陷入无限循环。
-  - 最小化更新（API9及以上版本）：当this.columnColor更新时，仅Column组件更新，Text组件不会更新。只有当this.textColor更改时，会去更新整个Text组件，其所有属性函数都会执行，所以会看到Text(`${this.count++}`)自增。因为目前UI以组件为单位进行更新，如果组件上某一个属性发生改变，会更新整个的组件。所以整体的更新链路是：this.textColor = Color.Pink -&gt;Text组件整个更新-&gt;this.count++ -&gt;Text组件整个更新。值得注意的是，这种写法在初次渲染时会导致Text组件渲染两次，影响性能。
+  - 最小化更新（API9及以上版本）：当this.columnColor更新时，仅[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)组件更新，Text组件不会更新。只有当this.textColor更改时，会去更新整个Text组件，其所有属性函数都会执行，所以会看到Text(`${this.count++}`)自增。因为目前UI以组件为单位进行更新，如果组件上某一个属性发生改变，会更新整个的组件。所以整体的更新链路是：this.textColor = Color.Pink -&gt;Text组件整个更新-&gt;this.count++ -&gt;Text组件整个更新。值得注意的是，这种写法在初次渲染时会导致Text组件渲染两次，影响性能。
   
   build函数中更改应用状态的行为可能比上面的示例更加隐蔽，例如：
 
@@ -561,8 +563,6 @@ struct Son {
       // ...
     })
     ```
-  
-    <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) --> 
     
     ``` TypeScript
     // 正确的执行方式为：filter返回一个新数组，后面的sort方法才不会改变原数组this.arr
@@ -578,7 +578,7 @@ struct Son {
 
 自定义组件通过“.”链式调用设置通用样式。
 
-<!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) -->
+<!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) --> 
 
 ``` TypeScript
 @Component
@@ -593,6 +593,7 @@ struct ChildComponent {
 struct MyComponent {
   build() {
     Row() {
+      // 属性设置给ChildComponent而不是ChildComponent中的Button
       ChildComponent()
         .width(200)
         .height(300)
@@ -604,7 +605,7 @@ struct MyComponent {
 
 > **说明：**
 >
-> ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的Button组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
+> ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的[Button](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
 
 ## 自定义组件支持跨Ability迁移
 
@@ -793,7 +794,7 @@ struct ComponentUnderBuilderNode {
 }
 ```
 
-<!-- @[EnableCustomComponentCrossAbility_ExtraAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets) -->
+<!-- @[EnableCustomComponentCrossAbility_ExtraAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets) --> 
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -807,6 +808,7 @@ export default class ExtraAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/ExtraIndex', (err) => {
       if (err.code) {
+        // ExtraIndex加载失败，输出报错信息
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }

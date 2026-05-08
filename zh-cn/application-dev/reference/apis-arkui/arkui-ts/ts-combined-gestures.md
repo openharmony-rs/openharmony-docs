@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 接口
 
@@ -19,6 +21,10 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -35,6 +41,10 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值    | 说明                                       |
 | --------- | -------| ------------------------------------- |
 | Sequence | - | 顺序识别，根据注册顺序依次进行手势识别，直到所有手势识别成功。如果任一手势识别失败，则后续手势识别均无法完成。<br>在顺序识别手势组中，仅最后一个手势能响应onActionEnd事件。 |
@@ -46,7 +56,9 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 ### onCancel
 
-onCancel(event: () => void)
+ArkTS-Dyn: onCancel(event: () => void)
+
+ArkTS-Sta: onCancel(event: VoidCallback)
 
 手势识别成功，接收到触摸取消事件，触发回调。
 
@@ -54,11 +66,15 @@ onCancel(event: () => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  () => void | 是   | 手势事件回调函数。|
+| event  |  ArkTS-Dyn: () => void<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 是   | 手势事件回调函数。|
 
 ## 示例
 

@@ -1,7 +1,7 @@
 # external_window.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -1207,7 +1207,7 @@ int32_t OH_NativeWindow_LockBuffer(OHNativeWindow* window, Region region, OHNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md)* window | 一个指向OHNativeWindow的结构体实例的指针。 |
-| [Region](capi-nativewindow-region.md) region | 一个Region结构体，表示一块脏区域，该区域有内容更新。 |
+| [Region](capi-nativewindow-region.md) region | 一个Region结构体，表示一块脏区域，该区域有内容更新。<br>Region.rectNumber限制最大数量为1000，当rectNumber≤0或者rectNumber>1000时，使用整个buffer作为脏区。<br>Region.rect以buffer左下角为坐标原点。 |
 | [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)** buffer | 一个指向OHNativeWindowBuffer的二级指针。 |
 
 **返回：**

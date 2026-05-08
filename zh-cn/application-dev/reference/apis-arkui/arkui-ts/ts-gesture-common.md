@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  本模块首批接口从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## GestureInterface\<T><sup>11+</sup>
 
@@ -19,6 +21,12 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[Gesture](#gesture23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 ### tag<sup>11+</sup>
 
@@ -29,6 +37,12 @@ tag(tag: string): T
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[tag](#tag23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -52,6 +66,12 @@ allowedTypes(types: Array\<SourceTool>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[allowedTypes](#allowedtypes23)。
+
+**ArkTS-Dyn起始版本：** 14
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                        |
@@ -63,6 +83,62 @@ allowedTypes(types: Array\<SourceTool>): T
 | 类型     | 说明        |
 | ------ | --------- |
 | T | 返回当前组件。 |
+
+## Gesture<sup>23+</sup>
+
+定义Gesture接口。
+
+### tag<sup>23+</sup>
+
+tag(tag: string): this
+
+设置手势的标志。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[tag](#tag11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明                        |
+| ------ | ------------------------------------------ | ---- | ---------------------------- |
+| tag  |  string | 是   | 手势的标志。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| this | 返回当前组件。 |
+
+### allowedTypes<sup>23+</sup>
+
+allowedTypes(types: Array\<SourceTool>): this
+
+设置手势响应的输入类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[allowedTypes](#allowedtypes14)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明                        |
+| ------ | ------------------------------------------ | ---- | ---------------------------- |
+| types  |  Array\<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)> | 是   | 手势响应的输入类型。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| this | 返回当前组件。 |
 
 ## ScrollableTargetInfo<sup>12+</sup> 
 
@@ -77,6 +153,10 @@ isBegin(): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -93,6 +173,10 @@ isEnd(): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -113,6 +197,10 @@ getId(): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -152,6 +240,10 @@ ArkTS-Sta: getUniqueId(): int
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 ### getEventTargetInfo<sup>20+</sup>
 
 getEventTargetInfo(): EventTargetInfo
@@ -161,6 +253,10 @@ getEventTargetInfo(): EventTargetInfo
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -177,6 +273,10 @@ cancelTouch(): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 ### isHostBelongsTo
 
@@ -222,6 +322,10 @@ getTag(): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
@@ -237,6 +341,10 @@ getType(): GestureControl.GestureType
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -254,6 +362,10 @@ isBuiltIn(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
@@ -269,6 +381,10 @@ setEnabled(isEnabled: boolean): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -286,6 +402,10 @@ isEnabled(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
@@ -301,6 +421,10 @@ getState(): GestureRecognizerState
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -318,6 +442,10 @@ getEventTargetInfo(): EventTargetInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
@@ -332,6 +460,10 @@ isValid(): boolean;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
@@ -340,7 +472,9 @@ isValid(): boolean;
 
 ### getFingerCount<sup>18+</sup>
 
-getFingerCount(): number
+ArkTS-Dyn: getFingerCount(): number
+
+ArkTS-Sta: getFingerCount(): int
 
 返回预设手指识别数阈值。
 
@@ -348,11 +482,15 @@ getFingerCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设手指识别数阈值。<br/>取值范围：[1, 10], 整数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 预设手指识别数阈值。<br/>取值范围：[1, 10], 整数。 |
 
 ### isFingerCountLimit<sup>18+</sup>
 
@@ -363,6 +501,10 @@ isFingerCountLimit(): boolean
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -379,6 +521,10 @@ preventBegin(): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 ### isHostBelongsTo
 
@@ -416,7 +562,9 @@ ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
 
 ### getTapCount<sup>18+</sup>
 
-getTapCount(): number
+ArkTS-Dyn: getTapCount(): number
+
+ArkTS-Sta: getTapCount(): int
 
 返回预设点击手势识别器连续点击次数阈值。
 
@@ -424,11 +572,15 @@ getTapCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设点击手势识别器连续点击次数阈值。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 预设点击手势识别器连续点击次数阈值。<br/>取值范围：[0, +∞) |
 
 ## LongPressRecognizer<sup>18+</sup>
 
@@ -444,6 +596,10 @@ isRepeat(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
@@ -452,7 +608,9 @@ isRepeat(): boolean
 
 ### getDuration<sup>18+</sup>
 
-getDuration(): number
+ArkTS-Dyn: getDuration(): number
+
+ArkTS-Sta: getDuration(): int
 
 返回预设长按手势识别器触发长按最短时间阈值。
 
@@ -460,15 +618,21 @@ getDuration(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
 
 ### getAllowableMovement<sup>22+</sup>
 
-getAllowableMovement(): number
+ArkTS-Dyn: getAllowableMovement(): number
+
+ArkTS-Sta: getAllowableMovement(): double
 
 获取长按手势识别器识别的手势的最大移动距离。
 
@@ -476,11 +640,15 @@ getAllowableMovement(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 长按手势识别器识别的手势的最大移动距离，单位为px。<br/>取值范围：(0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 长按手势识别器识别的手势的最大移动距离，单位为px。<br/>取值范围：(0, +∞) |
 
 ## SwipeRecognizer<sup>18+</sup>
 
@@ -488,7 +656,9 @@ getAllowableMovement(): number
 
 ### getVelocityThreshold<sup>18+</sup>
 
-getVelocityThreshold(): number
+ArkTS-Dyn: getVelocityThreshold(): number
+
+ArkTS-Sta: getVelocityThreshold(): double
 
 返回预设快滑手势识别器识别滑动最小速度阈值。
 
@@ -496,11 +666,15 @@ getVelocityThreshold(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设快滑手势识别器识别滑动最小速度阈值，单位为vp/s。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设快滑手势识别器识别滑动最小速度阈值，单位为vp/s。<br/>取值范围：[0, +∞) |
 
 ### getDirection<sup>18+</sup>
 
@@ -511,6 +685,10 @@ getDirection(): SwipeDirection
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -524,7 +702,9 @@ getDirection(): SwipeDirection
 
 ### getDistance<sup>18+</sup>
 
-getDistance(): number
+ArkTS-Dyn: getDistance(): number
+
+ArkTS-Sta: getDistance(): double
 
 返回预设捏合手势识别器最小识别距离阈值。
 
@@ -532,11 +712,15 @@ getDistance(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设捏合手势识别器最小识别距离阈值，单位为vp。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设捏合手势识别器最小识别距离阈值，单位为vp。<br/>取值范围：[0, +∞) |
 
 ## RotationRecognizer<sup>18+</sup>
 
@@ -544,7 +728,9 @@ getDistance(): number
 
 ### getAngle<sup>18+</sup>
 
-getAngle(): number
+ArkTS-Dyn: getAngle(): number
+
+ArkTS-Sta: getAngle(): double
 
 返回预设旋转手势识别器触发旋转手势最小改变度数阈值。
 
@@ -552,11 +738,15 @@ getAngle(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设旋转手势识别器触发旋转手势最小改变度数阈值，单位为deg。<br/>取值范围：[0, +∞)<br/>**说明：** <br/>当输入的改变度数的值小于等于0或大于360时，会被转化为默认值，默认值为1。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设旋转手势识别器触发旋转手势最小改变度数阈值，单位为deg。<br/>取值范围：[0, +∞)<br/>**说明：** <br/>当输入的改变度数的值小于等于0或大于360时，会被转化为默认值，默认值为1。 |
 
 ## PanRecognizer<sup>12+</sup> 
 
@@ -571,6 +761,10 @@ getPanGestureOptions(): PanGestureOptions
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -588,6 +782,10 @@ getDirection(): PanDirection
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型     | 说明        |
@@ -596,7 +794,9 @@ getDirection(): PanDirection
 
 ### getDistance<sup>19+</sup>
 
-getDistance(): number
+ArkTS-Dyn: getDistance(): number
+
+ArkTS-Sta: getDistance(): double
 
 返回当前滑动手势识别器触发的最小滑动距离。
 
@@ -604,15 +804,21 @@ getDistance(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 当前滑动手势识别器触发的最小滑动距离。单位：vp |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前滑动手势识别器触发的最小滑动距离。单位：vp |
 
 ### getDistanceMap<sup>19+</sup>
 
-getDistanceMap(): Map\<SourceTool, number\>
+ArkTS-Dyn: getDistanceMap(): Map\<SourceTool, number\>
+
+ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 
 返回滑动手势识别器在不同输入源的情况下触发的最小滑动距离。
 
@@ -624,19 +830,27 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number> | 不同输入源的滑动手势识别器触发的最小滑动距离。滑动距离的单位：vp |
+| ArkTS-Dyn: Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number><br/>ArkTS-Sta: Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), double> | 不同输入源的滑动手势识别器触发的最小滑动距离。滑动距离的单位：vp |
 
-## GestureRecognizerState<sup>12+</sup> 
+## GestureRecognizerState<sup>12+</sup>
 
 定义手势识别器状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明                           |
 | ------- | ---- | ---------------------------------- |
@@ -655,20 +869,20 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 | 名称 | 类型  |   只读  | 可选    |  说明 |
 | -------- | -------- | ---- | ---- |-------- |
-| repeat | boolean | 否 |  否  |是否为重复触发事件，用于LongPressGesture手势触发场景。true表示重复触发事件，false表示非重复触发事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| offsetX | number | 否 | 否  |手势事件相对于手指按下时的偏移量X，单位为vp，用于PanGesture手势触发场景，从左向右滑动offsetX为正，反之为负。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞) |
-| offsetY | number | 否 | 否  |手势事件相对于手指按下时的偏移量Y，单位为vp，用于PanGesture手势触发场景，从上向下滑动offsetY为正，反之为负。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞)  |
-| angle | number | 否 | 否  |用于RotationGesture手势触发场景时，表示旋转角度。<br/>用于SwipeGesture手势触发场景时，表示快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数。<br/>**说明：**<br/>角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br/>取值范围：[-180,  +180]<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| scale | number |否 | 否  |缩放比例，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| pinchCenterX | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的x轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| pinchCenterY | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的y轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| speed<sup>8+</sup> | number | 否 | 否  |快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s，用于SwipeGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否  |输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br/>**说明：**<br/>1. 手指索引编号与位置对应，即fingerList[index]的id为index。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br/>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 是  |由触屏产生的手势，fingerInfos中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerInfos中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerInfos只会携带一条记录。<br/> **说明：**<br/>fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与当前手势触发的手指在fingerInfos中不会显示。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| velocityX<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| velocityY<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| velocity<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。<br/>取值范围：[0,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。在非点击手势中，tapLocation返回值为undefined。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| repeat | boolean | 否 |  否  |是否为重复触发事件，用于LongPressGesture手势触发场景。true表示重复触发事件，false表示非重复触发事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| offsetX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |手势事件相对于手指按下时的偏移量X，单位为vp，用于PanGesture手势触发场景，从左向右滑动offsetX为正，反之为负。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| offsetY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |手势事件相对于手指按下时的偏移量Y，单位为vp，用于PanGesture手势触发场景，从上向下滑动offsetY为正，反之为负。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |用于RotationGesture手势触发场景时，表示旋转角度。<br/>用于SwipeGesture手势触发场景时，表示快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数。<br/>**说明：**<br/>角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br/>取值范围：[-180,  +180]<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| scale | ArkTS-Dyn: number<br/>ArkTS-Sta: double |否 | 否  |缩放比例，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| pinchCenterX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的x轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| pinchCenterY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的y轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| speed<sup>8+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s，用于SwipeGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否  |输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br/>**说明：**<br/>1. 手指索引编号与位置对应，即fingerList[index]的id为index。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br/>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 是  |由触屏产生的手势，fingerInfos中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerInfos中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerInfos只会携带一条记录。<br/> **说明：**<br/>fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与当前手势触发的手指在fingerInfos中不会显示。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| velocityX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| velocityY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| velocity<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。<br/>取值范围：[0,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。在非点击手势中，tapLocation返回值为undefined。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## GestureMask枚举说明
 
@@ -677,6 +891,10 @@ getDistanceMap(): Map\<SourceTool, number\>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 |值| 说明 |
 | -------- | ---- |-------- |
@@ -691,6 +909,10 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 值 | 说明                               |
 | ----- | -------- | ----------------------- |
 | CONTINUE  | 0 | 不影响系统手势判定流程。|
@@ -704,18 +926,18 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 | 名称  | 值 | 说明                                   |
 | ----- | -------- | ------------------------------- |
-| TAP_GESTURE   | 0 | 点击手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| LONG_PRESS_GESTURE  | 1 | 长按手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| PAN_GESTURE    | 2 | 滑动手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| PINCH_GESTURE   | 3 | 捏合手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| SWIPE_GESTURE    | 4 | 快滑手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ROTATION_GESTURE   | 5 | 旋转手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DRAG    | 6 | 拖拽。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| CLICK   | 7 | 点击。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| BOX_SELECT_GESTURE<sup>23+</sup>   | 8 | 滚动类容器鼠标框选手势，是一种特殊的滑动手势，用于在滚动容器中通过鼠标拖拽创建选择区域，批量选择多个元素。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| WEB_SCROLL_GESTURE<sup>23+</sup>   | 9 | Web组件滚动手势，是一种特殊的滑动手势，用于控制Web组件内的滚动行为。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| TEXT_FIELD_SELECT_GESTURE<sup>23+</sup>   | 10 | 文本选择手势，是一种特殊的滑动手势，用于在输入框组件中通过拖拽选择文本内容。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| CONTEXT_MENU_HOVER_GESTURE<sup>23+</sup>   | 11 | 上下文菜单悬停手势是一种特殊的长按手势，用于在长按过程中触发菜单的hoverScale动画效果（需启用[ContextMenuAnimationOptions](./ts-universal-attributes-menu.md#contextmenuanimationoptions11)的hoverScaleInterruption属性以支持该行为）。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| TAP_GESTURE   | 0 | 点击手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| LONG_PRESS_GESTURE  | 1 | 长按手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| PAN_GESTURE    | 2 | 滑动手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| PINCH_GESTURE   | 3 | 捏合手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| SWIPE_GESTURE    | 4 | 快滑手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| ROTATION_GESTURE   | 5 | 旋转手势。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| DRAG    | 6 | 拖拽。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| CLICK   | 7 | 点击。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| BOX_SELECT_GESTURE<sup>23+</sup>   | 8 | 滚动类容器鼠标框选手势，是一种特殊的滑动手势，用于在滚动容器中通过鼠标拖拽创建选择区域，批量选择多个元素。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| WEB_SCROLL_GESTURE<sup>23+</sup>   | 9 | Web组件滚动手势，是一种特殊的滑动手势，用于控制Web组件内的滚动行为。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| TEXT_FIELD_SELECT_GESTURE<sup>23+</sup>   | 10 | 文本选择手势，是一种特殊的滑动手势，用于在输入框组件中通过拖拽选择文本内容。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| CONTEXT_MENU_HOVER_GESTURE<sup>23+</sup>   | 11 | 上下文菜单悬停手势是一种特殊的长按手势，用于在长按过程中触发菜单的hoverScale动画效果（需启用[ContextMenuAnimationOptions](./ts-universal-attributes-menu.md#contextmenuanimationoptions11)的hoverScaleInterruption属性以支持该行为）。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## GestureInfo<sup>11+</sup>对象说明
 
@@ -724,6 +946,10 @@ getDistanceMap(): Map\<SourceTool, number\>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                  | 只读 | 可选 | 说明         |
 | ---------------  | ---------------------|----|------| -----------|
@@ -735,20 +961,46 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 手指信息类型。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选| 说明 |
 | -------- | -------- |  -------- |--------- |-------- |
-| id | number | 否  | 否     |手指的索引编号，由按下手指的数量决定，按下一根手指为0，之后每按下1根手指索引编号加一。<br/>**说明：**<br/> 鼠标（索引编号为1001）、手写笔（索引编号为102）、鼠标滚轮（索引编号为0）、触摸板双指滑动（索引编号为0）的索引编号也会被转化为手指的索引编号。<br/>取值范围：[0, 9)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| globalX | number | 否  |  否     |相对于应用窗口左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| globalY | number | 否  |  否     |相对于应用窗口左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| localX | number | 否  |  否     |相对于当前组件元素原始区域左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| localY | number | 否  |  否     |相对于当前组件元素原始区域左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayX<sup>12+</sup> | number | 否  | 否     | 相对于屏幕左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| displayY<sup>12+</sup> | number | 否  |  否     |相对于屏幕左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否  |  是     |表示事件是由左手点击还是右手点击触发。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| globalDisplayX<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的X坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的Y坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| id | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否     |手指的索引编号，由按下手指的数量决定，按下一根手指为0，之后每按下1根手指索引编号加一。<br/>**说明：**<br/> 鼠标（索引编号为1001）、手写笔（索引编号为102）、鼠标滚轮（索引编号为0）、触摸板双指滑动（索引编号为0）的索引编号也会被转化为手指的索引编号。<br/>取值范围：[0, 9)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| globalX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否     |相对于应用窗口左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| globalY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否     |相对于应用窗口左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| localX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否     |相对于当前组件元素原始区域左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| localY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否     |相对于当前组件元素原始区域左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  | 否     | 相对于屏幕左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否     |相对于屏幕左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否  |  是     |表示事件是由左手点击还是右手点击触发。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是     |相对于全局屏幕的左上角的X坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是     |相对于全局屏幕的左上角的Y坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+
+### getCurrentLocalPosition
+
+ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
+ 
+ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
+
+获取手指位置相对于当前组件实时位置的左上角坐标。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 获取手指位置相对于当前组件实时位置的左上角坐标。|
 
 ## GestureType
 
@@ -760,6 +1012,12 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[GestureType](#gesturetype23)。
+
+**ArkTS-Dyn起始版本：** 11
+
 | 类型 | 说明 |
 | -------- | -------- |
 | [TapGesture](ts-basic-gestures-tapgesture.md) | 点击手势，支持单次点击、多次点击识别。 |
@@ -770,6 +1028,25 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 | [SwipeGesture](ts-basic-gestures-swipegesture.md) | 快滑手势，滑动速度大于等于速度阈值时可识别成功，默认最小速度为100vp/s。 |
 | [GestureGroup](ts-combined-gestures.md) | 手势识别组，多种手势组合为复合手势，支持连续识别、并行识别和互斥识别。 |
 
+## GestureType<sup>23+</sup>
+
+type GestureType = Gesture | GestureGroup
+
+定义手势类型。取值类型为下表类型中的并集。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[GestureType](#gesturetype)。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [Gesture](#gesture23) | 基础手势。 |
+| [GestureGroup](ts-combined-gestures.md) | 手势识别组，多种手势组合为复合手势，支持连续识别、并行识别和互斥识别。 |
+
 ## BaseGestureEvent<sup>11+</sup>对象说明
 
 基础手势事件类型。继承自[BaseEvent](./ts-gesture-customize-judge.md#baseevent8)。
@@ -778,8 +1055,8 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 | 名称      | 类型                                  | 只读   |    可选   | 说明        |
 | ---------  | -------------------------------------|-------| -----------|  -----------|
-| fingerList | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否 | 触发事件的所有手指信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[]  | 否 | 是 | 参与触发事件的所有有效触点信息。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| fingerList | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否 | 触发事件的所有手指信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[]  | 否 | 是 | 参与触发事件的所有有效触点信息。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## TapGestureEvent<sup>11+</sup>对象说明
 
@@ -791,7 +1068,7 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 | 名称      | 类型   | 只读 | 可选                                | 说明         |
 | ---------  | --- | ------|-------------------------------  | -----------|
-| tapLocation<sup>20+</sup>  | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20)| 否 | 是 | 获取点击手势的坐标信息。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| tapLocation<sup>20+</sup>  | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20)| 否 | 是 | 获取点击手势的坐标信息。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## LongPressGestureEvent<sup>11+</sup>对象说明
 
@@ -800,6 +1077,10 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                               | 只读 | 可选       | 说明         |
 | ---------  | ----------------------------------|-----| ----------|----------|
@@ -813,13 +1094,17 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型       | 只读    | 可选     | 说明         |
 | ---------  | ---------|-----  | ----------|--------------|
-| offsetX    | number | 否 | 否 | 手势事件x轴相对当前组件元素原始区域的偏移量，单位为vp，从左向右滑动offsetX为正，反之为负。  |
-| offsetY    | number | 否 | 否 | 手势事件y轴相对当前组件元素原始区域的偏移量，单位为vp，从上向下滑动offsetY为正，反之为负。  |
-| velocityX  | number | 否 | 否 | 获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。  |
-| velocityY  | number | 否 | 否 | 获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。|
-| velocity   | number | 否 | 否 | 获取当前的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。  |
+| offsetX    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 手势事件x轴相对当前组件元素原始区域的偏移量，单位为vp，从左向右滑动offsetX为正，反之为负。  |
+| offsetY    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 手势事件y轴相对当前组件元素原始区域的偏移量，单位为vp，从上向下滑动offsetY为正，反之为负。  |
+| velocityX  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。  |
+| velocityY  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。|
+| velocity   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 获取当前的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。  |
 
 ## PinchGestureEvent<sup>11+</sup>对象说明
 
@@ -829,11 +1114,15 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型     | 只读 | 可选 | 说明         |
 | ------------  | --------|-----------|---------------------  | -----------|
-| scale         | number | 否 | 否 | 缩放比例。  |
-| pinchCenterX  | number | 否 | 否 | 捏合手势中心点相对于当前组件元素原始区域左上角x轴坐标，单位为vp。  |
-| pinchCenterY  | number | 否 | 否 | 捏合手势中心点相对于当前组件元素原始区域左上角y轴坐标，单位为vp。  |
+| scale         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 缩放比例。  |
+| pinchCenterX  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 捏合手势中心点相对于当前组件元素原始区域左上角x轴坐标，单位为vp。  |
+| pinchCenterY  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 捏合手势中心点相对于当前组件元素原始区域左上角y轴坐标，单位为vp。  |
 
 ## RotationGestureEvent<sup>11+</sup>对象说明
 
@@ -843,9 +1132,13 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型                              |只读 | 可选        | 说明         |
 | ------------  | ---------------------------------|----|--------------| -----------|
-| angle         | number | 否 | 否 |   表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。  |
+| angle         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 |   表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。  |
 
 ## SwipeGestureEvent<sup>11+</sup>对象说明
 
@@ -855,7 +1148,11 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型                         | 只读 | 可选             | 说明         |
 | ------------  | ----------------------------|------|------  | -----------|
-| angle         | number | 否 | 否 | 表示快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数，单位为deg。<br/>**说明：**<br/>角度计算方式：当快滑手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。|
-| speed         | number | 否 | 否 | 快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s。  |
+| angle         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 表示快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数，单位为deg。<br/>**说明：**<br/>角度计算方式：当快滑手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。|
+| speed         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s。  |

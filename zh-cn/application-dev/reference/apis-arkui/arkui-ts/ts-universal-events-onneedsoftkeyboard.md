@@ -28,6 +28,8 @@ XComponent组件使用该方法时，如果返回值为`true`且XComponent组件
 
 当接口返回`true`时，应用的自绘制输入框需要主动[attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15)，建立输入法框架和输入法应用的通信，否则点击键盘会失去响应（失焦时输入法框架和输入法应用的通信会断开）。
 
+该接口只适用于对输入法应用接续的场景，对自定义键盘不生效。自定义键盘接续详见[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)。
+
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。

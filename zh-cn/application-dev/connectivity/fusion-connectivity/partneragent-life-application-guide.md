@@ -112,7 +112,7 @@ let businessCap: partnerAgent.BusinessCapability = {
   "supportMediaControl": true,
   "supportTelephonyControl": false,
 };
-if (isEnabled == true) {
+if (isEnabled == false) {
   // PartnerAgentAbility为设备发现时拉起的ability的name
   partnerAgent.bindDevice(deviceAddress, capability, businessCap, "PartnerAgentAbility")
     .then(() => {
@@ -139,7 +139,7 @@ let devices: partnerAgent.PartnerDeviceAddress[] = partnerAgent.getBoundDevices(
 for (let i = 0; i < devices.length; i++) {
   let addr = devices[i].bluetoothAddress;
   if (addr) {
-    console.info(`[testTag] bounded device (addr: ${addr.address}, addressType: ${addr.addressType},
+    console.info(`[testTag] bound device (addr: ${addr.address}, addressType: ${addr.addressType},
         rawAddressType: ${addr.rawAddressType})`);
   }
 }
@@ -193,7 +193,7 @@ if (isBound == true) {
 
 2. EntryAbility.ets文件。
 
-    EntryAbility中加载ets/pages/Index.dts绘制的页面，请求用户授予访问蓝牙权限。
+    EntryAbility中加载ets/pages/Index.ets绘制的页面，请求用户授予访问蓝牙权限。
 
     ![请求用户授予访问蓝牙权限示意图](./figures/请求用户授予访问蓝牙权限示意图.jpg)
 
@@ -309,7 +309,7 @@ if (isBound == true) {
 
           Row() {
             Button("unbindDevice").width(300).margin(5).onClick(() => {
-              console.info("[testTag] ubindDevice");
+              console.info("[testTag] unbindDevice");
               let btAddr: common.BluetoothAddress = {
                 "address": this.perBtAddress,
                 "addressType": common.BluetoothAddressType.VIRTUAL,
@@ -371,7 +371,7 @@ if (isBound == true) {
                 for (let i = 0; i < devices.length; i++) {
                   let btAddr = devices[i].bluetoothAddress;
                   if (btAddr) {
-                    console.info(`[testTag] bounded device (addr: ${btAddr.address}, addressType: ${btAddr.addressType},
+                    console.info(`[testTag] bound device (addr: ${btAddr.address}, addressType: ${btAddr.addressType},
                         rawAddressType: ${btAddr.rawAddressType})`);
                   }
                 }

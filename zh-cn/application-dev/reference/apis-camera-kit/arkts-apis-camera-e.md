@@ -133,7 +133,6 @@
 | DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
 | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
-| UNSUPPORTED_MULTI_CAMERA_COMBINATION<sup>24+</sup> | 7400113 | 不支持多摄像头组合。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## TorchMode<sup>11+</sup>
 
@@ -153,19 +152,18 @@
 
 枚举，输出格式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。        |
-| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。      |
-| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。            |
-| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。      |
-| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。      |
-| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。            |
+| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。        |
+| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。            |
+| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。            |
 | CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  DNG（数字负片）格式的图片。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| CAMERA_FORMAT_DNG_XDRAW | 5     | 增强型DNG格式的图片。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。     |
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -260,6 +258,7 @@
 | EXPOSURE_MODE_LOCKED          | 0    | 锁定曝光模式。不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | EXPOSURE_MODE_AUTO            | 1    | 自动曝光模式。支持曝光区域中心点设置，可以使用[AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | 连续自动曝光。不支持曝光区域中心点设置。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| EXPOSURE_MODE_MANUAL | 3    | 手动曝光。支持设置曝光时长。<br>设置该模式后，用户可通过[ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24)设置曝光时长。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## FocusMode
 
@@ -495,3 +494,20 @@
 | ------------------------- | ---- | ------------    |
 | PITCH      | 0    | 俯仰轴。相控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。   |
 | YAW   | 1    | 偏航轴。控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
+
+## ExposureState
+
+枚举，曝光状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| EXPOSURE_STATE_SCAN       | 0    | 曝光处于扫描状态。     |
+| EXPOSURE_STATE_CONVERGED  | 1    | 曝光已经收敛。     |

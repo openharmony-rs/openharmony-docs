@@ -1,9 +1,9 @@
 # Class (Router)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供通过不同的url访问不同的页面，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等。
@@ -474,7 +474,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -635,7 +635,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -800,7 +800,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -967,7 +967,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1132,7 +1132,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1294,7 +1294,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1443,6 +1443,8 @@ ArkTS-Sta: back(index: int, params?: Object): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1808,6 +1810,8 @@ getParams(): Object
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
