@@ -9,14 +9,16 @@
 
 本模块主要提供管理USB设备的相关功能，包括主设备上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；从设备上端口管理、功能切换及查询等。
 
-> **说明：**
+>  **说明：**
 > 
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 
 ## 导入模块
 
 ```ts
-import { usbManager } from '@kit.BasicServicesKit';
+import usbManager from '@ohos.usbManager';
 ```
 
 ## 使用说明
@@ -39,13 +41,17 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
-获取接入主设备的USB设备列表。
+获取接入主设备的USB设备列表。如果没有设备接入，那么将会返回一个空的列表。
 
 > **说明：**
 >
 > 三方应用没有权限获取serial字段读取设备序列号，需要通过[requestRight](#usbmanagerrequestright)申请权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -65,7 +71,9 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-console.info(`devicesList = ${devicesList}`);
+if (devicesList) {
+  console.log(`devicesList = ${JSON.stringify(devicesList)}`);
+}
 /*
   devicesList 返回的数据结构,此处提供一个简单的示例，如下
   [
@@ -130,6 +138,10 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -141,6 +153,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 类型 | 说明 |
 | -------- | -------- |
 | Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | 指定的传输通道对象。 |
+| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。 |
 
 **错误码：**
 
@@ -148,9 +161,11 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported.                                     |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
+| 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
+| 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -179,6 +194,10 @@ hasRight(deviceName: string): boolean
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -197,8 +216,8 @@ hasRight(deviceName: string): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported.  |
 
 **示例：**
 
@@ -226,6 +245,10 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -244,8 +267,8 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 801      |  Capability not supported.  | 
 
 **示例：**
 
@@ -274,6 +297,10 @@ removeRight(deviceName: string): boolean
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -292,8 +319,8 @@ removeRight(deviceName: string): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported.                                   |
 
 **示例：**
 
@@ -316,7 +343,9 @@ function removeRight(): boolean {
 
 ## usbManager.claimInterface
 
-claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number
+ArkTS-Dyn: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number
+
+ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): int
 
 声明对USB设备某个接口的控制权。
 
@@ -326,6 +355,10 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 > 下面用到的claim通信接口都表示claim interface操作。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -339,7 +372,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | claim通信接口成功返回0；claim通信接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -347,8 +380,8 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -364,22 +397,27 @@ function claimInterface() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
+  let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
 }
 ```
 
 ## usbManager.releaseInterface
+ArkTS-Dyn: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
-releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
+ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
-释放claim过的通信接口。
+释放注册过的通信接口。
 
 > **说明：**
 >
 > 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -392,7 +430,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -400,8 +438,8 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported.                              |
 
 **示例：**
 
@@ -417,7 +455,7 @@ function releaseInterface() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
 }
@@ -425,11 +463,17 @@ function releaseInterface() {
 
 ## usbManager.setConfiguration
 
-setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
+ArkTS-Dyn: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
+
+ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
 设置设备配置。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -442,7 +486,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -450,8 +494,8 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported.  |
 
 **示例：**
 
@@ -467,14 +511,16 @@ function setConfiguration() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let config: usbManager.USBConfiguration = device.configs?.[0];
-  let ret: number= usbManager.setConfiguration(devicepipe, config);
+  let ret: int = usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
 }
 ```
 
 ## usbManager.setInterface
 
-setInterface(pipe: USBDevicePipe, iface: USBInterface): number
+ArkTS-Dyn: setInterface(pipe: USBDevicePipe, iface: USBInterface): number
+
+ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 设置设备接口。
 
@@ -485,6 +531,10 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 > 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -497,7 +547,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常 。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常 。|
 
 **错误码：**
 
@@ -505,8 +555,8 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported.  |
 
 **示例：**
 
@@ -522,7 +572,7 @@ function setInterface() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  let ret: int = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
 }
@@ -536,6 +586,10 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -546,7 +600,8 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Uint8Array | 返回获取的原始数据；失败返回undefined。 |
+| Uint8Array | 返回获取的原始数据 |
+| undefined | 如果USB服务异常，可能返回`undefined` 。<br> **ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
 
 **错误码：**
 
@@ -554,8 +609,10 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
 
 **示例：**
 
@@ -575,11 +632,17 @@ function getRawDescriptor() {
 
 ## usbManager.getFileDescriptor
 
-getFileDescriptor(pipe: USBDevicePipe): number
+ArkTS-Dyn: getFileDescriptor(pipe: USBDevicePipe): number
+
+ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 
 获取文件描述符。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -591,7 +654,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -599,7 +662,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
 | 801      | Capability not supported.                                    |
 
 **示例：**
@@ -614,20 +677,25 @@ function getFileDescriptor() {
 
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  let ret: number = usbManager.getFileDescriptor(devicepipe);
+  let ret: int = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
-  let closeRet: number = usbManager.closePipe(devicepipe);
+  let closeRet: int = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${closeRet}`);
 }
 ```
 
 ## usbManager.usbControlTransfer<sup>12+</sup>
 
-usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
+ArkTS-Dyn: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: number): Promise&lt;number&gt;
 
-控制传输。使用Promise异步回调。
+
+ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: int): Promise&lt;int&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -635,13 +703,13 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -649,26 +717,17 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 801      | Capability not supported.                                    |
 
 **示例：**
 
 ```ts
-class PARA {
-  bmRequestType: number = 0
-  bRequest: number = 0
-  wValue: number = 0
-  wIndex: number = 0
-  wLength: number = 0
-  data: Uint8Array = new Uint8Array()
-}
-
-let param: PARA = {
+let param: usbManager.USBDeviceRequestParams = {
   bmRequestType: 0x80,
   bRequest: 0x06,
 
-  wValue:0x01 << 8 | 0,
+  wValue: 0x01 << 8 | 0,
   wIndex: 0,
   wLength: 18,
   data: new Uint8Array(18)
@@ -683,7 +742,7 @@ function usbControlTransfer() {
 
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
+  usbManager.usbControlTransfer(devicepipe, param).then((ret: int) => {
   console.info(`usbControlTransfer = ${ret}`);
   })
 }
@@ -691,10 +750,11 @@ function usbControlTransfer() {
 
 ## usbManager.bulkTransfer
 
-bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
+ArkTS-Dyn: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 批量传输。使用Promise异步回调。
-
 > **说明：** 
 >
 > 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下，数据总量过大会导致传输失败返回-1。
@@ -703,6 +763,10 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -710,13 +774,13 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其它属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -724,8 +788,8 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -755,9 +819,9 @@ function bulkTransfer() {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
-      let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+      let ret: int = usbManager.claimInterface(devicepipe, interfaces);
       let buffer =  new Uint8Array(128);
-      usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
+      usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: int) => {
         console.info(`bulkTransfer = ${ret}`);
       }).catch((error: BusinessError) => {
         console.error(`bulkTransfer failed : ${error}`);
@@ -781,6 +845,10 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -793,11 +861,14 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
+| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
+| 14400011 | The transfer is not in progress, or is already complete or cancelled. |
 | 14400012 | Transmission I/O error. |
 
 **示例：**
@@ -808,6 +879,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServiceKit';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -829,7 +901,7 @@ function usbSubmitTransfer() {
     return value.direction === 0 && value.type === 2
   })
   // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  let ret: int = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -844,7 +916,7 @@ function usbSubmitTransfer() {
     isoPacketCount: 0,
   };
   try {
-    transferParams.endpoint=endpoint?.address as number;
+    transferParams.endpoint=endpoint?.address as int;
     transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
       console.info('callBackData =' +JSON.stringify(callBackData));
     }
@@ -868,6 +940,10 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 > 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -920,7 +996,7 @@ function usbCancelTransfer() {
     return;
   }
   // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  let ret: int = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -934,7 +1010,7 @@ function usbCancelTransfer() {
     isoPacketCount: 0,
   };
   try {
-    transferParams.endpoint=endpoint?.address as number;
+    transferParams.endpoint=endpoint?.address as int;
     transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
       console.info('callBackData =' +JSON.stringify(callBackData));
     }
@@ -949,7 +1025,9 @@ function usbCancelTransfer() {
 
 ## usbManager.closePipe
 
-closePipe(pipe: USBDevicePipe): number
+ArkTS-Dyn: closePipe(pipe: USBDevicePipe): number 
+
+ArkTS-Sta: closePipe(pipe: USBDevicePipe): int 
 
 关闭设备消息控制通道。
 
@@ -958,6 +1036,10 @@ closePipe(pipe: USBDevicePipe): number
 3. 调用[usbManager.connectDevice](#usbmanagerconnectdevice)得到devicepipe作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -969,7 +1051,7 @@ closePipe(pipe: USBDevicePipe): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其它错误码如下：<br>- 22：服务异常。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其它错误码如下：<br>- 22：服务异常。 |
 
 **错误码：**
 
@@ -977,8 +1059,8 @@ closePipe(pipe: USBDevicePipe): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -992,7 +1074,7 @@ function closePipe() {
 
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  let ret: number = usbManager.closePipe(devicepipe);
+  let ret: int = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
 }
 ```
@@ -1006,6 +1088,10 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1025,11 +1111,11 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
-| 14401001 | The target USBAccessory not matched.                         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
+| 14400005 | Database operation exception.  |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1054,6 +1140,10 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型         | 必填 | 说明                                  |
@@ -1072,11 +1162,11 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
-| 14401001 | The target USBAccessory not matched.                         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 801      | Capability not supported. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1101,6 +1191,10 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型         | 必填 | 说明                                  |
@@ -1113,7 +1207,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 801      | Capability not supported.                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400005 | Database operation exception.                                |
@@ -1140,6 +1234,10 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 获取当前已接入主机的USB配件列表。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1178,6 +1276,10 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 **系统能力：**  SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型         | 必填 | 说明                                  |
@@ -1196,7 +1298,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 801      | Capability not supported.                                    |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
@@ -1231,6 +1333,10 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 需要调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件列表，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1274,6 +1380,10 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 > 本接口调用后会重置此前设置的配置和替换接口，请在调用之前确认相关业务已结束。
 
 **系统能力：**  SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1403,16 +1513,21 @@ function controlTransfer() {
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
-| address       | number                                      | 否   | 否 |端点地址。         |
-| attributes    | number                                      | 否   | 否 |端点属性。         |
-| interval      | number                                      | 否   | 否 |端点间隔。         |
-| maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小。    |
+| address       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点地址。         |
+| attributes    | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点属性。         |
+| interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔。         |
+| maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
-| number        | number                                      | 否   | 否 |端点号。          |
-| type          | number                                      | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
-| interfaceId   | number                                      | 否   | 否 |端点所属的接口的唯一标识。 |
+| number        | ArkTS-Dyn: number                                         | 否   | 否 |端点号。 <br>**ArkTS模式**：该字段仅适用于ArkTS-Dyn。         |
+| endpointAddr        | ArkTS-Sta: int                                         | 否   | 否 |端点地址。<br>**ArkTS模式**：该字段仅适用于ArkTS-Sta。           |
+| type          | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
+| interfaceId   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点所属的接口的唯一标识。 |
 
 ## USBInterface
 
@@ -1420,13 +1535,17 @@ function controlTransfer() {
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型                                     | 只读  | 可选            |说明                    |
 | ---------------- | ---------------------------------------- | ---- | ------------- |--------------------- |
-| id               | number                                   | 否 | 否 |接口的唯一标识。              |
-| protocol         | number                                   | 否 | 否 |接口的协议。                |
-| clazz            | number                                   | 否 | 否 |设备类型。                 |
-| subClass         | number                                   | 否 | 否 |设备子类。                 |
-| alternateSetting | number                                   | 否 | 否 |在同一个接口中的多个描述符中进行切换设置。值的大小表示支持可选模式个数，其中0表示不支持可选模式。 |
+| id               | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |接口的唯一标识。              |
+| protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |接口的协议。                |
+| clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |设备类型。                 |
+| subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |设备子类。                 |
+| alternateSetting | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |在同一个接口中的多个描述符中进行切换设置。值的大小表示支持可选模式个数，其中0表示不支持可选模式。 |
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
 
@@ -1436,11 +1555,15 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型                                             | 只读  | 可选  |说明              |
 | -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
-| id             | number                                           | 否 | 否 |配置的唯一标识。        |
-| attributes     | number                                           | 否 | 否 |配置的属性。          |
-| maxPower       | number                                           | 否 | 否 |最大功耗，（单位：毫安）。    |
+| id             | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否 |配置的唯一标识。        |
+| attributes     | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否 |配置的属性。          |
+| maxPower       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否 |最大功耗，（单位：毫安）。    |
 | name           | string                                           | 否 | 否 |配置的名称，可以为空。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
 | isSelfPowered  | boolean                                          | 否 | 否 |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
@@ -1452,20 +1575,24 @@ USB设备信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型                                 | 只读  | 可选         |说明         |
 | ---------------- | ------------------------------------ | ---- | ---------- |---------- |
-| busNum           | number                               | 否 | 否 |总线地址。      |
-| devAddress       | number                               | 否 | 否 |设备地址。      |
+| busNum           | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |总线地址。      |
+| devAddress       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备地址。      |
 | serial           | string                               | 否 | 否 |序列号。       |
 | name             | string                               | 否 | 否 |设备名字。      |
 | manufacturerName | string                               | 否 | 否 | 产商信息。      |
 | productName      | string                               | 否 | 否 |产品信息。      |
 | version          | string                               | 否 | 否 |版本。        |
-| vendorId         | number                               | 否 | 否 |厂商ID。      |
-| productId        | number                               | 否 | 否 |产品ID。      |
-| clazz            | number                               | 否 | 否 |设备类。       |
-| subClass         | number                               | 否 | 否 |设备子类。      |
-| protocol         | number                               | 否 | 否 |设备协议码。     |
+| vendorId         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |厂商ID。      |
+| productId        | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |产品ID。      |
+| clazz            | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备类。       |
+| subClass         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备子类。      |
+| protocol         | ArkTS-Dyn: number<br> ArkTS-Sta: int                                | 否 | 否 |设备协议码。     |
 | configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 否 |设备配置描述符信息。 |
 
 ## USBDevicePipe
@@ -1474,10 +1601,14 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
-| busNum     | number | 否 |否 | 总线地址。 |
-| devAddress | number | 否 |否 | 设备地址。 |
+| busNum     | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 否 |否 | 总线地址。 |
+| devAddress | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 否 |否 | 设备地址。 |
 
 ## USBDeviceRequestParams<sup>12+</sup>
 
@@ -1485,13 +1616,18 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+
 | 名称      | 类型                                            | 只读 | 可选               |说明               |
 | ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| bmRequestType | number                                    | 否 | 否   |请求控制类型。            |
-| bRequest  | number                                        | 否 | 否   |请求类型。          |
-| wValue | number                                           | 否 | 否   |请求参数。          |
-| wIndex   | number                                         | 否 | 否   |请求参数value对应的索引值。            |
-| wLength   | number                                        | 否 | 否   |请求数据的长度。 |
+| bmRequestType | ArkTS-Dyn: number<br> ArkTS-Sta: int                                    | 否 | 否   |请求控制类型。            |
+| bRequest  | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否   |请求类型。          |
+| wValue | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 否 | 否   |请求参数。          |
+| wIndex   | ArkTS-Dyn: number<br> ArkTS-Sta: int         | 否 | 否   |请求参数value对应的索引值。            |
+| wLength   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 否 | 否   |请求数据的长度。 |
 | data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
 
 ## USBRequestTargetType
@@ -1500,18 +1636,26 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
 | USB_REQUEST_TARGET_DEVICE    | 0    | 设备。 |
 | USB_REQUEST_TARGET_INTERFACE | 1    | 接口。 |
 | USB_REQUEST_TARGET_ENDPOINT  | 2    | 端点。 |
-| USB_REQUEST_TARGET_OTHER     | 3    | 其它。 |
+| USB_REQUEST_TARGET_OTHER     | 3    | 其他。 |
 
 ## USBControlRequestType
 
 控制请求类型。
 
 **系统能力：** SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                      | 值   | 说明   |
 | ------------------------- | ---- | ------ |
@@ -1525,6 +1669,10 @@ USB设备消息传输通道，用于确定设备。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                        | 值   | 说明                     |
 | --------------------------- | ---- | ------------------------ |
 | USB_REQUEST_DIR_TO_DEVICE   | 0    | 写数据，主设备往从设备。 |
@@ -1535,6 +1683,10 @@ USB设备消息传输通道，用于确定设备。
 USB配件信息。
 
 **系统能力：** SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型   | 只读 | 可选 | 说明             |
 | ------------ | ------ | ---- | ---- | ---------------- |
@@ -1550,9 +1702,13 @@ USB配件句柄。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型   | 只读 | 可选 | 说明                                      |
 | ----------- | ------ | ---- | ---- | ----------------------------------------- |
-| accessoryFd | number | 否 | 否   | 配件文件描述符。合法的accessoryFd是正整数。 |
+| accessoryFd | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否   | 配件文件描述符。合法的accessoryFd是正整数。 |
 
 ## UsbDataTransferParams<sup>18+</sup>
 
@@ -1560,24 +1716,32 @@ USB配件句柄。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
-| endpoint | number | 否 | 否 | 端点地址，正整数。 |
+| endpoint | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 端点地址，正整数。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
-| timeout | number | 否 | 否 | 超时时间，（单位：毫秒）。 |
-| length | number | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 超时时间，（单位：毫秒）。 |
+| length | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
 | callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
 | buffer | Uint8Array | 否 | 否 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个数）。 |
+| isoPacketCount | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个数）。 |
 
 ## UsbTransferFlags<sup>18+</sup>
 
 USB传输标志。
 
 **系统能力：** SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1592,6 +1756,10 @@ Usb传输类型。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
 | TRANSFER_TYPE_ISOCHRONOUS | 0x1    | 实时传输。 |
@@ -1604,9 +1772,13 @@ Usb异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型 | 只读 | 可选   | 说明    |
 | ---------- | ------ | ---- | ----- | ------ |
-| actualLength | number | 否 |  否 |读写操作的实际长度值，（单位：字节）。 |
+| actualLength |  ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 |  否 |读写操作的实际长度值，（单位：字节）。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |读写操作完成的状态。 |
 | isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | 否 | 否 |实时传输的分包信息。 |
 
@@ -1615,6 +1787,10 @@ Usb异步传输回调。
 数据处理完成后通过回调返回的状态码。
 
 **系统能力：** SystemCapability.USB.USBManager
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1632,10 +1808,14 @@ Usb异步传输回调。
 
 **系统能力：** SystemCapability.USB.USBManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型 | 只读  | 可选 | 说明    |
 | ---------- | ------ | ----| ----- | ------ |
-| length | number | 否 | 否 |读写操作的期望长度值，（单位：字节）。 |
-| actualLength | number|否 | 否 |读写操作的实际长度值，（单位：字节）。 |
+| length | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 |读写操作的期望长度值，（单位：字节）。 |
+| actualLength | ArkTS-Dyn: number<br> ArkTS-Sta: int|否 | 否 |读写操作的实际长度值，（单位：字节）。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |实时传输分包的状态码。 |
 
 ## USBControlParams<sup>(deprecated)</sup>
