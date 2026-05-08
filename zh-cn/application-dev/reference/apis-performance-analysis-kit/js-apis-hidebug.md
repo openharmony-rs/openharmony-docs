@@ -680,7 +680,7 @@ ArkTS-Sta: startAppTraceCapture(tags: long[], flag: TraceFlag, limitSize: int): 
 
 预期trace采集时长：开发者根据分析的故障场景自行决定，单位秒。
 
-trace单位流量：应用每秒产生的trace大小，系统推荐值为300Kb/s，建议开发者采用自身应用的实测值，单位Kb/s。
+trace单位流量：应用每秒产生的trace大小，系统推荐值为300KB/s，建议开发者采用自身应用的实测值，单位KB/s。
 
 trace单位流量实测方法：limitSize设置为最大值500M，调用startAppTraceCapture接口，在应用上操作N秒后，调用stopAppTraceCapture停止采集，然后查看trace大小S（Kb）。那么trace单位流量 = S/N（Kb/s）。
 
@@ -1394,7 +1394,7 @@ ArkTS-Sta: type GcStats = Record&lt;string, long&gt;
 
 | 类型                                                                                 | 说明                          |
 |------------------------------------------------------------------------------------| ---------------------------- |
-| ArkTS-Dyn: Record&lt;string, number&gt;<br/> ArkTS-Sta: Record&lt;string, long&gt; | 用于存储GC统计信息的键值对。包含以下键值信息：<br/>"ark.gc.gc-count"：当前线程的GC次数。<br/>"ark.gc.gc-time"：当前线程触发的GC总耗时，以ms为单位。<br/>"ark.gc.gc-bytes-allocated"：当前线程Ark虚拟机已分配的内存大小，以B为单位。<br/>"ark.gc.gc-bytes-freed"：当前线程GC成功回收的内存，以B为单位。<br/> "ark.gc.fullgc-longtime-count "：当前线程超长fullGC次数。    |
+| ArkTS-Dyn: Record&lt;string, number&gt;<br/> ArkTS-Sta: Record&lt;string, long&gt; | 用于存储GC统计信息的键值对。包含以下键值信息：<br/>"ark.gc.gc-count"：当前线程的GC次数。<br/>"ark.gc.gc-time"：当前线程触发的GC总耗时，以ms为单位。<br/>"ark.gc.gc-bytes-allocated"：当前线程Ark虚拟机已分配的内存大小，以B为单位。<br/>"ark.gc.gc-bytes-freed"：当前线程GC成功回收的内存，以B为单位。<br/> "ark.gc.fullgc-longtime-count"：当前线程超长fullGC次数。    |
 
 ## JsRawHeapTrimLevel<sup>20+</sup>
 
