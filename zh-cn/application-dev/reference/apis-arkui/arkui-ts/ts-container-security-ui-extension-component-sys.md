@@ -45,11 +45,11 @@ SecurityUIExtensionComponent(want: [Want](../../apis-ability-kit/js-apis-app-abi
 
 用于构造SecurityUIExtensionComponent时传递参数。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
