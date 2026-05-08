@@ -237,15 +237,18 @@
 * 7.1 设置RTS信号为高电平
 
    <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 设置RTS信号为高电平
    try {
-     await port.setRts(true);
-     console.info('Set RTS success');
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to set RTS: ${JSON.stringify(e)}`);
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     await this.port.setRts(true);
+     console.info(`${TAG} setRts(true) success`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} setRts failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
