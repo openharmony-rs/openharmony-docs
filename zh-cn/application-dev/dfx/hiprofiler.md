@@ -211,10 +211,10 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
 
 ### async_type参数介绍
-| LIBUV_SEND | 通过第三方库libuv接口调用产生的异步栈。 | 24 |
+
 | 参数名称 | 参数说明 | 开始支持的版本 | 
 | -------- | -------- | -------- |
-| LIBUV_SEND | 通过三方库libuv接口调用产生的异步栈。 | 24 |
+| LIBUV_SEND | 通过第三方库libuv接口调用产生的异步栈。 | 24 |
 | FFRT_POOL | 通过FFRT内置线程池产生的异步栈。 | 24 |
 | FFRT_QUEUE | 通过FFRT内置队列产生的异步栈。 | 24 |
 | EVENTHANDLER | 通过OpenHarmony Event Handler产生的异步栈。 | 24 |
