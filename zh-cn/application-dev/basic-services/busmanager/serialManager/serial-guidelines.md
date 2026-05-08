@@ -255,15 +255,18 @@
 * 7.2 获取CTS信号状态
 
    <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 获取CTS信号状态
    try {
-     let cts: boolean = await port.getCts();
-     console.info('CTS signal status: ' + cts);
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to get CTS: ${JSON.stringify(e)}`);
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     const ctsStatus = await this.port.getCts();
+     console.info(`${TAG} getCts success, CTS: ${ctsStatus}`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} getCts failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
