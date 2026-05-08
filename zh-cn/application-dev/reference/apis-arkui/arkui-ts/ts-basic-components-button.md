@@ -291,7 +291,7 @@ ArkTS-Sta: labelStyle(value: ButtonLabelStyle | undefined)
 
 | 参数名 | 类型                                | 必填 | 说明                              |
 | ------ | ----------------------------------- | ---- | --------------------------------- |
-| value  | ArkTS-Dyn: [LabelStyle](#labelstyle10对象说明)<br/>ArkTS-Sta: [ButtonLabelStyle](#buttonlabelstyle23对象说明) \| undefined | 是   | Button组件label文本和字体的样式。 |
+| value  | ArkTS-Dyn: [LabelStyle](#labelstyle10对象说明)<br/>ArkTS-Sta: [ButtonLabelStyle](#buttonlabelstyle23对象说明) \| undefined | 是   | Button组件label文本和字体的样式。取值为undefined时，按各属性的默认值处理。 |
 
 ### buttonStyle<sup>11+</sup>
 
@@ -389,7 +389,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ButtonConfiguration\> | un
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: ContentModifier[\<ButtonConfiguration\>](#buttonconfiguration12对象说明) <br/>ArkTS-Sta: ContentModifier[\<ButtonConfiguration\>](#buttonconfiguration12对象说明) \| undefined| 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: ContentModifier[\<ButtonConfiguration\>](#buttonconfiguration12对象说明) <br/>ArkTS-Sta: ContentModifier[\<ButtonConfiguration\>](#buttonconfiguration12对象说明) \| undefined| 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。取值为undefined时，则不使用contentModifier。 |
 
 ### minFontScale<sup>18+</sup>
 
@@ -451,7 +451,7 @@ attributeModifier(modifier: AttributeModifier\<ButtonAttribute\> | AttributeModi
 
 | 参数名 | 类型                                                                                                                                           | 必填 | 说明                      |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------- |
-| modifier | AttributeModifier\<[ButtonAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | Button组件的属性修改器。 |
+| modifier | AttributeModifier\<[ButtonAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | Button组件的属性修改器。 取值为undefined时，则不使用attributeModifier。|
 
 ## ButtonType枚举说明
 

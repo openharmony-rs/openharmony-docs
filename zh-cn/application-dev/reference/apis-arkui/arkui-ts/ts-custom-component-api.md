@@ -287,7 +287,9 @@ struct MyComponent {
 
 ## NavDestinationInfo
 
-type NavDestinationInfo = NavDestinationInfo
+ArkTS-Dyn: type NavDestinationInfo = NavDestinationInfo
+
+ArkTS-Sta: type NavDestinationInfo = uiObserver.NavDestinationInfo
 
 NavDestinationInfo实例对象。
 
@@ -301,7 +303,7 @@ NavDestinationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | 返回NavDestinationInfo实例对象。 |
+| ArkTS-Dyn: [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo)<br/>ArkTS-Sta: uiObserver.NavDestinationInfo | 返回NavDestinationInfo实例对象。 |
 
 ## queryNavigationInfo<sup>12+</sup>
 
@@ -365,7 +367,9 @@ export struct PageOne {
 
 ## NavigationInfo<sup>12+</sup>
 
-type NavigationInfo = NavigationInfo
+ArkTS-Dyn: type NavigationInfo = NavigationInfo
+
+ArkTS-Sta: type NavigationInfo = uiObserver.NavigationInfo
 
 NavigationInfo实例对象。
 
@@ -379,7 +383,7 @@ NavigationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | 返回NavigationInfo实例对象。 |
+| ArkTS-Dyn: [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12)<br/>ArkTS-Sta: uiObserver.NavigationInfo | 返回NavigationInfo实例对象。 |
 
 ## queryRouterPageInfo<sup>12+</sup>
 

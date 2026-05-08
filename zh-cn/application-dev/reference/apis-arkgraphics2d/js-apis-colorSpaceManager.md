@@ -28,7 +28,7 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 | 名称                         | 值     | 说明                    |
 | --------------------------- | ------ | ----------------------- |
-| UNKNOWN                           | 0      | 未知的色域类型。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
+| UNKNOWN                           | 0      | 未知的色域类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
 | ADOBE_RGB_1998                    | 1      | RGB色域为Adobe RGB(1998)类型。<br>转换函数为Adobe RGB(1998)类型。<br>编码范围为Full类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
 | DCI_P3                            | 2      | RGB色域为DCI-P3类型。<br>转换函数为Gamma 2.6类型。<br>编码范围为Full类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
 | DISPLAY_P3                        | 3      | RGB色域为Display P3类型。<br>转换函数为SRGB类型。<br>编码范围为Full类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
@@ -64,7 +64,7 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 ## ColorSpacePrimaries
 
-色域标准三原色（红、绿、蓝）和白色，使用(x, y)表示其在色彩空间中的位置。
+色域标准三原色（红、绿、蓝）和白色，基于现实世界的色度，使用(x, y)表示其在色彩空间中的位置。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -119,11 +119,10 @@ create(colorSpaceName: ColorSpace): ColorSpaceManager
 **示例：**
 
 ```ts
-let colorSpace: colorSpaceManager.ColorSpaceManager;
 try {
-    colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
+  let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 } catch (err) {
-    console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -166,22 +165,21 @@ ArkTS-Sta: create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceMana
 **示例：**
 
 ```ts
-let colorSpace: colorSpaceManager.ColorSpaceManager;
 try {
-    let primaries: colorSpaceManager.ColorSpacePrimaries = {
-        redX: 0.1,
-        redY: 0.1,
-        greenX: 0.2,
-        greenY: 0.2,
-        blueX: 0.3,
-        blueY: 0.3,
-        whitePointX: 0.4,
-        whitePointY: 0.4
-    };
-    let gamma = 2.2;
-    colorSpace = colorSpaceManager.create(primaries, gamma);
+  let primaries: colorSpaceManager.ColorSpacePrimaries = {
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+  };
+  let gamma = 2.2;
+  let colorSpace = colorSpaceManager.create(primaries, gamma);
 } catch (err) {
-    console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -213,9 +211,10 @@ getColorSpaceName(): ColorSpace
 
 ```ts
 try {
-    let spaceName = colorSpace.getColorSpaceName();
+  let spaceName = colorSpace.getColorSpaceName();
+  console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-    console.error(`Fail to get colorSpace's name. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get colorSpace's name. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -243,9 +242,10 @@ ArkTS-Sta: getWhitePoint(): Array\<double\>
 
 ```ts
 try {
-    let point = colorSpace.getWhitePoint();
+  let point = colorSpace.getWhitePoint();
+  console.info(`point: ` + point.toString());
 } catch (err) {
-    console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -273,8 +273,9 @@ ArkTS-Sta: getGamma(): double
 
 ```ts
 try {
-    let gamma = colorSpace.getGamma();
+  let gamma = colorSpace.getGamma();
+  console.info(`gamma: ` + gamma.toString());
 } catch (err) {
-    console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
 }
 ```

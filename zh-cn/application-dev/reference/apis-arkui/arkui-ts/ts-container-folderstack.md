@@ -617,7 +617,7 @@ struct attributeDemo {
 **ArkTS-Sta示例：**
 
 ```ts
-  import {
+import {
   Entry,
   Text,
   Column,
@@ -634,7 +634,7 @@ struct attributeDemo {
 } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 
-class MyFolderStackModifier implements AttributeModifier {
+class MyFolderStackModifier implements AttributeModifier<FolderStackAttribute> {
   applyNormalAttribute(instance: FolderStackAttribute): void {
     // folderStack回调 当折叠状态改变时回调
     instance.onFolderStateChange((msg) => {

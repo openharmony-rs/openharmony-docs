@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 弧形滑块视图容器，提供子组件滑动轮播显示的能力。 
@@ -719,7 +719,7 @@ ArkTS-Sta: onGestureSwipe(handler: GestureSwipeHandler | undefined)
 
 ArkTS-Dyn: customContentTransition(transition: Optional\<SwiperContentAnimatedTransition>)
 
-ArkTS-Sta: customContentTransition(transition: SwiperContentAnimatedTransition | undefined)
+ArkTS-Sta: customContentTransition(transition: ArcSwiperContentAnimatedTransition | undefined)
 
 自定义ArcSwiper页面切换动画。在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发回调。开发者可以在回调中设置透明度、缩放比例、位移等属性来自定义切换动画。
 
@@ -737,7 +737,7 @@ ArkTS-Sta: customContentTransition(transition: SwiperContentAnimatedTransition |
 
 | 参数名     | 类型                                                                                         | 必填 | 说明                                                                   |
 | ---------- | -------------------------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------------- |
-| transition | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)></br>ArkTS-Sta: [SwiperContentAnimatedTransition](#swipercontentanimatedtransition) \| undefined | 是   | ArcSwiper自定义切换动画相关信息。<br/>取值为undefined时，无回调。 |
+| transition | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)></br>ArkTS-Sta: [ArcSwiperContentAnimatedTransition](#arcswipercontentanimatedtransition24) \| undefined | 是   | ArcSwiper自定义切换动画相关信息。<br/>取值为undefined时，无回调。 |
 
 ## SwiperContentAnimatedTransition
 
@@ -747,14 +747,72 @@ ArcSwiper自定义切换动画相关信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 18
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---- | ---- | ---- | ---- |
+| timeout | number| 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
+| transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | 否 | 否 | 自定义切换动画具体内容。 |
+
+## ArcSwiperContentAnimatedTransition<sup>24+</sup>
+
+ArcSwiper自定义切换动画相关信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
-| transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | 否 | 否 | 自定义切换动画具体内容。 |
+| timeout<sup>24+</sup> | int | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
+| transition<sup>24+</sup> | Callback\<[ArcSwiperContentTransitionProxy](#arcswipercontenttransitionproxy24)> | 否 | 否 | 自定义切换动画具体内容。 |
+
+## ArcSwiperContentTransitionProxy<sup>24+</sup>
+
+ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知ArcSwiper组件页面自定义动画已结束。
+
+>**说明：** 
+>
+> - 假设当前选中的子组件的索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0页和第1页两页时，每帧会触发两次回调。其中第一次回调的selectedIndex为0，index为0，position为当前帧第0页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度；第二次回调的selectedIndex仍为0，index为1，position为当前帧第1页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第1页的长度。
+>
+> - 若动画曲线为弹簧插值曲线，从第0页切换到第1页的动画过程中，可能会因为离手时的位置和速度，先过滑到第2页，再回弹到第1页，该过程中每帧会对视窗内第1页和第2页触发回调。
+
+### 属性
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---- | ---- | ---- | ---- |
+| selectedIndex<sup>24+</sup> | int | 否 | 否 | 当前选中页面的索引。 |
+| index<sup>24+</sup> | int | 否 | 否 | 视窗内页面的索引。 |
+| position<sup>24+</sup> | double | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
+| mainAxisLength<sup>24+</sup> |  double | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
+
+### finishTransition<sup>24+</sup>
+
+finishTransition(): void
+
+通知ArcSwiper组件，此页面的自定义动画已结束。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
 
 ## SwiperContentTransitionProxy
 
@@ -772,16 +830,16 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Dyn起始版本：** 18
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| selectedIndex | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 当前选中页面的索引。 |
-| index | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 视窗内页面的索引。 |
-| position | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
-| mainAxisLength | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
+| selectedIndex | number | 否 | 否 | 当前选中页面的索引。 |
+| index |  number| 否 | 否 | 视窗内页面的索引。 |
+| position |  number | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
+| mainAxisLength | number | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
 
 ### finishTransition
 
@@ -793,9 +851,9 @@ finishTransition(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Dyn起始版本：** 18
 
 ## 示例
 

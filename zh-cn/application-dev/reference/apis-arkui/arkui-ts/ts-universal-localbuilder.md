@@ -1,6 +1,6 @@
 # \@LocalBuilder装饰器：维持组件关系
 
-@LocalBuilder拥有和局部@Builder相同的功能，且比局部@Builder能够更好的确定组件的父子关系和状态管理的父子关系。开发指南见[\@LocalBuilder装饰器：维持组件关系](../../../ui/state-management/arkts-localBuilder.md)。
+@LocalBuilder拥有和局部[@Builder](./ts-universal-builder-dynamic.md)相同的功能，且比局部@Builder能够更好的确定组件的父子关系和状态管理的父子关系。开发指南见[\@LocalBuilder装饰器：维持组件关系](../../../ui/state-management/arkts-localBuilder.md)。
 
 > **说明：**
 >

@@ -100,6 +100,16 @@
     ],
     "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义的配置文件menu.json
     "crossAppSharedConfig": "$profile:shared_config",
+    "skillProfiles": [
+      {
+        "name": "my-skill",
+        "abilityName": "EntryAbility",
+        "srcEntries": [
+          "../../my-skill/scripts/Test.ets"
+        ],
+        "permissions": []
+      }
+    ],
     // ...
   }
 }
@@ -115,7 +125,7 @@ module.json5配置文件包含以下标签。
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | name | 标识当前Module的名称，确保该名称在整个应用中唯一。命名规则如下&nbsp;：<br/>-&nbsp;由字母、数字和下划线组成，且必须以字母开头。<br/>-&nbsp;最大长度128字节。<br/>应用升级时允许修改该名称，但需要应用适配Module相关数据目录的迁移，详见[@ohos.file.fs (文件管理)](../reference/apis-core-file-kit/js-apis-file-fs.md)。<br/>**说明：**<br/>DevEco Studio新建模块时，限制模块名称的长度不能超过31。如果长度无法满足开发者需求，可以在配置文件修改该标签。 | 字符串 | 该标签不可缺省。 |
-| type | 标识当前Module的类型。支持的取值如下：<br/>-&nbsp;entry：应用的主模块。<br/>-&nbsp;feature：应用的动态特性模块。<br/>-&nbsp;har：静态共享包模块。<br/>-&nbsp;shared：动态共享包模块。 | 字符串 | 该标签不可缺省。 |
+| type | 标识当前Module的类型。支持的取值如下：<br/>-&nbsp;entry：应用的主模块。<br/>-&nbsp;feature：应用的动态特性模块。<br/>-&nbsp;har：静态共享包模块。<br/>-&nbsp;shared：动态共享包模块。<br/>-&nbsp;skill：技能包模块，用于定义AI代理的技能能力。该类型模块必须配置[skillProfiles](#skillprofiles标签)标签。<br/>**说明：**<br/>仅当应用的[bundleType](./app-configuration-file.md#配置文件标签)配置为skill，即app.json5配置文件中的bundleType为skill时，才允许将Module的type配置为skill，且此时应用只能包含1个Module。从API版本26.0.0开始，支持该标签。 | 字符串 | 该标签不可缺省。 |
 | srcEntry | 标识AbilityStage组件的代码路径，详情参考[AbilityStage组件容器](../application-models/abilitystage.md)，取值为长度不超过127字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | description | 标识当前Module的描述信息，开发者可以通过该标签描述当前模块的功能与作用，取值为长度不超过255字节的字符串，可以采用字符串资源索引格式。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | <!--DelRow-->process | 标识当前Module的进程名，取值为长度不超过31字节的字符串。如果在HAP标签下配置了process，则该Module的所有UIAbility、DataShareExtensionAbility、ServiceExtensionAbility都运行在该进程中。<br/>**说明：**<br/>开启[多实例特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)生效，三方应用配置不生效。 | 字符串 | 该标签可缺省，缺省为app.json5文件下app标签下的bundleName。 |
@@ -154,6 +164,7 @@ module.json5配置文件包含以下标签。
 | formWidgetModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，应用包需要配置该标签，用来关联卡片包。取值为卡片包的模块名称，对应卡片包module.json5中的name标签。具体使用方式请参考[FormExtensionAbility配置](../form/arkts-ui-widget-configuration.md#formextensionability配置)。<br/>**说明：**<br/> 1. 从API version 20开始，支持该标签。<br/> 2. 仅在独立卡片包的应用包中，该标签配置生效，且要求对应的卡片包模块必须配置formExtensionModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | shareFiles | 标识应用沙箱中分享目录的配置文件路径，用于为应用文件提供有安全保障的开放范围，保护应用资产。只允许entry类型模块配置，取值为长度不超过255字节的字符串。具体使用方式请参考[应用共享目录配置](../file-management/share-app-file-configuration.md)。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
+| [skillProfiles](#skillprofiles标签) | 标识当前模块的技能配置信息，用于定义AI代理的技能能力。仅允许type字段取值为entry、feature、shared、skill的模块配置，对于skill类型的模块必须配置该标签。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。 | 对象数组 | 对于skill类型的模块，该标签不可缺省。对于其他类型的模块，该标签可缺省，缺省值为空。 |
 | [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径信息。<br/>**说明：** <br/>从API version 24开始，支持该标签。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
 | srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
@@ -1349,5 +1360,41 @@ executableBinaryPaths示例：
     ],
     // ...
   },
+}
+```
+
+## skillProfiles标签
+
+从API版本26.0.0开始，新增skillProfiles标签。该标签标识当前模块的技能配置信息，用于定义AI代理的技能能力。通过定义技能，应用可以将AI代理的能力暴露给系统或其他应用，使其能够被其他应用发现和调用。仅type取值为entry、feature、shared、skill的模块配置该标签生效。
+
+**表32** skillProfiles标签说明
+
+<!--Table: 15%; 60%; 10%; 15%-->
+| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+| -------- | -------- | -------- | -------- |
+| name | 标识技能的名称，确保该名称在当前模块中唯一。命名规则如下：<br/>-&nbsp;仅允许使用小写字母、数字和连字符-。<br/>-&nbsp;必须以小写字母或数字开头。<br/>-&nbsp;必须以小写字母或数字结尾。<br/>-&nbsp;不能以连字符开头或结尾。<br/>-&nbsp;最大长度为64字节。 | 字符串 | 该标签不可缺省。 |
+| abilityName | 标识与该技能关联的组件名称，必须配置为[abilities标签](#abilities标签)下的UIAbility或[extensionAbilities标签](#extensionabilities标签)下type为service的ServiceExtension组件名称。取值为长度不超过127字节的字符串，以字母开头，可包含字母、数字、下划线（_）或点号（.）。<br/>**说明：**<br/>该字段仅适用于entry、feature、shared类型的模块。对于skill类型的模块，不支持该字段。 | 字符串 | 该标签可缺省，缺省值为入口Ability名称。如果没有入口Ability，则取值为空字符串。 |
+| srcEntries | 标识实现技能的代码文件路径列表，指向技能实现逻辑的.ets文件。数组中的每个元素都是相对于当前模块的skills目录的文件路径。<br/>**说明：**<br/>srcEntries指定的.ets文件应放置在skills/{skill-name}/scripts目录下，其中{skill-name}为skillProfiles中配置的技能名称。例如，若技能名称为"my-skill"，则.ets文件应放置在模块根目录下的skills/my-skill/scripts/目录中。最多支持100个文件路径。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
+| permissions | 标识调用该技能所需要的权限列表。当其他应用调用该技能时，需要申请相应的权限。一个数组元素为一个权限名称，不超过255字节，取值请参考[应用权限列表](../security/AccessToken/app-permissions.md)。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
+
+skillProfiles标签示例：
+<!-- @[module_skillProfiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "skillProfiles": [
+      {
+        "name": "my-skill",
+        "abilityName": "EntryAbility",
+        "srcEntries": [
+          "../../my-skill/scripts/Test.ets"
+        ],
+        "permissions": []
+      }
+    ],
+    // ...
+  }
 }
 ```
