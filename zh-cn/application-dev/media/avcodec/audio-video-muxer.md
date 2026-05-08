@@ -344,6 +344,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据封装)。
 
 1. 添加头文件。
+   <!-- @[FlvMuxer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
    #include <multimedia/player_framework/native_avmuxer.h>
@@ -354,13 +355,13 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```
 
 2. 调用OH_AVMuxer_Create()创建封装器实例对象。
+   <!-- @[FlvMuxer_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
-   // 设置封装格式为flv。
-   OH_AVOutputFormat format = AV_OUTPUT_FORMAT_FLV;
    // 以读写方式创建fd。
    int32_t fd = open("test.flv", O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
-   OH_AVMuxer *muxer = OH_AVMuxer_Create(fd, format);
+   // 设置封装格式为FLV。
+   OH_AVMuxer *muxer = OH_AVMuxer_Create(fd, AV_OUTPUT_FORMAT_FLV);
    ```
 
 3. FLV格式不支持调用OH_AVMuxer_SetRotation()设置旋转角度，调用将返回错误。
@@ -396,74 +397,57 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
 5. 添加音频轨（仅支持添加一个音频轨）。
 
    **添加AAC音频轨**
-
-   ```c++
-   int audioTrackId = -1;
-   uint8_t *buffer = ...; // 编码config data，如果没有可以不传。
-   size_t size = ...;  // 编码config data的长度，根据实际情况配置。
-   OH_AVFormat *formatAudio = OH_AVFormat_Create(); // 这里以封装44100Hz采样率、2声道的AAC-LC音频为例。
-   OH_AVFormat_SetStringValue(formatAudio, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_AAC); // 必填。
-   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_SAMPLE_RATE, 44100); // 必填。
-   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_CHANNEL_COUNT, 2); // 必填。
-   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_PROFILE, AAC_PROFILE_LC); // 选填。
-   OH_AVFormat_SetBuffer(formatAudio, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 选填。
-
-   int ret = OH_AVMuxer_AddTrack(muxer, &audioTrackId, formatAudio);
-   if (ret != AV_ERR_OK || audioTrackId < 0) {
-       // 音频轨添加失败。
-   }
-   OH_AVFormat_Destroy(formatAudio); // 销毁。
-   ```
+   <!-- @[FlvMuxer_addAacTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    > **说明：**
    >
-   > 音频编解码类型为AAC时，HE-AAC（AAC_PROFILE_HE或AAC_PROFILE_HE_V2）仅支持采样率大于等于16000Hz。
-
-   **添加Audio Vivid音频轨**
-
+   > 音频编解码类型为HE-AAC（AAC_PROFILE_HE或AAC_PROFILE_HE_V2）时，仅支持采样率大于等于16000Hz。
+   
    ```c++
    int audioTrackId = -1;
-   uint8_t *buffer = ...; // 编码config data，如果没有可以不传。
-   size_t size = ...;  // 编码config data的长度，根据实际情况配置。
-   OH_AVFormat *formatAudio = OH_AVFormat_Create(); // 这里以封装48000Hz采样率的Audio Vivid音频为例。
-   OH_AVFormat_SetStringValue(formatAudio, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_VIVID); // 必填。
-   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_SAMPLE_RATE, 48000); // 必填。
-   OH_AVFormat_SetBuffer(formatAudio, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 选填。
+   // 以封装44100Hz采样率、2声道的AAC-LC音频为例。
+   OH_AVFormat *formatAudio = OH_AVFormat_CreateAudioFormat(OH_AVCODEC_MIMETYPE_AUDIO_AAC, 44100, 2);
+   OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_PROFILE, AAC_PROFILE_LC); // 选填。
 
    int ret = OH_AVMuxer_AddTrack(muxer, &audioTrackId, formatAudio);
+   OH_AVFormat_Destroy(formatAudio);
    if (ret != AV_ERR_OK || audioTrackId < 0) {
        // 音频轨添加失败。
    }
-   OH_AVFormat_Destroy(formatAudio); // 销毁。
    ```
 
+<!--RP3--><!--RP3End-->
+
 6. 添加视频轨（仅支持添加一个视频轨）。
+   <!-- @[FlvMuxer_addVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
+
    > **说明：**
    >
    > 当开发者需要设置色彩信息时，必须保证OH_MD_KEY_COLOR_PRIMARIES、OH_MD_KEY_TRANSFER_CHARACTERISTICS、OH_MD_KEY_MATRIX_COEFFICIENTS三个key设置的值都在其各自的参数范围内，系统才会识别这是有效色彩信息数据。参数设置范围可参考[OH_ColorPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_colorprimary)、[OH_TransferCharacteristic](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_transfercharacteristic)和[OH_MatrixCoefficient](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_matrixcoefficient)。
 
    ```c++
    int videoTrackId = -1;
-   uint8_t *buffer = ...; // 编码config data，如果没有可以不传。
-   size_t size = ...;  // 编码config data的长度，根据实际情况配置。
-   OH_AVFormat *formatVideo = OH_AVFormat_Create();
-   OH_AVFormat_SetStringValue(formatVideo, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_AVC); // 必填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, 1280); // 必填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, 720); // 必填。
-   OH_AVFormat_SetBuffer(formatVideo, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 选填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // 色彩信息，选填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // 色彩信息，选填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // 色彩信息，选填。
-   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_RANGE_FLAG, 1); // 色彩信息，选填。值为0代表limited range，值为1代表full range。
+   OH_AVFormat *formatVideo = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_VIDEO_AVC, 1280, 720);
+   OH_AVFormat_SetDoubleValue(formatVideo, OH_MD_KEY_FRAME_RATE, 30.0); // 选填。
 
    int ret = OH_AVMuxer_AddTrack(muxer, &videoTrackId, formatVideo);
+   OH_AVFormat_Destroy(formatVideo);
    if (ret != AV_ERR_OK || videoTrackId < 0) {
        // 视频轨添加失败。
    }
-   OH_AVFormat_Destroy(formatVideo); // 销毁。
+   ```
+
+   当视频轨需要设置色彩信息时，在OH_AVMuxer_AddTrack前额外设置色彩相关key：
+
+   ```c++
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_RANGE_FLAG, 1); // 选填。值为0代表limited range，值为1代表full range。
    ```
 
 7. 调用OH_AVMuxer_Start()开始封装。
+   <!-- @[FlvMuxer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
    // 调用start，写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
@@ -473,48 +457,51 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```
 
 8. 调用OH_AVMuxer_WriteSampleBuffer()，写入封装数据。
+   <!-- @[FlvMuxer_writeSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    封装数据包括视频、音频数据。
 
    ```c++
-   // start后，才能开始写入数据。
-   int size = ...;
+   // start后，才能开始写入数据。以下以写入一帧48000Hz采样率、1024采样点的Audio Vivid音频数据为例。
+   int32_t size = 1024; // 当前编码帧的数据长度。
    OH_AVBuffer *sample = OH_AVBuffer_Create(size); // 创建AVBuffer。
    // 通过OH_AVBuffer_GetAddr(sample)往sampleBuffer里写入数据参考OH_AVBuffer的使用方法。
 
    // 创建buffer info。
-   OH_AVCodecBufferAttr info = {0};
-   info.pts = ...; // 当前数据的开始播放的时间，单位微秒，相对时间。
-   info.size = size; // 当前数据的长度。
-   info.offset = 0; // 偏移，一般为0。
-   info.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME; // 当前数据的标志。具体参考OH_AVCodecBufferFlags。
-   info.flags |= AVCODEC_BUFFER_FLAGS_CODEC_DATA; // 当annex-b格式的avc/hevc包含codec config的标志。
-   OH_AVBuffer_SetBufferAttr(sample, &info); // 设置buffer的属性。
+   OH_AVCodecBufferAttr attr = {0};
+   attr.pts = 0; // 当前数据的开始播放的时间，单位微秒，相对时间。首帧为0，后续按 采样点数*1000000/采样率 递增。
+   attr.size = size; // 当前数据的长度。
+   attr.offset = 0; // 偏移，一般为0。
+   attr.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME; // 当前数据的标志。具体参考OH_AVCodecBufferFlags。
+   attr.flags |= AVCODEC_BUFFER_FLAGS_CODEC_DATA; // 当annex-b格式的avc/hevc包含codec config的标志。
+   OH_AVBuffer_SetBufferAttr(sample, &attr);
    int trackId = audioTrackId; // 选择写的音视频轨。
 
    int ret = OH_AVMuxer_WriteSampleBuffer(muxer, trackId, sample);
    if (ret != AV_ERR_OK) {
        // 异常处理。
    }
+   OH_AVBuffer_Destroy(sample); // 写入完成后销毁buffer。
    ```
 
 9. 调用OH_AVMuxer_Stop()，停止封装。
+   <!-- @[FlvMuxer_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
    ```c++
    // 调用stop，写封装文件尾。stop后不能写入媒体数据。
-   if (OH_AVMuxer_Stop(muxer) != AV_ERR_OK) {
+   int ret = OH_AVMuxer_Stop(muxer);
+   if (ret != AV_ERR_OK) {
        // 异常处理。
    }
    ```
 
 10. 调用OH_AVMuxer_Destroy()销毁实例，释放资源。
+    <!-- @[FlvMuxer_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/muxer.cpp) -->
 
     注意不能重复销毁，否则将会导致程序崩溃。
 
     ```c++
-    if (OH_AVMuxer_Destroy(muxer) != AV_ERR_OK) {
-        // 异常处理。
-    }
-    muxer = NULL;
+    OH_AVMuxer_Destroy(muxer);
+    muxer = nullptr;
     close(fd); // 关闭文件描述符。
     ```
