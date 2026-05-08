@@ -66,7 +66,7 @@ struct Index {
               console.info('Succeeded in creating keyboard controller');
             })
             .catch(error => {
-              console.error(`Failed to create keyboard controller, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to create keyboard controller. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -123,7 +123,7 @@ struct Index {
               console.info('Succeeded in creating mouse controller');
             })
             .catch(error => {
-              console.error(`Failed to create mouse controller, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to create mouse controller. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -197,7 +197,7 @@ struct Index {
               console.info('Succeeded in pressing key');
             })
             .catch(error => {
-              console.error(`Failed to press key, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to press key. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -266,7 +266,7 @@ struct Index {
               console.info('Succeeded in releasing key');
             })
             .catch(error => {
-              console.error(`Failed to release key, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to release key. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -343,7 +343,7 @@ struct Index {
               console.info('Succeeded in moving mouse');
             })
             .catch(error => {
-              console.error(`Failed to move mouse, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to move mouse. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -412,7 +412,7 @@ struct Index {
               console.info('Succeeded in releasing mouse button');
             })
             .catch(error => {
-              console.error(`Failed to release mouse button, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to release mouse button. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -481,7 +481,7 @@ struct Index {
               console.info('Succeeded in releasing mouse button');
             })
             .catch(error => {
-              console.error(`Failed to release mouse button, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to release mouse button. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -551,7 +551,7 @@ struct Index {
               console.info('Succeeded in ending axis event');
             })
             .catch(error => {
-              console.error(`Failed to end axis event, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to end axis event. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -624,7 +624,7 @@ struct Index {
               console.info('Succeeded in ending axis event');
             })
             .catch(error => {
-              console.error(`Failed to end axis event, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to end axis event. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -696,7 +696,7 @@ struct Index {
               console.info('Succeeded in ending axis event');
             })
             .catch(error => {
-              console.error(`Failed to end axis event, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to end axis event. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
