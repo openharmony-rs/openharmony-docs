@@ -40,7 +40,7 @@ ArkTS-Sta: SecurityUIExtensionComponent(want: [Want](../../apis-ability-kit/js-a
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 是 | 要加载的Ability信息。通过bundleName和abilityName共同确定被拉起的UIExtensionAbility，同时需要在parameters中配置ability.want.params.uiExtensionType字段指定UIExtensionAbility的类型，当前仅支持"sysPicker/photoPicker"。 |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 是 | 要加载的Ability信息。通过bundleName和abilityName共同确定被拉起的UIExtensionAbility，同时需要在parameters中配置ability.want.params.uiExtensionType字段指定UIExtensionAbility的类型，当前仅支持'sysPicker/photoPicker'。 |
 | options | [SecurityUIExtensionOptions](#securityuiextensionoptions) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
 
 ## SecurityUIExtensionOptions
@@ -333,17 +333,17 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @State message: string = 'Hello World';
   @State want: Want = {
-    bundleName: "com.ohos.myapplication",
-    abilityName: "SUIExtensionProvider",
+    bundleName: 'com.ohos.myapplication',
+    abilityName: 'SUIExtensionProvider',
     parameters: {
-      "ability.want.params.uiExtensionType": "sysPicker/photoPicker",
+      'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
     },
   }
 
   build() {
     Column() {
-      Button("top")
-        .width("80%")
+      Button('top')
+        .width('80%')
         .height(40)
         .margin(3)
 
@@ -355,8 +355,8 @@ struct Index {
           hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
         })
 
-      Button("bottom")
-        .width("80%")
+      Button('bottom')
+        .width('80%')
         .height(40)
         .margin(3)
     }
@@ -382,17 +382,17 @@ import { Column, Button, Component, Entry, Color, SecurityUIExtensionComponent }
 struct Index {
   @State message: string = 'Hello World';
   private want: Want = {
-    bundleName: "com.ohos.myapplication",
-    abilityName: "SUIExtensionProvider",
+    bundleName: 'com.ohos.myapplication',
+    abilityName: 'SUIExtensionProvider',
     parameters: {
-      "ability.want.params.uiExtensionType": "sysPicker/photoPicker",
+      'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
     },
   }
 
   build() {
     Column() {
-      Button("top")
-        .width("80%")
+      Button('top')
+        .width('80%')
         .height(40)
         .margin(3)
 
@@ -405,8 +405,8 @@ struct Index {
           hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
         })
 
-      Button("bottom")
-        .width("80%")
+      Button('bottom')
+        .width('80%')
         .height(40)
         .margin(3)
     }
