@@ -384,11 +384,12 @@ struct Index {
       Text()
         .onClick(() => {
           inputEventClient.createMouseController()
-            .then(mouseController => {
-              return mouseController.pressButton(Button.LEFT);
+            .then((mouseController: inputEventClient.MouseController) => {
+              mouseController.pressButton(Button.LEFT);
+              return mouseController;
             })
-            .then(mouseController => {
-              return mouseController.releaseButton(Button.LEFT);
+            .then((mouseController: inputEventClient.MouseController) => {
+              mouseController.releaseButton(Button.LEFT);
             })
             .then(() => {
               console.info('Succeeded in releasing mouse button');
@@ -497,14 +498,16 @@ struct Index {
       Text()
         .onClick(() => {
           inputEventClient.createMouseController()
-            .then(mouseController => {
-              return mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
+            .then((mouseController: inputEventClient.MouseController) => {
+              mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
+              return mouseController;
             })
-            .then(mouseController => {
-              return mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
+            .then((mouseController: inputEventClient.MouseController) => {
+              mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
+              return mouseController;
             })
-            .then(mouseController => {
-              return mouseController.endAxis(Axis.SCROLL_VERTICAL);
+            .then((mouseController: inputEventClient.MouseController) => {
+              mouseController.endAxis(Axis.SCROLL_VERTICAL);
             })
             .then(() => {
               console.info('Succeeded in ending axis event');
