@@ -1307,8 +1307,6 @@ off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): v
 
 删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Geofence
 
 **参数**：
@@ -2479,8 +2477,6 @@ removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。
 
 GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
-
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
