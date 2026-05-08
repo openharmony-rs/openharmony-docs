@@ -888,6 +888,10 @@ Software caused connection abort
 
 Invalid file name
 
+**错误描述**
+
+文件名非法。
+
 **可能原因**
 
 文件名存在非法字符。
@@ -901,6 +905,10 @@ Invalid file name
 **错误信息**
 
 Invalid URI
+
+**错误描述**
+
+非法URI。
 
 **可能原因**
 
@@ -916,6 +924,10 @@ URI不合法。
 
 Invalid file name extension
 
+**错误描述**
+
+文件名后缀非法。
+
 **可能原因**
 
 按照文件类型命名。
@@ -929,6 +941,10 @@ Invalid file name extension
 **错误信息**
 
 File already in the recycle bin
+
+**错误描述**
+
+文件已进入回收站。
 
 **可能原因**
 
@@ -944,6 +960,10 @@ File already in the recycle bin
 
 System inner fail
 
+**错误描述**
+
+系统内部错误。
+
 **可能原因**
 
 系统异常，发生未知错误。
@@ -957,6 +977,10 @@ System inner fail
 **错误信息**
 
 Member is not a valid PhotoKey
+
+**错误描述**
+
+成员名非法。
 
 **可能原因**
 
