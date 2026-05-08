@@ -133,7 +133,7 @@ on(type: 'audioSessionDeactivated', callback: Callback\<AudioSessionDeactivatedE
 
 监听音频会话停用事件（当音频会话停用时触发）。使用callback异步回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -168,7 +168,7 @@ off(type: 'audioSessionDeactivated', callback?: Callback\<AudioSessionDeactivate
 
 取消监听音频会话停用事件。使用callback异步回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

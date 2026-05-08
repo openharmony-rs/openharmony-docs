@@ -54,7 +54,7 @@ type AudioDeviceDescriptors = Array&lt;Readonly&lt;AudioDeviceDescriptor&gt;&gt;
 
 设备属性数组类型，为[AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)的数组，只读。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
