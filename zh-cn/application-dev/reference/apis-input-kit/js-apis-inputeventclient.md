@@ -193,11 +193,14 @@ struct Index {
             .then(keyboardController => {
               return keyboardController.pressKey(KeyCode.KEYCODE_A);
             })
+            .then(keyboardController => {
+              return keyboardController.releaseKey(KeyCode.KEYCODE_A);
+            })
             .then(() => {
-              console.info('Succeeded in pressing key');
+              console.info('Succeeded in releasing key');
             })
             .catch(error => {
-              console.error(`Failed to press key. Code: ${error.code}, message: ${error.message}.`);
+              console.error(`Failed to release key. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -245,34 +248,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          inputEventClient.createKeyboardController()
-            .then(keyboardController => {
-              return keyboardController.pressKey(KeyCode.KEYCODE_A);
-            })
-            .then(keyboardController => {
-              return keyboardController.releaseKey(KeyCode.KEYCODE_A);
-            })
-            .then(() => {
-              console.info('Succeeded in releasing key');
-            })
-            .catch(error => {
-              console.error(`Failed to release key. Code: ${error.code}, message: ${error.message}.`);
-            });
-        })
-    }
-  }
-}
-```
+参见 [pressKey](#presskey) 示例。
 
 ## MouseController
 
