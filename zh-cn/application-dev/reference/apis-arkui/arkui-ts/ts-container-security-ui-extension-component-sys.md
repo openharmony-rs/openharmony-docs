@@ -102,7 +102,7 @@ UIExtensionAbility连接完成时触发的回调，使用callback异步回调。
 
 onReceive(callback: Callback\<Record\<string, Object\>\>)
 
-收到被拉起的Ability发送的数据时触发的回调。
+收到被拉起的Ability发送的数据时触发的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -120,7 +120,7 @@ onReceive(callback: Callback\<Record\<string, Object\>\>)
 
 onError(callback: ErrorCallback)
 
-被拉起的Ability扩展在运行过程中发生异常时触发的回调，不包含与UIExtensionAbility断开连接场景。
+被拉起的Ability扩展在运行过程中发生异常时触发的回调，不包含与UIExtensionAbility断开连接场景。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -138,7 +138,7 @@ onError(callback: ErrorCallback)
 
 onTerminated(callback: Callback\<TerminationInfo>)
 
-被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。
+被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -245,7 +245,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
-订阅被拉起的Ability发生同步注册的回调。
+订阅被拉起的Ability发生同步注册的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -264,7 +264,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability发生异步注册的回调。
+取消订阅被拉起的Ability发生异步注册的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -283,7 +283,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability发生同步注册后触发的回调。
+取消订阅被拉起的Ability发生同步注册后触发的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
