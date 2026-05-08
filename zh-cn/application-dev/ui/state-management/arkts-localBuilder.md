@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者使用局部\@Builder进行引用数据传递时，需要考虑组件的父子关系。然而在使用.bind(this)的方式更改函数调用上下文后，会出现组件的父子关系与状态管理的父子关系不一致的问题。为了解决这一问题，引入\@LocalBuilder装饰器。\@LocalBuilder拥有和局部\@Builder相同的功能，且比局部\@Builder能够更好的确定组件的父子关系和状态管理的父子关系。
+当开发者使用局部\@Builder进行引用数据传递时，需要考虑组件的父子关系。然而在使用.bind(this)的方式更改函数调用上下文后，会出现组件的父子关系与状态管理的父子关系不一致的问题。为了解决这一问题，引入[\@LocalBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-localbuilder.md)装饰器。\@LocalBuilder拥有和局部\@Builder相同的功能，且比局部\@Builder能够更好的确定组件的父子关系和状态管理的父子关系。
 
 在阅读本文档前，建议提前阅读：[@Builder](./arkts-builder.md)。
 
@@ -158,9 +158,9 @@ struct Parent {
 
 > **说明：**
 >
-> 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。见常见错误[\@LocalBuilder函数和`$$`参数一起使用UI不刷新](#localbuilder函数和参数一起使用ui不刷新)。
+> 若\@LocalBuilder函数和[\$\$](./arkts-two-way-sync.md)参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。见常见错误[\@LocalBuilder函数和`$$`参数一起使用UI不刷新](#localbuilder函数和参数一起使用ui不刷新)。
 
-组件Parent内的\@LocalBuilder函数在build函数内调用，按键值对写法进行传值，当点击Click me时，\@LocalBuilder内的Text文本内容会随着状态变量内容的改变而改变。
+组件Parent内的\@LocalBuilder函数在build函数内调用，按键值对写法进行传值，当点击Click me时，\@LocalBuilder内的[Text](../../ui/arkts-common-components-text-display.md)文本内容会随着状态变量内容的改变而改变。
 <!-- @[pass_by_reference_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets) --> 
 
 ``` TypeScript
@@ -323,7 +323,7 @@ struct Child {
 
 调用\@LocalBuilder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@LocalBuilder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
 
-组件Parent将\@State修饰的label值按照函数传参方式传递到\@LocalBuilder函数内，此时\@LocalBuilder函数获取到的值为普通变量值，所以改变\@State修饰的label值时，\@LocalBuilder函数内的值不会发生改变。
+组件Parent将[\@State](./arkts-state.md)修饰的label值按照函数传参方式传递到\@LocalBuilder函数内，此时\@LocalBuilder函数获取到的值为普通变量值，所以改变\@State修饰的label值时，\@LocalBuilder函数内的值不会发生改变。
 <!-- @[pass_by_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets) --> 
 
 ``` TypeScript

@@ -673,9 +673,8 @@ onDateChange(callback: Callback\<Date> | undefined)
 
 该示例实现了日期选择器组件，点击按钮可以切换公历农历。
 
-
 ```ts
-// xxx.ets
+// DatePickerExampleDyn.ets
 @Entry
 @Component
 struct DatePickerExample {
@@ -712,7 +711,7 @@ struct DatePickerExample {
 该示例通过配置[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)、[selectedTextStyle](#selectedtextstyle10)设置文本样式。
 
 ```ts
-// xxx.ets
+// DatePickerExampleDyn.ets
 @Entry
 @Component
 struct DatePickerExample {
@@ -747,7 +746,7 @@ struct DatePickerExample {
 从API version 18开始，新增了[DatePickerOptions](#datepickeroptions对象说明)的mode属性。
 
 ```ts
-// xxx.ets
+// DatePickerExampleDyn.ets
 @Entry
 @Component
 struct DatePickerExample {
@@ -797,7 +796,7 @@ struct DatePickerExample {
 从API version 20开始，可以通过配置[canLoop](#canloop20)参数设置DatePicker是否循环滚动。
 
 ```ts
-// xxx.ets
+// DatePickerExampleDyn.ets
 @Entry
 @Component
 struct DatePickerExample {
@@ -828,3 +827,39 @@ struct DatePickerExample {
 }
 ```
 ![datePicker](figures/DatePickerDemo4.gif)
+
+### 示例5（使用$$双向绑定）
+
+该示例通过$$双向绑定DatePicker组件的[selected](#datepickeroptions对象说明)属性。
+
+从API version 23开始，selected参数支持Bindable\<Date>类型。
+
+ArkTS-Sta示例：
+
+```ts
+// DatePickerExampleSta.ets
+
+import { $$, Column, ColumnOptions, Component, DatePicker, Entry, Text } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct DatePickerExample {
+  @State selectedDate: Date = new Date('2026-04-01');
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Text(`DatePicker $$selected: ${this.selectedDate}`)
+
+      DatePicker({
+        selected: $$(this.selectedDate)
+      })
+        .onDateChange((value: Date) => {
+          console.info(`DatePicker onDateChange: ${value.toString()}`);
+        })
+    }
+  }
+}
+```
+![datePicker](figures/DatePickerDemo5.png)
+

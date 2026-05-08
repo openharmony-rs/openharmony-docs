@@ -380,6 +380,7 @@ async function test() {
   avTranscoder.on('progressUpdate', (progress: number) => {
     console.info('avTranscoder progressUpdate = ' + progress);
   });
+}
 ```
 
 ## onProgressUpdate<sup>23+</sup>
@@ -442,6 +443,7 @@ async function test() {
   // 创建转码实例。
   let avTranscoder = await media.createAVTranscoder();
   avTranscoder.off('progressUpdate');
+}
 ```
 
 ## offProgressUpdate<sup>23+</sup>
@@ -522,6 +524,7 @@ async function test() {
   avTranscoder.on('error', (err: BusinessError) => {
     console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
   });
+}
 ```
 
 ## onError<sup>23+</sup>

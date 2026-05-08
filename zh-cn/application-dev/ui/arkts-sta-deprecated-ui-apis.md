@@ -103,9 +103,8 @@ struct DragControllerPage {
                 extraParams: ''
               }
               // 使用UIContext上的同名接口替代
-              this.getUIContext().getDragController().executeDrag(() => {
-                this.DraggingBuilder()
-              }, dragInfo, (err, eve) => {
+              this.getUIContext().getDragController().executeDrag(this.DraggingBuilder,
+                dragInfo, (err, eve) => {
                 // 处理起拖结果
               })
             }
@@ -221,9 +220,7 @@ struct DragControllerPage {
                 extraParams: ''
               }
               // 使用UIContext上的同名接口替代
-              this.getUIContext().getDragController().executeDrag(() => {
-                this.DraggingBuilder()
-              }, dragInfo)
+              this.getUIContext().getDragController().executeDrag(this.DraggingBuilder, dragInfo)!
                 .then((event) => {
                   // 处理起拖结果
                 })
@@ -355,7 +352,7 @@ struct DragControllerPage {
                   console.error("listener dragAction is null");
                   return;
                 }
-                (this.dragAction as dragController.DragAction).startDrag().then(() => {
+                (this.dragAction as dragController.DragAction).startDrag()!.then(() => {
                   // 发起拖拽成功
                 }).catch((err: Error) => {
                   // 发起拖拽失败
@@ -625,7 +622,7 @@ struct SnapshotExample {
       Button("click to generate UI snapshot")
         .onClick(() => {
           // 使用UIContext中的同名方法替代
-          this.getUIContext().getComponentSnapshot().get("snapshot_target", { scale: 2, waitUntilRenderFinished: true })
+          this.getUIContext().getComponentSnapshot().get("snapshot_target", { scale: 2, waitUntilRenderFinished: true })!
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap;
             }).catch((err: Error) => {
@@ -857,7 +854,7 @@ struct OffscreenSnapshotExample {
           // 使用UIContext中的同名接口替代
           this.getUIContext()
             .getComponentSnapshot()
-            .createFromBuilder(this.RandomBuilder, 320, true, { scale: 2, waitUntilRenderFinished: true })
+            .createFromBuilder(this.RandomBuilder, 320, true, { scale: 2, waitUntilRenderFinished: true })!
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
             })

@@ -52,6 +52,7 @@
 | [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
 | [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | 变焦范围配置。 |
 | [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | 物理光圈配置。 |
+| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | 描述变焦点信息。 |
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
@@ -90,6 +91,7 @@
 | [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | 拍照画质优先策略枚举。 |
 | [OH_Camera_OISMode](#oh_camera_oismode) | OH_Camera_OISMode | 光学防抖（Optical Image Stabilization）模式枚举。 |
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | 光学防抖（OIS）轴枚举。 |
+| [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
 
 ### 函数
 
@@ -259,7 +261,7 @@ enum Camera_Format
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
 | CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010 格式。<br>**起始版本：** 12 |
-| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 23 |
+| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 13 |
 
 ### Camera_FlashMode
 
@@ -528,7 +530,7 @@ enum Camera_PreconfigType
 | PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。 |
 | PRECONFIG_4K = 2 | 预配置照片分辨率为4K。 |
 | PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。 |
-| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br> **起始版本:** 23 |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**起始版本：** 23 |
 
 ### Camera_PreconfigRatio
 
@@ -712,6 +714,23 @@ enum OH_Camera_OISAxes
 | -- | -- |
 | OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。 |
 | OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
+
+### OH_Camera_ExposureState
+
+```c
+enum OH_Camera_ExposureState
+```
+
+**描述**
+
+枚举相机曝光状态。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | 表示曝光处于扫描状态。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 表示曝光已经收敛。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

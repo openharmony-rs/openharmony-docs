@@ -115,7 +115,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                       |
 | ------ | ------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 背景颜色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 背景颜色，默认为透明色。<br/>设置undefined时按默认值处理。 |
 
 ### regularColor
 

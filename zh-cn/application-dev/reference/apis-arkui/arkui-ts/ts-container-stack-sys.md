@@ -20,7 +20,9 @@
 
 ### pointLight
 
-pointLight(value: PointLightStyle)
+ArkTS-Dyn: pointLight(value: PointLightStyle)
+
+ArkTS-Sta: pointLight(value: PointLightStyle | undefined)
 
 设置点光源样式。
 
@@ -36,5 +38,5 @@ pointLight(value: PointLightStyle)
 
 | 参数名 | 参数类型                                                         | 只读 | 可选 | 说明         |
 | ------ | ------------------------------------------------------------ | ---- |---- | ------------ |
-| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | 否 | 否   | 点光源样式。 |
+| value  | ArkTS-Dyn: [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle)<br/>ArkTS-Sta: [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) \| undefined | 否 | 否   | 点光源样式。<br/>取值为undefined时，与不设置表现一致。 |
 

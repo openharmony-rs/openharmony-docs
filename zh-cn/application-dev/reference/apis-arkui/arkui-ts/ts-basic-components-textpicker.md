@@ -1350,7 +1350,7 @@ ArkTS-Sta: type TextPickerEnterSelectedAreaCallback = (value: string | string[],
 从API version 18开始，新增了[TextPickerOptions](#textpickeroptions对象说明)的columnWidths属性。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 import { LengthMetrics } from '@kit.ArkUI';
 
 class Bottom {
@@ -1361,7 +1361,7 @@ let bott: Bottom = new Bottom();
 @Entry
 @Component
 struct TextPickerExample {
-  private select: int = 1;
+  private select: number = 1;
   private apfruits: string[] = ['apple1', 'apple2', 'apple3', 'apple4'];
   private orfruits: string[] = ['orange1', 'orange2', 'orange3', 'orange4'];
   private pefruits: string[] = ['peach1', 'peach2', 'peach3', 'peach4'];
@@ -1402,7 +1402,7 @@ struct TextPickerExample {
     Column() {
 
       TextPicker({ range: this.apfruits, selected: this.select, columnWidths: this.singleColumnWidths })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
         .onScrollStop((value: string | string[], index: number | number[]) => {
@@ -1413,24 +1413,24 @@ struct TextPickerExample {
         })
 
       TextPicker({ range: this.multi, columnWidths: this.multipleColumnWidths })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('TextPicker 多列:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('TextPicker 多列:onScrollStop ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
         }).margin(bott)
-        .onEnterSelectedArea((value: string | string[], index: int | int[]) => {
+        .onEnterSelectedArea((value: string | string[], index: number | number[]) => {
           console.info('TextPicker 多列:onEnterSelectedArea ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
         })
 
       TextPicker({ range: this.cascade, columnWidths: this.cascadeColumnWidths })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('TextPicker 多列联动:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('TextPicker 多列联动:onScrollStop ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
         })
-        .onEnterSelectedArea((value: string | string[], index: int | int[]) => {
+        .onEnterSelectedArea((value: string | string[], index: number | number[]) => {
           console.info('TextPicker 多列联动:onEnterSelectedArea ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
         })
     }
@@ -1445,11 +1445,11 @@ struct TextPickerExample {
 该示例使用[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)、[selectedTextStyle](#selectedtextstyle10)设置文本选择器中的文本样式。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
-  private select: int = 0;
+  private select: number = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
 
   build() {
@@ -1459,10 +1459,10 @@ struct TextPickerExample {
         selected: this.select,
         value: this.fruits[this.select]
       })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
         .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
@@ -1483,20 +1483,20 @@ struct TextPickerExample {
 该示例通过配置[divider](#divider12)为null实现无分割线样式的文本选择器。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
-  private select: int = 0;
+  private select: number = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
 
   build() {
     Column() {
       TextPicker({ range: this.fruits, selected: this.select })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
         .disappearTextStyle({color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}})
@@ -1514,20 +1514,20 @@ struct TextPickerExample {
 该示例通过配置divider的DividerOptions设置文本选择器的分割线样式。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
-  private select: int = 1;
+  private select: number = 1;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
 
   build() {
     Column() {
       TextPicker({ range: this.fruits, selected: this.select })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
         .disappearTextStyle({color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}})
@@ -1550,20 +1550,20 @@ struct TextPickerExample {
 该示例通过配置[gradientHeight](#gradientheight12)设置文本选择器的渐隐效果高度。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
-  private select: int = 1;
+  private select: number = 1;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
 
   build() {
     Column() {
       TextPicker({ range: this.fruits, selected: this.select })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
         .disappearTextStyle({color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}})
@@ -1582,21 +1582,21 @@ struct TextPickerExample {
 该示例通过配置[defaultPickerItemHeight](#defaultpickeritemheight)设置选择项的高度。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
-  private select: int = 1;
+  private select: number = 1;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
 
   build() {
     Column() {
       TextPicker({ range: this.fruits, selected: this.select })
         .defaultPickerItemHeight(60)
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
     }.width('100%').height('100%')
@@ -1606,27 +1606,26 @@ struct TextPickerExample {
 
 ![textpicker](figures/TextPickerDemo6.png)
 
-
 ### 示例7（设置循环滚动）
 
 该示例通过配置[canLoop](#canloop10)设置文本选择器是否循环滚动。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
   @State isLoop: boolean = false;
-  private select: int = 1;
+  private select: number = 1;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
 
   build() {
     Column() {
       TextPicker({ range: this.fruits, selected: this.select })
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
         .canLoop(this.isLoop)
@@ -1652,7 +1651,7 @@ struct TextPickerExample {
 该示例通过配置[selectedIndex](#selectedindex10)设置默认选中项的索引值。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
@@ -1662,10 +1661,10 @@ struct TextPickerExample {
     Column() {
       TextPicker({ range: this.fruits, selected: 1 })
         .selectedIndex(2)
-        .onChange((value: string | string[], index: int | int[]) => {
+        .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index);
         })
-        .onScrollStop((value: string | string[], index: int | int[]) => {
+        .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
     }.width('100%').height('100%')
@@ -1682,11 +1681,11 @@ struct TextPickerExample {
 从API version 15开始，新增disableTextStyleAnimation、defaultTextStyle接口。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
-  private select: int = 1;
+  private select: number = 1;
   private fruits: string[] = ['AAAAA', 'BBBBBBBBBBBBB', 'CCCC', 'DDDDDDDD', 'EEE'];
 
   build() {
@@ -1717,7 +1716,7 @@ struct TextPickerExample {
 该示例通过配置[selectedBackgroundStyle](#selectedbackgroundstyle20)实现文本选择器选中项的背景样式。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
@@ -1779,7 +1778,7 @@ struct TextPickerExample {
 从API version 20开始，新增disappearTextStyle、textStyle和selectedTextStyle接口。
 
 ```ts
-// xxx.ets
+// TextPickerExampleDyn.ets
 @Entry
 @Component
 struct TextPickerExample {
@@ -1819,3 +1818,45 @@ struct TextPickerExample {
 ```
 
 ![textpicker](figures/TextPickerDemo11.gif)
+
+### 示例12（使用$$双向绑定）
+
+该示例通过$$双向绑定TextPicker组件的[selected](#textpickeroptions对象说明)属性。
+
+从API version 23开始，selected参数支持Bindable\<int>类型。
+
+ArkTS-Sta示例：
+
+```ts
+// TextPickerExampleSta.ets
+
+import { $$, Column, ColumnOptions, Component, Entry, ResourceStr, Text, TextPicker } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct TextPickerExample {
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
+  @State select: int = 0;
+  @State value: ResourceStr = 'apple1';
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Text(`TextPicker $$selected: ${this.select}, $$value: ${this.value}`)
+
+      TextPicker({
+        range: this.fruits,
+        selected: $$(this.select),
+        value: $$(this.value)
+      })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info(`TextPicker onChange value: ${value}, index: ${index}`);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info(`TextPicker onScrollStop value: ${value}, index: ${index}`);
+        })
+    }.width('100%')
+  }
+}
+```
+![textpicker](figures/TextPickerDemo12.png)

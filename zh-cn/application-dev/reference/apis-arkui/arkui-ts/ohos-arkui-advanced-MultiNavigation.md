@@ -1,9 +1,9 @@
 # MultiNavigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
@@ -38,7 +38,7 @@ ArkTS-Sta: MultiNavigation({navDestination: PageMapBuilder | undefined, multiSta
 
 MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左侧主页点击时，会触发详情页的加载并同时清除右侧所有其他详情页，确保右侧仅展示最新加载的详情页。然而，若在右侧的详情页上再次执行详情页加载操作，系统将不会执行清栈动作。效果可参见[主页跳转详情页效果演示](#示例)。
 
-**装饰器类型：** [@Component](./ts-custom-component-decorator-component.md#component)
+**装饰器类型：** [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -91,7 +91,7 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 | ------| ---------------------------------------------------------- | -- | ----------------------------------------- |
 |   info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  是  | NavDestination页面的信息。                |
 | animated |                           boolean                            |  否  | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。          |
-|  policy  |               [SplitPolicy](#splitpolicy枚举说明)                |  否  | 当前入栈页面的策略。默认值：DETAIL_PAGE |
+|  policy  |               [SplitPolicy](#splitpolicy枚举说明)                | 否  | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
 ### pushPath
 

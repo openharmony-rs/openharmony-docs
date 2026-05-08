@@ -125,7 +125,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 - 触发点击事件后：
   1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
-  2. \@StorageLink装饰的变量是和AppStorage中建立双向同步的，所以\@StorageLink('aProp') aProp的变化会被同步回AppStorage中。
+  2. [\@StorageLink](./arkts-static-appstorage.md#storagelink)装饰的变量是和AppStorage中建立双向同步的，所以\@StorageLink('aProp') aProp的变化会被同步回AppStorage中。
   3. AppStorage中“aProp”属性的改变会同步到所有绑定该“aProp”的单向或者双向变量，在本示例中没有其他的绑定“aProp”的变量。
   4. 因为“aProp”对应的属性已经被持久化，所以在AppStorage中“aProp”的改变会触发PersistentStorage，将新的改变写入本地磁盘。
 

@@ -858,6 +858,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | reason          | number                                                             | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
 | vibrationValues | Array\<number\>                                                    | 是  | 是  | 通知震动。 |
+| voiceContent | [VoiceContent](#voicecontent)                                              | 是  | 是  | 通知语音播报内容。 <br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0|
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
@@ -922,6 +923,21 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | uid         | number | 是   | 否   | 应用的uid。  |
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
 
+## VoiceContent
+  
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+  
+| 名称            | 类型                                                                | 只读 | 可选 | 说明     |
+| --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
+| textContent | string                                             | 是  | 是  | 文本语音播报内容。 |
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
