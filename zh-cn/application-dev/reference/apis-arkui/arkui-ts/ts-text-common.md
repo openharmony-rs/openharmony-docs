@@ -15,6 +15,8 @@
 
 ## CaretStyle<sup>10+</sup>
 
+光标样式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -342,6 +344,8 @@ equals(id: TextMenuItemId): boolean
 
 ## TextMenuItem<sup>12+</sup>对象说明
 
+自定义菜单项。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -542,6 +546,8 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 ## TextDataDetectorType<sup>11+</sup>枚举说明
 
+文本识别实体类型。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -629,6 +635,8 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 ## InsertValue<sup>12+</sup>对象说明
 
+插入内容对象。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -643,6 +651,8 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | insertValue  | string | 否   | 否   | 插入的值。 |
 
 ## DeleteValue<sup>12+</sup>对象说明
+
+删除内容对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -660,7 +670,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 ## TextDataDetectorConfig<sup>11+</sup>对象说明
 
-该配置只支持[Text](ts-basic-components-text.md)组件和[RichEditor](ts-basic-components-richeditor.md)组件。
+文本识别配置项。该配置只支持[Text](ts-basic-components-text.md)组件和[RichEditor](ts-basic-components-richeditor.md)组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

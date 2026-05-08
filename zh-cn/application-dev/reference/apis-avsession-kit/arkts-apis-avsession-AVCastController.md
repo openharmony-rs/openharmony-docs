@@ -1,7 +1,7 @@
 # Interface (AVCastController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -11,7 +11,6 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 10开始支持。
 
@@ -220,7 +219,7 @@ ArkTS-Dyn: getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
 ArkTS-Sta: getSupportedPlaySpeeds(): Promise\<Array\<double>>
 
-获取当前的远端设备所支持倍速播放列表。使用Promise异步回调。
+获取当前的远端设备所支持倍速播放列表，仅支持使用cast+协议连接的设备。使用Promise异步回调。
 
 **原子化服务API(仅ArkTS-Dyn)：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -260,7 +259,6 @@ avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
 sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 通过控制器发送命令到其对应的会话。使用Promise异步回调。
-
 
 **原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -422,7 +420,7 @@ currentAVSession.on('customDataChange', (callback) => {
 
 ## onCustomDataChange<sup>23+</sup>
 
-onCustomDataChange(callback: Callback<Record<string, Object>>): void
+onCustomDataChange(callback: Callback\<Record<string, Object>>): void
 
 注册远程设备发送自定义数据的监听。使用callback异步回调。
 
@@ -460,7 +458,7 @@ avCastController.onCustomDataChange((data: Record<string, Object>) => {
 
 off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void
 
-取消自定义数据监听。
+注销自定义数据监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -495,9 +493,9 @@ currentAVSession.off('customDataChange');
 
 ## offCustomDataChange<sup>23+</sup>
 
-offCustomDataChange(callback?: Callback<Record<string, Object>>): void
+offCustomDataChange(callback?: Callback\<Record<string, Object>>): void
 
-取消自定义数据监听。
+注销自定义数据监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -846,7 +844,7 @@ avCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
 
 ## getValidCommands<sup>11+</sup>
 
-getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): void
+getValidCommands(callback: AsyncCallback\<Array\<AVCastControlCommandType>>): void
 
 获取当前支持的命令。使用callback异步回调。
 
@@ -880,7 +878,7 @@ avCastController.getValidCommands((state: avSession.AVCastControlCommandType[]) 
 
 ## getValidCommands<sup>11+</sup>
 
-getValidCommands(): Promise<Array\<AVCastControlCommandType>>
+getValidCommands(): Promise\<Array\<AVCastControlCommandType>>
 
 获取当前支持的命令。使用Promise异步回调。
 
@@ -965,7 +963,7 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 
 release(callback: AsyncCallback\<void>): void
 
-销毁当前controller，使用callback异步回调。
+销毁当前controller。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1035,7 +1033,7 @@ avCastController.release().then(() => {
 
 on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
 
-设置播放状态变化的监听事件。使用callback异步回调。
+注册播放状态变化的监听事件。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -1083,7 +1081,7 @@ avCastController.on('playbackStateChange', playbackFilter, (playbackState: avSes
 
 onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackState>): void
 
-设置播放状态变化的监听事件。使用callback异步回调。
+注册播放状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1121,7 +1119,7 @@ avCastController.onPlaybackStateChange(playbackFilter, (playbackState: avSession
 
 onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
-设置播放状态变化的监听事件。使用callback异步回调。
+注册播放状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1157,7 +1155,9 @@ avCastController.onPlaybackStateChangeAll((playbackState: avSession.AVPlaybackSt
 
 off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): void
 
-取消播放状态变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销播放状态变化事件监听。使用callback异步回调。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1195,7 +1195,7 @@ avCastController.off('playbackStateChange');
 
 offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
-媒体控制器取消监听播放状态变化的事件。
+注销媒体控制器播放状态变化事件的监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1229,7 +1229,7 @@ avCastController.offPlaybackStateChange();
 
 on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
-设置投播当前播放媒体内容的监听事件。使用callback异步回调。
+注册投播当前播放媒体内容的监听事件。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -1271,7 +1271,7 @@ avCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
 
 onMediaItemChange(callback: Callback\<AVQueueItem>): void
 
-设置投播当前播放媒体内容的监听事件。使用callback异步回调。
+注册投播当前播放媒体内容的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1307,7 +1307,9 @@ avCastController.onMediaItemChange((item: avSession.AVQueueItem) => {
 
 off(type: 'mediaItemChange'): void
 
-取消设置投播当前播放媒体内容事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销设置投播当前播放媒体内容事件监听。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1344,7 +1346,7 @@ avCastController.off('mediaItemChange');
 
 offMediaItemChange(): void
 
-取消设置投播当前播放媒体内容的监听事件。
+注销设置投播当前播放媒体内容的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1373,7 +1375,7 @@ avCastController.offMediaItemChange();
 
 on(type: 'playNext', callback: Callback\<void>): void
 
-设置播放下一首资源的监听事件。使用callback异步回调。
+注册播放下一首资源的监听事件。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -1415,7 +1417,7 @@ avCastController.on('playNext', () => {
 
 onPlayNext(callback: NoParamCallback): void
 
-设置播放下一首资源的监听事件。使用callback异步回调。
+注册播放下一首资源的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1451,7 +1453,9 @@ avCastController.onPlayNext(() => {
 
 off(type: 'playNext'): void
 
-取消设置播放下一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销播放下一首资源事件监听。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1488,7 +1492,7 @@ avCastController.off('playNext');
 
 offPlayNext(): void
 
-取消设置播放下一首资源的监听事件。
+注销设置播放下一首资源的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1516,7 +1520,7 @@ avCastController.offPlayNext();
 
 on(type: 'playPrevious', callback: Callback\<void>): void
 
-设置播放上一首资源的监听事件。使用callback异步回调。
+注册播放上一首资源的监听事件。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -1558,7 +1562,7 @@ avCastController.on('playPrevious', () => {
 
 onPlayPrevious(callback: NoParamCallback): void
 
-设置播放上一首资源的监听事件。使用callback异步回调。
+注册播放上一首资源的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1594,7 +1598,9 @@ avCastController.onPlayPrevious(() => {
 
 off(type: 'playPrevious'): void
 
-取消设置播放上一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销设置播放上一首资源事件监听。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1631,7 +1637,7 @@ avCastController.off('playPrevious');
 
 offPlayPrevious(): void
 
-取消设置播放上一首资源的监听事件。
+注销设置播放上一首资源的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1660,7 +1666,7 @@ avCastController.offPlayPrevious();
 
 on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 
-设置请求播放的监听事件。使用callback异步回调。
+注册请求播放的监听事件。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -1700,7 +1706,7 @@ avCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
 
 onRequestPlay(callback: Callback\<AVQueueItem>): void
 
-设置请求播放的监听事件。使用callback异步回调。
+注册请求播放的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1736,7 +1742,7 @@ avCastController.onRequestPlay((item: avSession.AVQueueItem) => {
 
 off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 
-取消设置请求播放的监听事件。
+注销设置请求播放的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1772,7 +1778,7 @@ avCastController.off('requestPlay');
 
 offRequestPlay(callback?: Callback\<AVQueueItem>): void
 
-取消设置请求播放的监听事件。
+注销设置请求播放的监听事件。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1806,7 +1812,7 @@ avCastController.offRequestPlay();
 
 on(type: 'endOfStream', callback: Callback\<void>): void
 
-设置播放结束的监听事件。使用callback异步回调。
+注册播放结束的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1844,7 +1850,7 @@ avCastController.on('endOfStream', () => {
 
 onEndOfStream(callback: NoParamCallback): void
 
-设置播放结束的监听事件。使用callback异步回调。
+注册播放结束的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1880,7 +1886,7 @@ avCastController.onEndOfStream(() => {
 
 off(type: 'endOfStream', callback?: Callback\<void>): void
 
-取消设置播放结束的监听事件。
+注销设置播放结束的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1916,7 +1922,7 @@ avCastController.off('endOfStream');
 
 offEndOfStream(callback?: NoParamCallback): void
 
-取消设置播放结束的监听事件。
+注销设置播放结束的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1950,7 +1956,7 @@ avCastController.offEndOfStream();
 
 on(type: 'seekDone', callback: Callback\<number>): void
 
-设置seek结束的监听事件。使用callback异步回调。
+注册seek结束的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1990,7 +1996,7 @@ avCastController.on('seekDone', (pos: number) => {
 
 onSeekDone(callback: Callback\<int>): void
 
-设置seek结束的监听事件。使用callback异步回调。
+注册seek结束的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2026,7 +2032,9 @@ avCastController.onSeekDone((pos: int) => {
 
 off(type: 'seekDone'): void
 
-取消设置seek结束事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销设置seek结束事件监听。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2063,7 +2071,7 @@ avCastController.off('seekDone');
 
 offSeekDone(): void
 
-取消设置seek结束的监听事件。
+注销设置seek结束的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2131,7 +2139,7 @@ avCastController.on('validCommandChange', (validCommands: avSession.AVCastContro
 
 ## onValidCommandChange<sup>23+</sup>
 
-onValidCommandChange(callback: Callback<Array\<AVCastControlCommandType>>): void
+onValidCommandChange(callback: Callback\<Array\<AVCastControlCommandType>>): void
 
 会话支持的有效命令变化监听事件。使用callback异步回调。
 
@@ -2171,7 +2179,7 @@ avCastController.onValidCommandChange((validCommands: avSession.AVCastControlCom
 
 off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>)
 
-媒体控制器取消监听会话有效命令变化的事件。
+注销媒体控制器会话有效命令变化的事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2206,9 +2214,9 @@ avCastController.off('validCommandChange');
 
 ## offValidCommandChange<sup>23+</sup>
 
-offValidCommandChange(callback?: Callback<Array\<AVCastControlCommandType>>): void
+offValidCommandChange(callback?: Callback\<Array\<AVCastControlCommandType>>): void
 
-媒体控制器取消监听会话有效命令变化的事件。
+注销媒体控制器会话有效命令变化的事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2243,7 +2251,7 @@ avCastController.offValidCommandChange();
 
 on(type: 'videoSizeChange', callback: (width: number, height: number) => void): void
 
-媒体控制器监听视频尺寸变化变化的事件。使用callback异步回调。
+注册媒体控制器视频尺寸变化变化的事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2281,7 +2289,7 @@ avCastController.on('videoSizeChange', (width: number, height: number) => {
 
 onVideoSizeChange(callback: VideoSizeEvent): void
 
-媒体控制器监听视频尺寸变化变化的事件。使用callback异步回调。
+注册媒体控制器视频尺寸变化变化的事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2317,7 +2325,7 @@ avCastController.onVideoSizeChange((width: int, height: int) => {
 
 off(type: 'videoSizeChange'): void
 
-媒体控制器取消监听视频尺寸变化的事件。
+注销媒体控制器视频尺寸变化的事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2352,7 +2360,7 @@ avCastController.off('videoSizeChange');
 
 offVideoSizeChange(): void
 
-媒体控制器取消监听视频尺寸变化的事件。
+注销媒体控制器视频尺寸变化的事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2470,7 +2478,7 @@ avCastController.onError((error: BusinessError) => {
 
 off(type: 'error'): void
 
-取消播放的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销播放的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2513,7 +2521,7 @@ avCastController.off('error')
 
 offError(): void
 
-取消监听播放的错误事件。
+注销播放的错误事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2627,7 +2635,9 @@ avCastController.onKeyRequest(keyRequestCallback);
 
 off(type: 'keyRequest', callback?: KeyRequestCallback): void
 
-取消许可证请求事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+注销许可证请求事件监听。使用callback异步回调。
+
+指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2665,7 +2675,7 @@ avCastController.off('keyRequest');
 
 offKeyRequest(callback?: KeyRequestCallback): void
 
-取消监听许可证请求的事件。
+注销监听许可证请求的事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2699,7 +2709,7 @@ avCastController.offKeyRequest();
 
 on(type: 'castControlGenericError', callback: ErrorCallback): void
 
-监听投播通用错误事件。使用callback异步回调。
+注册投播通用错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2752,7 +2762,7 @@ avCastController.on('castControlGenericError', (error: BusinessError) => {
 
 onCastControlGenericError(callback: ErrorCallback): void
 
-监听投播通用错误事件。使用callback异步回调。
+注册投播通用错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2801,7 +2811,7 @@ avCastController.onCastControlGenericError((error: BusinessError) => {
 
 off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
-取消监听投播通用的错误事件。
+注销投播通用的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2838,7 +2848,7 @@ avCastController.off('castControlGenericError');
 
 offCastControlGenericError(callback?: ErrorCallback): void
 
-取消监听投播通用的错误事件。
+注销监听投播通用的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2864,7 +2874,7 @@ avCastController.offCastControlGenericError();
 
 on(type: 'castControlIoError', callback: ErrorCallback): void
 
-监听投播输入/输出的错误事件。使用callback异步回调。
+注册投播输入/输出的错误事件监听。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -2922,7 +2932,7 @@ avCastController.on('castControlIoError', (error: BusinessError) => {
 
 onCastControlIoError(callback: ErrorCallback): void
 
-监听投播输入/输出的错误事件。使用callback异步回调。
+注册投播输入/输出的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3011,7 +3021,7 @@ avCastController.off('castControlIoError');
 
 offCastControlIoError(callback?: ErrorCallback): void
 
-取消监听投播输入/输出的错误事件。
+注销投播输入/输出的错误事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3037,7 +3047,7 @@ avCastController.offCastControlIoError();
 
 on(type: 'castControlParsingError', callback: ErrorCallback): void
 
-监听投播解析的错误事件。使用callback异步回调。
+注册投播解析的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3081,7 +3091,7 @@ avCastController.on('castControlParsingError', (error: BusinessError) => {
 
 onCastControlParsingError(callback: ErrorCallback): void
 
-监听投播解析的错误事件。使用callback异步回调。
+注册投播解析的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3121,7 +3131,7 @@ avCastController.onCastControlParsingError((error: BusinessError) => {
 
 off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
-取消监听投播解析的错误事件。
+注销投播解析的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3158,7 +3168,7 @@ avCastController.off('castControlParsingError');
 
 offCastControlParsingError(callback?: ErrorCallback): void
 
-取消监听投播解析的错误事件。
+注销投播解析的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3184,7 +3194,7 @@ avCastController.offCastControlParsingError();
 
 on(type: 'castControlDecodingError', callback: ErrorCallback): void
 
-监听投播解码的错误事件。使用callback异步回调。
+注册投播解码的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3229,7 +3239,7 @@ avCastController.on('castControlDecodingError', (error: BusinessError) => {
 
 onCastControlDecodingError(callback: ErrorCallback): void
 
-监听投播解码的错误事件。使用callback异步回调。
+注册投播解码的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3270,7 +3280,7 @@ avCastController.onCastControlDecodingError((error: BusinessError) => {
 
 off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
-取消监听投播解码的错误事件。
+注销投播解码的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3307,7 +3317,7 @@ avCastController.off('castControlDecodingError');
 
 offCastControlDecodingError(callback?: ErrorCallback): void
 
-取消监听投播解码的错误事件。
+注销投播解码的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3333,7 +3343,7 @@ avCastController.offCastControlDecodingError();
 
 on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 
-监听投播音频渲染器的错误事件。使用callback异步回调。
+注册投播音频渲染器的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3375,7 +3385,7 @@ avCastController.on('castControlAudioRendererError', (error: BusinessError) => {
 
 onCastControlAudioRendererError(callback: ErrorCallback): void
 
-监听投播音频渲染器的错误事件。使用callback异步回调。
+注册投播音频渲染器的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3413,7 +3423,7 @@ avCastController.onCastControlAudioRendererError((error: BusinessError) => {
 
 off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
-取消监听投播音频渲染器的错误事件。
+注册投播音频渲染器的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3450,7 +3460,7 @@ avCastController.off('castControlAudioRendererError');
 
 offCastControlAudioRendererError(callback?: ErrorCallback): void
 
-取消监听投播音频渲染器的错误事件。
+注销投播音频渲染器的错误事件监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3476,7 +3486,7 @@ avCastController.offCastControlAudioRendererError();
 
 on(type: 'castControlDrmError', callback: ErrorCallback): void
 
-监听投播drm的错误事件。使用callback异步回调。
+注册投播DRM的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3493,7 +3503,7 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 错误事件回调类型，支持的事件：'castControlDrmError'。 |
-| callback | ErrorCallback | 是   | 投播drm的错误事件回调方法。 |
+| callback | ErrorCallback | 是   | 投播DRM的错误事件回调方法。 |
 
 **错误码：**
 
@@ -3525,7 +3535,7 @@ avCastController.on('castControlDrmError', (error: BusinessError) => {
 
 onCastControlDrmError(callback: ErrorCallback): void
 
-监听投播drm的错误事件。使用callback异步回调。
+注册投播DRM的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3539,7 +3549,7 @@ onCastControlDrmError(callback: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | ErrorCallback | 是   | 投播drm的错误事件回调方法。 |
+| callback | ErrorCallback | 是   | 投播DRM的错误事件回调方法。 |
 
 **错误码：**
 
@@ -3570,7 +3580,7 @@ avCastController.onCastControlDrmError((error: BusinessError) => {
 
 off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
-取消监听投播drm的错误事件。
+注销投播DRM的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3607,7 +3617,7 @@ avCastController.off('castControlDrmError');
 
 offCastControlDrmError(callback?: ErrorCallback): void
 
-取消监听投播drm的错误事件。
+注销投播DRM的错误事件监听。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

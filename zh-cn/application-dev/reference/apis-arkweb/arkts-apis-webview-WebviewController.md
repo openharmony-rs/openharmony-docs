@@ -4280,7 +4280,7 @@ function PostMsgToEts(data) {
 
 requestFocus(): void
 
-使当前Web页面获取焦点。
+使指定组件获取焦点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4523,7 +4523,7 @@ ArkTS-Dyn: getWebId(): number
 
 ArkTS-Sta: getWebId(): int
 
-获取当前Web组件的索引值，用于多个Web组件的管理。
+获取Web组件的索引值，用于多个Web组件的管理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4535,7 +4535,7 @@ ArkTS-Sta: getWebId(): int
 
 | 类型   | 说明                  |
 | ------ | --------------------- |
-| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前Web组件的索引值。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | Web组件的索引值。 |
 
 **错误码：**
 
@@ -9524,7 +9524,7 @@ struct WebComponent {
 
 isIntelligentTrackingPreventionEnabled(): boolean
 
-获取当前Web是否启用了智能防跟踪功能。
+获取Web组件是否启用了智能防跟踪功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9538,7 +9538,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 当前Web是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。<br>默认值：false。 |
+| boolean | Web组件是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。<br>默认值：false。 |
 
 **错误码：**
 
@@ -12032,7 +12032,7 @@ struct WebComponent {
 
 setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-为当前Web组件设置[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md), [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)类用于拦截指定scheme的请求。
+为Web组件设置[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md), [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)类用于拦截指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -12120,7 +12120,7 @@ struct WebComponent {
 
 clearWebSchemeHandler(): void
 
-清除当前Web组件设置的所有WebSchemeHandler。
+清除Web组件设置的所有WebSchemeHandler。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -13886,7 +13886,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { WebBuilder } from "./InjectWebview";
+   import { injectWebview } from "./InjectWebview";
 
    export class BuilderData {
      url: string;
@@ -13931,7 +13931,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
          return;
        }
        this.rootNode = new BuilderNode<BuilderData>(uiContext);
-       this.rootNode!.build(wrapBuilder(WebBuilder), new BuilderData(url, controller, uiContext));
+       this.rootNode!.build(injectWebview, new BuilderData(url, controller, uiContext));
      }
    }
 
@@ -14005,7 +14005,6 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { webview } from '@kit.ArkWeb';
    import { resourceConfigs } from "./Resource";
    import { BuilderData } from "./DynamicComponent";
-   import { BusinessError } from '@kit.BasicServicesKit';
 
    @Builder
    export function WebBuilder(data: BuilderData) {
@@ -14015,7 +14014,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
            try {
              const result = await getData(data.context);
              data.controller.injectOfflineResources(result);
-           } catch (err: BusinessError) {
+           } catch (err) {
              console.error("error: " + err.code + " " + err.message);
            }
          })();
@@ -17362,6 +17361,7 @@ import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
 import { webview } from '@kit.ArkWeb';
 import { AppStorage } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {

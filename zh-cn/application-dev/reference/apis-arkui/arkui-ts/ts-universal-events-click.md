@@ -56,8 +56,8 @@ ArkTS-Sta: onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: 
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | ArkTS-Dyn: Callback\<[ClickEvent](#clickevent)> <br/>ArkTS-Sta: Callback\<[ClickEvent](#clickevent)> \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
-| distanceThreshold  | ArkTS-Dyn: number <br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。 |
+| event  | ArkTS-Dyn: Callback\<[ClickEvent](#clickevent)> <br/>ArkTS-Sta: Callback\<[ClickEvent](#clickevent)> \|&nbsp;undefined | 是   | 点击事件的回调函数。<br/>传入undefined时无效果。 |
+| distanceThreshold  | ArkTS-Dyn: number <br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。<br/>传入undefined时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。 |
 
 >  **说明：**
 >
@@ -111,6 +111,8 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
@@ -137,6 +139,30 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 | --------- | ------- |
 | 100017       | Component does not support prevent function. |
 
+### getCurrentLocalPosition
+
+ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
+ 
+ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
+
+获取点击位置相对于当前组件实时位置的左上角坐标。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 获取点击位置相对于当前组件实时位置的左上角坐标。|
+
 ## EventTarget<sup>8+</sup>
 
 [BaseEvent](ts-gesture-customize-judge.md#baseevent8)中参数target的类型。
@@ -151,6 +177,8 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 | id<sup>15+</sup> | string | 否 | 是 | 开发者设置的节点[id](ts-universal-attributes-component-id.md#id)。默认值：undefined <br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
+
+### 示例1（获取点击事件相关参数）
 
 该示例通过按钮设置点击事件，点击按钮可获取点击事件的相关参数。
 
@@ -187,3 +215,68 @@ struct ClickExample {
 ```
 
 ![click](figures/click.gif)
+
+### 示例2（获取组件实时位置）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取点击位置相对于当前组件实时位置左上角的坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .onClick((event?: ClickEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event?.getCurrentLocalPosition?.();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Button, State, Column, Component, ClickEvent, Coordinate2D, TranslateOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY } as TranslateOptions)
+        .onClick((event?: ClickEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event?.getCurrentLocalPosition();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+![click](figures/localPosition1.gif)

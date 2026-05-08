@@ -62,7 +62,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 >
 >   1. image/subType用于声明数据内容的类型。从API版本26.0.0开始，Image组件接受任意`data:image/xxx;base64,Base64EncodedData`格式的Base64字符串，具体图片类型由系统多媒体能力根据实际数据内容识别，无需枚举所有支持的MIME类型。对于API版本26.0.0之前版本，Image组件不会强制校验声明的类型与Base64解码后的实际图片格式是否完全一致。在部分场景下，即使声明的类型与真实格式不一致，图片仍可能正常显示。为避免未来行为变化或未知问题，建议始终保持类型与实际图片格式一致。
 >
->   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显式声明具体的图片类型。
+>   2. Image组件从API版本26.0.0开始支持通过`data:image/*;base64,Base64EncodedData`的通配写法，对于API版本26.0.0之前版本，Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显式声明具体的图片类型。
 >
 >   3. Image组件从API版本26.0.0开始支持通过Base64加载SVG图片，对于API版本26.0.0之前版本，Image组件不支持通过Base64字符串形式加载SVG图片。
 
@@ -713,6 +713,36 @@ ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | undefined)
 | value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
 颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
+
+### colorFilter
+
+ArkTS-Dyn: colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor)
+
+ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor | undefined)
+
+为图像设置颜色滤镜效果。
+
+设置该属性时，[renderMode](#rendermode)属性设置不生效。
+
+当值为[ResourceColor](ts-types.md#resourcecolor)类型时，它将被转换为带有混合模式的[DrawingColorFilter](#drawingcolorfilter12)。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                                                         |
+| ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。 [ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制。<br/>当传入undefined时，图片显示无滤镜效果。|
 
 ### draggable<sup>9+</sup>
 

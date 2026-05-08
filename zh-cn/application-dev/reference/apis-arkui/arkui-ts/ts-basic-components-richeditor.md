@@ -561,6 +561,8 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | isEnabled  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined| 是   | 是否支持触控反馈。<br/>默认值：true，true表示开启触控反馈，false表示不开启触控反馈。<br/>设置为true后是否生效，还取决于系统的硬件是否支持。 |
@@ -625,6 +627,8 @@ ArkTS-Sta: undoStyle(style: UndoStyle | undefined)
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 24
+
+**参数：**
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
@@ -747,6 +751,26 @@ ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined  | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。<br/>设置为undefined时，不开启行首标点符号压缩。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<RichEditorAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置属性修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明           |
+| ----- | ------------------------------------------------------------ | ---- | -------------- |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<RichEditorAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是   | 设置属性修改器。 |
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
@@ -1670,7 +1694,7 @@ ArkTS-Sta: setTypingParagraphStyle(style: RichEditorParagraphStyle | undefined):
 
 | 参数名   | 类型                                     | 必填   | 说明  |
 | ----- | ---------------------------------------- | ---- | ----- |
-| style | ArkTS-Dyn: [RichEditorParagraphStyle](#richeditorparagraphstyle11)<br/>ArkTS-Sta: [RichEditorParagraphStyle](#richeditorparagraphstyle11) \| undefiend | 是    | 预设段落样式。<br/>取值为undefined时，与上一段落的段落样式一致。 |
+| style | ArkTS-Dyn: [RichEditorParagraphStyle](#richeditorparagraphstyle11)<br/>ArkTS-Sta: [RichEditorParagraphStyle](#richeditorparagraphstyle11) \| undefined | 是    | 预设段落样式。<br/>取值为undefined时，与上一段落的段落样式一致。 |
 
 ### setSelection<sup>11+</sup>
 
@@ -1730,7 +1754,7 @@ ArkTS-Sta: isEditing(): boolean | undefined
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefiend | true为编辑态，false为非编辑态。 |
+| ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | true为编辑态，false为非编辑态。 |
 
 ### stopEditing<sup>12+</sup>
 
@@ -2068,7 +2092,7 @@ ArkTS-Sta: getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | 
 
 | 类型                                       | 说明           |
 | ---------------------------------------- | ------------ |
-| ArkTS-Dyn: Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> <br/>ArkTS-Sta: Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> \| undefined | 文本和图片Span信息。 |
+| ArkTS-Dyn: Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> <br/>ArkTS-Sta: Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> \| undefined | 文本和图片Span信息。 |
 
 ### deleteSpans
 
@@ -2116,7 +2140,7 @@ ArkTS-Sta: getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphRes
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| ArkTS-Dyn: Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> <br/>ArkTS-Sta: Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> \| undefiend | 选中段落的信息。 |
+| ArkTS-Dyn: Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> <br/>ArkTS-Sta: Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> \| undefined | 选中段落的信息。 |
 
 ### getSelection<sup>11+</sup>
 
@@ -2442,7 +2466,7 @@ SymbolSpan样式选项。
 | wordBreak<sup>12+</sup> |  [WordBreak](ts-appendix-enums.md#wordbreak11) | 否    | 是 | 设置断行规则。 <br />默认值：WordBreak.BREAK_WORD <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | lineBreakStrategy<sup>12+</sup> | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | 否 | 是 | 设置折行规则。 <br />默认值：LineBreakStrategy.GREEDY<br />在wordBreak不等于breakAll的时候生效，不支持连字符。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | paragraphSpacing<sup>19+</sup> | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否    | 是 | 设置段落间距大小。<br/>单位：fp<br/>段落间距默认大小为0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
-| textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本书写方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## LeadingMarginPlaceholder<sup>11+</sup>
@@ -2513,7 +2537,7 @@ SymbolSpan样式选项。
 | fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见 [fontFeature属性列表](ts-basic-components-text.md#fontfeature12)。<br/>设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | halfLeading<sup>18+</sup> | boolean |否 | 是    | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| strokeWidth<sup>23+</sup> | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number  <br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| double     | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br/>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br/>默认值：0vp。<br/>单位：LengthMetrics类型时跟随LengthMetrics，number或double类型时是vp。<br/>取值范围：(-∞, +∞)<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| strokeWidth<sup>23+</sup> | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number  <br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| double     | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br/>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br/>默认值：0vp。<br/>单位：LengthMetrics类型时跟随LengthMetrics，number或double类型时是vp。<br/>取值范围：(-∞, +∞)<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值：跟随字体颜色。<br/>设置异常值时跟随字体颜色。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## PlaceholderStyle<sup>12+</sup>

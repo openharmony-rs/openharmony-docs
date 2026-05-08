@@ -494,7 +494,7 @@ struct SimpleContacts {
 
   build() {
     List() {
-      ForEach(this.contacts, (item: Contact, index: number) => {
+      ForEach(this.contacts, (item: Contact, index: Int) => {
         ListItem() {
           Row() {
             Image(item.icon)
@@ -989,11 +989,11 @@ export class ContactsGroupDataSource implements IDataSource<ContactsGroup> {
     this.list = list;
   }
 
-  totalCount(): number {
+  totalCount(): Int {
     return this.list.length;
   }
 
-  getData(index: number): ContactsGroup {
+  getData(index: Int): ContactsGroup {
     return this.list[index];
   }
 
@@ -1011,11 +1011,11 @@ export class ContactDataSource implements IDataSource<Contact> {
     this.list = list;
   }
 
-  totalCount(): number {
+  totalCount(): Int {
     return this.list.length;
   }
 
-  getData(index: number): Contact {
+  getData(index: Int): Contact {
     return this.list[index];
   }
 

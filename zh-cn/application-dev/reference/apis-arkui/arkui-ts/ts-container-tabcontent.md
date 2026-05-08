@@ -1,9 +1,9 @@
 # TabContent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @Giacinta-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 仅在[Tabs](ts-container-tabs.md)中使用，对应一个切换页签的内容视图。
@@ -585,7 +585,7 @@ padding(value: Padding | Dimension): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br />默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp} |
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br/>异常值时取默认值。<br />默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp} |
 
 **返回值：**
 
@@ -611,7 +611,7 @@ padding(padding: LocalizedPadding): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br />默认值：{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8),<br/>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 是   | 子页签的内边距属性。<br/>异常值时取默认值。<br/>取值范围：[0, +∞]<br/>异常值时取默认值。<br />默认值：{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8),<br/>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
 
 **返回值：**
 
@@ -790,7 +790,7 @@ label文本和字体的样式对象。
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 是  | 设置Label文本自适应高度的方式。默认值是最大行数优先。 |
 | font                 | [Font](ts-types.md#font)                                     | 否   | 是  | 设置Label文本字体样式。<br/>当页签为子页签时，默认值是字体大小16.0fp、字体类型'HarmonyOS Sans'，字体风格正常，选中时字重中等，未选中时字重正常。<br/>当页签为底部页签时，默认值是字体大小10.0fp、字体类型'HarmonyOS Sans'，字体风格正常，字重中等。<br/>从API version 12开始，底部页签内容左右排布时默认字体大小为12.0fp。 |
 | unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label文本字体未选中时的颜色。<br/>默认值：#99182431 |
-| selectedColor | [ResourceColorCS](ts-types.md#resourcecolor) | 否 | 是 | 设置Label文本字体选中时的颜色。<br/>默认值：#FF007DFF|
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label文本字体选中时的颜色。<br/>默认值：#FF007DFF|
 
 ## BottomTabBarStyle<sup>9+</sup>
 

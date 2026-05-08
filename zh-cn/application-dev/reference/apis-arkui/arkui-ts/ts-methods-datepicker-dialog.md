@@ -46,7 +46,7 @@ static show(options?: DatePickerDialogOptions)
 
 | 参数名  | 类型                                                        | 必填 | 说明                       |
 | ------- | ----------------------------------------------------------- | ---- | -------------------------- |
-| options | [DatePickerDialogOptions](#datepickerdialogoptions对象说明) | 否   | 配置日期选择器弹窗的参数。 |
+| options | [DatePickerDialogOptions](#datepickerdialogoptions对象说明) | 否   | 配置日期选择器弹窗的参数。参数缺省时无法弹出弹窗。 |
 
 ## DatePickerDialogOptions对象说明
 
@@ -151,7 +151,7 @@ static show(options?: DatePickerDialogOptions)
 该示例通过showTime、useMilitaryTime、dateTimeOptions设置显示时间。
 
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -205,8 +205,10 @@ struct DatePickerDialogExample {
 
 该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
+ArkTS-Dyn示例：
+
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -278,6 +280,96 @@ struct DatePickerDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// DatePickerDialogExampleSta.ets
+
+import {
+  Button,
+  ButtonRole,
+  ButtonStyleMode,
+  ButtonType,
+  Color,
+  Column,
+  Component,
+  Entry,
+  FontStyle,
+  FontWeight,
+  PickerDialogButtonStyle
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DatePickerDialogExample {
+  selectedDate: Date = new Date('2010-01-01');
+
+  build() {
+    Column() {
+      Button('DatePickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
+            selected: this.selectedDate,
+            disappearTextStyle: { color: '#297bec', font: { size: '20fp', weight: FontWeight.Bold } },
+            textStyle: { color: Color.Black, font: { size: '18fp', weight: FontWeight.Normal } },
+            selectedTextStyle: { color: Color.Blue, font: { size: '26fp', weight: FontWeight.Regular } },
+            acceptButtonStyle: {
+              type: ButtonType.Normal,
+              style: ButtonStyleMode.NORMAL,
+              role: ButtonRole.NORMAL,
+              fontColor: 'rgb(81, 81, 216)',
+              fontSize: '26fp',
+              fontWeight: FontWeight.Bolder,
+              fontStyle: FontStyle.Normal,
+              fontFamily: 'sans-serif',
+              backgroundColor: '#A6ACAF',
+              borderRadius: 20
+            } as PickerDialogButtonStyle,
+            cancelButtonStyle: {
+              type: ButtonType.Normal,
+              style: ButtonStyleMode.NORMAL,
+              role: ButtonRole.NORMAL,
+              fontColor: Color.Blue,
+              fontSize: '16fp',
+              fontWeight: FontWeight.Normal,
+              fontStyle: FontStyle.Italic,
+              fontFamily: 'sans-serif',
+              backgroundColor: '#50182431',
+              borderRadius: 10
+            } as PickerDialogButtonStyle,
+            onDateAccept: (value: Date) => {
+              // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
+              this.selectedDate = value;
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
+            },
+            onCancel: () => {
+              console.info('DatePickerDialog:onCancel()');
+            },
+            onDateChange: (value: Date) => {
+              console.info('DatePickerDialog:onDateChange()' + value.toString());
+            },
+            onDidAppear: () => {
+              console.info('DatePickerDialog:onDidAppear()');
+            },
+            onDidDisappear: () => {
+              console.info('DatePickerDialog:onDidDisappear()');
+            },
+            onWillAppear: () => {
+              console.info('DatePickerDialog:onWillAppear()');
+            },
+            onWillDisappear: () => {
+              console.info('DatePickerDialog:onWillDisappear()');
+            }
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
 ![DataPickerDialog](figures/DatePickerDialog_CustomButton.png)
 
 > **说明：**
@@ -289,6 +381,7 @@ struct DatePickerDialogExample {
 该示例展示了在折叠屏悬停态下设置dialog布局区域的效果。
 
 ```ts
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -347,7 +440,7 @@ struct DatePickerDialogExample {
 该示例通过alignment、offset设置弹窗的位置。
 
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -383,7 +476,7 @@ struct DatePickerDialogExample {
 该示例通过maskRect设置遮蔽区。
 
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -423,7 +516,7 @@ struct DatePickerDialogExample {
 该示例通过backgroundColor、backgroundBlurStyle、shadow设置弹窗背板。
 
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -460,7 +553,7 @@ struct DatePickerDialogExample {
 该示例通过lunar、lunarSwitch设置弹窗显示公历或农历。
 
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -511,7 +604,7 @@ struct DatePickerDialogExample {
 该示例通过配置mode参数实现显示月、日两列。
 
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -546,7 +639,7 @@ struct DatePickerDialogExample {
 从API version 20开始，可以通过配置canLoop参数设置是否循环滚动。
 
 ```ts
-// xxx.ets
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -590,6 +683,7 @@ struct DatePickerDialogExample {
 从API version 19开始，可以通过配置[backgroundBlurStyleOptions](#datepickerdialogoptions对象说明)，实现自定义背景模糊效果。
 
 ```ts
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {
@@ -629,6 +723,7 @@ struct DatePickerDialogExample {
 从API version 19开始，该示例通过配置[backgroundEffect](#datepickerdialogoptions对象说明)，实现自定义背景效果。
 
 ```ts
+// DatePickerDialogExampleDyn.ets
 @Entry
 @Component
 struct DatePickerDialogExample {

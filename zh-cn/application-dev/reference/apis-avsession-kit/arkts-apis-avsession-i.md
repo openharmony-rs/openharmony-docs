@@ -1,7 +1,7 @@
 # Interfaces (其他)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -108,7 +108,7 @@
 | pcmSrc<sup>20+</sup>     | boolean | 否   | 是   | 播放列表是否使用PCM数据源。true表示使用PCM数据源，false表示不使用PCM数据源。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>由于设备限制，暂时无法使用，将在后续版本提供支持。<br> **原子化服务API(仅ArkTS-Dyn)：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20  <br>**ArkTS-Sta起始版本：** 23       |
 | drmScheme<sup>12+</sup>     | string | 否   | 是   | 播放列表媒体支持的DRM方案，由uuid表示。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23       |
 | duration     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放列表媒体播放时长。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23         |
-| startPosition     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放列表媒体起始播放位置。音视频投播场景中，在投播资源时，此字段应置空或赋值为0。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23         |
+| startPosition     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放列表媒体起始播放位置。音视频投播场景中，在投播直播资源时，此字段应置空或赋值为0。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23         |
 | creditsPosition     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 播放列表媒体的片尾播放位置。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23         |
 | appName     | string                  | 否   | 是   | 播放列表提供的应用的名字。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23         |
 |displayTags<sup>11+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23        |

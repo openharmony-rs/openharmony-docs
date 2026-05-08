@@ -24,7 +24,7 @@ import { volumeManager } from '@kit.CoreFileKit';
 
 getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 
-异步获取当前外置存储中所有卷设备信息，使用Promise异步回调。
+获取当前外置存储中所有卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -84,7 +84,7 @@ ArkTS-Sta示例：
 
 getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
-异步获取当前外置存储中所有卷设备信息，使用callback异步回调。
+获取当前外置存储中所有卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -140,7 +140,13 @@ ArkTS-Sta示例：
 
 mount(volumeId: string): Promise&lt;void&gt;
 
-异步挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用Promise异步回调。
+
+当前仅支持以下文件系统的卷设备挂载：
+
+vfat、exfat及ntfs。
+
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -212,7 +218,13 @@ mount(volumeId: string): Promise&lt;void&gt;
 
 mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
-异步挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用callback异步回调。
+
+当前仅支持以下文件系统的卷设备挂载：
+
+vfat、exfat及ntfs。
+
+从API版本26.0.0开始支持ext4
 
 **系统接口**：此接口为系统接口。
 
@@ -275,7 +287,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 unmount(volumeId: string): Promise&lt;void&gt;
 
-异步卸载指定卷设备，使用Promise异步回调。
+卸载指定卷设备，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -347,7 +359,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
 
 unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步卸载指定卷设备，使用callback异步回调。
+卸载指定卷设备，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -410,7 +422,7 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
 getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
-异步通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。
+通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -479,7 +491,7 @@ ArkTS-Sta示例：
 
 getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
-异步通过卷设备uuid获得指定卷设备信息，使用callback异步回调。
+通过卷设备uuid获得指定卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -539,7 +551,7 @@ ArkTS-Sta示例：
 
 getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
-异步通过卷设备id获得指定卷设备信息，使用Promise异步回调。
+通过卷设备id获得指定卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -608,7 +620,7 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
 getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
-异步通过指定卷设备id获得卷设备信息，使用callback异步回调。
+通过指定卷设备id获得卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -668,7 +680,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
-异步修改指定卷设备描述，使用Promise异步回调。
+修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -742,7 +754,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步修改指定卷设备描述，使用callback异步回调。
+修改指定卷设备描述，使用callback异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -807,7 +819,15 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 
 format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
-异步对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
+对指定卷设备进行格式化，使用Promise异步回调。
+
+当前仅支持以下文件系统类型的格式化：
+
+vfat和exfat。
+
+从API版本26.0.0开始支持ext4文件系统的格式化。
+
+只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **系统接口**：此接口为系统接口。
 
@@ -881,7 +901,15 @@ format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
 format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
+对指定卷设备进行格式化，使用callback异步回调。
+
+当前仅支持以下文件系统类型的格式化：
+
+vfat和exfat。
+
+从API版本26.0.0开始支持ext4文件系统的格式化。
+
+只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **系统接口**：此接口为系统接口。
 
@@ -948,7 +976,7 @@ ArkTS-Dyn: partition(diskId: string, type: number): Promise&lt;void&gt;
 
 ArkTS-Sta: partition(diskId: string, type: int): Promise&lt;void&gt;
 
-异步对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。
+对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -1022,7 +1050,7 @@ ArkTS-Dyn: partition(diskId: string, type: number, callback: AsyncCallback&lt;vo
 
 ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&gt;): void
 
-异步对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。
+对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 

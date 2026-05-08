@@ -694,6 +694,11 @@ ArkTS-Sta: getUidRxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 获取指定应用实时下行流量。使用callback异步回调。
 
+**需要权限：**
+
+- API版本26.0.0之前：N/A
+- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -750,6 +755,11 @@ ArkTS-Dyn: getUidRxBytes(uid: number): Promise\<number>
 ArkTS-Sta: getUidRxBytes(uid: int): Promise\<long>
 
 获取指定应用实时下行流量。使用Promise异步回调。
+
+**需要权限：**
+
+- API版本26.0.0之前：N/A
+- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -808,6 +818,11 @@ ArkTS-Sta: getUidTxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 获取指定应用实时上行流量。使用callback异步回调。
 
+**需要权限：**
+
+- API版本26.0.0之前：N/A
+- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -864,6 +879,11 @@ ArkTS-Dyn: getUidTxBytes(uid: number): Promise\<number>
 ArkTS-Sta: getUidTxBytes(uid: int): Promise\<long>
 
 获取指定应用实时上行流量。使用Promise异步回调。
+
+**需要权限：**
+
+- API版本26.0.0之前：N/A
+- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 

@@ -154,7 +154,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md)<br/>不支持设置百分比字符串。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件大小。<br/>默认值：16fp<br/>取值为undefined时，按默认值处理。<br/>单位：[fp](ts-pixel-units.md)<br/>不支持设置百分比字符串。|
 
 ### fontWeight
 
@@ -184,7 +184,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined| 是   | SymbolGlyph组件粗细。<br/>默认值：FontWeight.Normal |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined| 是   | SymbolGlyph组件粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 
@@ -212,7 +212,7 @@ ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | ArkTS-Dyn: [SymbolRenderingStrategy](#symbolrenderingstrategy11枚举说明)<br>ArkTS-Sta: [SymbolRenderingStrategy](#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE |
+| value  | ArkTS-Dyn: [SymbolRenderingStrategy](#symbolrenderingstrategy11枚举说明)<br>ArkTS-Sta: [SymbolRenderingStrategy](#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE<br/>取值为undefined时，按默认值处理。 |
 
 不同渲染策略效果可参考以下示意图。
 
@@ -244,7 +244,7 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | ArkTS-Dyn: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE |
+| value  | ArkTS-Dyn: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE<br/>取值为undefined时，按默认值处理。 |
 
 ### symbolEffect<sup>12+</sup>
 
@@ -268,8 +268,8 @@ ArkTS-Sta: symbolEffect(symbolEffect: SymbolEffect | undefined, isActive: boolea
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| symbolEffect  | ArkTS-Dyn: [SymbolEffect](#symboleffect12对象说明)<br/>ArkTS-Sta: [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明) |
-| isActive  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined| ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | SymbolGlyph组件动效播放状态。[SymbolEffect](#symboleffect12对象说明)<br/>true表示播放，false表示不播放。<br/>默认值：false |
+| symbolEffect  | ArkTS-Dyn: [SymbolEffect](#symboleffect12对象说明)<br/>ArkTS-Sta: [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明)<br/>取值为undefined时，按默认值处理。 |
+| isActive  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined| ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | SymbolGlyph组件动效播放状态。[SymbolEffect](#symboleffect12对象说明)<br/>true表示播放，false表示不播放。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 |
 
 ### symbolEffect<sup>12+</sup>
 
@@ -293,8 +293,8 @@ ArkTS-Sta: symbolEffect(symbolEffect: SymbolEffect | undefined, triggerValue: in
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| symbolEffect | ArkTS-Dyn: [SymbolEffect](#symboleffect12对象说明)<br>ArkTS-Sta: [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明) |
-| triggerValue | ArkTS-Dyn: number<br>ArkTS-Sta: int \| undefined | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | SymbolGlyph组件动效播放触发器，在数值变更时触发动效。<br/>如果首次不希望触发动效，设置-1。 |
+| symbolEffect | ArkTS-Dyn: [SymbolEffect](#symboleffect12对象说明)<br>ArkTS-Sta: [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明)<br/>取值为undefined时，按默认值处理。 |
+| triggerValue | ArkTS-Dyn: number<br>ArkTS-Sta: int \| undefined | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | SymbolGlyph组件动效播放触发器，在数值变更时触发动效。<br/>如果首次不希望触发动效，设置-1。<br/>取值为undefined时，按symbolEffect中的默认值处理。 |
 
 >  **说明：**
 >
@@ -320,7 +320,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最小的字体缩放倍数。<br/>取值范围：[0, 1] <br/>设置为0，缩放最小。<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。 |
+| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最小的字体缩放倍数。<br/>取值范围：[0, 1] <br/>设置为0，缩放最小。<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br/>取值为undefined时，不生效。 |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -342,7 +342,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 |
+| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。<br/>取值为undefined时，不生效。 |
 
 ### shaderStyle<sup>20+</sup>
 
@@ -368,7 +368,7 @@ ArkTS-Sta: shaderStyle(shader: Array\<ShaderStyle | undefined\> | ShaderStyle | 
 
 | 参数名     | 类型                                         | 必填                             | 说明                               |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| shader | ArkTS-Dyn: Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20)<br/>ArkTS-Sta: Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined | 是 | 径向渐变或线性渐变或纯色。<br/>传入ShaderStyle时，覆盖所有层；传入数组时，数据项是ShaderStyle，则应用该层；数组项是undefined，则该层使用SymbolGlyph默认颜色，未设置的层也应用默认颜色。根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到SymbolGlyph组件上显示为渐变色效果。<br>**说明：** <br/>单位：[vp](ts-pixel-units.md)<br>中心点请按百分比使用。如果使用的是非百分比（例如10PX），效果等同于设置1000%。<br>半径建议使用百分比。<br>百分比是基于图标大小的百分比，建议取值范围[0, 1)。 |
+| shader | ArkTS-Dyn: Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20)<br/>ArkTS-Sta: Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined | 是 | 径向渐变或线性渐变或纯色。<br/>传入ShaderStyle时，覆盖所有层；传入数组时，数据项是ShaderStyle，则应用该层；数组项是undefined，则该层使用SymbolGlyph默认颜色，未设置的层也应用默认颜色。根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到SymbolGlyph组件上显示为渐变色效果。<br/>取值为undefined时，按无渐变色效果处理。<br>**说明：** <br/>单位：[vp](ts-pixel-units.md)<br>中心点请按百分比使用。如果使用的是非百分比（例如10PX），效果等同于设置1000%。<br>半径建议使用百分比。<br>百分比是基于图标大小的百分比，建议取值范围[0, 1)。 |
 
 ### symbolShadow<sup>20+</sup>
 
@@ -752,6 +752,8 @@ PulseSymbolEffect继承自父类SymbolEffect，脉冲动效。
 
 ## EffectDirection<sup>12+</sup>枚举说明
 
+动效方向。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -769,6 +771,8 @@ PulseSymbolEffect继承自父类SymbolEffect，脉冲动效。
 
 ## EffectScope<sup>12+</sup>枚举说明
 
+动效范围。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -785,6 +789,8 @@ PulseSymbolEffect继承自父类SymbolEffect，脉冲动效。
 | WHOLE | 1    | 整体模式。 |
 
 ## EffectFillStyle<sup>12+</sup>枚举说明
+
+动效模式。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

@@ -11,6 +11,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块为系统接口。
@@ -32,6 +33,10 @@ constructor()
 表示获取人脸认证管理器对象。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.FaceAuth
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -56,6 +61,10 @@ setSurfaceId(surfaceId: string): void
 该接口仅用于在录入人脸时，设置人脸预览界面 [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) 持有 Surface 的 ID，需要配合[人脸录入接口](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)来使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.FaceAuth
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 

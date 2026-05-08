@@ -103,7 +103,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 组件打开状态的背景颜色。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_emphasize')`混合`$r('sys.float.ohos_id_alpha_highlight_bg')`的透明度。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 组件打开状态的背景颜色。取值为undefined时，按默认值处理。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_emphasize')`混合`$r('sys.float.ohos_id_alpha_highlight_bg')`的透明度。 |
 
 ### switchPointColor
 
@@ -127,7 +127,7 @@ ArkTS-Sta: switchPointColor(color: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                       |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary') |
+| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | Switch类型的圆形滑块颜色。取值为undefined时，按默认值处理。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了[systemMaterial](#systemmaterial)新材质时，设置此属性后会出现点光源效果，点光源颜色跟随此属性的设置。 |
 
 ### switchStyle<sup>12+</sup>
 
@@ -149,7 +149,7 @@ ArkTS-Sta: switchStyle(value: SwitchStyle | undefined)
 
 | 参数名 | 类型                                  | 必填 | 说明             |
 | ------ | ------------------------------------- | ---- | ---------------- |
-| value  | ArkTS-Dyn: [SwitchStyle](#switchstyle12对象说明)<br/>ArkTS-Sta: [SwitchStyle](#switchstyle12对象说明) \| undefined | 是   | Switch样式风格。 |
+| value  | ArkTS-Dyn: [SwitchStyle](#switchstyle12对象说明)<br/>ArkTS-Sta: [SwitchStyle](#switchstyle12对象说明) \| undefined | 是   | Switch样式风格。取值为undefined时，按各属性的默认值处理。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -171,7 +171,36 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration\> | un
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration\>](#toggleconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration\>](#toggleconfiguration12对象说明) \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12对象说明)\><br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12对象说明)\> \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。取值为undefined时，则不使用contentModifier。 |
+
+### systemMaterial
+
+systemMaterial(material: SystemUiMaterial | undefined): T
+
+设置Toggle组件的系统材质。
+
+> **说明：**
+>
+> 不同[ToggleType](#toggletype枚举说明)类型设置系统材质的效果不同：
+> - ToggleType.Checkbox：当前未适配系统材质效果，设置系统材质不会出现系统材质相关的动效和视觉效果。
+> - ToggleType.Switch：传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启新材质的开关标记，不影响实际视觉效果。主要影响Toggle的滑块大小、滑块样式、阴影等视觉属性。设置[switchPointColor](#switchpointcolor)后会出现点光源效果，点光源颜色跟随switchPointColor的设置。传入undefined时，新材质不生效，表现为原先的Toggle样式。
+> - ToggleType.Button：设置系统材质的效果与[Button](ts-basic-components-button.md)组件设置系统材质的效果相同，主要影响背景颜色、边框、阴影等视觉属性。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型            | 必填     | 说明  |
+| -------- | -------------------- | ---- | -------------------------------------------------------------------- |
+| material | [SystemUiMaterial](ts-universal-attributes-image-effect.md) &nbsp;\|&nbsp; undefined | 是   | Toggle组件的系统材质对象。设置为undefined时恢复为无材质的效果。各[ToggleType](#toggletype枚举说明)类型的具体行为见上方说明。|
 
 ## SwitchStyle<sup>12+</sup>对象说明
 
@@ -218,7 +247,7 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| callback  | ArkTS-Dyn: (isOn: boolean) => void<br/>ArkTS-Sta: undefined | 是   | 为true时，代表状态从关切换为开。false时，代表状态从开切换为关。 |
+| callback  | ArkTS-Dyn: (isOn: boolean) => void<br/>ArkTS-Sta: undefined | 是   | 为true时，代表状态从关切换为开。false时，代表状态从开切换为关。为undefined时，则不使用事件。 |
 
 ## ToggleConfiguration<sup>12+</sup>对象说明
 

@@ -11,7 +11,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -25,10 +27,14 @@ import { resourceManager } from '@kit.LocalizationKit'
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型     | 只读   | 可选  |说明          |
 | ---------- | ------ | ----- | ----  | ---------------|
 | bundleName | string | 否    | 否 | 应用的bundle名称。 |
 | moduleName | string | 否    | 否 | 应用的module名称。 |
-| id         | number | 否    | 否 | 资源的id值，取值如下：<br/>-&nbsp;应用资源区间：[0x01000000, 0x06FFFFFF] 和 [0x08000000, 0xFFFFFFFF]<br/>-&nbsp;系统资源区间：[0x07000000, 0x07FFFFFF] |
-| params     | any[] | 否   | 是 | 其他资源参数，包括资源名、格式化接口的替换值、复数接口的量词。      |
-| type       | number | 否    | 是 | 资源的类型，取值如下：<br/>-&nbsp;10001：color<br/>-&nbsp;10002：float<br/>-&nbsp;10003：string<br/>-&nbsp;10004：plural<br/>-&nbsp;10005：boolean<br/>-&nbsp;10006：intarray<br/>-&nbsp;10007：integer<br/>-&nbsp;10008：pattern<br/>-&nbsp;10009：strarray<br/>-&nbsp;20000：media<br/>-&nbsp;30000：rawfile<br/>-&nbsp;40000：symbol |
+| id         | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否    | 否 | 资源的id值，取值如下：<br/>-&nbsp;应用资源区间：[0x01000000, 0x06FFFFFF] 和 [0x08000000, 0xFFFFFFFF]<br/>-&nbsp;系统资源区间：[0x07000000, 0x07FFFFFF] |
+| params     | ArkTS-Dyn: any[]<br>ArkTS-Sta: Array<string \| int \| long \| double \| Resource> | 否   | 是 | 其他资源参数，包括资源名、格式化接口的替换值、复数接口的量词。      |
+| type       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是 | 资源的类型，取值如下：<br/>-&nbsp;10001：color<br/>-&nbsp;10002：float<br/>-&nbsp;10003：string<br/>-&nbsp;10004：plural<br/>-&nbsp;10005：boolean<br/>-&nbsp;10006：intarray<br/>-&nbsp;10007：integer<br/>-&nbsp;10008：pattern<br/>-&nbsp;10009：strarray<br/>-&nbsp;20000：media<br/>-&nbsp;30000：rawfile<br/>-&nbsp;40000：symbol |

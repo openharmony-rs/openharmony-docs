@@ -81,5 +81,5 @@ struct Parent {
 }
 ```
 
-上述代码中so的实现可参考[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)。
+上述代码中so的实现可参考[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponent)。
 

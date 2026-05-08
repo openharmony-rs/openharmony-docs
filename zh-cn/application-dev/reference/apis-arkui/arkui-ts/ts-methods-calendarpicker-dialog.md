@@ -38,7 +38,7 @@ static show(options?: CalendarDialogOptions): void
 
 | 参数名  | 类型                                                    | 必填 | 说明                       |
 | ------- | ------------------------------------------------------- | ---- | -------------------------- |
-| options | [CalendarDialogOptions](#calendardialogoptions对象说明) | 否   | 配置日历选择器弹窗参数。 |
+| options | [CalendarDialogOptions](#calendardialogoptions对象说明) | 否   | 配置日历选择器弹窗参数。参数缺省时无法弹出弹窗。 |
 
 ## CalendarDialogOptions对象说明
 
@@ -82,7 +82,7 @@ static show(options?: CalendarDialogOptions): void
 该示例通过[CalendarDialogOptions](#calendardialogoptions对象说明)的backgroundColor、backgroundBlurStyle、shadow设置日历选择器弹窗背板。
 
 ```ts
-// xxx.ets
+// CalendarPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerDialogExample {
@@ -137,8 +137,10 @@ struct CalendarPickerDialogExample {
 
 从API version 12开始，该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的acceptButtonStyle、cancelButtonStyle实现自定义日历选择器弹窗按钮样式。
 
+ArkTS-Dyn示例：
+
 ```ts
-// xxx.ets
+// CalendarPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerDialogExample {
@@ -187,6 +189,74 @@ struct CalendarPickerDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// CalendarPickerDialogExampleSta.ets
+
+import {
+  Button,
+  ButtonRole,
+  ButtonStyleMode,
+  ButtonType,
+  CalendarPickerDialog,
+  Color,
+  Column,
+  Component,
+  Entry,
+  FontStyle,
+  FontWeight,
+  PickerDialogButtonStyle
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CalendarPickerDialogExample {
+  private selectedDate: Date = new Date('2024-12-12');
+
+  build() {
+    Column() {
+      Button('Show CalendarPicker Dialog')
+        .margin(20)
+        .onClick(() => {
+          console.info('CalendarDialog.show');
+          CalendarPickerDialog.show({
+            selected: this.selectedDate,
+            acceptButtonStyle: {
+              type: ButtonType.Normal,
+              style: ButtonStyleMode.NORMAL,
+              role: ButtonRole.NORMAL,
+              fontColor: 'rgb(81, 81, 216)',
+              fontSize: '26fp',
+              fontWeight: FontWeight.Bolder,
+              fontStyle: FontStyle.Normal,
+              fontFamily: 'sans-serif',
+              backgroundColor: '#A6ACAF',
+              borderRadius: 20
+            } as PickerDialogButtonStyle,
+            cancelButtonStyle: {
+              type: ButtonType.Normal,
+              style: ButtonStyleMode.NORMAL,
+              role: ButtonRole.NORMAL,
+              fontColor: Color.Blue,
+              fontSize: '16fp',
+              fontWeight: FontWeight.Normal,
+              fontStyle: FontStyle.Italic,
+              fontFamily: 'sans-serif',
+              backgroundColor: '#50182431',
+              borderRadius: 10
+            } as PickerDialogButtonStyle,
+            onAccept: (value) => {
+              this.selectedDate = value;
+              console.info('calendar onAccept:' + JSON.stringify(value));
+            }
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
 ![CalendarPickerDialog](figures/CalendarPickerDialog_CustomButton.png)
 
 ### 示例3（悬停态弹窗）
@@ -194,6 +264,7 @@ struct CalendarPickerDialogExample {
 从API version 14开始，该示例展示了在折叠屏悬停态下设置dialog布局区域的效果。
 
 ```ts
+// CalendarPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerDialogExample {
@@ -244,7 +315,7 @@ struct CalendarPickerDialogExample {
 从API version 10开始，该示例通过[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的hintRadius设置日期选中态底板样式。
 
 ```ts
-// xxx.ets
+// CalendarPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerDialogExample {
@@ -277,7 +348,7 @@ struct CalendarPickerDialogExample {
 从API version 18开始，该示例通过[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的start和end设置日历选择器弹窗的开始日期和结束日期。
 
 ```ts
-// xxx.ets
+// CalendarPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerDialogExample {
@@ -310,7 +381,7 @@ struct CalendarPickerDialogExample {
 从API version 19开始，该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的markToday，使系统当前日期在日历选择器弹窗内保持高亮显示，并通过配置[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的disabledDateRange设置禁用的日期区间。
 
 ```ts
-// xxx.ets
+// CalendarPickerExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerExample {
@@ -342,6 +413,7 @@ struct CalendarPickerExample {
 从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#calendardialogoptions对象说明)，实现自定义背景模糊效果。
 
 ```ts
+// CalendarPickerExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerDialogExample {
@@ -381,6 +453,7 @@ struct CalendarPickerDialogExample {
 从API version 19开始，该示例通过配置[backgroundEffect](#calendardialogoptions对象说明)，实现自定义背景效果。
 
 ```ts
+// CalendarPickerDialogExampleDyn.ets
 @Entry
 @Component
 struct CalendarPickerDialogExample {

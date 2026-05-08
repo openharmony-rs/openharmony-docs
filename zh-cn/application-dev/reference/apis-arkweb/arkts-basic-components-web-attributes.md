@@ -3953,19 +3953,103 @@ ArkTS-Sta: registerNativeEmbedRule(tag: string | undefined, type: string | undef
   ```ts
   // xxx.ets
   'use static'
-  import { Entry, Component, Web, Column } from '@kit.ArkUI';
+
   import { webview } from '@kit.ArkWeb';
+  import { UIContext, $rawfile, Entry, Component, Web, Column, Button, State,
+    TouchEvent, NodeController, BuilderNode, NodeRenderType, PropRef, FrameNode,
+    Color, Stack, NodeContainer, NativeEmbedStatus, NativeEmbedDataInfo, wrapBuilder } from '@kit.ArkUI';
+
+  export class Params {
+    text: string = '';
+    width: double = 0;
+    height: double = 0;
+  }
+
+  export class NodeControllerParams {
+    surfaceId: string = '';
+    renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    width: double = 0;
+    height: double = 0;
+  }
+
+  export class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<Params> | undefined | null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: double = 0;
+    private height_: double = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+      this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ });
+      return this.rootNode?.getFrameNode() ?? null;
+    }
+
+    postInputEvent(event: TouchEvent): boolean {
+      return this.rootNode?.postInputEvent(event) as boolean;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @PropRef params: Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
 
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
+    controller: webview.WebviewController = new webview.WebviewController();
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .enableNativeEmbedMode(true)
-        .registerNativeEmbedRule("object", "application/view")
+    build() {
+      Column() {
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: $rawfile('index.html'), controller: this.controller })
+             // 配置同层渲染开关开启。
+            .enableNativeEmbedMode(true)
+             // 注册同层标签为<object>，类型为"native"前缀。
+            .registerNativeEmbedRule("object", "native")
+             // 获取<object>标签的生命周期变化数据。
+            .onNativeEmbedLifecycleChange((object: NativeEmbedDataInfo):void => {
+              if (object.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: object.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(object.info?.width as int),
+                  height: this.uiContext!.px2vp(object.info?.height as int)
+                } as NodeControllerParams);
+                this.nodeController.rebuild();
+              }
+            })
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 # Functions
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -22,6 +22,10 @@ import { avSession } from '@kit.AVSessionKit';
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
 创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败。使用Promise异步回调。
+
+> **说明：**
+> 
+> - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -90,6 +94,10 @@ struct Index {
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
 创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败。使用callback异步回调。
+
+> **说明：**
+> 
+> - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

@@ -66,6 +66,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             }
+            // 注入事件
             inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
             let backKeyUp: inputEventClient.KeyEvent = {
@@ -74,9 +75,10 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
+            // 注入事件
             inputEventClient.injectEvent({ KeyEvent: backKeyUp });
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -135,6 +137,7 @@ struct Index {
             }
 
             let eventDown: EventDown = { keyEvent: backKeyDown }
+            // 注入按键事件
             inputEventClient.injectKeyEvent(eventDown);
 
             let backKeyUp: inputEventClient.KeyEvent = {
@@ -149,9 +152,10 @@ struct Index {
             }
 
             let eventUp: EventUp = { keyEvent: backKeyUp }
+            // 注入按键事件
             inputEventClient.injectKeyEvent(eventUp);
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -228,6 +232,7 @@ struct Index {
             let mouseButtonUp: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonUpData
             }
+            // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonUp);
 
             let mouseButtonDownData: MouseEvent = {
@@ -260,11 +265,12 @@ struct Index {
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
             };
+            // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonDown);
           }
 
           catch (error) {
-            console.error(`Failed to inject MouseEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject MouseEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -348,6 +354,7 @@ struct Index {
             let touchEventUp: inputEventClient.TouchEventData = {
               touchEvent: touchEventUpData
             }
+            // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventUp);
 
             let touchEventDownData: TouchEvent = {
@@ -365,9 +372,10 @@ struct Index {
             let touchEventDown: inputEventClient.TouchEventData = {
               touchEvent: touchEventDownData
             }
+            // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventDown);
           } catch (error) {
-            console.error(`Failed to inject touchEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject touchEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -414,9 +422,10 @@ struct Index {
         .onClick(() => {
           try {
             let result = true;
+            // 授权事件注入
             inputEventClient.permitInjection(result);
           }catch(error){
-            console.error("failed:" + JSON.stringify(error));
+            console.error(`Failed to get inject permission, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

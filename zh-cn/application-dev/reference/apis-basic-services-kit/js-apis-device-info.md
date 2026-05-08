@@ -75,6 +75,15 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 |
 | deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/> 示例：gold<br/> **起始版本**：26.0.0 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[deviceInfo错误码](errorcode-device-info.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 14700103 | Permission verification failed. System permission operation permission denied |
+| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+
 **示例**
 
 ```ts
