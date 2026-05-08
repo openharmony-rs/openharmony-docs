@@ -8,6 +8,8 @@
 
 SecurityUIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI，展示的内容在另一个进程中运行，本应用并不参与其中的布局和渲染。
 
+通常用于有进程隔离诉求的模块化开发场景，SecurityUIExtensionComponent当前仅支持拉起PhotoPicker类型的UIExtensionAbility。
+
 > **说明：**
 >
 > - 本模块接口为系统接口。
