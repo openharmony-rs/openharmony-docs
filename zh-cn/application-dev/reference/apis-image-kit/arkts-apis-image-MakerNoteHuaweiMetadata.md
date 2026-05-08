@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @XiaoYao555-->
+<!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,8 @@ MakerNoteHuaweiMetadata implements Metadata
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,38 +27,42 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                    | 类型           | 只读 | 可选 | 说明                                                         |
 | --------------------------------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
 | isXmageSupported          | boolean  | 否   | 是   | 是否支持XMAGE。true表示支持，false表示不支持。                          |
-| xmageWatermarkMode        | number         | 否   | 是   | XMAGE水印模式。具体取值请参考[Constants](arkts-apis-image-c.md)。 |
-| xmageLeft                 | number         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的左边界（相对于图片左上角原点）的水平坐标。单位为像素（px）。 |
-| xmageTop                  | number         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的上边界（相对于图片左上角原点）的垂直坐标。单位为像素（px）。 |
-| xmageRight                | number         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的右边界（相对于图片左上角原点）的水平坐标。单位为像素（px）。 |
-| xmageBottom               | number         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的下边界（相对于图片左上角原点）的垂直坐标。单位为像素（px）。 |
+| xmageWatermarkMode        | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | XMAGE水印模式。具体取值请参考[Constants](arkts-apis-image-c.md)。 |
+| xmageLeft                 | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的左边界（相对于图片左上角原点）的水平坐标。单位为像素（px）。 |
+| xmageTop                  | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的上边界（相对于图片左上角原点）的垂直坐标。单位为像素（px）。 |
+| xmageRight                | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的右边界（相对于图片左上角原点）的水平坐标。单位为像素（px）。 |
+| xmageBottom               | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 当照片包含XMAGE水印时，原始图片上，有效内容区域（不含水印覆盖范围）的下边界（相对于图片左上角原点）的垂直坐标。单位为像素（px）。 |
 | xmageColorMode            | [XmageColorMode](arkts-apis-image-e.md#xmagecolormode23) | 否   | 是   | XMAGE颜色模式。                                              |
 | isCloudEnhanced           | boolean        | 否   | 是   | 图像是否存在云端增强。true表示存在，false表示不存在。                     |
 | cloudLabel                | string         | 否   | 是   | 云增强标签。                                                 |
 | isWindSnapshot            | boolean        | 否   | 是   | 是否采用风快照模式拍摄。true表示采用，false表示不采用。<br>该模式是针对拍摄快速移动物体或容易产生模糊场景（如大风中、抓拍运动物体）的专门摄影。 |
-| sceneVersion              | number         | 否   | 是   | 场景识别算法版本号。                                                   |
-| sceneFoodConfidence       | number         | 否   | 是   | 拍摄场景：美食置信度。                                       |
-| sceneStageConfidence      | number         | 否   | 是   | 拍摄场景：舞台演出置信度。                                   |
-| sceneBlueSkyConfidence    | number         | 否   | 是   | 拍摄场景：蓝天置信度。                                       |
-| sceneGreenPlantConfidence | number         | 否   | 是   | 拍摄场景：绿色植物置信度。                                   |
-| sceneBeachConfidence      | number         | 否   | 是   | 拍摄场景：海滩置信度。                                       |
-| sceneSnowConfidence       | number         | 否   | 是   | 拍摄场景：雪景置信度。                                       |
-| sceneSunsetConfidence     | number         | 否   | 是   | 拍摄场景：日落置信度。                                       |
-| sceneFlowersConfidence    | number         | 否   | 是   | 拍摄场景：花卉置信度。                                       |
-| sceneNightConfidence      | number         | 否   | 是   | 拍摄场景：夜景置信度。                                       |
-| sceneTextConfidence       | number         | 否   | 是   | 拍摄场景：文本置信度。                                       |
-| faceCount                 | number         | 否   | 是   | 人脸数。                                                     |
-| faceConfidences           | number[]       | 否   | 是   | 对指定数量的面孔置信度。                                    |
-| faceSmileScores           | number[]       | 否   | 是   | 特定数量面孔的微笑得分。                                     |
-| captureMode               | number         | 否   | 是   | 捕获模式。                                                   |
-| burstNumber               | number         | 否   | 是   | 连拍数量。                                                   |
+| sceneVersion              | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 场景识别算法版本号。                                                   |
+| sceneFoodConfidence       | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：美食置信度。                                       |
+| sceneStageConfidence      | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：舞台演出置信度。                                   |
+| sceneBlueSkyConfidence    | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：蓝天置信度。                                       |
+| sceneGreenPlantConfidence | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：绿色植物置信度。                                   |
+| sceneBeachConfidence      | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：海滩置信度。                                       |
+| sceneSnowConfidence       | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：雪景置信度。                                       |
+| sceneSunsetConfidence     | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：日落置信度。                                       |
+| sceneFlowersConfidence    | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：花卉置信度。                                       |
+| sceneNightConfidence      | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：夜景置信度。                                       |
+| sceneTextConfidence       | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 拍摄场景：文本置信度。                                       |
+| faceCount                 | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 人脸数。                                                     |
+| faceConfidences           | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]       | 否   | 是   | 对指定数量的面孔置信度。                                    |
+| faceSmileScores           | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]       | 否   | 是   | 特定数量面孔的微笑得分。                                     |
+| captureMode               | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 捕获模式。                                                   |
+| burstNumber               | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 连拍数量。                                                   |
 | isFrontCamera             | boolean        | 否   | 是   | 是否使用前置摄像头。true表示使用，false表示不使用。                     |
-| rollAngle                 | number         | 否   | 是   | 左右滚动角度。                                                 |
-| pitchAngle                | number         | 否   | 是   | 俯仰角度。                                                   |
-| physicalAperture          | number         | 否   | 是   | 物理光圈值。单位是fNumber。                                                   |
+| rollAngle                 | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 左右滚动角度。                                                 |
+| pitchAngle                | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 俯仰角度。                                                   |
+| physicalAperture          | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 是   | 物理光圈值。单位是[fNumber](arkts-apis-image-ExifMetadata.md)。                                                   |
 | focusMode                 | [FocusMode](arkts-apis-image-e.md#focusmode23) | 否   | 是   | 镜头对焦控制策略，决定相机如何调整焦距。                |
 
 ## createInstance
@@ -70,6 +75,10 @@ static createInstance(): MakerNoteHuaweiMetadata
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                  |
@@ -78,8 +87,21 @@ static createInstance(): MakerNoteHuaweiMetadata
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function makerNoteHuaweiCreateInstance(context: Context) {
+  let makerNoteHuaweiMetadata = image.MakerNoteHuaweiMetadata.createInstance();
+  if (makerNoteHuaweiMetadata != undefined) {
+    console.info("createInstance success");
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+
+async function makerNoteHuaweiMetadataCreateInstance(context: common.UIAbilityContext) {
   let makerNoteHuaweiMetadata = image.MakerNoteHuaweiMetadata.createInstance();
   if (makerNoteHuaweiMetadata != undefined) {
     console.info("createInstance success");
@@ -98,6 +120,10 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -121,6 +147,7 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -148,6 +175,46 @@ async function makerNoteHuaweiGetProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiMetadataGetProperties(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    try {
+      const exif = metaData?.makerNoteHuaweiMetadata;
+      if (exif) {
+        let data = exif.getProperties(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+        console.info('Get properties ',JSON.stringify(data));
+      }
+    } catch (err) {
+      console.error(`Get properties failed error.code is ${err.code}, error.message is ${err.message}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+  fileIo.closeSync(fd);
+}
+```
+
 ## setProperties
 
 setProperties(records: Record\<string, string \| null>): Promise\<void>
@@ -159,6 +226,10 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -182,6 +253,7 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -213,6 +285,49 @@ async function makerNoteHuaweiSetProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiMetadataSetProperties(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    try {
+      const exif = metaData?.makerNoteHuaweiMetadata;
+      let setkey: Record<string, string | null> = {
+        "HwMnoteIsXmageSupported": "1",
+        "HwMnoteXmageMode": "9"
+      };
+      if (exif) {
+        let data = exif.setProperties(setkey);
+        console.info('Set properties ',JSON.stringify(data));
+      }
+    } catch ( err ) {
+      console.error(`Failed to set metadata Properties. code is ${err.code}, error.message is ${err.message}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getAllProperties
 
 getAllProperties(): Promise\<Record\<string, string \| null>>
@@ -223,6 +338,10 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                     | 说明                                        |
@@ -231,6 +350,7 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -259,6 +379,47 @@ async function makerNoteHuaweiGetAllProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiMetadataGetAllProperties(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    try {
+      const exif = metaData?.makerNoteHuaweiMetadata;
+      if (exif) {
+        let data = exif.getAllProperties();
+        const count = Object.keys(data).length;
+        console.info('Metadata have ', count, ' properties');
+        console.info(`Get metadata all properties: ${data}`);
+      }
+    } catch ( err ) {
+      console.error(`Get metadata all properties failed error.code is ${err.code}, error.message is ${err.message}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## clone
 
 clone(): Promise\<MakerNoteHuaweiMetadata>
@@ -269,6 +430,10 @@ clone(): Promise\<MakerNoteHuaweiMetadata>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                                     |
@@ -277,6 +442,7 @@ clone(): Promise\<MakerNoteHuaweiMetadata>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -305,6 +471,47 @@ async function makerNoteHuaweiClone(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiMetadataClone(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    try {
+      const exif = metaData?.makerNoteHuaweiMetadata;
+      if (exif) {
+        let new_metadata = await exif.clone();
+        let data = new_metadata.getProperties(["HwMnoteIsXmageSupported"]);
+        const count = Object.keys(data).length;
+        console.info(`Clone new_metadata and get Properties: ${data}`);
+      }
+    } catch ( err ) {
+      console.error(`Clone new_metadata failed, error : ${err}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
@@ -315,6 +522,10 @@ getBlob(): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                                  |
@@ -323,6 +534,7 @@ getBlob(): Promise\<ArrayBuffer>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -346,6 +558,40 @@ async function makerNoteHuaweiGetBlob(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiMetadataGetBlob(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    const exif = metaData?.makerNoteHuaweiMetadata;
+    if (exif) {
+      let blob = await exif.getBlob();
+      if (blob != undefined) {
+        console.info("get blob success");
+      }
+    }
+  }
+}
+```
+
 ## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
@@ -355,6 +601,10 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -378,6 +628,7 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -401,6 +652,45 @@ async function makerNoteHuaweiSetBlob(context: Context) {
     let new_blob = metaData.makerNoteHuaweiMetadata.getBlob();
     if (new_blob != undefined) {
       console.info("new_blob is not undefined");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function makerNoteHuaweiMetadataSetBlob(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HwMnoteIsXmageSupported", "HwMnoteXmageMode"]);
+  if (metaData != undefined && metaData.makerNoteHuaweiMetadata != undefined) {
+    const exif = metaData?.makerNoteHuaweiMetadata;
+    if (exif) {
+      let blob = await exif.getBlob();
+      if (blob != undefined) {
+        console.info("get blob success");
+        exif.setBlob(blob);
+      }
+      let new_blob = exif.getBlob();
+      if (new_blob != undefined) {
+        console.info("new_blob is not undefined");
+      }
     }
   }
 }

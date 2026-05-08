@@ -12,7 +12,8 @@ HEIF序列图像元数据类，用于存储图像的元数据。
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,12 +27,16 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
-| heifsDelayTime | number | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒。 |
-| heifsCanvasHeight | number | 是   | 是   | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>该值为正整数。<br>**起始版本：** 26.0.0 |
-| heifsCanvasWidth | number | 是   | 是   | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>该值为正整数。<br>**起始版本：** 26.0.0 |
-| heifsUnclampedDelayTime | number | 是   | 是   | HEIF序列图片每帧未钳制的延迟时长。<br>单位为毫秒（ms）。<br>该值为正整数。<br>**起始版本：** 26.0.0 |
+| heifsDelayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒。 |
+| heifsCanvasHeight | number | 是   | 是   | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>该值为正整数。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
+| heifsCanvasWidth | number | 是   | 是   | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>该值为正整数。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
+| heifsUnclampedDelayTime | number | 是   | 是   | HEIF序列图片每帧未钳制的延迟时长。<br>单位为毫秒（ms）。<br>该值为正整数。 </br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## createInstance
 
@@ -43,6 +48,10 @@ static createInstance(): HeifsMetadata
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                               | 说明                        |
@@ -51,8 +60,21 @@ static createInstance(): HeifsMetadata
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function heifsMetadataCreateInstance(context: Context) {
+  let heifsMetadata = image.HeifsMetadata.createInstance();
+  if (heifsMetadata != undefined) {
+    console.info("createInstance success");
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+
+async function heifsMetadataCreateInstance(context: common.UIAbilityContext) {
   let heifsMetadata = image.HeifsMetadata.createInstance();
   if (heifsMetadata != undefined) {
     console.info("createInstance success");
@@ -71,6 +93,10 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -94,6 +120,7 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -121,6 +148,45 @@ async function heifsMetadataGetProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetProperties(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    try {
+      const exif = metaData?.heifsMetadata;
+      if (exif) {
+        let data = exif.getProperties(["HeifsDelayTime"]);
+        console.info('Get properties ',JSON.stringify(data));
+      }
+    } catch (err) {
+      console.error(`Get properties failed error.code is ${err.code}, error.message is ${err.message}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+  fs.closeSync(fd);
+}
+```
+
 ## setProperties
 
 setProperties(records: Record\<string, string \| null>): Promise\<void>
@@ -132,6 +198,10 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -155,6 +225,7 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -185,6 +256,48 @@ async function heifsMetadataSetProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function heifsMetadataSetProperties(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    try {
+      const exif = metaData?.heifsMetadata;
+      let setkey: Record<string, string | null> = {
+        "HeifsDelayTime": "200",
+      };
+      if (exif) {
+        let data = exif.setProperties(setkey);
+        console.info('Set properties ',JSON.stringify(data));
+      }
+    } catch ( err ) {
+      console.error(`Failed to set metadata Properties. code is ${err.code}, error.message is ${err.message}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## getAllProperties
 
 getAllProperties(): Promise\<Record<string, string \| null>>
@@ -197,6 +310,10 @@ getAllProperties(): Promise\<Record<string, string \| null>>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                     | 说明                                        |
@@ -205,6 +322,7 @@ getAllProperties(): Promise\<Record<string, string \| null>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -234,6 +352,47 @@ async function heifsMetadataGetAllProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function exifMetadataGetAllProperties(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    try {
+      const exif = metaData?.heifsMetadata;
+      if (exif) {
+        let data = exif.getAllProperties();
+        const count = Object.keys(data).length;
+        console.info('Metadata have ', count, ' properties');
+        console.info(`Get metadata all properties: ${data}`);
+      }
+    } catch ( err ) {
+      console.error(`Get metadata all properties failed error.code is ${err.code}, error.message is ${err.message}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
 ## clone
 
 clone(): Promise\<HeifsMetadata>
@@ -244,6 +403,10 @@ clone(): Promise\<HeifsMetadata>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                       | 说明                                  |
@@ -252,6 +415,7 @@ clone(): Promise\<HeifsMetadata>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -280,8 +444,48 @@ async function heifsMetadataClone(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
 
-## getBlob
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function heifsMetadataClone(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    try {
+      const exif = metaData?.heifsMetadata;
+      if (exif) {
+        let new_metadata = await exif.clone();
+        let data = new_metadata.getProperties(["HeifsDelayTime"]);
+        const count = Object.keys(data).length;
+        console.info(`Clone new_metadata and get Properties: ${data}`);
+      }
+    } catch ( err ) {
+      console.error(`Clone new_metadata failed, error : ${err}`);
+    }
+  } else {
+    console.error('Metadata is null.');
+  }
+}
+```
+
+## getBlob<sup>23+</sup>
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -291,6 +495,10 @@ getBlob(): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                                  |
@@ -299,6 +507,7 @@ getBlob(): Promise\<ArrayBuffer>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -322,7 +531,41 @@ async function heifsMetadataGetBlob(context: Context) {
 }
 ```
 
-## setBlob
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function heifsMetadataGetBlob(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    const exif = metaData?.heifsMetadata;
+    if (exif) {
+      let blob = await exif.getBlob();
+      if (blob != undefined) {
+        console.info("get blob success");
+      }
+    }
+  }
+}
+```
+
+## setBlob<sup>23+</sup>
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
@@ -331,6 +574,10 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -354,6 +601,7 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -377,6 +625,45 @@ async function heifsMetadataSetBlob(context: Context) {
     let new_blob = metaData.heifsMetadata.getBlob();
     if (new_blob != undefined) {
       console.info("new_blob is not undefined");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function heifsMetadataSetBlob(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    const exif = metaData?.heifsMetadata;
+    if (exif) {
+      let blob = await exif.getBlob();
+      if (blob != undefined) {
+        console.info("get blob success");
+        exif.setBlob(blob);
+      }
+      let new_blob = exif.getBlob();
+      if (new_blob != undefined) {
+        console.info("new_blob is not undefined");
+      }
     }
   }
 }
