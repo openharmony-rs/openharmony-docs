@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @@zhang_yixin13-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
