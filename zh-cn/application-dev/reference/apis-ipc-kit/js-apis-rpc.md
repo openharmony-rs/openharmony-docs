@@ -10074,7 +10074,7 @@ MessageOption构造函数。
   | 参数名    | 类型   | 必填 | 说明                                          |
   | --------- | ------ | ---- | --------------------------------------------- |
   | syncFlags | number | 否   | 同步调用或异步调用标志，同步调用标志：0；异步调用标志：1。默认同步调用。|
-  | waitTime  | number | 否   | 调用rpc最长等待时间（单位：秒）。默认TF_WAIT_TIME。|
+  | waitTime  | number | 否   | 调用rpc最长等待时间（单位：秒）。<br/>默认值：8<br/>取值范围：(0, 3000] |
 
 **示例：**
 
@@ -10133,16 +10133,34 @@ MessageOption构造函数。
 **参数：**
 
   | 参数名    | 类型   | 必填 | 说明                                          |
-  | --------- | ------ | ---- | --------------------------------------------- |
-  | syncFlags | number | 否   | 同步调用或异步调用标志，同步调用标志：0；异步调用标志：1。默认同步调用。        |
-  | waitTime  | number | 否   | 调用rpc最长等待时间（单位：秒）。<br/>默认值：8<br/>取值范围：(0, 3000] |
+  | -------- | ------ | ---- | --------------------------------------------- |
+  | isAsync | boolean | 是   | true：表示异步调用标志，false：表示同步调用标志。默认同步调用。 |
+
+**示例：**
+
+```ts
+import rpc from '@ohos.rpc';
+import hilog from 'ohos.hilog';
+import { BusinessError } from '@ohos.base';
+
+class TestRemoteObject extends rpc.MessageOption {
+  constructor(isAsync: boolean) {
+    super(isAsync);
+  }
+}
+```
+
+### constructor<sup>23+</sup>
+
+constructor()
+
+MessageOption构造函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **ArkTS-Sta起始版本：** 23
->>>>>>> upstream/OpenHarmony_feature_sta_20260331
 
 **示例：**
 
