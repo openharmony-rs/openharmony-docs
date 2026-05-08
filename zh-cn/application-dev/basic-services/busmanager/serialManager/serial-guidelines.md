@@ -289,18 +289,19 @@
 8. 注销数据接收回调和关闭串口设备。
 
    <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 注销数据接收回调
-   port.offDataRead();
-
-   // 关闭串口设备
    try {
-     await port.close();
-     console.info('Close serial port success');
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to close serial port: ${JSON.stringify(e)}`);
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     await this.port.close();
+     console.info(`${TAG} close success`);
+     this.port = null;
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} close failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
