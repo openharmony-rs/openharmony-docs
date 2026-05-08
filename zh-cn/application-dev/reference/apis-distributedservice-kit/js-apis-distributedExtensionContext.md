@@ -78,17 +78,47 @@ import { Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let connectionId: long = -1;
+export default class DistributedExtAbility extends DistributedExtension {
 
-export default class DistributedExtension extends DistributedExtensionAbility {
+  context:DistributedExtensionContext = new DistributedExtensionContext;
+
+  onCreate (want:Want) {
+    this.testConnectServiceExtensionAbility();
+  }
+
+  onDestroy () {
+    this.testDisconnectServiceExtensionAbility();
+  }
+  
+  connectId:long = -1;
+  
+  private testConnectServiceExtensionAbility() {
+    let deviceId1: string = '';
     try {
-      connectionId = this.context.connectServiceExtensionAbility(want, options);
-      console.info(`connectServiceExtensionAbility success, connectionId: ${connectionId}`);
+      let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+      deviceId1 = dmInstance.getLocalDeviceId();
     } catch (err) {
-      let error = err as BusinessError;
-      console.error(`connectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+      let e: BusinessError = err as BusinessError;
     }
-}
+    const targetWant:Want = {
+      deviceId: deviceId1,
+      bundleName: 'com.example.test0001',
+      abilityName: 'EntryServiceExtAbility',
+    }
+    const options: ConnectOptions = {
+      onConnect: (name: ElementName, remote: rpc.IRemoteObject): void => {
+      },
+      onDisconnect: (name: ElementName): void => {
+      },
+      onFailed: (code: int): void => {
+      }
+    };
+    try {
+      const id = this.context.connectServiceExtensionAbility(targetWant, options);
+      this.connectId = id;
+    } catch (err) {
+    }
+  }
 ```
 
 
@@ -128,26 +158,26 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// connectionId为connectServiceExtensionAbility返回的连接ID
-let connectionId: long = -1;
+export default class DistributedExtAbility extends DistributedExtension {
 
-export default class DistributedExtension extends DistributedExtensionAbility {
-  disconnectRemoteService() {
-    try {
-      this.context.disconnectServiceExtensionAbility(connectionId)
-        .then(() => {
-          console.info('disconnectServiceExtensionAbility success');
-        })
-        .catch((err: BusinessError) => {
-          console.error(`disconnectServiceExtensionAbility failed, error.code: ${err.code}, error.message: ${err.message}`);
-        });
-    } catch (err) {
-      let error = err as BusinessError;
-      console.error(`disconnectServiceExtensionAbility catch error, code: ${error.code}, message: ${error.message}`);
-    }
+  context:DistributedExtensionContext = new DistributedExtensionContext;
+
+  onCreate (want:Want) {
+    this.testConnectServiceExtensionAbility();
+  }
+
+  onDestroy () {
+    this.testDisconnectServiceExtensionAbility();
+  }
+  
+  connectId:long = -1;
+  
+  private testDisconnectServiceExtensionAbility() {
+    this.context.disconnectServiceExtensionAbility(this.connectId);
   }
 }
 ```
