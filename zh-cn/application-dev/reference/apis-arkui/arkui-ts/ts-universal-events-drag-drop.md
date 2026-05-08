@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
-> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
 
@@ -29,7 +31,9 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 ## onDragStart
 
-onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
+ArkTS-Dyn: onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
+
+ArkTS-Sta: onDragStart(event: ((event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo) | undefined): this
 
 在手势拖拽场景中，在可拖拽的组件上长按时间超过500ms，然后手指移动距离大于10vp时触发此回调；在鼠标拖拽场景中，鼠标左键在可拖拽的组件上按下并移动超过1vp时，即可触发此回调。
 
@@ -49,21 +53,27 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明               |
 | ----------- | ------------------------------- | ---- | ------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo)  | 是   | 回调函数。<br/> **说明：**<br/> event参数为拖拽事件的信息。<br/> extraParams参数为拖拽事件的额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo)<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo))&nbsp;\|&nbsp;undefined | 是   | 回调函数。<br/> **说明：**<br/> event参数为拖拽事件的信息。<br/> extraParams参数为拖拽事件的额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。<br/>传入undefined时无效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDragEnter
 
-onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragEnter(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 拖拽进入组件范围内时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
 
@@ -71,21 +81,27 @@ onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDragMove
 
-onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragMove(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 拖拽在组件范围内移动时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
 
@@ -93,21 +109,27 @@ onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDragLeave
 
-onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragLeave(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 拖拽离开组件范围内时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
 
@@ -115,21 +137,27 @@ onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDrop
 
-onDrop(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDrop(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDrop(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 绑定此事件的组件可作为释放目标。当在本组件范围内停止拖放行为时，将触发回调。如果开发者未在onDrop中主动调用event.setResult()来设置拖拽接收的结果，对于系统支持的默认可拖入组件，处理结果将以系统实际处理的数据为准。对于其他组件，系统将默认视为数据接收成功。
 
@@ -137,21 +165,27 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDrop<sup>15+</sup>
 
-onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
+ArkTS-Dyn: onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
+
+ArkTS-Sta: onDrop(eventCallback: OnDragEventCallback | undefined, dropOptions: DropOptions): this
 
 绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.[setResult](ts-universal-events-drag-drop.md#setresult10)()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
 
@@ -159,22 +193,28 @@ onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| eventCallback  | [OnDragEventCallback](#ondrageventcallback15)   | 是   | 回调函数。|
-| dropOptions  | [DropOptions](#dropoptions15)   | 否   | 落入过程的参数。 |
+| eventCallback  | ArkTS-Dyn: [OnDragEventCallback](#ondrageventcallback15) <br/>ArkTS-Sta: [OnDragEventCallback](#ondrageventcallback15) \|&nbsp;undefined | 是   | 回调函数。<br/>传入undefined时无效果。|
+| dropOptions  | [DropOptions](#dropoptions15)   | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | 落入过程的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDragEnd<sup>10+</sup>
 
-onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragEnd(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 绑定此事件的组件触发的拖拽结束后，触发回调。
 
@@ -182,21 +222,27 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => void) \| undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。<br/>传入undefined时无效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onPreDrag<sup>12+</sup>
 
-onPreDrag(callback: Callback\<PreDragStatus>): T
+ArkTS-Dyn: onPreDrag(callback: Callback\<PreDragStatus>): T
+
+ArkTS-Sta: onPreDrag(callback: Callback\<PreDragStatus> | undefined): this
 
 绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。拖拽发起前的各阶段可参考[PreDragStatus](#predragstatus12枚举说明)。此接口不支持在鼠标拖拽中触发。
 
@@ -208,21 +254,27 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| callback    | Callback<[PreDragStatus](#predragstatus12枚举说明)>     | 是   | 回调函数。|
+| callback    | ArkTS-Dyn: Callback<[PreDragStatus](#predragstatus12枚举说明)><br/> ArkTS-Sta: Callback<[PreDragStatus](#predragstatus12枚举说明)> \| undefined     | 是   | 回调函数。<br/>传入undefined时无效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onDragSpringLoading<sup>20+</sup>
 
-onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configuration?: DragSpringLoadingConfiguration): T
+ArkTS-Dyn: onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configuration?: DragSpringLoadingConfiguration): T
+
+ArkTS-Sta: onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null | undefined, configuration?: DragSpringLoadingConfiguration): this
 
 绑定此事件的组件可作为具有悬停检测功能的拖拽响应目标。当拖拽对象悬停在目标上时，触发回调通知。此时只有一个目标可以成为响应方，并且子组件始终具有更高的响应优先级。
 
@@ -232,18 +284,22 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名        | 类型                                      | 必填 | 说明                                           |
 | :------------ | ----------------------------------------- | ---- | ---------------------------------------------- |
-| callback          | Callback\<[SpringLoadingContext](#springloadingcontext20)\> \| null    | 是   | 悬停检测回调函数，当值为null时禁用悬停检测。 |
-| configuration | [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 否   | 悬停检测配置信息，为undefined时取[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20)默认值。  |
+| callback          | ArkTS-Dyn: Callback\<[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)\> \| null<br/>ArkTS-Sta: Callback\<[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)\> \| null \| undefined    | 是   | 悬停检测回调函数，为null时禁用悬停检测。<br/>传入undefined时无效果。 |
+| configuration | [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | 悬停检测配置信息，为undefined时取[DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20)默认值。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## DragItemInfo
 
@@ -252,6 +308,10 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                  | 只读| 可选   | 说明                               |
 | --------- | ---------------------------------------- | ---- | ---- | --------------------------------- |
@@ -267,6 +327,10 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型 | 只读 | 可选 | 说明                                                         |
 | ---------- | ---- | ---- | ---- | ------------------------------------------------------------ |
 | onlyForLifting | boolean | 否    | 是    | 自定义配置的预览图是否仅用于浮起。<br /> **说明：** <br/>默认值为false。true表示自定义预览图仅用于浮起，false表示可用于浮起和拖拽。设置为true时，如果发起长按拖拽，浮起时的预览图为自定义配置的预览图，拖拽时的预览图不使用[dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11)属性，优先使用开发者在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)中返回的预览图，如果[onDragStart](ts-universal-events-drag-drop.md#ondragstart)中没有返回预览图则使用组件自截图。|
@@ -274,9 +338,9 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 ## extraParams说明
 
-  用于返回组件在拖拽中需要用到的额外信息。
+用于返回组件在拖拽中需要用到的额外信息。
 
-  extraParams是JSON对象转换的string字符串，可以通过JSON.parse转换的JSON对象获取如下属性。
+extraParams是JSON对象转换的string字符串，可以通过JSON.parse转换的JSON对象获取如下属性。
 
 | 名称          | 类型   | 描述                                       |
 | ------------- | ------ | ---------------------------------------- |
@@ -292,6 +356,10 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型  | 只读 | 可选 | 说明             |
 | ------ | ------ | ----- | ---- | ------- |
@@ -316,7 +384,9 @@ setData(unifiedData: UnifiedData): void
 
 ### getData<sup>10+</sup>
 
-getData(): UnifiedData
+ArkTS-Dyn: getData(): UnifiedData
+
+ArkTS-Sta: getData(): UnifiedData | undefined
 
 获取拖拽相关数据。
 
@@ -324,11 +394,15 @@ getData(): UnifiedData
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 从DragEvent中获取拖拽相关数据。数据获取结果请参考错误码说明。 |
+| ArkTS-Dyn: [UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)<br/>ArkTS-Sta: [UnifiedData](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) \| undefined | 从DragEvent中获取拖拽相关数据。数据获取结果请参考错误码说明。 |
 
 **错误码：**
 
@@ -341,7 +415,9 @@ getData(): UnifiedData
 
 ### getSummary<sup>10+</sup>
 
-getSummary(): Summary
+ArkTS-Dyn: getSummary(): Summary
+
+ArkTS-Sta: getSummary(): Summary | undefined
 
 获取所拖拽数据的概要，包括数据类型及大小信息；在延迟拖拽场景下，只能获取到数据类型信息。
 
@@ -349,11 +425,15 @@ getSummary(): Summary
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| [Summary](#summary10) | 拖拽相关数据的概要。 |
+| ArkTS-Dyn: [Summary](#summary10)<br/>ArkTS-Sta: [Summary](#summary10) \| undefined | 拖拽相关数据的概要。 |
 
 ### setResult<sup>10+</sup>
 
@@ -364,6 +444,10 @@ setResult(dragResult: DragResult): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -381,6 +465,10 @@ getResult(): DragResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型                                | 说明                          |
@@ -397,7 +485,11 @@ getPreviewRect(): Rectangle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -405,7 +497,9 @@ getPreviewRect(): Rectangle
 
 ### getVelocityX<sup>10+</sup>
 
-getVelocityX(): number
+ArkTS-Dyn: getVelocityX(): number
+
+ArkTS-Sta: getVelocityX(): double
 
 获取当前拖拽的x轴方向拖动速度。
 
@@ -413,15 +507,21 @@ getVelocityX(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 当前拖拽的x轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从左往右为正，反之为负。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽的x轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从左往右为正，反之为负。 |
 
 ### getVelocityY<sup>10+</sup>
 
-getVelocityY(): number
+ArkTS-Dyn: getVelocityY(): number
+
+ArkTS-Sta: getVelocityY(): double
 
 获取当前拖拽的y轴方向拖动速度。
 
@@ -429,15 +529,21 @@ getVelocityY(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 当前拖拽的y轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从上往下为正，反之为负。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽的y轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从上往下为正，反之为负。 |
 
 ### getVelocity<sup>10+</sup>
 
-getVelocity(): number
+ArkTS-Dyn: getVelocity(): number
+
+ArkTS-Sta: getVelocity(): double
 
 获取当前拖拽的主方向拖动速度。
 
@@ -445,15 +551,21 @@ getVelocity(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 当前拖拽的主方向拖动速度。为xy轴方向速度的平方和的算术平方根，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽的主方向拖动速度。为xy轴方向速度的平方和的算术平方根，单位为vp。 |
 
 ### getWindowX<sup>10+</sup>
 
-getWindowX(): number
+ArkTS-Dyn: getWindowX(): number
+
+ArkTS-Sta: getWindowX(): double
 
 获取拖拽点相对于窗口左上角的x轴坐标。
 
@@ -461,15 +573,21 @@ getWindowX(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。 |
 
 ### getWindowY<sup>10+</sup>
 
-getWindowY(): number
+ArkTS-Dyn: getWindowY(): number
+
+ArkTS-Sta: getWindowY(): double
 
 获取拖拽点相对于窗口左上角的y轴坐标。
 
@@ -477,15 +595,21 @@ getWindowY(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。 |
 
 ### getDisplayX<sup>10+</sup>
 
-getDisplayX(): number
+ArkTS-Dyn: getDisplayX(): number
+
+ArkTS-Sta: getDisplayX(): double
 
 获取当前拖拽点相对于屏幕左上角的x轴坐标。
 
@@ -493,15 +617,21 @@ getDisplayX(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于屏幕左上角的x轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于屏幕左上角的x轴坐标，单位为vp。 |
 
 ### getDisplayY<sup>10+</sup>
 
-getDisplayY(): number
+ArkTS-Dyn: getDisplayY(): number
+
+ArkTS-Sta: getDisplayY(): double
 
 获取当前拖拽点相对于屏幕左上角的y轴坐标。
 
@@ -509,11 +639,15 @@ getDisplayY(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于屏幕左上角的y轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于屏幕左上角的y轴坐标，单位为vp。 |
 
 ### getModifierKeyState<sup>12+</sup>
 
@@ -524,6 +658,10 @@ getModifierKeyState?(keys: Array<string\>): boolean
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -547,13 +685,19 @@ getModifierKeyState?(keys: Array<string\>): boolean
 
 ### startDataLoading<sup>15+</sup>
 
-startDataLoading(options: DataSyncOptions): string
+ArkTS-Dyn: startDataLoading(options: DataSyncOptions): string
+
+ArkTS-Sta: startDataLoading(options: DataSyncOptions): string | undefined
 
 异步获取拖拽数据，并通知开发者当前数据同步进度，仅支持在onDrop阶段使用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -570,15 +714,17 @@ startDataLoading(options: DataSyncOptions): string
 | 401       | Parameter error. |
 | 190003    | Operation not allowed for current phase. |
 
-**返回值：** 
+**返回值：**
 
 | 类型   | 说明                               |
 | ------ | ---------------------------------- |
-| string | 拖拽数据的标识，用于区分每次拖拽。 |
+| ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 拖拽数据的标识，用于区分每次拖拽。 |
 
 ### executeDropAnimation<sup>18+</sup>
 
-executeDropAnimation(customDropAnimation: Callback\<void\>): void
+ArkTS-Dyn: executeDropAnimation(customDropAnimation: Callback\<void\>): void
+
+ArkTS-Sta: executeDropAnimation(customDropAnimation: [VoidCallback](ts-types.md#voidcallback12)): void
 
 设置自定义落位动效的执行函数，仅在[useCustomDropAnimation](ts-universal-events-drag-drop.md#属性)为true时有效。
 
@@ -586,27 +732,37 @@ executeDropAnimation(customDropAnimation: Callback\<void\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 18
 
-| 参数名    | 类型  | 必填 | 说明      |
-| ------ | ------ | --- | --------- |
-| customDropAnimation | [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)  | 是 |在此回调函数中实现自定义落位动效。<br/> **说明：** <br/>1. 该接口仅在onDrop回调中使用有效。<br/> 2. 使用前需设置useCustomDropAnimation为true，否则该接口不生效。<br/> 3. 不要在动画callback中实现与动效无关的逻辑，避免影响执行效率。|
+**ArkTS-Sta起始版本：** 23
+
+| 参数名     | 类型  | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| customDropAnimation | ArkTS-Dyn: [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)<br/>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12)  | 是 |在此回调函数中实现自定义落位动效。<br/> **说明：** <br/>1. 该接口仅在onDrop回调中使用有效。<br/> 2. 使用前需设置useCustomDropAnimation为true，否则该接口不生效。<br/> 3. 不要在动画callback中实现与动效无关的逻辑，避免影响执行效率。|
 
 ### getDisplayId<sup>20+</sup>
 
-getDisplayId(): number
+ArkTS-Dyn: getDisplayId(): number
+
+ArkTS-Sta: getDisplayId(): int
 
 获取当前拖拽事件发生时所在的屏幕ID，不支持在[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)阶段使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：** 
 
 | 类型   | 说明                             |
 | ------ | -------------------------------- |
-| number | 当前拖拽事件发生时所在的屏幕ID。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 当前拖拽事件发生时所在的屏幕ID。 |
 
 ### getDragSource<sup>20+</sup>
 
@@ -614,11 +770,17 @@ getDragSource(): string
 
 获取拖起方包名。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
@@ -630,11 +792,17 @@ isRemote(): boolean
 
 获取是否是跨设备拖拽，跨设备拖拽时为true。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
@@ -646,9 +814,15 @@ setDataLoadParams(dataLoadParams: DataLoadParams): void
 
 设置起拖方延迟提供数据。使用此方法向系统提供数据加载参数，而不是直接提供完整的数据对象。当用户在目标应用程序上落入时，系统将使用此参数从起拖方请求实际数据。与[setData](#setdata10)方法同时使用，以最后调用的方法为准。该接口仅在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -668,7 +842,11 @@ getX(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
+**返回值：**
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
@@ -686,7 +864,11 @@ getY(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
+**返回值：**
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
@@ -694,35 +876,51 @@ getY(): number
 
 ### getGlobalDisplayX<sup>20+</sup>
 
-getGlobalDisplayX(): number
+ArkTS-Dyn: getGlobalDisplayX(): number
+
+ArkTS-Sta: getGlobalDisplayX(): double
 
 当前拖拽点相对于全局屏幕的左上角的X坐标。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| number | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：[0, +∞)|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：[0, +∞)|
 
 ### getGlobalDisplayY<sup>20+</sup>
 
-getGlobalDisplayY(): number
+ArkTS-Dyn: getGlobalDisplayY(): number
+
+ArkTS-Sta: getGlobalDisplayY(): double
 
 当前拖拽点相对于全局屏幕的左上角的Y坐标。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：** 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| number | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp，取值范围：[0, +∞)|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ## DragResult<sup>10+</sup>枚举说明
 
@@ -732,12 +930,12 @@ getGlobalDisplayY(): number
 
 | 名称   | 值 | 说明 |
 | ----- | -- | --------------- |
-| UNKNOWN<sup>24+</sup> | -1 |拖拽结果尚未设置，在[onDragStart](#ondragstart)，[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)，[onDrop](#ondrop)中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| UNKNOWN<sup>24+</sup> | -1 |拖拽结果尚未设置，在[onDragStart](#ondragstart)，[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)，[onDrop](#ondrop)中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 23 |
+| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## DragBehavior<sup>10+</sup>
 
@@ -746,6 +944,10 @@ getGlobalDisplayY(): number
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ----- | -- | ----------------- |
@@ -760,14 +962,14 @@ getGlobalDisplayY(): number
 
 | 名称 | 值 | 说明 |
 | ---- | - | ----------------- |
-| ACTION_DETECTING_STATUS | 0 | 拖拽手势启动阶段。(按下50ms时触发)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| READY_TO_TRIGGER_DRAG_ACTION | 1 | 拖拽准备完成，可发起拖拽阶段。(按下500ms时触发)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PREVIEW_LIFT_STARTED | 2 | 拖拽浮起动效发起阶段。(按下800ms时触发)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PREVIEW_LIFT_FINISHED | 3 | 拖拽浮起动效结束阶段。(浮起动效完全结束时触发)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PREVIEW_LANDING_STARTED | 4 | 拖拽落回动效发起阶段。(落回动效发起时触发)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PREVIEW_LANDING_FINISHED | 5 | 拖拽落回动效结束阶段。(落回动效结束时触发)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ACTION_CANCELED_BEFORE_DRAG | 6 | 拖拽浮起落位动效中断。(已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬手时触发)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PREPARING_FOR_DRAG_DETECTION<sup>18+</sup>  | 7 | 拖拽准备完成，可发起拖拽阶段。(按下350ms时触发)<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| ACTION_DETECTING_STATUS | 0 | 拖拽手势启动阶段。(按下50ms时触发) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| READY_TO_TRIGGER_DRAG_ACTION | 1 | 拖拽准备完成，可发起拖拽阶段。(按下500ms时触发)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PREVIEW_LIFT_STARTED | 2 | 拖拽浮起动效发起阶段。(按下800ms时触发)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PREVIEW_LIFT_FINISHED | 3 | 拖拽浮起动效结束阶段。(浮起动效完全结束时触发)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PREVIEW_LANDING_STARTED | 4 | 拖拽落回动效发起阶段。(落回动效发起时触发)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PREVIEW_LANDING_FINISHED | 5 | 拖拽落回动效结束阶段。(落回动效结束时触发) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| ACTION_CANCELED_BEFORE_DRAG | 6 | 拖拽浮起落位动效中断。(已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬手时触发) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| PREPARING_FOR_DRAG_DETECTION<sup>18+</sup>  | 7 | 拖拽准备完成，可发起拖拽阶段。(按下350ms时触发) <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
 
 ## UnifiedData<sup>10+</sup>
 
@@ -778,6 +980,10 @@ type UnifiedData = UnifiedData
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | ----- | ----------------- |
@@ -793,6 +999,10 @@ type Summary = Summary
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | ----- | ----------------- |
 | [Summary](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) | 拖拽相关数据的简介。|
@@ -806,6 +1016,10 @@ type DataLoadParams = DataLoadParams
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 类型 | 说明 |
 | ----- | ----------------- |
@@ -821,6 +1035,10 @@ type DataSyncOptions = GetDataParams
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | ----- | ----------------- |
 | [GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
@@ -834,6 +1052,10 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -850,6 +1072,10 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型  | 只读 | 可选 | 说明           |
 | ------ | ------ | ---------------- | ------ | ------ |
 | disableDataPrefetch | boolean  | 否  | 是  | 设置拖拽是否提前获取数据。true表示不提前获取数据，false表示提前获取数据，默认值为false。<br/>**说明：**<br/> 当使用[startDataLoading](#startdataloading15)获取数据时需设置该参数为true，防止拖拽提前获取数据。 |
@@ -864,6 +1090,10 @@ type DragSpringLoadingConfiguration = DragSpringLoadingConfiguration
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 类型 | 说明 |
 | ----- | ----------------- |
 | [DragSpringLoadingConfiguration](../js-apis-arkui-dragController.md#dragspringloadingconfiguration20) | 定义拖拽的悬停检测配置参数的接口。|
@@ -877,6 +1107,10 @@ type SpringLoadingContext = SpringLoadingContext
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 类型 | 说明 |
 | ----- | ----------------- |

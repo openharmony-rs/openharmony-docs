@@ -10,6 +10,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 不支持嵌套滚动组件场景按键走焦。
@@ -22,7 +24,9 @@
 
 ## onFocus
 
-onFocus(event: () => void): T
+ArkTS-Dyn: onFocus(event: () => void): T
+
+ArkTS-Sta: onFocus(event: (() => void) | undefined): this
 
 当前组件获取焦点时触发的回调。
 
@@ -30,21 +34,27 @@ onFocus(event: () => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | () => void |  是   | onFocus的回调函数，表示组件已获焦。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onFocus的回调函数，表示组件已获焦。<br/>传入undefined时无效果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onBlur
 
-onBlur(event:()&nbsp;=&gt;&nbsp;void): T
+ArkTS-Dyn: onBlur(event: () => void): T
+
+ArkTS-Sta: onBlur(event: (() => void) | undefined): this
 
 当前组件失去焦点时触发的回调。
 
@@ -52,17 +62,21 @@ onBlur(event:()&nbsp;=&gt;&nbsp;void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | () => void |  是   | onBlur的回调函数，表示组件已失焦。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onBlur的回调函数，表示组件已失焦。<br/>传入undefined时无效果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 

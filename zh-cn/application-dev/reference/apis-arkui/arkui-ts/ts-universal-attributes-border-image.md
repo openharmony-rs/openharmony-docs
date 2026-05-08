@@ -10,11 +10,15 @@
 
 >  **说明：**
 >
->  从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## borderImage
 
-borderImage(value: BorderImageOption): T
+ArkTS-Dyn: borderImage(value: BorderImageOption): T
+
+ArkTS-Sta: borderImage(value: BorderImageOption | undefined): this
 
 设置组件的图片边框。
 
@@ -24,17 +28,21 @@ borderImage(value: BorderImageOption): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名      | 类型                                            | 必填 | 说明                           |
 | ----------- | ----------------------------------------------- | ---- | -------------------------------- |
-| value | [BorderImageOption](#borderimageoption对象说明) | 是   | 图片边框或者渐变色边框设置接口。 |
+| value | [BorderImageOption](#borderimageoption对象说明) | 是   | 图片边框或者渐变色边框设置接口。<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## BorderImageOption对象说明
 
@@ -44,6 +52,11 @@ borderImage(value: BorderImageOption): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+<!--Table: 15%; 25%; 8%; 8%; 44%-->
 | 名称   | 类型                                                         | 只读 | 可选 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- |  ------------------------------------------------------------ |  ------------------------------------------------------------ |
 | source | string \| [Resource](ts-types.md#resource) \| [LinearGradient](#lineargradient) | 否 | 是 | 边框图源或者渐变色设置。参数类型为string类型时，用于设置边框图源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>**说明：**<br>边框图源仅适用于容器组件，如[Row](ts-container-row.md)、[Column](ts-container-column.md)、[Flex](ts-container-flex.md)，在非容器组件上使用会失效。 |
@@ -75,6 +88,10 @@ borderImage(value: BorderImageOption): T
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
 | --------------- | ------ | ---- | ---- | ------------------------- |

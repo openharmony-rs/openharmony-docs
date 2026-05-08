@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ApplicationContext作为应用上下文，继承自[Context](js-apis-inner-application-context.md)，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
 
@@ -498,9 +498,9 @@ export default class MyAbility extends UIAbility {
 
 ## ApplicationContext.onSystemConfigurationUpdated<sup>24+</sup>
 
-onSystemConfigurationUpdated(callback: systemconfiguration.UpdatedCallback): void
+onSystemConfigurationUpdated(callback: systemConfiguration.UpdatedCallback): void
 
-注册监听系统环境[Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration)的变化。使用callback异步回调。仅支持主线程调用。
+注册监听系统环境[Configuration](js-apis-app-ability-configuration.md#configuration)的变化。使用callback异步回调。仅支持主线程调用。
 
 > **说明：**
 >
@@ -514,7 +514,7 @@ onSystemConfigurationUpdated(callback: systemconfiguration.UpdatedCallback): voi
 
 | 参数名                   | 类型     | 必填 | 说明                           |
 | ------------------------ | -------- | ---- | ------------------------------ |
-| callback | [systemconfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | 是   | 系统环境变化时触发的回调方法。 |
+| callback | [systemConfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | 是   | 系统环境变化时触发的回调方法。 |
 
 **示例：**
 
@@ -568,9 +568,9 @@ export default class EntryAbility extends UIAbility {
 
 ## ApplicationContext.offSystemConfigurationUpdated<sup>24+</sup>
 
-offSystemConfigurationUpdated(callback?: systemconfiguration.UpdatedCallback): void
+offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): void
 
-取消监听系统环境[Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration)的变化。仅支持主线程调用。
+取消监听系统环境[Configuration](js-apis-app-ability-configuration.md#configuration)的变化。仅支持主线程调用。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -580,7 +580,7 @@ offSystemConfigurationUpdated(callback?: systemconfiguration.UpdatedCallback): v
 
 | 参数名                   | 类型     | 必填 | 说明                           |
 | ------------------------ | -------- | ---- | ------------------------------ |
-| callback | [systemconfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | 否   | 回调函数。取值可以为使用[ApplicationContext.onSystemConfigurationUpdated](#applicationcontextonsystemconfigurationupdated24)方法注册的callback回调，也可以为空。<br/>-&nbsp;如果传入已定义的回调，则取消该监听。 <br/>-&nbsp;如果未传入参数，则取消所有已注册的监听。|
+| callback | [systemConfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | 否   | 回调函数。取值可以为使用[ApplicationContext.onSystemConfigurationUpdated](#applicationcontextonsystemconfigurationupdated24)方法注册的callback回调，也可以为空。<br/>-&nbsp;如果传入已定义的回调，则取消该监听。 <br/>-&nbsp;如果未传入参数，则取消所有已注册的监听。|
 
 **示例：**
 

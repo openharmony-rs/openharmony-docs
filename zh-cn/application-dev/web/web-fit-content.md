@@ -45,6 +45,7 @@
 
 ## 示例代码
 
+ArkTS-Dyn示例：
 <!-- @[a_page_that_contains_a_webview_and_text_in_the_comment_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/FitPageContent.ets) -->
 
 ``` TypeScript
@@ -54,6 +55,46 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebHeightPage {
   private webviewController: WebviewController = new webview.WebviewController();
+  private scroller: Scroller = new Scroller();
+
+  build() {
+    Navigation() {
+      Column() {
+        Scroll(this.scroller) {
+          Column() {
+            Web({
+              src: $rawfile('fit_content.html'),
+              controller: this.webviewController,
+              renderMode: RenderMode.SYNC_RENDER // 设置为同步渲染模式
+            })
+              .layoutMode(WebLayoutMode.FIT_CONTENT) // 设置为Web组件大小自适应页面内容
+              .overScrollMode(OverScrollMode.NEVER) // 设置过滚动模式为关闭状态
+            Text('Comments')
+              .fontSize(28)
+              .fontColor('#FF0F0F')
+              .height(100)
+              .width('100%')
+              .backgroundColor('#f89f0f')
+          }
+        }
+      }
+    }
+    .title('Title')
+  }
+}
+```
+
+ArkTS-Sta示例：
+``` TypeScript
+'use static'
+
+import { $rawfile, Entry, Component, Navigation, Text, Web, Column, RenderMode, WebLayoutMode, OverScrollMode, Scroll, Scroller } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebHeightPage {
+  private webviewController: webview.WebviewController = new webview.WebviewController();
   private scroller: Scroller = new Scroller();
 
   build() {

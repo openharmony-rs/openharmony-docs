@@ -1,10 +1,11 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
@@ -12,7 +13,7 @@
     - [基本语法概述](state-management/arkts-basic-syntax-overview.md)
     - [UI装饰器总览](state-management/arkts-decorator-overview.md)
     - [声明式UI描述](state-management/arkts-declarative-ui-description.md)
-    - 自定义组件<!--arkts-custom-components-->
+    - 动态自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](state-management/arkts-create-custom-components.md)
       - [自定义组件生命周期](state-management/arkts-page-custom-components-lifecycle.md)
       - [自定义组件生命周期（推荐）](state-management/arkts-custom-components-new-lifecycle.md)
@@ -24,15 +25,26 @@
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
+    - 静态自定义组件<!--arkts-static-custom-components-->
+      - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
+      - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
+      - [自定义组件生命周期](state-management-static/arkts-custom-components-new-lifecycle.md)
+      - [自定义组件冻结](../ui/state-management-static/arkts-static-custom-components-v1-v2-freeze.md)
+        - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
+        - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
     - 组件扩展<!--arkts-extend-components-->
       - [组件扩展概述](state-management/arkts-extend-components-overview.md)
       - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
       - [\@LocalBuilder装饰器：维持组件关系](state-management/arkts-localBuilder.md)
       - [\@BuilderParam装饰器：引用\@Builder函数](state-management/arkts-builderparam.md)
-      - [wrapBuilder：封装全局@Builder](state-management/arkts-wrapBuilder.md)
+      - [wrapBuilder：封装全局@Builder（ArkTS-Dyn）](state-management/arkts-wrapBuilder.md)
+      - [wrapBuilder：封装全局@Builder（ArkTS-Sta）](../ui/state-management/arkts-static-wrapBuilder.md)
+      - [rememberVariable: \@Builder内部状态（ArkTS-Sta）](../ui/state-management-static/arkts-static-remembervariable.md)
       - [mutableBuilder：实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md) 
+      - [applyStyles：定义组件重用样式（ArkTS-Sta）](../ui/state-management/arkts-apply-styles.md)
       - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
       - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
+      - [Function-with-Receiver：定义扩展组件样式（ArkTS-Sta）](../ui/state-management/arkts-function-with-receiver.md)
       - [stateStyles：多态样式](state-management/arkts-statestyles.md)
       - [@AnimatableExtend装饰器：定义可动画属性](state-management/arkts-animatable-extend.md)
     - [@Require装饰器：校验构造传参](state-management/arkts-require.md)
@@ -82,8 +94,39 @@
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
-      - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
-      - [!!语法：双向绑定](state-management/arkts-new-binding.md)
+      - 动态ArkTS<!--arkts-ui-syntactic-sugar-dynamic-->
+        - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
+        - [!!语法：双向绑定](state-management/arkts-new-binding.md)
+      - 静态ArkTS<!--arkts-ui-syntactic-sugar-static-->
+        - [$$()语法：系统组件双向同步](state-management/arkts-two-way-sync-static.md)
+    - 静态ArkTS的状态管理<!--arkts-state-management-v1-static-->
+      - 状态管理（V1）<!--arkts-state-management-v1-->
+        - 管理组件拥有的状态<!--arkts-component-state-management-->
+          - [\@State装饰器：组件内状态](state-management-static/arkts-static-state.md)
+          - [\@PropRef装饰器：父子单向同步](state-management-static/arkts-static-propref.md)
+          - [\@Link装饰器：父子双向同步](state-management-static/arkts-static-link.md)
+          - [\@Provide装饰器和\@Consume装饰器：与后代组件双向同步](state-management-static/arkts-static-provide-and-consume.md)
+          - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management-static/arkts-static-observed-and-objectlink.md)
+          - [\@Watch装饰器：状态变量更改通知](state-management-static/arkts-static-watch.md)
+        - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
+          - [\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
+        - 管理应用拥有的状态<!--arkts-application-state-management-->
+          - [LocalStorage：页面级UI状态存储](state-management-static/arkts-static-localstorage.md)
+          - [AppStorage：应用全局的UI状态存储](state-management-static/arkts-static-appstorage.md)
+          - [PersistentStorage：持久化存储UI状态](state-management-static/arkts-static-persiststorage.md)
+          - [Environment：设备环境查询](state-management-static/arkts-static-environment.md)
+      - 状态管理（V2）<!--arkts-state-management-v2-->
+        - 管理组件拥有的状态<!--arkts-component-state-management-v2-->
+          - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
+          - [\@Param装饰器：组件外部输入](state-management-static/arkts-static-new-param.md)
+            - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
+          - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
+          - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
+          - [\@Env：环境变量](state-management-static/arkts-static-new-env.md)
+        - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
+          - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
+          - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
+          - [\@SyncMonitor装饰器：状态变量修改同步监听](state-management-static/arkts-static-new-syncmonitor.md)
     - 状态管理V1-V2迁移指导<!--arkts-v1-v2-guide-->
       - [V1-V2迁移概述](state-management/arkts-v1-v2-migration.md)
       - 状态管理V1向V2迁移场景<!--arkts-state-management-v1-v2-migration-guide-->
@@ -109,6 +152,8 @@
     - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
     - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
     - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
+  - 渲染控制（ArkTS-Sta）<!--arkts-rendering-control-static-->
+    - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量](arkts-env-system-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
@@ -243,6 +288,7 @@
       - [自定义组件节点 (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
+      - [自定义声明式节点 (BuilderNode)(ArkTS-Sta)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
       - [设置自定义节点跨语言属性](arkts-user-defined-arktsNode-crossLanguage.md)
     - 自定义绘制<!--arkts-draw-->
       - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
@@ -274,15 +320,21 @@
     <!--DelEnd-->
   - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
     - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
+      - [UI接口适配](arkts-sta-deprecated-ui-apis.md)
       - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
       - [UI组件适配（路由与导航）](arkts-sta-deprecated-router-and-navigation.md)
       - [UI组件适配（滚动与滑动）](arkts-sta-deprecated-scroll-and-swipe.md)
       - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
+      - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
   - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
       - [在ArkTS-Sta中使用ArkTS-Dyn的组件导航（Navigation）](arkts-sta-interop-dyn-navigation.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的资源（Resource）](arkts-sta-interop-dyn-resource.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的组件导航（Navigation）](arkts-dyn-interop-sta-navigation.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](arkts-dyn-interop-sta-animator.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](arkts-dyn-interop-sta-resource.md)
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
@@ -405,6 +457,8 @@
   - [UI预览](ui-ide-previewer.md)
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
+    - [UI并行化创建组件树（ArkTS-Sta）](ui-parallel-components.md)
+    - [BuilderNode并行化构建和更新节点树（ArkTS-Sta）](ui-parallel-buildernode.md)
   - UI开发常见问题<!--ui-development-faq-->
     - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)

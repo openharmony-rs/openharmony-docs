@@ -449,8 +449,9 @@ Web页面场景下，全局滚动条模式。
 
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
-| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条。 |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条，可以拖拽。 |
 | FORCE_DISPLAY_SCROLLBAR    | 1 | 常驻滚动条。 |
+| OVERLAY_VISUAL_SCROLLBAR    | 2 | 非常驻滚动条，不可以拖拽。<br/>**起始版本：** 26.0.0 |
 
 ## WebBlanklessErrorCode<sup>20+</sup>
 
@@ -489,15 +490,16 @@ Web页面场景下，全局滚动条模式。
 
 ## ArkWebEngineVersion<sup>20+</sup>
 
-ArkWeb内核版本，请参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)。
+ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)，[M132内核在OpenHarmony 7.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| SYSTEM_DEFAULT   | 0     | 系统默认内核，OpenHarmony 6.0版本默认为M132。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| SYSTEM_DEFAULT   | 0     | 系统默认内核，OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M144。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
 | M114             | 1     | OpenHarmony 6.0版本的遗留内核。开发者可选择此遗留内核，若系统版本上不存在此内核则设置无效。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
-| M132             | 2     | OpenHarmony 6.0版本的常青内核，M132为此版本的默认内核。若系统版本上不存在此内核则设置无效。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| M132             | 2     | OpenHarmony 6.0版本的常青内核（OpenHarmony 7.0版本的遗留内核），M132为OpenHarmony 6.0版本的默认内核。若系统版本上不存在此内核则设置无效。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
+| M144             | 3     | OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内核。若系统版本上不存在此内核则设置无效。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
 | ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 常青内核，系统的最新内核。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony开发套件（基于API 23）及之后所有系统版本都生效。 <br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
 
 **表1** 常青内核与遗留内核含义说明

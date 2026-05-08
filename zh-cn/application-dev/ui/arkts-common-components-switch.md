@@ -18,7 +18,7 @@ Toggle通过调用[ToggleOptions](../reference/apis-arkui/arkui-ts/ts-basic-comp
 Toggle(options: { type: ToggleType, isOn?: boolean })
 ```
 
-其中，ToggleType为开关类型，包括Button、Checkbox和Switch，isOn为切换按钮的状态。
+其中，[ToggleType](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggletype枚举说明)为开关类型，包括Button、Checkbox和Switch，isOn为切换按钮的状态。
 
 API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
@@ -72,7 +72,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
 ## 自定义样式
 
-- 通过selectedColor属性设置Toggle打开选中后的背景颜色。
+- 通过[selectedColor](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#selectedcolor)属性设置Toggle打开选中后的背景颜色。
 
   <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
   
@@ -95,7 +95,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
   ![zh-cn_image_0000001563060657](figures/zh-cn_image_0000001563060657.png)
 
-- 通过switchPointColor属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
+- 通过[switchPointColor](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#switchpointcolor)属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
 
   <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->  
   
@@ -113,7 +113,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
 ## 添加事件
 
-除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Toggle还用于选中和取消选中后触发某些操作，可以绑定onChange事件来响应操作后的自定义行为。
+除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Toggle还用于选中和取消选中后触发某些操作，可以绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#onchange)事件来响应操作后的自定义行为。
 
 
 <!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  

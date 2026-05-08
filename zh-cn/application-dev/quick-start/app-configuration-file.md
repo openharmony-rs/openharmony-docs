@@ -61,7 +61,10 @@
       "com.ohos.note"
     ],
     "startMode": "mainTask",
-    "buildVersion": "1.0.0"
+    "buildVersion": "1.0.0",
+    "allowListenBundleChangedEvent": [
+      "5628971256935874952"
+    ]
   }
 }
 ```
@@ -76,7 +79,7 @@ app.json5配置文件包含以下标签。
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | bundleName | 标识应用的Bundle名称，用于标识应用的唯一性。命名规则如下&nbsp;：<br/>-&nbsp;必须为以点号（.）分隔的字符串，且至少包含三段，每段中仅允许使用英文字母、数字、下划线（_）。<br/>-&nbsp;首段以英文字母开头，非首段以数字或英文字母开头，每一段以数字或者英文字母结尾。<br/>-&nbsp;不允许多个点号（.）连续出现。<br/>-&nbsp;字符串最小长度为7字节，最大长度128字节。<br/>-&nbsp;推荐采用反域名形式命名（如“com.example.demo”，建议第一级为域名后缀com，第二级为厂商/个人名，第三级为应用名，也可以多级）。 | 字符串 | 该标签不可缺省。 |
-| bundleType| 标识应用的Bundle类型。支持的取值如下：<br/>-&nbsp;app：当前Bundle为应用。<br/>-&nbsp;atomicService：当前Bundle为原子化服务。<br/>-&nbsp;shared：当前Bundle为共享库应用，仅支持系统应用配置，三方应用配置后应用无法安装。<br/>-&nbsp;appService：当前Bundle为系统级共享库应用，仅系统应用生效。<br/>-&nbsp;appPlugin：当前Bundle为应用的插件包。从API version 19开始，支持该标签。 | 字符串| 该标签可缺省，缺省值为app。 |
+| bundleType| 标识应用的Bundle类型。支持的取值如下：<br/>-&nbsp;app：当前Bundle为应用。<br/>-&nbsp;atomicService：当前Bundle为原子化服务。<br/>-&nbsp;shared：当前Bundle为共享库应用，仅支持系统应用配置，三方应用配置后应用无法安装。<br/>-&nbsp;appService：当前Bundle为系统级共享库应用，仅系统应用生效。<br/>-&nbsp;appPlugin：当前Bundle为应用的插件包。从API version 19开始，支持该标签。<br/>-&nbsp;skill：当前Bundle为技能包应用，用于封装AI代理的技能能力，可被其他应用发现和调用。配置为skill类型时，应用只允许包含1个模块，且模块的type必须配置为skill，即module.json5中的type字段需配置为skill，具体使用指导请参考模块的[type](./module-configuration-file.md#配置文件标签)字段。从API版本26.0.0开始，支持该标签。 | 字符串| 该标签可缺省，缺省值为app。 |
 | debug | 标识应用是否可调试。<br/>-&nbsp;true：可调试，一般用于开发阶段。<br/>-&nbsp;false：不可调试，一般用于发布阶段。 | 布尔值 | 由DevEco Studio编译构建时生成。该标签可缺省，缺省值为false。 |
 | icon | 标识应用的图标，取值为图标资源文件的索引。支持配置单层图标和分层图标，配置规则和示例请参考[配置应用图标和名称](layered-image.md)。 | 字符串 | 该标签不可缺省。 |
 | label | 标识应用的名称，取值为字符串资源的索引，以支持多语言，字符串长度不超过63字节，具体请参考[配置应用图标和名称](layered-image.md) 。 | 字符串 | 该标签不可缺省。 |
@@ -115,6 +118,7 @@ app.json5配置文件包含以下标签。
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该标签。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该标签仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
 | buildVersion | 标识应用的构建版本号，建议采用“A.B.C”三段式。三段式建议的含义如下：<br/>第一段：主版本号/Major，用于标识重大修改的版本，例如实现新的重大特性或重大变化。<br/>第二段：次版本号/Minor，用于表示实现较突出的特性，例如新特性添加或大问题修复。<br/>第三段：特性版本号/Feature，用于标识规划的新版本特性。<br/>**说明：**<br/>从API version 23开始，支持该标签。<br/>字符串格式要求如下：<br/>-&nbsp;字符串最小长度为1字节，最大长度18字节。<br/>-&nbsp;字符串由数字和'.'组成。<br/>-&nbsp;'.'的数量限制0到2个，不能以'.'开头和结尾，也不能相邻。<br/>-&nbsp;数字段可以为0，但不能以0开头，如"02"，"0123"。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | profileable | 标识是否允许[调优工具](../dfx/hiperf.md)对<!--RP3-->[Profile签名文件](../security/app-provision-structure.md)类型为release<!--RP3End-->的应用进行性能分析。<br/>-&nbsp;true：允许调优工具对应用进行性能分析。<br/>-&nbsp;false：不允许调优工具应用进行性能分析。<br/>**说明：**<br/>从API version 24开始，支持该标签。<br/>仅当bundleType为app或atomicService时，可以配置该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| allowListenBundleChangedEvent | 配置允许监听当前应用的安装、更新、卸载和清理缓存公共事件的三方应用列表。<br/>一个数组元素即为一个应用程序的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。<br/>仅当<!--RP4-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-distribution-type为enterprise<!--RP4End-->时，该配置生效。<br/>仅当bundleType为app或atomicService时，可以配置该标签，其他类型配置该标签会导致编译失败。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | distributedNotificationEnabled<sup>(deprecated)</sup> | 标识应用是否开启分布式通知，当开启分布式通知时，同一分布式组网下的两个设备（A和B），当设备A收到一条消息时，设备B会收到一条分布式消息用于设备B的使用者去查看设备A的消息。<br/>-&nbsp;true：开启。<br/>-&nbsp;false：不开启。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | entityType<sup>(deprecated)</sup> | 标识应用的类别，包括：<br/>-&nbsp;game：游戏类。<br/>-&nbsp;media：影音类。<br/>-&nbsp;communication：社交通信类。<br/>-&nbsp;news：新闻类。<br/>-&nbsp;travel：出行类。<br/>-&nbsp;utility：工具类。<br/>-&nbsp;shopping：购物类。<br/>-&nbsp;education：教育类。<br/>-&nbsp;kids：少儿类。<br/>-&nbsp;business：商务类。<br/>-&nbsp;photography：拍摄类。<br/>-&nbsp;unspecified：其他，不属于上述类。<br/>**说明：** <br/>从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省为unspecified。 |
 | keepAlive<sup>(deprecated)</sup> | 标识应用程序是否保持活动状态。此属性仅在使用系统应用或特权应用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |

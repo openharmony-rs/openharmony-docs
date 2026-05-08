@@ -19,6 +19,8 @@
 普通静态网页，可以在onPageEnd等Web组件生命周期回调和Web性能指标回调中通过getPageHeight获取网页内容的高度。
 
 应用侧代码
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -44,11 +46,41 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+``` TypeScript
+'use static'
+
+import { $rawfile, Entry, Component, Row, Web, Column, RenderMode } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Row() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPageEnd(() => {
+            console.info("page height: onPageEnd: " + this.controller.getPageHeight());
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+``` 
+
 ## 复杂动态网页使用JSBridge传递特定回调
 
 动态网页可以通过JSBridge传递特定回调，通知到应用侧调用。
 
 应用侧代码
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -78,6 +110,51 @@ struct Index {
           .javaScriptAccess(true)
           .javaScriptProxy({
             object: this.jsbObj,
+            name: "jsbObj",
+            methodList: ["notifyToGet"],
+            controller: this.controller
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+``` TypeScript
+'use static'
+
+import { $rawfile, Entry, Component, Row, Web, Column, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+export class TestClass {
+  testController: webview.WebviewController;
+
+  constructor(controller: webview.WebviewController) {
+    this.testController = controller;
+  }
+
+  notifyToGet(): void {
+    console.info("page height: " + this.testController.getPageHeight());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State jsbObj: TestClass = new TestClass(this.controller);
+
+  build() {
+    Row() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .javaScriptProxy({
+            jsObject: this.jsbObj,
             name: "jsbObj",
             methodList: ["notifyToGet"],
             controller: this.controller
@@ -193,6 +270,8 @@ struct Index {
 在无法使用JSBridge的场景下，可以通过添加setTimeout等函数来延迟获取当前页面的高度。具体的延迟时间可以根据网页的复杂度来确定。
 
 应用侧代码
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -209,6 +288,36 @@ struct Index {
           .onPageEnd(() => {
             setTimeout(()=>{
                 console.info("page height: onPageEnd: setTimeout: " + this.controller.getPageHeight());
+            },2000)
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+``` TypeScript
+'use static'
+
+import { $rawfile, Entry, Component, Row, Web, Column } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Row() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onPageEnd(() => {
+            setTimeout(()=>{
+              console.info("page height: onPageEnd: setTimeout: " + this.controller.getPageHeight());
             },2000)
           })
       }

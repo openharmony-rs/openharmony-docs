@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 [FA模型](ability-terminology.md#fa模型)中的DataAbility对应[Stage模型](ability-terminology.md#stage模型)中的DataShareExtensionAbility。
 

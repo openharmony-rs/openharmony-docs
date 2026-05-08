@@ -14,11 +14,15 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## keyboardShortcut
 
-keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?: () => void): T
+ArkTS-Dyn: keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?: () => void): T
+
+ArkTS-Sta: keyboardShortcut(value: string | FunctionKey | undefined, keys: Array\<ModifierKey> | undefined, action?: () => void): this
 
 设置组件的自定义组合键。
 
@@ -26,19 +30,23 @@ keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明                                     |
 | ----- | ------------------------------------- | ---- | ---------------------------------------- |
-| value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10)。<br />空字符串意为取消快捷键绑定。<br/> |
-| keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | 是 | 热键组合。<br />仅当value为[FunctionKey](ts-appendix-enums.md#functionkey10)的情况下keys的值可以为空。<br/> |
+| value |  ArkTS-Dyn: string \| [FunctionKey](ts-appendix-enums.md#functionkey10)<br/> ArkTS-Sta: string \| [FunctionKey](ts-appendix-enums.md#functionkey10) \| undefined | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10)。<br/>空字符串意为取消快捷键绑定。<br/>传入undefined意为取消快捷键绑定。 |
+| keys  | ArkTS-Dyn: Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)><br/> ArkTS-Sta: Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> \| undefined | 是 | 热键组合。<br />仅当value为[FunctionKey](ts-appendix-enums.md#functionkey10)的情况下keys的值可以为空。<br/>传入undefined意为取消快捷键绑定。 |
 | action  | () => void    | 否    | 组合快捷键触发成功后的自定义事件回调。<br/>                               |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 快捷键使用注意事项
 
