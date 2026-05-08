@@ -317,12 +317,16 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 ### 示例1（SecurityUIExtensionComponent基础使用）
 
+本示例展示了SecurityUIExtensionComponent的基本用法，通过配置Want拉起指定Ability的UIExtensionAbility，并在连接异常时通过onError回调获取错误信息。
+
+**起始版本：** 26.0.0
+
 ArkTS-Dyn示例：
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -369,7 +373,7 @@ ArkTS-Sta示例：
 
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { State } from '@ohos.arkui.stateManagement'
 import { Column, Button, Component, Entry, Color, SecurityUIExtensionComponent } from '@ohos.arkui.component';
 
