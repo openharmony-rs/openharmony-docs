@@ -8,7 +8,7 @@
 
 SecurityUIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI，展示的内容在另一个进程中运行，本应用并不参与其中的布局和渲染。
 
-通常用于有进程隔离诉求的模块化开发场景，SecurityUIExtensionComponent当前仅支持拉起PhotoPicker类型的UIExtensionAbility。
+通常用于有进程隔离诉求的模块化开发场景，SecurityUIExtensionComponent当前仅支持拉起[PhotoPicker](../../apis-media-library-kit/ohos-file-PhotoPickerComponent.md)类型的UIExtensionAbility。
 
 > **说明：**
 >
@@ -40,7 +40,7 @@ ArkTS-Sta: SecurityUIExtensionComponent(want: [Want](../../apis-ability-kit/js-a
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 是 | 要加载的Ability信息。 |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 是 | 要加载的Ability信息。通过bundleName和abilityName共同确定被拉起的UIExtensionAbility，同时需要在parameters中配置ability.want.params.uiExtensionType字段指定UIExtensionAbility的类型，当前仅支持"sysPicker/photoPicker"。 |
 | options | [SecurityUIExtensionOptions](#securityuiextensionoptions) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
 
 ## SecurityUIExtensionOptions
