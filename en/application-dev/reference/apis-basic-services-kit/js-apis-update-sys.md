@@ -358,7 +358,7 @@ try {
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-Obtains the description file of the new version. This API uses an asynchronous callback to return the result.
+Obtains the description of the new version. This API uses an asynchronous callback to return the result.
 
 **System API:** This is a system API.
 
@@ -372,7 +372,7 @@ Obtains the description file of the new version. This API uses an asynchronous c
 | ------------------ | ---------------------------------------- | ---- | -------------- |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.        |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | Yes   | Options of the description file.       |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the description file of the new version.|
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the description of the new version.|
 
 **Error codes**
 
@@ -423,7 +423,7 @@ try {
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-Obtains the description file of the new version. This API uses a promise to return the result.
+Obtains the description of the new version. This API uses a promise to return the result.
 
 **System API:** This is a system API.
 
@@ -442,7 +442,7 @@ Obtains the description file of the new version. This API uses a promise to retu
 
 | Type                                      | Description                 |
 | ---------------------------------------- | ------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the description file of the new version.|
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the description of the new version.|
 
 **Error codes**
 
@@ -600,7 +600,7 @@ try {
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-Obtains the description file of the current version. This API uses an asynchronous callback to return the result.
+Obtains the description of the current version. This API uses an asynchronous callback to return the result.
 
 **System API:** This is a system API.
 
@@ -613,7 +613,7 @@ Obtains the description file of the current version. This API uses an asynchrono
 | Name               | Type                                      | Mandatory  | Description             |
 | ------------------ | ---------------------------------------- | ---- | --------------- |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | Yes   | Options of the description file.         |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the description file of the current version.|
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the description of the current version.|
 
 **Error codes**
 
@@ -657,7 +657,7 @@ try {
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-Obtains the description file of the current version. This API uses a promise to return the result.
+Obtains the description of the current version. This API uses a promise to return the result.
 
 **System API:** This is a system API.
 
@@ -675,7 +675,7 @@ Obtains the description file of the current version. This API uses a promise to 
 
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the description file of the current version.|
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the description of the current version.|
 
 **Error codes**
 
@@ -1594,7 +1594,7 @@ Sets the update policy. This API uses an asynchronous callback to return the res
 | Name     | Type                             | Mandatory  | Description           |
 | -------- | ------------------------------- | ---- | ------------- |
 | policy   | [UpgradePolicy](#upgradepolicy) | Yes   | Update policy.         |
-| callback | AsyncCallback\<void>            | Yes   | Callback used to return result. If the update policy is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void>            | Yes   | Callback used to return the result. If the upgrade policy is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1712,7 +1712,7 @@ Terminates the update. This API uses an asynchronous callback to return the resu
 
 | Name     | Type                  | Mandatory  | Description                                    |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the update cache is cleared successfully, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the update is terminated successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1912,7 +1912,7 @@ Clears the user data partition. This API uses an asynchronous callback to return
 
 | Name     | Type                  | Mandatory  | Description                                    |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If factory reset fails, **err** is an error object and a callback is returned. If the operation is successful, **err** is undefined and no callback is returned.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the factory reset is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
