@@ -556,7 +556,6 @@ enum OH_AVOutputFormat
 | AV_OUTPUT_FORMAT_AAC = 11 | 输出文件格式为AAC格式。<br>**起始版本：** 18 |
 | AV_OUTPUT_FORMAT_FLAC = 12 | 输出文件格式为FLAC格式。<br>**起始版本：** 20 |
 | AV_OUTPUT_FORMAT_OGG = 13 | 输出文件格式为OGG格式。<br>**起始版本：** 23 |
-| AV_OUTPUT_FORMAT_FLV = 14 | 输出文件格式为FLV格式。<br>**起始版本：** 26.0.0 |
 
 ### OH_AVSeekMode
 

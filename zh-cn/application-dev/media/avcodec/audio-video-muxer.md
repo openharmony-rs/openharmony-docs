@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成音视频封装，即将音频、视频等编码后的媒体数据，按一定的格式存储到文件里。
 
-当前支持的封装能力请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据封装)。
+当前支持的封装能力请参考AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
 
 <!--RP2--><!--RP2End-->
 
@@ -42,11 +42,11 @@ target_link_libraries(sample PUBLIC libnative_media_avmuxer.so)
 target_link_libraries(sample PUBLIC libnative_media_core.so)
 ```
 
-### 开发步骤
+### mp4格式封装开发步骤
 
-参考以下示例代码，完成音视频封装的全流程。以封装mp4格式的音视频文件为例。
+参考以下示例代码，完成音视频封装mp4的全流程。
 
-不同的封装格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据封装)。
+不同的封装格式需要配置的key请参考AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
 
 1. 添加头文件。
 
@@ -77,21 +77,21 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 4. 添加文件级数据。
 
-   文件级数据已定义的key详见[AVCodec支持的格式](avcodec-support-formats.md#媒体数据封装)。
+   文件级数据已定义的key详见AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
 
-   用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API20开始增加支持uint8_t*。
+   用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API version 20开始增加支持uint8_t*。
 
    > **说明：**
    >
    > 已定义的key必须在OH_AVMuxer_Start()前设置，用户自定义的key可以在OH_AVMuxer_Stop()前设置。
 
    ```c++
-   OH_AVFormat *format = OH_AVFormat_Create(); // 用OH_AVFormat_Create创建format。
+   OH_AVFormat *format = OH_AVFormat_Create(); // 使用OH_AVFormat_Create创建format。
 
    // 设置已定义的key。
-   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00:000000Z"); // 从API14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
-   OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test"); // 从API20开始支持设置评论。值类型为string。
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_MOOV_FRONT, 1); // 从API20开始支持设置moov元数据是否前置。默认值为0，设置1代表前置。
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00:000000Z"); // 从API version 14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test"); // 从API version 20开始支持设置评论。值类型为string。
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_MOOV_FRONT, 1); // 从API version 20开始支持设置moov元数据是否前置。默认值为0，设置1代表前置。
    OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LATITUDE, 39.9); // 从API version 24开始支持设置纬度，值类型为float，范围为[-90.0, 90.0]。当需要设置地理位置信息时，纬度和经度是必选的，不能仅设置一种。
    OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LONGITUDE, 116.3); // 从API version 24开始支持设置经度，值类型为float，范围为[-180.0, 180.0]。当需要设置地理位置信息时，纬度和经度是必选的，不能仅设置一种。
    OH_AVFormat_SetFloatValue(format, OH_MD_KEY_ALTITUDE, 44.4); // 从API version 24开始支持设置海拔，值类型为float，设置地理位置信息时海拔是可选的。
@@ -99,9 +99,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    // 设置用户自定义key（需要com.openharmony.开头）。
    OH_AVFormat_SetIntValue(format, "com.openharmony.testInt", 1024); // 值类型为int32_t。
    OH_AVFormat_SetFloatValue(format, "com.openharmony.testFloat", 1.024); // 值类型为float。
-   OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256。
+   OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256个字符。
    uint8_t testData[] = {1, 2, 3};
-   OH_AVFormat_SetBuffer(format, "com.openharmony.testBuffer", testData, sizeof(testData)); // 从API20开始支持值类型为uint8_t*。
+   OH_AVFormat_SetBuffer(format, "com.openharmony.testBuffer", testData, sizeof(testData)); // 从API version 20开始支持值类型为uint8_t*。
 
    int ret = OH_AVMuxer_SetFormat(muxer, format); // 设置封装的format。
    if (ret != AV_ERR_OK) {
@@ -118,7 +118,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    int audioTrackId = -1;
    uint8_t *buffer = ...; // 编码config data，如果没有可以不传。
    size_t size = ...;  // 编码config data的长度，根据实际情况配置。
-   OH_AVFormat *formatAudio = OH_AVFormat_Create(); // 用OH_AVFormat_Create创建format，这里以封装44100Hz采样率、2声道的AAC-LC音频为例。
+   OH_AVFormat *formatAudio = OH_AVFormat_Create(); // 使用OH_AVFormat_Create创建format，这里以封装44100Hz采样率、2声道的AAC-LC音频为例。
    OH_AVFormat_SetStringValue(formatAudio, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_AAC); // 必填。
    OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_SAMPLE_RATE, 44100); // 必填。
    OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_AUD_CHANNEL_COUNT, 2); // 必填。
@@ -203,7 +203,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    >
    > 设置OH_MD_KEY_TRACK_TYPE时，值为MEDIA_TYPE_AUXILIARY代表添加辅助轨。<br>
    > 设置OH_MD_KEY_TRACK_REFERENCE_TYPE时，值必须为"hint"、"cdsc"、"font"、"hind"、"vdep"、"vplx"、"subt"、"thmb"、"auxl"、"cdtg"、"shsc"或"aest"其中一项。<br>
-   > 设置OH_MD_KEY_TRACK_DESCRIPTION时，值必须为"com.openharmony."开头且长度不超过256的字符串。<br>
+   > 设置OH_MD_KEY_TRACK_DESCRIPTION时，值必须为"com.openharmony."开头且长度不超过256个字符的字符串。<br>
    > 设置OH_MD_KEY_REFERENCE_TRACK_IDS时，track id值必须大于等于0，且必须是已经存在的track id。
 
    **添加音频辅助轨**
@@ -283,7 +283,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 9. 调用OH_AVMuxer_Start()开始封装。
 
    ```c++
-   // 调用start，写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
+   // 调用start写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
    if (OH_AVMuxer_Start(muxer) != AV_ERR_OK) {
        // 异常处理。
    }
@@ -337,11 +337,13 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     close(fd); // 关闭文件描述符。
     ```
 
-### FLV格式封装开发步骤
+### flv格式封装开发步骤
 
-以封装flv格式的音视频文件为例。FLV格式仅支持一个音频轨和一个视频轨，不支持设置旋转角度、封面轨和辅助轨。
+从API版本26.0.0开始支持flv格式封装。
 
-FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据封装)。
+flv格式仅支持一个音频轨和一个视频轨，不支持设置旋转角度、封面轨和辅助轨。
+
+flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
 
 1. 添加头文件。
 
@@ -358,32 +360,32 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    ```c++
    // 以读写方式创建fd。
    int32_t fd = open("test.flv", O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
-   // 设置封装格式为FLV。
+   // 设置封装格式为flv。
    OH_AVMuxer *muxer = OH_AVMuxer_Create(fd, AV_OUTPUT_FORMAT_FLV);
    ```
 
-3. FLV格式不支持调用OH_AVMuxer_SetRotation()设置旋转角度，调用将返回错误。
+3. flv格式不支持调用OH_AVMuxer_SetRotation()设置旋转角度，调用将返回错误。
 
 4. 添加文件级数据。
 
-   文件级数据已定义的key详见[AVCodec支持的格式](avcodec-support-formats.md#媒体数据封装)。
+   文件级数据已定义的key详见AVCodec支持的格式中的[媒体数据封装](avcodec-support-formats.md#媒体数据封装)。
 
-   用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API20开始增加支持uint8_t*。
+   用户自定义的key必须以"com.openharmony."为开头。值类型为string。
 
    > **说明：**
    >
-   > 已定义的key必须在OH_AVMuxer_Start()前设置，用户自定义的key可以在OH_AVMuxer_Stop()前设置。
-   > FLV格式不支持OH_MD_KEY_ENABLE_MOOV_FRONT。
+   > - 已定义的key必须在OH_AVMuxer_Start()前设置，用户自定义的key可以在OH_AVMuxer_Stop()前设置。
+   > - flv格式不支持OH_MD_KEY_ENABLE_MOOV_FRONT。
 
    ```c++
-   OH_AVFormat *format = OH_AVFormat_Create(); // 用OH_AVFormat_Create创建format。
+   OH_AVFormat *format = OH_AVFormat_Create(); // 使用OH_AVFormat_Create创建format。
 
    // 设置已定义的key。
-   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00:000000Z"); // 从API14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
-   OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test"); // 从API20开始支持设置评论。值类型为string。
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00:000000Z"); // 从API version 14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test"); // 从API version 20开始支持设置评论。值类型为string。
 
    // 设置用户自定义key（需要com.openharmony.开头）。
-   OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256。
+   OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // 值类型为string，长度不超过256个字符。
 
    int ret = OH_AVMuxer_SetFormat(muxer, format); // 设置封装的format。
    if (ret != AV_ERR_OK) {
@@ -413,7 +415,7 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    }
    ```
 
-<!--RP3--><!--RP3End-->
+   <!--RP3--><!--RP3End-->
 
 6. 添加视频轨（仅支持添加一个视频轨）。
 
@@ -433,7 +435,7 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    }
    ```
 
-   当视频轨需要设置色彩信息时，在OH_AVMuxer_AddTrack前额外设置色彩相关key：
+   当视频轨需要设置色彩信息时，在使用OH_AVMuxer_AddTrack()之前先设置色彩信息相关key。
 
    ```c++
    OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // 选填。
@@ -445,7 +447,7 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
 7. 调用OH_AVMuxer_Start()开始封装。
 
    ```c++
-   // 调用start，写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
+   // 调用start写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
    if (OH_AVMuxer_Start(muxer) != AV_ERR_OK) {
        // 异常处理。
    }
@@ -456,15 +458,15 @@ FLV格式需要配置的key请参考[AVCodec支持的格式](avcodec-support-for
    封装数据包括视频、音频数据。
 
    ```c++
-   // start后，才能开始写入数据。以下以写入一帧48000Hz采样率、1024采样点的Audio Vivid音频数据为例。
-   int32_t size = 1024; // 当前编码帧的数据长度。
+   // start后，才能开始写入数据。以下以写入一帧48000Hz采样率、1024采样点的音频数据为例。
+   int32_t size = 1024; // 当前编码帧的数据长度，单位为字节。
    OH_AVBuffer *sample = OH_AVBuffer_Create(size); // 创建AVBuffer。
    // 通过OH_AVBuffer_GetAddr(sample)往sampleBuffer里写入数据参考OH_AVBuffer的使用方法。
 
    // 创建buffer info。
    OH_AVCodecBufferAttr attr = {0};
-   attr.pts = 0; // 当前数据的开始播放的时间，单位微秒，相对时间。首帧为0，后续按 采样点数*1000000/采样率 递增。
-   attr.size = size; // 当前数据的长度。
+   attr.pts = 0; // 当前数据的开始播放的时间，单位微秒，相对时间。首帧为0，后续按“采样点数*1000000/采样率”递增。
+   attr.size = size; // 当前数据的长度，单位为字节。
    attr.offset = 0; // 偏移，一般为0。
    attr.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME; // 当前数据的标志。具体参考OH_AVCodecBufferFlags。
    attr.flags |= AVCODEC_BUFFER_FLAGS_CODEC_DATA; // 当annex-b格式的avc/hevc包含codec config的标志。
