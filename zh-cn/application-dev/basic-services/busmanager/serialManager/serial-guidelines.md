@@ -153,32 +153,24 @@
 3. 打开串口设备。
 
    <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 使用默认配置打开串口
-   let port: serial.SerialPort = ports[0];
    try {
-   await port.open();
-   console.info('Open serial port success');
-   } catch (error) {
-   let e = error as BusinessError;
-   console.error(`Failed to open serial port: ${JSON.stringify(e)}`)
-   return;
-   }
-
-   // 也可指定配置参数打开串口
-   try {
-     await port.open({
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     const config: serial.SerialConfigs = {
        baudRate: 115200,
        dataBits: serial.DataBits.EIGHT,
        stopBits: serial.StopBits.ONE,
-       parity: serial.Parity.NONE,
-       rtscts: false
-     });
-     console.info('Open serial port with config success');
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to open serial port: ${JSON.stringify(e)}`);
+       parity: serial.Parity.NONE
+     };
+     await this.port.open(config);
+     console.info(`${TAG} open success`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} open failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
