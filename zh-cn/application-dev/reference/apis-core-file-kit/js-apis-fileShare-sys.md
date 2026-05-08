@@ -320,7 +320,7 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201      | Permission verification failed.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |
@@ -398,7 +398,7 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201      | Permission verification failed.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |
@@ -470,7 +470,7 @@ revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201      | Permission verification failed.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |
