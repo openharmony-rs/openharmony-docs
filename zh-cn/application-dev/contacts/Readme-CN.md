@@ -3,9 +3,8 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @jiayanhong-hw-->
+<!--Designer: @yanghaoqian-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 - [Contacts Kit简介](contacts-intro.md)
 - [使用picker管理联系人](contacts-addcontactviaui.md)
-- [联系人管理（受限开放）](contacts-contactmanager.md)
