@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @@zhang_yixin13-->
+<!--Adviser: @zhang_yixin13-->
 
 输入事件注入模块，提供键盘和鼠标输入事件模拟能力。
 
