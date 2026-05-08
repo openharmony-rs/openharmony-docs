@@ -125,10 +125,9 @@
 1. 导入模块。
 
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 导入串口通信模块
-   import { serial, BusinessError } from "@kit.BasicServicesKit";
+   import { serial, BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 获取串口设备列表。
