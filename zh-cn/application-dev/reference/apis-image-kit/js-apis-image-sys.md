@@ -20,7 +20,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
- ## GainmapParams<sup>24+</sup>
+ ## GainmapParams<sup>26+</sup>
  	 
  Gainmap参数设置选项。
  	 
@@ -130,7 +130,7 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-## image.createPictureByHdrAndSdrPixelMap<sup>20+</sup>
+## image.createPictureByHdrAndSdrPixelMap<sup>26+</sup>
  	 
  createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, params: GainmapParams): Promise\<Picture>
  	 
