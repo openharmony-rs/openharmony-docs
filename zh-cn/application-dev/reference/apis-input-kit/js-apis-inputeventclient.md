@@ -436,34 +436,7 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, Button } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          inputEventClient.createMouseController()
-            .then(mouseController => {
-              return mouseController.pressButton(Button.LEFT);
-            })
-            .then(mouseController => {
-              return mouseController.releaseButton(Button.LEFT);
-            })
-            .then(() => {
-              console.info('Succeeded in releasing mouse button');
-            })
-            .catch(error => {
-              console.error(`Failed to release mouse button. Code: ${error.code}, message: ${error.message}.`);
-            });
-        })
-    }
-  }
-}
-```
+参见 [pressButton](#pressbutton) 示例。
 
 ### beginAxis
 
