@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @@zhang_yixin13-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
@@ -32,44 +32,63 @@ Input service exception.
 
 建议稍后重试。如果问题持续存在，请检查系统资源使用情况。
 
-## 4300001 按键状态错误
+## 4300001 状态错误
 
 **错误信息**
 
-The key has been pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
+状态错误，根据具体接口和场景有以下不同情况。
 
 **错误描述**
 
-当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
+该错误码在不同接口中表示不同的状态错误：
 
-**可能原因**
+- **pressKey 接口**：The key has been pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
 
-1. 按键已经被按下，且不是最近按下的按键。
-2. 已按下的按键数量超过了5个。
+  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
 
-**处理步骤**
+  **可能原因**：按键已经被按下且不是最近按下的按键，或已按下的按键数量超过了5个。
 
-1. 确保按键在释放状态下才能被按下。
-2. 如果按键已被按下，确保它是最近按下的按键。
-3. 确保同时按下的按键数量不超过5个。
+  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键；确保同时按下的按键数量不超过5个。
 
-## 4300001 按键未被按下
+- **releaseKey 接口**：The key has not been pressed.
 
-**错误信息**
+  当调用键盘控制器的releaseKey接口时，如果按键未被按下，会产生此错误码。
 
-The key has not been pressed.
+  **可能原因**：尝试抬起一个未被按下的按键。
 
-**错误描述**
+  **处理步骤**：确保只抬起已经被按下的按键。
 
-当调用键盘控制器的releaseKey接口时，如果按键未被按下，会产生此错误码。
+- **pressButton 接口**：The mouse button has been pressed.
 
-**可能原因**
+  当调用鼠标控制器的pressButton接口时，如果鼠标按键已被按下，会产生此错误码。
 
-尝试释放一个未被按下的按键。
+  **可能原因**：鼠标按键已经处于按下状态。
 
-**处理步骤**
+  **处理步骤**：确保鼠标按键在抬起状态下才能被按下。
 
-确保只释放已经被按下的按键。
+- **releaseButton 接口**：The mouse button has not been pressed.
+
+  当调用鼠标控制器的releaseButton接口时，如果鼠标按键未被按下，会产生此错误码。
+
+  **可能原因**：尝试抬起一个未被按下的鼠标按键。
+
+  **处理步骤**：确保只抬起已经被按下的鼠标按键。
+
+- **beginAxis 接口**：An axis event is in progress.
+
+  当调用鼠标控制器的beginAxis接口时，如果已有轴事件正在进行中，会产生此错误码。
+
+  **可能原因**：已经有一个轴事件序列正在进行，尚未结束。
+
+  **处理步骤**：确保在开始新的轴事件序列之前，先结束当前正在进行的轴事件序列。
+
+- **updateAxis/endAxis 接口**：No axis event is in progress.
+
+  当调用鼠标控制器的updateAxis或endAxis接口时，如果没有轴事件正在进行中，会产生此错误码。
+
+  **可能原因**：尝试更新或结束一个未开始的轴事件序列。
+
+  **处理步骤**：确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
 
 ## 4300002 显示器不存在
 
@@ -88,75 +107,3 @@ The display does not exist.
 **处理步骤**
 
 使用有效的显示器ID，可以通过显示管理接口查询可用的显示器列表。
-
-## 4300001 鼠标按键已被按下
-
-**错误信息**
-
-The mouse button has been pressed.
-
-**错误描述**
-
-当调用鼠标控制器的pressButton接口时，如果鼠标按键已被按下，会产生此错误码。
-
-**可能原因**
-
-鼠标按键已经处于按下状态。
-
-**处理步骤**
-
-确保鼠标按键在释放状态下才能被按下。
-
-## 4300001 鼠标按键未被按下
-
-**错误信息**
-
-The mouse button has not been pressed.
-
-**错误描述**
-
-当调用鼠标控制器的releaseButton接口时，如果鼠标按键未被按下，会产生此错误码。
-
-**可能原因**
-
-尝试释放一个未被按下的鼠标按键。
-
-**处理步骤**
-
-确保只释放已经被按下的鼠标按键。
-
-## 4300001 轴事件正在进行中
-
-**错误信息**
-
-An axis event is in progress.
-
-**错误描述**
-
-当调用鼠标控制器的beginAxis接口时，如果已有轴事件正在进行中，会产生此错误码。
-
-**可能原因**
-
-已经有一个轴事件序列正在进行，尚未结束。
-
-**处理步骤**
-
-确保在开始新的轴事件序列之前，先结束当前正在进行的轴事件序列。
-
-## 4300001 轴事件未在进行中
-
-**错误信息**
-
-No axis event is in progress.
-
-**错误描述**
-
-当调用鼠标控制器的updateAxis或endAxis接口时，如果没有轴事件正在进行中，会产生此错误码。
-
-**可能原因**
-
-尝试更新或结束一个未开始的轴事件序列。
-
-**处理步骤**
-
-确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
