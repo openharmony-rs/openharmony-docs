@@ -254,7 +254,9 @@ console.info(`cpuUsage = ${cpuUsage}`);
 
 ## hidebug.getServiceDump<sup>9+</sup>
 
-getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
+ArkTS-Dyn: getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
+
+ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 获取系统服务信息。
 
