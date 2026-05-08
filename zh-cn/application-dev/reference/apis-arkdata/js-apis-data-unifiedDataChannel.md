@@ -1542,7 +1542,7 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 | -------- | -------- | -------- | -------- | -------- |
 | htmlContent  | string | 否 | 否 | html格式内容。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。           |
 | plainContent  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 使用用于拖拽场景的URI来授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
