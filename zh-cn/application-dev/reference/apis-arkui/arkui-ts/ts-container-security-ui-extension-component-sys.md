@@ -366,10 +366,12 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 'use static'
+
 import { Want } from '@kit.AbilityKit';
-import { BusinessError, ErrorCallback } from '@ohos.base';
+import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
-import { Column, Button, Component, Entry, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement'
+import { Column, Button, Component, Entry, Color, SecurityUIExtensionComponent } from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -392,7 +394,8 @@ struct Index {
 
       SecurityUIExtensionComponent(this.want)
         .width('90%')
-        .height('90%').backgroundColor(Color.Green)
+        .height('90%')
+        .backgroundColor(Color.Green)
         .onError((error: BusinessError) => {
           this.message = 'Error: ' + JSON.stringify(error);
           hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
