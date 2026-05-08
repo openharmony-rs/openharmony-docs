@@ -193,11 +193,12 @@ struct Index {
       Text()
         .onClick(() => {
           inputEventClient.createKeyboardController()
-            .then(keyboardController => {
-              return keyboardController.pressKey(KeyCode.KEYCODE_A);
+            .then((keyboardController: inputEventClient.KeyboardController) => {
+              keyboardController.pressKey(KeyCode.KEYCODE_A);
+              return keyboardController;
             })
-            .then(keyboardController => {
-              return keyboardController.releaseKey(KeyCode.KEYCODE_A);
+            .then((keyboardController: inputEventClient.KeyboardController) => {
+              keyboardController.releaseKey(KeyCode.KEYCODE_A);
             })
             .then(() => {
               console.info('Succeeded in releasing key');
