@@ -1171,7 +1171,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1276,7 +1276,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1372,7 +1372,7 @@ stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;vo
 
 取消指定Id的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1458,7 +1458,7 @@ export default class EntryAbility extends UIAbility {
 | DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
 | AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。                 |
 | AUDIO_RECORDING         | 3    | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                    |
-| LOCATION                | 4    | 定位导航。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。                   |
+| LOCATION                | 4    | 定位导航。<br/>**原子化服务API：** 从AP版本 26.0.0开始，该接口支持在原子化服务中使用。                   |
 | BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。                  |
 | MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
 | VOIP<sup>13+</sup> | 8    | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
@@ -1839,14 +1839,14 @@ export default class EntryAbility extends UIAbility {
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
 | MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** <br/>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。                 |
-| MODE_AUDIO_PLAYBACK             | 2         | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 申请/更新MODE_AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。              |
+| MODE_AUDIO_PLAYBACK             | 2         | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 申请/更新MODE_AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。              |
 | MODE_AUDIO_RECORDING            | 3         | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
-| MODE_LOCATION                   | 4         | 定位导航。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。                   |
+| MODE_LOCATION                   | 4         | 定位导航。<br/>**原子化服务API：** 从AP版本 26.0.0开始，该接口支持在原子化服务中使用。                   |
 | MODE_BLUETOOTH_INTERACTION      | 5         | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。            |
-| MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。           |
+| MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。           |
 | MODE_VOIP                       | 8         | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
 | MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 |
-| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。             |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。<br/>**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。             |
 | MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>使用场景举例：应用在后台导出媒体文件、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 从API version 24开始，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)的应用开放。API version 23及之前版本，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放，已经申请该权限的应用在API version 24之后不受影响。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
 | MODE_NEARLINK | 14 | 星闪业务。<br/>使用场景举例：通过星闪传输文件时退后台。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
@@ -1860,10 +1860,10 @@ export default class EntryAbility extends UIAbility {
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。       |
-| SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。                   |
+| SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。<br/>**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。                   |
 | SUBMODE_LIVE_VIEW_NOTIFICATION  | 3    | 实况窗通知。            |
-| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。             |
-| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，通知类型为普通文本类型。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。             |
+| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。<br/>**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。             |
+| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，通知类型为普通文本类型。<br/>**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。             |
 | SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音，通知类型为普通文本通知。            |
 | SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 录屏，通知类型为普通文本通知。            |
 | SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，通知类型为普通文本通知。            |
