@@ -315,8 +315,7 @@ interface Rect {
 
      可通过响应式环境变量装饰器@Env(@Env(SystemProperties.WINDOW_AVOID_AREA)或@Env(SystemProperties.WINDOW_AVOID_AREA_PX))获取并监听当前窗口的避让区域信息。
 
-     当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。
-     示例代码如下：
+     当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。示例代码如下：
      ```ts
      // Index.ets
      import { window } from '@kit.ArkUI';
@@ -421,5 +420,5 @@ interface Rect {
    此例中UI颜色比较简单，故未对状态栏文字颜色、背景色进行设置，未对导航区域进行隐藏。
 
 | 未适配沉浸式布局与避让区 | 适配沉浸式布局与避让区 |
-  | -------- | -------- |
-  | ![未适配沉浸式布局与避让区](figures/avoid-area-before-adaptation.png) | ![适配沉浸式布局与避让区](figures/avoid-area-after-adaptation.png)|
+| -------- | -------- |
+| ![未适配沉浸式布局与避让区](figures/avoid-area-before-adaptation.png) | ![适配沉浸式布局与避让区](figures/avoid-area-after-adaptation.png)|
