@@ -581,10 +581,10 @@ xxx
 图片类型超出
 [xxx](figures/stepc4.raw)
 
-3. 链接中存在空格
+链接中存在空格
 [链接中存在空格](../health-service-kit       /cross-file.md)
 
-4. 链接中存在br标签
+链接中存在br标签
 [xxx<br>](xxxxxx)
 [xxx<br/>](xxxxxx)
 ```
@@ -605,7 +605,7 @@ Readme中，节点必须有urlpath
 - 存在具体文档的使用文档名称
 
 > **说明：**
-> 以Readme-CN.md或Readme-EN.md 结尾的默认不检测。 例如: \[Data Protection Kit（数据保护服务）](DataProtectionKit/Readme-CN.md)
+> 以Readme-CN.md或Readme-EN.md 结尾的默认不检测。 例如： \[Data Protection Kit（数据保护服务）](DataProtectionKit/Readme-CN.md)
 
 ```markdown
 - 入门<!--application-getting-started-->

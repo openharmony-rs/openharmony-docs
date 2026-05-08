@@ -85,14 +85,14 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 ​
 ```
 
-### 去除所有的删除替换标题
+### 去除所有的删除替换标签
 
 ```markdown
 [<!--DelEnd-->卡片组件<!--Del-->](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)
 ​
 ```
 
-### 存在`()` 或者 `#` 删除
+### 存在`()` 或者 `#` 则删除
 
 ```markdown
 AbilityStage拥有[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)
