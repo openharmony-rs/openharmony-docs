@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## obscured
 
@@ -22,8 +24,13 @@ obscured(reasons: Array&lt;ObscuredReasons&gt;): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[obscured<sup>23+</sup>](#obscured23)。
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：** 
 
 | 参数名 | 类型                                     | 必填                                   | 说明                                  |
 | -----| ------------------------------------------ | ------------------------------------ | ------------------------------------ |
@@ -34,6 +41,33 @@ obscured(reasons: Array&lt;ObscuredReasons&gt;): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
+
+## obscured<sup>23+</sup>
+
+obscured(reasons: Array\<ObscuredReasons> | undefined): this
+
+设置组件内容的遮罩类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[obscured](#obscured)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+
+| 参数名 | 类型                                     | 必填                                   | 说明                                  |
+| -----| ------------------------------------------ | ------------------------------------ | ------------------------------------ |
+| reasons | Array\<[ObscuredReasons](ts-appendix-enums.md#obscuredreasons10)> \| undefined | 是 | 设置组件内容的遮罩类型。<br>默认值：[ ]<br/>仅支持[Image](ts-basic-components-image.md)组件、[Text](ts-basic-components-text.md)组件<!--Del-->和[Formcomponent](ts-basic-components-formcomponent-sys.md)组件<sup>12+</sup><!--DelEnd-->的隐私遮罩处理。<br/>**说明：**<br/>如需在图片加载过程中显示隐私遮罩，需要设置Image组件的宽度和高度。<br/>Text组件设置子组件或设置[属性字符串](ts-universal-styled-string.md)时，不支持隐私遮罩。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
 
 ## 示例
 

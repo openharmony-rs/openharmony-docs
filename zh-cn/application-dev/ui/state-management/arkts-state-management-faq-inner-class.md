@@ -26,7 +26,7 @@ UIUtils.getTarget(value) === value
 当开发者将修改`success`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
 
 【反例】
-<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) --> 
+<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -56,6 +56,8 @@ export class TestModel {
 
   constructor() {
     this.model = new Model(() => {
+      // 此时TestModel实例尚未被代理封装，this指向TestModel实例本身
+      // this.isSuccess的修改无法触发Index中Text的UI刷新
       this.isSuccess = true;
       hilog.info(0xFF00, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
     })
@@ -82,7 +84,7 @@ export class Model {
 上述示例代码中，状态变量的修改在构造函数内。界面刚开始时显示“failed”，点击后日志打印“this.isSuccess: true”，表明修改成功，但界面仍然显示“failed”，这说明UI未刷新。
 
 【正例】
-<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) --> 
+<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -109,6 +111,7 @@ export class TestModel {
   public model: Model = new Model(() => {
   })
 
+  // 状态变量的修改放在类的普通方法中
   query() {
     this.model.callback = () => {
       this.isSuccess = true;
@@ -232,7 +235,7 @@ struct PlayDetailPage {
 
 【反例】
 
-<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->  
+<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -259,6 +262,7 @@ struct Index {
   }
 
   isRenderText(index: number): number {
+    // 日志打印，观察使用简单属性数组导致冗余刷新
     hilog.info(DOMAIN_NUMBER, TAG, `index ${index} is rendered`);
     return 1;
   }
@@ -1113,6 +1117,7 @@ class Ancestor {
   }
 
   public loadData() {
+    // 这里创建的Child[]类型的数组tempList并没有能被观测的能力
     let tempList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
     this.childList = tempList;
   }
@@ -1202,6 +1207,7 @@ struct CompAncestor {
     Column() {
       CompList({ childList: this.ancestor.childList })
       Row() {
+        // 点击Button对ancestor执行清空数据
         Button('Clear')
           .onClick(() => {
             this.ancestor.clearData();
@@ -1300,6 +1306,7 @@ class Ancestor {
   }
 
   public loadData() {
+    // 临时的数组tempList修改为具有被观测能力的ChildList类
     let tempList = new ChildList();
     for (let i = 1; i < 6; i++) {
       tempList.push(new Child(i));

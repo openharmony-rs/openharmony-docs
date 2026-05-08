@@ -1,14 +1,15 @@
 # Functions
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -20,11 +21,19 @@ import { avSession } from '@kit.AVSessionKit';
 
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
-创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。
+创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+> **说明：**
+> 
+> - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
+
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -46,7 +55,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -58,7 +67,7 @@ import { avSession } from '@kit.AVSessionKit';
 struct Index {
   @State message: string = 'hello world';
 
-  build() { 
+  build() {
     Column() {
         Text(this.message)
           .onClick(()=>{
@@ -70,7 +79,7 @@ struct Index {
             avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
             currentAVSession = data;
             sessionId = currentAVSession.sessionId;
-            console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+            console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
             });
           })
       }
@@ -84,9 +93,17 @@ struct Index {
 
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
-创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。
+创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败。使用callback异步回调。
+
+> **说明：**
+> 
+> - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -145,9 +162,13 @@ getAVSession(context: Context): Promise\<AVSession>
 
 该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，当前接口会调用失败抛出异常。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -206,12 +227,16 @@ struct Index {
 
 getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
-获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。结果通过Promise异步回调方式返回。
+获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES 或 ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 系统应用可以从ohos.permission.MANAGE_MEDIA_RESOURCES或ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC两个权限中选择一个进行申请，普通应用仅允许申请ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC受限权限。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -255,7 +280,6 @@ struct Index {
     .height('100%')
   }
 }
-
 ```
 
 ## avSession.createController<sup>23+</sup>
@@ -265,9 +289,14 @@ createController(sessionId: string): Promise\<AVSessionController>
 根据会话ID创建会话控制器。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES 或 ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
+
 系统应用可以从ohos.permission.MANAGE_MEDIA_RESOURCES或ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC两个权限中选择一个进行申请，普通应用仅允许申请ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC受限权限。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -330,6 +359,10 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
@@ -369,7 +402,6 @@ struct Index {
     .height('100%')
   }
 }
-
 ```
 
 ## avSession.onSessionDestroy<sup>23+</sup>
@@ -381,6 +413,10 @@ onSessionDestroy(callback: Callback\<AVSessionDescriptor>): void
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -430,6 +466,10 @@ onTopSessionChange(callback: Callback\<AVSessionDescriptor>): void
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -482,6 +522,10 @@ offSessionCreate(callback?: Callback\<AVSessionDescriptor>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明       |
@@ -530,6 +574,10 @@ offSessionDestroy(callback?: Callback\<AVSessionDescriptor>): void
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -580,6 +628,10 @@ offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型              | 必填 | 说明                        |
@@ -596,6 +648,7 @@ offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
 | 6600101  | Session service exception. |
 
 **示例：**
+
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
@@ -629,6 +682,10 @@ isDesktopLyricSupported(): Promise\<boolean>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                       | 说明                               |
@@ -649,6 +706,6 @@ isDesktopLyricSupported(): Promise\<boolean>
 import { avSession } from '@kit.AVSessionKit';
 
 avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
-  console.info(`Succeeded in checking desktop lyric supported: ${isSupported}`);
+  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
 });
 ```

@@ -952,6 +952,7 @@ The target application is under control.
 - 目标应用是系统预装应用，并且使用本地编译的版本进行覆盖安装。
 - 目标应用开发证书过期，拉起时被系统管控拦截，此时会有系统弹框提示“应用已过期”。
 - 目标应用刚完成应用克隆，处于数据恢复中，此时会有系统弹框提示“数据恢复中，请稍后再试”。
+- [创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)的5天有效期已过期，导致应用拉起时被系统管控拦截。
 
 **处理步骤**
 
@@ -959,6 +960,7 @@ The target application is under control.
 - 针对可能原因2，需要先卸载该应用，再使用本地编译的版本进行安装。
 - 针对可能原因3，需要[更换证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-cert-faq-0000002329508280#section11365113515519)。
 - 针对可能原因4，需要等待数据恢复完成后再尝试启动。
+- 针对可能原因5，需要重新[创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)。
 
 ### 10106106 目标应用被EDM管控
 

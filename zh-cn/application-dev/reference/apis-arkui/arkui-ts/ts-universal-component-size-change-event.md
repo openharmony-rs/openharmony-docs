@@ -10,13 +10,17 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  
->  该事件返回的宽高是组件绘制出来的宽高，可能与组件设置的宽高不同。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该事件返回的宽高是组件绘制出来的宽高，可能与组件设置的宽高不同。
 
 ## onSizeChange
 
-onSizeChange(event: SizeChangeCallback): T
+ArkTS-Dyn: onSizeChange(event: SizeChangeCallback): T
+
+ArkTS-Sta: onSizeChange(event: SizeChangeCallback | undefined): this
 
 组件区域变化时触发该回调。仅会响应由布局变化所导致的组件尺寸发生变化时的回调。
 
@@ -32,17 +36,21 @@ onSizeChange(event: SizeChangeCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [SizeChangeCallback](#sizechangecallback) | 是   | 目标元素变化前后的尺寸。 |
+| event | ArkTS-Dyn: [SizeChangeCallback](#sizechangecallback) <br/>ArkTS-Sta: [SizeChangeCallback](#sizechangecallback) \|&nbsp;undefined | 是   | 目标元素变化前后的尺寸。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## SizeChangeCallback
 
@@ -55,6 +63,10 @@ type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

@@ -5569,6 +5569,20 @@
 
 **起始版本**：23
 
+## ohos.permission.RESTORE_END_NOTIFICATION
+
+允许系统应用订阅备份框架结束恢复的事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 允许应用获取本地账号授权。
@@ -5613,7 +5627,7 @@
 
 **起始版本**：24
 
-### ohos.permission.READ_APP_PROTECTION_RECORD
+## ohos.permission.READ_APP_PROTECTION_RECORD
 
 允许系统应用读取应用保护记录。
 
@@ -5627,7 +5641,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.WRITE_APP_PROTECTION_RECORD
+## ohos.permission.WRITE_APP_PROTECTION_RECORD
 
 允许系统应用修改应用保护记录。
 
@@ -5641,7 +5655,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.READ_SPAM_SHIELD_SETTING
+## ohos.permission.READ_SPAM_SHIELD_SETTING
 
 允许系统应用读取骚扰拦截配置项。
 
@@ -5655,7 +5669,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+## ohos.permission.WRITE_SPAM_SHIELD_SETTING
 
 允许系统应用修改骚扰拦截配置项。
 

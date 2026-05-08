@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当Stack组件中有多个节点触摸区域重叠时，如果最上层节点的子组件命中，则默认只会对显示在最上层的节点做触摸测试。此时只有给显示在最上层的节点设置hitTestBehavior为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
@@ -18,7 +20,9 @@
 
 ## hitTestBehavior
 
-hitTestBehavior(value: HitTestMode): T
+ArkTS-Dyn: hitTestBehavior(value: HitTestMode): T
+
+ArkTS-Sta: hitTestBehavior(value: HitTestMode | undefined): this
 
 设置组件的触摸测试类型。如果组件不设置hitTestBehavior，其默认触摸测试类型为HitTestMode.Default。
 
@@ -26,17 +30,21 @@ hitTestBehavior(value: HitTestMode): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名            | 类型     | 必填                             | 说明                               |
 | -------------------- | -------- | ---------------------------------------- | ---------------------------------------- |
-| value | [HitTestMode](./ts-appendix-enums.md#hittestmode9) | 是 | 设置当前组件的触摸测试类型。|
+| value | ArkTS-Dyn: [HitTestMode](./ts-appendix-enums.md#hittestmode9) <br/>ArkTS-Sta: [HitTestMode](./ts-appendix-enums.md#hittestmode9) \| undefined | 是 | 设置当前组件的触摸测试类型。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 

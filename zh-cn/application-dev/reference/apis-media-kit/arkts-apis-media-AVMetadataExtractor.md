@@ -1,8 +1,8 @@
 # Interface (AVMetadataExtractor)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -256,7 +256,7 @@ ArkTS-Sta: fetchFramesByTimes(timesUs: long[], queryOption: AVImageQueryOptions,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |

@@ -11,13 +11,20 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[ohos.account.osAccount (系统账号管理)](js-apis-osAccount.md)。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { osAccount } from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
 ```
 
 ## AccountManager
@@ -26,7 +33,9 @@ import { osAccount } from '@kit.BasicServicesKit';
 
 ### activateOsAccount
 
-activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: activateOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;): void
 
 激活指定系统账号。使用callback异步回调。
 
@@ -36,14 +45,20 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                |
 | -------- | ------------------------- | ---- | -------------------------------------------------- |
-| localId  | number                    | 是   | 系统账号ID。                  |
+| localId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。                  |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当账号激活成功时，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -57,9 +72,13 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
-**示例：** 激活ID为100的系统账号
+**示例：**
 
+激活ID为100的系统账号。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -78,9 +97,32 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.activateOsAccount(localId, (err: BusinessError | null)=>{
+      if (err) {
+        console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('activateOsAccount successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### activateOsAccount
 
-activateOsAccount(localId: number): Promise&lt;void&gt;
+ArkTS-Dyn: activateOsAccount(localId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: activateOsAccount(localId: int): Promise&lt;void&gt;
 
 激活指定系统账号。使用Promise异步回调。
 
@@ -90,11 +132,15 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -103,6 +149,8 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -116,9 +164,13 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
-**示例：** 激活ID为100的系统账号
+**示例：**
 
+激活ID为100的系统账号。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -135,9 +187,31 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.activateOsAccount(localId).then(() => {
+      console.info('activateOsAccount successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`activateOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### activateOsAccount<sup>23+</sup>
 
-activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
+ArkTS-Dyn: activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: activateOsAccount(localId: int, displayId: long): Promise&lt;void&gt;
 
 在指定逻辑屏激活（前台启动或切换）目标系统账号。使用Promise异步回调。
 
@@ -149,12 +223,16 @@ activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明           |
 | --------- | ------ | ---- | -------------- |
-| localId   | number | 是   | 系统账号ID。   |
-| displayId | number | 是   | 逻辑屏ID。   |
+| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。   |
+| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 逻辑屏ID。   |
 
 **返回值：**
 
@@ -180,8 +258,10 @@ activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 | 12300019 | Cross-display activation not supported. |
 
 **示例：**
+
 在ID为0的逻辑屏上激活ID为100的系统账号。
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -200,9 +280,32 @@ activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  let displayId: long = 0;
+  try {
+    accountManager.activateOsAccount(localId, displayId).then(() => {
+      console.info('activateOsAccount with displayId successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`activateOsAccount with displayId failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`activateOsAccount with displayId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### deactivateOsAccount<sup>12+</sup>
 
-deactivateOsAccount(localId: number): Promise&lt;void&gt;
+ArkTS-Dyn: deactivateOsAccount(localId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: deactivateOsAccount(localId: int): Promise&lt;void&gt;
 
 注销（退出登录）指定系统账号。使用Promise异步回调。
 
@@ -212,11 +315,15 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -225,6 +332,8 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -236,9 +345,13 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300008 | Restricted Account. |
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 
-**示例：** 注销ID为100的系统账号
+**示例：**
 
+注销ID为100的系统账号。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -255,9 +368,31 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.deactivateOsAccount(localId).then(() => {
+      console.info('deactivateOsAccount successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`deactivateOsAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deactivateOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### isOsAccountActivated<sup>11+</sup>
 
-isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: isOsAccountActivated(localId: int): Promise&lt;boolean&gt;
 
 判断指定系统账号是否处于激活状态。使用Promise异步回调。
 
@@ -267,11 +402,15 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | --------------------------------- |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -281,6 +420,8 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -289,9 +430,13 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否处于激活状态
+**示例：**
 
+判断ID为100的系统账号是否处于激活状态。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -308,9 +453,31 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.isOsAccountActivated(localId).then((isActivated: boolean) => {
+      console.info('isOsAccountActivated successfully, isActivated: ' + isActivated);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`isOsAccountActivated failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### isOsAccountConstraintEnabled<sup>11+</sup>
 
-isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;boolean&gt;
+ArkTS-Dyn: isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;boolean&gt;
+
+ArkTS-Sta: isOsAccountConstraintEnabled(localId: int, constraint: string): Promise&lt;boolean&gt;
 
 判断指定系统账号是否使能指定约束。使用Promise异步回调。
 
@@ -320,11 +487,15 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                |
 | ---------- | ------ | ---- | ---------------------------------- |
-| localId    | number | 是   | 系统账号ID。  |
+| localId    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。  |
 | constraint | string | 是   | 指定的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
 
 **返回值：**
@@ -335,6 +506,8 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -343,9 +516,13 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
 
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -363,9 +540,32 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  let constraint: string = 'constraint.wifi';
+  try {
+    accountManager.isOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {
+      console.info('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`isOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### isOsAccountUnlocked<sup>11+</sup>
 
-isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
 检查指定系统账号是否已验证。使用Promise异步回调。
 
@@ -375,11 +575,15 @@ isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                              |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | number | 是   | 系统账号ID。不填则检查当前系统账号是否已验证。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。不填则检查当前系统账号是否已验证。 |
 
 **返回值：**
 
@@ -388,6 +592,8 @@ isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 | Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -399,7 +605,9 @@ isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -416,9 +624,31 @@ isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.isOsAccountUnlocked(localId).then((isVerified: boolean) => {
+      console.info('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`isOsAccountUnlocked failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### removeOsAccount
 
-removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: removeOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;): void
 
 删除指定系统账号。使用callback异步回调。
 
@@ -428,14 +658,20 @@ removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                 |
 | -------- | ------------------------- | ---- | -------------------------------------------------- |
-| localId  | number                    | 是   | 系统账号ID。                  |
+| localId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。                  |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果删除账号成功，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -450,7 +686,9 @@ removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -472,9 +710,39 @@ removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let accountName: string = 'testAccountName';
+  try {
+    accountManager.createOsAccount(accountName, osAccount.OsAccountType.NORMAL,
+      (err: BusinessError | null, osAccountInfo: osAccount.OsAccountInfo | undefined) => {
+        if (osAccountInfo) {
+          accountManager.removeOsAccount(osAccountInfo.localId, (err: BusinessError | null)=>{
+            if (err) {
+              console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+            } else {
+              console.info('removeOsAccount successfully');
+            }
+          });
+        } else {
+          console.error('createOsAccount returned null osAccountInfo');
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### removeOsAccount
 
-removeOsAccount(localId: number): Promise&lt;void&gt;
+ArkTS-Dyn: removeOsAccount(localId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: removeOsAccount(localId: int): Promise&lt;void&gt;
 
 删除指定系统账号。使用Promise异步回调。
 
@@ -484,11 +752,15 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | --------------------------------- |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -497,6 +769,8 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -511,7 +785,9 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -522,7 +798,7 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
         accountManager.removeOsAccount(osAccountInfo.localId).then(() => {
           console.info('removeOsAccount successfully');
         }).catch((err: BusinessError) => {
-          console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
         });
     });
   } catch (e) {
@@ -531,9 +807,38 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let accountName: string = 'testAccountName';
+  try {
+    accountManager.createOsAccount(accountName, osAccount.OsAccountType.NORMAL,
+      (err: BusinessError | null, osAccountInfo: osAccount.OsAccountInfo | undefined) => {
+        if (osAccountInfo) {
+          accountManager.removeOsAccount(osAccountInfo.localId).then(() => {
+            console.info('removeOsAccount successfully');
+          }).catch((e: Error) => {
+            const err = e as BusinessError;
+            console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+          });
+        } else {
+          console.error('createOsAccount returned null osAccountInfo');
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### removeOsAccount<sup>24+</sup>
 
-removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;void&gt;
+ArkTS-Dyn: removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;void&gt;
+
+ArkTS-Sta: removeOsAccount(localId: int, options: RemoveOsAccountOptions): Promise&lt;void&gt;
 
 根据删除选项，删除指定系统账号。使用Promise异步回调。
 
@@ -543,11 +848,15 @@ removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;vo
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | --------------------------------- |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 | options | [RemoveOsAccountOptions](#removeosaccountoptions24) | 是   | 删除系统账号的选项。|
 
 **返回值：**
@@ -566,14 +875,16 @@ removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;vo
 | 202 | Not system application.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid localId or options.    |
+| 12300002 | Invalid localId or options.   |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 | 12300010 | Service busy. Possible causes: The target account is being operated on. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -588,7 +899,7 @@ try {
       accountManager.removeOsAccount(osAccountInfo.localId, options).then(() => {
         console.info('removeOsAccount successfully');
       }).catch((err: BusinessError) => {
-        console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
       });
   });
 } catch (e) {
@@ -597,9 +908,43 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let accountName: string = 'testAccountName';
+let token: Uint8Array = new Uint8Array([0]);
+let options: osAccount.RemoveOsAccountOptions = {
+  token: token,
+}
+try {
+  accountManager.createOsAccount(accountName, osAccount.OsAccountType.NORMAL,
+    (err: BusinessError | null, osAccountInfo: osAccount.OsAccountInfo | undefined) => {
+      if (osAccountInfo) {
+        accountManager.removeOsAccount(osAccountInfo.localId, options).then(() => {
+          console.info('removeOsAccount successfully');
+        }).catch((e: Error) => {
+          const err = e as BusinessError;
+          console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+      } else {
+        console.error('createOsAccount returned null osAccountInfo');
+      }
+    });
+} catch (e: Error) {
+  const err = e as BusinessError;
+  console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
 ### setOsAccountConstraints
 
-setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enable: boolean,callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enable: boolean,callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt;, enable: boolean,callback: AsyncCallback&lt;void&gt;): void
 
 为指定系统账号设置/删除约束。使用callback异步回调。
 
@@ -609,16 +954,22 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                      | 必填 | 说明                                             |
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
-| localId     | number                    | 是   | 系统账号ID。               |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。               |
 | constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。        |
 | enable      | boolean                   | 是   | 设置(true)/删除(false) 。                          |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -630,9 +981,13 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置禁止使用Wi-Fi的约束
+**示例：**
 
+给ID为100的系统账号设置禁止使用Wi-Fi的约束。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -652,9 +1007,33 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  let constraint: string = 'constraint.wifi';
+  try {
+    accountManager.setOsAccountConstraints(localId, [constraint], true, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setOsAccountConstraints failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setOsAccountConstraints successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setOsAccountConstraints
 
-setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enable: boolean): Promise&lt;void&gt;
+ArkTS-Dyn: setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enable: boolean): Promise&lt;void&gt;
+
+ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt;, enable: boolean): Promise&lt;void&gt;
 
 为指定系统账号设置/删除约束。使用Promise异步回调。
 
@@ -664,11 +1043,15 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                | 必填 | 说明                                         |
 | ----------- | ------------------- | ---- | -------------------------------------------- |
-| localId     | number              | 是   | 系统账号ID。           |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int              | 是   | 系统账号ID。           |
 | constraints | Array&lt;string&gt; | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。    |
 | enable      | boolean             | 是   | 设置(true)/删除(false)。                     |
 
@@ -680,6 +1063,8 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -690,9 +1075,13 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 删除ID为100的系统账号的禁止使用Wi-Fi的约束
+**示例：**
 
+删除ID为100的系统账号的禁止使用Wi-Fi的约束。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -709,9 +1098,31 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.setOsAccountConstraints(localId, ['constraint.location.set'], false).then(() => {
+      console.info('setOsAccountConstraints successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setOsAccountConstraints failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setOsAccountName
 
-setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setOsAccountName(localId: int, localName: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置指定系统账号的账号名。使用callback异步回调。
 
@@ -721,15 +1132,21 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                             |
 | :-------- | ------------------------- | ---- | ----------------------------------------------- |
-| localId   | number                    | 是   | 系统账号ID。               |
+| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。               |
 | localName | string                    | 是   | 账号名，最大长度为1024个字符。                          |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -741,9 +1158,13 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 将ID为100的系统账号的账号名设置成demoName
+**示例：**
 
+将ID为100的系统账号的账号名设置成demoName。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -763,11 +1184,35 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  let name: string = 'demoName';
+  try {
+    accountManager.setOsAccountName(localId, name, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setOsAccountName failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setOsAccountName successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountName exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setOsAccountName
 
-setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
+ArkTS-Dyn: setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
-设置指定系统账号的账号名。使用Promise异步回调。
+ArkTS-Sta: setOsAccountName(localId: int, localName: string): Promise&lt;void&gt;
+
+设置指定系统账号的账号名。使用Promise异步调用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -775,11 +1220,15 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                |
 | --------- | ------ | ---- | --------------------------------- |
-| localId   | number | 是   | 系统账号ID。 |
+| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 | localName | string | 是   | 账号名，最大长度为1024个字符。            |
 
 **返回值：**
@@ -789,6 +1238,8 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -800,9 +1251,13 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 将ID为100的系统账号的账号名设置成demoName
+**示例：**
 
+将ID为100的系统账号的账号名设置成demoName。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -820,9 +1275,32 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  let name: string = 'testName';
+  try {
+    accountManager.setOsAccountName(localId, name).then(() => {
+      console.info('setOsAccountName successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setOsAccountName failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountName exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setOsAccountType<sup>24+</sup>
 
-setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTypeOptions): Promise&lt;void&gt;
+ArkTS-Dyn: setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTypeOptions): Promise&lt;void&gt;
+
+ArkTS-Sta: setOsAccountType(localId: int, type: OsAccountType, options?: SetOsAccountTypeOptions): Promise&lt;void&gt;
 
 设置指定系统账号的账号类型。使用Promise异步回调。
 
@@ -832,11 +1310,15 @@ setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTyp
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名  | 类型                                                 | 必填 | 说明                     |
 | ------- | ---------------------------------------------------- | ---- | ------------------------ |
-| localId | number                                               | 是   | 系统账号ID。             |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int                  | 是   | 系统账号ID。             |
 | type    | [OsAccountType](js-apis-osAccount.md#osaccounttype)  | 是   | 系统账号类型。           |
 | options | [SetOsAccountTypeOptions](#setosaccounttypeoptions24) | 否   | 设置系统账号类型的选项。默认为空。 |
 
@@ -864,6 +1346,7 @@ setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTyp
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -885,9 +1368,33 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let localId: int = 100;
+let type: osAccount.OsAccountType = osAccount.OsAccountType.ADMIN;
+let options: osAccount.SetOsAccountTypeOptions = {
+  token: new Uint8Array([0, 1, 2, 3])
+};
+try {
+  accountManager.setOsAccountType(localId, type, options).then(() => {
+    console.info('setOsAccountType successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setOsAccountType failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e: Error) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountType exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### queryMaxOsAccountNumber
 
-queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: queryMaxOsAccountNumber(callback: AsyncCallback&lt;int&gt;): void
 
 查询允许创建的系统账号的最大数量。使用callback异步回调。
 
@@ -895,13 +1402,19 @@ queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                                                              |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，如果查询成功，err为null，data为允许创建的系统账号的最大数量；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数，如果查询成功，err为null，data为允许创建的系统账号的最大数量；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -911,7 +1424,9 @@ queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -929,9 +1444,31 @@ queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryMaxOsAccountNumber((err: BusinessError | null, maxCnt: int | undefined) => {
+      if (err) {
+        console.error(`queryMaxOsAccountNumber failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('queryMaxOsAccountNumber successfully, maxCnt:' + maxCnt);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryMaxOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryMaxOsAccountNumber
 
-queryMaxOsAccountNumber(): Promise&lt;number&gt;
+ArkTS-Dyn: queryMaxOsAccountNumber(): Promise&lt;number&gt;
+
+ArkTS-Sta: queryMaxOsAccountNumber(): Promise&lt;int&gt;
 
 查询允许创建的系统账号的最大数量。使用Promise异步回调。
 
@@ -939,13 +1476,19 @@ queryMaxOsAccountNumber(): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                                         |
 | --------------------- | ------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回允许创建的系统账号的最大数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回允许创建的系统账号的最大数量。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -954,7 +1497,9 @@ queryMaxOsAccountNumber(): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -970,9 +1515,30 @@ queryMaxOsAccountNumber(): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryMaxOsAccountNumber().then((maxCnt: int) => {
+      console.info('queryMaxOsAccountNumber successfully, maxCnt: ' + maxCnt);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryMaxOsAccountNumber failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryMaxOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryMaxLoggedInOsAccountNumber<sup>12+</sup>
 
-queryMaxLoggedInOsAccountNumber(): Promise&lt;number&gt;
+ArkTS-Dyn: queryMaxLoggedInOsAccountNumber(): Promise&lt;number&gt;
+
+ArkTS-Sta: queryMaxLoggedInOsAccountNumber(): Promise&lt;int&gt;
 
 查询允许同时登录的系统账号的最大数量。使用Promise异步回调。
 
@@ -980,13 +1546,19 @@ queryMaxLoggedInOsAccountNumber(): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                                         |
 | --------------------- | ------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回允许登录的系统账号的最大数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回允许登录的系统账号的最大数量。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -995,7 +1567,9 @@ queryMaxLoggedInOsAccountNumber(): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1011,9 +1585,30 @@ queryMaxLoggedInOsAccountNumber(): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryMaxLoggedInOsAccountNumber().then((maxNum: int) => {
+      console.info('queryMaxLoggedInOsAccountNumber successfully, maxNum: ' + maxNum);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryMaxLoggedInOsAccountNumber failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryMaxLoggedInOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getEnabledOsAccountConstraints<sup>11+</sup>
 
-getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
+ArkTS-Dyn: getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
+
+ArkTS-Sta: getEnabledOsAccountConstraints(localId: int): Promise&lt;Array&lt;string&gt;&gt;
 
 获取指定系统账号已使能的全部约束。使用Promise异步回调。
 
@@ -1023,11 +1618,15 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -1037,6 +1636,8 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -1045,9 +1646,13 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的全部约束
+**示例：**
 
+获取ID为100的系统账号的全部约束。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1059,6 +1664,26 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
       console.error(`getEnabledOsAccountConstraints err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getEnabledOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.getEnabledOsAccountConstraints(localId).then((constraints: string[]) => {
+      console.info('getEnabledOsAccountConstraints, constraints: ' + constraints);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getEnabledOsAccountConstraints err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getEnabledOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1076,6 +1701,10 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                               |
@@ -1083,6 +1712,8 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 | callback | AsyncCallback&lt;Array&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt;&gt; | 是   | 回调函数。如果查询成功，err为null，data为已创建的所有系统账号的信息列表；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -1093,7 +1724,9 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1111,6 +1744,26 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryAllCreatedOsAccounts((err: BusinessError | null, accountArr: osAccount.OsAccountInfo[] |undefined)=>{
+      if (err) {
+        console.error(`queryAllCreatedOsAccounts exception:code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryAllCreatedOsAccounts exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryAllCreatedOsAccounts
 
 queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
@@ -1123,6 +1776,10 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                        | 说明                                           |
@@ -1130,6 +1787,8 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 | Promise&lt;Array&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt;&gt; | Promise对象，返回已创建的所有系统账号的信息列表。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -1139,7 +1798,9 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1150,6 +1811,25 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
       console.error(`queryAllCreatedOsAccounts err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryAllCreatedOsAccounts exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryAllCreatedOsAccounts().then((accountArr: osAccount.OsAccountInfo[]) => {
+      console.info('queryAllCreatedOsAccounts, accountArr: ' + JSON.stringify(accountArr));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryAllCreatedOsAccounts err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`queryAllCreatedOsAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1167,6 +1847,10 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                                                                         |
@@ -1176,6 +1860,8 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 | callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | 是   | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
@@ -1192,7 +1878,9 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1211,6 +1899,27 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.createOsAccount('testName', osAccount.OsAccountType.NORMAL,
+      (err: BusinessError | null, osAccountInfo: osAccount.OsAccountInfo |undefined)=>{
+        if (err) {
+          console.error(`createOsAccount exception:code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### createOsAccount
 
 createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccountOptions): Promise&lt;OsAccountInfo&gt;
@@ -1223,13 +1932,17 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                            | 必填 | 说明                   |
 | --------- | ------------------------------- | ---- | ---------------------- |
-| localName | string                          | 是   | 创建的系统账号的名称。 |
-| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype) | 是   | 创建的系统账号的类型。 |
-| options      | [CreateOsAccountOptions](#createosaccountoptions12) | 否   | 创建系统账号的选项，默认为空。<br/>从API version 12开始支持该可选参数。|
+| localName | string                          | 是   | 创建的系统账号的名称。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype) | 是   | 创建的系统账号的类型。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| options<sup>12+</sup>      | [CreateOsAccountOptions](#createosaccountoptions12) | 否   | 创建系统账号的选项，默认为空。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
 **返回值：**
 
@@ -1238,6 +1951,8 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | Promise&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Promise对象，返回新创建的系统账号的信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
@@ -1255,7 +1970,9 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1277,6 +1994,31 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let options: osAccount.CreateOsAccountOptions = {
+    shortName: 'myShortName',
+    disallowedPreinstalledBundles: [],
+    allowedPreinstalledBundles: [],
+  }
+  try {
+    accountManager.createOsAccount('testAccountName', osAccount.OsAccountType.NORMAL, options).then(
+      (accountInfo: osAccount.OsAccountInfo) => {
+        console.info('createOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+      }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`createOsAccount err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### createOsAccountForDomain<sup>8+</sup>
 
 createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, callback: AsyncCallback&lt;OsAccountInfo&gt;): void
@@ -1289,6 +2031,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                 | 必填 | 说明                                                                         |
@@ -1298,6 +2044,8 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 | callback   | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | 是   | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
@@ -1315,7 +2063,9 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1336,6 +2086,29 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let domainInfo: osAccount.DomainAccountInfo =
+    {domain: 'testDomain', accountName: 'testAccountName'};
+  try {
+    accountManager.createOsAccountForDomain(osAccount.OsAccountType.NORMAL, domainInfo,
+      (err: BusinessError | null, osAccountInfo: osAccount.OsAccountInfo |undefined)=>{
+        if (err) {
+          console.error(`createOsAccountForDomain exception:code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('createOsAccountForDomain osAccountInfo:' + JSON.stringify(osAccountInfo));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### createOsAccountForDomain<sup>8+</sup>
 
 createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, options?: CreateOsAccountForDomainOptions): Promise&lt;OsAccountInfo&gt;
@@ -1348,13 +2121,17 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                 |
 | ---------- | ---------------------------------------- | ---- | -------------------- |
-| type       | [OsAccountType](js-apis-osAccount.md#osaccounttype)          | 是   | 创建的系统账号的类型。 |
-| domainInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。          |
-| options      | [CreateOsAccountForDomainOptions](#createosaccountfordomainoptions12) | 否   | 创建账号的可选参数，默认为空。 <br/>从API version 12开始支持该可选参数。|
+| type       | [OsAccountType](js-apis-osAccount.md#osaccounttype)          | 是   | 创建的系统账号的类型。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| domainInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。  <br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23        |
+| options<sup>12+</sup>      | [CreateOsAccountForDomainOptions](#createosaccountfordomainoptions12) | 否   | 创建账号的可选参数，默认为空。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
 **返回值：**
 
@@ -1363,6 +2140,8 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | Promise&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Promise对象，返回新创建的系统账号的信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
@@ -1381,7 +2160,9 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1403,6 +2184,31 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let domainInfo: osAccount.DomainAccountInfo =
+    {domain: 'testDomain', accountName: 'testAccountName'};
+  let options: osAccount.CreateOsAccountForDomainOptions = {
+    shortName: 'myShortName',
+  }
+  try {
+    accountManager.createOsAccountForDomain(osAccount.OsAccountType.NORMAL, domainInfo, options).then(
+      (accountInfo: osAccount.OsAccountInfo) => {
+        console.info('createOsAccountForDomain, account info: ' + JSON.stringify(accountInfo));
+      }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`createOsAccountForDomain err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryOsAccount<sup>11+</sup>
 
 queryOsAccount(): Promise&lt;OsAccountInfo&gt;
@@ -1415,6 +2221,10 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                           | 说明                                       |
@@ -1422,6 +2232,8 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 | Promise&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Promise对象，返回当前进程所属的系统账号信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -1431,7 +2243,9 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1447,9 +2261,30 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
+      console.info('queryOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryOsAccount err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryOsAccountById
 
-queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;): void
+ArkTS-Dyn: queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;): void
+
+ArkTS-Sta: queryOsAccountById(localId: int, callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 查询指定系统账号的信息。使用callback异步回调。
 
@@ -1459,14 +2294,20 @@ queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                                       |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| localId  | number                                               | 是   | 要查询的系统账号的ID。                                                      |
+| localId  | ArkTS-Dyn: number<br>ArkTS-Sta: int          | 是   | 要查询的系统账号的ID。                                                      |
 | callback | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | 是   | 回调函数。如果查询成功，err为null，data为查到的系统账号的信息；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -1477,9 +2318,13 @@ queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 查询ID为100的系统账号信息
+**示例：**
 
+查询ID为100的系统账号信息。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1498,9 +2343,32 @@ queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.queryOsAccountById(localId, (err: BusinessError | null, accountInfo: osAccount.OsAccountInfo |undefined)=>{
+      if (err) {
+        console.error(`queryOsAccountById exception:code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryOsAccountById exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryOsAccountById
 
-queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
+ArkTS-Dyn: queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
+
+ArkTS-Sta: queryOsAccountById(localId: int): Promise&lt;OsAccountInfo&gt;
 
 查询指定系统账号的信息。使用Promise异步回调。
 
@@ -1510,11 +2378,15 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| localId | number | 是   | 要查询的系统账号的ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要查询的系统账号的ID。 |
 
 **返回值：**
 
@@ -1523,6 +2395,8 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
 | Promise&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Promise对象，返回查到的系统账号的信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -1533,9 +2407,13 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
 | 12300002 | Invalid localId. |
 | 12300003 | Account not found. |
 
-**示例：** 查询ID为100的系统账号信息
+**示例：**
 
+查询ID为100的系统账号信息。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1552,9 +2430,31 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.queryOsAccountById(localId).then((accountInfo: osAccount.OsAccountInfo) => {
+      console.info('queryOsAccountById, accountInfo: ' + JSON.stringify(accountInfo));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryOsAccountById err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryOsAccountById exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountProfilePhoto
 
-getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;): void
+ArkTS-Dyn: getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;): void
+
+ArkTS-Sta: getOsAccountProfilePhoto(localId: int, callback: AsyncCallback&lt;string&gt;): void
 
 获取指定系统账号的头像信息。使用callback异步回调。
 
@@ -1564,14 +2464,20 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;)
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                                                         |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| localId  | number                      | 是   | 系统账号ID。                                                                |
+| localId  | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 是   | 系统账号ID。                                                                |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。如果获取成功，err为null，data为指定系统账号的头像信息；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -1582,9 +2488,13 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;)
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的头像
+**示例：**
 
+获取ID为100的系统账号的头像。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1603,9 +2513,32 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.getOsAccountProfilePhoto(localId, (err: BusinessError | null , photo: string |undefined)=>{
+      if (err) {
+        console.error(`getOsAccountProfilePhoto exception:code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('get photo:' + photo + ' by localId: ' + localId);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountProfilePhoto
 
-getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
+ArkTS-Dyn: getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
+
+ArkTS-Sta: getOsAccountProfilePhoto(localId: int): Promise&lt;string&gt;
 
 获取指定系统账号的头像信息。使用Promise异步回调。
 
@@ -1615,11 +2548,15 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -1628,6 +2565,8 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
 | Promise&lt;string&gt; | Promise对象，返回指定系统账号的头像信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -1638,9 +2577,13 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的头像
+**示例：**
 
+获取ID为100的系统账号的头像。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1657,9 +2600,31 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.getOsAccountProfilePhoto(localId).then((photo: string) => {
+      console.info('getOsAccountProfilePhoto: ' + photo);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountProfilePhoto err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setOsAccountProfilePhoto
 
-setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string, callback: AsyncCallback&lt;void&gt;): void
 
 为指定系统账号设置头像信息。使用callback异步回调。
 
@@ -1669,15 +2634,21 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明         |
 | -------- | ------------------------- | ---- | ------------ |
-| localId  | number                    | 是   | 系统账号ID。 |
+| localId  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 系统账号ID。 |
 | photo    | string                    | 是   | 头像信息。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。  |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -1689,9 +2660,13 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置头像
+**示例：**
 
+给ID为100的系统账号设置头像。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1714,9 +2689,36 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  let photo: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
+    'Cxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVDhPvZLBDYMwDEV/ugsXRjAT0EHCOuFIBwkbdIRewi6unbiAyoGgSn1SFH85+Y'+
+    'q/4ljARW62X+LHS8uIzjm4dXUYF+utzBikB52Jo5e5iEPKqpACk7R9NM2RvWm5tIkD2czLCUFNKLD6IjdMHFHDzws285MgGrT0xCtp3WOKHo'+
+    '+7q0mP0DZW9pNmoEFUzrQjp5cCnaen2kSJXLFD8ghbXyZCMQf/8e8Ns1XVAG/XAgqKzVnJFAAAAABJRU5ErkJggg=='
+  try {
+    accountManager.setOsAccountProfilePhoto(localId, photo, (err: BusinessError | null)=>{
+      if (err) {
+        console.error(`setOsAccountProfilePhoto exception:code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setOsAccountProfilePhoto successful.');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setOsAccountProfilePhoto
 
-setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
+ArkTS-Dyn: setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
+
+ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string): Promise&lt;void&gt;
 
 为指定系统账号设置头像信息。使用Promise异步回调。
 
@@ -1726,11 +2728,15 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 | photo   | string | 是   | 头像信息。   |
 
 **返回值：**
@@ -1740,6 +2746,8 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -1751,9 +2759,13 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置头像
+**示例：**
 
+给ID为100的系统账号设置头像。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1774,17 +2786,47 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  let photo: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
+    'Cxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVDhPvZLBDYMwDEV/ugsXRjAT0EHCOuFIBwkbdIRewi6unbiAyoGgSn1SFH85+Y'+
+    'q/4ljARW62X+LHS8uIzjm4dXUYF+utzBikB52Jo5e5iEPKqpACk7R9NM2RvWm5tIkD2czLCUFNKLD6IjdMHFHDzws285MgGrT0xCtp3WOKHo'+
+    '+7q0mP0DZW9pNmoEFUzrQjp5cCnaen2kSJXLFD8ghbXyZCMQf/8e8Ns1XVAG/XAgqKzVnJFAAAAABJRU5ErkJggg=='
+  try {
+    accountManager.setOsAccountProfilePhoto(localId, photo).then(() => {
+      console.info('setOsAccountProfilePhoto success');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setOsAccountProfilePhoto err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### on
 
 on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&gt;): void
 
 订阅系统账号的激活完成与激活中的事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onActivate](#onactivate23)（激活完成），[onActivating](#onactivating23)（激活中）。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1795,6 +2837,8 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 | callback | Callback&lt;number&gt;     | 是   | 订阅系统账号激活完成与激活中的事件回调，表示激活完成后或正在激活中的系统账号ID。    |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -1807,6 +2851,7 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 **示例：**
 
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1829,11 +2874,17 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 
 取消订阅系统账号的激活完成与激活中的事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offActivate](#offactivate23)（激活完成），[offActivating](#offactivating23)（激活中）。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1841,9 +2892,11 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'activate' \| 'activating' | 是   | 取消订阅类型，activate表示取消订阅账号已激活完成的事件，activating取消订阅账号正在激活的事件。 |
 | name     | string                     | 是   | 订阅名称，可自定义，要求非空且长度不超过1024字节，需要与订阅接口传入的值保持一致。 |
-| callback | Callback&lt;number&gt;     | 否   | 取消订阅系统账号激活完成与激活中的事件回调，默认为空，表示取消该类型事件的所有回调。                      |
+| callback | Callback&lt;number&gt; | 否   | 取消订阅系统账号激活完成与激活中的事件回调，默认为空，表示取消该类型事件的所有回调。                      |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -1856,6 +2909,7 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 **示例：**
 
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1878,6 +2932,10 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 订阅系统账号的前后台正在切换事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSwitching](#onswitching23)。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
@@ -1885,6 +2943,8 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1894,6 +2954,8 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -1905,6 +2967,7 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 **示例：**
 
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1927,6 +2990,10 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 
 取消订阅系统账号的前后台正在切换事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSwitching](#offswitching23)。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
@@ -1934,6 +3001,8 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1943,6 +3012,8 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 | callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 否   | 取消订阅系统账号的前后台正在切换事件回调，默认为空，表示取消该类型事件的所有回调。                      |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -1965,11 +3036,16 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
   }
   ```
 
+
 ### on<sup>12+</sup>
 
 on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 订阅系统账号的前后台切换结束事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSwitched](#onswitched23)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1979,6 +3055,8 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
@@ -1987,6 +3065,8 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -1998,6 +3078,7 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 **示例：**
 
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2020,6 +3101,10 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 取消订阅系统账号的前后台切换结束事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSwitched](#offswitched23)。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
@@ -2027,6 +3112,8 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2036,6 +3123,8 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 | callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 否   | 取消订阅系统账号的前后台切换结束事件回调，默认为空，表示取消该类型事件的所有回调。                      |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2067,12 +3156,16 @@ onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChang
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
 | constraints  | string[] | 是   | 表示待订阅的[约束](js-apis-osAccount.md#系统账号约束列表)列表。 |
-| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | 是   | 表示用于接收约束变更事件的回调函数。 |
+| callback | Callback&lt;[ConstraintChangeInfo ](#constraintchangeinfo23)&gt;  | 是   | 表示用于接收约束变更事件的回调函数。 |
 
 
 **错误码：**
@@ -2112,6 +3205,11 @@ offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 
 **参数：**
 
@@ -2154,24 +3252,33 @@ try {
 }
 ```
 
+
 ### getBundleIdForUid<sup>9+</sup>
 
-getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
-通过uid查询对应的bundleId。使用callback异步回调。
+ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
+
+通过uid查询对应的bundleId，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------------------ |
-| uid      | number                      | 是   | 进程uid。                                                                 |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果查询成功，err为null，data为与uid对应的bundleId；否则为错误对象。 |
+| uid      | ArkTS-Dyn: number<br>ArkTS-Sta: int                      | 是   | 进程uid。                                                                 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。如果查询成功，err为null，data为与uid对应的bundleId；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2182,7 +3289,9 @@ getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2201,29 +3310,58 @@ getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let testUid: int = 1000000;
+  try {
+    accountManager.getBundleIdForUid(testUid, (err: BusinessError | null, bundleId: int | undefined) => {
+      if (err) {
+        console.error(`getBundleIdForUid errInfo:code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getBundleIdForUid bundleId:' + JSON.stringify(bundleId));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getBundleIdForUid exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getBundleIdForUid<sup>9+</sup>
 
-getBundleIdForUid(uid: number): Promise&lt;number&gt;
+ArkTS-Dyn: getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
-通过uid查询对应的bundleId。使用Promise异步回调。
+ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
+
+通过uid查询对应的bundleId，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| uid     | number | 是   |  进程uid。 |
+| uid     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  进程uid。 |
 
 **返回值：**
 
 | 类型                  | 说明                                  |
 | --------------------- | ------------------------------------ |
-| Promise&lt;number&gt; | Promise对象，返回与uid对应的bundleId。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回与uid对应的bundleId。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2234,7 +3372,9 @@ getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2251,9 +3391,31 @@ getBundleIdForUid(uid: number): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let testUid: int = 1000000;
+  try {
+    accountManager.getBundleIdForUid(testUid).then((result: int) => {
+      console.info('getBundleIdForUid bundleId:' + JSON.stringify(result));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getBundleIdForUid errInfo:code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getBundleIdForUid exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getBundleIdForUidSync<sup>10+</sup>
 
-getBundleIdForUidSync(uid: number): number
+ArkTS-Dyn: getBundleIdForUidSync(uid: number): number
+
+ArkTS-Sta: getBundleIdForUidSync(uid: int): int
 
 通过uid查询对应的bundleId。使用同步方式返回结果。
 
@@ -2261,19 +3423,25 @@ getBundleIdForUidSync(uid: number): number
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| uid     | number | 是   |  进程uid。 |
+| uid     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  进程uid。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| number | 表示与进程uid对应的bundleId。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 表示与进程uid对应的bundleId。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2283,7 +3451,9 @@ getBundleIdForUidSync(uid: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2297,17 +3467,446 @@ getBundleIdForUidSync(uid: number): number
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let testUid: int = 1000000;
+  try {
+    let bundleId : int = accountManager.getBundleIdForUidSync(testUid);
+    console.info('getBundleIdForUidSync bundleId:' + bundleId);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getBundleIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### onActivate<sup>23+</sup>
+
+onActivate(name: string, callback: Callback&lt;int&gt;): void
+
+订阅系统账号的激活完成的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activate')](#on)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| name     | string                     | 是   | 订阅名称，可自定义，要求非空且长度不超过1024字节。           |
+| callback | Callback&lt;int&gt;     | 是   | 订阅系统账号激活完成的事件回调。表示激活完成后的系统账号ID。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid type name. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.onActivate('osAccountOnOffNameA', (receiveLocalId: int)=>{
+      console.info('receive localId:' + receiveLocalId);});
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`receive localId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### onActivating<sup>23+</sup>
+
+onActivating(name: string, callback: Callback&lt;int&gt;): void
+
+订阅系统账号的激活中的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('activating')](#on)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| name     | string                     | 是   | 订阅名称，可自定义，要求非空且长度不超过1024字节。           |
+| callback | Callback&lt;int&gt;     | 是   | 订阅系统账号激活中的事件回调，表示正在激活中的系统账号ID。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid type name. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.onActivating('osAccountOnOffNameA', (receiveLocalId: int)=>{
+      console.info('receive localId:' + receiveLocalId);});
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`receive localId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### offActivate<sup>23+</sup>
+
+offActivate(name: string, callback?: Callback&lt;int&gt;): void
+
+取消订阅系统账号的激活完成的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('activate')](#off)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| name     | string                     | 是   | 订阅名称，可自定义，要求非空且长度不超过1024字节，需要与订阅接口传入的值保持一致。 |
+| callback | Callback&lt;int&gt;     | 否   | 取消订阅系统账号激活完成的事件回调。默认为空，表示取消该类型事件的所有回调。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid type name. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.offActivate('osAccountOnOffNameA', ()=>{
+      console.info('off enter')
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`off exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### offActivating<sup>23+</sup>
+
+offActivating(name: string, callback?: Callback&lt;int&gt;): void
+
+取消订阅系统账号的激活中的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('activating')](#off)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| name     | string                     | 是   | 订阅名称，可自定义，要求非空且长度不超过1024字节，需要与订阅接口传入的值保持一致。 |
+| callback | Callback&lt;int&gt;     | 否   | 取消订阅系统账号激活中的事件回调。默认为空，表示取消该类型事件的所有回调。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid type name. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.offActivating('osAccountOnOffNameA', ()=>{
+      console.info('off enter')
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`off exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### onSwitching<sup>23+</sup>
+
+onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
+
+订阅系统账号的前后台正在切换事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switching')](#on12)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.onSwitching((eventData: osAccount.OsAccountSwitchEventData)=>{
+      console.info('receive eventData:' + JSON.stringify(eventData));
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`receive eventData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### offSwitching<sup>23+</sup>
+
+offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
+
+取消订阅系统账号的前后台正在切换事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switching')](#off12)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 否   | 取消订阅系统账号的前后台正在切换事件回调，默认为空，表示取消该类型事件的所有回调。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+```ts
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.offSwitching((eventData: osAccount.OsAccountSwitchEventData)=>{
+      console.info('receive eventData:' + JSON.stringify(eventData));
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`off exception: code is ${err.code}, message is ${err.message}`);
+  }
+```
+
+### onSwitched<sup>23+</sup>
+
+onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
+
+订阅系统账号的前后台切换结束事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switched')](#on12-1)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.onSwitched((eventData: osAccount.OsAccountSwitchEventData)=>{
+      console.info('receive eventData:' + JSON.stringify(eventData));
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`receive eventData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+### offSwitched<sup>23+</sup>
+
+offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
+
+取消订阅系统账号的前后台切换结束事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switched')](#off12-1)。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 否   | 取消订阅系统账号的前后台切换结束事件回调，默认为空，表示取消该类型事件的所有回调。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+  ```ts
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.offSwitched((eventData: osAccount.OsAccountSwitchEventData)=>{
+      console.info('receive eventData:' + JSON.stringify(eventData));
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`off exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+
 ### isMainOsAccount<sup>9+</sup>
 
 isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询当前进程是否处于主用户。使用callback异步回调。
+查询当前进程是否处于主用户，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2316,6 +3915,8 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2326,7 +3927,9 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2344,17 +3947,41 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.isMainOsAccount((err: BusinessError | null,result: boolean | undefined)=>{
+      if (err) {
+        console.error(`isMainOsAccount errInfo:code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('isMainOsAccount result:' + JSON.stringify(result));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`isMainOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### isMainOsAccount<sup>9+</sup>
 
 isMainOsAccount(): Promise&lt;boolean&gt;
 
-查询当前进程是否处于主用户。使用Promise异步回调。
+查询当前进程是否处于主用户，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2364,6 +3991,8 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 201 | Permission denied.|
@@ -2372,7 +4001,9 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2388,9 +4019,31 @@ isMainOsAccount(): Promise&lt;boolean&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let displayId: number = 0;
+  try {
+    accountManager.isMainOsAccount().then((result: boolean) => {
+      console.info('isMainOsAccount result:' + JSON.stringify(result));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`isMainOsAccount errInfo:code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`isMainOsAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getForegroundOsAccountLocalId<sup>23+</sup>
 
-getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
+ArkTS-Dyn: getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getForegroundOsAccountLocalId(displayId: long): Promise&lt;int&gt;
 
 获取指定逻辑屏上运行的前台系统账号ID。使用Promise异步回调。
 
@@ -2400,17 +4053,21 @@ getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明         |
 | --------- | ------ | ---- | ------------ |
-| displayId | number | 是   | 逻辑屏ID。 |
+| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 逻辑屏ID。 |
 
 **返回值：**
 
 | 类型                  | 说明                         |
 | --------------------- | ---------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回系统账号ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回系统账号ID。 |
 
 **错误码：**
 
@@ -2425,6 +4082,7 @@ getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2442,9 +4100,31 @@ getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
   }
   ```
 
+ArkT-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let displayId: long = 0;
+  try {
+    accountManager.getForegroundOsAccountLocalId(displayId).then((localId: int) => {
+      console.info('foreground account on display ' + displayId + ' is ' + localId);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getForegroundOsAccountLocalId failed: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getForegroundOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getForegroundOsAccountDisplayId<sup>23+</sup>
 
-getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
+ArkTS-Dyn: getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getForegroundOsAccountDisplayId(localId: int): Promise&lt;long&gt;
 
 获取指定前台系统账号所运行的逻辑屏ID。使用Promise异步回调。
 
@@ -2454,17 +4134,21 @@ getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明       |
 | ------- | ------ | ---- | ---------- |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
 
 **返回值：**
 
 | 类型                  | 说明                           |
 | --------------------- | ------------------------------ |
-| Promise&lt;number&gt; | Promise对象，返回逻辑屏ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回逻辑屏ID。 |
 
 **错误码：**
 
@@ -2479,6 +4163,7 @@ getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2496,11 +4181,33 @@ getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
   }
   ```
 
+ArkT-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.getForegroundOsAccountDisplayId(localId).then((displayId: long) => {
+      console.info('account ' + localId + ' foreground displayId: ' + displayId);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getForegroundOsAccountDisplayId failed: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getForegroundOsAccountDisplayId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountConstraintSourceTypes<sup>9+</sup>
 
-getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback: AsyncCallback&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;): void
+ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback: AsyncCallback&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;): void
 
-查询指定系统账号的指定约束来源信息。使用callback异步回调。
+ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, callback: AsyncCallback&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;): void
+
+查询指定系统账号的指定约束来源信息，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2508,15 +4215,21 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| localId     | number | 是   |  要查询的系统账号ID。 |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
 | constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
 | callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | 是   | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。                      |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2529,7 +4242,9 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2548,11 +4263,34 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountConstraintSourceTypes(100, 'constraint.wifi',
+      (err: BusinessError | null,sourceTypeInfos: osAccount.ConstraintSourceTypeInfo[] | undefined)=>{
+        if (err) {
+          console.error(`getOsAccountConstraintSourceTypes errInfo:code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getOsAccountConstraintSourceTypes sourceTypeInfos:' + JSON.stringify(sourceTypeInfos));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraintSourceTypes exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountConstraintSourceTypes<sup>9+</sup>
 
-getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
+ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
 
-查询指定系统账号的指定约束来源信息。使用Promise异步回调。
+ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
+
+查询指定系统账号的指定约束来源信息，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2560,11 +4298,15 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId     | number | 是   |  要查询的系统账号ID。 |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
 | constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
 
 **返回值：**
@@ -2574,6 +4316,8 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 | Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2586,7 +4330,9 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2603,11 +4349,33 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountConstraintSourceTypes(100, 'constraint.wifi').then(
+      (result: osAccount.ConstraintSourceTypeInfo[]) => {
+        console.info('getOsAccountConstraintSourceTypes sourceTypeInfos:' + JSON.stringify(result));
+      }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountConstraintSourceTypes errInfo:code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraintSourceTypes exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountType<sup>12+</sup>
 
-getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
+ArkTS-Dyn: getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
-查询指定系统账号的类型。使用Promise异步回调。
+ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
+
+查询指定系统账号的类型，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2615,11 +4383,15 @@ getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId     | number | 是   |  要查询的系统账号ID。 |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
 
 **返回值：**
 
@@ -2628,6 +4400,8 @@ getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 | Promise&lt;[OsAccountType](js-apis-osAccount.md#osaccounttype)&gt; | Promise对象，返回指定系统账号的类型。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2639,7 +4413,9 @@ getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -2656,9 +4432,31 @@ getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    let localId: int = 100;
+    accountManager.getOsAccountType(localId).then((type: osAccount.OsAccountType) => {
+      console.info('getOsAccountType Type:' + type);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountType errInfo:code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### bindDomainAccount<sup>20+</sup>
 
-bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promise&lt;void&gt;
+ArkTS-Dyn: bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promise&lt;void&gt;
+
+ArkTS-Sta: bindDomainAccount(localId: int, domainAccountInfo: DomainAccountInfo): Promise&lt;void&gt;
 
 在指定系统账号上绑定指定域账号。使用Promise异步回调。
 
@@ -2668,11 +4466,15 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId     | number | 是   |  要查询的系统账号ID。 |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
 | domainAccountInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。          |
 
 **返回值：**
@@ -2700,6 +4502,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2719,6 +4522,28 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    let localId: int = 100;
+    let domainInfo: osAccount.DomainAccountInfo =
+      { domain: 'testDomain', accountName: 'testAccountName' };
+    accountManager.bindDomainAccount(localId, domainInfo).then(() => {
+      console.info('bindDomainAccount success.');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`bindDomainAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`bindDomainAccount error, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ## osAccount.getAuthorizationManager<sup>24+</sup>
 
 getAuthorizationManager(): AuthorizationManager
@@ -2730,6 +4555,10 @@ getAuthorizationManager(): AuthorizationManager
 **系统能力：** SystemCapability.Account.OsAccount
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -2761,6 +4590,10 @@ let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthoriz
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 ### acquireAuthorization<sup>24+</sup>
 
 acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): Promise&lt;AcquireAuthorizationResult&gt;
@@ -2774,6 +4607,10 @@ acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -2835,6 +4672,10 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2890,6 +4731,10 @@ releaseAuthorization(privilege: string): Promise&lt;void&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2943,6 +4788,10 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | challenge | Uint8Array | 否 | 是 | 随机挑战值，可用于防止重放攻击，长度不得超过32字节，默认为undefined。|
@@ -2958,6 +4807,10 @@ try {
 **系统能力：** SystemCapability.Account.OsAccount
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
@@ -2977,11 +4830,15 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | resultCode | [AuthorizationResultCode](#authorizationresultcode24) | 否 | 否 | 授权结果码。|
 | privilege | string | 否 | 否 | 与授权关联的权限。 |
-| isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true：表示是复用的授权结果。false：表示不是复用的授权结果。 |
+| isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true:表示是复用的授权结果。false:表示不是复用的授权结果。 |
 | validityPeriod | number | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
 | token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
 
@@ -3001,21 +4858,28 @@ constructor()
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 202 | Not system application.|
 
 **示例：**
-
   ```ts
   let userAuth = new osAccount.UserAuth();
   ```
 
 ### getVersion<sup>8+</sup>
 
-getVersion(): number
+ArkTS-Dyn: getVersion(): number
+
+ArkTS-Sta: getVersion(): int
 
 返回版本信息。
 
@@ -3023,13 +4887,19 @@ getVersion(): number
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明         |
 | :----- | :----------- |
-| number | 返回版本信息。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回版本信息。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -3037,15 +4907,31 @@ getVersion(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let version: number = userAuth.getVersion();
   console.info('getVersion version = ' + version);
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let version: int = userAuth.getVersion();
+  console.info('getVersion version = ' + version);
+  ```
+
 ### getAvailableStatus<sup>8+</sup>
 
-getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
+ArkTS-Dyn: getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
+
+ArkTS-Sta: getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): int
 
 获取指定认证类型和认证可信等级的认证能力的可用状态。
 
@@ -3054,6 +4940,10 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3066,9 +4956,11 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 
 | 类型   | 说明                           |
 | ------ | ----------------------------- |
-| number | 返回认证能力的可用状态。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回认证能力的可用状态。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3081,8 +4973,10 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { osAccount } from '@kit.BasicServicesKit';
+  import { BusinessError } from '@kit.BasicServicesKit';                
 
   let userAuth = new osAccount.UserAuth();
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
@@ -3091,6 +4985,23 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
     let status: number = userAuth.getAvailableStatus(authType, authTrustLevel);
     console.info('getAvailableStatus status = ' + status);
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAvailableStatus exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let authType: osAccount.AuthType = osAccount.AuthType.PIN;
+  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+  try {
+    let status: int = userAuth.getAvailableStatus(authType, authTrustLevel);
+    console.info('getAvailableStatus status = ' + status);
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getAvailableStatus exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -3108,6 +5019,10 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                                    | 必填 | 说明                                |
@@ -3116,6 +5031,8 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 | callback | AsyncCallback&lt;[ExecutorProperty](#executorproperty8)&gt; | 是   | 回调函数。如果获取成功，err为null，data为执行器属性信息；否则为错误对象。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3128,7 +5045,9 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3155,6 +5074,35 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let keys: Array<osAccount.GetPropertyType>  = [
+    osAccount.GetPropertyType.AUTH_SUB_TYPE,
+    osAccount.GetPropertyType.REMAIN_TIMES,
+    osAccount.GetPropertyType.FREEZING_TIME
+  ];
+  let request: osAccount.GetPropertyRequest = {
+    authType: osAccount.AuthType.PIN,
+    keys: keys
+  };
+  try {
+    userAuth.getProperty(request, (err: BusinessError | null, result: osAccount.ExecutorProperty |undefined) => {
+      if (err) {
+        console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getProperty result = ' + JSON.stringify(result));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getProperty<sup>8+</sup>
 
 getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
@@ -3166,6 +5114,10 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3181,6 +5133,8 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -3192,7 +5146,9 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3217,6 +5173,34 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let keys: Array<osAccount.GetPropertyType> = [
+    osAccount.GetPropertyType.AUTH_SUB_TYPE,
+    osAccount.GetPropertyType.REMAIN_TIMES,
+    osAccount.GetPropertyType.FREEZING_TIME
+  ];
+  let request: osAccount.GetPropertyRequest = {
+    authType: osAccount.AuthType.PIN,
+    keys: keys
+  };
+  try {
+    userAuth.getProperty(request).then((result: osAccount.ExecutorProperty) => {
+      console.info('getProperty result = ' + JSON.stringify(result));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getProperty error = code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getPropertyByCredentialId<sup>14+</sup>
 
 getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyType&gt;): Promise&lt;ExecutorProperty&gt;
@@ -3228,6 +5212,10 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3244,10 +5232,13 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
+| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
 | 12300020 | Device hardware abnormal. |
@@ -3255,7 +5246,9 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -3292,6 +5285,45 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  let credInfo: osAccount.EnrolledCredInfo[] = [];
+
+  try {
+    credInfo = await userIDM.getAuthInfo(osAccount.AuthType.PRIVATE_PIN);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  if (credInfo.length == 0) {
+    console.info('no credential infos');
+    return;
+  }
+  let testCredentialId: Uint8Array = credInfo[0].credentialId;
+  let keys: Array<osAccount.GetPropertyType> = [
+    osAccount.GetPropertyType.AUTH_SUB_TYPE,
+    osAccount.GetPropertyType.REMAIN_TIMES,
+    osAccount.GetPropertyType.FREEZING_TIME
+  ];
+  try {
+    let userAuth = new osAccount.UserAuth();
+    userAuth.getPropertyByCredentialId(testCredentialId, keys).then((result: osAccount.ExecutorProperty) => {
+      console.info('getPropertyByCredentialId result = ' + JSON.stringify(result));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getPropertyByCredentialId error = code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getPropertyByCredentialId exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setProperty<sup>8+</sup>
 
 setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): void
@@ -3304,6 +5336,10 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                  | 必填 | 说明                                                                    |
@@ -3312,6 +5348,8 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 | callback | AsyncCallback&lt;void&gt;                           | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3323,7 +5361,9 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3346,6 +5386,31 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let request: osAccount.SetPropertyRequest = {
+    authType: osAccount.AuthType.PIN,
+    key: osAccount.SetPropertyType.INIT_ALGORITHM,
+    setInfo: new Uint8Array([0])
+  };
+  try {
+    userAuth.setProperty(request, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setProperty successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setProperty<sup>8+</sup>
 
 setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
@@ -3357,6 +5422,10 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3372,6 +5441,8 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -3382,7 +5453,9 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3403,6 +5476,30 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let request: osAccount.SetPropertyRequest = {
+    authType: osAccount.AuthType.PIN,
+    key: osAccount.SetPropertyType.INIT_ALGORITHM,
+    setInfo: new Uint8Array([0])
+  };
+  try {
+    userAuth.setProperty(request).then(() => {
+      console.info('setProperty successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### prepareRemoteAuth<sup>12+</sup>
 
 prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
@@ -3414,6 +5511,10 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3429,6 +5530,8 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -3441,7 +5544,9 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3464,17 +5569,47 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
   )
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let distributedDeviceMgr = distributedDeviceManager.createDeviceManager("com.example.bundleName");
+  distributedDeviceMgr.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
+    try {
+      if (data.length > 0 && data[0].networkId != null) {
+        userAuth.prepareRemoteAuth(data[0].networkId! ).then(() => {
+          console.info('prepareRemoteAuth successfully');
+        }).catch((e: Error) => {
+          const err = e as BusinessError;
+          console.error(`prepareRemoteAuth failed, error = code is ${err.code}, message is ${err.message}`);
+        });
+      }
+    } catch (e: Error) {
+      const err = e as BusinessError;
+      console.error(`prepareRemoteAuth exception = code is ${err.code}, message is ${err.message}`);
+    }
+  }
+  )
+  ```
+
 ### auth<sup>8+</sup>
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
-认证当前用户。
+认证当前用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3492,6 +5627,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | Uint8Array | 返回取消的上下文ID。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
@@ -3520,7 +5657,9 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3530,11 +5669,33 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
   try {
     userAuth.auth(challenge, authType, authTrustLevel, {
       onResult: (result: number, extraInfo: osAccount.AuthResult) => {
+          console.info('auth result = ' + result);
+          console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+      }
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let challenge: Uint8Array = new Uint8Array([0]);
+  let authType: osAccount.AuthType = osAccount.AuthType.PIN;
+  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+  try {
+    userAuth.auth(challenge, authType, authTrustLevel, {
+      onResult: (result: int, extraInfo: osAccount.AuthResult) => {
         console.info('auth result = ' + result);
         console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
-  } catch (e) {
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -3544,13 +5705,17 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, options: AuthOptions, callback: IUserAuthCallback): Uint8Array
 
-基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。
+基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3569,6 +5734,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | Uint8Array | 返回取消的上下文ID。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
@@ -3598,7 +5765,9 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3621,9 +5790,36 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let challenge: Uint8Array = new Uint8Array([0]);
+  let authType: osAccount.AuthType = osAccount.AuthType.PIN;
+  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+  let options: osAccount.AuthOptions = {
+    accountId: 100
+  };
+  try {
+    userAuth.auth(challenge, authType, authTrustLevel, options, {
+      onResult: (result: int, extraInfo: osAccount.AuthResult) => {
+        console.info('auth result = ' + result);
+        console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### authUser<sup>8+</sup>
 
-authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
+ArkTS-Dyn: authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
+
+ArkTS-Sta: authUser(userId: int, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
 认证指定用户。使用callback异步回调。
 
@@ -3633,11 +5829,15 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型                                                 | 必填 | 说明                                |
 | --------------- | ---------------------------------------------------- | --- | ------------------------------------ |
-| userId          | number                                               | 是  | 指示用户身份。                        |
+| userId          | ArkTS-Dyn: number<br>ArkTS-Sta: int                  | 是  | 指示用户身份。                        |
 | challenge       | Uint8Array                                           | 是  | 指示挑战值，挑战值为一个随机数，用于提升安全性。                          |
 | authType        | [AuthType](#authtype8)                   | 是  | 指示认证类型。                        |
 | authTrustLevel  | [AuthTrustLevel](#authtrustlevel8)       | 是  | 指示认证结果的信任级别。               |
@@ -3650,6 +5850,8 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 | Uint8Array | 返回取消的上下文ID。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
@@ -3679,7 +5881,9 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3700,6 +5904,29 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let userID: int = 100;
+  let challenge: Uint8Array = new Uint8Array([0]);
+  let authType: osAccount.AuthType = osAccount.AuthType.PIN;
+  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+  try {
+    userAuth.authUser(userID, challenge, authType, authTrustLevel, {
+      onResult: (result: int,extraInfo: osAccount.AuthResult) => {
+        console.info('authUser result = ' + result);
+        console.info('authUser extraInfo = ' + JSON.stringify(extraInfo));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`authUser exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### cancelAuth<sup>8+</sup>
 
 cancelAuth(contextID: Uint8Array): void
@@ -3712,6 +5939,10 @@ cancelAuth(contextID: Uint8Array): void
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型       | 必填  | 说明                                        |
@@ -3719,6 +5950,8 @@ cancelAuth(contextID: Uint8Array): void
 | contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID动态生成没有具体值。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------ |
@@ -3730,7 +5963,9 @@ cancelAuth(contextID: Uint8Array): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
@@ -3745,6 +5980,28 @@ cancelAuth(contextID: Uint8Array): void
   try {
     userAuth.cancelAuth(contextId);
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`cancelAuth exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userAuth = new osAccount.UserAuth();
+  let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
+  let challenge = new Uint8Array([0]);
+  let contextId: Uint8Array = userAuth.auth(challenge, osAccount.AuthType.PIN, osAccount.AuthTrustLevel.ATL1, {
+    onResult: (result: int, extraInfo: osAccount.AuthResult) => {
+      console.info('auth result = ' + result);
+      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+    }
+  });
+  try {
+    userAuth.cancelAuth(contextId);
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`cancelAuth exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -3766,7 +6023,13 @@ constructor()
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -3790,6 +6053,10 @@ registerInputer(inputer: IInputer): void
 
 **需要权限：** ohos.permission.ACCESS_PIN_AUTH
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
@@ -3797,6 +6064,8 @@ registerInputer(inputer: IInputer): void
 | inputer   | [IInputer](#iinputer8)  | 是  | PIN码输入器，用于获取PIN码。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3827,6 +6096,7 @@ registerInputer(inputer: IInputer): void
   }
   ```
 
+
 ### unregisterInputer<sup>8+</sup>
 
 unregisterInputer(): void
@@ -3839,7 +6109,13 @@ unregisterInputer(): void
 
 **需要权限：** ohos.permission.ACCESS_PIN_AUTH
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3869,6 +6145,10 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL或ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
@@ -3877,6 +6157,8 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 | inputer   | [IInputer](#iinputer8)  | 是  | 凭据输入器，用于获取凭据。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3908,6 +6190,7 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
   }
   ```
 
+
 ### unregisterInputer<sup>9+</sup>
 
 static unregisterInputer(authType: AuthType): void
@@ -3920,6 +6203,10 @@ static unregisterInputer(authType: AuthType): void
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL或ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
@@ -3927,6 +6214,8 @@ static unregisterInputer(authType: AuthType): void
 | authType   | [AuthType](#authtype8)  | 是  | 认证类型。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3937,24 +6226,703 @@ static unregisterInputer(authType: AuthType): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
   try {
     osAccount.InputerManager.unregisterInputer(authType);
     console.info('unregisterInputer success.');
-  } catch (e) {
+  } catch(err) {
+    console.error(`unregisterInputer code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
+  try {
+    osAccount.InputerManager.unregisterInputer(authType);
+    console.info('unregisterInputer success.');
+  } catch(e: Error) {
     const err = e as BusinessError;
     console.error(`unregisterInputer code is ${err.code}, message is ${err.message}`);
   }
   ```
 
+## DomainPluginAuthFunc<sup>23+</sup>
+
+type DomainPluginAuthFunc = (domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback) => void
+
+认证指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| credential   | Uint8Array  | 是   | 表示域账号的凭据。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {
+  // 模拟认证
+  // 通知认证结果
+  let result: osAccount.AuthResult = {
+    token: new Uint8Array([0]),
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback.onResult(0, result);
+};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+
+let userAuth = new osAccount.UserAuth();
+let challenge: Uint8Array = new Uint8Array([0]);
+let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
+let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+try {
+  userAuth.auth(challenge, authType, authTrustLevel, {
+    onResult: (resultCode: int, authResult: osAccount.AuthResult) => {
+      console.info('auth resultCode = ' + resultCode);
+      console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e: Error) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginAuthWithPopupFunc<sup>23+</sup>
+
+type DomainPluginAuthWithPopupFunc = (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+
+弹窗认证指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {
+  // 模拟认证
+  // 通知认证结果
+  let result: osAccount.AuthResult = {
+    token: new Uint8Array([0]),
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback.onResult(0, result);
+};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginAuthWithTokenFunc<sup>23+</sup>
+
+type DomainPluginAuthWithTokenFunc = (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+
+使用授权令牌认证指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token   | Uint8Array  | 是   | 表示PIN码或生物识别认证成功时生成的授权令牌。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {
+  // 模拟认证
+  // 通知认证结果
+  let result: osAccount.AuthResult = {
+    token: new Uint8Array([0]),
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback.onResult(0, result);
+};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginGetAccountInfoFunc<sup>23+</sup>
+
+type DomainPluginGetAccountInfoFunc = (options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;) => void
+
+查询指定域账号的信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| options   | [GetDomainAccountInfoPluginOptions](#getdomainaccountinfopluginoptions10)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | 是   | 表示查询结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
+  // 模拟获取账号信息
+  // 通知结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  let accountInfo: osAccount.DomainAccountInfo = {
+    domain: options.domain ?? "",
+    accountName: options.accountName,
+    accountId: 'xxxx'
+  };
+  callback(code, accountInfo);
+};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginGetAuthStatusInfoFunc<sup>23+</sup>
+
+type DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;AuthStatusInfo&gt;) => void
+
+查询指定域账号的认证状态信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | 是   | 表示查询结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
+  // 模拟获取认证状态信息
+  // 通知结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  let statusInfo: osAccount.AuthStatusInfo = {
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback(code, statusInfo);
+};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginBindAccountFunc<sup>23+</sup>
+
+type DomainPluginBindAccountFunc = (domainAccountInfo: DomainAccountInfo, localId: int, callback: AsyncCallback&lt;void&gt;) => void
+
+绑定指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| localId             | int  | 是   | 系统账号ID。 |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {
+  // 模拟绑定操作
+  // 通知绑定结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  callback(code, undefined);
+};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginUnbindAccountFunc<sup>23+</sup>
+
+type DomainPluginUnbindAccountFunc = (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;void&gt;) => void
+
+解绑指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
+  // 模拟解绑操作
+  // 通知解绑结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  callback(code, undefined);
+};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginIsAccountTokenValidFunc<sup>23+</sup>
+
+type DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: AsyncCallback&lt;boolean&gt;) => void
+
+检查指定的域账号令牌是否有效。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token | Uint8Array | 是 | 表示域账号令牌。 |
+| callback   | AsyncCallback&lt;boolean&gt; | 是   | 表示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {
+  // 模拟检查操作
+  // 通知检查结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  callback(code, true);
+};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginGetAccessTokenFunc<sup>23+</sup>
+
+type DomainPluginGetAccessTokenFunc = (options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;) => void
+
+根据指定的选项获取域访问令牌。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| options | [GetDomainAccessTokenOptions](#getdomainaccesstokenoptions10)  | 是   | 表示获取域访问令牌的选项。|
+| callback   | AsyncCallback&lt;Uint8Array&gt; | 是   | 表示结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
+  // 模拟获取令牌操作
+  // 通知结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  let token: Uint8Array = new Uint8Array([0]);
+  callback(code, token);
+};
+
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## DomainPlugin<sup>9+</sup>
 
 域插件，提供域账号认证功能。
 
+### 属性
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称      | 类型                                    | 只读 | 可选 | 说明             |
+| ---------- | --------------------------------------- | ---- | ---- | --------------- |
+| auth<sup>23+</sup>   | [DomainPluginAuthFunc](#domainpluginauthfunc23)  | 否 | 否   | 认证指定的域账号。|
+| authWithPopup<sup>23+</sup>   | [DomainPluginAuthWithPopupFunc](#domainpluginauthwithpopupfunc23)  | 否 | 否   | 弹窗认证指定的域账号。|
+| authWithToken<sup>23+</sup>   | [DomainPluginAuthWithTokenFunc](#domainpluginauthwithtokenfunc23)  | 否 | 否    | 使用授权令牌认证指定的域账号。|
+| getAccountInfo<sup>23+</sup>   | [DomainPluginGetAccountInfoFunc](#domainplugingetaccountinfofunc23)  | 否 | 否    | 查询指定域账号的信息。|
+| getAuthStatusInfo<sup>23+</sup>   | [DomainPluginGetAuthStatusInfoFunc](#domainplugingetauthstatusinfofunc23)  | 否 | 否    | 查询指定域账号的认证状态信息。|
+| bindAccount<sup>23+</sup>   | [DomainPluginBindAccountFunc](#domainpluginbindaccountfunc23)  | 否 | 否    | 绑定指定的域账号|
+| unbindAccount<sup>23+</sup>   | [DomainPluginUnbindAccountFunc](#domainpluginunbindaccountfunc23)  | 否 | 否    | 解绑指定的域账号。|
+| isAccountTokenValid<sup>23+</sup>   | [DomainPluginIsAccountTokenValidFunc](#domainpluginisaccounttokenvalidfunc23)  | 否 | 否    | 检查指定的域账号令牌是否有效。|
+| getAccessToken<sup>23+</sup>   | [DomainPluginGetAccessTokenFunc](#domainplugingetaccesstokenfunc23)  | 否 | 否    | 根据指定的选项获取域访问令牌。|
 
 ### auth<sup>9+</sup>
 
@@ -3962,67 +6930,73 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 认证指定的域账号。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| credential   | Uint8Array  | 是   | 指示域账号的凭据。|
-| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| credential   | Uint8Array  | 是   | 表示域账号的凭据。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin);
-  let userAuth = new osAccount.UserAuth();
-  let challenge: Uint8Array = new Uint8Array([0]);
-  let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
-  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-  try {
-    userAuth.auth(challenge, authType, authTrustLevel, {
-      onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-          console.info('auth resultCode = ' + resultCode);
-          console.info('auth authResult = ' + JSON.stringify(authResult));
-      }
-    });
-  } catch (e) {
-    const err = e as BusinessError;
-    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {
+    // 模拟认证
+    // 通知认证结果
+    let result: osAccount.AuthResult = {
+      token: new Uint8Array([0]),
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback.onResult(0, result);
+  },
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin);
+let userAuth = new osAccount.UserAuth();
+let challenge: Uint8Array = new Uint8Array([0]);
+let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
+let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+try {
+  userAuth.auth(challenge, authType, authTrustLevel, {
+    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+        console.info('auth resultCode = ' + resultCode);
+        console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### authWithPopup<sup>10+</sup>
 
@@ -4030,51 +7004,56 @@ authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback)
 
 弹窗认证指定的域账号。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {
+    // 模拟认证
+    // 通知认证结果
+    let result: osAccount.AuthResult = {
+      token: new Uint8Array([0]),
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback.onResult(0, result);
+  },
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### authWithToken<sup>10+</sup>
 
@@ -4082,52 +7061,57 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 
 使用授权令牌认证指定的域账号。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| token   | Uint8Array  | 是   | 指示PIN码或生物识别认证成功时生成的授权令牌。|
-| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token   | Uint8Array  | 是   | 表示PIN码或生物识别认证成功时生成的授权令牌。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {
+    // 模拟认证
+    // 通知认证结果
+    let result: osAccount.AuthResult = {
+      token: new Uint8Array([0]),
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback.onResult(0, result);
+  },
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin);
+```
 
 ### getAccountInfo<sup>10+</sup>
 
@@ -4135,56 +7119,61 @@ getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallba
 
 查询指定域账号的信息。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| options   | [GetDomainAccountInfoPluginOptions](#getdomainaccountinfopluginoptions10)  | 是   | 指示域账号信息。|
-| callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | 是   | 指示查询结果回调。|
+| options   | [GetDomainAccountInfoPluginOptions](#getdomainaccountinfopluginoptions10)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | 是   | 表示查询结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
-      // mock getting account information
-      // notify result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let accountInfo: osAccount.DomainAccountInfo = {
-        domain: options.domain ? options.domain : "",
-        accountName: options.accountName,
-        accountId: 'xxxx'
-      };
-      callback(code, accountInfo);
-    },
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
+    // 模拟获取账号信息
+    // 通知结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    let accountInfo: osAccount.DomainAccountInfo = {
+      domain: options.domain ? options.domain : "",
+      accountName: options.accountName,
+      accountId: 'xxxx'
+    };
+    callback(code, accountInfo);
+  },
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### getAuthStatusInfo<sup>10+</sup>
 
@@ -4192,53 +7181,58 @@ getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&
 
 查询指定域账号的认证状态信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | 是   | 指示查询结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | 是   | 表示查询结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let statusInfo: osAccount.AuthStatusInfo = {
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback(code, statusInfo);
-    },
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    let statusInfo: osAccount.AuthStatusInfo = {
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback(code, statusInfo);
+  },
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### bindAccount<sup>10+</sup>
 
@@ -4246,52 +7240,57 @@ bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: Asy
 
 绑定指定的域账号。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| localId             | number  | 是   | 系统账号ID。 |
-| callback   | AsyncCallback&lt;void&gt; | 是   | 指示绑定结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| localId             | number | 是   | 系统账号ID。 |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {
-      // mock unbinding operation
-      // notify binding result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code);
-    },
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {
+    // 模拟绑定操作
+    // 通知绑定结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    callback(code);
+  },
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### unbindAccount<sup>10+</sup>
 
@@ -4303,47 +7302,50 @@ unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;v
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| callback   | AsyncCallback&lt;void&gt; | 是   | 指示绑定结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
-      // mock unbinding operation
-      // notify unbinding result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code);
-    },
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
+    // 模拟解绑操作
+    // 通知解绑结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    callback(code);
+  },
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### isAccountTokenValid<sup>10+</sup>
 
@@ -4351,52 +7353,57 @@ isAccountTokenValid(domainAccountInfo: DomainAccountInfo, token: Uint8Array, cal
 
 检查指定的域账号令牌是否有效。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| token | Uint8Array | 是 | 指示域账号令牌。 |
-| callback   | AsyncCallback&lt;boolean&gt; | 是   | 指示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token | Uint8Array | 是 | 表示域账号令牌。 |
+| callback   | AsyncCallback&lt;boolean&gt; | 是   | 表示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {
-      // mock checking operation
-      // notify checking result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code, true);
-    },
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {
+    // 模拟检查操作
+    // 通知结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    callback(code, true);
+  },
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### getAccessToken<sup>10+</sup>
 
@@ -4404,52 +7411,57 @@ getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;
 
 根据指定的选项获取域访问令牌。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| options | [GetDomainAccessTokenOptions](#getdomainaccesstokenoptions10)  | 是   | 指示获取域访问令牌的选项。|
-| callback   | AsyncCallback&lt;Uint8Array&gt; | 是   | 指示结果回调。|
+| options | [GetDomainAccessTokenOptions](#getdomainaccesstokenoptions10)  | 是   | 表示获取域访问令牌的选项。|
+| callback   | AsyncCallback&lt;Uint8Array&gt; | 是   | 表示结果回调。|
 
 **示例：**
 
-  ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
-      // mock getting operation
-      // notify result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let token: Uint8Array = new Uint8Array([0]);
-      callback(code, token);
-    }
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+    callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+    callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
+    // 模拟获取令牌操作
+    // 通知结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    let token: Uint8Array = new Uint8Array([0]);
+    callback(code, token);
   }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ## DomainAccountManager <sup>9+</sup>
 
@@ -4467,6 +7479,10 @@ static registerPlugin(plugin: DomainPlugin): void
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
@@ -4474,6 +7490,8 @@ static registerPlugin(plugin: DomainPlugin): void
 | plugin   | [DomainPlugin](#domainplugin9)  | 是  | 指示域插件。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -4485,8 +7503,10 @@ static registerPlugin(plugin: DomainPlugin): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+  import { osAccount } from '@kit.BasicServicesKit';
+  import { AsyncCallback } from '@kit.BasicServicesKit';
 
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
@@ -4509,7 +7529,38 @@ static registerPlugin(plugin: DomainPlugin): void
   try {
     osAccount.DomainAccountManager.registerPlugin(plugin);
     console.info('registerPlugin success.');
-  } catch (e) {
+  } catch(err) {
+    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import  { AsyncCallback } from '@ohos.base';
+
+  let plugin: osAccount.DomainPlugin = {
+    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+      callback: osAccount.IUserAuthCallback) => {},
+    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+      callback: osAccount.IUserAuthCallback) => {},
+    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+      callback: osAccount.IUserAuthCallback) => {},
+    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
+      callback: AsyncCallback<void>) => {},
+    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+      callback: AsyncCallback<boolean>) => {},
+    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+  }
+  try {
+    osAccount.DomainAccountManager.registerPlugin(plugin);
+    console.info('registerPlugin success.');
+  } catch(e: Error) {
     const err = e as BusinessError;
     console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
   }
@@ -4527,7 +7578,13 @@ static unregisterPlugin(): void
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -4537,13 +7594,24 @@ static unregisterPlugin(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     osAccount.DomainAccountManager.unregisterPlugin();
     console.info('unregisterPlugin success.');
-  } catch (e) {
+  } catch(err) {
+    console.error(`unregisterPlugin code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  try {
+    osAccount.DomainAccountManager.unregisterPlugin();
+    console.info('unregisterPlugin success.');
+  } catch(e: Error) {
     const err = e as BusinessError;
     console.error(`unregisterPlugin code is ${err.code}, message is ${err.message}`);
   }
@@ -4561,6 +7629,10 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
@@ -4570,6 +7642,8 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -4592,6 +7666,7 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4613,6 +7688,26 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  let domainAccountInfo: osAccount.DomainAccountInfo = {
+    domain: 'CHINA',
+    accountName: 'zhangsan'
+  }
+  let credential = new Uint8Array([0])
+  try {
+    osAccount.DomainAccountManager.auth(domainAccountInfo, credential, {
+      onResult: (resultCode: int, authResult: osAccount.AuthResult) => {
+        console.info('auth resultCode = ' + resultCode);
+        console.info('auth authResult = ' + JSON.stringify(authResult));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### auth<sup>24+</sup>
 
 auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: DomainAccountAuthOptions, callback: IUserAuthCallback): void
@@ -4624,6 +7719,10 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: Doma
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -4658,6 +7757,7 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: Doma
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4665,7 +7765,7 @@ let domainAccountInfo: osAccount.DomainAccountInfo = {
   domain: 'CHINA',
   accountName: 'zhangsan'
 }
-let credential = new Uint8Array([0]);
+let credential = new Uint8Array([0])
 try {
   let serverParams: Record<string, Object> = {
     "uri": "test.example.com",
@@ -4685,6 +7785,32 @@ try {
   console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+ArkTS--Sta示例：
+```ts
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+let credential = new Uint8Array([0])
+try {
+  let serverParams: Record<string, RecordData> = {
+    "uri": "test.example.com",
+    "port": 100
+  }
+  let authOptions: osAccount.DomainAccountAuthOptions = {
+    serverParams: serverParams
+  }
+  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, authOptions, {
+    onResult: (resultCode: int, authResult: osAccount.AuthResult) => {
+      console.info('auth resultCode = ' + resultCode);
+      console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e: Error) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### authWithPopup<sup>10+</sup>
 
@@ -4700,6 +7826,10 @@ authWithPopup(callback: IUserAuthCallback): void
 
 从API version 11开始无需申请权限，建议升级SDK版本。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
@@ -4708,8 +7838,11 @@ authWithPopup(callback: IUserAuthCallback): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
+| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4727,6 +7860,7 @@ authWithPopup(callback: IUserAuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4743,9 +7877,26 @@ authWithPopup(callback: IUserAuthCallback): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  try {
+    osAccount.DomainAccountManager.authWithPopup({
+      onResult: (resultCode: int, authResult: osAccount.AuthResult) => {
+        console.info('auth resultCode = ' + resultCode);
+        console.info('auth authResult = ' + JSON.stringify(authResult));
+      }
+    })
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### authWithPopup<sup>10+</sup>
 
-authWithPopup(localId: number, callback: IUserAuthCallback): void
+ArkTS-Dyn: authWithPopup(localId: number, callback: IUserAuthCallback): void
+
+ArkTS-Sta: authWithPopup(localId: int, callback: IUserAuthCallback): void
 
 弹框认证指定的域账号。
 
@@ -4757,17 +7908,24 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 从API version 11开始无需申请权限，建议升级SDK版本。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| localId   | number  | 是   | 指示绑定域账号的系统账号的本地标识。|
+| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示绑定域账号的系统账号的本地标识。|
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
+| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4786,6 +7944,7 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4797,6 +7956,21 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
       }
     })
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`authWithPopup exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  try {
+    osAccount.DomainAccountManager.authWithPopup(100, {
+      onResult: (resultCode: int, authResult: osAccount.AuthResult) => {
+        console.info('authWithPopup resultCode = ' + resultCode);
+        console.info('authWithPopup authResult = ' + JSON.stringify(authResult));
+      }
+    })
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`authWithPopup exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -4814,6 +7988,10 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
@@ -4822,6 +8000,8 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 | callback   | AsyncCallback&lt;boolean&gt;  | 是   | 指示检查结果回调。true表示指定的域账号已存在；false表示指定的域账号不存在。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -4839,7 +8019,9 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainAccountInfo: osAccount.DomainAccountInfo = {
@@ -4860,6 +8042,29 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainAccountInfo: osAccount.DomainAccountInfo = {
+    domain: 'CHINA',
+    accountName: 'zhangsan'
+  }
+  try {
+    osAccount.DomainAccountManager.hasAccount(domainAccountInfo, (err: BusinessError | null, result: boolean | undefined) => {
+      if (err) {
+        console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('hasAccount result: ' + result);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### hasAccount<sup>10+</sup>
 
 hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
@@ -4871,6 +8076,10 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4885,6 +8094,8 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -4902,7 +8113,9 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainAccountInfo: osAccount.DomainAccountInfo = {
@@ -4921,6 +8134,28 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainAccountInfo: osAccount.DomainAccountInfo = {
+    domain: 'CHINA',
+    accountName: 'zhangsan'
+  }
+  try {
+    osAccount.DomainAccountManager.hasAccount(domainAccountInfo).then((result: boolean) => {
+      console.info('hasAccount result: ' + result);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### updateAccountToken<sup>10+</sup>
 
 updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: AsyncCallback&lt;void&gt;): void
@@ -4933,6 +8168,10 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
@@ -4942,6 +8181,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。如果更新成功，err为null，否则为错误对象。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -4954,7 +8195,9 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainAccountInfo: osAccount.DomainAccountInfo = {
@@ -4977,6 +8220,31 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainAccountInfo: osAccount.DomainAccountInfo = {
+    domain: 'CHINA',
+    accountName: 'zhangsan',
+    accountId: '123456'
+  }
+  let token = new Uint8Array([0])
+  try {
+    osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token, (err: BusinessError |null) => {
+      if (err != null) {
+        console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('updateAccountToken successfully');
+      }
+    })
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### updateAccountToken<sup>10+</sup>
 
 updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Promise&lt;void&gt;
@@ -4988,6 +8256,10 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5004,6 +8276,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -5015,7 +8289,9 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainAccountInfo: osAccount.DomainAccountInfo = {
@@ -5028,9 +8304,33 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
     osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
       console.info('updateAccountToken successfully');
     }).catch((err: BusinessError) => {
-      console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
+        console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainAccountInfo: osAccount.DomainAccountInfo = {
+    domain: 'CHINA',
+    accountName: 'zhangsan',
+    accountId: '123456'
+  }
+  let token = new Uint8Array([0])
+  try {
+    osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
+      console.info('updateAccountToken successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -5048,6 +8348,10 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
@@ -5056,6 +8360,8 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 | callback   | AsyncCallback&lt;DomainAccountInfo&gt;  | 是   | 指示查询结果回调。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5073,7 +8379,9 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
@@ -5095,6 +8403,30 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
+    domain: 'CHINA',
+    accountName: 'zhangsan'
+  }
+  try {
+    osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo,
+      (err: BusinessError | null, result: osAccount.DomainAccountInfo | undefined) => {
+        if (err) {
+          console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAccountInfo result: ' + result);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAccountInfo<sup>10+</sup>
 
 getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountInfo&gt;
@@ -5106,6 +8438,10 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5120,6 +8456,8 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 | Promise&lt;DomainAccountInfo&gt; | Promise对象，返回指定的域账号信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5137,7 +8475,9 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
@@ -5157,24 +8497,55 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
+    domain: 'CHINA',
+    accountName: 'zhangsan'
+  }
+  try {
+    osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo)
+      .then((result: osAccount.DomainAccountInfo) => {
+        console.info('getAccountInfo result: ' + result);
+      }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAccessToken<sup>11+</sup>
 
-getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&lt;Uint8Array&gt;): void
+ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-获取当前域账号的业务访问令牌。使用callback异步回调。
+ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: AsyncCallback&lt;Uint8Array&gt;): void
+
+获取当前域账号的业务访问令牌，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | Record<string, Object>  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
 | callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 指示结果回调。如果获取成功，err返回null，否则为错误对象。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5192,7 +8563,9 @@ getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let businessParams: Record<string, Object> = {
@@ -5214,21 +8587,52 @@ getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&l
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { RecordData } from '@ohos.base';
+
+  let businessParams: Record<string, RecordData> = {
+    'clientId': 'xxx',
+    'secretId': 'yyy'
+  };  // depends on the implementation of the domain plugin
+  try {
+    osAccount.DomainAccountManager.getAccessToken(businessParams,
+      (err: BusinessError | null, result: Uint8Array | undefined) => {
+        if (err) {
+          console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAccessToken result: ' + result);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAccessToken<sup>11+</sup>
 
-getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt;
+ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt;
 
-查询当前域账号的业务访问令牌。使用Promise异步回调。
+ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uint8Array&gt;
+
+查询当前域账号的业务访问令牌，使用promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | Record<string, Object> | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
 
 **返回值：**
 
@@ -5237,6 +8641,8 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
 | Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5254,7 +8660,9 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let businessParams: Record<string, Object> = {
@@ -5274,6 +8682,30 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { RecordData } from '@ohos.base';
+
+  let businessParams: Record<string, RecordData> = {
+    'clientId': 'xxx',
+    'secretId': 'yyy'
+  };  // depends on the implementation of the domain plugin
+  try {
+    osAccount.DomainAccountManager.getAccessToken(businessParams)
+      .then((result: Uint8Array) => {
+        console.info('getAccessToken result: ' + result);
+      }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### isAuthenticationExpired<sup>12+</sup>
 
 isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
@@ -5285,6 +8717,10 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5300,6 +8736,8 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -5311,7 +8749,9 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainInfo: osAccount.DomainAccountInfo =
@@ -5323,6 +8763,26 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
       console.error('isAuthenticationExpired err: ' + err);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error('isAuthenticationExpired exception: ' + e);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainInfo: osAccount.DomainAccountInfo =
+    {domain: 'testDomain', accountName: 'testAccountName'};
+  try {
+    osAccount.DomainAccountManager.isAuthenticationExpired(domainInfo).then((result: boolean | undefined) => {
+      console.info('isAuthenticationExpired, result: ' + result);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error('isAuthenticationExpired err: ' + err);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error('isAuthenticationExpired exception: ' + e);
   }
@@ -5344,7 +8804,13 @@ constructor()
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5368,6 +8834,10 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                             | 必填 | 说明                                                            |
@@ -5375,6 +8845,8 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 | callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 回调函数。如果打开会话成功，err为null，data为挑战值；否则为错误对象。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5385,7 +8857,9 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -5403,9 +8877,31 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  try {
+    userIDM.openSession((err: BusinessError | null, challenge: Uint8Array | undefined) => {
+      if (err) {
+        console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('openSession challenge = ' + JSON.stringify(challenge));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### openSession<sup>8+</sup>
 
-openSession(accountId?: number): Promise&lt;Uint8Array&gt;
+ArkTS-Dyn: openSession(accountId?: number): Promise&lt;Uint8Array&gt;
+
+ArkTS-Sta: openSession(accountId?: int): Promise&lt;Uint8Array&gt;
 
 打开会话，获取挑战值（用于判断后续的身份认证场景是否处于该会话下，防止重放攻击）。使用Promise异步回调。
 
@@ -5415,11 +8911,15 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型    | 必填 | 说明        |
 | --------- | ------- | ---- | ----------- |
-| accountId<sup>12+</sup> | number  | 否   | 系统账号标识，默认为空。 |
+| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 系统账号标识，默认为空。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
@@ -5428,6 +8928,8 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
 | Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5440,7 +8942,28 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  let accountId = 100;
+  try {
+    userIDM.openSession(accountId).then((challenge: Uint8Array) => {
+        console.info('openSession challenge = ' + JSON.stringify(challenge));
+    }).catch((err: BusinessError) => {
+        console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -5448,10 +8971,11 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
   try {
     userIDM.openSession(accountId).then((challenge: Uint8Array) => {
       console.info('openSession challenge = ' + JSON.stringify(challenge));
-    }).catch((err: BusinessError) => {
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
       console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
     });
-  } catch (e) {
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -5469,6 +8993,10 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型                                 | 必填 | 说明                        |
@@ -5477,6 +9005,8 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | callback        | [IIdmCallback](#iidmcallback8)       | 是  | 回调对象，返回添加凭据的结果。  |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
@@ -5498,7 +9028,9 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
@@ -5530,6 +9062,46 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
   });
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
+  let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
+
+  try {
+    pinAuth.registerInputer({
+      onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+        callback.onSetData(authSubType, password);
+      }
+    });
+  } catch(e: Error) {
+    const err = e as BusinessError;
+    console.error(`registerInputer code is ${err.code}, message is ${err.message}`);
+  }
+
+  let credentialInfo: osAccount.CredentialInfo = {
+    credType: osAccount.AuthType.PIN,
+    credSubType: osAccount.AuthSubType.PIN_SIX,
+    token: new Uint8Array(0),
+  };
+  let userIDM = new osAccount.UserIdentityManager();
+  userIDM.openSession((err: BusinessError |null, challenge: Uint8Array | undefined) => {
+    try {
+      userIDM.addCredential(credentialInfo, {
+        onResult: (result: int, extraInfo: osAccount.RequestResult) => {
+          console.info('addCredential result = ' + result);
+          console.info('addCredential extraInfo = ' + extraInfo);
+        }
+      });
+    } catch (e: Error) {
+      const err = e as BusinessError;
+      console.error(`addCredential exception = code is ${err.code}, message is ${err.message}`);
+    }
+  });
+  ```
+
 ### updateCredential<sup>8+</sup>
 
 updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
@@ -5542,6 +9114,10 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型                                  | 必填 | 说明                     |
@@ -5550,6 +9126,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | callback        | [IIdmCallback](#iidmcallback8)        | 是  | 回调对象，返回更新凭据的结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
@@ -5568,7 +9146,9 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -5597,8 +9177,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
         try {
           userIDM.updateCredential(credentialInfo, {
             onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-              console.info('updateCredential result = ' + result);
-              console.info('updateCredential extraInfo = ' + extraInfo);
+                console.info('updateCredential result = ' + result);
+                console.info('updateCredential extraInfo = ' + extraInfo);
             }
           });
         } catch (e) {
@@ -5610,9 +9190,67 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
   });
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
+  let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
+  let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
+  let credentialInfo: osAccount.CredentialInfo = {
+    credType: osAccount.AuthType.PIN,
+    credSubType: osAccount.AuthSubType.PIN_SIX,
+    token: new Uint8Array(0),
+  };
+
+  try {
+    pinAuth.registerInputer({
+      onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+        callback.onSetData(authSubType, password);
+      }
+    });
+  } catch(e: Error) {
+    const err = e as BusinessError;
+    console.error(`registerInputer code is ${err.code}, message is ${err.message}`);
+  }
+
+  userIDM.openSession((err: BusinessError | null, challenge: Uint8Array | undefined) => {
+    if (err || !challenge){
+      console.error(`openSession failed: ${err?.code || 'challenge is undefined'}`);
+      return;
+    }
+    userAuth.auth(challenge, credentialInfo.credType, osAccount.AuthTrustLevel.ATL1, {
+      onResult: (result: int, extraInfo: osAccount.AuthResult) => {
+        if (result != osAccount.ResultCode.SUCCESS) {
+          return;
+        }
+        if (extraInfo.token != null && extraInfo.token !== undefined) {
+          credentialInfo.token = extraInfo.token!; // 使用!断言非空
+        }
+        //credentialInfo.token = extraInfo.token ?? new Uint8Array();
+        try {
+          userIDM.updateCredential(credentialInfo, {
+            onResult: (result: int, extraInfo: osAccount.RequestResult) => {
+              console.info('updateCredential result = ' + result);
+              console.info('updateCredential extraInfo = ' + extraInfo);
+            }
+          });
+        } catch (e: Error) {
+          const err = e as BusinessError;
+          console.error(`updateCredential exception = code is ${err.code}, message is ${err.message}`);
+        }
+      }
+    });
+  });
+  ```
+
 ### closeSession<sup>8+</sup>
 
-closeSession(accountId?: number): void
+ArkTS-Dyn: closeSession(accountId?: number): void
+
+ArkTS-Sta: closeSession(accountId?: int): void
 
 关闭会话，结束IDM操作。
 
@@ -5622,13 +9260,19 @@ closeSession(accountId?: number): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型    | 必填 | 说明        |
 | --------- | ------- | ---- | ----------- |
-| accountId<sup>12+</sup> | number  | 否   | 系统账号标识，默认为空。 |
+| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 系统账号标识，默认为空。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -5659,6 +9303,10 @@ cancel(challenge: Uint8Array): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型        | 必填 | 说明   |
@@ -5666,6 +9314,8 @@ cancel(challenge: Uint8Array): void
 | challenge | Uint8Array | 是   | 挑战值。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
@@ -5677,6 +9327,7 @@ cancel(challenge: Uint8Array): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5684,7 +9335,18 @@ cancel(challenge: Uint8Array): void
   let challenge: Uint8Array = new Uint8Array([0]);
   try {
     userIDM.cancel(challenge);
-  } catch (e) {
+  } catch(err) {
+    console.error(`cancel code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  let userIDM = new osAccount.UserIdentityManager();
+  let challenge: Uint8Array = new Uint8Array([0]);
+  try {
+    userIDM.cancel(challenge);
+  } catch(e: Error) {
     const err = e as BusinessError;
     console.error(`cancel code is ${err.code}, message is ${err.message}`);
   }
@@ -5694,13 +9356,17 @@ cancel(challenge: Uint8Array): void
 
 delUser(token: Uint8Array, callback: IIdmCallback): void
 
-删除具有身份验证令牌的用户。使用callback异步回调。
+删除具有身份验证令牌的用户，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5710,6 +9376,8 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 | callback | [IIdmCallback](#iidmcallback8) | 是  | 回调对象，返回删除用户的结果。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息        |
 | -------- | ------------------- |
@@ -5721,6 +9389,7 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5739,6 +9408,23 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  let userIDM = new osAccount.UserIdentityManager();
+  let token: Uint8Array = new Uint8Array([0]);
+  try {
+    userIDM.delUser(token, {
+      onResult: (result: int, extraInfo: osAccount.RequestResult) => {
+        console.info('delUser result = ' + result);
+        console.info('delUser extraInfo = ' + JSON.stringify(extraInfo));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`delUser exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### delCred<sup>8+</sup>
 
 delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): void
@@ -5751,6 +9437,10 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型                                            | 必填 | 说明                      |
@@ -5760,6 +9450,8 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 | callback        | [IIdmCallback](#iidmcallback8)      | 是  | 回调对象，返回删除凭据的结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -5773,6 +9465,7 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5792,6 +9485,24 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  let userIDM = new osAccount.UserIdentityManager();
+  let credentialId: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0]);
+  let token: Uint8Array = new Uint8Array([0]);
+  try {
+    userIDM.delCred(credentialId, token, {
+      onResult: (result: int, extraInfo: osAccount.RequestResult) => {
+        console.info('delCred result = ' + result);
+        console.info('delCred extraInfo = ' + JSON.stringify(extraInfo));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`delCred exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAuthInfo<sup>8+</sup>
 
 getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
@@ -5804,6 +9515,10 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                                     | 必填 | 说明                                                 |
@@ -5811,6 +9526,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 | callback | AsyncCallback&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | 是   | 回调函数。如果成功，err为null，data为当前用户的所有已注册凭据信息；否则为错误对象。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | --------------------- |
@@ -5821,7 +9538,9 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -5839,6 +9558,26 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  try {
+    userIDM.getAuthInfo((err: BusinessError | null, result: osAccount.EnrolledCredInfo[] | undefined) => {
+      if (err) {
+        console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getAuthInfo result = ' + JSON.stringify(result));
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAuthInfo<sup>8+</sup>
 
 getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
@@ -5851,6 +9590,10 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                               | 必填 | 说明                                                |
@@ -5859,6 +9602,8 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 | callback | AsyncCallback&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | 是   | 回调函数，如果获取成功，err为null，data为当前用户指定类型的所有已注册凭据信息；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
@@ -5870,7 +9615,9 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -5889,6 +9636,27 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  try {
+    userIDM.getAuthInfo(osAccount.AuthType.PIN,
+      (err: BusinessError | null, result: osAccount.EnrolledCredInfo[] | undefined) => {
+        if (err) {
+          console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAuthInfo result = ' + JSON.stringify(result));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAuthInfo<sup>8+</sup>
 
 getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
@@ -5900,6 +9668,10 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.USE_USER_IDM
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5915,6 +9687,8 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -5925,7 +9699,9 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -5936,6 +9712,25 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
       console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  try {
+    userIDM.getAuthInfo(osAccount.AuthType.PIN).then((result: osAccount.EnrolledCredInfo[]) => {
+      console.info('getAuthInfo result = ' + JSON.stringify(result))
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -5953,6 +9748,10 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                | 必填 | 说明      |
@@ -5967,6 +9766,8 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -5978,7 +9779,9 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -5998,9 +9801,34 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userIDM = new osAccount.UserIdentityManager();
+  let options: osAccount.GetAuthInfoOptions = {
+    authType: osAccount.AuthType.PIN,
+    accountId: 100,
+  };
+  try {
+    userIDM.getAuthInfo(options).then((result: osAccount.EnrolledCredInfo[]) => {
+      console.info('getAuthInfo result = ' + JSON.stringify(result))
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAuthInfo error = code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getEnrolledId<sup>12+</sup>
 
-getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
+ArkTS-Dyn: getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
+
+ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8Array&gt;
 
 基于凭据类型，以及可选的账号标识，获取已注册的凭据ID。使用Promise异步回调。
 
@@ -6010,12 +9838,16 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
 | authType  | [AuthType](#authtype8) | 是   | 认证凭据类型 |
-| accountId | number                 | 否   | 系统账号标识，默认为空。 |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int                 | 否   | 系统账号标识，默认为空。 |
 
 **返回值：**
 
@@ -6024,6 +9856,8 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 | Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
@@ -6038,7 +9872,9 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let userIDM = new osAccount.UserIdentityManager();
@@ -6046,11 +9882,32 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
   let accountId = 100;
   try {
     userIDM.getEnrolledId(authType, accountId).then((enrolledId: Uint8Array) => {
-      console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
+        console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
     }).catch((err: BusinessError) => {
-      console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
+        console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getEnrolledId exception = code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let userIDM = new osAccount.UserIdentityManager();
+  let authType: osAccount.AuthType = osAccount.AuthType.PIN;
+  let accountId = 100;
+  try {
+    userIDM.getEnrolledId(authType, accountId).then((enrolledId: Uint8Array) => {
+      console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getEnrolledId exception = code is ${err.code}, message is ${err.message}`);
   }
@@ -6066,6 +9923,10 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;Credentia
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.USE_USER_IDM
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6124,6 +9985,10 @@ offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明      |
@@ -6174,6 +10039,7 @@ try {
 }
 ```
 
+
 ## IInputData<sup>8+</sup>
 
 密码数据回调。
@@ -6190,6 +10056,10 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                     | 必填 | 说明                                            |
@@ -6198,6 +10068,8 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 | data       | Uint8Array                               | 是   | 要设置的数据是凭据，用来在认证、添加、修改凭据操作。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
@@ -6237,6 +10109,10 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
@@ -6247,6 +10123,7 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
   let passwordNumber: Uint8Array = new Uint8Array([1, 2, 3, 4]);
@@ -6265,6 +10142,30 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
   console.info('registerInputer result: ' + result);
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
+  let passwordNumber: Uint8Array = new Uint8Array([1, 2, 3, 4]);
+  let inputer: osAccount.IInputer = {
+    onGetData: (authSubType: osAccount.AuthSubType,
+      callback: osAccount.IInputData, options: osAccount.GetInputDataOptions) => {
+      if (authSubType == osAccount.AuthSubType.PIN_NUMBER) {
+        callback.onSetData(authSubType, passwordNumber);
+      } else {
+        callback.onSetData(authSubType, password);
+      }
+    }
+  };
+  let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
+  try {
+    pinAuth.registerInputer(inputer);
+    console.info('registerInputer called')
+  } catch (e: Error) {
+    const err = e as BusinessError
+    console.error(`registerInputer failed: code=${err.code}, message=${err.message}`)
+  }
+  ```
+
 ## IUserAuthCallback<sup>8+</sup>
 
 表示用户认证回调类。
@@ -6273,7 +10174,9 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: AuthResult) => void
+ArkTS-Dyn: onResult: (result: number, extraInfo: AuthResult) => void
+
+ArkTS-Sta: onResult: (result: int, extraInfo: AuthResult) => void
 
 身份认证结果回调函数，返回结果码和认证结果信息。
 
@@ -6281,15 +10184,20 @@ onResult: (result: number, extraInfo: AuthResult) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                    | 必填 | 说明                 |
 | --------- | --------------------------------------- | ---- | ------------------- |
-| result    | number                                   | 是   | 表示身份认证结果代码。|
+| result    | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 是   | 表示身份认证结果代码。|
 | extraInfo | [AuthResult](#authresult8)  | 是   | 表示不同情况下的具体信息，如果认证通过，则在extrainfo中返回认证令牌，如果身份验证失败，则在extrainfo中返回剩余的身份验证时间，如果身份验证执行器被锁定，冻结时间将在extrainfo中返回。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
@@ -6299,9 +10207,21 @@ onResult: (result: number, extraInfo: AuthResult) => void
   };
   ```
 
-### onAcquireInfo?<sup>8+</sup>
+ArkTS-Sta示例：
+  ```ts
+  let authCallback: osAccount.IUserAuthCallback = {
+    onResult: (result: int, extraInfo: osAccount.AuthResult) => {
+      console.info('auth result = ' + result);
+      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+    }
+  };
+  ```
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
+### onAcquireInfo<sup>8+</sup>
+
+ArkTS-Dyn: onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
+
+ArkTS-Sta: onAcquireInfo?: (module: int, acquire: int, extraInfo: Uint8Array) => void
 
 身份认证信息获取回调函数。
 
@@ -6309,16 +10229,21 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                           |
 | --------- | ------- | ---- | ----------------------------- |
-| module    | number  | 是   | 指示用于身份验证的执行器类型。   |
-| acquire   | number  | 是   | 指示不同身份验证执行器的tip代码。|
-| extraInfo | Uint8Array     | 是   | 保留参数。                     |
+| module    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示用于身份验证的执行器类型。   |
+| acquire   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示不同身份验证执行器的tip代码。|
+| extraInfo | Uint8Array                           | 是   | 保留参数。                     |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
@@ -6326,6 +10251,21 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
       console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
     },
     onAcquireInfo: (module: number, acquire: number, extraInfo: Uint8Array) => {
+      console.info('auth module = ' + module);
+      console.info('auth acquire = ' + acquire);
+      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+    }
+  };
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  let authCallback: osAccount.IUserAuthCallback = {
+    onResult: (result: int, extraInfo: osAccount.AuthResult) => {
+      console.info('auth result = ' + result)
+      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+    },
+    onAcquireInfo: (module: int, acquire: int, extraInfo: Uint8Array) => {
       console.info('auth module = ' + module);
       console.info('auth acquire = ' + acquire);
       console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
@@ -6341,7 +10281,9 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: RequestResult) => void
+ArkTS-Dyn: onResult: (result: number, extraInfo: RequestResult) => void
+
+ArkTS-Sta: onResult: (result: int, extraInfo: RequestResult) => void
 
 身份管理操作结果回调函数，返回结果码和请求结果信息。
 
@@ -6349,15 +10291,20 @@ onResult: (result: number, extraInfo: RequestResult) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                    | 必填 | 说明                     |
 | --------- | --------------------------------------- | ---- | ----------------------- |
-| result    | number                                  | 是   | 表示身份认证结果代码。    |
+| result    | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 是   | 表示身份认证结果代码。    |
 | extraInfo | [RequestResult](#requestresult8)  | 是   | 针对不同情况传递具体信息。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: osAccount.RequestResult) => {
@@ -6367,9 +10314,21 @@ onResult: (result: number, extraInfo: RequestResult) => void
   };
   ```
 
-### onAcquireInfo?<sup>8+</sup>
+ArkTS-Sta示例：
+  ```ts
+  let idmCallback: osAccount.IIdmCallback = {
+    onResult: (result: int, extraInfo: osAccount.RequestResult) => {
+      console.info('callback result = ' + result)
+      console.info('callback extraInfo = ' + JSON.stringify(extraInfo));
+    }
+  };
+  ```
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
+### onAcquireInfo<sup>8+</sup>
+
+ArkTS-Dyn: onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
+
+ArkTS-Sta: onAcquireInfo?: (module: int, acquire: int, extraInfo: Uint8Array) => void
 
 身份管理信息获取回调函数。
 
@@ -6377,16 +10336,21 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                           |
 | --------- | ------- | ---- | ----------------------------- |
-| module    | number  | 是   | 指示用于身份验证的执行器类型。   |
-| acquire   | number  | 是   | 指示不同身份验证执行器的tip代码。|
+| module    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示用于身份验证的执行器类型。   |
+| acquire   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示不同身份验证执行器的tip代码。|
 | extraInfo | Uint8Array | 是   | 保留参数。                     |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: Object) => {
@@ -6394,6 +10358,21 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
       console.info('callback onResult = ' + JSON.stringify(extraInfo));
     },
     onAcquireInfo: (module: number, acquire: number, extraInfo: Uint8Array) => {
+      console.info('callback module = ' + module);
+      console.info('callback acquire = ' + acquire);
+      console.info('callback onacquireinfo = ' + JSON.stringify(extraInfo));
+    }
+  };
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  let idmCallback: osAccount.IIdmCallback = {
+    onResult: (result: int, extraInfo: Object) => {
+      console.info('callback result = ' + result)
+      console.info('callback onResult = ' + JSON.stringify(extraInfo));
+    },
+    onAcquireInfo: (module: int, acquire: int, extraInfo: Uint8Array) => {
       console.info('callback module = ' + module);
       console.info('callback acquire = ' + acquire);
       console.info('callback onacquireinfo = ' + JSON.stringify(extraInfo));
@@ -6409,11 +10388,12 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称    | 类型                                                         | 只读  | 可选 | 说明                   |
 | -------- | ------------------------------------------------------------ | ----- | ----- | ----------------------- |
-| authType | [AuthType](#authtype8)                            | 否 | 否  | 身份验证凭据类型。        |
-| keys     | Array&lt;[GetPropertyType](#getpropertytype8)&gt; | 否 | 否  | 指示要获取的属性类型数组。 |
-| accountId<sup>12+</sup> | number | 否 | 是  | 系统账号标识，默认为undefined。 |
+| authType | [AuthType](#authtype8)                            | 否 | 否  | 身份验证凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
+| keys     | Array&lt;[GetPropertyType](#getpropertytype8)&gt; | 否 | 否  | 指示要获取的属性类型数组。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SetPropertyRequest<sup>8+</sup>
 
@@ -6422,6 +10402,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                             | 只读  | 可选 | 说明                 |
 | -------- | ------------------------------------------------ | ----- | ----- | -------------------- |
@@ -6439,14 +10423,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 | 名称         | 类型                         |  只读 | 可选 | 说明              |
 | ------------ | ---------------------------- | ----- | -----|----------------- |
-| result       | number                       | 否    | 否   | 指示结果。         |
-| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。|
-| remainTimes  | number                       | 否    | 是   | 指示剩余次数，默认为-1。     |
-| freezingTime | number                       | 否    | 是   | 指示冻结时间，单位为ms，默认为-1。     |
-| enrollmentProgress<sup>10+</sup> | string   | 否    | 是   | 指示录入进度，默认为空。 |
-| sensorInfo<sup>10+</sup> | string           | 否    | 是   | 指示传感器信息，默认为空。 |
-| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。 |
-| credentialLength<sup>20+</sup> | number | 否    | 是   | 指示凭据长度，默认为undefined。查询生物信息等无定长属性的凭据时返回undefined。 |
+| result       | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 否   | 指示结果。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| remainTimes  | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 是   | 指示剩余次数，默认为-1。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| freezingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 是   | 指示冻结时间，单位为ms，默认为-1。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| enrollmentProgress<sup>10+</sup> | string   | 否    | 是   | 指示录入进度，默认为空。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| sensorInfo<sup>10+</sup> | string           | 否    | 是   | 指示传感器信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| nextPhaseFreezingTime<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| credentialLength<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示凭据长度，默认为undefined。查询生物信息等无定长属性的凭据时返回undefined。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## AuthResult<sup>8+</sup>
 
@@ -6456,15 +10440,17 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
+
 | 名称        | 类型        |  只读 | 可选 | 说明              |
 | ------------ | ----------- | ----- | ----- | ----------------- |
-| token        | Uint8Array  | 否    | 是   | 指示认证令牌，默认为空。      |
-| remainTimes  | number      | 否    | 是   | 指示剩余次数，默认为空。      |
-| freezingTime | number      | 否    | 是   | 指示冻结时间，单位为ms，默认为空。      |
-| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。|
-| credentialId<sup>12+</sup> | Uint8Array  | 否    | 是   | 指示凭据ID，默认为空。 |
-| accountId<sup>12+</sup>         | number | 否    | 是   | 指示系统账号标识，默认为undefined。 |
-| pinValidityPeriod<sup>12+</sup> | number | 否    | 是   | 指示认证有效期，单位为ms，默认为undefined。 |
+| token        | Uint8Array  | 否    | 是   | 指示认证令牌，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
+| remainTimes  | ArkTS-Dyn: number<br>ArkTS-Sta: int      | 否    | 是   | 指示剩余次数，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
+| freezingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int      | 否    | 是   | 指示冻结时间，单位为ms，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
+| nextPhaseFreezingTime<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| credentialId<sup>12+</sup> | Uint8Array  | 否    | 是   | 指示凭据ID，默认为空。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| accountId<sup>12+</sup>         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| pinValidityPeriod<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否    | 是   | 指示认证有效期，单位为ms，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## CredentialInfo<sup>8+</sup>
 
@@ -6474,13 +10460,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称        | 类型                                     |  只读 | 可选 | 说明              |
 | ------------ | ---------------------------------------- | ----- | ----- | ----------------- |
-| credType     | [AuthType](#authtype8)       | 否    | 否   | 指示凭据类型。     |
-| credSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示凭据子类型。   |
-| token        | Uint8Array                           | 否    | 否   | 指示认证令牌。     |
-| accountId<sup>12+</sup>    | number | 否    | 是   | 系统账号标识，默认为undefined。 |
-| additionalInfo<sup>23+</sup>    | string | 否    | 是   | 凭据的附加信息，默认为空字符串。 |
+| credType     | [AuthType](#authtype8)       | 否    | 否   | 指示凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| credSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| token        | Uint8Array                           | 否    | 否   | 指示认证令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| accountId<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| additionalInfo<sup>23+</sup>    | string | 否    | 是   | 凭据的附加信息，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RequestResult<sup>8+</sup>
 
@@ -6489,6 +10476,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型        |  只读 | 可选 | 说明              |
 | ------------ | ----------- | ----- | ----- | ----------------- |
@@ -6502,14 +10493,15 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称        | 类型                                     |  只读 | 可选 | 说明              |
 | ------------ | ---------------------------------------- | ----- | ----- | ------------------- |
-| credentialId | Uint8Array                               | 否    | 否   | 指示凭据索引。       |
-| authType     | [AuthType](#authtype8)       | 否    | 否   | 指示认证凭据类型。   |
-| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。 |
-| templateId   | Uint8Array                               | 否    | 否   | 指示凭据模板ID。     |
-| isAbandoned<sup>20+</sup>   | boolean                      | 否    | 是   | 指示凭据是否废弃。废弃后的凭据可能作为备份凭据保存一段时间。true表示已废弃，false表示未废弃。默认为undefined，表示是否废弃未定义。   |
-| validityPeriod<sup>20+</sup>   | number                    | 否    | 是   | 指示凭据有效期，单位为ms。默认为undefined，表示有效期未定义。     |
+| credentialId | Uint8Array                               | 否    | 否   | 指示凭据索引。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23       |
+| authType     | [AuthType](#authtype8)       | 否    | 否   | 指示认证凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| templateId   | Uint8Array                               | 否    | 否   | 指示凭据模板ID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| isAbandoned<sup>20+</sup>   | boolean                      | 否    | 是   | 指示凭据是否废弃。废弃后的凭据可能作为备份凭据保存一段时间。true表示已废弃，false表示未废弃。默认为undefined，表示是否废弃未定义。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23   |
+| validityPeriod<sup>20+</sup>   | ArkTS-Dyn: number<br>ArkTS-Sta: long                    | 否    | 是   | 指示凭据有效期，单位为ms。默认为undefined，表示有效期未定义。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23     |
 
 ## GetPropertyType<sup>8+</sup>
 
@@ -6519,15 +10511,16 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称           | 值 | 说明      |
 | ------------- | ------ | --------- |
-| AUTH_SUB_TYPE | 1      | 认证子类型。 |
-| REMAIN_TIMES  | 2      | 剩余次数。   |
-| FREEZING_TIME | 3      | 冻结时间。   |
-| ENROLLMENT_PROGRESS<sup>10+</sup> | 4      | 录入进度。   |
-| SENSOR_INFO<sup>10+</sup> | 5      | 传感器信息。   |
-| NEXT_PHASE_FREEZING_TIME<sup>12+</sup> | 6 | 下次冻结时间。 |
-| CREDENTIAL_LENGTH<sup>20+</sup> | 7 | 凭据长度。 |
+| AUTH_SUB_TYPE | 1      | 认证子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| REMAIN_TIMES  | 2      | 剩余次数。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FREEZING_TIME | 3      | 冻结时间。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| ENROLLMENT_PROGRESS<sup>10+</sup> | 4      | 录入进度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| SENSOR_INFO<sup>10+</sup> | 5      | 传感器信息。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| NEXT_PHASE_FREEZING_TIME<sup>12+</sup> | 6 | 下次冻结时间。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| CREDENTIAL_LENGTH<sup>20+</sup> | 7 | 凭据长度。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SetPropertyType<sup>8+</sup>
 
@@ -6536,6 +10529,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值 | 说明        |
 | -------------- | ----- | ----------- |
@@ -6551,13 +10548,13 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 | 名称  | 值 | 说明             |
 | ----- | ----- | ---------------- |
-| PIN   | 1     | 表示PIN认证类型。 |
-| FACE  | 2     | 表示脸部认证类型。|
-| FINGERPRINT<sup>10+</sup>   | 4     | 表示指纹认证类型。 |
-| RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 |
-| PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。 |
-| COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。 |
-| DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。|
+| PIN   | 1     | 表示PIN认证类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| FACE  | 2     | 表示脸部认证类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| FINGERPRINT<sup>10+</sup>   | 4     | 表示指纹认证类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AuthSubType<sup>8+</sup>
 
@@ -6567,20 +10564,21 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称       | 值 | 说明               |
 | ---------- | ----- | ------------------ |
-| PIN_SIX    | 10000 | 表示6位凭证。       |
-| PIN_NUMBER | 10001 | 表示自定义数字凭证。 |
-| PIN_MIXED  | 10002 | 表示自定义混合凭据。 |
-| PIN_FOUR<sup>12+</sup>   | 10003 | 表示4位凭证。 |
-| PIN_PATTERN<sup>12+</sup>  | 10004 | 表示图案凭据。 |
-| PIN_QUESTION<sup>14+</sup>  | 10005 | 表示密保问题凭据。 |
-| FACE_2D    | 20000 | 表示2D 人脸凭证。   |
-| FACE_3D    | 20001 | 表示3D 人脸凭证。   |
-| FINGERPRINT_CAPACITIVE<sup>10+</sup>    | 30000 | 表示电容式指纹。   |
-| FINGERPRINT_OPTICAL<sup>10+</sup>    | 30001 | 表示光学指纹。   |
-| FINGERPRINT_ULTRASONIC<sup>10+</sup>    | 30002 | 表示超声波指纹。   |
-| DOMAIN_MIXED<sup>9+</sup>    | 10240001 | 表示域认证混合凭证。   |
+| PIN_SIX    | 10000 | 表示6位凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23       |
+| PIN_NUMBER | 10001 | 表示自定义数字凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_MIXED  | 10002 | 表示自定义混合凭据。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_FOUR<sup>12+</sup>   | 10003 | 表示4位凭证。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_PATTERN<sup>12+</sup>  | 10004 | 表示图案凭据。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_QUESTION<sup>14+</sup>  | 10005 | 表示密保问题凭据。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| FACE_2D    | 20000 | 表示2D 人脸凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FACE_3D    | 20001 | 表示3D 人脸凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FINGERPRINT_CAPACITIVE<sup>10+</sup>    | 30000 | 表示电容式指纹。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23  |
+| FINGERPRINT_OPTICAL<sup>10+</sup>    | 30001 | 表示光学指纹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| FINGERPRINT_ULTRASONIC<sup>10+</sup>    | 30002 | 表示超声波指纹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| DOMAIN_MIXED<sup>9+</sup>    | 10240001 | 表示域认证混合凭证。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
 
 ## AuthTrustLevel<sup>8+</sup>
 
@@ -6589,6 +10587,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明        |
 | ---- | ------ | ----------- |
@@ -6605,6 +10607,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值 | 说明                     |
 | --------- | ------ | ------------------------ |
 | FACE_AUTH | 1      | 表示从人脸认证获取的信息。 |
@@ -6616,6 +10622,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 值 | 说明                                     |
 | ----------------------- | ----- | ---------------------------------------- |
@@ -6639,6 +10649,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                          | 值 | 说明                                     |
 | ----------------------------- | ----- | ---------------------------------------- |
 | FACE_AUTH_TIP_TOO_BRIGHT      | 1     | 表示由于高照明，获得的面部图像太亮。         |
@@ -6661,16 +10675,17 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称                          | 值 | 说明                                            |
 | ----------------------------- | ----- | ----------------------------------------------- |
-| FINGERPRINT_TIP_GOOD          | 0     | 表示采集的图像良好。                              |
-| FINGERPRINT_TIP_IMAGER_DIRTY  | 1     | 表示由于传感器上可疑或检测到污垢，指纹图像噪声过大。 |
-| FINGERPRINT_TIP_INSUFFICIENT  | 2     | 表示由于检测到的情况，指纹图像噪声太大，无法处理。   |
-| FINGERPRINT_TIP_PARTIAL       | 3     | 表示仅检测到部分指纹图像。                         |
-| FINGERPRINT_TIP_TOO_FAST      | 4     | 表示指纹图像由于快速运动而不完整。                  |
-| FINGERPRINT_TIP_TOO_SLOW      | 5     | 表示由于缺少运动，指纹图像无法读取。                |
-| FINGERPRINT_TIP_FINGER_DOWN<sup>10+</sup>   | 6     | 表示手指落下。                  |
-| FINGERPRINT_TIP_FINGER_UP<sup>10+</sup>     | 7     | 表示手指抬起。                |
+| FINGERPRINT_TIP_GOOD          | 0     | 表示采集的图像良好。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                             |
+| FINGERPRINT_TIP_IMAGER_DIRTY  | 1     | 表示由于传感器上可疑或检测到污垢，指纹图像噪声过大。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| FINGERPRINT_TIP_INSUFFICIENT  | 2     | 表示由于检测到的情况，指纹图像噪声太大，无法处理。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FINGERPRINT_TIP_PARTIAL       | 3     | 表示仅检测到部分指纹图像。   <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                      |
+| FINGERPRINT_TIP_TOO_FAST      | 4     | 表示指纹图像由于快速运动而不完整。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                 |
+| FINGERPRINT_TIP_TOO_SLOW      | 5     | 表示由于缺少运动，指纹图像无法读取。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                |
+| FINGERPRINT_TIP_FINGER_DOWN<sup>10+</sup>   | 6     | 表示手指落下。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                  |
+| FINGERPRINT_TIP_FINGER_UP<sup>10+</sup>     | 7     | 表示手指抬起。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23               |
 
 ## OsAccountInfo
 
@@ -6678,10 +10693,15 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| shortName<sup>12+</sup> | string | 否 | 是  | 系统账号的短名称。<br>**系统接口：** 此接口为系统接口，默认为空。 |
-| isLoggedIn<sup>12+</sup> | boolean | 否 | 是  | 是否登录。true表示已登录；false表示未登录。<br>**系统接口：** 此接口为系统接口，默认为false。 |
+| shortName<sup>12+</sup> | string | 否 | 是  | 系统账号的短名称。<br>**系统接口：** 此接口为系统接口，默认为空。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| isLoggedIn<sup>12+</sup> | boolean | 否 | 是  | 是否登录。true表示已登录；false表示未登录。<br>**系统接口：** 此接口为系统接口，默认为false。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## OsAccountType
 
@@ -6689,9 +10709,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+
 | 名称   | 值 | 说明         |
 | ------ | ------ | ----------- |
-| PRIVATE<sup>12+</sup> | 1024  | 隐私账号。隐私账号只能有一个。<br>**系统接口：** 此接口为系统接口。   |
+| PRIVATE<sup>12+</sup> | 1024  | 隐私账号。隐私账号只能有一个。<br>**系统接口：** 此接口为系统接口。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
 
 ## DomainAccountInfo<sup>8+</sup>
 
@@ -6699,10 +10724,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| accountId<sup>10+</sup> | string | 否 | 是  | 域账号标识。<br>**系统接口：** 此接口为系统接口，默认为undefined。 |
-| isAuthenticated<sup>11+</sup>| boolean | 否 | 是  | 指示域账号是否已认证。true表示指定的域账号已认证；false表示指定的域账号未认证。<br>**系统接口：** 此接口为系统接口，默认为false。|
+| accountId<sup>10+</sup> | string | 否 | 是  | 域账号标识。<br>**系统接口：** 此接口为系统接口，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| isAuthenticated<sup>11+</sup>| boolean | 否 | 是  | 指示域账号是否已认证。true表示指定的域账号已认证；false表示指定的域账号未认证。<br>**系统接口：** 此接口为系统接口，默认为false。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
 
 ## ConstraintSourceTypeInfo<sup>9+</sup>
 
@@ -6712,9 +10741,13 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| localId      | number | 否 | 否  | 系统账号ID     |
+| localId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 系统账号ID     |
 | type | [ConstraintSourceType](#constraintsourcetype9) | 否 | 否  | 约束来源类型。 |
 
 ## ConstraintSourceType<sup>9+</sup>
@@ -6724,6 +10757,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明         |
 | ------ | ------ | ------------ |
@@ -6740,10 +10777,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| remainTimes  | number | 否 | 否  | 剩余次数。   |
-| freezingTime | number | 否 | 否  | 冻结时间，单位为ms。 |
+| remainTimes  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 剩余次数。   |
+| freezingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 冻结时间，单位为ms。 |
 
 ## GetDomainAccessTokenOptions<sup>10+</sup>
 
@@ -6753,13 +10794,16 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
 | domainAccountInfo  | [DomainAccountInfo](#domainaccountinfo8) | 否 | 否  | 域账号的信息。   |
 | domainAccountToken | Uint8Array | 否 | 否  | 域账号的令牌。 |
-| businessParams | Record<string, Object> | 否 | 否  | 业务参数，由业务方根据请求协议自定义。 |
-| callerUid | number | 否 | 否  | 调用方唯一标识符。 |
-
+| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt; | 否 | 否  | 业务参数，由业务方根据请求协议自定义。 |
+| callerUid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 调用方唯一标识符。 |
 
 ## DomainAccountAuthOptions<sup>24+</sup>
 
@@ -6769,9 +10813,13 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| serverParams | Record<string, Object> | 否 | 是  | 域账号认证服务器配置参数。默认为undefined。|
+| serverParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt; | 否 | 是  | 域账号认证服务器配置参数。默认为undefined。|
 
 ## GetDomainAccountInfoOptions<sup>10+</sup>
 
@@ -6781,11 +10829,12 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| accountName | string | 否 | 否  | 域账号名。 |
-| domain      | string | 否 | 是  | 域名。默认为undefined。|
-| serverConfigId<sup>12+</sup>| string | 否 | 是  | 域账号所属服务器标识。默认为undefined。|
+| accountName | string | 否 | 否  | 域账号名。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| domain      | string | 否 | 是  | 域名。默认为undefined。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| serverConfigId<sup>12+</sup>| string | 否 | 是  | 域账号所属服务器标识。默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
 ## GetDomainAccountInfoPluginOptions<sup>10+</sup>
 
@@ -6795,9 +10844,13 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| callerUid | number | 否 | 否  | 调用方唯一标识符。 |
+| callerUid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 调用方唯一标识符。 |
 
 ## OsAccountSwitchEventData<sup>12+</sup>
 
@@ -6809,9 +10862,9 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| fromAccountId | number | 否 | 否 | 切换来源系统账号ID。 |
-| toAccountId | number | 否 | 否 | 切换目标系统账号ID。 |
-| displayId<sup>23+</sup> | number | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
+| fromAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换来源系统账号ID。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| toAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换目标系统账号ID。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| displayId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ConstraintChangeInfo<sup>23+</sup>
 
@@ -6820,6 +10873,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -6834,12 +10891,13 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称      | 类型   | 只读  | 可选   | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。|
-| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。|
-| allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。|
-| token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。 |
+| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
+| allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
+| token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
@@ -6849,6 +10907,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称      | 类型   | 只读  | 可选   | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。|
+
 ## RemoveOsAccountOptions<sup>24+</sup>
 
 表示用于删除系统账号的可选参数。
@@ -6857,9 +10923,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-| 名称  | 类型       | 只读 | 可选 | 说明                         |
-| ----- | ---------- | ---- | ---- | ---------------------------- |
-| token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。   |
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称      | 类型   | 只读  | 可选   | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。|
+
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
@@ -6869,10 +10940,14 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                    | 只读  | 可选   | 说明       |
 | --------- | ---------------------- | ---- | ---- | ---------- |
 | authType  | [AuthType](#authtype8) | 否 | 是   | 认证类型，默认为undefined。 |
-| accountId | number                 | 否 | 是   | 系统账号标识，默认为undefined。 |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 系统账号标识，默认为undefined。 |
 
 ## AuthIntent<sup>12+</sup>
 
@@ -6882,12 +10957,13 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+
 | 名称     | 值   | 说明       |
 | -------- | --- | ---------- |
-| UNLOCK   | 1   | 解锁意图。 |
-| SILENT_AUTH<sup>14+</sup>  | 2   | 静默认证意图。 |
-| QUESTION_AUTH<sup>14+</sup>   | 3   | 密保问题认证意图。 |
-| ABANDONED_PIN_AUTH<sup>20+</sup>   | 4   | 废弃PIN码认证意图。用户修改锁屏密码后，旧的PIN码被废弃。废弃PIN存在期间，用户如果忘记密码可以通过废弃PIN认证通过后重置锁屏密码。 |
+| UNLOCK   | 1   | 解锁意图。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| SILENT_AUTH<sup>14+</sup>  | 2   | 静默认证意图。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| QUESTION_AUTH<sup>14+</sup>   | 3   | 密保问题认证意图。 <br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| ABANDONED_PIN_AUTH<sup>20+</sup>   | 4   | 废弃PIN码认证意图。用户修改锁屏密码后，旧的PIN码被废弃。废弃PIN存在期间，用户如果忘记密码可以通过废弃PIN认证通过后重置锁屏密码。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RemoteAuthOptions<sup>12+</sup>
 
@@ -6897,11 +10973,15 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |
 | verifierNetworkId  | string | 否 | 是  | 凭据验证者的网络标识，默认为空。 |
 | collectorNetworkId | string | 否 | 是  | 凭据收集者的网络标识，默认为空。 |
-| collectorTokenId   | number | 否 | 是  | 凭据收集者的令牌标识，默认为undefined。 |
+| collectorTokenId   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 凭据收集者的令牌标识，默认为undefined。 |
 
 ## AuthOptions<sup>12+</sup>
 
@@ -6911,9 +10991,13 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |
-| accountId          | number | 否 | 是  | 系统账号标识，默认为undefined。 |
+| accountId          | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 系统账号标识，默认为undefined。 |
 | authIntent         | [AuthIntent](#authintent12) | 否 | 是  | 认证意图，默认为undefined。 |
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | 否 | 是  | 远程认证选项，默认为undefined。 |
 
@@ -6924,6 +11008,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |
@@ -6937,14 +11025,19 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
 | changeType      | [CredentialChangeType](#credentialchangetype23) | 否 | 否  | 表示凭据变更的类型。     |
 | isSilent | boolean | 否 | 否  | 表示是否为静默变更，静默变更表示变更由系统在后台自动地发起。 |
 | credentialType      | [AuthType](#authtype8) | 否 | 否  | 表示凭据类型。     |
-| accountId | number | 否 | 否  | 表示系统账号标识。 |
-| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID。默认为undefined。   |
-| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID。默认为undefined。   |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 表示系统账号标识。 |
+| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID，默认为undefined。  |
+| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID，默认为undefined。  |
 
 ## CredentialChangeType<sup>23+</sup>
 
@@ -6953,6 +11046,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明       |
 | -------- | --- | ---------- |
@@ -6967,6 +11064,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称  | 类型       | 只读 | 可选 | 说明                         |
 | ----- | ---------- | ---- | ---- | ---------------------------- |
