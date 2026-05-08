@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -239,7 +239,7 @@
 | static const char * OHOS_DNG_PROPERTY_BASELINE_NOISE = "BaselineNoise" | 基线噪点。取值可以通过[OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble)获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_BASELINE_SHARPNESS = "BaselineSharpness" | 基线锐度。取值可以通过[OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble)获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_BAYER_GREEN_SPLIT = "BayerGreenSplit" | Bayer图像中两个绿色通道的分离程度。取值可以通过[OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort)获取。<br>**起始版本：** 24 |
-| static const char * OHOS_DNG_PROPERTY_LINEAR_RESPONSE_LIMIT = "LinearResponseLimit" | 线性响应限制。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
+| static const char * OHOS_DNG_PROPERTY_LINEAR_RESPONSE_LIMIT = "LinearResponseLimit" | 线性响应限制。取值可以通过[OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble)获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_CAMERA_SERIAL_NUMBER = "CameraSerialNumber" | 相机序列号。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring)共同获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_LENS_INFO = "LensInfo" | 镜头信息。取值可以通过[OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize)和[OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray)共同获取。<br>**起始版本：** 24 |
 | static const char * OHOS_DNG_PROPERTY_CHROMA_BLUR_RADIUS = "ChromaBlurRadius" | 色差模糊半径，单位：像素。取值可以通过[OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble)获取。<br>**起始版本：** 24 |
@@ -323,6 +323,7 @@ enum Image_ErrorCode
 | IMAGE_UNKNOWN_MIME_TYPE = 7600102 | 未知的MIME类型。 |
 | IMAGE_TOO_LARGE = 7600103 | 过大的数据或图片。 |
 | IMAGE_GET_IMAGE_DATA_FAILED = 7600104 |  获取图像数据失败。<br>**起始版本：** 23 |
+| IMAGE_PIXELMAP_RELEASED = 7600105 |  PixelMap已被释放。<br>**起始版本：** 26.0.0 |
 | IMAGE_DMA_NOT_EXIST = 7600173 | 内存不是DMA内存。 |
 | IMAGE_DMA_OPERATION_FAILED = 7600174 | DMA内存操作失败。 |
 | IMAGE_UNSUPPORTED_OPERATION = 7600201 | 不支持的操作。 |
@@ -337,6 +338,7 @@ enum Image_ErrorCode
 | IMAGE_LOCK_UNLOCK_FAILED = 7600303 |  内存加锁或解锁失败。<br>**起始版本：** 15 |
 | IMAGE_INIT_FAILED = 7600304 |  初始化失败。<br>**起始版本：** 22 |
 | IMAGE_CREATE_PIXELMAP_FAILED = 7600305 |  创建PixelMap失败。<br>**起始版本：** 22 |
+| IMAGE_DATA_CONVERSION_FAILED = 7600306 |  数据转换失败。<br>**起始版本：** 26.0.0 |
 | IMAGE_ALLOCATOR_MODE_UNSUPPORTED = 7600501 |  不支持的内存分配器类型。例如，使用共享内存创建hdr图像。<br> DMA内存支持hdr元数据。<br>**起始版本：** 20 |
 | IMAGE_UNKNOWN_ERROR = 7600901 | 未知错误。 |
 | IMAGE_BAD_SOURCE = 7700101 | 解码数据源异常。 |

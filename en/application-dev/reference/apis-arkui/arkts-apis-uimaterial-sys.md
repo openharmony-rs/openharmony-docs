@@ -10,7 +10,9 @@ This module provides APIs for system materials. Different system materials corre
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - This topic describes only system APIs provided by the module. For details about other public APIs, see [System Material](arkts-apis-uimaterial.md).
 
 ## Modules to Import
 

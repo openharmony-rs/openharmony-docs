@@ -4,7 +4,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 应用状态监听器，可以作为入参传入[on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)方法，监听应用的生命周期变化。
 

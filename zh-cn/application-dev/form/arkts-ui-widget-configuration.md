@@ -6,7 +6,7 @@
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
-卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
+卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md#方式二独立包方式创建卡片)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
 > **说明：**
 >
 >- 卡片五元组是确认卡片唯一的要素信息。五元组分别为bundleName、moduleName、abilityName、formName、formDimension。其中bundleName是[app.json5配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中bundleName配置项、moduleName是[module.json5配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)中的name配置项、abilityName是[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中的name配置项、formName是[配置文件字段说明](#配置文件字段说明)中的name配置项、formDimension对应的是[配置文件字段说明](#配置文件字段说明)中的supportDimensions配置项。
@@ -105,7 +105,7 @@
 |enableBlurBackground|表示卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。<br/>**说明：**<br/>本特性对产品功耗、性能要求较高，从API version 23开始仅在旗舰机型上支持，在不支持的机型上调用后不生效。|布尔类型|可缺省，缺省值为false。|
 |renderingMode|表示卡片的渲染模式，取值范围如下：<br/>-&nbsp;autoColor：自动模式，呈现效果可以根据卡片使用方确定最终是全彩模式还是单色模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到桌面或锁屏上。<br/>-&nbsp;fullColor：全彩模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片不允许被卡片使用方修改，卡片配置了该模式就可以添加到桌面上。<br/>-&nbsp;singleColor：单色模式，通过透明度和模糊区分元素，不使用任何色相<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到锁屏上。<br/>**说明：**<br/>从API version 15开始，支持该字段。 |字符串|可缺省，缺省值为“fullColor”。|
 |multiScheduledUpdateTime|表示卡片的多定点刷新的时刻，作为单点刷新的一个附加参数，采用24小时制，精确到分钟，多个时间用英文逗号分隔，最多写24个时间。<br/>**说明：**<br/>从API version 18开始，支持该字段。multiScheduledUpdateTime需要配合scheduledUpdateTime使用。|字符串|可缺省，缺省时不进行多定点刷新。|
-|conditionUpdate|表示卡片的支持的条件刷新（仅对系统应用的ArkTS卡片生效）。取值范围如下：<br/>-&nbsp;network：表示支持网络刷新。<br/>**说明：**<br/>从API version 18开始，支持该字段。|字符串数组|可缺省，缺省值为空字符串数组。|
+|conditionUpdate|表示卡片支持的条件刷新。取值范围如下：<br/>-&nbsp;network：表示支持网络刷新。<br/>**说明：**<br/>从API版本18开始，支持该字段配置<!--Del-->，功能仅系统应用支持<!--DelEnd-->。从API版本26.0.0开始，设置后功能生效。|字符串数组|可缺省，缺省值为空字符串数组。|
 |[funInteractionParams](#funinteractionparams标签)| 趣味交互类型互动卡片扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 |[sceneAnimationParams](#sceneanimationparams标签)| [场景动效类型互动卡片](./arkts-ui-liveform-sceneanimation-overview.md)扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 | resizable | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
@@ -143,7 +143,7 @@
 
    | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
    | -------- | -------- | -------- | -------- |
-   | designWidth | 标识页面设计基准宽度。以此为基准，根据实际设备宽度来缩放元素大小。 | 数值 | 可缺省，缺省值为720px。 |
+   | designWidth | 标识页面设计基准宽度。以此为基准，根据实际设备宽度来缩放元素大小。取值范围大于等于0小于2^16，单位：px | 数值 | 可缺省，缺省值为720px。 |
    | autoDesignWidth | 标识页面设计基准宽度是否自动计算。当配置为true时，designWidth将会被忽略，设计基准宽度由设备宽度与屏幕密度计算得出。 | 布尔值 | 可缺省，缺省值为false。 |
 
 ### funInteractionParams标签
@@ -155,7 +155,7 @@
 | abilityName       | 字符串 | 否  | 趣味交互场景LiveFormExtensionAbility名称，默认为空。                                                                                              |
 | targetBundleName  | 字符串 | 是  | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。       |
 | subBundleName     | 字符串 | 否  | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)，默认为空。|
-| keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,10000]的整数，超过取值范围则取默认值10000。                                               |
+| keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为[0,10000]的整数，超过取值范围则取默认值10000。                                               |
 
 ```json5
 {
@@ -178,7 +178,8 @@
 | 名称                                    | 类型     | 必填 | 说明 |
 |---------------------------------------|--------|----|----------------------------|
 | abilityName                           | 字符串 | 是  | 场景动效LiveFormExtensionAbility名称。|
-| <!--DelRow-->disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。 |
+| disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。<br/>**说明：**<br/>从API version 20开始支持该字段配置，功能仅对系统应用生效。 |
+| triggerTypes                           | 字符串数组 | 否  | 场景动效触发类型，支持的取值包括shake（摇一摇）。<br/>**说明：**<br/>从API version 26.0.0开始，支持该字段。|
 
 <!--RP2-->
    ```json5
@@ -193,6 +194,9 @@
               "PULL_DOWN_SEARCH",
               "LONG_CLICK",
               "DRAG"
+            ],
+            "triggerTypes": [
+              "shake"
             ]
          }          
        }

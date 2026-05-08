@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
-<!--Designer: @liveery-->
+<!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
@@ -73,6 +73,16 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 |
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号<br/> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 |
+| deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/> 示例：gold<br/> **起始版本**：26.0.0 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[deviceInfo错误码](errorcode-device-info.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 14700103 | Permission verification failed. System permission operation permission denied |
+| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
 **示例**
 
@@ -245,6 +255,9 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     // 输出结果：the value of the bootCount is :100
     console.info('the value of the deviceInfo bootCount is :' + bootCount);
 
+    let deviceColor: string = deviceInfo.deviceColor;
+    // 输出结果：the value of the deviceColor is :blue
+    console.info('the value of the deviceColor is :' + deviceColor);
 ```
 
 ## PerformanceClassLevel<sup>19+</sup>

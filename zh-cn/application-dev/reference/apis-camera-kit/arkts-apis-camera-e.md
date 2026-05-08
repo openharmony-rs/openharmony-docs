@@ -152,19 +152,18 @@
 
 枚举，输出格式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。        |
-| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。      |
-| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。            |
-| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。      |
-| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。      |
-| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。            |
+| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。        |
+| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。            |
+| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。            |
 | CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  DNG（数字负片）格式的图片。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| CAMERA_FORMAT_DNG_XDRAW | 5     | 增强型DNG格式的图片。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。     |
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -403,7 +402,7 @@
 |-----------|---|---------|
 | BEAUTY    | 0 | 美颜。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 | PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| AUTO_FRAMING<sup>24+</sup> | 2 | 自动构图。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| AUTO_FRAMING<sup>24+</sup> | 2 | 自动对焦。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
@@ -495,3 +494,20 @@
 | ------------------------- | ---- | ------------    |
 | PITCH      | 0    | 俯仰轴。相控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。   |
 | YAW   | 1    | 偏航轴。控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
+
+## ExposureState
+
+枚举，曝光状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| EXPOSURE_STATE_SCAN       | 0    | 曝光处于扫描状态。     |
+| EXPOSURE_STATE_CONVERGED  | 1    | 曝光已经收敛。     |

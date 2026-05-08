@@ -5,7 +5,7 @@
 <!--Owner: @xialiangwei-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 线程是操作系统进行运算调度的基本单位，是[进程](./process-model-stage.md)中的执行流，共享进程的资源。一个进程可以包含多个线程。

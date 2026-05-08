@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 输入监听模块，提供了监听输入设备事件的能力。输入设备事件当前包括触屏输入事件、鼠标输入事件和触控板输入事件。
 
@@ -64,12 +64,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', (touchEvent: TouchEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -118,12 +119,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', (mouseEvent: MouseEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -180,7 +182,7 @@ struct Index {
             this.getUIContext().getPromptAction().showToast({
               message: `监听成功：${JSON.stringify(mouseEvent)}`
             })
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
 
@@ -200,9 +202,10 @@ struct Index {
           }];
 
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', rect, callback);
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -252,15 +255,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (touchEvent: TouchEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
             return false;
           };
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', callback);
+            // 取消订阅触摸事件
             inputMonitor.off('touch', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -281,15 +286,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (touchEvent: TouchEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
             return false;
           };
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', callback);
+            // 取消订阅触摸事件
             inputMonitor.off('touch');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -339,15 +346,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (mouseEvent: MouseEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', callback);
+            // 取消订阅鼠标事件
             inputMonitor.off('mouse', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -368,15 +377,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (mouseEvent: MouseEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
           try {
+            // 订阅鼠标事件
             inputMonitor.on('mouse', callback);
+            // 取消订阅鼠标事件
             inputMonitor.off('mouse');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -419,6 +430,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅触摸事件
             inputMonitor.on('touch', touchEvent => {
               if (touchEvent.touches.length === 3) { // 当前有三个手指按下
                 return true;
@@ -426,7 +438,7 @@ struct Index {
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -474,12 +486,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', (pinchEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -529,15 +542,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -558,15 +573,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -614,12 +631,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅三指滑动事件
             inputMonitor.on('threeFingersSwipe', (threeFingersSwipe) => {
-              console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -669,15 +687,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅三指滑动事件
             inputMonitor.on('threeFingersSwipe', callback);
+            // 取消订阅三指滑动事件
             inputMonitor.off("threeFingersSwipe", callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -698,15 +718,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅三指滑动事件
             inputMonitor.on("threeFingersSwipe", callback);
+            // 取消订阅三指滑动事件
             inputMonitor.off("threeFingersSwipe");
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -754,12 +776,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅四指滑动事件
             inputMonitor.on('fourFingersSwipe', (fourFingersSwipe) => {
-              console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -809,15 +832,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅四指滑动事件
             inputMonitor.on('fourFingersSwipe', callback);
+            // 取消订阅四指滑动事件
             inputMonitor.off('fourFingersSwipe', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -838,15 +863,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
             return false;
           };
           try {
+            // 订阅四指滑动事件
             inputMonitor.on('fourFingersSwipe', callback);
+            // 取消订阅四指滑动事件
             inputMonitor.off('fourFingersSwipe');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -896,12 +923,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 旋转手势监听手指数2
             inputMonitor.on('rotate', 2, (rotateEvent: Rotate) => {
-              console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -952,15 +980,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (rotateEvent: Rotate) => {
-            console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
             return false;
           };
           try {
+            // 旋转手势监听手指数2
             inputMonitor.on('rotate', 2, callback);
+            // 取消订阅旋转事件
             inputMonitor.off('rotate', 2, callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`); 
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -981,15 +1011,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (rotateEvent: Rotate) => {
-            console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
             return false;
           };
           try {
+            // 旋转手势监听手指数2
             inputMonitor.on('rotate', 2, callback);
+            // 取消订阅旋转事件
             inputMonitor.off('rotate', 2);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1039,12 +1071,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 捏合手势监听手指数2
             inputMonitor.on('pinch', 2, (pinchEvent: Pinch) => {
-              console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1095,15 +1128,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 订阅捏合事件
             inputMonitor.on('pinch', 2, callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch', 2, callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1124,15 +1159,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // 捏合手势监听手指数2
             inputMonitor.on('pinch', 2, callback);
+            // 取消订阅捏合事件
             inputMonitor.off('pinch', 2);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1180,12 +1217,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', (threeFingersTap) => {
-              console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1235,15 +1273,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
             return false;
           };
           try {
+            // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
+            // 取消订阅三指点击事件
             inputMonitor.off("threeFingersTap", callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1264,15 +1304,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
             return false;
           };
           try {
+            // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
+            // 取消订阅三指点击事件
             inputMonitor.off("threeFingersTap");
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1323,11 +1365,12 @@ struct Index {
         .onClick(() => {
           let fingers: number = 4;
           try {
+            // 订阅触摸屏滑动事件
             inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1378,14 +1421,16 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (event: TouchGestureEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(event)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
           };
           let fingers: number = 4;
           try {
+            // 订阅触摸屏滑动事件
             inputMonitor.on('touchscreenSwipe', fingers, callback);
+            // 取消订阅触摸屏滑动事件
             inputMonitor.off('touchscreenSwipe', fingers, callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1407,12 +1452,14 @@ struct Index {
           // 取消监听所有回调函数
           let fingers: number = 4;
           try {
+            // 订阅触摸屏滑动事件
             inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
+            // 取消订阅触摸屏滑动事件
             inputMonitor.off('touchscreenSwipe', fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1463,11 +1510,12 @@ struct Index {
         .onClick(() => {
           let fingers: number = 4;
           try {
+            // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1518,14 +1566,16 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (event: TouchGestureEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(event)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
           };
           let fingers: number = 4;
           try {
+            // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, callback);
+            // 取消订阅触摸屏捏合事件
             inputMonitor.off("touchscreenPinch", fingers, callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1547,12 +1597,14 @@ struct Index {
           // 取消监听所有回调函数
           let fingers: number = 4;
           try {
+            // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
+            // 取消订阅触摸屏捏合事件
             inputMonitor.off("touchscreenPinch", fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1603,11 +1655,12 @@ struct Index {
         .onClick(() => {
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, (event: KeyEvent ) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1657,13 +1710,15 @@ struct Index {
           // 取消监听单个回调函数
           try {
             let callback = (event: KeyEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             };
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, callback);
+            // 取消订阅按键按下事件
             inputMonitor.off("keyPressed", callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1684,12 +1739,14 @@ struct Index {
           // 取消监听所有回调函数
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, (event: KeyEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
+            // 取消订阅按键按下事件
             inputMonitor.off("keyPressed");
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1735,17 +1792,18 @@ import { inputMonitor, TouchEvent } from '@kit.InputKit'
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 查询触屏事件数量
   inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
     events.forEach((event, index) => {
-      console.info(`Touch event ${index}: actionTime=${event.actionTime}, sourceType=${event.sourceType}`);
+      console.info(`Succeeded in querying touch event ${index}, actionTime=${event.actionTime}, sourceType=${event.sourceType}.`);
     });
   }).catch((error: BusinessError) => {
-    console.error('queryTouchEvents promise error: ' + JSON.stringify(error));
+    console.error(`Failed to query touch events promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
   });
 } catch (error) {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
-  console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+  console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
 }
 ```
 
@@ -1789,12 +1847,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅向内滑动事件
             inputMonitor.on('swipelnward', (SwipeInward) => {
-              console.info(`Monitor on success ${JSON.stringify(SwipeInward)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(SwipeInward)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1843,15 +1902,17 @@ build() {
       .onClick(() => {
         // 取消监听单个回调函数
         let callback = (swipeInward: SwipeInward) => {
-          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
           return false;
         };
         try {
+          // 订阅向内滑动事件
           inputMonitor.on('swipeInward', callback);
+          // 取消订阅向内滑动事件
           inputMonitor.off("swipeInward", callback);
-          console.info(`Monitor off success`);
+          console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
-          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
         }
       })
   }
@@ -1871,15 +1932,17 @@ build() {
       .onClick(() => {
         // 取消监听所有回调函数
         let callback = (swipeInward: SwipeInward) => {
-          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
           return false;
         };
         try {
+          // 订阅向内滑动事件
           inputMonitor.on('swipeInward', callback);
+          // 取消订阅向内滑动事件
           inputMonitor.off("swipeInward");
-          console.info(`Monitor off success`);
+          console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
-          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
         }
       })
   }
@@ -1927,12 +1990,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 订阅指纹事件
             inputMonitor.on('fingerprint', (FingerprintEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(FingerprintEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(FingerprintEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1982,15 +2046,17 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (fingerprintEvent: FingerprintEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
             return false;
           };
           try {
+            // 订阅指纹事件
             inputMonitor.on('fingerprint', callback);
+            // 取消订阅指纹事件
             inputMonitor.off("fingerprint", callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2011,15 +2077,17 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (fingerprintEvent: FingerprintEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
             return false;
           };
           try {
+            // 订阅指纹事件
             inputMonitor.on('fingerprint', callback);
+            // 取消订阅指纹事件
             inputMonitor.off("fingerprint");
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

@@ -5,7 +5,7 @@
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ## 场景介绍
 
@@ -119,11 +119,11 @@
         }
         ```
 
-3. 根据获取到的配置信息拼接生成URL信息。
+4. 根据获取到的配置信息拼接生成URL信息。
 
     URL格式如下：
 
-    ```
+    ```txt
     scheme://host:port/path
     ```
 
@@ -138,7 +138,7 @@
 
     根据上述参数，拼接得到的完整URL为：
 
-    ```
+    ```txt
     appurl://www.example.com/path1
     ```
 
@@ -148,7 +148,7 @@
     > - 建议在实际使用前，通过hdc命令确认目标应用的最新配置信息。
     > - 如果应用未配置skills中的uris字段，则不支持通过Deep Linking方式拉起。
 
-4. 使用Deep Linking方式拉起目标应用。
+5. 使用Deep Linking方式拉起目标应用。
 
     以下为通过[UIAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。
 
@@ -158,14 +158,13 @@
     >
     > - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
-    <!-- @[Start_Deep_Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) -->
-
-    ```ts
-    // Index.ets示例代码如下：
+    <!-- @[Deep Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
     import { common } from '@kit.AbilityKit'
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     @Entry
     @Component
     struct SpecifiedPage {
@@ -194,7 +193,7 @@
     }
     ```
 
-5. 调试验证。
+6. 调试验证。
 
     安装并启动拉起方应用后，点击"拉起目标应用"按钮即可拉起目标应用，演示效果如下：
 

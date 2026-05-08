@@ -17,7 +17,7 @@
 ```ts
 import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
   MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
+  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -647,6 +647,19 @@ function finish(): void {
 | width | number | 是 | 否 | 图片宽度，单位为像素（px），取值范围大于0。 |
 | height | number | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
 
+## ImageStream
+流图片类型，继承自[Image](#image)。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
+
 ## Effect<sup>21+</sup>
 
 特效类型，继承自[SceneResource](#sceneresource-1)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
@@ -680,7 +693,7 @@ getPropertyValue(propertyName: string): Object | null | undefined
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Object \| null \| undefined | 特效属性值，如果获取失败则返回null。 |
+| Object \| null \| undefined | 特效属性值。若当前Effect类型下不存在与传入的propertyName匹配的属性，则获取属性值失败，返回null；若propertyName对应的可选属性未设置，则返回undefined。 |
 
 **示例：**
 

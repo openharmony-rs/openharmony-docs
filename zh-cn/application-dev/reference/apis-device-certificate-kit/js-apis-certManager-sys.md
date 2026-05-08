@@ -88,7 +88,7 @@ try {
 
 getAllAppPrivateCertificates(): Promise\<CMResult>
 
-表示获取所有私有凭据列表，使用Promise方式异步返回结果。
+表示获取所有私有凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -127,7 +127,8 @@ try {
       let list = cmResult.credentialList;
       console.info('Succeeded in getting all app private certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -139,7 +140,7 @@ try {
 
 getAllSystemAppCertificates(): Promise\<CMResult>
 
-表示获取所有系统凭据列表，使用Promise方式异步返回结果。
+表示获取所有系统凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -178,7 +179,8 @@ try {
       let list = cmResult.credentialList;
       console.info('Succeeded in getting all system app certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all system app certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -192,13 +194,13 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 
 获取系统信任的CA证书详情，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -238,10 +240,11 @@ try {
       let cert: certificateManager.CertInfo = cmResult.certInfo;
       console.info('Succeeded in getting system trusted certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get system trusted certificate. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to get system trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -252,13 +255,13 @@ getSystemTrustedCertificateList(): Promise\<CMResult>
 
 获取系统信任的CA证书列表，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -291,10 +294,11 @@ try {
       let list: Array<certificateManager.CertAbstract> = cmResult.certList;
       console.info('Succeeded in getting system trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get system trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to get system trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -305,13 +309,13 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 
 设置CA证书的状态，当前仅支持设置用户CA证书状态，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_USER_TRUSTED_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -349,10 +353,11 @@ try {
   /* 设置用户CA证书状态为启用 */
   certificateManager.setCertificateStatus(certUri, certificateManager.CertType.CA_CERT_USER, true).then(() => {
     console.info('Succeeded in setting certificate status.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to set certificate status. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to set certificate status. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -363,13 +368,13 @@ uninstallAllUserTrustedCertificate() : Promise\<void>
 
 卸载所有用户信任的CA证书，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_USER_TRUSTED_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -395,10 +400,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.uninstallAllUserTrustedCertificate().then(() => {
     console.info('Succeeded in uninstalling all user trusted certificates.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to uninstall all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to uninstall all user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -409,13 +415,13 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 
 安装用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -456,14 +462,15 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-    certificateManager.installPublicCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in installing public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to install public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to install public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.installPublicCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    console.info('Succeeded in installing public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -471,15 +478,15 @@ try {
 
 uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
-卸载用的户公共凭据，仅证书管理应用调用。使用Promise异步回调。
+卸载用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -513,13 +520,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* 用户公共凭据的唯一标识符 */
 try {
-    certificateManager.uninstallPublicCertificate(keyUri).then(() => {
-        console.info('Succeeded in uninstalling public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to uninstall public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to uninstall public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.uninstallPublicCertificate(keyUri).then(() => {
+    console.info('Succeeded in uninstalling public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to uninstall public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -529,13 +537,13 @@ getAllPublicCertificates() : Promise\<CMResult>
 
 获取所有用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -560,20 +568,21 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    certificateManager.getAllPublicCertificates().then((cmResult: certificateManager.CMResult) => {
-        if (cmResult === undefined) { // 用户公共凭据个数为0时，返回cmResult为undefined。
-            console.info('The count of public certificates is 0.');
-        } else if (cmResult.credentialDetailList == undefined) {
-            console.info('The result of getting all public certificates is undefined.');
-        } else {
-            let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
-            console.info('Succeeded in getting all public certificates.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get all public certificates. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get all public certificates. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getAllPublicCertificates().then((cmResult: certificateManager.CMResult) => {
+    if (cmResult === undefined) { // 用户公共凭据个数为0时，返回cmResult为undefined。
+      console.info('The count of public certificates is 0.');
+    } else if (cmResult.credentialDetailList == undefined) {
+      console.info('The result of getting all public certificates is undefined.');
+    } else {
+      let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
+      console.info('Succeeded in getting all public certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get all public certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get all public certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -583,13 +592,13 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 
 授予应用使用用户公共凭据的权限，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -625,14 +634,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let keyUri: string = 'test'; /* 用户公共凭据的唯一标识符 */
 let clientAppUid: number = 1001; /* 应用UID */
 try {
-    certificateManager.grantPublicCertificate(keyUri, clientAppUid).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in granting public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to grant public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to grant public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.grantPublicCertificate(keyUri, clientAppUid).then((cmResult: certificateManager.CMResult) => {
+    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    console.info('Succeeded in granting public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to grant public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to grant public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -642,13 +652,13 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 
 获取用户公共凭据的授权应用列表，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -682,18 +692,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* 用户公共凭据的唯一标识符 */
 try {
-     certificateManager.getAuthorizedAppList(keyUri).then((cmResult: certificateManager.CMResult) => {
-        if (cmResult?.appUidList == undefined) {
-            console.info('The result of getting authorized app list is undefined.');
-        } else {
-            let appUidList: Array<string> = cmResult.appUidList;
-            console.info('Succeeded in getting authorized app list.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get authorized app list. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get authorized app list. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getAuthorizedAppList(keyUri).then((cmResult: certificateManager.CMResult) => {
+    if (cmResult?.appUidList == undefined) {
+      console.info('The result of getting authorized app list is undefined.');
+    } else {
+      let appUidList: Array<string> = cmResult.appUidList;
+      console.info('Succeeded in getting authorized app list.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get authorized app list. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get authorized app list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -703,13 +714,13 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 
 移除应用使用用户公共凭据的权限，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -745,13 +756,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let keyUri: string = 'test'; /* 用户公共凭据的唯一标识符 */
 let clientAppUid: number = 1001; /* 应用UID */
 try {
-    certificateManager.removeGrantedPublicCertificate(keyUri, clientAppUid).then(() => {
-        console.info('Succeeded in removing granted public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to remove granted public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to remove granted public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.removeGrantedPublicCertificate(keyUri, clientAppUid).then(() => {
+    console.info('Succeeded in removing granted public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to remove granted public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to remove granted public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -761,13 +773,13 @@ getAllAppPrivateCertificatesByUid(appUid: number) : Promise\<CMResult>
 
 获取指定应用的所有私有凭据，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -799,20 +811,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let appUid: number = 1001; /* 应用UID */
 try {
-    certificateManager.getAllAppPrivateCertificatesByUid(appUid).then((cmResult: certificateManager.CMResult) => {
-        if (cmResult === undefined) { // 指定应用的私有凭据个数为0时，返回cmResult为undefined。
-            console.info('The count of private certificates is 0.');
-        } else if (cmResult.credentialDetailList == undefined) {
-            console.info('The result of getting all private certificates is undefined.');
-        } else {
-            let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
-            console.info('Succeeded in getting all private certificates.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get all private certificates. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get all private certificates. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getAllAppPrivateCertificatesByUid(appUid).then((cmResult: certificateManager.CMResult) => {
+    if (cmResult === undefined) { // 指定应用的私有凭据个数为0时，返回cmResult为undefined。
+      console.info('The count of private certificates is 0.');
+    } else if (cmResult.credentialDetailList == undefined) {
+      console.info('The result of getting all private certificates is undefined.');
+    } else {
+      let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
+      console.info('Succeeded in getting all private certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get all private certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get all private certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -822,13 +835,13 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 
 安装系统应用凭据，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -869,14 +882,15 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-    certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in installing system app certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to install system app certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to install system app certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    console.info('Succeeded in installing system app certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install system app certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install system app certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -886,13 +900,13 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
 获取系统应用的凭据详情，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -926,18 +940,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* 系统应用凭据的唯一标识符 */
 try {
-    certificateManager.getSystemAppCertificate(keyUri).then((cmResult: certificateManager.CMResult) => {
-        if (cmResult?.credential == undefined) {
-            console.info('The result of getting system app certificate is undefined.');
-        } else {
-        let cred: certificateManager.Credential = cmResult.credential;
-            console.info('Succeeded in getting system app certificate.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get system app certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get system app certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getSystemAppCertificate(keyUri).then((cmResult: certificateManager.CMResult) => {
+    if (cmResult?.credential == undefined) {
+      console.info('The result of getting system app certificate is undefined.');
+    } else {
+      let cred: certificateManager.Credential = cmResult.credential;
+      console.info('Succeeded in getting system app certificate.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get system app certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get system app certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -947,13 +962,13 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
 卸载系统应用的凭据，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -987,13 +1002,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* 系统应用凭据的唯一标识符 */
 try {
-    certificateManager.uninstallSystemAppCertificate(keyUri).then(() => {
-        console.info('Succeeded in uninstalling system app certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to uninstall system app certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to uninstall system app certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.uninstallSystemAppCertificate(keyUri).then(() => {
+    console.info('Succeeded in uninstalling system app certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall system app certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to uninstall system app certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1003,13 +1019,13 @@ uninstallAllAppCertificate() : Promise\<void>
 
 卸载所有系统应用凭据和用户公共凭据，仅证书管理应用调用。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER 和 ohos.permission.ACCESS_CERT_MANAGER_INTERNAL 和 ohos.permission.ACCESS_SYSTEM_APP_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
-
-**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -1034,12 +1050,13 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    certificateManager.uninstallAllAppCertificate().then(() => {
-        console.info('Succeeded in uninstalling all app certificates.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to uninstall all app certificates. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.uninstallAllAppCertificate().then(() => {
+    console.info('Succeeded in uninstalling all app certificates.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall all app certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```

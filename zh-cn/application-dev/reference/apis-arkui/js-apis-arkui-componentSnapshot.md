@@ -537,22 +537,48 @@ getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
 **示例：**
 
 ```ts
-import { ComponentUtils } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct Index {
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
   build() {
     Column() {
-      Button("获取截图尺寸限制")
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
+      }
+
+      Button("click to generate UI snapshot")
         .onClick(() => {
           let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
           let limitation = componentSnapshot.getSizeLimitation();
           console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-        })
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`error:${JSON.stringify(error)}`)
+                return;
+              }
+              this.pixmap = pixmap
+            })
+          }
+        }).margin(10)
     }
     .width('100%')
     .height('100%')
+    .alignItems(HorizontalAlign.Center)
   }
 }
 ```
@@ -578,6 +604,7 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称           | 类型            |    只读       |    可选           |   说明                    |
 | ---------------|------------     | -------------|---------------| -----------------------------|
 | scale           | number | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |

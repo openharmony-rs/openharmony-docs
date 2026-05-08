@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -246,6 +246,7 @@
 | [int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventdowntime) | - | 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。|
 | [Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)](#oh_input_settoucheventtooltype) | - | 设置触屏输入事件的工具类型。|
 | [Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventtooltype) | - | 获取触屏输入事件的工具类型。 |
+| [Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)](#oh_input_bindinputdevicetodisplay) | - | 绑定指定输入设备到指定屏幕。|
 
 ## 枚举类型说明
 
@@ -857,11 +858,13 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 注入按键事件。
 
-如果当前处于用户未授权状态，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
 
@@ -2027,6 +2030,8 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 当前应用申请注入权限，包括申请注入按键事件[OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent)、注入触屏输入事件[OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent)、注入鼠标事件[OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent)等注入操作的权限。
 
+从API版本26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **设备行为差异**：该接口仅在PC/2in1设备上生效，在其他设备上返回801错误码。
@@ -2055,6 +2060,8 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 **描述**
 
 查询当前应用注入的权限状态。
+
+从API版本26.0.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE权限而具备注入能力。
 
 **起始版本：** 20
 
@@ -3847,11 +3854,13 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 使用以指定屏幕左上角为原点的相对坐标系的坐标注入触屏输入事件。
 
-如果当前处于用户未授权状态，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备上调用无效果。
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
 
@@ -3878,11 +3887,13 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 使用以指定屏幕左上角为原点的相对坐标系的坐标注入鼠标事件。
 
-如果当前处于用户未授权状态，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
 
@@ -3959,9 +3970,11 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 使用以主屏左上角为原点的全局坐标系的坐标注入鼠标事件。
 
-如果当前处于用户未授权状态，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 20
 
@@ -4072,9 +4085,11 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 使用以主屏左上角为原点的全局坐标系的坐标注入触屏输入事件。
 
-如果当前处于用户未授权状态，调用该接口注入事件不生效。
+如果当前未获得事件注入授权，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 20
 
@@ -4286,6 +4301,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 获取当前屏幕上鼠标的坐标点。
 
+从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。
+
 **设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
 
 **起始版本：** 20
@@ -4377,8 +4394,6 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 通常与[OH_Input_AddKeyEventHook](#oh_input_addkeyeventhook)接口配合使用。
 
 **起始版本：** 21
-
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **参数：**
 
@@ -4689,8 +4704,6 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
-
 **起始版本：** 22
 
 **参数：**
@@ -4903,9 +4916,7 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 
 **描述**
 
-设置触屏输入事件的压力。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件的压力。如果未设置压力值，或者不在合法范围内，默认值是0.0。
 
 **起始版本：** 24
 
@@ -4932,8 +4943,6 @@ double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)
 
 获取触屏输入事件的压力。
 
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
-
 **起始版本：** 24
 
 **参数：**
@@ -4956,9 +4965,7 @@ void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t 
 
 **描述**
 
-设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。如果未设置，默认值是0。
 
 **起始版本：** 24
 
@@ -4978,8 +4985,6 @@ int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)
 **描述**
 
 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 24
 
@@ -5003,9 +5008,7 @@ void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t 
 
 **描述**
 
-设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。如果未设置，默认值是0。
 
 **起始版本：** 24
 
@@ -5025,8 +5028,6 @@ int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)
 **描述**
 
 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 24
 
@@ -5050,9 +5051,7 @@ void OH_Input_SetTouchEventDownTime(struct Input_TouchEvent* touchEvent, int64_t
 
 **描述**
 
-设置当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。如果未设置，默认值是0。
 
 **起始版本：** 24
 
@@ -5072,8 +5071,6 @@ int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent
 **描述**
 
 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 24
 
@@ -5097,9 +5094,7 @@ Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent,
 
 **描述**
 
-设置触屏输入事件的工具类型。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件的工具类型。如果未设置toolType，默认值是Input_TouchEventToolType.TOOL_TYPE_FINGER。
 
 **起始版本：** 24
 
@@ -5126,8 +5121,6 @@ Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_Touch
 
 获取触屏输入事件的工具类型。
 
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
-
 **起始版本：** 24
 
 **参数：**
@@ -5141,3 +5134,33 @@ Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_Touch
 | 类型 | 说明 |
 | -- | -- |
 | [Input_TouchEventToolType](#input_toucheventtooltype) | 工具类型。 |
+
+### OH_Input_BindInputDeviceToDisplay()
+
+```c
+Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)
+```
+
+**描述**
+
+绑定指定输入设备到指定屏幕。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**需要权限：** ohos.permission.INPUT_DEVICE_CONFIGURATOR
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t inputDeviceId | 指定输入设备的设备ID。 |
+| int32_t displayId | 指定屏幕的屏幕ID。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：<br>  [INPUT_SUCCESS](#input_result)表示操作成功。<br>  [INPUT_PERMISSION_DENIED](#input_result)表示权限校验失败。<br>  [INPUT_PARAMETER_ERROR](#input_result)表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result)表示服务异常，请重试。 |

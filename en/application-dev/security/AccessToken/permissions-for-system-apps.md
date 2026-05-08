@@ -5465,7 +5465,7 @@ Allows a system application to use the running capability framework.
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: phones | tablets | TVs | wearables
 
 **Valid since**: 23
 
@@ -5568,6 +5568,20 @@ Allows an application to query whether the page is in the standby state and acce
 **Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 23
+
+## ohos.permission.RESTORE_END_NOTIFICATION
+ 	 
+Allows a system application to subscribe to the restore end event of the backup framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**since**: 23
 
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
@@ -5685,7 +5699,7 @@ With this permission, the application can always use sensors.
 
 **Since**: 24
 
-## ohos.permission.MODIFY_AGENT_CARD
+### ohos.permission.MODIFY_AGENT_CARD
 
 Allows a system application to update and delete AgentCard.
 
@@ -5709,13 +5723,13 @@ Allows a system application to launch another application to a specified page st
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | Tablet
+**Supported devices**: phones | tablets
 
 **Valid since**: 26.0.0
 
-## ohos.permission.ENCRYPT_VOLUME_MANAGER
- 	 
-Allows an application to call the API of storage manager for managing volume encryption.
+## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
+
+Allows an application to obtain and set the car scenario mode.
 
 **Permission level**: system_basic
 
@@ -5723,13 +5737,27 @@ Allows an application to call the API of storage manager for managing volume enc
 
 **Enable via ACL**: true
 
-**Supported devices**: General
+**Supported devices**: cars
 
-**Since**: 24
+**Since**: 26.0.0
 
-## ohos.permission.ODD_MANAGER
+## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
-Allows an application to call the API of storage manager for managing optical disc burning.
+Allows an application to subscribe to the notification service.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ASSET_CACHE_MANAGER
+
+Allows an application to deliver, control, and query tasks through the asset cache service management APIs.
 
 **Permission level**: system_basic
 
@@ -5737,9 +5765,23 @@ Allows an application to call the API of storage manager for managing optical di
 
 **Enable via ACL**: true
 
-**Supported devices**: General
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
+
+## ohos.permission.MANAGE_AOD
+
+Allows an application to trigger the Always On Display (AOD) mode or exit it, and manage the AOD status.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
 
 ## ohos.permission.DCAS_OTA_PERMISSION
 
@@ -5751,6 +5793,202 @@ Allows an application and a service to access the device-side model deployment m
 
 **Enable via ACL**: true
 
-**Supported devices**: General
+**Supported devices**: general devices
 
 **Since**: 24
+
+## ohos.permission.REVOKE_FILE_ACCESS_PERSIST
+
+Allows an application to revoke persistent file authorizations for specified applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_SHARED_FILE
+
+Allows an application to obtain and access shared files.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Valid since**: 26.0.0
+
+## ohos.permission.GET_FILE_ACCESS_PERSIST
+
+Allows an application to retrieve persistent file authorization records for specified applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_SUPPORT_FEEDBACK
+
+Allows a system application to open the Feedback screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_SUPPORT_HELP
+
+Allows a system application to launch the intelligent customer service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+Allows a system application to use the unified management capabilities of the digital certificate service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+Allows an application to enable the outdoor exploration service to provide the altitude subscription capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_INTIMATE_RELATION_INFO
+
+Allows an application to obtain information about close contacts and open the close contact page.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.QUERY_TOOL_PERMISSIONS
+
+Allows a system application to query the permissions required for running a CLI or skill.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+Allows a system application to set and query the permissions required for running a specified CLI or skill.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
+
+Allows an application to use the device interconnectivity capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 24
+
+## ohos.permission.GET_TICKET_INFO
+
+Allows a system application to generate integrity protection credentials for sensitive messages.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.QUERY_CLI_TOOL
+
+Allows a system application to query CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.EXEC_CLI_TOOL
+
+Allows a system application to run CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0

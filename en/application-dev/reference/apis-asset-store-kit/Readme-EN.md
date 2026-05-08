@@ -26,5 +26,4 @@
     - [Asset_ResultSet](capi-assettype-asset-resultset.md)
     - [Asset_SyncResult](capi-assettype-asset-syncresult.md)
 - Error Codes<!--asset-store-arkts-errcode-->
-  - [Asset Store Service Error Codes](errorcode-asset.md)
-<!--no_check-->
+  - [Asset Store Service Error Code](errorcode-asset.md)

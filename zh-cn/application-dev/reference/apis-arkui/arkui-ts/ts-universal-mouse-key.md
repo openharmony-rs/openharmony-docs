@@ -62,12 +62,15 @@ onMouse(event: (event: MouseEvent) => void): T
 | pressedButtons<sup>15+</sup> | MouseButton[]      |  否      | 是     |当前按下的鼠标按键集合。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | globalDisplayX<sup>20+</sup> | number       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | globalDisplayY<sup>20+</sup> | number      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| eventHandleId<sup>24+</sup> | number | 否 | 是 | 用于事件处理的唯一标识。<br/> 取值范围：[0, +∞)<br/> **说明：** 在使用[postEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。<br/> 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### getHistoricalPoints
  
 getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  
 获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果。
+ 
+该接口仅能在[MouseEvent](#mouseevent对象说明)中调用，用于获取触发[onMouse](#onmouse)时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent](#mouseevent对象说明)数目大于1，会将该帧最后一个点通过[onMouse](#onmouse)返回，其余点作为历史点。
 
  **起始版本：** 26.0.0
 
@@ -81,7 +84,7 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  
  | 类型                                                 | 说明              |
  | -------------------------------------------------- | --------------- |
- | Array&lt;[MouseHistoricalPoint](#mousehistoricalpoint)&gt; | 当前帧的所有历史点信息。 |
+ | Array&lt;[MouseHistoricalPoint](#mousehistoricalpoint)&gt; | 当前帧的所有历史点信息组成的数组。 |
  
 ## MouseHistoricalPoint
  
@@ -98,6 +101,8 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  4. 轨迹分析：分析鼠标移动轨迹，用于绘图应用或手势控制。
 
  5. 数据分析：历史点中的timestamp可用于计算鼠标移动速度。
+
+### 属性
 
  **起始版本：** 26.0.0
 
@@ -119,9 +124,29 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  | globalDisplayY | number| 是   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br>单位：vp  |
  | timestamp  | number    | 是   | 否   | 鼠标事件的时间戳。<br>单位：ns                              |
 
+### getCurrentLocalPosition
+
+getCurrentLocalPosition?(): Coordinate2D
+
+获取鼠标位置相对于当前组件实时位置的左上角坐标。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 鼠标位置相对于当前组件实时位置的左上角坐标。 |
+
 ## 示例
 
-### 示例1（使用鼠标事件）
+### 示例1（获取鼠标事件相关参数）
 
 该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
 
@@ -237,11 +262,16 @@ struct HistoricalPointsExample {
         .height(80)
         .onMouse((event: MouseEvent) => {
           if (event.action === MouseAction.Move) {
+            // 调用getHistoricalPoints接口获取当前帧历史点信息
             const historicalPoints = event.getHistoricalPoints?.();
             if (historicalPoints) {
-              this.historicalPointsInfo = `历史点数量: ${historicalPoints.length}\n`;
+              this.historicalPointsInfo = `历史点数量: ${historicalPoints.length}`;
               historicalPoints.forEach((point: MouseHistoricalPoint, index: number) => {
-                this.historicalPointsInfo += `点${index}: (${point.x}, ${point.y})\n`;
+                this.historicalPointsInfo += `\n点${index}: `
+                  +`x = ${point.x}, y = ${point.y}, windowX = ${point.windowX}, windowY = ${point.windowY}, `
+                  +`displayX = ${point.displayX}, displayY = ${point.displayY}, `
+                  +`globalDisplayX = ${point.globalDisplayX}, globalDisplayY = ${point.globalDisplayY}, `
+                  +`timestamp = ${point.timestamp}`;
               });
               console.info(this.historicalPointsInfo);
             }
@@ -253,3 +283,42 @@ struct HistoricalPointsExample {
   }
 }
 ```
+
+### 示例3（获取组件实时位置）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('获取鼠标位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .onMouse((event?: MouseEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.getCurrentLocalPosition?.();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+示意图： 
+
+鼠标触发事件时：
+
+![mouse](figures/localPosition1.gif)

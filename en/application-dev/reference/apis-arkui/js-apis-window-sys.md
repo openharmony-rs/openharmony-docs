@@ -86,20 +86,6 @@ Enumerates the window modes.
 | SECONDARY  | 4    | The application is displayed in the secondary window in split-screen mode. In top-bottom splits, the bottom screen is secondary; in left-right splits, the right screen is secondary. |
 | FLOATING   | 5    | The application is displayed in a floating window.|
 
-## WindowLayoutMode<sup>9+</sup>
-
-Enumerates the window layout modes.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
-| Name      | Value  | Description                         |
-| ---------- | ---- | ----------------------------- |
-| WINDOW_LAYOUT_MODE_CASCADE  | 0    | Cascade mode. In this mode, freeform windows are stacked with Z-order arrangement.    |
-| WINDOW_LAYOUT_MODE_TILE | 1    | Tile mode. In this mode, newly opened application windows appear on the rightmost.          |
-
-
 ## BlurStyle<sup>9+</sup>
 
 Enumerates the window blur styles.
@@ -204,7 +190,7 @@ Describes the translation parameters.
 
 ## StartAnimationSystemParams<sup>20+</sup>
 
-Start animation configuration. This API works only for full-screen applications.
+Describes the start animation configuration. This API works only for full-screen applications.
 
 The configuration does not take effect for inter-application transitions, where the default animation of the system is used.
 
@@ -229,6 +215,56 @@ Describes the window parameters during application startup.
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | systemAnimationParams             | [StartAnimationSystemParams](#startanimationsystemparams20)                 | No  | Yes  | Parameters for the startup animation. The default value is **undefined**. If this parameter is not set, the default animation of the system is used.|
+| isWindowLimitsForcible | boolean | No| Yes| Whether the dimensions of the main window of an application can exceed the default system limit. This parameter takes effect only when the started application is a system application. Otherwise, this parameter does not take effect and no error is reported.<br> - **true**: The default system limit can be exceeded. During the calculation of the window dimensions limit, the default system limit is ignored. The final effective result is still calculated based on the intersection of each source, and the priority remains unchanged. For details, see [WindowLimits](arkts-apis-window-i.md#windowlimits11).<br> - **false**: The default system limit cannot be exceeded. The window dimensions limit is calculated based on the default rules (including the default system limit).<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+
+## WindowAnchorInfo<sup>24+</sup>
+
+Describes the anchor point information used to maintain the relative position between the level-1 child window and the main window.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
+| ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| anchorType             | [WindowAnchor](arkts-apis-window-e.md#windowanchor20)                 | No  | No  | Type of the anchor point used to maintain the relative position.|
+| offsetX             |     number           | No  | Yes  | X-axis offset between the anchor points of the child window and the main window, in px. The value must be an integer. Floating-point numbers are rounded down. The default value is **0**.|
+| offsetY             |     number           | No  | Yes  | Y-axis offset between the anchor points of the child window and the main window, in px. The value must be an integer. Floating-point numbers are rounded down. The default value is **0**.|
+
+## SubWindowAttachOptions<sup>24+</sup>
+
+Describes the parameters used to maintain the relative position between the child window and the main window.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
+| ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| currentLayoutMode             | string               | No  | Yes  | Current layout mode of the child window, which is used to control the UI effect customized by the application. If this parameter is not passed, the default value is an empty string.|
+| parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | No  | Yes  | Callback triggered when the parent window size changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window size changes. By default, this parameter is not passed, and notifications about the parent window size changes cannot be received.|
+| parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | No  | Yes  | Callback triggered when the parent window mode changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window mode changes. By default, this parameter is not passed, and notifications about the parent window mode changes cannot be received.|
+
+## WindowLayoutMode<sup>(deprecated)</sup>
+
+Enumerates the window layout modes.
+
+> **NOTE**
+>
+> <!--RP4--><!--RP4End-->This API is supported since API version 9 and deprecated since API version 26.0.0. No substitute is provided.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+| Name      | Value  | Description                         |
+| ---------- | ---- | ----------------------------- |
+| WINDOW_LAYOUT_MODE_CASCADE<sup>(deprecated)</sup>  | 0    | Cascade mode. In this mode, freeform windows are stacked with Z-order arrangement.<br>Note: <!--RP4--><!--RP4End-->This enumerated value is supported since API version 9 and deprecated since API version 26.0.0. No substitute is provided.|
+| WINDOW_LAYOUT_MODE_TILE<sup>(deprecated)</sup> | 1    | Tile mode. In this mode, newly opened application windows appear on the rightmost.<br>Note: <!--RP4--><!--RP4End-->This enumerated value is supported since API version 9 and deprecated since API version 26.0.0. No substitute is provided.|
 
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
@@ -357,7 +393,7 @@ Minimizes all main windows on a display while keeping one window open. This API 
 | Name  | Type                     | Mandatory| Description          |
 | -------- | ------------------------- | ---- | -------------- |
 | displayId| number                    | Yes  | Display ID. The value must be an integer. Non-integer values are rounded down.|
-| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. If the window ID is greater than 0 but does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Non-integer values are rounded down.|
+| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. If the window ID is greater than 0 but does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Floating-point numbers are rounded down.|
 
 **Return value**
 
@@ -473,99 +509,6 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
 });
-```
-
-## window.setWindowLayoutMode<sup>9+</sup>
-setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
-
-Sets the window layout mode. This API uses an asynchronous callback to return the result.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description          |
-| -------- | ------------------------- | ---- | -------------- |
-| mode       | [WindowLayoutMode](#windowlayoutmode9)                  | Yes  | Window layout mode to set.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.    |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300003 | This window manager service works abnormally. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in setting window layout mode.');
-  });
-} catch (exception) {
-  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-## window.setWindowLayoutMode<sup>9+</sup>
-setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
-
-Sets the window layout mode. This API uses a promise to return the result.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description          |
-| -------- | ------------------------- | ---- | -------------- |
-| mode       | [WindowLayoutMode](#windowlayoutmode9)                    | Yes  | Window layout mode to set.|
-
-**Return value**
-
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300003 | This window manager service works abnormally. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
-  promise.then(() => {
-    console.info('Succeeded in setting window layout mode.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
-}
 ```
 
 ## window.on('systemBarTintChange')<sup>8+</sup>
@@ -946,7 +889,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -1011,7 +954,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -1023,6 +966,73 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
   try {
     let promise = window.setWaterMarkImage(pixelMap, enable);
     promise.then(() => {
+      console.info('Succeeded in showing watermark image.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to show watermark image. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (exception) {
+    console.error(`Failed to show watermark image. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create PixelMap. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## window.setWaterMarkImage
+setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: number): Promise&lt;void&gt;
+
+Sets the display status of a watermark image on the screen and the watermark priority. This API uses a promise to return the result. When **priority** is set to 0, this API is equivalent to [setWaterMarkImage](#windowsetwatermarkimage10).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Parameters**
+
+| Name| Type                       | Mandatory | Description                |
+| ------ | --------------------------- | ---- | -------------------- |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| Watermark image, which can be obtained by calling [createPixelMap](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmap8).|
+| enable   | boolean                  | Yes  | Whether to display the watermark image. **true** means that the watermark image is displayed, and **false** means the opposite. After the watermark image is displayed, you need to set this parameter to **false** to disable the watermark display.|
+| priority   | number                  | Yes  | Watermark priority. A smaller value indicates a higher priority. The value must be greater than or equal to 0. If the value is less than 0, error code 1300016 is returned. If the input priority in this watermark setting is lower than the previous setting, the current setting does not take effect.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**Example**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+let color: ArrayBuffer = new ArrayBuffer(40000);
+let initializationOptions: image.InitializationOptions = {
+  size: {
+    height: 100,
+    width: 100
+  }
+};
+image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
+  console.info('Succeeded in creating pixelmap.');
+  try {
+    window.setWaterMarkImage(pixelMap, enable, 0).then(() => {
       console.info('Succeeded in showing watermark image.');
     }).catch((err: BusinessError) => {
       console.error(`Failed to show watermark image. Cause code: ${err.code}, message: ${err.message}`);
@@ -1281,6 +1291,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
 | 1300003 | This window manager service works abnormally. |
 | 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
@@ -1310,6 +1321,184 @@ export default class EntryAbility extends UIAbility {
       console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
     }
   }
+}
+```
+
+## window.moveMainWindowToTargetDisplay
+moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
+
+Moves the specified main window to the specified display. This API uses a promise to return the result.
+
+- For window movement between the displays of a [main screen](../../displaymanager/display-terminology.md#main-screen) or an [extended screen](../../displaymanager/display-terminology.md#extended-screen) and a [virtual screen](../../displaymanager/display-terminology.md#virtual-screen), or of virtual screens, only the main window and its child windows are moved to the corresponding display and raised. If there are child windows, the topmost child window that can obtain focus will obtain the focus; otherwise, the main window will obtain the focus.
+- For window movement between the displays of a main screen and an extended screen, only the main window is moved to the corresponding display, and is raised and obtains focus.
+
+<!--RP3--><!--RP3End-->
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name         | Type  | Mandatory | Description                   |
+| -------------- | ------ | ----- | ----------------------- |
+| displayId | number | Yes   | ID of the display to which the window is moved. The value must be a non-negative integer. You can obtain the value by calling [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain [properties](arkts-apis-window-i.md#windowproperties) and then using **properties.displayId**. You can also obtain the value by using [id](js-apis-display.md#attributes) of the [Display](js-apis-display.md#display) object.|
+| windowId | number | Yes   | ID of the window to be moved. The value must be an integer greater than 0. You can obtain the value by calling [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain [properties](arkts-apis-window-i.md#windowproperties) and then using **properties.id**.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message                                     |
+| ------- | --------------------------------------------- |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+| 1300008 | The display device is abnormal.           |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+      let displayClass: display.Display | null = null;
+      displayClass = display.getDefaultDisplaySync();
+      let mainWindow = windowStage.getMainWindowSync();
+      try {
+        window.moveMainWindowToTargetDisplay(displayClass.id, mainWindow.getWindowProperties().id).then(() => {
+          console.info(`Succeeded in moving window id: ${mainWindow.getWindowProperties().id} to target display id: ${mainWindow.getWindowProperties().displayId}`);
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to move window to target display. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to move window to target display. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+## window.setWindowLayoutMode<sup>(deprecated)</sup>
+setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
+
+Sets the window layout mode. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> <!--RP4--><!--RP4End-->This API is supported since API version 9 and deprecated since API version 26.0.0. No substitute is provided.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description          |
+| -------- | ------------------------- | ---- | -------------- |
+| mode       | [WindowLayoutMode](#windowlayoutmodedeprecated)                  | Yes  | Window layout mode to set.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.    |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting window layout mode.');
+  });
+} catch (exception) {
+  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.setWindowLayoutMode<sup>(deprecated)</sup>
+setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
+
+Sets the window layout mode. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> <!--RP4--><!--RP4End-->This API is supported since API version 9 and deprecated since API version 26.0.0. No substitute is provided.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description          |
+| -------- | ------------------------- | ---- | -------------- |
+| mode       | [WindowLayoutMode](#windowlayoutmodedeprecated)                  | Yes  | Window layout mode to set.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
+  promise.then(() => {
+    console.info('Succeeded in setting window layout mode.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -1689,6 +1878,176 @@ export default class EntryAbility extends UIAbility {
       } catch (exception) {
         console.error(`Failed to set the window mode. Cause code: ${exception.code}, message: ${exception.message}`);
       }
+    });
+  }
+}
+```
+
+### attachLayoutToParentWindow<sup>24+</sup>
+
+attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise&lt;void&gt;
+
+Attaches a first-level child window to the main window to maintain a fixed relative position. This API uses a promise to return the result.
+
+The relative position is represented by the anchor point offset between the child window and the parent window. The child window and the parent window use the same window anchor point.
+
+> **NOTE**
+>
+> - Only first-level child windows can call this API. The child window must be in floating window mode (that is, the window mode is **window.WindowStatusType.FLOATING**).
+>
+> - After the child window calls this API, the display position of the child window immediately follows the main window and the relative position remains unchanged. In addition, the size and mode changes of the main window can be listened to. The effect will persist unless the [detachLayoutToParentWindow()](#detachlayouttoparentwindow24) API is called for detaching.
+>
+> - After the child window calls this API, calling APIs such as [moveWindowTo()](arkts-apis-window-Window.md#movewindowto9), [maximize()](arkts-apis-window-Window.md#maximize12), and [setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17) to change the window position, or dragging and moving or dragging and resizing the child window through mouse or touch operations will not take effect.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description          |
+| -------- | ------------------------- | ---- | -------------- |
+| anchorInfo       | [WindowAnchorInfo](#windowanchorinfo24)                    | No  | Anchor point information used to attach the first-level child window to the main window to maintain the fixed relative position. If this parameter is not passed, the default logic is the same as that of [WindowAnchorInfo](#windowanchorinfo24).|
+| attachOptions       | [SubWindowAttachOptions](#subwindowattachoptions24)                    | No  | Additional parameters for setting the child window layout. If this parameter is not passed, the default logic is the same as that of [SubWindowAttachOptions](#subwindowattachoptions24).|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        let anchorInfo : window.WindowAnchorInfo = {
+          anchorType: window.WindowAnchor.TOP_START,
+          offsetX: 0,
+          offsetY: 0
+        };
+        let attachOptions: window.SubWindowAttachOptions = {
+          parentWindowSizeChangeCallback:(data: window.Size) => {
+            console.info(`Successfully accepted parentWindow size change, width: ${data.width}, height: ${data.height}`);
+          },
+          parentWindowStatusChangeCallback:(type: window.WindowStatusType) => {
+            console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
+          }
+        }
+        subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
+          console.info("Succeeded in attaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`attachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+
+### detachLayoutToParentWindow<sup>24+</sup>
+
+detachLayoutToParentWindow(): Promise&lt;void&gt;
+
+Detach a first-level child window from the main window to cancel a fixed relative position. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - When the child window calls this API, the child window must be in the attached state.
+>
+> - After detached by calling this API, the child window retains its position during attaching. You can drag the child window to change its size and position.
+>
+> - After the detaching, calling APIs such as [moveWindowTo()](arkts-apis-window-Window.md#movewindowto9), [maximize()](arkts-apis-window-Window.md#maximize12), and [setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17) to change the window position, or dragging and moving or dragging and resizing the child window through mouse or touch operations will take effect.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function detachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: The subwindow is not attached to the main window.|
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        subWindow.detachLayoutToParentWindow().then(() => {
+          console.info("Succeeded in detaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`detachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
     });
   }
 }
@@ -2079,139 +2438,6 @@ try {
   windowClass.setSnapshotSkip(isSkip);
 } catch (exception) {
   console.error(`Failed to Skip. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-### setForbidSplitMove<sup>9+</sup>
-
-setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&gt;): void
-
-Sets whether the main window is forbidden to move in split-screen mode. This API uses an asynchronous callback to return the result.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
-**Parameters**
-
-| Name     | Type                     | Mandatory| Description                |
-| ----------- | ------------------------- | ---- | -------------------- |
-| isForbidSplitMove | boolean                   | Yes  | Whether the window is forbidden to move in split-screen mode. **true** if forbidden, **false** otherwise.|
-| callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
-
-**Example**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let isForbidSplitMove: boolean = true;
-      try {
-        windowClass.setForbidSplitMove(isForbidSplitMove, (err: BusinessError) => {
-          const errCode: number = err.code;
-          if (errCode) {
-            console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
-            return;
-          }
-          console.info('Succeeded in forbidding window moving in split screen mode.');
-        });
-      } catch (exception) {
-        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
-### setForbidSplitMove<sup>9+</sup>
-
-setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
-
-Sets whether the main window is forbidden to move in split-screen mode. This API uses a promise to return the result.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
-**Parameters**
-
-| Name     | Type   | Mandatory| Description                |
-| ----------- | ------- | ---- | -------------------- |
-| isForbidSplitMove | boolean | Yes  | Whether the window is forbidden to move in split-screen mode. **true** if forbidden, **false** otherwise.|
-
-**Return value**
-
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
-
-**Example**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let isForbidSplitMove: boolean = true;
-      try {
-        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
-        promise.then(() => {
-          console.info('Succeeded in forbidding window moving in split screen mode.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
 }
 ```
 
@@ -3657,77 +3883,6 @@ try {
 }
 ```
 
-### setWindowContainerModalColor<sup>20+</sup>
-
-setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
-
-Sets the background color of the main window container for both when it has focus and when it does not. In the stage model, you need to call this API after [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9).
-
-The background color you set here covers the entire window, including both the title bar and the content area. If you also use [setWindowBackgroundColor()](arkts-apis-window-Window.md#setwindowbackgroundcolor9), the content area shows the window background color, whereas the title bar shows the container background color.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Window.SessionManager
-
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ----- | ------ | -- | ----------------------------------------------------------------------- |
-| activeColor | string | Yes| Background color of the window container when it is focused. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.|
-| inactiveColor | string | Yes| Background color of the window container when it is not focused. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.                      |
-
-**Example**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
-      let errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('Succeeded in loading the content.');
-      // Obtain the main window.
-      let windowClass: window.Window | undefined = undefined;
-      windowStage.getMainWindow((err: BusinessError, data) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        windowClass = data;
-        let activeColor: string = '#00000000';
-        let inactiveColor: string = '#FF000000';
-        try {
-          windowClass.setWindowContainerModalColor(activeColor, inactiveColor);
-          console.info('Succeeded in setting window container color.');
-        } catch (exception) {
-          console.error(`Failed to set the window container color. Cause code: ${exception.code}, message: ${exception.message}`);
-        };
-      });
-    });
-  }
-}
-```
-
 ### setTopmost<sup>12+</sup>
 
 setTopmost(isTopmost: boolean): Promise&lt;void&gt;
@@ -3740,9 +3895,9 @@ Called by the main window to place the window above all the other windows. This 
 
 **Device behavior differences**
 
-In versions earlier than <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, and error code 801 is returned on other devices.
+In versions earlier than <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
 
-Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+Since <!--RP2-->OpenHarmony 6.1<!--RP2End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, this API returns error code 801 when called.
 
 **Parameters**
 
@@ -4022,6 +4177,58 @@ try {
 };
 ```
 
+### requestFocus<sup>13+</sup>
+
+requestFocus(isFocused: boolean): Promise&lt;void&gt;
+
+Allows this window to proactively request to gain or lose focus. This API uses a promise to return the result. A value is returned as long as the API is successfully called. The return value does not indicate that the window has gained or lost focus. You can use [on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10) to listen for the focus status of the window.
+
+When a focus request is sent, whether the window can successfully gain focus depends on its capability of being focused and its current visibility. To gain focus, the window must be capable of receiving focus and in a visible state (actively displayed and not hidden or destroyed).
+
+Conversely, once a blur request is sent, the window will lose focus without any conditions.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| isFocused | boolean | Yes  | Whether to gain or lose focus. **true** to gain focus, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocused: boolean = true;
+let promise = windowClass.requestFocus(isFocused);
+promise.then(() => {
+  console.info('Succeeded in requesting focus.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to request focus. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ### setWindowType<sup>(deprecated)</sup>
 
 setWindowType(type: WindowType, callback: AsyncCallback&lt;void&gt;): void
@@ -4099,25 +4306,94 @@ promise.then(() => {
 });
 ```
 
-### requestFocus<sup>13+</sup>
+### setForbidSplitMove<sup>(deprecated)</sup>
 
-requestFocus(isFocused: boolean): Promise&lt;void&gt;
+setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Allows this window to proactively request to gain or lose focus. This API uses a promise to return the result. A value is returned as long as the API is successfully called. The return value does not indicate that the window has gained or lost focus. You can use [on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10) to listen for the focus status of the window.
+Sets whether the main window is forbidden to move in split-screen mode. This API uses an asynchronous callback to return the result.
 
-When a focus request is sent, whether the window can successfully gain focus depends on its capability of being focused and its current visibility. To gain focus, the window must be capable of receiving focus and in a visible state (actively displayed and not hidden or destroyed).
-
-Conversely, once a blur request is sent, the window will lose focus without any conditions.
+> **NOTE**
+>
+> <!--RP4--><!--RP4End-->This API is supported since API version 9 and deprecated since API version 26.0.0. No substitute is provided.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Window.SessionManager
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| isFocused | boolean | Yes  | Whether to gain or lose focus. **true** to gain focus, **false** otherwise.|
+| Name     | Type                     | Mandatory| Description                |
+| ----------- | ------------------------- | ---- | -------------------- |
+| isForbidSplitMove | boolean                   | Yes  | Whether the window is forbidden to move in split-screen mode. **true** if forbidden, **false** otherwise.|
+| callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 1300002 | This window state is abnormal.               |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let isForbidSplitMove: boolean = true;
+      try {
+        windowClass.setForbidSplitMove(isForbidSplitMove, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in forbidding window moving in split screen mode.');
+        });
+      } catch (exception) {
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+### setForbidSplitMove<sup>(deprecated)</sup>
+
+setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
+
+Sets whether the main window is forbidden to move in split-screen mode. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> <!--RP4--><!--RP4End-->This API is supported since API version 9 and deprecated since API version 26.0.0. No substitute is provided.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Parameters**
+
+| Name     | Type   | Mandatory| Description                |
+| ----------- | ------- | ---- | -------------------- |
+| isForbidSplitMove | boolean | Yes  | Whether the window is forbidden to move in split-screen mode. **true** if forbidden, **false** otherwise.|
 
 **Return value**
 
@@ -4130,25 +4406,45 @@ Conversely, once a blur request is sent, the window will lose focus without any 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message|
-| ------- | ------------------------------ |
-| 202     | Permission verification failed, non-system application uses system API. |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let isFocused: boolean = true;
-let promise = windowClass.requestFocus(isFocused);
-promise.then(() => {
-  console.info('Succeeded in requesting focus.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to request focus. Cause code: ${err.code}, message: ${err.message}`);
-});
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let isForbidSplitMove: boolean = true;
+      try {
+        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
+        promise.then(() => {
+          console.info('Succeeded in forbidding window moving in split screen mode.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
 ```
 
 ## SubWindowOptions<sup>11+</sup>
@@ -4312,150 +4608,6 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to set image for recent.`);
-    }
-  }
-};
-```
-
-### setImageForRecent<sup>22+</sup>
-
-setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
-
-Sets the image displayed in the multitasking view. This API uses a promise to return the result.
-
-> **NOTE**
->
-> Before calling this API, you are advised to load the page by using [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1). If this API is called before the application finishes loading the page, the intended functionality does not take effect. As a result, only the application's starting window is displayed in the multitasking view.
-
-**System API**: This is a system API.
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System capability**: SystemCapability.Window.SessionManager
-
-**Parameters**
-
-| Name     | Type   | Mandatory| Description                                                        |
-| ----------- | ------- | ---- | ------------------------------------------------------------ |
-| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Custom image resource, which can be a resource ID or PixelMap.|
-| value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | Yes| Fill mode of the custom image.|
-
-**Return value**
-
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
-
-**Example**
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-      console.info('Succeeded in loading the content.');
-      let color = new ArrayBuffer(512 * 512 * 4); // Create an ArrayBuffer object to store image pixels. The size of the object is (height * width * 4) bytes.
-      let pixelMap: image.PixelMap;
-      let bufferArr = new Uint8Array(color);
-      for (let i = 0; i < bufferArr.length; i += 4) {
-        bufferArr[i] = 255;
-        bufferArr[i+1] = 0;
-        bufferArr[i+2] = 122;
-        bufferArr[i+3] = 255;
-      }
-      image.createPixelMap(color, {
-        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
-      }).then((data) => {
-        pixelMap = data;
-        console.info(`Succeeded in creating pixelMap`);
-        try {
-          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
-          promise.then(() => {
-            console.info(`Succeeded in setting image for recent`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
-          });
-        } catch (exception) {
-          console.error(`Failed to set image for recent.`);
-        }
-      })
-    });
-  }
-};
-```
-
-### removeImageForRecent<sup>22+</sup>
-
-removeImageForRecent(): Promise&lt;void&gt;
-
-Removes the image that the application has set to be displayed in the multitasking view. The change will be effective the next time you check the application widget in the multitasking view. This API uses a promise to return the result.
-
-**System API**: This is a system API.
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System capability**: SystemCapability.Window.SessionManager
-
-**Return value**
-
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-
-**Example**
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    try {
-      let promise = windowStage.removeImageForRecent();
-      promise.then(() => {
-        console.info(`Succeeded in removing image for recent`);
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      console.error(`Failed to remove image for recent.`);
     }
   }
 };
