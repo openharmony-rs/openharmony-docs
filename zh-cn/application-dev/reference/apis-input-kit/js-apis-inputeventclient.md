@@ -545,6 +545,9 @@ struct Index {
               return mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
             })
             .then(mouseController => {
+              return mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
+            })
+            .then(mouseController => {
               return mouseController.endAxis(Axis.SCROLL_VERTICAL);
             })
             .then(() => {
@@ -600,37 +603,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, Axis } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          inputEventClient.createMouseController()
-            .then(mouseController => {
-              return mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
-            })
-            .then(mouseController => {
-              return mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
-            })
-            .then(mouseController => {
-              return mouseController.endAxis(Axis.SCROLL_VERTICAL);
-            })
-            .then(() => {
-              console.info('Succeeded in ending axis event');
-            })
-            .catch(error => {
-              console.error(`Failed to end axis event. Code: ${error.code}, message: ${error.message}.`);
-            });
-        })
-    }
-  }
-}
-```
+参见 [beginAxis](#beginaxis) 示例。
 
 ### endAxis
 
@@ -672,34 +645,4 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, Axis } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          inputEventClient.createMouseController()
-            .then(mouseController => {
-              return mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
-            })
-            .then(mouseController => {
-              return mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
-            })
-            .then(mouseController => {
-              return mouseController.endAxis(Axis.SCROLL_VERTICAL);
-            })
-            .then(() => {
-              console.info('Succeeded in ending axis event');
-            })
-            .catch(error => {
-              console.error(`Failed to end axis event. Code: ${error.code}, message: ${error.message}.`);
-            });
-        })
-    }
-  }
-}
-```
+参见 [beginAxis](#beginaxis) 示例。
