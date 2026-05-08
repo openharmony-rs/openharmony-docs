@@ -76,6 +76,7 @@ Virtual serial port disconnected.
 **可能原因**
 
 1. USB转串口线缆被拔出。
+
 2. USB虚拟串口设备异常断开。
 
 **处理步骤**
@@ -97,6 +98,7 @@ Port already in use.
 **可能原因**
 
 1. 同一串口被其他应用打开。
+
 2. 上次操作未正常关闭串口。
 
 **处理步骤**
