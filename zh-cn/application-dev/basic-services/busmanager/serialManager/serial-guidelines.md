@@ -61,7 +61,7 @@
 
 - 使用串口通信功能前，需要确保设备已正确连接串口硬件。
 - 写入数据长度范围为(0, 4096]字节。
-- 若开发者未主动设置配置参数，则使用默认配置参数（波特率：115200bps，数据位：8，停止位：1，校验位：无，硬件流控：关闭，软件流控：关闭）。
+- 若开发者未主动设置配置参数，则使用默认配置参数（波特率：115200bps，数据位：8，停止位：1，校验位：无，硬件自动流控：关闭，软件流控：关闭）。
 - 同一串口同一时间只能被一个应用打开。
 - 用户授权在以下场景下会失效，再次访问串口需重新授权：USB虚拟串口拔出、系统切换用户、整机重启。
 
@@ -237,6 +237,8 @@
 
 7. 硬件信号控制。
 
+* 7.1 设置RTS信号为高电平
+
    <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
@@ -250,6 +252,8 @@
    }
    ```
 
+* 7.2 获取CTS信号状态
+
    <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
@@ -262,6 +266,8 @@
      console.error(`Failed to get CTS: ${JSON.stringify(e)}`);
    }
    ```
+
+* 7.3 发送break信号
 
    <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
