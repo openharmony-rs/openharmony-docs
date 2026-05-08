@@ -133,19 +133,20 @@
 2. 获取串口设备列表。
 
    <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // 获取可用串口设备列表
    try {
-     let ports: serial.SerialPort[] = await serial.getSerialPortList();
-     console.info('Serial port list: ' + JSON.stringify(ports));
-     if (ports === undefined || ports.length === 0) {
-       console.error('No serial port available');
-       return;
+     const portList = await serial.getSerialPortList();
+     console.info(`${TAG} getSerialPortList success, count: ${portList.length}`);
+     portList.forEach((port: serial.SerialPort, index: number) => {
+       console.info(`${TAG}   [${index}] portName=${port.portInfo.portName}, vendorId=${port.portInfo.vendorId}, productId=${port.portInfo.productId}`);
+     });
+     if (portList.length > 0) {
+       this.port = portList[0];
      }
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to get serial port list: ${JSON.stringify(e)}`)
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} getSerialPortList failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
