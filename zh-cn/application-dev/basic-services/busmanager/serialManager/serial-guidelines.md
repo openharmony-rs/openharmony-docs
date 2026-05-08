@@ -217,24 +217,18 @@
 6. 刷新缓冲区与等待发送完成。
 
    <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-    // 清空串口缓冲区（包括读缓冲区和写缓冲区），缓冲区中的数据将被直接丢弃
    try {
-     await port.flush();
-     console.info('Flush success');
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to flush: ${JSON.stringify(e)}`);
-   }
-
-   // 等待所有已写入数据发送完成
-   try {
-     await port.drain();
-     console.info('Drain success');
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to drain: ${JSON.stringify(e)}`);
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     await this.port.flush();
+     console.info(`${TAG} flush success`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} flush failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
