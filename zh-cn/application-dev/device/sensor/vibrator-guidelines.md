@@ -543,7 +543,7 @@ JSON文件共包含3个属性。
 
    <!-- @[vibrator_js_vibrator_on_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
 
-    ``` TypeScript
+   ``` TypeScript
    try {
      // 订阅 vibratorStateChange事件
      vibrator.onVibratorStateChange((data: vibrator.VibratorStatusEvent) => {
