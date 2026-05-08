@@ -36,9 +36,9 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // 新建一个本地应用文件
   try {
-    let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, 'upload file test');
-    fs.closeSync(file);
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
@@ -46,7 +46,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // 上传任务配置项
   let files: request.File[] = [
-  //uri前缀internal://cache 对应cacheDir目录
+  // uri前缀internal://cache 对应cacheDir目录
     {
       filename: fileName,
       name: 'test',
