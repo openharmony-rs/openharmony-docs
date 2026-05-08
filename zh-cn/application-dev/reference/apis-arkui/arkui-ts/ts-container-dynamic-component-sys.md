@@ -23,7 +23,7 @@ DynamicComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）
 
 ## 接口
 
-### DynamicComponent<sup>26+</sup>
+### DynamicComponent
 
 ArkTS-Dyn: DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
