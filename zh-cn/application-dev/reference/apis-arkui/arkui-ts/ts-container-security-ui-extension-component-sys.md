@@ -109,7 +109,7 @@ ArkTS-Dyn: onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-
 
 ArkTS-Sta: onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, RecordData\>\> | undefined)
 
-收到被拉起的Ability发送的数据时触发的回调。
+收到被拉起的Ability发送的数据时触发的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -129,7 +129,7 @@ ArkTS-Dyn: onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-ap
 
 ArkTS-Sta: onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> | undefined)
 
-被拉起的Ability扩展在运行过程中发生异常时触发的回调，不包含与UIExtensionAbility断开连接场景。
+被拉起的Ability扩展在运行过程中发生异常时触发的回调，不包含与UIExtensionAbility断开连接场景。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -149,7 +149,7 @@ ArkTS-Dyn: onTerminated(callback: [Callback](../../apis-basic-services-kit/js-ap
 
 ArkTS-Sta: onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)> | undefined)
 
-被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。
+被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -260,7 +260,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
-订阅被拉起的Ability发生同步注册的回调。
+订阅被拉起的Ability发生同步注册的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -279,7 +279,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability发生异步注册的回调。
+取消订阅被拉起的Ability发生异步注册的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -298,7 +298,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-取消订阅被拉起的Ability发生同步注册后触发的回调。
+取消订阅被拉起的Ability发生同步注册后触发的回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
