@@ -123,7 +123,7 @@ struct Index {
             .then(mouseController => {
               console.info('Succeeded in creating mouse controller');
             })
-            .catch(error => {
+            .catch((error: BusinessError) => {
               console.error(`Failed to create mouse controller. Code: ${error.code}, message: ${error.message}.`);
             });
         })
