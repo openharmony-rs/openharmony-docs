@@ -273,16 +273,18 @@
 * 7.3 发送break信号
 
    <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-
-   // 发送break信号
    try {
-     await port.sendBrk();
-     console.info('Send break signal success');
-   } catch (error) {
-     let e = error as BusinessError;
-     console.error(`Failed to send break: ${JSON.stringify(e)}`);
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     await this.port.sendBrk();
+     console.info(`${TAG} sendBrk success`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} sendBrk failed, code: ${e.code}, message: ${e.message}`);
    }
    ```
 
