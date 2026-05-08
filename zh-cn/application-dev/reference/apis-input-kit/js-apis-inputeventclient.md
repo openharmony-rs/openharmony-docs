@@ -165,7 +165,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -231,7 +231,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -280,7 +280,7 @@ struct Index {
 
 1. 鼠标按键只能在抬起状态下被按下。
 2. 鼠标按键只能在被按下后才能抬起。
-3. 有效的轴事件序列必须先开始事件为首个事件，包含零个或多个更新事件，最后以结束事件结尾。
+3. 有效的轴事件序列必须先开始，包含零个或多个更新，然后结束。
 4. 同一时间只能有一个进行中的轴事件序列。
 
 ### moveTo
@@ -311,7 +311,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -377,7 +377,7 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -446,7 +446,7 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -516,7 +516,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -586,7 +586,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -658,7 +658,7 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
