@@ -2213,7 +2213,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | 名称        | 类型                        | 只读 | 可选 | 说明                                  |
 | ----------- | --------------------------- | ---- |----|-------------------------------------|
 | type        | [ServiceType](#servicetype) | 否   | 否  | 服务类型。                               |
-| uri         | string                      | 否   | 否  | 服务的uri，格式为DeepLink类型。可以跳转到三方应用相应界面。长度建议为[0,5000]字符。 |
+服务的 URI，格式为DeepLink类型。可以跳转到三方应用相应界面。长度建议为[0,5000]字符。
 | description | string                      | 否   | 是  | 服务辅助描述。长度建议为[0,5000]字符，不填时，默认为空字符串。                 |
 
 ## ServiceType
