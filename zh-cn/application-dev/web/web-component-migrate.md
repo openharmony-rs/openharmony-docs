@@ -18,9 +18,9 @@ Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-
 >
 > 不要将一个Web组件同时挂载在两个父节点下，这会导致非预期行为。
 
-<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
-
 ArkTS-Dyn示例：
+
+<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 
 ``` TypeScript
 // 主窗口Ability
