@@ -25,8 +25,9 @@
 
 | 故障类型 | 说明 |
 | -------- | -------- |
-| THREAD_BLOCK_6S | 应用主线程卡死超时 |
-| APP_INPUT_BLOCK | 用户输入响应超时 |
+| THREAD_BLOCK_6S | 应用主线程卡死超时。 |
+| APP_INPUT_BLOCK | 用户输入响应超时。 |
+| LIFECYCLE_TIMEOUT | UIAbility生命周期切换超时。<br>**说明**：从API版本26.0.0开始，支持该类型。|
 
 当应用发生上述故障时，为了保证可恢复，会杀死应用。并上报应用冻屏事件，可通过HiAppEvent订阅[应用冻屏事件](hiappevent-watcher-freeze-events.md)。
 
@@ -57,6 +58,42 @@
 **图2**
 
 ![app_input_block](figures/app_input_block.png)
+
+### LIFECYCLE_TIMEOUT 生命周期切换超时
+
+**概述**：生命周期切换超时是指：[UIAbility生命周期](../application-models/uiability-lifecycle.md)切换流程没有在指定时间内执行完毕。原因可能为：应用在生命周期切换过程中执行耗时操作，或者后台任务优先级低，资源供给不足导致的。
+
+该故障发生在生命周期切换过程中，影响应用内Ability的切换或不同PageAbility之间的切换。
+
+从**API版本26.0.0**开始，应用在AppScope/app.json5文件中配置如下环境变量，可获取故障日志，获取方式参考[日志获取](#日志获取)。
+
+> **注意：**
+>
+> 配置日志获取后，该类型日志将以Appfreeze类型上报给三方应用，会增加Appfreeze故障统计，计入Appfreeze故障指标。
+
+```text
+"appEnvironments": [
+  {
+    "name": "DFX_APPFREEZE_LOG_OPTIONS",
+    "value": "report_lifecycle_as_appfreeze:enable;"
+  }
+]
+```
+
+**检测原理**：AMS（Ability Manager Service）作为协调Ability运行和生命周期调度的系统服务，向应用进程发送生命周期切换指令，等待应用返回结果，在固定时间内未成功完成任务将上报故障。
+
+生命周期切换超时由LIFECYCLE_HALF_TIMEOUT和LIFECYCLE_TIMEOUT两个事件组合而成。如果生命周期切换过程中，超过半生命周期阈值未被执行，将上报LIFECYCLE_HALF_TIMEOUT告警事件；如果超过完整生命周期阈值仍未被执行，将上报LIFECYCLE_TIMEOUT卡死事件，两个事件匹配生成应用无响应日志。LIFECYCLE_HALF_TIMEOUT作为LIFECYCLE_TIMEOUT的告警事件，捕获Binder等信息。
+
+不同的生命周期超时，对应的超时时间各不相同。具体如下表所示：
+
+| 生命周期 | 超时时间 |
+| -------- | -------- |
+| Load | 10s |
+| Foreground | 5s |
+
+**图3**
+
+![lifecycle_timeout](figures/lifecycle_timeout.png)
 
 ## 日志获取
 
@@ -274,7 +311,7 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 #28 pc 00000000000a9804 /system/lib/ld-musl-aarch64.so.1(libc_start_main_stage2+84)(f1a940981720250b920ee26d2d76af5b)
 ```
 
-大部分情况下，THREAD_BLOCK_6S、APP_INPUT_BLOCK故障的堆栈信息，可以协助开发者定位到异常代码。
+大部分情况下，THREAD_BLOCK_6S、LIFECYCLE_TIMEOUT以及APP_INPUT_BLOCK故障的堆栈信息，可以协助开发者定位到异常代码。
 
 其他情况下（比如瞬时栈场景），由于主线程繁忙等问题，导致获取堆栈信息延迟，无法及时捕获到异常代码段，堆栈的栈顶信息并非开发者期望获取的结果。
 
@@ -413,6 +450,95 @@ ReclaimAvailBuffer:                    4676608 kB
 
 ## 日志差异性信息
 
+**生命周期超时事件**
+
+以下为生命周期超时日志差异性内容示例：
+
+```text
+DOMAIN:AAFWK
+STRINGID:LIFECYCLE_TIMEOUT
+TIMEOUT TIMESTAMP:2025/02/10-21:40:59:113
+PID:1561
+UID:20010039
+PACKAGE_NAME:com.example.myapplication
+PROCESS_NAME:com.example.myapplication
+MSG:ability:EntryAbility background timeout
+server actions for ability:
+2025-02-10 21:40:56.376; AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts.
+2025-02-10 21:40:56.377; ServiceInner::UpdateAbilityState
+server actions for app:
+2025-02-10 21:40:56.397; AppRunningRecord::OnWindowVisibilityChanged
+2025-02-10 21:40:56.851; AppRunningRecord::OnWindowVisibilityChanged
+2025-02-10 21:40:58.668; AppRunningRecord::OnWindowVisibilityChanged
+client actions for ability:
+2025-02-10 21:40:56.378; AbilityThread::ScheduleAbilityTransaction
+2025-02-10 21:40:56.378; AbilityThread::HandleAbilityTransaction
+2025-02-10 21:40:56.382; JsUIAbility::OnStart begin
+2025-02-10 21:40:56.382; JsUIAbility::OnStart end
+2025-02-10 21:40:56.387; JsUIAbility::OnSceneCreated begin
+2025-02-10 21:40:56.388; JsUIAbility::OnSceneCreated end
+2025-02-10 21:40:56.388; JsUIAbility::WindowScene::GoForeground begin
+2025-02-10 21:40:56.389; UIAbilityImpl::WindowLifeCycleImpl::AfterForeground
+2025-02-10 21:40:56.392; JsUIAbility::IntentForeground execute start begin
+2025-02-10 21:40:56.397; JsUIAbility::IntentForeground end
+2025-02-10 21:40:56.397; JsUIAbility::OnForeground begin
+client actions for app:
+```
+
+下面表格用**两个完整生命周期切换**示例来解释MSG中的信息。
+
+1. load 阶段事件，以应用进程未创建为例。
+
+   | server | client | 描述 |
+   | ------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------- |
+   | AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | Ability加载生命周期开始，系统准备加载Ability所需的资源和进程。 |
+   | AppMgrServiceInner::LoadAbility | -| 在创建应用进程之前，服务端开始处理Ability加载请求，检查进程状态。 |
+   | AppMgrService::AttachApplication | -| 应用进程创建成功后，进程向服务端发起attach（挂载）请求，建立通信通道。 |
+   | ServiceInner::AttachApplication | -| 服务端处理进程attach，记录进程信息，准备后续调度。 |
+   | ServiceInner::LaunchApplication | -| 服务端调度应用执行加载流程，通知应用进程进行初始化。 |
+   | AppRunningRecord::LaunchApplication | -| 调度应用执行加载流程。 |
+   | AppScheduler::ScheduleLaunchApplication | -| 调度应用执行加载流程。 |
+   | -| ScheduleLaunchApplication | 应用进程接收到应用加载调度请求，开始准备加载环境。 |
+   | -| HandleLaunchApplication begin | 应用开始执行加载逻辑。 |
+   | -| HandleLaunchApplication end | 应用加载逻辑执行结束。 |
+   | AppRunningRecord::LaunchPendingAbilities | -| 调度应用中待启动的Ability，触发具体的Ability加载。 |
+   | -| MainThread::ScheduleLaunchAbility | 应用进程收到加载Ability的请求，准备执行Ability的创建流程。 |
+   | -| MainThread::HandleLaunchAbility | 应用主线程处理Ability加载请求。 |
+   | -| JsAbilityStage::Create | 加载AbilityStage。 |
+   | -| JsAbilityStage::OnCreate begin | AbilityStage onCreate生命周期开始。 |
+   | -| JsAbilityStage::OnCreate end | AbilityStage的onCreate生命周期结束，AbilityStage初始化完成。 |
+   | -| AbilityThread::Attach | AbilityStage挂载（Attach）到AMS，load阶段结束。 |
+
+2. foreground 阶段事件，应用冷启动。
+
+   | server | client | 描述 |
+   | ------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------- |
+   | AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. | -| Ability进入前台生命周期（Foreground Lifecycle）的起始阶段。 |
+   | ServiceInner::UpdateAbilityState | -| 先调度应用前台，更新Ability的运行状态为“正在前台”。 |
+   | AppRunningRecord::ScheduleForegroundRunning | -| 调度应用前台，通知应用进程进入前台运行模式。 |
+   | AppScheduler::ScheduleForegroundApplication | -| 调度应用前台。 |
+   | -| ScheduleForegroundApplication | 应用进程接收调度指令，开始处理应用前台切换。 |
+   | -| HandleForegroundApplication | 主线程执行调度，分发应用前台任务到具体模块。 |
+   | AppMgrService::AppForegrounded | -| 应用前台完成，服务端记录应用状态已切换至前台。 |
+   | ServiceInner::AppForegrounded | -| 应用前台完成。 |
+   | -| AbilityThread::ScheduleAbilityTransaction | 应用收到Ability前台调度，准备对具体的Ability进行事务处理。 |
+   | -| AbilityThread::HandleAbilityTransaction | 主线程执行Ability前台调度，触发Ability的生命周期回调。 |
+   | -| JsUIAbility::OnStart begin | onCreate生命周期开始，Ability执行初始化工作。 |
+   | -| JsUIAbility::OnStart end | onCreate生命周期结束，Ability的初始资源已准备就绪。 |
+   | -| JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 |
+   | -| JsUIAbility::OnSceneCreated end | 创建窗口scene结束。 |
+   | -| JsUIAbility::OnWillForeground begin | -|
+   | -| JsUIAbility::OnWillForeground end |- |
+   | -| JsUIAbility::WindowScene::GoForeground begin | 调用窗口接口执行GoForeground开始。 |
+   | -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | 窗口前台后回调。 |
+   | -| JsUIAbility::IntentForeground execute start begin | 执行应用前台相关的意图操作开始，处理由前台切换触发的Intent任务。 |
+   | -| JsUIAbility::IntentForeground end | 应用前台相关的意图操作执行结束，Intent相关逻辑已处理完成。 |
+   | -| JsUIAbility::OnForeground begin | onForeground生命周期开始，通知开发者Ability已经在前台展示。 |
+   | -| JsUIAbility::OnForeground end | onForeground生命周期结束，Ability的前台生命周期回调完成。 |
+   | -| -| 当窗口回调和onForeground都完成后，前台生命周期结束。 |
+
+参考[日志规格](#日志规格)分析其他日志信息。特别说明：生命周期切换时若发生主线程卡死，请结合前后两次日志的堆栈与 BinderCatcher 信息进行对比分析，以定位问题。
+
 **APP_INPUT_BLOCK 用户输入响应超时**
 
 ```text
@@ -446,15 +572,15 @@ DisplayPowerInfo:powerState:AWAKE
 
 生成AppFreeze增强日志的流程分为以下两个阶段，具体如下：
 
-1. 应用进程在运行时发生THREAD_BLOCK_3S时，会开启采集主线程调用栈流程，记录当前时刻的一些CPU信息。
+1. 应用进程在运行时发生THREAD_BLOCK_3S或LIFECYCLE_HALF_TIMEOUT时，会开启采集主线程调用栈流程，记录当前时刻的一些CPU信息。
 
-2. 应用进程在运行时发生THREAD_BLOCK_6S或APP_INPUT_BLOCK时，会停止上述流程的采集主线程调用栈流程，并计算周期内的CPU信息。一般情况下，会抓取1~10次堆栈日志。
+2. 应用进程在运行时发生THREAD_BLOCK_6S、LIFECYCLE_TIMEOUT或APP_INPUT_BLOCK时，会停止上述流程的采集主线程调用栈流程，并计算周期内的CPU信息。一般情况下，会抓取1~10次堆栈日志。
 
    > **说明：**
    >
    > 由于应用冻屏事件的采样栈会与[MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈的会与应用当前配置的采集堆栈的个数一致。
    >
-   > APP_INPUT_BLOCK故障有增强日志的前提是：先发生THREAD_BLOCK_3S。
+   > APP_INPUT_BLOCK故障有增强日志的前提是：先发生THREAD_BLOCK_3S或LIFECYCLE_HALF_TIMEOUT。
 
 ### 日志获取
 

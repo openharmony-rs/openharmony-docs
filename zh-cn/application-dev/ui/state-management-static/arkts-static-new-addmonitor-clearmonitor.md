@@ -4,6 +4,10 @@
 
 在阅读本文档前，建议提前阅读：[@ObservedV2/@Trace](./arkts-static-new-observedV2-and-trace.md)、[@ComponentV2](./arkts-static-componentv2.md)、[@Local](./arkts-static-new-local.md)，[@Monitor](./arkts-static-new-monitor.md)。
 
+>**说明：**
+>
+>从API版本26.0.0开始，支持使用重载的addMonitor接口实现属性变化监听能力，其作用等效于通配符观察。
+
 ## 概述
 
 装饰器@Monitor如果声明在@ObservedV2和@ComponentV2中，会使得开发者构造出的所有的@ObservedV2和@ComponentV2的实例，都默认有同样的@Monitor的监听回调，且无法取消或删除对应的监听回调。
@@ -933,6 +937,80 @@ struct Child {
   build() {
     Column() {
       Text(`${this.count}`).fontSize(20)
+    }
+  }
+}
+```
+
+### 使用addMonitor观察对象属性
+
+从API版本26.0.0开始，addMonitor新增重载实现，用于实现对对象的属性观察能力，其作用等效于通配符能力。开启对对象属性的观察能力，需要使用新的[addMonitor](../../reference/apis-arkui/js-apis-stateManagement-static.md#addmonitor)方法，配置[MonitorValueInfo](../../reference/apis-arkui/js-apis-stateManagement-static.md#monitorvalueinfo)中`observeProp`项为true。同时可以配置每一个监听变量所对应的路径信息。使用新的addMonitor方法注册监听时，将不对路径合法性进行校验，仅作为每一个监听变量变化时返回的路径名。
+
+正确使用新addMonitor方法的方式如下：
+
+```ts
+UIUtils.addMonitor({ valueCallback: () => this.obj, path: 'obj.*', observeProps: true }, this.onChange);
+```
+
+以下写法将保持与原有addMonitor行为一致，不会生效属性观察能力，即使路径上含有通配符：
+
+```ts
+UIUtils.addMonitor({ valueCallback: () => this.obj, path: 'obj.*'}, this.onChange);
+```
+
+通配符路径的使用规则可以参考@Monitor文档中对[监听包含通配符的路径](arkts-static-new-monitor.md#监听包含通配符的路径)的说明。
+
+使用新addMonitor方法观察对象属性变化的用例如下。
+
+```ts
+'use static'
+
+import { Entry, Text, Column, ComponentV2, Button,
+  ObservedV2, Trace, Local, Monitor, IMonitor, UIUtils, IMonitorDecoratedVariable } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@ObservedV2
+export class ClassA {
+  @Trace propA: int = 8;
+  @Trace propB: int = 99;
+
+  constructor(a: int, b: int) {
+    this.propA = a;
+    this.propB = b;
+  }
+}
+
+@Entry
+@ComponentV2
+struct AddMonitorObject {
+  @Local cls: ClassA = new ClassA(100, 100);
+  monitorHandle: IMonitorDecoratedVariable | undefined = undefined;
+  onClsChanged(m: IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `### onClsChanged, dirty: ${m.dirty.toString()}`);
+  }
+
+  aboutToAppear(): void {
+    // 监听cls中的属性变化，设置路径为'cls.*'
+    this.monitorHandle = UIUtils.addMonitor({ valueCallback: () => this.cls, observeProps: true, path: 'cls.*'}, this.onClsChanged);
+  }
+
+  build() {
+    Column() {
+      Button(`Change propA: ${this.cls.propA}`)
+        .onClick(() => {
+          this.cls.propA += 1; // onClsChanged回调触发
+        })
+      Button(`Change propB: ${this.cls.propB}`)
+        .onClick(() => {
+          this.cls.propB += 1; // onClsChanged回调触发
+        })
+      Button('Assign new object')
+        .onClick(() => {
+          this.cls = new ClassA(-200, -200); // onClsChanged回调触发
+        })
+      Button('clear').onClick(() => {
+        UIUtils.clearMonitor(this.monitorHandle!); // 取消监听
+      })
     }
   }
 }
