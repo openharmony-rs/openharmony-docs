@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @@zhang_yixin13-->
+<!--Adviser: @zhang_yixin13-->
 
 输入事件注入模块，提供键盘和鼠标输入事件模拟能力。
 
@@ -60,13 +60,14 @@ struct Index {
   build() {
     RelativeContainer() {
       Text()
-        .onClick(async () => {
-          try {
-            let keyboardController = await inputEventClient.createKeyboardController();
-            console.info('键盘控制器创建成功');
-          } catch (error) {
-            console.error(`创建键盘控制器失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+        .onClick(() => {
+          inputEventClient.createKeyboardController()
+            .then(keyboardController => {
+              console.info('Succeeded in creating keyboard controller');
+            })
+            .catch(error => {
+              console.error(`Failed to create keyboard controller. Code: ${error.code}, message: ${error.message}.`);
+            });
         })
     }
   }
@@ -116,13 +117,14 @@ struct Index {
   build() {
     RelativeContainer() {
       Text()
-        .onClick(async () => {
-          try {
-            let mouseController = await inputEventClient.createMouseController();
-            console.info('鼠标控制器创建成功');
-          } catch (error) {
-            console.error(`创建鼠标控制器失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+        .onClick(() => {
+          inputEventClient.createMouseController()
+            .then(mouseController => {
+              console.info('Succeeded in creating mouse controller');
+            })
+            .catch(error => {
+              console.error(`Failed to create mouse controller. Code: ${error.code}, message: ${error.message}.`);
+            });
         })
     }
   }
@@ -133,8 +135,8 @@ struct Index {
 
 提供模拟按键操作的功能。模拟按键操作序列必须满足以下要求：
 
-1. 按键只能在释放状态下被按下，或者在该按键是最近按下的按键且未释放的情况下被按下。
-2. 按键只能在被按下后才能释放。
+1. 按键只能在抬起状态下被按下，或者在该按键是最近按下的按键且未抬起的情况下被按下。
+2. 按键只能在被按下后才能抬起。
 3. 最多可以同时按下并保持五个按键。
 
 ### pressKey
@@ -151,7 +153,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -163,7 +165,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -186,14 +188,20 @@ struct Index {
   build() {
     RelativeContainer() {
       Text()
-        .onClick(async () => {
-          try {
-            let keyboardController = await inputEventClient.createKeyboardController();
-            await keyboardController.pressKey(KeyCode.KEYCODE_A);
-            console.info('按键按下成功');
-          } catch (error) {
-            console.error(`按键按下失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+        .onClick(() => {
+          inputEventClient.createKeyboardController()
+            .then(keyboardController => {
+              return keyboardController.pressKey(KeyCode.KEYCODE_A);
+            })
+            .then(keyboardController => {
+              return keyboardController.releaseKey(KeyCode.KEYCODE_A);
+            })
+            .then(() => {
+              console.info('Succeeded in releasing key');
+            })
+            .catch(error => {
+              console.error(`Failed to release key. Code: ${error.code}, message: ${error.message}.`);
+            });
         })
     }
   }
@@ -204,7 +212,7 @@ struct Index {
 
 releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
-释放按键。使用Promise异步回调。
+抬起按键。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -214,19 +222,19 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
-| keyCode | [KeyCode](js-apis-keycode.md#keycode) | 是   | 要释放的按键键码。|
+| keyCode | [KeyCode](js-apis-keycode.md#keycode) | 是   | 要抬起的按键键码。|
 
 **返回值：**
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -240,37 +248,15 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(async () => {
-          try {
-            let keyboardController = await inputEventClient.createKeyboardController();
-            await keyboardController.pressKey(KeyCode.KEYCODE_A);
-            await keyboardController.releaseKey(KeyCode.KEYCODE_A);
-            console.info('按键释放成功');
-          } catch (error) {
-            console.error(`按键释放失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
+参见 [pressKey](#presskey) 示例。
 
 ## MouseController
 
 提供模拟鼠标操作的功能。模拟鼠标操作序列必须满足以下要求：
 
-1. 鼠标按键只能在释放状态下被按下。
-2. 鼠标按键只能在被按下后才能释放。
-3. 有效的轴事件序列必须先开始，包含零个或多个更新，然后结束。
+1. 鼠标按键只能在抬起状态下被按下。
+2. 鼠标按键只能在被按下后才能抬起。
+3. 有效的轴事件序列必须先调用 beginAxis 开始事件，然后调用零次或多次 updateAxis 更新事件，最后调用 endAxis 结束事件。
 4. 同一时间只能有一个进行中的轴事件序列。
 
 ### moveTo
@@ -287,7 +273,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -301,7 +287,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -324,14 +310,17 @@ struct Index {
   build() {
     RelativeContainer() {
       Text()
-        .onClick(async () => {
-          try {
-            let mouseController = await inputEventClient.createMouseController();
-            await mouseController.moveTo(0, 100, 200);
-            console.info('鼠标移动成功');
-          } catch (error) {
-            console.error(`鼠标移动失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+        .onClick(() => {
+          inputEventClient.createMouseController()
+            .then(mouseController => {
+              return mouseController.moveTo(0, 100, 200);
+            })
+            .then(() => {
+              console.info('Succeeded in moving mouse');
+            })
+            .catch(error => {
+              console.error(`Failed to move mouse. Code: ${error.code}, message: ${error.message}.`);
+            });
         })
     }
   }
@@ -352,7 +341,7 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -364,7 +353,7 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -387,14 +376,20 @@ struct Index {
   build() {
     RelativeContainer() {
       Text()
-        .onClick(async () => {
-          try {
-            let mouseController = await inputEventClient.createMouseController();
-            await mouseController.pressButton(Button.LEFT);
-            console.info('鼠标按键按下成功');
-          } catch (error) {
-            console.error(`鼠标按键按下失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+        .onClick(() => {
+          inputEventClient.createMouseController()
+            .then(mouseController => {
+              return mouseController.pressButton(Button.LEFT);
+            })
+            .then(mouseController => {
+              return mouseController.releaseButton(Button.LEFT);
+            })
+            .then(() => {
+              console.info('Succeeded in releasing mouse button');
+            })
+            .catch(error => {
+              console.error(`Failed to release mouse button. Code: ${error.code}, message: ${error.message}.`);
+            });
         })
     }
   }
@@ -405,7 +400,7 @@ struct Index {
 
 releaseButton(button: Button): Promise&lt;void&gt;
 
-释放鼠标按键。使用Promise异步回调。
+抬起鼠标按键。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -415,19 +410,19 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
-| button | [Button](js-apis-mouseevent.md#button) | 是   | 要释放的鼠标按键。|
+| button | [Button](js-apis-mouseevent.md#button) | 是   | 要抬起的鼠标按键。|
 
 **返回值：**
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -441,29 +436,7 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, Button } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(async () => {
-          try {
-            let mouseController = await inputEventClient.createMouseController();
-            await mouseController.pressButton(Button.LEFT);
-            await mouseController.releaseButton(Button.LEFT);
-            console.info('鼠标按键释放成功');
-          } catch (error) {
-            console.error(`鼠标按键释放失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
+参见 [pressButton](#pressbutton) 示例。
 
 ### beginAxis
 
@@ -479,7 +452,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -492,7 +465,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -515,14 +488,23 @@ struct Index {
   build() {
     RelativeContainer() {
       Text()
-        .onClick(async () => {
-          try {
-            let mouseController = await inputEventClient.createMouseController();
-            await mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
-            console.info('轴事件开始成功');
-          } catch (error) {
-            console.error(`轴事件开始失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+        .onClick(() => {
+          inputEventClient.createMouseController()
+            .then(mouseController => {
+              return mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
+            })
+            .then(mouseController => {
+              return mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
+            })
+            .then(mouseController => {
+              return mouseController.endAxis(Axis.SCROLL_VERTICAL);
+            })
+            .then(() => {
+              console.info('Succeeded in ending axis event');
+            })
+            .catch(error => {
+              console.error(`Failed to end axis event. Code: ${error.code}, message: ${error.message}.`);
+            });
         })
     }
   }
@@ -543,7 +525,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -556,7 +538,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -570,29 +552,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, Axis } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(async () => {
-          try {
-            let mouseController = await inputEventClient.createMouseController();
-            await mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
-            await mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
-            console.info('轴事件更新成功');
-          } catch (error) {
-            console.error(`轴事件更新失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
+参见 [beginAxis](#beginaxis) 示例。
 
 ### endAxis
 
@@ -608,7 +568,7 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -620,7 +580,7 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | promise对象，无返回结果。|
 
 **错误码**：
 
@@ -634,27 +594,4 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **示例：**
 
-```js
-import { inputEventClient, Axis } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(async () => {
-          try {
-            let mouseController = await inputEventClient.createMouseController();
-            await mouseController.beginAxis(Axis.SCROLL_VERTICAL, 10);
-            await mouseController.updateAxis(Axis.SCROLL_VERTICAL, 20);
-            await mouseController.endAxis(Axis.SCROLL_VERTICAL);
-            console.info('轴事件结束成功');
-          } catch (error) {
-            console.error(`轴事件结束失败, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
+参见 [beginAxis](#beginaxis) 示例。
