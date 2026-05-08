@@ -531,6 +531,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
   nativeheap-65097-1775640819058
   ```
   <!--RP10End-->
+  
   <!--RP14-->
   <!--RP14End-->
 
