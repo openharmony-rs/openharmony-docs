@@ -23,7 +23,9 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 创建键盘控制器，用于模拟按键操作。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,7 +83,9 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 创建鼠标控制器，用于模拟鼠标操作。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -147,7 +151,9 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 按下按键。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -218,7 +224,9 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 抬起按键。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -269,7 +277,9 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 将鼠标光标移动到指定的显示器坐标。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -338,7 +348,9 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 按下鼠标按键。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -409,7 +421,9 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 抬起鼠标按键。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -451,7 +465,9 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 开始轴事件。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -527,7 +543,9 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 更新轴事件。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -570,7 +588,9 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 结束轴事件。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
