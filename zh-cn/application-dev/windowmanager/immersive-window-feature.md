@@ -233,176 +233,175 @@ interface Rect {
    }
    ```
 
-2. 获取和监听窗口避让区域可以通过使用接口或使用响应式环境变量装饰器来实现：
+2. 获取并监听窗口避让区域，在避让区域更新时同时更新应用内布局。
 
-   - 使用接口实现
+   此处以获取并监听状态栏、底部导航区域、挖孔区为例。
 
-   使用[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取当前窗口避让区域（此处以状态栏、底部导航区域、挖孔区为例）。使用[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听避让区域的动态变化，在避让区域更新时同时更新应用内布局。
+   - 可以通过使用[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取当前窗口避让区域。使用[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听避让区域的动态变化。
 
-   ```ts
-   // EntryAbility.ets
-   private initSafeArea(win: window.Window): void {
-     try {
-       // 获取状态栏避让区域
-       const systemAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-       // 获取底部导航区避让区域
-       const navigationAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-       // 获取挖孔区避让区域
-       const cutoutAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
+     常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
 
-       AppStorage.setOrCreate('topAvoidHeight', systemAvoidArea.topRect.height);
-       AppStorage.setOrCreate('bottomAvoidHeight', navigationAvoidArea.bottomRect.height);
-       AppStorage.setOrCreate('leftAvoidWidth', 0);
-       AppStorage.setOrCreate('rightAvoidWidth', 0);
-       this.handleCutoutAvoidArea(cutoutAvoidArea);
-     } catch (err) {
-       hilog.error(
-         DOMAIN,
-         'testTag',
-         'Failed to init safe area. Cause: %{public}s',
-         JSON.stringify(err)
-       );
-     }
-   }
-
-
-   private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
-     try {
-       this.mainWindow.on('avoidAreaChange', (option) => {
-         switch (option.type) {
-           // 监听状态栏避让区域
-           case window.AvoidAreaType.TYPE_SYSTEM: {
-             const topHeight = Math.max(
-               option.area.topRect.height,
-               AppStorage.get<number>('topAvoidHeight') ?? 0
-             );
-             AppStorage.setOrCreate('topAvoidHeight', topHeight);
-             break;
-           }
-           // 监听挖孔区避让区域
-           case window.AvoidAreaType.TYPE_CUTOUT: {
-             this.handleCutoutAvoidArea(option.area);
-             break;
-           }
-           // 监听底部导航区避让区域
-           case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
-             const bottomHeight = Math.max(
-               option.area.bottomRect.height,
-               AppStorage.get<number>('bottomAvoidHeight') ?? 0
-             );
-             AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
-             break;
-           }
-           default: {
-             break;
-           }
-         }
-       });
-     } catch (err) {
-       hilog.error(
-         DOMAIN,
-         'testTag',
-         'Failed to initialize avoid area listener. Cause: %{public}s',
-         JSON.stringify(err)
-       );
-     }
-   }
-   ```
-
-
-   常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
-
-   - 使用响应式环境变量装饰器实现
-
-   在沉浸式布局下，应用内容可以延伸到状态栏、导航区所在区域。为避免关键内容被系统界面元素遮挡，需要根据窗口避让区域动态调整页面布局。
-
-   可通过@Env响应式环境变量装饰器获取当前窗口的避让区域信息，例如状态栏避让区域、底部导航区域避让区域等。组件在布局时使用这些避让区域的高度设置padding，即可将关键内容避开系统界面元素；当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。
-   示例代码如下：
-   ```ts
-   // Index.ets
-   import { window } from '@kit.ArkUI';
-
-   @Entry
-   @Component
-   struct Index {
-     // 使用响应式环境变量获取并监听避让区域
-     @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
-
-     private text: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(10);
-
-     build() {
-       Column() {
-         // 顶部和挖孔避让区域
-         Row() {
-           Text('Top Container')
-             .fontSize(40)
-             .textAlign(TextAlign.Center)
-             .width('100%')
-         }
-         .backgroundColor('#2786d9')
-         .padding({
-           // 状态栏避让区域
-           top: this.avoidAreasVp.statusBar.topRect.height + 10,
-           bottom: 10,
-           // 挖孔避让区域
-           left: this.avoidAreasVp.cutout.leftRect.width,
-           right: this.avoidAreasVp.cutout.rightRect.width
-         })
-
-         // 内容区避让挖孔区域
-         Scroll() {
-           Column({ space: 12 }) {
-             Row() {
-               Text(this.text)
-                 .fontSize(20)
-             }
-
-             Divider()
-
-           }
-           .width('100%')
-         }
-         .backgroundColor(Color.White)
-         .padding(20)
-         .borderRadius(15)
-         .width('80%')
-         .margin({
-           left: this.avoidAreasVp.cutout.leftRect.width,
-           right: this.avoidAreasVp.cutout.rightRect.width
-         })
-         .layoutWeight(1)
-
-         // 底部和挖孔避让区域
-         Row() {
-           Text('Bottom Container')
-             .fontSize(40)
-             .textAlign(TextAlign.Center)
-             .width('100%')
-         }
-         .backgroundColor('#96dffa')
-         .padding({
-           top: 10,
-           // 底部导航区域避让区域
-           bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 10,
-           // 挖孔避让区域
-           left: this.avoidAreasVp.cutout.leftRect.width,
-           right: this.avoidAreasVp.cutout.rightRect.width
-         })
+     ```ts
+     // EntryAbility.ets
+     private initSafeArea(win: window.Window): void {
+       try {
+         // 获取状态栏避让区域
+         const systemAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.  TYPE_SYSTEM);
+         // 获取底部导航区避让区域
+         const navigationAvoidArea = win.getWindowAvoidArea(window.  AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
+         // 获取挖孔区避让区域
+         const cutoutAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.  TYPE_CUTOUT);
+  
+         AppStorage.setOrCreate('topAvoidHeight', systemAvoidArea.topRect.  height);
+         AppStorage.setOrCreate('bottomAvoidHeight', navigationAvoidArea.  bottomRect.height);
+         AppStorage.setOrCreate('leftAvoidWidth', 0);
+         AppStorage.setOrCreate('rightAvoidWidth', 0);
+         this.handleCutoutAvoidArea(cutoutAvoidArea);
+       } catch (err) {
+         hilog.error(
+           DOMAIN,
+           'testTag',
+           'Failed to init safe area. Cause: %{public}s',
+           JSON.stringify(err)
+         );
        }
-       .width('100%')
-       .height('100%')
-       .padding({
-         // 页面整体避让挖孔区域
-         left: this.avoidAreasVp.cutout.leftRect.width,
-         right: this.avoidAreasVp.cutout.rightRect.width
-       })
-       .alignItems(HorizontalAlign.Center)
-       .backgroundColor('#d5d5d5')
-       .justifyContent(FlexAlign.SpaceBetween)
      }
-   }
+  
+  
+     private async initializeMainWindow(windowStage: window.WindowStage):   Promise<void> {
+       try {
+         this.mainWindow.on('avoidAreaChange', (option) => {
+           switch (option.type) {
+             // 监听状态栏避让区域
+             case window.AvoidAreaType.TYPE_SYSTEM: {
+               const topHeight = Math.max(
+                 option.area.topRect.height,
+                 AppStorage.get<number>('topAvoidHeight') ?? 0
+               );
+               AppStorage.setOrCreate('topAvoidHeight', topHeight);
+               break;
+             }
+             // 监听挖孔区避让区域
+             case window.AvoidAreaType.TYPE_CUTOUT: {
+               this.handleCutoutAvoidArea(option.area);
+               break;
+             }
+             // 监听底部导航区避让区域
+             case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
+               const bottomHeight = Math.max(
+                 option.area.bottomRect.height,
+                 AppStorage.get<number>('bottomAvoidHeight') ?? 0
+               );
+               AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
+               break;
+             }
+             default: {
+               break;
+             }
+           }
+         });
+       } catch (err) {
+         hilog.error(
+           DOMAIN,
+           'testTag',
+           'Failed to initialize avoid area listener. Cause: %{public}s',
+           JSON.stringify(err)
+         );
+       }
+     }
+     ```
 
-   ```
+   - 还可以使用响应式环境变量装饰器@Env来实现避让区域的获取和监听。
+
+     在沉浸式布局下，应用内容可以延伸到状态栏、导航区所在区域。为避免关键内容被系统界面元素遮挡，需要根据窗口避让区域动态调整页面布局。
+
+     可通过@Env响应式环境变量装饰器获取当前窗口的避让区域信息，例如状态栏避让区域、底部导航区域避让区域等。组件在布局时使用这些避让区域的高度设置padding，即可将关键内容避开系统界面元素；当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。
+     示例代码如下：
+     ```ts
+     // Index.ets
+     import { window } from '@kit.ArkUI';
+  
+     @Entry
+     @Component
+     struct Index {
+       // 使用响应式环境变量获取并监听避让区域
+       @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.  UIEnvWindowAvoidAreaInfoVP;
+  
+       private text: string = 'Lorem ipsum dolor sit amet, consectetur   adipiscing elit. '.repeat(10);
+  
+       build() {
+         Column() {
+           // 顶部和挖孔避让区域
+           Row() {
+             Text('Top Container')
+               .fontSize(40)
+               .textAlign(TextAlign.Center)
+               .width('100%')
+           }
+           .backgroundColor('#2786d9')
+           .padding({
+             // 状态栏避让区域
+             top: this.avoidAreasVp.statusBar.topRect.height + 10,
+             bottom: 10,
+             // 挖孔避让区域
+             left: this.avoidAreasVp.cutout.leftRect.width,
+             right: this.avoidAreasVp.cutout.rightRect.width
+           })
+  
+           // 内容区避让挖孔区域
+           Scroll() {
+             Column({ space: 12 }) {
+               Row() {
+                 Text(this.text)
+                   .fontSize(20)
+               }
+  
+               Divider()
+  
+             }
+             .width('100%')
+           }
+           .backgroundColor(Color.White)
+           .padding(20)
+           .borderRadius(15)
+           .width('80%')
+           .margin({
+             left: this.avoidAreasVp.cutout.leftRect.width,
+             right: this.avoidAreasVp.cutout.rightRect.width
+           })
+           .layoutWeight(1)
+  
+           // 底部和挖孔避让区域
+           Row() {
+             Text('Bottom Container')
+               .fontSize(40)
+               .textAlign(TextAlign.Center)
+               .width('100%')
+           }
+           .backgroundColor('#96dffa')
+           .padding({
+             top: 10,
+             // 底部导航区域避让区域
+             bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height   + 10,
+             // 挖孔避让区域
+             left: this.avoidAreasVp.cutout.leftRect.width,
+             right: this.avoidAreasVp.cutout.rightRect.width
+           })
+         }
+         .width('100%')
+         .height('100%')
+         .padding({
+           // 页面整体避让挖孔区域
+           left: this.avoidAreasVp.cutout.leftRect.width,
+           right: this.avoidAreasVp.cutout.rightRect.width
+         })
+         .alignItems(HorizontalAlign.Center)
+         .backgroundColor('#d5d5d5')
+         .justifyContent(FlexAlign.SpaceBetween)
+       }
+     }
+  
+     ```
 
 3. 布局中的系统界面元素需要避让状态栏和导航区域，否则可能产生UI元素重叠等情况。  
 
@@ -445,9 +444,11 @@ interface Rect {
      right: this.getUIContext().px2vp(this.rightAvoidWidth)
    })
    ```
-
+| 未适配沉浸式布局与避让区 | 适配沉浸式布局与避让区 |
+  | -------- | -------- |
+  | ![未适配沉浸式布局与避让区](figures/avoid-area-before-adaptation.png) | ![适配沉浸式布局与避让区](figures/avoid-area-after-adaptation.png)|
   
-![避让区域适配前](figures/avoid-area-before-adaptation.png)  ![避让区域适配后](figures/avoid-area-after-adaptation.png)
+
 
 4. 根据实际的UI界面显示或相关UI元素背景颜色等，还可以按需设置状态栏的文字颜色、背景色或设置导航区域的显示或隐藏，以使UI界面效果呈现和谐。状态栏和导航区域默认是透明的，透传的是应用界面的背景色。  
 
