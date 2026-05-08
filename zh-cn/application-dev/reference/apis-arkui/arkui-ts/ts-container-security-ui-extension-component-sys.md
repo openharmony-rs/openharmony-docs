@@ -82,7 +82,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 ### onRemoteReady
 
-onRemoteReady(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\>)
+onRemoteReady(callback: Callback\<SecurityUIExtensionProxy\>)
 
 UIExtensionAbility连接完成时触发的回调，使用callback异步回调。之后可通过返回的[SecurityUIExtensionProxy](#securityuiextensionproxy)向被拉起的Ability发送数据。
 
@@ -96,11 +96,11 @@ UIExtensionAbility连接完成时触发的回调，使用callback异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数，用于向对端Ability发送数据。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数，用于向对端Ability发送数据。 |
 
 ### onReceive
 
-onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>)
+onReceive(callback: Callback\<Record\<string, Object\>\>)
 
 收到被拉起的Ability发送的数据时触发的回调。
 
@@ -118,7 +118,7 @@ onReceive(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#cal
 
 ### onError
 
-onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback))
+onError(callback: ErrorCallback)
 
 被拉起的Ability扩展在运行过程中发生异常时触发的回调，不包含与UIExtensionAbility断开连接场景。
 
@@ -136,7 +136,7 @@ onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#
 
 ### onTerminated
 
-onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)>)
+onTerminated(callback: Callback\<TerminationInfo>)
 
 被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。
 
@@ -239,7 +239,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，代表订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<[UIExtensionProxy]\> | 是 | 回调函数。订阅扩展Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。订阅扩展Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
 
 ### on('syncReceiverRegister')
 
@@ -258,7 +258,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<UIExtensionProxy\> | 是 | 回调函数。扩展Ability注册[setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedataforresultcallback11)后触发的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。扩展Ability注册[setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedataforresultcallback11)后触发的回调。 |
 
 ### off('asyncReceiverRegister')
 
@@ -277,7 +277,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，取消订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<UIExtensionProxy\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。非空代表取消订阅异步对应回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。非空代表取消订阅异步对应回调。 |
 
 ### off('syncReceiverRegister')
 
@@ -296,7 +296,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，取消订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<UIExtensionProxy\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
 
 ## 示例
 
