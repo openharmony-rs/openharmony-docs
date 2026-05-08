@@ -124,12 +124,16 @@
 
 1. 导入模块。
 
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    // 导入串口通信模块
    import { serial, BusinessError } from "@kit.BasicServicesKit";
    ```
 
 2. 获取串口设备列表。
+
+   <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    // 获取可用串口设备列表
@@ -147,6 +151,8 @@
    ```
 
 3. 打开串口设备。
+
+   <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    // 使用默认配置打开串口
@@ -178,6 +184,8 @@
 
 4. 注册数据接收回调，监听串口数据。
 
+   <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    // 注册数据接收回调，当串口收到数据时会触发该回调
    port.onDataRead((data: Uint8Array) => {
@@ -188,6 +196,8 @@
    ```
 
 5. 通过串口写入数据。
+
+   <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    // 向串口写入数据
@@ -202,6 +212,8 @@
    ```
 
 6. 刷新缓冲区与等待发送完成。
+
+   <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
     // 清空串口缓冲区（包括读缓冲区和写缓冲区），缓冲区中的数据将被直接丢弃
@@ -224,6 +236,8 @@
    ```
 
 7. 硬件信号控制。
+
+   <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    // 设置RTS信号为高电平
@@ -255,6 +269,8 @@
    ```
 
 8. 注销数据接收回调和关闭串口设备。
+
+   <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    // 注销数据接收回调
