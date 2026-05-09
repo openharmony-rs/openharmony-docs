@@ -1888,7 +1888,7 @@ GWP-ASan配置项。可用于配置是否使能、采样频率，以及最大分
 |--------------|------|-------|-------|-----|
 |alwaysEnabled | boolean | 否  | 是 | true：100%使能GWP-ASan。<br/>false：1/128概率使能GWP-ASan。<br/> 默认值：false。|
 |sampleRate    |ArkTS-Dyn: number<br/>ArkTS-Sta: int| 否  |是|GWP-ASan采样频率，默认值为2500，需要传入大于0的正整数，若传入小数则向上取整。<br/> 1/sampleRate的概率对分配的内存进行采样。<br/> 建议值：>=1000，过小会显著影响性能。|
-|maxSimutaneousAllocations|ArkTS-Dyn: number<br/>ArkTS-Sta: int|否|是|最大分配的插槽数，默认值为1000，需要传入大于0的正整数，若传入小数则向上取整。<br/>当插槽用尽时，新分配的内存将不再受监控。<br/>释放已使用的内存后，其占用的插槽将自动复用，以便于后续内存的监控。<br/> 建议值：<=20000，过大会可能导致VMA超限崩溃。|
+|maxSimultaneousAllocations|ArkTS-Dyn: number<br/>ArkTS-Sta: int|否|是|最大分配的插槽数，默认值为1000，需要传入大于0的正整数，若传入小数则向上取整。<br/>当插槽用尽时，新分配的内存将不再受监控。<br/>释放已使用的内存后，其占用的插槽将自动复用，以便于后续内存的监控。<br/> 建议值：<=20000，过大会可能导致VMA超限崩溃。|
 
 ## hidebug.disableGwpAsanGrayscale<sup>20+</sup>
 disableGwpAsanGrayscale(): void
