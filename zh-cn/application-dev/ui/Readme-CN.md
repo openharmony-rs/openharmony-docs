@@ -134,6 +134,7 @@
         - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
         - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management-static/arkts-static-new-addmonitor-clearmonitor.md)
         - [canBeObserved接口：判断对象是否可被观察](state-management-static/arkts-static-new-canBeObserved.md)
+      - [ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](state-management-static/arkts-static-new-observed-built-in-types.md)
     - 状态管理V1-V2迁移指导<!--arkts-v1-v2-guide-->
       - [V1-V2迁移概述](state-management/arkts-v1-v2-migration.md)
       - 状态管理V1向V2迁移场景<!--arkts-state-management-v1-v2-migration-guide-->
