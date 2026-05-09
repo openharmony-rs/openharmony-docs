@@ -45,9 +45,9 @@ ArkTS-Sta: DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 ## Worker
 
-用于运行Abc的Worker线程对象。
-
 type Worker = Worker
+
+用于运行Abc的Worker线程对象。
 
 **起始版本：** 26.0.0
 
@@ -63,9 +63,9 @@ type Worker = Worker
 
 ## ErrorCallback
 
-错误回调类型，用于接收异常信息。
-
 type ErrorCallback = ErrorCallback
+
+错误回调类型，用于接收异常信息。
 
 **起始版本：** 26.0.0
 
@@ -89,6 +89,8 @@ type ErrorCallback = ErrorCallback
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
@@ -109,7 +111,7 @@ type ErrorCallback = ErrorCallback
 
 ArkTS-Dyn: onError(callback: ErrorCallback)
 
-ArkTS-Sta: onError(callback: ErrorCallback\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> | undefined)
+ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError\> | undefined)
 
 DynamicComponent运行过程中发生异常时触发该回调。使用callback异步回调。
 
