@@ -2102,7 +2102,7 @@ ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback\<SimLabel\>): void
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback\<[SimLabel](#simlabel20)\> | 是   | 回调函数。获取SIM卡标签信息。 |
 
 **错误码：**
@@ -2130,7 +2130,9 @@ console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data
 
 ## sim.getSimLabel<sup>20+</sup>
 
-getSimLabel(slotId: number): Promise\<SimLabel\>
+ArkTS-Dyn: getSimLabel(slotId: number): Promise\<SimLabel\>:void
+
+ArkTS-Sta: getSimLabel(slotId: number): Promise\<SimLabel\>:void
 
 获取SIM卡的标签信息。使用Promise异步回调。
 
@@ -2145,7 +2147,7 @@ getSimLabel(slotId: number): Promise\<SimLabel\>
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -2180,7 +2182,9 @@ console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
 
 ## sim.getSimLabelSync<sup>20+</sup>
 
-getSimLabelSync(slotId: number): SimLabel
+ArkTS-Dyn:getSimLabelSync(slotId: number): SimLabel:void
+
+ArkTS-Sta: getSimLabelSync(slotId: int): SimLabel
 
 通过传入SIM卡槽的ID，获取对应的SIM卡标签。
 
@@ -2194,7 +2198,7 @@ getSimLabelSync(slotId: number): SimLabel
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
