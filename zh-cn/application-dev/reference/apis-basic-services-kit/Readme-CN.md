@@ -17,6 +17,7 @@
     <!--DelEnd-->
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
+    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial-sys.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
     - [@ohos.runningLock (Runninglock锁)](js-apis-runninglock.md)
@@ -27,6 +28,7 @@
     - [@ohos.batteryInfo (电量信息)(系统接口)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (耗电统计)(系统接口)](js-apis-batteryStatistics-sys.md)
     - [@ohos.brightness (屏幕亮度)(系统接口)](js-apis-brightness-sys.md)
+    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial-sys.md)
     - [@ohos.charger (充电类型)(系统接口)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (设备证明)(系统接口)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (系统电源管理)(系统接口)](js-apis-power-sys.md)
@@ -156,6 +158,7 @@
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - 错误码<!--basic-services-arkts-errcode-->
   - [USB服务错误码](errorcode-usb.md)
+  - [串口通信错误码](errorcode-busmanager-serial.md)
   - [RunningLock锁错误码](errorcode-runninglock.md)
   - [zlib子系统错误码](errorcode-zlib.md)
   <!--Del-->
