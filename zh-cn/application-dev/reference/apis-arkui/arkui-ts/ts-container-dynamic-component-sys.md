@@ -45,23 +45,39 @@ ArkTS-Sta: DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 ## Worker
 
-用于运行Abc的Worker线程对象，继承自[@ohos.worker](../../apis-arkts/js-apis-worker.md)中的Worker类型。
+用于运行Abc的Worker线程对象。
+
+type Worker = Worker
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**类型说明：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [Worker](../../apis-arkts/js-apis-worker.md) | 引用自@ohos.worker中定义的Worker类型，用于在独立线程中运行Abc。 |
 
 ## ErrorCallback
 
-错误回调类型，继承自[@ohos.base](../../apis-basic-services-kit/js-apis-base.md#errorcallback)中的ErrorCallback类型，用于接收异常信息。
+错误回调类型，用于接收异常信息。
+
+type ErrorCallback = ErrorCallback
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**类型说明：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 引用自@ohos.base中定义的ErrorCallback类型，用于接收运行过程中的异常信息。 |
 
 ## DynamicOptions
 
@@ -95,7 +111,7 @@ ArkTS-Dyn: onError(callback: ErrorCallback)
 
 ArkTS-Sta: onError(callback: ErrorCallback\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> | undefined)
 
-DynamicComponent运行过程中发生异常时触发该回调。
+DynamicComponent运行过程中发生异常时触发该回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
