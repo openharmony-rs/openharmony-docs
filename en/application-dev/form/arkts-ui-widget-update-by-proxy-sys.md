@@ -1,9 +1,9 @@
 # Updating Widget Content Through a Proxy (for System Applications Only)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 A widget can be updated through a proxy – a system application that has data sharing enabled – when the widget provider is not running.
