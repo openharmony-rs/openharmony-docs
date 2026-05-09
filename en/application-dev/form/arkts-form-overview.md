@@ -2,8 +2,8 @@
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->	 
- <!--Designer: @xueyulong-->	 
- <!--Tester: @yangyuecheng-->
+<!--Designer: @xueyulong-->	 
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 This document describes how to develop an ArkTS widget based on the declarative paradigm.
