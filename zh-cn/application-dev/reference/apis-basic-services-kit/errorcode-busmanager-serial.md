@@ -1,4 +1,4 @@
-# 串口通信错误码
+# 串口管理错误码
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: BusManager-->
