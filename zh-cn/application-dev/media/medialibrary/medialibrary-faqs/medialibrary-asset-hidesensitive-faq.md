@@ -16,6 +16,14 @@
 
 > **注意：**
 >
+> 脱敏处理仅针对图片，视频不提供脱敏能力。
+
+应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的脱敏级别变为不进行脱敏，应用即可正常获取图片所有敏感信息。
+
+地理位置信息字段说明，具体字段说明和使用方式请参考 Image Kit 中的[PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
+
+> **注意：**
+>
 > 去隐私处理仅针对图片，视频不提供去隐私能力。
 
 ## 解决措施
