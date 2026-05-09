@@ -179,9 +179,6 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { floatingBall } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct Index {
@@ -430,9 +427,6 @@ setWindowSize(size: window.Size): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import window from '@ohos.window';
-
 @Entry
 @Component
 struct Index {
@@ -1026,7 +1020,7 @@ struct Index {
 | displayId | number | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
 | windowScale | number | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
-| avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗的避让区域。 |
+| avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗内容的避让区域。当矩形区域属性不全为0时，表示该区域为生效避让区域。<br>**注意：**</br>通过[setUIContext](#setuicontext)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。 |
 | inSidebar | boolean | 否 | 否 | 标准悬浮窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
 
 ## RatioLimit
@@ -1073,7 +1067,7 @@ struct Index {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | state | [FloatViewState](#floatviewstate) | 否 | 否 | 标准悬浮窗的状态。 |
-| stopReason | string | 否 | 否 | 标准悬浮窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"APP_KILL_STOP"：应用进程被终止后停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_CLICK_STOP"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他标准悬浮窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 |
+| stopReason | string | 否 | 否 | 标准悬浮窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"APP_KILL_STOP"：应用进程被终止后停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_CLICK_STOP"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他标准悬浮窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 <br/> "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗被销毁后停止 |
 
 ## FloatViewState
 

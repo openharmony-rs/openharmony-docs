@@ -38,7 +38,7 @@
     默认创建的子窗均为非独立子窗。创建子窗时[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened默认为false，此时创建的子窗为非独立子窗。
 ## 悬浮窗
 
-悬浮窗分为智慧多窗悬浮窗和全局悬浮窗。
+悬浮窗分为智慧多窗悬浮窗、全局悬浮窗和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)。
 
 - 智慧多窗悬浮窗是指设备屏幕上悬浮的、非全屏的应用窗口。
 
