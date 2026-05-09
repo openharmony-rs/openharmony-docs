@@ -58,12 +58,12 @@
   - 进程线程通信<!--process-thread-communi-arkts-->
     - [系统定义的公共事件](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [系统定义的公共事件定义 (系统接口)](common_event/commonEventManager-definitions-sys.md)
+    - [系统定义的公共事件(系统接口)](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
     <!--Del-->
-    - [@ohos.commonEventManager (公共事件模块)(系统接口)](js-apis-commonEventManager-sys.md)
+    - [@ohos.commonEventManager (公共事件模块)(系统应用)](js-apis-commonEventManager-sys.md)
     - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)(系统接口)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
     - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext)(系统接口)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
@@ -77,7 +77,7 @@
     - [@ohos.ai.intelligentVoice (智能语音)(系统接口)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
     - [@ohos.base (公共回调信息)](js-apis-base.md)
-    - [@ohos.annotation (系统注解)](js-apis-annotation.md)
+    - [@ohos.annotation (注解)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (定制配置)](js-apis-customization-customConfig.md)
     - [@ohos.settings (设置数据项名称)](js-apis-settings.md)
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
@@ -103,11 +103,11 @@
     - [@system.request (上传下载)](js-apis-system-request.md)
     - [@ohos.screenLock (锁屏管理)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (公共事件模块)(系统接口)](js-apis-commonEvent-sys.md)
+    - [@ohos.commonEvent (公共事件模块)(系统应用)(已废弃)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB管理)(系统接口)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (系统属性)(系统接口)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
-    - [@ohos.systemTime(系统时间、时区)](js-apis-system-time.md)
+    - [@ohos.systemTime (系统时间、时区)](js-apis-system-time.md)
 - C API<!--basic-services-c-->
   - 模块<!--basic-services-module-->
     - [OH_CommonEvent](capi-oh-commonevent.md)
@@ -168,7 +168,7 @@
   <!--DelEnd-->
   - [热管理错误码](errorcode-thermal.md)
   - [上传下载错误码](errorcode-request.md)
-  - [时间时区错误码](errorcode-time.md)
+  - [时间时区服务错误码](errorcode-time.md)
   - [事件错误码](errorcode-CommonEventService.md)
   <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
