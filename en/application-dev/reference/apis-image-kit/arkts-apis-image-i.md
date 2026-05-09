@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -276,6 +276,12 @@ Describes the image metadata set.
 | heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | No  | Yes  | HEIF image sequence metadata.|
 | webPMetadata<sup>24+</sup> | [WebPMetadata](arkts-apis-image-WebPMetadata.md) | No  | Yes  | WebP image metadata class, which is used to store image metadata.|
 | dngMetadata<sup>24+</sup> | [DngMetadata](#dngmetadata24) | No  | Yes  | DNG image metadata.|
+| gifMetadata | [GifMetadata](arkts-apis-image-GifMetadata.md) | No  | Yes  | GIF image metadata.<br>**Since**: 26.0.0|
+| tiffMetadata | [TiffMetadata](arkts-apis-image-TiffMetadata.md) | No  | Yes  | TIFF image metadata.<br>**Since**: 26.0.0|
+| jfifMetadata | [JfifMetadata](arkts-apis-image-JfifMetadata.md) | No  | Yes  | JFIF image metadata.<br>**Since**: 26.0.0|
+| pngMetadata | [PngMetadata](arkts-apis-image-PngMetadata.md) | No  | Yes  | PNG image metadata.<br>**Since**: 26.0.0|
+| xmpMetadata | [XMPMetadata](arkts-apis-image-XMPMetadata.md) | No  | Yes  | XMP metadata.<br>**Since**: 26.0.0|
+| avisMetadata | [AvisMetadata](arkts-apis-image-AvisMetadata.md) | No  | Yes  | AVIS image metadata.<br>**Since**: 26.0.0|
 
 ## DngMetadata<sup>24+</sup>
 
@@ -322,7 +328,7 @@ DNG image metadata class, which is used to store image metadata.
 | antiAliasStrength | number | Yes| Yes| Anti-aliasing filter strength.|
 | shadowScale | number | Yes| Yes| Shadow region scaling factor.|
 | dngPrivateData | ArrayBuffer | Yes| Yes| Vendor-specific data block.|
-| makerNoteSafety | number | Yes| Yes| Whether the EXIF MakerNote is secure and can be retained. The value **1** indicates yes, and the value **0** indicates no.|
+| makerNoteSafety | boolean | Yes| Yes| Whether the EXIF MakerNote is secure and can be retained. The value **true** indicates yes, and the value **false** indicates no.|
 | calibrationIlluminant1 | number | Yes| Yes| Type of the first calibration illuminant.|
 | calibrationIlluminant2 | number | Yes| Yes| Type of the second calibration illuminant.|
 | bestQualityScale | number | Yes| Yes| Scaling ratio for the optimal image quality.|
@@ -426,12 +432,59 @@ Describes the image raw data.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.Multimedia.Image.Core
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 | Name             | Type             | Read Only| Optional| Description              |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
 | buffer  | ArrayBuffer | No  | No  | Image buffer.    |
 | bitsPerPixel | number  | No  | No  | Number of bits occupied by each pixel in the buffer data, in bits.    |
+
+## XMPTag
+
+Describes the XMP tag information.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name         | Type                                             | Read Only| Optional| Description             |
+| ------------- | ------------------------------------------------ | ---- | ---- | ---------------- |
+| xmpNamespace  | [XMPNamespace](#xmpnamespace)                    | No  | No  | XMP namespace.    |
+| name          | string                                           | No  | No  | XMP tag name.    |
+| type          | [XMPTagType](arkts-apis-image-e.md#xmptagtype)   | No  | No  | XMP tag type.    |
+| value         | string                                           | No  | Yes  | XMP tag value.      |
+
+## XMPNamespace
+
+Describes the XMP namespace.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name  | Type   | Read Only| Optional| Description            |
+| ------ | ------ | ---- | ---- | --------------- |
+| uri    | string | No  | No  | XMP namespace URI.|
+| prefix | string | No  | No  | XMP namespace prefix.|
+
+## XMPEnumerateOptions
+
+Describes XMP enumeration options.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name         | Type    | Read Only| Optional| Description                  |
+| ------------- | ------- | ---- | ---- | --------------------- |
+| isRecursive   | boolean | No  | Yes  | Whether to perform recursive traversal.<br>The value **true** indicates to perform recursive traversal. The value **false** indicates to traverse only direct child nodes. The default value is **false**.|
+| onlyQualifier | boolean | No  | Yes  | Whether to traverse only qualifier nodes.<br>The value **true** indicates to traverse only qualifier nodes. The value **false** indicates to traverse all nodes. The default value is **false**.|
 
 ## GetImagePropertyOptions<sup>(deprecated)</sup>
 
