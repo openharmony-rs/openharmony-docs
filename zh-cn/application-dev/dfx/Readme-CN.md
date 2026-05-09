@@ -36,6 +36,10 @@
         - [应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)
         - [订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)
         - [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)
+      - 应用冻屏告警事件<!--appfreezewarning-events-->
+        - [应用冻屏告警事件介绍](hiappevent-watcher-appfreezewarning-events.md)
+        - [订阅应用冻屏告警事件（ArkTS）](hiappevent-watcher-appfreezewarning-events-arkts.md)
+        - [订阅应用冻屏告警事件（C/C++）](hiappevent-watcher-appfreezewarning-events-ndk.md)
       - 资源泄漏事件<!--resource-leak-events-->
         - [资源泄漏事件介绍](hiappevent-watcher-resourceleak-events.md)
         - [订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)
