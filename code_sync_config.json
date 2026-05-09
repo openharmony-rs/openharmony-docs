@@ -52218,5 +52218,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets",
+				"functions":[
+					{
+						"end_line":244,
+						"name":"PickerMediaLibrary_getMediaTypeByMimeType",
+						"start_line":235
+					},
+					{
+						"end_line":262,
+						"name":"PickerMediaLibrary_getBurstTypeByUri",
+						"start_line":250
+					}
+				]
+			}
+		]
 	}
 ]
