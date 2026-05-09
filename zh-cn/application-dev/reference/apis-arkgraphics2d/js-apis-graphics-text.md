@@ -4381,7 +4381,7 @@ getTextStyle(): TextStyle
 
 | 类型                   |说明                                   |
 | ---------------------- | ------------------------------------- |
-| [TextStyle](#TextStyle)  | 该排版单元的文本样式。<br>**说明：**<br>1.`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>2.`textStyle.ellipsis`和`textStyle.ellipsisMode`为段落属性，不支持通过本接口获取，应使用[Paragraph.getParagraphStyle()](#getParagraphStyle)。 |
+| [TextStyle](#textStyle)  | 该排版单元的文本样式。<br>**说明：**<br>1.`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>2.`textStyle.ellipsis`和`textStyle.ellipsisMode`为段落属性，不支持通过本接口获取，应使用[getParagraphStyle()](#getParagraphStyle)。 |
 
 **示例：**
 
