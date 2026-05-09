@@ -319,7 +319,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 本示例展示了SecurityUIExtensionComponent的基本用法，通过配置Want拉起指定Ability的UIExtensionAbility，并在连接异常时通过onError回调获取错误信息。
 
-**起始版本：** 26.0.0
+从API版本26.0.0开始，新增[onError](#onerror)事件。
 
 ArkTS-Dyn示例：
 
