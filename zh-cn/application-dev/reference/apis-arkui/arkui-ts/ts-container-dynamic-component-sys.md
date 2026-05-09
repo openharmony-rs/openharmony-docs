@@ -41,7 +41,9 @@ DynamicComponent(options: DynamicOptions)
 
 ## Worker
 
-type Worker = Worker，用于运行Abc的Worker线程对象。
+type Worker = Worker
+
+用于运行Abc的Worker线程对象。
 
 **起始版本：** 26.0.0
 
@@ -57,7 +59,9 @@ type Worker = Worker，用于运行Abc的Worker线程对象。
 
 ## ErrorCallback
 
-type ErrorCallback = ErrorCallback，错误回调类型，用于接收异常信息。
+type ErrorCallback = ErrorCallback
+
+错误回调类型，用于接收异常信息。
 
 **起始版本：** 26.0.0
 
