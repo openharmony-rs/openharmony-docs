@@ -204,3 +204,73 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.cli.INSTALL_BUNDLE
+
+允许应用通过CLI命令安装、卸载除企业应用外的其他应用。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.UNINSTALL_BUNDLE
+
+允许应用通过CLI命令卸载应用。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.GET_BUNDLE_INFO_PRIVILEGED
+
+允许应用通过CLI命令查询应用信息，如应用包名、版本等。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.REMOVE_BUNDLE_DATA_AND_CACHE_FILES
+
+允许应用通过CLI命令清理指定应用的缓存和数据（包括内部存储和外部存储）。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_DISPOSED_APP_STATUS
+
+允许应用通过CLI命令设置和查询应用的处置状态。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
