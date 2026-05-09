@@ -51,8 +51,6 @@ type Worker = Worker
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**类型说明：**
-
 | 类型 | 说明 |
 | -------- | -------- |
 | [Worker](../../apis-arkts/js-apis-worker.md) | 用于在独立线程中运行Abc。 |
@@ -68,8 +66,6 @@ type ErrorCallback = ErrorCallback
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型说明：**
 
 | 类型 | 说明 |
 | -------- | -------- |
