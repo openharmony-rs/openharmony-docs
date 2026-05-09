@@ -494,6 +494,10 @@ replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
