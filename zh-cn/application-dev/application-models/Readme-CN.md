@@ -44,6 +44,7 @@
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
     - [获取应用异常退出原因](ability-exit-info-record.md)
+    - [应用生命周期](application-lifecycle.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
       - [流转概述](inter-device-interaction-hop-overview.md)
