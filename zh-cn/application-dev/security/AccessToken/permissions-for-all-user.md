@@ -260,5 +260,3 @@
 
 请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
 
-## ohos.permission.cli.BUNDLE_ACTIVE_INFO
-
