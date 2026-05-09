@@ -8,7 +8,6 @@
 <!--Adviser: @w_Machine_cc-->
 
 The **GesturePoint** module provides APIs
-
 for creating gesture touch point information required for an accessibility application to inject gestures.
 
 > **NOTE**
