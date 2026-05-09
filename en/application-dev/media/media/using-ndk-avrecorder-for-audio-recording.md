@@ -14,7 +14,7 @@ During application development, you can use the **state** property of the AVReco
 
 **Figure 1** Recording state transition
 
-![Recording status change](figures/audio-recording-status-change.png)
+![Recording state change](figures/audio-recording-status-change.png)
 
 For details about the states, see [AVRecorderState](../../reference/apis-media-kit/arkts-apis-media-t.md#avrecorderstate9).
 
@@ -87,11 +87,11 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        OH_AVRecorder_StateChangeReason reason, void *userData) {
       (void)recorder;
       (void)userData;
-
+   
       // Convert reason into a string.
       const char *reasonStr = (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_USER) ? "USER" :
                               (reason == OH_AVRecorder_StateChangeReason::AVRECORDER_BACKGROUND) ? "BACKGROUND" : "UNKNOWN";
-
+   
       if (state == OH_AVRecorder_State::AVRECORDER_IDLE) {
          OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange IDLE, reason: %{public}s", reasonStr);
          // Process the state change.
@@ -121,7 +121,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          // Process the state change.
       }
    }
-
+   
    // Set an error callback.
    void OnError(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)
    {
@@ -130,7 +130,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnError errorCode: %{public}d, error message: %{public}s",
                   errorCode, errorMsg);
    }
-
+   
    // Set a callback to listen for the generation of media files. (This operation is required when AUTO_CREATE is selected for fileGenerationMode.)
    void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)
    {
@@ -146,10 +146,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG; // Available video interfaces are provided by the media library.
          uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
          OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
-
+   
          uint32_t resultChange = OH_MediaAccessHelper_ApplyChanges(changeRequest);
          OH_LOG_INFO(LOG_APP, "result of OH_MediaAccessHelper_ApplyChanges: %d", resultChange);
-
+   
          OH_MediaAsset_Release(asset);
          OH_MediaAssetChangeRequest_Release(changeRequest);
       } else {
