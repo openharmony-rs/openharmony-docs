@@ -1509,3 +1509,154 @@ enableDeviceLevelCapture是AVScreenCaptureStrategy接口中的一个可选参数
 | 名称                      | 类型    | 必填 | 说明 |
 | ------------------------ | ------- | ---- | ---- |
 | enableDeviceLevelCapture | boolean | 否   | true表示折叠屏PC在折叠状态下录制整块屏幕，false表示折叠屏PC在折叠状态下录制半块屏幕。 |
+
+## getCurrentTrack
+
+getCurrentTrack(trackType：MediaType): Promise\<number>
+
+获取指定媒体类型的选定轨道。使用Promise异步回调。
+
+只有当AVPlayer处于prepared、playing或者paused状态时，才能调用该接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| trackType | [MediaType](arkts-apis-media-e.md#mediatype8) | 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<number> | Promise对象，返回指定媒体类型选中轨道的索引值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API.|
+| 5400101  | No memory.|
+| 5400102  | Operation not allowed.|
+| 5400103  | I/O error.|
+| 5400105  |Service died.|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  let myTrackId : number;
+  let trackType: media.MediaType = media.MediaType.MEDIA_TYPE_AUD;
+  avPlayer.getCurrentTrack(trackType).then((trackId: number) => {
+    console.info('Succeeded in getting CurrentTrack');
+    myTrackId = trackId;
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get CurrentTrack, error:${error}`);
+  });
+}
+```
+
+## forceLoadVideo
+
+forceLoadVideo(force: boolean): Promise\<void>
+
+是否强制加载视频。使用promise返回结果。
+
+只有当AVPlayer处于prepared、playing或者pause状态时，才能调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| force | boolean | 是 | 是否强制加载视频。<br>true表示强制加载视频，false表示不强制加载视频。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  avPlayer.forceLoadVideo(true);
+}
+```
+
+## privacyType
+
+privacyType?: audio.AudioPrivacyType
+
+音频隐私配置。
+
+相关详细信息，请参阅[AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)。
+
+### 属性
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| privacyType |  [AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)   | 否 | 音频隐私配置。<br>默认值为PRIVACY_TYPE_PUBLIC。 |
+
+## enableStartFrameRateOpt
+
+enableStartFrameRateOpt?: boolean
+
+音频隐私配置。
+
+相关详细信息，请参阅[AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)。
+
+### 属性
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| enableStartFrameRateOpt | boolean  | 否 | 开始播放时是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。|
