@@ -1166,9 +1166,9 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long, option?: WindowInfoOptions): 
 
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
-| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause :1. Invalid parameter range. |
 
 **示例：**
 
