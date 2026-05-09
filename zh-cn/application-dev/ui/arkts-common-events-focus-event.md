@@ -111,6 +111,7 @@ export struct FocusActiveExample {
 
 ``` TypeScript
 @Entry
+@Component
 export struct FocusTransferExample {
   @State logText: string = '\n';
   context = this.getUIContext().getHostContext();
@@ -128,8 +129,12 @@ export struct FocusTransferExample {
               .margin(20)
               .onClick(() => {
                 // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
-                this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
-                this.getUIContext().getFocusController().requestFocus('Row 2');
+                try {
+                  this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
+                  this.getUIContext().getFocusController().requestFocus('Row 2');
+                } catch (error) {
+                  console.error('Row 2 request focus failed!');
+                }
               })
           }
         }
@@ -140,24 +145,40 @@ export struct FocusTransferExample {
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
             Button('button 3')
               .margin(20)
               .onFocus(() => {
                 // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-                this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                try {
+                  this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+                } catch (error) {
+                  console.error('Get string failed!');
+                }
               })
           }
           .id('Row 2')
           .onFocus(() => {
             // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-            this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            try {
+              this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+            } catch (error) {
+              console.error('Get string failed!');
+            }
           })
         }
         .onFocus(() => {
           // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
-          this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          try {
+            this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          } catch (error) {
+            console.error('Get string failed!');
+          }
         })
 
         Scroll() {
@@ -1089,7 +1110,11 @@ export struct RequestFocusExample {
               Button('FocusController.requestFocus')
                 .width(200).height(70).fontColor(Color.White)
                 .onClick(() => {
-                  this.getUIContext().getFocusController().requestFocus('testButton');
+                  try {
+                    this.getUIContext().getFocusController().requestFocus('testButton');
+                  } catch (error) {
+                    console.error('Request focus failed!');
+                  }
                 })
                 .backgroundColor('#ff2787d9')
   
