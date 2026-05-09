@@ -1,9 +1,9 @@
 # @ohos.app.form.LiveFormExtensionAbility (LiveFormExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @Qian-Win-->
-<!--Designer: @cx983299475-->
-<!--Tester: @mahailong123456-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionAbility模块提供互动卡片功能，包括创建、销毁互动卡片等，继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。
