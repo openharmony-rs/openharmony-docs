@@ -157,7 +157,7 @@ Transmission timeout.
 
 3. 检查串口通信参数（波特率等）是否与对端一致。
 
-4. 降低写入频率或在写入间调用[drain](js-apis-busmanager-serial.md#drain)接口等待前次数据发送完成后再发送。
+4. 降低写入频率或在写入之间调用[drain](js-apis-busmanager-serial.md#drain)接口等待前次数据发送完成后再发送。
 
 ## 35700007 用户授权被拒绝
 
