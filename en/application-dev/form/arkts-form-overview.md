@@ -1,8 +1,8 @@
 # ArkTS Widget Overview
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->	 
-<!--Designer: @xueyulong-->	 
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
