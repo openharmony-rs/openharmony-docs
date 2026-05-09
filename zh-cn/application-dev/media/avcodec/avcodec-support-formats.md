@@ -151,11 +151,13 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 | aac      | -                     | AAC               | -             |
 | flac     | -                     | Flac              | jpeg、png、bmp |
 | ogg<sup>23+</sup>      | -                     | Vorbis、OPUS      | -              |
+| flv      | AVC（H.264）<!--RP11--><!--RP11End-->    | AAC<!--RP17--><!--RP17End--> | - |
 
 > **说明：**
 >
-> - 封装格式为mp4，音频编解码类型为MPEG（MP3）时采样率需大于等于16000Hz。  
-> - 封装格式为mp4/m4a，音频编解码类型为AAC时声道数范围为1~7。
+> - 封装格式为mp4时，音频编解码类型为MPEG（MP3）时采样率需大于等于16000Hz。
+> - 封装格式为mp4/m4a时，音频编解码类型为AAC时声道数范围为[1, 7]。
+> - 从API版本26.0.0开始，支持flv格式封装。封装格式为flv时，仅支持一个音频轨和一个视频轨，不支持设置旋转角度，不支持封面轨和辅助轨。
 
 文件级数据已定义的key如下所示：
    |                key                 |                       描述                    |
@@ -169,7 +171,8 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 
 > **说明：**
 >
-> 用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API20开始增加支持uint8_t*。
+> 封装格式为mp4时，用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API version 20开始增加支持uint8_t*。
+> 封装格式为flv时，用户自定义的key必须以"com.openharmony."为开头。值类型为string。
 
 配置选项key值说明：
 
@@ -284,5 +287,24 @@ ogg封装格式（从API version 23开始支持）：
    | OH_MD_KEY_AUD_SAMPLE_RATE          | 采样率                |  必须  |  必须  |
    | OH_MD_KEY_AUD_CHANNEL_COUNT        | 声道数                |  必须  |  必须  |
    | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  必须  |  必须  |
+
+flv封装格式（从API版本26.0.0开始支持）：
+<!--RP18-->
+   |                key                 |         描述         |   aac  |  H.264  |  H.265  |
+   | ---------------------------------- | :------------------: | :----: | :----: | :----: |
+   | OH_MD_KEY_AUD_SAMPLE_RATE          | 采样率                |  必须  |   -    |   -    |
+   | OH_MD_KEY_AUD_CHANNEL_COUNT        | 声道数                |  必须  |   -    |   -    |
+   | OH_MD_KEY_CHANNEL_LAYOUT           | 通道布局              |  可选  |   -    |   -    |
+   | OH_MD_KEY_PROFILE                  | 编码档次              |  可选  |   -    |   -    |
+   | OH_MD_KEY_BITRATE                  | 码率                  |  可选  |  可选  |  可选  |
+   | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  可选  |  可选  |  可选  |
+   | OH_MD_KEY_WIDTH                    | 宽度                  |   -   |  必须  |  必须  |
+   | OH_MD_KEY_HEIGHT                   | 高度                  |   -   |  必须  |  必须  |
+   | OH_MD_KEY_FRAME_RATE               | 视频流帧率            |   -   |  可选  |  可选  |
+   | OH_MD_KEY_COLOR_PRIMARIES          | 视频色域              |   -   |  可选  |  可选  |
+   | OH_MD_KEY_TRANSFER_CHARACTERISTICS | 视频传递函数          |   -   |  可选  |  可选  |
+   | OH_MD_KEY_MATRIX_COEFFICIENTS      | 视频矩阵系数          |   -   |  可选  |  可选  |
+   | OH_MD_KEY_RANGE_FLAG               | 值域标志              |   -   |  可选  |  可选  |
+<!--RP18End-->
 
 具体开发指导请参考[媒体数据封装](audio-video-muxer.md)。
