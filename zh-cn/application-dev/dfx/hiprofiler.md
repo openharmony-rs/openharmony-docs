@@ -180,6 +180,8 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | sample_interval | int | 采样大小。 | 设置此参数时开启采样模式。采样模式下对于malloc size小于采样大小进行概率性统计。调用栈分配内存大小越大，出现次数越高，被统计的几率越大。 | 
 | restrace_tag | string | 需要抓取资源的类型 | 参数可多次添加不同类型。当前支持类型见表[restrace_tag参数介绍](#restrace_tag参数介绍)。|
 | use_file_cache_mode | bool | 是否使用文件缓存模式。<br/>true：使用文件缓存模式。<br/>false：不使用文件缓存模式。<br/>默认为false。 |文件缓存模式通过将缓存数据落盘，提升内存分配信息的采集性能，有效缓解应用进程在内存信息采集过程中可能出现的卡顿问题。<br/>**说明**：从API version 24开始，支持该参数。 | 
+| async_stack_enable | bool | 是否抓取异步栈。<br/>true：表示开启抓取异步栈功能。<br/>false：表示关闭抓取异步栈功能。 | 默认为false。<br/>**说明**：从API version 24开始，支持该参数。|
+| async_type | AsyncFlagType | 当前系统支持的异步栈类型。 | async_stack_enable为true时，该参数才有效。<br/>默认抓取所有的异步栈。当前支持的类型见表[async_type参数介绍](#async_type参数介绍)。<br/>**说明**：从API version 24开始，支持该参数。|
 
 ### restrace_tag参数介绍
 
@@ -201,17 +203,25 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_THREAD_ALL | 以上线程相关操作时的调用栈。 | 23 |
 | RES_ARKTS_HEAP_MASK | arkts内存分配栈。 | 23 |
 | RES_JS_HEAP_MASK | 龙雀虚拟机JSVM内存跟踪 | 23 |
-| RES_KMP_HEAP_MASK | kmp内存分配栈。 | 23 |
 | RES_SO_MASK | SO内存分配栈。 | 23 |
 | RES_ASHMEM_MASK | ashmem内存分配栈。 | 23 |
-| RES_RN_HEAP_MASK | rn内存分配栈。 | 23 |
 | RES_DMABUF_MASK | dmabuf内存分配栈。 | 23 |
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
 | RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
-| RES_KOTLIN_HEAP_MASK | KOTLIN平台内存分配跟踪。 | 24 |
-| RES_RN_HERMES_HEAP | RN HERMES内存分配跟踪。 | 24 |
-| RES_DART_HEAP | DART框架内存分配跟踪。 | 24 |
+
+### async_type参数介绍
+
+| 参数名称 | 参数说明 | 开始支持的版本 | 
+| -------- | -------- | -------- |
+| LIBUV_SEND | 通过第三方库libuv接口调用产生的异步栈。 | 24 |
+| FFRT_POOL | 通过FFRT内置线程池产生的异步栈。 | 24 |
+| FFRT_QUEUE | 通过FFRT内置队列产生的异步栈。 | 24 |
+| EVENTHANDLER | 通过OpenHarmony Event Handler产生的异步栈。 | 24 |
+| PROMISE | JS Promise机制产生的异步栈。 | 24 |
+| ARKTS_WORKER | 通过ArkTS Worker线程产生的异步栈。 | 24 |
+| ARKTS_TASKPOOL | 通过ArkTS线程池产生的异步栈。 | 24 |
+
 
 **结果分析**
 
@@ -726,7 +736,7 @@ CONFIG
 
 
 
-抓取指定进程CPU使用率。
+### 抓取指定进程CPU使用率。
 
 
 对进程号为1234的进程采集CPU数据，采集时长为30s，采样周期为1000ms，调优数据传输的共享内存大小是16384个内存页，采集的数据会被保存至/data/local/tmp/hiprofiler_data.htrace文件中。
@@ -756,6 +766,8 @@ $ hiprofiler_cmd \
  }
 CONFIG
 ```
+
+### 抓取指定进程GPU图形内存调用栈
 
 抓取指定进程的GPU图形内存调用栈（需要使用最新smartperf release版本解析文件，下载链接：[smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases))。
 
@@ -802,13 +814,15 @@ CONFIG
 ```
 命令中使用了malloc_disable参数用于过滤nativeheap抓栈的数据；添加的restrace_tag参数中没有"RES_GPU_CL_IMAGE", 则不抓取OpenCL image类型的GPU内存分配栈。
 
+### 抓取指定进程GlobalHandle对象的调用栈
 
 从API version 23开始支持抓取指定进程创建[napi_ref](../napi/use-napi-life-cycle.md#napi_ref)的调用栈，不会抓取创建弱引用的调用栈。
 
 ```shell
 $ hiprofiler_cmd \
   -c - \
-  -t 30 \
+  -t 60 \
+  -o /data/local/tmp/hiprofiler_data.txt \
   -s \
   -k \
 <<CONFIG
@@ -837,17 +851,22 @@ plugin_configs {
   malloc_disable: true
   memtrace_enable: true
   restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+  js_stack_report: 1
+  max_js_stack_depth: 10
   }
 }
 CONFIG
 ```
+
+### 抓取指定进程LocalHandle对象调用栈
 
 从API version 23开始支持LocalHandle对象内存录制功能。例如，可通过如下方式对com.example.insight_test_stage进程进行内存录制。
 
 ```shell
 $ hiprofiler_cmd \
   -c - \
-  -t 20 \
+  -t 60 \
+  -o /data/local/tmp/hiprofiler_data.txt \
   -s \
   -k \
 <<CONFIG
@@ -876,6 +895,8 @@ plugin_configs {
   malloc_disable: true
   memtrace_enable: true
   restrace_tag: "RES_ARK_LOCAL_HANDLE"
+  js_stack_report: 1
+  max_js_stack_depth: 10
   }
 }
 CONFIG
@@ -890,14 +911,16 @@ LocalHandle对象内存录制功能要求被测应用在启动时替换加载维
 
 > **说明：**
 >
-> 1.应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制localhandle内存。
+> 1.应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制LocalHandle内存，此时startup_mode参数必须设置为false。
 >
 > 2.使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
 >
-> 3.此种方式抓取到的localhandle内存一定是泄漏的。
+> 3.此种方式抓取到的LocalHandle内存一定是泄漏的。
 >
 > 4.命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
 
+
+### 手动控制采集时长
 
 使用手动控制采集时长调优启停方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈。
 
