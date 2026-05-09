@@ -133,6 +133,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | fd | 句柄泄漏。 |
 | thread | 线程泄漏。 |
 
+
 ### memory字段说明
 
 | 名称 | 类型 | 说明 |
