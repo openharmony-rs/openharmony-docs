@@ -273,7 +273,7 @@
    * 发送break信号
 
      <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      try {
        if (!this.port) {
