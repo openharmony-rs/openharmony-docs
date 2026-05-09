@@ -320,7 +320,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let fileFd: int = -1;
 try {
-  // 请在组件内获取context，确保this.getUiContext().getHostContext()返回结果为UIAbilityContext。
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let path: string = this.getUIContext().getHostContext()!.filesDir + "/serviceInfo.txt";
   console.info("output path: " + path);
   fileFd = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
@@ -1513,7 +1513,7 @@ ArkTS-Sta: getGraphicsMemory(): Promise&lt;int&gt;
 
 **示例**：
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1524,7 +1524,7 @@ hidebug.getGraphicsMemory().then((ret: number) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
 
