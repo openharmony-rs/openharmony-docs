@@ -255,7 +255,7 @@
    * 获取CTS信号状态
 
      <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      try {
        if (!this.port) {
