@@ -997,6 +997,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | variationAxisRecords<sup>24+</sup> | Array<[FontVariationAxis](#fontvariationaxis24)> | 否 | 是 | 字体可变轴记录数组，用于描述字体支持的可变轴信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 | variationInstanceRecords<sup>24+</sup> | Array<[FontVariationInstance](#fontvariationinstance24)> | 否 | 是 | 字体可变实例记录数组，用于描述字体支持的可变实例信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 | index<sup>23+</sup> | number | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| languages | Array\<string> | 否 | 是 | 字体语言，默认为undefined。<br>**起始版本：** 26.0.0<br>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| fontFeatures | Array\<string> | 否 | 是 | 字体特性，默认为undefined。<br>**起始版本：** 26.0.0<br>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontVariationAxis<sup>24+</sup>
 
