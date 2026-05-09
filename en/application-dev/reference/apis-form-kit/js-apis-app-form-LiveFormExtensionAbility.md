@@ -1,9 +1,9 @@
 # @ohos.app.form.LiveFormExtensionAbility (LiveFormExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @Qian-Win-->
-<!--Designer: @cx983299475-->
-<!--Tester: @mahailong123456-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 The **LiveFormExtensionAbility** module, inherited from [ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md), provides interactive widget functions, including creating and destroying interactive widgets.
