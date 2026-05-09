@@ -105,6 +105,9 @@
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canvas* canvas,OH_Drawing_PixelMap* pixelMap, const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst,const OH_Drawing_SamplingOptions* samplingOptions, OH_Drawing_SrcRectConstraint constraint)](#oh_drawing_canvasdrawpixelmaprectconstraint) | 用于将像素图的指定区域绘制到画布的指定区域。 |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing_Canvas* canvas, const char* str,const OH_Drawing_Font* font, float x, float y, OH_Drawing_FontFeatures* fontFeatures)](#oh_drawing_canvasdrawsinglecharacterwithfeatures) | 绘制单个字符，字符带有字体特征。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。 |
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanvas, OH_Drawing_PixelMap* pixelMap, uint32_t meshWidth, uint32_t meshHeight, const float* vertices, uint32_t verticesSize, uint32_t vertOffset, const uint32_t* colors, uint32_t colorsSize, uint32_t colorOffset)](#oh_drawing_canvasdrawpixelmapmesh) | 在网格上绘制像素图，网格均匀分布在像素图上。（只支持brush，使用pen没有绘制效果。） |
+| [OH_Drawing_ErrorCode OH_Drawing_CanvasIsOpaque(const OH_Drawing_Canvas* canvas, bool* isOpaque)](#oh_drawing_canvasisopaque) | 检查当前绘制到设备上的图层是否是不透明的。 |
+| [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas, const int* glyphIds, int glyphIdCount, int glyphIdOffset, const OH_Drawing_Point2D* positions, int positionCount, int positionOffset, int glyphCount, const OH_Drawing_Font* font)](#oh_drawing_canvasdrawglyphs) | 绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。 |
+
 
 ## 枚举类型说明
 
@@ -1839,3 +1842,62 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanva
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示出现cCanvas、pixelMap、vertices等参数为空或传参不符合取值规则的情况。 |
+
+### OH_Drawing_CanvasIsOpaque()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_CanvasIsOpaque(const OH_Drawing_Canvas* canvas, bool* isOpaque)
+```
+
+**描述**
+
+检查当前绘制到设备上的图层是否是不透明的。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。 |
+| bool* isOpaque | 输出参数，表示画布是否不透明，true表示不透明，false表示透明。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数canvas或者isOpaque为空。 |
+
+### OH_Drawing_CanvasDrawGlyphs()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas, const int* glyphIds, int glyphIdCount, int glyphIdOffset, const OH_Drawing_Point2D* positions, int positionCount, int positionOffset, int glyphCount, const OH_Drawing_Font* font)
+```
+
+**描述**
+
+绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向OH_Drawing_Canvas对象的指针。 |
+| const int* glyphIds | 字形ID的数组。 |
+| int glyphIdCount | 字形ID数组的大小。 |
+| int glyphIdOffset | 在字形ID数组绘制前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为glyphIds[m]~glyphIds[m+n]的部分。 |
+| [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* positions | 位置数组。 |
+| int positionCount | 位置数组的大小。 |
+| int positionOffset | 在位置数组绘制之前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效positions数组范围为positions[m]~positions[m+n]的部分。 |
+| int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容。 |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 绘制时使用的字体。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示canvas、glyphIds、positions和font中的任何一个为nullptr。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示glyphIdOffset或positionOffset小于0，或者glyphIdCount小于glyphIdOffset + glyphCount，或者positionCount小于positionOffset + glyphCount。 |
