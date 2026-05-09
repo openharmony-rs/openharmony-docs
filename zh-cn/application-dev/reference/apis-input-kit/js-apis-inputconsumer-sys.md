@@ -49,7 +49,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | type       | string                     | 是    | 事件类型，目前仅支持'key'。                       |
-| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
 | callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
 **错误码**：
@@ -183,7 +183,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 | 参数名         | 类型                         | 必填   | 说明                              |
 | ---------- | -------------------------- | ---- | ------------------------------- |
 | type       | string                     | 是    | 事件类型，当前仅支持 'key'。              |
-| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
 | callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
 **错误码**：
@@ -349,6 +349,8 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -379,11 +381,8 @@ let keyOptions: inputConsumer.KeyOptions = {
   finalKeyDownDuration: 0,
   triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
 };
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
-  console.info(`KeyOptions: ${JSON.stringify(keyOptions)}`);
-  if (keyEvent) {
-    console.info(`KeyEvent: keyCode=${keyEvent.key.keyCode}, action=${keyEvent.action}`);
-  }
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
+  console.info(`keyOptions: ${keyOptions} keyEvents: ${keyEvents}`);
 }
 try {
   inputConsumer.onKey(keyOptions, callback);
@@ -402,7 +401,7 @@ let keyOptions: inputConsumer.KeyOptions = {
   finalKeyDownDuration: 0,
   triggerType: inputConsumer.KeyCommandTriggerType.REPEAT_PRESSED
 };
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
   console.info(`Repeat key event`);
 }
 try {
@@ -424,7 +423,7 @@ let keyOptions: inputConsumer.KeyOptions = {
   finalKeyDownDuration: 0,
   triggerType: inputConsumer.KeyCommandTriggerType.ALL_RELEASED
 };
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
   console.info(`All released event`);
 }
 try {
@@ -445,6 +444,8 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 **ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -470,7 +471,7 @@ import { inputConsumer } from '@kit.InputKit';
 // Unsubscribe a single callback
 let leftCtrlKey = 2072;
 let cKey = 2049;
-let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
   console.info(`KeyEvent received`);
 }
 let keyOptions: inputConsumer.KeyOptions = {
@@ -521,6 +522,8 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 **ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统API：** 此接口为系统接口。
 
@@ -739,11 +742,13 @@ struct Index {
 
 按键命令触发类型枚举，用于指定组合按键的触发时机。
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统API：** 此接口为系统接口。
 

@@ -112,7 +112,7 @@ onNavDestinationUpdate(callback: Callback\<observer.NavDestinationInfo>): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -508,7 +508,7 @@ onNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback: Callback\<ob
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1528,6 +1528,12 @@ on(type: 'navDestinationSwitch', callback: Callback\<observer.NavDestinationSwit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationSwitch<sup>23+</sup>](#onnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -1597,6 +1603,26 @@ struct Index {
 }
 ```
 
+## onNavDestinationSwitch<sup>23+</sup>
+
+onNavDestinationSwitch(callback: Callback<observer.NavDestinationSwitchInfo>): void
+
+监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationSwitch')<sup>12+</sup>](#onnavdestinationswitch12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)，返回页面切换事件的信息。                 |
+
 ## off('navDestinationSwitch')<sup>12+</sup>
 
 off(type: 'navDestinationSwitch', callback?: Callback\<observer.NavDestinationSwitchInfo\>): void
@@ -1606,6 +1632,12 @@ off(type: 'navDestinationSwitch', callback?: Callback\<observer.NavDestinationSw
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationSwitch<sup>23+</sup>](#offnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -1618,6 +1650,26 @@ off(type: 'navDestinationSwitch', callback?: Callback\<observer.NavDestinationSw
 
 参考[on('navDestinationSwitch')](#onnavdestinationswitch12)接口示例。
 
+## offNavDestinationSwitch<sup>23+</sup>
+
+offNavDestinationSwitch(callback?: Callback<observer.NavDestinationSwitchInfo>): void
+
+取消监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationSwitch')<sup>12+</sup>](#offnavdestinationswitch12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。不传参数时，取消该[Navigation](arkui-ts/ts-basic-components-navigation.md)上所有的监听回调。                 |
+
 ## on('navDestinationSwitch')<sup>12+</sup>
 
 on(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitchObserverOptions, callback: Callback\<observer.NavDestinationSwitchInfo\>): void
@@ -1627,6 +1679,12 @@ on(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitchO
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationSwitch<sup>23+</sup>](#onnavdestinationswitch23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -1699,6 +1757,27 @@ struct Index {
 }
 ```
 
+## onNavDestinationSwitch<sup>23+</sup>
+
+onNavDestinationSwitch(observerOptions: observer.NavDestinationSwitchObserverOptions, callback: Callback<observer.NavDestinationSwitchInfo>): void
+
+通过监听选项监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationSwitch')<sup>12+</sup>](#onnavdestinationswitch12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| observerOptions | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)，返回页面切换事件的信息。                 |
+
 ## off('navDestinationSwitch')<sup>12+</sup>
 
 off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitchObserverOptions, callback?: Callback\<observer.NavDestinationSwitchInfo\>): void
@@ -1708,6 +1787,12 @@ off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitch
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationSwitch<sup>23+</sup>](#offnavdestinationswitch23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -1720,6 +1805,27 @@ off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitch
 **示例：**
 
 参考[on('navDestinationSwitch')](#onnavdestinationswitch12-1)接口示例。
+
+## offNavDestinationSwitch<sup>23+</sup>
+
+offNavDestinationSwitch(observerOptions: observer.NavDestinationSwitchObserverOptions, callback?: Callback<observer.NavDestinationSwitchInfo>): void
+
+取消通过监听选项监听[Navigation](arkui-ts/ts-basic-components-navigation.md)的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationSwitch')<sup>12+</sup>](#offnavdestinationswitch12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| observerOptions | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。不传参数时，取消该[Navigation](arkui-ts/ts-basic-components-navigation.md)上所有的监听回调。                 |
 
 ## on('willClick')<sup>12+</sup>
 
@@ -1983,6 +2089,12 @@ on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): voi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabContentUpdate<sup>23+</sup>](#ontabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -2048,6 +2160,26 @@ struct TabsExample {
 }
 ```
 
+## onTabContentUpdate<sup>23+</sup>
+
+onTabContentUpdate(callback: Callback<observer.TabContentInfo>): void
+
+监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('tabContentUpdate')<sup>12+</sup>](#ontabcontentupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | 是   | 回调函数。携带[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)，返回[TabContent](arkui-ts/ts-container-tabcontent.md)页面切换事件的信息。 |
+
 ## off('tabContentUpdate')<sup>12+</sup>
 
 off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): void
@@ -2057,6 +2189,12 @@ off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): v
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offTabContentUpdate<sup>23+</sup>](#offtabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -2069,6 +2207,26 @@ off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): v
 
 参考[on('tabContentUpdate')](#ontabcontentupdate12)接口示例。
 
+## offTabContentUpdate<sup>23+</sup>
+
+offTabContentUpdate(callback?: Callback<observer.TabContentInfo>): void
+
+取消监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('tabContentUpdate')<sup>12+</sup>](#offtabcontentupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | 否   | 需要被注销的回调函数。不传参数时，取消该[Tabs](arkui-ts/ts-container-tabs.md)上所有的监听回调。 |
+
 ## on('tabContentUpdate')<sup>12+</sup>
 
 on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callback\<observer.TabContentInfo\>): void
@@ -2078,6 +2236,12 @@ on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callba
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabContentUpdate<sup>23+</sup>](#ontabcontentupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -2145,6 +2309,27 @@ struct TabsExample {
 }
 ```
 
+## onTabContentUpdate<sup>23+</sup>
+
+onTabContentUpdate(options: observer.ObserverOptions, callback: Callback<observer.TabContentInfo>): void
+
+通过[Tabs](arkui-ts/ts-container-tabs.md)组件的id监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('tabContentUpdate')<sup>12+</sup>](#ontabcontentupdate12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | 是   | 回调函数。携带TabContentInfo，返回[TabContent](arkui-ts/ts-container-tabcontent.md)页面切换事件的信息。 |
+
 ## off('tabContentUpdate')<sup>12+</sup>
 
 off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Callback\<observer.TabContentInfo\>): void
@@ -2154,6 +2339,12 @@ off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Call
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offTabContentUpdate<sup>23+</sup>](#offtabcontentupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -2167,6 +2358,27 @@ off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Call
 
 参考[on('tabContentUpdate')](#ontabcontentupdate12-1)接口示例。
 
+## offTabContentUpdate<sup>23+</sup>
+
+offTabContentUpdate(options: observer.ObserverOptions, callback?: Callback<observer.TabContentInfo>): void
+
+取消通过[Tabs](arkui-ts/ts-container-tabs.md)组件的id监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('tabContentUpdate')<sup>12+</sup>](#offtabcontentupdate12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | 否   | 需要被注销的回调函数。不传参数时，取消该[Tabs](arkui-ts/ts-container-tabs.md)上所有的监听回调。 |
+
 ## on('tabChange')<sup>22+</sup>
 
 on(type: 'tabChange', callback: Callback\<observer.TabContentInfo\>): void
@@ -2176,6 +2388,12 @@ on(type: 'tabChange', callback: Callback\<observer.TabContentInfo\>): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabChange<sup>23+</sup>](#ontabchange23)。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2265,6 +2483,26 @@ struct TabsExample {
 }
 ```
 
+## onTabChange<sup>23+</sup>
+
+onTabChange(callback: Callback<observer.TabContentInfo>): void
+
+监听[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件，支持多个[Tabs](arkui-ts/ts-container-tabs.md)组件的监听。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('tabChange')<sup>22+</sup>](#ontabchange22)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 是   | 回调函数。携带[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)，返回[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件的信息。 |
+
 ## off('tabChange')<sup>22+</sup>
 
 off(type: 'tabChange', callback?: Callback\<observer.TabContentInfo\>): void
@@ -2274,6 +2512,12 @@ off(type: 'tabChange', callback?: Callback\<observer.TabContentInfo\>): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[on('tabChange')<sup>22+</sup>](#ontabchange22)。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2286,6 +2530,26 @@ off(type: 'tabChange', callback?: Callback\<observer.TabContentInfo\>): void
 
 参考[on('tabChange')](#ontabchange22)接口示例。
 
+## offTabChange<sup>23+</sup>
+
+offTabChange(callback?: Callback<observer.TabContentInfo>): void
+
+取消监听所有的[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('tabChange')<sup>22+</sup>](#offtabchange22)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销所有通过[on('tabChange')](#ontabchange22)接口注册的回调函数。<br/>默认值：undefined |
+
 ## on('tabChange')<sup>22+</sup>
 
 on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback\<observer.TabContentInfo\>): void
@@ -2295,6 +2559,12 @@ on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback\<obse
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabChange<sup>23+</sup>](#ontabchange23-1)。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2382,6 +2652,27 @@ struct TabsExample {
 }
 ```
 
+## onTabChange<sup>23+</sup>
+
+onTabChange(config: observer.ObserverOptions, callback: Callback<observer.TabContentInfo>): void
+
+监听指定[Tabs](arkui-ts/ts-container-tabs.md)组件的页签切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('tabChange')<sup>22+</sup>](#ontabchange22-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)   | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>    | 是   | 回调函数。携带[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)，返回[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件的信息。 |
+
 ## off('tabChange')<sup>22+</sup>
 
 off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<observer.TabContentInfo\>): void
@@ -2391,6 +2682,12 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabChange<sup>23+</sup>](#ontabchange23-1)。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2403,6 +2700,28 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 **示例：**
 
 参考[on('tabChange')](#ontabchange22-1)接口示例。
+
+## offTabChange<sup>23+</sup>
+
+offTabChange(config: observer.ObserverOptions, callback?: Callback<observer.TabContentInfo>): void
+
+取消监听指定[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onTabChange<sup>23+</sup>](#ontabchange23-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。 |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)        | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
 
 ## on('textChange')<sup>22+</sup>
 
@@ -3324,13 +3643,13 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.Wind
 
 参考[on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22)接口示例。
 
-## onSwiperContentUpdate<sup>22+</sup>
+## onSwiperContentUpdate<sup>23+</sup>
 
 onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3392,13 +3711,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>22+</sup>
+## offSwiperContentUpdate<sup>23+</sup>
 
 offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 取消监听Swiper内容的切换事件。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3410,15 +3729,15 @@ offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate22)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate23)接口示例。
 
-## onSwiperContentUpdate<sup>22+</sup>
+## onSwiperContentUpdate<sup>23+</sup>
 
 onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
 
 通过Swiper组件的id监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3482,13 +3801,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>22+</sup>
+## offSwiperContentUpdate<sup>23+</sup>
 
 offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
 
 取消通过Swiper组件id监听的Swiper内容切换事件。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3501,7 +3820,7 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<Sw
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate22-1)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate23-1)接口示例。
 
 ## onRouterPageSizeChange<sup>23+</sup>
 
@@ -3608,7 +3927,9 @@ offNavDestinationSizeChange(callback?: Callback\<observer.NavDestinationInfo\>):
 
 ## onNavDestinationSizeChangeByUniqueId<sup>23+</sup>
 
-onNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback: Callback<observer.NavDestinationInfo>): void
+ArkTS-Dyn: onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callback<observer.NavDestinationInfo>): void
+
+ArkTS-Sta: onNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback: Callback<observer.NavDestinationInfo>): void
 
 注册监听回调函数，当属于指定Navigation的可见NavDestination的大小发生变化时，会触发该回调函数。使用callback异步回调。
 
@@ -3616,16 +3937,22 @@ onNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback: Callback
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| navigationUniqueId | int | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
+| navigationUniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | 是   | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。  |
 
 ## offNavDestinationSizeChangeByUniqueId<sup>23+</sup>
 
-offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback?: Callback<observer.NavDestinationInfo>): void
+ArkTS-Dyn: offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Callback<observer.NavDestinationInfo>): void
+
+ArkTS-Sta: offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback?: Callback<observer.NavDestinationInfo>): void
 
 移除使用onNavDestinationSizeChangeByUniqueId接口注册的监听回调函数。使用callback异步回调。
 
@@ -3633,11 +3960,15 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callback?: Callba
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| navigationUniqueId | int | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
+| navigationUniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
 
 ## onWindowSizeLayoutBreakpointChange<sup>23+</sup>

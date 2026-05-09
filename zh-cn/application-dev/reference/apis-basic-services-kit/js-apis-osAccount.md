@@ -4280,8 +4280,6 @@ ArkTS-Sta: getOsAccountLocalIds(): Promise&lt;int[]&gt;
 
 获取所有非系统级的操作系统账号的本地ID。非系统级的操作系统账号对用户可见，通常用于登录等操作。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
 
 **系统能力：** SystemCapability.Account.OsAccount

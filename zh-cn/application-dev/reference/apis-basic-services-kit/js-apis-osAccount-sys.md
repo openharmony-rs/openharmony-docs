@@ -1932,6 +1932,9 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2815,7 +2818,7 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onActivate](#onactivate22)（激活完成），[onActivating](#onactivating22)（激活中）。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onActivate](#onactivate23)（激活完成），[onActivating](#onactivating23)（激活中）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2873,7 +2876,7 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offActivate](#offactivate22)（激活完成），[offActivating](#offactivating22)（激活中）。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offActivate](#offactivate23)（激活完成），[offActivating](#offactivating23)（激活中）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3480,7 +3483,7 @@ ArkTS-Sta示例：
   }
   ```
 
-### onActivate<sup>22+</sup>
+### onActivate<sup>23+</sup>
 
 onActivate(name: string, callback: Callback&lt;int&gt;): void
 
@@ -3532,7 +3535,7 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
   }
   ```
 
-### onActivating<sup>22+</sup>
+### onActivating<sup>23+</sup>
 
 onActivating(name: string, callback: Callback&lt;int&gt;): void
 
@@ -3584,7 +3587,7 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
   }
   ```
 
-### offActivate<sup>22+</sup>
+### offActivate<sup>23+</sup>
 
 offActivate(name: string, callback?: Callback&lt;int&gt;): void
 
@@ -3637,7 +3640,7 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
   }
   ```
 
-### offActivating<sup>22+</sup>
+### offActivating<sup>23+</sup>
 
 offActivating(name: string, callback?: Callback&lt;int&gt;): void
 
@@ -6254,7 +6257,7 @@ ArkTS-Sta示例：
 
 ## DomainPluginAuthFunc<sup>23+</sup>
 
-DomainPluginAuthFunc: (domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback) => void
+type DomainPluginAuthFunc = (domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback) => void
 
 认证指定的域账号。
 
@@ -6339,7 +6342,7 @@ try {
 
 ## DomainPluginAuthWithPopupFunc<sup>23+</sup>
 
-DomainPluginAuthWithPopupFunc: (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+type DomainPluginAuthWithPopupFunc = (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
 
 弹窗认证指定的域账号。
 
@@ -6407,7 +6410,7 @@ try {
 
 ## DomainPluginAuthWithTokenFunc<sup>23+</sup>
 
-DomainPluginAuthWithTokenFunc: (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+type DomainPluginAuthWithTokenFunc = (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
 
 使用授权令牌认证指定的域账号。
 
@@ -6476,7 +6479,7 @@ try {
 
 ## DomainPluginGetAccountInfoFunc<sup>23+</sup>
 
-DomainPluginGetAccountInfoFunc: (options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;) => void
+type DomainPluginGetAccountInfoFunc = (options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;) => void
 
 查询指定域账号的信息。
 
@@ -6549,7 +6552,7 @@ try {
 
 ## DomainPluginGetAuthStatusInfoFunc<sup>23+</sup>
 
-DomainPluginGetAuthStatusInfoFunc: (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;AuthStatusInfo&gt;) => void
+type DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;AuthStatusInfo&gt;) => void
 
 查询指定域账号的认证状态信息。
 
@@ -6621,7 +6624,7 @@ try {
 
 ## DomainPluginBindAccountFunc<sup>23+</sup>
 
-DomainPluginBindAccountFunc: (domainAccountInfo: DomainAccountInfo, localId: int, callback: AsyncCallback&lt;void&gt;) => void
+type DomainPluginBindAccountFunc = (domainAccountInfo: DomainAccountInfo, localId: int, callback: AsyncCallback&lt;void&gt;) => void
 
 绑定指定的域账号。
 
@@ -6690,7 +6693,7 @@ try {
 
 ## DomainPluginUnbindAccountFunc<sup>23+</sup>
 
-DomainPluginUnbindAccountFunc: (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;void&gt;) => void
+type DomainPluginUnbindAccountFunc = (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;void&gt;) => void
 
 解绑指定的域账号。
 
@@ -6758,7 +6761,7 @@ try {
 
 ## DomainPluginIsAccountTokenValidFunc<sup>23+</sup>
 
-DomainPluginIsAccountTokenValidFunc: (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: AsyncCallback&lt;boolean&gt;) => void
+type DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: AsyncCallback&lt;boolean&gt;) => void
 
 检查指定的域账号令牌是否有效。
 
@@ -6827,7 +6830,7 @@ try {
 
 ## DomainPluginGetAccessTokenFunc<sup>23+</sup>
 
-DomainPluginGetAccessTokenFunc: (options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;) => void
+type DomainPluginGetAccessTokenFunc = (options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;) => void
 
 根据指定的选项获取域访问令牌。
 
@@ -6911,15 +6914,15 @@ try {
 
 | 名称      | 类型                                    | 只读 | 可选 | 说明             |
 | ---------- | --------------------------------------- | ---- | ---- | --------------- |
-| auth   | [DomainPluginAuthFunc](#domainpluginauthfunc23)  | 否 | 否   | 认证指定的域账号。|
-| authWithPopup   | [DomainPluginAuthWithPopupFunc](#domainpluginauthwithpopupfunc23)  | 否 | 否   | 弹窗认证指定的域账号。|
-| authWithToken   | [DomainPluginAuthWithTokenFunc](#domainpluginauthwithtokenfunc23)  | 否 | 否    | 使用授权令牌认证指定的域账号。|
-| getAccountInfo   | [DomainPluginGetAccountInfoFunc](#domainplugingetaccountinfofunc23)  | 否 | 否    | 查询指定域账号的信息。|
-| getAuthStatusInfo   | [DomainPluginGetAuthStatusInfoFunc](#domainplugingetauthstatusinfofunc23)  | 否 | 否    | 查询指定域账号的认证状态信息。|
-| bindAccount   | [DomainPluginBindAccountFunc](#domainpluginbindaccountfunc23)  | 否 | 否    | 绑定指定的域账号|
-| unbindAccount   | [DomainPluginUnbindAccountFunc](#domainpluginunbindaccountfunc23)  | 否 | 否    | 解绑指定的域账号。|
-| isAccountTokenValid   | [DomainPluginIsAccountTokenValidFunc](#domainpluginisaccounttokenvalidfunc23)  | 否 | 否    | 检查指定的域账号令牌是否有效。|
-| getAccessToken   | [DomainPluginGetAccessTokenFunc](#domainplugingetaccesstokenfunc23)  | 否 | 否    | 根据指定的选项获取域访问令牌。|
+| auth<sup>23+</sup>   | [DomainPluginAuthFunc](#domainpluginauthfunc23)  | 否 | 否   | 认证指定的域账号。|
+| authWithPopup<sup>23+</sup>   | [DomainPluginAuthWithPopupFunc](#domainpluginauthwithpopupfunc23)  | 否 | 否   | 弹窗认证指定的域账号。|
+| authWithToken<sup>23+</sup>   | [DomainPluginAuthWithTokenFunc](#domainpluginauthwithtokenfunc23)  | 否 | 否    | 使用授权令牌认证指定的域账号。|
+| getAccountInfo<sup>23+</sup>   | [DomainPluginGetAccountInfoFunc](#domainplugingetaccountinfofunc23)  | 否 | 否    | 查询指定域账号的信息。|
+| getAuthStatusInfo<sup>23+</sup>   | [DomainPluginGetAuthStatusInfoFunc](#domainplugingetauthstatusinfofunc23)  | 否 | 否    | 查询指定域账号的认证状态信息。|
+| bindAccount<sup>23+</sup>   | [DomainPluginBindAccountFunc](#domainpluginbindaccountfunc23)  | 否 | 否    | 绑定指定的域账号|
+| unbindAccount<sup>23+</sup>   | [DomainPluginUnbindAccountFunc](#domainpluginunbindaccountfunc23)  | 否 | 否    | 解绑指定的域账号。|
+| isAccountTokenValid<sup>23+</sup>   | [DomainPluginIsAccountTokenValidFunc](#domainpluginisaccounttokenvalidfunc23)  | 否 | 否    | 检查指定的域账号令牌是否有效。|
+| getAccessToken<sup>23+</sup>   | [DomainPluginGetAccessTokenFunc](#domainplugingetaccesstokenfunc23)  | 否 | 否    | 根据指定的选项获取域访问令牌。|
 
 ### auth<sup>9+</sup>
 
@@ -10857,15 +10860,11 @@ ArkTS-Sta示例：
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| fromAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换来源系统账号ID。 |
-| toAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换目标系统账号ID。 |
-| displayId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
+| fromAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换来源系统账号ID。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| toAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换目标系统账号ID。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| displayId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ConstraintChangeInfo<sup>23+</sup>
 

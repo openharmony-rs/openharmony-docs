@@ -12,9 +12,17 @@
 >
 > - 本模块仅适用于ArkTS-Sta。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## queryNavDestinationInfo
+## ExtendableComponent
+
+可扩展组件，是自定义组件和自定义对话框的基类。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### queryNavDestinationInfo
 
 queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
@@ -28,9 +36,9 @@ queryNavDestinationInfo(): NavDestinationInfo | undefined;
 | -------------------------------------------------------------------------- | --------- |
 | [NavDestinationInfo](ts-custom-component-api.md#navdestinationinfo) \| undefined | 返回NavDestinationInfo实例对象。 |
 
-## queryNavDestinationInfo
+### queryNavDestinationInfo
 
-queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
+queryNavDestinationInfo(isInner: boolean | undefined): NavDestinationInfo | undefined
 
 查询当前自定义组件距离最近的NavDestination信息（要求该NavDestination是Navigation的导航页或子页），isInner为true表示向内查找，false表示向外查找。
 
@@ -40,7 +48,7 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
+| isInner  | boolean \| undefined | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
 
 **返回值：**
 
@@ -48,7 +56,7 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 | -------------------------------------------------------------------------- | --------- |
 | [NavDestinationInfo](ts-custom-component-api.md#navdestinationinfo) \| undefined | 返回NavDestinationInfo实例对象。|
 
-## queryNavigationInfo
+### queryNavigationInfo
 
 queryNavigationInfo(): NavigationInfo | undefined
 
@@ -62,7 +70,7 @@ queryNavigationInfo(): NavigationInfo | undefined
 | -------------------------------------------------------------------------- | --------- |
 | [NavigationInfo](ts-custom-component-api.md#navigationinfo12) \| undefined | 返回NavigationInfo实例对象。 |
 
-## queryRouterPageInfo
+### queryRouterPageInfo
 
 queryRouterPageInfo(): RouterPageInfo | undefined;
 
@@ -76,7 +84,7 @@ queryRouterPageInfo(): RouterPageInfo | undefined;
 | ------------------------------------------------------------ | ---------------------------- |
 | [RouterPageInfo](ts-custom-component-api.md#routerpageinfo12) \| undefined | 返回RouterPageInfo实例对象。 |
 
-## onWillApplyTheme
+### onWillApplyTheme
 
 onWillApplyTheme(theme: Theme): void
 

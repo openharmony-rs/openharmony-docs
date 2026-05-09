@@ -31,11 +31,11 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 >**说明：**
 >
->1、关联[\@Observed](./arkts-static-observed-and-objectlink.md)对象时，由于该类型的name属性未定义，需要指定key或者自定义name属性。
+>1. 关联[\@Observed](./arkts-static-observed-and-objectlink.md)对象时，由于该类型的name属性未定义，需要指定key或者自定义name属性。
 >
->2、数据存储路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。
+>2. 数据存储路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。
 >
->3、因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同module的拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
+>3. 因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同module拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
 
 - globalConnect：创建或获取存储的数据。
 - remove：删除指定key的存储数据。删除PersistenceV2中不存在的key会报警告。
@@ -47,45 +47,47 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 ## 使用限制
 
-1、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型，使用会编译报错。
+1. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型，使用会编译报错。
 
-2、单个key支持数据大小约8k，过大会导致持久化失败。
+2. 单个key支持数据大小约8k，过大会导致持久化失败。
 
-3、持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date），不支持持久化基本类型（如string、number、boolean），使用会运行时报错。如果需要持久化非class对象，建议使用[prefrence](../../database/preferences-guidelines.md)进行数据持久化。
+3. 持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date），不支持持久化基本类型（如string、number、boolean），使用会运行时报错。如果需要持久化非class对象，建议使用[Preference](../../database/preferences-guidelines.md)进行数据持久化。
 
-4、不支持循环引用的对象，使用会编译报错。
+4. 不支持循环引用的对象，使用会编译报错。
 
-5、不宜大量持久化数据，可能会导致页面卡顿。
+5. 不宜大量持久化数据，可能会导致页面卡顿。
 
-6、connect和globalConnect不建议混用，如果混用，key必须不一致，否则会运行时报错。
+6. connect和globalConnect不建议混用，如果混用，key必须不一致，否则会运行时报错。
 
-7、PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
+7. PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
 
-```ts
-// EntryAbility.ets
-// 以下为代码片段，需要开发者自己在EntryAbility.ets中补全
-import { PersistenceV2, ObservedV2 } from '@kit.ArkUI';
+   ```ts
+   // EntryAbility.ets
+   // 以下为代码片段，需要开发者自己在EntryAbility.ets中补全
+   import { PersistenceV2, ObservedV2 } from '@kit.ArkUI';
+   
+   // 在EntryAbility外部定义class
+   @ObservedV2
+   class Storage {
+     @Trace isPersist: boolean = false;
+   }
+   
+   // 在onWindowStageCreate的loadContent回调中调用PersistenceV2
+   onWindowStageCreate(windowStage: window.WindowStage): void {
+     windowStage.loadContent('pages/Index', (err) => {
+       if (err.code) {
+         return;
+       }
+       PersistenceV2.connect<Storage>(
+         Class.from<Storage>(),
+         (): Storage => {
+           return new Storage();
+         })!;
+     });
+   }
+   ```
 
-// 在EntryAbility外部定义class
-@ObservedV2
-class Storage {
-  @Trace isPersist: boolean = false;
-}
-
-// 在onWindowStageCreate的loadContent回调中调用PersistenceV2
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err) => {
-    if (err.code) {
-      return;
-    }
-    PersistenceV2.connect<Storage>(
-      Class.from<Storage>(),
-      (): Storage => {
-        return new Storage();
-      })!;
-  });
-}
-```
+8. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement-static.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
 ## 使用场景
 
@@ -204,6 +206,82 @@ struct Index {
     .height('100%')
   }
 }
+```
+
+### 通过notifyOnError获取旧的序列化数据
+
+当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。开发者可通过向notifyOnError的回调函数参数中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观地感知到数据结构的差异。
+
+```ts
+'use static'
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Color } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@ObservedV2
+export class SampleInfo {
+  @Trace public info: boolean = true;
+  @Trace public propertyName: string = 'Hello';
+}
+
+@ObservedV2
+export class SampleChild {
+  // 起始时childInfo类型为SampleInfo，使用connect/globalConnect将其存储到磁盘
+  @Trace public childInfo: SampleInfo = new SampleInfo();
+  // 将childInfo类型切换为number，并重新运行
+  // @Trace public childInfo: number = 0;
+  public groupId: number = 1;
+}
+
+@ObservedV2
+export class Sample {
+  // 对于复杂对象需要@Type修饰，确保序列化成功
+  @Trace public father: SampleChild = new SampleChild();
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  static {
+    // 接受序列化失败的回调
+    PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+      hilog.error(DOMAIN, 'testTag', '%{public}s',
+        `error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);
+    });
+  }
+  @Local refresh: number = 0;
+  // 调用connect存储
+  @Local p: Sample = PersistenceV2.connect<Sample>(Class.from<Sample>(), 'connectSample', () => new Sample())!;
+
+  build() {
+    Column() {
+      // 显示数据
+      Text('Key connectSample: ' + this.p.father.groupId.toString())
+        .onClick(() => {
+          this.p.father.groupId += 1;
+        })
+        .fontSize(25)
+        .fontColor(Color.Red)
+
+      // save接口
+      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+        .onClick(() => {
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          this.p.father.groupId += 1;
+          PersistenceV2.save('connectSample');
+          this.refresh += 1;
+        })
+        .fontSize(25)
+    }
+    .width('100%')
+  }
+}
+```
+初始时，SampleChild中的childInfo变量类型为SampleInfo，正常存储后，将childInfo变量的类型切换为number，并赋值为1，之后再次启动应用程序，此时会由于存储数据的结构与当前数据的结构不一致，导致数据反序列化失败。此时会通过notifyOnError中设置的回调函数，将磁盘中存储的旧的序列化数据打印出来。即在Error日志中显示：
+```text
+error key: connectSample, reason: serialization, message: TypeError: Receiver is not a JSObject, oldValue: {"father":{"childInfo":{"info":true,"propertyName":"Hello"},"groupId":1}}
 ```
 
 ## 使用建议

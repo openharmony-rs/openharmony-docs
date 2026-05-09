@@ -306,11 +306,9 @@ attributeModifier(modifier: AttributeModifier\<RatingAttribute> | AttributeModif
 
 ### onChange
 
-ArkTS-Dyn: onChange(callback: (value: number) => void)
+onChange(callback: (value: number) => void)
 
-ArkTS-Sta: onChange(callback: OnRatingChangeCallback | undefined)
-
-当评分条的评星变化时触发该回调。
+当评分条的评星变化时触发该回调。使用callback异步回调。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -318,31 +316,25 @@ ArkTS-Sta: onChange(callback: OnRatingChangeCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
-ArkTS-Dyn参数：
+callback回调参数说明：
 
 | 参数名   | 类型     | 必填 | 说明                         |
 | -------- | -------- | ---- | ---------------------------- |
-| callback | [OnRatingChangeCallback](#onratingchangecallback18) | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
-
-ArkTS-Sta参数：
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [OnRatingChangeCallback](#onratingchangecallback18) \| undefined | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| value | number | 是   | 评分条的评分。 |
 
 ### onChange<sup>18+</sup>
 
-ArkTS-Dyn: onChange(callback: Optional\<OnRatingChangeCallback>)
+onChange(callback: Optional\<OnRatingChangeCallback>)
 
-ArkTS-Sta: onChange(callback: OnRatingChangeCallback | undefined)
-
-当评分条的评星变化时触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+当评分条的评星变化时触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。使用callback异步回调。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -350,15 +342,39 @@ ArkTS-Sta: onChange(callback: OnRatingChangeCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRatingChangeCallback](#onratingchangecallback18)><br/>ArkTS-Sta: [OnRatingChangeCallback](#onratingchangecallback18) \| undefined | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRatingChangeCallback](#onratingchangecallback18)> | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+
+### onChange<sup>23+</sup>
+
+onChange(callback: OnRatingChangeCallback | undefined)
+
+当评分条的评星变化时会触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onChange](#onchange)和[onChange<sup>18+</sup>](#onchange18)
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                         |
+| -------- | -------- | ---- | ---------------------------- |
+| callback | [OnRatingChangeCallback](#onratingchangecallback18) \| undefined | 是   | 操作评分条的评星变化时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## OnRatingChangeCallback<sup>18+</sup>
 
