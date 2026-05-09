@@ -1,9 +1,9 @@
 # postCardAction
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Provides information for interaction between the widget and widget provider. Currently, router, message, and call events are supported. This API can only be called within the widget.
