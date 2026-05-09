@@ -3116,7 +3116,7 @@ if (store != undefined) {
 
 queryByStep(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 
-根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符不超过1000个，使用Promise异步回调。
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符不超过1000个，使用Promise异步回调。该接口按行逐步获取结果，不存在2MB的单条数据大小限制。
 
 聚合函数不支持嵌套使用。
 
@@ -3180,7 +3180,7 @@ if (store != undefined) {
 
 queryByStep(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
 
-根据指定条件查询数据库中的数据，使用Promise异步回调。
+根据指定条件查询数据库中的数据，使用Promise异步回调。该接口按行逐步获取结果，不存在2MB的单条数据大小限制。
 
 **起始版本：** 26.0.0
 
