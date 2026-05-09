@@ -17,7 +17,7 @@
     <!--DelEnd-->
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
-    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial-sys.md)
+    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
     - [@ohos.runningLock (Runninglock锁)](js-apis-runninglock.md)
@@ -28,7 +28,7 @@
     - [@ohos.batteryInfo (电量信息)(系统接口)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (耗电统计)(系统接口)](js-apis-batteryStatistics-sys.md)
     - [@ohos.brightness (屏幕亮度)(系统接口)](js-apis-brightness-sys.md)
-    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
+    - [@ohos.busManager.serial (串口通信管理)(系统接口)](js-apis-busmanager-serial-sys.md)
     - [@ohos.charger (充电类型)(系统接口)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (设备证明)(系统接口)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (系统电源管理)(系统接口)](js-apis-power-sys.md)

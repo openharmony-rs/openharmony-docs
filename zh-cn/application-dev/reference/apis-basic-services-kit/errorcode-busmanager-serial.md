@@ -184,11 +184,11 @@ Permission denied.
 
 **错误描述**
 
-调用[addPortAuthorization](js-apis-busmanager-serial.md#serialaddportauthorization)接口时，当前应用不是串口授权弹窗应用，无权执行该操作。
+调用[serial.addPortAuthorization](js-apis-busmanager-serial-sys.md#serialaddportauthorization)接口时，当前应用不是串口授权弹窗应用，无权执行该操作。
 
 **可能原因**
 
-1. 调用方不是串口授权弹窗应用。[addPortAuthorization](js-apis-busmanager-serial.md#serialaddportauthorization)接口仅允许串口授权弹窗应用调用。
+1. 调用方不是串口授权弹窗应用。[serial.addPortAuthorization](js-apis-busmanager-serial-sys.md#serialaddportauthorization)接口仅允许串口授权弹窗应用调用。
 
 **处理步骤**
 
