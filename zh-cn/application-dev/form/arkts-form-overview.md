@@ -1,9 +1,9 @@
 # ArkTS卡片概述
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @Qian-Win-->
-<!--Designer: @cx983299475-->
-<!--Tester: @mahailong123456-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 以下内容介绍基于ArkTS声明式开发范式语言开发卡片。
