@@ -222,6 +222,10 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ### replyUiAction
 
 ArkTS-Dyn: replyUiAction(action: number, actionResult: string): void
