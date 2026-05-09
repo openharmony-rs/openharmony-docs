@@ -57,7 +57,7 @@ ArkTS-Sta: SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensio
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isTransferringCaller | boolean | 否 | 是 | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。<br/>true：转发上一级的Caller信息；false：不转发上一级的Caller信息。<br/>默认值：false |
-| placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。 |
+| placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。 |
 | dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。<br/>默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI |
 
 ## SecurityDpiFollowStrategy
@@ -176,7 +176,7 @@ ArkTS-Sta: onTerminated(callback: Callback\<TerminationInfo\> | undefined)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | code | number | 否 | 否 | 被拉起UIExtensionAbility退出时返回的结果码，0表示正常退出，非0表示异常退出。具体结果码含义由被拉起的UIExtensionAbility定义。 |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。 |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。 |
 
 ## SecurityUIExtensionProxy
 
