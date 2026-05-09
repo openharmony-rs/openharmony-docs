@@ -72,7 +72,7 @@ ArkTS-Sta: isSimActive\(slotId: int\): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -111,7 +111,7 @@ ArkTS-Sta: isSimActiveSync\(slotId: int\): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -137,11 +137,17 @@ console.info(`the sim is active: isSimActive->${JSON.stringify(isSimActive)}`);
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
+ArkTS-Dyn: getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
+
+ArkTS-Sta: getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
 
 获取默认语音业务的卡槽ID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -167,6 +173,10 @@ getDefaultVoiceSlotId\(\): Promise\<number\>
 获取默认语音业务的卡槽ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -199,8 +209,7 @@ ArkTS-Sta: hasOperatorPrivileges\(slotId: int, callback: AsyncCallback\<boolean\
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
-
+**ArkTS-Sta起始版本：** 23
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
@@ -260,7 +269,7 @@ ArkTS-Sta: hasOperatorPrivileges\(slotId: int\): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -327,7 +336,7 @@ ArkTS-Sta: getISOCountryCodeForSim\(slotId: int, callback: AsyncCallback\<string
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -383,9 +392,9 @@ ArkTS-Sta: getISOCountryCodeForSim\(slotId: int\): Promise\<string\>
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-**rkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -437,7 +446,7 @@ ArkTS-Sta: getISOCountryCodeForSimSync\(slotId: int\): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -485,7 +494,7 @@ ArkTS-Sta: getSimOperatorNumeric\(slotId: int, callback: AsyncCallback\<string\>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -548,7 +557,7 @@ ArkTS-Sta: getSimOperatorNumeric\(slotId: int\): Promise\<string\>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -616,7 +625,7 @@ ArkTS-Sta: getSimOperatorNumericSync\(slotId: int\): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -664,7 +673,7 @@ ArkTS-Sta: getSimSpn\(slotId: int, callback: AsyncCallback\<string\>\): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -727,7 +736,7 @@ ArkTS-Sta: getSimSpn\(slotId: int\): Promise\<string\>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -795,7 +804,7 @@ ArkTS-Sta: getSimSpnSync\(slotId: int\): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -843,7 +852,7 @@ ArkTS-Sta: getSimState\(slotId: int, callback: AsyncCallback\<SimState\>\): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -900,7 +909,7 @@ ArkTS-Sta: getSimState\(slotId: int\): Promise\<SimState\>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -951,7 +960,7 @@ ArkTS-Sta: getSimStateSync\(slotId: int\): SimState
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -987,7 +996,7 @@ ArkTS-Sta: getCardType\(slotId: int, callback: AsyncCallback\<CardType\>\): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1050,7 +1059,7 @@ ArkTS-Sta: getCardType\(slotId: int\): Promise\<CardType\>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1116,6 +1125,10 @@ ArkTS-Sta: getCardTypeSync\(slotId: int\): CardType
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 10
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
@@ -1162,7 +1175,7 @@ ArkTS-Sta: hasSimCard\(slotId: int, callback: AsyncCallback\<boolean\>\): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1219,7 +1232,7 @@ ArkTS-Sta: hasSimCard\(slotId: int\): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1267,6 +1280,10 @@ ArkTS-Sta: hasSimCardSync\(slotId: int\): boolean
 获取指定卡槽SIM卡是否插卡。
 
 **系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1316,9 +1333,9 @@ ArkTS-Sta: getSimAccountInfo\(slotId: int, callback: AsyncCallback\<IccAccountIn
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1381,9 +1398,9 @@ ArkTS-Sta: getSimAccountInfo\(slotId: int\): Promise\<IccAccountInfo\>
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1440,7 +1457,7 @@ getActiveSimAccountInfoList\(callback: AsyncCallback\<Array\<IccAccountInfo\>\>\
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1497,7 +1514,7 @@ ArkTS-Sta: getMaxSimCount\(\): int
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1530,7 +1547,7 @@ getActiveSimAccountInfoList\(\): Promise\<Array\<IccAccountInfo\>\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1575,7 +1592,7 @@ ArkTS-Sta: getOpKey\(slotId: int, callback: AsyncCallback\<string\>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1646,7 +1663,7 @@ ArkTS-Sta: getOpKey\(slotId: int\): Promise\<string\>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1714,7 +1731,7 @@ ArkTS-Sta: getOpKeySync\(slotId: int\): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1761,7 +1778,7 @@ ArkTS-Sta: getOpName\(slotId: int, callback: AsyncCallback\<string\>\): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1832,7 +1849,7 @@ ArkTS-Sta: getOpName\(slotId: int\): Promise\<string\>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1900,7 +1917,7 @@ ArkTS-Sta: getOpNameSync\(slotId: int\): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1947,7 +1964,7 @@ ArkTS-Sta: getDefaultVoiceSimId\(callback: AsyncCallback\<int\>\): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2009,7 +2026,7 @@ ArkTS-Sta: getDefaultVoiceSimId\(\): Promise\<int\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2061,6 +2078,134 @@ promise.then((data: int) => {
 });
 ```
 
+ ## sim.getSimLabel<sup>20+</sup>
+
+ArkTS-Dyn: getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
+
+ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback\<SimLabel\>): void
+
+查看卡槽ID和SIM卡的对应关系：
+- 卡槽1对应SIM卡1或SIM卡2
+- 卡槽2对应SIM卡2或ESIMX
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                     |
+| -------- | ------------------------ | ---- | ---------------------------------------- |
+| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| callback | AsyncCallback\<[SimLabel](#simlabel20)\> | 是   | 回调函数。获取SIM卡标签信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 8300001 | Invalid parameter value.                 |
+| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300003 | System internal error.                               |
+| 8300999  |Unknown error code.|
+
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
+console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
+
+## sim.getSimLabel<sup>20+</sup>
+
+getSimLabel(slotId: number): Promise\<SimLabel\>
+
+获取SIM卡的标签信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+
+| 参数名   | 类型                     | 必填 | 说明                                     |
+| -------- | ------------------------ | ---- | ---------------------------------------- |
+| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+
+**返回值：**
+
+| 类型                  | 说明                               |
+| --------------------- | ---------------------------------- |
+| Promise\<[SimLabel](#simlabel20) \>| 回调函数。获取SIM卡标签信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 8300001 | Invalid parameter value.                 |
+| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300003 | System internal error.                               |
+| 8300999  |Unknown error code.|
+
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimLabel(0).then((data: sim.SimLabel) => {
+console.info(`getSimLabel success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+## sim.getSimLabelSync<sup>20+</sup>
+
+getSimLabelSync(slotId: number): SimLabel
+
+通过传入SIM卡槽的ID，获取对应的SIM卡标签。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                     |
+| -------- | ------------------------ | ---- | ---------------------------------------- |
+| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+
+**返回值：**
+
+| 类型                  | 说明                               |
+| --------------------- | ---------------------------------- |
+| [SimLabel](#simlabel20) | SIM卡标签。 |
+
+**示例：**
+
+```ts
+import { sim } from '@kit.TelephonyKit';
+
+let simLabel: sim.SimLabel = sim.getSimLabelSync(0);
+console.info(`The sim state is:` + simLabel);
+```
 ## SimState
 
 SIM卡状态。
@@ -2069,7 +2214,7 @@ SIM卡状态。
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 值   | 说明                                                       |
 | --------------------- | ---- | ---------------------------------------------------------- |
@@ -2080,6 +2225,36 @@ SIM卡状态。
 | SIM_STATE_READY       | 4    | 表示SIM卡处于ready状态，即SIM卡在位且工作正常。            |
 | SIM_STATE_LOADED      | 5    | 表示SIM卡处于loaded状态，即SIM卡在位且所有卡文件加载完毕。 |
 
+## SimType<sup>20+</sup>
+ 	 
+SIM卡类型的枚举。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                | 值 |  说明                                                       |
+| --------------------- | ----| ---------------------------------------------------------- |
+| PSIM     | 0   |实体SIM卡。                      |
+| ESIM | 1   |电子SIM卡。      |
+
+## SimLabel<sup>20+</sup>
+
+SIM卡标签。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称         | 类型 | 只读| 可选  | 说明                                                       |
+| ---------------------|----|---- | ----| --------------------------------------------------- |
+|  simType   |  [SimType](#simtype20)  | 否  | 否|表示SIM卡类型的枚举。                      |
+| index |  number   |  否  |否 | SIM卡的唯一标识索引值。      |
+
 ## CardType<sup>7+</sup>
 
 卡类型。
@@ -2088,7 +2263,7 @@ SIM卡状态。
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ----- | ----- | ----- |
@@ -2111,7 +2286,7 @@ Icc帐户信息。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型    | 只读| 可选 | 说明             |
 | ---------- | ------- | ---- |--- |---------------- |
