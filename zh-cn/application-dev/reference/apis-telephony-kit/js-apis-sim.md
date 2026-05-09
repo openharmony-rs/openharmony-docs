@@ -153,7 +153,7 @@ ArkTS-Sta: getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
 
 | 参数名   | 类型                        | 必填 | 说明       |
 | -------- | --------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
 
 **示例：**
 
@@ -2261,7 +2261,7 @@ SIM卡标签。
 | 名称         | 类型 | 只读| 可选  | 说明                                                       |
 | ---------------------|----|---- | ----| --------------------------------------------------- |
 |  simType   |  [SimType](#simtype20)  | 否  | 否|表示SIM卡类型的枚举。                      |
-| index |  rkTS-Dyn: number <br/>ArkTS-Sta: int   |  否  |否 | SIM卡的唯一标识索引值。      |
+| index |  ArkTS-Dyn: number <br/>ArkTS-Sta: int   |  否  |否 | SIM卡的唯一标识索引值。      |
 
 ## CardType<sup>7+</sup>
 
