@@ -120,6 +120,7 @@ Port not open.
 **可能原因**
 
 1. 未调用[open](js-apis-busmanager-serial.md#open)方法打开串口。
+
 2. 串口已被关闭。
 
 **处理步骤**
