@@ -234,59 +234,59 @@
 
 7. 硬件信号控制。
 
- * 7.1 设置RTS信号为高电平
+   * 设置RTS信号为高电平
 
-   <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   try {
-     if (!this.port) {
-       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
-       return;
+     <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       await this.port.setRts(true);
+       console.info(`${TAG} setRts(true) success`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} setRts failed, code: ${e.code}, message: ${e.message}`);
      }
-     await this.port.setRts(true);
-     console.info(`${TAG} setRts(true) success`);
-   } catch (err) {
-     const e = err as BusinessError;
-     console.error(`${TAG} setRts failed, code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+     ```
 
- * 7.2 获取CTS信号状态
+   * 获取CTS信号状态
 
-   <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   try {
-     if (!this.port) {
-       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
-       return;
+     <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       const ctsStatus = await this.port.getCts();
+       console.info(`${TAG} getCts success, CTS: ${ctsStatus}`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} getCts failed, code: ${e.code}, message: ${e.message}`);
      }
-     const ctsStatus = await this.port.getCts();
-     console.info(`${TAG} getCts success, CTS: ${ctsStatus}`);
-   } catch (err) {
-     const e = err as BusinessError;
-     console.error(`${TAG} getCts failed, code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+     ```
 
- * 7.3 发送break信号
+   * 发送break信号
 
-   <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   try {
-     if (!this.port) {
-       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
-       return;
+     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       await this.port.sendBrk();
+       console.info(`${TAG} sendBrk success`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} sendBrk failed, code: ${e.code}, message: ${e.message}`);
      }
-     await this.port.sendBrk();
-     console.info(`${TAG} sendBrk success`);
-   } catch (err) {
-     const e = err as BusinessError;
-     console.error(`${TAG} sendBrk failed, code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+     ```
 
 8. 注销数据接收回调和关闭串口设备。
 
