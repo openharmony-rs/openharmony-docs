@@ -95,7 +95,7 @@
 | [SerialPort.open](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#open)(config?: [SerialConfigs](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialconfigs)): Promise&lt;void&gt; | 打开串口设备。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。使用Promise异步回调。 |
 | [SerialPort.close](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#close)(): Promise&lt;void&gt; | 关闭串口设备。使用Promise异步回调。 |
 | [SerialPort.write](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#write)(data: Uint8Array, timeout?: number): Promise&lt;number&gt; | 向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。 |
-| [SerialPort.onDataRead](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#ondataread)(callback: Callback&lt;Uint8Array&gt;): void | 监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](#close)后，所有回调将被清除。 |
+| [SerialPort.onDataRead](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#ondataread)(callback: Callback&lt;Uint8Array&gt;): void | 监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#close)后，所有回调将被清除。 |
 | [SerialPort.offDataRead](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#offdataread)(callback?: Callback&lt;Uint8Array&gt;): void | 取消监听串口接收数据事件。使用callback异步回调。 |
 | [SerialPort.flush](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#flush)(): Promise&lt;void&gt; | 清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。 |
 | [SerialPort.drain](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#drain)(): Promise&lt;void&gt; | 等待所有写请求完成。使用Promise异步回调。 |
