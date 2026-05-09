@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
-<!--Designer: @hanruofei-->
+<!--Designer: @guo867-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
