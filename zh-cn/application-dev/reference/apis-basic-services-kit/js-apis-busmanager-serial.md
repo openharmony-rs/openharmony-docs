@@ -9,7 +9,9 @@
 
 本模块主要提供串口通信管理功能，包括获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理等。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -23,7 +25,9 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 
 查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -65,7 +69,9 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 串口对象，提供串口设备的信息和通信能力。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -83,7 +89,9 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 
 打开串口设备。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：**  SystemCapability.BusManager.Serial
 
@@ -144,7 +152,9 @@ close(): Promise&lt;void&gt;
 
 关闭串口设备。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -180,11 +190,15 @@ port.close().then(() => {
 
 ### write
 
-write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
+ArkTS-Dyn: write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: write(data: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -195,13 +209,13 @@ write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 | 参数名   | 类型         | 必填 | 说明                                                                                                     |
 | -------- | ------------ | ---- | -------------------------------------------------------------------------------------------------------- |
 | data     | Uint8Array   | 是   | 待发送的数据。长度范围：(0, 4096]。                                                                        |
-| timeout  | number       | 否   | 超时时间。取值范围：[0, 300000]，整数，单位为毫秒。默认值0表示当数据无法写入端口时，不等待直接返回写入长度0。 |
+| timeout  | ArkTS-Dyn: number<br> ArkTS-Sta: int       | 否   | 超时时间。取值范围：[0, 300000]，整数，单位为毫秒。默认值0表示当数据无法写入端口时，不等待直接返回写入长度0。 |
 
 **返回值：**
 
 | 类型                    | 说明                        |
 | ----------------------- | --------------------------- |
-| Promise&lt;number&gt;   | Promise对象，返回写入数据长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt;  | Promise对象，返回写入数据长度。 |
 
 **错误码：**
 
@@ -223,7 +237,7 @@ import { serial } from "@kit.BasicServicesKit";
 
 // 向串口写入数据
 let writeData: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
-port.write(writeData, 2000).then((size: number) => {
+port.write(writeData, 2000).then((size: int) => {
   console.info('write success, size: ' + size);
 }).catch((error: Error) => {
   console.error(`write error: ${JSON.stringify(error)}`);
@@ -236,7 +250,9 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](#close)后，所有回调将被清除。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -275,7 +291,9 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
 取消监听串口接收数据事件。使用callback异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -317,7 +335,9 @@ flush(): Promise&lt;void&gt;
 
 清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -358,7 +378,9 @@ drain(): Promise&lt;void&gt;
 
 等待所有写请求完成。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -399,7 +421,9 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 设置RTS（请求发送）信号状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -446,7 +470,9 @@ getCts(): Promise&lt;boolean&gt;
 
 获取CTS（清除发送）信号状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -487,7 +513,9 @@ sendBrk(): Promise&lt;void&gt;
 
 发送BRK（中断）信号。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -526,7 +554,9 @@ port.sendBrk().then(() => {
 
 串口设备信息。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -535,15 +565,17 @@ port.sendBrk().then(() => {
 | 名称          | 类型     | 只读 | 可选 | 说明                        |
 | ------------- | -------- | ---- | ---- | --------------------------- |
 | portName      | string   | 否   | 否   | 端口名称。                  |
-| vendorId      | number   | 否   | 是   | USB虚拟串口的厂商ID。       |
-| productId     | number   | 否   | 是   | USB虚拟串口设备的产品ID。   |
+| vendorId      | ArkTS-Dyn: number<br> ArkTS-Sta: int   | 否   | 是   | USB虚拟串口的厂商ID。       |
+| productId     | ArkTS-Dyn: number<br> ArkTS-Sta: int   | 否   | 是   | USB虚拟串口设备的产品ID。   |
 | manufacturer  | string   | 否   | 是   | USB虚拟串口设备的制造商名称。 |
 
 ## DataBits
 
 表示数据位的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -560,7 +592,9 @@ port.sendBrk().then(() => {
 
 表示停止位的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -575,7 +609,9 @@ port.sendBrk().then(() => {
 
 表示校验位的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：**  SystemCapability.BusManager.Serial
 
@@ -591,7 +627,9 @@ port.sendBrk().then(() => {
 
 串口通信配置参数。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -599,7 +637,7 @@ port.sendBrk().then(() => {
 
 | 名称     | 类型                     | 只读 | 可选 | 说明                                                                  |
 | -------- | ------------------------ | ---- | ---- | --------------------------------------------------------------------- |
-| baudRate | number                   | 否   | 是   | 波特率。值为正整数，非标准波特率的具体支持情况依赖于硬件。单位：bit/s。默认值：115200。       |
+| baudRate | ArkTS-Dyn: number<br> ArkTS-Sta: int                   | 否   | 是   | 波特率。值为正整数，非标准波特率的具体支持情况依赖于硬件。单位：bit/s。默认值：115200。       |
 | dataBits | [DataBits](#databits)    | 否   | 是   | 数据位。默认值：EIGHT。                                                |
 | stopBits | [StopBits](#stopbits)    | 否   | 是   | 停止位。默认值：ONE。                                                  |
 | parity   | [Parity](#parity)        | 否   | 是   | 校验位。默认值：NONE。                                                 |
