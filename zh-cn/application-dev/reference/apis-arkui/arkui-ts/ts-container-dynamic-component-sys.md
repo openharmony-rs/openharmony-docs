@@ -43,21 +43,37 @@ DynamicComponent(options: DynamicOptions)
 
 用于运行Abc的Worker线程对象。
 
+type Worker = Worker
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**类型说明：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [Worker](../../apis-arkts/js-apis-worker.md) | 引用自@ohos.worker中定义的Worker类型，用于在独立线程中运行Abc。 |
 
 ## ErrorCallback
 
 错误回调类型，用于接收异常信息。
 
+type ErrorCallback = ErrorCallback
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**类型说明：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 引用自@ohos.base中定义的ErrorCallback类型，用于接收运行过程中的异常信息。 |
 
 ## DynamicOptions
 
@@ -69,10 +85,12 @@ DynamicComponent(options: DynamicOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
-| worker | [Worker](../../apis-arkts/js-apis-worker.md) | 否 | 否 | 运行Abc的Worker。 |
+| worker | [Worker](#worker) | 否 | 否 | 运行Abc的Worker。 |
 | backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false |
 | allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false |
 
