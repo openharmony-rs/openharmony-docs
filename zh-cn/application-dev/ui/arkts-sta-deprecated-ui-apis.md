@@ -6,9 +6,9 @@
 
 ### executeDrag
 
-ArkTS-Dyn接口声明：[executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo, callback:AsyncCallback\<DragEventParam>): void](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollerexecutedragdeprecated)
+ArkTS-Dyn接口声明：[executeDrag](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollerexecutedragdeprecated)(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo, callback:AsyncCallback\<DragEventParam>): void
 
-替代的ArkTS-Sta接口声明：[executeDrag(custom: CustomBuilder | DragItemInfo | undefined, dragInfo: dragController.DragInfo, callback: AsyncCallback&lt;dragController.DragEventParam&gt;): void](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#executedrag11)
+替代的ArkTS-Sta接口声明：[executeDrag](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#executedrag11)(custom: CustomBuilder | DragItemInfo | undefined, dragInfo: dragController.DragInfo, callback: AsyncCallback&lt;dragController.DragEventParam&gt;): void
 
 ArkTS-Dyn示例：
 
@@ -40,6 +40,7 @@ struct DragControllerPage {
         .onTouch((event?: TouchEvent) => {
           if (event) {
             if (event.type == TouchType.Down) {
+              // 设置拖拽数据
               let text = new unifiedDataChannel.PlainText();
               text.textContent = 'drag text';
               text.abstract = 'abstract';
@@ -52,7 +53,7 @@ struct DragControllerPage {
               dragController.executeDrag(() => {
                 this.DraggingBuilder()
               }, dragInfo, (err, eve) => {
-                // handle drag result
+                // 处理起拖结果
               })
             }
           }
@@ -94,6 +95,7 @@ struct DragControllerPage {
         .onTouch((event?: TouchEvent) => {
           if (event) {
             if (event.type == TouchType.Down) {
+              // 设置拖拽数据
               let text = new unifiedDataChannel.PlainText();
               text.textContent = 'drag text';
               let unifiedData = new unifiedDataChannel.UnifiedData(text);
@@ -117,11 +119,13 @@ struct DragControllerPage {
 }
 ```
 
+![execute_drag](figures/execute_drag.gif)
+
 ### executeDrag
 
-ArkTS-Dyn接口声明：[executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<DragEventParam>](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollerexecutedragdeprecated-1)
+ArkTS-Dyn接口声明：[executeDrag](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollerexecutedragdeprecated-1)(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<DragEventParam>
 
-替代的ArkTS-Sta接口声明：[executeDrag(custom: CustomBuilder | DragItemInfo | undefined, dragInfo: dragController.DragInfo): Promise&lt;dragController.DragEventParam&gt; | null](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#executedrag11-1)
+替代的ArkTS-Sta接口声明：[executeDrag](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#executedrag11-1)(custom: CustomBuilder | DragItemInfo | undefined, dragInfo: dragController.DragInfo): Promise&lt;dragController.DragEventParam&gt; | null
 
 ArkTS-Dyn示例：
 
@@ -153,6 +157,7 @@ struct DragControllerPage {
         .onTouch((event?: TouchEvent) => {
           if (event) {
             if (event.type == TouchType.Down) {
+              // 设置拖拽数据
               let text = new unifiedDataChannel.PlainText();
               text.textContent = 'drag text';
               text.abstract = 'abstract';
@@ -211,6 +216,7 @@ struct DragControllerPage {
         .onTouch((event?: TouchEvent) => {
           if (event) {
             if (event.type == TouchType.Down) {
+              // 设置拖拽数据
               let text = new unifiedDataChannel.PlainText();
               text.textContent = 'drag text';
               let unifiedData = new unifiedDataChannel.UnifiedData(text);
@@ -237,11 +243,13 @@ struct DragControllerPage {
 }
 ```
 
+![execute_drag](figures/execute_drag.gif)
+
 ### createDragAction
 
-ArkTS-Dyn接口声明：[createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragInfo: DragInfo): DragAction](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollercreatedragactiondeprecated)
+ArkTS-Dyn接口声明：[createDragAction](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollercreatedragactiondeprecated)(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragInfo: DragInfo): DragAction
 
-替代的ArkTS-Sta接口声明：[createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt; \| undefined, dragInfo: dragController.DragInfo): dragController.DragAction](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#createdragaction11)
+替代的ArkTS-Sta接口声明：[createDragAction](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#createdragaction11)(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt; \| undefined, dragInfo: dragController.DragInfo): dragController.DragAction
 
 ArkTS-Dyn示例：
 
@@ -269,12 +277,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('使用dragAction发起拖拽')
+      Button('dragAction start')
         .onTouch((event?: TouchEvent) => {
           if (event) {
             if (event.type == TouchType.Down) {
               this.customBuilders.splice(0, this.customBuilders.length);
               this.customBuilders.push(() => {this.DraggingBuilder()});
+              // 设置拖拽数据
               let text = new unifiedDataChannel.PlainText();
               text.textContent = 'drag text';
               let unifiedData = new unifiedDataChannel.UnifiedData(text);
@@ -331,12 +340,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('使用dragAction发起拖拽')
+      Button('dragAction start')
         .onTouch((event?: TouchEvent) => {
           if (event) {
             if (event.type == TouchType.Down) {
               this.customBuilders.splice(0, this.customBuilders.length);
               this.customBuilders.push(() => {this.DraggingBuilder()});
+              // 设置拖拽数据
               let text = new unifiedDataChannel.PlainText();
               text.textContent = 'drag text';
               let unifiedData = new unifiedDataChannel.UnifiedData(text);
@@ -368,11 +378,13 @@ struct DragControllerPage {
 }
 ```
 
+![drag_action_start](figures/drag_action_start.gif)
+
 ### getDragPreview
 
-ArkTS-Dyn接口声明：[getDragPreview(): DragPreview](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollergetdragpreviewdeprecated)
+ArkTS-Dyn接口声明：[getDragPreview](../reference/apis-arkui/js-apis-arkui-dragController.md#dragcontrollergetdragpreviewdeprecated)(): DragPreview
 
-替代的ArkTS-Sta接口声明：[getDragPreview(): dragController.DragPreview](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#getdragpreview11)
+替代的ArkTS-Sta接口声明：[getDragPreview](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#getdragpreview11)(): dragController.DragPreview
 
 ArkTS-Dyn示例：
 
@@ -451,13 +463,15 @@ struct DragControllerPage {
 }
 ```
 
+![get_drag_preview](figures/get_drag_preview.gif)
+
 ## @ohos.arkui.componentSnapshot
 
 ### get
 
-ArkTS-Dyn接口声明：[get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated)
+ArkTS-Dyn接口声明：[get](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated)(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptions): void
 
-替代的ArkTS-Sta接口声明：[get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12)
+替代的ArkTS-Sta接口声明：[get](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12)(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void
 
 ArkTS-Dyn示例：
 
@@ -474,12 +488,12 @@ struct SnapshotExample {
     Column() {
       Row() {
         // 用来显示截图结果的图片组件
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap).width(100).height(100).border({ color: Color.Black, width: 2 }).margin(5)
         // 用来被截图的组件
         Image($r('app.media.startIcon'))
           .autoResize(true)
-          .width(200)
-          .height(200)
+          .width(100)
+          .height(100)
           .margin(5)
           .id("snapshot_target")
       }
@@ -517,12 +531,12 @@ struct SnapshotExample {
     Column() {
       Row() {
         // 用来显示截图结果的图片组件
-        Image(this.pixmap ? this.pixmap : '').width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap ? this.pixmap : '').width(100).height(100).border({ color: Color.Black, width: 2 }).margin(5)
         // 用来被截图的组件
         Image($r('app.media.startIcon'))
           .autoResize(true)
-          .width(200)
-          .height(200)
+          .width(100)
+          .height(100)
           .margin(5)
           .id("snapshot_target")
       }
@@ -546,11 +560,13 @@ struct SnapshotExample {
 }
 ```
 
+![generate_snapshot](figures/generate_snapshot.gif)
+
 ### get
 
-ArkTS-Dyn接口声明：[get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated-1)
+ArkTS-Dyn接口声明：[get](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotgetdeprecated-1)(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
-替代的ArkTS-Sta接口声明：[get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12-1)
+替代的ArkTS-Sta接口声明：[get](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12-1)(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 ArkTS-Dyn示例：
 
@@ -567,12 +583,12 @@ struct SnapshotExample {
     Column() {
       Row() {
         // 用来显示截图结果的图片组件
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap).width(100).height(100).border({ color: Color.Black, width: 2 }).margin(5)
         // 用来被截图的组件
         Image($r('app.media.startIcon'))
           .autoResize(true)
-          .width(200)
-          .height(200)
+          .width(100)
+          .height(100)
           .margin(5)
           .id("snapshot_target")
       }
@@ -609,12 +625,12 @@ struct SnapshotExample {
     Column() {
       Row() {
         // 用来显示截图结果的图片组件
-        Image(this.pixmap ? this.pixmap : '').width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap ? this.pixmap : '').width(100).height(100).border({ color: Color.Black, width: 2 }).margin(5)
         // 用来被截图的组件
         Image($r('app.media.startIcon'))
           .autoResize(true)
-          .width(200)
-          .height(200)
+          .width(100)
+          .height(100)
           .margin(5)
           .id("snapshot_target")
       }
@@ -637,11 +653,13 @@ struct SnapshotExample {
 }
 ```
 
+![generate_snapshot](figures/generate_snapshot.gif)
+
 ### createFromBuilder
 
-ArkTS-Dyn接口声明：[createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated)
+ArkTS-Dyn接口声明：[createFromBuilder](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated)(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): void
 
-替代的ArkTS-Sta接口声明：[createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)
+替代的ArkTS-Sta接口声明：[createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void
 
 ArkTS-Dyn示例：
 
@@ -757,11 +775,13 @@ struct OffscreenSnapshotExample {
 }
 ```
 
+![generate_offscreen_snapshot](figures/generate_offscreen_snapshot.gif)
+
 ### createFromBuilder
 
-ArkTS-Dyn接口声明：[createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated-1)
+ArkTS-Dyn接口声明：[createFromBuilder](../reference/apis-arkui/js-apis-arkui-componentSnapshot.md#componentsnapshotcreatefrombuilderdeprecated-1)(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: SnapshotOptions): Promise<image.PixelMap>
 
-替代的ArkTS-Sta接口声明：[createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)
+替代的ArkTS-Sta接口声明：[createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)(builder: CustomBuilder, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 ArkTS-Dyn示例：
 
@@ -795,6 +815,12 @@ struct OffscreenSnapshotExample {
 
   build() {
     Column() {
+      // 显示截图结果的图片组件
+      Image(this.pixmap)
+        .margin(10)
+        .height(200)
+        .width(200)
+        .border({ color: Color.Black, width: 2 })
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           componentSnapshot.createFromBuilder(() => {
@@ -806,12 +832,6 @@ struct OffscreenSnapshotExample {
             console.error("error: " + err)
           })
         })
-      // 显示截图结果的图片组件
-      Image(this.pixmap)
-        .margin(10)
-        .height(200)
-        .width(200)
-        .border({ color: Color.Black, width: 2 })
     }.width('100%').margin({ left: 10, top: 5, bottom: 5 }).height(300)
   }
 }
@@ -849,6 +869,12 @@ struct OffscreenSnapshotExample {
 
   build() {
     Column() {
+      // 显示截图结果的图片组件
+      Image(this.pixmap ? this.pixmap : '')
+        .margin(10)
+        .height(200)
+        .width(200)
+        .border({ color: Color.Black, width: 2 })
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           // 使用UIContext中的同名接口替代
@@ -862,23 +888,20 @@ struct OffscreenSnapshotExample {
               console.error("error: " + err)
             })
         })
-      // 显示截图结果的图片组件
-      Image(this.pixmap ? this.pixmap : '')
-        .margin(10)
-        .height(200)
-        .width(200)
-        .border({ color: Color.Black, width: 2 })
     }.width('100%').margin({ left: 10, top: 5, bottom: 5 } as Margin).height(300)
   }
 }
 ```
+
+![generate_offscreen_snapshot](figures/generate_offscreen_snapshot.gif)
+
 ## @ohos.arkui.componentUtils
 
 ### getRectangleById
 
-ArkTS-Dyn接口声明：[getRectangleById(id: string): ComponentInfo](../reference/apis-arkui/js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyiddeprecated)
+ArkTS-Dyn接口声明：[getRectangleById](../reference/apis-arkui/js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyiddeprecated)(id: string): ComponentInfo
 
-替代的ArkTS-Sta接口声明：[getRectangleById(id: string): componentUtils.ComponentInfo](../reference/apis-arkui/arkts-apis-uicontext-componentutils.md#getrectanglebyid)
+替代的ArkTS-Sta接口声明：[getRectangleById](../reference/apis-arkui/arkts-apis-uicontext-componentutils.md#getrectanglebyid)(id: string): componentUtils.ComponentInfo
 
 ArkTS-Dyn示例：
 
@@ -896,6 +919,7 @@ struct Utils {
 
   build() {
     Column() {
+      // 组件应用图形变换
       Image($r("app.media.startIcon"))
         .transform(this.matrix1)
         .translate({ x: 20, y: 20, z: 20 })
@@ -942,6 +966,7 @@ struct Utils {
 
   build() {
     Column() {
+      // 组件应用图形变换
       Image($r("app.media.startIcon"))
         .transform(this.matrix1)
         .translate({ x: 20, y: 20, z: 20 })
@@ -971,13 +996,16 @@ struct Utils {
   }
 }
 ```
+
+![get_rectangle_by_id](figures/get_rectangle_by_id.gif)
+
 ## 布局回调
 
 ### createComponentObserver
 
-ArkTS-Dyn接口声明：[createComponentObserver(id: string): ComponentObserver](../reference/apis-arkui/js-apis-arkui-inspector.md#inspectorcreatecomponentobserverdeprecated)
+ArkTS-Dyn接口声明：[createComponentObserver](../reference/apis-arkui/js-apis-arkui-inspector.md#inspectorcreatecomponentobserverdeprecated)(id: string): ComponentObserver
 
-替代的ArkTS-Sta接口声明：[createComponentObserver(id: string): inspector.ComponentObserver](../reference/apis-arkui/arkts-apis-uicontext-uiinspector.md#createcomponentobserver)
+替代的ArkTS-Sta接口声明：[createComponentObserver](../reference/apis-arkui/arkts-apis-uicontext-uiinspector.md#createcomponentobserver)(id: string): inspector.ComponentObserver
 
 
 
