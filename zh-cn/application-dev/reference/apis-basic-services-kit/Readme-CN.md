@@ -17,7 +17,7 @@
     <!--DelEnd-->
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
-    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial-sys.md)
+    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
     - [@ohos.runningLock (Runninglock锁)](js-apis-runninglock.md)
