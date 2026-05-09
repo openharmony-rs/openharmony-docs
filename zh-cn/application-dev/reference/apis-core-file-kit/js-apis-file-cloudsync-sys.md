@@ -892,6 +892,112 @@ fileSync.getUploadList(uris).then((progressList: cloudSync.UploadProgress[]) => 
 });
 ```
 
+### pauseUpload
+
+pauseUpload(uri: string): void
+
+暂停云文件上传。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| uri | string | 是   | 待暂停的文件URI。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 14000002 | Invalid URI. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileSync = new cloudSync.FileSync("com.ohos.demo");
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+
+try {
+  fileSync.pauseUpload(uri);
+  console.info("pause upload successfully.");
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error("pause upload failed with error message: " + error.message + ", error code: " + error.code);
+}
+```
+
+### resumeUpload
+
+resumeUpload(uri: string): void
+
+恢复云文件上传。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| uri | string | 是   | 待恢复上传的文件URI。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 14000002 | Invalid URI. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileSync = new cloudSync.FileSync("com.ohos.demo");
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+
+try {
+  fileSync.resumeUpload(uri);
+  console.info("resume upload successfully.");
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error("resume upload failed with error message: " + error.message + ", error code: " + error.code);
+}
+```
+
 ## CloudFileCache<sup>11+</sup>
 
 云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。
