@@ -49,7 +49,7 @@ import { screenshot } from '@kit.ArkUI';
 | displayId | number        | 否 | 是   | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 |
 | isNotificationNeeded| boolean        | 否 | 是   | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。   |
 | isCaptureFullOfScreen | boolean        | 否 | 是   | 表示是否截取当前物理屏上所有DisplayId对应的逻辑屏。对于一个物理屏上有多个DisplayId的场景，true表示截取整个物理屏，false表示只截取DisplayId所在区域的逻辑屏。默认值为false。 |
-| displayIntent | [DisplayIntentType](#displayintenttype-26)        | 否 | 是   | 表示截取图像的渲染方式。CANONICAL表示截图以标准显示属性进行渲染。LOCAL表示截图以当前显示属性进行渲染。默认值为CANONICAL。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| displayIntent | [DisplayIntentType](#displayintenttype)        | 否 | 是   | 表示截取图像的渲染方式。CANONICAL表示截图以标准显示属性进行渲染。LOCAL表示截图以当前显示属性进行渲染。默认值为CANONICAL。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## DisplayIntentType 
 
