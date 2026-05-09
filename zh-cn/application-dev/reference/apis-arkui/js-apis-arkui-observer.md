@@ -507,7 +507,7 @@ struct Index {
 
 ## uiObserver.onNavDestinationUpdate<sup>23+</sup>
 
-onNavDestinationUpdate(options: NavDestinationSwitchObserverOptions, callback: Callback<observer.NavDestinationInfo\>): void
+onNavDestinationUpdate(options: NavDestinationSwitchObserverOptions, callback: Callback<NavDestinationInfo\>): void
 
 监听NavDestination组件的状态变化。
 
