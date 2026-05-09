@@ -272,7 +272,7 @@ colorMode(value: FormColorMode)
 
 ### onAcquired
 
-onAcquired(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onAcquired(callback:&nbsp;Callback\<FormCallbackInfo>)&nbsp;
 
 获取到卡片后触发的回调。
 
