@@ -762,3 +762,4 @@ Enumerates the XMP tag types.
 | ALTERNATE_ARRAY | 4    | Alternative array. During serialization, the format of this type in XMP metadata is \<rdf:Alt>.         |
 | ALTERNATE_TEXT  | 5    | Multi-language text. During serialization, this type is an alternative array of **xml:lang** qualifiers in XMP format.|
 | STRUCTURE       | 6    | Struct. Unlike array elements, fields in the struct can belong to different namespaces.           |
+<!--no_check-->
