@@ -37,7 +37,9 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ### Screen Capture Picker Control
 
-Starting from API version 20, you can set whether the screen capture picker should display.
+Starting from API version 20, screen capture pickers can be configured on PC and 2-in-1 devices.
+
+Starting from API version 23, screen capture pickers can be configured on phones and tablets.
 
 Call [OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup) to set whether to display the screen capture picker.
 
@@ -83,7 +85,7 @@ Starting from API version 20, you can call [OH_AVScreenCapture_StrategyForPrivac
 
 
 ```c++
-// The value 0 means that the full-screen masking mode is used, and 1 means that the window masking mode is used. The default value is full-screen masking mode.
+// The value 0 means that the full-screen masking mode is used, and 1 means that the window masking mode is used. The default mode is full-screen masking.
 int value = 0;
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
@@ -136,7 +138,7 @@ OH_AVScreenCapture_SetMaxVideoFrameRate(capture, 20);
 
 ## Setting Screen Resolution
 
-Call [OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas) to adjust the screen capture resolution. This API must be called after capture starts, and resolution values are constrained to specific ranges.
+Use [OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas) to adjust the screen capture resolution. This API must be called after screen capture starts. The resolution is subject to range limits. The maximum video width and height must not exceed the ranges defined by [OH_AVCapability_GetVideoWidthRange](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange) and [OH_AVCapability_GetVideoHeightRange](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange).
 
 ```c++
 OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280);

@@ -14,8 +14,7 @@ The full playback process includes creating an AVPlayer instance, setting callba
 
 During application development, you can obtain the playback process information through the callbacks [OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback) of the AVPlayer. If the application performs an operation when the AVPlayer is not in the given state, the system may throw an exception or generate other undefined behavior.
 
-**Figure 1** Playback state transition
-
+**Figure 1** Playback state transition 
 ![Playback status change](figures/playback-status-change-ndk.png)
 
 For details about the states, see [AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate). When the AVPlayer is in the **prepared**, **playing**, **paused**, or **completed** state, the playback engine is working and a large amount of RAM is occupied. If your application does not need to use the AVPlayer, call **OH_AVPlayer_Reset()** or **OH_AVPlayer_Release()** to release the instance.
@@ -31,23 +30,23 @@ This topic describes only how to implement the playback of a media asset. In pra
 - Use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback [OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback) and error callback [OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively. After[OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback) is set, the callback [OH_AVPlayerOnInfo](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfo) set through [OH_AVPlayer_SetPlayerCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplayercallback) is not executed. After [OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback) is set, the callback[OH_AVPlayerOnError](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerror) set through [OH_AVPlayer_SetPlayerCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplayercallback) is not executed.
 
 ## How to Develop
-Link the following dynamic libraries in the CMake script:
-```
+Link the dynamic library in the CMake script.
+```C++
 target_link_libraries(sample PUBLIC libavplayer.so)
 ```
 
 To use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback and error callback, link the following dynamic libraries in the CMake script:
-```
+```C++
 target_link_libraries(sample PUBLIC libnative_media_core.so)
 ```
 
 To use system logging, include the following header file:
-```
+```C++
 #include <hilog/log.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
-```
+In addition, link the following dynamic library in the CMake script:
+```C++
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -84,7 +83,7 @@ Read [AVPlayer](../../reference/apis-media-kit/capi-avplayer.md) for the API ref
 ## Running the Sample Project
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKAudio), and copy its resources to the corresponding directories.
-    ```
+    ```txt
     AVPlayerNDKAudio
     entry/src/main/ets/
     └── pages
