@@ -304,7 +304,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 本示例展示了SecurityUIExtensionComponent的基本用法，通过配置Want拉起指定Ability的UIExtensionAbility，并在连接异常时通过onError回调获取错误信息。
 
-从API版本26.0.0开始，新增onError（添加链接）事件。
+从API版本26.0.0开始，新增[onError](#onerror)事件。
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
