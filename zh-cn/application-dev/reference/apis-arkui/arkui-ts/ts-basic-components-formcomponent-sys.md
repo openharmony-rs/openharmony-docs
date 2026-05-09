@@ -316,7 +316,7 @@ onRouter(callback: Callback\<object\>)
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 |------| - | ---- | ------------------------------------------------------------ |
-| callback | Callback\<object\>  | 是   | 获得[routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 |
+| callback | Callback\<object\>  | 是   | 获得[事件绑定](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 |
 
 ### onUninstall
 
