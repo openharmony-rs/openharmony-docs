@@ -234,7 +234,7 @@ The input method panel does not exist.
 
 **处理步骤**
 
-开发者可以通过接口[createPanel](js-apis-inputmethodengine.md#createpanel10)创建[软键盘类型](js-apis-inputmethodengine.md#paneltype10)的[面板](js-apis-inputmethodengine.md#panel10)。
+开发者可以通过接口[createPanel](js-apis-inputmethodengine.md#createpanel10)创建。
 
 ## 12800013 窗口管理服务错误
 
