@@ -1,9 +1,9 @@
 # Developing a Scene-based Widget
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 This document outlines the development of scene-based widgets, covering UI designs for both inactive and active states, as well as related configuration files.
 

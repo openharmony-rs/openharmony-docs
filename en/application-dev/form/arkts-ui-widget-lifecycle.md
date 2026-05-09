@@ -1,9 +1,9 @@
 # Managing ArkTS Widget Lifecycle
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 When creating an ArkTS widget, you need to implement the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) lifecycle APIs.
