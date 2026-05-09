@@ -7624,7 +7624,7 @@ this.context.resourceManager.getColor(resource, (error: BusinessError, value: nu
 
 getColor(resource: Resource): Promise&lt;number&gt;
 
-Obtains a color value based on the specified resource object. This API uses a promise to return the result.
+Obtains a color value based on the specified resource object. This API uses a promise to return the result. 
 
 > **NOTE**
 >
