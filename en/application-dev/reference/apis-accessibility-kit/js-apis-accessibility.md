@@ -88,7 +88,7 @@ Provides information about an accessibility application.
 type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |
   'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |
   'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |
-  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common'
+  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction'
 
 Target actions supported by the application. The target actions for which parameters need to be set have been specified in the description of the following table.
 
@@ -123,6 +123,7 @@ Target actions supported by the application. The target actions for which parame
 | 'notificationCenter'      | Open the notification bar.  |
 | 'controlCenter'       | Open the control center.  |
 | 'setCursorPosition'     | Set cursor location. You need to set the **offset** parameter.  |
+| 'injectAction'    | Injection action. The **injectActionType** parameter must be set.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## Capability
 
@@ -232,7 +233,9 @@ Subscribes to the state changes of captions configuration. This API uses an asyn
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [off('enableChange')](#offenablechangedeprecated) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+> - This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -241,7 +244,7 @@ Subscribes to the state changes of captions configuration. This API uses an asyn
 | Name     | Type                     | Mandatory  | Description                                     |
 | -------- | ----------------------- | ---- | --------------------------------------- |
 | type     | string                  | Yes   | Event type, which is set to **'enableChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | Yes   | Callback invoked when the enabled status of captions configuration changes.             |
+| callback | Callback&lt;boolean&gt; | Yes   | Callback invoked when the enabled status of captions configuration changes. The value **true** indicates that the subtitle configuration is enabled, and the value **false** indicates that the subtitle configuration is disabled.             |
 
 **Error codes**
 
@@ -284,7 +287,10 @@ Subscribes to captions style changes. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [off('styleChange')](#offstylechangedeprecated) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+> - This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
+
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -345,7 +351,7 @@ Unsubscribes from the state changes of captions configuration. This API uses an 
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | Yes  | Event type, which is set to **'enableChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. The value must be the same as the value of **callback** in **on('enableChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. It must be consistent with the callback used in [on('enableChange')](#onenablechangedeprecated). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 
@@ -402,7 +408,7 @@ Unsubscribes from the captions style changes. This API uses an asynchronous call
 | Name  | Type                                            | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                           | Yes  | Event type, which is set to **'styleChange'** in this API. |
-| callback | Callback&lt;[CaptionsStyle](#captionsstyle8)&gt; | No  | Callback used to unregister. The value must be the same as the value of **callback** in **on('styleChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;[CaptionsStyle](#captionsstyle8)&gt; | No  | Callback used to unregister. It must be consistent with the callback used in [on('styleChange')](#onstylechangedeprecated). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 
@@ -459,27 +465,27 @@ Describes a GUI change event.
 | type             | [EventType](#eventtype)               | No  | No  | Accessibility event type (mandatory).        |
 | windowUpdateType | [WindowUpdateType](#windowupdatetype) | No  | Yes  | Window update type.              |
 | bundleName       | string                                | No  | No  | Name of the target application (mandatory).          |
-| componentType    | string                                | No  | Yes  | Component type, for example, **Button** for the button component and **Image** for the image component.      |
+| componentType    | string                                | No  | Yes  | It should correspond to the event source component type, and the default value is empty.<br>Example:<br>- Button type - > 'Button'<br>- Image type - > 'Image'  |
 | pageId           | number                                | No  | Yes  | ID of the page where the event occurs. The default value is **0**.           |
-| description      | string                                | No  | Yes  | Event description. Set this parameter as required.       |
+| description      | string                                | No  | Yes  | Event description, which is set according to the actual scenario with no special restrictions, and the default value is empty.       |
 | triggerAction    | [Action](#action)                     | No  | No  | Action that triggers the event (mandatory).   |
-| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | No  | Yes  | Text move granularity.     |
-| contents         | Array&lt;string&gt;                   | No  | Yes  | Content list. Set this parameter as required.                |
-| lastContent      | string                                | No  | Yes  | Latest content. Set this parameter as required.                |
+| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | No  | Yes  | Text moving granularity. The default value is char.     |
+| contents         | Array&lt;string&gt;                   | No  | Yes  | Content list, which is set according to the actual scenario with no special restrictions. The default value is empty.                |
+| lastContent      | string                                | No  | Yes  | Latest content, which is set according to the actual scenario with no special restrictions. The default value is empty.                |
 | beginIndex       | number                                | No  | Yes  | Start index. The default value is **0**.|
 | currentIndex     | number                                | No  | Yes  | Current index. The default value is **0**.     |
 | endIndex         | number                                | No  | Yes  | End index. The default value is **0**.|
 | itemCount        | number                                | No  | Yes  | Total number of items. The default value is **0**.       |
 | elementId<sup>12+</sup>        | number                  | No  | Yes  | Element ID of the component. The default value is **0**.       |
-| textAnnouncedForAccessibility<sup>12+</sup>     | string     | No  | Yes  | Content for auto-broadcasting. Set the broadcast content based on the actual scenario. No special restrictions.|
+| textAnnouncedForAccessibility<sup>12+</sup>     | string     | No  | Yes  | Content for auto-broadcasting. When the application needs to proactively broadcast, set the broadcast content according to the actual scenario with no special restrictions, and the default value is empty.|
 | textResourceAnnouncedForAccessibility<sup>18+</sup>      | Resource   | No  | Yes  | Content for auto-broadcasting. The value is a string of the **Resource** type. |
-| customId<sup>12+</sup>        | string                                | No  | Yes  | Component ID for auto-focusing.       |
+| customId<sup>12+</sup>        | string                                | No  | Yes  | Component ID for active focusing, and the default value is empty.       |
 
 ### constructor
 
 constructor(jsonObject: Object)
 
-Implements a constructor.
+Constructor, which is used to construct an EventInfo instance using a JSON object.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
@@ -509,7 +515,7 @@ Implements a constructor.
 
 constructor(type: EventType, bundleName: string, triggerAction: Action)
 
-Implements a constructor.
+Constructor, which is used to construct an EventInfo instance using independent parameters.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
@@ -539,7 +545,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
 'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
-'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive'
+'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate'
 
 Accessibility event types.
 
@@ -568,6 +574,7 @@ Accessibility event types.
 | 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | Event of the auto-broadcasting without interruption.|
 | 'scrolling'<sup>18+</sup>   | Event indicating that an item is scrolled out of the screen in the scrolling view.|
 | 'pageActive'<sup>23+</sup> | Event indicating that a page changes. The value is fixed at **'pageActive'**.|
+| 'notificationUpdate' | Event indicating that a notification changes. The value is fixed at **'notificationUpdate'**.<br>**Since**: 26.0.0|
 
 ## TextMoveUnit
 
@@ -644,7 +651,7 @@ let abilityType: accessibility.AbilityType = 'spoken';
 let abilityState: accessibility.AbilityState = 'enable';
 
 accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
 });
@@ -668,7 +675,7 @@ Obtains the accessibility application list. This API uses an asynchronous callba
 | ----------- | ---------------------------------------- | ---- | ---------------- |
 | abilityType | [AbilityType](#abilitytype)              | Yes   | Accessibility application type.        |
 | stateType   | [AbilityState](#abilitystate)            | Yes   | Accessibility application status.        |
-| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Yes   | Callback used to return the accessibility application list.|
+| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Yes   | Callback used to return the accessibility application list. If the operation is successful, **err** is **undefined** and **data** is the accessibility application list. Otherwise, it is an error object.|
 
 **Example**
 
@@ -684,7 +691,7 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
     console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
     return;
   }
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 })
 ```
 
@@ -740,7 +747,7 @@ let abilityType: accessibility.AbilityType = 'all'; // Set the accessibility app
 let abilityState: accessibility.AbilityState = 'install'; // Set the accessibility application state to 'install'.
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
 });
@@ -765,7 +772,7 @@ let abilityType: accessibility.AbilityType = 'spoken'; // Set the accessibility 
 let abilityState: accessibility.AbilityState = 'enable'; // Set the accessibility application state to 'enable'.
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
 });
@@ -789,7 +796,7 @@ Obtains the accessibility application list. This API uses an asynchronous callba
 | ----------- | ---------------------------------------- | ---- | ---------------- |
 | abilityType | [AbilityType](#abilitytype)              | Yes   | Accessibility application type.        |
 | stateType   | [AbilityState](#abilitystate)            | Yes   | Accessibility application status.        |
-| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Yes   | Callback used to return the accessibility application list.|
+| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Yes   | Callback used to return the accessibility application list. If the operation is successful, **err** is **undefined** and **data** is the accessibility application list. Otherwise, it is an error object.|
 
 **Error codes**
 
@@ -823,7 +830,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
     console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 });
 
 // For example, install an accessibility application whose bundle name is com.example.myaccessibilityapp in the system.
@@ -851,7 +858,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
     console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -902,10 +909,10 @@ let data: accessibility.AccessibilityAbilityInfo[];
 
 try {
   data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 } catch (error) {
   let err = error as BusinessError;
-  console.error(`error code: ${err.code}`);
+  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
 }
 
 // For example, install an accessibility application whose bundle name is com.example.myaccessibilityapp in the system.
@@ -931,10 +938,10 @@ let data: accessibility.AccessibilityAbilityInfo[];
 
 try {
   data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 } catch (error) {
   let err = error as BusinessError;
-  console.error(`error code: ${err.code}`);
+  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
 }
 ```
 
@@ -973,6 +980,11 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the state changes of the accessibility application. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
 
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.off('accessibilityStateChange')](#accessibilityoffaccessibilitystatechange) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -984,7 +996,7 @@ Subscribes to the state changes of the accessibility application. This API uses 
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | Yes  | Event type, which is set to **'accessibilityStateChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | Yes  | Callback invoked when the enabled status of accessibility application changes. The returned result indicates the global enabled status of the accessibility application.|
+| callback | Callback&lt;boolean&gt; | Yes  | Callback invoked when the enabled status of accessibility application changes. The returned result indicates the global enabled status of the accessibility application. The value **true** indicates that the accessibility application is enabled, and **false** indicates that the accessibility application is disabled.|
 
 **Error codes**
 
@@ -1016,6 +1028,11 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the state changes in touch guide mode. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
 
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.off('touchGuideStateChange')](#accessibilityofftouchguidestatechange) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -1027,7 +1044,7 @@ Subscribes to the state changes in touch guide mode. This API uses an asynchrono
 | Name     | Type                     | Mandatory  | Description                                      |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | Yes   | Event type, which is set to **'touchGuideStateChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | Yes   | Callback invoked when the enabling state of touch guide mode changes.          |
+| callback | Callback&lt;boolean&gt; | Yes   | Callback invoked when the enabling state of touch guide mode changes. The value **true** indicates that the touch guide mode is enabled, and the value **false** indicates that the touch guide mode is disabled.          |
 
 **Error codes**
 
@@ -1056,6 +1073,11 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the state changes of the screen reader. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.off('screenReaderStateChange')](#accessibilityoffscreenreaderstatechange18) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -1067,7 +1089,7 @@ Subscribes to the state changes of the screen reader. This API uses an asynchron
 | Name     | Type                     | Mandatory  | Description                                      |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | Yes   | Event type, which is set to **'screenReaderStateChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | Yes   | Callback invoked when the enabling state of screen reader changes.          |
+| callback | Callback&lt;boolean&gt; | Yes   | Callback invoked when the enabling state of screen reader changes. The value **true** indicates that the screen reader is enabled, and the value **false** indicates that the screen reader is disabled.          |
 
 **Error codes**
 
@@ -1092,6 +1114,11 @@ accessibility.on('screenReaderStateChange', (data: boolean) => {
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
 Subscribes to the single- or double-touch event changes in touch guide mode. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.off('touchModeChange')](#accessibilityofftouchmodechange20) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
@@ -1144,6 +1171,11 @@ onAnimationReduceStateChange(callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the state changes in animation reduction mode. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.offAnimationReduceStateChange](#accessibilityoffanimationreducestatechange23) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
@@ -1183,6 +1215,11 @@ struct Index {
 onFlashReminderStateChange(callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the state changes in flash alerts mode. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.offFlashReminderStateChange](#accessibilityoffflashreminderstatechange23) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1224,6 +1261,11 @@ onAudioMonoStateChange(callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the state changes in mono audio mode. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.offAudioMonoStateChange](#accessibilityoffaudiomonostatechange23) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
@@ -1258,6 +1300,53 @@ struct Index {
 }
 ```
 
+## accessibility.onSeniorModeStateChange
+
+onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
+
+Listens for enabling status changes of the senior mode. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, you must use [accessibility.offSeniorModeStateChange](#accessibilityoffseniormodestatechange) to cancel the listener before the object's lifecycle ends. Otherwise, a crash may occur.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+**Parameters**
+
+| Name  | Type                   | Mandatory| Description                                                        |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | Yes  | Callback function. The value **true** indicates that the senior mode is enabled, and the value **false** indicates that the senior mode is disabled.|
+
+**Example**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe senior mode state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onSeniorModeStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## accessibility.off('accessibilityStateChange')
 
 off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
@@ -1275,7 +1364,7 @@ Unsubscribes from the state changes of the accessibility application. This API u
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | Yes  | Event type, which is set to **'accessibilityStateChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. The value must be the same as the value of **callback** in **accessibility.on('accessibilityStateChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. It must be consistent with the callback used in [accessibility.on('accessibilityStateChange')](#accessibilityonaccessibilitystatechange). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 
@@ -1312,7 +1401,7 @@ Unsubscribes from the state changes in touch guide mode. This API uses an asynch
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | Yes  | Event type, which is set to **'touchGuideStateChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. The value must be the same as the value of **callback** in **accessibility.on('touchGuideStateChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. It must be consistent with the callback used in [accessibility.on('touchGuideStateChange')](#accessibilityontouchguidestatechange). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 
@@ -1349,7 +1438,7 @@ Unsubscribes from the state changes of the screen reader. This API uses an async
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | Yes  | Event type, which is set to **'screenReaderStateChange'** in this API.|
-| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. The value must be the same as the value of **callback** in **accessibility.on('screenReaderStateChange')**. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. It must be consistent with the callback used in [accessibility.on('screenReaderStateChange')](#accessibilityonscreenreaderstatechange18). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Error codes**
 
@@ -1438,7 +1527,7 @@ Unsubscribes from the state changes in animation reduction mode. This API uses a
 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. The value must be the same as the value of callback in [accessibility.onAnimationReduceStateChange](#accessibilityonanimationreducestatechange23). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;boolean&gt; | No  | Callback function. Cancels the event response of a specified callback object. The value must be the same as the value of callback in [accessibility.onAnimationReduceStateChange](#accessibilityonanimationreducestatechange23). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Example**
 
@@ -1482,7 +1571,7 @@ Unsubscribes from the state changes in flash alerts mode. This API uses an async
 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. The value must be the same as the value of callback in [accessibility.onFlashReminderStateChange](#accessibilityonflashreminderstatechange23). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;boolean&gt; | No  | Callback function. Cancels the event response of a specified callback object. The value must be the same as the value of callback in [accessibility.onFlashReminderStateChange](#accessibilityonflashreminderstatechange23). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Example**
 
@@ -1526,7 +1615,7 @@ Unsubscribes from the state changes in mono audio mode. This API uses an asynchr
 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | No  | Callback used to unregister. The value must be the same as the value of callback in [accessibility.onAudioMonoStateChange](#accessibilityonaudiomonostatechange23). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | Callback&lt;boolean&gt; | No  | Callback function. Cancels the event response of a specified callback object. The value must be the same as the value of callback in [accessibility.onAudioMonoStateChange](#accessibilityonaudiomonostatechange23). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Example**
 
@@ -1547,6 +1636,52 @@ struct Index {
 
   aboutToDisappear(): void {
     accessibility.offAudioMonoStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.offSeniorModeStateChange
+
+offSeniorModeStateChange(callback?: Callback&lt;boolean&gt;): void
+
+Cancels listening for the senior mode change event. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                        |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | No  | Callback function. The value **true** indicates that the senior mode is enabled, and the value **false** indicates that the senior mode is disabled. Cancels the event response of a specified callback object. It must be consistent with the callback used in [accessibility.onSeniorModeStateChange](#accessibilityonseniormodestatechange). If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+
+**Example**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe senior mode state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onSeniorModeStateChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.offSeniorModeStateChange(this.callback);
   }
 
   build() {
@@ -1994,6 +2129,56 @@ struct Index {
 }
 ```
 
+## accessibility.isSeniorModeEnabled
+
+isSeniorModeEnabled(): Promise&lt;boolean&gt;
+
+Checks whether the senior mode is enabled. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+**Return value**
+
+| Type                  | Description                                                        |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the senior mode is enabled, and the value **false** indicates that the senior mode is disabled.|
+
+**Error codes**
+
+For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+
+| ID  | Error Message                                    |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. |
+
+**Example**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    accessibility.isSeniorModeEnabled().then((data: boolean) => {
+      console.info(`success data:isSeniorModeEnabled : ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to call isSeniorModeEnabled, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## accessibility.sendEvent<sup>(deprecated)</sup>
 
 sendEvent(event: EventInfo): Promise&lt;void&gt;
@@ -2031,7 +2216,7 @@ let eventInfo: accessibility.EventInfo = ({
 });
 
 accessibility.sendEvent(eventInfo).then(() => {
-  console.info(`Succeeded in send event,eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to sendEvent, Code is ${err.code}, message is ${err.message}`);
 });
@@ -2073,7 +2258,7 @@ accessibility.sendEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to sendEvent, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in sendEvent, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -2122,7 +2307,7 @@ let eventInfo: accessibility.EventInfo = ({
 });
 
 accessibility.sendAccessibilityEvent(eventInfo).then(() => {
-  console.info(`Succeeded in send event,eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to send event , Code is ${err.code}, message is ${err.message}`);
 });
@@ -2172,7 +2357,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -2199,7 +2384,7 @@ let eventInfo: accessibility.EventInfo = ({
   type: 'requestFocusForAccessibility',
   bundleName: 'com.example.MyApplication',
   triggerAction: 'common',
-  customId: 'click' // ID of the component to be focused.
+  customId: 'click' // ID attribute value of the component to be focused.
 });
 
 accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
@@ -2207,7 +2392,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -2229,7 +2414,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
