@@ -11,6 +11,8 @@
 
 > **说明**：
 >
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
@@ -23,7 +25,9 @@ import { pointer } from '@kit.InputKit';
 
 ## pointer.setPointerSpeed
 
-setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置鼠标移动速度，使用AsyncCallback异步方式返回结果。
 
@@ -31,11 +35,15 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed    | number                    | 是    | 鼠标移动速度，范围1-20，默认为10。   |
+| speed    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标移动速度成功时，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -49,6 +57,8 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -79,9 +89,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标指针速度
+            pointer.setPointerSpeed(5, (error:  BusinessError<void>|null, info: undefined) => {
+              if (error) {
+                console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting pointer speed.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerSpeed
 
-setPointerSpeed(speed: number): Promise&lt;void&gt;
+ArkTS-Dyn: setPointerSpeed(speed: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 设置鼠标移动速度，使用Promise异步回调。
 
@@ -89,11 +134,15 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。 |
 
 **返回值**：
 
@@ -112,6 +161,8 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -140,9 +191,40 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标指针速度
+            pointer.setPointerSpeed(5).then(() => {
+              console.info(`Succeeded in setting pointer speed.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerSpeedSync<sup>10+</sup>
 
-setPointerSpeedSync(speed: number): void
+ArkTS-Dyn: setPointerSpeedSync(speed: number): void
+
+ArkTS-Sta: setPointerSpeedSync(speed: int): void
 
 使用同步方式设置鼠标移动速度。
 
@@ -150,11 +232,15 @@ setPointerSpeedSync(speed: number): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。 |
 
 **错误码**：
 
@@ -166,6 +252,8 @@ setPointerSpeedSync(speed: number): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -189,9 +277,37 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+           pointer.setPointerSpeedSync(5);
+            console.info(`Succeeded in setting pointer speed.`);
+          } catch (error) {
+            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerSpeed
 
-getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 获取鼠标移动速度，使用AsyncCallback异步方式返回结果。
 
@@ -199,11 +315,15 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br> ArkTS-Sta: AsyncCallback&lt;int&gt;| 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度；否则为错误对象。 |
 
 **错误码**：
 
@@ -216,6 +336,8 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -246,9 +368,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标指针速度
+            pointer.getPointerSpeed((error: BusinessError<void>|null, speed: int|undefined) => {
+              if (error) {
+                console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerSpeed
 
-getPointerSpeed(): Promise&lt;number&gt;
+ArkTS-Dyn: getPointerSpeed(): Promise&lt;number&gt;
+
+ArkTS-Sta: getPointerSpeed(): Promise&lt;int&gt;
 
 获取当前鼠标移动速度，使用Promise异步回调。
 
@@ -256,11 +413,15 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标移动速度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，异步返回鼠标移动速度。 |
 
 **错误码**：
 
@@ -271,6 +432,8 @@ getPointerSpeed(): Promise&lt;number&gt;
 | 202  | Permission denied, non-system app called system api. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -299,9 +462,40 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标指针速度
+            pointer.getPointerSpeed().then((speed: int) => {
+              console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerSpeedSync<sup>10+</sup>
 
-getPointerSpeedSync(): number
+ArkTS-Dyn: getPointerSpeedSync(): number
+
+ArkTS-Sta: getPointerSpeedSync(): int
 
 使用同步方式获取当前鼠标移动速度。
 
@@ -309,11 +503,15 @@ getPointerSpeedSync(): number
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 返回鼠标移动速度。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度。 |
 
 **错误码**：
 
@@ -326,8 +524,36 @@ getPointerSpeedSync(): number
 
 **示例**：
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let speed = pointer.getPointerSpeedSync();
+            console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
+          } catch (error) {
+            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -358,6 +584,10 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
@@ -375,6 +605,8 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -405,6 +637,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标悬停滚动状态
+            pointer.setHoverScrollState(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting mouse hover scroll.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setHoverScrollState<sup>10+</sup>
 
 setHoverScrollState(state: boolean): Promise&lt;void&gt;
@@ -414,6 +679,10 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -437,6 +706,8 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -465,6 +736,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标悬停滚动状态
+            pointer.setHoverScrollState(true).then(() => {
+              console.info(`Succeeded in setting mouse hover scroll.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getHoverScrollState<sup>10+</sup>
 
 getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
@@ -474,6 +773,10 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -491,6 +794,8 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -521,6 +826,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标悬停滚动状态
+            pointer.getHoverScrollState((error: BusinessError | null, state: boolean | undefined) => {
+              console.info(`Succeeded in getting mouse hover scroll, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getHoverScrollState<sup>10+</sup>
 
 getHoverScrollState(): Promise&lt;boolean&gt;
@@ -530,6 +863,10 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -547,6 +884,8 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -575,6 +914,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标悬停滚动状态
+            pointer.getHoverScrollState().then((state: boolean) => {
+              console.info(`Succeeded in getting mouse hover scroll, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setMousePrimaryButton<sup>10+</sup>
 
 setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt;): void
@@ -584,6 +951,10 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -602,6 +973,8 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -632,6 +1005,38 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标主键
+            pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting mouse primary button.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setMousePrimaryButton<sup>10+</sup>
 
 setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
@@ -641,6 +1046,10 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -664,6 +1073,8 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -692,6 +1103,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标主键
+            pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
+              console.info(`Succeeded in setting mouse primary button.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getMousePrimaryButton<sup>10+</sup>
 
 getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
@@ -701,6 +1140,10 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -718,6 +1161,8 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -748,6 +1193,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标主键
+            pointer.getMousePrimaryButton((error: BusinessError<pointer.PrimaryButton>|null, primary: pointer.PrimaryButton|undefined) => {
+              console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getMousePrimaryButton<sup>10+</sup>
 
 getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
@@ -757,6 +1230,10 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -774,6 +1251,8 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -802,6 +1281,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标主键
+            pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
+              console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setMouseScrollRows<sup>10+</sup>
 
 setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
@@ -812,11 +1319,15 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | number                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -829,6 +1340,8 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -859,9 +1372,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标滚动行数
+            pointer.setMouseScrollRows(1, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting mouse scroll rows.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setMouseScrollRows<sup>10+</sup>
 
-setMouseScrollRows(rows: number): Promise&lt;void&gt;
+ArkTS-Dyn: setMouseScrollRows(rows: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
 设置鼠标滚动行数，使用Promise异步回调。
 
@@ -869,11 +1417,15 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | number | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
+| rows  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
 
 **返回值**：
 
@@ -891,6 +1443,8 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -919,9 +1473,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标滚动行数
+            pointer.setMouseScrollRows(20).then(() => {
+              console.info(`Succeeded in setting mouse scroll rows.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getMouseScrollRows<sup>10+</sup>
 
-getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getMouseScrollRows(callback: AsyncCallback&lt;int&gt;): void
 
 获取鼠标滚动行数，使用AsyncCallback异步方式返回结果。
 
@@ -929,11 +1513,15 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是    | 回调函数，当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
 
 **错误码**：
 
@@ -945,6 +1533,8 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -975,9 +1565,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标滚动行数
+            pointer.getMouseScrollRows((error: BusinessError<int>|null, rows: int|undefined) => {
+              if (error) {
+                console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting mouse scroll rows, rows: ${JSON.stringify(rows)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getMouseScrollRows<sup>10+</sup>
 
-getMouseScrollRows(): Promise&lt;number&gt;
+ArkTS-Dyn: getMouseScrollRows(): Promise&lt;number&gt;
+
+ArkTS-Sta: getMouseScrollRows(): Promise&lt;int&gt;
 
 获取当前鼠标滚动行数，使用Promise异步回调。
 
@@ -985,11 +1610,15 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标滚动行数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，异步返回鼠标滚动行数。 |
 
 **错误码**：
 
@@ -1001,6 +1630,8 @@ getMouseScrollRows(): Promise&lt;number&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1029,6 +1660,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标滚动行数
+            pointer.getMouseScrollRows().then((rows: int) => {
+              console.info(`Succeeded in getting mouse scroll rows, rows: ${JSON.stringify(rows)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadScrollSwitch<sup>10+</sup>
 
 setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
@@ -1038,6 +1697,10 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1056,6 +1719,8 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1086,6 +1751,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板滚动开关
+            pointer.setTouchpadScrollSwitch(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad scroll switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadScrollSwitch<sup>10+</sup>
 
 setTouchpadScrollSwitch(state: boolean): Promise\<void>
@@ -1095,6 +1793,10 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1118,6 +1820,8 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1146,6 +1850,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板滚动开关
+            pointer.setTouchpadScrollSwitch(false).then(() => {
+              console.info(`Succeeded in setting touchpad scroll switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadScrollSwitch<sup>10+</sup>
 
 getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
@@ -1155,6 +1887,10 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1172,6 +1908,8 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1202,6 +1940,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板滚动开关
+            pointer.getTouchpadScrollSwitch((error: BusinessError | null, state: boolean | undefined) => {
+              console.info(`Succeeded in getting touchpad scroll switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadScrollSwitch<sup>10+</sup>
 
 getTouchpadScrollSwitch(): Promise\<boolean>
@@ -1211,6 +1977,10 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1228,6 +1998,8 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1256,6 +2028,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板滚动开关
+            pointer.getTouchpadScrollSwitch().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad scroll switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadScrollDirection<sup>10+</sup>
 
 setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
@@ -1265,6 +2065,10 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1283,6 +2087,8 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1313,6 +2119,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板滚动方向
+            pointer.setTouchpadScrollDirection(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad scroll direction.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadScrollDirection<sup>10+</sup>
 
 setTouchpadScrollDirection(state: boolean): Promise\<void>
@@ -1322,6 +2161,10 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1345,6 +2188,8 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1373,6 +2218,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板滚动方向
+            pointer.setTouchpadScrollDirection(false).then(() => {
+              console.info(`Succeeded in setting touchpad scroll direction.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadScrollDirection<sup>10+</sup>
 
 getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
@@ -1382,6 +2255,10 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1399,6 +2276,8 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1425,6 +2304,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板滚动方向
+            pointer.getTouchpadScrollDirection((error: BusinessError | null, state: boolean | undefined) => {
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadScrollDirection<sup>10+</sup>
 
 getTouchpadScrollDirection(): Promise\<boolean>
@@ -1434,6 +2341,10 @@ getTouchpadScrollDirection(): Promise\<boolean>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1451,6 +2362,8 @@ getTouchpadScrollDirection(): Promise\<boolean>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1479,6 +2392,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板滚动方向
+            pointer.getTouchpadScrollDirection().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadTapSwitch<sup>10+</sup>
 
 setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
@@ -1488,6 +2429,10 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1506,6 +2451,8 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1528,7 +2475,40 @@ struct Index {
               console.info(`Succeeded in setting touchpad tap switch.`);
             });
           } catch (error) {
-            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`); 
+            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板点击开关
+            pointer.setTouchpadTapSwitch(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad tap switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1545,6 +2525,10 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1568,6 +2552,8 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1596,6 +2582,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板点击开关
+            pointer.setTouchpadTapSwitch(false).then(() => {
+              console.info(`Succeeded in setting touchpad tap switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadTapSwitch<sup>10+</sup>
 
 getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
@@ -1605,6 +2619,10 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1622,6 +2640,8 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1652,6 +2672,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板点击开关
+            pointer.getTouchpadTapSwitch((error: BusinessError | null, state: boolean | undefined) => {
+              console.info(`Succeeded in getting touchpad tap switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadTapSwitch<sup>10+</sup>
 
 getTouchpadTapSwitch(): Promise\<boolean>
@@ -1661,6 +2709,10 @@ getTouchpadTapSwitch(): Promise\<boolean>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1678,6 +2730,8 @@ getTouchpadTapSwitch(): Promise\<boolean>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1706,9 +2760,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板点击开关
+            pointer.getTouchpadTapSwitch().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad tap switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadPointerSpeed<sup>10+</sup>
 
-setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: setTouchpadPointerSpeed(speed: int, callback: AsyncCallback\<void>): void
 
 设置触控板光标移动速度，使用AsyncCallback异步方式返回结果。
 
@@ -1716,11 +2800,15 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
+| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
 | callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1733,6 +2821,8 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1763,9 +2853,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板指针速度
+            pointer.setTouchpadPointerSpeed(1, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad pointer speed.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadPointerSpeed<sup>10+</sup>
 
-setTouchpadPointerSpeed(speed: number): Promise\<void>
+ArkTS-Dyn: setTouchpadPointerSpeed(speed: number): Promise\<void>
+
+ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
 设置触控板光标移动速度，使用Promise异步回调。
 
@@ -1773,11 +2898,15 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | 是    | speed代表光标移动速度。speed取值范围[1,11]，默认6。    |
+| speed| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | speed代表光标移动速度。speed取值范围[1,11]，默认6。    |
 
 **返回值**：
 
@@ -1795,6 +2924,8 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1823,9 +2954,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板指针速度
+            pointer.setTouchpadPointerSpeed(10).then(() => {
+              console.info(`Succeeded in setting touchpad pointer speed.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadPointerSpeed<sup>10+</sup>
 
-getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: getTouchpadPointerSpeed(callback: AsyncCallback\<int>): void
 
 获取触控板光标移动速度，使用AsyncCallback异步方式返回结果。
 
@@ -1833,11 +2994,15 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<number> | 是    | 回调函数，当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<int> | 是    | 回调函数，当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
 
 **错误码**：
 
@@ -1849,6 +3014,8 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1879,9 +3046,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板指针速度
+            pointer.getTouchpadPointerSpeed((error: BusinessError<int>|null, speed: int|undefined) => {
+              if (error) {
+                console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting touchpad pointer speed, speed: ${JSON.stringify(speed)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadPointerSpeed<sup>10+</sup>
 
-getTouchpadPointerSpeed(): Promise\<number>
+ArkTS-Dyn: getTouchpadPointerSpeed(): Promise\<number>
+
+ArkTS-Sta: getTouchpadPointerSpeed(): Promise\<int>
 
 获取触控板光标移动速度，使用Promise异步回调。
 
@@ -1889,11 +3091,15 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise对象，异步返回触控板光标移动速度。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise对象，异步返回触控板光标移动速度。 |
 
 **错误码**：
 
@@ -1905,6 +3111,8 @@ getTouchpadPointerSpeed(): Promise\<number>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1933,6 +3141,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板指针速度
+            pointer.getTouchpadPointerSpeed().then((speed: int) => {
+              console.info(`Succeeded in getting touchpad pointer speed, speed: ${JSON.stringify(speed)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadPinchSwitch<sup>10+</sup>
 
 setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
@@ -1942,6 +3178,10 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1960,6 +3200,8 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1990,6 +3232,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板捏合开关
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad pinch switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadPinchSwitch<sup>10+</sup>
 
 setTouchpadPinchSwitch(state: boolean): Promise\<void>
@@ -1999,6 +3274,10 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2022,6 +3301,8 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2050,6 +3331,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板捏合开关
+            pointer.setTouchpadPinchSwitch(false).then(() => {
+              console.info(`Succeeded in setting touchpad pinch switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadPinchSwitch<sup>10+</sup>
 
 getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
@@ -2059,6 +3368,10 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2076,6 +3389,8 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2106,6 +3421,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板捏合开关
+            pointer.getTouchpadPinchSwitch((error: BusinessError | null, state: boolean | undefined) => {
+              console.info(`Succeeded in getting touchpad pinch switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadPinchSwitch<sup>10+</sup>
 
 getTouchpadPinchSwitch(): Promise\<boolean>
@@ -2115,6 +3458,10 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -2132,6 +3479,8 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2160,6 +3509,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板捏合开关
+            pointer.getTouchpadPinchSwitch().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad pinch switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadSwipeSwitch<sup>10+</sup>
 
 setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
@@ -2169,6 +3546,10 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2187,6 +3568,8 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2217,6 +3600,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板滑动开关
+            pointer.setTouchpadSwipeSwitch(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad swipe switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadSwipeSwitch<sup>10+</sup>
 
 setTouchpadSwipeSwitch(state: boolean): Promise\<void>
@@ -2226,6 +3642,10 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2249,6 +3669,8 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2277,6 +3699,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板滑动开关
+            pointer.setTouchpadSwipeSwitch(false).then(() => {
+              console.info(`Succeeded in setting touchpad swipe switch.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
 getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
@@ -2286,6 +3736,10 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2303,6 +3757,8 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2329,6 +3785,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板滑动开关
+            pointer.getTouchpadSwipeSwitch((error: BusinessError | null, state: boolean | undefined) => {
+              console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
 getTouchpadSwipeSwitch(): Promise\<boolean>
@@ -2338,6 +3822,10 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -2355,6 +3843,8 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2383,6 +3873,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板滑动开关
+            pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadRightClickType<sup>10+</sup>
 
 setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>): void
@@ -2392,6 +3910,10 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2410,6 +3932,8 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2440,6 +3964,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板右键点击类型
+            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad right click type.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadRightClickType<sup>10+</sup>
 
 setTouchpadRightClickType(type: RightClickType): Promise\<void>
@@ -2449,6 +4006,10 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2472,6 +4033,8 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2500,6 +4063,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板右键点击类型
+            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
+              console.info(`Succeeded in setting touchpad right click type.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadRightClickType<sup>10+</sup>
 
 getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
@@ -2509,6 +4100,10 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2526,6 +4121,8 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2552,6 +4149,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板右键点击类型
+            pointer.getTouchpadRightClickType((error: BusinessError<pointer.RightClickType>|null, type: pointer.RightClickType|undefined) => {
+              console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadRightClickType<sup>10+</sup>
 
 getTouchpadRightClickType(): Promise\<RightClickType>
@@ -2561,6 +4186,10 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -2578,6 +4207,8 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2606,9 +4237,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板右键点击类型
+            pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
+              console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerSize<sup>10+</sup>
 
-setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setPointerSize(size: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置鼠标光标大小，使用AsyncCallback异步方式返回结果。
 
@@ -2616,11 +4277,15 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| size     | number                    | 是    | 鼠标光标大小，范围为[1-7]，默认为1。   |
+| size     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标光标大小，范围为[1-7]，默认为1。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，当设置成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -2633,6 +4298,8 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2663,9 +4330,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标指针大小
+            pointer.setPointerSize(1, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting pointer size.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerSize<sup>10+</sup>
 
-setPointerSize(size: number): Promise&lt;void&gt;
+ArkTS-Dyn: setPointerSize(size: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 
 设置鼠标光标大小，使用Promise异步回调。
 
@@ -2673,11 +4375,15 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
 
 **返回值**：
 
@@ -2695,6 +4401,8 @@ setPointerSize(size: number): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2723,9 +4431,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标指针大小
+            pointer.setPointerSize(3).then(() => {
+              console.info(`Succeeded in setting pointer size.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerSizeSync<sup>10+</sup>
 
-setPointerSizeSync(size: number): void
+ArkTS-Dyn: setPointerSizeSync(size: number): void
+
+ArkTS-Sta: setPointerSizeSync(size: int): void
 
 设置鼠标光标大小，使用同步方式进行设置。
 
@@ -2733,11 +4471,15 @@ setPointerSizeSync(size: number): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
 
 **错误码**：
 
@@ -2749,6 +4491,8 @@ setPointerSizeSync(size: number): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2773,15 +4517,48 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 同步设置鼠标指针大小
+            pointer.setPointerSizeSync(5);
+            console.info(`Succeeded in setting pointer size sync.`);
+          } catch (error) {
+            console.error(`Failed to set pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerSize<sup>10+</sup>
 
-getPointerSize(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getPointerSize(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getPointerSize(callback: AsyncCallback&lt;int&gt;): void
 
 获取鼠标光标大小，使用AsyncCallback异步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2799,6 +4576,8 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2829,9 +4608,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标指针大小
+            pointer.getPointerSize((error: BusinessError<int>|null, size: int|undefined) => {
+              if (error) {
+                console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerSize<sup>10+</sup>
 
-getPointerSize(): Promise&lt;number&gt;
+ArkTS-Dyn: getPointerSize(): Promise&lt;number&gt;
+
+ArkTS-Sta: getPointerSize(): Promise&lt;int&gt;
 
 获取当前鼠标光标大小，使用Promise异步回调。
 
@@ -2839,11 +4653,15 @@ getPointerSize(): Promise&lt;number&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标光标大小。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，异步返回鼠标光标大小。 |
 
 **错误码**：
 
@@ -2855,6 +4673,8 @@ getPointerSize(): Promise&lt;number&gt;
 
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2883,9 +4703,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标指针大小
+            pointer.getPointerSize().then((size: int) => {
+              console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerSizeSync<sup>10+</sup>
 
-getPointerSizeSync(): number
+ArkTS-Dyn: getPointerSizeSync(): number
+
+ArkTS-Sta: getPointerSizeSync(): int
 
 获取鼠标光标大小，使用同步方式返回结果。
 
@@ -2893,11 +4743,15 @@ getPointerSizeSync(): number
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 鼠标光标大小。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 鼠标光标大小。 |
 
 **错误码**：
 
@@ -2909,6 +4763,8 @@ getPointerSizeSync(): number
 
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2932,9 +4788,37 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let pointerSize = pointer.getPointerSizeSync();
+            console.info(`Succeeded in getting pointer size sync, pointerSize: ${JSON.stringify(pointerSize)}.`);
+          } catch (error) {
+            console.error(`Failed to get pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerColor<sup>10+</sup>
 
-setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setPointerColor(color: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置鼠标光标颜色，使用AsyncCallback异步方式返回结果。
 
@@ -2946,11 +4830,15 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| color     | number                    | 是    | 鼠标光标颜色，默认为黑色：0x000000。   |
+| color     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标光标颜色，默认为黑色：0x000000。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，当设置成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -2963,6 +4851,8 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2993,9 +4883,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标指针颜色
+            pointer.setPointerColor(0xF6C800, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting pointer color.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerColor<sup>10+</sup>
 
-setPointerColor(color: number): Promise&lt;void&gt;
+ArkTS-Dyn: setPointerColor(color: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 
 设置鼠标光标颜色，使用Promise异步回调。
 
@@ -3007,11 +4932,15 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| color  | number | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
+| color  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
 
 **返回值**：
 
@@ -3029,6 +4958,8 @@ setPointerColor(color: number): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3057,9 +4988,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置鼠标指针颜色
+            pointer.setPointerColor(0xF6C800).then(() => {
+              console.info(`Succeeded in setting pointer color.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerColorSync<sup>10+</sup>
 
-setPointerColorSync(color: number): void
+ArkTS-Dyn: setPointerColorSync(color: number): void
+
+ArkTS-Sta: setPointerColorSync(color: int): void
 
 设置鼠标光标颜色，使用同步方式进行设置。
 
@@ -3071,11 +5032,15 @@ setPointerColorSync(color: number): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| color  | number | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
+| color  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
 
 **错误码**：
 
@@ -3087,6 +5052,8 @@ setPointerColorSync(color: number): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3111,9 +5078,38 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 同步设置鼠标指针颜色
+            pointer.setPointerColorSync(0xF6C800);
+            console.info(`Succeeded in setting pointer color sync.`);
+          } catch (error) {
+            console.error(`Failed to set pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerColor<sup>10+</sup>
 
-getPointerColor(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getPointerColor(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getPointerColor(callback: AsyncCallback&lt;int&gt;): void
 
 获取鼠标光标颜色，使用AsyncCallback异步方式返回结果。
 
@@ -3121,11 +5117,15 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标颜色成功，err为undefined，number是获取的鼠标光标颜色；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是    | 回调函数。当获取鼠标光标颜色成功，err为undefined，number是获取的鼠标光标颜色；否则为错误对象。 |
 
 **错误码**：
 
@@ -3137,6 +5137,8 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3167,9 +5169,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标指针颜色
+            pointer.getPointerColor((error: BusinessError<int>|null, color: int|undefined) => {
+              if (error) {
+                console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting pointer color, color: ${JSON.stringify(color)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerColor<sup>10+</sup>
 
-getPointerColor(): Promise&lt;number&gt;
+ArkTS-Dyn: getPointerColor(): Promise&lt;number&gt;
+
+ArkTS-Sta: getPointerColor(): Promise&lt;int&gt;
 
 获取当前鼠标光标颜色，使用Promise异步回调。
 
@@ -3177,11 +5214,15 @@ getPointerColor(): Promise&lt;number&gt;
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，异步返回鼠标光标颜色。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，异步返回鼠标光标颜色。 |
 
 **错误码**：
 
@@ -3193,6 +5234,8 @@ getPointerColor(): Promise&lt;number&gt;
 
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3221,9 +5264,39 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取鼠标指针颜色
+            pointer.getPointerColor().then((color: int) => {
+              console.info(`Succeeded in getting pointer color, color: ${JSON.stringify(color)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerColorSync<sup>10+</sup>
 
-getPointerColorSync(): number
+ArkTS-Dyn: getPointerColorSync(): number
+
+ArkTS-Sta: getPointerColorSync(): int
 
 获取鼠标光标颜色，使用同步方式返回结果。
 
@@ -3231,11 +5304,15 @@ getPointerColorSync(): number
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 鼠标光标颜色。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 鼠标光标颜色。 |
 
 **错误码**：
 
@@ -3248,8 +5325,36 @@ getPointerColorSync(): number
 
 **示例**：
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let pointerColor = pointer.getPointerColorSync();
+            console.info(`Succeeded in getting pointer color sync, pointerColor: ${JSON.stringify(pointerColor)}.`);
+          } catch (error) {
+            console.error(`Failed to get pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3280,6 +5385,10 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 **系统接口**: 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
@@ -3297,6 +5406,8 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3327,6 +5438,38 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板双击拖拽状态
+            pointer.setTouchpadDoubleTapAndDragState(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting touchpad double tap and drag state.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setTouchpadDoubleTapAndDragState<sup>14+</sup>
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
@@ -3336,6 +5479,10 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3359,6 +5506,8 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3387,6 +5536,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板双击拖拽状态
+            pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
+              console.info(`Succeeded in setting touchpad double tap and drag state.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadDoubleTapAndDragState<sup>14+</sup>
 
 getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
@@ -3396,6 +5573,10 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3413,6 +5594,8 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3443,6 +5626,38 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板双击拖拽状态
+            pointer.getTouchpadDoubleTapAndDragState((error: BusinessError<void>|null, state: boolean|undefined) => {
+              if (error) {
+                console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              } else {
+                console.info(`Succeeded in getting touchpad double tap and drag state, state: ${JSON.stringify(state)}.`);
+              }
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getTouchpadDoubleTapAndDragState<sup>14+</sup>
 
 getTouchpadDoubleTapAndDragState(): Promise\<boolean>
@@ -3452,6 +5667,10 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统接口**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -3468,6 +5687,8 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3496,6 +5717,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触摸板双击拖拽状态
+            pointer.getTouchpadDoubleTapAndDragState().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad double tap and drag state, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setMouseScrollDirection<sup>24+</sup>
 
 setMouseScrollDirection(inverted: boolean): Promise\<void>
@@ -3507,6 +5756,10 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **参数**：
 
@@ -3531,6 +5784,8 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 | 3800001 | Input service exception.    |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3559,6 +5814,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text("setMouseScrollDirection")
+        .onClick(() => {
+          try {
+            // 设置鼠标滚动方向
+            pointer.setMouseScrollDirection(false).then(() => {
+              console.info(`Succeeded in setting mouse scroll direction.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getMouseScrollDirection<sup>24+</sup>
 
 getMouseScrollDirection(): Promise\<boolean>
@@ -3570,6 +5853,10 @@ getMouseScrollDirection(): Promise\<boolean>
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **返回值**：
 
@@ -3589,6 +5876,8 @@ getMouseScrollDirection(): Promise\<boolean>
 
 **示例**：
 
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3607,6 +5896,34 @@ struct Index {
             }).catch((error: BusinessError) => {
               console.error(`Failed to get mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
+          } catch (error) {
+            console.error(`Failed to get mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text("getMouseScrollDirection")
+        .onClick(() => {
+          try {
+            // 获取鼠标滚动方向
+            pointer.getMouseScrollDirection().then((state: boolean) => {
+              console.info(`Succeeded in getting mouse scroll direction, state: ${JSON.stringify(state)}.`);
+            });
           } catch (error) {
             console.error(`Failed to get mouse scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }

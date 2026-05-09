@@ -11,6 +11,8 @@
 
 >  **说明：**
 > 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -23,9 +25,13 @@ import { IntentionCode } from '@kit.InputKit';
 
 意图事件枚举值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                               | 值   |  说明        |
 | -------------------------------- | ------ | --------------------------- |

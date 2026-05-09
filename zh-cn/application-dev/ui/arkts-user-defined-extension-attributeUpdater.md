@@ -63,6 +63,8 @@ export declare class AttributeUpdater<T> implements AttributeModifier<T> {
 
 组件初始化完成之后，开发者可以通过`AttributeUpdater`实例的`attribute`属性方法，获取到属性对象。通过属性对象直接修改属性，会立即触发组件属性的更新。
 
+ArkTS-Dyn示例：
+
 <!-- @[att_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttModifier.ets) -->
 
 ``` TypeScript
@@ -98,7 +100,46 @@ struct updaterDemo {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+``` TypeScript
+import { Column, Component, Entry, Row, Button, ButtonAttribute } from '@kit.ArkUI';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+
+class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
+  // 首次绑定时触发initializeModifier方法，进行属性初始化
+  initializeModifier(instance: ButtonAttribute): void {
+    instance.backgroundColor('#2787D9')
+      .width('50%')
+      .height(30)
+  }
+}
+
+@Entry
+@Component
+struct updaterDemo {
+  modifier: MyButtonModifier = new MyButtonModifier()
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+          .onClick(() => {
+            // 通过attribute，直接修改组件属性，并立即触发组件属性更新
+            this.modifier.attribute?.backgroundColor('#17A98D').width('30%')
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![AttributeUpdater](figures/AttributeUpdater.gif)
+
 
 
 ## 通过modifier更新组件的构造参数
@@ -149,7 +190,7 @@ struct updaterDemo {
 
 ArkTS-Sta示例：
 
-```ts
+``` TypeScript
 // index.ets
 
 import { Entry, Text, Column, Row, Component, Button, ClickEvent, TextAttribute,Color, TextAlign } from '@ohos.arkui.component';

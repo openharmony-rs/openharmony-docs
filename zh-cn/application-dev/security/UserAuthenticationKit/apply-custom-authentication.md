@@ -148,8 +148,7 @@ applyingCustomAuthentication() {
     // 订阅认证结果
     this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
   } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
+      Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```

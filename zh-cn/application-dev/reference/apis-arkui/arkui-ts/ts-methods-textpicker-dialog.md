@@ -54,6 +54,8 @@ static show(options?: TextPickerDialogOptions)
 
 文本选择器弹窗的参数继承自[TextPickerOptions](ts-basic-components-textpicker.md#textpickeroptions对象说明)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -95,6 +97,8 @@ static show(options?: TextPickerDialogOptions)
 ## TextPickerDialogOptionsExt<sup>20+</sup>对象说明
 
 文本选择器弹窗的参数继承自[TextPickerOptions](ts-basic-components-textpicker.md#textpickeroptions对象说明)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -138,6 +142,8 @@ static show(options?: TextPickerDialogOptions)
 ## TextPickerResult对象说明
 
 文本选择器结果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

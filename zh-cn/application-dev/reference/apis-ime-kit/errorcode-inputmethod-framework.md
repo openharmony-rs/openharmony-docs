@@ -234,7 +234,7 @@ The input method panel does not exist.
 
 **处理步骤**
 
-开发者可以通过接口[createPanel](js-apis-inputmethodengine.md#createpanel10)创建[软键盘类型](js-apis-inputmethodengine.md#paneltype10)的[面板](js-apis-inputmethodengine.md#panel10)。
+开发者可以通过接口[createPanel](js-apis-inputmethodengine.md#createpanel10)创建。
 
 ## 12800013 窗口管理服务错误
 
@@ -434,6 +434,60 @@ Invalid displayId.
 **处理步骤**
 
 开发者可以通过接口[getDisplayId](js-apis-inputmethodengine.md#getdisplayid15)获取当前窗口的所在id。
+
+## 12800023 指定的用户不存在
+
+**错误信息**
+
+The specified user does not exist.
+
+**错误描述**
+
+指定的用户不存在。
+
+**可能原因**
+
+调用带有userId参数的接口时，传入的userId对应的用户不存在。
+
+**处理步骤**
+
+开发者可以通过系统用户管理接口确认用户ID的有效性，或检查传入的userId参数是否正确。
+
+## 12800024 指定的用户未在前台
+
+**错误信息**
+
+The specified user is not in the foreground.
+
+**错误描述**
+
+指定的用户未在前台。
+
+**可能原因**
+
+调用带有userId参数的接口时，传入的userId对应的用户当前未处于前台状态。
+
+**处理步骤**
+
+确保目标用户处于前台状态后再调用相关接口。
+
+## 12800025 跨用户操作被拒绝
+
+**错误信息**
+
+Cross-user operation denied. Only user 0 applications are authorized for this operation.
+
+**错误描述**
+
+跨用户操作被拒绝。只有用户0的应用才有权执行此操作。
+
+**可能原因**
+
+非用户0的应用尝试访问或操作其他用户的数据或功能。
+
+**处理步骤**
+
+确保只有用户0的应用才调用此类跨用户操作接口。
 <!--Del-->
 ## 12800026 输入法系统面板错误
 
