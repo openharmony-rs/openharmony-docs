@@ -2920,7 +2920,7 @@ export default class EntryAbility extends UIAbility {
 
 **长时任务主类型与子类型对照表：**
 
-| [长时任务主类型](#backgroundtaskmode21) | [长时任务子类型](#backgroundtasksubmode21)  |
+| 长时任务主类型[BackgroundTaskMode](#backgroundtaskmode21) | 长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)  |
 | --------------------------------- | ----------------------------------- |
 | MODE_DATA_TRANSFER                | SUBMODE_LIVE_VIEW_NOTIFICATION      |
 | MODE_AUDIO_PLAYBACK               | SUBMODE_NORMAL_NOTIFICATION         |
