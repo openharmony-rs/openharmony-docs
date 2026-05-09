@@ -320,7 +320,7 @@ onRouter(callback: Callback\<object\>)
 
 ### onUninstall
 
-onUninstall(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUninstall(callback:&nbsp;Callback\<FormCallbackInfo>)&nbsp;
 
 卡片卸载回调。
 
@@ -352,7 +352,7 @@ onLoad(callback: VoidCallback)
 
 ### onUpdate<sup>18+</sup>
 
-onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
+onUpdate(callback:&nbsp;Callback\<FormCallbackInfo>](#formcallbackinfo12)&nbsp;
 
 卡片内容更新回调。
 
