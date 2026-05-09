@@ -17,9 +17,11 @@ Queue和[Deque](js-apis-deque.md)相比，Queue在尾部增加元素，在头部
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -33,13 +35,17 @@ import { Queue } from '@kit.ArkTS';
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| length | number | 是 | 否 | Queue的元素个数。 |
+| length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否 | Queue的元素个数。 |
 
 
 ### constructor
@@ -48,9 +54,13 @@ constructor()
 
 Queue的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -62,8 +72,16 @@ Queue的构造函数。
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let queue = new Queue<number | string | Object>();
+```
+
+ArkTS-Sta示例：
+
+```ts
+let queue : Queue<int | string | Object> = new Queue<int | string | Object>();
 ```
 
 
@@ -73,9 +91,13 @@ add(element: T): boolean
 
 在队列尾部插入元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -99,6 +121,8 @@ add(element: T): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 class C1 {
   name: string = ""
@@ -114,15 +138,36 @@ let result3 = queue.add(c);
 console.info("result:", queue.length);  // result: 4
 ```
 
+ArkTS-Sta示例：
+
+```ts
+class C1 {
+  name: string = ""
+  age: string = ""
+}
+let queue : Queue<int | string | C1 | int[]> = new Queue<int | string | C1 | int[]>();
+let result = queue.add("a");
+let result1 = queue.add(1);
+let b: int[] = [1, 2, 3];
+let result2 = queue.add(b);
+let c : C1 = {name : "Dylan", age : "13"};
+let result3 = queue.add(c);
+console.info("result:", queue.length);  // result: 4
+```
+
 ### pop
 
 pop(): T
 
 删除头元素并返回该删除元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -136,12 +181,28 @@ pop(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The pop method cannot be bound. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let queue = new Queue<number>();
+queue.add(2);
+queue.add(4);
+queue.add(5);
+queue.add(2);
+queue.add(4);
+let result = queue.pop();
+console.info("result:", result);  // result: 2
+```
+
+ArkTS-Sta示例：
+
+```ts
+let queue = new Queue<int>();
 queue.add(2);
 queue.add(4);
 queue.add(5);
@@ -157,9 +218,13 @@ getFirst(): T
 
 获取队列的头元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -173,12 +238,27 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getFirst method cannot be bound. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let queue = new Queue<number>();
+queue.add(2);
+queue.add(4);
+queue.add(5);
+queue.add(2);
+let result = queue.getFirst();
+console.info("result:", result);  // result: 2
+```
+
+ArkTS-Sta示例：
+
+```ts
+let queue = new Queue<int>();
 queue.add(2);
 queue.add(4);
 queue.add(5);
@@ -193,9 +273,15 @@ forEach(callbackFn: (value: T, index?: number, Queue?: Queue&lt;T&gt;) => void, 
 
 在遍历Queue实例对象中每一个元素的过程中，对每个元素执行回调函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[forEach](#foreach23)。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -238,15 +324,58 @@ queue.forEach((value: number, index: number): void => {
 // value:4 index:3
 ```
 
+### forEach<sup>23+</sup>
+
+forEach(callbackfn: QueueForEachCb\<T\>): void
+
+通过回调函数来遍历Queue实例对象上的元素以及元素对应的下标。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[forEach](#foreach)。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callbackFn | [QueueForEachCb\<T\>](#queueforeachcbt23) | 是 | 回调函数。 |
+
+**示例：**
+
+```ts
+import { QueueForEachCb } from '@kit.ArkTS';
+
+let queue : Queue<int> = new Queue<int>();
+queue.add(2);
+queue.add(4);
+queue.add(5);
+queue.add(4);
+let queueCb: QueueForEachCb<int> = (value: int, index: int, q: Queue<int>) : void => {
+  console.info("value:" + value, "index:" + index);
+};
+
+queue.forEach(queueCb);
+```
+
 ### [Symbol.iterator]
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
 返回一个迭代器，每一项都是一个JavaScript对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[$_iterator](#_iterator23)。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -291,3 +420,60 @@ while(temp != undefined) {
 // value: 5
 // value: 4
 ```
+
+### $_iterator<sup>23+</sup>
+
+\$_iterator\(): IterableIterator&lt;T&gt;
+
+返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Symbol.iterator](#symboliterator)。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| IterableIterator&lt;T&gt; | 返回一个迭代器。 |
+
+**示例：**
+
+```ts
+let queue : Queue<int> = new Queue<int>();
+queue.add(2);
+queue.add(4);
+queue.add(5);
+queue.add(4);
+
+let iter = queue.$_iterator();
+let temp: IteratorResult<int> = iter.next();
+while(temp.value != undefined) {
+  console.info("value:" + temp.value);
+  temp = iter.next();
+}
+```
+
+### QueueForEachCb\<T\><sup>23+</sup>
+
+type QueueForEachCb\<T\> = (value: T, index: int, queue: Queue\<T\>) => void
+
+Queue中forEach方法的回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | T | 是 | 当前遍历到的元素。 |
+| index | int | 是 | 当前遍历到的下标值。 |
+| queue | [Queue&lt;T&gt;](#queue) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
