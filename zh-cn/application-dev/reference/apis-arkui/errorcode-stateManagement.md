@@ -168,7 +168,7 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **可能原因**
 
-设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptions18)的[areaMode](./js-apis-stateManagement.md#connectoptions18)属性范围不在EL1-EL5内。
+设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptionst18)的[areaMode](./js-apis-stateManagement.md#connectoptionst18)属性范围不在EL1-EL5内。
 
 **处理步骤**
 
