@@ -443,8 +443,7 @@
   - [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20)接口可以监听截屏动作，并能返回触发的截屏事件类型[ScreenshotEventType](../reference/apis-arkui/arkts-apis-window-e.md#screenshoteventtype20)。比如系统截屏成功或中止、滚动截屏开始或结束等。
 
   - 当不需要再对进行屏幕截图进行监听时，可通过对应off接口（[off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20)）关闭监听。
-
-- 长截屏/滚动截屏：用于获取超出单屏范围的连续内容，适用于长页面、长列表等完整截取场景。  
+ 
 
 ```ts
 import { display, screenshot } from '@kit.ArkUI';
