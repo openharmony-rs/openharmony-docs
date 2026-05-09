@@ -477,3 +477,13 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | 否    |  否 | 触屏输入事件。   |
 | useGlobalCoordinate<sup>20+</sup> | boolean | 否    |  是 | 是否使用全局坐标来计算注入的触屏输入事件。默认值为false，取值为false表示使用以指定屏幕左上角为原点的相对坐标系的坐标来计算注入的触屏输入事件。取值为true表示使用以主屏左上角为原点的全局坐标系的坐标来计算注入的触屏输入事件。   |
+
+## KeyEventInfo<sup>23+</sup>
+
+定义用户注入的按键事件信息。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+| 名称        | 类型   | 只读   | 可选   | 说明      |
+| --------- | ------ | ---- | ---- | ------- |
+| keyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |

@@ -2580,9 +2580,15 @@ setRestoreEnabled(enabled: boolean): void
 
 设置UIAbility是否启用备份恢复。
 
+> **说明：**
+>
+> 如果应用设置[removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities标签)为true，备份恢复功能不生效。
+
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：UIAbility备份恢复功能仅在Phone、Tablet、Wearable和TV设备中生效，PC/2in1设备不支持备份恢复功能，Tablet设备开启自由多窗后备份恢复功能也不生效。
 
 **参数：**
 
