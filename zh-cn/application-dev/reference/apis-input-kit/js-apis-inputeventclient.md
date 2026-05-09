@@ -173,7 +173,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -246,7 +246,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -260,7 +260,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **示例：**
 
-参见 [pressKey](#presskey) 示例。
+参见[pressKey](#presskey)示例。
 
 ## MouseController
 
@@ -268,7 +268,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 1. 鼠标按键只能在抬起状态下被按下。
 2. 鼠标按键只能在被按下后才能抬起。
-3. 有效的轴事件序列必须先调用 beginAxis 开始事件，然后调用零次或多次 updateAxis 更新事件，最后调用 endAxis 结束事件。
+3. 有效的轴事件序列必须先调用beginAxis开始事件，然后调用零次或多次updateAxis更新事件，最后调用endAxis结束事件。
 4. 同一时间只能有一个进行中的轴事件序列。
 
 ### moveTo
@@ -301,7 +301,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -370,7 +370,7 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -443,7 +443,7 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -457,7 +457,7 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **示例：**
 
-参见 [pressButton](#pressbutton) 示例。
+参见[pressButton](#pressbutton)示例。
 
 ### beginAxis
 
@@ -488,7 +488,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -566,7 +566,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -580,7 +580,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **示例：**
 
-参见 [beginAxis](#beginaxis) 示例。
+参见[beginAxis](#beginaxis)示例。
 
 ### endAxis
 
@@ -610,7 +610,7 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | promise对象，无返回结果。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码**：
 
@@ -624,4 +624,4 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **示例：**
 
-参见 [beginAxis](#beginaxis) 示例。
+参见[beginAxis](#beginaxis)示例。
