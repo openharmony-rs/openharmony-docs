@@ -37,13 +37,13 @@
 
 - 当业务场景明确需要对隐私窗口进行有效截图时，可以使用[snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18)接口实现。
 
-- 当业务场景明确需要对隐私窗口进行屏幕录制时，需要先调用[setWindowPrivacyMode(false)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)接口取消该窗口的隐私模式，以避免无法获取到对应的窗口画面。
+- 当业务场景明确需要对隐私窗口进行屏幕录制时，需要先调用[setWindowPrivacyMode](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)(false)接口取消该窗口的隐私模式，以避免无法获取到对应的窗口画面。
 
 ### 设置隐私模式
 
-可以使用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)接口设置窗口是否隐私模式。
+可以使用[setWindowPrivacyMode](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)接口设置窗口是否隐私模式。
 
-对于需要防截屏/录屏/投屏的页面，通常是在进入到该页面时就设置为隐私模式（[setWindowPrivacyMode(true)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)），当页面隐藏、销毁，或切换到其他非隐私页面时，应该在对应生命周期中取消隐私模式（[setWindowPrivacyMode(false)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)）。
+对于需要防截屏/录屏/投屏的页面，通常是在进入到该页面时就设置为隐私模式（[setWindowPrivacyMode](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)(true)），当页面隐藏、销毁，或切换到其他非隐私页面时，应该在对应生命周期中取消隐私模式（[setWindowPrivacyMode](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)(false)）。
 
 ## 窗口截图
 
@@ -442,7 +442,7 @@
 
   - [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20)接口可以监听截屏动作，并能返回触发的截屏事件类型[ScreenshotEventType](../reference/apis-arkui/arkts-apis-window-e.md#screenshoteventtype20)。比如系统截屏成功或中止、滚动截屏开始或结束等。
 
-  - 当不需要再对进行屏幕截图进行监听时，可通过对应off接口（[off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20)）关闭监听。
+  - 当不需要再对进行屏幕截图进行监听时，可通过对应off接口（[off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshotappevent20)）关闭监听。
  
 
 ```ts

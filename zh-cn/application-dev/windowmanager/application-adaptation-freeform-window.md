@@ -340,7 +340,7 @@
 如果应用页面底部是固定高度的功能按钮，在计算底部功能按钮位置时，若只用窗口高度减去底部功能按钮高度，则会导致底部功能按钮向下偏移一个标题栏高度的位置，从而出现显示不全的情况。
 
 有以下三种方式解决以上问题：
-- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorheight11)获取，单位为vp。
+- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11)获取，单位为vp。
 
 - 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
 
