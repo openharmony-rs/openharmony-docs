@@ -10,7 +10,7 @@
   - [性能优化概览](performance-overview.md)
   - [应用开发性能优化入门引导](application-performance-optimization-guidance.md)
   - [应用性能优化常见问题解决指导](performance-optimization-practical-guidance.md)
-  - ArkTS高性能编程
+  - ArkTS高性能编程<!--arkts-high-performance-->
     - [高效并发编程](efficient-concurrent-programming.md)
     - [安全和高效地使用N-API开发Native模块](develop-Native-modules-using-NAPI-safely-and-efficiently.md)
     - [多线程能力场景化示例实践](multi_thread_capability.md)
@@ -19,7 +19,7 @@
     - [使用AOT进行性能优化](performance-optimization-using-aot.md)
     - [高负载场景下线程优先级设置防止关键线程被打断](qos-protect-critical-threads.md)
     - [延迟加载Lazy-Import使用指导](Lazy-Import-Instructions.md)
-  - 减少卡顿丢帧
+  - 减少卡顿丢帧<!--reduce-frame-drops-->
     - [正确使用LazyForEach优化](lazyforeach_optimization.md)
     - [组件复用实践](component-recycle.md)
     - [组件复用性能优化指导](component_recycle_case.md)
@@ -39,7 +39,7 @@
     - [图像模糊动效优化：静态模糊与动态模糊的性能对比解析](fuzzy_scene_performance_optimization.md)
     - [复杂绘制场景下使用Native Drawing自绘制能力替代Canvas提升性能](native_drawing_substitute_canvas.md)
     - [应用闪屏问题解决方案](screen_flicker_solution.md)
-  - 提升应用启动和响应速度
+  - 提升应用启动和响应速度<!--improve-speed-->
     - [提升应用冷启动速度](improve-application-cold-start-speed.md)
     - [提升应用响应速度](improve-application-response.md)
     - [Flex布局性能提升使用指导](flex-development-performance-boost.md)
@@ -63,7 +63,7 @@
     - [相机分段式拍照性能提升实践](performance-camera-shot2see.md)
     - [在线视频播放卡顿优化实践](online_video_playback_lags_practice.md)
     - [音画同步最佳实践](audio-video-synchronization.md)
-  - 性能工具
+  - 性能工具<!--performance-tools-->
     - [应用性能分析工具CPU Profiler的使用指导](application-performance-analysis.md)
     - [使用HiDumper命令行工具优化性能](performance-optimization-using-hidumper.md)
     - [使用SmartPerf-Host分析应用性能](performance-optimization-using-smartperf-host.md)
@@ -75,7 +75,7 @@
     - [应用性能问题分析指导](application-performance-guide.md)
     - [页面布局检查器ArkUI Inspector](arkUI-inspector.md)
     - [跨线程序列化耗时点分析](cross-thread-serialization-time-consumption-analysis.md)
-  - 功耗
+  - 功耗<!--power-consumption-->
     - [高效利用HWC的低功耗设计](utilize_hwc_effiently.md)
     - [主动关闭CPU访问窗口缓冲区数据降低功耗](close_CPU_access_window_buffer_data.md)
     - [使用属性动画替换帧动画](using-animation-insteadof-animator.md)
