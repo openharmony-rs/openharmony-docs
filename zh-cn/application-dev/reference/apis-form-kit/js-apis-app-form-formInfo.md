@@ -1,9 +1,9 @@
 # @ohos.app.form.formInfo (formInfo)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @Qian-Win-->
-<!--Designer: @cx983299475-->
-<!--Tester: @mahailong123456-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
