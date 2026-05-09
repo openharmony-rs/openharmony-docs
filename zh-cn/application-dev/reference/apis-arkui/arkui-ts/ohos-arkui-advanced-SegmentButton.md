@@ -95,6 +95,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButton的动效发生改变。<br/>对于胶囊类多选按钮（即type为"capsule"且multiply为true），该属性不生效。<br/>默认值：无材质效果。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### constructor
 
@@ -210,6 +211,7 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButton的动效发生改变。<br/>对于胶囊类多选按钮（即type为"capsule"且multiply为true），该属性不生效。<br/>默认值：无材质效果。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## BorderRadiusMode<sup>20+</sup>
 
@@ -1304,3 +1306,50 @@ struct Index12 {
 ```
 
 ![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
+
+### 示例8（设置背景板材质）
+以下示例通过backgroundSystemMaterial属性，为分段按钮设置了半透明的背景板材质。
+
+从API版本26.0.0开始，[SegmentButtonOptions](#segmentbuttonoptions)和[CommonSegmentButtonOptions](#commonsegmentbuttonoptions)中新增backgroundSystemMaterial属性。
+
+```ts
+import {
+  ItemRestriction,
+  SegmentButton,
+  SegmentButtonOptions,
+  SegmentButtonTextItem,
+  uiMaterial
+} from '@kit.ArkUI';
+
+
+@Entry
+@Component
+struct IndexCl {
+  @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
+      text: '页签按钮3'
+    }] as ItemRestriction<SegmentButtonTextItem>,
+    backgroundColor: Color.Transparent,
+    // 设置为半透明材质
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+  });
+
+  @State tabSelectedIndexes: number[] = [2];
+
+  build() {
+    Stack() {
+      // 作为分段按钮的背景，其中('app.media.pic')需要替换为开发者所需的图片
+      Image($r('app.media.pic'))
+      Column() {
+        SegmentButton({
+          options: this.tabOptions,
+          selectedIndexes: $tabSelectedIndexes
+        })
+      }
+    }
+  }
+}
+
+```
+
+![segmentbutton-sample7](figures/segmentbutton-sample7.png)

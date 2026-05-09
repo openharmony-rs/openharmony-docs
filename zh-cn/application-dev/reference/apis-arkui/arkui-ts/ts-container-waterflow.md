@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 瀑布流容器，由“行”和“列”分割的单元格所组成，通过容器自身的排列规则，将不同大小的“项目”自上而下，如瀑布般紧密布局。
@@ -1253,7 +1253,9 @@ struct WaterFlowDemo {
             console.info('update:' + result);
           })
           .margin({ top: 10, left: 20 })
+      }.margin({ bottom: 20 })
 
+      Row() {
         Button('delete')
           .height('5%')
           .onClick(() => {
@@ -1289,7 +1291,7 @@ struct WaterFlowDemo {
             console.info('count:' + this.sections.length());
           })
           .margin({ top: 10, left: 20 })
-      }.margin({ bottom: 20 })
+      }
 
       WaterFlow({ scroller: this.scroller, sections: this.sections }) {
         LazyForEach(this.dataSource, (item: number) => {

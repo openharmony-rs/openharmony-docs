@@ -22,7 +22,7 @@ With support for development in [blend mode](../../graphics/complex-drawing-effe
 
 | Name | Description|
 | ------- | -------- |
-| ContentSlot(content: Content) | Container component for hybrid development. The **Content** object acts as the manager for **ContentSlot**, providing native-side APIs to register tree attachment and detachment callbacks and manage child components.|
+| ContentSlot(content: Content) | Container component for hybrid development. The **Content** object acts as the manager for **ContentSlot**, providing native-side APIs to register  attachment and detachment callbacks and manage child components.|
 
 ```ts
 abstract class Content {
@@ -42,7 +42,7 @@ abstract class Content {
 |[OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_getnodecontenthandle)|Obtains the **Content** object that triggers the attach and detach events.|
 |[OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_setuserdata)|Sets the custom attributes on **Content**.|
 |[OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_getuserdata)|Obtains the custom attributes from **Content**.|
-|typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} [ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Enumerates the event types on **Content**.|
+|typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} [ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Enumerates the attach and detach event types on **Content**.|
 
 ## Development and Implementation
 
@@ -148,7 +148,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 ### Native-side API Usage
 
-- **Registering Tree Events and Obtaining the Corresponding Content Object**
+- **Registering Attach and Detach Events and Obtaining the Corresponding Content Object**
 
   <!-- @[contentslot_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
 

@@ -5465,7 +5465,7 @@ Allows a system application to use the running capability framework.
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: phones | tablets | TVs | wearables
 
 **Valid since**: 23
 
@@ -5769,6 +5769,20 @@ Allows an application to deliver, control, and query tasks through the asset cac
 
 **Since**: 24
 
+## ohos.permission.MANAGE_AOD
+
+Allows an application to trigger the Always On Display (AOD) mode or exit it, and manage the AOD status.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 Allows an application and a service to access the device-side model deployment management.
@@ -5782,6 +5796,48 @@ Allows an application and a service to access the device-side model deployment m
 **Supported devices**: general devices
 
 **Since**: 24
+
+## ohos.permission.REVOKE_FILE_ACCESS_PERSIST
+
+Allows an application to revoke persistent file authorizations for specified applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_SHARED_FILE
+
+Allows an application to obtain and access shared files.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Valid since**: 26.0.0
+
+## ohos.permission.GET_FILE_ACCESS_PERSIST
+
+Allows an application to retrieve persistent file authorization records for specified applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.ACCESS_SUPPORT_FEEDBACK
 
@@ -5836,5 +5892,103 @@ Allows an application to enable the outdoor exploration service to provide the a
 **Enable via ACL**: true
 
 **Supported devices**: phones
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_INTIMATE_RELATION_INFO
+
+Allows an application to obtain information about close contacts and open the close contact page.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.QUERY_TOOL_PERMISSIONS
+
+Allows a system application to query the permissions required for running a CLI or skill.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+Allows a system application to set and query the permissions required for running a specified CLI or skill.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
+
+Allows an application to use the device interconnectivity capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 24
+
+## ohos.permission.GET_TICKET_INFO
+
+Allows a system application to generate integrity protection credentials for sensitive messages.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
+## ohos.permission.QUERY_CLI_TOOL
+
+Allows a system application to query CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.EXEC_CLI_TOOL
+
+Allows a system application to run CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0

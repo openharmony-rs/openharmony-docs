@@ -58,7 +58,7 @@ Called when a DriverExtensionAbility is created to initialize the service logic.
 
   class DriverExt extends DriverExtensionAbility {
     onInit(want : Want) {
-      console.info('onInit, want: ${want.abilityName}');
+      console.info(`onInit, want: ${want.abilityName}`);
     }
   }
   ```
@@ -123,7 +123,7 @@ Called following [onCreate](../apis-ability-kit/js-apis-app-ability-abilityStage
   }
   class DriverExt extends DriverExtensionAbility {
     onConnect(want : Want) {
-      console.info('onConnect , want: ${want.abilityName}');
+      console.info(`onConnect , want: ${want.abilityName}`);
       return new StubTest('test');
     }
   }
@@ -178,7 +178,7 @@ Called when a client is disconnected from this **DriverExtensionAbility**.
 
 | Type| Description|
 | -------- | -------- |
-| void \| Promise\<void> | The return value is **void** or a **Promise** object returns no value.|
+| void \| Promise\<void> | Empty value, or promise used to return the value.|
 
 **Example**
 
@@ -188,7 +188,7 @@ Called when a client is disconnected from this **DriverExtensionAbility**.
 
   class DriverExt extends DriverExtensionAbility {
     onDisconnect(want : Want) {
-      console.info('onDisconnect, want: ${want.abilityName}');
+      console.info(`onDisconnect, want: ${want.abilityName}`);
     }
   }
   ```
@@ -201,7 +201,7 @@ After the **onDisconnect** lifecycle callback is executed, the application may e
 
   class DriverExt extends DriverExtensionAbility {
     async onDisconnect(want : Want) {
-      console.info('onDisconnect, want: ${want.abilityName}');
+      console.info(`onDisconnect, want: ${want.abilityName}`);
       // Call the asynchronous function.
     }
   }

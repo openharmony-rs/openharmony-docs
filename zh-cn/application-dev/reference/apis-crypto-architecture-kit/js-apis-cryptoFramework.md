@@ -2534,7 +2534,7 @@ try {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
 
-获取指定数据生成非对称密钥。使用callback异步回调。详情请看下方**密钥转换说明**。
+解析密钥数据，生成非对称密钥对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2589,7 +2589,7 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
-获取指定数据生成非对称密钥。使用Promise异步回调。详情请看下方**密钥转换说明**。
+解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2649,7 +2649,7 @@ keyGenPromise.then(keyPair => {
 
 convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
-同步获取指定数据生成非对称密钥。详情请看下方**密钥转换说明**。
+解析密钥数据，生成非对称密钥对象。使用同步方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2706,18 +2706,11 @@ try {
 }
 ```
 
-**密钥转换说明**
-
-1. 非对称密钥（RSA、ECC、DSA）的公钥和私钥调用 getEncoded() 方法后，分别返回 X.509 格式的二进制数据和 PKCS#8 格式的二进制数据。对于 ECC 私钥，返回的是 RFC5915 定义的格式。这些数据可用于跨应用传输或持久化存储。
-2. 当调用convertKey方法将外来二进制数据转换为算法库非对称密钥对象时，公钥应符合ASN.1语法、X.509规范和DER编码格式；私钥应符合ASN.1语法、PKCS#8规范和DER编码格式。
-3. convertKey方法中，公钥和私钥二进制数据非必选项，可单独传入公钥或私钥的数据，生成对应只包含公钥或私钥的KeyPair对象。
-4. convertKey或convertKeySync方法将外来二进制数据转换为算法库非对称密钥对象时，不会校验生成的密钥对象的规格与创建非对称密钥生成器时指定的密钥规格是否一致。
-
 ### convertPemKey<sup>12+</sup>
 
 convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
-获取指定数据生成非对称密钥。使用Promise异步回调。
+解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
 
 > **说明：**
 > 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
@@ -2795,7 +2788,7 @@ async function TestConvertPemKeyByPromise() {
 
 convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
 
-获取指定数据生成非对称密钥。支持加密的私钥，同步传入私钥口令解密私钥。使用Promise异步回调。
+解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。使用Promise异步回调。
 
 > **说明：**
 > 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
@@ -2950,7 +2943,7 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-获取指定数据生成非对称密钥。支持加密的私钥，同步传入私钥口令解密私钥。使用同步方法。
+解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。使用同步方法。
 
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey18)接口说明。
@@ -4465,7 +4458,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
-**以AES GCM模式加密为例：**
+**示例：**
 
 更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
@@ -4570,7 +4563,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                      |
 
-**以AES GCM模式加密为例：**
+**示例：**
 
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
@@ -4663,7 +4656,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 | 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
-**以AES GCM模式加密为例：**
+**示例：**
 
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
@@ -5089,12 +5082,6 @@ updateSync(data: DataBlob): void
 | ------ | -------- | ---- | ---------- |
 | data   | [DataBlob](#datablob)  | 是   | 传入的消息。 |
 
-**返回值：**
-
-| 类型           | 说明          |
-| -------------- | ------------- |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
@@ -5205,7 +5192,7 @@ signSync(data: DataBlob | null): DataBlob
 | 17620002 | failed to convert parameters between arkts and c.         |
 | 17630001 | crypto operation error. |
 
-**callback示例：**
+**示例：**
 
 此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
@@ -5269,7 +5256,7 @@ function signByCallback() {
 }
 ```
 
-**Promise示例：**
+**示例：**
 
 此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
@@ -5335,7 +5322,7 @@ async function signByPromise() {
 }
 ```
 
-**Sync示例：**
+**示例：**
 
 此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
@@ -5649,12 +5636,6 @@ initSync(pubKey: PubKey): void
 | ------ | ---- | ---- | ---------------------------- |
 | pubKey | [PubKey](#pubkey)  | 是   | 公钥对象，用于Verify的初始化。 |
 
-**返回值：**
-
-| 类型           | 说明          |
-| -------------- | ------------- |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
@@ -5779,12 +5760,6 @@ updateSync(data: DataBlob): void
 | ------ | -------- | ---- | ---------- |
 | data   | [DataBlob](#datablob)  | 是   | 传入的消息。 |
 
-**返回值：**
-
-| 类型           | 说明          |
-| -------------- | ------------- |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
@@ -5898,7 +5873,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 | 17620002 | failed to convert parameters between arkts and c.         |
 | 17630001 | crypto operation error. |
 
-**callback示例：**
+**示例：**
 
 此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
@@ -5972,7 +5947,7 @@ function verifyByCallback() {
 }
 ```
 
-**Promise示例：**
+**示例：**
 
 更多示例请参见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
@@ -6048,7 +6023,7 @@ async function verifyByPromise() {
 }
 ```
 
-**Sync示例：**
+**示例：**
 
 此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
@@ -6533,7 +6508,7 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 | 17620002 | failed to convert parameters between arkts and c.         |
 | 17630001 | crypto operation error. |
 
-**callback示例：**
+**示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6552,7 +6527,7 @@ async function testGenerateSecret() {
 }
 ```
 
-**Promise示例：**
+**示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6571,7 +6546,7 @@ async function testGenerateSecret() {
 }
 ```
 
-**Sync示例：**
+**示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6833,6 +6808,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -6844,6 +6821,90 @@ async function mdByPromise() {
   console.info('[Promise]: MD result: ' + mdOutput.data);
   console.info('[Promise]: MD len: ' + md.getMdLength());
 }
+```
+
+JS示例：
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="MdTest">Md异步测试</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+
+let plainText = "123456";
+
+function mdTest() {
+    let inData = StringToUint8Array(plainText);
+    let md = cryptoFramework.createMd('SHA256');
+    console.info("createMd " + typeof md);
+
+    md.update({data: inData}, function (finishErr) {
+        if (finishErr) {
+            console.error("Digest update failed. Code:" + finishErr.code + " : " + finishErr.message);
+        } else {
+            console.info("Digest update successfully.");
+        }
+    })
+
+    md.digest(function (finishErr, digestOutput){
+        if (finishErr) {
+            console.error("Digest failed. Code:" + finishErr.code + " : " + finishErr.message);
+        } else {
+            console.info("Digest successfully:" + digestOutput);
+        }
+    })
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    MdTest() {
+        mdTest();
+    }
+};
 ```
 
 ### digestSync<sup>12+</sup>
@@ -6875,6 +6936,8 @@ digestSync(): DataBlob
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -6886,6 +6949,77 @@ async function mdBySync() {
   console.info('[Sync]: MD result: ' + mdOutput.data);
   console.info('[Sync]: MD len: ' + md.getMdLength());
 }
+```
+
+JS示例：
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="MdTestSync">Md同步测试</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+
+function mdTestSync() {
+    let mdAlgName = 'SHA256';
+    let message = 'mdTestMessage';
+    let md = cryptoFramework.createMd(mdAlgName);
+    md.updateSync({ data: StringToUint8Array(message) });
+    let mdResult = md.digestSync();
+    console.info('Digest successfully. result:' + mdResult.data);
+    let mdLen = md.getMdLength();
+    console.info("Digest successfully. md len: " + mdLen);
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    MdTestSync() {
+        mdTestSync();
+    }
+};
 ```
 
 ### getMdLength
@@ -7591,6 +7725,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7602,6 +7738,72 @@ promiseGenerateRand.then(randData => {
 }).catch((error: BusinessError) => {
   console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
 });
+```
+
+JS示例：
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="RandTest">Rand异步测试</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function randTest() {
+    let rand = cryptoFramework.createRandom();
+    let seed = new Uint8Array([1, 2, 3]);
+    rand.setSeed({ data : seed });
+
+    rand.generateRandom(12, function (finishErr, randData){
+        if (finishErr) {
+            console.error("GenerateRandom failed. Code:" + finishErr.code + " : " + finishErr.message);
+        } else {
+            console.info("GenerateRandom successfully:" + randData);
+        }
+    })
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    RandTest() {
+        randTest();
+    }
+};
 ```
 
 ### generateRandomSync<sup>10+</sup>
@@ -7640,6 +7842,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7656,6 +7860,73 @@ try {
   let e: BusinessError = error as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
+```
+
+JS示例：
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="RandTestSync">Rand同步测试</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function randTestSync() {
+    let rand = cryptoFramework.createRandom();
+    let randLen = 24;
+    try {
+        let randData = rand.generateRandomSync(randLen);
+        if (randData != null) {
+            console.info("GenerateRandom successfully: " + randData.data);
+        } else {
+            console.error("GenerateRandom failed!");
+        }
+    } catch (error) {
+        console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
+    }
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    RandTestSync() {
+        randTestSync();
+    }
+};
 ```
 
 ### enableHardwareEntropy<sup>21+</sup>

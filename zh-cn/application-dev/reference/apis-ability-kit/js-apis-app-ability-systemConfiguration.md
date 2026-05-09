@@ -4,7 +4,7 @@
 <!--Owner: @RuiChen_01-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 systemConfiguration模块提供系统环境变化监听回调能力，包括系统深浅色模式、系统语言、系统字体大小缩放比例等变化的回调。
 

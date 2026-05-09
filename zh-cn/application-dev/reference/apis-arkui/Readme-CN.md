@@ -154,6 +154,7 @@
     - 交互事件分发控制<!--event-dispatch-control-->
       - [自定义事件拦截](arkui-ts/ts-universal-attributes-on-touch-intercept.md)
       - [自定义事件分发](arkui-ts/ts-universal-attributes-on-child-touch-test.md)
+      - [全局基础输入事件监听](arkui-ts/ts-inputeventmonitor.md)
     - 无障碍相关<!--accessibility-related-->
       - [无障碍控制操作](arkui-ts/ts-universal-accessibility-event.md)
       - [无障碍悬浮事件](arkui-ts/ts-universal-accessibility-hover-event.md)
@@ -241,6 +242,7 @@
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
       - [工具栏设置](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [节点调测标签](arkui-ts/ts-universal-attributes-inspector-label.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
@@ -292,6 +294,7 @@
     - [WaterFlow](arkui-ts/ts-container-waterflow.md)
     - [FlowItem](arkui-ts/ts-container-flowitem.md)
     - [LazyVGridLayout](arkui-ts/ts-container-lazyvgridlayout.md)
+    - [LazyVWaterFlowLayout](arkui-ts/ts-container-lazyvwaterflowlayout.md)
     - [ScrollBar](arkui-ts/ts-basic-components-scrollbar.md)
     - [Refresh](arkui-ts/ts-container-refresh.md)
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
@@ -499,6 +502,7 @@
     - [FullScreenLaunchComponent](arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md)
     - [GridObjectSortComponent](arkui-ts/ohos-arkui-advanced-GridObjectSortComponent.md)
     - [Popup](arkui-ts/ohos-arkui-advanced-Popup.md)
+    - [PopupV2](arkui-ts/ohos-arkui-advanced-PopupV2.md)
     - [ProgressButton](arkui-ts/ohos-arkui-advanced-ProgressButton.md)
     - [ProgressButtonV2](arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md)
     - [SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)
@@ -514,9 +518,6 @@
     - [ToolBarV2](arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
-    <!--Del-->
-    - [SegmentButton(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
-    - [SegmentButtonV2(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
     <!--DelEnd-->
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
@@ -806,6 +807,7 @@
     - [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md)
     - [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md)
     - [ArkUI_RenderNodeMaskOption](capi-arkui-nativemodule-arkui-rendernodemaskoption.md)
+    - [ArkUI_RenderBlurStyleOption](capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)
     - [ArkUI_RoundRectShapeOption](capi-arkui-nativemodule-arkui-roundrectshapeoption.md)
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)

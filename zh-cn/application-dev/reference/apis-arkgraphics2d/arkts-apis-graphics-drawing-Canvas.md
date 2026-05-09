@@ -1364,6 +1364,65 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## drawGlyphs
+
+drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<common2D.Point\>, positionOffset: number, glyphCount: number, font: Font): void
+
+绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数**
+
+| 参数名          | 类型                                      | 必填  | 说明                                             |
+| ------         | -------------------                      | ---- | -----------                                      |
+| glyphIds       | Array\<number\>                             | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。                                     |
+| glyphIdOffset  | number                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为glyphIds[m]~glyphIds[m+n]的部分。如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。|
+| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                  |
+| positionOffset | number                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效positions数组范围为positions[m]~positions[m+n]的部分。如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。|
+| glyphCount     | number                                      | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容。                               |
+| font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 用于绘图的字体。                                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<number> = [100, 200, 300];
+    let positionArray = new Array<common2D.Point>();
+    const pts1: common2D.Point = { x: 100.0, y: 100.0 };
+    const pts2: common2D.Point = { x: 200.0, y: 100.0 };
+    const pts3: common2D.Point = { x: 150.0, y: 200.0 };
+    positionArray.push(pts1);
+    positionArray.push(pts2);
+    positionArray.push(pts3);
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawSingleCharacter<sup>12+</sup>
 
 drawSingleCharacter(text: string, font: Font, x: number, y: number): void
@@ -2627,6 +2686,40 @@ class DrawingRenderNode extends RenderNode {
     let dst1: common2D.Rect = { left: 200, top: 0, right: 360, bottom: 160 };
     canvas.drawImageLattice(pixelMap, lattice, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
     canvas.drawImageLattice(pixelMap, lattice, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+  }
+}
+```
+
+## isOpaque
+
+isOpaque(): boolean
+
+检查当前绘制到设备的图层是否不透明。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前绘制到设备的图层是否不透明的结果，true表示不透明，false表示透明。 |
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
   }
 }
 ```

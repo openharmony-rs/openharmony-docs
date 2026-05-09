@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
@@ -1377,7 +1377,11 @@ struct ScrollExample {
       Button('fling -3000')
         .height('5%')
         .onClick(() => { // 点击后触发初始速度为-3000vp/s的惯性滚动
-          this.scroller.fling(-3000);
+          try {
+            this.scroller.fling(-3000);
+          } catch (error) {
+            console.error('Failed to execute fling scroll:', error);
+          }
         })
         .margin({ top: 260, left: 20 })
       Button('scroll to bottom 700')
@@ -1675,7 +1679,11 @@ struct ListExample {
     for (let i = 0; i < 10; i++) {
       this.arr.push(i);
     }
-    this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    try {
+      this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
   }
   build() {
     Column() {
@@ -1701,7 +1709,11 @@ struct ListExample {
         PanGesture()
           .onActionUpdate((event: GestureEvent) => {
             if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined && event.fingerList[0].localY != undefined) {
-              this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              try {
+                this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              } catch (error) {
+                console.error('Failed to get item index from scroller:', error);
+              }
               this.itemBackgroundColorArr[this.listIndex] = true;
             }
           })
