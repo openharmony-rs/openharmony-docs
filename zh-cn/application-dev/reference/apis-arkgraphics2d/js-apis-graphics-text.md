@@ -4432,13 +4432,13 @@ struct Index {
   }
 }
 
- function numberToRGBA(colorNum: number): common2D.Color {
- 	   const alpha = (colorNum >>> 24) & 0xFF;
- 	   const red = (colorNum >>> 16) & 0xFF;
- 	   const green = (colorNum >>> 8) & 0xFF;
- 	   const blue = colorNum & 0xFF;
- 	   return { alpha: alpha, red: red, green: green, blue: blue };
- 	 }
+function numberToRGBA(colorNum: number): common2D.Color {
+  const alpha = (colorNum >>> 24) & 0xFF;
+  const red = (colorNum >>> 16) & 0xFF;
+  const green = (colorNum >>> 8) & 0xFF;
+  const blue = colorNum & 0xFF;
+  return { alpha: alpha, red: red, green: green, blue: blue };
+}
 ```
 
 ## TextTab<sup>18+</sup>
