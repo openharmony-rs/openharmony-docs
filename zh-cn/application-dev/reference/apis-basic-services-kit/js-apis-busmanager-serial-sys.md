@@ -46,7 +46,7 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |

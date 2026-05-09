@@ -37,7 +37,7 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
@@ -103,7 +103,7 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -158,7 +158,7 @@ close(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | -------------------- |
@@ -205,7 +205,7 @@ write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -250,7 +250,7 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -289,7 +289,7 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | -------------------- |
@@ -331,7 +331,7 @@ flush(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -372,7 +372,7 @@ drain(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -419,7 +419,7 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -460,7 +460,7 @@ getCts(): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -501,7 +501,7 @@ sendBrk(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[串口通信管理错误码](errorcode-busmanager-serial.md)。
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
