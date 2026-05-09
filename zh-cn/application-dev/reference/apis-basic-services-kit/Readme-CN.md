@@ -158,7 +158,7 @@
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - 错误码<!--basic-services-arkts-errcode-->
   - [USB服务错误码](errorcode-usb.md)
-  - [串口通信错误码](errorcode-busmanager-serial.md)
+  - [串口管理错误码](errorcode-busmanager-serial.md)
   - [RunningLock锁错误码](errorcode-runninglock.md)
   - [zlib子系统错误码](errorcode-zlib.md)
   <!--Del-->
