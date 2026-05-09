@@ -2992,6 +2992,10 @@ print.addPrinter(printerName, uri, ppdName).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | WATERMARK_HANDLE_SUCCESS | 0 | 表示强制水印处理成功。 |
