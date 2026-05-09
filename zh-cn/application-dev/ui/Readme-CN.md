@@ -281,7 +281,7 @@
     - [拖拽事件](ndk-drag-event.md)
     - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
   - [使用动画](ndk-use-animation.md)
-  - 构建布局<!--arkts-build-layout-ndk-->
+  - 使用列表与网格<!--arkts-list-and-grid-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
