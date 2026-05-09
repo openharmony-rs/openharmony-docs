@@ -27,6 +27,8 @@
 
 RelativeContainer()
 
+相对布局组件，用于复杂场景中元素对齐的布局。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。

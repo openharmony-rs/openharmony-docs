@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -306,7 +306,7 @@ Dng图像元数据类，用于存储图像的元数据。
 | antiAliasStrength | number | 是 | 是 | 抗锯齿滤波器强度。 |
 | shadowScale | number | 是 | 是 | 阴影区域缩放因子。 |
 | dngPrivateData | ArrayBuffer | 是 | 是 | 厂商私有数据块。 |
-| makerNoteSafety | number | 是 | 是 | EXIF MakerNote是否安全可保留。0：不安全，1：安全。 |
+| makerNoteSafety | boolean | 是 | 是 | EXIF MakerNote是否安全可保留。true表示安全，false表示不安全。 |
 | calibrationIlluminant1 | number | 是 | 是 | 第一校准光源类型。 |
 | calibrationIlluminant2 | number | 是 | 是 | 第二校准光源类型。 |
 | bestQualityScale | number | 是 | 是 | 最佳画质缩放比例。 |
@@ -410,7 +410,7 @@ ImageReceiver的初始化选项。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |

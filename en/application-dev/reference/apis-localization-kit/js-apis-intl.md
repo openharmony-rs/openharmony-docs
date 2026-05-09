@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 The **intl** module provides basic i18n capabilities, such as time and date formatting, number formatting, and string sorting, through the standard i18n APIs defined in ECMA 402.
 
@@ -141,7 +141,7 @@ let localeID = locale.toString(); // localeID = 'en-GB'
 
 maximize(): Locale
 
-> This API is supported since API version 68 and deprecated since API version 20. You are advised to use [Intl.Locale.maximize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale.maximize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) instead.
 
 Maximizes locale information by supplementing the missing script and country/region information.
 

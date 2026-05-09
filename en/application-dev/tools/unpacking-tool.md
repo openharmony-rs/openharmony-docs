@@ -25,7 +25,7 @@ You can use the JAR package of the unpacking tool to unpack an HAP file by impor
 
 **Example**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -45,7 +45,7 @@ You can use the JAR package of the unpacking tool to unpack an APP file by impor
 
 **Example**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> [--force true]
 ```
 
@@ -64,7 +64,7 @@ You can use the JAR package of the unpacking tool to unpack an HAP file to obtai
 
 **Example**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -84,7 +84,7 @@ You can use the unpacking tool to unpack HAP files based on the architecture typ
 
 **Example**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -105,7 +105,7 @@ You can use the JAR package of the unpacking tool to unpack an HSP file by impor
 
 **Example**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true]
 ```
 
@@ -124,7 +124,7 @@ You can use the unpacking tool to unpack HSP files based on the architecture typ
 
 **Example**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -136,7 +136,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 | --hsp-path | Yes        | NA            | Path of the HSP file.                                            |
 | --out-path | Yes        | NA            | Path of the target files.                                          |
 | --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
-| --libs     | No        | true or false| Whether to unpack HSP files based on the architecture type of the **libs** directory. The value **true** indicates that HSP files are unpacked based on the architecture type.|
+| --libs     | No        | true or false| Whether to unpack HAP files based on the architecture type of the **libs** directory. The value **true** indicates that HAP files are unpacked based on the architecture type.|
 | --cpu-abis | No        | NA            | Architecture type of the **libs** to be unpacked. You can specify multiple architecture types and use commas (,) to separate them. This parameter does not take effect when **--libs** is set to **false**.|
 
 ### Unpacking Commands for APPQF Files
@@ -145,7 +145,7 @@ You can use the JAR package of the unpacking tool to unpack an APPQF file by imp
 
 **Example**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <path> [--force true]
 ```
 
@@ -235,6 +235,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | compileSdkType                 | String  | SDK type used for compiling the application.  | This field is valid only for API version 10 and later.  |
 | labels                         | HashMap\<String, String> | Labels of the application in multiple languages.| NA          |
 | descriptions                   | HashMap\<String, String> | Descriptions of the application in multiple languages.| NA          |
+| buildVersion                    | String  | [buildVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) in the application. | This field is supported since API version 23.         |
 
 ### HapInfo Struct
 
@@ -271,6 +272,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | compressedSize       | long                        | Size of the compressed HAP, in bytes.        | NA              |
 | originalSize         | long                        | Original size of the HAP, in bytes.        | NA             |
 | isModuleAbcCompressed  | boolean                   | Whether the [modules.abc](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build) file is compressed. The value **true** indicates that the file is compressed, and **false** indicates that the opposite.        | NA             |
+<!--RP1--><!--RP1End-->
 
 ### AbilityInfo Struct
 
@@ -454,7 +456,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | -------- | ------------------- |----------------------| ---- |
 | actions  | List\<String>       | Actions of the Want that the ExtensionAbility can receive.| NA   |
 | entities | List\<String>       | Entities of the Want that the ExtensionAbility can receive.  | NA   |
-| domainVerify | boolean       | Whether an ability supports domain verification. The value **true** indicates that the ability supports domain verification, and **false** indicates the opposite.  | NA   |
+| domainVerify | boolean       | Whether an ability supports domain verification. **true** to support, **false** otherwise.  | NA   |
 
 ### UriInfo Struct
 
@@ -474,7 +476,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | ------------------- | -------------------------| ------------------------------------------------------------ |-----------|
 | name                | String                   | Name of the widget.                                             | NA        |
 | type                | String                   | Type of the widget.                                          | NA        |
-| updateEnabled       | boolean                  | Whether the widget supports scheduled refresh. The value **true** indicates that the widget supports scheduled refresh, and **false** indicates the opposite.                                  | NA        |
+| updateEnabled       | boolean                  | Whether the widget supports scheduled refresh. **true** to support, **false** otherwise.                                  | NA        |
 | scheduledUpdateTime | String                   | Scheduled time to update the widget. The value is in 24-hour format and accurate to the minute.      | NA        |
 | updateDuration      | int                      | Interval to update the widget. The unit is 30 minutes. The value is a multiple of 30.  | NA        |
 | supportDimensions   | List\<String>            | Dimensions supported by the widget, which can be **1 * 2**, **2 * 2**, **2 * 4**, or **4 * 4**.  | NA        |

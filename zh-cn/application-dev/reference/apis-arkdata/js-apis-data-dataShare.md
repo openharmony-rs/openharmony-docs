@@ -56,8 +56,8 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`createDataProxyHandle error: code: ${err.code}, message: ${err.message}`);
     });
-  };
-};
+  }
+}
 ```
 
 ## ChangeType<sup>20+</sup>
@@ -202,7 +202,7 @@ const config: dataShare.DataProxyConfig = {
 };
 const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
   if (err) {
-    console.error('err:', err);
+    console.error(`callback error: code: ${err.code}, message: ${err.message}`);
   } else {
     changes.forEach((change) => {
       console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
@@ -257,7 +257,7 @@ const config: dataShare.DataProxyConfig = {
 };
 const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
   if (err) {
-    console.error('err:', err);
+    console.error(`callback error: code: ${err.code}, message: ${err.message}`);
   } else {
     changes.forEach((change) => {
       console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
@@ -306,11 +306,11 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 const newConfigData: dataShare.ProxyData[] = [{
   uri: 'datashareproxy://com.example.app1/config1',
   value: 'Value1',
-  allowList: ['appIdentifier2', 'appIdentifier3'], //此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
+  allowList: ['appIdentifier2', 'appIdentifier3'], // 此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
 }, {
   uri: 'datashareproxy://com.example.app1/config2',
   value: 'Value2',
-  allowList: ['appIdentifier3', 'appIdentifier4'], //此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
+  allowList: ['appIdentifier3', 'appIdentifier4'], // 此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
 }];
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
@@ -320,7 +320,7 @@ dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProx
     console.info(`URI: ${result.uri}, Result: ${result.result}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('Error publishing config:', error);
+  console.error(`Failed to publish config. code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -367,7 +367,7 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
     console.info(`URI: ${result.uri}, Result: ${result.result}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('Error deleting config:', error);
+  console.error(`Failed to delete config. code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -414,6 +414,6 @@ dataProxyHandle.get(urisToGet, config).then((results: dataShare.DataProxyGetResu
     console.info(`URI: ${result.uri}, Result: ${result.result}, AllowList: ${result.allowList}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('Error getting config:', error);
+  console.error(`Failed to get config. code: ${error.code}, message: ${error.message}`);
 });
 ```

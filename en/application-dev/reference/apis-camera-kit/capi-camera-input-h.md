@@ -237,7 +237,7 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 **Description**
 
-Releases a Camera_Input instance.<br>Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close) needs to be called.
+Releases a Camera_Input instance.<br> Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close) needs to be called.
 
 **Since**: 11
 
@@ -270,7 +270,7 @@ Checks whether the physical camera orientation is adjustable in different fold s
 | Name| Description|
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance.|
-| bool* isVariable | Pointer to the check result for whether the physical camera orientation is adjustable. **true** if adjustable, **false** otherwise.|
+| bool* isVariable | Checks whether the physical camera orientation is adjustable in different fold states of the device. **true** if adjustable, **false** otherwise.|
 
 **Returns**
 
@@ -320,7 +320,7 @@ Enables or disables the use of the physical camera orientation.
 | Name| Description|
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance.|
-| bool isUsed | Whether to enable the use of the physical camera orientation. **true** to enable, **false** otherwise.|
+| bool isUsed | Enables or disables the use of the physical camera orientation. **true** to enable, **false** otherwise.|
 
 **Returns**
 

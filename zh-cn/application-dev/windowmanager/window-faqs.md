@@ -732,3 +732,41 @@ try {
 系统的后续API版本中将提供新的字段修正。
 
 应用内创建窗口时需要指明窗口类型，开发者可以直接感知窗口类型，不必要通过此接口主动获取。
+
+## on('windowSizeChange')等监听回调中通过getWindowAvoidArea()接口获取到的避让区域数据不是最新的
+
+**问题现象**
+
+在[on('windowSizeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7)、[on('windowRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowrectchange12)等窗口属性变化监听回调中，通过[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取到的避让区域数据不准确。
+
+**产生原因**
+
+避让区域更新同时依赖窗口位置/尺寸属性的更新和系统界面元素（如状态栏）的位置/尺寸更新，在窗口属性更新回调触发时系统界面元素不一定已完成更新，这个时候通过getWindowAvoidArea()接口不能拿到准确的避让区域。
+
+**解决措施**
+
+通过避让区域专有的监听接口[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)监听避让区域变化，避免在其他窗口属性变化事件回调中通过getWindowAvoidArea()接口主动获取避让区域。
+
+**示例代码**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+// 代码中假设windowClass为已获取的Window实例
+
+// 错误写法：监听windowSizeChange事件主动获取避让区域
+windowClass.on('windowSizeChange', () => {
+  try {
+    const systemAvoidArea = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);  // 获取到的避让区域不准确
+  } catch (exception) {
+    console.error(`Failed to get window avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+});
+
+// 正确写法：监听avoidAreaChange事件
+windowClass.on('avoidAreaChange', (data) => {
+  if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
+    const systemAvoidArea = data.area;  // 回调中的数据总是准确的避让区域
+  }
+});
+```

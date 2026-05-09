@@ -98,7 +98,7 @@ No **NavDestination** component is available for navigation.
 
 **Solution**
 
-Make sure there is a **NavDestiantion** component for navigation.
+Make sure there is a **NavDestination** component for navigation.
 
 ## 106200 Invalid Index Value
 

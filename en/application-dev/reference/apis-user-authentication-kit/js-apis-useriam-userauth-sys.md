@@ -30,7 +30,7 @@ Represents the user authentication parameters.
 | Name          | Type                              | Read-Only| Optional| Description                                                        |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | userId<sup>18+</sup> | number | No  | Yes  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.<br>**System API**: This is a system API.|
-| credentialIdList<sup>23+</sup> | Uint8Array[] | No| Yes|List of credential IDs. If the credential ID list is not empty, the specified credential ID is authenticated.<br>**System API**: This is a system API.|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | No| Yes|List of credential IDs. If the credential ID list is not empty, the specified credential ID is authenticated.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -393,7 +393,7 @@ Queries whether there is any reusable identity authentication result.
 
 | Name | Type  | Mandatory| Description                |
 | ------- | ------ | ---- | -------------------- |
-| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | Yes| Represents the user authentication parameters.|
+| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | Yes| User authentication parameters.|
 
 **Return value**
 

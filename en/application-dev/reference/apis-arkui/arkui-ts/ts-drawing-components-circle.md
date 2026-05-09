@@ -1,12 +1,12 @@
 # Circle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Circle** component is used to draw a circle.
+ The **Circle** component is used to draw a circle.
 
 >  **NOTE**
 >
@@ -15,7 +15,7 @@ The **Circle** component is used to draw a circle.
 
 ## Child Components
 
-Not supported
+None
 
 
 ## APIs
@@ -32,11 +32,11 @@ Circle(value?: CircleOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [CircleOptions](#circleoptions) | No| Options of the circle.<br>The values undefined and null are invalid.|
+| value | [CircleOptions](#circleoptions)| No| Options of the circle.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
 
 ## CircleOptions
 
-This object is used to describe the drawing attributes of the Circle component.
+Describes the options of the circle.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -46,8 +46,8 @@ This object is used to describe the drawing attributes of the Circle component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| width | [Length](ts-types.md#length) | No| Yes| Width. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
-| height | [Length](ts-types.md#length) | No| Yes| Height. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| width | [Length](ts-types.md#length) | No| Yes| Width. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
+| height | [Length](ts-types.md#length) | No| Yes| Height. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ## Attributes
 
@@ -57,7 +57,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 fill(value: ResourceColor)
 
-Sets the color of the fill area. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. If an exception occurs, the default value is used. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
+Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -69,13 +69,13 @@ Sets the color of the fill area. The [attributeModifier](ts-universal-attributes
 
 | Name| Type                                      | Mandatory| Description                                  |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**<br>If the value is undefined, null, NaN, or Infinity, the default value is used.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: [Color](ts-appendix-enums.md#color).Black<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### fillOpacity
 
 fillOpacity(value: number | string | Resource)
 
-Sets the opacity of the fill area. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes.
+Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -87,13 +87,13 @@ Sets the opacity of the fill area. The [attributeModifier](ts-universal-attribut
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value is in number format and ranges from 0.0 to 1.0. If the given value is less than 0.0, the value 0.0 is used. If the given value is greater than 1.0, the value 1.0 is used. Other abnormal values are processed as 1.0.<br>The value is a string that can be converted to a number. The value range is the same as that of number.<br>The value is a string in the system resource or application resource. The value range is the same as that of number.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>For the number type, the value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other invalid value is treated as **1.0**.<br>For the string type, the value is a character string of the number type. The value range is the same as that of the number type.<br>For the Resource type, the value is a character string from the system resource or application resource. The value range is the same as that of the number type.<br>Invalid value **NaN** is treated as **0.0**, while invalid values **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**|
 
 ### stroke
 
 stroke(value: ResourceColor)
 
-Sets the stroke color. You can use the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set this attribute. If this attribute is not set, the default border transparency is 0, indicating that there is no border.
+Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke opacity is **0**, meaning no stroke is displayed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -105,13 +105,13 @@ Sets the stroke color. You can use the [attributeModifier](ts-universal-attribut
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>If the value is undefined or null, the default value is used. If the value is NaN or Infinity, the value Color.Black is used.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Default value: [Color](ts-appendix-enums.md#color).Transparent<br>Invalid values **undefined** and **null** values are treated as the default value, and invalid values **NaN** and **Infinity** are treated as [Color](ts-appendix-enums.md#color).Black.|
 
 ### strokeDashArray
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-Sets stroke dashes. You can use the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set this attribute. The value must be greater than or equal to 0. Invalid values are treated as the default value.
+Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value must be greater than or equal to 0. Invalid values are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -123,13 +123,13 @@ Sets stroke dashes. You can use the [attributeModifier](ts-universal-attributes-
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the circle outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>The values undefined and null are processed as the default values.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the circle outline. Elements alternate between dash length and gap length.<br>Default value: **[]** (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
 strokeDashOffset(value: number | string)
 
-Sets the offset of the start point for drawing the border. You can use the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set this attribute.
+Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -141,13 +141,13 @@ Sets the offset of the start point for drawing the border. You can use the [attr
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>The values undefined and null are processed as the default values. If the value is NaN or Infinity, strokeDashArray becomes invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>Invalid values **undefined** and **null** are treated as the default value. If set to **NaN** or **Infinity**, **strokeDashArray** has no effect.|
 
 ### strokeLineCap
 
 strokeLineCap(value: LineCapStyle)
 
-Sets the cap style of the stroke. You can use the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set this attribute.
+Sets the cap style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -159,13 +159,13 @@ Sets the cap style of the stroke. You can use the [attributeModifier](ts-univers
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>The values undefined, null, NaN, and Infinity are processed as the default values.|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeLineJoin
 
 strokeLineJoin(value: LineJoinStyle)
 
-Sets the join style of the stroke. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. This attribute does not work for the **Circle** component, which does not have corners.
+Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not work for the **Circle** component, which does not have corners.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -177,13 +177,13 @@ Sets the join style of the stroke. The [attributeModifier](ts-universal-attribut
 
 | Name| Type                                               | Mandatory| Description                                              |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeMiterLimit
 
 strokeMiterLimit(value: number | string)
 
-Sets the maximum ratio of the miter length to the border width. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. This attribute does not take effect for the **Circle** component, which does not have a miter join.
+Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not take effect for the **Circle** component, which does not have a miter join.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -195,13 +195,13 @@ Sets the maximum ratio of the miter length to the border width. The [attributeMo
 
 | Name| Type                      | Mandatory| Description                                          |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, stroke becomes invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The **undefined**, **null**, and **NaN** values are invalid and treated as the default value. If set to **Infinity**, **stroke** has no effect.|
 
 ### strokeOpacity
 
 strokeOpacity(value: number | string | Resource)
 
-Sets the stroke opacity. This attribute can be dynamically set through the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) method. The value range of this attribute is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.
+Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -213,13 +213,13 @@ Sets the stroke opacity. This attribute can be dynamically set through the [attr
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>The value range of this attribute is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.<br>Default value: transparency set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>Default value: opacity set by the [stroke](#stroke) API<br>Invalid value **NaN** is treated as **0.0**, while invalid values **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
 strokeWidth(value: Length)
 
-Sets the stroke width. This attribute can be dynamically set through the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) method. If this attribute is of the string type, the percentage is not supported. The percentage is processed as 1 px.
+Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -231,13 +231,13 @@ Sets the stroke width. This attribute can be dynamically set through the [attrib
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>The values undefined, null, and NaN are processed as default values, and Infinity is processed as 0.|
+| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>Invalid values **undefined**, **null**, and **NaN** are treated as the default value, and invalid value **Infinity** is treated as **0**.|
 
 ### antiAlias
 
 antiAlias(value: boolean)
 
-Sets whether to enable the anti-aliasing effect. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can dynamically set attributes.
+Sets whether to enable anti-aliasing. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -249,13 +249,13 @@ Sets whether to enable the anti-aliasing effect. The [attributeModifier](ts-univ
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>- **true**: enabled.<br>- **false**: disabled.<br>Default value: **true**<br>The values undefined and null are processed as default values.|
+| value  | boolean | Yes  | Whether to enable anti-aliasing.<br>- **true**: enable<br>- **false**: disable<br>Default value: **true**<br>Invalid values **undefined** and **null** are treated as **false**.|
 
-## Example
+## Examples
 
-### Example 1: Drawing Rectangles
+### Example 1: Drawing a Circle
 
-This example demonstrates how to use **fillOpacity**, **stroke**, and **strokeDashArray** to set the opacity, stroke color, and stroke dashes of a circle.
+This example demonstrates how to set the opacity, stroke color, and stroke dash style of a circle by setting the **fillOpacity**, **stroke**, and **strokeDashArray** attributes, respectively.
 
 ```ts
 // xxx.ets
@@ -264,9 +264,9 @@ This example demonstrates how to use **fillOpacity**, **stroke**, and **strokeDa
 struct CircleExample {
   build() {
     Column({ space: 10 }) {
-      // Draw a circle whose diameter is 150.
+      // Draw a circle with a diameter of 150.
       Circle({ width: 150, height: 150 })
-      // Draw a circle whose diameter is 150 and stroke color is red. (If the width and height values are different, the smaller value will be used as the diameter.)
+      // Draw a circle with a diameter of 150 and a red-dashed stroke. (If the width and height values are different, the smaller value will be used as the diameter.)
       Circle()
         .width(150)
         .height(200)
@@ -281,9 +281,9 @@ struct CircleExample {
 
 ![en-us_image_0000001219744191](figures/en-us_image_0000001219744191.png)
 
-### Example 2: Using Different Parameter Types for the Width and Height of a Circle
+### Example 2: Drawing a Circle with Different Parameter Types for Width and Height
 
-width and height are used to draw a circle using different length types.
+This example demonstrates how to draw a circle using different length types of the **width** and **height** attributes.
 
 ```ts
 // xxx.ets
@@ -296,8 +296,8 @@ struct CircleTypeExample {
       Circle({ width: '50', height: '50' }) // Use the string type.
       // Draw a circle with a diameter of 100.
       Circle({ width: 100, height: 100 }) // Use the number type.
-      // Draw a circle whose diameter is 150.
-      Circle({ width: $r('app.string.CircleWidth'), height: $r('app.string.CircleHeight') }) // Use the Resource type, which should be customized.
+      // Draw a circle with a diameter of 150.
+      Circle({ width: $r('app.string.CircleWidth'), height: $r('app.string.CircleHeight') }) // Use the Resource type, which needs to be customized.
     }.width('100%')
   }
 }
@@ -307,13 +307,13 @@ struct CircleTypeExample {
 
 ### Example 3: Dynamically Setting Attributes of the Circle Component Using attributeModifier
 
-The following example shows how to use attributeModifier to dynamically set the fill, fillOpacity, stroke, strokeDashArray, strokeDashOffset, strokeLineCap, strokeOpacity, strokeWidth, and antiAlias attributes of the Circle component.
+This example shows how to use **attributeModifier** to dynamically set the **fill**, **fillOpacity**, **stroke**, **strokeDashArray**, **strokeDashOffset**, **strokeLineCap**, **strokeOpacity**, **strokeWidth**, and **antiAlias** attributes of the **Circle** component.
 
 ```ts
 // xxx.ets
 class MyCircleModifier implements AttributeModifier<CircleAttribute> {
   applyNormalAttribute(instance: CircleAttribute): void {
-    // Fill color: #707070; fill transparency: 0.5; border color: #2787D9; border gap: [20]; left offset: 15; line end style: semi-circle; border transparency: 0.5; border width: 10; anti-aliasing enabled.
+    // Fill color: #707070; fill opacity: 0.5; stroke color: #2787D9; stroke dash array: [20]; offset to left: 15; cap style: semi-circle; stroke opacity: 0.5; stroke width: 10; anti-aliasing enabled.
     instance.fill("#707070")
     instance.fillOpacity(0.5)
     instance.stroke("#2787D9")

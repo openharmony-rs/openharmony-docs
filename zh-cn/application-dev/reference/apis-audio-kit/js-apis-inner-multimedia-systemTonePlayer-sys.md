@@ -265,7 +265,7 @@ setAudioVolumeScale(scale: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
@@ -345,7 +345,7 @@ getSupportedHapticsFeatures(): Promise&lt;Array&lt;systemSoundManager.ToneHaptic
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -382,7 +382,7 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
@@ -424,7 +424,7 @@ getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 
 | 错误码ID | 错误信息                            |
@@ -468,7 +468,7 @@ on(type: 'playFinished', streamId: number, callback: Callback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -514,7 +514,7 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -556,7 +556,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -592,7 +592,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|

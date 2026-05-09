@@ -1,8 +1,8 @@
 # @ohos.arkui.node 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -53,9 +53,7 @@ The [XComponentNode](./js-apis-arkui-xcomponentNode.md) module provides APIs a X
 
 
 ## Obtaining UI Context
-To obtain the UI context, use any of the following methods:
-
-1. Call [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **ohos.window** to obtain the **UIContext **instance.
+To obtain the UI context, use any of the following methods:<br>1. Call [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **ohos.window** to obtain the **UIContext **instance.
 
 2. Call the built-in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of the custom component.
 

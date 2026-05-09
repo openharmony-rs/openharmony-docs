@@ -156,6 +156,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 当前仅2in1设备和平板上的应用可申请此权限。
 
+<!--RP15--><!--RP15End-->
+
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
@@ -301,6 +303,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
 允许运营商应用添加eSIM配置文件。
+
+<!--RP86--><!--RP86End-->
 
 **权限级别**：system_basic
 
@@ -575,6 +579,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 1. 外设扩展驱动客户端权限声明中的value字段中描述的目标扩展驱动服务端已上架或一并上架。
 2. 被申请目标扩展驱动服务端对外提供能力与扩展外设驱动客户端业务诉求一致。
 
+<!--RP82--><!--RP82End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -593,6 +599,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
 2. 外设能够以对操作系统透明的方式来模拟SCSI设备。
+
+<!--RP83--><!--RP83End-->
 
 **权限级别**：system_basic
 
@@ -804,6 +812,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用读取所有的日历信息。
 
+<!--RP84--><!--RP84End-->
+
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
@@ -815,6 +825,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.WRITE_WHOLE_CALENDAR
 
 允许应用添加、移除或更改所有的日历活动。
+
+<!--RP85--><!--RP85End-->
 
 **权限级别**：system_basic
 
@@ -1097,5 +1109,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.PRINTER_DRIVER
+
+允许应用管理打印系统。
+
+<!--RP89--><!--RP89End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
 
 **起始版本**：24

@@ -5,7 +5,7 @@
 <!--Owner: @dsz2025 -->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AbilityManager模块提供获取Ability相关信息和运行状态信息的能力。
 

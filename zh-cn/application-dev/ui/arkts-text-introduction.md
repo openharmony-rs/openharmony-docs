@@ -32,7 +32,7 @@
 
 ## 图文混排
 
-当需要图片和文字混排的场景，可以使用Span和ImageSpan实现。若需要样式多样的混排效果，可以选择属性字符串实现。参考[图文混排](arkts-text-image-layout.md)章节。
+当需要图片和文字混排的场景，可以使用[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)实现。若需要样式多样的混排效果，可以选择属性字符串实现。参考[图文混排](arkts-text-image-layout.md)章节。
 
 ## 管理软键盘
 

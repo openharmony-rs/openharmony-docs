@@ -73,9 +73,9 @@ let want: Want = {
 };
 
 vpnExtension.setAlwaysOnVpnEnabled(true, want.bundleName).then(() => {
-  console.info('setAlwaysOnVpnEnabled success.');
+  console.info(`setAlwaysOnVpnEnabled success.`);
 }).catch((err : BusinessError) => {
-  console.error('setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error(`setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}`);
 });
 ```
 
@@ -128,9 +128,9 @@ let want: Want = {
 };
 
 vpnExtension.isAlwaysOnVpnEnabled(want.bundleName).then((data : boolean) => {
-  console.info('isAlwaysOnVpnEnabled success.');
+  console.info(`isAlwaysOnVpnEnabled success.`);
 }).catch((err : BusinessError) => {
-  console.error('isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error(`isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}`);
 });
 ```
 

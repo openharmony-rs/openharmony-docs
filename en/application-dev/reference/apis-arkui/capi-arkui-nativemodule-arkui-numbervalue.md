@@ -1,8 +1,8 @@
 # ArkUI_NumberValue
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef union {...} ArkUI_NumberValue
 
 ## Overview
 
-Provides the number types of ArkUI on the native side.
+Defines the number types of ArkUI on the native side.
 
 **Since**: 12
 

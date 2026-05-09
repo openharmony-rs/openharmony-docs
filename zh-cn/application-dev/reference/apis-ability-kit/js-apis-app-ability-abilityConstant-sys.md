@@ -5,7 +5,7 @@
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AbilityConstant提供Ability相关的枚举，包括WindowMode等。
 

@@ -21,7 +21,7 @@
 
 > **注意：**
 >
-> AppFreeze检测仅对[release版本应用](performance-analysis-kit-terminology.md#release版本应用)生效，对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)不生效。
+> 当开发者通过DevEco Studio的Debug按钮安装并启动应用时，会自动关闭当前工程的超时检测机制。避免调试过程出现超时检测影响开发者调试。
 
 | 故障类型 | 说明 |
 | -------- | -------- |

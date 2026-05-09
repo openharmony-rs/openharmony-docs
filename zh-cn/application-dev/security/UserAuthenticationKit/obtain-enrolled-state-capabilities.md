@@ -31,11 +31,11 @@
 obtainingEnrolledCredentialInformation() {
   try {
     let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-    Logger.info('get current enrolled state successfully');
+    Logger.info('get current enrolled state successfully.');
     return enrolledState.credentialDigest;
   } catch (error) {
     const err: BusinessError = error as BusinessError;
-    Logger.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+    Logger.error(`get current enrolled state failed, code is ${err?.code}, message is ${err?.message}`);
     return false;
   }
 }

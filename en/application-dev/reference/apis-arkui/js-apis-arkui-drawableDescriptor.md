@@ -75,16 +75,7 @@ Obtains this **PixelMap** instance.
 
 **Example**
 
-```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
-import { image } from '@kit.ImageKit'
-
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-// Replace $r('app.media.app_icon') with the image resource file you use.
-let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-  .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
-let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
-```
+For details, see [LayeredDrawableDescriptor](#layereddrawabledescriptor).
 
 ### loadSync<sup>21+</sup>
 
@@ -568,18 +559,35 @@ struct Index {
 }
 ```
 
+## AnimationStopMode<sup>24+</sup>
+
+Enumerates the stop modes of an animation.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name     | **Value** | Description             |
+| ---------- | ---- |------------------------ |
+| FIRST_FRAME   | 0 | The animation returns to the first frame when it stops.|
+| LAST_FRAME | 1 | The animation stays at the last frame when it stops.|
+
 ## AnimationOptions<sup>12+</sup>
 
 Provides the configuration options for animation playback, including the playback duration, number of playback times, and autoplay behavior.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name     | Type   | Read-Only| Optional | Description                                   |
 | :--------- | :----- | :----| :----| :-------------------------------------- |
 | duration   | number | No  | Yes | Total playback duration for the image sequence.<br>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the duration is determined by the playback delay embedded in the image resource.<br>Unit: ms.<br> Value range: [0, +∞).<br>Negative values are treated as the default value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 | autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model constraint**: This API can be used only in the stage model.|
 
 **Example**
 
@@ -642,7 +650,7 @@ Defines a descriptor object used to play animated content (for example, **PixelM
 
 constructor(pixelMaps: Array\<image.PixelMap>, options?: AnimationOptions)
 
-A constructor used to create an **AnimatedDrawableDescriptor** instance.
+A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -659,7 +667,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 constructor(src: ResourceStr | Array\<image.PixelMap>, options?: AnimationOptions)
 
-A constructor used to create an **AnimatedDrawableDescriptor** instance.
+A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 

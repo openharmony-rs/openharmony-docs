@@ -5,7 +5,7 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 停止PageAbility通过featureAbility中的terminateSelf接口实现。
 

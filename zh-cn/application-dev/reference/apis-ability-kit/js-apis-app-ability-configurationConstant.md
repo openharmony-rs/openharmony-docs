@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ConfigurationConstant模块提供了[Configuration](js-apis-app-ability-configuration.md)操作相关的系统预置枚举。
 

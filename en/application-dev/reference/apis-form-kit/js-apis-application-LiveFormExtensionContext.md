@@ -9,9 +9,9 @@
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 ```ts
@@ -36,9 +36,7 @@ Starts the widget provider (application) page. This API uses a promise to return
 
 This API can only be used to start the page of the interactive widget provider (application). If this API is used to start the page of another application, error code 16501011 will be reported.
 
-You are advised to call this API in click event callbacks. Calling it in callbacks of other gesture events is not recommended, and direct calls in non-gesture events are not allowed. Otherwise, the error code 16501011 will be reported.
-
-In addition, this API can be directly called in the click event callback but cannot be called after a delay. Otherwise, the error code 16501011 will be reported.
+This API can only be called within the click event callback and must be called directly. Delayed calls are not supported. Otherwise, the error code 16501011 will be reported.
 
 **Model restriction**: This API can be used only in the stage model.
 

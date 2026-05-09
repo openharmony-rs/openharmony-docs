@@ -175,11 +175,11 @@ This error code is reported if the UT is not connected.
 
 **Possible Causes**
 
-The current carrier does not support sending of UT requests over a Wi-Fi network, but the phone is actually connected to the Wi-Fi network.
+The current carrier does not support sending of UT requests over a Wi-Fi network, but the device is connected to the Wi-Fi network.
 
 **Procedure**
 
-Disconnect the Wi-Fi connection, and send a new UT request.
+Disconnect the Wi-Fi network and resend the UT request.
 
 
 ## 3120001 Service Connection Error

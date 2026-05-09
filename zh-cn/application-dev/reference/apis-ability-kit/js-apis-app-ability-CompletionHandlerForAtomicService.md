@@ -4,7 +4,7 @@
 <!--Owner: @littlejerry1; @wendel; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 CompletionHandlerForAtomicService作为[AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md)的可选参数，用于接收打开原子化服务请求的结果。
 

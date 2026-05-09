@@ -42,11 +42,11 @@ The file declares the AVMetadataExtractor APIs. You can use the APIs to obtain m
 | [OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *extractor, uint32_t index)](#oh_avmetadataextractor_gettrackdescription) | Obtains the track description of a specified index from the media source. This function must be used after resources are set.|
 | [OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extractor)](#oh_avmetadataextractor_getcustominfo) | Obtains custom metadata from the media source. This function must be used after resources are set.|
 | [OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extractor, OH_AVMediaSource *source)](#oh_avmetadataextractor_setmediasource) | Sets the media source for the extractor.|
-| [OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)](#oh_avmetadataextractor_create) | Creates an OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)](#oh_avmetadataextractor_create) | Creates an **OH_AVMetadataExtractor** instance.|
 | [OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)](#oh_avmetadataextractor_setfdsource) | Sets a data source based on the media file descriptor.|
 | [OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)](#oh_avmetadataextractor_fetchmetadata) | Obtains metadata from a media asset.<br>        This function must be called after [OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource).|
 | [OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)](#oh_avmetadataextractor_fetchalbumcover) | Obtains the cover of an audio album.<br>        This function must be called after [OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource).|
-| [OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)](#oh_avmetadataextractor_release) | Releases the resources used by the OH_AVMetadataExtractor instance and destroys the instance.|
+| [OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)](#oh_avmetadataextractor_release) | Releases the resources used by the **OH_AVMetadataExtractor** instance and destroys the instance.|
 
 ## Function Description
 
@@ -128,7 +128,7 @@ Extracts an image at a specified time point from the video source. This function
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | int64_t timeUs | Time (in microseconds) at which an image is extracted from the video resource.|
 | [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode) seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode).|
 | [const OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)* outputParam | Output parameter of the image, for example, the height or width of the image. For details, see [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md). If this parameter is a null pointer, the original size of the video is used. Note: You need to use [OH_PixelmapNative_Destroy](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) to release the pixel map after using it.|
@@ -168,7 +168,7 @@ Extracts images at multiple specified time points from the video source asynchro
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | int64_t timeUs[] | Time point array (in microseconds) when images are extracted from the video source.|
 | uint16_t timesUsSize | Length of the time point array.|
 | [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode) seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode).|
@@ -198,7 +198,7 @@ Cancels all batch image obtaining operations initiated by [OH_AVMetadataExtracto
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 
 ### OH_AVMetadataExtractor_GetTrackDescription()
 
@@ -216,14 +216,14 @@ Obtains the track description of a specified index from the media source. This f
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | uint32_t index | Index of the track description to be obtained.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains the track description if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. The **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The format is not supported.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains the track description if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The format is not supported.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -241,13 +241,13 @@ Obtains custom metadata from the media source. This function must be used after 
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains custom metadata if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. The **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The custom information is not found.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | Pointer to the **OH_AVFormat** instance that contains custom metadata if the operation is successful; null pointer otherwise.<br>         The possible causes of an operation failure are as follows:<br>         1. **extractor** is a null pointer.<br>         2. The media source is not set.<br>         3. The custom information is not found.<br>         Note: You need to use [OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy) to release the **OH_AVFormat** instance after using it.|
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 
@@ -265,14 +265,14 @@ Sets the media source for the extractor.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | Media source to be set.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | Execution result of the function.<br>         **AV_ERR_OK**: The execution is successful.<br>         **AV_ERR_INVALID_VAL**: The input **extractor** is a null pointer or the **source** is invalid.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | Execution result of the function.<br>         **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input **extractor** is a null pointer or the **source** is invalid.|
 
 ### OH_AVMetadataExtractor_Create()
 
@@ -282,7 +282,7 @@ OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)
 
 **Description**
 
-Creates an OH_AVMetadataExtractor instance.
+Creates an **OH_AVMetadataExtractor** instance.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -292,7 +292,7 @@ Creates an OH_AVMetadataExtractor instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* | Pointer to the OH_AVMetadataExtractor instance created if the operation is successful; nullptr otherwise.<br>         Possible cause of failures: **HstEngineFactory::CreateAVMetadataHelperEngine** fails to run.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* | Pointer to the **OH_AVMetadataExtractor** instance created if the operation is successful; nullptr otherwise.<br>         Possible cause of failures: **HstEngineFactory::CreateAVMetadataHelperEngine** fails to run.|
 
 ### OH_AVMetadataExtractor_SetFDSource()
 
@@ -312,7 +312,7 @@ Sets a data source based on the media file descriptor.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | int32_t fd | File descriptor of the media source.|
 | int64_t offset | Offset of the media source in the file descriptor.|
 | int64_t size | Size of the media source.|
@@ -341,14 +341,14 @@ Obtains metadata from a media asset.<br>        This function must be called aft
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the OH_AVMetadataExtractor instance.|
-| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* avMetadata | Pointer to the OH_AVFormat instance, which contains the obtained metadata.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* avMetadata | Pointer to the **OH_AVFormat** instance, which contains the obtained metadata.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.<br>         **AV_ERR_IO_CLEARTEXT_NOT_PERMITTED**: (Added in API version 23) HTTP plaintext traffic is not allowed.|
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 
@@ -368,7 +368,7 @@ Obtains the cover of an audio album.<br>        This function must be called aft
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)** pixelMap | Double pointer to the album cover obtained.|
 
 **Return value**
@@ -385,7 +385,7 @@ OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)
 
 **Description**
 
-Releases the resources used by the OH_AVMetadataExtractor instance and destroys the instance.
+Releases the resources used by the **OH_AVMetadataExtractor** instance and destroys the instance.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -395,7 +395,7 @@ Releases the resources used by the OH_AVMetadataExtractor instance and destroys 
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 
 **Return value**
 

@@ -105,7 +105,7 @@ The sequence of these lifecycle events is illustrated in the figure below.
 
 In addition, there are two special lifecycle callbacks:
 
-- **onResult**: invoked when you return from another **NavDestination** page by swiping left or right or by pressing the back button.
+- **onResult**: invoked when other **NavDestination** pages are popped, or when the user swipes left/right to return from another **NavDestination** page.
 - **onNewParam**: invoked when a **NavDestination** page that previously exists in the stack is moved to the top of the stack through [launchMode.MOVE_TO_TOP_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12) or [launchMode.POP_TO_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12).
 
 ## Page Listening and Query

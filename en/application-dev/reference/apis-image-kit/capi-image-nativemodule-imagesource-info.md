@@ -16,7 +16,7 @@ The OH_ImageSource_Info struct describes the image source information encapsulat
 
 To create an OH_ImageSource_Info object, call [OH_ImageSourceInfo_Create](capi-image-source-native-h.md#oh_imagesourceinfo_create).
 
-To release an OH_ImageSource_Info object, call [OH_ImageSourceInfo_Release](capi-image-source-native-h.md#oh_imagesourceinfo_release).
+To release an OH_ImageSource_Info object, call [OH_ImageSourceInfo_Release](capi-image-source-native-h.md#oh_imagesourceinfo_release). After this API is called, all properties related to the OH_ImageSource_Info struct are released. Therefore, before calling this API, ensure that the relevant properties are no longer needed or that a deep copy of these properties has been completed.
 
 The table below describes the content and operation mode of the OH_ImageSource_Info struct.
 
@@ -24,9 +24,10 @@ The table below describes the content and operation mode of the OH_ImageSource_I
 | -------- | -------- | -------- | -------- | -------- |
 | uint32_t | width | Image width.| [OH_ImageSourceInfo_GetWidth](capi-image-source-native-h.md#oh_imagesourceinfo_getwidth) |Obtains the image width.|
 | uint32_t | height | Image height.| [OH_ImageSourceInfo_GetHeight](capi-image-source-native-h.md#oh_imagesourceinfo_getheight) |Obtains the image height.|
-| bool | isHdr | Dynamic range.| [OH_ImageSourceInfo_GetDynamicRange](capi-image-source-native-h.md#oh_imagesourceinfo_getdynamicrange) |Obtains the dynamic range of an image.|
+| bool | isHdr | Whether the image is an HDR image.| [OH_ImageSourceInfo_GetDynamicRange](capi-image-source-native-h.md#oh_imagesourceinfo_getdynamicrange) |Obtains the dynamic range of an image.|
+| [Image_MimeType](capi-image-nativemodule-image-string.md) | mimeType | Pointer to the image MIME type.| [OH_ImageSourceInfo_GetMimetype](./capi-image-source-native-h.md#oh_imagesourceinfo_getmimetype) | Obtains the MIME type of an image.|
 
-**Since**: 13
+**Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
 

@@ -4,7 +4,7 @@
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台服务创建、销毁、连接、断开等生命周期回调。
 
@@ -95,7 +95,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onRequest(want: Want, startId: number): void
 
-Extension生命周期回调，如果是startAbility或者startServiceExtensionAbility拉起的服务，会在onCreate之后回调。每次拉起服务都会回调，startId会递增。
+Extension生命周期回调，如果是[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)或者[requestDialogService](js-apis-inner-application-uiAbilityContext.md#requestdialogservice)拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

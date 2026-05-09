@@ -229,6 +229,7 @@ struct Index {
 
 @Component
 struct Child1 {
+  // @Env读取系统环境变量
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
   build() {

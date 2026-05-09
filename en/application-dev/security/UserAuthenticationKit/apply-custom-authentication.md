@@ -7,7 +7,7 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-If the biometric authentication fails and the user taps the navigation button for a custom authentication, the unified identity authentication framework will terminate the system authentication process and instruct the caller to launch the custom authentication page.
+If the biometric authentication fails and the user taps the navigation button for a custom authentication, the unified user authentication framework will terminate the system authentication process and instruct the caller to launch the custom authentication page.
 
 For example, if the facial or fingerprint authentication provided by the system fails in a payment process, the user can switch to the password authentication defined by the device vendor.
 
@@ -43,58 +43,57 @@ This example only shows how to configure the UI and select the custom authentica
 <!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
-	// ···
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-		// ···
-              Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-			// ···
-            if (result.result == userAuth.UserAuthResultCode.CANCELED_FROM_WIDGET ||
-              result.result == userAuth.UserAuthResultCode.NOT_ENROLLED) {
-              // You need to implement the process of launching the custom authentication page.
-			// ···
-            }
-			// ···
-        }
-      });
-      // Start authentication.
-      userAuthInstance.start();
-      Logger.info('auth start success');
-	// ···
-  }
-
-  /*
-   * apply-custom-authentication.md
-   * This example shows how to configure the page and switch to the custom authorizer page. You need to implement the pages to be started and the corresponding pages.
-   * */
-  applyingCustomAuthentication() {
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
+handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
+  // ...
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        // ...
+          Logger.info('userAuthInstance callback');
+          // ...
+          if (result.result == userAuth.UserAuthResultCode.CANCELED_FROM_WIDGET ||
+            result.result == userAuth.UserAuthResultCode.NOT_ENROLLED) {
+            // You need to implement the process of launching the custom authentication page.
+            // ...
+          }
+          // ...
       }
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.FACE],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      };
-      // Configure custom authentication and set the text on the navigation button.
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-        navigationButtonText: resourceToString($r('app.string.navigationButtonText'))
-      };
-      // Obtain an authentication object.
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // Subscribe to the authentication result.
-      this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
-    }
-  }
+    });
+    // Start authentication.
+    userAuthInstance.start();
+    Logger.info('auth start successfully');
+    // ...
+}
 
+/*
+ * apply-custom-authentication.md
+ * This example shows how to configure the page and switch to the custom authorizer page. You need to implement the pages to be started and the corresponding pages.
+ * */
+applyingCustomAuthentication() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
+    }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.FACE],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // Configure custom authentication and set the text on the navigation button.
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+      navigationButtonText: resourceToString($r('app.string.navigationButtonText'))
+    };
+    // Obtain an authentication object.
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully');
+    // Subscribe to the authentication result.
+    this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
+  }
+}
 ```
 
 

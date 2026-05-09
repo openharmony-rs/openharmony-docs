@@ -45,7 +45,6 @@ open(callback: AsyncCallback\<void\>): void
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
 | 7400201                |  Camera service fatal error.                                  |
-| 7400113 | Unsupported multi-camera combination. It is suggested to use [getCameraConcurrentInfos](arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to check the concurrent infos;               |
 
 **示例：**
 
@@ -89,7 +88,6 @@ open(): Promise\<void\>
 | 7400107 | Can not use camera cause of conflict.     |
 | 7400108 | Camera disabled cause of security reason. |
 | 7400201 | Camera service fatal error.               |
-| 7400113 | Unsupported multi-camera combination. It is suggested to use [getCameraConcurrentInfos](arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to check the concurrent infos;               |
 
 **示例：**
 
@@ -136,7 +134,6 @@ open(isSecureEnabled: boolean): Promise\<bigint\>
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
 | 7400201                |  Camera service fatal error.                                  |
-| 7400113 | Unsupported multi-camera combination. It is suggested to use [getCameraConcurrentInfos](arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to check the concurrent infos;               |
 
 **示例：**
 

@@ -53,7 +53,7 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Defines the foreground blur options. For details about the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).                                  |
 
 **Return value**
@@ -81,7 +81,7 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Foreground blur options.                                    |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   No  |  System adaptive adjustment options.<br>Default value: **{ disableSystemAdaptation: false }**   |
 
@@ -177,3 +177,4 @@ struct ForegroundBlurStyleDemo {
 ```
 
 ![en-us_image_background_blur_style](figures/en-us_image_foreground_blur_style.png)
+<!--no_check-->

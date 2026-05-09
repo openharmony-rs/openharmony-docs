@@ -10,6 +10,8 @@
 
 Defines APIs for game controllers.
 
+**File to include**: <GameControllerKit/game_pad.h>
+
 **Library:** libohgame_controller.z.so
 
 **System capability**: SystemCapability.Game.GameController

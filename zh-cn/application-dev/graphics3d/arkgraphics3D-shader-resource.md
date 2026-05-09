@@ -57,8 +57,8 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ### rasterizationState
 用于表示光栅化过程中的属性配置，具体包括：
-   - enableDepthClamp：用于控制渲染过程中的depth写入时是否进行clamp，true表示进行clamp，false表示不进行clamp。当前此属性需保持值为false。
-   - enableDepthBias：用于控制渲染过程中的depth写入时是否进行Bias计算，true表示进行Bias计算，false表示不进行Bias计算。当前此属性需保持值为false。
+   - enableDepthClamp：用于控制渲染过程中的depth写入时是否进行clamp，true表示进行clamp，false表示不进行clamp。当前此属性应设置为false。
+   - enableDepthBias：用于控制渲染过程中的depth写入时是否进行Bias计算，true表示进行Bias计算，false表示不进行Bias计算。当前此属性应设置为false。
    - enableRasterizerDiscard：用于控制本次drawCall的fragment阶段是否跳过，true表示跳过，false表示不跳过。
    - polygonMode：用于指定光栅化渲染中的三角形填充方式，可取值及含义见下表。
       | 可取值 | 说明 |
@@ -85,7 +85,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 用于表示深度测试和模板测试的状态属性，具体包括：
    - enableDepthTest：用于控制是否开启深度测试，true表示开启，false表示关闭。若开启深度测试则非透明物体将按照深度呈现遮挡关系，若关闭深度测试则物体按照绘制顺序排序。
    - enableDepthWrite：用于物体绘制时深度附件是否写入该物体的深度值，true表示写入，false表示不写入。
-   - enableDepthBoundsTest：在深度测试的基础上再规定了通过深度测试的最小值和最大值范围，在此范围之外的值不通过深度测试，true表示开启，false表示关闭。当前此属性需保持值为false。
+   - enableDepthBoundsTest：在深度测试的基础上再规定了通过深度测试的最小值和最大值范围，在此范围之外的值不通过深度测试，true表示开启，false表示关闭。当前此属性应设置为false。
    - enableStencilTest：用于控制是否开启模板测试，true表示开启，false表示关闭。若开启模板测试则通过模板测试的物体会被绘制，没有通过模板测试的物体不被绘制，若关闭则不进行模板测试。
    - depthCompareOp：用于控制深度测试的比较方式，可取值及含义见下表。
       | 可取值 | 说明 |
@@ -101,7 +101,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ### colorBlendState
 用于指定本次渲染中渲染源与渲染目标的混合状态属性。包括colorAttachments，用于指定本次渲染中颜色附件的混合状态属性。colorAttachments具体包括如下几项：
-   - enableBlend：渲染源与渲染目标的混合是否开启，true表示开启混合，false表示关闭混合。若开启则渲染源与渲染目标以指定方式混合，若不开启则不启用混合。
+   - enableBlend：渲染源与渲染目标的混合是否开启，true表示开启混合，false表示关闭混合。若开启则渲染源与渲染目标以指定方式混合，若不开启则不进行混合。
    - colorWriteMask：指定渲染颜色附件中通道掩码，若指定了通道掩码则该通道将被计算混合，若不指定则不计算混合，可取值有r_bit、g_bit、b_bit、a_bit，各个通道可以用|符号取并集，可取值及含义见下表。
      | 可取值 | 说明 |
      | :----: | :----: |

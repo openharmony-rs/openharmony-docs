@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-The module provides APIs for image processing based on sendable objects. You can use the APIs to create a PixelMap object with specified properties or read pixels of an image (or even in a region of an image).
+The module provides APIs for image processing based on the [Sendable](../../arkts-utils/arkts-sendable.md) object. You can use the APIs to create a PixelMap object with specified properties or read pixels of an image (or even in a region of an image).
 
 > **NOTE**
 >
@@ -33,7 +33,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | Yes  | Color array in BGRA_8888 format.                                       |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editability.|
 
 **Return value**
 
@@ -221,7 +221,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | Yes  | Color array in BGRA_8888 format.                                       |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editability.|
 
 **Return value**
 | Type                            | Description                 |
@@ -354,7 +354,7 @@ type ISendable = lang.ISendable
 
 ## PixelMap
 
-Provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [createPixelMap](#sendableimagecreatepixelmap) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width * Height * Number of bytes occupied by each pixel.
+Provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [createPixelMap](#sendableimagecreatepixelmap) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width × Height × Bytes each pixel.
 
 The PixelMap object under **sendableImage** supports the **sendable** attribute and sharing of the worker thread. The [Convert](#sendableimageconverttopixelmap) API can be used to convert a PixelMap object in **sendableImage** to a PixelMap object in **image**, and vise versa. After the conversion, the APIs of the original object cannot be called. Otherwise, error 501 is reported. When processing a PixelMap object across threads, you need to consider the multithreaded problem.
 
@@ -804,7 +804,7 @@ async function Demo(pixelMap : sendableImage.PixelMap) {
 
 getBytesNumberPerRow(): number
 
-Obtains the number of bytes per row of this image.
+Obtains the number of bytes per row of this image. Unit: bytes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -830,7 +830,7 @@ async function Demo(pixelMap : sendableImage.PixelMap) {
 
 getPixelBytesNumber(): number
 
-Obtains the total number of bytes of this image.
+Obtains the total number of bytes of this image. Unit: bytes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1172,8 +1172,8 @@ The size of the translated image is changed to width+X and height+Y. It is recom
 
 | Name  | Type                | Mandatory| Description                           |
 | -------- | -------------------- | ---- | ------------------------------- |
-| x        | number               | Yes  | Scale factor of the width.|
-| y        | number               | Yes  | Scale factor of the height.|
+| x      | number | Yes  | X coordinate, in px.|
+| y      | number | Yes  | Y coordinate, in px.|
 
 **Error codes**
 
@@ -1217,7 +1217,7 @@ Rotates this PixelMap based on a given angle. This API uses a promise to return 
 
 | Name| Type  | Mandatory| Description                         |
 | ------ | ------ | ---- | ----------------------------- |
-| angle  | number | Yes  | Angle to rotate.             |
+| angle  | number | Yes  | Angle to rotate. Unit: degrees.             |
 
 **Return value**
 
@@ -1262,7 +1262,7 @@ Rotates this image based on a given angle. This API returns the result synchrono
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate.             |
+| angle    | number               | Yes  | Angle to rotate. Unit: degrees.             |
 
 **Error codes**
 
@@ -1786,6 +1786,7 @@ async function Demo(pixelMap: sendableImage.PixelMap) {
 ## Size
 
 Describes the size of an image.
+
 It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -1802,6 +1803,7 @@ It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)
 ## Region
 
 Describes the region information.
+
 It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -1879,11 +1881,11 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 ```ts
 import { sendableImage } from '@kit.ImageKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function Demo(context : Context) {
   const path: string = context.cacheDir + "/test.jpg";
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(file.fd);
 }
 ```
@@ -2002,7 +2004,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap]> | Promise used to return the PixelMap object.|
+| Promise\<[PixelMap](#pixelmap)> | Promise used to return the PixelMap object.|
 
 **Example**
 
@@ -2071,7 +2073,7 @@ Images occupy a large amount of memory. When you finish using an Image instance,
 | clipRect | [Region](#region) | No  | No  | Image area to be cropped.                                |
 | size     | [Size](#size)      | Yes  | No  | Image size.<br>If the Image object stores camera preview stream data (YUV image data), the width and height in **size** reflect the dimensions of the YUV image.<br>If the Image object stores camera capture stream data (JPEG image data), given that it is an encoded file, the width in **size** is the size of the JPEG file, while the height is set to **1**.<br>The type of data stored in the Image object depends on whether the application passes the surface ID in the receiver to a previewOutput or captureOutput object of the camera.<br>For details about the best practices of camera preview and photo capture, see [Dual-Channel Preview (ArkTS)](../../media/camera/camera-dual-channel-preview.md) and [Photo Capture Sample (ArkTS)](../../media/camera/camera-shooting-case.md).|
 | format   | number             | Yes  | No  | Image format. For details, see [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format).|
-| timestamp<sup>12+</sup> | number         | Yes     | No  | Image timestamp. Timestamps, measured in nanoseconds, are usually monotonically increasing. The specific meaning and baseline of these timestamps are determined by the image producer, which is the camera in the camera preview and photo scenarios. As a result, images from different producers may carry timestamps with distinct meanings and baselines, making direct comparison between them infeasible. To obtain the generation time of a photo, you can use [getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11) to read the related Exif information.|
+| timestamp| number         | Yes     | No  | Image timestamp. Timestamps, measured in nanoseconds, are usually monotonically increasing. The specific meaning and baseline of these timestamps are determined by the image producer, which is the camera in the camera preview and photo scenarios. As a result, images from different producers may carry timestamps with distinct meanings and baselines, making direct comparison between them infeasible. To obtain the generation time of a photo, you can use [getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11) to read the related Exif information.|
 
 ### getComponent
 
@@ -2159,7 +2161,7 @@ async function Demo() {
 
 ## ImageReceiver
 
-You can use the **ImageReceiver** class to obtain the surface ID of a component, read the latest image or the next image, and release ImageReceiver instances.
+Image receiver class. You can use it to obtain the surface ID of a component, read the latest image and the next image, and release **ImageReceiver** instances.
 
 Before calling any APIs in ImageReceiver, you must create an ImageReceiver instance.
 
@@ -2185,7 +2187,7 @@ Obtains a surface ID for the camera or other components. This API uses a promise
 
 | Type            | Description                |
 | ---------------- | -------------------- |
-| Promise\<string> | Promise used to return the surface ID.|
+| Promise\<string> | Asynchronously returns the surface ID.|
 
 **Example**
 
@@ -2215,8 +2217,7 @@ readLatestImage(): Promise\<Image>
 Reads the latest image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API can be called to receive data only after the [on](#on) callback is triggered. When the [Image](#image) object returned by this API is no longer needed, call [release](#release-2) to release the object. New data can be received only after the release.
+>This API can be called to receive data only after the [on](#on) callback is triggered. When the [Image](#image) object returned by this API is no longer needed, call [release](#release-2) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -2239,7 +2240,7 @@ async function Demo() {
     width: 8
   }
   let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, image.ImageFormat.JPEG, 8);
-  receiver.readLatestImage().then((img: image.Image) => {
+  receiver.readLatestImage().then((img: sendableImage.Image) => {
     console.info('readLatestImage succeeded.');
   }).catch((error: BusinessError) => {
     console.error(`readLatestImage failed. code ${error.code}, message is ${error.message}`);
@@ -2254,8 +2255,7 @@ readNextImage(): Promise\<Image>
 Reads the next image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API can be called to receive data only after the [on](#on) callback is triggered. When the [Image](#image) object returned by this API is no longer needed, call [release](#release-2) to release the object. New data can be received only after the release.
+>This API can be called to receive data only after the [on](#on) callback is triggered. When the [Image](#image) object returned by this API is no longer needed, call [release](#release-2) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -2278,7 +2278,7 @@ async function Demo() {
     width: 8
   }
   let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, image.ImageFormat.JPEG, 8);
-  receiver.readNextImage().then((img: image.Image) => {
+  receiver.readNextImage().then((img: sendableImage.Image) => {
     console.info('readNextImage succeeded.');
   }).catch((error: BusinessError) => {
     console.error(`readNextImage failed. code ${error.code}, message is ${error.message}`);
@@ -2357,4 +2357,3 @@ async function Demo() {
   })
 }
 ```
-<!--no_check-->

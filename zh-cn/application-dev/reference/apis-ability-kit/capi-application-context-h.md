@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -576,7 +576,7 @@ void demo()
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextGetLaunchParameter
+### OH_AbilityRuntime_ApplicationContextGetLaunchParameter()
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
@@ -625,7 +625,7 @@ static napi_value GetLaunchParameter(napi_env env, napi_callback_info info)
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextGetLatestParameter
+### OH_AbilityRuntime_ApplicationContextGetLatestParameter()
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
@@ -674,7 +674,7 @@ static napi_value GetLatestParameter(napi_env env, napi_callback_info info)
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextNotifyPageChanged
+### OH_AbilityRuntime_ApplicationContextNotifyPageChanged()
 
 ```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(

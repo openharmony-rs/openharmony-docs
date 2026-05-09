@@ -27,6 +27,7 @@ Defines a struct that represents the type of the elements in **options** of [OH_
 | Name                                                                           | Description           |
 |-------------------------------------------------------------------------------|---------------|
 | [JSVM_CompileOptionId](capi-jsvm-types-h.md#jsvm_compileoptionid) id | Compilation option ID.|
-| void* ptr   | void* type.     |
-| int num      | Integer type.       |
-| bool boolean   | Boolean type.           |
+| content     | Union of the compilation option value corresponding to the ID.|
+| content.ptr   | Pointer to the compilation option value.|
+| content.num      | Used to store the compilation option value of the integer type.|
+| content.boolean   | Used to store the compilation option value of the Boolean type.|

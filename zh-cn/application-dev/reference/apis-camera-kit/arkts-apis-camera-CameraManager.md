@@ -398,7 +398,7 @@ function createPreviewOutput(cameraManager: camera.CameraManager, surfaceId: str
 }
 ```
 
-### createDeferredPreviewOutput<sup>24+</sup>
+## createDeferredPreviewOutput<sup>24+</sup>
 
 createDeferredPreviewOutput(profile: Profile): PreviewOutput
 

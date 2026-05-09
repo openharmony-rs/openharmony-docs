@@ -107,6 +107,7 @@ hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位：ms。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |

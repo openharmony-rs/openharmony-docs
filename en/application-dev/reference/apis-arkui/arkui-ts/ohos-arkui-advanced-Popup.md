@@ -54,11 +54,11 @@ Defines the style parameters of the popup.
 | icon      | [PopupIconOptions](#popupiconoptions)                        | No  | Yes| Icon of the popup.<br>**NOTE**<br>The icon is not displayed when **width** and **height** are set to an invalid value or **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | title     | [PopupTextOptions](#popuptextoptions)                        | No  | Yes | Title of the popup.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | message   | [PopupTextOptions](#popuptextoptions)                        | No | No | Content of the popup.<br>**NOTE**<br>**fontWeight** is not available for **messages**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| showClose | boolean \| [Resource](ts-types.md#resource)                | No  | Yes | Whether to show the close button.<br>**true**: Show the close button. **false**: Do not show the close button.<br>**Resource**: Show the corresponding icon.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| showClose | boolean \| [Resource](ts-types.md#resource)                | No  | Yes | Whether to show the close button.<br>**true**: Show the close button. **false**: Do not show the close button.<br>**Resource**: Show the corresponding icon.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onClose   | () => void                                                   | No  | Yes | Callback for the popup close button.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | buttons   | [[PopupButtonOptions](#popupbuttonoptions)?,[PopupButtonOptions](#popupbuttonoptions)?] | No  | Yes | Buttons of the popup. A maximum of two buttons can be set.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | No                               | Yes                              | Layout direction.<br>Default value: **Direction.Auto**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| maxWidth<sup>18+</sup> | [Dimension](ts-types.md#dimension10)                                             | No                               | Yes                              | Maximum width of the popup. This API allows the popup to display with a custom width.<br>**NOTE**<br>1. When using resource references, ensure that the parameter type matches the attribute method type.<br>2. **maxWidth** accepts numeric values (both floating-point and integer values), such as **$r('app.float.maxWidth')** and **$r('app.integer.maxWidth')**.<br>3. When the type is Resource, values default to px units if no unit is explicitly specified.<br>Default value: 400 vp<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| maxWidth<sup>18+</sup> | [Dimension](ts-types.md#dimension10)                                             | No                               | Yes                              | Maximum width of the popup. This API allows the popup to display with a custom width.<br>**NOTE**<br>1. When using resource references, ensure that the parameter type matches the attribute method type.<br>2. **maxWidth** accepts numeric values (both floating-point and integer values), such as **$r('app.float.maxWidth')** and **$r('app.integer.maxWidth')**.<br>3. When the type is Resource, values default to px units if no unit is explicitly specified.<br>Default value: **400vp**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## PopupTextOptions
 
@@ -305,7 +305,7 @@ struct PopupPage {
           fontColor: Color.Black,
         },
           {
-            text: 'cancel',
+            text: 'Cancel',
             action: () => {
               console.info('cancel button click');
             },

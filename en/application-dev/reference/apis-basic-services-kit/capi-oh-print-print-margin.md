@@ -26,7 +26,7 @@ Defines a struct for the page margin to print.
 
 | Name                 | Description    |
 | --------------------- | -------- |
-| uint32_t leftMargin   | Left margin.|
-| uint32_t topMargin    | Top margin.|
-| uint32_t rightMargin  | Right margin.|
-| uint32_t bottomMargin | Bottom margin.|
+| uint32_t leftMargin   | Left margin, in millimeters.|
+| uint32_t topMargin    | Top margin, in millimeters.|
+| uint32_t rightMargin  | Right margin, in millimeters.|
+| uint32_t bottomMargin | Bottom margin, in millimeters.|

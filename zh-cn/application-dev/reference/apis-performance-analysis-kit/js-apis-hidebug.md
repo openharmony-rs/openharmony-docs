@@ -1354,7 +1354,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1409,7 +1409,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1622,7 +1622,7 @@ setProcDumpInSharedOOM(enable: boolean): void
 
 **参数**：
 
-| 名称         | 类型  | 必填 | 说明 |
+| 参数名         | 类型  | 必填 | 说明 |
 |--------------|------|------|------|
 | enable | boolean | 是 | 当进程发生SharedHeap OOM时，系统将依据该进程在其生命周期中最后一次调用该接口所记录的信息，转储相应级别的堆快照。<br/>true：进程级。<br/>false：线程级。<br/> 默认值：false。 |
 

@@ -5476,7 +5476,7 @@ Allows a system application to access the runtime capability framework.
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: phones | tablets | TVs | wearables
 
 **Since**: 23
 
@@ -5607,6 +5607,20 @@ Allows a system application to obtain AgentCard information.
 **Enable via ACL**: true
 
 **Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.ASSET_CACHE_MANAGER
+
+Allows an application to deliver, control, and query tasks through the asset cache service management APIs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
 

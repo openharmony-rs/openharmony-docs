@@ -1,7 +1,7 @@
 # 应用模型
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->

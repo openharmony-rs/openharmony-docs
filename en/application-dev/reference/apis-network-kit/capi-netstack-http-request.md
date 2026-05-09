@@ -25,6 +25,6 @@ Defines an HTTP request.
 
 | Name| Description|
 | -- | -- |
-| uint32_t requestId | HTTP request ID.|
+| uint32_t requestId | ID of an HTTP request.|
 | char *url | Pointer to the HTTP request URL.|
 | [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | Pointer to the HTTP request configuration. For details, see [Http_RequestOptions](capi-netstack-http-requestoptions.md).|

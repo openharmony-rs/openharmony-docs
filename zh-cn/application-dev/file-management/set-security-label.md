@@ -40,6 +40,7 @@ import { fileIo } from '@kit.CoreFileKit';
 <!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
+// 获取需要设备数据等级的文件沙箱路径，请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 let filePath = pathDir + '/test.txt';
@@ -50,10 +51,10 @@ try {
   file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   // 设置文件的数据等级为s0
   securityLabel.setSecurityLabel(filePath, 's0').then(() => {
-    console.info('Succeeded in setSecurityLabeling.');
+    console.info('Succeeded in setting security label.');
     fileIo.closeSync(file);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to set security label. Code: ${err.code}, message: ${err.message}`);
     if (file) {
       try {
         fileIo.closeSync(file);

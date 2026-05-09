@@ -8,6 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 The **hid** module provides Bluetooth capabilities based on Bluetooth Classic's [Human Interface Device Profile (HID)](../../connectivity/terminology.md#hid), such as obtaining the Bluetooth connection status.
+
 When the local device is registered as an HID device, you can use the APIs provided by [HidDeviceProfile](#hiddeviceprofile23). The local device can connect to and interact with only classic Bluetooth devices.
 
 > **NOTE**
@@ -174,13 +175,13 @@ let descriptors: Uint8Array = new Uint8Array([
     
     // Key field definition.
     0x05, 0x07,        // Switch to the keyboard/key area.
-    0x19, 0x00,        //   Define the minimum key code as 0 (no key).
-    0x29, 0x01,        //   Define the maximum key code as 1 (only two values are supported).
-    0x15, 0x00,        //   Logical minimum value 0 (lower limit of the data range).
-    0x25, 0x01,        //   Logical maximum value 1 (upper limit of the data range).
-    0x75, 0x08,        //   Each field contains eight bits.
-    0x95, 0x01,        //   There is only one field.
-    0x81, 0x00,        //   Input field, which is of the data group type.
+    0x19, 0x00,        // Define the minimum key code as 0 (no key).
+    0x29, 0x01,        // Define the maximum key code as 1 (only two values are supported).
+    0x15, 0x00,        // Logical minimum value 0 (lower limit of the data range).
+    0x25, 0x01,        // Logical maximum value 1 (upper limit of the data range).
+    0x75, 0x08,        // Each field contains eight bits.
+    0x95, 0x01,        // There is only one field.
+    0x81, 0x00,        // Define the input field: data field. The value is the key array.
     
     // End the device definition.
     0xC0               // The application set ends.
@@ -604,7 +605,7 @@ try {
 
 offSetReport(callback?: Callback&lt;SetReportData&gt;): void
 
-Unsubscribes from the events for sending **SET_REPORT** transmission requests by an HID host to an HID device. This API uses an asynchronous callback to return the result.
+Unsubscribes from the events for sending [SET_REPORT](../../connectivity/terminology.md#hid) transmission requests by an HID host to an HID device. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 

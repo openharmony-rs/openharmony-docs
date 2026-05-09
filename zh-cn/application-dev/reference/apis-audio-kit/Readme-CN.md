@@ -43,6 +43,7 @@
   - 模块<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
+    - [OHMIDI](capi-ohmidi.md)
   - 头文件<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
     - [native_audio_manager.h](capi-native-audio-manager-h.md)
@@ -59,6 +60,8 @@
     - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
     - [native_audio_suite_engine.h](capi-native-audio-suite-engine-h.md)
     - [native_audio_session_base.h](capi-native-audio-session-base-h.md)
+    - [native_midi.h](capi-native-midi-h.md)
+    - [native_midi_base.h](capi-native-midi-base-h.md)
   - 结构体<!--audio-struct-->
     - [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)
     - [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md)
@@ -89,8 +92,15 @@
     - [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)
     - [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)
     - [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)
+    - [OH_MIDIEvent](capi-ohmidi-oh-midievent.md)
+    - [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md)
+    - [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md)
+    - [OH_MIDIPortDescriptor](capi-ohmidi-oh-midiportdescriptor.md)
+    - [OH_MIDICallbacks](capi-ohmidi-oh-midicallbacks.md)
+    - [OH_MIDIClientStruct](capi-ohmidi-oh-midiclientstruct.md)
+    - [OH_MIDIDeviceStruct](capi-ohmidi-oh-mididevicestruct.md)
 - 错误码<!--audio-arkts-errcode-->
   - [Audio错误码](errorcode-audio.md)
   <!--Del-->
-  - [Ringtone错误码](errorcode-ringtone.md)
+  - [Ringtone错误码](errorcode-audio-ringtone-sys.md)
   <!--DelEnd-->

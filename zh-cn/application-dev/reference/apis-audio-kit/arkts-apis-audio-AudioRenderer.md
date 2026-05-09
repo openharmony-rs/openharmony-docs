@@ -2289,9 +2289,12 @@ audioRenderer.off('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallba
 
 on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 
-监听音频数据写入回调事件（当需要写入音频数据时触发），使用 callback 方式返回结果。
+监听音频数据写入回调事件（当需要写入音频数据时触发）。使用callback异步回调。
 
-回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
+> **说明：**
+>
+> - 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
+> - 为避免音频播放启动和停止时数据不连续可能出现的杂音，系统通常会在启动和停止时对音频数据做20ms以内的淡入淡出处理。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 

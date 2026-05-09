@@ -48,7 +48,7 @@ Sets the click feedback effect of the component. Compared with [clickEffect](#cl
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ClickEffect](#clickeffect)&nbsp;\|&nbsp;null> | Yes  | Sets the click feedback effect of the component.<br>**NOTE**<br>Use **undefined** or **null** to disable the click feedback effect.<br>Avoid using this feature in scenarios where the component size dynamically changes.<br>This attribute is not supported when the component cannot trigger universal events.<br>After the click feedback effect triggers scaling, the touch point may fall outside the control, making the component unresponsive to gesture events.|
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ClickEffect](#clickeffect)&nbsp;\|&nbsp;null> | Yes  | Click feedback effect of the component.<br>**NOTE**<br>Use **undefined** or **null** to disable the click feedback effect.<br>Avoid using this feature in scenarios where the component size dynamically changes.<br>This attribute is not supported when the component cannot trigger universal events.<br>After the click feedback effect triggers scaling, the touch point may fall outside the control, making the component unresponsive to gesture events.|
 
 **Return value**
 
@@ -66,7 +66,7 @@ Defines the click effect.
 
 | Name | Type                                                 | Read-Only   | Optional  |  Description                                                        |
 | ----- | ----------------------------------------------------------- | ---- | --------- | --------------------------------------------------------- |
-| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | No  | No |Sets the click feedback effect of the component.<br>Default value: **ClickEffectLevel.LIGHT**<br>**NOTE**<br>When **level** is **undefined** or **null**, **ClickEffect** uses the effect corresponding to **ClickEffectLevel.LIGHT** with a scaling ratio as described below.|
+| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | No  | No |Click feedback effect of the component.<br>Default value: **ClickEffectLevel.LIGHT**<br>**NOTE**<br>When **level** is **undefined** or **null**, **ClickEffect** uses the effect corresponding to **ClickEffectLevel.LIGHT** with a scaling ratio as described below.|
 | scale | number                                                      | No  | Yes |Custom scaling ratio for fine-tuning the click feedback effect.<br>**NOTE**<br>The default value varies depending on the value of **level**:<br>**ClickEffectLevel.LIGHT**: **0.90**<br>**ClickEffectLevel.MIDDLE** or **ClickEffectLevel.HEAVY**: **0.95**<br>**undefined** or **null** (treated as **ClickEffectLevel.LIGHT**): **0.90**<br>When **scale** is set to **undefined** or **null**, the default scaling ratio for the current **level** is used.|
 
 ## Example
@@ -144,3 +144,4 @@ struct ToggleExample {
 ```
 
 ![clickeffect](figures/clickeffect.gif)
+<!--no_check-->

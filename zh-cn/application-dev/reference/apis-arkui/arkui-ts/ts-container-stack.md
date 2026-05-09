@@ -23,6 +23,8 @@
 
 Stack(options?: StackOptions)
 
+堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。
+
 > **说明：**
 >
 > 过多的组件嵌套会导致性能劣化。在部分场景中，直接使用组件属性或借助系统API的能力可以替代层叠容器的效果，减少了嵌套组件数进而优化性能。最佳实践请参考[组件嵌套优化-优先使用组件属性代替嵌套组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-nesting-optimization#section78181114123811)。
@@ -40,6 +42,8 @@ Stack(options?: StackOptions)
 | options | [StackOptions](#stackoptions18对象说明) | 否   | 设置子组件在容器内的对齐方式。 |
 
 ## StackOptions<sup>18+</sup>对象说明
+
+设置堆叠容器的子组件对齐方式。
 
 > **说明：**
 >

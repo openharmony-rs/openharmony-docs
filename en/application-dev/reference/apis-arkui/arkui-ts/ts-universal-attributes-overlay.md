@@ -128,7 +128,7 @@ struct OverlayExample {
 }
 ```
 
-![en-us_image_0000001212058472](figures/en-us_image_0000001212058472.png)
+![en-us_image_0000001205769446](figures/en-us_image_0000001205769446.png)
 
 ### Example 2: Setting an Overlay Using a Custom Builder
 
@@ -139,7 +139,8 @@ This example demonstrates how to set an overlay using a custom builder.
 @Entry
 @Component
 struct OverlayExample {
-  @Builder OverlayNode() {
+  @Builder
+  OverlayNode() {
     Column() {
       // Replace $r('app.media.img1') with the image resource file you use.
       Image($r('app.media.img1'))
@@ -172,16 +173,17 @@ This example demonstrates how to use **ComponentContent** to dynamically change 
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
 
-class Params{
+class Params {
   backgroundColor: string | Resource = ""
+
   constructor(backgroundColor: string | Resource) {
     this.backgroundColor = backgroundColor;
   }
 }
 
 @Builder
-function overlayBuilder(params: Params){
-  Row(){
+function overlayBuilder(params: Params) {
+  Row() {
   }.width('100%').height('100%').backgroundColor(params.backgroundColor)
 }
 
@@ -190,7 +192,8 @@ function overlayBuilder(params: Params){
 struct Page_4040 {
   @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
   private uiContext: UIContext = this.getUIContext();
-  private overlayNode: ComponentContent<Params> = new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor))
+  private overlayNode: ComponentContent<Params> =
+    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor))
 
   aboutToAppear(): void {
     setInterval(() => {
@@ -206,7 +209,7 @@ struct Page_4040 {
 
   build() {
     Row() {
-      Column(){
+      Column() {
         Text(this.overlayColor)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)

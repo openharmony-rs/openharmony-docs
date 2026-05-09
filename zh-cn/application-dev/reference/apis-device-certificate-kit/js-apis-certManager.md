@@ -317,7 +317,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise\<CMResult>
 
-表示安装私有凭据，使用Promise方式异步返回结果。
+表示安装私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -489,7 +489,7 @@ try {
 
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取私有凭据详情，使用Promise方式异步返回结果。
+表示获取私有凭据详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -590,7 +590,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-表示卸载指定的私有凭据，使用Promise方式异步返回结果。
+表示卸载指定的私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -791,7 +791,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
-表示使用凭据进行签名、验签的初始化操作，使用Promise方式异步返回结果。
+表示使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -900,7 +900,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
-表示签名、验签的数据更新操作，使用Promise方式异步返回结果。
+表示签名、验签的数据更新操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1061,7 +1061,7 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-表示完成签名、验签的操作，使用Promise方式异步返回结果。
+表示完成签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1179,7 +1179,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-表示中止签名、验签的操作，使用Promise方式异步返回结果。
+表示中止签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1231,7 +1231,7 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取用户公共凭据的详细信息，使用Promise方式异步返回结果。
+表示获取用户公共凭据的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1287,7 +1287,7 @@ try {
 
 isAuthorizedApp(keyUri: string): Promise\<boolean>
 
-表示当前应用是否由指定的用户凭据授权，使用Promise方式异步返回结果。
+表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1340,7 +1340,7 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-表示获取当前用户和设备公共位置的所有用户根CA证书列表，使用Promise方式异步返回结果。
+表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1388,7 +1388,7 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-表示根据证书的位置获取用户根CA证书列表，使用Promise方式异步返回结果。
+表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1446,7 +1446,7 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-表示获取用户根CA证书的详细信息，使用Promise方式异步返回结果。
+表示获取用户根CA证书的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1500,7 +1500,7 @@ try {
 
 getPrivateCertificates(): Promise\<CMResult>
 
-表示获取应用安装的凭据列表，使用Promise方式异步返回结果。
+表示获取应用安装的凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 

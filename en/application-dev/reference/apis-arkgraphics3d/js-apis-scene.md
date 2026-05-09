@@ -14,13 +14,13 @@ The @ohos.graphics.scene module brings together APIs for 3D development, streaml
 
 ## Scene
 
-[Scene](js-apis-inner-scene.md): basic module of ArkGraphics 3D. It provides common data types such as **SceneResourceParameters** and **SceneNodeParameters**. It also provides basic methods such as glTF model loading, scene creation, and resource creation.
+[Scene](js-apis-inner-scene.md): ArkGraphics 3D basic module, which provides common data types such as [SceneResourceParameters](js-apis-inner-scene.md#sceneresourceparameters) and [SceneNodeParameters](js-apis-inner-scene.md#scenenodeparameters). It also provides basic methods such as glTF model loading, scene creation, and resource creation.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## SceneNode
 
-[SceneNode](js-apis-inner-scene-nodes.md): 3D scenes adopt a tree structure. You can change the 3D scene by operating the node properties and the node tree structure. This module provides the types and operation methods of scene nodes in 3D graphics.
+[SceneNode](js-apis-inner-scene-nodes.md): 3D scenes adopt a tree structure. You can change the 3D scene by operating the node properties and the node tree structure. The module provides the types and operation methods of scene nodes in 3D graphics.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 

@@ -163,7 +163,7 @@ Defines the progress of scanning pictures.
 **Properties**
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| progress | number | No| No| Progress percentage, whose value ranges from 0 to 100.|
+| progress | number | No| No| Progress percentage, whose value ranges from 0 to 100. Unit: %|
 | pictureFd | number | No| No| File descriptor of the scanned picture.|
 | isFinal | boolean | No| No| Whether the picture is the last one to be scanned. The value **true** indicates that the picture is the last one to be scanned, and **false** indicates that the picture is not the last one.|
 

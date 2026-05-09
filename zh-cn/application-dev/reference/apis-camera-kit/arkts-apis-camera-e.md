@@ -398,14 +398,12 @@
 
 枚举，相机控制器支持的效果类型。
 
- **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称      | 值 | 说明    |
 |-----------|---|---------|
-| BEAUTY    | 0 | 美颜。   |
-| PORTRAIT  | 1 | 人像虚化。|
+| BEAUTY    | 0 | 美颜。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
+| PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 

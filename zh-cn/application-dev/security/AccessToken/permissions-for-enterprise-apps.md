@@ -20,12 +20,14 @@
 企业类应用可参考[声明权限](declare-permissions.md)，申请以下权限。
 
 > **注意：**
-> 
+>
 > 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
 
 ## ohos.permission.SET_FILE_GUARD_POLICY
 
 允许应用下发文件管控策略。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -44,6 +46,8 @@
 
 当前扩展属性包括文件密级、文件标签。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -61,6 +65,8 @@
 
 获取该权限后，应用可以获取用户数据中指定文件的写权限，并修改文件。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -75,6 +81,8 @@
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 允许应用跨系统本地账号交互。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -93,6 +101,8 @@
 
 可获取其他应用的运行态信息，包括Ability、Extension、Application的信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -109,6 +119,8 @@
 允许应用监听应用状态。
 
 获取该权限后，可注册应用状态监听器。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -127,6 +139,8 @@
 
 如应用包名，版本等信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -143,6 +157,8 @@
 允许应用获取Wi-Fi的配置信息。
 
 该权限允许应用获取SSID、PSK、加密方式等Wi-Fi配置的相关信息。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -163,6 +179,8 @@
 
 该权限允许应用添加、删除Wi-Fi，以及修改Wi-Fi的配置信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -178,6 +196,8 @@
 
 允许应用查询域账号信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -192,6 +212,8 @@
 ## ohos.permission.QUERY_AUDIT_EVENT
 
 允许企业安全类应用查询安全审计事件。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -210,6 +232,8 @@
 
 获取权限后，可终止其他正在运行中的应用，允许它在必要时对系统中的进程进行管理和控制。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -227,6 +251,8 @@
 
 获取该权限后，可执行开启/关闭、连接、断开Wi-Fi等操作。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -240,6 +266,8 @@
 允许应用管理企业设备的用户CA证书。
 
 在企业设备上企业应用使用私有的CA证书认证企业服务器时，该权限用于允许企业应用把私有CA证书安装到企业设备上，并对安装的CA证书进行管理操作。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -255,6 +283,8 @@
 允许系统应用配置防火墙规则。
 
 当前仅2in1设备应用可申请此权限。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -273,6 +303,8 @@
 
 当前仅2in1设备应用可申请此权限。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -288,6 +320,8 @@
 
 允许应用获取域账号服务器配置。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -300,6 +334,8 @@
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 允许应用管理域账号服务器配置。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -314,6 +350,8 @@
 
 允许应用管理域账号。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -327,6 +365,8 @@
 
 允许应用获取应用包的签名信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -339,6 +379,8 @@
 ## ohos.permission.VISIBLE_WINDOW_INFO
 
 允许应用获取当前屏幕的可见窗口信息。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -354,6 +396,8 @@
 允许企业安全应用阻断安全审计事件。
 
 企业安全应用申请此权限后，可以阻断安全审计事件。这些事件包括文件创建，文件打开和文件删除等。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -372,6 +416,8 @@
 
 获取此权限后，应用可作为AppServiceExtension被同应用或同在"appidentifierAllowList"配置中的应用拉起或连接。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -388,6 +434,8 @@
 允许企业网络安全软件在EAP报文中新增私有信息。
 
 获取此权限后，允许企业网络安全软件获取802.1x报文并新增信息，完成定制化认证需求。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -406,6 +454,8 @@
 
 特定用户是支持应用单例运行的用户。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -422,6 +472,8 @@
 允许企业普通应用查询工作空间和不允许删除的空间列表。
 
 获取此权限后，可查询工作空间的基本信息，以及哪些空间已被设置成不可删除。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -440,6 +492,8 @@
 
 获取该权限后，应用可以通过API为网络设置扩展属性以标识网络是内部网络还是外部网络。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -454,6 +508,8 @@
 ## ohos.permission.MANAGE_ANTIVIRUS
 
 允许企业应用管理防病毒软件。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -470,6 +526,8 @@
 
 允许企业防病毒软件向系统注册、更新基本信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -484,6 +542,8 @@
 ## ohos.permission.CALL_TPM_CMD
 
 允许应用调用TPM（Trusted Platform Module）命令。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -501,6 +561,8 @@
 允许企业应用订阅企业数字空间相关事件。
 
 获取此权限后，可以通过spaceManager.subscribeEvent和spaceManager.unsubscribeEvent，订阅和取消订阅企业数字空间相关事件。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 
@@ -535,6 +597,8 @@
 允许应用获取UDID。
 
 UDID（Unified Device ID）是设备的唯一标识。
+
+<!--RP2--><!--RP2End-->
 
 **权限级别**：system_basic
 

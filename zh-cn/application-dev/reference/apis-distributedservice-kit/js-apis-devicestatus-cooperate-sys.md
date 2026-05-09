@@ -497,7 +497,7 @@ try {
 
 
 
-## on('cooperateMessage')<sup>11+</sup>
+## cooperate.on('cooperateMessage')<sup>11+</sup>
 
 on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
 
@@ -511,7 +511,7 @@ on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'   |
+| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'。   |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 是   | 回调函数，异步返回键鼠穿越状态消息。 |
 
 **错误码：**
@@ -541,7 +541,7 @@ try {
 
 
 
-## off('cooperateMessage')<sup>11+</sup>
+## cooperate.off('cooperateMessage')<sup>11+</sup>
 
 off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void;
 
@@ -555,7 +555,7 @@ off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperate'。                                |
+| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'。                                |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
@@ -607,7 +607,7 @@ try {
 ```
 
 
-## on('cooperateMouse')<sup>12+</sup>
+## cooperate.on('cooperateMouse')<sup>12+</sup>
 
 on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void;
 
@@ -621,8 +621,8 @@ on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocatio
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'   |
-| networkId| string                                                | 是   | 目标设备描述符   |
+| type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'。   |
+| networkId| string                                                | 是   | 目标设备描述符。   |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 是   | 回调函数，异步返回指定监听设备鼠标光标位置信息。 |
 
 **错误码：**
@@ -653,7 +653,7 @@ try {
 
 
 
-## off('cooperateMouse')<sup>12+</sup>
+## cooperate.off('cooperateMouse')<sup>12+</sup>
 
 off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocation&gt;): void;
 
@@ -668,7 +668,7 @@ off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocat
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'。                                |
-| networkId| string                                                | 是   | 目标设备描述符   |
+| networkId| string                                                | 是   | 目标设备描述符。   |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
@@ -834,7 +834,7 @@ prepare(callback: AsyncCallback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -879,7 +879,7 @@ prepare(): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.prepareCooperate](#cooperatepreparecooperate11-1)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -924,7 +924,7 @@ unprepare(callback: AsyncCallback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -969,7 +969,7 @@ unprepare(): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11-1)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1014,7 +1014,7 @@ activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1064,7 +1064,7 @@ activate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.activateCooperate](#cooperateactivatecooperate11-1)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1121,7 +1121,7 @@ deactivate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1167,7 +1167,7 @@ deactivate(isUnchained: boolean): Promise&lt;void&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.deactivateCooperate](#cooperatedeactivatecooperate11-1)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1219,7 +1219,7 @@ getCrossingSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1266,7 +1266,7 @@ getCrossingSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11-1)替代
+> 从API version 11开始不再维护。建议使用[cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11-1)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1312,7 +1312,7 @@ try {
 
 
 
-## on('cooperate')<sup>(deprecated)</sup>
+## cooperate.on('cooperate')<sup>(deprecated)</sup>
 
 on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateMsg }&gt;): void;
 
@@ -1320,7 +1320,7 @@ on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateM
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[on('cooperateMessage')](#oncooperatemessage11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.on('cooperateMessage')](#cooperateoncooperatemessage11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1328,7 +1328,7 @@ on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateM
 
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
-| type                 | string                                                          |  是  | 监听类型，取值为'cooperate' |
+| type                 | string                                                          |  是  | 监听类型，取值为'cooperate'。 |
 | callback             | Callback&lt;{ networkId: string, msg: [CooperateMsg](#cooperatemsgdeprecated) }&gt; |  是  | 回调函数，异步返回键鼠穿越状态消息。 |
 
 **错误码：**
@@ -1360,7 +1360,7 @@ try {
 
 
 
-## off('cooperate')<sup>(deprecated)</sup>
+## cooperate.off('cooperate')<sup>(deprecated)</sup>
 
 off(type: 'cooperate', callback?: Callback&lt;void&gt;): void;
 
@@ -1368,7 +1368,7 @@ off(type: 'cooperate', callback?: Callback&lt;void&gt;): void;
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[off('cooperateMessage')](#offcooperatemessage11)替代
+> 从API version 11开始不再维护。建议使用[cooperate.off('cooperateMessage')](#cooperateoffcooperatemessage11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1436,7 +1436,7 @@ try {
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[CooperateState](#cooperatestate11)替代
+> 从API version 11开始不再维护。建议使用[CooperateState](#cooperatestate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 

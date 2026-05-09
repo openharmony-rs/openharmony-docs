@@ -11,6 +11,9 @@
 
 Function Flow Runtime (FFRT) is a concurrent programming framework designed to simplify concurrent programming and task scheduling. You only need to pay attention to tasks and their dependencies in task scheduling without processing underlying threads and computing resources. In addition, FFRT leverages coroutine-based task execution to enhance task parallelism, improve thread utilization, and fully utilizes the computing resources of the multi-core platform to ensure centralized management and optimized scheduling of all system resources.
 
+<!--RP1-->
+<!--RP1End-->
+
 ## Basic Concepts
 
 The following describes the basic concepts in FFRT development:
@@ -24,12 +27,12 @@ The following describes the basic concepts in FFRT development:
 
 ### Programming Models
 
-|                | Thread Programming Model                                                                      | Task Programming Model                                                                                                                |
+|   Item      | Thread Programming Model                                                                      | Task Programming Model                                                                                                                |
 | -------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Degree of Parallelism (DOP) mining mode| Programmers create multiple threads and assign tasks to them for parallel execution to achieve the optimal runtime performance.            | Programmers, with the help of compilers or programming language features, decompose the application into tasks and describe their data dependencies during static programming. The scheduler allocates tasks to worker threads for execution.          |
 | Owner for creating threads| Programmers are responsible for creating threads. The maximum number of threads that can be created is not under control.  | The scheduler is responsible for creating and managing worker threads. Programmers cannot directly create threads.                                                  |
 | Load balancing      | Programmers map tasks to threads during static programming. Improper mapping or uncertain task execution time will cause a load imbalance among threads.| A ready task is automatically scheduled to an idle thread for execution, reducing the load imbalance among threads.                                              |
-| Scheduling overhead      | Thread scheduling is implemented by a kernel-mode scheduler, resulting in high scheduling overhead.                                          | Thread scheduling is implemented by a user-mode coroutine scheduler, requiring less scheduling overhead. In addition, FFRT can further reduce the scheduling overhead through hardware-based scheduling offload.|
+| Scheduling overhead      | Thread scheduling is implemented by a kernel-mode scheduler, resulting in high scheduling overhead.                                          | FFRT schedules execution via coroutines in user mode. It is more lightweight than kernel thread scheduling mechanisms and reduces scheduling overhead.|
 | Dependency expression      | A thread is in the executable state once it is created, and it is executed parallelly with other threads, causing frequent thread switching.              | FFRT determines whether a task can be executed based on the input and output dependencies explicitly expressed during task creation. If the input dependencies do not meet the requirements, the task is not scheduled.          |
 
 ### FFRT Programming Model
@@ -44,7 +47,7 @@ The tasks in the FFRT programming model have the following features:
 
 - Task dependencies can be directly specified, or expressed using data objects.
 - Tasks can be nested. That is, when a task is being executed, a new task can be generated and delivered to that task to form a parent-child relationship.
-- Simultaneous operations, such as wait, lock, and condition variables, are supported.
+- Multi-task synchronization is supported, such as waiting, locks, and condition variables.
 
 > **NOTE**
 >

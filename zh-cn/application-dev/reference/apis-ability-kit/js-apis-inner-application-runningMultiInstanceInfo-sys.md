@@ -5,7 +5,7 @@
 <!--Owner: @wendel; @Luobniz21-->
 <!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 定义多实例应用在运行态的结构信息，通过appManager的[getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)来获取。
 
