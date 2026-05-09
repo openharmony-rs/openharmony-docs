@@ -1,8 +1,8 @@
 # Using AVRecorder to Record Audio (C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -14,7 +14,7 @@ During application development, you can use the **state** property of the AVReco
 
 **Figure 1** Recording state transition
 
-![Recording state change](figures/recording-status-change-ndk.png)
+![Recording status change](figures/audio-recording-status-change.png)
 
 For details about the states, see [AVRecorderState](../../reference/apis-media-kit/arkts-apis-media-t.md#avrecorderstate9).
 
@@ -31,8 +31,6 @@ Before your development, configure the following permissions for your applicatio
 
 ## How to Develop
 
-> **NOTE**
->
 > To record only audio, you do not need to set video-related parameters such as **videoFrameWidth** and **videoFrameHeight**. Similarly, to record only videos, you do not need to set audio-related parameters such as **audioBitrate** and **audioChannels**.
 
 
@@ -42,27 +40,27 @@ Read [AVRecorder](../../reference/apis-media-kit/capi-avrecorder.md) for the API
 
 
 Link the dynamic libraries in the CMake script.
-```
+```c++
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
 To use [OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md) APIs, include the following header file:
-```
+```c++
 #include <multimedia/player_framework/native_avformat.h>
 ```
 
 In addition, link the following dynamic libraries in the CMake script:
-```
+```c++
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
 To use system logging, include the following header file:
-```
+```c++
 #include <hilog/log.h>
 ```
 
 In addition, link the following dynamic libraries in the CMake script:
-```
+```c++
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -161,7 +159,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    }
    ```
 
-3. Set video recording parameters and call **OH_AVRecorder_Prepare()**. The AVRecorder enters the **prepared** state.
+3. Set audio recording parameters and call **OH_AVRecorder_Prepare()**. The AVRecorder enters the **prepared** state.
 
    > **NOTE**
    >
@@ -169,7 +167,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - Before parameter configuration, ensure that you have gained the required permissions. For details, see [Requesting Permissions](#requesting-permissions).
    >
-   > - In pure video recording scenarios, set only video-related parameters in **OH_AVRecorder_Config** of **OH_AVRecorder_Prepare()**.
+   > - Set only audio-related parameters in **OH_AVRecorder_Config** of **prepare()**, as shown in the sample code.
    >
    > - The recording output URL (URL in **OH_AVRecorder_Config** in the sample code) must be in the format of fd://xx (where xx indicates a file descriptor). You must call the basic file operation APIs to implement access to the application file. For details, see [Accessing Application Files](../../file-management/native-fileio-guidelines.md).
 
@@ -186,9 +184,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     
        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
-
-       config.metadata.location.latitude = 27.791863;
-       config.metadata.location.longitude = 64.574687;
     }
 
     // Prepare for recording.
