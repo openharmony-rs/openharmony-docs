@@ -718,7 +718,7 @@ CONFIG
 
 
 
-### 抓取指定进程CPU使用率。
+### 抓取指定进程CPU使用率
 
 
 对进程号为1234的进程采集CPU数据，采集时长为30s，采样周期为1000ms，调优数据传输的共享内存大小是16384个内存页，采集的数据会被保存至/data/local/tmp/hiprofiler_data.htrace文件中。
@@ -751,7 +751,7 @@ CONFIG
 
 ### 抓取指定进程GPU图形内存调用栈
 
-抓取指定进程的GPU图形内存调用栈（需要使用最新smartperf release版本解析文件，下载链接：[smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases))。
+抓取指定进程的GPU图形内存调用栈（需要使用最新SmartPerf release版本解析文件，下载链接：[SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases))。
 
 ```shell
 $ hiprofiler_cmd \
