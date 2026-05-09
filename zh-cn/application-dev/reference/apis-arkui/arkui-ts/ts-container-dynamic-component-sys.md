@@ -41,9 +41,7 @@ DynamicComponent(options: DynamicOptions)
 
 ## Worker
 
-用于运行Abc的Worker线程对象。
-
-type Worker = Worker
+type Worker = Worker，用于运行Abc的Worker线程对象。
 
 **起始版本：** 26.0.0
 
@@ -55,13 +53,11 @@ type Worker = Worker
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [Worker](../../apis-arkts/js-apis-worker.md) | 引用自@ohos.worker中定义的Worker类型，用于在独立线程中运行Abc。 |
+| [Worker](../../apis-arkts/js-apis-worker.md) | 用于在独立线程中运行Abc。 |
 
 ## ErrorCallback
 
-错误回调类型，用于接收异常信息。
-
-type ErrorCallback = ErrorCallback
+type ErrorCallback = ErrorCallback，错误回调类型，用于接收异常信息。
 
 **起始版本：** 26.0.0
 
@@ -73,7 +69,7 @@ type ErrorCallback = ErrorCallback
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 引用自@ohos.base中定义的ErrorCallback类型，用于接收运行过程中的异常信息。 |
+| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 用于接收运行过程中的异常信息。 |
 
 ## DynamicOptions
 
