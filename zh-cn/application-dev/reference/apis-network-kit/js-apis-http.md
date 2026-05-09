@@ -599,7 +599,7 @@ requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallbac
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | 是   | 发起网络请求的URL地址。                         |
 | options  | HttpRequestOptions                             | 是   | 参考[HttpRequestOptions](#httprequestoptions)。 |
-| callback | AsyncCallback\<number\>       | 是   | 回调函数。当请求成功，err为undefined，返回HTTP请求响应错误码(#responsecode)；否则为错误对象。                                    |
+| callback | AsyncCallback\<number\>       | 是   | 回调函数。当请求成功，err为undefined，返回HTTP请求响应错误码，具体含义见[ResponseCode](#responsecode)；否则为错误对象。                                    |
 
 **错误码：**
 
