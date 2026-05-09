@@ -4629,7 +4629,7 @@ SOCKS5代理配置信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | host  | string | 否  | 否 |代理服务器主机名。<br>**说明:** 当该项为空字符串时，视为未配置SOCKS5代理。|
-| port  | number | 否  |否  |主机端口。取值范围[0, 65535]。<br>**说明:** 当参数不在上述取值范围时，视为未配置SOCKS5代理。 |
+| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  |否  |主机端口。取值范围[0, 65535]。<br>**说明:** 当参数不在上述取值范围时，视为未配置SOCKS5代理。 |
 | username | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
 | password | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。
 | dnsStrategy | [Socks5DnsStrategy](#socks5dnsstrategy) | 否 | 是 | 指定DNS解析由系统执行还是由代理服务器执行。<br>**说明:** 当此项未指定时，如果host有`socks5h://`协议前缀，则DNS解析由代理服务器执行，否则DNS解析由系统执行。 |
