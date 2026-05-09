@@ -1434,7 +1434,7 @@
           - [划词服务概述](basic-services/selectionInput/selection-services-intro.md)
           - [实现一个划词扩展能力](basic-services/selectionInput/selection-services-application-guide.md)
         - 电源管理<!--powermgr-->
-          - 运行锁使用指南<!--running-dev-->
+          - 运行锁使用指南<!--powermgr-->
             - [阻止系统闲时进入睡眠开发指南](basic-services/powermgr/runningLock/runningLock-dev.md)
       - Function Flow Runtime Kit（任务并发调度服务）<!--ffrt-kit-->
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
@@ -3273,7 +3273,7 @@
           <!--Del-->
           - [应用级变量的状态管理（系统接口）](reference/apis-arkui/arkui-ts/ts-state-management-sys.md)
           <!--DelEnd-->
-        - 响应式环境变量<!--responsive-env-system-property-->
+        - 响应式环境变量<!--arkts-env-system-property-->
           - [\@Env：环境变量](reference/apis-arkui/arkui-ts/ts-env-system-property.md)
         - 公共定义<!--common-definitions-->
           - [基础类型定义](reference/apis-arkui/arkui-ts/ts-types.md)
@@ -3402,7 +3402,7 @@
             - [继承样式](reference/apis-arkui/arkui-js/js-components-custom-style.md)
             - [slot插槽](reference/apis-arkui/arkui-js/js-components-custom-slot.md)
             - [生命周期定义](reference/apis-arkui/arkui-js/js-components-custom-lifecycle.md)
-          - 全局接口<!--js-lite-interface-->
+          - 全局接口
             - [旋转表冠事件监听](reference/apis-arkui/arkui-js/js-components-common-monitorcrownevents.md)
           - [动态创建组件](reference/apis-arkui/arkui-js/js-components-create-elements.md)
           - [数据类型说明](reference/apis-arkui/arkui-js/js-appendix-types.md)
@@ -3444,7 +3444,7 @@
           - 画布组件<!--js-lite-canvas-comp-->
             - [canvas组件](reference/apis-arkui/arkui-js-lite/js-lite-components-canvas-canvas.md)
             - [CanvasRenderingContext2D对象](reference/apis-arkui/arkui-js-lite/js-lite-components-canvas-canvasrenderingcontext2d.md)
-          - 全局接口<!--arkui-js-lite-interface-->
+          - 全局接口
             - [旋转表冠事件监听](reference/apis-arkui/arkui-js-lite/js-lite-common-monitorcrownevents.md)
         - JS服务卡片UI组件<!--arkui-card-comp-->
           - 框架说明<!--card-comp-framework-overview-->
@@ -5016,7 +5016,7 @@
         - [@ohos.multimedia.audioHaptic (音振协同)(系统接口)](reference/apis-audio-kit/js-apis-audioHaptic-sys.md)
         - [@ohos.multimedia.systemSoundManager (系统声音管理)(系统接口)](reference/apis-audio-kit/js-apis-systemSoundManager-sys.md)
         <!--DelEnd-->
-        - multimedia<!--multimedia-->
+        - multimedia
           - [SystemSoundPlayer (音效播放器)](reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md)
           <!--Del-->
           - [ringtonePlayer (铃声播放器)(系统接口)](reference/apis-audio-kit/js-apis-inner-multimedia-ringtonePlayer-sys.md)
