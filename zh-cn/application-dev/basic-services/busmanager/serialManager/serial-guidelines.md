@@ -75,7 +75,7 @@
 
 - **SDK版本配置**：
 
-  本模块提供的ArkTS接口，所需SDK版本为API 26.0.0及以上才可使用。
+  本模块提供的ArkTS接口需要SDK版本为API 26.0.0及以上。
 
 ### 搭建环境
 
@@ -127,7 +127,8 @@
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { serial, BusinessError } from '@kit.BasicServicesKit';
+   import serial from '@ohos.busManager.serial'
+   import { BusinessError } from '@ohos.base'
    ```
 
 2. 获取串口设备列表。
