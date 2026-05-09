@@ -1009,6 +1009,11 @@
 						"end_line":91,
 						"name":"app_json5_configuration",
 						"start_line":19
+					},
+					{
+						"end_line":90,
+						"name":"app_json5_alternateIcons",
+						"start_line":20
 					}
 				]
 			}
