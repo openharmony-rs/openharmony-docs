@@ -59,7 +59,7 @@ type Worker = Worker
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [Worker](../../apis-arkts/js-apis-worker.md) | 引用自@ohos.worker中定义的Worker类型，用于在独立线程中运行Abc。 |
+| [Worker](../../apis-arkts/js-apis-worker.md) | 用于在独立线程中运行Abc。 |
 
 ## ErrorCallback
 
@@ -77,7 +77,7 @@ type ErrorCallback = ErrorCallback
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 引用自@ohos.base中定义的ErrorCallback类型，用于接收运行过程中的异常信息。 |
+| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 用于接收运行过程中的异常信息。 |
 
 ## DynamicOptions
 
