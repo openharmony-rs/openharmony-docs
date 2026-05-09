@@ -23,7 +23,7 @@ DynamicComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）
 
 ## 接口
 
-DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
+DynamicComponent(options: DynamicOptions)
 
 创建DynamicComponent组件，用于显示Worker线程中运行的Abc UI。
 
@@ -41,7 +41,7 @@ DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 ## Worker
 
-用于运行Abc的Worker线程对象，继承自[@ohos.worker](../../apis-arkts/js-apis-worker.md)中的Worker类型。
+用于运行Abc的Worker线程对象。
 
 **起始版本：** 26.0.0
 
@@ -51,7 +51,7 @@ DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 ## ErrorCallback
 
-错误回调类型，继承自[@ohos.base](../../apis-basic-services-kit/js-apis-base.md#errorcallback)中的ErrorCallback类型，用于接收异常信息。
+错误回调类型，用于接收异常信息。
 
 **起始版本：** 26.0.0
 
@@ -72,9 +72,9 @@ DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
-| worker | [Worker](#worker) | 否 | 否 | 运行Abc的Worker。 |
-| backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false。 |
-| allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false。 |
+| worker | [Worker](../../apis-arkts/js-apis-worker.md) | 否 | 否 | 运行Abc的Worker。 |
+| backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false |
+| allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false |
 
 ## 属性
 
@@ -86,9 +86,9 @@ DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 ### onError
 
-onError(callback: ErrorCallback): DynamicComponentAttribute
+onError(callback: ErrorCallback)
 
-DynamicComponent运行过程中发生异常时触发该回调。
+DynamicComponent运行过程中发生异常时触发该回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -100,4 +100,4 @@ DynamicComponent运行过程中发生异常时触发该回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [ErrorCallback](#errorcallback) | 是 | 回调函数，入参用于接收异常信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息。 |
