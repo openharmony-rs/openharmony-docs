@@ -11,6 +11,8 @@
 
 >**说明：**
 >
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >- 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >- 文档中“全局”表示整个触控屏或触控板。如监听全局触屏输入事件，表示触摸触控板任何位置时，整个触控板的触屏输入事件均被监听。
@@ -31,7 +33,13 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouch](#inputmonitorontouch23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -78,6 +86,68 @@ struct Index {
 }
 ```
 
+## inputMonitor.onTouch<sup>23+</sup>
+
+onTouch(receiver: TouchEventReceiver): void
+
+监听全局触屏事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouch)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明                  |
+| -------- | ---------------------------------------- | ---- | ------------------- |
+| receiver | [TouchEventReceiver](#toucheventreceiver) | 是    | 回调函数，异步上报触摸屏输入事件。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | Permission denied, non-system app called system api.   |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { TouchEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅触摸事件
+            inputMonitor.onTouch((touchEvent: TouchEvent): Boolean => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+              return false;
+            } );
+          } catch (error) {
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('mouse')<sup>9+</sup>
 
 on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
@@ -86,7 +156,13 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：** 
 
@@ -133,6 +209,67 @@ struct Index {
 }
 ```
 
+## inputMonitor.onMouse<sup>23+</sup>
+
+onMouse(receiver: Callback&lt;MouseEvent&gt;): void
+
+监听全局鼠标事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse9)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | 是    | 回调函数，异步上报鼠标输入事件。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | Permission denied, non-system app called system api.   |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { MouseEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅鼠标事件
+            inputMonitor.onMouse((mouseEvent: MouseEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('mouse')<sup>11+</sup>
 
 on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
@@ -141,9 +278,15 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse23-1)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 11
+
+**参数：**
 
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
@@ -213,6 +356,74 @@ struct Index {
 }
 ```
 
+## inputMonitor.onMouse<sup>23+</sup>
+
+onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
+
+监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse11)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| rect     | display.Rect[]             | 是    | 可以触发回调任务的矩形区域，可传入1至2个。 |
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | 是    | 回调函数，异步上报鼠标输入事件。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+import { inputMonitor } from '@kit.InputKit';
+import { MouseEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let rect: Array<display.Rect> = [{ left: 100, top: 100, width: 100, height: 100 },
+            { left: 600, top: 100, width: 100, height: 100
+          }];
+          let callback = (mouseEvent : MouseEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+          }
+
+          try {
+            // 订阅鼠标事件
+            inputMonitor.onMouse(rect, callback);
+          } catch (error) {
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('touch')
 
 off(type: 'touch', receiver?: TouchEventReceiver): void
@@ -221,7 +432,13 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouch](#inputmonitorofftouch23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -304,6 +521,76 @@ struct Index {
 }
 ```
 
+## inputMonitor.offTouch<sup>23+</sup>
+
+offTouch(receiver?: TouchEventReceiver): void
+
+取消监听全局触屏事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouch)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明                  |
+| -------- | ---------------------------------------- | ---- | ------------------- |
+| receiver | [TouchEventReceiver](#toucheventreceiver) | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | Permission denied, non-system app called system api.   |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let callback = (touchEvent: TouchEvent):Boolean => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+            return false;
+          };
+          try {
+            // 取消监听单个回调函数
+            inputMonitor.onTouch(callback);
+            inputMonitor.offTouch(callback);
+            // 取消监听所有回调函数
+            inputMonitor.onTouch((touchEvent: TouchEvent):Boolean => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+              return false;
+            });
+            inputMonitor.offTouch();
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('mouse')<sup>9+</sup>
 
 off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
@@ -312,7 +599,13 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMouse](#inputmonitoroffmouse23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -395,6 +688,74 @@ struct Index {
 }
 ```
 
+## inputMonitor.offMouse<sup>23+</sup>
+
+offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
+
+取消监听全局鼠标事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffmouse9)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;MouseEvent&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | Permission denied, non-system app called system api.   |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let callback = (mouseEvent: MouseEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+          };
+          try {
+            // 取消监听单个回调函数
+            inputMonitor.onMouse(callback);
+            inputMonitor.offMouse(callback);
+            // 取消监听所有回调函数
+            inputMonitor.onMouse((mouseEvent: MouseEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+            });
+            inputMonitor.offMouse();
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## TouchEventReceiver
 
 type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
@@ -404,6 +765,10 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 **需要权限：** ohos.permission.INPUT_MONITORING
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -418,6 +783,8 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 | Boolean | 若返回true，本次触屏后续产生的事件不再分发到窗口；若返回false，本次触屏后续产生的事件还会分发到窗口。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
@@ -446,6 +813,36 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { TouchEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅触摸事件
+            inputMonitor.onTouch((touchEvent: TouchEvent): Boolean => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+              return false;
+            } );
+          } catch (error) {
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
 on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
@@ -454,7 +851,13 @@ on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -500,6 +903,66 @@ struct Index {
 }
 ```
 
+## inputMonitor.onPinch<sup>23+</sup>
+
+onPinch(receiver: Callback&lt;Pinch&gt;): void
+
+监听全局触控板的捏合事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch10)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | 是    | 回调函数，异步上报捏合输入事件。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅捏合事件
+            inputMonitor.onPinch((pinchEvent: Pinch) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to monitor the pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('pinch')<sup>10+</sup>
 
 off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
@@ -508,7 +971,13 @@ off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -591,6 +1060,73 @@ struct Index {
 }
 ```
 
+## inputMonitor.offPinch<sup>23+</sup>
+
+offPinch(receiver?: Callback&lt;Pinch&gt;): void
+
+取消监听全局触控板的捏合事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch10)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let funCallback = (pinchEvent: Pinch) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            };
+            inputMonitor.onPinch(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offPinch(funCallback);
+            // 取消监听所有回调函数
+            inputMonitor.onPinch((pinchEvent: Pinch) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            });
+            inputMonitor.offPinch();
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('threeFingersSwipe')<sup>10+</sup>
 
 on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
@@ -599,7 +1135,13 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onThreeFingersSwipe](#inputmonitoronthreefingersswipe23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -645,6 +1187,67 @@ struct Index {
 }
 ```
 
+## inputMonitor.onThreeFingersSwipe<sup>23+</sup>
+
+onThreeFingersSwipe(receiver: Callback&lt;ThreeFingersSwipe&gt;): void
+
+监听全局触控板的三指滑动事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('threeFingersSwipe')](#inputmonitoronthreefingersswipe10)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt; | 是    | 回调函数，异步上报三指滑动输入事件。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅三指滑动事件
+            let funCallback = (threeFingersSwipe: ThreeFingersSwipe) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
+            };
+            inputMonitor.onThreeFingersSwipe(funCallback);
+          } catch (error) {
+            console.error(`Failed to monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('threeFingersSwipe')<sup>10+</sup>
 
 off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
@@ -653,7 +1256,13 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): vo
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offThreeFingersSwipe](#inputmonitoroffthreefingersswipe23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -736,6 +1345,73 @@ struct Index {
 }
 ```
 
+## inputMonitor.offThreeFingersSwipe<sup>23+</sup>
+
+offThreeFingersSwipe(receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
+
+取消监听全局触控板的三指滑动事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('threeFingersSwipe')](#inputmonitoroffthreefingersswipe10)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let funCallback = (threeFingersSwipe: ThreeFingersSwipe) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
+            };
+            inputMonitor.onThreeFingersSwipe(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offThreeFingersSwipe(funCallback);
+            inputMonitor.onThreeFingersSwipe((threeFingersSwipe: ThreeFingersSwipe) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
+            });
+            // 取消监听所有回调函数
+            inputMonitor.offThreeFingersSwipe();
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('fourFingersSwipe')<sup>10+</sup>
 
 on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
@@ -744,7 +1420,13 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFourFingersSwipe](#inputmonitoronfourfingersswipe23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -790,6 +1472,67 @@ struct Index {
 }
 ```
 
+## inputMonitor.onFourFingersSwipe<sup>23+</sup>
+
+onFourFingersSwipe(receiver: Callback&lt;FourFingersSwipe&gt;): void
+
+监听全局触控板的四指滑动事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('fourFingersSwipe')](#inputmonitoronfourfingersswipe10)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt; | 是    | 回调函数，异步上报四指滑动输入事件。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅四指滑动事件
+            let funCallback = (fourFingersSwipe: FourFingersSwipe) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
+            };
+            inputMonitor.onFourFingersSwipe(funCallback);
+          } catch (error) {
+            console.error(`Failed to monitor four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('fourFingersSwipe')<sup>10+</sup>
 
 off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
@@ -798,7 +1541,13 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFourFingersSwipe](#inputmonitorofffourfingersswipe23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -881,6 +1630,73 @@ struct Index {
 }
 ```
 
+## inputMonitor.offFourFingersSwipe<sup>23+</sup>
+
+offFourFingersSwipe(receiver?: Callback&lt;FourFingersSwipe&gt;): void
+
+取消监听全局触控板的四指滑动事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('fourFingersSwipe')](#inputmonitorofffourfingersswipe10)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| receiver | Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let funCallback = (fourFingersSwipe: FourFingersSwipe) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
+            };
+            inputMonitor.onFourFingersSwipe(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offFourFingersSwipe(funCallback);
+            inputMonitor.onFourFingersSwipe((fourFingersSwipe: FourFingersSwipe) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
+            });
+            // 取消监听所有回调函数
+            inputMonitor.offFourFingersSwipe();
+          } catch (error) {
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('rotate')<sup>11+</sup>
 
 on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
@@ -889,7 +1705,13 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRotate](#inputmonitoronrotate23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -937,6 +1759,69 @@ struct Index {
 }
 ```
 
+## inputMonitor.onRotate<sup>23+</sup>
+
+onRotate(fingers: int, receiver: Callback&lt;Rotate&gt;): void
+
+监听全局触控板的旋转事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronrotate11)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| fingers     | int                     | 是    | 旋转的手指数，手指数不能小于0，当前仅支持收到旋转手势的回调。 |
+| receiver | Callback&lt;[Rotate](js-apis-multimodalinput-gestureevent.md#rotate11)&gt; | 是    | 回调函数，异步上报旋转输入事件。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { Rotate } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 旋转手势监听手指数2
+            inputMonitor.onRotate(2, (rotateEvent: Rotate) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Failed to monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('rotate')<sup>11+</sup>
 
 off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
@@ -945,7 +1830,13 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRotate](#inputmonitoroffrotate23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1029,6 +1920,103 @@ struct Index {
 }
 ```
 
+## inputMonitor.offRotate<sup>23+</sup>
+
+offRotate(fingers: int, receiver?: Callback&lt;Rotate&gt;): void
+
+取消监听全局触控板的旋转事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rotate')](#inputmonitoroffrotate11)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| fingers     | int                     | 是    | 旋转的手指数，手指数不能小于0，当前仅支持收到旋转手势的回调。 |
+| receiver | Callback&lt;[Rotate](js-apis-multimodalinput-gestureevent.md#rotate11)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { Rotate } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (rotateEvent: Rotate) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
+            return false;
+          };
+          try {
+            inputMonitor.onRotate(2, callback);
+            inputMonitor.offRotate(2, callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { Rotate } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (rotateEvent: Rotate) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
+            return false;
+          };
+          try {
+            inputMonitor.onRotate(2, callback);
+            inputMonitor.offRotate(2);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('pinch')<sup>11+</sup>
 
 on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
@@ -1037,7 +2025,13 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch23-1)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1085,6 +2079,69 @@ struct Index {
 }
 ```
 
+## inputMonitor.onPinch<sup>23+</sup>
+
+onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
+
+监听全局触控板的捏合事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('pinch')](#inputmonitoronpinch11)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| fingers     | int                     | 是    | 捏合的手指数，手指数不能小于0，当前仅支持收到捏合手势的回调。 |
+| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | 是    | 回调函数，异步上报捏合输入事件。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { Pinch } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 捏合手势监听手指数2
+            inputMonitor.onPinch(2, (pinchEvent: Pinch) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Failed to monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('pinch')<sup>11+</sup>
 
 off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
@@ -1093,7 +2150,13 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch23-1)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1177,6 +2240,103 @@ struct Index {
 }
 ```
 
+## inputMonitor.offPinch<sup>23+</sup>
+
+offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
+
+取消监听全局触控板的捏合事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch11)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                         | 必填   | 说明                  |
+| -------- | -------------------------- | ---- | ------------------- |
+| fingers     | int                     | 是    | 捏合的手指数，手指数不能小于0，当前仅支持收到捏合手势的回调。 |
+| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { Pinch } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            inputMonitor.onPinch(2, callback);
+            inputMonitor.offPinch(2, callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { Pinch } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            inputMonitor.onPinch(2, callback);
+            inputMonitor.offPinch(2);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('threeFingersTap')<sup>11+</sup>
 
 on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
@@ -1185,7 +2345,13 @@ on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onThreeFingersTap](#inputmonitoronthreefingerstap23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1231,6 +2397,67 @@ struct Index {
 }
 ```
 
+## inputMonitor.onThreeFingersTap<sup>23+</sup>
+
+onThreeFingersTap(receiver: Callback&lt;ThreeFingersTap&gt;): void
+
+监听全局触控板的三指轻点事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('threeFingersTap')](#inputmonitoronthreefingerstap11)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                      |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
+| receiver | Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt; | 是   | 回调函数，异步上报三指轻点输入事件。      |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅三指点击事件
+            let funCallback = (threeFingersTap: ThreeFingersTap) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
+            };
+            inputMonitor.onThreeFingersTap(funCallback);
+          } catch (error) {
+            console.error(`Failed to monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('threeFingersTap')<sup>11+</sup>
 
 off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
@@ -1239,7 +2466,13 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offThreeFingersTap](#inputmonitoroffthreefingerstap23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1322,6 +2555,73 @@ struct Index {
 }
 ```
 
+## inputMonitor.offThreeFingersTap<sup>23+</sup>
+
+offThreeFingersTap(receiver?: Callback&lt;ThreeFingersTap&gt;): void
+
+取消监听全局触控板的三指轻点事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffthreefingerstap11)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| receiver | Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let funCallback = (threeFingersTap: ThreeFingersTap) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
+            };
+            inputMonitor.onThreeFingersTap(funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offThreeFingersTap(funCallback);
+            inputMonitor.onThreeFingersTap((threeFingersTap: ThreeFingersTap) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
+            });
+            // 取消监听所有回调函数
+            inputMonitor.offThreeFingersTap();
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('touchscreenSwipe')<sup>18+</sup>
 
 on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
@@ -1330,7 +2630,13 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchscreenSwipe](#inputmonitorontouchscreenswipe23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -1378,6 +2684,70 @@ struct Index {
 }
 ```
 
+## inputMonitor.onTouchscreenSwipe<sup>23+</sup>
+
+onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): void
+
+监听触摸屏滑动手势事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('touchscreenSwipe')](#inputmonitorontouchscreenswipe18)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| fingers  | int                                                       | 是   | 滑动手势的手指数，取值范围：[3,5]。 |
+| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 是   | 回调函数，异步上报触摸屏滑动手势事件。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅触摸屏滑动事件
+            let funCallback = (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenSwipe(fingers, funCallback);
+          } catch (error) {
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('touchscreenSwipe')<sup>18+</sup>
 
 off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
@@ -1386,7 +2756,13 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchscreenSwipe](#inputmonitorofftouchscreenswipe23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -1467,6 +2843,76 @@ struct Index {
 }
 ```
 
+## inputMonitor.offTouchscreenSwipe<sup>23+</sup>
+
+offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;): void
+
+取消监听触摸屏滑动手势事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('touchscreenSwipe')](#inputmonitorofftouchscreenswipe18)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| fingers  | int                                                       | 是   | 滑动手势的手指数，取值范围：[3,5]。 |
+| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let funCallback = (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenSwipe(fingers, funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offTouchscreenSwipe(fingers, funCallback);
+            inputMonitor.onTouchscreenSwipe(fingers, (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // 取消监听所有回调函数
+            inputMonitor.offTouchscreenSwipe(fingers);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('touchscreenPinch')<sup>18+</sup>
 
 on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
@@ -1475,7 +2921,13 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchscreenPinch](#inputmonitorontouchscreenpinch23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -1523,6 +2975,70 @@ struct Index {
 }
 ```
 
+## inputMonitor.onTouchscreenPinch<sup>23+</sup>
+
+onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): void
+
+监听触摸屏捏合手势事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('touchscreenPinch')](#inputmonitorontouchscreenpinch18)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| fingers  | int                                                       | 是   | 捏合手势的手指数，取值范围：[4,5]。 |
+| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 是   | 回调函数，异步上报触摸屏捏合手势事件。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅触摸屏捏合事件
+            let funCallback = (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenPinch(fingers, funCallback);
+          } catch (error) {
+            console.error(`Failed to monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('touchscreenPinch')<sup>18+</sup>
 
 off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
@@ -1531,7 +3047,13 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchscreenPinch](#inputmonitorofftouchscreenpinch23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -1612,6 +3134,76 @@ struct Index {
 }
 ```
 
+## inputMonitor.offTouchscreenPinch<sup>23+</sup>
+
+offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;): void
+
+取消监听触摸屏捏合手势事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('touchscreenPinch')](#inputmonitorofftouchscreenpinch18)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| fingers  | int                                                       | 是   | 捏合手势的手指数，取值范围：[4,5]。 |
+| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let funCallback = (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let fingers: int = 4;
+            inputMonitor.onTouchscreenPinch(fingers, funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offTouchscreenPinch(fingers, funCallback);
+            inputMonitor.onTouchscreenPinch(fingers, (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // 取消监听所有回调函数
+            inputMonitor.offTouchscreenPinch(fingers);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('keyPressed')<sup>15+</sup>
 
 on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): void
@@ -1620,7 +3212,13 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyPressed](#inputmonitoronkeypressed23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1668,6 +3266,70 @@ struct Index {
 }
 ```
 
+## inputMonitor.onKeyPressed<sup>23+</sup>
+
+onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): void
+
+监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyPressed')](#inputmonitoronkeypressed15)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| keys     | Array<[KeyCode](js-apis-keycode.md#keycode)> | 是   | 按键码列表，支持如下取值：KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_POWER、KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_UP。                      |
+| receiver | Callback&lt;[KeyEvent](js-apis-keyevent.md#keyevent)&gt;    | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[按键前置监听错误码](./errorcode-inputmonitor.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 4100001  | Event listening not supported for the key.                   |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅按键按下事件
+            let funCallback = (event: KeyEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            inputMonitor.onKeyPressed(keys, funCallback);
+          } catch (error) {
+            console.error(`Failed to monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('keyPressed')<sup>15+</sup>
 
 off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
@@ -1676,7 +3338,13 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyPressed](#inputmonitoroffkeypressed23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1754,9 +3422,79 @@ struct Index {
 }
 ```
 
+## inputMonitor.offKeyPressed<sup>23+</sup>
+
+offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
+
+取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyPressed')](#inputmonitoroffkeypressed15)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                      | 必填 | 说明                                                         |
+| -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| receiver | Callback&lt;[KeyEvent](js-apis-keyevent.md#keyevent)&gt; | 否   | 需要取消监听的回调函数。若不填，取消应用所有按键监听的回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let funCallback = (event: KeyEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            inputMonitor.onKeyPressed(keys, funCallback);
+            // 取消监听单个回调函数
+            inputMonitor.offKeyPressed(funCallback);
+            inputMonitor.onKeyPressed(keys, (event: KeyEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // 取消监听所有回调函数
+            inputMonitor.offKeyPressed();
+          } catch (error) {
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.queryTouchEvents()<sup>20+</sup>
 
-queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
+ArkTS-Dyn: queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
+
+ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 查询最近的触屏输入事件，最多支持查询 100 条事件，使用Promise异步回调。
 
@@ -1764,11 +3502,15 @@ queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | number                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
+| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
 
 **返回值：**
 
@@ -1786,6 +3528,8 @@ queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 | 202      | Permission denied, non-system app called system api.         |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputMonitor, TouchEvent } from '@kit.InputKit'
@@ -1807,6 +3551,36 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 查询触屏事件数量
+            inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
+              console.info(`Succeeded in querying touch events, events=${events}.`);
+            });
+          } catch(error) {
+            const code = (error as BusinessError).code;
+            const message = (error as BusinessError).message;
+            console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.on('swipeInward')<sup>12+</sup>
 
 on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
@@ -1815,7 +3589,13 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSwipeInward](#inputmonitoronswipeinward23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1848,9 +3628,69 @@ struct Index {
         .onClick(() => {
           try {
             // 订阅向内滑动事件
-            inputMonitor.on('swipelnward', (SwipeInward) => {
+            inputMonitor.on('swipeInward', (SwipeInward) => {
               console.info(`Succeeded in monitoring on ${JSON.stringify(SwipeInward)}.`);
               return false;
+            });
+          } catch (error) {
+            console.error(`Failed to monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.onSwipeInward<sup>23+</sup>
+
+onSwipeInward(receiver: Callback&lt;SwipeInward&gt;): void
+
+监听向内滑动事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('swipeInward')](#inputmonitoronswipeinward12)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;     | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅向内滑动事件
+            inputMonitor.onSwipeInward((SwipeInward) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(SwipeInward)}.`);
             });
           } catch (error) {
             console.error(`Failed to monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1869,7 +3709,13 @@ off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSwipeInward](#inputmonitoroffswipeinward23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1926,27 +3772,95 @@ import { inputMonitor, SwipeInward } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-build() {
-  RelativeContainer() {
-    Text()
-      .onClick(() => {
-        // 取消监听所有回调函数
-        let callback = (swipeInward: SwipeInward) => {
-          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
-          return false;
-        };
-        try {
-          // 订阅向内滑动事件
-          inputMonitor.on('swipeInward', callback);
-          // 取消订阅向内滑动事件
-          inputMonitor.off("swipeInward");
-          console.info(`Succeeded in turning off monitor.`);
-        } catch (error) {
-          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-        }
-      })
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (swipeInward: SwipeInward) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+            return false;
+          };
+          try {
+            // 订阅向内滑动事件
+            inputMonitor.on('swipeInward', callback);
+            // 取消订阅向内滑动事件
+            inputMonitor.off("swipeInward");
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
   }
 }
+```
+
+## inputMonitor.offSwipeInward<sup>23+</sup>
+
+offSwipeInward(receiver?: Callback&lt;SwipeInward&gt;): void
+
+取消监听向内滑动事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('swipeInward')](#inputmonitoroffswipeinward12)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 取消监听单个回调函数
+            let callback = (swipeInward: SwipeInward) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+            };
+            inputMonitor.onSwipeInward(callback);
+            inputMonitor.offSwipeInward(callback);
+            // 取消监听所有回调函数
+            inputMonitor.onSwipeInward((swipeInward: SwipeInward) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+            });
+            inputMonitor.offSwipeInward();
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -1958,7 +3872,13 @@ on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFingerprint](#inputmonitoronfingerprint23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2004,6 +3924,66 @@ struct Index {
 }
 ```
 
+## inputMonitor.onFingerprint<sup>23+</sup>
+
+onFingerprint(receiver: Callback&lt;FingerprintEvent&gt;): void
+
+监听指纹手势输入事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('fingerprint')](#inputmonitoronfingerprint12)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 订阅指纹事件
+            inputMonitor.onFingerprint((FingerprintEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(FingerprintEvent)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputMonitor.off('fingerprint')<sup>12+</sup>
 
 off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
@@ -2012,7 +3992,13 @@ off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFingerprint](#inputmonitorofffingerprint23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2085,6 +4071,98 @@ struct Index {
             inputMonitor.on('fingerprint', callback);
             // 取消订阅指纹事件
             inputMonitor.off("fingerprint");
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.offFingerprint<sup>23+</sup>
+
+offFingerprint(receiver?: Callback&lt;FingerprintEvent&gt;): void
+
+取消监听指纹手势输入事件。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('fingerprint')](#inputmonitorofffingerprint12)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 取消监听单个回调函数
+            let callback = (fingerprintEvent: FingerprintEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            };
+            inputMonitor.onFingerprint(callback);
+            inputMonitor.offFingerprint(callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 取消监听所有回调函数
+            let callback = (fingerprintEvent: FingerprintEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            };
+            inputMonitor.onFingerprint(callback);
+            inputMonitor.offFingerprint();
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
