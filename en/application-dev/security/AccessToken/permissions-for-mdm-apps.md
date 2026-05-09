@@ -738,4 +738,4 @@ Allows an MDM application to possess the VPN access permission by default.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 24
+**Since**: 26.0.0
