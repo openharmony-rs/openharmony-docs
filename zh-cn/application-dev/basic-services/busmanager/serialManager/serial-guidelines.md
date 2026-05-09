@@ -51,9 +51,9 @@
 
 **图1** 串口通信数据流
 
-```
+``` txt
 应用层写入数据 → 串口驱动发送 → 物理串口线 → 对端串口设备
-                                                          ↓
+                                              ↓
 应用层读取数据 ← 串口驱动缓冲 ← 物理串口线 ← 对端串口设备
 ```
 
@@ -234,7 +234,7 @@
 
 7. 硬件信号控制。
 
-* 7.1 设置RTS信号为高电平
+ * 7.1 设置RTS信号为高电平
 
    <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -252,7 +252,7 @@
    }
    ```
 
-* 7.2 获取CTS信号状态
+ * 7.2 获取CTS信号状态
 
    <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -270,7 +270,7 @@
    }
    ```
 
-* 7.3 发送break信号
+ * 7.3 发送break信号
 
    <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
