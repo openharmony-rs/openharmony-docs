@@ -2261,7 +2261,7 @@ SIM卡标签。
 | 名称         | 类型 | 只读| 可选  | 说明                                                       |
 | ---------------------|----|---- | ----| --------------------------------------------------- |
 |  simType   |  [SimType](#simtype20)  | 否  | 否|表示SIM卡类型的枚举。                      |
-| index |  number   |  否  |否 | SIM卡的唯一标识索引值。      |
+| index |  rkTS-Dyn: number <br/>ArkTS-Sta: int   |  否  |否 | SIM卡的唯一标识索引值。      |
 
 ## CardType<sup>7+</sup>
 
