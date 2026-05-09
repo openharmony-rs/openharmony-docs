@@ -47,7 +47,7 @@
     - [合理选择条件渲染和显隐控制](proper-choice-between-if-and-visibility.md)
     - [文件上传下载性能提升指导](improve-file-upload-and-download-performance.md)
     - [减少首帧绘制时的冗余操作](reduce-redundant-operations-when-render-first-frame.md)
-    - [列表场景性能提升实践](list-perf-improvment.md)
+    - [列表场景性能提升实践](list-perf-improvement.md)
     - [动效能力实践](animation_practice.md)
     - [性能提升的其他方法](arkts-performance-improvement-recommendation.md)
     - [运行时动态加载页面提升性能](performance-dynamic-import.md)
@@ -76,7 +76,7 @@
     - [页面布局检查器ArkUI Inspector](arkUI-inspector.md)
     - [跨线程序列化耗时点分析](cross-thread-serialization-time-consumption-analysis.md)
   - 功耗<!--power-consumption-->
-    - [高效利用HWC的低功耗设计](utilize_hwc_effiently.md)
+    - [高效利用HWC的低功耗设计](utilize_hwc_efficiently.md)
     - [主动关闭CPU访问窗口缓冲区数据降低功耗](close_CPU_access_window_buffer_data.md)
     - [使用属性动画替换帧动画](using-animation-insteadof-animator.md)
     - [冗余刷新类问题解决方案](invisible-refresh-performance.md)
