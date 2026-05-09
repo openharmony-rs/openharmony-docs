@@ -18,17 +18,9 @@
 >
 > 脱敏处理仅针对图片，视频不提供脱敏能力。
 
-应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的脱敏级别变为不进行脱敏，应用即可正常获取图片所有敏感信息。
-
-地理位置信息字段说明，具体字段说明和使用方式请参考 Image Kit 中的[PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
-
-> **注意：**
->
-> 去隐私处理仅针对图片，视频不提供去隐私能力。
-
 ## 解决措施
 
-应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的去隐私级别变为不进行脱敏，应用即可正常获取图片所有敏感信息。
+应用申请[ohos.permissions.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限后，应用的脱敏级别变为不进行脱敏，应用即可正常获取图片所有敏感信息。
 
 **示例**
 
@@ -93,7 +85,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## 附录
 
-地理位置信息字段说明，具体字段说明和使用方式请参考Image Kit中的[PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
+地理位置信息字段说明，具体字段说明和使用方式请参考 Image Kit 中的[PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
 
 | 名称  |  说明 |
 | ----- | ---- |
@@ -103,4 +95,3 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 | GPSDateStamp | GPS日期戳。 |
 | GPSAltitude | 基于GPSAltitudeRef的高度。 |
 | GPSVersionID | GPS信息版本号。 |
-
