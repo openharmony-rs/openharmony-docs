@@ -186,10 +186,10 @@ import { scan } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
-| numValue | number | 否 | 是 | 数值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
-| strValue | string | 否 | 是 | 字符串值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
-| boolValue | boolean | 否 | 是 | 布尔值。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型。 |
+| numValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 数值。 |
+| strValue | string | 否 | 是 | 字符串值。 |
+| boolValue | boolean | 否 | 是 | 布尔值。 |
 
 ## PictureScanProgress
 
@@ -204,9 +204,9 @@ import { scan } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| progress | number | 否 | 否 | 当前进度百分比，范围从0~100。单位：百分比。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
-| pictureFd | number | 否 | 否 | 扫描图片的文件描述符。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
-| isFinal | boolean | 否 | 否 | 是否是本次扫描的最后一张图片。true表示是最后一张图片，false表示不是最后一张图片。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23 |
+| progress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前进度百分比，范围从0~100。单位：百分比。 |
+| pictureFd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 扫描图片的文件描述符。 |
+| isFinal | boolean | 否 | 否 | 是否是本次扫描的最后一张图片。true表示是最后一张图片，false表示不是最后一张图片。 |
 
 ## ScannerDevice
 
