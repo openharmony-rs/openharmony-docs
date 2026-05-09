@@ -259,15 +259,3 @@
 **替代方案**：
 
 请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
-
-## ohos.permission.cli.BUNDLE_ACTIVE_INFO
-
-允许应用通过CLI命令查询应用运行状态。
-
-**权限级别**：normal
-
-**授权方式**：用户授权（user_grant）
-
-**支持设备**：PC/2in1 | Tablet | Phone
-
-**起始版本**：26.0.0
