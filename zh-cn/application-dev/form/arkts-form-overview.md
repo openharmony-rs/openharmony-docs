@@ -1,8 +1,8 @@
 # ArkTS卡片概述
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->	 
-<!--Designer: @xueyulong-->	 
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
