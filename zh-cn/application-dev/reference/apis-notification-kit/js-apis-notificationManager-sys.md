@@ -3367,10 +3367,6 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 设置设备是否支持分布式通知。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3382,6 +3378,10 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **参数：**
 
@@ -3443,10 +3443,6 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 设置设备是否支持分布式通知。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3458,6 +3454,10 @@ setDistributedEnable(enable: boolean): Promise\<void>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **参数：**
 
@@ -3518,10 +3518,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 设置指定应用是否支持分布式通知。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3533,6 +3529,10 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3603,10 +3603,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 设置指定应用是否支持分布式通知。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3618,6 +3614,10 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3687,10 +3687,6 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 根据应用的包获取应用程序是否支持分布式通知。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3702,6 +3698,10 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3769,10 +3769,6 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 查询指定应用是否支持分布式通知。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃，建议使用有deviceType入参的[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3784,6 +3780,10 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3850,10 +3850,6 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 获取通知的提醒方式。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3865,6 +3861,8 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -3922,10 +3920,6 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 获取通知的提醒方式。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -3937,6 +3931,8 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **返回值：**
 
@@ -5063,10 +5059,6 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 
 设置是否将通知同步到未安装应用程序的设备(callback形式)。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -5078,6 +5070,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：** 
 
@@ -5146,10 +5140,6 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 
 设置是否将通知同步到未安装应用程序的设备(Promise形式)。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
@@ -5161,6 +5151,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -5228,10 +5220,6 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 
 获取同步通知到未安装应用程序设备的开关是否开启(callback形式)。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
@@ -5241,6 +5229,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -5305,10 +5295,6 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 获取同步通知到未安装应用程序设备的开关是否开启(Promise形式)。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
@@ -5318,6 +5304,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 

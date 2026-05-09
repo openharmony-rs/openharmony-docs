@@ -2289,10 +2289,6 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -2300,6 +2296,8 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -2355,10 +2353,6 @@ isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 9开始支持，从API version 26开始废弃。
-
 **设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -2366,6 +2360,8 @@ isDistributedEnabled(): Promise\<boolean>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **返回值：**
 
