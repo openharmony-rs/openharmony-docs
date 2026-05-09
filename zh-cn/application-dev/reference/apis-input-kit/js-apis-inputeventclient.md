@@ -37,7 +37,7 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;[KeyboardController](#keyboardcontroller26)&gt; | Promise对象，返回键盘控制器实例。|
+| Promise&lt;[KeyboardController](#keyboardcontroller)&gt; | Promise对象，返回键盘控制器实例。|
 
 **错误码**：
 
@@ -95,7 +95,7 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 | 类型                   | 说明       |
 | --------------------- | --------- |
-| Promise&lt;[MouseController](#mousecontroller26)&gt; | Promise对象，返回鼠标控制器实例。|
+| Promise&lt;[MouseController](#mousecontroller)&gt; | Promise对象，返回鼠标控制器实例。|
 
 **错误码**：
 
