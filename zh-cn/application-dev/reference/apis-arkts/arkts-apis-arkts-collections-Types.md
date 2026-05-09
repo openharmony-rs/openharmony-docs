@@ -7,9 +7,11 @@
 <!--Adviser: @ge-yafang-->
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Class仅适用于ArkTS-Dyn。
 >
-> 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
 ## ISendable
 
@@ -17,7 +19,7 @@ type ISendable = lang.ISendable
 
 ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有任何必须的方法和属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -32,7 +34,7 @@ ArkTS Array归约函数类型，被Array类的[from](arkts-apis-arkts-collection
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -54,7 +56,7 @@ ArkTS Array归约函数类型，被Array类的'some'和'every'接口使用，用
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -77,7 +79,7 @@ ArkTS Array归约函数类型，被Array类的'reduceRight'接口使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -103,7 +105,7 @@ ArkTS TypedArray映射函数类型。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -125,7 +127,7 @@ ArkTS TypedArray断言测试函数类型。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -148,7 +150,7 @@ ArkTS TypedArray遍历函数类型。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -165,7 +167,7 @@ ArkTS TypedArray转换映射函数类型。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -188,7 +190,7 @@ ArkTS TypedArray归约函数类型。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -212,7 +214,7 @@ ArkTS TypedArray排序函数类型。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 

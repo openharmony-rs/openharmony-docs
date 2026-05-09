@@ -9,9 +9,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Class仅适用于ArkTS-Dyn。
 >
-> 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
 文档中存在泛型的使用，涉及以下泛型标记符：
 
@@ -27,7 +29,7 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -41,7 +43,7 @@ constructor(values?: readonly T[] | null)
 
 构造函数，用于创建ArkTS Set对象。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -93,7 +95,7 @@ constructor(iterable: Iterable\<T>)
 
 创建ArkTS Set对象的构造函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -129,7 +131,7 @@ entries(): IterableIterator<[T, T]>
 
 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -165,7 +167,7 @@ keys(): IterableIterator\<T>
 
 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -201,7 +203,7 @@ values(): IterableIterator\<T>
 
 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -253,7 +255,7 @@ clear(): void
 
 删除该Set中的所有元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -282,7 +284,7 @@ delete(value: T): boolean
 
 删除该Set中指定元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -325,7 +327,7 @@ forEach(callbackFn: (value: T, value2: T, set: Set\<T>) => void): void
 
 按插入顺序对该Set中的每个键/值对执行一次回调函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -375,7 +377,7 @@ has(value: T): boolean
 
 判断该Set中是否存在指定元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -416,7 +418,7 @@ add(value: T): Set\<T>
 
 如果没有相同元素，则在该Set中插入一个新元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -468,7 +470,7 @@ mySet.add(obj);
 >
 > 本接口不支持在.ets文件中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）： ** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
