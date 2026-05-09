@@ -12,6 +12,9 @@
 
 开发者指南见：[\@Env开发者指南](../../../ui/arkts-env-system-property.md)。
 
+如需读取由[WithEnv](ts-container-with-env.md)作用域通过[customEnv](ts-container-with-env.md#customenv)设置的自定义环境变量，请参考[@CustomEnv：自定义环境变量](ts-custom-env-system-property.md)。
+
+除本文明确列出的`@Env('system.arkui.layout.direction')`外，当前文档不表示其他普通系统环境变量已经与WithEnv形成通用的作用域化读取和更新链路。
 
 ## \@Env
 Env: EnvDecorator
@@ -40,7 +43,7 @@ struct Index {
 ```
 
 ## EnvDecorator
-type EnvDecorator = (value: SystemProperties) => PropertyDecorator
+type EnvDecorator = (value: SystemProperties | 'system.arkui.layout.direction') => PropertyDecorator
 
 定义@Env装饰器类型。
 
@@ -54,7 +57,7 @@ type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 | 参数名   | 类型                  | 必填 | 说明          |
 | -------- | -------------------- | ---- | --------- |
-| value    |      [SystemProperties](./ts-env-system-property.md#systemproperties)          | 是   |      环境变量属性名。    |
+| value    | [SystemProperties](./ts-env-system-property.md#systemproperties) \| `'system.arkui.layout.direction'` | 是   | 环境变量属性名。`SystemProperties`用于读取组件所在窗口的环境变量；`'system.arkui.layout.direction'`用于读取当前组件上下文中的方向环境变量。 |
 
 **返回值：**
 
@@ -65,13 +68,62 @@ type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 **错误码：**
 
 详细介绍请参见[环境变量错误码](../errorcode-env.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 |140000|Invalid key for @Env|
 
+## WithEnv作用域化方向环境变量
+
+可通过`@Env('system.arkui.layout.direction')`读取当前组件上下文中的方向环境变量。该能力与[WithEnv](ts-container-with-env.md)配合使用，用于读取祖先作用域通过`env(SystemEnvKeys.DIRECTION, value)`设置的局部布局方向。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 参数 | 返回类型 | 说明 |
+| ----- | ----- | ----- |
+| `'system.arkui.layout.direction'` | [Direction](ts-appendix-enums.md#direction) | 返回当前组件上下文的方向值。显式设置的[direction](ts-universal-attributes-location.md#direction)优先于祖先WithEnv方向作用域；没有匹配的WithEnv方向作用域时，读取结果与当前组件的direction解析语义保持一致。 |
+
+> **说明：**
+>
+> - `@Env('system.arkui.layout.direction')`会在祖先WithEnv方向作用域变化，或attach/detach/reparent导致最近作用域提供者变化时响应式更新。
+> - `Direction.Auto`保留Auto语义；实际非Auto回落仍遵循组件现有方向解析规则。
+
+**示例：**
+
+```ts
+@Component
+struct DirectionTag {
+  @Env('system.arkui.layout.direction') currentDirection: Direction;
+
+  build() {
+    Text(`${this.currentDirection}`)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State directionValue: Direction = Direction.Ltr;
+
+  build() {
+    Column({ space: 12 }) {
+      Button('切换方向')
+        .onClick(() => {
+          this.directionValue = this.directionValue === Direction.Ltr ? Direction.Rtl : Direction.Ltr;
+        })
+
+      WithEnv() {
+        DirectionTag()
+      }
+      .env(SystemEnvKeys.DIRECTION, this.directionValue)
+    }
+  }
+}
+```
+
 ## SystemProperties
 
-定义环境变量枚举值。
+定义窗口级环境变量枚举值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
