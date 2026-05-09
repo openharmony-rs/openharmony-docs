@@ -11206,7 +11206,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":90,
 						"name":"custom_gestures",
 						"start_line":15
 					}
@@ -11266,7 +11266,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets",
 				"functions":[
 					{
-						"end_line":256,
+						"end_line":294,
 						"name":"gesture_recognition",
 						"start_line":16
 					}
@@ -20314,7 +20314,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets",
 				"functions":[
 					{
-						"end_line":88,
+						"end_line":109,
 						"name":"dynamic_focus_transfer",
 						"start_line":16
 					}
@@ -20434,7 +20434,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":97,
 						"name":"dynamic_focus_control_demo",
 						"start_line":16
 					}
