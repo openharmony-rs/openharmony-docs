@@ -385,7 +385,7 @@ function sendMessageToNative() {
 ### 实现拉起WebNativeMessagingExtensionAbility（浏览器开发者）
 浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING。
 
-1. 当接收到创建NativeMessaging连接时，先通过[@ohos.data.dataShare (数据共享)](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
+1. 当接收到创建NativeMessaging连接时，先通过[数据共享](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
 
    ArkTS-Dyn示例：
    
