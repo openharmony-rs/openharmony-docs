@@ -237,7 +237,7 @@
    * 设置RTS信号为高电平
 
      <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      try {
        if (!this.port) {
