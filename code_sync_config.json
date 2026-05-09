@@ -35008,6 +35008,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/PropertyAnimationDisplaySync.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/PropertyAnimationDisplaySync.ets",
 				"functions":[
 					{
 						"end_line":91,
@@ -35137,6 +35141,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets",
 				"functions":[
 					{
 						"end_line":141,
