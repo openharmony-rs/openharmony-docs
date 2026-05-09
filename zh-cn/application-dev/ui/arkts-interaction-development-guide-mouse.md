@@ -8,12 +8,12 @@
 
 ![mouse](figures/device_mouse.png)
 
-鼠标设备是2in1类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过MouseEvent及AxisEvent上报给应用。
+鼠标设备是2in1类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)及[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)上报给应用。
 
 >**说明：**
 >
 >所有单指可响应的触摸事件/手势事件，均可通过鼠标左键来操作和响应。
-> - 例如当我们需要开发单击Button跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（onClick）就可以实现该效果；
+> - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
 
 ## 处理鼠标移动
@@ -310,7 +310,11 @@ struct ListExample {
               // 判断修饰键状态
               let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                try {
+                  isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                } catch (error) {
+                  console.error('Get modifier key state failed!')
+                }
               }
               // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
               if (!isCtrlPressing) {
@@ -335,6 +339,7 @@ struct ListExample {
       .friction(0.6)
       .edgeEffect(EdgeEffect.Spring)
       .width('90%')
+      .height('100%')
     }
     .width('100%')
     .height('100%')
@@ -353,7 +358,7 @@ struct ListExample {
 鼠标滚轮轴事件的上报，每次都以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN类型开始，当停止滚动时以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).End结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
 - 上报的数值单位为角度，为单次变化量，非总量。
 - 上报数值大小受系统设置中对滚轮放大倍数设置的影响。
-- 系统设置中的放大倍数通过AxisEvent中的scrollStep告知。
+- 系统设置中的放大倍数通过[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)中的scrollStep告知。
 - 向前滚动，上报数值为负，向后滚动，上报数值为正。
 
 如果使用滚动类组件，对于滚轮的响应，系统内部已实现，不需要额外处理。

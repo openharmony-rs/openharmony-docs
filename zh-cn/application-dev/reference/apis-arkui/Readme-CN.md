@@ -154,6 +154,7 @@
     - 交互事件分发控制<!--event-dispatch-control-->
       - [自定义事件拦截](arkui-ts/ts-universal-attributes-on-touch-intercept.md)
       - [自定义事件分发](arkui-ts/ts-universal-attributes-on-child-touch-test.md)
+      - [全局基础输入事件监听](arkui-ts/ts-inputeventmonitor.md)
     - 无障碍相关<!--accessibility-related-->
       - [无障碍控制操作](arkui-ts/ts-universal-accessibility-event.md)
       - [无障碍悬浮事件](arkui-ts/ts-universal-accessibility-hover-event.md)
@@ -292,6 +293,7 @@
     - [WaterFlow](arkui-ts/ts-container-waterflow.md)
     - [FlowItem](arkui-ts/ts-container-flowitem.md)
     - [LazyVGridLayout](arkui-ts/ts-container-lazyvgridlayout.md)
+    - [LazyVWaterFlowLayout](arkui-ts/ts-container-lazyvwaterflowlayout.md)
     - [ScrollBar](arkui-ts/ts-basic-components-scrollbar.md)
     - [Refresh](arkui-ts/ts-container-refresh.md)
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
@@ -804,6 +806,7 @@
     - [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md)
     - [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md)
     - [ArkUI_RenderNodeMaskOption](capi-arkui-nativemodule-arkui-rendernodemaskoption.md)
+    - [ArkUI_RenderBlurStyleOption](capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)
     - [ArkUI_RoundRectShapeOption](capi-arkui-nativemodule-arkui-roundrectshapeoption.md)
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)

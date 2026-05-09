@@ -97,7 +97,7 @@
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import fileIo from '@ohos.file.fs';
+   import { fileIo } from '@kit.CoreFileKit';
 
    let avProfile: media.AVRecorderProfile = {
      fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式。
@@ -175,7 +175,7 @@ import { camera } from '@kit.CameraKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
-import fileIo from '@ohos.file.fs';
+import { fileIo } from '@kit.CoreFileKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function videoRecording(context: common.Context): Promise<void> {
