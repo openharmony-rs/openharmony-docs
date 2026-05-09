@@ -73,7 +73,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let file: fs.File = fs.openSync(photoAsset.uri, fs.OpenMode.READ_ONLY);
     const imageSourceObj = image.createImageSource(file.fd);
     console.info("getImagePropertySync");
-    // 获取图片中的维度信息。
+    // 获取图片中的纬度信息。
     let latitude = imageSourceObj.getImagePropertySync(image.PropertyKey.GPS_LATITUDE);
     return latitude;
   } catch (err) {
