@@ -46,6 +46,8 @@
     - [net_websocket_type.h](capi-net-websocket-type-h.md)
     - [net_http.h](capi-net-http-h.md)
     - [net_http_type.h](capi-net-http-type-h.md)
+    - [http_interceptor.h](capi-net-http-interceptor-h.md)
+    - [http_interceptor_type.h](capi-net-http-interceptor-type-h.md)
   - Structs<!--network-struct-->
     - [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md)
     - [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)
@@ -81,6 +83,10 @@
     - [Http_Request](capi-netstack-http-request.md)
     - [Http_EventsHandler](capi-netstack-http-eventshandler.md)
     - [Http_Headers](capi-netstack-http-headers.md)
+    - [OH_Http_Interceptor_Headers](capi-netstack-http-interceptor-headers.md)
+    - [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md)
+    - [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md)
+    - [OH_Http_Interceptor](capi-netstack-http-interceptor.md)
 - APIs No Longer Maintained<!--network-arkts-dep-->
   - [@system.network (Network State)](js-apis-system-network.md)
   - [@system.fetch (Data Request)](js-apis-system-fetch.md)

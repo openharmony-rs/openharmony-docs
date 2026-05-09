@@ -125,6 +125,30 @@ This error code is reported if the parameter is not within the range of the [Pho
 
 Ensure that the input parameter is within the range of the PhotoKeys enum.
 
+<!--Del-->
+## 23800201 Unsupported Operation Type
+
+**Error Message**
+
+Unsupported operation type.
+
+**Description**
+
+The operation type is not supported.
+
+**Possible Causes**
+
+1. The current album does not support the input [AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute).
+
+2. The current [AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute) does not support the input [AlbumOperationType](js-apis-photoAccessHelper-sys.md#albumoperationtype).
+
+3. There are other restrictions.
+
+**Solution**
+
+Check the type and use scenario of the album attribute, and locate the cause based on the logs.
+<!--DelEnd-->
+
 ## 23800202 Invalid Scenario Call
 
 **Error Message**
