@@ -91,9 +91,9 @@ ArkTS-Sta: DynamicComponent(options: DynamicOptions): DynamicComponentAttribute
 
 ### onError
 
-ArkTS-Dyn: onError(callback: ErrorCallback): DynamicComponentAttribute
+ArkTS-Dyn: onError(callback: ErrorCallback)
 
-ArkTS-Sta: onError(callback: ErrorCallback\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> | undefined): DynamicComponentAttribute
+ArkTS-Sta: onError(callback: ErrorCallback\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> | undefined)
 
 DynamicComponent运行过程中发生异常时触发该回调。
 
