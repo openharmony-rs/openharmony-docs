@@ -413,7 +413,9 @@
     <!--DelEnd-->
   - 景深效果<!--depth-of-field -->
     - [DepthComponent](arkui-ts/ts-basic-components-depthcomponent.md)
+    <!--Del-->
     - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
+    <!--DelEnd-->
   - 菜单<!--menus-->
     - [Menu](arkui-ts/ts-basic-components-menu.md)
     - [MenuItem](arkui-ts/ts-basic-components-menuitem.md)
