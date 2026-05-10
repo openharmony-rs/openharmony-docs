@@ -52,6 +52,7 @@ console.info('isPipEnabled:' + enable);
 ```
 
 ## PiPWindow.create
+<a name="pipwindowcreate"></a>
 
 create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 
@@ -313,6 +314,7 @@ struct Index {
 ```
 
 ## PiPWindow.create<sup>12+</sup>
+<a name="pipwindowcreate12"></a>
 
 create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;PiPController&gt;
 
