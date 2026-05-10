@@ -293,9 +293,9 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
-| displayId | number | 是   | 目标显示器ID。|
-| displayX | number | 是   | 目标位置相对于显示器左边缘的X坐标，单位:px。|
-| displayY | number | 是   | 目标位置相对于显示器上边缘的Y坐标，单位:px。|
+| displayId | int | 是   | 目标显示器ID。|
+| displayX | int | 是   | 目标位置相对于显示器左边缘的X坐标，单位:px。无取值限制，实际坐标值会规约到有效范围[0, 显示器宽度-1]。|
+| displayY | int | 是   | 目标位置相对于显示器上边缘的Y坐标，单位:px。无取值限制，实际坐标值会规约到有效范围[0, 显示器高度-1]。|
 
 **返回值：**
 
@@ -482,7 +482,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
 | axis | [Axis](js-apis-mouseevent.md#axis) | 是   | 轴类型。|
-| value | number | 是   | 轴值。|
+| value | int | 是   | 轴值。|
 
 **返回值：**
 
@@ -560,7 +560,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
 | axis | [Axis](js-apis-mouseevent.md#axis) | 是   | 轴类型。|
-| value | number | 是   | 轴值。|
+| value | int | 是   | 轴值。|
 
 **返回值：**
 
