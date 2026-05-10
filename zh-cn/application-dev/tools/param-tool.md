@@ -85,3 +85,7 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   ```
   **示例**<br>
   ![save](figures/param-save.png)
+  
+### 系统参数错误码说明
+**错误码说明**
+错误码参数[通用错误码说明文档](../../device-dev/subsystems/subsys-boot-init-sysparam.md)
