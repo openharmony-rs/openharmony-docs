@@ -406,6 +406,7 @@ function OffFunc(creator: image.ImageCreator): void {
         console.info(0x00000, 'OffFunc', 'on success!');
       }
     });
+    // 移除注册的回调函数。
     creator.offImageRelease('imageRelease', (err: BusinessError | null) => {
       if (err) {
         console.error(0x00000, 'OffFunc', 'off failed: ' + err);

@@ -760,7 +760,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
 function PackToFileFunc(context: common.UIAbilityContext): void {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width * 4。
   const path: string = context.filesDir + "test_source.jpg"
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
