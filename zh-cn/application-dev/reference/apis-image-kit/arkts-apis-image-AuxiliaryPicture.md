@@ -278,12 +278,12 @@ function SetMetadataFunc(auxPicture: image.AuxiliaryPicture, context: common.UIA
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
     let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
-    let pixelMap: image.PixelMap = await imageSource.createPixelMap();
-    let picture: image.Picture = image.createPicture(pixelMap);
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap(); // 解码图片获取PixelMap
+    let picture: image.Picture = image.createPicture(pixelMap); // 创建Picture对象以获取元数据
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
-    let metadata: image.Metadata | null = await picture.getMetadata(metadataType);
+    let metadata: image.Metadata | null = await picture.getMetadata(metadataType); // 从Picture获取EXIF元数据
     if (metadata != null) {
-       auxPicture.setMetadata(metadataType, metadata);
+       auxPicture.setMetadata(metadataType, metadata); // 将元数据设置到辅助图对象
        console.info(0x00000, 'SetMetadataFunc', 'setMetadata success!');
     }
   } catch (err) {

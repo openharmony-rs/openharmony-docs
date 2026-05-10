@@ -289,11 +289,11 @@ async function PackingFunc(context: common.UIAbilityContext): Promise<void> {
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
     let imageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
-    let pixelMap: image.PixelMap = await imageSource.createPixelMap();
-    let picture: image.Picture = image.createPicture(pixelMap);
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap(); // 解码图片为PixelMap对象
+    let picture: image.Picture = image.createPicture(pixelMap); // 使用PixelMap创建Picture对象
     const imagePacker: image.ImagePacker = image.createImagePacker();
     let packingOpts: image.PackingOption = { format: "image/jpeg", quality: 98, bufferSize: 10 };
-    let arrayBuffer: ArrayBuffer = await imagePacker.packing(picture, packingOpts);
+    let arrayBuffer: ArrayBuffer = await imagePacker.packing(picture, packingOpts); // 将Picture对象编码为ArrayBuffer
     console.info(0x00000, 'PackingFunc', 'packing success!');
   } catch (err) {
     console.error(0x00000, 'PackingFunc', 'PackingFunc failed: ' + err);
@@ -374,7 +374,7 @@ async function PackToDataFromPixelmapSequenceFunc(context: common.UIAbilityConte
   const fileData = await resourceMgr.getRawFileContent("moving_test.gif");
   const color = fileData.buffer as ArrayBuffer;
   let imageSource = image.createImageSource(color);
-  let pixelMapList = await imageSource.createPixelMapList();
+  let pixelMapList = await imageSource.createPixelMapList(); // 从GIF文件解码出多个PixelMap帧
   let opts: image.PackingOptionsForSequence = {
     frameCount: 3,  // 指定GIF编码中的帧数为3。
     delayTimeList: [10, 10, 10],  // 指定GIF编码中3帧的延迟时间分别为100ms、100ms、100ms。
@@ -383,7 +383,7 @@ async function PackToDataFromPixelmapSequenceFunc(context: common.UIAbilityConte
   };
   let imagePacker: image.ImagePacker = image.createImagePacker();
   try {
-    let array: ArrayBuffer = await imagePacker.packToDataFromPixelmapSequence(pixelMapList, opts);
+    let array: ArrayBuffer = await imagePacker.packToDataFromPixelmapSequence(pixelMapList, opts); // 将PixelMap序列编码为GIF数据
     console.info(0x00000, 'PackToDataFromPixelmapSequenceFunc', 'packToDataFromPixelmapSequence success!');
   } catch (err) {
     console.error(0x00000, 'PackToDataFromPixelmapSequenceFunc', 'PackToDataFromPixelmapSequenceFunc failed: ' + err);
@@ -970,12 +970,12 @@ async function PackToFileFunc(context: common.UIAbilityContext): Promise<void> {
     // 此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
     const rawFile = await resourceMgr.getRawFileContent("test_image.jpg");
     let imageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
-    let pixelMap: image.PixelMap = await imageSource.createPixelMap();
-    let picture: image.Picture = image.createPicture(pixelMap);
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap(); // 解码源图片为PixelMap
+    let picture: image.Picture = image.createPicture(pixelMap); // 创建Picture对象用于编码
     const imagePacker: image.ImagePacker = image.createImagePacker();
     let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98, bufferSize: 10 };
-    await imagePacker.packToFile(picture, file.fd, packOpts);
+    await imagePacker.packToFile(picture, file.fd, packOpts); // 将Picture编码后直接写入文件
     console.info(0x00000, 'PackToFileFunc', 'packToFile success!');
   } catch (err) {
     console.error(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
@@ -1064,9 +1064,9 @@ async function PackToFileFromPixelmapSequenceFunc(context: common.UIAbilityConte
   const fileData = await resourceMgr.getRawFileContent('moving_test.gif');
   const color = fileData.buffer;
   let imageSource = image.createImageSource(color);
-  let pixelMapList = await imageSource.createPixelMapList();
+  let pixelMapList = await imageSource.createPixelMapList(); // 从源GIF文件解码出PixelMap帧序列
   let path: string = context.filesDir + "test_source.gif";
-  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE); // 打开目标文件用于写入编码结果
   let opts: image.PackingOptionsForSequence = {
     frameCount: 3,  // 指定GIF编码中的帧数为3。
     delayTimeList: [10, 10, 10],  // 指定GIF编码中3帧的延迟时间分别为100ms、100ms、100ms。
@@ -1075,7 +1075,7 @@ async function PackToFileFromPixelmapSequenceFunc(context: common.UIAbilityConte
   };
   let imagePacker: image.ImagePacker = image.createImagePacker();
   try {
-    await imagePacker.packToFileFromPixelmapSequence(pixelMapList, file.fd, opts);
+    await imagePacker.packToFileFromPixelmapSequence(pixelMapList, file.fd, opts); // 将PixelMap序列编码并写入文件
     console.info(0x00000, 'PackToFileFromPixelmapSequenceFunc', 'packToFileFromPixelmapSequence success!');
   } catch (err) {
     console.error(0x00000, 'PackToFileFromPixelmapSequenceFunc', 'PackToFileFromPixelmapSequenceFunc failed: ' + err);
