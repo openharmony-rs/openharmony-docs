@@ -167,3 +167,23 @@ Trigger magnification failed.
 
 先开启放大手势功能并配置放大模式。
 <!--DelEnd-->
+
+## 9300008 应用分身索引不合法
+
+**错误信息**
+
+The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist.
+
+**错误描述**
+
+应用分身索引不合法。
+
+**可能原因**
+
+该错误码表示应用分身索引不合法，可能原因如下：
+1. 应用分身索引不在合法范围。
+2. 该索引对应的应用不存在。
+
+**处理步骤**
+
+检查appIndex的值是否合法。
