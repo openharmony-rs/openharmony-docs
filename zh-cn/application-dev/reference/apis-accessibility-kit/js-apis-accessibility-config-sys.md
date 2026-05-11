@@ -504,7 +504,7 @@ try {
 
 ## setSeniorModeStateForApp
 
-setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt;): Promise&lt;void&gt;
+setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Promise&lt;void&gt;
 
 设置应用长辈模式状态。使用Promise异步回调。
 
@@ -577,7 +577,7 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | bundleName | string | 是 | 查询长辈模式状态的应用包名。 |
-| appIndex | number | 否 | 应用包的分身索引标识, 取值范围：大于等于0的整数。缺省时，appIndex=0。 |
+| appIndex | number | 否 | 应用包的分身索引标识, 取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
 
 **返回值：**
 
@@ -611,9 +611,9 @@ config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: bool
 
 ## onSeniorModeStateChangeForApp
 
-onSeniorModeStateChangeForApp(callback: Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt;): void
+onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
-监听所有应用关怀模式状态变化事件。使用callback异步回调。
+监听所有应用长辈模式状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -630,7 +630,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;[AppSeniorModeInfo](#appseni
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AppSeniorModeInfo](#AppSeniorModeInfo)&gt; | 是   | 回调函数。返回应用修改后的长辈模式状态信息。 |
+| callback | Callback&lt;[AppSeniorModeInfo](#AppSeniorModeInfo)&gt; | 是   | 回调函数。返回被修改的应用长辈模式状态信息。 |
 
 **示例：**
 
@@ -657,9 +657,9 @@ struct Index {
 
 ## offSeniorModeStateChangeForApp
 
-offSeniorModeStateChangeForApp(callback: Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt;): void
+offSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
-取消监听应用关怀模式变化事件。使用callback异步回调。
+取消监听应用长辈模式变化事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
