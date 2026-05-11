@@ -318,6 +318,14 @@
 
 <!-- @[transferableObject_makeObserved](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+runTests() {
+  taskpool.execute(observeJSON1).then((res) => {
+    this.layout = UIUtils.makeObserved(res as LayoutS);
+  })
+}
+```
+
 ### 创建UI组件实时观察Sendable对象属性变化
 
 Index.ets中通过`@Local`状态保存任务返回值，再由Text组件绑定`pb.value_string`和`layout.type`。其中，pb存储的是observeProtobuf返回的Sendable对象（test_pb类型），layout存储的是observeJSON1返回的Sendable对象（LayoutS类型）。
