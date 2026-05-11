@@ -1090,7 +1090,7 @@ export struct CustomDrawCanvasNative {
 
 ## 设置标签
 
-开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，这有助于在节点[inspector](./arkts-inspector-overview.md)中更清晰地区分各节点。
+开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，有助于在使用inspector[检查页面布局](./arkts-inspector-overview.md)时更清晰区分各节点。
 
 ArkTS-Dyn示例：
 
