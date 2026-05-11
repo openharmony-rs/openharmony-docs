@@ -2402,7 +2402,7 @@ export default class EntryAbility extends UIAbility {
 | slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br/>**说明：** 长时任务申请或更新成功后不支持提示音。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
 | contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 | notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 长时任务通知 Id。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
-| continuousTaskId<sup>15+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    | 长时任务 Id。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
+| continuousTaskId<sup>15+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    | 长时任务 Id。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>
 
@@ -2611,11 +2611,11 @@ export default class EntryAbility extends UIAbility {
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**说明：** 主类型与子类型必须匹配。     |
-| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。 <br/>**说明：** 主类型与子类型必须匹配。|
-| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
-| continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
+| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。     |
+| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。|
+| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
+| continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -2624,6 +2624,8 @@ isModeSupported(): boolean
 查询当前[ContinuousTaskRequest](#continuoustaskrequest21)设置的长时任务主类型，是否支持申请长时任务。是否支持申请长时任务请参考[BackgroundTaskMode](#backgroundtaskmode21)的说明。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
