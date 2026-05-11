@@ -1528,7 +1528,7 @@ enableDeviceLevelCapture是AVScreenCaptureStrategy接口中的一个可选参数
 
 ### getCurrentTrack
 
-getCurrentTrack(trackType：MediaType): Promise\<number>
+getCurrentTrack(trackType: MediaType): Promise\<number>
 
 获取指定媒体类型的选定轨道。使用Promise异步回调。
 
@@ -1540,7 +1540,7 @@ getCurrentTrack(trackType：MediaType): Promise\<number>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -1560,11 +1560,11 @@ getCurrentTrack(trackType：MediaType): Promise\<number>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202  | Permission verification failed. A non-system application calls a system API.|
-| 5400101  | No memory.|
-| 5400102  | Operation not allowed.|
-| 5400103  | I/O error.|
-| 5400105  |Service died.|
+| 202  | Called from Non-System applications. return by promise.|
+| 5400101  | No memory. Return by promise.|
+| 5400102  | Operation not allowed. Return by promise.|
+| 5400103  | I/O error. Return by promise.|
+| 5400105  |Service died. return by promise.|
 
 **示例：**
 
@@ -1587,7 +1587,7 @@ async function test(){
 
 forceLoadVideo(force: boolean): Promise\<void>
 
-是否强制加载视频。使用promise返回结果。
+是否强制加载视频。使用Promise返回结果。
 
 只有当AVPlayer处于prepared、playing或者pause状态时，才能调用此接口。
 
@@ -1617,7 +1617,7 @@ forceLoadVideo(force: boolean): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202  | Permission verification failed. A non-system application calls a system API.|
+| 202  | Called from Non-System applications. return by promise.|
 
 **示例：**
 
