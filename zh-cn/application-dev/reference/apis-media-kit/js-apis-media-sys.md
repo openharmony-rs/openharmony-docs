@@ -1530,7 +1530,7 @@ Audio/Video播放demo可参考：[音频播放开发指导](../../media/media/us
 
 | 名称               | 类型                                   | 只读 | 可选 | 说明             |
 | ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
-| privacyType<sup>26+</sup> | [AudioPrivacyType](arkts-apis-audio-e.md#AudioPrivacyType10+) | 否   | 是   | 音频隐私配置。<br>默认值为PRIVACY_TYPE_PUBLIC。 |
+| privacyType<sup>26+</sup> | [AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#AudioPrivacyType10+) | 否   | 是   | 音频隐私配置。<br>默认值为PRIVACY_TYPE_PUBLIC。 |
 | enableStartFrameRateOpt<sup>26+</sup> | boolean | 否   | 是   |开始播放时是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。|
 
 ### getCurrentTrack
