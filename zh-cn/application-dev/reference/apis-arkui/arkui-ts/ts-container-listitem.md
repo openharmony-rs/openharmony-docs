@@ -157,7 +157,7 @@ ListItem吸顶效果枚举。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用List组件的[stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用List组件的[StickyStyle](ts-container-list.md#stickystyle9枚举说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
