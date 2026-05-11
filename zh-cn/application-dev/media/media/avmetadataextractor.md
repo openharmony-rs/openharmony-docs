@@ -77,6 +77,9 @@
      };
      // 设置dataSrc。
      avMetadataExtractor.dataSrc = dataSrc;
+
+     // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
+     fileIo.closeSync(fd);
      ```
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
@@ -177,12 +180,12 @@
      height : 300
    }
    // 获取视频缩略图（callback模式）。
-   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
      if (err) {
-       console.error(`fetch failed, error = ${JSON.stringify(err)}`);
+       console.error(TAG, `fetch failed, error = ${JSON.stringify(err)}`);
        return;
      }
-     console.info(`fetch success.`);
+     console.info(TAG, `fetch success.`);
      if (frameInfo !== undefined && frameInfo.image !== undefined) {
        this.pixelMap = frameInfo.image;
      }
