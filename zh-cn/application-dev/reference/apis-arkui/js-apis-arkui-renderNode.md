@@ -3374,7 +3374,7 @@ class MyNodeController extends NodeController {
         radius: 20
       };
       renderNode.appendChild(myRenderNode);
-      const foregroundBlur = myRenderNode.contentBlur;
+      const foregroundBlur = myRenderNode.foregroundBlur;
       console.info(`foreground blur radius: ${foregroundBlur.radius}`);
     }
     return this.rootNode;
