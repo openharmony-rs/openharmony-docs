@@ -1016,17 +1016,16 @@ Operation Not Support
 
 1. 确认资源类型。
 
-   - 如果执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源时Moving Photo类型。
-   - 如果执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO。
+   - 如执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源是Moving Photo类型。
+   - 如执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO类型。
 
 2. 避免重复操作。
 
-   - 在调用addAssets/removeAssets/moveAssets前，检查是否已操作过相同资源。
-   - 可以通过changeRequest获取当前待处理的资源列表确认。
+   - 在调用addAssets/removeAssets/moveAssets前，检查是否已执行过此操作，避免连续重复调用。
 
 3. 完成提交后再修改。
 
-   - 在调用createAssetFromUri/getWriteCacheHandler/addResource后，必须调用commit()提交。
+   - 在调用createAssetFromUri/getWriteCacheHandler/addResource后，必须调用applyChanges提交。
    - 提交完成后才能发起新的修改请求。
    - 可以通过isPending() 检查是否有未提交的请求。
 
