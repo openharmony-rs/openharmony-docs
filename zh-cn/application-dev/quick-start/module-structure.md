@@ -184,7 +184,7 @@ metadata对象示例：
 }
 ```
 
-## deviceType标签s
+## deviceType标签
 
 **表7** **deviceType标签配置说明**
 
