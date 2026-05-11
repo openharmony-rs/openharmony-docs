@@ -1002,25 +1002,37 @@ Operation Not Support
 
 **可能原因**
 
-1.Moving Photo（动态照片）不支持获取写缓存句柄
+1. 对非Moving Photo类型的资源执行了Moving Photo相关操作。
 
-2.之前的资源创建/修改请求还未提交就再次修改（包含 CREATE_FROM_URI/GET_WRITE_CACHE_HANDLER/ADD_RESOURCE 操作）
+2. 对已通过添加/移动/移除的资源，再次操作相同的URI。
 
-3.对非视频类型资源执行了视频资源操作
+3. 之前的资源创建/修改请求还未提交就再次修改（包含 CREATE_FROM_URI/GET_WRITE_CACHE_HANDLER/ADD_RESOURCE 操作）。
 
-4.相册操作不支持（如 dismissAssets）
+4. 对非视频类型（MediaType.VIDEO）的资源执行了视频增强等视频专属操作。
 
-5.资源类型不匹配
+5. 对非用户相册或高亮相册执行了不允许的操作。
 
 **处理步骤**
 
-1.Moving Photo 相关操作需确保资源类型正确
+1. 确认资源类型。
 
-2.完成当前修改请求的提交（commit）后再发起新的修改
+- 如果执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源时Moving Photo类型。
+- 如果执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO。
 
-3.确认操作的目标资源类型与请求的操作类型匹配
+2. 避免重复操作。
 
-4.查看 API 文档确认该操作是否支持当前资源类型
+- 在调用addAssets/removeAssets/moveAssets前，检查是否已操作过相同资源。
+- 可以通过changeRequest获取当前待处理的资源列表确认。
+
+3. 完成提交后再修改。
+
+- 再调用createAssetFromUri/getWriteCacheHandler/addResourse后，必须调用commit()提交。
+- 提交完成后才能发起新的修改请求。
+- 可以通过isPending() 检查是否有未提交的请求。
+
+4. 确认相册类型。
+- addAssets/removeAssets 仅支持用户相册和高亮相册。
+- 系统相册（如相机、 截屏相册）不支持这些操作。
 
 ## 空间统计错误码
 
