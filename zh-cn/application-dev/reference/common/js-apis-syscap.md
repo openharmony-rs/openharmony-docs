@@ -1,8 +1,8 @@
 # SysCap (系统能力)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
 <!--Designer: @chenjinxiang3-->
-<!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
