@@ -652,6 +652,10 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -694,6 +698,10 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -733,6 +741,10 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
