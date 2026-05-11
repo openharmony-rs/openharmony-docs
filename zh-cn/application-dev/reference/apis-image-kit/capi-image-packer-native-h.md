@@ -138,7 +138,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 图像格式。可传入一个空指针和零大小，系统将分配内存，但必须在使用后释放内存。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 图像格式。可传入一个空指针和大小为0的size，系统将分配内存，但必须在使用后释放内存。 |
 
 **返回：**
 

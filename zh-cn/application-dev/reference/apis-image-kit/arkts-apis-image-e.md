@@ -166,7 +166,7 @@
 | GPS_SPEED_REF<sup>12+</sup>              | "GPSSpeedRef"               | 用来表示GPS接收器移动速度的单位。<br/>'K'："km/h"。<br />'M'："mph"。<br />'N'："knots"。<br />**读写能力：** 可读写。 | **修改传参格式说明：** 修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'K');`<br />或`imageSource.modifyImageProperty(key,'km/h');`<br />**读取结果示例：** "K" |
 | GPS_SPEED<sup>12+</sup>                  | "GPSSpeed"                  | GPS接收器的移动速度。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串<br />**修改示例：**`imageSource.modifyImageProperty(key,'123');`<br />或`imageSource.modifyImageProperty(key,'123.45');`<br />**读取结果示例：** "123.45" |
 | GPS_TRACK_REF<sup>12+</sup>              | "GPSTrackRef"               | GPS接收机移动方向的参照，用于说明这个角度是以哪个“北”为参考。<br/> 'T'："True direction"，真北：地理极点方向，适合地图、导航。<br />'M'："Magnetic direction"， 磁北：受地磁影响，磁偏角因地区和时间不同而变化。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'T');`<br />或`imageSource.modifyImageProperty(key,'True direction');`<br />**读取结果示例：** "T" |
-| GPS_TRACK<sup>12+</sup>                  | "GPSTrack"                  | GPS接收机的移动方向。用于记录拍摄设备在拍照时的移动方向（行进方向），单位是角度（度）<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'180');`<br />**读取结果示例：** "180" |
+| GPS_TRACK<sup>12+</sup>                  | "GPSTrack"                  | GPS接收机的移动方向。用于记录拍摄设备在拍照时的移动方向（行进方向），单位是角度（deg）<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'180');`<br />**读取结果示例：** "180" |
 | GPS_IMG_DIRECTION_REF<sup>12+</sup>      | "GPSImgDirectionRef"        | 图像方向的参照。<br/> 'T'："True direction"，真北：地理极点方向，适合地图、导航。<br />'M'："Magnetic direction"， 磁北：受地磁影响，磁偏角因地区和时间不同而变化。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'T');`<br />或`imageSource.modifyImageProperty(key,'True direction');`<br />**读取结果示例：** "T" |
 | GPS_IMG_DIRECTION<sup>12+</sup>          | "GPSImgDirection"           | 拍摄时图像的方向。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'120');`<br />**读取结果示例：** "120" |
 | GPS_MAP_DATUM<sup>12+</sup>              | "GPSMapDatum"               | GPS接收器使用的大地测量数据。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'GPS Map Datum');`<br />**读取结果示例：** "GPS Map Datum" |
@@ -182,7 +182,7 @@
 | GPS_AREA_INFORMATION<sup>12+</sup>       | "GPSAreaInformation"   | 记录GPS区域名的字符串。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'GPS Area Information');`<br />**读取结果示例：** "GPS Area Information" |
 | GPS_DATE_STAMP<sup>10+</sup>              | "GPSDateStamp"         | GPS日期戳。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 格式为“YY:MM:DD”。<br />**修改示例：**`imageSource.modifyImageProperty(key,'2020:07:07');`<br />**读取结果示例：** "2020:07:07" |
 | GPS_DIFFERENTIAL<sup>12+</sup>           | "GPSDifferential"      | 此字段表示GPS数据是否应用了差分校正，对于精确的位置准确性至关重要。<br/>  0："Without correction"，没有使用差分校正。<br/> 1："Correction applied"，使用差分校正。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Without correction');`<br />**读取结果示例：** "0" |
-| GPS_H_POSITIONING_ERROR<sup>12+</sup>    | "GPSHPositioningError" | 此标签指示水平定位误差，单位为米。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'100');`<br />**读取结果示例：** "100" |
+| GPS_H_POSITIONING_ERROR<sup>12+</sup>    | "GPSHPositioningError" | 此标签指示水平定位误差，单位为米（m）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'100');`<br />**读取结果示例：** "100" |
 | ISO_SPEED_RATINGS<sup>9+</sup>            | "ISOSpeedRatings"           | ISO感光度，例如400。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3200');`<br />**读取结果示例：** "3200" |
 | PHOTOGRAPHIC_SENSITIVITY<sup>12+</sup>   | "PhotographicSensitivity" | 用于表示图像拍摄时所用的感光度值（ISO 值），也叫ISO Speed。该字段是Exif 2.3后的推荐字段，ISOSpeedRatings（Tag 0x8827）是早期使用的字段，类型和含义相同，若两个字段都存在，以`PhotographicSensitivity` 为主。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3200');`<br />**读取结果示例：** "3200" |
 | OECF<sup>12+</sup>                       | "OECF"                      | 表示ISO 14524中规定的光电转换函数（OECF）。<br/>**读写能力：** 可读写。<br> | 该字段为特有格式，虽然支持读写，但目前版本不做解析。 |
@@ -334,7 +334,7 @@
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒。 |
+| HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒（ms）。 |
 | HEIFS_UNCLAMPED_DELAY_TIME | 'HeifsUnclampedDelayTime' | HEIF序列图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0 |
 | HEIFS_CANVAS_HEIGHT | 'HeifsCanvasHeight' | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
 | HEIFS_CANVAS_WIDTH | 'HeifsCanvasWidth' | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
@@ -400,7 +400,7 @@
 | LINEAR_RESPONSE_LIMIT | 'LinearResponseLimit' | 线性响应上限，有效值范围为[0.0, 1.0]。 |
 | CAMERA_SERIAL_NUMBER | 'CameraSerialNumber' | 相机序列号。 |
 | LENS_INFO | 'LensInfo' | 镜头信息。 |
-| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位：像素。 |
+| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位：像素（px）。 |
 | ANTI_ALIAS_STRENGTH | 'AntiAliasStrength' | 抗锯齿滤波器强度。 |
 | SHADOW_SCALE | 'ShadowScale' | 阴影区域缩放因子。 |
 | DNG_PRIVATE_DATA | 'DNGPrivateData' | 厂商私有数据块。 |

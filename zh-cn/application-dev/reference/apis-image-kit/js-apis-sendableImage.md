@@ -2171,9 +2171,9 @@ async function Demo() {
 
 | 名称     | 类型                         | 只读 | 可选 | 说明               |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
-| size     | [image.Size](./arkts-apis-image-i.md#size)                | 是   | 否   | 图片大小。         |
+| size     | [Size](./arkts-apis-image-i.md#size)                | 是   | 否   | 图片大小。         |
 | capacity | number                       | 是   | 否   | 同时访问的图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
-| format   | [image.ImageFormat](./arkts-apis-image-e.md#imageformat9) | 是   | 否   | 图像格式。         |
+| format   | [ImageFormat](./arkts-apis-image-e.md#imageformat9) | 是   | 否   | 图像格式。         |
 
 ### getReceivingSurfaceId
 

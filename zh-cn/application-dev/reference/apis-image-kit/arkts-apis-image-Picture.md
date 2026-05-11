@@ -164,7 +164,7 @@ async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
       console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
     }
   }).catch((error: BusinessError) => {
-    console.error(`GetHdrComposedPixelmapWithOptions information failed error.code: ${error.code} ,error.message: ${error.message}`);
+    console.error(`Failed to getHdrComposedPixelmapWithOptions information. error.code: ${error.code} ,error.message: ${error.message}`);
   });
 }
 ```
@@ -247,9 +247,9 @@ async function SetAuxiliaryPicture(context: Context) {
   let pixelMap: image.PixelMap = await imageSource.createPixelMap();
   let pictureObj: image.Picture = image.createPicture(pixelMap);
   if (pictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 
   if (pictureObj != null) {
@@ -320,7 +320,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 | 类型           | 说明                                   |
 | -------------- | -------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -346,18 +346,18 @@ async function SetPictureObjMetadata(exifContext: Context) {
   let exifCommodityPixelMap: image.PixelMap = await exifImageSource.createPixelMap();
   let exifPictureObj: image.Picture = image.createPicture(exifCommodityPixelMap);
   if (exifPictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 
   if (exifPictureObj != null) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let exifMetaData: image.Metadata = await exifPictureObj.getMetadata(metadataType);
     exifPictureObj.setMetadata(metadataType, exifMetaData).then(() => {
-      console.info('Set metadata success');
+      console.info('Succeeded in setting metadata.');
     }).catch((error: BusinessError) => {
-      console.error('Failed to set metadata. error.code: ' +JSON.stringify(error.code) + ' ,error.message:' + JSON.stringify(error.message));
+      console.error(`Failed to set metadata. error.code: ${error.code} ,error.message: ${error.message}`);
     });
   } else {
     console.error('exifPictureObj is null');
@@ -402,9 +402,9 @@ async function GetPictureObjMetadataProperties(pictureObj : image.Picture) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let pictureObjMetaData: image.Metadata = await pictureObj.getMetadata(metadataType);
     if (pictureObjMetaData != null) {
-      console.info('get picture metadata success');
+      console.info('Succeeded in getting picture metadata.');
     } else {
-      console.error('get picture metadata is failed');
+      console.error('Failed to get picture metadata.');
     }
   } else {
     console.error(" pictureObj is null");
@@ -449,10 +449,10 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Marshalling success !');
+      console.info('Succceed in marshalling.');
       return true;
     } else {
-      console.error('Marshalling failed !');
+      console.error('Failed to marshall.');
       return false;
     }
   }
@@ -461,7 +461,7 @@ class MySequence implements rpc.Parcelable {
     this.picture.getMainPixelmap().getImageInfo().then((imageInfo : image.ImageInfo) => {
       console.info(`Unmarshalling to get mainPixelmap information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
     }).catch((error: BusinessError) => {
-      console.error(`Unmarshalling failed error.code: ${error.code} ,error.message: ${error.message}`);
+      console.error(`Failed to unmarshall. error.code: ${error.code} ,error.message: ${error.message}`);
     });
     return true;
   }

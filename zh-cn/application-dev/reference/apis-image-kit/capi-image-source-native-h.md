@@ -212,7 +212,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| uint32_t *width | 图片的宽，单位：像素。 |
+| uint32_t *width | 图片的宽，单位：像素（px）。 |
 
 **返回：**
 
@@ -238,7 +238,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| uint32_t *height | 图片的高，单位：像素 |
+| uint32_t *height | 图片的高，单位：像素（px）。 |
 
 **返回：**
 
@@ -476,7 +476,7 @@ Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float *rotate | 旋转角度，单位为deg，默认值为0。 |
+| float *rotate | 旋转角度，单位为角度（deg），默认值为0。取值范围为[0,360]。 |
 
 **返回：**
 
