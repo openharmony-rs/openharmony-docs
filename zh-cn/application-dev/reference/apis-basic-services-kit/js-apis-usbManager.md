@@ -153,7 +153,6 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 类型 | 说明 |
 | -------- | -------- |
 | Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | 指定的传输通道对象。 |
-| undefined | 如果USB服务异常，可能返回`undefined`。<br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。 |
 
 **错误码：**
 
@@ -600,8 +599,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Uint8Array | 返回获取的原始数据 |
-| undefined | 如果USB服务异常，可能返回`undefined` 。<br> **ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
+| Uint8Array | 返回获取的原始数据；失败返回undefined。 |
 
 **错误码：**
 
@@ -861,14 +859,11 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
-| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
-| 14400011 | The transfer is not in progress, or is already complete or cancelled. |
 | 14400012 | Transmission I/O error. |
 
 **示例：**
