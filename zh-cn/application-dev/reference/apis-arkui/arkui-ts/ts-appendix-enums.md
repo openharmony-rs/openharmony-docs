@@ -1261,6 +1261,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值   | 说明             |
 | ---- | ---- | -------------- |
 | FILL | 0 | 缩放当前子组件以填充满父组件。 |
@@ -1616,15 +1620,19 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明   |
-| ---- | ---- |
-| Mon  | 星期一。  |
-| Tue  | 星期二。  |
-| Wed  | 星期三。  |
-| Thur | 星期四。  |
-| Fri  | 星期五。  |
-| Sat  | 星期六。  |
-| Sun  | 星期日。  |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 值 | 说明   |
+| ---- | --- | ---- |
+| Mon  | 0 | 星期一。  |
+| Tue  | 1 | 星期二。  |
+| Wed  | 2 | 星期三。  |
+| Thur | 3 | 星期四。  |
+| Fri  | 4 | 星期五。  |
+| Sat  | 5 | 星期六。  |
+| Sun  | 6 | 星期日。  |
 
 ## WidthBreakpoint<sup>13+</sup>
 
