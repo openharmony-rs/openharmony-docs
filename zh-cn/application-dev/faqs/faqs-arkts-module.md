@@ -38,7 +38,7 @@
 ([OpenHarmony工程管理介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V3/ohos-project-overview-0000001218440650-V3))
 
 module.json5部分参数示例如下:
-``` json
+``` json5
 {
   "module": {
     "name": "entry",
@@ -150,7 +150,8 @@ load libentry.so failed.
 ### 循环依赖原理
 1. 模块加载顺序： 
 
-根据ECMA规范，模块的执行顺序是深度遍历加载。  
+根据ECMA规范，模块的执行顺序是深度遍历加载。
+
 假设应用存在加载链路A->B->C，那么ArkTs模块化会先执行C文件，再执行B文件，最后执行A文件，执行顺序为C->B->A。  
 2. 循环依赖：  
 
