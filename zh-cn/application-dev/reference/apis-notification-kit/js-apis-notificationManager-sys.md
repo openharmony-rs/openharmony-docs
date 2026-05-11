@@ -5945,6 +5945,10 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                       |
@@ -5976,6 +5980,7 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5997,6 +6002,32 @@ let deviceType: string = "liteWearable";
 notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
     console.info("setDistributedEnableByBundles success");
 }).catch((err: BusinessError) => {
+    console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle1: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName1",
+    uid: 1,
+    enable: true
+};
+let bundle2: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName2",
+    uid: 2,
+    enable: true
+};
+let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
+    bundle1,bundle2
+]
+
+let deviceType: string = "liteWearable";
+notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
+    console.info("setDistributedEnableByBundles success");
+}).catch((err: Error) => {
     console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6821,7 +6852,7 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用[自定义铃声](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
+| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声，自定义铃声参考[sound](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
 | value   | string | 是  | 附加配置值。参数示例：[bundleName1,bundleName2]。 |
 
 **返回值：**
@@ -7554,6 +7585,10 @@ isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
@@ -7577,6 +7612,7 @@ isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7600,6 +7636,30 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let deviceType: string = "wearable";
+      notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
+        console.info('isDistributedEnabled succeeded, result = ' + data);
+      }).catch((err: Error) => {
+        console.error(`isDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`isDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
 ## notificationManager.setDistributedEnabled<sup>20+</sup>
 
 setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
@@ -7611,6 +7671,10 @@ setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7636,6 +7700,7 @@ setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7660,6 +7725,31 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let isEnable: boolean = true;
+      let deviceType: string = "wearable";
+      notificationManager.setDistributedEnabled(isEnable, deviceType).then(() => {
+        console.info('setDistributedEnabled succeeded.');
+      }).catch((err: Error) => {
+        console.error(`setDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`setDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
 ## notificationManager.getDistributedDeviceList<sup>20+</sup>
 
 getDistributedDeviceList(): Promise\<Array\<string\>\>
@@ -7671,6 +7761,10 @@ getDistributedDeviceList(): Promise\<Array\<string\>\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -7689,6 +7783,7 @@ getDistributedDeviceList(): Promise\<Array\<string\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7702,6 +7797,29 @@ export default class EntryAbility extends UIAbility {
       notificationManager.getDistributedDeviceList().then((data: Array<string>) => {
         console.info('getDistributedDeviceList succeeded, result = ' + data);
       }).catch((err: BusinessError) => {
+        console.error(`getDistributedDeviceList failed. Code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`getDistributedDeviceList failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      notificationManager.getDistributedDeviceList().then((data: Array<string>) => {
+        console.info('getDistributedDeviceList succeeded, result = ' + data);
+      }).catch((err: Error) => {
         console.error(`getDistributedDeviceList failed. Code is ${err.code}, message is ${err.message}`);
       });
     } catch (err) {
