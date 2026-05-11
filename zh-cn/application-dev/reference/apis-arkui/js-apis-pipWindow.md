@@ -51,8 +51,7 @@ let enable: boolean = PiPWindow.isPiPEnabled();
 console.info('isPipEnabled:' + enable);
 ```
 
-<a name="pipwindowcreate"></a>
-## PiPWindow.create
+## PiPWindow.create {#pipwindowcreate}
 
 create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 
@@ -313,8 +312,7 @@ struct Index {
 }
 ```
 
-<a name="pipwindowcreate12"></a>
-## PiPWindow.create<sup>12+</sup>
+## PiPWindow.create<sup>12+</sup> {#pipwindowcreate12}
 
 create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;PiPController&gt;
 
@@ -483,8 +481,8 @@ struct Index {
 | navigationId        | string                                                           | 否  | 是 | navigation控件ID，不传值则默认不需要缓存页面。<br/>1、UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确保还原场景下能够从画中画窗口恢复到原页面。<br/>2、UIAbility使用[Router](js-apis-router.md)管理页面时，无需设置navigationId。<br/>3、UIAbility只有单页面时，无需设置navigationId，还原场景下也能够从画中画窗口恢复到原页面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24  |
 | handleId<sup>22+</sup>        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID。使用[Navigation](arkui-ts/ts-basic-components-navigation.md)模块内页面路由时，推荐使用[系统路由表](../../ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12)获取页面ID不准确的情况。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 24  |
 | templateType        | [PiPTemplateType](#piptemplatetype)                                        | 否  | 是 | 模板类型，用以区分视频播放、视频通话、视频会议或视频直播，不传值则默认为视频播放模板。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                            |
-| contentWidth        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](js-apis-pipWindow.md#pipwindowcreate12)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](js-apis-pipWindow.md#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的宽度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                           |
-| contentHeight       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](js-apis-pipWindow.md#pipwindowcreate12)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](js-apis-pipWindow.md#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的高度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                             |
+| contentWidth        | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的宽度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                           |
+| contentHeight       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是 | 原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的高度。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 24                                                             |
 | controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | 否 | 是  | 画中画控制面板的可选控件组列表，应用可以对此进行配置以决定是否显示。应用未配置时，面板显示基础控件（如视频播放控件组的播放/暂停控件）；应用选择配置时，则最多可以选择三个控件，超出三个create接口抛出401错误码。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24                                                                          |
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | 否  | 是 | 自定义UI控制器，用于实现在画中画界面的自定义UI功能。此参数不填时，默认不使用自定义UI功能<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 24                                                                       |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | 否  | 是 | 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。     <br/>**ArkTS-Dyn起始版本：** 17 <br/>**ArkTS-Sta起始版本：** 24                                                                       |
