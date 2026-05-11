@@ -3411,7 +3411,7 @@ ArkTS-Dyn: opacity(opacity: number): void
 
 ArkTS-Sta: opacity(opacity: double): void
 
-设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口不透明度。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3593,7 +3593,7 @@ try {
 
 getTransitionController(): TransitionController
 
-获取窗口属性转换控制器。
+获取窗口属性转换控制器。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3631,7 +3631,7 @@ ArkTS-Dyn: setBlur(radius: number): void
 
 ArkTS-Sta: setBlur(radius: double): void
 
-设置窗口模糊。
+设置窗口模糊。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3674,7 +3674,7 @@ ArkTS-Dyn: setBackdropBlur(radius: number): void
 
 ArkTS-Sta: setBackdropBlur(radius: double): void
 
-设置窗口背景模糊。
+设置窗口背景模糊。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 窗口背景是指窗口覆盖的下层区域，与窗口大小相同。
 
@@ -3763,7 +3763,7 @@ ArkTS-Dyn: setShadow(radius: number, color?: string, offsetX?: number, offsetY?:
 
 ArkTS-Sta: setShadow(radius: double, color?: string, offsetX?: double, offsetY?: double): void
 
-设置窗口边缘阴影。
+设置窗口边缘阴影。仅支持系统窗口、应用子窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3810,7 +3810,7 @@ ArkTS-Dyn: setCornerRadius(cornerRadius: number): void
 
 ArkTS-Sta: setCornerRadius(cornerRadius: double): void
 
-设置窗口圆角半径。
+设置窗口圆角半径。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
