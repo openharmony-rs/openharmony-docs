@@ -39,14 +39,14 @@ import { media } from '@kit.MediaKit';
 | fdDst<sup>12+</sup>                               | ArkTS-Dyn: number<br>ArkTS-Sta: int                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
 ## addWatermark
  
- addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
+addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
  
-  为视频转码添加水印。使用Promise异步回调。
+为视频转码添加水印。使用Promise异步回调。
   
-  > **说明：**
-  >
-  > - 应用最多可以添加5个水印。
-  > - 此接口只能在prepared状态之前调用。
+> **说明：**
+>
+> - 应用最多可以添加5个水印。
+> - 此接口只能在prepared状态之前调用。
   
  **起始版本：** 26.0.0
  
