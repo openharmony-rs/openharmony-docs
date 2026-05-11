@@ -40,6 +40,27 @@
    插件生效还需在工程根目录hvigorfile.ts添加相关插件配置。
 
    <!-- @[transferableObject_configPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigorfile.ts) -->
+   
+   ``` TypeScript
+   import { turboTransJsonPlugin } from '@hadss/turbo-trans-json-plugin';
+   import { hvigor } from '@ohos/hvigor';
+   import { appTasks } from '@ohos/hvigor-ohos-plugin';
+   
+   export default {
+     system: appTasks, /* Built-in plugin of Hvigor. It cannot be modified. */
+     plugins: [
+       turboTransJsonPlugin(hvigor, {
+         ignoreModuleNames: ['TurboTransCore' , 'TurboTransJSON',  'PerformanceBaseline','TurboTransProtobuf'], // 忽略的模块
+         scanDir: ['src/main/ets'], // 扫描目录
+         deserializationMode: 'performance', // 反序列化模式
+         importRewrite: {
+           scanPaths: ['src/main/ets', 'src/ohosTest/ets'],
+           preserveOriginalImports: false
+         }
+       }),
+     ]       /* Custom plugin to extend the functionality of Hvigor. */
+   }
+   ```
 
 
 2. 定义可序列化模型。
