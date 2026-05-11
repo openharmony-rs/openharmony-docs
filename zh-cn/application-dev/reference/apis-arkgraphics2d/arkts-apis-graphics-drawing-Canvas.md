@@ -817,8 +817,8 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<comm
 | ----------- | -------------  | ---- | ------------------------------- |
 | vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
 | vertexCount   | number         | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
-| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs    | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
 | colors      | Array\<number> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
 | indexCount  | number         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
 | indices  | Array\<number> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
@@ -2701,6 +2701,8 @@ isOpaque(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
