@@ -90,28 +90,20 @@ Input service exception.
 
   **处理步骤**：确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
 
-## 4300002 显示器不存在或坐标无效
+## 4300002 显示器不存在
 
 **错误信息**
 
-The display does not exist or coordinates are out of valid range.
+The display does not exist.
 
 **错误描述**
 
-该错误码在不同情况下表示不同的错误：
+当调用鼠标控制器的moveTo接口时，如果指定的显示器不存在，会产生此错误码。
 
-- **moveTo 接口（显示器不存在）**：The display does not exist.
+**可能原因**
 
-  当调用鼠标控制器的moveTo接口时，如果指定的显示器不存在，会产生此错误码。
+指定的displayId对应的显示器不存在。
 
-  **可能原因**：指定的displayId对应的显示器不存在。
+**处理步骤**
 
-  **处理步骤**：使用有效的显示器ID，可以通过显示管理接口查询可用的显示器列表。
-
-- **moveTo 接口（坐标无效）**：Coordinates are out of valid range.
-
-  当调用鼠标控制器的moveTo接口时，如果指定的坐标不在有效范围内，会产生此错误码。
-
-  **可能原因**：displayX或displayY不在有效范围内，displayX必须≥0且小于屏幕宽度，displayY必须≥0且小于屏幕高度。
-
-  **处理步骤**：确保displayX≥0且小于屏幕宽度，displayY≥0且小于屏幕高度。
+使用有效的显示器ID，可以通过显示管理接口查询可用的显示器列表。
