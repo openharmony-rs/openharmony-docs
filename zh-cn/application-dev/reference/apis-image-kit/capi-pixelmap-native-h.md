@@ -174,7 +174,8 @@ enum PIXEL_FORMAT
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102格式。 |
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010格式。 |
 | PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010格式。 |
-| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br/>**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br>**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_F16 = 16 | ALPHA_F16格式。<br>**起始版本：** 26.0.0 |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -1360,9 +1361,7 @@ Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixe
 
 **描述**
 
-从源PixelMap创建一个仅包含Alpha通道的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑。
-
-若源PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+从源PixelMap创建一个仅包含Alpha通道的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑。<br>     若源PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 **起始版本：** 22
 
@@ -1734,7 +1733,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：<br>         1. 参数srcpixelmap或dstpixelmap为空；<br>         2. 参数srcpixelmap或dstpixelmap所持有的inner pixelmap为空。 |
 
 ### OH_PixelmapNative_CreateEmptyPixelmap()
 
@@ -1759,7 +1758,7 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_Initialization
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：<br>         1. 参数options为空或者无效的options导致创建pixelmap失败；<br>         2. 参数options无效导致创建pixelmap失败。 |
 
 ### OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator()
 
@@ -1853,7 +1852,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 **描述**
 
-通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置[CPU访问权限](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage)，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。
+通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置CPU访问权限，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。
 
 **起始版本：** 22
 
@@ -1861,14 +1860,14 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) *nativeBuffer | 含有PixelMap数据的NativeBuffer对象。 |
+| [OH_NativeBuffer](capi-image-nativemodule-oh-nativebuffer.md) *nativeBuffer | 含有PixelMap数据的NativeBuffer对象。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 被创建的PixelMap。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：nativeBuffer或pixelmap有误，像素格式不支持，或未配置[CPU访问权限](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage)。<br>         IMAGE_CREATE_PIXELMAP_FAILED：PixelMap创建失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：nativeBuffer或pixelmap有误，像素格式不支持，或未配置CPU访问权限。<br>         IMAGE_CREATE_PIXELMAP_FAILED：PixelMap创建失败。 |
 
 ### OH_PixelmapNative_GetNativeBuffer()
 
@@ -1887,7 +1886,7 @@ Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, O
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 要获取NativeBuffer的源PixelMap。 |
-| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) **nativeBuffer | 被创建的NativeBuffer对象指针。 |
+| [OH_NativeBuffer](capi-image-nativemodule-oh-nativebuffer.md) **nativeBuffer | 被创建的NativeBuffer对象指针。 |
 
 **返回：**
 
