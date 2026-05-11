@@ -339,8 +339,6 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
-当[ExecuteParam](#executeparam)中的**deviceId**不为空时，需要申请`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`权限。
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -425,8 +423,6 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
 
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
-
-当[ExecuteParam](#executeparam)中的**deviceId**不为空时，需要申请`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`权限。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
