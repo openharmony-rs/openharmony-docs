@@ -1708,15 +1708,13 @@ function DemoSetOpacity(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoSetOpacity(pixelMap: image.PixelMap) {
   let opacityValue: double = 0.5;
   pixelMap.setOpacity(opacityValue)
     .then(() => {
       console.info('不透明度设置成功。');
     })
-    .catch((e: BusinessError) => {
+    .catch((e) => {
       console.error(`不透明度设置失败。错误码：${e.code} 错误信息：${e.message}`);
     });
 }
@@ -1783,15 +1781,12 @@ function DemoSetOpacitySync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoSetOpacitySync(pixelMap: image.PixelMap) {
   try {
     let opacityValue: double = 0.5;
     pixelMap.setOpacitySync(opacityValue);
     console.info('不透明度设置成功。');
   } catch (e) {
-    const error = e as BusinessError;
     console.error(`不透明度设置失败。错误码：${e.code} 错误信息：${e.message}`);
   }
 }
@@ -1849,14 +1844,12 @@ async function Opacity(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Opacity(pixelMap:image.PixelMap) {
   let rate: double = 0.5;
   if (pixelMap != undefined) {
-    pixelMap.opacity(rate, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to set opacity. code is ${err.code}, message is ${err.message}`);
+    pixelMap.opacity(rate, (e) => {
+      if (e) {
+        console.error(`Failed to set opacity. code is ${e.code}, message is ${e.message}`);
         return;
       } else {
         console.info("Succeeded in setting opacity.");
@@ -1920,15 +1913,13 @@ async function Opacity(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Opacity(pixelMap:image.PixelMap) {
   let rate: double = 0.5;
   if (pixelMap != undefined) {
     pixelMap.opacity(rate).then(() => {
       console.info('Succeeded in setting opacity.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to set opacity. code is ${err.code}, message is ${err.message}`);
+    }).catch((e) => {
+      console.error(`Failed to set opacity. code is ${e.code}, message is ${e.message}`);
     })
   }
 }
@@ -2314,8 +2305,6 @@ function DemoApplyScale(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoApplyScale(pixelMap: image.PixelMap) {
   let scaleX: double = 2.0;
   let scaleY: double = 1.0;
@@ -2323,7 +2312,7 @@ function DemoApplyScale(pixelMap: image.PixelMap) {
     .then(() => {
       console.info('缩放成功。');
     })
-    .catch((e: BusinessError) => {
+    .catch((e) => {
       console.error(`缩放失败。错误码：${e.code} 错误信息：${e.message}`);
     });
 }
@@ -2398,8 +2387,6 @@ function DemoApplyScaleSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoApplyScaleSync(pixelMap: image.PixelMap) {
   try {
     let scaleX: double = 2.0;
@@ -2407,7 +2394,6 @@ function DemoApplyScaleSync(pixelMap: image.PixelMap) {
     pixelMap.applyScaleSync(scaleX, scaleY);
     console.info('缩放成功。');
   } catch (e) {
-    const error = e as BusinessError;
     console.error(`缩放失败。错误码：${e.code} 错误信息：${e.message}`);
   }
 }
@@ -2472,15 +2458,13 @@ async function Scale(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Scale(pixelMap:image.PixelMap) {
   let scaleX: double = 2.0;
   let scaleY: double = 1.0;
   if (pixelMap != undefined) {
-    pixelMap.scale(scaleX, scaleY, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to scale pixelmap. code is ${err.code}, message is ${err.message}`);
+    pixelMap.scale(scaleX, scaleY, (e) => {
+      if (e) {
+        console.error(`Failed to scale pixelmap. code is ${e.code}, message is ${e.message}`);
         return;
       } else {
         console.info("Succeeded in scaling pixelmap.");
@@ -2551,16 +2535,14 @@ async function Scale(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Scale(pixelMap:image.PixelMap) {
   let scaleX: double = 2.0;
   let scaleY: double = 1.0;
   if (pixelMap != undefined) {
     pixelMap.scale(scaleX, scaleY).then(() => {
       console.info('Succeeded in scaling pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to scale pixelmap. code is ${err.code}, message is ${err.message}`);
+    }).catch((e) => {
+      console.error(`Failed to scale pixelmap. code is ${e.code}, message is ${e.message}`);
     })
   }
 }
@@ -2702,16 +2684,14 @@ function ScaleSync(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function ScaleSync(pixelMap:image.PixelMap) {
   let scaleX: double = 2.0;
   let scaleY: double = 1.0;
   if (pixelMap != undefined) {
     pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
       console.info('Succeeded in scaling pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to scale pixelmap. code is ${err.code}, message is ${err.message}`);
+    }).catch((e) => {
+      console.error(`Failed to scale pixelmap. code is ${e.code}, message is ${e.message}`);
     })
   }
 }
@@ -2787,7 +2767,7 @@ function ScaleSync(pixelMap: image.PixelMap) {
 
 ArkTS-Dyn: createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
 
-ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel): Promise\<PixelMap>
+ArkTS-Sta: createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel): Promise\<image.PixelMap>
 
 根据指定的缩放算法和输入的宽高的缩放倍数，创建一个新的缩放后的图片，生成的新PixelMap不可编辑。使用Promise异步回调。
 
@@ -2843,16 +2823,14 @@ async function CreateScaledPixelMap(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function CreateScaledPixelMap(pixelMap:image.PixelMap) {
   let scaleX: double = 2.0;
   let scaleY: double = 1.0;
   if (pixelMap != undefined) {
       pixelMap.createScaledPixelMap(scaleX, scaleY, image.AntiAliasingLevel.LOW).then((scaledPixelMap: image.PixelMap) => {
       console.info('Succeeded in creating scaledPixelMap.');
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to create scaledPixelMap. Error code is ${error.code}, error message is ${error.message}`);
+    }).catch((e) => {
+      console.error(`Failed to create scaledPixelMap. e code is ${e.code}, e message is ${e.message}`);
     })
   }
 }
@@ -2862,7 +2840,7 @@ async function CreateScaledPixelMap(pixelMap:image.PixelMap) {
 
 ArkTS-Dyn: createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): PixelMap
 
-ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLevel): PixelMap
+ArkTS-Sta: createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLevel): image.PixelMap
 
 根据指定的缩放算法和输入的宽高的缩放倍数，创建一个新的缩放后的图片，生成的新PixelMap不可编辑。同步返回结果。
 
@@ -2925,7 +2903,7 @@ function CreateScaledPixelMapSync(pixelMap:image.PixelMap) {
 
 ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
 
-ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise\<PixelMap>
+ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise\<image.PixelMap>
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。使用Promise异步回调。
 
@@ -2990,9 +2968,7 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
+function DemoCreateCroppedAndScaledPixelMap(pixelMap: image.PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -3002,11 +2978,11 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
   const scaleX: double = 2.0;
   const scaleY: double = 2.0;
   pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH)
-    .then((croppedAndScaled: PixelMap) => {
+    .then((croppedAndScaled: image.PixelMap) => {
       console.info('PixelMap crop and scale succeeded.');
     })
-    .catch((error: BusinessError) => {
-      console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+    .catch((e) => {
+      console.error(`PixelMap crop and scale failed. e code: ${e.code}, message: ${e.message}`);
     });
 }
 ```
@@ -3015,7 +2991,7 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
 
 ArkTS-Dyn: createCroppedAndScaledPixelMapSync(region: Region, x: number, y: number, level?: AntiAliasingLevel): PixelMap
 
-ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: double, level?: AntiAliasingLevel): PixelMap
+ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: double, level?: AntiAliasingLevel): image.PixelMap
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。同步返回结果。
 
@@ -3079,9 +3055,7 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
+function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
   const imageInfo = pixelMap.getImageInfoSync();
   const region: image.Region = {
     size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
@@ -3093,8 +3067,7 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
   try {
     const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
   } catch (e) {
-    const error = e as BusinessError;
-    console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+    console.error(`PixelMap crop and scale failed. e code: ${e.code}, message: ${e.message}`);
   }
 }
 ```
@@ -3266,8 +3239,6 @@ function DemoApplyTranslate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoApplyTranslate(pixelMap: image.PixelMap) {
   let translateX: double = 50.0;
   let translateY: double = 10.0;
@@ -3275,7 +3246,7 @@ function DemoApplyTranslate(pixelMap: image.PixelMap) {
     .then(() => {
       console.info('平移成功。');
     })
-    .catch((e: BusinessError) => {
+    .catch((e) => {
       console.error(`平移失败。错误码：${e.code} 错误信息：${e.message}`);
     });
 }
@@ -3349,8 +3320,6 @@ function DemoApplyTranslateSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoApplyTranslateSync(pixelMap: image.PixelMap) {
   try {
     let translateX: double = 50.0;
@@ -3358,7 +3327,6 @@ function DemoApplyTranslateSync(pixelMap: image.PixelMap) {
     pixelMap.applyTranslateSync(translateX, translateY);
     console.info('平移成功。');
   } catch (e) {
-    const error = e as BusinessError;
     console.error(`平移失败。错误码：${e.code} 错误信息：${e.message}`);
   }
 }
@@ -3420,15 +3388,13 @@ async function Translate(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Translate(pixelMap:image.PixelMap) {
   let translateX: double = 50.0;
   let translateY: double = 10.0;
   if (pixelMap != undefined) {
-    pixelMap.translate(translateX, translateY, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to translate pixelmap. code is ${err.code}, message is ${err.message}`);
+    pixelMap.translate(translateX, translateY, (e) => {
+      if (e) {
+        console.error(`Failed to translate pixelmap. code is ${e.code}, message is ${e.message}`);
         return;
       } else {
         console.info("Succeeded in translating pixelmap.");
@@ -3496,16 +3462,14 @@ async function Translate(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Translate(pixelMap:image.PixelMap) {
   let translateX: double = 50.0;
   let translateY: double = 10.0;
   if (pixelMap != undefined) {
     pixelMap.translate(translateX, translateY).then(() => {
       console.info('Succeeded in translating pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to translate pixelmap. code is ${err.code}, message is ${err.message}`);
+    }).catch((e) => {
+      console.error(`Failed to translate pixelmap. code is ${e.code}, message is ${e.message}`);
     })
   }
 }
@@ -3645,15 +3609,13 @@ function DemoApplyRotate(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoApplyRotate(pixelMap: image.PixelMap) {
   let angle: double = 90.0;
   pixelMap.applyRotate(angle)
     .then(() => {
       console.info('旋转成功。');
     })
-    .catch((e: BusinessError) => {
+    .catch((e) => {
       console.error(`旋转失败。错误码：${e.code} 错误信息：${e.message}`);
     });
 }
@@ -3725,15 +3687,12 @@ function DemoApplyRotateSync(pixelMap: image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function DemoApplyRotateSync(pixelMap: image.PixelMap) {
   try {
     let angle: double = 90.0;
     pixelMap.applyRotateSync(angle);
     console.info('旋转成功。');
   } catch (e) {
-    const error = e as BusinessError;
     console.error(`旋转失败。错误码：${e.code} 错误信息：${e.message}`);
   }
 }
@@ -3796,14 +3755,12 @@ async function Rotate(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Rotate(pixelMap:image.PixelMap) {
   let angle: double = 90.0;
   if (pixelMap != undefined) {
-    pixelMap.rotate(angle, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to rotate pixelmap. code is ${err.code}, message is ${err.message}`);
+    pixelMap.rotate(angle, (e) => {
+      if (e) {
+        console.error(`Failed to rotate pixelmap. code is ${e.code}, message is ${e.message}`);
         return;
       } else {
         console.info("Succeeded in rotating pixelmap.");
@@ -3872,15 +3829,13 @@ async function Rotate(pixelMap:image.PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Rotate(pixelMap:image.PixelMap) {
   let angle: double = 90.0;
   if (pixelMap != undefined) {
     pixelMap.rotate(angle).then(() => {
       console.info('Succeeded in rotating pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to rotate pixelmap. code is ${err.code}, message is ${err.message}`);
+    }).catch((e) => {
+      console.error(`Failed to rotate pixelmap. code is ${e.code}, message is ${e.message}`);
     })
   }
 }
@@ -5335,7 +5290,7 @@ function DemoGetUniqueId(pixelMap: PixelMap) {
 ArkTS-Sta示例：
 
 ```ts
-function DemoGetUniqueId(pixelMap: PixelMap) {
+function DemoGetUniqueId(pixelMap: image.PixelMap) {
   const uniqueId: int = pixelMap.getUniqueId();
 }
 ```
