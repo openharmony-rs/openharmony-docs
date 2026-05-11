@@ -1889,15 +1889,15 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas
 | [const OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向OH_Drawing_Canvas对象的指针。 |
 | const int* glyphIds | 字形ID的数组。 |
 | int glyphIdCount | 字形ID数组的大小。 |
-| int glyphIdOffset | 在字形ID数组绘制前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为glyphIds[m]~glyphIds[m+n]的部分。 |
+| int glyphIdOffset | 在字形ID数组绘制前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。 |
 | [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* positions | 位置数组。 |
 | int positionCount | 位置数组的大小。 |
-| int positionOffset | 在位置数组绘制之前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效positions数组范围为positions[m]~positions[m+n]的部分。 |
-| int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容。 |
+| int positionOffset | 在位置数组绘制之前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。 |
+| int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容并返回错误码。如果glyphCount与glyphIdOffset或者positionOffset和大于int32_t上限，则该和按上限处理。 |
 | [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 绘制时使用的字体。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示canvas、glyphIds、positions和font中的任何一个为nullptr。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示glyphIdOffset或positionOffset小于0，或者glyphIdCount小于glyphIdOffset + glyphCount，或者positionCount小于positionOffset + glyphCount。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示canvas、glyphIds、positions和font中的任何一个为nullptr。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示glyphIdOffset或positionOffset小于0，或者glyphIdCount小于glyphIdOffset + glyphCount，或者positionCount小于positionOffset + glyphCount。或者glyphIdOffset小于0，或者positionOffset小于0，或者glyphCount小于或等于0。 |
