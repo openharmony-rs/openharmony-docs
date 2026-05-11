@@ -94,6 +94,8 @@ type ErrorCallback = ErrorCallback
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
 **参数：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -112,6 +114,8 @@ type ErrorCallback = ErrorCallback
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
