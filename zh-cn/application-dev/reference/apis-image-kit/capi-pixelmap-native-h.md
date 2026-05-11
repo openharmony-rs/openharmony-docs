@@ -174,7 +174,8 @@ enum PIXEL_FORMAT
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102格式。 |
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010格式。 |
 | PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010格式。 |
-| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br/>**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br>**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_F16 = 16 | ALPHA_F16格式。<br>**起始版本：** 26.0.0 |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -1360,9 +1361,7 @@ Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixe
 
 **描述**
 
-从源PixelMap创建一个仅包含Alpha通道的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑。
-
-若源PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+从源PixelMap创建一个仅包含Alpha通道的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑。<br>     若源PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 **起始版本：** 22
 
