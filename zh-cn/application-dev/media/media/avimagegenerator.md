@@ -40,6 +40,7 @@
    avImageGenerator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
    ```
 	<br>ArkTS-Sta:
+    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
 	```ts
     import common from '@ohos.app.ability.common';
    import { globalContext } from '../entryability/GlobalContext';
@@ -80,6 +81,7 @@
    this.pixelMap = await avImageGenerator.fetchFrameByTime(timeUs, queryOption, param);
    ```   
    <br>ArkTS-Sta:
+   <!-- @[fetch_frame](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    ```ts
    import { image } from '@kit.ImageKit';
 
