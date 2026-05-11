@@ -887,6 +887,8 @@ With this permission, the application can record the screen without showing a pr
 
 **Since**: 22
 
+**changelog**: Since API version 26.0.0, this permission is also available on TVs.
+
 ## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
 
 Allows an application to use external native programs.

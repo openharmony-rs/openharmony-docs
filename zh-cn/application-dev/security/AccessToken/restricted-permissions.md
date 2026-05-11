@@ -888,7 +888,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：22
 
-**变更信息**：从 API 版本 26 开始，增加支持在 TV 上申请。
+**变更信息**：从API版本26.0.0开始，增加支持在TV上申请。
 
 ## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
 
