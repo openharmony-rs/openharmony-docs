@@ -25,7 +25,7 @@ mediatool is a lightweight command line tool set that built in the **/bin** fold
 mediatool send <path-to-local-media-file> [-ts] [-tas] [-rf] [-urf]
 ```
 
-Sends images, audios, and videos in **\<path-to-local-media-file>** of the device to the media library for storage.  The original file names are used. If **\<path-to-local-media-file>** indicates a folder, all files in the folder are sent to the media library. After a file is successfully saved, the URI of the file is displayed.
+This command requires root privileges. Sends images, audios, and videos in **\<path-to-local-media-file>** of the device to the media library for storage.  The original file names are used. If **\<path-to-local-media-file>** indicates a folder, all files in the folder are sent to the media library. After a file is successfully saved, the URI of the file is displayed.
 
 By default, a thumbnail is generated in synchronous mode when a media file is being saved to the media library, and the source file in **\<path-to-local-media-file>** is deleted once the saving process is complete.
 
@@ -49,7 +49,7 @@ file://media/Photo/3/IMG_1721381297_001/MyImage.jpg # The image is saved success
 mediatool list <resource-uri>
 ```
 
-Displays the information of a resource file specified by **\<resource-uri>** in the media library in CSV format.
+This command requires root privileges. Displays the information of a resource file specified by **\<resource-uri>** in the media library in CSV format.
 
 For example, if the URI of image A in the media library is **file://media/Photo/3/IMG_1721381297_001/MyImage.jpg**, you can run **mediatool list file://media/Photo/3** or **mediatool list file://media/Photo/3/IMG_1721381297_001/MyImage.jpg** to display the resource information.
 
