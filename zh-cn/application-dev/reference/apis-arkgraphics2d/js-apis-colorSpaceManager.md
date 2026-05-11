@@ -207,6 +207,14 @@ getColorSpaceName(): ColorSpace
 | ------------------ | ------------------------ |
 | [ColorSpace](#colorspace)  | 返回色域类型枚举值。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：9-22 | 
+
 **示例：**
 
 ```ts
@@ -238,6 +246,14 @@ ArkTS-Sta: getWhitePoint(): Array\<double\>
 | ------------------ | ------------------------ |
 | ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\>  | 返回色域白点值[x, y]。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：9-22 |
+
 **示例：**
 
 ```ts
@@ -268,6 +284,14 @@ ArkTS-Sta: getGamma(): double
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
 | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 返回色域gamma值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：9-22 | 
 
 **示例：**
 
