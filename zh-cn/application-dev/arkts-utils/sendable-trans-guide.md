@@ -71,6 +71,19 @@
    - `@SerialName({ name: 'xxx' })`：将类属性与JSON字段名绑定。
 
      <!-- @[transferableObject_Layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) -->
+     
+     ``` TypeScript
+     import { Serializable, SerialName } from '@hadss/turbo-trans-core';
+     // ...
+     
+     @Serializable({ generateSendable: true})
+     export class Layout {
+       @SerialName({ name: 'type'})
+       public type: string = '';
+       @SerialName({ name: 'arr'})
+       public arr: number[] = [];
+     }
+     ```
 
 3. 从JSON字符串反序列化为普通对象（TJSON.fromString）。
 
