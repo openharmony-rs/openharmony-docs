@@ -451,7 +451,7 @@ Web页面场景下，全局滚动条模式。
 | ------------------------------- | - | ---------- |
 | OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条，可以拖拽。 |
 | FORCE_DISPLAY_SCROLLBAR    | 1 | 常驻滚动条。 |
-| OVERLAY_VISUAL_SCROLLBAR    | 2 | 非常驻滚动条，不可以拖拽。<br/>**起始版本：** 26.0.0 |
+| OVERLAY_VISUAL_SCROLLBAR    | 2 | 非常驻滚动条，不可以拖拽。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## WebBlanklessErrorCode<sup>20+</sup>
 
