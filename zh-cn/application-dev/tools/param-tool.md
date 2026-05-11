@@ -88,7 +88,7 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
 
 
 ### 系统参数错误码说明
-  
-  **错误码说明**
- 	 
-  错误码参数[系统参数](../../device-dev/subsystems/subsys-boot-init-sysparam.md)文档描述
+
+ **错误码说明**
+ 
+ 错误码参数[系统参数](../../device-dev/subsystems/subsys-boot-init-sysparam.md)文档描述
