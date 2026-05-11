@@ -1553,7 +1553,7 @@ getCurrentTrack(trackType: MediaType): Promise\<number>
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| trackType | [audio.AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)| 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
+| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
 
 **返回值：**
 
