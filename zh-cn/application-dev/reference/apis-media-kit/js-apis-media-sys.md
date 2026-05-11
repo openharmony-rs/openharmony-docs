@@ -1583,7 +1583,7 @@ async function test(){
 }
 ```
 
-## forceLoadVideo
+### forceLoadVideo
 
 forceLoadVideo(force: boolean): Promise\<void>
 
