@@ -1065,7 +1065,8 @@ OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
 // 设置段落最大行数为3行
 OH_Drawing_SetTypographyTextMaxLines(typoStyle, 3);
 // 设置省略号模式为尾部省略号
-OH_Drawing_SetTypographyTextEllipsisModal(typoStyle, ELLIPSIS_MODAL_TAIL);
+OH_Drawing_SetTypographyStyleAttributeInt(typoStyle,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
 // 设置省略号文本
 OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
 // 设置对齐方式为居中对齐
