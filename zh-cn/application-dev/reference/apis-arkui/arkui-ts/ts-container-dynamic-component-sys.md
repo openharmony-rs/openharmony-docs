@@ -50,7 +50,9 @@ type Worker = Worker
 
 用于运行Abc的Worker线程对象。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -68,7 +70,9 @@ type ErrorCallback = ErrorCallback
 
 错误回调类型，用于接收异常信息。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -84,7 +88,7 @@ type ErrorCallback = ErrorCallback
 
 用于在DynamicComponent构造时传递参数。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统接口：** 此接口为系统接口。
 
@@ -98,7 +102,26 @@ type ErrorCallback = ErrorCallback
 | worker | ArkTS-Dyn: [Worker](#worker)<br/>ArkTS-Sta: EAWorker \| undefined | 否 | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是 | 运行Abc的Worker。<br/>ArkTS-Sta模式下，undefined回拉起一个空的DynamicComponent。 |
 | backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false |
 | allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false |
-| allowOccupied | boolean | 否 | 是 | 是否允许DynamicComponent占用键盘避让区域。<br/>true：允许占用键盘避让区域；false：不允许占用键盘避让区域。<br/>默认值：false。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Sta。 |
+
+## DynamicOptions
+
+用于在DynamicComponent构造时传递参数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
+| worker | ArkTS-Dyn: [Worker](#worker)<br/>ArkTS-Sta: EAWorker \| undefined | 否 | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是 | 运行Abc的Worker。<br/>ArkTS-Sta模式下，undefined回拉起一个空的DynamicComponent。 |
+| backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false |
+| allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false |
+| allowOccupied | boolean | 否 | 是 | 是否允许DynamicComponent占用键盘避让区域。<br/>true：允许占用键盘避让区域；false：不允许占用键盘避让区域。<br/>默认值：false<br/> |
 
 ## 属性
 
@@ -116,7 +139,9 @@ ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError\> | undefined)
 
 DynamicComponent运行过程中发生异常时触发该回调。使用callback异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
