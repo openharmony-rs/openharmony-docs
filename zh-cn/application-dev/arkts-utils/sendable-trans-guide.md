@@ -23,6 +23,13 @@
    引入TurboTransJSONPlugin和TurboTransJSON三方库
 
    <!-- @[transferableObject_jsonPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigor/hvigor-config.json5) -->
+   
+   ``` JSON5
+     "dependencies": {
+   // ...
+       "@hadss/turbo-trans-json-plugin": "latest",
+     },
+   ```
 
    在工程目录或模块下使用ohpm方式安装三方库。
 
