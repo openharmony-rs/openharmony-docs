@@ -118,5 +118,7 @@
     - [ArkGuard字节码混淆开启指南](bytecode-obfuscation-guide.md)
     - [不同包类型的字节码混淆建议](bytecode-obfuscation-practice.md)
     - [ArkGuard字节码混淆常见问题](bytecode-obfuscation-questions.md)
+  - 基于AOT的应用编译 (ArkTS-Sta)<!--arkts-static-aot-->
+    - [AOT编译概述 (ArkTS-Sta)](static-arkts-aot-overview.md)
+    - [安装时AOT开发指导 (ArkTS-Sta)](static-arkts-install-time-aot.md)
   - [在build-profile.json5中配置arkOptions](arkoptions-guide.md)
-
