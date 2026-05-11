@@ -1502,39 +1502,39 @@ struct Index {
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PRINT_JOB_COMPLETED_SUCCESS | 0 | 表示打印任务成功。 |
-| PRINT_JOB_COMPLETED_FAILED | 1 | 表示打印任务失败。 |
-| PRINT_JOB_COMPLETED_CANCELLED | 2 | 表示打印任务已取消。|
-| PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | 表示打印文件已损坏。 |
-| PRINT_JOB_BLOCK_OFFLINE | 4 | 表示打印处于离线状态。 |
-| PRINT_JOB_BLOCK_BUSY | 5 | 表示打印被其他进程占用。 |
-| PRINT_JOB_BLOCK_CANCELLED | 6 | 表示打印任务已取消。 |
-| PRINT_JOB_BLOCK_OUT_OF_PAPER | 7 | 表示打印纸张用完。 |
-| PRINT_JOB_BLOCK_OUT_OF_INK | 8 | 表示打印墨水用完。 |
-| PRINT_JOB_BLOCK_OUT_OF_TONER | 9 | 表示打印墨粉用完。 |
-| PRINT_JOB_BLOCK_JAMMED | 10 | 表示打印卡纸。 |
-| PRINT_JOB_BLOCK_DOOR_OPEN | 11 | 表示打印盖开启。 |
-| PRINT_JOB_BLOCK_SERVICE_REQUEST | 12 | 表示打印服务请求。 |
-| PRINT_JOB_BLOCK_LOW_ON_INK | 13 | 表示打印墨水不足。 |
-| PRINT_JOB_BLOCK_LOW_ON_TONER | 14 | 表示打印墨粉不足。 |
-| PRINT_JOB_BLOCK_REALLY_LOW_ON_INK | 15 | 表示打印墨水量非常低。 |
-| PRINT_JOB_BLOCK_BAD_CERTIFICATE | 16 | 表示打印证书有误。 |
-| PRINT_JOB_BLOCK_DRIVER_EXCEPTION<sup>20+</sup> | 17 | 表示打印驱动异常。 |
-| PRINT_JOB_BLOCK_ACCOUNT_ERROR | 18 | 表示打印账户时出错。 |
-| PRINT_JOB_BLOCK_PRINT_PERMISSION_ERROR | 19 | 表示打印许可异常。 |
-| PRINT_JOB_BLOCK_PRINT_COLOR_PERMISSION_ERROR | 20 | 表示彩色打印权限异常。 |
-| PRINT_JOB_BLOCK_NETWORK_ERROR | 21 | 表示设备未连接到网络。 |
-| PRINT_JOB_BLOCK_SERVER_CONNECTION_ERROR | 22 | 表示无法连接服务器。 |
-| PRINT_JOB_BLOCK_LARGE_FILE_ERROR | 23 | 表示打印大文件异常。 |
-| PRINT_JOB_BLOCK_FILE_PARSING_ERROR | 24 | 表示文件分析异常。 |
-| PRINT_JOB_BLOCK_SLOW_FILE_CONVERSION | 25 | 表示文件转换太慢。 |
-| PRINT_JOB_RUNNING_UPLOADING_FILES | 26 | 表示正在上传文件。 |
-| PRINT_JOB_RUNNING_CONVERTING_FILES | 27 | 表示正在转换文件。 |
-| PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | 表示文件上传失败。 |
-| PRINT_JOB_BLOCK_DRIVER_MISSING<sup>20+</sup> | 34 | 表示打印驱动缺失。 |
-| PRINT_JOB_BLOCK_INTERRUPT<sup>20+</sup> | 35 | 表示打印任务中断。 |
-| PRINT_JOB_BLOCK_PRINTER_UNAVAILABLE<sup>20+</sup> | 98 | 表示打印机不可用。 |
-| PRINT_JOB_BLOCK_UNKNOWN | 99 | 表示打印未知问题。 |
+| PRINT_JOB_COMPLETED_SUCCESS | 0 | 表示打印任务成功。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_COMPLETED_FAILED | 1 | 表示打印任务失败。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_COMPLETED_CANCELLED | 2 | 表示打印任务已取消。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23|
+| PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | 表示打印文件已损坏。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OFFLINE | 4 | 表示打印处于离线状态。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_BUSY | 5 | 表示打印被其他进程占用。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_CANCELLED | 6 | 表示打印任务已取消。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OUT_OF_PAPER | 7 | 表示打印纸张用完。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OUT_OF_INK | 8 | 表示打印墨水用完。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OUT_OF_TONER | 9 | 表示打印墨粉用完。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_JAMMED | 10 | 表示打印卡纸。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_DOOR_OPEN | 11 | 表示打印盖开启。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_SERVICE_REQUEST | 12 | 表示打印服务请求。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_LOW_ON_INK | 13 | 表示打印墨水不足。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_LOW_ON_TONER | 14 | 表示打印墨粉不足。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_REALLY_LOW_ON_INK | 15 | 表示打印墨水量非常低。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_BAD_CERTIFICATE | 16 | 表示打印证书有误。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_DRIVER_EXCEPTION<sup>20+</sup> | 17 | 表示打印驱动异常。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_ACCOUNT_ERROR | 18 | 表示打印账户时出错。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_PRINT_PERMISSION_ERROR | 19 | 表示打印许可异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_PRINT_COLOR_PERMISSION_ERROR | 20 | 表示彩色打印权限异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_NETWORK_ERROR | 21 | 表示设备未连接到网络。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_SERVER_CONNECTION_ERROR | 22 | 表示无法连接服务器。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_LARGE_FILE_ERROR | 23 | 表示打印大文件异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_FILE_PARSING_ERROR | 24 | 表示文件分析异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_SLOW_FILE_CONVERSION | 25 | 表示文件转换太慢。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_RUNNING_UPLOADING_FILES | 26 | 表示正在上传文件。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_RUNNING_CONVERTING_FILES | 27 | 表示正在转换文件。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | 表示文件上传失败。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_DRIVER_MISSING<sup>20+</sup> | 34 | 表示打印驱动缺失。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_INTERRUPT<sup>20+</sup> | 35 | 表示打印任务中断。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_PRINTER_UNAVAILABLE<sup>20+</sup> | 98 | 表示打印机不可用。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_UNKNOWN | 99 | 表示打印未知问题。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
 
 ## PrintErrorCode<sup>14+</sup>
 
@@ -1548,20 +1548,20 @@ struct Index {
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| E_PRINT_NONE | 0 | 表示没有错误。 |
-| E_PRINT_NO_PERMISSION | 201 | 表示没有许可。 |
-| E_PRINT_INVALID_PARAMETER | 401 | 表示无效的参数。 |
-| E_PRINT_GENERIC_FAILURE | 13100001 | 表示一般打印失败。 |
-| E_PRINT_RPC_FAILURE | 13100002 | 表示RPC失败。 |
-| E_PRINT_SERVER_FAILURE | 13100003 | 表示打印服务失败。 |
-| E_PRINT_INVALID_EXTENSION | 13100004 | 表示打印扩展无效。 |
-| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效。 |
-| E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效。 |
-| E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误。 |
-| E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。 |
-| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
-| E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
-| E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| E_PRINT_NONE | 0 | 表示没有错误。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_NO_PERMISSION | 201 | 表示没有许可。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_PARAMETER | 401 | 表示无效的参数。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_GENERIC_FAILURE | 13100001 | 表示一般打印失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_RPC_FAILURE | 13100002 | 表示RPC失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_SERVER_FAILURE | 13100003 | 表示打印服务失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_EXTENSION | 13100004 | 表示打印扩展无效。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
+| E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
+| E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1814,18 +1814,18 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| printerId | string | 否 | 否 | 表示打印机ID。 |
-| printerName | string | 否 | 否 | 表示打印机名称。 |
-| printerStatus | [PrinterStatus](#printerstatus14) | 否 | 否 | 表示当前打印机状态。 |
-| description | string | 否 | 是 | 表示打印机说明。 |
-| capability | [PrinterCapabilities](#printercapabilities14) | 否 | 是 | 表示打印机能力。 |
-| uri | string | 否 | 是 | 表示打印机uri。 |
-| printerMake | string | 否 | 是 | 表示打印机型号。 |
-| preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。 |
-| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。 |
-| selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | 否 | 是 | 表示添加打印机时选择的驱动的信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
-| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时使用的协议。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
-| options | string | 否 | 是 | 表示打印机详细信息。 |
+| printerId | string | 否 | 否 | 表示打印机ID。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| printerName | string | 否 | 否 | 表示打印机名称。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| printerStatus | [PrinterStatus](#printerstatus14) | 否 | 否 | 表示当前打印机状态。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| description | string | 否 | 是 | 表示打印机说明。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| capability | [PrinterCapabilities](#printercapabilities14) | 否 | 是 | 表示打印机能力。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| uri | string | 否 | 是 | 表示打印机uri。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| printerMake | string | 否 | 是 | 表示打印机型号。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
+| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
+| selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | 否 | 是 | 表示添加打印机时选择的驱动的信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
+| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时使用的协议。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
+| options | string | 否 | 是 | 表示打印机详细信息。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
 
 ## PrinterCapabilities<sup>14+</sup>
 
@@ -1917,9 +1917,9 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。 |
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。 |
 | borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。 |
-| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。**模型约束：** 此接口仅可在Stage模型下使用。 |
-| defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。**模型约束：** 此接口仅可在Stage模型下使用。 |
-| defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。**模型约束：** 此接口仅可在Stage模型下使用。 |
+| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
+| defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
+| defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 | options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。 |
 
 ## PrinterEvent<sup>18+</sup>
