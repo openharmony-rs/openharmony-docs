@@ -14,7 +14,7 @@
     - [@ohos.arkui.dragController (DragController)](js-apis-arkui-dragController.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)](js-apis-arkui-drawableDescriptor.md)
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
-    - [@ohos.arkui.node(自定义节点)](js-apis-arkui-node.md)
+    - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
     - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
@@ -244,7 +244,7 @@
       - [工具栏设置](arkui-ts/ts-universal-attributes-toolbar.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
-      - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
+      - [绑定手势事件](arkui-ts/ts-gesture-settings.md)
       - [设置组件绑定的手势](arkui-ts/ts-uigestureevent.md)
       - [手势处理器](arkui-ts/ts-gesturehandler.md)
     - 基础手势<!--basic-gestures-->
@@ -254,7 +254,7 @@
       - [PinchGesture](arkui-ts/ts-basic-gestures-pinchgesture.md)
       - [RotationGesture](arkui-ts/ts-basic-gestures-rotationgesture.md)
       - [SwipeGesture](arkui-ts/ts-basic-gestures-swipegesture.md)
-    - [组合手势](arkui-ts/ts-combined-gestures.md)
+    - [GestureGroup](arkui-ts/ts-combined-gestures.md)
     - 手势控制<!--gesture-control-->
       - [自定义手势判定](arkui-ts/ts-gesture-customize-judge.md)
       - [手势拦截增强](arkui-ts/ts-gesture-blocking-enhancement.md)

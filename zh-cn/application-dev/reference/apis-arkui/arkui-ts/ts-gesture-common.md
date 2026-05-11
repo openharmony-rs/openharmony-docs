@@ -206,7 +206,7 @@ getId(): string
 
 | 类型     | 说明        |
 | ------ | --------- |
-| string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md#id)。 |
+| string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md)。 |
 
 ### getUniqueId
 
