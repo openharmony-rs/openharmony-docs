@@ -967,7 +967,7 @@ onError(callback: ErrorCallback): void
 
 **错误码：**  
 
-以下错误码的详细介绍请参见[通用错误码](arkts-apis-media-e.md)和[Media错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Enums](arkts-apis-media-e.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
