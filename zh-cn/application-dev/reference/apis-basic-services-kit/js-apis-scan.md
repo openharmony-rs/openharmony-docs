@@ -495,7 +495,9 @@ scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) =
 
 ## scan.setScannerParameter
 
-setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise&lt;void&gt;
+ArkTS-Dyn: setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise&lt;void&gt;
+
+ArkTS-Sta: setScannerParameter(scannerId: string, optionIndex: int, value: ScannerOptionValue): Promise&lt;void&gt;
 
 设置扫描仪参数。使用Promise异步回调。
 
@@ -503,11 +505,15 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要设置的选项的索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要设置的选项的索引。 |
 | value | [ScannerOptionValue](#scanneroptionvalue) | 是 | 要设置的值。 |
 
 **返回值：**
@@ -542,7 +548,9 @@ scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
 
 ## scan.setScanAutoOption
 
-setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
+ArkTS-Dyn: setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setScanAutoOption(scannerId: string, optionIndex: int): Promise&lt;void&gt;
 
 设置扫描选项为自动模式。使用Promise异步回调。
 
@@ -550,11 +558,15 @@ setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要设置为自动的选项的索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要设置为自动的选项的索引。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -584,19 +596,25 @@ scan.setScanAutoOption(scannerId, optionIndex).then(() => {
 
 ## scan.getScannerCurrentSetting
 
-getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;ScannerOptionValue&gt;
+ArkTS-Dyn: getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;ScannerOptionValue&gt;
 
-获取当前扫描仪设置。使用Promise异步回调。
+ArkTS-Sta: getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise&lt;ScannerOptionValue&gt;
+
+获取扫描仪当前设置。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
-| optionIndex | number | 是 | 要获取的选项的索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要获取的选项的索引。 |
 
 **返回值：**
 | **类型** | **说明** |
