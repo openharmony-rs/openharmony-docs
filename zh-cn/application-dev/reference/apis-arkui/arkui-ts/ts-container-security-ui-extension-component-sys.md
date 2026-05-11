@@ -358,7 +358,7 @@ ArkTS-Sta示例：
 'use static'
 
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { State } from '@ohos.arkui.stateManagement'
 import { Column, Button, Component, Entry, Color, SecurityUIExtensionComponent } from '@ohos.arkui.component';
