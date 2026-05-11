@@ -12,5 +12,5 @@
 
 ## 1300004错误码的定位指导
 
-## 超市警告WINDOW_EXCEPTION_DETECTION的定位指导
+## 超时警告WINDOW_EXCEPTION_DETECTION的定位指导
 
