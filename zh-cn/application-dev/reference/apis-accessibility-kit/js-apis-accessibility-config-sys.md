@@ -504,7 +504,7 @@ try {
 
 ## setSeniorModeStateForApp
 
-setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Promise&lt;void&gt;
+setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt;): Promise&lt;void&gt;
 
 设置应用长辈模式状态。使用Promise异步回调。
 
@@ -520,7 +520,7 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](AppSeniorModeInfo)&gt; | 是 | 需要修改的应用长辈模式状态信息。 |
+| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#AppSeniorModeInfo)&gt; | 是 | 需要修改的应用长辈模式状态信息。 |
 
 **返回值：**
 
@@ -611,14 +611,14 @@ config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: bool
 
 ## onSeniorModeStateChangeForApp
 
-onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
+onSeniorModeStateChangeForApp(callback: Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt;): void
 
 监听所有应用关怀模式状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
-> - 调用此方法后，务必在对象生命周期结束前使用[onSeniorModeStateChangeForApp](#onSeniorModeStateChangeForApp)取消监听，否则可能会导致崩溃。
+> - 调用此方法后，务必在对象生命周期结束前使用[offSeniorModeStateChangeForApp](#offSeniorModeStateChangeForApp)取消监听，否则可能会导致崩溃。
 
 **起始版本：** 26.0.0
 
@@ -657,7 +657,7 @@ struct Index {
 
 ## offSeniorModeStateChangeForApp
 
-offSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
+offSeniorModeStateChangeForApp(callback: Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt;): void
 
 取消监听应用关怀模式变化事件。使用callback异步回调。
 
@@ -671,7 +671,7 @@ offSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): voi
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AppSeniorModeInfo](#AppSeniorModeInfo)&gt; | 是   | 回调函数。返回应用修改后的长辈模式状态信息。需与[onSeniorModeStateChangeForApp](#onSeniorModeStateChangeForApp)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;[AppSeniorModeInfo](#AppSeniorModeInfo)&gt; | 是   | 回调函数。返回被修改的应用长辈模式状态信息。需与[onSeniorModeStateChangeForApp](#onSeniorModeStateChangeForApp)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **示例：**
 
@@ -1043,6 +1043,5 @@ type OnDisconnectCallback = () => void
 | 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
 | bundleName | string | 否   | 否   | 应用包名。 |
-| appIndex | number | 否   | 是   | 应用包的分身索引标识，要求大于等于0的整数，0是主应用，分身应用依次是1,2,3。 |
-| seniorModeState | boolean | 否   | 否   | 应用长辈模式状态，false表示未开启长辈模式，true表示开启长辈模式。 |
-
+| appIndex | number | 否   | 是   | 应用包的分身索引标识，要求大于等于0的整数，缺省时默认为0。 |
+| seniorModeState | boolean | 否   | 否   | 应用长辈模式状态，false表示长辈模式未开启，true表示长辈模式开启。 |
