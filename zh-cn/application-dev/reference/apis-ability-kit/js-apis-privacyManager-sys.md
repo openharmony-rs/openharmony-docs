@@ -46,7 +46,7 @@ ArkTS-Sta: addPermissionUsedRecord(tokenID: int, permissionName: Permissions, su
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 应用权限名称。 |
 | successCount | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 访问成功的次数。 |
 | failCount | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 访问失败的次数。 |
@@ -81,10 +81,10 @@ ArkTS-Dyn示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0).then(() => {
   console.info('addPermissionUsedRecord success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 // with options param
@@ -94,7 +94,7 @@ let options: privacyManager.AddPermissionUsedRecordOptions = {
 };
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, options).then(() => {
   console.info('addPermissionUsedRecord success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -104,7 +104,7 @@ ArkTS-Sta示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: int = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: int = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0).then(() => {
   console.info('addPermissionUsedRecord success.');
 }).catch((err: BusinessError): void => {
@@ -145,7 +145,7 @@ ArkTS-Sta: addPermissionUsedRecord(tokenID: int, permissionName: Permissions, su
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 应用权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | successCount | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 访问成功的次数。 |
 | failCount | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 访问失败的次数。 |
@@ -174,7 +174,7 @@ ArkTS-Dyn示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, (err: BusinessError, data: void) => {
   if (err) {
     console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
@@ -189,7 +189,7 @@ ArkTS-Sta示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: int = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: int = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, (err: BusinessError | null): void => {
   if (err) {
     console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
@@ -259,7 +259,7 @@ let request: privacyManager.PermissionUsedRequest = {
 
 privacyManager.getPermissionUsedRecord(request).then((data) => {
   console.info(`getPermissionUsedRecord success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -418,19 +418,6 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
-  console.info('setPermissionUsedRecordToggleStatus success');
-}).catch((err: BusinessError) => {
-  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -476,24 +463,6 @@ getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-privacyManager.getPermissionUsedRecordToggleStatus().then((res) => {
-  console.info('getPermissionUsedRecordToggleStatus success');
-  if (res == true) {
-    console.info('get status is TRUE');
-  } else {
-    console.info('get status is FALSE');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -532,7 +501,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;v
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 
 **返回值：**
@@ -563,10 +532,10 @@ startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;v
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -593,7 +562,7 @@ ArkTS-Sta: startUsingPermission(tokenID: int, permissionName: Permissions, pid?:
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 调用方的进程pid，默认-1，-1表示不根据进程生命周期响应。|
 | usedType       | [PermissionUsedType](#permissionusedtype12) | 否 | 敏感权限访问方式，默认NORMAL_TYPE。 |
@@ -627,32 +596,32 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
 // without pid and usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid and usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -663,7 +632,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import rpc from '@ohos.rpc';
 
-let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过bundleManager.getBundleInfoForSelfSync获取accessTokenId。
+let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: int = rpc.IPCSkeleton.getCallingPid() as int;
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
@@ -717,7 +686,7 @@ ArkTS-Sta: startUsingPermission(tokenID: int, permissionName: Permissions, pid?:
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获得。|
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 调用方的进程pid。默认为-1，表示不根据进程生命周期响应。|
 | usedType       | [PermissionUsedType](#permissionusedtype12) | 否 | 敏感权限访问方式，默认NORMAL_TYPE。 |
@@ -751,38 +720,38 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
 // 不带pid和usedType参数
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // 带pid参数
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // 带usedType参数
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // 带pid和usedType参数
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // 带pid、usedType和enhancedIdentity
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType, {enhancedIdentity: "test"}).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -793,7 +762,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import rpc from '@ohos.rpc';
 
-let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过bundleManager.getBundleInfoForSelfSync获取accessTokenId。
+let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: int = rpc.IPCSkeleton.getCallingPid() as int;
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
@@ -851,7 +820,7 @@ ArkTS-Sta: startUsingPermission(tokenID: int, permissionName: Permissions, callb
 
 | 参数名          | 类型                  | 必填 | 说明                                  |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当开始使用权限成功时，err为undefined；否则为错误对象。 |
 
@@ -878,7 +847,7 @@ ArkTS-Dyn示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
     console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -893,7 +862,7 @@ ArkTS-Sta示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: int = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: int = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError | null): void => {
   if (err) {
     console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -925,7 +894,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;vo
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 
 **返回值：**
@@ -955,10 +924,10 @@ stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;vo
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -987,7 +956,7 @@ pid需要与startUsingPermission传入的pid相同。
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 与startUsingPermission传入的pid相同，默认-1。|
 
@@ -1020,20 +989,20 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 
 // without pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // with pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1044,7 +1013,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import rpc from '@ohos.rpc';
 
-let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过bundleManager.getBundleInfoForSelfSync获取accessTokenId。
+let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: int = rpc.IPCSkeleton.getCallingPid() as int;
 
 // without pid
@@ -1089,7 +1058,7 @@ pid需要与[startUsingPermission](#privacymanagerstartusingpermission-1)传入�
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 调用方的进程pid。默认为-1，表示不根据进程生命周期响应。 |
 | options        | [PermissionUsingOptions](#permissionusingoptions)| 否 | 权限使用可选参数。 |
@@ -1122,27 +1091,27 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 
 // 不带pid参数
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // 带pid参数
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // 带扩展身份标识
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {enhancedIdentity: "test"}).then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1153,7 +1122,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import rpc from '@ohos.rpc';
 
-let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过bundleManager.getBundleInfoForSelfSync获取accessTokenId。
+let tokenID: int = rpc.IPCSkeleton.getCallingTokenId() as int; // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: int = rpc.IPCSkeleton.getCallingPid() as int;
 
 // 不带pid参数
@@ -1200,7 +1169,7 @@ ArkTS-Sta: stopUsingPermission(tokenID: int, permissionName: Permissions, callba
 
 | 参数名          | 类型                  | 必填 | 说明                                  |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止使用权限成功时，err为undefined；否则为错误对象。 |
 
@@ -1226,7 +1195,7 @@ ArkTS-Dyn示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
     console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -1241,7 +1210,7 @@ ArkTS-Sta示例：
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: int = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: int = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError | null): void => {
   if (err) {
     console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -1607,30 +1576,30 @@ ArkTS-Dyn示例：
 import { privacyManager, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenId: number = 0; // 可以通过bundleManager.getApplicationInfo获取accessTokenId。
+let tokenId: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let permissionName: Permissions = 'ohos.permission.CAMERA';
 // without any param
 privacyManager.getPermissionUsedTypeInfos().then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // only tokenId
 privacyManager.getPermissionUsedTypeInfos(tokenId).then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // only permissionName
 privacyManager.getPermissionUsedTypeInfos(null, permissionName).then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // tokenId and permissionName
 privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1640,7 +1609,7 @@ ArkTS-Sta示例：
 import { privacyManager, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenId: int = 0; // 可以通过bundleManager.getApplicationInfo获取accessTokenId。
+let tokenId: int = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let permissionName: Permissions = 'ohos.permission.CAMERA';
 // without any param
 privacyManager.getPermissionUsedTypeInfos().then(() => {

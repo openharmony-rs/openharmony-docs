@@ -1223,6 +1223,24 @@ Grid滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
 | ------ | ------ | ------ | ------|
 | handler | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12) \| undefined | 是 | Grid滑动时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<GridAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置Grid组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier\<GridAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+
 ### onScroll<sup>(deprecated)</sup>
 onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void) 
 

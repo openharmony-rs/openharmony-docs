@@ -11,6 +11,8 @@
 <!--Del-->
 - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](system-window-stage-sys.md)
 <!--DelEnd-->
+ <!--RP2-->
+ <!--RP2End-->
 - 窗口基础能力<!--window-basic-capabilities-->
   - 窗口旋转<!--rotation-->
     - [窗口旋转](window-rotation.md)
