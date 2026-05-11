@@ -132,7 +132,7 @@ load libentry.so failed.
 
 **so加载失败可能的原因、定位方式以及解决方法**  
 
-参考([Node-API常见问题](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/napi/use-napi-faqs.md))文档
+参考([Node-API常见问题](../napi/use-napi-faqs.md))文档
 
 
 ## 模块间循环依赖导致运行时未初始化异常问题定位
