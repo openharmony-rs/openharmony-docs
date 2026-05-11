@@ -102,7 +102,7 @@ UIExtensionAbility连接完成时触发的回调，使用callback异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> \| undefined | 是 | 回调函数，用于向对端Ability发送数据。<br/>ArkTS-Sta模式下可不传。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> \| undefined | 是 | 回调函数，用于向对端Ability发送数据。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
 
 ### onReceive
 
@@ -122,7 +122,7 @@ ArkTS-Sta: onReceive(callback: Callback\<Record\<string, RecordData\>\> | undefi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, RecordData\>\> \| undefined | 是 | 回调函数，返回收到的来自对端Ability的数据。<br/>ArkTS-Sta模式下可不传。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, RecordData\>\> \| undefined | 是 | 回调函数，返回收到的来自对端Ability的数据。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
 
 ### onError
 
@@ -142,7 +142,7 @@ ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError\> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> \| undefined | 是 | 回调函数，入参用于接收异常信息。<br/>ArkTS-Sta模式下可不传。 |
+| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> \| undefined | 是 | 回调函数，入参用于接收异常信息。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
 
 ### onTerminated
 
@@ -162,7 +162,7 @@ ArkTS-Sta: onTerminated(callback: Callback\<TerminationInfo\> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\> \| undefined | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。<br/>ArkTS-Sta模式下可不传。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\> \| undefined | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
 
 ## SecurityUIExtensionProxy
 
