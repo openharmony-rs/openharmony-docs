@@ -2628,7 +2628,7 @@ let controller = windowClass.getTransitionController(); // 获取属性转换控
 
 setBlur(radius: number): void
 
-设置窗口模糊。设置窗口模糊。仅支持系统窗口、全局悬浮窗和模态窗口使用。
+设置窗口模糊。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
