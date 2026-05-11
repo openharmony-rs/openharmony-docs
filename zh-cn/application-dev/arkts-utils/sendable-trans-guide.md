@@ -93,6 +93,49 @@
    - testJSON2方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
 
      <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) -->
+     
+     ``` TypeScript
+     import { TJSON } from '@hadss/turbo-trans-json';
+     import { Layout, LayoutS } from 'entry/ets/turbotrans_JSON/layout';
+     import type { ITSerializable } from '@hadss/turbo-trans-json';
+     import { ArkTSUtils } from '@kit.ArkTS';
+     
+     export function testJSON1(): LayoutS {
+       let obj = new Layout();
+       obj.type = 'Test';
+       obj.arr = [3, 4];
+       let str = JSON.stringify(obj);
+       let layoutNormal = TJSON.fromString<Layout>(str, Layout);
+       console.info('111 layout arr: ' + layoutNormal.arr);
+       let layoutSendable = (layoutNormal as object as ITSerializable).toSendable();
+       if (ArkTSUtils.isSendable(layoutSendable)) {
+         console.info('expect layout from JSON string is Sendable');
+       } else {
+         console.error('test occur error');
+       }
+       let layoutS = layoutSendable as LayoutS;
+       return layoutS;
+     }
+     
+     export function testJSON2(): LayoutS {
+       let layoutStr = '{"type":"Text","arr":[3,4]}';
+       let layoutNormal = TJSON.fromString<Layout>(layoutStr, Layout);
+       console.info('222 layout arr: ' + layoutNormal.arr);
+       let layoutSendable = (layoutNormal as object as ITSerializable).toSendable();
+       if (ArkTSUtils.isSendable(layoutSendable)) {
+         console.info('expect layout from simple string is Sendable');
+       } else {
+         console.error('test occur error');
+       }
+       let layoutS = layoutSendable as LayoutS;
+       return layoutS;
+     }
+     
+     export function testJSON() {
+       testJSON1();
+       testJSON2();
+     }
+     ```
 
 4. 将普通对象转换为Sendable对象（toSendable）。
 
