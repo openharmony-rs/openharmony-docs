@@ -60,7 +60,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| NOT_SPECIFIED<sup>18+</sup>  | 0      | 未指定用户。 |
+| NOT_SPECIFIED<sup>18+</sup>  | 0      | 不指定使用范围。 |
 | CURRENT_USER | 1      | 当前用户。 |
 | GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。 |
 
@@ -137,7 +137,7 @@ USB证书凭据授权请求信息。
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-表示拉起证书管理对话框，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理对话框，显示相应的页面。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -193,7 +193,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -251,7 +251,7 @@ let caCert: Uint8Array = new Uint8Array([
 ]);
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
-    console.info('Succeeded opening install certificate');
+    console.info('Succeeded in opening install certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -264,7 +264,7 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理删除证书向导，显示相应的页面。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -311,13 +311,13 @@ import { UIContext } from '@kit.ArkUI';
 
 /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
-/* certificateType为证书类型，此处赋值CA_CERT，即安装CA证书 */
+/* certificateType为证书类型，此处赋值CA_CERT，即删除CA证书 */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certUri为业务安装证书返回的唯一标识符，此处仅为示例 */
 let certUri: string = "test";
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
-    console.info('Succeeded opening uninstall certificate');
+    console.info('Succeeded in opening uninstall certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -330,7 +330,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。
+表示拉起证书管理对话框显示证书的详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -384,7 +384,7 @@ let property: certificateManagerDialog.CertificateDialogProperty = {
 };
 try {
   certificateManagerDialog.openCertificateDetailDialog(context, caCert, property).then(() => {
-    console.info('Succeeded opening certificate detail dialog.');
+    console.info('Succeeded in opening certificate detail dialog.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open certificate detail dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -397,7 +397,7 @@ try {
 
 openAuthorizeDialog(context: common.Context): Promise\<string>
 
-打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise方式异步返回结果。
+打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -439,7 +439,7 @@ import { UIContext } from '@kit.ArkUI';
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
     certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Success to authorize certificate, uri: ${uri}`)
+        console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
     });
@@ -507,7 +507,7 @@ let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: c
 try {
     certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
       let reference = certReference;
-      console.info(`Success to open authorize dialog.`)
+      console.info(`Succeeded in opening authorize dialog.`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -570,7 +570,7 @@ let keyUri: string = "test"
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
 try {
     certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Success to open ukey authorization dialog`)
+        console.info(`Succeeded in opening ukey authorization dialog`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
     });

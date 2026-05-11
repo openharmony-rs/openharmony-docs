@@ -1045,6 +1045,7 @@ let htmlRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.
 pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
+
 ### addRecord<sup>9+</sup>
 
 addRecord(mimeType: string, value: ValueType): void
@@ -1069,6 +1070,7 @@ addRecord(mimeType: string, value: ValueType): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 12900002 | The number of records exceeds the upper limit, since 9 - 9. |
 
 **示例：**
 
@@ -1635,6 +1637,7 @@ hasMimeType(mimeType: string): boolean
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
 ```
+
 ### removeRecordAt<sup>(deprecated)</sup>
 
 removeRecordAt(index: number): boolean
@@ -1958,7 +1961,7 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
@@ -2001,7 +2004,7 @@ getData(): Promise&lt;PasteData&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 
 **示例：**
 
@@ -2537,7 +2540,7 @@ getDataSync(): PasteData
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
 
 **示例：**
 
@@ -2840,6 +2843,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API, since 12 - 13. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12900006 | Settings already exist. |
 
@@ -2872,6 +2876,7 @@ removeAppShareOptions(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API, since 12 - 13. |
 
 **示例：**
 

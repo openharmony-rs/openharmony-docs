@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块提供屏幕亮度和模式的查询、调节接口。
 
@@ -48,7 +48,7 @@ getValue(options?: GetBrightnessOptions): void
   ```js
   brightness.getValue({
       success: (data: BrightnessResponse) => {
-        console.log('success get brightness value:' + data.value);
+        console.info('success get brightness value:' + data.value);
       },
       fail: (data: string, code: number) => {
         console.error('get brightness fail, code: ' + code + ', data: ' + data);
@@ -77,7 +77,7 @@ setValue(options?: SetBrightnessOptions): void
   brightness.setValue({
       value: 100,
       success: () => {
-        console.log('handling set brightness success.');
+        console.info('handling set brightness success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set brightness value fail, code:' + code + ', data: ' + data);
@@ -105,7 +105,7 @@ getMode(options?: GetBrightnessModeOptions): void
   ```js
   brightness.getMode({
       success: (data: BrightnessModeResponse) => {
-        console.log('success get mode:' + data.mode);
+        console.info('success get mode:' + data.mode);
       },
       fail: (data: string, code: number) => {
         console.error('handling get mode fail, code:' + code + ', data: ' + data);
@@ -133,7 +133,7 @@ setMode(options?: SetBrightnessModeOptions): void
   brightness.setMode({
       mode: 1,
       success: () => {
-        console.log('handling set mode success.');
+        console.info('handling set mode success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set mode fail, code:' + code + ', data: ' + data);
@@ -149,6 +149,9 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 >除Lite Wearable外，从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
 
 设置屏幕是否保持常亮状态，开启常亮模式推荐在onShow()阶段调用。
+> **注意：**
+>
+> 在Lite Wearable上，该接口仅能阻止系统无活动超时灭屏（自动），无法阻止用户主动操作（如盖屏）、常亮时刻结束等导致的灭屏。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -164,7 +167,7 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
   brightness.setKeepScreenOn({
       keepScreenOn: true,
       success: () => {
-        console.log('handling set keep screen on success.');
+        console.info('handling set keep screen on success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set keep screen on fail, code:' + code + ', data: ' + data);

@@ -106,6 +106,8 @@ This action is not supported.
 
 确认该无障碍节点元素支持的操作列表中是否包含该操作。
 
+<!--Del-->
+
 ## 9300006 目标应用和无障碍服务建立连接失败
 
 **错误信息**
@@ -142,3 +144,4 @@ Trigger magnification failed.
 **处理步骤**
 
 先开启放大手势功能并配置放大模式。
+<!--DelEnd-->

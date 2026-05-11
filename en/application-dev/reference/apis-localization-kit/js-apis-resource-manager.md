@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 The **resourceManager** module provides the resource management functionality. It allows an application to obtain the best matched application resources or system resources based on the specified [configuration](#configuration). For details about the matching rules, see [Matching Resources](../../quick-start/resource-categories-and-access.md#matching-resources).
 
@@ -598,7 +598,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
-Obtains a string based on the specified resource ame and formats the string based on **args**. This API returns the result synchronously.
+Obtains a string based on the specified resource name and formats the string based on **args**. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -797,7 +797,7 @@ Obtains a string based on the specified resource name. This API uses an asynchro
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
 | resName  | string                      | Yes   | Resource name.           |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   |Callback used to return the result, which is the string corresponding to the specified resource ID.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   |Callback used to return the obtained string.|
 
 **Error codes**
 
@@ -4081,7 +4081,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFdSync(path: string): void
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API returns the result synchronously.
+Closes the file descriptor (fd) of the HAP where the **rawfile** file in the **resources/rawfile** directory is located. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4770,7 +4770,7 @@ export default class EntryAbility extends UIAbility {
             // Print the output result: sub isRawDir, result: true
             console.info(`sub isRawDir, result: ${isRawDir}`);
 
-            // If the test.txt file exists in the root directory, the value of isRawDir is false.
+            // If the test.txt file exists in the rawfile root directory, the value of isRawDir is false.
             // Replace "test.txt" with the actual resource.
             isRawDir = this.context.resourceManager.isRawDir("test.txt");
             // Print the output result: test.txt isRawDir, result: false
@@ -6328,7 +6328,7 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptorByName](#getdrawabledescriptorbyname10) or [getDrawableDescriptor] (#getdrawabledescriptor10) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptorByName](#getdrawabledescriptorbyname10) or [getDrawableDescriptor](#getdrawabledescriptor10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7630,7 +7630,7 @@ Obtains a color value based on the specified resource object. This API uses a pr
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName] (#getcolorbyname10-1) or [getColor] (#getcolor10-1) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName](#getcolorbyname10-1) or [getColor](#getcolor10-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

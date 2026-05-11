@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ApplicationContext作为应用上下文，继承自[Context](js-apis-inner-application-context.md)，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
 
@@ -1243,6 +1243,8 @@ getAllRunningInstanceKeys(): Promise\<Array\<string>>;
 获取应用的所有多实例的唯一实例标识。使用Promise异步回调。仅支持主线程调用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用。
 
 **返回值：**
 

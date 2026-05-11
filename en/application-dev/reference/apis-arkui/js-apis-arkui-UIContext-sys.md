@@ -1,8 +1,8 @@
 # @ohos.arkui.UIContext (UIContext) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@ In the stage model, a window stage or window can use the **loadContent** API to 
 >
 > You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
 
 ## UIContext
 
@@ -409,6 +409,34 @@ struct MyStateSample {
 }
 ```
 
+### getLuminanceSampler<sup>23+</sup>
+
+getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
+
+Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) color picker object. You can use this object to set the background luminance color picking parameters, register the luminance change listening callback, and unregister the listening callback.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type   | Mandatory  | Description     |
+| --- | --- | --- | --- |
+| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| ID of the target component.|
+
+**Return value**
+
+| Type                                             | Description                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) | Background luminance color picker.|
+
+**Example**
+
+For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23).
+
 ## ComponentSnapshot<sup>12+</sup>
 
 In the following API examples, you must first use [getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) in **UIContext** to obtain a **ComponentSnapshot** instance, and then call the APIs using the obtained instance.
@@ -462,6 +490,7 @@ import { image } from '@kit.ImageKit';
 @Component
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined
+
   build() {
     Column() {
       Row() {
@@ -473,22 +502,47 @@ struct SnapshotExample {
               Row() {
                 Text('Text3').id('text3')
               }.id('root5').backgroundColor('#E4E8F0')
-            }.width('80%').height('80%').justifyContent(FlexAlign.SpaceAround).backgroundColor('#C1D1F0').id('root4')
-          }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#FFEEF0').id('root3')
+            }
+            .width('80%')
+            .height('80%')
+            .justifyContent(FlexAlign.SpaceAround)
+            .backgroundColor('#C1D1F0')
+            .id('root4')
+          }
+          .width('80%')
+          .height('80%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#FFEEF0')
+          .id('root3')
           .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT })
-        }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#D5D5D5').id('root2')
-      }.width('50%').height('50%').justifyContent(FlexAlign.Center).backgroundColor('#E4E8F0').id('root1')
+        }
+        .width('80%')
+        .height('80%')
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#D5D5D5')
+        .id('root2')
+      }
+      .width('50%')
+      .height('50%')
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor('#E4E8F0')
+      .id('root1')
+
       Row() {
         Button("getWithRange")
           .onClick(() => {
-            this.getUIContext().getComponentSnapshot().getWithRange('root2', 'root4', true)
+            this.getUIContext()
+              .getComponentSnapshot()
+              .getWithRange('root2', 'root4', true)
               .then((pixmap: image.PixelMap) => {
                 this.pixmap = pixmap
-              }).catch((err:Error) => {
-              console.error("error: " + err)
-            })
+              })
+              .catch((err: Error) => {
+                console.error("error: " + err)
+              })
           }).margin(10)
       }.justifyContent(FlexAlign.SpaceAround)
+
       Row() {
         Image(this.pixmap).width(200).height(300).border({ color: Color.Black, width: 2 }).margin(5)
       }.justifyContent(FlexAlign.SpaceAround)

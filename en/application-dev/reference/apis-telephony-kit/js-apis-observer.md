@@ -1292,7 +1292,7 @@ Defines information about the data connection status.
 | Name| Type                                  |  Read-Only| Optional| Description|
 | ----- |--------------------------------------| ----- | ---- | -----|
 |  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  No |  No | Data connection status.|
-| network | [RatType](js-apis-radio.md#radiotechnology)  |  No |  No | Network type.|
+| network | [RatType](#rattype)  |  No |  No | Network type.|
 
 ## ObserverOptions<sup>11+</sup>
 

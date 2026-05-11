@@ -369,7 +369,7 @@ bm dump-dependencies [-h] [-n bundleName] [-m moduleName]
 | -------- | -------- |
 | -h | 帮助信息。 |
 | -n | 必选参数，查询指定应用依赖的共享库信息。|
-| -m | 可选参数，查询指定应用指定模块依赖的共享库信息。|
+| -m | 必选参数，查询指定应用指定模块依赖的共享库信息。|
 
 示例：
 ```Bash
@@ -1186,7 +1186,7 @@ error: install failed due to insufficient disk memory.
 
 **处理步骤**
 
-查看设备存储空间并清理，保证满足安装所需空间，再重试安装应用。
+查看应用安装的设备存储空间并清理，保证满足安装所需空间，再重试安装应用。模拟器上存储空间清理之后仍然失败，请尝试创建新的模拟器设备，并设置更大的存储空间，详情请参考[创建新的模拟器](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-emulator-create#section1764055173710)。
 <!--RP4-->
 ```bash
 # 查看磁盘空间使用情况
@@ -2720,6 +2720,7 @@ error: check syscap filed and device type is not supported.
 
 **错误描述**
 
+<!--RP12-->
 应用配置的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)不支持安装。
 
 **可能原因**
@@ -2728,7 +2729,7 @@ error: check syscap filed and device type is not supported.
 
 **处理步骤**
 
-调整正确的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)。
+调整正确的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)。<!--RP12End-->
 
 ### 9568415 禁止安装签名证书为debug或者配置文件debug为true的加密应用
 **错误信息**

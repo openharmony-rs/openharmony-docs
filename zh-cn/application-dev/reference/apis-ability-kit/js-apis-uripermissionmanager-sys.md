@@ -5,7 +5,7 @@
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 URI权限管理模块。用于应用A授权/撤销授权URI给应用B。
 
@@ -156,7 +156,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
     } else {
-      console.info(`mkdir succeed.`);
+      console.info(`mkdir success.`);
     }
   });
   let uri = fileUri.getUriFromPath(path);

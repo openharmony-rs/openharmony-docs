@@ -26,6 +26,7 @@ The file declares the APIs used to create an OH_AVScreenCapture instance.
 
 ### Functions
 
+<!--Table: 50%; 50% -->
 | Name| Description|
 | -- | -- |
 | [struct OH_AVScreenCapture *OH_AVScreenCapture_Create(void)](#oh_avscreencapture_create) | Creates an OH_AVScreenCapture instance.<br> You can release the instance by calling [OH_AVScreenCapture_Release](#oh_avscreencapture_release).|
@@ -538,6 +539,10 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 **Description**
 
 Sets whether the captured screen data should rotate.<br> When **canvasRotation** is set to **true**, rotation is enabled and the captured screen data remains upright.<br> The default value is **false**.
+
+> **NOTE**
+>
+> Since API version 20, foldable PCs/2-in-1 devices are supported.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 

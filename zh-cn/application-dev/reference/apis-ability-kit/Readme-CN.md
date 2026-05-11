@@ -4,7 +4,7 @@
 <!--Owner: @wanghang-->
 <!--Designer: @hanfeng6; @lihaitao-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--ability-arkts-->
   - Stage模型能力的接口<!--stage-model-->
@@ -268,7 +268,6 @@
     - [@system.package (应用管理)](js-apis-system-package.md)
     - ability<!--ability-deprecated-->
       - [want](js-apis-inner-ability-want.md)
-    - continuation<!--ability--continuation-->
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)

@@ -316,6 +316,8 @@ Creates a subwindow for this **UIExtensionHostWindowProxy** instance. This API u
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
@@ -397,6 +399,8 @@ Creates a subwindow under this **UIExtensionHostWindowProxy** instance. By setti
 **System API**: This is a system API.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
 
 **Parameters**
 

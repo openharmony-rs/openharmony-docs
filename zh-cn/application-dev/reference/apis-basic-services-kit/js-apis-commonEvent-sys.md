@@ -1,9 +1,8 @@
-# @ohos.commonEvent (公共事件模块)(系统应用)
-
+# @ohos.commonEvent (公共事件模块)(系统应用)(已废弃)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 

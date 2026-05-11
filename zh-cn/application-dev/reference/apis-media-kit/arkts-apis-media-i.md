@@ -195,12 +195,12 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | ---------- | -------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | mimeType   | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否   | 否   | 编码器MIME类型名称。                                           |
 | type       | string                           | 否   | 否   | 编码器类型，audio表示音频编码器，video表示视频编码器。         |
-| bitRate    | [Range](#range11)                | 否   | 是   | 比特率，包含该编码器的最大和最小值。                           |
-| frameRate  | [Range](#range11)                | 否   | 是   | 视频帧率，包含帧率的最大和最小值，仅视频编码器拥有。          |
-| width      | [Range](#range11)                | 否   | 是   | 视频帧的宽度，包含宽度的最大和最小值，仅视频编码器拥有。       |
-| height     | [Range](#range11)                | 否   | 是   | 视频帧的高度，包含高度的最大和最小值，仅视频编码器拥有。       |
+| bitRate    | [Range](#range11)                | 否   | 是   | 比特率，包含该编码器的最大和最小值。单位为比特每秒（bit/s）。                           |
+| frameRate  | [Range](#range11)                | 否   | 是   | 视频帧率，包含帧率的最大和最小值，仅视频编码器拥有。单位为帧率（FPS）。          |
+| width      | [Range](#range11)                | 否   | 是   | 视频帧的宽度，包含宽度的最大和最小值，仅视频编码器拥有。单位为像素（px）。       |
+| height     | [Range](#range11)                | 否   | 是   | 视频帧的高度，包含高度的最大和最小值，仅视频编码器拥有。单位为像素（px）。       |
 | channels   | [Range](#range11)                | 否   | 是   | 音频采集声道数，包含声道数的最大和最小值，仅音频编码器拥有。   |
-| sampleRate | Array\<number>                    | 否   | 是   | 音频采样率，包含所有可以使用的音频采样率值数组，具体数值依赖编码器类型，仅音频编码器拥有。 |
+| sampleRate | Array\<number>                    | 否   | 是   | 音频采样率，包含所有可以使用的音频采样率值数组，具体数值依赖编码器类型，仅音频编码器拥有。单位为赫兹（Hz）。 |
 
 ## Range<sup>11+</sup>
 
@@ -291,8 +291,8 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                                            |
 |--------|--------|------|------|---------------------------------------------------------------------------------|
-| width  | number | 否   | 是   | 输出的缩略图宽度。应保证大于0且不大于原始视频宽度。否则返回的缩略图不会进行缩放。 |
-| height | number | 否   | 是   | 输出的缩略图高度。应保证大于0且不大于原始视频高度。否则返回的缩略图不会进行缩放。 |
+| width  | number | 否   | 是   | 输出的缩略图宽度，单位为像素（px）。<br/>应保证大于0且不大于原始视频宽度。否则返回的缩略图不会进行缩放。 |
+| height | number | 否   | 是   | 输出的缩略图高度，单位为像素（px）。<br/>应保证大于0且不大于原始视频高度。否则返回的缩略图不会进行缩放。 |
 
 ## OutputSize<sup>20+</sup>
 
@@ -302,8 +302,8 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | 否   | 是   | 输出的缩略图宽度。<br/>- 如果该值小于0，宽度是视频的原始宽度。<br/>- 如果值为0或未分配任何值，缩放比例同高度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
-| height | number | 否   | 是   | 输出的缩略图高度。<br/>- 如果该值小于0，高度是视频的原始高度。<br/>- 如果值为0或未分配任何值，缩放比例同宽度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
+| width  | number | 否   | 是   | 输出的缩略图宽度，单位为像素（px）。<br/>- 如果该值小于0，宽度是视频的原始宽度。<br/>- 如果值为0或未分配任何值，缩放比例同高度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
+| height | number | 否   | 是   | 输出的缩略图高度，单位为像素（px）。<br/>- 如果该值小于0，高度是视频的原始高度。<br/>- 如果值为0或未分配任何值，缩放比例同宽度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
 
 ## FrameInfo<sup>23+</sup>
 
@@ -431,12 +431,12 @@ async function setupPlayer() {
 | 名称              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | fd                | number                                                       | 否   | 否   | 录制输出的文件fd。                                           |
-| frameWidth        | number                                                       | 否   | 是   | 录屏的视频宽度。<br>默认屏幕宽度，根据不同屏幕默认值不同，单位为像素（px）。 |
-| frameHeight       | number                                                       | 否   | 是   | 录屏的视频高度。<br>默认屏幕高度，根据不同屏幕默认值不同，单位为像素（px）。 |
-| videoBitrate      | number                                                       | 否   | 是   | 录屏的视频比特率。<br>，默认为10000000。                            |
-| audioSampleRate   | number                                                       | 否   | 是   | 录屏的音频采样率。<br>内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。 |
+| frameWidth        | number                                                       | 否   | 是   | 录屏的视频宽度。<br>默认屏幕宽度，根据不同屏幕默认值不同。单位为像素（px）。 |
+| frameHeight       | number                                                       | 否   | 是   | 录屏的视频高度。<br>默认屏幕高度，根据不同屏幕默认值不同。单位为像素（px）。 |
+| videoBitrate      | number                                                       | 否   | 是   | 录屏的视频比特率。<br>默认为10000000。单位为比特每秒（bit/s）。                            |
+| audioSampleRate   | number                                                       | 否   | 是   | 录屏的音频采样率。<br>内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。单位为赫兹（Hz）。 |
 | audioChannelCount | number                                                       | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。 |
-| audioBitrate      | number                                                       | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。 |
+| audioBitrate      | number                                                       | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。单位为比特每秒（bit/s）。 |
 | preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | 否   | 是   | 录屏使用的编码和封装格式，默认SCREEN_RECORD_PRESET_H264_AAC_MP4格式。 |
 | displayId<sup>15+</sup>            | number | 否   | 是   | 指定录屏使用的屏幕，默认主屏幕。 |
 | fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| 否   | 是   | 录屏时视频流的填充模式。 |
@@ -467,8 +467,8 @@ async function setupPlayer() {
 | 名称                                | 类型                                         | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | audioEncoder                        | [AudioEncoder](arkts-apis-media-e.md#audioencoderdeprecated)                | 否   | 是   | 音频编码格式，默认设置为AAC_LC。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用audioEncoderMime替代。 |
-| audioEncodeBitRate                  | number                                       | 否   | 是   | 音频编码比特率，默认值为48000。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioBitrate替代。 |
-| audioSampleRate                     | number                                       | 否   | 是   | 音频采集采样率，默认值为48000。<br>可变比特率模式，码率仅作参考。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioSampleRate替代。 |
+| audioEncodeBitRate                  | number                                       | 否   | 是   | 音频编码比特率，默认值为48000。单位为比特每秒（bit/s）。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioBitrate替代。 |
+| audioSampleRate                     | number                                       | 否   | 是   | 音频采集采样率，默认值为48000。单位为赫兹（Hz）。<br>可变比特率模式，码率仅作参考。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioSampleRate替代。 |
 | numberOfChannels                    | number                                       | 否   | 是   | 音频采集声道数，默认值为2。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioChannels替代。 |
 | format                              | [AudioOutputFormat](arkts-apis-media-e.md#audiooutputformatdeprecated)      | 否   | 是   | 音频输出封装格式，默认设置为MPEG_4。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用fileFormat替代。 |
 | location                            | [Location](#location)                        | 否   | 是   | 音频采集的地理位置。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVMetadata](#avmetadata11)中的location替代。 |

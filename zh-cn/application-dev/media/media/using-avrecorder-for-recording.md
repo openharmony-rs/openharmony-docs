@@ -1,8 +1,8 @@
 # 使用AVRecorder录制音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -32,6 +32,7 @@
 - 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务开发指导](../../task-management/continuous-task.md)。
 - 录制需要在前台启动，启动后可以退后台。在后台启动录制将会失败。
 - 应用录制音频时需要使用合适的录制流类型，请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)。
+- 应用录制音频时需要切换输入设备路由，请参考[实现音频输入设备路由切换](../audio/audio-input-device-switcher.md)。
 
 ## 开发步骤及注意事项
 
@@ -94,7 +95,7 @@
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import fileIo from '@ohos.file.fs';
+   import { fileIo } from '@kit.CoreFileKit';
 
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
@@ -177,7 +178,7 @@
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import fileIo from '@ohos.file.fs';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function audioRecording(context: common.Context): Promise<void> {
   // 创建avRecorder对象。

@@ -1,8 +1,8 @@
 # Class (UIContext)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -132,7 +132,7 @@ struct Index {
           let resolvedUIContext = UIContext.resolveUIContext();
           let contextByAtomicInterface = GetUIContextByAtomicInterface();
           hilog.info(0x00, 'testTag',
-            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
           this.message = 'Welcome';
         })
     }
@@ -1019,13 +1019,13 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'")
+        Text("cacheDir='" + this.uiContext?.getHostContext()?.cacheDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
-        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'")
+        Text("bundleCodeDir='" + this.uiContext?.getHostContext()?.bundleCodeDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
       }
       .width('100%')
@@ -1126,7 +1126,9 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
-2. 当uniqueId对应的是自定义组件时，若其有渲染内容，则返回该自定义组件的根节点，类型为__Common__；若其无渲染内容，则返回其第一个子组件的FrameNode。
+2. 当uniqueId对应的是自定义组件时：
+   - 若其有渲染内容，且没有被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。
+   - 若其无渲染内容，或者被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。
 3. 当uniqueId无对应的组件时，返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1790,8 +1792,8 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("run task").onClick(()=>{
-          this.uiContext.runScopedTask(()=>{
+        Button("run task").onClick(() => {
+          this.uiContext.runScopedTask(() => {
             // do something
           })
         })
@@ -2052,6 +2054,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **参数：**
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>其余字段仅供测试场景使用。 |
@@ -2853,7 +2856,7 @@ postFrameCallback(frameCallback: FrameCallback): void
 **示例：**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2902,7 +2905,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 **示例：**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2962,14 +2965,14 @@ import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
 @Component
 struct Frame {
   @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
-  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: SwiperDynamicSyncScene[] = [];
 
   build() {
     Column() {
-      Text("动画"+ JSON.stringify(this.ANIMATION))
-      Text("跟手"+ JSON.stringify(this.GESTURE))
-      Row(){
+      Text("动画" + JSON.stringify(this.ANIMATION))
+      Text("跟手" + JSON.stringify(this.GESTURE))
+      Row() {
         Swiper() {
           Text("one")
           Text("two")
@@ -2980,7 +2983,7 @@ struct Frame {
         .id("dynamicSwiper")
         .backgroundColor(Color.Blue)
         .autoPlay(true)
-        .onAppear(()=>{
+        .onAppear(() => {
           this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
         })
       }
@@ -3702,7 +3705,7 @@ getTextMenuController(): TextMenuController
 
 ## createUIContextWithoutWindow<sup>17+</sup>
 
-static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext) : UIContext | undefined
+static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext): UIContext | undefined
 
 创建一个不依赖窗口的UI实例，并返回其UI上下文。该接口所创建的UI实例是单例。
 
@@ -3747,7 +3750,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
   }
 
   // ......
@@ -3775,7 +3778,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
     UIContext.destroyUIContextWithoutWindow();
   }
 
@@ -3870,14 +3873,14 @@ setPixelRoundMode(mode: PixelRoundMode): void
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
 
-export default class EntryAbility extends UIAbility{
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
 
-      windowStage.loadContent('pages/Index', (err, data) => {
-        let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
-        uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
-      });
-    }
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+    });
+  }
 }
 ```
 

@@ -888,7 +888,7 @@ Registers a one-time observer for HTTP Response Header events. Once triggered, t
 | Name  | Type              | Mandatory| Description                              |
 | -------- | ------------------ | ---- | ---------------------------------- |
 | type     | string             | Yes  | Event type. The value is **headersReceive**.|
-| callback | Callback\<Object\> | Yes  | Callback used to return the HTTP response header.                        |
+| callback | Callback\<Object\> | Yes  | Callback the HTTP response header.                        |
 
 **Example**
 
@@ -1139,6 +1139,7 @@ Defines the options for initiating an HTTP request.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+<!--Table: 12%; 14%; 8%; 8%; 58%-->
 | Name        | Type                                         | Read Only| Optional| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | -------------- | --------------------------------------------- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | method         | [RequestMethod](#requestmethod)               | No | Yes | Request method. The default value is **GET**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -1942,7 +1943,7 @@ Defines the HTTP interceptor API, which is used to define the interception proce
 
 interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise\<ChainContinue\>
 
-Intercepts the HTTP processing process and modifies it as required.
+Intercepts the HTTP processing and modifies it as required.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

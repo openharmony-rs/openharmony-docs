@@ -941,7 +941,7 @@ getBufferSize(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。 |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
 **示例：**
 
@@ -972,7 +972,7 @@ getBufferSize(): Promise\<number>
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise对象，返回缓冲区大小。 |
+| Promise\<number> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
@@ -1001,7 +1001,7 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| number | 返回缓冲区大小。 |
+| number | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 
@@ -1031,7 +1031,7 @@ setSpeed(speed: number): void
 
 | 参数名 | 类型                                     | 必填 | 说明                   |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | 是   | 设置播放的倍速值（倍速范围：[0.25, 4.0]）。 |
+| speed | number | 是   | 设置播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **错误码：**
 
@@ -1060,7 +1060,7 @@ getSpeed(): number
 
 | 类型                                              | 说明        |
 | ------------------------------------------------- |-----------|
-| number | 返回播放的倍速值。 |
+| number | 返回播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **示例：**
 
@@ -1267,7 +1267,7 @@ getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
+|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1294,7 +1294,7 @@ getMinStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最小音量（音量范围[0, 1]）。|
+| Promise&lt;number&gt;| Promise对象，返回音频流最小音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1320,7 +1320,7 @@ getMinStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最小音量（音量范围[0, 1]）。|
+| number| 返回音频流最小音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1348,7 +1348,7 @@ getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。|
+|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1375,7 +1375,7 @@ getMaxStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最大音量（音量范围[0, 1]）。|
+| Promise&lt;number&gt;| Promise对象，返回音频流最大音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1401,7 +1401,7 @@ getMaxStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最大音量（音量范围[0, 1]）。|
+| number| 返回音频流最大音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -2289,9 +2289,12 @@ audioRenderer.off('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallba
 
 on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 
-监听音频数据写入回调事件（当需要写入音频数据时触发），使用 callback 方式返回结果。
+监听音频数据写入回调事件（当需要写入音频数据时触发）。使用callback异步回调。
 
-回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
+> **说明：**
+>
+> - 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
+> - 为避免音频播放启动和停止时数据不连续可能出现的杂音，系统通常会在启动和停止时对音频数据做20ms以内的淡入淡出处理。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -2735,7 +2738,7 @@ getLoudnessGain(): number
 
 | 类型    | 说明             |
 |------- |-----------------  |
-| number | 返回播放的响度值。 |
+| number | 返回播放的响度值，单位为分贝。 |
 
 **示例：**
 

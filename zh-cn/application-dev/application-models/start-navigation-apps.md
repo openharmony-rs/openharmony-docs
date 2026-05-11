@@ -5,7 +5,7 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本章节介绍如何拉起导航类应用扩展面板。
 

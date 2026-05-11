@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -971,6 +971,60 @@ Memory copy failed.
 
 检查是否已释放要拷贝的实例。检查内存类型是否匹配。
 
+## 7600101 不支持的MIME类型
+
+**错误信息**
+
+Unsupported mime type.
+
+**错误描述**
+
+不支持的MIME类型。
+
+**可能原因**
+
+设备不支持该MIME类型。
+
+**处理步骤**
+
+检查图片数据或更换图片，可使用相关接口查询编解码能力范围。
+
+## 7600102 未知MIME类型
+
+**错误信息**
+
+Unknown mime type.
+
+**错误描述**
+
+未知的MIME类型。
+
+**可能原因**
+
+设备不支持该图像类型或图片损坏。
+
+**处理步骤**
+
+检查图片数据或更换图片。
+
+## 7600103 数据或图片太大
+
+**错误信息**
+
+Too large data or image.
+
+**错误描述**
+
+数据或图片太大。
+
+**可能原因**
+
+图片尺寸太大。
+
+**处理步骤**
+
+更换较小的图片。
+
 ## 7600104 获取图像数据失败
 
 **错误信息**
@@ -989,6 +1043,42 @@ Failed to get the data from Surface.
 **处理步骤**
 
 检查图像数据来源或使用新的图像数据。
+
+## 7600173 DMA内存不存在
+
+**错误信息**
+
+DMA memory does not exist.
+
+**错误描述**
+
+DMA内存不存在。
+
+**可能原因**
+
+没有使用DMA内存解码HDR图片。
+
+**处理步骤**
+
+使用正确的内存分配类型。
+
+## 7600174 DMA操作失败
+
+**错误信息**
+
+DMA operation failed.
+
+**错误描述**
+
+DMA内存操作失败。
+
+**可能原因**
+
+读写DMA内存时没有正确地进行同步操作。
+
+**处理步骤**
+
+使用正确的方式读写DMA内存。
 
 ## 7600201 不支持的操作
 
@@ -1025,6 +1115,24 @@ Unsupported metadata. Possible causes: Unsupported metadata type.
 **处理步骤**
 
 重新确定辅助图类型和元数据类型是否对应，再进行读写操作。
+
+## 7600203 不支持的转换
+
+**错误信息**
+
+Unsupported conversion.
+
+**错误描述**
+
+不支持的转换。
+
+**可能原因**
+
+PixelMap的格式不支持转换。
+
+**处理步骤**
+
+检查并更换格式匹配的PixelMap数据。
 
 ## 7600204 无效的区域
 
@@ -1116,6 +1224,24 @@ Memory copy failed.
 
 检查要拷贝的内存是否存在，清理内存后重试。
 
+## 7600303 内存锁定或解锁失败
+
+**错误信息**
+
+Memory lock or unlock failed.
+
+**错误描述**
+
+内存锁定或解锁失败。
+
+**可能原因**
+
+PixelMap或内存地址无效。
+
+**处理步骤**
+
+检查PixelMap或内存地址是否有效。
+
 ## 7600305 创建PixelMap失败
 
 **错误信息**
@@ -1134,6 +1260,24 @@ Failed to create the PixelMap.
 **处理步骤**
 
 检查函数入参或检查是否提前释放了实例。
+
+## 7600501 不支持的分配器模式
+
+**错误信息**
+
+Unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata.
+
+**错误描述**
+
+不支持的分配器模式。
+
+**可能原因**
+
+没有指定内存分配类型，或指定了错误的内存分配类型。例如：使用共享内存方式解码HDR图片就会出错，因为只有DMA方式才支持HDR元数据。
+
+**处理步骤**
+
+使用正确的内存分配类型。
 
 ## 7600901 未知错误
 
@@ -1357,6 +1501,24 @@ Unsupported options.
 **处理步骤**
 
 检查选项参数配置。
+
+## 7800202 ImagePacker无效参数
+
+**错误信息**
+
+Invalid parameter for ImagePacker.
+
+**错误描述**
+
+编码参数无效。
+
+**可能原因**
+
+编码参数为空或无效。
+
+**处理步骤**
+
+检查编码选项参数配置。
 
 ## 7800301 编码失败
 

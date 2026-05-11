@@ -51,17 +51,29 @@ The table below lists the media codec formats. The type is a constant string.
 | OH_AVCODEC_MIMETYPE_AUDIO_TWINVQ | MIME type of the Transform-domain Weighted Interleave Vector Quantization (TWINVQ) audio decoder.<br>This specification is supported since API version 23.|
 | OH_AVCODEC_MIMETYPE_AUDIO_ILBC | MIME type of the Internet Low Bitrate Codec (ILBC) audio decoder.<br>This specification is supported since API version 23.|
 | OH_AVCODEC_MIMETYPE_AUDIO_TRUEHD | MIME type of the True High Definition (TRUEHD) audio decoder.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_AUDIO_DVAUDIO | MIME type of the DVAUDIO (Digital Video Audio) audio decoder.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_AUDIO_DTS | MIME type of the DTS (Digital Theater Systems) audio decoder.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_AUDIO_COOK | MIME type of the Cook (RealAudio Cook) audio decoder.<br>This specification is supported since API version 23.|
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | MIME type of the VVC (H.266) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | MIME type of the HEVC (H.265) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | MIME type of the AVC (H.264) video codec.                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_H263 | MIME type of the H.263 video codec.                    |
-| OH_AVCODEC_MIMETYPE_VIDEO_VC1 | MIME type of the VC-1 video codec.<br>This specification is supported since API version 19.|
-| OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MIME type of the Microsoft Video 1 (MSVIDEO1) video codec.<br>This specification is supported since API version 19.|
-| OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | MIME type of the WMV3 video codec.<br>This specification is supported since API version 19.|
-| OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MIME type of the Motion JPEG (MJPEG) video codec.<br>This specification is supported since API version 19.|
+| OH_AVCODEC_MIMETYPE_VIDEO_VC1 | MIME type of the VC-1 video codec.<br>This specification is supported since API version 22.|
+| OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MIME type of the Microsoft Video 1 (MSVIDEO1) video codec.<br>This specification is supported since API version 22.|
+| OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | MIME type of the WMV3 video codec.<br>This specification is supported since API version 22.|
+| OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MIME type of the Motion JPEG (MJPEG) video codec.<br>This specification is supported since API version 22.|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MIME type of the MPEG4 video encoder, which is used only for multiplexing MPEG4 video streams. (It is deprecated from API version 11.)|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | MIME type of the MPEG4 Part 2 video codec.|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | MIME type of the MPEG2 video codec.|
+| OH_AVCODEC_MIMETYPE_VIDEO_AV1 | MIME type of the AV1 video codec.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_VP9 | MIME type of the VP9 video codec.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_VP8 | MIME type of the VP8 video codec.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_RV30 | MIME type of the RV30 video codec.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_RV40 | MIME type of the RV40 video codec.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_WVC1 | MIME type of the WVC1 video codec.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO | MIME type of the DVVIDEO (Digital Video) video codec. Supports DV NTSC, DV PAL, and DVCPRO HD.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO | MIME type of the RAWVIDEO video codec.<br>This specification is supported since API version 23.|
+| OH_AVCODEC_MIMETYPE_VIDEO_MPEG1 | MIME type of the MPEG1 video codec.<br>This specification is supported since API version 23.|
 | OH_AVCODEC_MIMETYPE_IMAGE_JPG | MIME type of the JPG image encoder, which is used only for multiplexing JPG covers.      |
 | OH_AVCODEC_MIMETYPE_IMAGE_PNG | MIME type of the PNG image encoder, which is used only for multiplexing PNG covers.      |
 | OH_AVCODEC_MIMETYPE_IMAGE_BMP | MIME type of the BMP image encoder, which is used only for multiplexing BMP covers.      |
@@ -132,15 +144,19 @@ The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query pa
 | OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE   | Output color space of the video decoder. The value type is int32_t. The supported value is **OH_COLORSPACE_BT709_LIMIT**.|
 | OH_MD_KEY_ROTATION                    | Rotation angle of the surface, with a clockwise direction. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is optional and is used only for video decoding in surface mode This key is optional.|
 | OH_MD_KEY_SCALING_MODE            | Video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode). This key is optional and is used only for video decoding in surface mode. You are advised to set the scaling mode by calling [OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2). (It is deprecated from API version 14.)|
-| OH_MD_KEY_VIDEO_CROP_TOP       | Top coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
-| OH_MD_KEY_VIDEO_CROP_BOTTOM        | Bottom coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
-| OH_MD_KEY_VIDEO_CROP_LEFT     | Left coordinate (x) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
-| OH_MD_KEY_VIDEO_CROP_RIGHT     | Right coordinate (x) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
+| OH_MD_KEY_VIDEO_CROP_TOP       | Y-coordinate of the top edge of the crop rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
+| OH_MD_KEY_VIDEO_CROP_BOTTOM        | Y-coordinate of the bottom edge of the crop rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
+| OH_MD_KEY_VIDEO_CROP_LEFT     | X-coordinate of the left edge of the crop rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
+| OH_MD_KEY_VIDEO_CROP_RIGHT     | X-coordinate of the right edge of the crop rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
 | OH_MD_KEY_VIDEO_DECODER_OUTPUT_ENABLE_VRR     | Whether the decoder enables the video variable frame rate feature. The value type is int32_t. This key is optional and is used only for video decoding.|
 | OH_MD_KEY_SQR_FACTOR     | Quality parameter in SQR mode. The value range is [0, 51] (same as the QP value in encoding). A smaller value indicates a higher output bit rate and better quality. The value type is int32_t. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_MAX_BITRATE    | Maximum bit rate in SQR mode. The value range can be obtained by calling [OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange) and is the same as that of **OH_MD_KEY_BITRATE**. The unit is bit/s. The value type is int64_t. This key is optional and is used only for video encoding.|
-| OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS    | ROI encoding parameters, including the ROI area and deltaQp. The value type is string. This key is optional and is used only for video encoding.|
-| OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL    | Enabled status of the PTS-based bit rate control mode. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional and used only for video encoding. The default value is **0**. If this feature is enabled, each video frame must contain PTS information and be sent to the encoder. It is used in the configuration phase.|
+| OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS    | ROI encoding parameters, including the ROI area and deltaQp. The value type is char *. This key is optional and is used only for video encoding.|
+| OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL    | Key for enabling the PTS-based bit rate control mode. The value type is int32_t. **1** to enable, **0** otherwise. This key is optional and used only for video encoding. The default value is **0**. If this feature is enabled, each video frame must contain PTS information and be sent to the encoder. It is used in the configuration phase.|
+| OH_MD_KEY_VIDEO_ENCODER_ENABLE_B_FRAME | Key for enabling bidirectional predictive frame (B-frame) encoding. The value type is int32_t. **1** to enable, **0** otherwise. This key is optional and used only for video encoding. The default value is **0**.<br> If enabled, the video encoder uses B-frame encoding, resulting in a decoding sequence different from the display sequence.<br> For a device that does not support B-frame encoding, the configured key does not take effect.<br> To check the device capability, use the [OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported) API and the enumerated value [OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_ENCODER_B_FRAME.<br> This key is used only by calling [OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure).|
+| OH_MD_KEY_VIDEO_ENCODER_MAX_B_FRAMES | Pointer to the key that describes the maximum number of consecutive B-frames supported by the video encoder. The value type is int32_t. Note: This key is used only to query the encoder capability.<br> The usage specifications are as follows:<br> 1. To check whether the feature is supported, use the [OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported) API and the enumerated value [OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_ENCODER_B_FRAME.<br> 2. Obtain the OH_AVFormat pointer through the [OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties) API and the enumerated value [OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_ENCODER_B_FRAME.<br> 3. Obtain the maximum number of B-frames through the [OH_AVFormat_GetIntValue](capi-native-avformat-h.md#oh_avformat_getintvalue) API and this key.|
+| OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | Pointer to the key that specifies whether to output blank frames when the video decoder is disabled. The value type is int32_t. **1** to output, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and is used only for video decoding in surface mode.<br> After this feature is enabled, the video decoder outputs blank frames (usually black) when the [OH_VideoDecoder_Stop](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_stop) or [OH_VideoDecoder_Destroy](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_destroy) API is called. This mechanism prevents frozen frames caused by sudden termination of the decoder.|
+| OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT     | Pointer to the key that is used to query the native buffer pixel format in video encoding and decoding. The value type is int32_t.<br> For details, see the pixel formats defined in [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format). This key is used in the following scenarios:<br> 1. Video decoding: Call [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) or [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) to obtain the current output format from the returned OH_AVFormat object.<br> 2. Video encoding: Call [OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) to obtain the current input format from the returned OH_AVFormat object.|
 
 ### Key-Value Pairs Dedicated for Audio
 
@@ -160,7 +176,6 @@ The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query pa
 | OH_MD_KEY_AUDIO_OBJECT_NUMBER | Number of audio objects. The value type is int32_t. This key is used only for Audio Vivid decoding. This key is optional.           |
 | OH_MD_KEY_AUDIO_VIVID_METADATA | Audio Vivid metadata. The value type is uint8_t\*. This key is used only for Audio Vivid decoding. This key is optional.    |
 | OH_MD_KEY_BLOCK_ALIGN | Size of the audio data block, in bytes. The value type is int32_t. This key is supported since API version 22 and must be configured only for WMAV1, WMAV2, and WMA PRO decoding.|
-| OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO | Key carried in the OH_AVBuffer used to skip part of the decoded audio data. It is measured in sample points, with a value type of uint8_t*. This key is supported when using MP3, Vorbis, or OPUS decoders. It is carried only by the first and last frames of an audio stream and is optional.<br>Method 1: Obtain the information during demultiplexing and set it to the input OH_AVBuffer used for decoding.<br>1. Obtain the OH_AVBuffer used for decoding from the callback function [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) of [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md).<br>2. Call [OH_AVDemuxer_ReadSampleBuffer](capi-native-avdemuxer-h.md#oh_avdemuxer_readsamplebuffer) to read audio data. This function automatically sets **OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO** when needed.<br>3. Call [OH_AudioCodec_PushInputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_pushinputbuffer) to push the input OH_AVBuffer for decoding.<br>Method 2: Construct the data required by the key and set it to the input OH_AVBuffer used for decoding.<br>Create a 10-byte uint8_t[] array with the structure as follows:<br>1. Bytes 0-3 (uint32_t, little-endian): number of samples to skip from the beginning of this frame.<br>2. Bytes 4-7 (uint32_t, little-endian): number of samples to skip from the end of this frame (must not exceed the frame's total sample count).<br>3. Bytes 8-9: reserved; set to **0**.<br>This key is supported since API version 23.|
 
 ### Key-Value Pairs Dedicated for Multiplexing and Demultiplexing
 
@@ -171,23 +186,24 @@ The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query pa
 | OH_MD_KEY_TRACK_START_TIME | Start time of the track, measured in microseconds. The value type is int64_t. This key is optional.           |
 | OH_MD_KEY_TRACK_TYPE                | Track type in a media file. The value type is int32_t. For details, see [OH_MediaType](capi-native-avcodec-base-h.md#oh_mediatype). This key is optional.|
 | OH_MD_KEY_DURATION                    | Duration in a media file. The value type is int64_t. This key is optional.                 |
-| OH_MD_KEY_TITLE                          | Title in a media file. The value type is string. This key is optional.              |
-| OH_MD_KEY_ARTIST                        | Artist in a media file. The value type is string. This key is optional.            |
-| OH_MD_KEY_ALBUM                          | Album in a media file. The value type is string. This key is optional.              |
-| OH_MD_KEY_ALBUM_ARTIST            | Album artist of the input media. The value type is string. This key is optional.              |
-| OH_MD_KEY_DATE                            | Date in a media file, for example, 2024. The value type is string. This key is optional.   |
-| OH_MD_KEY_COMMENT                      | Comment in a media file. The value type is string. This key is optional.              |
-| OH_MD_KEY_GENRE                          | Genre in a media file. The value type is string. This key is optional.              |
-| OH_MD_KEY_COPYRIGHT                  | Copyright in a media file. The value type is string. This key is optional.              |
-| OH_MD_KEY_LANGUAGE                    | Language in a media file. The value type is string. This key is optional.              |
-| OH_MD_KEY_DESCRIPTION              | Description in a media file. The value type is string. This key is optional.              |
-| OH_MD_KEY_LYRICS                        | Lyrics in a media file. The value type is string. This key is optional.              |
+| OH_MD_KEY_TITLE                          | Title of a media file. The value type is char *. This key is optional.              |
+| OH_MD_KEY_ARTIST                        | Artist. The value type is char *. This key is optional.            |
+| OH_MD_KEY_ALBUM                          | Album media file. The value type is char *. This key is optional.              |
+| OH_MD_KEY_ALBUM_ARTIST            | Album artist. The value type is char *. This key is optional.              |
+| OH_MD_KEY_DATE                            | Date of a media file, for example, 2024. The value type is char *. This key is optional.   |
+| OH_MD_KEY_COMMENT                      | Comment of a media file. The value type is char *. This key is optional.              |
+| OH_MD_KEY_GENRE                          | Genre in a media file. The value type is char *. This key is optional.              |
+| OH_MD_KEY_COPYRIGHT                  | Copyright of a media file. The value type is char *. This key is optional.              |
+| OH_MD_KEY_LANGUAGE                    | Language of a media file. The value type is char *. This key is optional.              |
+| OH_MD_KEY_DESCRIPTION              | Description of a media file. The value type is char *. This key is optional.              |
+| OH_MD_KEY_LYRICS                        | Lyrics in a media file. The value type is char *. This key is optional.              |
 | OH_MD_KEY_TRACK_COUNT              | Number of tracks in a media file. The value type is int32_t. This key is optional.        |
 | OH_MD_KEY_BUFFER_DURATION | Duration corresponding to the audio, video, or subtitle sample carried in AVBuffer, in microseconds. The value type is int64_t. This key is optional.           |
 | OH_MD_KEY_DECODING_TIMESTAMP | Decoding timestamp corresponding to the audio, video, or subtitle sample carried in AVBuffer, in microseconds. The value type is int64_t. This key is optional.           |
-| OH_MD_KEY_CODEC_MIME                | [MIME](#media-codec-formats) type of the codec. The value type is string. This key is optional.        |
+| OH_MD_KEY_CODEC_MIME                | [MIME](#media-codec-formats) type of the codec. The value type is char *. This key is optional.        |
 | OH_MD_KEY_VIDEO_SAR                  | Aspect ratio of the sample. The value type is double.|
-| OH_MD_KEY_CREATION_TIME          | Media file creation time. The value type is string.|
+| OH_MD_KEY_CREATION_TIME          | Media file creation time metadata. The value type is char *.|
 | OH_MD_KEY_REFERENCE_TRACK_IDS          | Reference relationship between media file tracks. The value type is int32_t\*.|
-| OH_MD_KEY_TRACK_REFERENCE_TYPE         | Auxiliary track type of a media file. The value type is string.|
-| OH_MD_KEY_TRACK_DESCRIPTION         | Auxiliary track description of a media file. The value type is string.|
+| OH_MD_KEY_TRACK_REFERENCE_TYPE         | Auxiliary track type of a media file. The value type is char *.|
+| OH_MD_KEY_TRACK_DESCRIPTION         | Auxiliary track description of a media file. The value type is char *.|
+| OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO | Key carried in the OH_AVBuffer, which is supported only by demultiplexing. This key may be carried in the start and end frames of the audio output of demultiplexing.<br>This key corresponds to a 10-byte uint8_t[] array, which records the number of audio samples to skip after decoding in the audio file metadata.<br>The structure is as follows:<br>1. Bytes 0-3 (uint32_t, little-endian): number of samples to skip from the beginning of this frame.<br>2. Bytes 4-7 (uint32_t, little-endian): number of samples to skip from the end of this frame (must not exceed the frame's total sample count).<br>3. Bytes 8-9: reserved. The default output is 0.<br>This key is supported since API version 23.|

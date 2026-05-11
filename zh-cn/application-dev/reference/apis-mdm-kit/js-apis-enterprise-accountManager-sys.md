@@ -1,12 +1,12 @@
-# @ohos.enterprise.accountManager（账户管理）(系统接口)
+# @ohos.enterprise.accountManager（账号管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
-本模块提供设备帐户管理能力，包括禁止创建本地用户等。
+本模块提供设备帐户管理能力，包括禁止创建本地账号等。
 
 > **说明：**
 >
@@ -28,7 +28,7 @@ import { accountManager } from '@kit.MDMKit';
 
 disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-禁止设备创建本地用户。使用callback异步回调。
+禁止设备创建本地账号。使用callback异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -43,7 +43,7 @@ disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback&
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
-| disallow    | boolean     | 是    | 是否禁止创建本地用户，true表示禁止创建，false表示允许创建。                  |
+| disallow    | boolean     | 是    | 是否禁止创建本地账号，true表示禁止创建，false表示允许创建。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。       |
 
 **错误码**：
@@ -83,7 +83,7 @@ accountManager.disallowAddLocalAccount(wantTemp, true, (err) => {
 
 disallowAddLocalAccount(admin: Want, disallow: boolean): Promise&lt;void&gt;
 
-禁止设备创建本地用户。使用promise异步回调。
+禁止设备创建本地账号。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -98,13 +98,13 @@ disallowAddLocalAccount(admin: Want, disallow: boolean): Promise&lt;void&gt;
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| disallow    | boolean     | 是    | 是否禁止创建本地用户，true表示禁止创建，false表示允许创建。                  |
+| disallow    | boolean     | 是    | 是否禁止创建本地账号，true表示禁止创建，false表示允许创建。                  |
 
 **返回值：**
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁止创建本地用户失败时，抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁止创建本地账号失败时，抛出错误对象。 |
 
 **错误码**：
 
@@ -312,7 +312,7 @@ try {
   let info: osAccount.OsAccountInfo = accountManager.addOsAccount(wantTemp, "TestAccountName", osAccount.OsAccountType.NORMAL);
   console.info(`Succeeded in creating os account: ${JSON.stringify(info)}`);
 } catch (err) {
-  console.error(`Failed to creating os account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create os account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

@@ -21,8 +21,8 @@ Describes an audio and video file asset. It is used to specify a particular asse
 | Name  | Type  | Read-Only| Optional | Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | fd     | number | No | No | Resource handle, which is obtained by calling [resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9) or [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).   |
-| offset | number | No | Yes | Resource offset, which needs to be entered based on the preset asset information. The default value is **0**. An invalid value causes a failure to parse audio and video assets.|
-| length | number | No | Yes | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse audio and video assets.|
+| offset | number | No | Yes | Resource offset.<br>The value ranges from 0 to the size of the audio/video file to be played. The default value is **0**. The value needs to be entered based on the preset resource information. An invalid value causes a failure to parse audio and video resources.|
+| length | number | No | Yes | Resource length.<br>The value ranges from 0 to the size of the audio or video file to be played. The default value is the number of remaining bytes starting from the offset in the file. The value needs to be entered based on the preset resource information. An invalid value causes a failure to parse audio and video resources.|
 
 ## AVDataSrcDescriptor<sup>10+</sup>
 
@@ -291,8 +291,8 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 | Name  | Type  | Read-Only| Optional| Description                                                                           |
 |--------|--------|------|------|---------------------------------------------------------------------------------|
-| width  | number | No  | Yes  | Width of the thumbnail. The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
-| height | number | No  | Yes  | Height of the thumbnail. The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
 
 ## OutputSize<sup>20+</sup>
 
@@ -302,8 +302,8 @@ Describes the output size of the video thumbnail fetched.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | No  | Yes  | Width of the thumbnail.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
-| height | number | No  | Yes  | Height of the thumbnail.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
 
 ## FrameInfo<sup>23+</sup>
 
@@ -401,7 +401,7 @@ Describes the playback strategy.
 | preferredHeight | number | No  | Yes  | Preferred height, in px. The value is an integer greater than 0, for example, 1920.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredBufferDuration | number | No  | Yes  | Preferred buffer duration, in seconds. The value range is [1, 20].<br>For details, see [Minimizing Stuttering in Online Video Playback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-online-video-playback-lags-practice).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredHdr | boolean | No  | Yes  | Whether HDR is preferred. **true** if preferred, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableSuperResolution<sup>18+</sup> | boolean | No  | Yes  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 x 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| enableSuperResolution<sup>18+</sup> | boolean | No  | Yes  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 × 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | showFirstFrameOnPrepare<sup>17+</sup> | boolean | No  | Yes  | Whether to show the first frame after **prepare** is called. **true** to show, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | No  | Yes  | Type of the media to mute.<br>From API version 12 to 19, only **MediaType.MEDIA_TYPE_AUD** can be set. Starting from API version 20, **MediaType.MEDIA_TYPE_VID** is added.|
 | preferredAudioLanguage<sup>13+</sup> | string | No  | Yes  | Preferred audio track language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|

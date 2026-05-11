@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The inputDevice module implements input device management functions such as listening for the connection and disconnection of input devices and querying input device information such as the device name.
 
@@ -1115,9 +1115,10 @@ Provides information about an input device.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled, its ID may change.|
+| id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 | name                 | string                                 | No| No| Name of the input device.                                            |
 | sources              | Array&lt;[SourceType](#sourcetype9)&gt; | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
 | axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | No| No| Axis information of the input device.                                          |

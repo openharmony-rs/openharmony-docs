@@ -68,14 +68,14 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ----- |
-| All | - | 所有方向。 |
-| Horizontal | - | 水平方向。 |
-| Vertical | - | 竖直方向。 |
-| Left | - | 向左滑动。 |
-| Right | - | 向右滑动。 |
-| Up | - | 向上滑动。 |
-| Down | - | 向下滑动。 |
-| None | - | 任何方向都不可触发滑动手势事件。 |
+| None | 0 | 任何方向都不可触发滑动手势事件。 |
+| Left | 1 | 向左滑动。 |
+| Right | 2 | 向右滑动。 |
+| Horizontal | 3 | 水平方向。 |
+| Up | 4 | 向上滑动。 |
+| Down | 8 | 向下滑动。 |
+| Vertical | 12 | 竖直方向。 |
+| All | 15 | 所有方向。 |
 
 
 ## PanGestureOptions
@@ -116,7 +116,7 @@ setDirection(value: PanDirection)
 
 setDistance(value: number)
 
-设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手，响应时延过大等问题导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286)。
+设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手、响应时延过大等问题导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

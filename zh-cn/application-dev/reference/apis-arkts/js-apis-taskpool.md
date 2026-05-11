@@ -1,8 +1,8 @@
 # @ohos.taskpool (启动任务池)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -149,7 +149,7 @@ taskpool.execute<[[number, string]], string>(testWithArray, [100, "test"]).then(
 
 execute(task: Task, priority?: Priority): Promise\<Object>
 
-将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级和通过cancel取消任务。任务不能是任务组任务、串行队列任务或异步队列任务。非长时任务可以多次调用执行。使用Promise异步回调。
+将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级和通过cancel取消任务。任务不能是任务组任务、串行队列任务或异步队列任务。长时任务只能调用一次，非长时任务可以多次调用执行。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -208,7 +208,7 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Object) => {
 
 execute<A extends Array\<Object>, R>(task: GenericsTask<A, R>, priority?: Priority): Promise\<R>
 
-将创建好的泛型任务放入taskpool的内部任务队列，不校验任务的参数类型和返回值类型。使用Promise异步回调。
+将创建好的泛型任务放入taskpool的内部任务队列，校验任务的参数类型和返回值类型。使用Promise异步回调。
 
 execute任务的校验是结合new GenericsTask一起用的，参数、返回值类型需与new GenericsTask中的类型保持一致。
 
@@ -319,10 +319,10 @@ taskGroup2.addTask(task1);
 taskGroup2.addTask(task2);
 taskGroup2.addTask(task3);
 taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-  console.info("taskpool execute res is:" + res);
+  console.info("Succeeded in excuting task, res is:" + res);
 });
 taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-  console.info("taskpool execute res is:" + res);
+  console.info("Succeeded in excuting task, res is:" + res);
 });
 ```
 
@@ -378,9 +378,9 @@ let t: number = Date.now();
 console.info("taskpool start time is: " + t);
 let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: test number
 taskpool.executeDelayed(1000, task).then(() => { // 1000: delayTime is 1000ms
-  console.info("taskpool execute success");
+  console.info('Succeeded in executing task');
 }).catch((e: BusinessError) => {
-  console.error(`taskpool execute: Code: ${e.code}, message: ${e.message}`);
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
 })
 ```
 
@@ -436,9 +436,9 @@ function printArgs(args: number): string {
 
 let task: taskpool.Task = new taskpool.GenericsTask<[number], string>(printArgs, 100); // 100: test number
 taskpool.executeDelayed<[number], string>(1000, task).then((res: string) => { // 1000: delayTime is 1000ms
-  console.info("taskpool execute success");
+  console.info('Succeeded in executing task');
 }).catch((e: BusinessError) => {
-  console.error(`taskpool execute: Code: ${e.code}, message: ${e.message}`);
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
 })
 ```
 
@@ -503,7 +503,7 @@ function taskpoolTest() {
     let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: test number
     taskpool.executePeriodically(1000, task); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-1: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 
   try {
@@ -511,7 +511,7 @@ function taskpoolTest() {
     periodicTask.onReceiveData(printResult);
     taskpool.executePeriodically(1000, periodicTask); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-2: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 
@@ -580,7 +580,7 @@ function taskpoolTest() {
     let task: taskpool.Task = new taskpool.GenericsTask<[number], void>(printArgs, 100); // 100: test number
     taskpool.executePeriodically<[number], void>(1000, task); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-1: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 
   try {
@@ -588,7 +588,7 @@ function taskpoolTest() {
     periodicTask.onReceiveData(printResult);
     taskpool.executePeriodically<[number], void>(1000, periodicTask); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-2: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 
@@ -658,9 +658,9 @@ function concurrentFunc() {
   let task5: taskpool.Task = new taskpool.Task(inspectStatus, 500); // 500: test number
   let task6: taskpool.Task = new taskpool.Task(inspectStatus, 600); // 600: test number
   taskpool.execute(task1).then((res: Object) => {
-    console.info("taskpool test result: " + res);
+    console.info(`Succeeded in excuting task. result: ` + res);
   }).catch((err: BusinessError) => {
-    console.error("taskpool catch err: " + err.message);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   taskpool.execute(task2);
   taskpool.execute(task3);
@@ -672,7 +672,7 @@ function concurrentFunc() {
     try {
       taskpool.cancel(task1);
     } catch (e) {
-      console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+      console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
     }
   }, 1000);
 }
@@ -728,18 +728,18 @@ function concurrentFunc() {
   let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
   taskGroup2.addTask(printArgs, 100); // 100: test number
   taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-    console.info("taskGroup1 res is:" + res);
+    console.info(`Succeeded in excuting task. res is: ` + res);
   });
   taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-    console.info("taskGroup2 res is:" + res);
+    console.info(`Succeeded in excuting task. res is: ` + res);
   }).catch((err: BusinessError) => {
-    console.error("taskGroup2 catch err: " + err.message);
+    console.error(`Failed to excute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     try {
       taskpool.cancel(taskGroup2);
     } catch (e) {
-      console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+      console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
     }
   }, 1000);
 }
@@ -798,14 +798,14 @@ function cancelFunction(taskId: number) {
   try {
     taskpool.cancel(taskId);
   } catch (e) {
-    console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+    console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 
 function concurrentFunc() {
   let task = new taskpool.Task(printArgs, 100); // 100: test number
   taskpool.execute(task).catch((err: BusinessError) => {
-    console.error("taskpool catch err: " + err.message);
+    console.error(`Failed to excute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
@@ -1044,7 +1044,7 @@ for (let i: number = 0; i < taskArray.length; i+=4) { // 4: 每次执行4个任�
 
 ## Task
 
-任务可以多次执行，也可以放入任务组、串行队列或异步队列执行，还支持添加依赖关系。
+调用Task中的任何接口前必须先使用构造函数创建Task对象。任务可以多次执行，也可以放入任务组、串行队列或异步队列执行，还支持添加依赖关系。
 
 ### 属性
 
@@ -1202,9 +1202,9 @@ function inspectStatus(arg: number): number {
 
 let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
 taskpool.execute(task).then((res: Object) => {
-  console.info("taskpool test result: " + res);
+  console.info("Succeeded in executing task, result: " + res);
 }).catch((e: BusinessError) => {
-  console.error("taskpool test occur error: " + e);
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
 });
 // 不调用cancel，isCanceled()默认返回false，task执行的结果为101
 ```
@@ -1939,9 +1939,9 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("taskpool test result: " + res);
+    console.info("Succeeded in executing task, result: " + res);
   }).catch((e: BusinessError) => {
-    console.error("taskpool test occur error: " + e);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 
   setTimeout(() => {
@@ -2789,9 +2789,9 @@ async function delayExecute(): Promise<Array<Object>> {
 
 async function taskpoolExecute(): Promise<void> {
   taskpool.execute(delayExecute).then((result: Object) => {
-    console.info("taskPoolTest task result: " + result);
+    console.info("Succeeded in excuting task, result: " + result);
   }).catch((e: BusinessError) => {
-    console.error("taskpool test occur error: " + e);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 }
 
@@ -2821,9 +2821,9 @@ export async function func2(): Promise<void> {
   console.info("taskpoolTest2 start");
   let strArray: Array<string> = ['c test string', 'b test string', 'a test string'];
   taskpool.execute(strSort, strArray).then((result: Object) => {
-    console.info("func2 result: " + result);
+    console.info("Succeeded in excuting task, result: " + result);
   }).catch((e: BusinessError) => {
-    console.error("taskpool test occur error: " + e);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 }
 ```
@@ -2865,9 +2865,9 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("taskpool test result: " + res);
+    console.info("Succeeded in excuting task, result: " + res);
   }).catch((e: BusinessError) => {
-    console.error("taskpool test occur error: " + e);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
   // 1s后取消task
   setTimeout(() => {
@@ -2909,9 +2909,9 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("taskpool test result: " + res);
+    console.info("Succeeded in excuting task, result: " + res);
   }).catch((e: BusinessError) => {
-    console.error("taskpool test occur error: " + e);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 
   setTimeout(() => {
@@ -2966,7 +2966,7 @@ async function taskpoolGroupCancelTest(): Promise<void> {
   try {
     taskpool.cancel(taskGroup2);
   } catch (e) {
-    console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+    console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 

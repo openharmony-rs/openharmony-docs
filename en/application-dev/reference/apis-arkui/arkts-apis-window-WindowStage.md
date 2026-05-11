@@ -13,6 +13,8 @@
 > - The initial APIs of this interface are supported since API version 9.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
+>
+> - When an API of this module is called, an error will be thrown if parameter verification fails, permission verification fails, or the system status is abnormal. It is recommended that you use try-catch to capture errors at the outermost layer when calling APIs of this module. This helps prevent application crashes caused by API call failures.
 
 Implements a window manager, which manages each basic window unit, that is, [Window](arkts-apis-window-Window.md) instance.
 

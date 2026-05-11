@@ -5,7 +5,7 @@
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-## Native api中导出的OpenGL 3.0符号列表
+## Native API中导出的OpenGL 3.0符号列表
 
 |符号类型|符号名|
 | --- | --- |
@@ -72,7 +72,7 @@
 |FUNC|glDepthRange|
 |FUNC|glDepthRangef|
 |FUNC|glDetachShader|
-|FUNC|glDisablevertexAttribArray|
+|FUNC|glDisableVertexAttribArray|
 |FUNC|glDispatchCompute|
 |FUNC|glDrawArrays|
 |FUNC|glDrawArraysInstanced|
@@ -154,7 +154,7 @@
 |FUNC|glProgramParameteri|
 |FUNC|glPushDebugGroup|
 |FUNC|glReadBuffer|
-|FUNC|glReadpixels|
+|FUNC|glReadPixels|
 |FUNC|glReleaseShaderCompiler|
 |FUNC|glRenderbufferStorage|
 |FUNC|glRenderbufferStorageMultisample|
@@ -234,7 +234,7 @@
 |FUNC|glVertexAttribPointer|
 |FUNC|glViewport|
 
-## Native api中导出的OpenGL 4.2符号列表
+## Native API中导出的OpenGL 4.2符号列表
 
 从API version 22开始，支持使用OpenGL 4.2中的以下接口。
 |符号类型|符号名|
@@ -367,7 +367,6 @@
 |FUNC|glQueryCounter|
 |FUNC|glGetQueryObjecti64v|
 |FUNC|glGetQueryObjectui64v|
-|FUNC|glVertexAttribDivisor|
 |FUNC|glVertexAttribP1ui|
 |FUNC|glVertexAttribP1uiv|
 |FUNC|glVertexAttribP2ui|
@@ -498,7 +497,6 @@
 |FUNC|glTexStorage1D|
 |FUNC|glTexStorage2D|
 |FUNC|glTexStorage3D|
-|FUNC|glDispatchCompute|
 |FUNC|glDispatchComputeIndirect|
 |FUNC|glFramebufferParameteri|
 |FUNC|glGetFramebufferParameteriv|

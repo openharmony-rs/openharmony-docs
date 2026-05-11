@@ -13,7 +13,7 @@ typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
 
 ## Overview
 
-Defines network status callbacks.
+ Defines a struct for the network status listener callback collection. All callback events must be registered; those not requiring attention can be set to empty.
 
 **Since**: 12
 

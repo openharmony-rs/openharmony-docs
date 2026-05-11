@@ -1,8 +1,8 @@
 # native_type.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -164,7 +164,7 @@
 | [ArkUI_TextOverflow](#arkui_textoverflow)                           | ArkUI_TextOverflow              | 定义文本超长时的显示方式。                     |
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | 定义图片基于文本的对齐方式。                    |
 | [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | 定义[Image](arkui-ts/ts-basic-components-image.md)组件的图片填充效果。    |
-| [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | 定义图片插值效果。                         |
+| [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | 定义图片插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。                         |
 | [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | 定义图像动态范围模式（例如：SDR/HDR），用于控制图像的明暗与色彩显示范围。 |
 | [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | 定义图像旋转方向。                         |
 | [ArkUI_BlendMode](#arkui_blendmode)                                 | ArkUI_BlendMode                 | 混合模式枚举值。                          |
@@ -501,12 +501,12 @@
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | - | 获取预期更新间隔。 |
 | [bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) | - | 获取可见区域计算模式。 |
 | [ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)](#oh_arkui_textpickerrangecontentarray_create) | - | 创建TextPickerRangeContent数组的对象。 |
-| [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | - | 指定TextPickerRangeContent数组指定位置的icon数据。 |
-| [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | - | 指定TextPickerRangeContent数组指定位置的text数据。 |
+| [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | - | 设置TextPickerRangeContent数组指定位置的icon数据。 |
+| [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | - | 设置TextPickerRangeContent数组指定位置的text数据。 |
 | [void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)](#oh_arkui_textpickerrangecontentarray_destroy) | - | 删除TextPickerRangeContent数组对象。 |
 | [ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)](#oh_arkui_textcascadepickerrangecontentarray_create) | - | 创建TextCascadePickerRangeContent数组对象。 |
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | - | 指定TextCascadePickerRangeContent数组指定位置的text数据。 |
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | - | 指定TextCascadePickerRangeContent数组指定位置的child数据。 |
+| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | - | 设置TextCascadePickerRangeContent数组指定位置的text数据。 |
+| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | - | 设置TextCascadePickerRangeContent数组指定位置的child数据。 |
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy (ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | - | 删除TextCascadePickerRangeContent数组对象。 |
 | [ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()](#oh_arkui_embeddedcomponentoption_create) | - | 创建EmbeddedComponent组件选项的对象。 |
 | [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | - | 删除EmbeddedComponent组件选项的对象。 |
@@ -2410,10 +2410,10 @@ enum ArkUI_LengthMetricUnit
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | 默认，字体类单位为FP，非字体类单位为VP。 |
-| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | 单位为PX。 |
-| ARKUI_LENGTH_METRIC_UNIT_VP = 1 | 单位为VP。 |
-| ARKUI_LENGTH_METRIC_UNIT_FP = 2 | 单位为FP。 |
+| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | 默认，字体类单位为fp，非字体类单位为vp。 |
+| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | 单位为px。 |
+| ARKUI_LENGTH_METRIC_UNIT_VP = 1 | 单位为vp。 |
+| ARKUI_LENGTH_METRIC_UNIT_FP = 2 | 单位为fp。 |
 
 ### ArkUI_TextInputContentType
 
@@ -8070,7 +8070,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* i
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 图片宽度，单位为PX，imageInfo为空指针时返回0。 |
+| int32_t | 图片宽度，单位为px，imageInfo为空指针时返回0。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetHeight()
 
@@ -8091,7 +8091,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* ima
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t height | 图片高度，单位为PX。 |
+| int32_t height | 图片高度，单位为px。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetHeight()
 
@@ -8117,7 +8117,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 图片高度，单位为PX，imageInfo为空指针时返回0。 |
+| int32_t | 图片高度，单位为px，imageInfo为空指针时返回0。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetTop()
 
@@ -8138,7 +8138,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageI
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t top | 图片相对于组件左上角的纵向坐标，单位为PX。 |
+| int32_t top | 图片相对于组件左上角的纵向坐标，单位为px。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetTop()
 
@@ -8164,7 +8164,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* ima
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 图片相对于组件左上角的纵向坐标，单位为PX，imageInfo为空指针时返回0。 |
+| int32_t | 图片相对于组件左上角的纵向坐标，单位为px，imageInfo为空指针时返回0。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetLeft()
 
@@ -8185,7 +8185,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* image
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t left | 图片相对于组件左上角的横向坐标，单位为PX。 |
+| int32_t left | 图片相对于组件左上角的横向坐标，单位为px。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetLeft()
 
@@ -8211,7 +8211,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* im
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 图片相对于组件左上角的横向坐标，单位为PX，imageInfo为空指针时返回0。 |
+| int32_t | 图片相对于组件左上角的横向坐标，单位为px，imageInfo为空指针时返回0。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetDuration()
 
@@ -9677,7 +9677,7 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascad
 **描述：**
 
 
-指定TextCascadePickerRangeContent数组指定位置的text数据。
+设置TextCascadePickerRangeContent数组指定位置的text数据。
 
 **起始版本：** 19
 
@@ -11501,7 +11501,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(Ark
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
-### OH_ArkUI_TextMarqueeOptions_Create
+### OH_ArkUI_TextMarqueeOptions_Create()
 ``` c
 ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 ```
@@ -11518,7 +11518,7 @@ ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)*| 创建文本跑马灯模式配置项的对象指针。|
 
-### OH_ArkUI_TextMarqueeOptions_Dispose
+### OH_ArkUI_TextMarqueeOptions_Dispose()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11536,7 +11536,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 需要销毁的文本跑马灯模式配置项对象指针。 |
 
 
-### OH_ArkUI_TextMarqueeOptions_SetStart
+### OH_ArkUI_TextMarqueeOptions_SetStart()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)
 ```
@@ -11554,7 +11554,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | bool start | 是否播放。true表示播放，false表示不播放。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetStart
+### OH_ArkUI_TextMarqueeOptions_GetStart()
 ``` c
 bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11578,7 +11578,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 | bool | 是否播放。true表示播放，false表示不播放。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetStep
+### OH_ArkUI_TextMarqueeOptions_SetStep()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)
 ```
@@ -11596,7 +11596,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | float step | 步长。单位：vp。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetStep
+### OH_ArkUI_TextMarqueeOptions_GetStep()
 ``` c
 float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11620,7 +11620,7 @@ float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 | float | 步长。单位：vp。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetSpacing
+### OH_ArkUI_TextMarqueeOptions_SetSpacing()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)
 ```
@@ -11638,7 +11638,7 @@ void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, fl
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | float spacing | 首尾间距。单位：vp。|
 
-### OH_ArkUI_TextMarqueeOptions_GetSpacing
+### OH_ArkUI_TextMarqueeOptions_GetSpacing()
 ``` c
 float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11663,7 +11663,7 @@ float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 
 
 
-### OH_ArkUI_TextMarqueeOptions_SetLoop
+### OH_ArkUI_TextMarqueeOptions_SetLoop()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)
 ```
@@ -11681,7 +11681,7 @@ void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | int32_t loop | 设置的重复滚动的次数。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetLoop
+### OH_ArkUI_TextMarqueeOptions_GetLoop()
 ``` c
 int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11706,7 +11706,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 
 
 
-### OH_ArkUI_TextMarqueeOptions_SetFromStart
+### OH_ArkUI_TextMarqueeOptions_SetFromStart()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)
 ```
@@ -11724,7 +11724,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, 
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | bool fromStart | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。|
 
-### OH_ArkUI_TextMarqueeOptions_GetFromStart
+### OH_ArkUI_TextMarqueeOptions_GetFromStart()
 ``` c
 bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11748,7 +11748,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 | bool | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetDelay
+### OH_ArkUI_TextMarqueeOptions_SetDelay()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)
 ```
@@ -11766,7 +11766,7 @@ void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int3
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | int32_t delay| 每轮滚动延迟时间，单位为毫秒。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetDelay
+### OH_ArkUI_TextMarqueeOptions_GetDelay()
 ``` c
 int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11789,7 +11789,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 | -- | -- |
 | int32_t | 返回每轮滚动延迟时间，单位为毫秒。|
 
-### OH_ArkUI_TextMarqueeOptions_SetFadeout
+### OH_ArkUI_TextMarqueeOptions_SetFadeout()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)
 ```
@@ -11808,7 +11808,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | bool fadeout| 跑马灯是否支持文字超长时的渐隐效果。<br/>true表示支持渐隐效果，false表示不支持渐隐效果。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetFadeout
+### OH_ArkUI_TextMarqueeOptions_GetFadeout()
 ``` c
 bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11832,7 +11832,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 | bool | 是否支持文字超长时的渐隐效果。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetStartPolicy
+### OH_ArkUI_TextMarqueeOptions_SetStartPolicy()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)
 
@@ -11851,7 +11851,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy) startPolicy| 启动策略。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetStartPolicy
+### OH_ArkUI_TextMarqueeOptions_GetStartPolicy()
 ``` c
 ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11875,7 +11875,7 @@ ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMa
 | ArkUI_MarqueeStartPolicy | 启动策略。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy
+### OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option,
     ArkUI_MarqueeUpdatePolicy updatePolicy)
@@ -11894,7 +11894,7 @@ void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* optio
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) updatePolicy| 更新策略。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy
+### OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy()
 ``` c
 ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)
 ```

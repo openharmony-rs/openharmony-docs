@@ -80,7 +80,7 @@ getCookieManager(): WebCookie
 
 requestFocus()
 
-使当前web页面获取焦点。
+使当前Web页面获取焦点。
 
 > **说明：**
 >
@@ -386,11 +386,11 @@ getHitTest(): HitTestType
 
 loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })
 
-baseUrl为空时，通过”data“协议加载指定的一段字符串。
+baseUrl为空时，通过“data”协议加载指定的一段字符串。
 
-当baseUrl为”data“协议时，编码后的data字符串将被Web组件作为”data"协议加载。
+当baseUrl为“data”协议时，编码后的data字符串将被Web组件作为“data”协议加载。
 
-当baseUrl为“http/https"协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
+当baseUrl为“http/https”协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
 
 > **说明：**
 >
@@ -402,11 +402,11 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 | 参数名        | 类型   | 必填   | 说明                                     |
 | ---------- | ------ | ---- | ---------------------------------------- |
-| data       | string | 是   | 按照”Base64“或者”URL"编码后的一段字符串。              |
+| data       | string | 是   | 按照“Base64”或者“URL”编码后的一段字符串。              |
 | mimeType   | string | 是   | 媒体类型（MIME）。                              |
-| encoding   | string | 是   | 编码类型，具体为“Base64"或者”URL编码。                |
-| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。 |
-| historyUrl | string | 否   | 历史记录URL。非空时，可被历史记录管理，实现前后后退功能。当baseUrl为空时，此属性无效。 |
+| encoding   | string | 是   | 编码类型，具体为“Base64”或者“URL”编码。                |
+| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/“data”协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
+| historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前进后退功能。当baseUrl为空时，此属性无效。 |
 
 **示例：**
 
@@ -437,7 +437,7 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 loadUrl(options: { url: string | Resource, headers?: Array\<Header\> })
 
-使用指定的http头加载指定的URL。
+使用指定的HTTP头加载指定的URL。
 
 通过loadUrl注入的对象只在当前document有效，即通过loadUrl导航到新的页面会无效。
 
@@ -559,7 +559,7 @@ zoom(factor: number): void
 
 | 参数名    | 类型   | 必填   | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，正值为放大，负值为缩小。 |
+| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，当入参为1时为默认加载网页的缩放比例，小于1为缩小，大于1为放大。取值范围(0, 100]。 |
 
 **示例：**
 
@@ -620,7 +620,7 @@ refresh()
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
 > **说明：**
 >
@@ -714,7 +714,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 | 参数名      | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
 | script   | string                   | 是   | JavaScript脚本。                            |
-| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。 |
+| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。不传入时不进行回调。 |
 
 **示例：**
 

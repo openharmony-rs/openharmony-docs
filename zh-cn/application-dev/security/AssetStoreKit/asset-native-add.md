@@ -2,14 +2,14 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 ## 接口介绍
 
-可通过API文档查看新增关键资产的接口[OH_Asset_Add](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_add)的详细介绍。
+开发者可以查阅API文档，获取关键资产新增接口的详细说明：[OH_Asset_Add](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_add)。
 
 在新增关键资产时，关键资产属性的内容参数如下表所示：
 

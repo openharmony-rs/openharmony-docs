@@ -2107,4 +2107,4 @@ Obtains the statistic metrics of the current AVPlayer. This API can be called wh
 
 | Type| Description|
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | If the operation is successful, the statistic metric information of the AVPlayer is returned. (For details about the key values, see [statistic metric information](../apis-media-kit/capi-avplayer-base-h.md#variables)). Otherwise, **nullptr** is returned.<br> Possible failure cause: The input **player** pointer is invalid.|
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | If the operation is successful, the statistic metrics of the current AVPlayer are returned. (For details about the key values, see [Variables](../apis-media-kit/capi-avplayer-base-h.md#variables) in **avplayer_base.h**.) Otherwise, **nullptr** is returned.<br> Possible failure cause: The input **player** pointer is invalid.|

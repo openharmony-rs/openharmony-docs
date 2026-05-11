@@ -1,16 +1,10 @@
 # BuilderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
 
 提供能够挂载系统组件的自定义节点BuilderNode。BuilderNode仅可作为叶子节点使用。使用方式参考[BuilderNode开发指南](../../ui/arkts-user-defined-arktsNode-builderNode.md)。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
 
@@ -93,7 +87,7 @@ build的可选参数。
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported | boolean | 否   | 是   | 是否支持Builder嵌套Builder进行使用。其中，true表示支持，false表示不支持。<br/>默认值：false <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 是   | 给当前BuilderNode设置LocalStorage，挂载在此BuilderNode下的自定义组件共享该LocalStorage。如果自定义组件构造函数同时也传入LocalStorage，优先使用构造函数中传入的LocalStorage。<br/>默认值：null <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内[状态管理V1](../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的[\@Consume](../../ui/state-management/arkts-provide-and-consume.md)变量是否与BuilderNode外部的[\@Provide](../../ui/state-management/arkts-provide-and-consume.md)变量双向同步，BuilderNode内[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的[\@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md)变量是否与BuilderNode外部的[\@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md)变量双向同步。<br/>从API version 20开始支持状态管理V1自定义组件的双向同步，从API version 22开始支持状态管理V2自定义组件的双向同步。<br/>true表示支持，false表示不支持。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内[状态管理V1](../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的[\@Consume](../../ui/state-management/arkts-provide-and-consume.md)变量是否与BuilderNode外部的[\@Provide](../../ui/state-management/arkts-provide-and-consume.md)变量双向同步，BuilderNode内[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的[\@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md)变量是否与BuilderNode外部的[\@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md)变量双向同步。<br/>从API version 20开始支持状态管理V1自定义组件的双向同步，从API version 23开始支持状态管理V2自定义组件的双向同步。<br/>true表示支持，false表示不支持。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## InputEventType<sup>20+</sup>
 

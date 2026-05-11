@@ -5,15 +5,15 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## 功能介绍
 
-不同地区的用户使用不同的历法，大多数地区使用公历，也有些地区的用户使用其他历法，例如农历、伊斯兰历或希伯来历。日历上的时间和日期根据历法计算得到，并会随时区和夏令时的变化而调整。因此，用户需要设置符合本地习惯的历法。国际化提供了[Calendar](../reference/apis-localization-kit/js-apis-i18n.md#calendar8)类，可以设置历法、日期、时区、一周的起始日期和一年中第一周的最小天数。此外，还可以判断具体某一天在日历中是否为周末以及计算相差天数。在应用开发过程中，可以根据业务需求选择使用不同功能。
+不同地区的用户使用不同的历法，大多数地区使用公历，也有些地区的用户使用其他历法，例如农历、伊斯兰历或希伯来历。日历上的时间和日期根据历法计算得到，并会随时区和夏令时的变化而调整。因此，用户需要设置符合本地习惯的历法。国际化提供了[Calendar](../reference/apis-localization-kit/js-apis-i18n.md#calendar)类，可以设置历法、日期、时区、一周的起始日期和一年中第一周的最小天数。此外，还可以判断具体某一天在日历中是否为周末以及计算相差天数。在应用开发过程中，可以根据业务需求选择使用不同功能。
 
 ## 开发步骤
 
-以查看公历日期对应的农历日期为例，说明如何使用[Calendar](../reference/apis-localization-kit/js-apis-i18n.md#calendar8)类接口。
+以查看公历日期对应的农历日期为例，说明如何使用[Calendar](../reference/apis-localization-kit/js-apis-i18n.md#calendar)类接口。
 
 1. 导入模块。
 

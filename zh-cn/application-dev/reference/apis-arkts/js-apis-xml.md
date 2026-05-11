@@ -1,8 +1,8 @@
 # @ohos.xml (XML解析与生成)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -1147,7 +1147,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getColumnNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1191,7 +1191,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getDepth() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1227,7 +1227,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getLineNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1263,7 +1263,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getName() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1302,7 +1302,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getNamespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1341,7 +1341,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getPrefix() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1377,7 +1377,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getText() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1416,7 +1416,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isEmptyElementTag() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1455,7 +1455,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isWhitespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1489,7 +1489,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getAttributeCount() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);

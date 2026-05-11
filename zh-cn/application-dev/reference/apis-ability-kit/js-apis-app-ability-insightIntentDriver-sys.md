@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供执行意图调用的能力，系统根据用户交互等信息执行意图调用。
 
@@ -527,7 +527,7 @@ getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo]
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module. |
 
 **示例：**
 
@@ -585,7 +585,7 @@ getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promi
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module.  |
 
 **示例：**
 
@@ -646,7 +646,7 @@ getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentN
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service fails to communicate with the dependency module.  |
 
 **示例：**
 

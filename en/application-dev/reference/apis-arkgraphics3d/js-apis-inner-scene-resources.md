@@ -13,12 +13,15 @@ The SceneResource module provides basic resource types in 3D graphics.
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
+
 ```ts
 import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
   MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
   SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
 ```
+
 ## SceneResourceType
+
 Enumerates the scene resource types, which are used to classify resources in a scene.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -37,6 +40,7 @@ Enumerates the scene resource types, which are used to classify resources in a s
 | EFFECT<sup>21+</sup> | 9 | Post-processing effect resource.|
 
 ## SceneResource
+
 Describes a resource in a scene.
 
 ### Properties
@@ -50,6 +54,7 @@ Describes a resource in a scene.
 | uri | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr) | Yes| Yes| Resource to load. The default value is undefined.|
 
 ### destroy
+
 destroy(): void
 
 Destroys the scene resource and releases all associated resources or references. Once released, the resource can no longer be used or accessed.
@@ -57,6 +62,7 @@ Destroys the scene resource and releases all associated resources or references.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Shader, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
@@ -80,6 +86,7 @@ function destroy(): void {
 ```
 
 ## Shader
+
 Shader resource, which inherits from [SceneResource](#sceneresource-1).
 
 ### Properties
@@ -101,11 +108,13 @@ Sets the inputs for the shader. This API delivers better performance than direct
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| A mapping of strings to values for setting shader inputs.|
 
 **Example**
+
 ```ts
 import { Image, MaterialType, Scene, SceneResourceFactory, Shader, ShaderMaterial } from '@kit.ArkGraphics3D';
 
@@ -144,6 +153,7 @@ function setinputs(): void {
 ```
 
 ## MaterialType
+
 Enumerates the material types in a scene. The material type defines how materials in a scene are rendered.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -155,6 +165,7 @@ Enumerates the material types in a scene. The material type defines how material
 | UNLIT<sup>23+</sup> | 3 | Material that is not affected by lighting.|
 
 ## CullMode<sup>20+</sup>
+
 Enumerates the culling modes of PBR materials. You can improve rendering performance and visual quality by determining whether the front or back faces of objects are culled.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -166,6 +177,7 @@ Enumerates the culling modes of PBR materials. You can improve rendering perform
 | BACK | 2 | Culls the back faces of geometric objects.|
 
 ## Blend<sup>20+</sup>
+
 Controls the transparency of materials.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -175,6 +187,7 @@ Controls the transparency of materials.
 | enabled | boolean | No| No| Whether the transparency of the material is enabled. **true** if enabled, **false** otherwise.|
 
 ## RenderSort<sup>20+</sup>
+
 Describes the order in which materials are rendered, controlling the sequence of drawing in the rendering pipeline.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -185,6 +198,7 @@ Describes the order in which materials are rendered, controlling the sequence of
 | renderSortLayerOrder | number | No| Yes| Rendering order of different objects within the same rendering layer. A smaller value indicates an earlier rendering order. The value range is [0, 255]. The default value is **0**.|
 
 ## PolygonMode<sup>23+</sup>
+
 Enumerates the polygon drawing mode.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -196,6 +210,7 @@ Enumerates the polygon drawing mode.
 | POINT | 2 | Draws only the vertices of the polygon.|
 
 ## Material
+
 Material resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -209,7 +224,9 @@ Material resource, which inherits from [SceneResource](#sceneresource-1).
 | alphaCutoff<sup>20+</sup> | number | No| Yes| Threshold of the alpha channel. If the alpha of a pixel is greater than or equal to this threshold, the pixel is rendered; otherwise, the pixel is not rendered. Setting a value less than **1** enables this mode. The value range is [0, 1]. The default value is **1**.|
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | No| Yes| Rendering order, which determines the rendering sequence of materials in the rendering pipeline. The default layer ID is 32, and the default order within the layer is 0.|
 | polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | No| Yes| Polygon drawing mode of the model. The default value is **FILL**.|
+
 ## MaterialProperty<sup>20+</sup>
+
 Defines the textures, property factors, and texture samplers used by a material.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -221,6 +238,7 @@ Defines the textures, property factors, and texture samplers used by a material.
 | sampler | [Sampler](#sampler20) | No| Yes| Texture sampler, with the default value set to **LINEAR** for magnification, minification, and mipmaps, and to **REPEAT** for U, V, and W directions.|
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
+
 Material resource for creating realistic appearances, using the Metallic-Roughness model based on PBR. It simulates the surface lighting and reflection effects of different materials like metal and plastic by adjusting metallicity and roughness parameters. It inherits from [Material](#material).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -239,6 +257,7 @@ Material resource for creating realistic appearances, using the Metallic-Roughne
 | specular | [MaterialProperty](#materialproperty20) | No| No| Specular reflection of non-metallic materials, showing the intensity of traditional mirror-like reflections.|
 
 ## ShaderMaterial
+
 Shader material, which inherits from [Material](#material).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -258,6 +277,7 @@ Material that is not affected by lighting. The shading value of the material is 
 | baseColor | [MaterialProperty](#materialproperty20) | No| No| Base color property, which defines the base color information of the material.|
 
 ## SamplerFilter<sup>20+</sup>
+
 Enumerates the filtering modes of a sampler. The filtering mode determines the interpolation method used when sampling textures, controlling how final pixel colors are calculated during texture scaling or deformation.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -267,8 +287,8 @@ Enumerates the filtering modes of a sampler. The filtering mode determines the i
 | NEAREST | 0 | Uses nearest-neighbor interpolation, which is fast but can result in jagged edges.|
 | LINEAR | 1 | Uses linear interpolation, providing a smoother appearance but with a slight performance cost.|
 
-
 ## SamplerAddressMode<sup>20+</sup>
+
 Enumerates the sampler addressing modes, which are used to control how texture coordinates are handled when they go beyond the [0, 1] range.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -280,6 +300,7 @@ Enumerates the sampler addressing modes, which are used to control how texture c
 | CLAMP_TO_EDGE | 2 | The edge pixels of the texture are stretched when the coordinates exceed the range.|
 
 ## Sampler<sup>20+</sup>
+
 Describes the sampling modes used during texture sampling.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -293,6 +314,7 @@ Describes the sampling modes used during texture sampling.
 | addressModeV | [SamplerAddressMode](#sampleraddressmode20) | No| Yes| Sampling mode of the texture in the V (vertical) direction. The default value is **REPEAT**.|
 
 ## SubMesh
+
 Sub-mesh resource.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -304,6 +326,7 @@ Sub-mesh resource.
 | aabb | [Aabb](js-apis-inner-scene-types.md#aabb) | Yes| No| Axis aligned bounding box.|
 
 ## Morpher<sup>20+</sup>
+
 Defines the deformation of 3D models by adjusting the weights of different deformation targets to create dynamic effects.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -313,6 +336,7 @@ Defines the deformation of 3D models by adjusting the weights of different defor
 | targets | Record<string, number> | Yes| No| Used to store the names and weights of deformation targets. The weight value is usually within the range of [0.0, 1.0].|
 
 ## Mesh
+
 Mesh resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -324,11 +348,13 @@ Mesh resource, which inherits from [SceneResource](#sceneresource-1).
 | materialOverride | [Material](#material) | No| Yes| Material. The default value is undefined.|
 
 ## MeshResource<sup>18+</sup>
+
 Mesh resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## Animation
+
 Animation resource, which inherits from [SceneResource](#sceneresource-1).
 
 ### Properties
@@ -344,6 +370,7 @@ Animation resource, which inherits from [SceneResource](#sceneresource-1).
 | progress | number | Yes| No| Playing progress of the animation. The value range is [0, 1].|
 
 ### onFinished
+
 onFinished(callback: Callback\<void>): void
 
 Called when the animation playback is complete or the **finish** API is called.
@@ -351,11 +378,13 @@ Called when the animation playback is complete or the **finish** API is called.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | callback | Callback\<void> | Yes| Callback function. The return value is null.|
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -375,20 +404,21 @@ function onFinished(): void {
 ```
 
 ### onStarted
+
 onStarted(callback: Callback\<void>): void
 
 Called when the animation starts to play. The start operation is triggered by calling **start** or **restart**.
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | callback | Callback\<void> | Yes| Callback function. The return value is null.|
 
- 
-
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -408,6 +438,7 @@ function onStarted(): void {
 ```
 
 ### pause
+
 pause(): void
 
 Pauses the animation. The animation remains in the current playing progress.
@@ -415,6 +446,7 @@ Pauses the animation. The animation remains in the current playing progress.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -432,6 +464,7 @@ function pause(): void {
 ```
 
 ### restart
+
 restart(): void
 
 Plays the animation from the beginning.
@@ -439,6 +472,7 @@ Plays the animation from the beginning.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -456,6 +490,7 @@ function restart(): void {
 ```
 
 ### seek
+
 seek(position: number): void
 
 Plays the animation from the specified position.
@@ -463,11 +498,13 @@ Plays the animation from the specified position.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | position | number | Yes| Position from which the animation playback starts. The value range is [0, 1].|
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -485,6 +522,7 @@ function seek(): void {
 ```
 
 ### start
+
 start(): void
 
 Plays the animation based on the current progress.
@@ -492,6 +530,7 @@ Plays the animation based on the current progress.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -509,6 +548,7 @@ function start(): void {
 ```
 
 ### stop
+
 stop(): void
 
 Stops playing the animation and sets its progress to **0** (not started).
@@ -516,6 +556,7 @@ Stops playing the animation and sets its progress to **0** (not started).
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -533,11 +574,14 @@ function stop(): void {
 ```
 
 ### finish
+
 finish(): void
 
 Finishes the playing of the animation and sets its progress of **1** (finished).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Example**
 
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
@@ -556,6 +600,7 @@ function finish(): void {
 ```
 
 ## EnvironmentBackgroundType
+
 Enumerates the environment background types, which are used to define how the background of a scene is presented.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -568,6 +613,7 @@ Enumerates the environment background types, which are used to define how the ba
 | BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular background.|
 
 ## Environment
+
 Environment resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -584,6 +630,7 @@ Environment resource, which inherits from [SceneResource](#sceneresource-1).
 | environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| Yes| Rotation of the ambient light. The default value is undefined. The parameter must be a normalized quaternion.|
 
 ## Image
+
 Image resource, which inherits from [SceneResource](#sceneresource-1).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
