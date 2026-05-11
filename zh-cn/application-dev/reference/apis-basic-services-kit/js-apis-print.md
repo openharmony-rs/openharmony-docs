@@ -2729,7 +2729,7 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| fdList | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 否 | 表示待打印文件fd列表。 |
+| fdList | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 否 | 表示待打印文件fd列表。 |
 | jobId | string | 否 | 否 | 表示打印任务ID。 |
 | printerId | string | 否 | 否 | 表示负责打印的打印机ID。 |
 | jobState | [PrintJobState](#printjobstate14) | 否 | 否 | 表示当前打印任务状态。 |
