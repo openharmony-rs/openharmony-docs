@@ -13,6 +13,8 @@
 <!--Del-->
 - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](system-window-stage-sys.md)
 <!--DelEnd-->
+<!--RP2-->
+<!--RP2End-->
 - 窗口模式<!--window-status-->
   - 自由窗口<!--freeform-window-->
     - [自由窗口简介](freeform-window-overview.md)
