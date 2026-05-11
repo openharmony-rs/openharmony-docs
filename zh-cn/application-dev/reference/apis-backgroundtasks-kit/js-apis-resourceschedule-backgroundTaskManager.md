@@ -1414,9 +1414,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-
-
-
 ## DelaySuspendInfo
 
 短时任务信息。
