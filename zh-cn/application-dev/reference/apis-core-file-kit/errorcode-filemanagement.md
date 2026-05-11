@@ -1026,9 +1026,9 @@ Operation Not Support
 
 3. 完成提交后再修改。
 
-   - 再调用createAssetFromUri/getWriteCacheHandler/addResource后，必须调用commit()提交。
-   - 提交完成后才能发起新的修改请求。
    - 在调用createAssetFromUri/getWriteCacheHandler/addResource后，必须调用commit()提交。
+   - 提交完成后才能发起新的修改请求。
+   - 可以通过isPending() 检查是否有未提交的请求。
 
 4. 确认相册类型。
    - addAssets/removeAssets 仅支持用户相册和高亮相册。
