@@ -52,7 +52,7 @@
 
    （1）PC设备创建该类型的运行锁无系统应用权限管控，系统应用和非系统应用均可创建以及使用；非PC设备创建和使用该类型的运行锁要求是系统应用，非PC设备且非系统应用使用该类型锁**功能不生效**，开发时应考虑此约束。
 
-   （2）BACKGROUND_USER_IDLE用户闲时任务锁可以阻止系统自动睡眠，但不能阻止系统强制睡眠。因此使用该接口的应用必须监听[进入强制睡眠的公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，在接收到该公共事件后1s内主动释放掉该锁；是否监听[退出强制睡眠的公共事件](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_exit_force_sleep12)并重新持有锁，由应用根据具体场景自行决策。
+   （2）BACKGROUND_USER_IDLE用户闲时任务锁可以阻止系统自动睡眠，但不能阻止系统强制睡眠。因此使用该接口的应用必须监听进入强制睡眠的公共事件[COMMON_EVENT_ENTER_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，在接收到该公共事件后1s内主动释放掉该锁；是否监听退出强制睡眠的公共事件[COMMON_EVENT_EXIT_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_exit_force_sleep12)并重新持有锁，由应用根据具体场景自行决策。
    > **注意**：
    > 
    > 进入强制睡眠时系统会做兜底来强制释放该锁，确保系统能正常进入睡眠，公共事件提供给业务测一个感知强制睡眠并处理相应业务的途径。
