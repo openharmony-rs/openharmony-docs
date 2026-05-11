@@ -4480,9 +4480,9 @@
 						"start_line":194
 					},
 					{
-						"end_line":232,
+						"end_line":238,
 						"name":"c_text_metrics_get_all_case",
-						"start_line":200
+						"start_line":206
 					}
 				]
 			}
@@ -4574,9 +4574,9 @@
 						"start_line":1065
 					},
 					{
-						"end_line":993,
+						"end_line":998,
 						"name":"complex_text_c_style_copy_text",
-						"start_line":907
+						"start_line":911
 					}
 				]
 			}
