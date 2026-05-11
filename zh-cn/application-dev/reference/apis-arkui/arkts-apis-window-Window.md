@@ -14031,7 +14031,18 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+**设备行为差异：**
+ - 对于主窗口：
+   - 本接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；
+   - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；
+   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+
+ - 对于显示装饰栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为true）
+   - 在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；
+   - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；
+   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+
+ - 对于不显示装饰栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为false），调用本接口将返回1300002或801错误码。
 
 **ArkTS-Dyn起始版本：** 15
 
