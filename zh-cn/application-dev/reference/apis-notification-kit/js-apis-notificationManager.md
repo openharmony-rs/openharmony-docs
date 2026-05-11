@@ -1891,7 +1891,7 @@ notificationManager.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-在使用[通知模板](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
+在使用[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1953,7 +1953,7 @@ notificationManager.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-在使用[通知模板](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。
+在使用[NotificationTemplate](./js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2283,7 +2283,7 @@ notificationManager.requestEnableNotification().then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabled   
+## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
 
 isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
@@ -2296,6 +2296,8 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -2345,7 +2347,7 @@ let isDistributedEnabledCallback = (err: BusinessError | null, data: boolean | u
 notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 ```
 
-## notificationManager.isDistributedEnabled
+## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
 
 isDistributedEnabled(): Promise\<boolean>
 
@@ -2358,6 +2360,8 @@ isDistributedEnabled(): Promise\<boolean>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **返回值：**
 
