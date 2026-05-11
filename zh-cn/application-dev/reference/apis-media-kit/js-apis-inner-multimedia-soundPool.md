@@ -645,7 +645,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       leftVolume: 0.5, // range = 0.0-1.0。
       rightVolume: 0.5, // range = 0.0-1.0。
       priority: 0, // 最低优先级。
-      pitch：1, // 原音调（API版本26.0.0之后可以使用）。
+      pitch: 1, // 原音调（API版本26.0.0之后可以使用）。
     }
 
     soundPool.play(soundID, playParameters).then((streamId: number) => {
