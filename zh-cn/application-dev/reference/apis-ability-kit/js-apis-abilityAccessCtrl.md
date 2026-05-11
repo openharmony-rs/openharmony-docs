@@ -89,7 +89,7 @@ let tokenID: number = bundleInfo.appInfo.accessTokenId;
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
 atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`checkAccessToken success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`checkAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -352,7 +352,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
   console.info('requestPermissionsFromUser data authResults:' + data.authResults);
   console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
   console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -412,7 +412,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
   console.info(`requestPermissionOnSetting success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -471,7 +471,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: Boolean) => {
   console.info(`requestGlobalSwitch success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -568,7 +568,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
   console.info(`openPermissionOnSetting success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`openPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -657,7 +657,7 @@ let tokenID: number = bundleInfo.appInfo.accessTokenId;
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
 atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -699,7 +699,7 @@ let tokenID: number = bundleInfo.appInfo.accessTokenId;
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
 atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```

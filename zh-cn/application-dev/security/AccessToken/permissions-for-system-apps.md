@@ -5881,6 +5881,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.ACCESS_INTIMATE_RELATION_INFO
+
+允许获取亲密关系人信息及拉起亲密人页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
 ## ohos.permission.QUERY_TOOL_PERMISSIONS
 
 允许系统应用查询执行CLI/Skill所需要的权限。
@@ -5948,5 +5962,33 @@
 **ACL使能**：true
 
 **支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.QUERY_CLI_TOOL
+
+允许系统应用查询CLI工具。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.EXEC_CLI_TOOL
+
+允许系统应用执行CLI工具。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0

@@ -154,6 +154,7 @@
     - 交互事件分发控制<!--event-dispatch-control-->
       - [自定义事件拦截](arkui-ts/ts-universal-attributes-on-touch-intercept.md)
       - [自定义事件分发](arkui-ts/ts-universal-attributes-on-child-touch-test.md)
+      - [全局基础输入事件监听](arkui-ts/ts-inputeventmonitor.md)
     - 无障碍相关<!--accessibility-related-->
       - [无障碍控制操作](arkui-ts/ts-universal-accessibility-event.md)
       - [无障碍悬浮事件](arkui-ts/ts-universal-accessibility-hover-event.md)
@@ -241,6 +242,7 @@
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
       - [工具栏设置](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [节点调测标签](arkui-ts/ts-universal-attributes-inspector-label.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
@@ -545,6 +547,7 @@
     - [RemoteWindow (系统接口)](arkui-ts/ts-basic-components-remotewindow-sys.md)
     - [PluginComponent (系统接口)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (系统接口)](arkui-ts/ts-container-ui-extension-component-sys.md)
+    - [SecurityUIExtensionComponent (系统接口)](arkui-ts/ts-container-security-ui-extension-component-sys.md)
     - [UnionEffectContainer (系统接口)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
     - [DistortionComponent (系统接口)](arkui-ts/ts-container-distortioncomponent-sys.md)
   <!--DelEnd-->
@@ -805,6 +808,7 @@
     - [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md)
     - [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md)
     - [ArkUI_RenderNodeMaskOption](capi-arkui-nativemodule-arkui-rendernodemaskoption.md)
+    - [ArkUI_RenderBlurStyleOption](capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)
     - [ArkUI_RoundRectShapeOption](capi-arkui-nativemodule-arkui-roundrectshapeoption.md)
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)

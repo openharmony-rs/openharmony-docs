@@ -41,12 +41,12 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
-| key       | number  | 否      | 否      | 按键键值。<br/>**说明：** 从API version 21开始，支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键、[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
+| key       | number  | 否      | 否      | 按键键值。<br/>**说明：** 从API version 26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode)键和[KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode)键。<br/>从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
 | action    | number  | 否      | 否      | 订阅指定的按键事件。<br/>**说明：** 从API version 21开始，支持取值为1和2，取值为1表示订阅按键按下事件，取值为2表示同时订阅按键按下事件和按键抬起事件。<br/>对于API version 20及之前的版本，仅支持取值为1，表示订阅按键按下事件。 |
 | isRepeat  | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
@@ -263,7 +263,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
 **参数：**
 
@@ -321,7 +321,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
 **参数：**
 

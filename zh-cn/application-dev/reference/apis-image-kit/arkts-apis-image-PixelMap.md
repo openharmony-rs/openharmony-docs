@@ -1753,6 +1753,10 @@ extractAlphaPixelMap(): Promise\<PixelMap\>
 
 提取PixelMap的Alpha通道数据，并生成一个仅包含Alpha通道信息的ALPHA_U8格式的PixelMap。生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
 
+> **说明：**
+>
+> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1802,6 +1806,10 @@ function DemoExtractAlphaPixelMap(pixelMap: image.PixelMap) {
 extractAlphaPixelMapSync(): PixelMap
 
 提取PixelMap的Alpha通道数据，并生成一个仅包含Alpha通道信息的ALPHA_U8格式的PixelMap。生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。
+
+> **说明：**
+>
+> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 **起始版本：** 26.0.0
 
@@ -1853,6 +1861,10 @@ createAlphaPixelmap(): Promise\<PixelMap>
 
 根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
 
+> **说明：**
+>
+> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
+
 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -1888,6 +1900,10 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
 根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用callback异步回调。
+
+> **说明：**
+>
+> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
@@ -1927,6 +1943,10 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 createAlphaPixelmapSync(): PixelMap
 
 根据Alpha通道的信息，生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。同步返回PixelMap类型的结果。
+
+> **说明：**
+>
+> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 从API版本26.0.0开始，建议使用[extractAlphaPixelMapSync](#extractalphapixelmapsync)代替，以获得更完善的异常处理能力。
 

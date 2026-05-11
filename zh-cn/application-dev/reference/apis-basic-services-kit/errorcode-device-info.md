@@ -1,4 +1,4 @@
-# 系统参数错误码
+# deviceInfo错误码
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
