@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-+实现长按页面元素或鼠标右键弹出的菜单信息。示例代码参考[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)。
+实现长按页面元素或鼠标右键弹出的菜单信息。示例代码参考[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)。
 
 > **说明：**
 >
