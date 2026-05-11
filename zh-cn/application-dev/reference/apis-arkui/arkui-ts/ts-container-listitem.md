@@ -361,6 +361,24 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | isSelected | ArkTS-Dyn: (isSelected: boolean) => void</br>ArkTS-Sta: ((isSelected: boolean) => void) \| undefined | 是   | 进入鼠标框选范围即被选中返回true，移出鼠标框选范围即未被选中返回false。 |
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ListItemAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置ListItem组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier\<ListItemAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+
 ## ListItemSwipeActionManager<sup>21+</sup>
 
 ListItem划出菜单的管理器。

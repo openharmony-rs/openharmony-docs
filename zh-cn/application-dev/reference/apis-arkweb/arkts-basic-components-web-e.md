@@ -28,11 +28,11 @@ ConsoleMessage的信息级别。
 
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
-| ArkTS-Dyn: Debug <br>ArkTS-Sta: DEBUG| 0 | 调试级别。 |
-| ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 1 | 错误级别。 |
+| ArkTS-Dyn: Debug <br>ArkTS-Sta: DEBUG| 1 | 调试级别。 |
+| ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 4 | 错误级别。 |
 | ArkTS-Dyn: Info  <br>ArkTS-Sta: INFO| 2 | 消息级别。 |
-| ArkTS-Dyn: Log  <br>ArkTS-Sta: LOG| 3 | 日志级别。 |
-| ArkTS-Dyn: Warn <br>ArkTS-Sta: WARN| 4 | 警告级别。 |
+| ArkTS-Dyn: Log  <br>ArkTS-Sta: LOG| 5 | 日志级别。 |
+| ArkTS-Dyn: Warn <br>ArkTS-Sta: WARN| 3 | 警告级别。 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 

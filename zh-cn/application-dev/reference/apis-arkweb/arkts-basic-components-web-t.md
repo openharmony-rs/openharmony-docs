@@ -16,7 +16,9 @@
 
 ## WebviewController<sup>9+</sup>
 
-type WebviewController = WebviewController
+ArkTS-Dyn: type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
+
+ArkTS-Sta: type WebviewController = WebviewController
 
 提供Web控制器的方法。
 

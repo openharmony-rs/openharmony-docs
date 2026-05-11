@@ -66,7 +66,7 @@ ChipGroup({
 })
 ```
 
-**装饰器类型：**@Component
+**装饰器类型：** [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -80,14 +80,14 @@ ChipGroup({
 
 | 名称            | 类型                                            | 必填 | 装饰器类型 | 说明                                                                                     |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
-| items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | ArkTS-Dyn: @Require &nbsp;@Prop <br/> ArkTS-Sta: @Require &nbsp;@PropRef | 每个Chip的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br/>若为undefined时，ChipGroup默认为空。            |
+| items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | ArkTS-Dyn: [@Require](../../../ui/state-management/arkts-require.md) &nbsp;[@Prop](../../../ui/state-management/arkts-prop.md) <br/> ArkTS-Sta: @Require &nbsp;[@PropRef](../../../ui/state-management-static/arkts-static-propref.md) | 每个[Chip](./ohos-arkui-advanced-Chip.md)的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br/>若为undefined时，ChipGroup默认为空。            |
 | itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | `Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br/>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') } <br>值为undefined时，按默认值处理。 |
-| selectedIndexes | ArkTS-Dyn: Array&lt;number&gt; <br/> ArkTS-Sta: Array&lt;int&gt; | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 被选中Chip的索引。<br/>默认值：[0] <br>值为undefined时，按默认值处理。 |
+| selectedIndexes | ArkTS-Dyn: [Array](../../apis-arkts/arkts-apis-arkts-collections-Array.md)&lt;number&gt; <br/> ArkTS-Sta: Array&lt;int&gt; | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 被选中Chip的索引。<br/>默认值：[0] <br>值为undefined时，按默认值处理。 |
 | multiple        | boolean                                         | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 是否选中多个`Chip`。<br/>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false` <br>值为undefined时，按默认值处理。 |
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 } <br>单位：vp <br>值为undefined时，按默认值处理。 |
 | chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef  | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 } <br>单位：vp  <br>值为undefined时，按默认值处理。 |
 | onChange        | ArkTS-Dyn: Callback\<Array\<number>> <br/> ArkTS-Sta: Callback\<Array\<int>> | 否   | -  | Chip状态改变时的回调方法。<br/>若为undefined，表示解绑事件。                                                              |
-| suffix          | Callback\<void\>                                        | 否   | @BuilderParam | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。  |
+| suffix          | Callback\<void\>                                        | 否   | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。  |
 
 > **说明：**
 >
@@ -320,7 +320,7 @@ type ChipGroupSuffixBuilder = () => void
 
 用于构造chipGroup尾部图标的构造器。
 
-**装饰器类型：** @Builder
+**装饰器类型：** [@Builder](../../../ui/state-management/arkts-builder.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1255,6 +1255,8 @@ export struct ChipGroupExample2 {
 }
 ```
 
+![](figures/ChipGroupDemo4.png)
+
 ### 示例5（多选时无障碍朗读）
 
 该示例实现了ChipGroup在多选模式下，有后缀区域和无后缀区域的屏幕朗读功能，具体播报内容为accessibilityText属性中的内容。
@@ -1562,3 +1564,5 @@ export struct ChipGroupExample2 {
   }
 }
 ```
+
+![](figures/ChipGroupDemo5.png)

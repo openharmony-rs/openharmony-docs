@@ -129,7 +129,7 @@ ArkTS-Sta: colorFilter(filter: ColorFilter | DrawingColorFilter | undefined)
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| filter  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵为：<br/>![image-matrix-1](figures/image_matrix_1.png)<br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>该接口中的DrawingColorFilter类型支持在原子化服务中使用。其中，svg类型的图源只对stroke属性生效。|
+| filter  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵为：<br/>![image-matrix-1](figures/image_matrix_1.png)<br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>该接口中的DrawingColorFilter类型支持在原子化服务中使用。其中，svg类型的图源只对stroke属性生效。<br/>取值为undefined时，无颜色滤镜效果。|
 
 ### supportSvg2<sup>22+</sup>
 
@@ -179,7 +179,7 @@ ArkTS-Sta: onComplete(callback: ImageCompleteCallback | undefined)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | ArkTS-Dyn: [ImageCompleteCallback](#imagecompletecallback12)<br/>ArkTS-Sta: [ImageCompleteCallback](#imagecompletecallback12) \| undefined | 是   | 图片数据加载成功和解码成功时触发的回调。 |
+| callback | ArkTS-Dyn: [ImageCompleteCallback](#imagecompletecallback12)<br/>ArkTS-Sta: [ImageCompleteCallback](#imagecompletecallback12) \| undefined | 是   | 图片数据加载成功和解码成功时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onError<sup>12+</sup>
 
@@ -201,7 +201,7 @@ ArkTS-Sta: onError(callback: ImageErrorCallback | undefined)
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | ArkTS-Dyn: [ImageErrorCallback](ts-basic-components-image.md#imageerrorcallback9)<br/>ArkTS-Sta: [ImageErrorCallback](ts-basic-components-image.md#imageerrorcallback9) \| undefined | 是   | 图片加载异常时触发的回调。 |
+| callback | ArkTS-Dyn: [ImageErrorCallback](ts-basic-components-image.md#imageerrorcallback9)<br/>ArkTS-Sta: [ImageErrorCallback](ts-basic-components-image.md#imageerrorcallback9) \| undefined | 是   | 图片加载异常时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ## ImageCompleteCallback<sup>12+</sup>
 

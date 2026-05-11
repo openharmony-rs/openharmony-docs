@@ -159,13 +159,14 @@ initiatingUserAuthentication1() {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
           Logger.info('userAuthInstance callback.');
-          Logger.info(`result: ${result.result}`);
-          this.showResult(`${result.result}`);
+          EAWorker.postToMain<void>((): void => {
+            this.result[ResultIndex.EXAMPLE_1] =
+              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
+          });
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.offResult();
         } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
         }
       }
     });
@@ -173,8 +174,7 @@ initiatingUserAuthentication1() {
     userAuthInstance.start();
     Logger.info('auth start successfully.');
   } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -268,14 +268,14 @@ initiatingUserAuthentication2() {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
           Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
-          Logger.info(`result: ${result.result}`);
-          this.showResult(`${result.result}`);
+          EAWorker.postToMain<void>((): void => {
+            this.result[ResultIndex.EXAMPLE_2] =
+              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
+          });
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.offResult();
         } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
         }
       }
     });
@@ -283,8 +283,7 @@ initiatingUserAuthentication2() {
     userAuthInstance.start();
     Logger.info('auth start successfully.');
   } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -378,14 +377,14 @@ initiatingUserAuthentication3() {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
           Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
-          Logger.info(`result: ${result.result}`);
-          this.showResult(`${result.result}`);
+          EAWorker.postToMain<void>((): void => {
+            this.result[ResultIndex.EXAMPLE_3] =
+              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
+          });
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.offResult();
         } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
         }
       }
     });
@@ -393,8 +392,7 @@ initiatingUserAuthentication3() {
     userAuthInstance.start();
     Logger.info('auth start successfully.');
   } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -483,14 +481,14 @@ initiatingUserAuthentication4() {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
           Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
-          Logger.info(`result: ${result.result}`);
-          this.showResult(`${result.result}`);
+          EAWorker.postToMain<void>((): void => {
+            this.result[ResultIndex.EXAMPLE_4] =
+              result.result == userAuth.UserAuthResultCode.SUCCESS ? ResultMessage.PASSED : ResultMessage.FAILED;
+          });
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.offResult();
         } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
         }
       }
     });
@@ -498,8 +496,7 @@ initiatingUserAuthentication4() {
     userAuthInstance.start();
     Logger.info('auth start successfully.');
   } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```

@@ -41,7 +41,23 @@ FlowItem()
 
 ## 属性
 
-无
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<FlowItemAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置FlowItem组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier\<FlowItemAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
 
 ## 示例
 

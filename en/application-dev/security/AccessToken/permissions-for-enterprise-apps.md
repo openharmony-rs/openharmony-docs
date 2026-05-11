@@ -32,7 +32,7 @@ Allows an application to update the file guard policy.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -49,7 +49,7 @@ Currently, the extended attributes include the file security level and file labe
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -66,7 +66,7 @@ With this permission, the application can obtain the write permission on user fi
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -81,7 +81,7 @@ Allows an application to interact across local accounts.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 7
 
@@ -98,7 +98,7 @@ With this permission, the application can query the identities of specified or a
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: general devices
 
@@ -115,7 +115,7 @@ With this permission, the application can obtain the runtime information of othe
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 7
 
@@ -132,7 +132,7 @@ With this permission, the application can register an application state observer
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 7
 
@@ -149,7 +149,7 @@ such as the app bundle name and version.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 7
 
@@ -168,7 +168,7 @@ With this permission, the application can obtain Wi-Fi configurations, such as t
 **Supported devices**: PCs/2-in-1 devices
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 8
 
@@ -185,7 +185,7 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 8
 
@@ -200,7 +200,7 @@ Allows an application to obtain domain account information.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -215,7 +215,7 @@ Allows an enterprise security application to query security audit events.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 12
 
@@ -232,7 +232,7 @@ With this permission, the system application can terminate other running applica
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 12
 
@@ -248,7 +248,7 @@ With this permission, the application can enable or disable Wi-Fi, connect to Wi
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 15
 
@@ -263,7 +263,7 @@ With this permission, the enterprise application can install private CA certific
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 18
 
@@ -278,7 +278,7 @@ Currently, this permission is available only to 2-in-1 device applications.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 12
 
@@ -295,7 +295,7 @@ Currently, this permission is available only to 2-in-1 device applications.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 12
 
@@ -310,7 +310,7 @@ Allows an application to obtain domain account server configurations.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 18
 
@@ -323,7 +323,7 @@ Allows an application to manage domain account server configurations.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 18
 
@@ -336,7 +336,7 @@ Allows an application to manage domain accounts.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 18
 
@@ -349,7 +349,7 @@ Allows an application to obtain the application package signature information.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 18
 
@@ -362,7 +362,7 @@ Allows an application to obtain visible window information of the current screen
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 18
 
@@ -377,7 +377,7 @@ With this permission, the enterprise security application can block security aud
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -394,7 +394,7 @@ With this permission, the application can be started or connected as an **AppSer
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -411,7 +411,7 @@ With this permission, the software can obtain 802.1X packets and add information
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -428,7 +428,7 @@ The specific user supports applications running in singleton mode.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -445,7 +445,7 @@ With this permission, the application can query the basic information about work
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -462,7 +462,7 @@ With this permission, the application can specify whether a network is identifie
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -477,7 +477,7 @@ Allows an enterprise application to manage antivirus software.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -492,7 +492,7 @@ Allows enterprise antivirus software to register with the system and update basi
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -507,7 +507,7 @@ Allows an application to call Trusted Platform Module (TPM) commands.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -524,7 +524,7 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -541,7 +541,7 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
  **Authorization mode**: system_grant
 
  <!--Del-->
- **Enable via ACL**: true<!--DelEnd-->
+ **Certificate-based authorization**: true<!--DelEnd-->
 
  **Supported devices**: PCs/2-in-1 devices
 
@@ -558,7 +558,7 @@ The UDID uniquely identifies a device.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 7
 
@@ -575,7 +575,7 @@ With this permission, the application can update print status and printer inform
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 

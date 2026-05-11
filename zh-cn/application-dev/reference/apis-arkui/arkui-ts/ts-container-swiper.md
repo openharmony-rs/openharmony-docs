@@ -1062,7 +1062,7 @@ ArkTS-Sta: changeIndex(index: int | undefined, animationMode?: SwiperAnimationMo
 
 ArkTS-Dyn: finishAnimation(callback?: VoidCallback)
 
-ArktS-Sta: finishAnimation(callback?: VoidCallback): void
+ArkTS-Sta: finishAnimation(callback?: VoidCallback): void
 
 停止播放动画。
 

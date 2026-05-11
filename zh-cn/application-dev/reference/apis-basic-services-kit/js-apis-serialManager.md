@@ -170,7 +170,7 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function requestSerialRight() {
@@ -504,7 +504,7 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function read() {
@@ -688,7 +688,7 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function write() {

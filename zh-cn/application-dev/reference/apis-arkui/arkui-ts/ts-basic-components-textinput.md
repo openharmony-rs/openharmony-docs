@@ -841,7 +841,7 @@ ArkTS-Sta: passwordRules(value: string | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 定义生成密码的规则。<br/>取值为undefined时，按passwordRules中的默认值处理。 |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 定义生成密码的规则。<br/>取值为undefined时，不生效。 |
 
 ### cancelButton<sup>11+</sup>
 
@@ -883,7 +883,7 @@ cancelButton(iconOptions: CancelButtonOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| iconOptions  | [CancelButtonOptions](ts-basic-components-search.md#cancelbuttonoptions12对象说明) \|  undefined | 是   | 右侧清除按钮样式选项。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />}<br/>Wearable设备上默认值为：28vp |
+| iconOptions  | [CancelButtonOptions](ts-basic-components-search.md#cancelbuttonoptions12对象说明) \|  undefined | 是   | 右侧清除按钮样式选项。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />}<br/>Wearable设备上默认值为：28vp <br/>取值为undefined时，按默认值处理。|
 
 ### selectAll<sup>11+</sup>
 
@@ -2142,7 +2142,7 @@ ArkTS-Sta: onContentScroll(callback: OnContentScrollCallback | undefined)
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | [OnContentScrollCallback](#oncontentscrollcallback18) | 是   | 文本内容滚动回调。 |
+| callback | ArkTS-Dyn:[OnContentScrollCallback](#oncontentscrollcallback18)<br/>ArkTS-Sta: [OnContentScrollCallback](#oncontentscrollcallback18) \| undefined| 是   | 文本内容滚动回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onSecurityStateChange<sup>12+</sup>
 
