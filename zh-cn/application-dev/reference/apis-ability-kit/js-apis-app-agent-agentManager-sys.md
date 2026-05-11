@@ -1,4 +1,4 @@
-# @ohos.app.agent.agentManager (Agent管理)(系统接口)
+# @ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
