@@ -101,7 +101,7 @@ ArkTS-Sta: show(x: double, y: double): void
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
