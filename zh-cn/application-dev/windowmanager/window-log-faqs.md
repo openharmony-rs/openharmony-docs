@@ -6,11 +6,11 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-## 调用北向接口报1300002错误码
-
-## 调用北向接口报1300004错误码
-
 ## 使用窗口hidumper命令查看窗口信息定位问题
 
-## 如何使用WINDOW_EXCEPTION_DETECTION辅助定位问题
+## 1300002错误码的定位指导
+
+## 1300004错误码的定位指导
+
+## 超市警告WINDOW_EXCEPTION_DETECTION的定位指导
 
