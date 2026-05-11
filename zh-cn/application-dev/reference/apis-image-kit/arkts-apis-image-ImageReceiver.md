@@ -188,7 +188,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function ReadLatestImageFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
   try {
-    // 创建imageReceiver实例
+    // 创建imageReceiver实例。
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     receiver.readLatestImage((err: BusinessError | null, img: image.Image | undefined) => {
       if (err) {

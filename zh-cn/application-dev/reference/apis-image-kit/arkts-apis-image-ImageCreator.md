@@ -187,14 +187,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function QueueImageFunc(creator: image.ImageCreator): void {
   try {
-    let image: image.Image = await creator.dequeueImage(); // 从空闲队列获取Image对象用于绘制
+    let image: image.Image = await creator.dequeueImage(); // 从空闲队列获取Image对象用于绘制。
     creator.queueImage(image, (err: BusinessError | null) => {
       if (err) {
         console.error(0x00000, 'QueueImageFunc', 'queueImage failed! err:' + err);
       } else {
         console.info(0x00000, 'QueueImageFunc', 'queueImage success!');
       }
-    }); // 将绘制完成的Image放入队列供消费者使用
+    }); // 将绘制完成的Image放入队列供消费者使用。
   } catch (err) {
     console.error(0x00000, 'QueueImageFunc', 'QueueImageFunc failed: ' + err);
   }

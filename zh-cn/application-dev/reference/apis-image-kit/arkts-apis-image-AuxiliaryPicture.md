@@ -278,12 +278,12 @@ function SetMetadataFunc(auxPicture: image.AuxiliaryPicture, context: common.UIA
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
     let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
-    let pixelMap: image.PixelMap = await imageSource.createPixelMap(); // 解码图片获取PixelMap
-    let picture: image.Picture = image.createPicture(pixelMap); // 创建Picture对象以获取元数据
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap(); // 解码图片获取PixelMap。
+    let picture: image.Picture = image.createPicture(pixelMap); // 创建Picture对象以获取元数据。
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
-    let metadata: image.Metadata | null = await picture.getMetadata(metadataType); // 从Picture获取EXIF元数据
+    let metadata: image.Metadata | null = await picture.getMetadata(metadataType); // 从Picture获取EXIF元数据。
     if (metadata != null) {
-       auxPicture.setMetadata(metadataType, metadata); // 将元数据设置到辅助图对象
+       auxPicture.setMetadata(metadataType, metadata); // 将元数据设置到辅助图对象。
        console.info(0x00000, 'SetMetadataFunc', 'setMetadata success!');
     }
   } catch (err) {
@@ -296,13 +296,15 @@ function SetMetadataFunc(auxPicture: image.AuxiliaryPicture, context: common.UIA
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-从辅助图中获取元数据。使用Promise异步回调。
+getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+从辅助图中获取元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -315,6 +317,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 | 类型                             | 说明             |
 | -------------------------------- | ---------------- |
 | Promise<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，返回元数据的Promise对象。 |
+| Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
 
 **错误码：**
 
@@ -322,11 +325,12 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. **ArkTS模式**: 该错误码仅适用于ArkTS-Dyn|
 | 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
   if (auxPictureObj != null) {
@@ -343,40 +347,7 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## getMetadata<sup>23+</sup>
-
-getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
-
-从辅助图中获取元数据。使用Promise异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名       | 类型                            | 必填 | 说明                                   |
-| ------------ | ------------------------------- | ---- | -------------------------------------- |
-| metadataType | [MetadataType](arkts-apis-image-e.md#metadatatype13) | 是   | 元数据类型，用于获取对应类型的元数据。 |
-
-**返回值：**
-
-| 类型                             | 说明             |
-| -------------------------------- | ---------------- |
-| Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | :----------------------------------------------------------- |
-| 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 function GetMetadataFunc(auxPicture: image.AuxiliaryPicture): void {
   try {

@@ -26,22 +26,24 @@ import { image } from '@kit.ImageKit';
 
 getMainPixelmap(): PixelMap
 
-获取主图的pixelmap。
+getMainPixelmap(): PixelMap | undefined
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+获取主图的pixelmap。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                | 说明                   |
 | ------------------- | ---------------------- |
 | [PixelMap](arkts-apis-image-PixelMap.md) | 同步返回PixelMap对象。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 同步返回PixelMap对象。 |
 
-**示例：**
-
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -64,26 +66,7 @@ async function GetMainPixelmap(pictureObj : image.Picture) {
 }
 ```
 
-## getMainPixelmap<sup>23+</sup>
-
-getMainPixelmap(): PixelMap | undefined
-
-获取主图的pixelmap。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Sta起始版本：** 23
-
-**返回值：**
-
-| 类型                | 说明                   |
-| ------------------- | ---------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 同步返回PixelMap对象。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 function GetMainPixelmapFunc(picture: image.Picture): void {
   try {
@@ -99,19 +82,22 @@ function GetMainPixelmapFunc(picture: image.Picture): void {
 
 getHdrComposedPixelmap(): Promise\<PixelMap>
 
-合成HDR图并获取HDR图的pixelmap。使用Promise异步回调。
+getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+合成HDR图并获取HDR图的pixelmap。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                          | 说明                        |
 | ----------------------------- | --------------------------- |
 | Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -124,6 +110,7 @@ getHdrComposedPixelmap(): Promise\<PixelMap>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -142,6 +129,18 @@ async function GetHdrComposedPixelmap(pictureObj : image.Picture) {
     }
   } else {
     console.error('PictureObj is null');
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+function GetHdrComposedPixelmapFunc(picture: image.Picture): void {
+  try {
+    let pixelMap = await picture.getHdrComposedPixelmap();
+    console.info(0x00000, 'GetHdrComposedPixelmapFunc', 'getHdrComposedPixelmap success!');
+  } catch (err) {
+    console.error(0x00000, 'GetHdrComposedPixelmapFunc', 'GetHdrComposedPixelmapFunc failed: ' + err);
   }
 }
 ```
@@ -236,46 +235,6 @@ async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
     }
   } catch (err) {
     console.error(`GetHdrComposedPixelmapWithOptions information failed error.code: ${err.code} ,error.message: ${err.message}`);
-  }
-}
-```
-
-## getHdrComposedPixelmap<sup>23+</sup>
-
-getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
-
-合成hdr图并获取hdr图的pixelmap。使用Promise异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Sta起始版本：** 23
-
-**返回值：**
-
-| 类型                          | 说明                        |
-| ----------------------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息               |
-| -------- | ---------------------- |
-| 7600901  | Unknown error. |
-| 7600201  | Unsupported operation. |
-
-**示例：**
-
-```ts
-function GetHdrComposedPixelmapFunc(picture: image.Picture): void {
-  try {
-    let pixelMap = await picture.getHdrComposedPixelmap();
-    console.info(0x00000, 'GetHdrComposedPixelmapFunc', 'getHdrComposedPixelmap success!');
-  } catch (err) {
-    console.error(0x00000, 'GetHdrComposedPixelmapFunc', 'GetHdrComposedPixelmapFunc failed: ' + err);
   }
 }
 ```
@@ -560,13 +519,15 @@ function SetMetadataFunc(picture: image.Picture): void {
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-获取主图的元数据。使用Promise异步回调。
+getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+获取主图的元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -579,6 +540,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 | 类型               | 说明                      |
 | ------------------ | ------------------------- |
 | Promise\<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象。返回元数据。 |
+| Promise\<Metadata \| undefined> | Promise对象。返回元数据。 |
 
 **错误码：**
 
@@ -591,6 +553,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function GetPictureObjMetadataProperties(pictureObj : image.Picture) {
   if (pictureObj != null) {
@@ -607,40 +570,7 @@ async function GetPictureObjMetadataProperties(pictureObj : image.Picture) {
 }
 ```
 
-## getMetadata<sup>23+</sup>
-
-getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
-
-获取主图的元数据。使用Promise异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名       | 类型         | 必填 | 说明         |
-| ------------ | ------------ | ---- | ------------ |
-| metadataType | [MetadataType](arkts-apis-image-e.md#metadatatype13) | 是   | 元数据类型。 |
-
-**返回值：**
-
-| 类型               | 说明                      |
-| ------------------ | ------------------------- |
-| Promise\<Metadata \| undefined> | Promise对象。返回元数据。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type. |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 function GetMetadataFunc(picture: image.Picture): void {
   try {
