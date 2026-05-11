@@ -1016,23 +1016,23 @@ Operation Not Support
 
 1. 确认资源类型。
 
-- 如果执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源时Moving Photo类型。
-- 如果执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO。
+   - 如果执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源时Moving Photo类型。
+   - 如果执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO。
 
 2. 避免重复操作。
 
-- 在调用addAssets/removeAssets/moveAssets前，检查是否已操作过相同资源。
-- 可以通过changeRequest获取当前待处理的资源列表确认。
+   - 在调用addAssets/removeAssets/moveAssets前，检查是否已操作过相同资源。
+   - 可以通过changeRequest获取当前待处理的资源列表确认。
 
 3. 完成提交后再修改。
 
-- 再调用createAssetFromUri/getWriteCacheHandler/addResourse后，必须调用commit()提交。
-- 提交完成后才能发起新的修改请求。
-- 可以通过isPending() 检查是否有未提交的请求。
+   - 再调用createAssetFromUri/getWriteCacheHandler/addResourse后，必须调用commit()提交。
+   - 提交完成后才能发起新的修改请求。
+   - 可以通过isPending() 检查是否有未提交的请求。
 
 4. 确认相册类型。
-- addAssets/removeAssets 仅支持用户相册和高亮相册。
-- 系统相册（如相机、 截屏相册）不支持这些操作。
+   - addAssets/removeAssets 仅支持用户相册和高亮相册。
+   - 系统相册（如相机、 截屏相册）不支持这些操作。
 
 ## 空间统计错误码
 
