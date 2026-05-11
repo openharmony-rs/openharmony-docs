@@ -813,6 +813,79 @@ scan.on('scanDeviceFound', callback);
 scan.off('scanDeviceFound', callback);
 ```
 
+## scan.onScanDeviceFound
+
+onScanDeviceFound(callback: Callback&lt;ScannerDevice&gt;): void
+
+注册扫描仪设备发现事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备发现信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+scan.onScanDeviceFound((device: scan.ScannerDevice) => {
+    console.info('scan device found: ' + JSON.stringify(device));
+})
+```
+
+## scan.offScanDeviceFound
+
+offScanDeviceFound(callback?: Callback&lt;ScannerDevice&gt;): void
+
+取消注册扫描仪设备发现事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+let callback = (device: scan.ScannerDevice) => {
+    console.info('scan device found: ' + JSON.stringify(device));
+};
+scan.onScanDeviceFound(callback);
+// 取消注册
+scan.offScanDeviceFound(callback);
+```
+
 ## scan.on
 
 on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
@@ -878,4 +951,77 @@ let callback = (device: scan.ScannerSyncDevice) => {
 scan.on('scanDeviceSync', callback);
 // 取消注册
 scan.off('scanDeviceSync', callback);
+```
+
+## scan.onScanDeviceSync
+
+onScanDeviceSync(callback: Callback&lt;ScannerSyncDevice&gt;): void
+
+注册扫描仪设备同步事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 是 | 回调函数，返回扫描仪设备同步信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+scan.onScanDeviceSync((device: scan.ScannerSyncDevice) => {
+    console.info('scan device sync: ' + JSON.stringify(device));
+})
+```
+
+## scan.offScanDeviceSync
+
+offScanDeviceSync(callback?: Callback&lt;ScannerSyncDevice&gt;): void
+
+取消注册扫描仪设备同步事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 否 | 回调函数，返回扫描仪设备同步信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { scan } from '@kit.BasicServicesKit';
+
+let callback = (device: scan.ScannerSyncDevice) => {
+    console.info('scan device sync: ' + JSON.stringify(device));
+};
+scan.onScanDeviceSync(callback);
+// 取消注册
+scan.offScanDeviceSync(callback);
 ```
