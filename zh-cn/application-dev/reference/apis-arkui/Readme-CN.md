@@ -14,7 +14,7 @@
     - [@ohos.arkui.dragController (DragController)](js-apis-arkui-dragController.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)](js-apis-arkui-drawableDescriptor.md)
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
-    - [@ohos.arkui.node(自定义节点)](js-apis-arkui-node.md)
+    - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
     - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
@@ -57,7 +57,8 @@
       - [Enums](arkts-apis-uicontext-e.md)
       - [Types](arkts-apis-uicontext-t.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
-    - [@ohos.arkui.StateManagement (状态管理)](js-apis-stateManagement.md)
+    - [@ohos.arkui.StateManagement (状态管理) (ArkTS-Dyn)](js-apis-stateManagement.md)
+    - [@ohos.arkui.stateManagement (状态管理) (ArkTS-Sta)](./js-apis-stateManagement-static.md)
     - [@ohos.curves (插值计算)](js-apis-curve.md)
     - [@ohos.font (注册自定义字体)](js-apis-font.md)
     - [@ohos.matrix4 (矩阵变换)](js-apis-matrix4.md)
@@ -478,8 +479,8 @@
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - [自定义组件内置方法（静态）](arkui-ts/ts-custom-component-api-sta.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
-    - 动态ArkTS自定义组件
-      - 自定义组件装饰器
+    - 动态ArkTS自定义组件<!--dynamic-arkts-custom-component-->
+      - 自定义组件装饰器<!--custom-component-decorator-->
         - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component.md)
         - [@ComponentV2：自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2.md)
         - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
@@ -495,13 +496,13 @@
         - [@Styles：组件重用样式](arkui-ts/ts-custom-component-decorator-styles.md)
         - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
         - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
-    - 静态ArkTS自定义组件
-      - 自定义组件装饰器
+    - 静态ArkTS自定义组件<!--static-arkts-custom-component-->
+      - 自定义组件装饰器<!--custom-component-decorator-static-->
         - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component-static.md)
-        - [@ComponentV2:自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2-static.md)
+        - [@ComponentV2：自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2-static.md)
         - [@Entry：页面入口](arkui-ts/ts-custom-component-decorator-entry-static.md)
         - [@CustomLayout：自定义布局](arkui-ts/ts-custom-component-decorator-customlayout.md)
-      - 组件扩展装饰器
+      - 组件扩展装饰器<!--component-extend-decorator-static-->
         - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-static.md)
         - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-static.md)
         - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-static.md)
@@ -510,12 +511,12 @@
         - [applyStyles：定义组件重用样式](arkui-ts/ts-universal-applyStyles.md)
         - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-static.md)
         - [rememberVariable：@Builder内部状态](arkui-ts/ts-universal-remembervariable-static.md)
-  - 互操作
+  - 互操作<!--interop-->
     - [compatibleComponent (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
     - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)
     - [transferCompatibleBuilder (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-builder.md)
     - [compatibleWrappedBuilder (ArkTS-Sta)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
-    - [enableCompatibleObservedV2ForStatic\<T\> (ArkTS-Sta)](arkui-ts/ts-interop-compatible-ObservedV2.md)
+    - [enableCompatibleObservedV2ForStatic (ArkTS-Sta)](arkui-ts/ts-interop-compatible-ObservedV2.md)
   - 组件预览<!--component-preview-->
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
@@ -569,8 +570,8 @@
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
-    - 动态ArkTS状态管理
-      - 状态管理V1装饰器 
+    - 动态ArkTS状态管理<!--dynamic-arkts-state-management-decorator-->
+      - 状态管理V1装饰器<!--v1-state-management-decorator-->
         - [@Consume](arkui-ts/ts-state-management-consume.md)
         - [@Link](arkui-ts/ts-state-management-link.md)
         - [@LocalStorageLink](arkui-ts/ts-state-management-localstoragelink.md)
@@ -584,7 +585,7 @@
         - [@StorageProp](arkui-ts/ts-state-management-storageprop.md)
         - [@Track](arkui-ts/ts-state-management-track.md)
         - [@Watch](arkui-ts/ts-state-management-watch.md)
-      - 状态管理V2装饰器
+      - 状态管理V2装饰器<!--v2-state-management-decorator-->
         - [@Computed](arkui-ts/ts-state-management-computed.md)
         - [@Consumer](arkui-ts/ts-state-management-consumer.md)
         - [@Event](arkui-ts/ts-state-management-event.md)
@@ -596,8 +597,8 @@
         - [@Provider](arkui-ts/ts-state-management-provider.md)
         - [@Trace](arkui-ts/ts-state-management-trace.md)
         - [@Type](arkui-ts/ts-state-management-type.md)
-    - 静态ArkTS状态管理
-      - 状态管理V1装饰器 
+    - 静态ArkTS状态管理 <!--static-arkts-state-management-decorator-->
+      - 状态管理V1装饰器 <!--static-state-management-v1-decorator-->
         - [@Consume](arkui-ts/ts-state-management-consume-static.md)
         - [@Link](arkui-ts/ts-state-management-link-static.md)
         - [@LocalStorageLink](arkui-ts/ts-state-management-localstoragelink-static.md)
@@ -611,7 +612,7 @@
         - [@StoragePropref](arkui-ts/ts-state-management-storagepropref-static.md)
         - [@Track](arkui-ts/ts-state-management-track-static.md)
         - [@Watch](arkui-ts/ts-state-management-watch-static.md)
-      - 状态管理V2装饰器
+      - 状态管理V2装饰器 <!--static-state-management-v2-decorator-->
         - [@Computed](arkui-ts/ts-state-management-computed-static.md)
         - [@Consumer](arkui-ts/ts-state-management-consumer-static.md)
         - [@Event](arkui-ts/ts-state-management-event-static.md)
