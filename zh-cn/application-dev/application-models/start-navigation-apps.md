@@ -72,7 +72,7 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
 
 
     ```ts
-	@Entry
+    @Entry
     @Component
     struct Index {
       @State hideAbility: string = 'hideAbility'
@@ -145,7 +145,7 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
         | PlaceSearch    | 声明应用支持位置搜索功能     |
         | DetailLocation | 声明应用支持地点详情功能     |
     2. 设置scheme、host、port、path/pathStartWith属性，与Want中URI相匹配，以便区分不同功能。
-    ```json
+    ```json5
     {
       "abilities": [
           {
