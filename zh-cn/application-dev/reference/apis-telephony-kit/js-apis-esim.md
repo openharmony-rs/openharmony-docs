@@ -26,7 +26,7 @@ ArkTS-Sta: isSupported\(slotId: int\): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -46,7 +46,7 @@ ArkTS-Sta: isSupported\(slotId: int\): boolean
 
 | 错误码ID              | 错误信息                           |
 | --------------------- | ---------------------------------- |
-| 401 | Invalid parameter value.     |
+| 401 | Parameter error. Possible causes:    1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |
 
@@ -83,7 +83,7 @@ addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -104,7 +104,7 @@ addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 | 错误码ID              | 错误信息                           |
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied.           |
-| 401 | Invalid parameter value.     |
+| 401 | Parameter error. Possible causes:    1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported.    |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |
@@ -168,7 +168,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                   |  只读 | 可选 | 说明 |
 | ----- |--------------------------------------| ----- | ---- | -----|
@@ -185,7 +185,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ----- |----|----| -----|
