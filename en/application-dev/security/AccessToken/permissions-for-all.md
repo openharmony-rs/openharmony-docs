@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Certificate-based authorization" is not involved for permissions of the normal level.
+> "Certificate-based authorization" is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode

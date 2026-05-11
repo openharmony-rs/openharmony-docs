@@ -2206,7 +2206,7 @@ Allows a system application to execute distributed intents.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: cars | phones | TVs | wearables | PCs/2-in-1 devices | tablets
 
@@ -4811,7 +4811,7 @@ Allows a system application to call ExtensionAbility in youth mode.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5931,7 +5931,7 @@ Allows an application to obtain information about close contacts and open the cl
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -6001,7 +6001,7 @@ Allows a system application to query CLI tools.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -6015,7 +6015,7 @@ Allows a system application to run CLI tools.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
