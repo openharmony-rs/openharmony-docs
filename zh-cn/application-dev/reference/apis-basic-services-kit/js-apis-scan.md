@@ -782,6 +782,10 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 
 注册扫描仪设备发现事件回调。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.onScanDeviceFound](#scanonscandevicefound)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
@@ -813,6 +817,10 @@ scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
 off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 
 取消注册扫描仪设备发现事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.offScanDeviceFound](#scanoffscandevicefound)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -851,6 +859,8 @@ onScanDeviceFound(callback: Callback&lt;ScannerDevice&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口**：该接口对应的ArkTS-Dyn接口是[scan.on](#scanon)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
@@ -885,6 +895,8 @@ offScanDeviceFound(callback?: Callback&lt;ScannerDevice&gt;): void
 取消注册扫描仪设备发现事件回调。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[scan.off](#scanoff)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -922,6 +934,10 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 
 注册扫描仪设备同步事件回调。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.onScanDeviceSync](#scanonscandevicesync)。
+
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
 **系统能力：** SystemCapability.Print.PrintFramework
@@ -953,6 +969,10 @@ scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
 off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 
 取消注册扫描仪设备同步事件回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.offScanDeviceSync](#scanoffscandevicesync)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -991,6 +1011,8 @@ onScanDeviceSync(callback: Callback&lt;ScannerSyncDevice&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口**：该接口对应的ArkTS-Dyn接口是[scan.on](#scanon-1)。
+
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
 **系统能力：** SystemCapability.Print.PrintFramework
@@ -1025,6 +1047,8 @@ offScanDeviceSync(callback?: Callback&lt;ScannerSyncDevice&gt;): void
 取消注册扫描仪设备同步事件回调。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[scan.off](#scanoff-1)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
