@@ -62,7 +62,9 @@
 4. 释放资源：调用release()销毁实例，释放资源。
    ```ts
    // 释放资源（promise模式）。
-   avImageGenerator.release();
+   await avImageGenerator.release().catch((err: BusinessError) => {
+      console.error(`release failed, error code: ${err.code}, error message: ${err.message}`);
+   });
    ```
 
 ## 运行示例工程
