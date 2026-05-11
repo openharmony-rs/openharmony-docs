@@ -45,8 +45,8 @@ let enable: boolean = PiPWindow.isPiPEnabled();
 console.info('isPipEnabled:' + enable);
 ```
 
-## PiPWindow.create
 <a name="pipwindowcreate"></a>
+## PiPWindow.create
 
 create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 
@@ -180,8 +180,8 @@ struct Index {
 }
 ```
 
-## PiPWindow.create<sup>12+</sup>
 <a name="pipwindowcreate12"></a>
+## PiPWindow.create<sup>12+</sup>
 
 create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;PiPController&gt;
 
