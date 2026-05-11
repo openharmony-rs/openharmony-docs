@@ -30,8 +30,8 @@
    > - 也可以使用应用沙箱路径访问对应资源（必须确认资源文件可用），参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
    >
    > - 不同AVImageGenerator或者[AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
-   
-   <br>ArkTS-Dyn:
+
+	ArkTS-Dyn:
    ```ts
    import { common } from '@kit.AbilityKit';
    // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
@@ -39,7 +39,7 @@
    // 设置fdSrc，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
    avImageGenerator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
    ```
-	<br>ArkTS-Sta:
+	ArkTS-Sta:
     <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
 	```ts
     import common from '@ohos.app.ability.common';
@@ -61,7 +61,8 @@
    this.avImageGenerator!!.fdSrc = descriptor;
    ```
 3. 获取指定时间图像：调用fetchFrameByTime()，可以获取到一个PixelMap对象，该对象可用于图片显示。
-	<br>ArkTS-Dyn:
+
+	ArkTS-Dyn:
    ```ts
    import { image } from '@kit.ImageKit';
 
@@ -79,8 +80,8 @@
 
    // 获取缩略图（promise模式）。
    this.pixelMap = await avImageGenerator.fetchFrameByTime(timeUs, queryOption, param);
-   ```   
-   <br>ArkTS-Sta:
+   ```
+	ArkTS-Sta:
    <!-- @[fetch_frame](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    ```ts
    import { image } from '@kit.ImageKit';
