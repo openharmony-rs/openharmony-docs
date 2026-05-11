@@ -4789,6 +4789,20 @@ Allows an application to write the parental control website configuration.
 
 **Valid since**: 19
 
+## ohos.permission.MINORS_PROTECTION_UI
+
+Allows a system application to call ExtensionAbility in youth mode.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 Allows an application to call the accessibility service extension APIs to query and manipulate UI components.
