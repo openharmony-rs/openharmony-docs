@@ -1025,7 +1025,7 @@ Operation Not Support
 
 3. 完成提交后再修改。
 
-   - 在调用createAssetFromUri/getWriteCacheHandler/addResource后，需调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。。
    - 提交生效后才能对创建的资产发起新的修改请求。
 
 4. 确认相册类型。
