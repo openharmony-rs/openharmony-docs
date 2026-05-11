@@ -169,9 +169,9 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
 
-ArkTS-Dyn: getDefaultVoiceSlotId\(\): Promise\<number\>: void
+ArkTS-Dyn: ArkTS-Dyn: getDefaultVoiceSlotId(): Promise<number>
 
-ArkTS-Sta: getDefaultVoiceSlotId\(\): Promise\<number\>: void
+ArkTS-Sta: getDefaultVoiceSlotId(): Promise<number>
 
 
 获取默认语音业务的卡槽ID。使用Promise异步回调。
@@ -2090,9 +2090,9 @@ ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback\<SimLabel\>): void
 
 查看卡槽ID和SIM卡的对应关系：
 - 卡槽1对应SIM卡1或SIM卡2
-- 卡槽2对应SIM卡2或ESIMX
+- 卡槽2对应SIM卡2或eSIMX
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -2114,7 +2114,7 @@ ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback\<SimLabel\>): void
 | 8300001 | Invalid parameter value.                 |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |
-| 8300999  |Unknown error code.|
+| 8300999 | Unknown error code. |
 
 
 **示例：**
@@ -2130,9 +2130,9 @@ console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data
 
 ## sim.getSimLabel<sup>20+</sup>
 
-ArkTS-Dyn: getSimLabel(slotId: number): Promise\<SimLabel\>:void
+ArkTS-Dyn: getSimLabel(slotId: number): Promise<SimLabel>
 
-ArkTS-Sta: getSimLabel(slotId: number): Promise\<SimLabel\>:void
+ArkTS-Sta: getSimLabel(slotId: number): Promise<SimLabel>
 
 获取SIM卡的标签信息。使用Promise异步回调。
 
@@ -2164,7 +2164,7 @@ ArkTS-Sta: getSimLabel(slotId: number): Promise\<SimLabel\>:void
 | 8300001 | Invalid parameter value.                 |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |
-| 8300999  |Unknown error code.|
+| 8300999  | Unknown error code. |
 
 
 **示例：**
@@ -2176,13 +2176,13 @@ import { sim } from '@kit.TelephonyKit';
 sim.getSimLabel(0).then((data: sim.SimLabel) => {
 console.info(`getSimLabel success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
+console.error(`getSimLabel failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## sim.getSimLabelSync<sup>20+</sup>
 
-ArkTS-Dyn:getSimLabelSync(slotId: number): SimLabel:void
+ArkTS-Dyn:getSimLabelSync(slotId: number): SimLabel
 
 ArkTS-Sta: getSimLabelSync(slotId: int): SimLabel
 
@@ -2212,7 +2212,7 @@ ArkTS-Sta: getSimLabelSync(slotId: int): SimLabel
 import { sim } from '@kit.TelephonyKit';
 
 let simLabel: sim.SimLabel = sim.getSimLabelSync(0);
-console.info(`The sim state is:` + simLabel);
+console.info(`The sim label is: ${simLabel}`);
 ```
 ## SimState
 
