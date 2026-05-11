@@ -71,7 +71,7 @@
 
 | 名称          | 值   | 说明         |
 | ------------- | ---- | ------------ |
-| GAINMAP       | 1    | 增益图（Gain Map）。<br>用于更准确地生成HDR图像。<br>HDR合成通常需要同时使用SDR主图、增益图和[HDR元数据](./arkts-apis-image-PixelMap.md#getmetadata12)共同计算亮度映射关系。 |
+| GAINMAP       | 1    | 增益图（Gain Map）。<br>用于更准确地生成HDR图像。<br>HDR合成通常需要同时使用SDR主图、增益图和HDR元数据(可通过[getMetadata](./arkts-apis-image-PixelMap.md#getmetadata12)接口获取)共同计算亮度映射关系。 |
 | DEPTH_MAP     | 2    | 深度图（Depth Map）。<br>用于存储每个像素与摄像头之间的距离信息，提供场景的三维结构。<br>可用于3D重建、背景分离和场景理解等任务。     |
 | UNREFOCUS_MAP | 3    | 未重对焦原图（UnReFocus Map）。<br>用于保存拍摄时未重对焦的图片像素内容。<br>可用于人像虚化等后期处理，便于用户自由选择焦点区域。  |
 | LINEAR_MAP    | 4    | 线性图（Linear Map）。<br>以线性方式记录光照、颜色或其他视觉要素，为图像处理提供补充信息。<br>可用于视觉效果增强与色彩后期处理。  |
