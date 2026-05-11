@@ -2913,7 +2913,7 @@ zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ConsoleMe
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ControllerHandler.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-DataResubmissionHandler.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-e.md @zourongchun @kurli1 @HelloShuo
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-EventResult.md @zhou-ke13 @LongLie @HelloShuo
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-EventResult.md @yp99ustc @LongLie @HelloShuo @ghiker
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorResult.md @zourongchun @zhufenghao @HelloShuo
@@ -2967,7 +2967,7 @@ zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-webmessageport8h.md 
 zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/capi-web.md @aohui @zourongchun @yaomingliu @zhufenghao @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @zourongchun @kurli1 @HelloShuo
-zh-cn/application-dev/reference/apis-arkweb/Readme-CN.md @yp99ustc @kurli1 @HelloShuo
+zh-cn/application-dev/reference/apis-arkweb/Readme-CN.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-api-h.md @yhf @wkr321_ent @zengyawen
 zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-type-h.md @yhf @wkr321_ent @zengyawen
 zh-cn/application-dev/reference/apis-asset-store-kit/capi-assetapi.md @yhf @wkr321_ent @zengyawen
@@ -5366,7 +5366,7 @@ zh-cn/application-dev/ui/state-management/troubleshooting-state-manage.md @liwen
 zh-cn/application-dev/web/app-takeovers-web-media.md @zhangyao75477 @qiu-gongkai @HelloShuo
 zh-cn/application-dev/web/arkweb-ndk-jsbridge.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/arkweb-ndk-page-data-channel.md @aohui @yaomingliu @HelloShuo
-zh-cn/application-dev/web/Readme-CN.md @yp99ustc @kurli1 @HelloShuo
+zh-cn/application-dev/web/Readme-CN.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/web/web-adsblock.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-app-page-data-channel.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-clipboard.md @zourongchun @zhufenghao @HelloShuo
@@ -5386,11 +5386,11 @@ zh-cn/application-dev/web/web-download.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-drag.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/web/web-event-sequence.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/web/web-file-upload.md @zourongchun @zhufenghao @HelloShuo
-zh-cn/application-dev/web/web-fit-content.md @yp99ustc @LongLie @HelloShuo
+zh-cn/application-dev/web/web-fit-content.md @yp99ustc @LongLie @HelloShuo @ghiker
 zh-cn/application-dev/web/web-focus.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/web/web-geolocation-permission.md @zhang-yinglie @handyohos @HelloShuo
 zh-cn/application-dev/web/web-gesture.md @zourongchun @zhufenghao @HelloShuo
-zh-cn/application-dev/web/web-getpage-height.md @zhou-ke13 @LongLie @HelloShuo
+zh-cn/application-dev/web/web-getpage-height.md @yp99ustc @LongLie @HelloShuo @ghiker
 zh-cn/application-dev/web/web-in-app-frontend-page-function-invoking.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-in-page-app-function-invoking.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-incognito-mode.md @aohui @yaomingliu @HelloShuo
@@ -5406,19 +5406,19 @@ zh-cn/application-dev/web/web-picture-in-picture.md @gzweioh @qiu-gongkai @Hello
 zh-cn/application-dev/web/web-predictor.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-print.md @zhang-yinglie @handyohos @HelloShuo
 zh-cn/application-dev/web/web-redirection-and-browsing-history-mgmt.md @aohui @yaomingliu @HelloShuo
-zh-cn/application-dev/web/web-render-mode.md @zhou-ke13 @LongLie @HelloShuo
+zh-cn/application-dev/web/web-render-mode.md @yp99ustc @LongLie @HelloShuo @ghiker
 zh-cn/application-dev/web/web-resource-interception-request-mgmt.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-router-flash-optimization.md @wangxinbao01 @defeng20201 @HelloShuo
 zh-cn/application-dev/web/web-rtc.md @qq_42700029 @qiu-gongkai @HelloShuo
-zh-cn/application-dev/web/web-safe-area-insets.md @KeeGitee @LongLie @HelloShuo
-zh-cn/application-dev/web/web-same-layer.md @ding-xin88 @LongLie @HelloShuo
+zh-cn/application-dev/web/web-safe-area-insets.md @yp99ustc @LongLie @HelloShuo @ghiker
+zh-cn/application-dev/web/web-same-layer.md @yp99ustc @LongLie @HelloShuo @ghiker
 zh-cn/application-dev/web/web-scale-zoom.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/web/web-scheme-handler.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-secure-shield-mode.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/web/web-sensor.md @zhang-yinglie @handyohos @HelloShuo
 zh-cn/application-dev/web/web-set-back-forward-cache.md @aohui @yaomingliu @HelloShuo
-zh-cn/application-dev/web/web-set-dark-mode.md @KeeGitee @LongLie @HelloShuo
-zh-cn/application-dev/web/web-white-screen.md @yp99ustc @LongLie @HelloShuo
+zh-cn/application-dev/web/web-set-dark-mode.md @yp99ustc @LongLie @HelloShuo @ghiker
+zh-cn/application-dev/web/web-white-screen.md @yp99ustc @LongLie @HelloShuo @ghiker
 zh-cn/application-dev/web/web_component_process.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/web/web_full_screen.md @GrowUpEveryday @qiu-gongkai @HelloShuo
 zh-cn/application-dev/webgl/Readme-CN.md @samhu1989 @shi-yang-2012 @ge-yafang
