@@ -306,9 +306,9 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 
 > **说明：**
 >
-> 该接口返回的激活设备跟系统的[音频设备选择策略](../../reference/apis-audio-kit/arkts-apis-audio-e.md#AudioStreamDeviceChangeReason11)有关。
+> 该接口返回的活跃设备跟系统的[音频设备选择策略](../../reference/apis-audio-kit/arkts-apis-audio-e.md#AudioStreamDeviceChangeReason11)有关。
 
-``` TypeScript
+```typescript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit';
 
