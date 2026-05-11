@@ -55,7 +55,6 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isTransferringCaller | boolean | 否 | 是 | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。<br/>true：转发上一级的Caller信息；false：不转发上一级的Caller信息。<br/>默认值：false |
@@ -163,22 +162,7 @@ ArkTS-Sta: onTerminated(callback: Callback\<TerminationInfo\> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)\> \| undefined | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。<br/>ArkTS-Sta模式下可不传。 |
-
-## TerminationInfo
-
-用于表示被拉起的UIExtensionAbility正常退出时的返回结果。
-
-**起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| code | number | 否 | 否 | 被拉起UIExtensionAbility退出时返回的结果码，0表示正常退出，非0表示异常退出。具体结果码含义由被拉起的UIExtensionAbility定义。 |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\> \| undefined | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。<br/>ArkTS-Sta模式下可不传。 |
 
 ## SecurityUIExtensionProxy
 
