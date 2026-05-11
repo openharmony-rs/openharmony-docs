@@ -127,4 +127,4 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Interceptor_Result](#oh_interceptor_result) | 拦截器处理结果：- OH_CONTINUE：继续处理 - OH_ABORT：拦截处理。 |
+| [OH_Interceptor_Result](#oh_interceptor_result) | 拦截器处理结果。<br> - OH_CONTINUE：继续处理 <br>- OH_ABORT：拦截处理 |
