@@ -355,7 +355,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ``` TypeScript
-'use static'
 
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
