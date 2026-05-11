@@ -2008,9 +2008,9 @@ ArkTS-Sta: drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Arr
 | 参数名          | 类型                                     | 必填 | 说明                                              |
 | ------         | -------------------                      | ---- | -----------                                      |
 | glyphIds       | ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<int\>               | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。|
-| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m]~glyphIds[m+n])的部分。如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。若glyphIdOffset小于0则抛出错误码25900001。|
+| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。若glyphIdOffset小于0则抛出错误码25900001。|
 | positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。|
-| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m]~positions[m+n])的部分。如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。若positionOffset小于0则抛出错误码25900001。|
+| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。若positionOffset小于0则抛出错误码25900001。|
 | glyphCount     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容,并抛出错误码25900001。如果glyphCount与glyphIdOffset或者positionOffset和大于int32_t上限，则该和按上限处理。|
 | font           | [Font](arkts-apis-graphics-drawing-Font.md)                     | 是   | 用于绘图的字体。|
 
