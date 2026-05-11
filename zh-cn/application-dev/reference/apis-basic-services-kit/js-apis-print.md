@@ -1911,16 +1911,16 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示默认单双面模式。 |
-| defaultPrintQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示默认打印质量。 |
-| defaultMediaType | string | 否 | 是 | 表示默认纸张类型。 |
-| defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。 |
-| defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。 |
-| borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。 |
+| defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示默认单双面模式。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| defaultPrintQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示默认打印质量。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| defaultMediaType | string | 否 | 是 | 表示默认纸张类型。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 | defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 | defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 | defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
-| options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。 |
+| options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 
 ## PrinterEvent<sup>18+</sup>
 
