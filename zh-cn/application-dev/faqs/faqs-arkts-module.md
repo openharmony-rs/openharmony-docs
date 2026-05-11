@@ -36,6 +36,7 @@
 (1) 打开应用工程级编译构建文件: entry > src/main/module.json5
 
 ([OpenHarmony工程管理介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V3/ohos-project-overview-0000001218440650-V3))
+
 module.json5部分参数示例如下:
 ``` json
 {
@@ -147,10 +148,12 @@ load libentry.so failed.
 开关打开后复现报错就是第一现场报错，解决即可。如果报错仍是xxx is not initialized, 就是文件存在循环依赖。
 
 ### 循环依赖原理
-1. 模块加载顺序：  
+1. 模块加载顺序： 
+
 根据ECMA规范，模块的执行顺序是深度遍历加载。  
 假设应用存在加载链路A->B->C，那么ArkTs模块化会先执行C文件，再执行B文件，最后执行A文件，执行顺序为C->B->A。  
 2. 循环依赖：  
+
 如果应用存在加载链路A->B->A，根据深度遍历执行顺序，执行流程会先标记A的状态为加载中，然后去加载B，标记B的状态为加载中，然后去加载A，由于A文件已经标记加载中，根据规范定义，识别到加载中模块会直接返回，就会先执行B文件。  
 **为什么有的循环依赖没有影响，有的就会产生crash?**  
 由上面的叙述可知，B文件虽然依赖A文件变量，但是B文件先执行，如果B文件导入的A文件变量没有在全局或者类静态中被使用，B文件将正常执行。如果B文件在全局或者实例化某个类等其他方法，导致文件执行时就会用到A的变量，就会产生xxx is not initialized的crash，即循环依赖导致变量未被初始化。
