@@ -1,8 +1,8 @@
 # 通知错误码
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -214,7 +214,7 @@ Failed to read the template configuration.
 请检查系统中模板配置文件是否存在，配置文件路径：/system/etc/notification_template/external.json。
 <!--DelEnd-->
 
-## 1600012 内存空间不够
+## 1600012 内存空间不足
 
 **错误信息**
 
@@ -222,9 +222,11 @@ No memory space.
 
 **错误描述**
 
-内存申请出现错误，方法将返回该错误码。
+内存申请可能因内存空间不足出现错误，方法将返回该错误码。
 
 **可能原因**
+
+内存空间不足。
 
 内存申请出现错误。
 
@@ -517,4 +519,24 @@ The "Awareness & suggestions" switch of the location-based service is off.
 **处理步骤**
 
 打开如下位置开关，设置->隐私和安全->位置->最底部“系统服务”->感知与提醒。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600028 当前通知不支持该接口
+
+**错误信息**
+
+This notification is not supported.
+
+**错误描述**
+
+当前通知不支持该接口。
+
+**可能原因**
+
+设置稍后提醒时，该通知类型为三方实况、系统实况或者其他无法删除的类型。
+
+**处理步骤**
+
+设置稍后提醒时，检查该通知类型是否为三方实况、系统实况或者其他无法删除的类型。
 <!--DelEnd-->

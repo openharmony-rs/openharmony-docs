@@ -1,7 +1,7 @@
 # @ohos.multimedia.avsession (媒体会话管理)(系统接口)
 <!--Kit: AVSession Kit-->
-<!--Subsystem:Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -58,8 +58,8 @@ getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDesc
 **示例：** 
 
 ```ts 
-import { BusinessError } from '@kit.BasicServicesKit'; 
-import { avSession } from '@kit.AVSessionKit'; 
+import { avSession } from '@kit.AVSessionKit';
+
 @Entry 
 @Component 
 struct Index { 
@@ -69,17 +69,13 @@ struct Index {
     Column() { 
         Text(this.message) 
           .onClick(()=>{ 
-            avSession.getAllSessionDescriptors((err: BusinessError, descriptors: avSession.AVSessionDescriptor[]) => { 
-              if (err) { 
-                console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`); 
-              } else { 
+            avSession.getAllSessionDescriptors((descriptors: avSession.AVSessionDescriptor[]) => { 
                 console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`); 
                 if (descriptors.length > 0 ) { 
                     console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`); 
                     console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`); 
                     console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`); 
                 } 
-              } 
             }); 
           }) 
       } 
@@ -127,8 +123,6 @@ getSessionDescriptors(category: SessionCategory): Promise\<Array\<Readonly\<AVSe
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((descriptors: avSession.AVSessionDescriptor[]) => {
   console.info(`Succeeded in getting session descriptors, length: ${descriptors.length}`);
   if (descriptors.length > 0) {
@@ -136,8 +130,6 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
     console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
     console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`GetSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -179,8 +171,6 @@ getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVS
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
   console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`);
   if (descriptors.length > 0 && descriptors[0]) {
@@ -190,8 +180,6 @@ avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessi
     console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`);
     console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -228,21 +216,15 @@ getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avSession.getHistoricalSessionDescriptors(1, (err: BusinessError, descriptors: avSession.AVSessionDescriptor[]) => {
-  if (err) {
-    console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`);
-    if (descriptors.length > 0 ) {
-      console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`);
-      console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`);
-      console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
-      console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`);
-      console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`);
-    }
-  }
+avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDescriptor[]) => { 
+    console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`); 
+    if (descriptors.length > 0 ) { 
+      console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`); 
+      console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`); 
+      console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`); 
+      console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`); 
+      console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`); 
+    } 
 });
 ```
 
@@ -283,12 +265,8 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {
   console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
-}).catch((err: BusinessError) => {
-  console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -326,14 +304,8 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callback: AsyncCa
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avSession.getHistoricalAVQueueInfos(3, 5, (err: BusinessError, avQueueInfos: avSession.AVQueueInfo[]) => {
-  if (err) {
-    console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
-  }
+avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]) => { 
+    console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`); 
 });
 ```
 
@@ -371,8 +343,8 @@ createController(sessionId: string, callback: AsyncCallback\<AVSessionController
 **示例：** 
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -385,16 +357,10 @@ struct Index {
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
               console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
               if (descriptors.length > 0 ) {
-                avSession.createController(descriptors[0]?.sessionId, (err: BusinessError, avcontroller: avSession.AVSessionController) => {
-                  if (err) {
-                    console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
-                  } else {
-                    console.info('Succeeded in creating controller.');
-                  }
+avSession.createController(descriptors[0]?.sessionId, (avcontroller: avSession.AVSessionController) => { 
+                    console.info('Succeeded in creating controller.'); 
                 });
               }
-            }).catch((err: BusinessError) => {
-              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -448,7 +414,6 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
 let audioRoutingManager = audioManager.getRoutingManager();
@@ -456,15 +421,11 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
-}).catch((err: BusinessError) => {
-  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 
 if (audioDevices !== undefined) {
   avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
     console.info('Succeeded in creating controller.');
-  }).catch((err: BusinessError) => {
-    console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -508,7 +469,6 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
 let audioRoutingManager = audioManager.getRoutingManager();
@@ -517,16 +477,10 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
   if (audioDevices !== undefined) {
-    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError) => {
-      if (err) {
-        console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
+    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, () => {
         console.info('Succeeded in casting audio.');
-      }
     });
   }
-}).catch((err: BusinessError) => {
-  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -570,61 +524,9 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('Succeeded in starting AV playback.');
-}).catch((err: BusinessError) => {
-  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## avSession.startAVPlayback<sup>22+</sup>
-
-startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise\<void>
-
-启动媒体播放应用程序。使用Promise异步回调。
-
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Manager
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名        | 类型                                                   | 必填 | 说明         |
-| ------------ |------------------------------------------------------|----|------------|
-| bundleName   | string                                               | 是  | 指定启动的应用包名。 |
-| assetId      | string                                               | 是  | 指定启动的媒体ID。 |
-| info      | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) | 是  | 指定相关的命令信息。 |
-
-**返回值：**
-
-| 类型           | 说明                          |
-| -------------- | ----------------------------- |
-| Promise\<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 201 | permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
-| 6600101  | Session service exception. |
-
-**示例：**
-
-```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
-  console.info('Succeeded in starting AV playback.');
-}).catch((err: BusinessError) => {
-  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -666,13 +568,10 @@ getDistributedSessionController(distributedSessionType: DistributedSessionType):
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {
   console.info(`Succeeded in getting distributed session controller, length: ${sessionControllers.length}`);
-}).catch((err: BusinessError) => {
-  console.error(`getDistributedSessionController BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -723,6 +622,7 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
  **示例：** 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -777,6 +677,7 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -828,6 +729,7 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -881,6 +783,7 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -932,6 +835,7 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -983,6 +887,7 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -1180,17 +1085,12 @@ sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 ```ts
 import { KeyEvent } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
 let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
-avSession.sendSystemAVKeyEvent(event, (err: BusinessError) => {
-  if (err) {
-    console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+avSession.sendSystemAVKeyEvent(event, () => {
     console.info('Succeeded in sending system AV key event.');
-  }
 });
 ```
 
@@ -1235,15 +1135,12 @@ sendSystemAVKeyEvent(event: KeyEvent): Promise\<void>
 
 ```ts
 import { KeyEvent } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
 let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event).then(() => {
   console.info('Succeeded in sending system AV key event.');
-}).catch((err: BusinessError) => {
-  console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1298,12 +1195,8 @@ let avcommand: avSession.AVControlCommand = {command:cmd};
 // let avcommand = {command:cmd, parameter:avSession.LoopMode.LOOP_MODE_SINGLE};
 // let cmd : avSession.AVControlCommandType = 'toggleFavorite';
 // let avcommand = {command:cmd, parameter:"false"};
-avSession.sendSystemControlCommand(avcommand, (err) => {
-  if (err) {
-    console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+avSession.sendSystemControlCommand(avcommand, () => {
     console.info('Succeeded in sending system control command.');
-  }
 });
 ```
 
@@ -1347,7 +1240,6 @@ sendSystemControlCommand(command: AVControlCommand): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'pause';
@@ -1367,8 +1259,6 @@ let avcommand: avSession.AVControlCommand = {command:cmd};
 // let avcommand = {command:cmd, parameter:"false"};
 avSession.sendSystemControlCommand(avcommand).then(() => {
   console.info('Succeeded in sending system control command.');
-}).catch((err: BusinessError) => {
-  console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1409,14 +1299,9 @@ startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.startCastDeviceDiscovery((err: BusinessError) => {
-  if (err) {
-    console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+avSession.startCastDeviceDiscovery(() => {
     console.info('Succeeded in starting cast device discovery.');
-  }
 });
 ```
 
@@ -1463,15 +1348,10 @@ startCastDeviceDiscovery(filter: number, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let filter = 2;
-avSession.startCastDeviceDiscovery(filter, (err: BusinessError) => {
-  if (err) {
-    console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+avSession.startCastDeviceDiscovery(filter, () => {
     console.info('Succeeded in starting cast device discovery.');
-  }
 });
 ```
 
@@ -1510,14 +1390,11 @@ startCastDeviceDiscovery(filter?: number, drmSchemes?: Array\<string>): Promise\
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let filter = 2;
 let drmSchemes = ['3d5e6d35-9b9a-41e8-b843-dd3c6e72c42c'];
 avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
   console.info('Succeeded in starting cast device discovery.');
-}).catch((err: BusinessError) => {
-  console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1548,14 +1425,9 @@ stopCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.stopCastDeviceDiscovery((err: BusinessError) => {
-  if (err) {
-    console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+avSession.stopCastDeviceDiscovery(() => {
     console.info('Succeeded in stopping cast device discovery.');
-  }
 });
 ```
 
@@ -1586,12 +1458,9 @@ stopCastDeviceDiscovery(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.stopCastDeviceDiscovery().then(() => {
   console.info('Succeeded in stopping cast device discovery.');
-}).catch((err: BusinessError) => {
-  console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1624,14 +1493,9 @@ setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.setDiscoverable(true, (err: BusinessError) => {
-  if (err) {
-    console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+avSession.setDiscoverable(true, () => {
     console.info('Succeeded in setting discoverable.');
-  }
 });
 ```
 
@@ -1669,12 +1533,9 @@ setDiscoverable(enable: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.setDiscoverable(true).then(() => {
   console.info('Succeeded in setting discoverable.');
-}).catch((err: BusinessError) => {
-  console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1852,7 +1713,6 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1869,14 +1729,10 @@ struct Index {
           let context = this.getUIContext().getHostContext() as Context;
           let sessionId: string = ""; // 供后续函数入参使用。
 
-          let aVCastController: avSession.AVCastController;
-          avSession.getAVCastController(sessionId, (err: BusinessError, avcontroller: avSession.AVCastController) => {
-            if (err) {
-              console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              aVCastController = avcontroller;
+          let avCastController: avSession.AVCastController;
+          avSession.getAVCastController(sessionId, (avcontroller: avSession.AVCastController) => {
+              avCastController = avcontroller;
               console.info('Succeeded in getting AV cast controller.');
-            }
           });
         })
     }
@@ -1927,7 +1783,6 @@ getAVCastController(sessionId: string): Promise\<AVCastController>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1944,12 +1799,10 @@ struct Index {
           let context = this.getUIContext().getHostContext() as Context;
           let sessionId: string = ""; // 供后续函数入参使用。
 
-          let aVCastController: avSession.AVCastController;
+          let avCastController: avSession.AVCastController;
           avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
-            aVCastController = avcontroller;
+            avCastController = avcontroller;
             console.info('Succeeded in getting AV cast controller.');
-          }).catch((err: BusinessError) => {
-            console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
           });
         })
     }
@@ -1994,7 +1847,6 @@ startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCal
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
@@ -2004,12 +1856,8 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   castDevice = device;
   console.info(`on deviceAvailable  : ${device} `);
   if (castDevice !== undefined) {
-    avSession.startCasting(myToken, castDevice, (err: BusinessError) => {
-      if (err) {
-        console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
+    avSession.startCasting(myToken, castDevice, () => {
         console.info('Succeeded in starting casting.');
-      }
     });
   }
 });
@@ -2056,7 +1904,6 @@ startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
@@ -2068,8 +1915,6 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   if (castDevice !== undefined) {
     avSession.startCasting(myToken, castDevice).then(() => {
       console.info('Succeeded in starting casting.');
-    }).catch((err: BusinessError) => {
-      console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -2105,17 +1950,12 @@ stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
-avSession.stopCasting(myToken, (err: BusinessError) => {
-  if (err) {
-    console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+avSession.stopCasting(myToken, () => {
     console.info('Succeeded in stopping casting.');
-  }
 });
 ```
 
@@ -2154,15 +1994,12 @@ stopCasting(session: SessionToken): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
 avSession.stopCasting(myToken).then(() => {
   console.info('Succeeded in stopping casting.');
-}).catch((err: BusinessError) => {
-  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2203,15 +2040,12 @@ startDeviceLogging(url: string, maxSize?: number): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
 let file = await fileIo.open("filePath");
 let url = file.fd.toString();
 avSession.startDeviceLogging(url, 2048).then(() => {
   console.info('Succeeded in starting device logging.');
-}).catch((err: BusinessError) => {
-  console.error(`startDeviceLogging BusinessError: code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -2244,12 +2078,8 @@ stopDeviceLogging(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.stopDeviceLogging().then(() => {
   console.info('Succeeded in stopping casting.');
-}).catch((err: BusinessError) => {
-  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2449,19 +2279,16 @@ setDisplaySurface(surfaceId: string): Promise\<void>
 
 ```ts
 import { media } from '@kit.MediaKit';
+
 let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
-  avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
-    if (err == null) {
-      console.info('Succeeded in getting input surface.');
-      surfaceID = surfaceId;
-      if (surfaceID) {
-        aVCastController.setDisplaySurface(surfaceID).then(() => {
-          console.info('Succeeded in setting display surface.');
-        });
-      }
-    } else {
-      console.error('getInputSurface failed and error is ' + err.message);
+  avRecorder.getInputSurface((surfaceId: string) => {
+    console.info('Succeeded in getting input surface.');
+    surfaceID = surfaceId;
+    if (surfaceID) {
+      avCastController.setDisplaySurface(surfaceID).then(() => {
+        console.info('Succeeded in setting display surface.');
+      });
     }
   });
 })
@@ -2497,25 +2324,17 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
+
 let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
-  avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
-    if (err == null) {
-      console.info('Succeeded in getting input surface.');
-      surfaceID = surfaceId;
-      if (surfaceID) {
-        aVCastController.setDisplaySurface(surfaceID, (err: BusinessError) => {
-          if (err) {
-            console.error(`setDisplaySurface BusinessError: code: ${err.code}, message: ${err.message}`);
-          } else {
-            console.info('Succeeded in setting display surface.');
-          }
-        });
-      }
-    } else {
-      console.error('getInputSurface failed and error is ' + err.message);
+  avRecorder.getInputSurface((surfaceId: string) => {
+    console.info('Succeeded in getting input surface.');
+    surfaceID = surfaceId;
+    if (surfaceID) {
+      avCastController.setDisplaySurface(surfaceID, () => {
+          console.info('Succeeded in setting display surface.');
+      });
     }
   });
 })
@@ -2550,7 +2369,7 @@ on(type: 'videoSizeChange', callback: (width:number, height:number) => void): vo
 **示例：**
 
 ```ts
-aVCastController.on('videoSizeChange', (width: number, height: number) => {
+avCastController.on('videoSizeChange', (width: number, height: number) => {
   console.info(`width ：${width} `);
   console.info(`height：${height} `);
 });
@@ -2584,7 +2403,7 @@ off(type: 'videoSizeChange'): void
 **示例：**
 
 ```ts
-aVCastController.off('videoSizeChange');
+avCastController.off('videoSizeChange');
 ```
 
 ## avSession.onActiveSessionChanged<sup>23+</sup>

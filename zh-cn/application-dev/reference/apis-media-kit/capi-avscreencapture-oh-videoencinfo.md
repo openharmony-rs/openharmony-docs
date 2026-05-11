@@ -27,7 +27,7 @@ typedef struct OH_VideoEncInfo {...} OH_VideoEncInfo
 | 名称 | 描述 |
 | -- | -- |
 | [OH_VideoCodecFormat](capi-native-avscreen-capture-base-h.md#oh_videocodecformat) videoCodec | 视频采集编码格式。 |
-| int32_t videoBitrate | 视频采集比特率。 |
-| int32_t videoFrameRate | 视频采集帧率。 |
+| int32_t videoBitrate | 视频采集比特率。单位为比特每秒（bit/s）。 |
+| int32_t videoFrameRate | 视频采集帧率。单位为帧率（FPS）。 |
 
 

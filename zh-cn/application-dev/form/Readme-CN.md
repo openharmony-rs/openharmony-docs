@@ -17,7 +17,6 @@
       - [ArkTS卡片界面开发概述](arkts-ui-widget-page-overview.md)
       - [ArkTS卡片为组件添加动效](arkts-ui-widget-page-animation.md)
       - [ArkTS卡片使用画布组件绘制自定义图形](arkts-ui-widget-page-custom-drawing.md)
-      - [ArkTS卡片界面适配深浅色模式](arkts-ui-widget-dark-light-color-adapt.md)
       - [ArkTS卡片使用自定义字体](arkts-ui-widget-load-custom-font.md)
     - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
       - [ArkTS卡片页面刷新概述](arkts-ui-widget-interaction-overview.md)
@@ -41,6 +40,7 @@
       - [应用内拉起卡片管理加桌](arkts-ui-widget-open-formmanager.md)
     <!--RP1--><!--RP1End-->
     <!--RP2--><!--RP2End-->
+    <!--RP4--><!--RP4End-->
   <!--Del--> 
   - [ArkTS卡片使用方开发指导（仅对系统应用开放）](widget-host-development-guide-sys.md)
   <!--DelEnd-->

@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -166,11 +166,11 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | 渲染进程异常退出。         |
+| ProcessAbnormalTermination | 0 | 渲染进程异常退出，可能原因包括：渲染进程启动超时、达到进程数量上限导致系统回收旧渲染进程、多个页签同时关闭等。     |
 | ProcessWasKilled           | 1 | 收到SIGKILL，或被手动终止。 |
 | ProcessCrashed             | 2 | 渲染进程崩溃退出，如段错误。    |
 | ProcessOom                 | 3 | 程序内存不足。           |
-| ProcessExitUnknown         | 4 | 其他原因。             |
+| ProcessExitUnknown         | 4 | 其他原因，比如渲染进程孵化失败。        |
 
 ## SslError<sup>9+</sup>
 
@@ -606,3 +606,20 @@ AI会话操作的结果状态。
 | SUCCESS | 0 | 操作执行成功。  |
 | FAILURE | 1 | 操作执行失败。  |
 | RUNNING | 2 | 操作正在执行中。 |
+
+## WebKeyboardAppearanceMode
+
+WebView中输入法沉浸模式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------- | ----  | ------------------- |
+| NONE_IMMERSIVE  | 0 |默认外观模式，不采用沉浸式风格。 |
+| IMMERSIVE       | 1 |沉浸式模式，跟随系统。|
+| LIGHT_IMMERSIVE | 2 |浅色沉浸式风格。                |
+| DARK_IMMERSIVE  | 3 |深色沉浸式风格。                |

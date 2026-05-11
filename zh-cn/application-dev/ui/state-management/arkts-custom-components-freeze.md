@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -93,7 +93,7 @@ struct PageOne {
 ```
 
 页面2：
-<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) -->
+<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -116,6 +116,7 @@ struct PageTwo {
         .onClick(() => {
           this.getUIContext().getRouter().back();
         })
+      // 点击Button修改storageLink，观察页面1隐藏时会不会触发first回调
       Button('second page storageLink + 2').fontSize(30)
         .onClick(() => {
           this.storageLink += 2;
@@ -145,7 +146,7 @@ struct PageTwo {
 图示如下：
 
 ![freezeWithTab](./figures/freezewithTabs.png)
-<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
+<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -165,6 +166,7 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
+        // 点击Button修改message，触发可见TabContent的onMessageUpdated回调
         Button('change message').onClick(() => {
           this.message++;
         })
@@ -596,7 +598,7 @@ struct NavigationContentMsgStack {
 **组件复用、if和组件冻结混用场景**
 
 下面是组件复用、if组件和组件冻结混合使用场景的例子，if组件绑定的状态变量变化成false时，触发子组件`ChildComponent`的下树，由于`ChildComponent`被标记了组件复用，所以不会被销毁，而是进入复用池，这个时候如果同时开启了组件冻结，则可以使在复用池里不再刷新。
-<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) -->
+<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -618,6 +620,7 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
+    // 输出recycled提示，确认组件进入复用池
     hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
 

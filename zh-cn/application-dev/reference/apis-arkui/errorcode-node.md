@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangchensu1-->
-<!--Designer: @xiang-shouxing-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -175,7 +175,7 @@ BuilderNode中，状态管理V2暂不支持组件复用。
 
 **处理步骤**
 
-使用状态管理V2时，不在BuilderNode节点上使用组件复用相关功能。
+使用状态管理V2时，不在BuilderNode节点上使用组件复用相关功能。从API版本26.0.0开始，BuilderNode中的自定义组件支持V2组件复用。
 
 
 ## 106103 对应的操作不支持ArkTS创建的节点

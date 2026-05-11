@@ -1008,6 +1008,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     private static readonly CREATE_MENU_ITEM_ID_1: string = 'create1';
     private static readonly CREATE_MENU_ITEM_ID_2: string = 'create2';
     private static readonly PREPARE_MENU_ITEM_ID: string = 'prepare1';
+    private controller: TextController = new TextController();
     @State private text: string = 'Text editMenuOptions';
     @State private endIndex: number = 0;
     @State blockCallbackText: string = '';
@@ -1062,29 +1063,31 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     private onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange): boolean => {
       const menuItemId: TextMenuItemId = menuItem.id;
   
-      // 处理自定义菜单项
+      // 处理自定义菜单项，return false，点击自定义菜单项后菜单会关闭
       if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2))) {
         let msg = '拦截 id: create2 start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
-        return true;
+        this.blockCallbackText = msg;
+        return false;
       }
-  
+      // 处理自定义菜单项，return true，点击自定义菜单项后菜单不会关闭
       if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
         let msg = '拦截 id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
-        this.blockCallbackText = msg
+        this.blockCallbackText = msg;
         return true;
       }
   
-      // 处理系统菜单项
+      // 处理系统菜单项，return true，拦截系统默认逻辑，此时点击复制菜单不会关闭
       if (menuItemId.equals(TextMenuItemId.COPY)) {
         let msg = '拦截 COPY start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
+        this.blockCallbackText = msg;
+        // 可以通过文本控制器关闭菜单，手柄也会消失，仅保持选中区域，点击可消失
+        this.controller.closeSelectionMenu();
         return true;
       }
-  
+      // 处理系统菜单项，return false，不拦截系统默认逻辑，自定义逻辑亦会被执行
       if (menuItemId.equals(TextMenuItemId.SELECT_ALL)) {
         let msg = '不拦截 SELECT_ALL start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
+        this.blockCallbackText = msg;
         return false;
       }
   
@@ -1114,7 +1117,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     build() {
       NavDestination() {
         Column() {
-          Text(this.text)
+          Text(this.text, { controller: this.controller })
             .fontSize(20)
             .copyOption(CopyOptions.LocalDevice)
             .editMenuOptions(this.editMenuOptions)
@@ -1133,7 +1136,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
 
 ### 屏蔽系统服务类菜单
 
-- 从API version 20开始，支持通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)屏蔽文本选择菜单内所有系统服务菜单项。
+- 从API version 20开始，支持通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)屏蔽文本选择菜单内所有系统服务菜单项。更多详见[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
 
   <!-- @[Service_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets) -->
   
@@ -1183,7 +1186,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
 
   ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
 
-- 从API version 20开始，支持通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)屏蔽文本选择菜单内指定的系统服务菜单项。
+- 从API version 20开始，支持通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)屏蔽文本选择菜单内指定的系统服务菜单项。更多详见[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
 
   <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
   

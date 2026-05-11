@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行debug操作
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -52,10 +52,10 @@ static int32_t TestJSVM()
     }
     // 创建JSVM环境
     CHECK(OH_JSVM_CreateVM(nullptr, &vm));
+    CHECK(OH_JSVM_OpenVMScope(vm, &vmScope));
     CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
     // 打开JSVM_SCOPE_CHECK校验选项
     CHECK(OH_JSVM_SetDebugOption(env, JSVM_SCOPE_CHECK, true));
-    CHECK(OH_JSVM_OpenVMScope(vm, &vmScope));
     CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
     // 打开HandleScope
     CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
@@ -80,10 +80,10 @@ static int32_t TestJSVM()
     // 关闭HandleScope
     CHECK_RET(OH_JSVM_CloseHandleScope(env, handleScope));
     CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
-    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     // 关闭JSVM_SCOPE_CHECK校验选项
     CHECK(OH_JSVM_SetDebugOption(env, JSVM_SCOPE_CHECK, false));
     CHECK(OH_JSVM_DestroyEnv(env));
+    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     CHECK(OH_JSVM_DestroyVM(vm));
     return 0;
 }
@@ -92,7 +92,7 @@ static int32_t TestJSVM()
 
 hilog中有以下结果输出：
 
-```
+```txt
 ADD_VAL_TO_SCOPE_CHECK in function: NewString
 CHECK_SCOPE in function: OH_JSVM_CompileScript
 ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_GetCbInfo
@@ -126,10 +126,10 @@ static int32_t TestJSVM()
     }
     // 创建JSVM环境
     CHECK(OH_JSVM_CreateVM(nullptr, &vm));
+    CHECK(OH_JSVM_OpenVMScope(vm, &vmScope));
     CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
     // 打开JSVM_SCOPE_CHECK校验选项
     CHECK(OH_JSVM_SetDebugOption(env, JSVM_SCOPE_CHECK, true));
-    CHECK(OH_JSVM_OpenVMScope(vm, &vmScope));
     CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
     // 打开HandleScope
     CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
@@ -149,10 +149,10 @@ static int32_t TestJSVM()
     // OH_JSVM_IsBoolean接口在错误的HandleScope调用JSVM_Value类型变量result
     JSVM_Status status = OH_JSVM_IsBoolean(env, result, &boolResult);
     CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
-    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     // 关闭JSVM_SCOPE_CHECK校验选项
     CHECK(OH_JSVM_SetDebugOption(env, JSVM_SCOPE_CHECK, false));
     CHECK(OH_JSVM_DestroyEnv(env));
+    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     CHECK(OH_JSVM_DestroyVM(vm));
     return 0;
 }
@@ -160,7 +160,7 @@ static int32_t TestJSVM()
 **执行结果**
 
 程序崩溃，有cppcrash日志生成，在hilog中可以检索到类似以下的信息：
-```
+```txt
 JSVM Fatal Error Position : "../../../../../../../arkcompiler/jsvm/src/js_native_api_v8.cpp":4537
 JSVM Fatal Error Message : "Run in wrong HandleScope"
 ```

@@ -126,7 +126,7 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
     onResult (result) {
@@ -143,20 +143,20 @@ try {
                       console.info(`retAuthToken key:${key}`);
                   })
               }).catch ((error: BusinessError) => {
-                  console.error(`verify authToken error. Code is ${error?.code}, message is ${error?.message}`);
+                  console.error(`verify authToken failed. Code is ${error?.code}, message is ${error?.message}`);
               })
         } catch (error) {
           const err: BusinessError = error as BusinessError;
-          console.error(`verify authToken error. Code is ${err?.code}, message is ${err?.message}`);
+          console.error(`verify authToken failed. Code is ${err?.code}, message is ${err?.message}`);
         }
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   // 启动认证。
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

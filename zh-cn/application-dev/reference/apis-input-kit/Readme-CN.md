@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS API<!--input-arkts-->
   - [@ohos.multimodalInput.inputDevice (输入设备)](js-apis-inputdevice.md)
@@ -19,6 +19,7 @@
   - [@ohos.multimodalInput.touchEvent (触屏输入事件)](js-apis-touchevent.md)
   - [@ohos.multimodalInput.infraredEmitter (红外管理)](js-apis-infraredemitter.md)
   - [@ohos.multimodalInput.inputConsumer (全局快捷键)](js-apis-inputconsumer.md)
+  - [@ohos.multimodalInput.inputEventClient (输入事件注入)](js-apis-inputeventclient.md)
   <!--Del-->
   - [@ohos.multimodalInput.pointer (鼠标光标)(系统接口)](js-apis-pointer-sys.md)
   - [@ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)](js-apis-shortKey-sys.md)
@@ -63,3 +64,4 @@
   - [输入设备错误码](errorcode-inputdevice.md)
   - [鼠标光标错误码](errorcode-pointer.md)
   - [红外管理错误码](errorcode-infraredemitter.md)
+  - [输入事件注入错误码](errorcode-inputeventclient.md)

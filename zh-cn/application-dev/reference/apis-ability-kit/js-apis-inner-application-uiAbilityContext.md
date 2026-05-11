@@ -5,7 +5,7 @@
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIAbilityContext是[UIAbility](./js-apis-app-ability-uiAbility.md)组件的上下文，继承自[Context](./js-apis-inner-application-context.md)。各类Context之间的关联与差异详见[应用上下文Context](../../application-models/application-context-stage.md)。
 
@@ -962,6 +962,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -2175,7 +2177,7 @@ struct Index {
             context.moveAbilityToBackground().then(() => {
               console.info(`moveAbilityToBackground success.`);
             }).catch((err: BusinessError) => {
-              console.info(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
+              console.error(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
             });
           });
       }
@@ -2424,7 +2426,7 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 // 调用方
 // index.ets
 import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -2533,9 +2535,15 @@ setRestoreEnabled(enabled: boolean): void
 
 设置UIAbility是否启用备份恢复。
 
+> **说明：**
+>
+> 如果应用设置[removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities标签)为true，备份恢复功能不生效。
+
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：UIAbility备份恢复功能仅在Phone、Tablet、Wearable和TV设备中生效，PC/2in1设备不支持备份恢复功能，Tablet设备开启自由多窗后备份恢复功能也不生效。
 
 **参数：**
 
@@ -2747,12 +2755,12 @@ struct UIServiceExtensionAbility {
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+        console.error(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      console.error(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
     };
   }
 
@@ -2859,12 +2867,12 @@ struct UIServiceExtensionAbility {
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+        console.error(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      console.error(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
     }
   }
 }

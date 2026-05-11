@@ -1,8 +1,8 @@
 # @ohos.arkui.uiExtension (uiExtension)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @chbchb12-->
+<!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -10,13 +10,13 @@
 
 > **说明**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本文仅介绍当前模块的系统接口，其他公开接口参见[@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)。
+> - 本文仅介绍当前模块的系统接口，其他公开接口参见[@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)。
 
 ## 导入模块
 
-```
+```ts
 import { uiExtension } from '@kit.ArkUI';
 ```
 
@@ -66,7 +66,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 **示例**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -81,6 +81,7 @@ export default class EntryAbility extends UIExtensionAbility {
       console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
     })
   }
+  
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 取消隐藏非安全窗口
@@ -129,7 +130,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 **示例** 
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

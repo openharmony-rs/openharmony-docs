@@ -36,7 +36,7 @@ x(): number
 
 | 类型     | 说明                                 |
 | ------ |------------------------------------|
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp（虚拟像素）。 |
+| number | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## y<sup>9+</sup>
 
@@ -50,13 +50,13 @@ y(): number
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp（虚拟像素）。 |
+| number | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## getLinkUrl<sup>9+</sup>
 
 getLinkUrl(): string
 
-获取经过安全检查的url链接地址。
+获取经过安全检查的URL链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,13 +64,13 @@ getLinkUrl(): string
 
 | 类型     | 说明                        |
 | ------ | ------------------------- |
-| string | 如果长按位置是链接，返回经过安全检查的url链接。 |
+| string | 如果长按位置是链接，返回经过安全检查的URL链接。 |
 
 ## getUnfilteredLinkUrl<sup>9+</sup>
 
 getUnfilteredLinkUrl(): string
 
-获取原始url链接地址。
+获取原始URL链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,7 +78,7 @@ getUnfilteredLinkUrl(): string
 
 | 类型     | 说明                    |
 | ------ | --------------------- |
-| string | 如果长按位置是链接，返回原始的url链接。 |
+| string | 如果长按位置是链接，返回原始的URL链接。 |
 
 ## getSourceUrl<sup>9+</sup>
 
@@ -92,7 +92,7 @@ getSourceUrl(): string
 
 | 类型     | 说明                       |
 | ------ | ------------------------ |
-| string | 如果选中的元素有src属性，返回src的url。返回url的最大上限为2M，超出上限时返回空字符串。 |
+| string | 如果选中的元素有src属性，返回src的URL。返回URL的最大上限为2MB，超出上限时返回空字符串。 |
 
 ## existsImageContents<sup>9+</sup>
 
@@ -168,7 +168,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 isEditable(): boolean
 
-获取网页元素是否可编辑标识。
+获取网页元素是否可编辑状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -204,7 +204,7 @@ getPreviewWidth(): number
 
 | 类型     | 说明       |
 | ------ | ----------- |
-| number | 预览图的宽。<br>单位：vp（虚拟像素）。 |
+| number | 预览图的宽。<br>单位：px（物理像素）。 |
 
 ## getPreviewHeight<sup>13+</sup>
 
@@ -218,7 +218,7 @@ getPreviewHeight(): number
 
 | 类型     | 说明       |
 | ------ | ----------  |
-| number | 预览图的高。<br>单位：vp（虚拟像素）。 |
+| number | 预览图的高。<br>单位：px（物理像素）。 |
 
 ## getContextMenuMediaType<sup>22+</sup>
 

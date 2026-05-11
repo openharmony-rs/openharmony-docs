@@ -21,6 +21,8 @@ UIPickerComponent容器是用于实现用户选择操作的组件。它支持从
 > - UIPickerComponent容器的子组件的对齐方式固定为居中对齐，不支持通过[align](ts-universal-attributes-location.md#align)属性改变子组件的对齐方式。
 >
 > - UIPickerComponent容器当前不支持智能手表设备。
+>
+> - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
 ## 子组件
 
@@ -61,7 +63,7 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [UIPickerComponentOptions](#uipickercomponentoptions对象说明)| 否 | 配置UIPickerComponent容器的参数。 |
+| options |  [UIPickerComponentOptions](#uipickercomponentoptions对象说明)| 否 | 配置UIPickerComponent容器的参数。参数缺省时组件占位，但内容显示为空。 |
 
 ## UIPickerComponentOptions对象说明
 

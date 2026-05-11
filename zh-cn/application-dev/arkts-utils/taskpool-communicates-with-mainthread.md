@@ -1,8 +1,8 @@
 # TaskPool任务与宿主线程通信
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,18 +12,22 @@
 
 1. 实现接收Task消息的方法。
 
-   ```ts
-   // TaskSendDataUsage.ets
-   export function notice(data: number): void {
-     console.info("子线程任务已执行完，共加载图片: ", data);
+   <!-- @[receive_task_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
+   
+   ``` TypeScript
+   import { taskpool } from '@kit.ArkTS';
+   import { IconItemSource } from './IconItemSource';
+   
+   function notice(data: number): void {
+     console.info('子线程任务已执行完，共加载图片: ', data);
    }
    ```
-   <!-- @[receive_task_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
 
-2. 在需要执行的Task中，添加sendData()接口将消息发送给宿主线程。
+2. 在需要执行的Task中，添加sendData()接口将消息发送给宿主线程。在宿主线程通过onReceiveData()接口接收消息。这样宿主线程就可以通过notice()接口接收到Task发送的数据。
 
-   ```ts
-   // IconItemSource.ets
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
+   
+   ``` TypeScript
    export class IconItemSource {
      image: string | Resource = '';
      text: string | Resource = '';
@@ -34,12 +38,16 @@
      }
    }
    ```
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
 
-   ```ts
-   // TaskSendDataUsage.ets
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
+   
+   ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
    import { IconItemSource } from './IconItemSource';
+   
+   function notice(data: number): void {
+     console.info('子线程任务已执行完，共加载图片: ', data);
+   }
    
    // 通过Task的sendData方法，即时通知宿主线程信息
    @Concurrent
@@ -60,18 +68,6 @@
      }
      return iconItemSourceList;
    }
-   ```
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
-
-3. 最后，在宿主线程通过onReceiveData()接口接收消息。
-
-   这样宿主线程就可以通过notice()接口接收到Task发送的数据。
-
-   ```ts
-   // Index.ets
-   import { taskpool } from '@kit.ArkTS';
-   import { IconItemSource } from './IconItemSource';
-   import { loadPictureSendData, notice } from './TaskSendDataUsage';
    
    @Entry
    @Component
@@ -84,13 +80,15 @@
            Text(this.message)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
-             .onClick(async () => {
-               let iconItemSourceList: IconItemSource[] = [];
-               let loadPictureTask: taskpool.Task = new taskpool.Task(loadPictureSendData, 30);
+             .onClick(() => {
+               let iconItemSourceList: IconItemSource[];
+               let lodePictureTask: taskpool.Task = new taskpool.Task(loadPictureSendData, 30);
                // 设置notice方法接收Task发送的消息
-               loadPictureTask.onReceiveData(notice);
-               iconItemSourceList = await taskpool.execute(loadPictureTask) as IconItemSource[];
-               console.info("The length of iconItemSourceList is " + iconItemSourceList.length);
+               lodePictureTask.onReceiveData(notice);
+               taskpool.execute(lodePictureTask).then((res: object) => {
+                 iconItemSourceList = res as IconItemSource[];
+               })
+               this.message = 'success';
              })
          }
          .width('100%')
@@ -99,4 +97,3 @@
      }
    }
    ```
-   <!-- @[receive_task_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->

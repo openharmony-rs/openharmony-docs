@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -54,7 +54,7 @@ FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has chang
 在上述示例中，Text组件多渲染了一次。这个错误行为不会造成严重的后果，所以许多开发者忽略了这个日志。
 
 但是，此行为是严重错误的，随着工程的复杂度升级，隐患将逐渐增大。见下一个例子。
-<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->  
+<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -64,6 +64,7 @@ struct Index {
 
   build() {
     Column() {
+      // 典型错误，会导致appfreeze
       Text(`${this.message++}`)
       Text(`${this.message++}`)
     }
@@ -93,7 +94,7 @@ struct Index {
 >
 >需要在[aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
 
-<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) --> 
+<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -134,7 +135,7 @@ struct Test {
   build() {
     Column() {
       // 请在resources\base\element\string.json文件中配置name为'state_countvalue_text1' ，value为非空字符串的资源
-      Text(this.context.resourceManager.getStringByNameSync('state_countvalue_text1') + `${this.count}`)
+      Text(resource.resourceToString($r('app.string.state_countvalue_text1')) + `${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();
@@ -261,7 +262,7 @@ struct Index {
 
 在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理，用于观测一层属性或API调用产生的变化。当复杂类型常量重复赋值给状态变量时，可能会由于加了代理而判断为新旧值不相等，导致不必要的刷新。
 
-<!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) --> 
+<!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -284,6 +285,7 @@ struct Index {
     Column() {
       ConsumerChild({ dataObj: this.dataObjFromList })
       Button('change to self').onClick(() => {
+        // 把相同的类实例赋值给一个Class类型的状态变量，会触发刷新
         this.dataObjFromList = this.list[0];
       })
     }
@@ -316,7 +318,7 @@ struct ConsumerChild {
 为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。
 
 方法一：增加\@Observed
-<!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) --> 
+<!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -340,6 +342,8 @@ struct Index {
     Column() {
       ConsumerChild({ dataObj: this.dataObjFromList })
       Button('change to self').onClick(() => {
+        // DataObj被@Observed装饰，list[0]也是Proxy类型
+        // 再次赋值相同的对象时，不会触发刷新
         this.dataObjFromList = this.list[0];
       })
     }
@@ -707,7 +711,7 @@ struct Page1 {
 
 【反例】
 
-<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) --> 
+<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -722,6 +726,7 @@ struct Index {
       Button('Click to print log')
         .onClick(() => {
           for (let i = 0; i < 10; i++) {
+            // 循环逻辑中频繁读取状态变量
             hilog.info(0x0000, 'TAG', '%{public}s', this.message);
           }
         })
@@ -743,7 +748,7 @@ struct Index {
 
 【正例】
 
-<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) --> 
+<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -757,6 +762,7 @@ struct Index {
     Column() {
       Button('Click to print log')
         .onClick(() => {
+          // 正确做法，在循环逻辑外读取状态变量
           let logMessage: string = this.message;
           for (let i = 0; i < 10; i++) {
             hilog.info(0x0000, 'TAG', '%{public}s', logMessage);
@@ -1197,7 +1203,7 @@ struct ChildComponent {
 
 开发过程中经常会使用对象数组和[ForEach](../rendering-control/arkts-rendering-control-foreach.md)结合起来使用，但是写法不当的话会出现UI不刷新的情况。
 
-<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->  
+<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1240,6 +1246,7 @@ struct Page {
           hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
+        // ForEach中生成的item是一个常量，点击改变item中的内容时没有办法观测到UI刷新
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
             Text('Hello World')
@@ -1260,7 +1267,7 @@ struct Page {
 
 由于ForEach中生成的item是一个常量，因此当点击改变item中的内容时，没有办法观测到UI刷新，尽管日志表明item的值已改变（这体现在打印了“change font size”的日志）。因此，需要使用自定义组件，配合@ObjectLink来实现观测的能力。
 
-<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->  
+<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1313,6 +1320,7 @@ struct Page {
           hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
+        // 使用@ObjectLink接受传入的item，TextComponent组件内的textStyle变量具有了被观测的能力
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
             TextComponent({ textStyle: item })

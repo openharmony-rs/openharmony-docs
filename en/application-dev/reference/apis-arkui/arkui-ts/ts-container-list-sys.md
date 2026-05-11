@@ -56,10 +56,10 @@ Provides the chained animation settings, which cover the maximum spacing, minimu
 
 | Name          | Type                                      | Read-Only  | Optional| Description                                      |
 | ------------ | ---------------------------------------- | ---- | -- | ---------------------------------------- |
-| minSpace     | [Length](ts-types.md#length)             | No   | No| Minimum spacing between the chained animations.                           |
-| maxSpace     | [Length](ts-types.md#length)             | No   | No| Maximum spacing between the chained animations.                           |
+| minSpace     | [Length](ts-types.md#length)             | No   | No| Minimum spacing between the chained animations.<br>Unit: same as **Length**.                           |
+| maxSpace     | [Length](ts-types.md#length)             | No   | No| Maximum spacing between the chained animations.<br>Unit: same as **Length**.                         |
 | conductivity | number                                   | No   | Yes| Conductivity of the chained animations. The value range is [0,1]. A larger value indicates higher conductivity.<br>Default value: **0.7**.|
 | intensity    | number                                   | No   | Yes| Intensity of the chained animations. The value range is [0,1]. A larger value indicates more obvious animations.<br>Default value: **0.3**.|
 | edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10)| No   | Yes| Chained animation edge scrolling effect.<br>Default value: **ChainEdgeEffect.DEFAULT**.|
-| stiffness    | number                                   | No   | Yes| Stiffness of the chained animations.<br>Default value: **228**.|
-| damping      | number                                   | No   | Yes| Damping of the chained animations.<br>Default value: **30**.|
+| stiffness    | number                                   | No   | Yes| Stiffness of the chained animations.<br>Value range: [0, +∞)<br>Default value: **228**.|
+| damping      | number                                   | No   | Yes| Damping of the chained animations.<br>Value range: [0, +∞)<br>Default value: **30**.|

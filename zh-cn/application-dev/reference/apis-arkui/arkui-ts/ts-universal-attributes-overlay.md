@@ -20,7 +20,9 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 >**说明：**
 >
-> overlay会将浮层组件覆盖在所绑定的组件上方，阻塞用户对浮层下方组件的所有交互操作。若需用户可操作下方组件，应参照[示例2（通过builder设置浮层）](#示例2通过builder设置浮层)中的实现，在浮层builder的最外层组件上配置`.hitTestBehavior(HitTestMode.Transparent)`。此配置在通过浮层实现水印时尤其重要，因为水印显示不应妨碍用户对下层组件的操作。
+> - overlay会将浮层组件覆盖在所绑定的组件上方，阻塞用户对浮层下方组件的所有交互操作。若需用户可操作下方组件，应参照[示例2（通过builder设置浮层）](#示例2通过builder设置浮层)中的实现，在浮层builder的最外层组件上配置`.hitTestBehavior(HitTestMode.Transparent)`。此配置在通过浮层实现水印时尤其重要，因为水印显示不应妨碍用户对下层组件的操作。
+>
+> - 多次调用overlay接口时，如果同时传入string类型和[CustomBuilder](ts-types.md#custombuilder8)类型，或者同时传入string类型和[ComponentContent](#componentcontent12)类型，浮层内容会叠加显示。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -80,8 +82,8 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
 | ------- | ---------------------------------------------------------| ---- | ------| --------------------------------------------------- |
-| x<sup>7+</sup>        | number                                                   | 否   | 是    | 横向偏移量。<br />单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
-| y<sup>7+</sup>        | number                                                   | 否   | 是    | 纵向偏移量。<br />单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
+| x<sup>7+</sup>        | number                                                   | 否   | 是    | 横向偏移量。<br/>默认值：0<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
+| y<sup>7+</sup>        | number                                                   | 否   | 是    | 纵向偏移量。<br/>默认值：0<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
 
 ## ComponentContent<sup>12+</sup>
 

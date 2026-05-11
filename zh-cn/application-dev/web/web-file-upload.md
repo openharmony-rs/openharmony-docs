@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。
+Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。
 
 ## 使用onShowFileSelector拉起文件管理器
 
@@ -189,7 +189,7 @@ struct Index {
 }
 ```
 
-html页面代码
+HTML页面代码
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -244,7 +244,7 @@ html页面代码
 | 仅包含图片类型              | 设置为"environment"或"user" | 直接拉起相机拍照模式。                             |
 | 仅包含图片类型               | 不设置                      | 先拉起弹窗，用户选择拍照后拉起相机拍照模式。       |
 | 仅包含视频类型              | 设置为"environment"或"user" | 直接拉起相机录像模式。                             |
-| 仅包含视频类型               | 不设置                      | 先拉起弹窗，用户选择拍照后拉起相机录像模式。       |
+| 仅包含视频类型               | 不设置                      | 先拉起弹窗，用户选择录像后拉起相机录像模式。       |
 | 包含图片和视频类型          | 设置为"environment"或"user" | 直接拉起相机拍照模式，可录像。                     |
 | 包含图片和视频类型            | 不设置                      | 先拉起弹窗，用户选择拍照后拉起相机拍照模式，可录像。 |
 | 不设置图片或视频类型        | 设置为"environment"或"user" | 直接拉起相机拍照模式，可录像。                     |
@@ -258,9 +258,9 @@ html页面代码
 
 >  **说明：** 
 >
-> ArkWeb默认仅拉起相机后置摄像头，值`'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口另行处理
+> ArkWeb默认仅拉起相机后置摄像头，值`'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口另行处理。
 
-html页面代码
+HTML页面代码
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -320,7 +320,7 @@ struct Index {
 ```
 ![web-default-camera](./figures/web-default-camera.gif)
 
-## 自定义处理js接口拉起的文件请求
+## 自定义处理JS接口拉起的文件请求
 
 从API version 23开始，在OnShowFileSelectorEvent的FileSelectorParam中新增接口getSuggestedName()、getDefaultPath()、getDescriptions()、isAcceptAllOptionExcluded()。
 
@@ -454,12 +454,12 @@ struct WebComponent {
           const documentViewPicker = new picker.DocumentViewPicker();
           documentViewPicker.save(documentSaveOptions).then((documentSelectResult) => {
             uri = documentSelectResult[0];
-            console.info('documentViewPicker.select to file succeed and uri is:' + uri);
+            console.info('documentViewPicker.save to file succeed and uri is:' + uri);
             if (event) {
               event.result.handleFileList([uri]);
             }
           }).catch((err: BusinessError) => {
-            console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
           })
           return true;
         })
@@ -469,18 +469,18 @@ struct WebComponent {
 ```
 ![web-custom-mode-file-picker.gif](./figures/web-custom-mode-file-picker.gif)
 
-样例以HTML中的`showSaveFilePicker()`配合ETS中`documentViewPicker.save()`方法为例。
+样例以HTML中的`showSaveFilePicker()`配合ArkTS中`documentViewPicker.save()`方法为例。
 
 需注意：
 
 1. HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
-2. ETS中如调用[`documentViewPicker.select()`](../reference/apis-core-file-kit/js-apis-file-picker.md#select)方法需配合[`picker.DocumentSelectOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)对象为picker传参，而非[`picker.DocumentSaveOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)对象，请参见[@ohos.file.picker (选择器)](../reference/apis-core-file-kit/js-apis-file-picker.md)。
+2. ETS中如调用[`documentViewPicker.select()`](../reference/apis-core-file-kit/js-apis-file-picker.md#select)方法需配合[`picker.DocumentSelectOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)对象为Picker传参，而非[`picker.DocumentSaveOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)对象，请参见[@ohos.file.picker (选择器)](../reference/apis-core-file-kit/js-apis-file-picker.md)。
 
 ## 常见问题
 
 ### onShowFileSelector配合ArkWeb默认弹窗使用
 
-用户点击文件上传按钮后，程序优先执行onShowFileSelector中的回调进行逻辑处理，应用开发者可以根据处理结果选择返回`false`进而拉起ArkWeb默认弹窗，此时不推荐同时拉起应用侧各Picker；如果开发者选择返回`true`，则拦截ArkWeb默认弹窗，只执行自定义行为。
+用户点击文件上传按钮后，程序优先执行onShowFileSelector中的回调进行逻辑处理，应用开发者可根据处理结果选择返回`false`以触发ArkWeb默认弹窗，此时应避免同时触发应用侧的其他Picker；若开发者选择返回`true`，则拦截ArkWeb默认弹窗并仅执行自定义行为。
 
 ### 回调中getAcceptType和getMimeTypes的区别
 

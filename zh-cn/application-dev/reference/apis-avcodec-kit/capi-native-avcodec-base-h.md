@@ -40,7 +40,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_MediaType](#oh_mediatype) | OH_MediaType | 媒体类型。 |
-| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<!--DelEnd--> |
+| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | AAC档次。 |
 | [OH_AVCProfile](#oh_avcprofile) | OH_AVCProfile | AVC档次。 |
 | [OH_HEVCProfile](#oh_hevcprofile) | OH_HEVCProfile | HEVC档次。 |
 | [OH_VVCProfile](#oh_vvcprofile) | OH_VVCProfile | VVC档次。 |
@@ -117,10 +117,10 @@
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_JPG | JPG图片编码的MIME类型，仅用于封装JPG封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_PNG | PNG图片编码的MIME类型，仅用于封装PNG封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_BMP | BMP图片编码的MIME类型，仅用于封装BMP封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_AVCODEC_MIMETYPE_AUDIO_VIVID | Audio Vivid音频解码器的MIME类型。<!--Del-->（当前规格暂未开放）<!--DelEnd--><br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_VIVID | Audio Vivid音频解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB | AMR_NB音频<!--RP4--><!--RP4End-->解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | AMR_WB音频<!--RP4--><!--RP4End-->解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_AVCODEC_MIMETYPE_AUDIO_OPUS | OPUS音频编解码器的MIME类型。<!--Del-->（当前规格暂未开放）<!--DelEnd--><br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_OPUS | OPUS音频编解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_G711MU | G711MU音频编解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_ALAC | ALAC（Apple Lossless Audio Codec）音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AC3 | AC3（Dolby Audio Coding 3）音频解码器的MIME类型。<br>**起始版本：** 22 |
@@ -150,8 +150,8 @@
 | const char * OH_MD_KEY_DURATION | 媒体文件持续时间的键，单位为微秒，值类型为int64_t。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_BITRATE | 比特率的键，值类型为int64_t。可以通过能力查询接口[OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange)接口来获取取值范围。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_MAX_INPUT_SIZE | 设置解码输入码流大小最大值的键，值类型为int32_t。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_WIDTH | 视频宽度的键，值类型为int32_t。<br> 在视频编解码流程中调用Configure接口时，使用此接口来设置视频帧的显示宽度。可以通过能力查询接口[OH_AVCapability_GetVideoWidthRange](capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange)来获取取值范围。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_HEIGHT | 视频高度键，值类型为int32_t。<br> 在视频编解码流程中调用Configure接口时，使用此接口来设置视频帧的显示高度。可以通过能力查询接口[OH_AVCapability_GetVideoHeightRange](capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange)来获取取值范围。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_WIDTH | 视频宽度的键，值类型为int32_t。<br>对于视频编码，该键用于设置目标编码分辨率。对于视频解码，该键是解码器预分配内部缓冲区的分辨率提示。实际解码输出尺寸由OH_MD_KEY_VIDEO_PIC_WIDTH提供。<br>虽然该键主要用于控制内存分配，但可参考[OH_AVCapability_GetVideoWidthRange](capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange)获取推荐值范围，该接口定义了编码器支持的解码宽度范围。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_HEIGHT | 视频高度键，值类型为int32_t。<br>对于视频编码，该键用于设置目标编码分辨率。对于视频解码，该键是解码器预分配内部缓冲区的分辨率提示。实际解码输出尺寸由OH_MD_KEY_VIDEO_PIC_HEIGHT提供。<br> 虽然该键主要用于控制内存分配，但可参考[OH_AVCapability_GetVideoHeightRange](capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange)获取推荐值范围，该接口定义了编解码器支持的解码高度范围。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_PIXEL_FORMAT | 视频像素格式的键，值类型为int32_t，请参见[OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat)。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_AUDIO_SAMPLE_FORMAT | 音频原始格式的键，值类型为int32_t，请参见[OH_BitsPerSample](#oh_bitspersample)。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_FRAME_RATE | 视频帧率的键，值类型为double。该值必须大于 0。可以通过能力查询接口[OH_AVCapability_GetVideoFrameRateRange](capi-native-avcapability-h.md#oh_avcapability_getvideoframeraterange)来获取取值范围。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -200,6 +200,7 @@
 | const char * OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY | 使能分层编码的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。<br> 使用前可以通过[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature)中的VIDEO_ENCODER_TEMPORAL_SCALABILITY来查询当前视频编码器是否支持分层编码。<br>详情请参见：[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md#接口介绍)。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE | 描述图片组基本层图片的间隔大小的键，值类型为int32_t，只在使能分层编码时生效。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE | 描述图片组内参考模式的键，值类型为int32_t，请参见[OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode)，只在使能分层编码时生效。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID | 描述图像组（GOP）内的时域层号ID键，数据类型为int32_t。<br> 时域层号为0时，表示基础层，1及以上时表示增强层，最大时域层号与OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE参数和OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE参数相关。<br> 该键目前仅用于查询编码器输出的AVBuffer中携带的时域层号。<br> 使用流程如下：<br> 1. 通过[OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)接口或[OH_VideoEncoder_GetOutputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)获取缓冲区实例（AVBuffer）。<br> 2. 通过[OH_AVBuffer_GetParameter](capi-native-avbuffer-h.md#oh_avbuffer_getparameter)获取除基础属性外的其他参数实例（OH_AVFormat）。<br> 3. 通过[OH_AVFormat_GetIntValue](capi-native-avformat-h.md#oh_avformat_getintvalue)接口和本键获取对应帧的时域层号。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT | 描述长期参考帧个数的键，值类型为int32_t，必须在支持的值范围内使用。<br> 使用前可以通过[OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature)中的VIDEO_ENCODER_LONG_TERM_REFERENCE来查询支持的LTR数目。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR | 标记当前帧为长期参考帧的键，值类型为int32_t，1表示被标记，0表示未被标记，默认值为0。配置非0值将按照配置1处理，表示被标记。<br> 只在长期参考帧个数被配置后生效。<br> 该键是可选的且只用于视频编码输入轮转中，配置后立即生效。<br>详情请参见：[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md#接口介绍)。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR | 描述当前帧参考的长期参考帧帧的POC号的键，值类型为int32_t。<br> 该键是可选的且只用于视频编码输入轮转中，配置后立即生效。<br>详情请参见：[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md#接口介绍)。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -209,10 +210,10 @@
 | const char * OH_MD_KEY_VIDEO_CROP_BOTTOM | 描述裁剪矩形底部坐标(y)值的键，值类型为int32_t。<br> 包含裁剪框底部的行，行索引从0开始。<br> 该键只用于视频解码。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_CROP_LEFT | 描述裁剪矩形左坐标(x)值的键，值类型为int32_t。<br> 包含裁剪框最左边的列，列索引从0开始。<br> 该键只用于视频解码。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_CROP_RIGHT | 描述裁剪矩形右坐标(x)值的键，值类型为int32_t。<br> 包含裁剪框最右边的列，列索引从0开始。<br> 该键只用于视频解码。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_STRIDE | 描述视频帧宽跨距的键，值类型为int32_t。<br> 宽跨距是像素的索引与正下方像素的索引之间的差。<br> 对于YUV420格式，宽跨距对应于Y平面，U和V平面的跨距可以根据颜色格式计算，但通常未定义，并且取决于设备和版本。<br>使用指导请参见：[视频编码Buffer模式](../../media/avcodec/video-encoding.md#buffer模式)的“步骤-3”。<br>width、height、wStride、hStride图像排布与使用示例请参考：[视频编码Buffer模式](../../media/avcodec/video-encoding.md#buffer模式)的“步骤-8”或[视频解码Buffer模式](../../media/avcodec/video-decoding.md#buffer模式)“步骤-11”。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_SLICE_HEIGHT | 描述视频帧高跨距的键，值类型为int32_t。<br> 高跨距是指从Y平面顶部到U平面顶部必须偏移的行数。本质上，U平面的偏移量是sliceHeight * stride。<br> U/V平面的高度可以根据颜色格式计算，尽管它通常是未定义的，并且取决于设备和版本。<br>使用指导请参见：[视频编码Buffer模式](../../media/avcodec/video-encoding.md#buffer模式)的“步骤-3”。<br>width、height、wStride、hStride图像排布与使用示例请参考：[视频编码Buffer模式](../../media/avcodec/video-encoding.md#buffer模式)的“步骤-8”或[视频解码Buffer模式](../../media/avcodec/video-decoding.md#buffer模式)“步骤-11”。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_PIC_WIDTH | 描述视频帧真实宽度的键，值类型为int32_t。<br> 视频解码时调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口，可以从其返回的OH_AVFormat中解析出宽度值。<br> 当解码输出码流<!--RP2--><!--RP2End-->变化时，也可从[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)返回的OH_AVFormat实例中解析出宽度值。<br> 从OH_AVFormat实例中解析出来的是对齐后的宽、高与调用Configure接口设置的OH_MD_KEY_WIDTH、OH_MD_KEY_HEIGHT不一样。<br>width、height、wStride、hStride图像排布与使用示例请参考：[视频编码Buffer模式](../../media/avcodec/video-encoding.md#buffer模式)的“步骤-8”或[视频解码Buffer模式](../../media/avcodec/video-decoding.md#buffer模式)“步骤-11”。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_PIC_HEIGHT | 描述视频帧真实高度的键，值类型为int32_t。<br> 视频解码时调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口，可以从其返回的OH_AVFormat中解析出高度值。<br> 当解码输出码流<!--RP2--><!--RP2End-->变化时，也可从[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)返回的OH_AVFormat实例中解析出高度值。<br> 从OH_AVFormat实例中解析出来的是对齐后的宽、高与调用Configure接口设置的OH_MD_KEY_WIDTH、OH_MD_KEY_HEIGHT不一样。<br>width、height、wStride、hStride图像排布与使用示例请参考：[视频编码Buffer模式](../../media/avcodec/video-encoding.md#buffer模式)的“步骤-8”或[视频解码Buffer模式](../../media/avcodec/video-decoding.md#buffer模式)“步骤-11”。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_STRIDE | 描述视频帧宽跨距的键，值类型为int32_t。<br> 宽跨距表示内存中相邻两行数据起始位置之间的字节距离。由于硬件对齐要求，stride通常大于或等于图像有效宽度。当stride等于width，表示无水平填充。应始终通过OH_VideoEncoder_GetInputDescription（编码）、OH_VideoDecoder_GetOutputDescription（解码）或OH_AVCodecOnStreamChanged回调中的OH_AVFormat参数获取实际跨距值，而非假设固定值。<br> 使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或者[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_SLICE_HEIGHT | 描述视频帧高跨距的键，值类型为int32_t。<br>高跨距表示内存中为单个平面分配的总行数。由于硬件对齐要求，sliceHeight通常大于或等于图像有效高度。U平面的起始地址相对于Y平面原点的偏移量为（sliceHeight * stride）。应始终通过OH_VideoEncoder_GetInputDescription（编码）、OH_VideoDecoder_GetOutputDescription（解码）或 OH_AVCodecOnStreamChanged回调中的OH_AVFormat参数获取实际高跨距值，而非假设固定值。<br>使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_PIC_WIDTH | 描述解码后视频帧实际有效宽度的键名。值类型为int32_t。该键为只读，仅用于视频解码。<br>调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)时，或通过[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)回调检测到解码输出流变化时，可从返回的OH_AVFormat实例中获取该值。该值表示剪裁后的可见宽度，与Configure阶段设置的OH_MD_KEY_WIDTH不同，后者是用于预分配缓冲区的配置提示。当存在剪裁时，应使用该值（而非stride）作为显示或保存图像的实际宽度。<br>图像排布和使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_PIC_HEIGHT | 描述解码后视频帧实际有效高度的键名。值类型为int32_t。该键为只读，仅用于视频解码。<br>调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)时，或通过[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)回调检测到解码输出码流变化时，可从返回的OH_AVFormat实例中获取该值。该值表示剪裁后的可见高度，与Configure阶段设置的OH_MD_KEY_HEIGHT不同，后者是用于预分配缓冲区的配置提示。当存在剪裁时，应使用该值（而非sliceHeight）作为显示或保存图像的实际高度。<br>图像排布和使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY | 使能低时延视频解码的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。<br> 该键是可选的，在Configure阶段使用。<br> 如果使能，则视频解码器持有的输入和输出数据不会超过解码器标准所要求的数量。<br> 可以通过能力查询接口[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)来查询特定解码器是否支持低时延。若解码器支持，使能此接口时，视频解码器将按照解码序输出帧。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_QP_MAX | 描述视频编码器允许的最大量化参数的键，值类型为int32_t。<br> 在Configure/SetParameter阶段使用，或随帧立即生效。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_QP_MIN | 描述视频编码器允许的最小量化参数的键，值类型为int32_t。<br> 在Configure/SetParameter阶段使用，或随帧立即生效。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -241,6 +242,7 @@
 | const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，调用[OH_VideoDecoder_Stop](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_stop)接口或者[OH_VideoDecoder_Destroy](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_destroy)接口时，视频解码器将输出空白帧（通常为黑色）。该机制可避免因解码器突然终止导致的显示残留。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO | OH_AVBuffer中携带的键，用于跳过音频解码输出的数据。以采样点为单位，值类型为uint8_t*，当使用mp3、vorbis、opus解码器解码时，可设置该键。<br> 仅音频的起始、末尾帧携带该键，该键是可选的。使用方法一：解封装时获取该信息并设置到解码输入的OH_AVBuffer。<br> 1. 从[OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md)的回调函数[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)里获取解码用的OH_AVBuffer。<br> 2. 调用[OH_AVDemuxer_ReadSampleBuffer](capi-native-avdemuxer-h.md#oh_avdemuxer_readsamplebuffer)接口读取音频数据，该接口会自行设置OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO。<br> 3. 调用[OH_AudioCodec_PushInputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_pushinputbuffer)输入OH_AVBuffer进行解码。<br> 使用方法二：构造该键需要的数据并设置到解码输入的OH_AVBuffer。<br> 开发者需要先创建一个10字节uint8_t[]类型的数组，具体结构如下：<br> 1. 数组0~3，这4个字节表示从当前帧第一个采样点开始往后跳过的采样点数，以小端序存储uint32_t值。<br> 2. 数组4~7，这4个字节表示从当前帧最后一个采样点开始往前跳过的采样点数（不大于1帧采样点数），以小端序存储uint32_t值。<br> 3. 数组8~9，这2个字节填0即可。<br><br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_ENABLE_BUFFER_SKIP_SAMPLES | 在音频解码器中使能OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO的键，值类型为int32_t。1表示使能，0表示不使能，默认值为0。配置非1值将按照配置0处理，表示不使能。<br>该键是可选的。仅用于音频解码器。<br>**起始版本：** 24 |
 | const char * OH_MD_KEY_LATITUDE | 纬度的键，值类型为float，范围为[-90.0, 90.0]。表示地理位置信息中的纬度。<br>**起始版本：** 24 |
 | const char * OH_MD_KEY_LONGITUDE | 经度的键，值类型为float，范围为[-180.0, 180.0]。表示地理位置信息中的经度。<br>**起始版本：** 24 |
 | const char * OH_MD_KEY_ALTITUDE | 海拔的键，值类型为float，该键是可选的。表示地理位置信息中的海拔。<br>**起始版本：** 24 |
@@ -277,7 +279,7 @@ enum OH_AACProfile
 
 **描述**
 
-AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<!--DelEnd-->
+AAC档次。
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -286,8 +288,8 @@ AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<
 | 枚举项 | 描述 |
 | -- | -- |
 | AAC_PROFILE_LC = 0 | AAC编码档次为Low Complexity级别。 |
-| AAC_PROFILE_HE = 3 | AAC编码档次为High Efficiency级别。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
-| AAC_PROFILE_HE_V2 = 4 | AAC编码档次为High Efficiency v2级别。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
+| AAC_PROFILE_HE = 3 | AAC编码档次为High Efficiency级别。包含音频对象类型：AAC LC和SBR。<br>**起始版本：** 14 |
+| AAC_PROFILE_HE_V2 = 4 | AAC编码档次为High Efficiency v2级别。包含音频对象类型：AAC LC、SBR和PS。<br>**起始版本：** 14 |
 
 ### OH_AVCProfile
 
@@ -1064,6 +1066,7 @@ enum OH_BitrateMode
 | BITRATE_MODE_VBR = 1 | 可变比特率模式。 |
 | BITRATE_MODE_CQ = 2 | 恒定质量模式。 |
 | BITRATE_MODE_SQR = 3 | 质量稳定模式，仅支持H265（HEVC）。<br>**起始版本：** 20 |
+| BITRATE_MODE_CBR_HIGH_QUALITY = 4 | 高质量恒定比特率模式，仅支持H265（HEVC）。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

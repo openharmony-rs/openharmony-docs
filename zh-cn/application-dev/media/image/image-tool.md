@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -25,7 +25,7 @@ Exif信息的读取与编辑相关的API详细介绍请参考[getImageProperty](
    <!-- @[editExif_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -80,7 +80,7 @@ Exif信息的读取与编辑相关的API详细介绍请参考[getImageProperty](
            console.info(info);
            return info; // 获取key值成功时返回修改成功信息
          } catch (error) {
-           console.error(`Failed to get the the ${key}'s value with ${error}`);
+           console.error(`Failed to get the ${key}'s value with ${error}`);
            console.error(info);
            return info; // 获取key值失败时返回错误信息
          }

@@ -1,9 +1,9 @@
 # 渲染控制概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
-<!--Designer: @lixingchi1-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @maorh-->
+<!--Designer: @keerecles-->
+<!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
 

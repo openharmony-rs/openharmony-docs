@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 InsightIntentDecorator模块提供了几类意图装饰器，用于装饰类或方法。开发者可以[使用装饰器开发意图](../../application-models/insight-intent-decorator-development.md), 将应用的功能定义为意图，并集成到智能问答、智能搜索、智能推荐等AI入口。
 

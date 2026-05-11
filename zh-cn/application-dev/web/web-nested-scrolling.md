@@ -29,7 +29,6 @@ import { webview } from '@kit.ArkWeb';
 @ComponentV2
 struct NestedScroll {
   private scrollerForScroll: Scroller = new Scroller();
-  private listScroller: Scroller = new Scroller();
   controller: webview.WebviewController = new webview.WebviewController();
   @Local arr: Array<number> = [];
 
@@ -114,7 +113,7 @@ struct NestedScroll {
 
     (1) 如果Web页面没有滚动到底部，Scroll组件将滚动偏移量派发给Web，Scroll组件自身不滚动。
 
-    (2) 如果Web页面滚动至底部，而Scroll组件尚未滚动至底部，则仅Scroll组件自身滚动，不向Web组件和List组件传递滚动位移。
+    (2) 如果Web页面滚动至底部，而Scroll组件尚未滚动至底部，则仅Scroll组件自身滚动，不向Web组件和List组件派发滚动偏移量。
 
     (3) 如果Scroll组件滚动到底部，则滚动偏移量派发给List组件，Scroll组件自身不滚动。
 2. 手指向下滑动：
@@ -133,7 +132,7 @@ struct NestedScroll {
     ```ts
     this.webController.setScrollable(false, webview.ScrollType.EVENT);
     ```
-    (2) 再使用[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13)方法，禁止Web组件自带的滑动手势触发。
+    (2) 再使用[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13)方法，禁止Web组件自带的滚动手势触发。
     ```ts
     .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, otherArray<GestureRecognizer>) => {
       if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
@@ -142,7 +141,7 @@ struct NestedScroll {
       return GestureJudgeResult.CONTINUE;
     })
     ```
-2. 如何禁止[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的手势。
+2. 如何禁用[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的手势。
     ```ts
     .enableScrollInteraction(false)
     ```
@@ -168,11 +167,11 @@ struct NestedScroll {
 5. 如何让Scroll组件不滚动。
 
    Scroll组件绑定[onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，Scroll组件就不滚动，也不会停止惯性滚动动画。
-6. 滚动偏移量如何派发给List。
+6. 滚动偏移量如何派发给List组件。
     ```ts
     this.listScroller.scrollBy(0, offset)
     ```
-7. 滚动偏移量如何派发给Web。
+7. 滚动偏移量如何派发给Web组件。
     ```ts
     this.webController.scrollBy(0, offset)
     ```

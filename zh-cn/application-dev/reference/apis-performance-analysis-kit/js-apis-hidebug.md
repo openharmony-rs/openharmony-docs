@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -39,6 +39,7 @@ getNativeHeapSize(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
+console.info(`nativeHeapSize = ${nativeHeapSize}`);
 ```
 
 ## hidebug.getNativeHeapAllocatedSize
@@ -61,6 +62,7 @@ getNativeHeapAllocatedSize(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
+console.info(`nativeHeapAllocatedSize = ${nativeHeapAllocatedSize}`);
 ```
 
 ## hidebug.getNativeHeapFreeSize
@@ -82,6 +84,7 @@ getNativeHeapFreeSize(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapFreeSize: bigint = hidebug.getNativeHeapFreeSize();
+console.info(`nativeHeapFreeSize = ${nativeHeapFreeSize}`);
 ```
 
 ## hidebug.getPss
@@ -107,6 +110,7 @@ getPss(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let pss: bigint = hidebug.getPss();
+console.info(`pss = ${pss}`);
 ```
 
 ## hidebug.getVss<sup>11+</sup>
@@ -129,6 +133,7 @@ getVss(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let vss: bigint = hidebug.getVss();
+console.info(`vss = ${vss}`);
 ```
 
 ## hidebug.getSharedDirty
@@ -155,6 +160,7 @@ getSharedDirty(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let sharedDirty: bigint = hidebug.getSharedDirty();
+console.info(`sharedDirty = ${sharedDirty}`);
 ```
 
 ## hidebug.getPrivateDirty<sup>9+</sup>
@@ -180,6 +186,7 @@ getPrivateDirty(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let privateDirty: bigint = hidebug.getPrivateDirty();
+console.info(`privateDirty = ${privateDirty}`);
 ```
 
 ## hidebug.getCpuUsage<sup>9+</sup>
@@ -206,6 +213,7 @@ getCpuUsage(): number
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let cpuUsage: number = hidebug.getCpuUsage();
+console.info(`cpuUsage = ${cpuUsage}`);
 ```
 
 ## hidebug.getServiceDump<sup>9+</sup>
@@ -224,7 +232,7 @@ getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
 | -------- | ------ | ---- |----------------------------|
 | serviceid | number | 是   | 基于用户输入的service id获取系统服务信息。 |
 | fd | number | 是   | 文件描述符，接口会向该fd写入数据。         |
-| args | Array&lt;string&gt; | 是   | 系统服务的dump接口参数列表。string长度的最大值为254。 |
+| args | Array&lt;string&gt; | 是   | 系统服务的dump接口参数列表。string长度的最大值为254，超出部分将会被截断。 |
 
 **错误码**：
 
@@ -608,6 +616,7 @@ let limitSize: number = 1024 * 1024;
 
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
@@ -647,6 +656,7 @@ let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
 let limitSize: number = 1024 * 1024;
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
@@ -736,6 +746,8 @@ getAppMemoryLimit(): MemoryLimit
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appMemoryLimit:hidebug.MemoryLimit = hidebug.getAppMemoryLimit();
+console.info(`rssLimit: ${appMemoryLimit.rssLimit}, vssLimit: ${appMemoryLimit.vssLimit},` +
+  `vmHeapLimit: ${appMemoryLimit.vmHeapLimit}, vmTotalHeapSize: ${appMemoryLimit.vmTotalHeapSize}`);
 ```
 
 ## hidebug.getSystemCpuUsage<sup>12+</sup>
@@ -797,7 +809,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 | 参数名   | 类型   | 必填 | 说明                                                                                                                                                                      |
 | -------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | type | string |  是  | 泄漏资源类型，共四种：<br/>- pss_memory（native内存）<br/>- js_heap（js堆内存）<br/>- fd（文件描述符）<br/>- thread（线程）                                                                            |
-| value | number |  是  | 对应泄漏资源类型的最大值，范围：<br/>- pss_memory类型：`[1024, 4 * 1024 * 1024]`（单位：KB）<br/>- js_heap类型：`[85, 95]`（分配给JS堆内存上限的85%~95%）<br/>- fd类型：`[10, 10000]`<br/>- thread类型：`[1, 1000]` |
+| value | number |  是  | 对应泄漏资源类型的最大值，范围：<br/>- pss_memory类型：`[1024, 4 * 1024 * 1024]`（单位：KB）<br/>- js_heap类型：`[85, 95]`（分配给JS堆内存上限的85%~95%）<br/>- fd类型：`[10, 10000]`<br/>- thread类型：`[1, 1000]`。超出范围会导致功能失效。 |
 | enableDebugLog | boolean |  是  | 是否启用外部调试日志。外部调试日志请仅在灰度版本（正式版本发布之前，先向一小部分用户推出的测试版本）中启用，因为收集调试日志会占用大量的cpu资源和内存资源，可能会引起应用流畅性问题。<br/>true：启用外部调试日志。<br/>false：禁用外部调试日志。                                     |
 
 **错误码**：
@@ -888,7 +900,7 @@ getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 
 > **注意**：
 >
-> 由于读取 `/proc/{pid}/smaps_rollup` 比较耗时，建议不在主线程中使用该接口。可以通过 `@ohos.taskpool` 或 `@ohos.worker` 开启异步线程，以避免应用卡顿。
+> 由于读取 `/proc/{pid}/smaps_rollup` 比较耗时，建议不在主线程中使用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1238,7 +1250,7 @@ getGraphicsMemory(): Promise&lt;number&gt;
 **示例**：
 
 ```ts
-import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 hidebug.getGraphicsMemory().then((ret: number) => {
@@ -1342,7 +1354,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1397,7 +1409,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1441,6 +1453,67 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+## hidebug.dumpJsRawHeapData
+
+dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise&lt;Array&lt;string&gt;&gt;
+
+为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转换为heapsnapshot格式文件进行解析。
+> **注意**：
+>
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+>
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**参数**：
+
+| 参数名                     | 类型      | 必填 | 说明                                          |
+|-------------------------|---------|----|---------------------------------------------|
+| needGC         | boolean | 是  | 转储堆快照前是否需要GC。true：需要GC；false：不需要GC。|
+| needClean      | boolean | 是  | 转储堆快照前是否需要清除nodeId。true：需要清除；false：不需要清除。|
+| processDump      | boolean | 是  | 是否转储当前线程所属进程的原始堆快照。true：转储当前线程所属进程的原始堆快照。|
+
+**返回值**：
+
+| 类型  | 说明                                                                                                   |
+| ------ |------------------------------------------------------------------------------------------------------|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回生成的快照文件路径数组（[应用沙箱内路径](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug错误码](errorcode-hiviewdfx-hidebug.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| ----------------------------------------------------------------- |
+| 11400106 | Quota exceeded. |
+| 11400107 | Fork operation failed. |
+| 11400108 | Failed to wait for the child process to finish. |
+| 11400109 | Timeout while waiting for the child process to finish. |
+| 11400110 | Disk remaining space too low. |
+| 11400111 | Napi interface call exception. |
+| 11400112 | Repeated data dump. |
+| 11400113 | Failed to create dump file. |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
 }).catch((error: BusinessError) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
@@ -1610,7 +1683,7 @@ setProcDumpInSharedOOM(enable: boolean): void
 
 **参数**：
 
-| 名称         | 类型  | 必填 | 说明 |
+| 参数名         | 类型  | 必填 | 说明 |
 |--------------|------|------|------|
 | enable | boolean | 是 | 当进程发生SharedHeap OOM时，系统将依据该进程在其生命周期中最后一次调用该接口所记录的信息，转储相应级别的堆快照。<br/>true：进程级。<br/>false：线程级。<br/> 默认值：false。 |
 

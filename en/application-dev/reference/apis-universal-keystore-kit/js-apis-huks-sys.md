@@ -23,7 +23,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-Generates a key for the specified user. This API uses a promise to return the result. Because the key is always protected in a trusted environment (such as a TEE), the promise does not return the key content. It returns only the information indicating whether the API is successfully called.
+Generates a key for the specified user. This API uses a promise to return the result. Based on the principle that the key cannot be transferred out of [Trusted Execution Environment (TEE)](../../security/UniversalKeystoreKit/huks-concepts.md#tee), the key material content is not returned through the promise and is only used to indicate whether the call is successful.
 
 **System API**: This is a system API.
 
@@ -349,7 +349,7 @@ Attests a key for the specified user. This API uses a promise to return the resu
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**Required permissions**: ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
@@ -654,7 +654,7 @@ export default function HuksAsUserTest() {
 
 ## huks.anonAttestKeyItemOfflineAsUser
 
-anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params[]: HuksParam) : Promise\<HuksReturnResult>
+anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
 
 Obtains an anonymous key certificate in offline mode for a specified user. This API uses a promise to return the result.
 
@@ -683,7 +683,7 @@ Obtains an anonymous key certificate in offline mode for a specified user. This 
 
 | Type                                          | Description                                         |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise When the call is successful, the **certChains** member of the **HuksReturnResult** object is the obtained certificate chain. Otherwise, the member is empty.|
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise used to return the result. When the call is successful, the **certChains** member of the **HuksReturnResult** object is the obtained certificate chain. Otherwise, the member is empty.|
 
 **Error codes**
 
@@ -727,7 +727,6 @@ const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const keyAliasString = "key anon local attest as user";
 
-const securityLevel = StringToUint8Array('sec_level');
 const challenge = StringToUint8Array('challenge_data');
 
 async function generateKey(alias: string) {
@@ -783,16 +782,14 @@ async function anonAttestKeyItemOfflineAsUser() {
   ];
 
   await generateKey(aliasString);
-  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, {
-    properties: properties
-  }).then((data) => {
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
     console.info('anonAttestationOffline ok!')
     console.debug(`'CERT:${JSON.stringify(data)}`)
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`CERT${i} is ${data.certChains[i]}`)
     }
     console.info("anonAttestationOffline Success")
-  }).catch((err: Business) => {
+  }).catch((err: BusinessError) => {
     console.error("anonAttestationOffline fail, erroCode: " + err.code + " erroInfo: " + err.message)
   })
 }

@@ -1469,7 +1469,7 @@ Defines virtual screen parameters.
 | name      | string   | No  | No  | Name of a virtual screen.              |
 | width     | number   | No  | No  | Width of the virtual screen, in px. The value must be an integer.|
 | height    | number   | No  | No  | Height of the virtual screen, in px. The value must be an integer.|
-| density   | number   | No  | No  | Density of the virtual screen, in px. The value must be a floating-point number.|
+| density   | number   | No  | No  | Density of the virtual screen. The value must be a floating point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen.       |
 | supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable; **false** otherwise. The default value is **true**.|
 | userId<sup>24+</sup> | number | No| Yes | User ID of the virtual screen, which is an integer. The default value is **-1**.|

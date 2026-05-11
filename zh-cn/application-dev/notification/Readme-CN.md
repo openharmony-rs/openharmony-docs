@@ -1,9 +1,8 @@
 # Notification Kit（用户通知服务）<!--notification-kit-->
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -31,7 +30,7 @@
   <!--DelEnd-->
   - [清除跨设备场景下的重复通知](notification-distributed-messageid.md)
 - 通知订阅扩展能力<!--notification-subscriber-extension-->
-  - [NotificationSubscriberExtensionAbility (开发概述)](notification-subscriber-extension-ability.md)
+  - [通知订阅扩展能力概述](notification-subscriber-extension-ability.md)
   - [通知订阅扩展能力开发步骤](notification-subscriber-extension-ability-development-steps.md)
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->

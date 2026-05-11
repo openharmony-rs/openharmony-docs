@@ -109,7 +109,7 @@ Example 2: Unsubscribe from a specific callback of steady standing state change 
 
    ```ts
    // Define the callback variable.
-   let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus. SteadyStandingStatus) => {
+   let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus.SteadyStandingStatus) => {
       console.info('succeed to get status, now status = ' + data);
    };
    // Subscribe to a specific callback of steady standing state change events.

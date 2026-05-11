@@ -1,9 +1,9 @@
 # @ohos.file.keyManager (User Key Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 This module provides common features related to user key management, including user key uninstallation.

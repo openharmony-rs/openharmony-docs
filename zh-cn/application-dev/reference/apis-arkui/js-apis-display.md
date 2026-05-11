@@ -38,7 +38,7 @@ import { display } from '@kit.ArkUI';
 
 ## Orientation<sup>10+</sup>
 
-显示设备当前显示的方向枚举。
+显示设备的显示方向枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -87,13 +87,16 @@ import { display } from '@kit.ArkUI';
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | 表示双折轴设备折轴一和折轴二的折叠状态均为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 >**说明：**<br>
-> 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。<br>
-> 具有两个折轴的产品包含上表除FOLD_STATUS_UNKNOWN以外的九种折叠状态。<br>
-> FOLD_STATUS_UNKNOWN是一种不可用的折叠状态。
+>
+>- 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。<br>
+>
+>- 具有两个折轴的产品包含上表除FOLD_STATUS_UNKNOWN以外的九种折叠状态。<br>
+>
+>- FOLD_STATUS_UNKNOWN是一种不可用的折叠状态。
 
 ## FoldDisplayMode<sup>10+</sup>
 
-可折叠设备的显示模式枚举。
+可折叠设备的屏幕显示模式枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -108,8 +111,10 @@ import { display } from '@kit.ArkUI';
 | FOLD_DISPLAY_MODE_COORDINATION | 4 | 表示设备当前双屏协同显示。|
 
 >**说明：**<br>
->&bullet; 对于内外屏均可作为主屏幕使用的折叠产品，例如大折叠、阔折叠，内屏显示状态为FOLD_DISPLAY_MODE_FULL，外屏显示状态为FOLD_DISPLAY_MODE_MAIN。<br>
->&bullet; 对于外屏只有简单的辅助显示作用的折叠产品，例如小折叠，内屏显示状态为FOLD_DISPLAY_MODE_MAIN，外屏显示状态为FOLD_DISPLAY_MODE_SUB。
+>
+>- 对于内外屏均可作为主屏幕使用的折叠产品，例如大折叠、阔折叠，内屏显示状态为FOLD_DISPLAY_MODE_FULL，外屏显示状态为FOLD_DISPLAY_MODE_MAIN。<br>
+>
+>- 对于外屏只有简单的辅助显示作用的折叠产品，例如小折叠，内屏显示状态为FOLD_DISPLAY_MODE_MAIN，外屏显示状态为FOLD_DISPLAY_MODE_SUB。
 
 ## CornerType<sup>23+</sup>
 
@@ -144,7 +149,7 @@ import { display } from '@kit.ArkUI';
 
 ## FoldCreaseRegion<sup>10+</sup>
 
-折叠折痕区域。
+折叠设备屏幕的折痕区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -165,8 +170,8 @@ import { display } from '@kit.ArkUI';
 
 | 名称   | 类型 |  只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| left   | number   | 否   | 否   | 矩形区域的左边界，单位为px，该参数为整数。 |
-| top    | number   | 否   | 否   | 矩形区域的上边界，单位为px，该参数为整数。 |
+| left   | number   | 否   | 否   | 矩形区域的左上角顶点相对所在屏幕左顶点的x轴坐标，单位为px，该参数为整数。 |
+| top    | number   | 否   | 否   | 矩形区域的左上角顶点相对所在屏幕左顶点的y轴坐标，单位为px，该参数为整数。 |
 | width  | number   | 否   | 否   | 矩形区域的宽度，单位为px，该参数为整数。   |
 | height | number   | 否   | 否   | 矩形区域的高度，单位为px，该参数为整数。   |
 
@@ -300,7 +305,7 @@ getDisplayByIdSync(displayId: number): Display
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | number                    | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
+| displayId     | number                    | 是   | 屏幕ID，应为非负整数。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
 
 **返回值：**
 
@@ -314,14 +319,12 @@ getDisplayByIdSync(displayId: number): Display
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 1400003 | This display manager service works abnormally. Possible causes: Display is null, display id corresponding display does not exist. |
 
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 try {
@@ -335,7 +338,7 @@ try {
 
 ## display.getBrightnessInfo<sup>22+</sup>
 
-getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
+getBrightnessInfo(displayId: number): BrightnessInfo
 
 获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
@@ -368,8 +371,6 @@ getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
 **示例：**
 
 ```ts 
-import { display } from '@kit.ArkUI';
-
 try {
   let brightNessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
@@ -406,7 +407,6 @@ getAllDisplayPhysicalResolution(): Promise&lt;Array&lt;DisplayPhysicalResolution
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let promise = display.getAllDisplayPhysicalResolution();
 promise.then((resolutionObjects) => {
@@ -448,8 +448,6 @@ getDefaultDisplaySync(): Display
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
@@ -485,8 +483,6 @@ getPrimaryDisplaySync(): Display
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 displayClass = display.getPrimaryDisplaySync();
@@ -520,7 +516,6 @@ getAllDisplays(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> = [];
 display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
@@ -562,7 +557,6 @@ getAllDisplays(): Promise&lt;Array&lt;Display&gt;&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> =[];
 let promise: Promise<Array<display.Display>> = display.getAllDisplays();
@@ -608,7 +602,7 @@ let callback: Callback<number> = (data: number) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
 
-display.on("add", callback);
+display.on('add', callback);
 ```
 
 ## display.off('add'|'remove'|'change')
@@ -639,9 +633,8 @@ off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
-display.off("remove");
+display.off('remove');
 
 let callback: Callback<number> = (data: number) => {
   console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`)
@@ -714,8 +707,6 @@ isFoldable(): boolean
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isFoldable();
 ```
@@ -746,8 +737,6 @@ getFoldStatus(): FoldStatus
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldStatus = display.getFoldStatus();
 console.info(`Succeeded in obtaining fold status. Data: ${data}`);
 ```
@@ -780,8 +769,6 @@ getFoldDisplayMode(): FoldDisplayMode
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldDisplayMode = display.getFoldDisplayMode();
 console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ```
@@ -789,7 +776,7 @@ console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ## display.getCurrentFoldCreaseRegion<sup>10+</sup>
 getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
-在当前显示模式下获取折叠折痕区域。
+获取折叠设备屏幕的折痕区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -801,7 +788,7 @@ getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 | 类型 | 说明 |
 | ----------------------------------------------- | ------------------------------------------------------- |
-| [FoldCreaseRegion](#foldcreaseregion10) | FoldCreaseRegion对象，返回设备在当前显示模式下的折叠折痕区域。 |
+| [FoldCreaseRegion](#foldcreaseregion10) | FoldCreaseRegion对象，返回折叠设备在当前显示模式下的折痕区域。 |
 
 **错误码：**
 
@@ -814,8 +801,6 @@ getCurrentFoldCreaseRegion(): FoldCreaseRegion
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldCreaseRegion = display.getCurrentFoldCreaseRegion();
 console.info(`Succeeded in obtaining current fold crease region. Data: ${JSON.stringify(data)}`);
 ```
@@ -840,8 +825,8 @@ on(type: 'foldStatusChange', callback: Callback&lt;FoldStatus&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态发生变化。 |
-| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 是   | 回调函数。表示折叠设备折叠状态。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态变化事件。 |
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 是   | 回调函数。返回折叠设备折叠状态。 |
 
 **错误码：**
 
@@ -881,8 +866,8 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态发生变化。 |
-| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 否   | 需要取消注册的回调函数。表示折叠设备折叠状态。若无此参数，则取消注册折叠状态变化监听的所有回调函数。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldStatusChange'，表示折叠设备折叠状态变化事件。 |
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 否   | 需要取消注册的回调函数。返回折叠设备折叠状态。若无此参数，则取消注册折叠状态变化监听的所有回调函数。 |
 
 **错误码：**
 
@@ -896,7 +881,6 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldStatusChange');
 
@@ -921,7 +905,7 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
+| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态变化事件。 |
 | callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
 
 **错误码：**
@@ -941,7 +925,7 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
-  display.on("brightnessInfoChange", callback);
+  display.on('brightnessInfoChange', callback);
 } catch (error) {
   console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
 }
@@ -961,7 +945,7 @@ off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, Brigh
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
+| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态变化事件。 |
 | callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。表示brightnessInfo状态发生改变。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。参数1为displayId，参数2为屏幕亮度信息。 |
 
 **错误码：**
@@ -981,7 +965,7 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
-  display.off("brightnessInfoChange", callback);
+  display.off('brightnessInfoChange', callback);
 } catch (error) {
   console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
 }
@@ -1001,8 +985,8 @@ on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'foldAngleChange'，表示折叠设备折叠角度发生变化。|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。|
+| type     | string                                   | 是 | 监听事件，固定为'foldAngleChange'，表示折叠设备折叠角度变化事件。|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。返回折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。|
 
 **错误码：**
 
@@ -1038,8 +1022,8 @@ off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): vo
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                    | 是  | 监听事件，固定为'foldAngleChange'表示折叠设备折叠角度发生变化。|
-| callback | Callback&lt;Array&lt;number&gt;&gt; | 否  | 需要取消注册的回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。若无此参数，则取消注册折叠角度变化监听的所有回调函数。|
+| type     | string                                    | 是  | 监听事件，固定为'foldAngleChange'表示折叠设备折叠角度变化事件。|
+| callback | Callback&lt;Array&lt;number&gt;&gt; | 否  | 需要取消注册的回调函数。返回折叠设备屏幕折叠角度值（0度~180度）。若无此参数，则取消注册折叠角度变化监听的所有回调函数。|
 
 **错误码：**
 
@@ -1053,6 +1037,7 @@ off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): vo
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldAngleChange');
@@ -1078,7 +1063,7 @@ on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态变化事件。|
 | callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。|
 
 **错误码：**
@@ -1115,7 +1100,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态变化事件。|
 | callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。|
 
 **错误码：**
@@ -1130,6 +1115,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('captureStatusChange');
@@ -1167,10 +1153,54 @@ isCaptured(): boolean
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isCaptured();
+```
+
+## display.isCaptured
+isCaptured(bundleNameList: Array\<string>): boolean
+
+检查设备的屏幕显示信息是否正被应用列表中的应用获取。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| bundleNameList | Array\<string> | 是   | 需要检查的应用列表。数组最大长度为100，超过最大长度返回1400004错误码。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----------------------------------------------- | ------------------------------------------------------- |
+| boolean | boolean值，返回设备的屏幕显示信息是否存在被获取的情况。返回true表示设备的屏幕信息正在被指定应用列表中的应用获取；返回false表示设备的屏幕信息当前没有被指定应用列表中的应用获取。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible causes: The size of bundleNameList is larger than 100. |
+
+**示例：**
+
+```ts
+try {
+  const bundleList: Array<string> = ["com.example.app"];
+  let ret = display.isCaptured(bundleList);
+  console.info(`The screen is captured or not: ${ret}`);
+} catch (err) {
+  console.error(`Failed to get display isCaptured. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## display.on('foldDisplayModeChange')<sup>10+</sup>
@@ -1187,14 +1217,12 @@ on(type: 'foldDisplayModeChange', callback: Callback&lt;FoldDisplayMode&gt;): vo
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
-
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式发生变化。 |
-| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 是   | 回调函数。表示折叠设备屏幕显示模式。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式变化事件。 |
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 是   | 回调函数。返回折叠设备屏幕显示模式。 |
 
 **错误码：**
 
@@ -1230,14 +1258,12 @@ off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): 
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
-
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式发生变化。 |
-| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 否   | 需要取消注册的回调函数。表示折叠设备屏幕显示模式。若无此参数，则取消注册屏幕显示模式变化监听的所有回调函数。 |
+| type     | string                                   | 是   | 监听事件，固定为'foldDisplayModeChange'，表示折叠设备屏幕显示模式变化事件。 |
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 否   | 需要取消注册的回调函数。若无此参数，则取消注册屏幕显示模式变化监听的所有回调函数。 |
 
 **错误码：**
 
@@ -1251,6 +1277,7 @@ off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): 
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldDisplayModeChange');
@@ -1319,9 +1346,9 @@ let config : VirtualScreenConfig = {
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {
-  console.info(`Succeeded in creating the virtual screen.ScreenId : ${screenId}`);
+  console.info(`Succeeded in creating the virtual screen. ScreenId : ${screenId}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1368,7 +1395,7 @@ let screenId: number = 1;
 display.destroyVirtualScreen(screenId).then(() => {
   console.info('Succeeded in destroying the virtual screen.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to destroy the virtual screen.Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to destroy the virtual screen. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1424,7 +1451,7 @@ struct Index {
     display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in setting the surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
     });
   }
   build() {
@@ -1490,7 +1517,7 @@ let screenId: number = 0;
 display.makeUnique(screenId).then(() => {
   console.info('Succeeded in making unique screens.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to make unique screens. Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to make unique screens. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1528,8 +1555,6 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let relativePosition: display.RelativePosition = {
   displayId: 0,
   position: {
@@ -1581,8 +1606,6 @@ convertGlobalToRelativeCoordinate(position: Position, displayId?: number): Relat
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let position: display.Position = {
     x: 100,
     y: 200
@@ -1911,14 +1934,13 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
   let promise = displayClass.getAvailableArea();
   promise.then((data) => {
-    console.info(`Succeeded get the available area in this display. data: ${JSON.stringify(data)}`);
+    console.info(`Succeeded in getting the available area in this display. data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
   })
@@ -1959,7 +1981,6 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -1967,7 +1988,7 @@ let callback: Callback<display.Rect> = (data: display.Rect) => {
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
-  displayClass.on("availableAreaChange", callback);
+  displayClass.on('availableAreaChange', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -2006,7 +2027,6 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -2014,7 +2034,7 @@ let callback: Callback<display.Rect> = (data: display.Rect) => {
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
-  displayClass.off("availableAreaChange", callback);
+  displayClass.off('availableAreaChange', callback);
 } catch (exception) {
   console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -2031,7 +2051,7 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| [FoldCreaseRegion](#foldcreaseregion10) | 返回设备在当前显示模式下的折叠折痕区域。 |
+| [FoldCreaseRegion](#foldcreaseregion10) | 返回折叠设备在当前显示模式下的折痕区域。 |
 
 **错误码：**
 
@@ -2045,8 +2065,6 @@ getLiveCreaseRegion(): FoldCreaseRegion
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();

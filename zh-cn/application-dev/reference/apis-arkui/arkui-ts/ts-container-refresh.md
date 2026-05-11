@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
  可以进行页面下拉操作并显示刷新动效的容器组件。 
@@ -49,6 +49,7 @@ Refresh(value: RefreshOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型                                      | 只读   | 可选 | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | 否    | 否 | 组件当前是否处于刷新中状态。true表示处于刷新中状态，false表示未处于刷新中状态。<br/>默认值：false<br/>该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -82,6 +83,28 @@ refreshOffset(value: number)
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | value  | number |  是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。|
+
+### refreshOffset
+
+refreshOffset(value: number | Resource)
+
+设置触发刷新的下拉偏移量，当下拉距离小于该属性设置值时离手不会触发刷新，支持Resource资源类型。
+
+未通过该接口设置时，当未设置[promptText](#refreshoptions对象说明)参数时，默认偏移量为64vp；设置了[promptText](#refreshoptions对象说明)参数时，默认偏移量为96vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| value  | number \| [Resource](ts-types.md#resource) |  是 | 下拉偏移量。<br/>单位：vp<br/>取值范围：(0, +∞)。值为0或负数时，按默认值处理。|
 
 ### pullToRefresh<sup>12+</sup>
 
@@ -147,6 +170,28 @@ maxPullDownDistance(distance: Optional\<number>)
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
 
+### maxPullDownDistance
+
+maxPullDownDistance(distance: number | Resource | undefined)
+
+设置最大下拉距离，支持Resource资源类型。
+
+未通过该接口设置时，设置最大下拉距离为undefined。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| distance  | number \| [Resource](ts-types.md#resource) \| undefined |  是 | 最大下拉距离。<br/>默认值：undefined<br/>单位：vp<br/>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](#refreshoffset12)时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -201,7 +246,7 @@ onOffsetChange(callback: Callback\<number>)
 
 | 参数名 | 类型                                    | 必填 | 说明       |
 | ------ | --------------------------------------- | ---- | ---------- |
-| callback  | Callback\<number> | 是   | 下拉距离。<br/>单位：vp |
+| callback  | Callback\<number> | 是   | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。<br/>单位：vp |
 
 
 ## RefreshStatus枚举说明
@@ -270,7 +315,7 @@ struct RefreshExample {
         .scrollBar(BarState.Off)
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -333,7 +378,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(96)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -408,7 +453,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(64)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -502,7 +547,7 @@ struct RefreshExample {
         this.params.refreshStatus = refreshStatus;
         // 更新自定义组件内容。
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -587,7 +632,7 @@ struct RefreshExample {
         this.ratio = 1 - Math.pow((offset / this.maxRefreshingHeight), 3);
       })
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -741,7 +786,7 @@ struct RefreshExample {
       }
       .maxPullDownDistance(150)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus)
+        console.info('Refresh onStateChange state is ' + refreshStatus)
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value)
@@ -814,7 +859,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .pullDownRatio(this.ratio)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -876,7 +921,7 @@ struct RefreshExample {
         )
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -976,7 +1021,7 @@ struct RefreshExample {
         this.refreshStatus = refreshStatus;
         this.params.refreshStatus = refreshStatus;
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {

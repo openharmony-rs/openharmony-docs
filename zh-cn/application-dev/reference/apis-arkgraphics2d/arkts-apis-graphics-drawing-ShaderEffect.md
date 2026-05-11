@@ -233,7 +233,7 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | centerPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的圆心。 |
-| radius   | number  | 是   | 表示渐变的半径，小于等于0时无效，该参数为浮点数。 |
+| radius   | number  | 是   | 表示渐变的半径，小于等于0时无效，该参数为浮点数。单位为物理像素px。 |
 | colors | Array\<number> | 是   | 表示在圆心和圆边界之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在圆心和圆边界之间。 |
@@ -326,9 +326,9 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   |表示渐变的起始圆的圆心。 |
-| startRadius | number | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。 |
+| startRadius | number | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | endPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的结束圆的圆心。 |
-| endRadius | number | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。 |
+| endRadius | number | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | colors | Array\<number> | 是   | 表示在起始圆和结束圆之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。|

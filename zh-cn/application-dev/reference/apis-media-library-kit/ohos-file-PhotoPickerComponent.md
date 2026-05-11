@@ -53,7 +53,7 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 
 | 名称                      | 类型                                                                               | 必填  | 装饰器类型      | 说明                                                                                                                                                                                                                                                                                                                                                            |
 |-------------------------|----------------------------------------------------------------------------------|-----|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| pickerOptions           | [PickerOptions](#pickeroptions)                                                  | 否   | - | picker配置参数信息。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                     |
+| pickerOptions              | [PickerOptions](#pickeroptions)                                                  | 否   | - | picker配置参数信息。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                     |
 | onSelect                | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中勾选图片时产生的回调事件，将图片uri报给应用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                            |
 | onDeselect              | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中取消勾选图片时产生的回调事件，同时也会将图片uri报给应用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                      |
 | onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | 否   | - | 用户在picker组件中点击宫格产生的回调事件。<br>点击图片（缩略图宫格）时，返回值为true则勾选此图片，否则不响应勾选，URI不授权；点击相机宫格，返回值为true则拉起系统相机，否则不拉起相机，由应用自行处理。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                    |
@@ -71,7 +71,7 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | onMovingPhotoBadgeStateChanged<sup>22+</sup> | [MovingPhotoBadgeStateChangedCallback](#movingphotobadgestatechangedcallback22) | 否 | - | 用户在Picker组件中打开/关闭动态效果时产生的回调。将图片uri和动态照片状态报给应用。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | onScrollStopAtStart<sup>23+</sup> | [ScrollStopAtStartCallback](#scrollstopatstartcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容起始位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容结束位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | 否 | - | 宫格试图进入到大图视图、大图浏览切换时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | 否 | - | 宫格视图进入到大图视图、大图浏览切换时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | onError<sup>23+</sup> | [ErrorCallback](#errorcallback23) | 否 | - | 使用PhotoPickerComponent组件发生错误时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## PickerOptions
@@ -106,7 +106,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
-| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度，透明度范围为0到1的数值，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -256,7 +256,7 @@ private isOnClickedNotify: boolean = false;
     onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
         return true;
     };
-    // 当一个宫格被点击时，代码会验证该宫格对应 URI是否有效，如无效，则忽略。
+    // 当一个宫格被点击时，代码会验证该宫格对应URI是否有效，如无效，则忽略。
     // 然后，会检查 clickedUris 中否已存在该URI的记录。如没有，则创建一条记录并将 isSelected 属性设置为 true。
     // 如果记录存在，则将该记录的 isSelected 属性更新为 true。
     // 数据保存完成后点击“setClickResult”按钮，会调用addData(SET_ITEM_CLICK_RESULT)将对应宫格设置为选中状态。
@@ -382,7 +382,7 @@ type ScrollStopAtEndCallback = () => void
 
 type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
-用户在Picker组件中打开/关闭动态效果时的回调事件。
+宫格视图进入到大图视图、大图浏览切换时产生的回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -587,7 +587,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | 是 | 需要保存到图库的应用沙箱图片/视频uri。trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功的newUri。 |
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | 是 | 返回保存后新生成的媒体库文件对应的uri。             |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。<br>默认使用trustedUris对应mediaItem的title、fileNameExtension和photoType值，且subtype固定为DEFAULT。             |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>1. 传入subtype选项，配置项不生效，仅支持保存DEFAULT类型图片。<br>默认使用trustedUris对应mediaItem的title、fileNameExtension和photoType值，且subtype固定为DEFAULT。<br>2. 该参数在[SaveMode](#savemode15)为OVERWRITE下不生效。             |
 | saveMode | [SaveMode](#savemode15)           | 否 | 图片保存模式。<br>默认使用SAVE_AS模式保存为新图片。             |
 
 ### updatePickerOptions<sup>22+</sup>
@@ -685,12 +685,12 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
 | 名称     | 类型    | 只读 | 可选  | 说明                                                |
 |----------|--------|-----|-----|---------------------------------------------------|
-| uri      | string                | 否 | 是   | 图片、视频的uri。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。</br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
-| mimeType | string                | 否 | 是   | 图片、视频的mimeType。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
+| uri      | string                | 否 | 是   | 图片、视频的uri。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**注意：**<br>当资源为连拍照片类型时，仅返回该连拍组的封面资源。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
+| mimeType | string                | 否 | 是   | 图片、视频的mimeType。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>开发者可以通过mimeType的字符串前缀判断媒体类型：以'image/'开头表示图片，以'video/'开头表示视频。具体判断方式请参考[使用mimeType字段来判断资源类型](../../media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#使用mimetype字段来判断资源类型)。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | height   | number                | 否 | 是   | 图片、视频的高（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
-| duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| duration   | number                | 否 | 是   | 视频的持续时间（单位：毫秒）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BURST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
@@ -828,7 +828,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| backgroundOpacity<sup>24+</sup>         | number                         | 否   | 是 | 支持配置picker背景透明度，透明度范围为0到1的数值，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 
 ## PickerError<sup>23+</sup>
 
@@ -1036,7 +1036,7 @@ Picker的颜色模式。
 | SQUARE_RATIO        | 0   | 1:1比例显示。    |
 | ORIGINAL_SIZE_RATIO | 1   | 原图宽高比显示。 |
 
-## 示例
+## 示例一（PhotoPickerComponent组件的使用）
 
 ```ts
 // xxx.ets
@@ -1118,7 +1118,7 @@ struct PickerDemo {
       return true; // 返回true则拉起系统相机，若应用需要自行处理则返回false。
     } else {
       if (clickType === ClickType.SELECTED) {
-        // 应用做自己的业务处理（注：非长耗时操作，例如opensync大文件）。
+        // 应用做自己的业务处理（注：非长耗时操作，例如openSync大文件）。
         if (uri) {
           this.selectUris.push(uri);
           this.pickerOptions.preselectedUris = [...this.selectUris];
@@ -1254,6 +1254,239 @@ struct PickerDemo {
         }
       }
     }
+  }
+}
+```
+
+## 示例二（使用PhotoPickerComponent实现抽屉组件效果）
+
+从API version 23开始，可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、[PhotoPickerComponent](#photopickercomponent)的onScrollStopAtStart和onScrollStopAtEnd回调来实现抽屉效果。
+
+```ts
+// xxx.ets
+import { display } from '@kit.ArkUI';
+import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
+const enum DrawerState {
+  // 展开状态。
+  Expanding,
+  // 收缩状态。
+  Collapsing,
+  // 滑动状态。
+  Sliding
+}
+
+@Entry
+@Component
+struct Drawer {
+  @State pickerController: PickerController = new PickerController();
+  private pickerOptions: PickerOptions = new PickerOptions();
+  // 屏幕高度，单位为vp。
+  @State screenHeight: number = 0;
+  // 抽屉高度，单位为vp。
+  @State drawerHeight: number = 0;
+  // 抽屉的偏移量，单位为vp。
+  @State offsetY: number = 0;
+  // 抽屉是否展开。
+  @State isExpanded: boolean = false;
+  // 拖拽起始位置，单位为vp。
+  private startY: number = 0;
+  // 当前拖拽的偏移量，单位为vp。
+  private currentOffset: number = 0;
+  // 自定义抽屉高度在整个屏幕的占比。
+  private drawerRatio: number = 0.8;
+  // 自定义初始化时隐藏抽屉的占比。
+  private hideRatio: number = 0.8;
+  // 初始化为收缩状态。
+  private drawerState: DrawerState = DrawerState.Collapsing;
+  // 手势响应阈值，判断手势是否为向下。
+  private pullingDownThreshold: number = -5;
+
+  aboutToAppear(): void {
+    // 获取屏幕高度。
+    let displayInfo = display.getDefaultDisplaySync();
+    this.screenHeight = displayInfo.height / displayInfo.densityPixels;
+    // 获取抽屉高度，示例为屏幕高度的0.8倍，可自定义修改。
+    this.drawerHeight = this.screenHeight * this.drawerRatio;
+    // 初始时抽屉在底部（隐藏高度），示例为隐藏抽屉的0.8倍。
+    this.offsetY = this.drawerHeight * this.hideRatio;
+    // 初始化时Picker不支持滑动。
+    this.pickerOptions.isSlidingSupported = false;
+    // 无边缘回弹。
+    this.pickerOptions.edgeEffect = EdgeEffect.None;
+    // 不展示搜索框。
+    this.pickerOptions.isSearchSupported = false;
+  }
+
+  private scrollStopAtStart() {
+    // 状态变更为展开状态，同时设置宫格不能滑动。
+    this.drawerState = DrawerState.Expanding;
+    this.pickerController.updatePickerOptions({
+    isSlidingSupported: false
+  })
+  }
+
+  private toggleDrawer() {
+    if (this.isExpanded) {
+      this.hideDrawer();
+    } else {
+      this.showDrawer();
+    }
+  }
+
+  private hideDrawer() {
+    this.getUIContext()?.animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = false;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Collapsing;
+      this.offsetY = this.drawerHeight * 0.8;
+    })
+  }
+
+  private showDrawer() {
+    this.getUIContext()?.animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = true;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Expanding;
+      this.offsetY = 0;
+    })
+  }
+
+  build() {
+    RelativeContainer() {
+      // 主内容区域。
+      Column() {
+        Text('主页面内容')
+          .fontSize(24)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Text('这是一个使用RelativeContainer实现的底部抽屉效果')
+          .fontSize(16)
+          .fontColor('#666')
+          .margin({ bottom: 30 })
+          .textAlign(TextAlign.Center)
+          .width('80%')
+
+        Button(this.isExpanded ? '收起抽屉' : '展开抽屉')
+          .onClick(() => {
+            this.toggleDrawer();
+          })
+      }
+      .width('100%')
+      .padding(20)
+      .alignItems(HorizontalAlign.Center)
+      .backgroundColor('#f5f5f5')
+      .borderRadius(10)
+      .alignRules({
+        top: { anchor: '__container__', align: VerticalAlign.Top },
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+      })
+      .height('100%')
+
+      if (this.isExpanded) {
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#80000000')
+          .alignRules({
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+          })
+          .onClick(() => {
+            this.hideDrawer();
+          })
+      }
+
+      Column() {
+        Row()
+          .width(50)
+          .height(5)
+          .backgroundColor('#CCC')
+          .borderRadius(3)
+          .margin({ top: 12, bottom: 8 })
+
+        Text('抽屉菜单')
+          .fontSize(18)
+          .fontWeight(FontWeight.Medium)
+          .margin({ bottom: 10 })
+
+        Divider()
+          .width('90%')
+          .margin({ bottom: 10 })
+
+        PhotoPickerComponent({
+          pickerOptions: this.pickerOptions,
+          pickerController: this.pickerController,
+          onScrollStopAtStart: this.scrollStopAtStart
+        })
+          .layoutWeight(1)
+          .width('100%')
+      }
+      .width('100%')
+      .height(this.drawerHeight)
+      .backgroundColor(Color.White)
+      .borderRadius({ topLeft: 20, topRight: 20 })
+      .shadow({ radius: 10, color: '#33000000' })
+      .alignRules({
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+        bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+      })
+      .translate({ y: this.offsetY })
+      .gesture(
+        PanGesture({ direction: PanDirection.Vertical })
+          // 记录抽屉开始拖拽的位置。
+          .onActionStart((event: GestureEvent) => {
+            this.startY = event.fingerList[0].globalY || 0;
+            this.currentOffset = this.offsetY;
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            // 如果是Picker滑动状态，不改变抽屉的高度，直接返回。
+            if (this.drawerState === DrawerState.Sliding) {
+              return;
+            }
+            // 如果抽屉的状态是展开或者收缩则需要通过手势来进一步改变抽屉状态。
+            // 计算移动距离。
+            const deltaY = event.fingerList[0].globalY - this.startY || 0;
+            // 当抽屉处于展开状态且用户向下滑动时，开启宫格滑动功能并将抽屉状态切换为滑动状态。
+            if (this.drawerState === DrawerState.Expanding && deltaY < this.pullingDownThreshold) {
+              this.pickerController.updatePickerOptions({
+                isSlidingSupported: true
+              })
+              this.drawerState = DrawerState.Sliding
+            }
+            let newOffset = this.currentOffset + deltaY;
+            if (newOffset < 0) {
+              newOffset = 0;
+            }
+            this.offsetY = newOffset;
+          })
+          .onActionEnd(()=>{
+            // 手势结束，根据位置自动展开或收起。
+            if (this.offsetY > this.drawerHeight / 2) {
+              // 滑动超过抽屉高度一半，抽屉状态置为收缩状态。
+              this.hideDrawer();
+            } else {
+              // 滑动不到抽屉高度一半，抽屉状态置为展开状态。
+              this.showDrawer();
+            }
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#E0E0E0')
   }
 }
 ```

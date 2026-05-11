@@ -173,7 +173,7 @@
 
 ## 主轴对齐方式
 
-通过justifyContent参数设置子元素在主轴方向的对齐方式。
+通过[justifyContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)参数设置子元素在主轴方向的对齐方式。
 
 ![flex-spindle-alignment](figures/flex-spindle-alignment.png)
 

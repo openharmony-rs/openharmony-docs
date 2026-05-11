@@ -13,6 +13,8 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - This component can be used only in the stage model.
+>
 > - If the **ToolBarV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ToolBarV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ToolBarV2** component.
 >
 > - The toolbar background color does not automatically switch when the system changes between light and dark modes.
@@ -30,7 +32,7 @@ Not supported
 
 ## ToolBarV2
 
-ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
 
 Creates a toolbar.
 
@@ -45,13 +47,11 @@ Creates a toolbar.
 | Name                  | Type                                                              | Mandatory| Decorator              | Description                                                          |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
 | toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | Yes | @Param<br>@Require | Toolbar list.                                                      |
-| activatedIndex       | number                                                           | No | @Param              | Index of the active item.<br></div>Default value: **-1**, indicating that no toolbar item is activated<br>Value range: [-1, 4]     |
-| dividerModifier<sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No | @Param              | Modifier for the toolbar header divider, which can be used to customize the divider's height, color, and other attributes.<br>This parameter does not take effect by default.                        |
-| toolBarModifier<sup> | [ToolBarV2Modifier](#toolbarv2modifier)                          | No | @Param              | Modifier for the toolbar, which can be used to set the toolbar's height, background color, padding (which only takes effect when there are fewer than five toolbar items), and whether to display the pressed state.<br>This parameter does not take effect by default.|
+| activatedIndex    | number                                                           | No | @Param              | Index of the active item.<br></div>Default value: **-1**, indicating that no toolbar item is activated<br>Value range: [-1, 4]     |
+| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No | @Param              | Modifier for the toolbar header divider, which can be used to customize the divider's height, color, and other attributes.<br>This parameter does not take effect by default.                        |
+| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | No | @Param              | Modifier for the toolbar, which can be used to set the toolbar's height, background color, padding (which only takes effect when there are fewer than five toolbar items), and whether to display the pressed state.<br>This parameter does not take effect by default.|
 
 ## ToolBarV2Item
-
-ToolbarV2({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: 	ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
 
 Defines an item in the toolbar.
 
@@ -95,8 +95,6 @@ A constructor used to create a **ToolBarV2Item** instance.
 
 ## ToolBarV2ItemOptions
 
-ToolBarV2ItemOptions({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
-
 Defines the options for initializing a **ToolBarV2Item** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -134,8 +132,6 @@ Defines the callback for the click event of a toolbar item.
 | index | number | Yes |Index of the toolbar item that triggers the click event.<br>     |
 
 ## ToolBarV2ItemText
-
-ToolBarV2ItemText({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 Defines the text of a toolbar item.
 
@@ -175,8 +171,6 @@ A constructor used to create a **ToolBarV2ItemText** instance.
 
 ## ToolBarV2ItemTextOptions
 
-ToolBarV2ItemTextOptions({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
-
 Defines the options for initializing a **ToolBarV2ItemText** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -192,8 +186,6 @@ Defines the options for initializing a **ToolBarV2ItemText** object.
 | activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**.|
 
 ## ToolBarV2ItemImage
-
-ToolBarV2ItemImage({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 Defines the icon content of a toolbar item.
 
@@ -232,8 +224,6 @@ A constructor used to create a **ToolBarV2ItemImage** instance.
 | options | [ToolBarV2ItemImageOptions](#toolbarv2itemimageoptions) | Yes | Configuration options for the icon content of the toolbar item.|
 
 ## ToolBarV2ItemImageOptions
-
-ToolBarV2ItemImageOptions({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 Defines the options for initializing a **ToolBarV2ItemImage** object.
 
@@ -390,8 +380,6 @@ Enumerates the states of the toolbar item.
 
 ## ToolBarV2SymbolGlyph
 
-ToolBarV2SymbolGlyph({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
-
 Defines the icon symbol options.
 
 **Decorator**: @ObservedV2
@@ -429,8 +417,6 @@ A constructor used to create a **ToolBarV2SymbolGlyph** object.
 
 ## ToolBarV2SymbolGlyphOptions
 
-ToolBarV2SymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
-
 Defines the options for initializing a **ToolBarV2SymbolGlyph** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -462,7 +448,7 @@ struct Index {
     this.toolbarList.push(new ToolBarV2Item({
       content: new ToolBarV2ItemText(
         {
-          text: 'Cut Super Long Text'
+          text: Long long long long long'
         }
       ),
       icon: new ToolBarV2ItemImage({
@@ -505,7 +491,7 @@ struct Index {
       new ToolBarV2Item({
         content: new ToolBarV2ItemText(
           {
-            text:'Select All'
+            text: 'All'
           }
         ),
         icon: new ToolBarV2ItemImage({
@@ -726,16 +712,16 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Cut Super Long Text',
+          text: Long long long long long'
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_share')
         }),
         action: () => {
         },
-        accessibilityText: 'Clip', // Screen reader announcement for the item.
-        accessibilityDescription: 'Double-tap to clip', // Screen reader announcement for the item.
-        accessibilityLevel: 'yes' // Configure this element to be focused by accessibility screen readers.
+        accessibilityText: 'Clip', // Screen reader announcement text for the item.
+        accessibilityDescription: 'Double-tap to clip', // Screen reader announcement description for the item.
+        accessibilityLevel: 'yes'  // Configure this element to be focused by accessibility screen readers.
       })
     )
     this.toolbarList.push(
@@ -767,7 +753,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Select All',
+          text: 'All',
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_select_all'),
