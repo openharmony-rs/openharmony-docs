@@ -58,7 +58,7 @@ matchMediaSync(condition: string): MediaQueryListener
 
 | 类型               | 说明                                         |
 | ------------------ | -------------------------------------------- |
-| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
+| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和注销监听回调。 |
 
 **示例：** 
 
@@ -125,7 +125,7 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 
 **示例：** 
 
-  详见[off('change')](#offchange)示例。
+详见[off('change')](#offchange)示例。
 
 ### off('change')
 
@@ -148,11 +148,9 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 | 参数名   | 类型                             | 必填 | 说明                                                       |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | 是   | 必须填写字符串'change'。                                   |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
@@ -168,24 +166,7 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 取消注册回调
-  ```
-
-ArkTS-Sta示例：
-
-```ts
-import mediaquery from '@ohos.mediaquery';
-
-let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
-function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
-  if (mediaQueryResult.matches) {
-    // do something here
-  } else {
-    // do something here
-  }
-}
-listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 去取消注册回调
+listener.off('change', onPortrait) // 注销回调
 ```
 
 ### onChange<sup>23+</sup>
@@ -210,6 +191,10 @@ onChange(callback: Callback&lt;MediaQueryResult&gt;): void
 | -------- | ----------------------------------------------------- | ---- | ------------------------ |
 | callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 是   | 向媒体查询注册的回调。     |
 
+**示例：** 
+
+详见[offChange](#offchange23)示例。
+
 ### offChange<sup>23+</sup>
 
 offChange(callback?: Callback&lt;MediaQueryResult&gt;): void
@@ -226,7 +211,24 @@ offChange(callback?: Callback&lt;MediaQueryResult&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                       |
 | -------- | ----------------------------------------------------- | ---- | ---------------------------------------------------------- |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要去注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要注销的回调，如果参数缺省则注销该句柄下所有的回调。 |
+
+**示例：**
+
+```ts
+import mediaquery from '@kit.ArkUI';
+
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches) {
+    // do something here
+  } else {
+    // do something here
+  }
+}
+listener.onChange(onPortrait) // 注册回调
+listener.offChange(onPortrait) // 注销回调
+```
 
 ## MediaQueryResult
 

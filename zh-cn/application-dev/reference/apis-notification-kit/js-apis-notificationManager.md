@@ -2283,7 +2283,7 @@ notificationManager.requestEnableNotification().then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabled   
+## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
 
 isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
@@ -2296,6 +2296,8 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -2345,7 +2347,7 @@ let isDistributedEnabledCallback = (err: BusinessError | null, data: boolean | u
 notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 ```
 
-## notificationManager.isDistributedEnabled
+## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
 
 isDistributedEnabled(): Promise\<boolean>
 
@@ -2358,6 +2360,8 @@ isDistributedEnabled(): Promise\<boolean>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **返回值：**
 

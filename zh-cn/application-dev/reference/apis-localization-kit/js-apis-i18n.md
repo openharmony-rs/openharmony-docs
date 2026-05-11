@@ -3502,6 +3502,8 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
@@ -3533,6 +3535,8 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -3950,7 +3954,7 @@ static convertCanonicalLocaleIdentifier(locale: string): string
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| locale | string | 否    | 区域ID。 |
+| locale | string | 是    | 区域ID。 |
 
 **返回值：**
 
