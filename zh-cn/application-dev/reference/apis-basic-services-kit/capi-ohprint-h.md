@@ -128,9 +128,9 @@ enum Print_PrinterState
 
 | 枚举项              | 描述           |
 | ------------------- | -------------- |
-| PRINTER_IDLE        | 打印机空闲。   |
-| PRINTER_BUSY        | 打印机忙。     |
-| PRINTER_UNAVAILABLE | 打印机不可用。 |
+| PRINTER_IDLE = 1        | 打印机空闲。   |
+| PRINTER_BUSY = 2        | 打印机忙。     |
+| PRINTER_UNAVAILABLE = 3 | 打印机不可用。 |
 
 ### Print_DiscoveryEvent
 
@@ -258,11 +258,11 @@ enum Print_DocumentFormat
 
 | 枚举项                     | 描述                                  |
 | -------------------------- | ------------------------------------- |
-| DOCUMENT_FORMAT_AUTO       | MIME 类型：application/octet-stream。 |
-| DOCUMENT_FORMAT_JPEG       | MIME 类型：image/jpeg。               |
-| DOCUMENT_FORMAT_PDF        | MIME 类型：application/pdf。          |
-| DOCUMENT_FORMAT_POSTSCRIPT | MIME 类型：application/postscript。   |
-| DOCUMENT_FORMAT_TEXT       | MIME 类型：text/plain。               |
+| DOCUMENT_FORMAT_AUTO = 1       | MIME 类型：application/octet-stream。 |
+| DOCUMENT_FORMAT_JPEG = 2       | MIME 类型：image/jpeg。               |
+| DOCUMENT_FORMAT_PDF = 3        | MIME 类型：application/pdf。          |
+| DOCUMENT_FORMAT_POSTSCRIPT = 4 | MIME 类型：application/postscript。   |
+| DOCUMENT_FORMAT_TEXT = 5       | MIME 类型：text/plain。               |
 
 ### Print_JobDocAdapterState
 
@@ -298,12 +298,12 @@ enum OH_Print_JobState
 
 **起始版本：** 24
 
-| 名称                 | 值  | 说明          |
-| -------------------- | -- |-------------- |
-| OH_PRINT_JOB_SUCCEED | 0  | 打印任务成功。 |
-| OH_PRINT_JOB_FAIL    | 1  | 打印任务失败。 |
-| OH_PRINT_JOB_CANCEL  | 2  | 打印任务取消。 |
-| OH_PRINT_JOB_BLOCK   | 3  | 打印任务阻塞。 |
+| 名称                 | 说明          |
+| -------------------- |-------------- |
+| OH_PRINT_JOB_SUCCEED = 0 | 打印任务成功。 |
+| OH_PRINT_JOB_FAIL = 1    | 打印任务失败。 |
+| OH_PRINT_JOB_CANCEL = 2  | 打印任务取消。 |
+| OH_PRINT_JOB_BLOCK = 3   | 打印任务阻塞。 |
 
 ## 函数说明
 
