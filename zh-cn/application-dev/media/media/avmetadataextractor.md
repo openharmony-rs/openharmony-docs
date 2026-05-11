@@ -327,7 +327,7 @@
       };
    // 批量获取视频缩略图（callback模式）。
    this.avMetadataExtractor!!.fetchFramesByTimes(timesUs, queryOption, param, onFrameFetched);
-   // 暂停批量获取视频缩略图
+   // 暂停批量获取视频缩略图。
    this.avMetadataExtractor!!.cancelAllFetchFrames();
    ```
 8. 释放资源：调用release()销毁实例，释放资源。
