@@ -2198,6 +2198,20 @@
 
 **起始版本**：11
 
+## ohos.permission.EXECUTE_DISTRIBUTED_INTENT
+
+允许系统应用执行分布式意图。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Car | Phone | TV | Wearable | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
 ## ohos.permission.VERIFY_ACTIVATION_LOCK
 
 允许应用校验激活锁凭据合法性。
