@@ -303,7 +303,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredOutputDevicesChang
 
 **描述**
 
-注册音频路由管理器的最高优先级输出设备变更回调。当指定播放流类型的最高优先级输出设备发生变化时，已注册的客户端将收到回调。<br> 为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback)来释放回调。
+注册音频路由管理器的最高优先级输出设备变更回调。当指定播放流类型的最高优先级输出设备发生变化时，已注册的客户端将收到回调。<br> 为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback) 来释放回调。
 
 **起始版本：** 26.0.0
 
