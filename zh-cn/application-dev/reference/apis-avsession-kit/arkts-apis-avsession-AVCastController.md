@@ -1,7 +1,7 @@
 # Interface (AVCastController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -44,14 +44,8 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
-  if (err) {
-    console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in getting AV playback state.');
-  }
+avCastController.getAVPlaybackState((state: avSession.AVPlaybackState) => {
+  console.info('Succeeded in getting AV playback state.');
 });
 ```
 
@@ -82,12 +76,10 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+
+avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('Succeeded in getting AV playback state.');
-}).catch((err: BusinessError) => {
-  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -118,15 +110,13 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
+
+avCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
   console.info(`Succeeded in getting supported decoders, length: ${decoderTypes.length}`);
   if (decoderTypes.length > 0 ) {
     console.info(`Succeeded in getting supported decoder: ${decoderTypes[0]}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -163,13 +153,11 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
-aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
+avCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
   console.info('Succeeded in getting recommended resolution level.');
-}).catch((err: BusinessError) => {
-  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -200,16 +188,14 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import type hdrCapability from './@ohos.graphics.hdrCapability';
 
-aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
+avCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
   console.info(`Succeeded in getting supported HDR capabilities, length: ${hdrFormats.length}`);
   if (hdrFormats.length > 0 ) {
     console.info(`Succeeded in getting supported HDR capability: ${hdrFormats[0]}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -217,7 +203,7 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 
 getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
-获取当前的远端设备所支持倍速播放列表。使用Promise异步回调。
+获取当前的远端设备所支持倍速播放列表，仅支持使用cast+协议连接的设备。使用Promise异步回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -240,15 +226,13 @@ getSupportedPlaySpeeds(): Promise\<Array\<number>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
+
+avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
   console.info(`Succeeded in getting supported play speeds, length: ${nums.length}`);
   if (nums.length > 0 ) {
     console.info(`Succeeded in getting supported play speed: ${nums[0]}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -289,13 +273,11 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand).then(() => {
+avCastController.sendControlCommand(avCommand).then(() => {
   console.info('Succeeded in sending control command.');
-}).catch((err: BusinessError) => {
-  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -328,15 +310,11 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
-  if (err) {
-    console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in sending control command.');
-  }
+avCastController.sendControlCommand(avCommand, () => {
+  console.info('Succeeded in sending control command.');
 });
 ```
 
@@ -373,9 +351,9 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.sendCustomData({customData : "This is custom data"});
+
+avCastController.sendCustomData({customData : "This is custom data"});
 ```
 
 ## prepare<sup>10+</sup>
@@ -406,7 +384,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
@@ -426,12 +404,8 @@ let playItem: avSession.AVQueueItem = {
   }
 };
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
-aVCastController.prepare(playItem, (err: BusinessError) => {
-  if (err) {
-    console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in preparing.');
-  }
+avCastController.prepare(playItem, () => {
+  console.info('Succeeded in preparing.');
 });
 ```
 
@@ -471,7 +445,7 @@ prepare(item: AVQueueItem): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
@@ -491,10 +465,8 @@ let playItem: avSession.AVQueueItem = {
   }
 };
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
-aVCastController.prepare(playItem).then(() => {
+avCastController.prepare(playItem).then(() => {
   console.info('Succeeded in preparing.');
-}).catch((err: BusinessError) => {
-  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -503,6 +475,10 @@ aVCastController.prepare(playItem).then(() => {
 start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 启动播放某个媒体资源。结果通过callback异步回调方式返回。
+
+> **说明：**
+>
+> 在音视频投播场景下，当应用程序顺序调用[prepare](#prepare10)和start接口，且assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -526,7 +502,7 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
@@ -547,12 +523,8 @@ let playItem: avSession.AVQueueItem = {
 };
 
 // 启动播放。
-aVCastController.start(playItem, (err: BusinessError) => {
-  if (err) {
-    console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in starting.');
-  }
+avCastController.start(playItem, () => {
+  console.info('Succeeded in starting.');
 });
 ```
 
@@ -561,6 +533,10 @@ aVCastController.start(playItem, (err: BusinessError) => {
 start(item: AVQueueItem): Promise\<void>
 
 启动播放某个媒体资源。结果通过Promise异步回调方式返回。
+
+> **说明：**
+>
+> 在音视频投播场景下，当应用程序顺序调用[prepare](#prepare10)和start接口，且assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -591,7 +567,7 @@ start(item: AVQueueItem): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
@@ -611,10 +587,8 @@ let playItem: avSession.AVQueueItem = {
   }
 };
 // 启动播放。
-aVCastController.start(playItem).then(() => {
+avCastController.start(playItem).then(() => {
   console.info('Succeeded in starting.');
-}).catch((err: BusinessError) => {
-  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -643,14 +617,8 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
-  if (err) {
-    console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in getting current item.');
-  }
+avCastController.getCurrentItem((value: avSession.AVQueueItem) => {
+  console.info('Succeeded in getting current item.');
 });
 ```
 
@@ -681,12 +649,10 @@ getCurrentItem(): Promise\<AVQueueItem>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
+
+avCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
   console.info('Succeeded in getting current item.');
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -715,14 +681,8 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
-  if (err) {
-    console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in getting valid commands.');
-  }
+avCastController.getValidCommands((state: avSession.AVCastControlCommandType[]) => {
+  console.info('Succeeded in getting valid commands.');
 });
 ```
 
@@ -751,12 +711,10 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
+
+avCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
   console.info('Succeeded in getting valid commands.');
-}).catch((err: BusinessError) => {
-  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -801,7 +759,7 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
   // 从服务器获取许可证，需要开发者根据实际情况进行赋值。
   let licenseResponseData: Uint8Array = new Uint8Array();
   console.info(`Succeeded in get license by ${drmUrl}.`);
-  aVCastController.processMediaKeyResponse(assetId, licenseResponseData);
+  avCastController.processMediaKeyResponse(assetId, licenseResponseData);
 }
 ```
 
@@ -830,14 +788,10 @@ release(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.release((err: BusinessError) => {
-  if (err) {
-    console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in releasing.');
-  }
+
+avCastController.release(() => {
+  console.info('Succeeded in releasing.');
 });
 ```
 
@@ -868,12 +822,10 @@ release(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.release().then(() => {
+
+avCastController.release().then(() => {
   console.info('Succeeded in releasing.');
-}).catch((err: BusinessError) => {
-  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 
 ```
@@ -910,12 +862,12 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 **示例：**
 
 ```ts
-aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
 let playbackFilter: Array<keyof avSession.AVPlaybackState> = ['state', 'speed', 'loopMode'];
-aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -949,7 +901,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 **示例：**
 
 ```ts
-aVCastController.off('playbackStateChange');
+avCastController.off('playbackStateChange');
 ```
 
 ## on('mediaItemChange')<sup>10+</sup>
@@ -983,7 +935,7 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 **示例：**
 
 ```ts
-aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
+avCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
   console.info(`on mediaItemChange state : ${item.itemId}`);
 });
 ```
@@ -1016,7 +968,7 @@ off(type: 'mediaItemChange'): void
 **示例：**
 
 ```ts
-aVCastController.off('mediaItemChange');
+avCastController.off('mediaItemChange');
 ```
 
 ## on('playNext')<sup>10+</sup>
@@ -1050,7 +1002,7 @@ on(type: 'playNext', callback: Callback\<void>): void
 **示例：**
 
 ```ts
-aVCastController.on('playNext', () => {
+avCastController.on('playNext', () => {
   console.info('on playNext');
 });
 ```
@@ -1083,7 +1035,7 @@ off(type: 'playNext'): void
 **示例：**
 
 ```ts
-aVCastController.off('playNext');
+avCastController.off('playNext');
 ```
 
 ## on('playPrevious')<sup>10+</sup>
@@ -1117,7 +1069,7 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 **示例：**
 
 ```ts
-aVCastController.on('playPrevious', () => {
+avCastController.on('playPrevious', () => {
   console.info('on playPrevious');
 });
 ```
@@ -1150,7 +1102,7 @@ off(type: 'playPrevious'): void
 **示例：**
 
 ```ts
-aVCastController.off('playPrevious');
+avCastController.off('playPrevious');
 ```
 
 ## on('requestPlay')<sup>11+</sup>
@@ -1182,7 +1134,7 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 **示例：**
 
 ```ts
-aVCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
+avCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
   console.info(`on requestPlay state : ${item.itemId}`);
 });
 ```
@@ -1214,7 +1166,7 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 **示例：**
 
 ```ts
-aVCastController.off('requestPlay');
+avCastController.off('requestPlay');
 ```
 
 ## on('endOfStream')<sup>11+</sup>
@@ -1246,7 +1198,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 **示例：**
 
 ```ts
-aVCastController.on('endOfStream', () => {
+avCastController.on('endOfStream', () => {
   console.info('on endOfStream');
 });
 ```
@@ -1278,7 +1230,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 **示例：**
 
 ```ts
-aVCastController.off('endOfStream');
+avCastController.off('endOfStream');
 ```
 
 ## on('seekDone')<sup>10+</sup>
@@ -1312,7 +1264,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 **示例：**
 
 ```ts
-aVCastController.on('seekDone', (pos: number) => {
+avCastController.on('seekDone', (pos: number) => {
   console.info(`on seekDone pos：${pos} `);
 });
 ```
@@ -1345,7 +1297,7 @@ off(type: 'seekDone'): void
 **示例：**
 
 ```ts
-aVCastController.off('seekDone');
+avCastController.off('seekDone');
 ```
 
 ## on('validCommandChange')<sup>11+</sup>
@@ -1378,7 +1330,7 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 **示例：**
 
 ```ts
-aVCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
+avCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
   console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
   console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
@@ -1412,7 +1364,7 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 **示例：**
 
 ```ts
-aVCastController.off('validCommandChange');
+avCastController.off('validCommandChange');
 ```
 
 ## on('videoSizeChange')<sup>12+</sup>
@@ -1443,7 +1395,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 **示例：**
 
 ```ts
-aVCastController.on('videoSizeChange', (width: number, height: number) => {
+avCastController.on('videoSizeChange', (width: number, height: number) => {
   console.info(`Succeeded in video size change, size: ${width}, ${height}`);
 });
 ```
@@ -1474,7 +1426,7 @@ off(type: 'videoSizeChange'): void
 **示例：**
 
 ```ts
-aVCastController.off('videoSizeChange');
+avCastController.off('videoSizeChange');
 ```
 
 ## on('error')<sup>10+</sup>
@@ -1516,7 +1468,7 @@ on(type: 'error', callback: ErrorCallback): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.on('error', (error: BusinessError) => {
+avCastController.on('error', (error: BusinessError) => {
   console.info(`error happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1555,7 +1507,7 @@ off(type: 'error'): void
 **示例：**
 
 ```ts
-aVCastController.off('error')
+avCastController.off('error')
 ```
 
 ## on('keyRequest')<sup>12+</sup>
@@ -1593,7 +1545,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
   console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
 }
-aVCastController.on('keyRequest', keyRequestCallback);
+avCastController.on('keyRequest', keyRequestCallback);
 ```
 
 ## off('keyRequest')<sup>12+</sup>
@@ -1625,7 +1577,7 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('keyRequest');
+avCastController.off('keyRequest');
 ```
 
 ## on('castControlGenericError')<sup>13+</sup>
@@ -1672,7 +1624,7 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlGenericError', (error: BusinessError) => {
+avCastController.on('castControlGenericError', (error: BusinessError) => {
   console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1705,7 +1657,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlGenericError');
+avCastController.off('castControlGenericError');
 ```
 
 ## on('castControlIoError')<sup>13+</sup>
@@ -1755,7 +1707,7 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlIoError', (error: BusinessError) => {
+avCastController.on('castControlIoError', (error: BusinessError) => {
   console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1788,7 +1740,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlIoError');
+avCastController.off('castControlIoError');
 ```
 
 ## on('castControlParsingError')<sup>13+</sup>
@@ -1826,7 +1778,7 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlParsingError', (error: BusinessError) => {
+avCastController.on('castControlParsingError', (error: BusinessError) => {
   console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1859,7 +1811,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlParsingError');
+avCastController.off('castControlParsingError');
 ```
 
 ## on('castControlDecodingError')<sup>13+</sup>
@@ -1898,7 +1850,7 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlDecodingError', (error: BusinessError) => {
+avCastController.on('castControlDecodingError', (error: BusinessError) => {
   console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1931,7 +1883,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlDecodingError');
+avCastController.off('castControlDecodingError');
 ```
 
 ## on('castControlAudioRendererError')<sup>13+</sup>
@@ -1967,7 +1919,7 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
+avCastController.on('castControlAudioRendererError', (error: BusinessError) => {
   console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -2000,7 +1952,7 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlAudioRendererError');
+avCastController.off('castControlAudioRendererError');
 ```
 
 ## on('castControlDrmError')<sup>13+</sup>
@@ -2043,7 +1995,7 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlDrmError', (error: BusinessError) => {
+avCastController.on('castControlDrmError', (error: BusinessError) => {
   console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -2076,7 +2028,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlDrmError');
+avCastController.off('castControlDrmError');
 ```
 
 ## on('customDataChange')<sup>20+</sup>
@@ -2107,7 +2059,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-aVCastController.on('customDataChange', (callback) => {
+avCastController.on('customDataChange', (callback) => {
     console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
 });
 ```
@@ -2140,5 +2092,5 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 **示例：**
 
 ```ts
-aVCastController.off('customDataChange');
+avCastController.off('customDataChange');
 ```

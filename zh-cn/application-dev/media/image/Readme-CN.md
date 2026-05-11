@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -40,6 +40,7 @@
   - [如何处理HEIF图片](image-faqs/heif-adapter-faq.md)
   - [如何获取图片的旋转角度信息](image-faqs/image-rotate-faq.md)
   - [Image Kit异常处理](image-faqs/image-error-faq.md)
+  - [Image Kit常见崩溃报错问题](image-faqs/image-common-mistakes.md)
 - 图片开发指导(依赖JS对象)(不再推荐)<!--image-native-js-objects-->
     - [图片解码](image-decoding-native.md)
     - [图片编码](image-encoding-native.md)

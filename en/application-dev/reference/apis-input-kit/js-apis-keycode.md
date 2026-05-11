@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
@@ -316,6 +316,7 @@ Enumerates the key codes.
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | Keyboard Input-assisted Cancel key         |
 | KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | Mouse AI Assistant key         |
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | Mouse Smart Selection key         |
+| KEYCODE_AOD_SINGLE_CLICK         |  2740 | Tapping the phone touchscreen, which is used in AOD mode<br>**Since**: 26.0.0|
 | KEYCODE_FRONT                    |  2800 | Front key, which is used to launch the windshield defogger                  |
 | KEYCODE_SETUP                    |  2801 | Setup key                        |
 | KEYCODE_WAKEUP                   |  2802 | Wakeup key                        |
@@ -377,3 +378,4 @@ Enumerates the key codes.
 | KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | Double tapping the smart watch's X-TAP sensor|
 | KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | Long-pressing the smart watch's X-TAP sensor|
 | KEYCODE_DIV<sup>20+</sup> | 3220 | Left button of the smart watch|
+| KEYCODE_XKEY | 3232 | Custom shortcut key<br>**Since**: 26.0.0|

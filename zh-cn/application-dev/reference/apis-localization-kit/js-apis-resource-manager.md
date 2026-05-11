@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 本模块提供资源获取能力。根据当前的[Configuration](#configuration)配置，获取最匹配的应用资源或系统资源。具体匹配规则参考[资源匹配](../../quick-start/resource-categories-and-access.md#资源匹配)。
 
@@ -4936,6 +4936,8 @@ getResourceName(resId: number): string
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：** 
 

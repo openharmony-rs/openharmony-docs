@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
@@ -112,6 +112,7 @@ scrollBarColor(color: Color | number | string | Resource)
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。   |
 
+
 ### scrollBarWidth
 
 scrollBarWidth(value: number | string)
@@ -127,6 +128,28 @@ scrollBarWidth(value: number | string)
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | number&nbsp;\|&nbsp;string | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。|
+
+### scrollBarWidth
+
+scrollBarWidth(value: number | string | Resource)
+
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Scroll组件主轴方向的高度，则滚动条的宽度会变为4vp，支持Resource资源类型。
+
+未通过该接口设置时，设置滚动条的宽度为4vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                       | 必填 | 说明                                      |
+| ------ | -------------------------- | ---- | ----------------------------------------- |
+| value  | number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的宽度。<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。|
 
 ### scrollSnap<sup>10+</sup>
 
@@ -889,7 +912,7 @@ currentOffset(): OffsetResult
 | -------- | -------- |
 |  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。|
 
-### offset<sup>23+<sup>
+### offset<sup>23+</sup>
 
 offset(): OffsetResult | undefined
 
@@ -1102,6 +1125,24 @@ contentSize(): SizeResult
 | ------- | -------- |
 | 100004   | Controller not bound to a component. |
 
+### getFrameNode
+
+getFrameNode(): FrameNode | undefined
+
+获取与当前Scroller绑定的FrameNode。
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [FrameNode](../js-apis-arkui-frameNode.md) \| undefined | 当Scroller已绑定到Scroll、List、Grid、WaterFlow等滚动类组件时，返回对应组件的FrameNode；如果Scroller未绑定组件，则返回undefined。 |
+
 ## OffsetResult<sup>11+</sup>对象说明
 
 滑动偏移量对象。
@@ -1125,7 +1166,7 @@ contentSize(): SizeResult
 
 | 名称   | 类型   | 只读   | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
-| duration | number | 否 | 是 | 设置滚动时长。<br/>默认值：1000<br/>**说明：** <br/>设置为小于0的值时，按默认值显示。 |
+| duration | number | 否 | 是 | 设置滚动时长。<br/>默认值：1000<br/>单位：毫秒<br/>**说明：** <br/>设置为小于0的值时，按默认值显示。 |
 | curve | [Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9) | 否 | 是 | 设置滚动曲线。<br/>默认值：Curve.Ease |
 | canOverScroll | boolean | 否 | 是 | 设置滚动动画滚动到边界后，是否转换成越界回弹动画。<br/>默认值：false<br/>**说明：** <br/> 仅在设置为true，且组件的edgeEffect设置为[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)时，使用动画滚动到边界会转换为越界回弹动画，设置为false时，滚动到边界会直接停止动画，不会转换为越界回弹动画。 <br>从API version 20开始，如果[ScrollOptions](#scrolloptions18对象说明)中的canOverScroll设置为true，表示滚动可以停留在过界位置，滚动动画过界后不会转换为回弹动画。|
 
@@ -1208,8 +1249,8 @@ contentSize(): SizeResult
 
 | 名称    | 类型                                                     | 只读 | 可选 | 说明                                                     |
 | --------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| xOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| yOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 垂直滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| xOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 水平滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| yOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | 否   | 否 | 垂直滚动总偏移量。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>参数类型为number时单位为vp。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12对象说明)&nbsp;\|&nbsp;boolean | 否   | 是 | 动画配置。<br/>- ScrollAnimationOptions:&nbsp; 自定义滚动动效。 <br/>- boolean:&nbsp;使能默认弹簧动效。<br/>默认值：<br/>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br/>boolean:&nbsp;false<br/>**说明：** <br/>当前List、Scroll、Grid、WaterFlow均支持boolean类型和ICurve曲线。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 是 | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在过界后停留，设置为false时滚动无法在过界后停留。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
@@ -1316,7 +1357,7 @@ struct ScrollExample {
       Button('scroll 100')
         .height('5%')
         .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
-          let curve = curves.interpolatingSpring(10, 1, 228, 30); //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(10, 1, 228, 30); // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({ xOffset: 0, yOffset: yOffset + 100, animation: { duration: 1000, curve: curve } });
         })
@@ -1336,7 +1377,11 @@ struct ScrollExample {
       Button('fling -3000')
         .height('5%')
         .onClick(() => { // 点击后触发初始速度为-3000vp/s的惯性滚动
-          this.scroller.fling(-3000);
+          try {
+            this.scroller.fling(-3000);
+          } catch (error) {
+            console.error('Failed to execute fling scroll:', error);
+          }
         })
         .margin({ top: 260, left: 20 })
       Button('scroll to bottom 700')
@@ -1634,7 +1679,11 @@ struct ListExample {
     for (let i = 0; i < 10; i++) {
       this.arr.push(i);
     }
-    this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    try {
+      this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
   }
   build() {
     Column() {
@@ -1660,7 +1709,11 @@ struct ListExample {
         PanGesture()
           .onActionUpdate((event: GestureEvent) => {
             if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined && event.fingerList[0].localY != undefined) {
-              this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              try {
+                this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              } catch (error) {
+                console.error('Failed to get item index from scroller:', error);
+              }
               this.itemBackgroundColorArr[this.listIndex] = true;
             }
           })
@@ -1810,7 +1863,7 @@ struct StickyNestedScroll {
     Column() {
       Row() {
         Button('有动画scrollTo').onClick(() => {
-          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({
             xOffset: 0,
@@ -1842,8 +1895,8 @@ struct StickyNestedScroll {
         .height('100%')
       }
       .scrollable(ScrollDirection.Vertical)
-      .edgeEffect(EdgeEffect.Spring) //设置边缘效果
-      .fadingEdge(false) //关闭边缘渐隐效果
+      .edgeEffect(EdgeEffect.Spring) // 设置边缘效果
+      .fadingEdge(false) // 关闭边缘渐隐效果
       .scrollBar(BarState.Auto)
       .friction(undefined)
       .backgroundColor('#DCDCDC')
@@ -1927,7 +1980,7 @@ struct ScrollExample1 {
               this.contentHeight = this.scroller.contentSize().height;
             } catch (error) {
               let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
             }
           })
         // 将获取到的内容尺寸信息通过文本进行呈现

@@ -1,8 +1,8 @@
 # ArkTSUtils.ASON
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -113,7 +113,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
 | text   | string | 是 | 有效的JSON字符串。|
-| reviver   | [Transformer](#transformer) | 否 | 转换函数，传入该参数，可以用来修改解析生成的原始值。默认值是undefined。目前只支持传入undefined。|
+| reviver   | [Transformer](#transformer) | 否 | 转换函数，传入该参数，可以用来修改解析生成的原始值。默认值是undefined。该参数目前仅支持传入undefined值，其他值会被忽略或视为无效。|
 | options   | [ParseOptions](#parseoptions) | 否 | 解析的配置，传入该参数，可以用来控制解析生成的结果类型。默认值是undefined。|
 
 **返回值：**
@@ -212,14 +212,14 @@ hashMap.set("sh","b");
 hashMap.set("map","c");
 let str1 = ArkTSUtils.ASON.stringify(hashMap);
 console.info(str1);
-// 期望输出：'{"sh":"b","ha":"a","map":"c"}'
+// 因HashMap的存储顺序由hashCode决定，因此存储位置不确定，输出可能是：'{"sh":"b","ha":"a","map":"c"}'
 let hashSet = new HashSet<string>();
 hashSet.add("ha");
 hashSet.add("sh");
 hashSet.add("set");
 let str2 = ArkTSUtils.ASON.stringify(hashSet);
 console.info(str2);
-// 期望输出：'["set","sh","ha"]'
+// 因HashSet的存储顺序由hashCode决定，因此存储位置不确定，输出可能是：'["set","sh","ha"]'
 let map = new Map<string,string>();
 map.set("m","a");
 map.set("a","b");

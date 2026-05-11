@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 The **resourceManager** module provides the resource management functionality. It allows an application to obtain the best matched application resources or system resources based on the specified [configuration](#configuration). For details about the matching rules, see [Matching Resources](../../quick-start/resource-categories-and-access.md#matching-resources).
 
@@ -391,7 +391,9 @@ Provides APIs for accessing application resources and system resources.
 >
 > - Resource files are defined in the **resources** directory of the project. You can obtain resource values such as strings, string arrays, and colors based on the specified **resName**, **resId**, or **Resource** object. **resName** indicates the resource name, **resId** indicates the resource ID, which can be obtained through `$r(*resource-address*).id`, for example, `$r('app.string.test').id`.
 >
-> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For details, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
+> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For more information, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
+>
+> - In API version 22 and earlier versions, an exception is thrown due to an invalid ID when the intermediate-code HAR or bytecode HAR accesses resources through resource ID-related APIs. From API version 23, the intermediate-code HAR or bytecode HAR can properly access resources through resource ID-related APIs. For details, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
 >
 > - For details about the content of the test files used in the sample code, see [Appendix](#appendix).
 
@@ -596,7 +598,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
-Obtains a string based on the specified resource ame and formats the string based on **args**. This API returns the result synchronously.
+Obtains a string based on the specified resource name and formats the string based on **args**. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -795,7 +797,7 @@ Obtains a string based on the specified resource name. This API uses an asynchro
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
 | resName  | string                      | Yes   | Resource name.           |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   |Callback used to return the result, which is the string corresponding to the specified resource ID.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   |Callback used to return the obtained string.|
 
 **Error codes**
 
@@ -4079,7 +4081,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFdSync(path: string): void
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API returns the result synchronously.
+Closes the file descriptor (fd) of the HAP where the **rawfile** file in the **resources/rawfile** directory is located. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4918,6 +4920,72 @@ export default class EntryAbility extends UIAbility {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
             console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+### getResourceName
+
+getResourceName(resId: number): string
+
+Obtains the resource name corresponding to a specified resource ID.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.ResourceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type    | Mandatory  | Description   |
+| ----- | ------ | ---- | ----- |
+| resId | number | Yes   | Resource ID.|
+
+**Return value**
+
+| Type    | Description         |
+| ------ | ----------- |
+| string | Resource name corresponding to the resource ID.|
+
+**Error codes**
+
+For details about the error codes, see [Resource Manager Error Codes](errorcode-resource-manager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 9001001  | Invalid resource ID.                     |
+
+**Example**
+```json5
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.string.test' with the actual resource.
+            let resName: string = this.context.resourceManager.getResourceName($r('app.string.test').id);
+            console.info(`getResourceName, result: ${resName}`);
+            // Print the output result: getResourceName, result: test
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getResourceName failed, error code: ${code}, message: ${message}.`);
         }
     }
 }

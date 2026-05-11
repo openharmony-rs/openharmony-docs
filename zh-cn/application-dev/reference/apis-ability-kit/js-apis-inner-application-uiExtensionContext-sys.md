@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIExtensionContext是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)，提供UIExtensionAbility的相关配置信息以及操作UIAbility的方法，如启动UIAbility等。
 
@@ -545,6 +545,8 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 | 16000005 | The specified process does not have the permission. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to commnicate with dependency module.|
 | 16000053 | The ability is not on the top of the UI. |
 | 16000070 | The extension cannot start the service. |

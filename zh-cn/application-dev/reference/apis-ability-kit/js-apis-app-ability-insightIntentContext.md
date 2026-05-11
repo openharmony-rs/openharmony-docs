@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供意图执行上下文，是[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)和[@InsightIntentEntry的意图执行基类](./js-apis-app-ability-InsightIntentEntryExecutor.md)的属性，为意图执行提供基础能力，例如启动本应用内的[UIAbility组件](./js-apis-app-ability-uiAbility.md)。
 

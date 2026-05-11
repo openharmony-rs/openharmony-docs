@@ -164,9 +164,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 表示证书二进制数据。
 
-**系统能力：** SystemCapability.Security.CertificateManager
-
 **起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
@@ -278,9 +278,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 表示证书文件格式。
 
-**系统能力：** SystemCapability.Security.CertificateManager
-
 **起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称       | 值 | 说明      |
 | ---------- | ------ | --------- |
@@ -332,7 +332,7 @@ try {
     if (err != null) {
       console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
     } else {
-      let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+      let uri: string = cmResult?.uri ?? '';
       console.info('Succeeded in installing private certificate.');
     }
   });
@@ -345,7 +345,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise\<CMResult>
 
-表示安装私有凭据，使用Promise方式异步返回结果。
+表示安装私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -390,9 +390,10 @@ let keystore: Uint8Array = new Uint8Array([
 let keystorePwd: string = "123456";
 try {
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
-    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    let uri: string = cmResult?.uri ?? '';
     console.info('Succeeded in installing private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -452,9 +453,10 @@ try {
   /* 安装凭据在首次解锁设备后可以使用。 */
   let level = certificateManager.AuthStorageLevel.EL2;
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
-    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    let uri: string = cmResult.uri ?? '';
     console.info('Succeeded in installing private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -503,7 +505,7 @@ try {
       if (cmResult?.credential == undefined) {
         console.info('The result of getting private certificate is undefined.');
       } else {
-        let list = cmResult.credential;
+        let list = cmResult?.credential;
         console.info('Succeeded in getting private certificate.');
       }
     }
@@ -517,7 +519,7 @@ try {
 
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取私有凭据详情，使用Promise方式异步返回结果。
+表示获取私有凭据详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -560,7 +562,8 @@ try {
       let list = cmResult.credential;
       console.info('Succeeded in getting private certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -618,7 +621,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-表示卸载指定的私有凭据，使用Promise方式异步返回结果。
+表示卸载指定的私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -656,7 +659,8 @@ let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯
 try {
   certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
     console.info('Succeeded in uninstalling private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -670,11 +674,11 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
 安装用户CA证书。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
 
 **系统能力：** SystemCapability.Security.CertificateManager
-
-**起始版本：** 26.0.0
 
 **参数**：
 
@@ -709,22 +713,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
 try {
-    let certBlob: certificateManager.CertBlob = {
-        certData: certData,
-        certFormat: certificateManager.CertFileFormat.PEM_DER,
-        certScope: certificateManager.CertScope.CURRENT_USER
-    };
-    certificateManager.installUserTrustedCertificate(certBlob).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in installing user trusted certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  let certBlob: certificateManager.CertBlob = {
+    certData: certData,
+    certFormat: certificateManager.CertFileFormat.PEM_DER,
+    certScope: certificateManager.CertScope.CURRENT_USER
+  };
+  certificateManager.installUserTrustedCertificate(certBlob).then((cmResult) => {
+    let uri: string = cmResult.uri ?? '';
+    console.info('Succeeded in installing user trusted certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -767,22 +772,22 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 **示例**：
 
 ```ts
-import {certificateManager} from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
 
 /* 安装的CA证书数据需要业务赋值，本例数据非CA证书数据 */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
 try {
-    let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
-    let certUri = result.uri;
-    if (certUri === undefined) {
-        console.error("The result of install user trusted certificate is undefined.");
-    } else {
-        console.info("Succeeded to install user trusted certificate.");
-    }
+  let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
+  let certUri = result.uri;
+  if (certUri === undefined) {
+    console.error("The result of install user trusted certificate is undefined.");
+  } else {
+    console.info("Succeeded to install user trusted certificate.");
+  }
 } catch (error) {
-    console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -816,13 +821,13 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 **示例**：
 
 ```ts
-import {certificateManager} from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
 
 let certUri: string = "test"; /* 业务删除证书，需要使用证书的标识符，此处省略 */
 try {
-    certificateManager.uninstallUserTrustedCertificateSync(certUri);
+  certificateManager.uninstallUserTrustedCertificateSync(certUri);
 } catch (error) {
-    console.error(`Failed to uninstall user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to uninstall user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -883,7 +888,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
-表示使用凭据进行签名、验签的初始化操作，使用Promise方式异步返回结果。
+表示使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -928,7 +933,8 @@ const req: certificateManager.CMSignatureSpec = {
 try {
   certificateManager.init(uri, req).then((handle) => {
     console.info('Succeeded in initiating.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -992,7 +998,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
-表示签名、验签的数据更新操作，使用Promise方式异步返回结果。
+表示签名、验签的数据更新操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1036,7 +1042,8 @@ let srcData: Uint8Array = new Uint8Array([
 try {
   certificateManager.update(cmHandle, srcData).then((result) => {
     console.info('Succeeded in updating.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1085,7 +1092,7 @@ try {
       console.error(`Failed to finish. Code: ${err.code}, message: ${err.message}`);
     } else {
       if (cmResult?.outData != undefined) {
-        let signRes: Uint8Array = cmResult.outData;
+        let signRes = cmResult?.outData;
         console.info('Succeeded in finishing.');
       } else {
         console.info('The result of finishing is undefined.');
@@ -1153,7 +1160,7 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-表示完成签名、验签的操作，使用Promise方式异步返回结果。
+表示完成签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1195,12 +1202,13 @@ try {
   /* 签名的finish操作 */
   certificateManager.finish(cmHandle).then((cmResult) => {
     if (cmResult?.outData != undefined) {
-      let signRes1: Uint8Array = cmResult.outData;
+      let signRes1 = cmResult?.outData;
       console.info('Succeeded in finishing signature.');
     } else {
       console.info('The result of signature is undefined.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to finish signature. Code: ${err.code}, message: ${err.message}`);
   })
 
@@ -1211,7 +1219,8 @@ try {
   /* 验签的finish操作 */
   certificateManager.finish(cmHandle, signRes).then((cmResult) => {
     console.info('Succeeded in finishing verification.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to finish verification. Code: ${err.code}, message: ${err.message}`);
   })
 } catch(error) {
@@ -1271,7 +1280,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-表示中止签名、验签的操作，使用Promise方式异步返回结果。
+表示中止签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1311,7 +1320,8 @@ let cmHandle: Uint8Array = new Uint8Array([
 try {
   certificateManager.abort(cmHandle).then((result) => {
     console.info('Succeeded in aborting.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1323,7 +1333,7 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取用户公共凭据的详细信息，使用Promise方式异步返回结果。
+表示获取用户公共凭据的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1367,7 +1377,8 @@ try {
       let cred = cmResult.credential;
       console.info('Succeeded in getting Public certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get Public certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1379,7 +1390,7 @@ try {
 
 isAuthorizedApp(keyUri: string): Promise\<boolean>
 
-表示当前应用是否由指定的用户凭据授权，使用Promise方式异步返回结果。
+表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1420,7 +1431,8 @@ try {
     } else {
       console.info('The application is not authorized by the user.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to check if the application is authorized. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1432,7 +1444,7 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-表示获取当前用户和设备公共位置的所有用户根CA证书列表，使用Promise方式异步返回结果。
+表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1468,7 +1480,8 @@ try {
       let list = cmResult.certList;
       console.info('Succeeded in getting all user trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1480,7 +1493,7 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-表示根据证书的位置获取用户根CA证书列表，使用Promise方式异步返回结果。
+表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1526,7 +1539,8 @@ try {
       let list = cmResult.certList;
       console.info('Succeeded in getting current user trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1538,7 +1552,7 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-表示获取用户根CA证书的详细信息，使用Promise方式异步返回结果。
+表示获取用户根CA证书的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1581,7 +1595,8 @@ try {
       let cert = cmResult.certInfo;
       console.info('Succeeded in getting user trusted certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get user trusted certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1592,7 +1607,7 @@ try {
 
 getPrivateCertificates(): Promise\<CMResult>
 
-表示获取应用安装的凭据列表，使用Promise方式异步返回结果。
+表示获取应用安装的凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1628,7 +1643,8 @@ try {
       let list = cmResult.credentialList;
       console.info('Succeeded in getting all private certificates installed by the application.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all private certificates installed by the application. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1749,13 +1765,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* USB凭据的唯一标识符，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
-  }
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+}
 try {
   certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
-      let list = cmResult.credentialDetailList;
-      console.info('Succeeded in getting detail of USB key certificate.');
-  }).catch((err: BusinessError) => {
+    let list = cmResult.credentialDetailList;
+    console.info('Succeeded in getting detail of USB key certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1769,11 +1786,11 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 获取USB凭据证书列表。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
-
-**起始版本：** 26.0.0
 
 **设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
 
@@ -1797,7 +1814,6 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
-| 202         | Permission verification failed. A non-system application calls a system API. |
 | 801         | Capability not supported. |
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 | 17500010    | Indicates that access USB key service failed. |
@@ -1811,16 +1827,84 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let ukeyProvider: string = 'testProvider'; /* USB凭据提供商，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
 }
 try {
-    certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult: certificateManager.CMResult) => {
-        let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
-        console.info('Succeeded in getting USB key certificate list.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult) => {
+    let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
+    console.info('Succeeded in getting USB key certificate list.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManager.importUkeyCertificate
+
+importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Promise\<void>
+
+导入证书到USB Key。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| keyUri | string | 是 | 表示USB key证书的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。<br>证书数据格式遵循SKF规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN或PURPOSE_ENCRYPT。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500002 | Indicates that the certificate does not exist. |
+| 17500010 | Indicates that access USB key service failed. |
+| 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
+
+**示例**：
+
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
+let keyUri: string = 'test'; /* USB key证书的uri，可通过getUkeyCertificateList获取 */
+let certData: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+]);
+let ukeyInfo: certificateManager.UkeyInfo = {
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+};
+try {
+  certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
+    console.info('Succeeded in importing USB key certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```

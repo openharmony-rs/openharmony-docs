@@ -154,9 +154,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用访问公共目录下Desktop目录及子目录。
 
-<!--RP15-->
 当前仅2in1设备和平板上的应用可申请此权限。
-<!--RP15End-->
+
+<!--RP15--><!--RP15End-->
 
 **权限级别**：system_basic
 
@@ -224,9 +224,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：General
+
 **起始版本**：11
 
-**变更信息**：API 11，权限等级为system_core；从API 12开始，权限等级变更为system_basic，向普通应用开放。
+**变更信息**：API 11，权限等级为system_core；从API 12开始，权限等级变更为system_basic，向普通应用开放。从API 26.0.0开始，该权限支持在全设备上申请。
 
 ## ohos.permission.INPUT_MONITORING
 
@@ -303,6 +305,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
 允许运营商应用添加eSIM配置文件。
+
+<!--RP86--><!--RP86End-->
 
 **权限级别**：system_basic
 
@@ -577,6 +581,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 1. 外设扩展驱动客户端权限声明中的value字段中描述的目标扩展驱动服务端已上架或一并上架。
 2. 被申请目标扩展驱动服务端对外提供能力与扩展外设驱动客户端业务诉求一致。
 
+<!--RP82--><!--RP82End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -595,6 +601,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
 2. 外设能够以对操作系统透明的方式来模拟SCSI设备。
+
+<!--RP83--><!--RP83End-->
 
 **权限级别**：system_basic
 
@@ -635,6 +643,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone |  Tablet
 
 **起始版本**：20
 
@@ -806,6 +816,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用读取所有的日历信息。
 
+<!--RP84--><!--RP84End-->
+
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
@@ -817,6 +829,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.WRITE_WHOLE_CALENDAR
 
 允许应用添加、移除或更改所有的日历活动。
+
+<!--RP85--><!--RP85End-->
 
 **权限级别**：system_basic
 
@@ -870,9 +884,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：21
+
+**变更信息**：从API版本24开始，增加支持在手机和平板上申请。
 
 ## ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -992,11 +1008,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**: 系统授权（system_grant）
 
-**支持设备**: PC/2in1 | Tablet
+**支持设备**: PC/2in1 | Tablet | Phone
 
 **起始版本**: 22
 
-**变更信息：** 从API 24开始，增加支持在平板上申请。
+**变更信息：** 从API版本24开始，增加支持在平板上申请；从API版本26.0.0开始，增加支持在手机上申请。
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
@@ -1012,6 +1028,38 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**: 23
 
+## ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+允许应用设置在多任务中和Dock栏悬停显示的预览图。
+
+多任务和鼠标悬停在Dock栏应用图标，将展示应用实时预览图，获取该权限后，应用可自定义此预览图。
+
+<!--RP72--><!--RP72End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 26.0.0
+
+## ohos.permission.SET_WINDOW_ALPHA
+
+允许应用设置主窗容器透明。
+
+获取该权限后，应用可以设置主窗口容器背景色。
+
+<!--RP73--><!--RP73End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 26.0.0
+
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
@@ -1025,6 +1073,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**: Phone | PC/2in1 | Tablet
 
 **起始版本**: 23
+
+## ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+允许应用设置窗口事件热区，非热区事件将被透传。
+
+<!--RP75--><!--RP75End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**: 26.0.0
 
 ## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
 
@@ -1113,3 +1175,87 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.CONTROL_DEVICE
+
+允许应用注入输入事件以控制本设备。
+
+<!--RP79--><!--RP79End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
+
+允许应用申请特殊类型长时任务。
+
+<!--RP76--><!--RP76End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.FLOAT_VIEW
+
+允许应用使用应用浮窗。
+
+<!--RP78--><!--RP78End-->
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.GET_CALL_TRANSFER_INFO
+
+允许应用查询呼叫转移状态。
+
+<!--RP80--><!--RP80End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.kernel.AS_LDK_DRIVER
+
+允许应用安装PCIe驱动。
+
+<!--RP77--><!--RP77End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.PRINTER_DRIVER
+
+允许应用管理打印系统。
+
+<!--RP89--><!--RP89End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24

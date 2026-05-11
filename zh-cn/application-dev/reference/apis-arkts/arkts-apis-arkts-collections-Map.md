@@ -5,7 +5,7 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
-一种非线性数据结构。
+一种基于键值对存储的非线性数据结构。能够高效地通过唯一键来存取对应的值。
 
 > **说明：**
 >
@@ -75,7 +75,7 @@ const myMap = new collections.Map<number, number>();
 const myMap = new collections.Map<number, string>([
   [1, "one"],
   [2, "two"],
-  [3, "three"],
+  [3, "three"]
 ]);
 ```
 
@@ -180,7 +180,9 @@ const myMap: collections.Map<number, string> = new collections.Map<number, strin
   [2, "three"],
   [3, "four"]
 ]);
+// 返回一个myMap迭代器对象，该对象包含了此myMap中的每个元素的[number, string]键值对。
 const entriesIter: IterableIterator<[number, string]> = myMap.entries();
+// 遍历entriesIter迭代器对象。
 for (const entry of entriesIter) {
   if (entry[1].startsWith('t')) {
     myMap.delete(entry[0]);

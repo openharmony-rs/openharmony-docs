@@ -42,7 +42,7 @@
     ```javascript
     import { common } from '@kit.AbilityKit';
     import { media } from '@kit.MediaKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
+    import { fileIo } from '@kit.CoreFileKit';
     ```
 
 2. 创建AVScreenCaptureRecorder类型的成员变量screenCapture。
@@ -119,7 +119,7 @@
     ```javascript
     const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let filePath: string = context.filesDir + '/screenCapture.mp4';
-    let captureFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
     if (!captureFile) {
       console.error("处理异常情况");
       return;
@@ -182,23 +182,23 @@
 
 ```javascript
 import { media } from '@kit.MediaKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
-  private captureFile: fs.File | undefined = undefined;
+  private captureFile: fileIo.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
 
   private openFile(context: Context): void {
     const path: string = context.filesDir + '/screenCapture.mp4'; // 文件沙箱路径，文件后缀名应与封装格式对应。
-    this.captureFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    this.captureFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   }
 
   private closeFile(): void {
     if (!this.captureFile) {
       return;
     }
-    fs.closeSync(this.captureFile);
+    fileIo.closeSync(this.captureFile);
   }
 
   private setConfig(): void {

@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> "Certificate-based authorization" is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -669,7 +669,7 @@ With this permission, the application can apply HDR brightening effects to compo
 
 **Supported devices**: general devices
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -683,4 +683,18 @@ With this permission, the application can query available types of pluggable emb
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
-**Valid since**: 24
+**Since**: 24
+
+## ohos.permission.STYLUS_FRAME_BOOST
+
+Allows an application to use stylus responsiveness enhancement APIs.
+
+With this permission, the application can improve handwriting performance, ensuring a more responsive stylus experience while writing.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0

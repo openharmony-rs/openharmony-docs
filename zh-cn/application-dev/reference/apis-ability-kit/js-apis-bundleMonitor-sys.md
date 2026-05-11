@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供监听应用安装，卸载，更新的能力。
 
@@ -70,7 +70,7 @@ on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 | 参数名                       | 类型     | 必填 | 说明               |
 | ---------------------------- | -------- | ---- | ------------------ |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注册监听的事件类型。 |
-| callback | callback\<BundleChangedInfo>| 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为null，data为应用变更信息；否则为错误对象。 |
+| callback | callback\<BundleChangedInfo>| 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -117,7 +117,7 @@ off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 | 参数名                       | 类型     | 必填 | 说明                                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注销监听的事件类型。                                         |
-| callback | callback\<BundleChangedInfo>| 否   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为null，data为应用变更信息；否则为错误对象。 |
+| callback | callback\<BundleChangedInfo>| 否   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
 
 **错误码：**
 

@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 [FA模型](ability-terminology.md#fa模型)应用在[config.json文件](../quick-start/application-configuration-file-overview-fa.md)中描述应用的基本信息，一个应用工程中可以创建多个Module，每个Module中都有一份config.json文件。config.json由app、deviceConfig和module三部分组成，app标签用于配置应用级别的属性，如果一个应用有多个Module，需要由开发者保证各个config.json文件中app标签配置的一致性。
 

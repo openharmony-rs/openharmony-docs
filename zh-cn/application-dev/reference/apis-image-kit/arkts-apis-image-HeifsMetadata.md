@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -29,6 +29,9 @@ import { image } from '@kit.ImageKit';
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
 | heifsDelayTime | number | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒。 |
+| heifsCanvasHeight | number | 是   | 是   | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>该值为正整数。<br>**起始版本：** 26.0.0 |
+| heifsCanvasWidth | number | 是   | 是   | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>该值为正整数。<br>**起始版本：** 26.0.0 |
+| heifsUnclampedDelayTime | number | 是   | 是   | HEIF序列图片每帧未钳制的延迟时长。<br>单位为毫秒（ms）。<br>该值为正整数。<br>**起始版本：** 26.0.0 |
 
 ## createInstance
 
@@ -93,11 +96,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -148,17 +151,17 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type|
+| 7600202  | Unsupported metadata. Possible causes: unsupported metadata type. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -204,11 +207,11 @@ getAllProperties(): Promise\<Record<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -251,11 +254,11 @@ clone(): Promise\<HeifsMetadata>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -297,11 +300,11 @@ getBlob(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -352,11 +355,11 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }

@@ -34,7 +34,7 @@ Use the correct context.
 
 **Error Message**
 
-System inner fail.
+MediaLibrary inner fail.
 
 **Description**
 
@@ -42,11 +42,43 @@ This error code is reported if an internal error occurs in the media library.
 
 **Possible Causes**
 
-1. The database is abnormal.
+1. Failed to create reference.
 
-2. The file system is abnormal.
+2. Failed to create instance.
 
-3. The IPC message times out.
+3. Failed to get undefined value.
+
+4. Failed to get callback info.
+
+5. Failed to bind native object to JavaScript object.
+
+6. Failed to unwrap native object.
+
+7. Failed to create Boolean value.
+
+8. Failed to get int32 value.
+
+9. Failed to initialize data field.
+
+10. Failed to initialize error field.
+
+11. Failed to get argument type.
+
+12. Failed to check argument type.
+
+13. Failed to create PhotoAlbumNapi.
+
+14. Failed to add property.
+
+15. Failed to get fetch option.
+
+16. Invalid fetch columns.
+
+17. Failed to check array type.
+
+18. Failed to get array length.
+
+19. Failed to get array element.
 
 **Solution**
 
@@ -56,7 +88,7 @@ Clear the background or restart the device.
 
 **Error Message**
 
-Scene parameter validation failed.
+Invalid parameter.
 
 **Description**
 
@@ -78,7 +110,7 @@ Check the parameter values and ensure they meet the required criteria.
 
 **Error Message**
 
-The provided member must be a property name of PhotoKey.
+Invalid input parameter.
 
 **Description**
 
@@ -93,8 +125,32 @@ This error code is reported if the parameter is not within the range of the [Pho
 
 Ensure that the input parameter is within the range of the PhotoKeys enum.
 
+<!--Del-->
+## 23800201 Unsupported Operation Type
+
+**Error Message**
+
+Unsupported operation type.
+
+**Description**
+
+The operation type is not supported.
+
+**Possible Causes**
+
+1. The current album does not support the input [AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute).
+
+2. The current [AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute) does not support the input [AlbumOperationType](js-apis-photoAccessHelper-sys.md#albumoperationtype).
+
+3. There are other restrictions.
+
+**Solution**
+
+Check the type and use scenario of the album attribute, and locate the cause based on the logs.
+<!--DelEnd-->
+
 ## 23800202 Invalid Scenario Call
- 	 
+
 **Error Message**
 
 Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.

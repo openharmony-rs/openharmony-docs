@@ -52,6 +52,7 @@
 | [anonymous7](#anonymous7)                       | - | 定义轴事件的操作类型。 |
 | [anonymous8](#anonymous8)                       | - | 定义轴事件的轴类型。 |
 | [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | 定义惯性滚动轴事件的阶段。 |
+| [ArkUI_CompetitionStrategy](#arkui_competitionstrategy) | ArkUI_CompetitionStrategy | 事件的注入方和被注入方间手势识别结果是否为竞争场景的策略。该策略决定了事件的注入方如何与被注入方的手势处理逻辑交互，非竞争场景会同时触发手势，竞争场景只触发其中一个。 |
 | [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) | ArkUI_TouchTestStrategy | 定义触摸测试策略。 |
 
 ### 函数
@@ -66,6 +67,10 @@
 | [uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getpointercount) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取多点触控的接触点数量。指向性事件一般是附带有事件发生位置信息的事件，如触摸事件，用户操作时，可以感知事件在什么位置发生。而非指向性事件，如按键事件，一般没有位置信息，没有触点的说法，所以该接口对按键事件无效。对于触摸事件，该接口多用于处理多指触控，判断用户有几根手指在操作当前控件。而对于鼠标和轴事件，可认为触点只有1个，该接口永远返回1。                                                                                                                                                                                                                                                                                                                                                                                  |
 | [int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpointerid) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取多点触控的接触点标识。返回事件发生时，事件触点的唯一标识符，用于区分同类输入设备的多点触控信息。其数值没有除标识触点外的其他含义。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* event, uint32_t* pointerIndex)](#oh_arkui_pointerevent_getchangedpointerid) | 获取当前触摸事件触发的id。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocalx) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalxbyindex) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的X坐标。所有类型事件，若传入的索引值小于0时为非法值。对于鼠标和轴事件，当索引值非0时为非法值。对于触摸事件，根据给定的索引获取特定接触点相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocaly) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalybyindex) | 从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的Y坐标。所有类型事件，若传入的索引值小于0时为非法值。对于鼠标和轴事件，当索引值非0时为非法值。对于触摸事件。根据给定的索引获取特定接触点相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getxbyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定接触点相对于当前组件左上角的X坐标。对于鼠标和轴事件，当给定的索引大于0时，返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gety) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -90,18 +95,18 @@
 | [float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareaheight) | 从指向性输入事件（如触摸事件）中获取触屏区域的高度。仅适用于手指操作产生的触控事件，这通常是一个圆形区域的半径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhand) | 获取当前触摸事件是左手点击触发还是右手点击触发。仅在部分触控产品上有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent *event, int32_t pointerIndex, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhandbyindex) | 获取当前触摸事件是左手点击触发还是右手点击触发。仅在部分触控产品上有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| [uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gethistorysize) | 从指向性输入事件（如触摸事件）中获取历史事件数量。历史事件为此次事件与上一次事件之间发生的原始事件，仅在指向性输入事件的移动阶段（即触摸移动或鼠标移动）中适用，在其他状态中调用返回默认值0。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryeventtime) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件发生的时间。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| [uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointercount) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中多点触控的接触点数量。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| [int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointerid) | 从指向性输入事件（如触摸事件）的历史点中获取多点触控的接触点标识。返回事件发生时，事件触点的唯一标识符，用于区分同类输入设备的多点触控信息。其数值没有除标识触点外的其他含义。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| [float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| [float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| [float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayx) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| [float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayy) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayx) | 从给定指针索引和历史记录索引的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件中相对于全局显示的特定触摸点的X坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayy) | 从给定指针索引和历史记录索引的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件中相对于全局显示的特定触摸点的Y坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gethistorysize) | [从指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)中获取历史事件数量。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。历史事件为此次事件与上一次事件之间发生的原始事件，仅在指向性输入事件的移动阶段（即触摸移动或鼠标移动）中适用，在其他状态中调用返回默认值0。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryeventtime) | 从指向性输入事件中获取历史事件发生的时间。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointercount) | 从指向性输入事件中获取特定历史事件中多点触控的接触点数量。本接口支持的指向性输入事件仅包含触摸事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointerid) | 从指向性输入事件的历史点中获取多点触控的接触点标识。本接口支持的指向性输入事件仅包含触摸事件。返回事件发生时，事件触点的唯一标识符，用于区分同类输入设备的多点触控信息。其数值没有除标识触点外的其他含义。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryx) | 从指向性输入事件中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryy) | 从指向性输入事件中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowx) | 从指向性输入事件中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorywindowy) | 从指向性输入事件中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayx) | 从指向性输入事件中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorydisplayy) | 从指向性输入事件中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayx) | 从给定指针索引和历史记录索引的指向性输入事件中获取历史事件中相对于全局显示的特定触摸点的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。只能从指针事件中获取位置信息，对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 20开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayy) | 从给定指针索引和历史记录索引的指向性输入事件中获取历史事件中相对于全局显示的特定触摸点的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。只能从指针事件中获取位置信息，对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 20开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | [float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypressure) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的触屏压力。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | [float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytiltx) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的相对YZ平面的角度，取值的范围[-90, 90]，单位为deg，其中正值是向右倾斜。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytilty) | 从指向性输入事件（如触摸事件）中获取特定历史事件中的相对XZ平面的角度，值的范围[-90, 90]，单位为deg，其中正值是向下倾斜。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -143,6 +148,43 @@
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputEvent* event, int32_t fingerId)](#oh_arkui_pointerevent_setclonedeventchangedfingerid) | 设置当前带有指向性的克隆输入事件的触摸点ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)](#oh_arkui_pointerevent_setclonedeventfingeridbyindex) | 设置带有指向性的克隆输入事件特定接触点的触摸点ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_postclonedevent) | 转发克隆事件到特定节点。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreateClonedPointerEvent(const ArkUI_UIInputEvent* event, ArkUI_UIInputEvent** clonedEvent)](#oh_arkui_pointerevent_createclonedpointerevent) | 创建指定事件的克隆事件。该接口适用于触摸事件、鼠标事件和轴事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreatePointerEvent(ArkUI_UIInputEvent** event, ArkUI_UIInputEvent_Type type)](#oh_arkui_pointerevent_createpointerevent) | 创建新事件，不克隆现有事件。该接口适用于触摸事件、鼠标事件和轴事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_PointerEvent_DestroyClonedPointerEvent(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_destroyclonedpointerevent) | 销毁克隆事件指针。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetActionType(const ArkUI_UIInputEvent* event, int32_t type)](#oh_arkui_clonedevent_setactiontype) | 设置克隆事件的动作类型。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetSourceType(const ArkUI_UIInputEvent* event, int32_t sourceType)](#oh_arkui_clonedevent_setsourcetype) | 设置克隆事件的源类型。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetToolType(const ArkUI_UIInputEvent* event, int32_t toolType)](#oh_arkui_clonedevent_settooltype) | 设置克隆事件的工具类型。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressure(const ArkUI_UIInputEvent* event, float pressure)](#oh_arkui_clonedevent_setpressure) | 设置克隆事件应用于触摸屏的压力。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressureByIndex(const ArkUI_UIInputEvent* event, float pressure, int32_t pointerIndex)](#oh_arkui_clonedevent_setpressurebyindex) | 设置克隆事件指定触摸点应用于触摸屏的压力。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetEventTime(const ArkUI_UIInputEvent* event, int64_t timestamp)](#oh_arkui_clonedevent_seteventtime) | 设置克隆UI输入事件发生的时间。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetDeviceId(const ArkUI_UIInputEvent* event, int32_t deviceId)](#oh_arkui_clonedevent_setdeviceid) | 设置触发克隆UI输入事件的设备ID。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTargetDisplayId(const ArkUI_UIInputEvent* event, int32_t targetDisplayId)](#oh_arkui_clonedevent_settargetdisplayid) | 设置克隆UI输入事件发生的屏幕ID。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedFingerId(const ArkUI_UIInputEvent* event, int32_t fingerId)](#oh_arkui_clonedevent_setchangedfingerid) | 设置克隆指针事件的触摸点ID。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)](#oh_arkui_clonedevent_setfingeridbyindex) | 设置克隆事件特定接触点的触摸点ID。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedWindowPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedwindowposition) | 设置克隆事件相对于当前窗口左上角的X坐标和Y坐标。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetWindowPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setwindowpositionbyindex) | 设置克隆事件特定接触点相对于当前窗口左上角的X坐标和Y坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedScreenPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedscreenposition) | 设置克隆事件相对于当前屏幕左上角的X坐标和Y坐标。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScreenPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setscreenpositionbyindex) | 设置克隆事件特定接触点相对于当前屏幕左上角的X坐标和Y坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI_UIInputEvent* event, float x, float y)](#oh_arkui_clonedevent_setchangedglobaldisplayposition) | 设置克隆事件在[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)的坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)](#oh_arkui_clonedevent_setglobaldisplaypositionbyindex) | 设置克隆事件在[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)的坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHandleId(const ArkUI_UIInputEvent* event, int32_t eventHandleId)](#oh_arkui_clonedevent_sethandleid) | 设置事件处理会话的唯一句柄。该句柄必须用于对该事件的任何进一步操作。对于给定的手指，同一时间只有一个具有此句柄的事件处于活动状态。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTiltAngle(const ArkUI_UIInputEvent* event, float tiltX, float tiltY)](#oh_arkui_clonedevent_settiltangle) | 设置克隆事件相对于XZ平面和YZ平面的倾斜角度。取值范围为[-90, 90]，其中正值表示向右倾斜。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRollAngle(const ArkUI_UIInputEvent* event, float rollAngle)](#oh_arkui_clonedevent_setrollangle) | 设置克隆事件触控笔绕Z轴的旋转角度。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedKeys(const ArkUI_UIInputEvent* event, int32_t* pressedKeyCodes, int32_t length)](#oh_arkui_clonedevent_setpressedkeys) | 设置克隆事件中所有按下的按键。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedTouchArea(const ArkUI_UIInputEvent* event, float width, float height)](#oh_arkui_clonedevent_setchangedtoucharea) | 设置克隆事件的手指接触区域的宽度和高度，该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTouchAreaByIndex(const ArkUI_UIInputEvent* event, float width, float height, int32_t pointerIndex)](#oh_arkui_clonedevent_settouchareabyindex) | 设置克隆事件特定接触点的手指接触区域的宽度和高度，该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedInteractionHand(const ArkUI_UIInputEvent* event, int32_t hand)](#oh_arkui_clonedevent_setchangedinteractionhand) | 设置克隆事件是左手或右手触发。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetInteractionHandByIndex(const ArkUI_UIInputEvent* event, int32_t hand, int32_t pointerIndex)](#oh_arkui_clonedevent_setinteractionhandbyindex) | 设置克隆事件特定接触点由左手或右手触发。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedTimeByIndex(const ArkUI_UIInputEvent* event, int64_t pressedTime, int32_t pointerIndex)](#oh_arkui_clonedevent_setpressedtimebyindex) | 设置克隆事件指定触摸点的按下时间。该接口仅适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPinchAxisScaleValue(const ArkUI_UIInputEvent* event, double pinchAxisScaleValue)](#oh_arkui_clonedevent_setpinchaxisscalevalue) | 设置克隆事件的捏合轴缩放值。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHorizontalAxisScaleValue(const ArkUI_UIInputEvent* event, double horizontalAxisScaleValue)](#oh_arkui_clonedevent_sethorizontalaxisscalevalue) | 设置克隆事件水平滚动轴的值。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetVerticalAxisScaleValue(const ArkUI_UIInputEvent* event, double verticalAxisScaleValue)](#oh_arkui_clonedevent_setverticalaxisscalevalue) | 设置克隆事件垂直滚动轴的值。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScrollStep(const ArkUI_UIInputEvent* event, int32_t scrollStep)](#oh_arkui_clonedevent_setscrollstep) | 设置克隆事件的滚动步长系数。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetMouseButton(const ArkUI_UIInputEvent* event, int32_t button)](#oh_arkui_clonedevent_setmousebutton) | 设置克隆事件的按钮类型值。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRawDeltaX(const ArkUI_UIInputEvent* event, float rawDeltaX)](#oh_arkui_clonedevent_setrawdeltax) | 设置鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRawDeltaY(const ArkUI_UIInputEvent* event, float rawDeltaY)](#oh_arkui_clonedevent_setrawdeltay) | 设置鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedButtons(const ArkUI_UIInputEvent* event, const int32_t* pressedButtons, int32_t length)](#oh_arkui_clonedevent_setpressedbuttons) | 设置克隆事件的按下的按键。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ArkUI_ErrorCode OH_ArkUI_PointerEvent_PostClonedEventWithStrategy(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event, ArkUI_CompetitionStrategy strategy)](#oh_arkui_pointerevent_postclonedeventwithstrategy) | 使用指定的竞争策略将克隆事件发送到特定节点。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()](#oh_arkui_uiinputevent_getlateststatus) | 调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。                                                                                                                                                                                                                              |
 | [ArkUI_CoastingAxisEvent OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getcoastingaxisevent) | 获取惯性滚动轴事件的指针。  |
 | [int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_geteventtime) | 获取惯性滚动轴事件发生的时间。  |
@@ -466,6 +508,24 @@ enum ArkUI_TouchTestStrategy
 | ARKUI_TOUCH_TEST_STRATEGY_DEFAULT = 0 | 自定义分发不产生影响，系统按当前节点命中状态分发事件。  |
 | ARKUI_TOUCH_TEST_STRATEGY_FORWARD_COMPETITION = 1 | 应用指定分发事件到某个子节点，其他兄弟节点是否分发事件交由系统决定。  |
 | ARKUI_TOUCH_TEST_STRATEGY_FORWARD = 2 | 应用指定分发事件到某个子节点，系统不再分发事件到其他兄弟节点。  |
+
+### ArkUI_CompetitionStrategy
+
+```c
+enum ArkUI_CompetitionStrategy
+```
+
+**描述：**
+
+
+事件的注入方和被注入方间手势识别结果是否为竞争场景的策略。该策略决定了事件的注入方如何与被注入方的手势处理逻辑交互，非竞争场景会同时触发手势，竞争场景只触发其中一个。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_COMPETITION_STRATEGY_DEFAULT = 0 | 无竞争策略。注入的事件不与任何现有手势竞争。注入的事件和现有手势可以独立并行处理。  |
+| ARKUI_COMPETITION_STRATEGY_COMPETITION = 1 | 竞争策略。事件注入方和被注入方间的手势为竞争关系，只能处理其中一方的手势。  |
 
 ### ArkUI_CrownEvent_Action
 
@@ -803,6 +863,124 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 | 类型 | 说明 |
 | -- | -- |
 | float | 返回指向性输入事件事件中特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalX()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalX(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的X坐标。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回当前指向性输入事件相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
+```
+
+**描述：**
+
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的X坐标。
+
+所有类型事件，若传入的索引值小于0时为非法值。
+
+对于鼠标和轴事件，当索引值非0时为非法值。
+
+对于触摸事件，根据给定的索引获取特定接触点相对于当前组件左上角的X坐标。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
+| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回特定接触点相对于当前组件左上角的X坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalY()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalY(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取相对于当前组件左上角的Y坐标。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回当前指向性输入事件相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
+```
+
+**描述：**
+
+
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)（如触摸事件、鼠标事件、轴事件）中根据实时位置获取特定接触点相对于当前组件左上角的Y坐标。
+
+所有类型事件，若传入的索引值小于0时为非法值。
+
+对于鼠标和轴事件，当索引值非0时为非法值。
+
+对于触摸事件，根据给定的索引获取特定接触点相对于当前组件左上角的Y坐标。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
+| uint32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回特定接触点相对于当前组件左上角的Y坐标；默认单位为px，单位可跟随[setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit)的设置而变化；如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
@@ -1348,7 +1526,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从指向性输入事件（如触摸事件）中获取历史事件数量。历史事件为此次事件与上一次事件之间发生的原始事件，仅在指向性输入事件的移动阶段（即触摸移动或鼠标移动）中适用，在其他状态中调用返回默认值0。
+从[指向性输入事件](../../ui/arkts-interaction-capability-overview.md#指向性事件)中获取历史事件数量。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。历史事件为此次事件与上一次事件之间发生的原始事件，仅在指向性输入事件的移动阶段（即触摸移动或鼠标移动）中适用，在其他状态中调用返回默认值0。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1374,7 +1552,7 @@ int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* even
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件发生的时间。
+从指向性输入事件中获取历史事件发生的时间。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1401,7 +1579,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* 
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中多点触控的接触点数量。
+从指向性输入事件中获取特定历史事件中多点触控的接触点数量。本接口支持的指向性输入事件仅包含触摸事件。
 
 **起始版本：** 12
 
@@ -1428,7 +1606,7 @@ int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* even
 **描述：**
 
 
-从指向性输入事件（如触摸事件）的历史点中获取多点触控的接触点标识。返回事件发生时，事件触点的唯一标识符，用于区分同类输入设备的多点触控信息。其数值没有除标识触点外的其他含义。
+从指向性输入事件的历史点中获取多点触控的接触点标识。本接口支持的指向性输入事件仅包含触摸事件。返回事件发生时，事件触点的唯一标识符，用于区分同类输入设备的多点触控信息。其数值没有除标识触点外的其他含义。
 
 **起始版本：** 12
 
@@ -1456,7 +1634,7 @@ float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。
+从指向性输入事件中获取特定历史事件中特定接触点相对于当前组件左上角的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1484,7 +1662,7 @@ float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。
+从指向性输入事件中获取特定历史事件中特定接触点相对于当前组件左上角的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1512,7 +1690,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, u
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。
+从指向性输入事件中获取特定历史事件中特定接触点相对于当前应用窗口左上角的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1540,7 +1718,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, u
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。
+从指向性输入事件中获取特定历史事件中特定接触点相对于当前应用窗口左上角的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1568,7 +1746,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, 
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。
+从指向性输入事件中获取特定历史事件中特定接触点相对于当前屏幕左上角的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1596,7 +1774,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, 
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。
+从指向性输入事件中获取特定历史事件中特定接触点相对于当前屏幕左上角的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 12开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 12
 
@@ -1624,7 +1802,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* e
 **描述：**
 
 
-从给定指针索引和历史记录索引的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件中相对于全局显示的特定触摸点的X坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。
+从给定指针索引和历史记录索引的指向性输入事件中获取历史事件中相对于全局显示的特定触摸点的X坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。只能从指针事件中获取位置信息，对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 20开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 20
 
@@ -1652,7 +1830,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* e
 **描述：**
 
 
-从给定指针索引和历史记录索引的输入事件（如触摸事件、鼠标事件、轴事件）中获取历史事件中相对于全局显示的特定触摸点的Y坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。
+从给定指针索引和历史记录索引的指向性输入事件中获取历史事件中相对于全局显示的特定触摸点的Y坐标。本接口支持的指向性输入事件仅包含触摸事件、鼠标事件。只能从指针事件中获取位置信息，对于鼠标事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。从API version 20开始支持触摸事件，从API version 26.0.0开始支持鼠标事件。
 
 **起始版本：** 20
 
@@ -2769,6 +2947,1024 @@ int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果组件状态异常，则返回[ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](capi-native-type-h.md#arkui_errorcode)。<br>         如果未命中可响应事件的组件，则返回[ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_PointerEvent_CreateClonedPointerEvent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreateClonedPointerEvent(const ArkUI_UIInputEvent* event, ArkUI_UIInputEvent** clonedEvent)
+```
+
+**描述：**
+
+
+创建指定事件的克隆事件。该接口适用于触摸事件、鼠标事件和轴事件。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** clonedEvent | ArkUI_UIInputEvent克隆事件指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_PointerEvent_CreatePointerEvent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreatePointerEvent(ArkUI_UIInputEvent** event, ArkUI_UIInputEvent_Type type)
+```
+
+**描述：**
+
+
+创建新事件，不克隆现有事件。该接口适用于触摸事件、鼠标事件和轴事件。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | 指向新的ArkUI_UIInputEvent对象的指针。 |
+| [ArkUI_UIInputEvent_Type](#arkui_uiinputevent_type) type | ArkUI_UIInputEvent的事件类型。支持取值[ARKUI_UIINPUTEVENT_TYPE_TOUCH](#arkui_uiinputevent_type)、[ARKUI_UIINPUTEVENT_TYPE_AXIS](#arkui_uiinputevent_type)和[ARKUI_UIINPUTEVENT_TYPE_MOUSE](#arkui_uiinputevent_type)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_PointerEvent_DestroyClonedPointerEvent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PointerEvent_DestroyClonedPointerEvent(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+
+销毁克隆事件指针。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetActionType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetActionType(const ArkUI_UIInputEvent* event, int32_t type)
+```
+
+**描述：**
+
+
+设置克隆事件的动作类型。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t type | 克隆事件的类型，包括触摸事件的[TouchType](#anonymous1)，鼠标事件的[MouseAction](#anonymous4)，轴事件的[AxisAction](#anonymous7)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetSourceType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetSourceType(const ArkUI_UIInputEvent* event, int32_t sourceType)
+```
+
+**描述：**
+
+
+设置克隆事件的源类型。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t sourceType | 克隆事件的源类型。取值范围为[0,5]的整数，其中0表示未知，1表示鼠标，2表示触屏，4表示键盘，5表示手柄。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetToolType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetToolType(const ArkUI_UIInputEvent* event, int32_t toolType)
+```
+
+**描述：**
+
+
+设置克隆事件的工具类型。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t toolType | 克隆事件的工具类型。由[UI_INPUT_EVENT_TOOL_TYPE_XXX](#anonymous2)枚举定义。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetPressure()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressure(const ArkUI_UIInputEvent* event, float pressure)
+```
+
+**描述：**
+
+
+设置克隆事件应用于触摸屏的压力。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float pressure | 应用于触摸屏的压力，取值范围为[0,1]中的任意数值，部分设备中可能大于1。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetPressureByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressureByIndex(const ArkUI_UIInputEvent* event, float pressure, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件指定触摸点应用于触摸屏的压力。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float pressure | 应用于触摸屏的压力，取值范围为[0,1]中的任意数值，部分设备中可能大于1。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetEventTime()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetEventTime(const ArkUI_UIInputEvent* event, int64_t timestamp)
+```
+
+**描述：**
+
+
+设置克隆UI输入事件发生的时间。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int64_t timestamp | 克隆UI输入事件发生的时间，单位为ns。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetDeviceId()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetDeviceId(const ArkUI_UIInputEvent* event, int32_t deviceId)
+```
+
+**描述：**
+
+
+设置触发克隆UI输入事件的设备ID。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t deviceId | 触发克隆UI输入事件的设备ID，可用[OH_ArkUI_UIInputEvent_GetDeviceId](#oh_arkui_uiinputevent_getdeviceid)接口获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetTargetDisplayId()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTargetDisplayId(const ArkUI_UIInputEvent* event, int32_t targetDisplayId)
+```
+
+**描述：**
+
+
+设置克隆UI输入事件发生的屏幕ID。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t targetDisplayId | 克隆UI输入事件发生的屏幕ID，可用[OH_ArkUI_UIInputEvent_GetTargetDisplayId](#oh_arkui_uiinputevent_gettargetdisplayid)接口获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetChangedFingerId()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedFingerId(const ArkUI_UIInputEvent* event, int32_t fingerId)
+```
+
+**描述：**
+
+
+设置克隆指针事件的触摸点ID。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t fingerId | 触发事件的触摸点ID，可以通过[OH_ArkUI_PointerEvent_GetPointerId](#oh_arkui_pointerevent_getpointerid)接口获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetFingerIdByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件特定接触点的触摸点ID。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t fingerId | 特定接触点的触摸点ID，可以通过[OH_ArkUI_PointerEvent_GetChangedPointerId](#oh_arkui_pointerevent_getchangedpointerid)接口获取。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetChangedWindowPosition()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedWindowPosition(const ArkUI_UIInputEvent* event, float x, float y)
+```
+
+**描述：**
+
+
+设置克隆事件相对于当前窗口左上角的X坐标和Y坐标。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float x | 事件相对于当前窗口左上角的X坐标，单位为px。 |
+| float y | 事件相对于当前窗口左上角的Y坐标，单位为px。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetWindowPositionByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetWindowPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件特定接触点相对于当前窗口左上角的X坐标和Y坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float x | 事件相对于当前窗口左上角的X坐标，单位为px。 |
+| float y | 事件相对于当前窗口左上角的Y坐标，单位为px。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetChangedScreenPosition()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedScreenPosition(const ArkUI_UIInputEvent* event, float x, float y)
+```
+
+**描述：**
+
+
+设置克隆事件相对于当前屏幕左上角的X坐标和Y坐标。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float x | 事件相对于当前屏幕左上角的X坐标，单位为px。 |
+| float y | 事件相对于当前屏幕左上角的Y坐标，单位为px。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetScreenPositionByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScreenPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件特定接触点相对于当前屏幕左上角的X坐标和Y坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float x | 事件相对于当前屏幕左上角的X坐标，单位为px。 |
+| float y | 事件相对于当前屏幕左上角的Y坐标，单位为px。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedGlobalDisplayPosition(const ArkUI_UIInputEvent* event, float x, float y)
+```
+
+**描述：**
+
+
+设置克隆事件在[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)的坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float x | 事件相对于全局显示的X坐标，单位为px。 |
+| float y | 事件相对于全局显示的Y坐标，单位为px。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetGlobalDisplayPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件在[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)的坐标。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float x | 事件相对于全局显示的X坐标，单位为px。 |
+| float y | 事件相对于全局显示的Y坐标，单位为px。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetHandleId()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHandleId(const ArkUI_UIInputEvent* event, int32_t eventHandleId)
+```
+
+**描述：**
+
+
+设置事件处理会话的唯一句柄。该句柄必须用于对该事件的任何进一步操作。对于给定的手指，同一时间只有一个具有此句柄的事件处于活动状态。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t eventHandleId | 事件处理会话的唯一句柄。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetTiltAngle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTiltAngle(const ArkUI_UIInputEvent* event, float tiltX, float tiltY)
+```
+
+**描述：**
+
+
+设置克隆事件相对于XZ平面和YZ平面的倾斜角度。取值范围为[-90, 90]，其中正值表示向右倾斜。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float tiltX | 克隆事件相对于YZ平面的倾斜角度，单位为deg。 |
+| float tiltY | 克隆事件相对于XZ平面的倾斜角度，单位为deg。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetRollAngle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRollAngle(const ArkUI_UIInputEvent* event, float rollAngle)
+```
+
+**描述：**
+
+
+设置克隆事件触控笔绕Z轴的旋转角度。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float rollAngle | 克隆事件触控笔绕Z轴的旋转角度，单位为deg。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetPressedKeys()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedKeys(const ArkUI_UIInputEvent* event, int32_t* pressedKeyCodes, int32_t length)
+```
+
+**描述：**
+
+
+设置克隆事件中所有按下的按键。该接口适用于触摸事件、鼠标事件和轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t* pressedKeyCodes | 所有按下的按键键值数组，键值取值为[ArkUI_KeyCode](capi-native-key-event-h.md#arkui_keycode)。 |
+| int32_t length | 按下的按键数组长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetChangedTouchArea()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedTouchArea(const ArkUI_UIInputEvent* event, float width, float height)
+```
+
+**描述：**
+
+
+设置克隆事件的手指接触区域的宽度和高度，该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float width | 克隆事件的接触区域的宽度，单位为px。 |
+| float height | 克隆事件的接触区域的高度，单位为px。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetTouchAreaByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetTouchAreaByIndex(const ArkUI_UIInputEvent* event, float width, float height, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件特定接触点的手指接触区域的宽度和高度，该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float width | 克隆事件的接触区域的宽度，单位为px。 |
+| float height | 克隆事件的接触区域的高度，单位为px。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetChangedInteractionHand()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetChangedInteractionHand(const ArkUI_UIInputEvent* event, int32_t hand)
+```
+
+**描述：**
+
+
+设置克隆事件是左手或右手触发。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t hand | 触摸点是左手还是右手，[ARKUI_EVENT_HAND_LEFT](#arkui_interactionhand)为左手，[ARKUI_EVENT_HAND_RIGHT](#arkui_interactionhand)为右手。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetInteractionHandByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetInteractionHandByIndex(const ArkUI_UIInputEvent* event, int32_t hand, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件特定接触点由左手或右手触发。该接口适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t hand | 触摸点是左手还是右手，[ARKUI_EVENT_HAND_LEFT](#arkui_interactionhand)为左手，[ARKUI_EVENT_HAND_RIGHT](#arkui_interactionhand)为右手。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetPressedTimeByIndex()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedTimeByIndex(const ArkUI_UIInputEvent* event, int64_t pressedTime, int32_t pointerIndex)
+```
+
+**描述：**
+
+
+设置克隆事件指定触摸点的按下时间。该接口仅适用于触摸事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int64_t pressedTime | 指定触摸点的按下时间，单位为ns。 |
+| int32_t pointerIndex | 表示多点触控数据列表中目标触控点的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetPinchAxisScaleValue()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPinchAxisScaleValue(const ArkUI_UIInputEvent* event, double pinchAxisScaleValue)
+```
+
+**描述：**
+
+
+设置克隆事件的捏合轴缩放值。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| double pinchAxisScaleValue | 捏合轴的缩放值，单位为vp，取值[0, +∞)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetHorizontalAxisScaleValue()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetHorizontalAxisScaleValue(const ArkUI_UIInputEvent* event, double horizontalAxisScaleValue)
+```
+
+**描述：**
+
+
+设置克隆事件水平滚动轴的值。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| double horizontalAxisScaleValue | 水平滚动轴的值，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetVerticalAxisScaleValue()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetVerticalAxisScaleValue(const ArkUI_UIInputEvent* event, double verticalAxisScaleValue)
+```
+
+**描述：**
+
+
+设置克隆事件垂直滚动轴的值。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| double verticalAxisScaleValue | 垂直滚动轴的值，单位为vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetScrollStep()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetScrollStep(const ArkUI_UIInputEvent* event, int32_t scrollStep)
+```
+
+**描述：**
+
+
+设置克隆事件的滚动步长系数。该接口仅适用于轴事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t scrollStep | 克隆事件的滚动步长系数，取值为[0, 65535]的整数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>        如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetMouseButton()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetMouseButton(const ArkUI_UIInputEvent* event, int32_t button)
+```
+
+**描述：**
+
+
+设置克隆事件的按钮类型值。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| int32_t button | 克隆事件的鼠标按钮类型，取值由[anonymous5](#anonymous5)枚举定义。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetRawDeltaX()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRawDeltaX(const ArkUI_UIInputEvent* event, float rawDeltaX)
+```
+
+**描述：**
+
+
+设置鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float rawDeltaX | 鼠标位置相对于之前上报的鼠标事件中位置的X轴偏移量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetRawDeltaY()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetRawDeltaY(const ArkUI_UIInputEvent* event, float rawDeltaY)
+```
+
+**描述：**
+
+
+设置鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| float rawDeltaY | 鼠标位置相对于之前上报的鼠标事件中位置的Y轴偏移量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_ClonedEvent_SetPressedButtons()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedButtons(const ArkUI_UIInputEvent* event, const int32_t* pressedButtons, int32_t length)
+```
+
+**描述：**
+
+
+设置克隆事件的按下的按键。该接口仅适用于鼠标事件。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const int32_t* pressedButtons | 按下的按键数组，按键的值请参考[anonymous5](#anonymous5) |
+| int32_t length | 按下的按键数组长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果事件类型不支持，则返回[ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_PointerEvent_PostClonedEventWithStrategy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PointerEvent_PostClonedEventWithStrategy(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event, ArkUI_CompetitionStrategy strategy)
+```
+
+**描述：**
+
+
+使用指定的竞争策略将克隆事件发送到特定节点。只有通过[OH_ArkUI_PointerEvent_CreateClonedPointerEvent](#oh_arkui_pointerevent_createclonedpointerevent)和[OH_ArkUI_PointerEvent_CreatePointerEvent](#oh_arkui_pointerevent_createpointerevent)接口创建的ArkUI_UIInputEvent对象才能使用此接口。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点。 |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| [ArkUI_CompetitionStrategy](#arkui_competitionstrategy) strategy | 竞争策略，取值为[ArkUI_CompetitionStrategy](#arkui_competitionstrategy)。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         如果输入的事件指针不是克隆事件指针，则返回[ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT](capi-native-type-h.md#arkui_errorcode)。<br>         如果组件状态异常，则返回[ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL](capi-native-type-h.md#arkui_errorcode)。<br>         如果未命中可响应事件的组件，则返回[ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT](capi-native-type-h.md#arkui_errorcode)。|
 
 ### OH_ArkUI_UIInputEvent_GetLatestStatus()
 

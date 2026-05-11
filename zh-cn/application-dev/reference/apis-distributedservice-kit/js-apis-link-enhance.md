@@ -4,7 +4,8 @@
 <!--Owner: @wangJE-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+
 linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备间连接的稳定性。使用多通道合并算法，增加设备间连接数，提升跨设备数据传输能力，改善用户使用体验。
 
 > **说明：**
@@ -50,6 +51,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -105,6 +107,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390206 | Invalid parameter.  |
 
 **示例：**

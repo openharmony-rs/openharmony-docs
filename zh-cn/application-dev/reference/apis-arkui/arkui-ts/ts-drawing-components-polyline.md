@@ -1,8 +1,8 @@
 # Polyline
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -23,6 +23,8 @@
 ## 接口
 
 Polyline(options?: PolylineOptions)
+
+用于绘制折线的构造函数。 
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

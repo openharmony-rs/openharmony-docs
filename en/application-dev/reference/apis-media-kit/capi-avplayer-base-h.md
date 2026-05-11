@@ -26,7 +26,7 @@ The file declares the structs and enums of the AVPlayer.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | Defines the set of **OH_AVPlayerOnInfo** and **OH_AVPlayerOnInfo** callback function pointers. To ensure the normal running of OH_AVPlayer, you must register this struct with the OH_AVPlayer instance and process the information reported by the callback functions. (It is deprecated in API version 12.)|
+| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | Defines a set of pointers to the [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) callbacks. To ensure the normal running of AVPlayer, you must register this struct with the **OH_AVPlayer** instance and process the information reported by the callbacks. (This struct is deprecated in API version 12.)|
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | Describes an initialized AVPlayer.|
 | [OH_AVSeiMessageArray](./capi-avplayer-oh-avseimessagearray.md) | OH_AVSeiMessageArray | Defines the SEI message array.|
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) | OH_AVPlaybackStrategy | Defines the audio and video playback strategy.|

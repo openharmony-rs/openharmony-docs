@@ -1,8 +1,8 @@
 # UI开发（ArkTS声明式开发范式）概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -99,7 +99,7 @@
 | 列表与网格 | 介绍了几种列表与网格组件的使用方法。 | -&nbsp;[列表与网格](arkts-list-grid-development-overview.md) |
 | 使用文本 | 介绍了输入框、富文本和属性字符串等文本组件的使用方法。                | -&nbsp;[文本显示](arkts-common-components-text-display.md) <br/>- [文本输入](arkts-common-components-text-input.md)<br/>- [富文本](arkts-common-components-richeditor.md)<br/>- [图标小符号](arkts-common-components-symbol.md)<br/>- [属性字符串](arkts-styled-string.md)|
 | 媒体展示 | 介绍了几种媒体展示组件的使用方法。 | -&nbsp;[显示图片 (Image)](arkts-graphics-display.md)<br/>-&nbsp;[视频播放 (Video)](arkts-common-components-video-player.md)<br/>-&nbsp;[创建轮播 (Swiper)](arkts-layout-development-create-looping.md)<br/>-&nbsp;[创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md) |
-| 表单选择 | 介绍了几种常用表单选择组件的使用方法。 | -&nbsp;[表单与选择组件](arkts-forms-overview.md) |
+| 按钮与选择 | 介绍了几种常用按钮与选择组件的使用方法。 | -&nbsp;[按钮与选择组件](arkts-forms-overview.md) |
 | 添加组件 | 介绍了XComponent和Progress组件的使用方法。 | -&nbsp;[自定义渲染 (XComponent)](napi-xcomponent-guidelines.md)<br/>-&nbsp;[进度条 (Progress)](arkts-common-components-progress-indicator.md) |
 | 使用弹窗 | 介绍了弹窗的应用场景与使用方法。 | -&nbsp;[使用弹出框](arkts-base-dialog-overview.md)<br/>-&nbsp;[菜单](arkts-menu-overview.md)<br/>-&nbsp;[气泡提示](arkts-popup-overview.md)<br/>-&nbsp;[绑定模态页面](arkts-modal-overview.md)<br/>-&nbsp;[即时反馈](arkts-create-toast.md)<br/>-&nbsp;[设置浮层](arkts-create-overlaymanager.md) |
 | 显示图形        | 介绍了如何显示图片、绘制自定义几何图形以及使用画布绘制自定义图形。   | -&nbsp;[几何图形](arkts-shape-overview.md)<br/>-&nbsp;[画布](arkts-drawing-customization-on-canvas.md) |

@@ -18,7 +18,7 @@ use of default id generator function not possible on provided data structure.Nee
 
 **Description**
 
-The default key value generation function of [ForEach](./arkui-ts/ts-rendering-control-foreach.md) cannot generate key values based on the provided data structure.
+This error code is reported when the default key value generation function of [ForEach](./arkui-ts/ts-rendering-control-foreach.md) cannot generate key values based on the provided data structure.
 
 **Possible Causes**
 
@@ -36,7 +36,7 @@ lacks mandatory '.each' attribute function, i.e. has no default item builder. Ap
 
 **Description**
 
-The '[each](./arkui-ts/ts-rendering-control-repeat.md#each)' attribute is missing.
+This error code is reported when the '[each](./arkui-ts/ts-rendering-control-repeat.md#each)' attribute is missing.
 
 **Possible Causes**
 
@@ -54,7 +54,7 @@ __RepeatVirtualScrollImpl (eg:1) onCreateNode: for index=(eg:7) with data array 
 
 **Description**
 
-The node index exceeds the data source length.
+This error code is reported when the node index exceeds the data source length.
 
 **Possible Causes**
 
@@ -72,7 +72,7 @@ onLazyLoading function executed illegal operation.
 
 **Description**
 
-Invalid data operations in the [lazy loading](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#lazy-loading-capability) scenario.
+This error code is reported when invalid data operations are performed in the [lazy loading](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#lazy-loading-capability) scenario.
 
 **Possible Causes**
 
@@ -90,7 +90,7 @@ Repeat(). Default key gen failed. Application Error!
 
 **Description**
 
-The default [key value](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#key-generation-rules) of [Repeat](./arkui-ts/ts-rendering-control-repeat.md) fails to be generated.
+This error code is reported when the default [key value](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#key-generation-rules) of [Repeat](./arkui-ts/ts-rendering-control-repeat.md) fails to be generated.
 
 **Possible Causes**
 

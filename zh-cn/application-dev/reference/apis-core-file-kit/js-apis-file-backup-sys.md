@@ -2,8 +2,8 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 该模块为应用提供备份/恢复数据的能力。
@@ -190,7 +190,7 @@ onFileReady : AsyncCallback&lt;File&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   onFileReady: (err: BusinessError, file: backup.File) => {
     if (err) {
@@ -198,7 +198,7 @@ onFileReady : AsyncCallback&lt;File&gt;
       return;
     }
     console.info(`onFileReady success with file: ${file.bundleName}, ${file.uri}`);
-    fs.closeSync(file.fd);
+    fileIo.closeSync(file.fd);
   }
   ```
 
@@ -576,7 +576,7 @@ getLocalCapabilities(callback: AsyncCallback&lt;FileData&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   try {
     backup.getLocalCapabilities((err: BusinessError, fileData: backup.FileData) => {
@@ -586,7 +586,7 @@ getLocalCapabilities(callback: AsyncCallback&lt;FileData&gt;): void
       }
       console.info('getLocalCapabilities success');
       console.info('fileData info:' + fileData.fd);
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     });
   } catch (error) {
     let err: BusinessError = error as BusinessError;
@@ -647,14 +647,14 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   async function getLocalCapabilities() {
     try {
       let fileData = await backup.getLocalCapabilities();
       console.info('getLocalCapabilities success');
       console.info('fileData info:' + fileData.fd);
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
@@ -724,7 +724,7 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   async function getLocalCapabilities() {
     try {
@@ -735,7 +735,7 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
       let fileData = await backup.getLocalCapabilities(backupApps);
       console.info('getLocalCapabilities success');
       console.info('fileData info:' + fileData.fd);
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
@@ -781,7 +781,7 @@ getBackupInfo(bundleToBackup: string): string
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { backup } from '@kit.CoreFileKit';
 
   function getBackupInfo() {
     try {
@@ -962,7 +962,7 @@ constructor(callbacks: GeneralCallbacks)
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -971,7 +971,7 @@ constructor(callbacks: GeneralCallbacks)
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1042,7 +1042,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   interface test { // 用于解析能力文件
     bundleInfos: [];
@@ -1072,7 +1072,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1114,18 +1114,18 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
-        if (!fs.accessSync(basePath)) {
-          fs.mkdirSync(basePath);
+        if (!fileIo.accessSync(basePath)) {
+          fileIo.mkdirSync(basePath);
           console.info('create success' + basePath);
         }
-        fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
-        fs.closeSync(fileData.fd);
+        fileIo.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
+        fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     }
-    let data = fs.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
+    let data = fileIo.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
     try {
       const jsonsObj: test | null = JSON.parse(data); // 解析本地的能力文件并打印部分信息
       if (jsonsObj) {
@@ -1208,7 +1208,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   interface scannedInfos { // 用于解析扫描结果
     scanned: [];
@@ -1228,7 +1228,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1346,7 +1346,7 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): v
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1355,7 +1355,7 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): v
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1451,7 +1451,7 @@ appendBundles(bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1460,7 +1460,7 @@ appendBundles(bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1588,7 +1588,7 @@ release(): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1597,7 +1597,7 @@ release(): Promise&lt;void&gt;
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1673,7 +1673,7 @@ cancel(bundleName: string): number
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1685,7 +1685,7 @@ cancel(bundleName: string): number
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1946,7 +1946,7 @@ constructor(callbacks: GeneralCallbacks)
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -1956,7 +1956,7 @@ constructor(callbacks: GeneralCallbacks)
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2027,7 +2027,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   interface test { // 用于解析能力文件
     bundleInfos: [];
@@ -2057,7 +2057,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2099,18 +2099,18 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
-        if (!fs.accessSync(basePath)) {
-          fs.mkdirSync(basePath);
+        if (!fileIo.accessSync(basePath)) {
+          fileIo.mkdirSync(basePath);
           console.info('create success' + basePath);
         }
-        fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
-        fs.closeSync(fileData.fd);
+        fileIo.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
+        fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed with code: ${err.code}, message: ${err.message}`);
     }
-    let data = fs.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
+    let data = fileIo.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
     try {
       const jsonsObj: test | null = JSON.parse(data); // 解析本地的能力文件并打印部分信息
       if (jsonsObj) {
@@ -2193,7 +2193,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback:
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -2202,7 +2202,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback:
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2257,7 +2257,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback:
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     } finally {
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     }
   }
   ```
@@ -2314,7 +2314,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: s
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -2323,7 +2323,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: s
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2398,7 +2398,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: s
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     } finally {
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     }
   }
   ```
@@ -2444,7 +2444,7 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -2454,7 +2454,7 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2546,7 +2546,7 @@ getFileHandle(fileMeta: FileMeta): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -2556,7 +2556,7 @@ getFileHandle(fileMeta: FileMeta): Promise&lt;void&gt;
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2644,7 +2644,7 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let g_session: backup.SessionRestore;
@@ -2662,7 +2662,7 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
           return;
         }
         console.info('onFileReady success');
-        fs.closeSync(file.fd);
+        fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
         countMap.set(file.bundleName, cnt + 1); // 实际写入文件个数更新
         // 恢复所需文件个数与实际写入文件个数相等时调用，保证数据的一致性和完整性
@@ -2761,7 +2761,7 @@ publishFile(fileMeta: FileMeta): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let g_session: backup.SessionRestore;
@@ -2786,7 +2786,7 @@ publishFile(fileMeta: FileMeta): Promise&lt;void&gt;
           return;
         }
         console.info('onFileReady success');
-        fs.closeSync(file.fd);
+        fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
         countMap.set(file.bundleName, cnt + 1); // 实际写入文件个数更新
         // 恢复所需文件个数与实际写入文件个数相等时调用，保证数据的一致性和完整性
@@ -2867,7 +2867,7 @@ release(): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let g_session: backup.SessionRestore;
@@ -2885,7 +2885,7 @@ release(): Promise&lt;void&gt;
           return;
         }
         console.info('onFileReady success');
-        fs.closeSync(file.fd);
+        fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
         countMap.set(file.bundleName, cnt + 1); // 实际写入文件个数更新
         // 恢复所需文件个数与实际写入文件个数相等时调用，保证数据的一致性和完整性
@@ -2979,7 +2979,7 @@ cancel(bundleName: string): number
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -2992,7 +2992,7 @@ cancel(bundleName: string): number
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3269,7 +3269,7 @@ constructor(callbacks: GeneralCallbacks)
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3279,7 +3279,7 @@ constructor(callbacks: GeneralCallbacks)
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3349,7 +3349,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   interface test { // 用于解析能力文件
@@ -3380,7 +3380,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3422,18 +3422,18 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
-        if (!fs.accessSync(basePath)) {
-          fs.mkdirSync(basePath);
+        if (!fileIo.accessSync(basePath)) {
+          fileIo.mkdirSync(basePath);
           console.info('create success' + basePath);
         }
-        fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
-        fs.closeSync(fileData.fd);
+        fileIo.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
+        fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     }
-    let data = fs.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
+    let data = fileIo.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
     try {
       const jsonsObj: test | null = JSON.parse(data); // 解析本地的能力文件并打印部分信息
       if (jsonsObj) {
@@ -3515,7 +3515,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   interface scannedInfos { // 用于解析扫描结果
@@ -3536,7 +3536,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3661,7 +3661,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3671,7 +3671,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3762,7 +3762,7 @@ appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3772,7 +3772,7 @@ appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3895,7 +3895,7 @@ release(): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3905,7 +3905,7 @@ release(): Promise&lt;void&gt;
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3980,7 +3980,7 @@ cancel(bundleName: string): number
 **示例：**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3993,7 +3993,7 @@ cancel(bundleName: string): number
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {

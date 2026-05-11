@@ -21,8 +21,8 @@ Only the first notification is displayed on the device. Duplicate notifications 
 
 ## Constraints
 
-- The uniqueness of the [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) field must be ensured. This field for the same notification must stay consistent on all devices.
-- The [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) field is valid only within 24 hours after the notification is published. If the notification is published beyond 24 hours or the device is restarted, this field becomes invalid.
+- You must ensure the uniqueness of **appMessageId**. The same notification must retain the same value for this field across all device form factors.
+- This field is only valid within 24 hours after the notification is published. It becomes invalid after 24 hours or when the device is restarted.
 
 ## Available APIs
 

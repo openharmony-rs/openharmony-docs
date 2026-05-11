@@ -5,7 +5,7 @@
 <!--Owner: @dreamsky8023-->
 <!--Designer: @dreamsky8023-->
 <!--Tester: @murphy84-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 The **wallpaper** module provides APIs for switching between wallpapers. Since API version 9, the APIs of this module function as system APIs, and only system applications are allowed to switch between wallpapers. Applications that use the wallpaper, for example, the home screen, should subscribe to wallpaper changes and update the wallpaper accordingly.
 
@@ -373,11 +373,15 @@ try {
 }
 ```
 
-## wallpaper.getColorsSync<sup>9+</sup>
+## wallpaper.getColorsSync<sup>(deprecated)</sup>
 
 getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 Obtains the main color information of the wallpaper of the specified type.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 

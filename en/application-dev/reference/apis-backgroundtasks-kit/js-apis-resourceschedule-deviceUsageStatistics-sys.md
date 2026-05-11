@@ -1,7 +1,7 @@
 # @ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -1289,7 +1289,7 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessErr
 
 queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
-Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information.  
+Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses a promise to return the result.
 
 This API uses a promise to return a maximum of 1000 FA usage records sorted by time (most recent first).
 
@@ -1719,7 +1719,7 @@ Defines the information about the usage record in the FA model.
 | abilityDescriptionId | number                                   | No   | Yes   | **MainAbility** description ID of the FA.|
 | abilityIconId        | number                                   | No   | Yes   | **MainAbility** icon ID of the FA.       |
 | launchedCount        | number                                   | No   | No   | Number of FA startup times.                     |
-| lastModuleUsedTime   | number                                   | No   | No   | Last time when the FA was used.                  |
+| lastModuleUsedTime   | number                                   | No   | No   | Last time when the FA was used, in milliseconds.                  |
 | formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | No   | No   | Array of widget usage records in the FA.                  |
 
 ## HapFormInfo
@@ -1733,7 +1733,7 @@ Defines the information about the usage record of FA widgets.
 | formName         | string | No   | No   | Widget name.      |
 | formDimension    | number | No   | No   | Widget dimensions.      |
 | formId           | number | No   | No   | Widget ID.      |
-| formLastUsedTime | number | No   | No   | Last time when the widget was clicked.|
+| formLastUsedTime | number | No   | No   | Last time when the widget was clicked, in milliseconds.|
 | count            | number | No   | No   | Number of clicks on the widget.   |
 
 ## AppGroupCallbackInfo
@@ -1759,15 +1759,15 @@ Provides the usage duration information of an application.
 | Name                     | Type    | Read-Only  | Optional  | Description                                      |
 | ------------------------ | ------ | ---- | ---- | ---------------------------------------- |
 | bundleName               | string | No   | Yes   | Bundle name of the application.                                   |
-| abilityPrevAccessTime    | number | No   | Yes   | Last time when the application was used.                            |
-| abilityInFgTotalTime     | number | No   | Yes   | Total time that the application runs in the foreground.                            |
+| abilityPrevAccessTime    | number | No   | Yes   | Last time when the application was used, in milliseconds.                            |
+| abilityInFgTotalTime     | number | No   | Yes   | Total time that the application runs in the foreground, in milliseconds.                            |
 | id                       | number | No   | No   | User ID.|
-| abilityPrevSeenTime      | number | No   | Yes   | Last time when the application was visible in the foreground.|
-| abilitySeenTotalTime     | number | No   | Yes   | Total time that the application is visible in the foreground.|
-| fgAbilityAccessTotalTime | number | No   | Yes   | Total time that the application accesses the foreground.|
-| fgAbilityPrevAccessTime  | number | No   | Yes   | Last time when the application accessed the foreground.|
-| infosBeginTime           | number | No   | Yes   | Time logged in the first application usage record in the **BundleActiveInfo** object.|
-| infosEndTime             | number | No   | Yes   | Time logged in the last application usage record in the **BundleActiveInfo** object.|
+| abilityPrevSeenTime      | number | No   | Yes   | Last time when the application was visible in the foreground, in milliseconds.|
+| abilitySeenTotalTime     | number | No   | Yes   | Total time that the application is visible in the foreground, in milliseconds.|
+| fgAbilityAccessTotalTime | number | No   | Yes   | Total time that the application accesses the foreground, in milliseconds.|
+| fgAbilityPrevAccessTime  | number | No   | Yes   | Last time when the application accessed the foreground, in milliseconds.|
+| infosBeginTime           | number | No   | Yes   | Time logged in the first application usage record in the **BundleActiveInfo** object, in milliseconds.|
+| infosEndTime             | number | No   | Yes   | Time logged in the last application usage record in the **BundleActiveInfo** object, in milliseconds.|
 | appIndex<sup>15+</sup>                 | number | No   | Yes   | Application index.|
 
 ## BundleEvents
@@ -1780,7 +1780,7 @@ Provides information about an application event.
 | --------------------- | ------ | ---- | ---- | ---------------------------------------- |
 | bundleName            | string | No   | Yes   | Bundle name of the application.                                   |
 | eventId             | number | No   | Yes   | Application event type.                                 |
-| eventOccurredTime     | number | No   | Yes   | Timestamp when the application event occurs.                             |
+| eventOccurredTime     | number | No   | Yes   | Timestamp when the application event occurs, in milliseconds.                             |
 | appGroup | number | No   | Yes   | Group of the application by usage priority.|
 | indexOfLink           | string | No   | Yes   | Shortcut ID.|
 | nameOfClass           | string | No   | Yes   | Class name.|

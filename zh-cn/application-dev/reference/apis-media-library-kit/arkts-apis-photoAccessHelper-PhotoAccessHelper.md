@@ -941,9 +941,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogDemo.');
 
   try {
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
     let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
     let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
       {
@@ -1005,29 +1005,29 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts 
-import { dataSharePredicates } from '@kit.ArkData';	 
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
-  try {	 
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。	 
-    let srcFileUris: Array<string> = [	 
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。	 
-    ];	 
-    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [	 
-      {	 
-        title: 'test2', // 可选。	 
-        fileNameExtension: 'jpg',	 
-        photoType: photoAccessHelper.PhotoType.IMAGE	 
-      }	 
-    ];	 
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);	 
-    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);	 
-  } catch (err) {	 
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);	 
-  }	 
-} 
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
+    ];
+    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
+      {
+        title: 'test2', // 可选。
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
+      }
+    ];
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
+  } catch (err) {
+    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
 ```
 
 ## showSingleAssetCreationDialogEx<sup>23+</sup>
@@ -1071,29 +1071,29 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 | 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
- 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。	 
 
-```ts	 
-import { dataSharePredicates } from '@kit.ArkData';	 
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {	 
-  console.info('ShowSingleAssetCreationDialogExDemo.');	 
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
 
-  try {	 
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。	 
-    let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的uri。	 
-    let photoCreationConfig: photoAccessHelper.CreationSetting = {	 
-      title: 'test2', // 可选。	 
-      fileNameExtension: 'jpg',	 
-      photoType: photoAccessHelper.PhotoType.IMAGE	 
-    }	 
-    let isImageFullyDisplayed: boolean = true	 
-    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed); 
-    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri); 
-  } catch (err) { 
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message); 
-  } 
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowSingleAssetCreationDialogExDemo.');
+
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
+    let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的URI。
+    let photoCreationConfig: photoAccessHelper.CreationSetting = {
+      title: 'test2', // 可选。
+      fileNameExtension: 'jpg',
+      photoType: photoAccessHelper.PhotoType.IMAGE
+    }
+    let isImageFullyDisplayed: boolean = true
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
+  } catch (err) {
+    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
 }
 ```
 
@@ -1151,7 +1151,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
         let resultUri: string = await phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig);
         let resultFile: fileIo.File = fileIo.openSync(resultUri, fileIo.OpenMode.READ_WRITE);
-        // 实际场景请使用真实的uri和文件大小。
+        // 实际场景请使用真实的URI和文件大小。
         let srcFile:  fileIo.File = fileIo.openSync("file://test.jpg", fileIo.OpenMode.READ_ONLY);
         let bufSize: number = 2000000;
         let readSize: number = 0;
@@ -1253,9 +1253,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   console.info('requestPhotoUrisReadPermissionDemo.');
 
   try {
-    // 获取需要进行授权的图片/视频uri。
+    // 获取需要进行授权的图片/视频URI。
     let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
     let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
@@ -1266,7 +1266,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ```
 
 ## requestPhotoUrisReadPermissionEx<sup>23+</sup>
- 	 
+
 requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
 
 应用调用接口为未授权的URI授权。使用promise异步回调。
@@ -1311,9 +1311,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 console.info('requestPhotoUrisReadPermissionExDemo.');
 
   try {
-    // 获取需要进行授权的图片/视频uri。
+    // 获取需要进行授权的图片/视频URI。
     let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
     let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
     console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
@@ -2205,4 +2205,214 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('offSinglePhotoAlbumChangeDemo failed, errCode is', error);
   }
 }
+```
+
+## setAssetCompatibleCapability<sup>24+</sup>
+
+setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<void>
+
+配置资产兼容能力。系统会对特殊的资产（如高分辨率资产）进行兼容性处理，如果开发者希望获得原始资产需要向系统注册兼容能力。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力。|
+
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151 | The scenario parameter verification fails, Invalid tokenId.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
+        supportedHighResolution : true,
+    };
+    await phAccessHelper.setAssetCompatibleCapability(capability);
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err', error);
+  }
+}
+```
+
+## checkPhotoUrisReadPermission
+
+checkPhotoUrisReadPermission(uris: string[]): Promise&lt;Map&lt;string, MediaAssetPermissionState&gt;&gt;
+
+查询URI对应资产的读权限，以及资产是否存在。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| uris | string[] | 是   | 待查询的URI数组，单次最多查询500条。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Map&lt;string, [MediaAssetPermissionState](arkts-apis-photoAccessHelper-e.md#mediaassetpermissionstate)&gt;&gt; | Promise对象，返回URI与MediaAssetPermissionState的键值对集合。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The length of the input parameter queue is greater than 500. 2. The input parameter is null or undefined.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('checkPhotoUrisReadPermissionDemo');
+
+  try {
+    let uris: string[] = [
+      'file://fileUriDemo1', // 实际场景请使用真实的URI。
+      'file://fileUriDemo2'
+    ];
+    let permissionMap: Map<string, photoAccessHelper.MediaAssetPermissionState> =
+      await phAccessHelper.checkPhotoUrisReadPermission(uris);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`checkPhotoUrisReadPermission failed, error: ${error.code}, ${error.message}`);
+  }
+}
+```
+## onMediaLibraryAvailability
+
+onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): void
+
+注册媒体库可用性状态，返回媒体库当前可用状态和不可用原因。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[MediaLibraryAvailability](arkts-apis-photoAccessHelper-i.md#medialibraryavailability)&gt; | 是   | 回调函数，返回媒体库可用性信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The input parameter is null or undefined. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+private handleMediaLibraryChange?: (
+  changeData: photoAccessHelper.MediaLibraryAvailability
+) => void;
+
+onMediaLibraryAvailability = async () => {
+  try {
+    this.handleMediaLibraryChange = (
+      changeData: photoAccessHelper.MediaLibraryAvailability
+    ) => {
+      const availabilityStatus = changeData.availabilityStatus;
+      const unavailabilityReason = changeData.unavailabilityReason;
+      console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
+    };
+    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+    console.info('媒体库监听注册成功');
+  } catch (err) {
+    console.error(`onMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
+  }
+};
+```
+
+## offMediaLibraryAvailability
+
+offMediaLibraryAvailability(callback?: Callback&lt;MediaLibraryAvailability&gt;): void
+
+取消注册媒体库可用性状态。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback | Callback&lt;[MediaLibraryAvailability](arkts-apis-photoAccessHelper-i.md#medialibraryavailability)&gt; | 否   | 回调函数，返回取消[onMediaLibraryAvailability](#onmedialibraryavailability)注册时指定的callback监听。不填时，则取消对媒体库可用性变化的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+private handleMediaLibraryChange?: (
+  changeData: photoAccessHelper.MediaLibraryAvailability
+) => void;
+
+offMediaLibraryAvailability = async () => {
+  try {
+    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+    this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
+    console.info('媒体库监听解除成功');
+  } catch (err) {
+    console.error(`offMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
+  }
+};
 ```

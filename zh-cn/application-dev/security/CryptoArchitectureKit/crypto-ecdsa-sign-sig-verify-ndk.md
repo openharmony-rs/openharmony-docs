@@ -15,7 +15,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
 ## 签名开发步骤
-1. 调用[OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create)，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。
+1. 调用[OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create)，指定字符串参数'ECC256|SHA256'，创建非对称密钥类型为ECC256、摘要算法为SHA256的Sign实例，用于完成签名操作。
 
 2. 调用[OH_CryptoSign_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init)，使用私钥[OH_CryptoPrivKey](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkey.md)初始化Sign实例。
 
@@ -144,7 +144,7 @@ bool DoTestEcdsaSignature()
     }
     OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(keyPair);
     // verify
-    ret = OH_CryptoVerify_Create((const char *)"ECC|SHA256", &verify);
+    ret = OH_CryptoVerify_Create((const char *)"ECC256|SHA256", &verify);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoVerify_Destroy(verify);
         OH_CryptoAsymKeyGenerator_Destroy(keyCtx);

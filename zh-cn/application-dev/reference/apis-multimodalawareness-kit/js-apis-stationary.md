@@ -51,9 +51,9 @@ type ActivityType = 'still' | 'relativeStill'
 
 | 名称                             | 值    | 说明                                       |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | 进入。   |
-| EXIT | 2   | 退出。 |
-| ENTER_EXIT | 3   | 进入和退出。 |
+| ENTER         | 1    | 进入事件。   |
+| EXIT | 2   | 退出事件。 |
+| ENTER_EXIT | 3   | 进入和退出事件。 |
 
 ## ActivityState
 
@@ -63,10 +63,10 @@ type ActivityType = 'still' | 'relativeStill'
 
 | 名称                             | 值    | 说明                                       |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | 进入。   |
-| EXIT | 2   | 退出。 |
+| ENTER         | 1    | 进入状态。   |
+| EXIT | 2   | 退出状态。 |
 
-## stationary.on('still' | 'relativeStill')
+## stationary.on
 
 on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callback: Callback&lt;ActivityResponse&gt;): void
 
@@ -92,7 +92,7 @@ stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) =
 })
 ```
 
-## stationary.once('still' | 'relativeStill')
+## stationary.once
 
 once(activity: ActivityType, callback: Callback&lt;ActivityResponse&gt;): void
 
@@ -115,7 +115,7 @@ stationary.once('still', (data) => {
 })
 ```
 
-## stationary.off('still' | 'relativeStill')
+## stationary.off
 
 off(activity: ActivityType, event: ActivityEvent, callback?: Callback&lt;ActivityResponse&gt;): void
 

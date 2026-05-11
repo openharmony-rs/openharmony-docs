@@ -7,14 +7,21 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **LazyVGridLayout** component implements a lazy-loading grid layout, with its parent component restricted to [WaterFlow](ts-container-waterflow.md) or [FlowItem](ts-container-flowitem.md). It can also be used within the **WaterFlow** or **FlowItem** component after being wrapped by custom components or [NodeContainer](ts-basic-components-nodecontainer.md).
+Implements a grid layout that supports lazy loading.
 
-Lazy loading is supported only when the **WaterFlow** component uses single-column mode or single-column segments in segmented layout and [FlexDirection](ts-appendix-enums.md#flexdirection) is set to **FlexDirection.Column**. Lazy loading is not supported if the **WaterFlow** component is in multi-column mode or the layout direction is **FlexDirection.Row** or **FlexDirection.RowReverse**. Using this component with **FlexDirection.ColumnReverse** in the **WaterFlow** component causes display anomalies. When lazy loading is enabled, the component only loads child components within the **WaterFlow** visible area, with pre-loading of half-screen content above and below the viewport during frame idle periods.
+In versions earlier than API version 26.0.0, the parent component of the **LazyVGridLayout** component supports the [WaterFlow](ts-container-waterflow.md) and [FlowItem](ts-container-flowitem.md) components. You can also encapsulate the parent component using a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) component and use it in **WaterFlow** or **FlowItem**.
+
+Since API version 26.0.0, the parent component of this component also supports [List](ts-container-list.md) and [Scroll](ts-container-scroll.md). Additionally, it can be encapsulated using a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) and applied to **List** or **Scroll**.
 
 > **NOTE**
 >
 > - This component is supported since API version 19. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component's height adapts to content by default. Setting the height, height constraints, or aspect ratio causes display anomalies.
+> - The lazy loading conditions of this component in different parent components are as follows:
+>   1. In the **WaterFlow** component, lazy loading is supported only when it uses single-column mode or single-column segments in segmented layout and [FlexDirection](ts-appendix-enums.md#flexdirection) is set to **FlexDirection.Column**. Lazy loading is not supported if the **WaterFlow** component is in multi-column mode or the layout direction is **FlexDirection.Row** or **FlexDirection.RowReverse**. Using this component with **FlexDirection.ColumnReverse** in the **WaterFlow** component causes display anomalies.
+>   2. In the **List** component, the layout direction must be vertical (that is, the [listDirection](ts-container-list.md#listdirection) property is set to **Axis.Vertical**). Using this component in a non-vertical **List** component will cause an application crash. If any of the **lanes**, **chainAnimation**, and **scrollSnapAlign** properties is set for the **List** component, the lazy loading of this component will become invalid.
+>   3. In the **Scroll** component, the layout direction must be vertical (that is, the value of the [scrollable](ts-container-scroll.md#scrollable) property is **ScrollDirection.Vertical**). Using this component in a non-vertical **Scroll** component will cause an application crash.
+> - When lazy loading is enabled, the component only loads child components within the visible area of the parent component, with pre-loading of half-screen content above and below the viewport during frame idle periods.
 
 ## APIs
 
@@ -45,7 +52,7 @@ For example, **'1fr 1fr 2fr'** indicates three columns, with the first column ta
 **columnsTemplate('repeat(auto-stretch, track-size)')**: The layout uses **columnsGap** to define the minimum gap between columns and automatically calculates the number of columns and the actual gap size based on the fixed column width specified by **track-size**.
 
 **repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in units of px, vp (default), %, or any valid numeric value. The value must be greater than or equal to a valid column width.<br>
-In auto-fit and auto-stretch modes, only a valid column width value is supported for **track-size**. Additionally, in auto-stretch mode, **track-size** only supports units such as px, vp, and valid numbers, but does not support percentage (%). The auto-fill mode supports one or more valid column widths, for example, columnsTemplate('repeat(auto-fill, 20)') or columnsTemplate('repeat(auto-fill, 20 80px)').
+In auto-fit and auto-stretch modes, only a valid column width value is supported for **track-size**. Additionally, in auto-stretch mode, **track-size** only supports units such as px, vp, and valid numbers, but does not support percentage (%). The auto-fill mode supports one or more valid column widths, for example: columnsTemplate('repeat(auto-fill, 20)') or columnsTemplate('repeat(auto-fill, 20 80px)').
 
 If this attribute is set to **'0fr'**, the column width is 0, and child components are not displayed. If this attribute is set to an invalid value, the child components are displayed in a fixed column.
 
@@ -105,13 +112,56 @@ Sets the gap between rows. Values less than 0 are treated as the default value.
 
 ## Events
 
-Only the [universal events](ts-component-general-events.md) are supported.
+In addition to the [universal events](ts-component-general-events.md), the following events are supported.
+
+### onVisibleIndexesChange
+
+onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
+
+Sets a callback for **onVisibleIndexesChange**. This callback is triggered when the index of a child component in the visible area of **LazyVGridLayout** changes. It returns the start and end indexes of the child components in the visible area. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                      |
+| ------ | ------ | ---- | -------------------------- |
+| callback  | [OnVisibleIndexesChangeCallback](#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | Yes | Callback for the **onVisibleIndexesChange** event. If the input parameter is **undefined**, the listening is canceled.|
+
+## OnVisibleIndexesChangeCallback
+
+OnVisibleIndexesChangeCallback = (start: number, end: number) => void
+
+Triggered when the index of a child component in the visible area of **LazyVGridLayout** changes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                 |
+| ------ | ------ | ---- | ------------------------------------- |
+| start  | number | Yes | Start index of a child component in the current visible area. If there is no child component in the visible area or **LazyVGridLayout**, **-1** is returned.|
+| end  | number | Yes | End index of a child component in the current visible area. If there is no child component in the visible area or **LazyVGridLayout**, **-1** is returned.|
 
 ## Example
 
-This example demonstrates how to implement a lazy-loading grid layout using the **WaterFlow** and **LazyVGridLayout** components.
+In this example, [WaterFlow](ts-container-waterflow.md) and [LazyVGridLayout](ts-container-lazyvgridlayout.md) are used to implement the lazy loading grid layout, and [onVisibleIndexesChange](#onvisibleindexeschange) is used to call back the index when the display area changes.
 
 **MyDataSource** implements the [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) API for [LazyForEach](ts-rendering-control-lazyforeach.md), which provides child components for **LazyVGridLayout** through **LazyForEach**.
+
+The **onVisibleIndexesChange** event is added since API version 26.0.0.
 
 <!--code_no_check-->
 ```ts
@@ -138,6 +188,10 @@ struct LazyVGridLayoutSample1 {
         }
         .columnsTemplate('1fr')
         .rowsGap(LengthMetrics.vp(10))
+        // The onVisibleIndexesChange event is added since API version 26.0.0.
+        .onVisibleIndexesChange((start: number, end: number) => {
+          console.info('visible indexes: start= ' + 'start,' + 'end= ' + 'end');
+      })
 
         LazyVGridLayout() {
           LazyForEach(this.arr2, (item:number)=>{

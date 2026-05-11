@@ -3,10 +3,10 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向云空间应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件等。
+该模块向云盘管理应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件，全量下载等。
 
 > **说明：**
 >
@@ -41,7 +41,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回修改应用的端云文件同步开关的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -84,7 +84,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 | accountId | string | 是   | 账号Id。|
 | bundleName | string | 是   | 应用包名|
 | status | boolean | 是   | 修改的应用云同步开关状态。true为打开；false为关闭。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步修改应用的端云文件同步开关之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步修改应用的端云文件同步开关之后。 |
 
 **错误码：**
 
@@ -133,7 +133,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回通知端云服务应用的云数据变更的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -175,7 +175,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
 | bundleName | string | 是   | 应用包名。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步通知端云服务应用的云数据变更之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步通知端云服务应用的云数据变更之后的。 |
 
 **错误码：**
 
@@ -239,7 +239,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回通知端云服务应用的云数据变更的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -284,7 +284,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 | ---------- | ------ | ---- | ---- |
 | userId | number | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步通知端云服务应用的云数据变更之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步通知端云服务应用的云数据变更之后。 |
 
 **错误码：**
 
@@ -336,7 +336,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回使能端云协同能力的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -359,9 +359,9 @@ let switches: Record<string, boolean> = {
   'com.example.bundleName2': false
 }
 cloudSyncManager.enableCloud(accountId, switches).then(() => {
-  console.error("enableCloud successfully");
+  console.info("enableCloud successfully.");
 }).catch((err: BusinessError) => {
-  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 
@@ -383,7 +383,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
 | switches | Record<string, boolean> | 是   | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步使能端云协同能力之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步使能端云协同能力之后。 |
 
 **错误码：**
 
@@ -436,7 +436,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回去使能端云协同能力的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -478,7 +478,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步去使能端云协同能力之后的回调。|
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步去使能端云协同能力之后。|
 
 **错误码：**
 
@@ -541,7 +541,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回清理本地云相关数据的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -588,7 +588,7 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
 | appActions | Record<string, Action> | 是   | 清理动作类型，string类型为待清理应用包名， [Action](#action)为清理动作类型。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步方法清理本地云相关数据。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步方法清理本地云相关数据。 |
 
 **错误码：**
 
@@ -621,9 +621,9 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 
 ## DowngradeDownload<sup>20+</sup>
 
-降级下载：云空间会员服务到期，为避免用户云上数据丢失，提供的集中下载云端数据的能力。
+全量下载：为云盘管理应用提供集中下载云端数据的能力。
 
-云盘降级下载对象，用于支撑云空间应用完成云盘文件的降级下载流程。
+云盘全量下载对象，用于支撑云盘管理应用完成云盘文件的全量下载流程。
 
 **系统接口**：该接口为系统接口。
 
@@ -633,7 +633,7 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 
 constructor(bundleName: string)
 
-降级下载对象的构造函数，用于获取指定包名的DowngradeDownload类的实例。
+全量下载对象的构造函数，用于获取指定包名的DowngradeDownload类的实例。
 
 **系统接口**：该接口为系统接口。
 
@@ -676,7 +676,7 @@ try {
 
 getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
-获取需要降级下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件大小和个数信息。使用Promise异步回调。
+获取需要全量下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件大小和个数信息。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -720,9 +720,9 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 
 startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
-异步方法启动指定应用的云文件的降级下载，使用Promise异步回调。
+启动指定应用的云文件的全量下载，使用Promise异步回调。使用callback异步回调。
 
-同一应用存在正在执行的降级下载任务的情况下，重复触发会返回错误信息（22400006）。
+同一应用存在正在执行的全量下载任务的情况下，重复触发会返回错误信息（22400006）。
 
 **系统接口**：该接口为系统接口。
 
@@ -734,7 +734,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                                                |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 降级下载进度回调，回调参数为DownloadProgress，返回值为void。 |
+| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 回调函数。全量下载进度，参数为DownloadProgress，返回值为void。 |
 
 **返回值：**
 
@@ -782,7 +782,7 @@ downgradeMgr.startDownload(callback).then(() => {
 
 stopDownload(): Promise&lt;void&gt;
 
-停止由[startDownload](#startdownload20)触发的降级下载任务，使用Promise异步回调。
+停止由[startDownload](#startdownload20)触发的全量下载任务，使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -868,7 +868,7 @@ if (needStop) {
 
   | 类型 | 说明 |
   | ---- | ---- |
-  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise 对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
 
   **错误码：**
 
@@ -895,5 +895,65 @@ cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<
   });
 }).catch((err: BusinessError) => {
   console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+## cloudSyncManager.getDowngradeDownloadTaskState
+
+getDowngradeDownloadTaskState(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress&gt;&gt;
+
+查询接入云盘的应用的全量下载任务状态。使用Promise异步回调。
+
+由于返回的DownloadProgress对象中不包含包名信息，因此在批量查询多个应用时，调用方需自行记录应用包名。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**系统接口**：该接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| bundleNames | Array&lt;string&gt; | 是 | 需要查询的应用包名数组，每个元素为应用的包名字符串，包名数组大小上限为20个。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;Array&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt;&gt; | Promise对象，返回查询的全量下载任务的状态信息数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+
+
+**示例**：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+cloudSyncManager.getDowngradeDownloadTaskState(bundles).then((results: Array<cloudSyncManager.DownloadProgress>) => {
+  results.forEach((item) => {
+    console.info(`state: ${item.state}, downloadedSize: ${item.downloadedSize}, totalSize: ${item.totalSize}`);
+    console.info(`successfulCount: ${item.successfulCount}, failedCount: ${item.failedCount}, totalCount: ${item.totalCount}`);
+    if (item.state == cloudSyncManager.DownloadState.STOPPED) {
+      console.info(`stopReason: ${item.stopReason}`);
+    }
+  });
+}).catch((err: BusinessError) => {
+  console.error(`getDowngradeDownloadTaskState failed, code: ${err.code}, message: ${err.message}`);
 });
 ```
