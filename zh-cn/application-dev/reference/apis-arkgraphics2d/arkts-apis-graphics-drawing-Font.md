@@ -469,7 +469,7 @@ measureText(text: string, encoding: TextEncoding): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 文本的宽度，浮点数。 |
+| number | 文本的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
