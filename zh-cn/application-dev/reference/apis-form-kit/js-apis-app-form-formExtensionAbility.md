@@ -14,6 +14,8 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 >
 > FormExtensionAbility创建后10秒内无操作将会被清理。
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 如下模块不支持在FormExtensionAbility引用，可能会导致程序异常退出。
 > - @ohos.ability.particleAbility (ParticleAbility模块)
 > - @ohos.multimedia.audio (音频管理)
@@ -44,7 +46,9 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| onStop<sup>23+</sup> |[OnStopFn](#onstopfn23)| 否   | 是   | 当卡片提供方的卡片进程退出时，触发该回调。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
+| onAcquireFormState<sup>23+</sup> | [OnAcquireFormStateFn](#onacquireformstatefn23) | 否 | 是 | 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
 
 ### FormExtensionAbility.onAddForm
 
@@ -57,6 +61,10 @@ onAddForm(want: Want): formBindingData.FormBindingData
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -71,6 +79,8 @@ onAddForm(want: Want): formBindingData.FormBindingData
 | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | formBindingData.FormBindingData对象，卡片要显示的数据。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
@@ -90,6 +100,24 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onAddForm(want: Want) : formBindingData.FormBindingData {
+    console.info('testTag', 'onAddForm testing');
+    // 返回一个FormBindingData对象。
+    const formData = '';
+    return formBindingData.createFormBindingData(formData);
+  }
+}
+```
+
 ### FormExtensionAbility.onCastToNormalForm
 
 onCastToNormalForm(formId: string): void
@@ -102,6 +130,10 @@ onCastToNormalForm(formId: string): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
@@ -110,7 +142,24 @@ onCastToNormalForm(formId: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onCastToNormalForm(formId: string) {
+    // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
+    console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
@@ -133,6 +182,10 @@ onUpdateForm(formId: string, wantParams?: Record<string, Object>): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -141,6 +194,8 @@ onUpdateForm(formId: string, wantParams?: Record<string, Object>): void
 | wantParams<sup>12+</sup> | Record<string, Object> | 否   | 更新参数。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
@@ -164,9 +219,36 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onUpdateForm(formId: string, wantParams?: Record<string, Object>) {
+    console.info('testTag', 'onUpdateForm testing');
+    let param: Record<string, string> = {
+      'temperature': '22c',
+      'time': '22:00'
+    }
+    let obj2: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+    formProvider.updateForm(formId, obj2).then(() => {
+      console.info(`FormExtensionAbility context updateForm`);
+    }).catch((e) => {
+      console.error(`FormExtensionAbility context updateForm failed, code: ${e.code} message: ${e.message}`);
+    });
+  }
+}
+```
+
 ### FormExtensionAbility.onChangeFormVisibility
 
-onChangeFormVisibility(newStatus: Record\<string, number>): void
+ArkTS-Dyn: onChangeFormVisibility(newStatus: Record\<string, number>): void
+
+ArkTS-Sta: onChangeFormVisibility(newStatus: Record\<string, int>): void
 
 卡片提供方接收修改可见性的通知接口。该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
 
@@ -174,13 +256,18 @@ onChangeFormVisibility(newStatus: Record\<string, number>): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                   |
 | ------- | ------ | ---- | ---------------------- |
-| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。<br>详细参考 [formInfo.VisibilityType](js-apis-app-form-formInfo.md#visibilitytype) |
-
+| newStatus  | ArkTS-Dyn: Record\<string, number> <br>ArkTS-Sta: Record\<string, int>| 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。<br>详细参考 [formInfo.VisibilityType](js-apis-app-form-formInfo.md#visibilitytype) |
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
@@ -216,6 +303,20 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onChangeFormVisibility(newStatus: Record<string, int>) {
+    console.info('testTag', 'onChangeFormVisibility testing');
+  }
+}
+```
+
 ### FormExtensionAbility.onFormEvent
 
 onFormEvent(formId: string, message: string): void
@@ -228,6 +329,10 @@ onFormEvent(formId: string, message: string): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                   |
@@ -237,6 +342,8 @@ onFormEvent(formId: string, message: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FormExtensionAbility } from '@kit.FormKit';
 
@@ -245,6 +352,20 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
   }
 };
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onFormEvent(formId: string, message: string) {
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
+  }
+}
 ```
 
 ### FormExtensionAbility.onRemoveForm
@@ -259,6 +380,10 @@ onRemoveForm(formId: string): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -266,6 +391,8 @@ onRemoveForm(formId: string): void
 | formId | string | 是   | 请求销毁的卡片标识。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { FormExtensionAbility } from '@kit.FormKit';
@@ -275,6 +402,20 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
   }
 };
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onRemoveForm(formId: string) {
+    console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
+  }
+}
 ```
 
 ### FormExtensionAbility.onConfigurationUpdate
@@ -289,6 +430,10 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -296,6 +441,8 @@ onConfigurationUpdate(newConfig: Configuration): void
 | newConfig | [Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md) | 是 | 表示需要更新的配置信息。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { FormExtensionAbility } from '@kit.FormKit';
@@ -310,6 +457,23 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormExtensionAbility } from '@kit.FormKit';
+import { Configuration } from '@kit.AbilityKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onConfigurationUpdate(newConfig: Configuration) {
+    // 仅当前formExtensionAbility存活时更新配置才会触发此生命周期。
+    // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
+    console.info(`onConfigurationUpdate, config language: ${newConfig.language}`);
+  }
+}
+```
+
 ### FormExtensionAbility.onAcquireFormState
 
 onAcquireFormState?(want: Want): formInfo.FormState
@@ -321,6 +485,10 @@ onAcquireFormState?(want: Want): formInfo.FormState
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -360,6 +528,10 @@ onStop?(): void
   
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **示例：**
 
 ```ts
@@ -384,6 +556,10 @@ onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): v
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -392,6 +568,8 @@ onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): v
 | newFormLocation | [formInfo.FormLocation](js-apis-app-form-formInfo.md#formlocation20) | 是 | 卡片最新位置的枚举值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
@@ -404,6 +582,29 @@ export default class EntryFormAbility extends FormExtensionAbility {
     };
     return formBindingData.createFormBindingData(formData);
   }
+
+  onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation) {
+    console.info("EntryFormAbility onFormLocationChanged current location: " + newFormLocation);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+
+export default class EntryFormAbility extends FormExtensionAbility {
+  onAddForm(want: Want) {
+    let formData: Record<string, string | Object> = {
+      'data': 'addForm'
+    };
+    return formBindingData.createFormBindingData(formData);
+  }
+
   onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation) {
     console.info("EntryFormAbility onFormLocationChanged current location: " + newFormLocation);
   }
@@ -422,6 +623,10 @@ onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: for
   
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -432,12 +637,102 @@ onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: for
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FormExtensionAbility, formInfo } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect) {
     console.info(`FormExtensionAbility onSizeChanged, formId: ${formId}, newDimension: ${newDimension}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormExtensionAbility, formInfo } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect) {
+    console.info(`FormExtensionAbility onSizeChanged, formId: ${formId}, newDimension: ${newDimension}`);
+  }
+}
+```
+
+## OnStopFn<sup>23+</sup>
+
+type OnStopFn = () => void
+
+当卡片提供方的卡片进程退出时，触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+```ts
+'use static'
+
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onStopFn() {
+    console.info(`FormExtensionAbility onStop`);
+  }
+}
+```
+
+## OnAcquireFormStateFn<sup>23+</sup>
+
+type OnAcquireFormStateFn = (want: Want) => formInfo.FormState
+
+卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以重写）。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | want表示获取卡片状态的描述。描述包括Bundle名称、能力名称、模块名称、卡片名称等。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                         |
+| ------------------------------------------------------------ | -------------------------------------------- |
+| [formInfo.FormState](js-apis-app-form-formInfo.md#formstate) | formInfo.FormState枚举，表示卡片当前的状态。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { FormExtensionAbility, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onAcquireFormStateFn(want: Want) {
+    console.info(`FormExtensionAbility onAcquireFormState, want: ${want}`);
+    return formInfo.FormState.UNKNOWN;
   }
 }
 ```

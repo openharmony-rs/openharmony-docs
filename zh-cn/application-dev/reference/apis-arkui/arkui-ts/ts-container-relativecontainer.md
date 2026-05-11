@@ -115,7 +115,7 @@ barrier(value: Array&lt;BarrierStyle&gt;)
 
 ArkTS-Dyn: barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
 
-ArkTS-Sta: barrier(barrierStyle: Array&lt;BarrierStyle&gt; | Array&lt;LocalizedBarrierStyle&gt; | undefined): this
+ArkTS-Sta: barrier(barrierStyle: Array&lt;BarrierStyle&gt; | Array&lt;LocalizedBarrierStyle&gt; | undefined)
 
 设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier，支持定义镜像模式的屏障线。
 
@@ -1033,7 +1033,7 @@ struct Index {
 
 ### 示例7（设置链）
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)接口从上至下分别实现了水平方向的[SPREAD链，SPREAD_INSIDE链和PACKED链](ts-universal-attributes-location.md#chainstyle12)。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)接口从上至下分别实现了水平方向的[SPREAD](ts-universal-attributes-location.md#chainstyle12)链、[SPREAD_INSIDE](ts-universal-attributes-location.md#chainstyle12)链和[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
 
 ArkTS-Dyn示例：
 
@@ -1337,7 +1337,7 @@ struct Index {
 
 ### 示例8（链中设置偏移）
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias对象说明)接口实现了水平方向的带偏移的[PACKED链](ts-universal-attributes-location.md#chainstyle12)。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias对象说明)接口实现了水平方向的带偏移的[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
 
 ArkTS-Dyn示例：
 

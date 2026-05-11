@@ -3361,7 +3361,7 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 });
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
@@ -3378,6 +3378,10 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **参数：**
 
@@ -3433,7 +3437,7 @@ let enable: boolean = true;
 notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
@@ -3450,6 +3454,10 @@ setDistributedEnable(enable: boolean): Promise\<void>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **参数：**
 
@@ -3504,7 +3512,7 @@ notificationManager.setDistributedEnable(enable).then(() => {
 });
 ```
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
@@ -3521,6 +3529,10 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3585,7 +3597,7 @@ let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
 ```
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
@@ -3602,6 +3614,10 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3665,7 +3681,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
@@ -3682,6 +3698,10 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3743,7 +3763,7 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
@@ -3760,6 +3780,10 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **参数：**
 
@@ -3820,7 +3844,7 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 });
 ```
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
@@ -3837,6 +3861,8 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -3888,7 +3914,7 @@ let getDeviceRemindTypeCallback = (err: BusinessError | null, data: notification
 notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
 ```
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(): Promise\<DeviceRemindType\>
 
@@ -3905,6 +3931,8 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **返回值：**
 
@@ -5023,7 +5051,7 @@ notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
 });
 ```
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
 
@@ -5042,6 +5070,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：** 
 
@@ -5102,7 +5132,7 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null): 
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
 ```
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
 
@@ -5121,6 +5151,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -5180,7 +5212,7 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 });
 ```
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<boolean>): void
 
@@ -5197,6 +5229,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -5253,7 +5287,7 @@ let getSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null, d
 notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotificationEnabledWithoutAppCallback);
 ```
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 ArkTS-Dyn: getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
@@ -5270,6 +5304,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -6852,7 +6888,7 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声，自定义铃声参考[sound](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
+| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声。 |
 | value   | string | 是  | 附加配置值。参数示例：[bundleName1,bundleName2]。 |
 
 **返回值：**

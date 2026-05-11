@@ -425,14 +425,7 @@ struct ThreeColumns {
 ArkTS-Dyn示例：
 
 ```ts
-import {
-  FoldSplitContainer,
-  PresetSplitRatio,
-  ExtraRegionPosition,
-  ExpandedRegionLayoutOptions,
-  HoverModeRegionLayoutOptions,
-  FoldedRegionLayoutOptions
-} from '@kit.ArkUI';
+import { FoldSplitContainer, PresetSplitRatio, ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayoutOptions, FoldedRegionLayoutOptions } from '@kit.ArkUI';
 
 @Component
 struct Region {
@@ -829,35 +822,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import {
-  FoldSplitContainer,
-  PresetSplitRatio,
-  ExpandedRegionLayoutOptions,
-  HoverModeRegionLayoutOptions,
-  FoldedRegionLayoutOptions,
-  ExtraRegionPosition
-} from '@ohos.arkui.advanced.FoldSplitContainer';
-import {
-  Column,
-  Component,
-  Text,
-  Entry,
-  Builder,
-  TextAlign,
-  RelativeContainer,
-  BuilderParam,
-  Scroll,
-  Row,
-  Blank,
-  Toggle,
-  ToggleType,
-  ForEach,
-  Radio,
-  HorizontalAlign,
-  VerticalAlign,
-  Color,
-  ColumnOptions
-} from '@ohos.arkui.component';
+import { FoldSplitContainer, PresetSplitRatio, ExpandedRegionLayoutOptions, HoverModeRegionLayoutOptions, FoldedRegionLayoutOptions, ExtraRegionPosition } from '@ohos.arkui.advanced.FoldSplitContainer';
+import { Column, Component, Text, Entry, Builder, TextAlign, RelativeContainer, BuilderParam, Scroll, Row, Blank, Toggle, ToggleType, ForEach, Radio, HorizontalAlign, VerticalAlign, Color, ColumnOptions } from '@ohos.arkui.component';
 import { State, Watch, PropRef } from '@ohos.arkui.stateManagement';
 
 @Component

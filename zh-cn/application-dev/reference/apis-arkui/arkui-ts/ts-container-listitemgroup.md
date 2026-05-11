@@ -134,6 +134,24 @@ ArkTS-Sta: childrenMainSize(value: ChildrenMainSize | undefined)
 | ---------- | ------ | ---- | ------------------------------- |
 | value | ArkTS-Dyn: [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明)<br/>ArkTS-Sta: [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明) \| undefined | 是   | 该对象用来维护子组件在主轴方向的大小信息。<br/>取值undefined时，没有childrenMainSize。|
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ListItemGroupAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置ListItemGroup组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier\<ListItemGroupAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+
 ## ListItemGroupStyle<sup>10+</sup>枚举说明
 
 ListItemGroup组件卡片样式枚举。

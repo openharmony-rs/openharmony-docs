@@ -39,29 +39,7 @@ Flex布局容器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[Flex](#flex23)。
-
 **ArkTS-Dyn起始版本：** 7
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ----- | --- | --- | --- |
-| value | [FlexOptions](#flexoptions对象说明) | 否 | 弹性布局子组件参数。 |
-
-### Flex<sup>23+</sup>
-
-Flex(value?: FlexOptions，content_?: CustomBuilder)
-
-Flex布局容器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[Flex](#flex-1)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -70,7 +48,6 @@ Flex布局容器。
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | --- | --- | --- |
 | value | [FlexOptions](#flexoptions对象说明) | 否 | 弹性布局子组件参数。 |
-| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 定义子组件的Builder函数。 |
 
 ## FlexOptions对象说明
 

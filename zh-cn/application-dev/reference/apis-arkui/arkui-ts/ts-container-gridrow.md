@@ -36,38 +36,15 @@ GridRow(option?: GridRowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[GridRow](#gridrow23)。
-
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
 | option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
-
-### GridRow<sup>23+</sup>
-
-GridRow(option?: GridRowOptions，content_?: CustomBuilder)
-
-栅格行布局容器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[GridRow](#gridrow-1)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
-
-| 参数名 |类型|必填|说明|
-|-----|-----|----|----|
-| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
-| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 容器。 |
 
 ## GridRowOptions对象说明
 
@@ -307,7 +284,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | At
 
 ArkTS-Dyn: onBreakpointChange(callback: (breakpoints: string) => void)
 
-ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefined): this
+ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefined)
 
 断点发生变化时触发回调。
 
