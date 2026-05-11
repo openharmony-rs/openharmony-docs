@@ -1515,11 +1515,17 @@ enableDeviceLevelCapture是AVScreenCaptureStrategy接口中的一个可选参数
 > **说明：**
 >播放管理类，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
 
+在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](#onerror9)：监听错误事件。
+
+应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
+
+Audio/Video播放demo可参考：[音频播放开发指导](../../media/media/using-avplayer-for-playback.md)、[视频播放开发指导](../../media/media/video-playback.md)。
+
 ### 属性
 
 **系统能力：**  SystemCapability.Multimedia.Media.AVPlayer
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称               | 类型                                   | 只读 | 可选 | 说明             |
 | ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
@@ -1538,15 +1544,15 @@ getCurrentTrack(trackType: MediaType): Promise\<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| trackType | [MediaType](arkts-apis-media-e.md#mediatype8) | 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
+| trackType | [audio.AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)| 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
 
 **返回值：**
 
@@ -1587,7 +1593,7 @@ async function test(){
 
 forceLoadVideo(force: boolean): Promise\<void>
 
-是否强制加载视频。使用Promise返回结果。
+是否强制加载视频。使用Promise异步回调。
 
 只有当AVPlayer处于prepared、playing或者pause状态时，才能调用此接口。
 
@@ -1595,9 +1601,9 @@ forceLoadVideo(force: boolean): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+**系统接口：** 此接口为系统接口。
 
-**系统接口：** 该接口为系统接口。
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **参数：**
 
@@ -1609,7 +1615,7 @@ forceLoadVideo(force: boolean): Promise\<void>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise\<void> | Promise对象，无异步回调 。 |
 
 **错误码：**
 
