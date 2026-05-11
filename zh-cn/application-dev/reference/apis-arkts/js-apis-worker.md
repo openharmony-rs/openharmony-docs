@@ -47,7 +47,7 @@ Worker构造函数的选项，用于为Worker添加其他信息。
 | ---- | -------- | ---- | ---- | -------------- |
 | type | 'classic' \| 'module' | 否   | 是 | Worker执行脚本的模式类型，暂不支持module类型，默认值为"classic"。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | name | string   | 否   | 是 | Worker的名称。<br/>默认值为undefined，此时线程名称为'WorkerThread'。<br/>非默认值情况下，对应的线程名称带有'WorkerThread_'前缀。比如name为'testName'时，对应的线程名称为'WorkerThread_testName'。<br/>线程名称可通过[HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24)的threadName获取<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| shared | boolean | 否   | 是 | 表示Worker共享功能，此接口暂不支持。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| shared | boolean | 否   | 是 | 表示Worker共享功能，此接口暂不支持。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | priority<sup>18+</sup> | [ThreadWorkerPriority](#threadworkerpriority18) | 否   | 是 | 表示Worker线程优先级。默认值为MEDIUM。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 
