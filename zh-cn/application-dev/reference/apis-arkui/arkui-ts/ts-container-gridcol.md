@@ -32,29 +32,7 @@ GridCol(option?: GridColOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[GridCol](#gridcol23)。
-
 **ArkTS-Dyn起始版本：** 9
-
-**参数：**
-
-| 参数名 | 类型                                                  | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| option   | [GridColOptions](#gridcoloptions对象说明) | 否   | 栅格布局子组件参数。 |
-
-### GridCol<sup>23+</sup>
-
-GridCol(option?: GridColOptions，content_?: CustomBuilder)
-
-栅格列布局组件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[GridCol](#gridcol-1)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -63,7 +41,6 @@ GridCol(option?: GridColOptions，content_?: CustomBuilder)
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | option   | [GridColOptions](#gridcoloptions对象说明) | 否   | 栅格布局子组件参数。 |
-| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 定义子组件的Builder函数。 |
 
 ## GridColOptions对象说明
 

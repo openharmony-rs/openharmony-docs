@@ -157,7 +157,7 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double> | undefined
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](./ts-types.md#directionaledgestt12) \| undefined  |  子组件的margin信息。<br/>取值为undefined时，与不设置表现一致。   |
+| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的margin信息。<br/>取值为undefined时，与不设置表现一致。   |
 
 ### getPadding<sup>12+</sup>
 
@@ -179,7 +179,7 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double> | undefined
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](./ts-types.md#directionaledgestt12) \| undefined  |  子组件的padding信息。<br/>取值为undefined时，与不设置表现一致。  |
+| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的padding信息。<br/>取值为undefined时，与不设置表现一致。  |
 
 ### getBorderWidth<sup>12+</sup>
 
@@ -201,7 +201,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](./ts-types.md#directionaledgestt12) \| undefined  |  子组件的borderWidth信息。  |
+| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的borderWidth信息。  |
 
 ## Measurable<sup>10+</sup>
 
@@ -277,7 +277,7 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double\> | undefined
 
 | 类型                               | 说明                     |
 |------------------------------------|-------------------------|
-|ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](./ts-types.md#directionaledgestt12) \| undefined  | 子组件的margin信息。<br/>取值为undefined时，与不设置表现一致。   |
+|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的margin信息。<br/>取值为undefined时，与不设置表现一致。   |
 
 ### getPadding<sup>12+</sup>
 
@@ -299,7 +299,7 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double\> | undefined
 
 | 类型                               | 说明                     |
 |------------------------------------|-------------------------|
-|ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](./ts-types.md#directionaledgestt12) \| undefined  | 子组件的padding信息。<br/>取值为undefined时，与不设置表现一致。   |
+|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的padding信息。<br/>取值为undefined时，与不设置表现一致。   |
 
 ### getBorderWidth<sup>12+</sup>
 
@@ -321,7 +321,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 | 类型                               | 说明                     |
 |------------------------------------|-------------------------|
-|ArkTS-Dyn: [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)<br/>ArkTS-Sta: [DirectionalEdgesT&lt;double&gt;](./ts-types.md#directionaledgestt12) \| undefined  | 子组件的borderWidth信息。<br/>取值为undefined时，与不设置表现一致。 |
+|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的borderWidth信息。<br/>取值为undefined时，与不设置表现一致。 |
 
 
 ## MeasureResult<sup>10+</sup>
@@ -358,8 +358,8 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 | 名称     | 类型   |只读|可选| 说明    |
 |--------|--------|------|------|-------|
-| width  | number | 否|否|测量后的宽。<br>单位：vp。 |
-| height | number | 否|否|测量后的高。<br>单位：vp。 |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的宽。<br>单位：vp。 |
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的高。<br>单位：vp。 |
 
 ## onLayout<sup>(deprecated)</sup>
 
