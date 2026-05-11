@@ -391,7 +391,7 @@ Provides APIs for accessing application resources and system resources.
 >
 > - Resource files are defined in the **resources** directory of the project. You can obtain resource values such as strings, string arrays, and colors based on the specified **resName**, **resId**, or **Resource** object. **resName** indicates the resource name, **resId** indicates the resource ID, which can be obtained through `$r(*resource-address*).id`, for example, `$r('app.string.test').id`.
 >
-> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For more information, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
+> - No matter whether resources are in the same HAP or different HAPs or HSPs, you are advised to use the API with **resName** or **resId** specified. Using the **Resource** object will take a longer time. If the resources are in different HAPs or HSPs, you first need to use [createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) to create the context of the corresponding module and then call the API with **resName** or **resId** specified. For more information, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
 >
 > - In API version 22 and earlier versions, an exception is thrown due to an invalid ID when the intermediate-code HAR or bytecode HAR accesses resources through resource ID-related APIs. From API version 23, the intermediate-code HAR or bytecode HAR can properly access resources through resource ID-related APIs. For details, see [Accessing Resources](../../quick-start/resource-categories-and-access.md#accessing-resources).
 >
@@ -598,7 +598,7 @@ export default class EntryAbility extends UIAbility {
 
 getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
-Obtains a string based on the specified resource ame and formats the string based on **args**. This API returns the result synchronously.
+Obtains a string based on the specified resource name and formats the string based on **args**. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -797,7 +797,7 @@ Obtains a string based on the specified resource name. This API uses an asynchro
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
 | resName  | string                      | Yes   | Resource name.           |
-| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   |Callback used to return the result, which is the string corresponding to the specified resource ID.|
+| callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;string&gt; | Yes   |Callback used to return the obtained string.|
 
 **Error codes**
 
@@ -4081,7 +4081,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFdSync(path: string): void
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API returns the result synchronously.
+Closes the file descriptor (fd) of the HAP where the **rawfile** file in the **resources/rawfile** directory is located. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4770,7 +4770,7 @@ export default class EntryAbility extends UIAbility {
             // Print the output result: sub isRawDir, result: true
             console.info(`sub isRawDir, result: ${isRawDir}`);
 
-            // If the test.txt file exists in the root directory, the value of isRawDir is false.
+            // If the test.txt file exists in the rawfile root directory, the value of isRawDir is false.
             // Replace "test.txt" with the actual resource.
             isRawDir = this.context.resourceManager.isRawDir("test.txt");
             // Print the output result: test.txt isRawDir, result: false
@@ -6328,7 +6328,7 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptorByName](#getdrawabledescriptorbyname10) or [getDrawableDescriptor] (#getdrawabledescriptor10) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getDrawableDescriptorByName](#getdrawabledescriptorbyname10) or [getDrawableDescriptor](#getdrawabledescriptor10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7630,7 +7630,7 @@ Obtains a color value based on the specified resource object. This API uses a pr
 
 > **NOTE**
 >
-> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName] (#getcolorbyname10-1) or [getColor] (#getcolor10-1) instead.
+> This API is supported since API version 10 and is deprecated since API version 20. You are advised to use [getColorByName](#getcolorbyname10-1) or [getColor](#getcolor10-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -8178,4 +8178,3 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
     ]
   }
   ```
-<!--no_check-->
