@@ -7,7 +7,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
-本模块提供系统相关的以及增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。接口中使用的名词定义如下：
+本模块提供系统相关的以及增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[国际化-Intl](js-apis-intl.md)模块提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整的国际化能力。接口中使用的名词定义如下：
 - 模式字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)和单引号包裹的自定义文本自由组合而成的字符串。
 - 框架字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)自由组合而成的字符串，不支持自定义文本。
 
@@ -17,7 +17,7 @@
 >
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如[时间日期格式化接口](#simplenumberformat18)，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如时间日期格式化接口，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 
@@ -4594,6 +4594,296 @@ format(date: Date): string
   }
   ```
 
+## SymbolDateTimeFormat
+
+提供自定义时间日期符号的能力。继承自[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)，支持[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)的方法。
+
+### constructor
+
+constructor(locale?: Intl.Locale, options?: SymbolDateTimeFormatOptions)
+
+创建使用自定义符号的时间日期格式化对象。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明    |
+| ---- | ------ | ---- | ----- |
+| locale  | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否    | 区域对象。默认值：系统区域对象。 |
+| options | [SymbolDateTimeFormatOptions](#symboldatetimeformatoptions) | 否    | 自定义符号时间日期格式化的配置项。默认值：区域对象默认的符号。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+```
+
+### format
+
+ArkTS-Dyn: format(date?: Date | number): string
+
+ArkTS-Sta: format(date?: Date | double): string
+
+对时间日期进行格式化，返回使用自定义符号的时间日期字符串。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| date | ArkTS-Dyn: Date \| number<br>ArkTS-Sta: Date \| double | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 使用自定义符号的时间日期字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let result = formatter.format(new Date(2026, 3, 26, 14, 20, 0)); // result = '晚2:20'
+```
+
+### formatToParts
+
+ArkTS-Dyn: formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]
+
+ArkTS-Sta: formatToParts(date?: Date | double): Intl.DateTimeFormatPart[]
+
+对时间日期进行格式化，返回使用自定义符号的时间日期元素数组。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| date | ArkTS-Dyn: Date \| number<br>ArkTS-Sta: Date \| double | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.DateTimeFormatPart[] | 使用自定义符号的时间日期元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let parts = formatter.formatToParts(new Date(2026, 3, 26, 14, 20, 0)); // parts[0].type = 'dayPeriod'
+```
+
+### formatRange
+
+ArkTS-Dyn: formatRange(startDate: Date | number | bigint, endDate: Date | number | bigint): string
+
+ArkTS-Sta: formatRange(startDate: Date | double, endDate: Date | double): string
+
+对时间日期范围进行格式化。自定义符号在该接口上暂不生效。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| endDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 格式化后的时间日期范围字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let startDate = new Date(2026, 3, 27, 14, 20, 0);
+let endDate = new Date(2026, 3, 27, 18, 20, 0);
+let result = formatter.formatRange(startDate, endDate); // result = '下午2:20至6:20'
+```
+
+### formatRangeToParts
+
+ArkTS-Dyn: formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint): Intl.DateTimeRangeFormatPart[]
+
+ArkTS-Sta: formatRangeToParts(startDate: Date | double, endDate: Date | double): Intl.DateTimeRangeFormatPart[]
+
+把时间日期范围格式化成时间日期元素数组。自定义符号在该接口上暂不生效。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| endDate | ArkTS-Dyn: Date \| number \| bigint<br>ArkTS-Sta: Date \| double | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.DateTimeRangeFormatPart[] | 时间日期范围元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let startDate = new Date(2026, 3, 27, 14, 20, 0);
+let endDate = new Date(2026, 3, 27, 18, 20, 0);
+let parts = formatter.formatRangeToParts(startDate, endDate); // parts[0].type = 'dayPeriod'
+```
+
+### resolvedOptions
+
+resolvedOptions(): ResolvedSymbolDateTimeFormatOptions
+
+解析自定义时间日期符号的配置项。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| [ResolvedSymbolDateTimeFormatOptions](#resolvedsymboldatetimeformatoptions)  | 自定义符号时间日期格式化对象配置项的解析结果。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['早', '晚']
+});
+let options = formatter.resolvedOptions(); // options.timeStyle = 'short', options.amPMSymbol = ['早', '晚']
+```
+
+### SymbolDateTimeFormatOptions
+
+创建自定义符号时间日期格式化对象时的可选配置项。继承自Intl.DateTimeFormatOptions，支持Intl.DateTimeFormatOptions的所有配置项，并且功能与其一致。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| amPMSymbol     | string[] |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
+
+### ResolvedSymbolDateTimeFormatOptions
+
+自定义符号时间日期格式化对象配置项的解析结果。继承自Intl.ResolvedDateTimeFormatOptions，支持Intl.ResolvedDateTimeFormatOptions的所有配置项，并且功能与其一致。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| amPMSymbol     | string[] |   否   |  是   |  指定的上午和下午符号，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
+
 ## StyledDateTimeFormat<sup>23+</sup>
 
 提供富文本时间日期格式化的能力。
@@ -4981,6 +5271,301 @@ try {
   console.error(`call SimpleNumberFormat.format failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+## SymbolNumberFormat
+
+提供自定义数字符号的能力。继承自[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)，支持[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)的方法。
+
+### constructor
+
+constructor(locale?: Intl.Locale, options?: SymbolNumberFormatOptions)
+
+创建使用自定义符号的数字格式化对象。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明    |
+| ---- | ------ | ---- | ----- |
+| locale  | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否    | 区域对象。默认值：系统区域对象。 |
+| options | [SymbolNumberFormatOptions](#symbolnumberformatoptions) | 否    | 自定义数字格式化符号的配置项。默认值：区域默认的符号。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+```
+
+### format
+
+ArkTS-Dyn: format(value: number | bigint): string
+
+ArkTS-Sta: format(value: double | bigint | long): string
+
+对数字进行格式化，返回使用自定义符号的数字字符串。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| value | ArkTS-Dyn: number \| bigint<br>ArkTS-Sta: double \| bigint \| long | 是    | 待格式化的数字。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 使用自定义符号的数字字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.format(10); // result = '1(0)天'
+```
+
+### formatToParts
+
+ArkTS-Dyn: formatToParts(value?: number \| bigint): Intl.NumberFormatPart[]
+
+ArkTS-Sta: formatToParts(value: double \| bigint): Intl.NumberFormatPart[]
+
+对数字进行格式化，返回使用自定义符号的数字元素数组。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| value | ArkTS-Dyn: number \| bigint<br>ArkTS-Sta: double \| bigint | 否    | 待格式化的数字。默认值：NaN。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.NumberFormatPart[] | 使用自定义符号的数字元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatToParts(10); // result[0].type = 'integer'
+```
+
+### formatRange
+
+ArkTS-Dyn: formatRange(startRange: number, endRange: number): string
+
+ArkTS-Sta: formatRange(startRange: double | bigint, endRange: double | bigint): string
+
+对数字范围进行格式化，返回使用自定义符号的数字范围字符串。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startRange | ArkTS-Dyn: number<br>ArkTS-Sta: double \| bigint | 是    | 起始数字。 |
+| endRange | ArkTS-Dyn: number<br>ArkTS-Sta: double \| bigint | 是    | 终止数字。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| string | 使用自定义符号的数字范围字符串。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatRange(10, 20); // result = '1(0)-2(0)天'
+```
+
+### formatRangeToParts
+
+ArkTS-Dyn: formatRangeToParts(startRange: number, endRange: number): Intl.NumberFormatPart[]
+
+ArkTS-Sta: formatRangeToParts(startRange: double | bigint, endRange: double | bigint): Intl.NumberFormatPart[]
+
+对数字范围进行格式化，返回使用自定义符号的数字元素数组。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| startRange | ArkTS-Dyn: number<br>ArkTS-Sta: double \| bigint | 是    | 起始数字。 |
+| endRange | ArkTS-Dyn: number<br>ArkTS-Sta: double \| bigint | 是    | 终止数字。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| Intl.NumberFormatPart[] | 使用自定义符号的数字元素数组。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatRangeToParts(10, 20); // result[0].type = 'integer'
+```
+
+### resolvedOptions
+
+resolvedOptions(): ResolvedSymbolNumberFormatOptions
+
+解析自定义数字符号的配置项。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+|       类型        |         说明          |
+| ----------------- | ----------------------|
+| [ResolvedSymbolNumberFormatOptions](#resolvedsymbolnumberformatoptions)  | 自定义符号数字格式化对象配置项的解析结果。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.resolvedOptions(); // result.style = 'unit', result.unit = 'day', result.zero = '(0)'
+```
+
+### SymbolNumberFormatOptions
+
+创建自定义符号数字格式化对象时的可选配置项。继承自Intl.NumberFormatOptions，支持Intl.NumberFormatOptions的所有配置项，并且功能与其一致。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| zero     | string  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
+| nan     | string  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
+| minusSign     | string  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
+| plusSign     | string  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
+| infinity     | string  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
+| groupingSeparator     | string |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
+
+### ResolvedSymbolNumberFormatOptions
+
+自定义符号数字格式化对象配置项的解析结果。继承自Intl.ResolvedNumberFormatOptions，支持Intl.ResolvedNumberFormatOptions的所有配置项，并且功能与其一致。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型             |  只读   |  可选   |  说明                                   |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| zero     | string  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
+| nan     | string  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
+| minusSign     | string  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
+| plusSign     | string  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
+| infinity     | string  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
+| groupingSeparator     | string |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
+
 
 ## StyledNumberFormat<sup>18+</sup>
 
