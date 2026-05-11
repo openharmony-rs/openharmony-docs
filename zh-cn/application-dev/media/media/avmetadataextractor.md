@@ -105,6 +105,9 @@
      };
      // 设置dataSrc。
      avMetadataExtractor.dataSrc = dataSrc;
+
+     // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
+     fileIo.closeSync(fd);
      ```
      ArkTS-Sta:
      <!-- @[set_dataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
@@ -286,12 +289,12 @@
      height : 300
    }
    // 获取视频缩略图（callback模式）。
-   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
      if (err) {
-       console.error(`fetch failed, error = ${JSON.stringify(err)}`);
+       console.error(TAG, `fetch failed, error = ${JSON.stringify(err)}`);
        return;
      }
-     console.info(`fetch success.`);
+     console.info(TAG, `fetch success.`);
      if (frameInfo !== undefined && frameInfo.image !== undefined) {
        this.pixelMap = frameInfo.image;
      }
