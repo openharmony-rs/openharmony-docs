@@ -26,11 +26,11 @@ import { image } from '@kit.ImageKit';
  	 
  **系统接口：** 该接口为系统接口。
 
- **系统能力：** SystemCapability.Multimedia.Image.createPictureByHdrAndSdrPixelMap
+ **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称               | 类型              | 只读 | 可选 | 说明             |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
-| isFullSizeGainmap<sup>24+</sup> | [boolean] | 否   | 否   | 返回Picture中的GainMap是否使用全尺寸图，默认值为false；<br/>false: GainMap不使用全尺寸图，宽高均为主图的一半;<br/>true: GainMap使用全尺寸图，宽高和主图一致。 |
+| isFullSizeGainmap<sup>26+</sup> | [boolean] | 否   | 否   | 返回Picture中的GainMap是否使用全尺寸图，默认值为false；<br/>false: GainMap不使用全尺寸图，宽高均为主图的一半;<br/>true: GainMap使用全尺寸图，宽高和主图一致。 |
  	 
 
 ## DecodingOptions<sup>7+</sup>
@@ -65,7 +65,7 @@ import { image } from '@kit.ImageKit';
 
 createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): Promise\<Picture>
 
-根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个增益图（gainmap），返回的Picture对象将包含SDR PixelMap和生成的gainmap PixelMap，像素格式为RGBA8888。使用Promise异步回调。
+根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个增益图（gainmap），返回的Picture对象将包含SDR PixelMap和生成的gainmap PixelMap，像素格式可以为RGBA8888、yuv10bit、rgba 10bit。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
