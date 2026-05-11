@@ -98,6 +98,24 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | color  |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\><br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>取值为undefined时，滚动条的颜色为'\#66182431'。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ScrollBarAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置ScrollBar组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier\<ScrollBarAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+
 ## ScrollBarOptions对象说明
 
 滚动条组件参数。

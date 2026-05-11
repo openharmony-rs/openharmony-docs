@@ -136,6 +136,8 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -312,7 +314,7 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: number \| [Resource](ts-types.md#resource) \| undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### enablePaging<sup>11+</sup>
 
@@ -357,6 +359,24 @@ ArkTS-Sta: initialOffset(value: OffsetOptions | undefined)
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
 | value  | ArkTS-Dyn: [OffsetOptions](#offsetoptions12对象说明)<br/>ArkTS-Sta: [OffsetOptions](#offsetoptions12对象说明) \| undefined  | 是   |当输入的大小为百分比时，初始滚动偏移量为Scroll组件主轴方向大小与百分比数值之积。<br/>取值为undefined时，按默认值处理。|
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ScrollAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置Scroll组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier\<ScrollAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
 
 ### maxZoomScale<sup>20+</sup>
 
@@ -415,6 +435,8 @@ ArkTS-Sta: zoomScale(scale: double | Bindable<double\> | undefined)
 设置Scroll组件内容的缩放比例。未通过该接口设置时，内容的缩放比例默认为1。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -639,6 +661,10 @@ ArkTS-Sta: onDidScroll(handler: ScrollOnScrollCallback | undefined)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -994,8 +1020,9 @@ Scroller的构造函数。
 
 ### scrollTo
 
-scrollTo(options: ScrollOptions)
+ArkTS-Dyn: scrollTo(options: ScrollOptions)
 
+ArkTS-Sta: scrollTo(options: ScrollOptions): void
 
 滑动到指定位置。
 
@@ -1020,7 +1047,9 @@ scrollTo(options: ScrollOptions)
 
 ### scrollEdge
 
-scrollEdge(value: Edge, options?: ScrollEdgeOptions)
+ArkTS-Dyn: scrollEdge(value: Edge, options?: ScrollEdgeOptions)
+
+ArkTS-Sta: scrollEdge(value: Edge, options?: ScrollEdgeOptions): void
 
 滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。
 
@@ -1074,7 +1103,9 @@ ArkTS-Sta: fling(velocity: double): void
 
 ### scrollPage<sup>9+</sup>
 
-scrollPage(value:   ScrollPageOptions)
+ArkTS-Dyn: scrollPage(value: ScrollPageOptions)
+
+ArkTS-Sta: scrollPage(value: ScrollPageOptions): void
 
 滚动到下一页或者上一页。
 
@@ -1165,7 +1196,7 @@ offset(): OffsetResult | undefined
 
 ArkTS-Dyn: scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions)
 
-ArkTS-Sta: scrollToIndex(value: int, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions)
+ArkTS-Sta: scrollToIndex(value: int, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions): void
 
 滑动到指定Index，支持设置滑动额外偏移量。
 
@@ -1202,11 +1233,11 @@ ArkTS-Sta: scrollToIndex(value: int, smooth?: boolean, align?: ScrollAlign, opti
 
 ### scrollBy<sup>9+</sup>
 
-scrollBy(dx: Length, dy: Length)
+ArkTS-Dyn: scrollBy(dx: Length, dy: Length)
 
+ArkTS-Sta: scrollBy(dx: Length, dy: Length): void
 
 滑动指定距离。
-
 
 >  **说明：**
 >
@@ -1240,6 +1271,10 @@ isAtEnd(): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
