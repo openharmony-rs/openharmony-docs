@@ -1510,7 +1510,23 @@ enableDeviceLevelCapture是AVScreenCaptureStrategy接口中的一个可选参数
 | ------------------------ | ------- | ---- | ---- |
 | enableDeviceLevelCapture | boolean | 否   | true表示折叠屏PC在折叠状态下录制整块屏幕，false表示折叠屏PC在折叠状态下录制半块屏幕。 |
 
-## getCurrentTrack
+## AVPlayer<sup>9+</sup>
+
+> **说明：**
+>播放管理类，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
+
+### 属性
+
+**系统能力：**  SystemCapability.Multimedia.Media.AVPlayer
+
+**系统接口：** 该接口为系统接口。
+
+| 名称               | 类型                                   | 只读 | 可选 | 说明             |
+| ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
+| privacyType | [AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。<br>默认值为PRIVACY_TYPE_PUBLIC。 |
+| enableStartFrameRateOpt | boolean | 否   | 是   |开始播放时是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。|
+
+### getCurrentTrack
 
 getCurrentTrack(trackType：MediaType): Promise\<number>
 
@@ -1612,51 +1628,3 @@ async function test(){
   avPlayer.forceLoadVideo(true);
 }
 ```
-
-## privacyType
-
-privacyType?: audio.AudioPrivacyType
-
-音频隐私配置。
-
-相关详细信息，请参阅[AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)。
-
-### 属性
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
-**系统接口：** 该接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型     | 必填 | 说明                                                         |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| privacyType |  [AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)   | 否 | 音频隐私配置。<br>默认值为PRIVACY_TYPE_PUBLIC。 |
-
-## enableStartFrameRateOpt
-
-enableStartFrameRateOpt?: boolean
-
-音频隐私配置。
-
-相关详细信息，请参阅[AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10)。
-
-### 属性
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
-**系统接口：** 该接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型     | 必填 | 说明                                                         |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| enableStartFrameRateOpt | boolean  | 否 | 开始播放时是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。|
