@@ -12,7 +12,7 @@
 
 ### mode
 
-[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性用于控制Navigation的显示模式，有四种模式：单栏，分栏，自适应，根据纵横比自适应。
+[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性用于控制Navigation的显示模式，有四种模式：单栏，分栏，自适应，根据高宽比自适应。
 
 **图1** 单栏（NavigationMode.Stack）效果
 
@@ -26,7 +26,7 @@
 
 ![img](figures/NavigationModeAuto.gif)
 
-**图4** 根据纵横比自适应（NavigationMode.AUTO_WITH_ASPECT_RATIO）效果
+**图4** 根据高宽比自适应（NavigationMode.AUTO_WITH_ASPECT_RATIO）效果
 
 ![img](figures/NavigationModeAUTO_WITH_ASPECT_RATIO.gif)
 
