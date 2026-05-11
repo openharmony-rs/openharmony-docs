@@ -505,7 +505,7 @@ minimizeAllWithExclusion(displayId: number, excludeWindowId: number): Promise&lt
 | 参数名   | 类型                      | 必填 | 说明           |
 | -------- | ------------------------- | ---- | -------------- |
 | displayId| number                    | 是   | 屏幕ID，该参数仅支持整数输入，输入浮点数会向下取整。 |
-| excludeWindowId | number              | 是   | 窗口ID。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。窗口ID小于等于0，或窗口ID为null或者undefined时，会抛出[401错误码](../errorcode-universal.md#401-参数检查失败)；窗口ID大于0但是不存在会抛出1300002错误码；窗口ID大于0且窗口存在但是不在该屏幕，最小化指定屏幕上的所有主窗口。该参数仅支持整数输入，输入浮点数会向下取整。 |
+| excludeWindowId | number              | 是   | 窗口ID。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。窗口ID小于等于0，或窗口ID为null或者undefined时，会抛出401错误码；窗口ID大于0但是不存在会抛出1300002错误码；窗口ID大于0且窗口存在但是不在该屏幕，最小化指定屏幕上的所有主窗口。该参数仅支持整数输入，输入浮点数会向下取整。 |
 
 **返回值：**
 
@@ -2365,7 +2365,7 @@ promise.then(() => {
 
 hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-隐藏当前窗口，过程中播放动画，使用callback异步回调，仅支持系统窗口。
+隐藏当前窗口，过程中播放动画，使用callback异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2428,7 +2428,7 @@ windowClass.hideWithAnimation((err: BusinessError<void> | null) => {
 
 hideWithAnimation(): Promise&lt;void&gt;
 
-隐藏当前窗口，过程中播放动画，使用Promise异步回调，仅支持系统窗口。
+隐藏当前窗口，过程中播放动画，使用Promise异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2485,7 +2485,7 @@ promise.then(() => {
 
 showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-显示当前窗口，过程中播放动画，使用callback异步回调，仅支持系统窗口。
+显示当前窗口，过程中播放动画，使用callback异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2548,7 +2548,7 @@ windowClass.showWithAnimation((err: BusinessError<void> | null) => {
 
 showWithAnimation(): Promise&lt;void&gt;
 
-显示当前窗口，过程中播放动画，使用Promise异步回调，仅支持系统窗口。
+显示当前窗口，过程中播放动画，使用Promise异步回调。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3452,7 +3452,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口缩放参数。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3499,7 +3499,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-设置窗口旋转参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口旋转参数。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3547,7 +3547,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
+设置窗口平移参数。仅支持在系统窗口、全局悬浮窗和模态窗口的[自定义显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3720,7 +3720,7 @@ try {
 
 setBackdropBlurStyle(blurStyle: BlurStyle): void
 
-设置窗口背景模糊类型。
+设置窗口背景模糊类型。仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5234,7 +5234,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
-当存在同时使用该接口、[setDefaultDensityEnabled(true)](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
+当存在同时使用该接口、[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
 
 **系统接口：** 此接口为系统接口。
 
