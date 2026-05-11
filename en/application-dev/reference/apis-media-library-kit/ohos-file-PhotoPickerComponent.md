@@ -106,7 +106,7 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | isSlidingSupported<sup>23+</sup>         | boolean                         | No  | Yes| Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.<br>The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value range is [0, 1]. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -690,7 +690,7 @@ Represents basic image and video information.
 | width    | number                | No| Yes  | Width of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | height   | number                | No| Yes  | Height of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| duration   | number                | No| Yes  | Video duration, in milliseconds. For an image or a moving photo, the value **-1** is returned.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| duration   | number                | No| Yes  | Video duration, in milliseconds.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | No| Yes  | Subtype of the photo. The options are **DEFAULT**, **MOVING_PHOTO**, and **BURST**.<br>The default value is **DEFAULT (0)**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | No| Yes  | Dynamic range type of the media file. The options are **HDR** and **SDR**.<br>For moving photos, this parameter specifies the dynamic range type of the cover image.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | orientation<sup>21+</sup>   | number             | No| Yes  | Image or video direction information.<br>1: **TOP-left**: The image is not rotated.<br>2: **TOP-right**: The image is flipped horizontally.<br>3: **Bottom-right**: The image is rotated by 180°.<br>4: **Bottom-left**: The image is flipped vertically.<br>5: **Left-top**: The image is flipped horizontally and then rotated clockwise by 270°.<br>6: **Right-top**: The image is rotated clockwise by 90°.<br>7: **Right-bottom**: The image is vertically flipped and then rotated clockwise by 90°.<br>8: **Left-bottom**: The image is rotated clockwise by 270°.<br>Images with mirroring information retain their original width and height attributes regardless of rotation, whereas images without such information have these attributes updated to reflect the post-rotation dimensions.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
@@ -827,7 +827,7 @@ Describes the updatable attributes of the **PhotoPickerComponent**. These attrib
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | No  | Yes| Playback mode of the moving photo. The maximum array length is 2. If this limit is exceeded, the first two elements are used, and the extra ones are automatically ignored.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| backgroundOpacity<sup>24+</sup>         | number                         | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value range is [0, 1]. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## PickerError<sup>23+</sup>
 
@@ -1035,7 +1035,7 @@ Enumerates the aspect ratios for grid display in single-line display mode.
 | SQUARE_RATIO        | 0   | 1:1 ratio.   |
 | ORIGINAL_SIZE_RATIO | 1   | Original image aspect ratio.|
 
-## Example
+## Example 1: Using the PhotoPickerComponent Component
 
 ```ts
 // xxx.ets
@@ -1253,6 +1253,238 @@ struct PickerDemo {
         }
       }
     }
+  }
+}
+```
+
+## Example 2: Using PhotoPickerComponent to Implement the Drawer Component Effect
+
+Since API version 23, you can use the **isSlidingSupported** callback of [PickerOptions](#pickeroptions) and the **onScrollStopAtStart** and **onScrollStopAtEnd** callbacks of [PhotoPickerComponent](#photopickercomponent) to implement the drawer effect.
+
+```ts
+// xxx.ets
+import { display } from '@kit.ArkUI';
+import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
+const enum DrawerState {
+  // Expanded state.
+  Expanding,
+  // Collapsed state.
+  Collapsing,
+  // Sliding state.
+  Sliding
+}
+
+@Entry
+@Component
+struct Drawer {
+  @State pickerController: PickerController = new PickerController();
+  private pickerOptions: PickerOptions = new PickerOptions();
+  // Screen height, in vp.
+  @State screenHeight: number = 0;
+  // Drawer height, in vp.
+  @State drawerHeight: number = 0;
+  // Drawer offset, in vp.
+  @State offsetY: number = 0;
+  // Whether the drawer is expanded.
+  @State isExpanded: boolean = false;
+  // Start position of dragging, in vp.
+  private startY: number = 0;
+  // Current dragging offset, in vp.
+  private currentOffset: number = 0;
+  // Percentage of the custom drawer height to the entire screen.
+  private drawerRatio: number = 0.8;
+  // Percentage of the custom drawer to be hidden during initialization.
+  private hideRatio: number = 0.8;
+  // Initialize the drawer to the collapsed state.
+  private drawerState: DrawerState = DrawerState.Collapsing;
+  // Gesture response threshold, which is used to determine whether the gesture is downward.
+  private pullingDownThreshold: number = -5;
+
+  aboutToAppear(): void {
+    // Obtain the display height.
+    this.screenHeight = px2vp(display.getDefaultDisplaySync().height);
+    // Obtain the drawer height. In this example, the height is 0.8 times the display height, which can be customized.
+    this.drawerHeight = this.screenHeight * this.drawerRatio;
+    // Initially, the drawer is at the bottom and fully hidden. In this example, 80% of the drawer height is hidden.
+    this.offsetY = this.drawerHeight * this.hideRatio;
+    // The Picker does not support sliding during initialization.
+    this.pickerOptions.isSlidingSupported = false;
+    // No edge effect.
+    this.pickerOptions.edgeEffect = EdgeEffect.None;
+    // The search box is not displayed.
+    this.pickerOptions.isSearchSupported = false;
+  }
+
+  private scrollStopAtStart() {
+    // Change the state to expanded and disable the grid sliding.
+    this.drawerState = DrawerState.Expanding;
+    this.pickerController.updatePickerOptions({
+    isSlidingSupported: false
+  })
+  }
+
+  private toggleDrawer() {
+    if (this.isExpanded) {
+      this.hideDrawer();
+    } else {
+      this.showDrawer();
+    }
+  }
+
+  private hideDrawer() {
+    animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = false;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Collapsing;
+      this.offsetY = this.drawerHeight * 0.8;
+    })
+  }
+
+  private showDrawer() {
+    animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = true;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Expanding;
+      this.offsetY = 0;
+    })
+  }
+
+  build() {
+    RelativeContainer() {
+      // Main content area.
+      Column() {
+        Text('Main page content')
+          .fontSize(24)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Text('This is a bottom drawer effect implemented using RelativeContainer.')
+          .fontSize(16)
+          .fontColor('#666')
+          .margin({ bottom: 30 })
+          .textAlign(TextAlign.Center)
+          .width('80%')
+
+        Button(this.isExpanded? 'Collapse drawer' : 'Expand drawer')
+          .onClick(() => {
+            this.toggleDrawer();
+          })
+      }
+      .width('100%')
+      .padding(20)
+      .alignItems(HorizontalAlign.Center)
+      .backgroundColor('#f5f5f5')
+      .borderRadius(10)
+      .alignRules({
+        top: { anchor: '__container__', align: VerticalAlign.Top },
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+      })
+      .height('100%')
+
+      if (this.isExpanded) {
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#80000000')
+          .alignRules({
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+          })
+          .onClick(() => {
+            this.hideDrawer();
+          })
+      }
+
+      Column() {
+        Row()
+          .width(50)
+          .height(5)
+          .backgroundColor('#CCC')
+          .borderRadius(3)
+          .margin({ top: 12, bottom: 8 })
+
+        Text ('Drawer menu')
+          .fontSize(18)
+          .fontWeight(FontWeight.Medium)
+          .margin({ bottom: 10 })
+
+        Divider()
+          .width('90%')
+          .margin({ bottom: 10 })
+
+        PhotoPickerComponent({
+          pickerOptions: this.pickerOptions,
+          pickerController: this.pickerController,
+          onScrollStopAtStart: this.scrollStopAtStart
+        })
+          .layoutWeight(1)
+          .width('100%')
+      }
+      .width('100%')
+      .height(this.drawerHeight)
+      .backgroundColor(Color.White)
+      .borderRadius({ topLeft: 20, topRight: 20 })
+      .shadow({ radius: 10, color: '#33000000' })
+      .alignRules({
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+        bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+      })
+      .translate({ y: this.offsetY })
+      .gesture(
+        PanGesture({ direction: PanDirection.Vertical })
+          // Record the position where the drawer starts to be dragged.
+          .onActionStart((event: GestureEvent) => {
+            this.startY = event.fingerList[0].globalY || 0;
+            this.currentOffset = this.offsetY;
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            // If the drawer is in the Picker sliding state, do not change the drawer height and return directly.
+            if (this.drawerState === DrawerState.Sliding) {
+              return;
+            }
+            // If the drawer is expanded or collapsed, use gestures to further change the drawer state.
+            // Calculate the moving distance.
+            const deltaY = event.fingerList[0].globalY - this.startY || 0;
+            // When the drawer is expanded and the user swipes down, enable the grid sliding function and switch the drawer state to the sliding state.
+            if (this.drawerState === DrawerState.Expanding && deltaY < this.pullingDownThreshold) {
+              this.pickerController.updatePickerOptions({
+                isSlidingSupported: true
+              })
+              this.drawerState = DrawerState.Sliding
+            }
+            let newOffset = this.currentOffset + deltaY;
+            if (newOffset < 0) {
+              newOffset = 0;
+            }
+            this.offsetY = newOffset;
+          })
+          .onActionEnd(()=>{
+            // When the gesture ends, the drawer is automatically expanded or collapsed based on the position.
+            if (this.offsetY > this.drawerHeight / 2) {
+              // If the sliding distance exceeds half of the drawer height, the drawer is collapsed.
+              this.hideDrawer();
+            } else {
+              // If the sliding distance is less than half of the drawer height, the drawer is expanded.
+              this.showDrawer();
+            }
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#E0E0E0')
   }
 }
 ```

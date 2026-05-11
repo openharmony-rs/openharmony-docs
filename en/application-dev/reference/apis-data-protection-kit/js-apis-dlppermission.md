@@ -1525,11 +1525,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
  
 ## DlpConnManager<sup>21+</sup>
   
-Calls **registerPlugin** and **unregisterPlugin** to register and deregister callback capabilities in the SA.
+Calls **registerPlugin** and **unregisterPlugin** to register and unregister callback capabilities in the SA.
 
 >**NOTE**
 >
-> **registerPlugin** registers callback capabilities in the SA, and **unregisterPlugin** deregisters callback capabilities from the SA.
+> **registerPlugin** registers callback capabilities in the SA, and **unregisterPlugin** unregisters callback capabilities from the SA.
 
 ### constructor<sup>21+</sup>
 
@@ -1593,7 +1593,7 @@ Unregisters a callback from the SA.
 
 >**NOTE**
 >
-> **unregisterPlugin** deregisters a plug-in from the SA.
+> **unregisterPlugin** unregisters a plug-in from the SA.
   
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
 

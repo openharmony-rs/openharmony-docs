@@ -1085,7 +1085,7 @@ NODE_TEXT_LAYOUT_MANAGER = 1043
 
 | 类型 | 说明 |
 | -- | -- |
-| .object | 文本布局管理器对象，参数类型为[ArkUI_LayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)。 |
+| .object | 文本布局管理器对象，参数类型为[ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)。 |
 
 ## NODE_TEXT_EDIT_MENU_OPTIONS
 

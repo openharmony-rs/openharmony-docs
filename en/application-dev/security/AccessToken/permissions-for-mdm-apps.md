@@ -24,7 +24,7 @@ With this permission, the application can read the device ID, hard disk serial n
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -39,7 +39,7 @@ With this permission, the application can query the network adapter settings, IP
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -52,7 +52,7 @@ Allows a device administrator application to install and uninstall applications.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -65,7 +65,7 @@ Allows a device administrator application to set application running policies.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -78,7 +78,7 @@ Allows a device administrator application to restore devices' factory settings.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -93,7 +93,7 @@ With this permission, the application can add accounts.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -108,7 +108,7 @@ With this permission, the application can set the bundle installation trustlist.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -123,7 +123,7 @@ With this permission, the application can set the system time and prohibiting us
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 9
 
@@ -138,7 +138,7 @@ With this permission, the application can disable and enable network adapters.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -153,7 +153,7 @@ With this permission, the application can query whether Wi-Fi is disabled and se
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -168,7 +168,7 @@ such as application installation, application uninstallation, and system update 
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 9
 
@@ -183,7 +183,7 @@ With this permission, the application can disable HDC and direct printing servic
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -196,7 +196,7 @@ Allows the device administrator application to set the screen off time.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -209,7 +209,7 @@ Allows a device administrator application to manage the USB.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -222,7 +222,7 @@ Allows a device administrator application to manage the network.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -235,7 +235,7 @@ Allows a device administrator application to manage certificates.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -248,7 +248,7 @@ Allows a device administrator application to obtain the **Settings** application
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -261,7 +261,7 @@ Allows the device to set or cancel browser policies.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 10
 
@@ -276,7 +276,7 @@ With this permission, the application, once activated, can set enterprise inform
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 9
 
@@ -289,7 +289,7 @@ Allows a device administrator application to set security management policies fo
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -302,7 +302,7 @@ Allows a device administrator application to set and query Bluetooth information
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -315,7 +315,7 @@ Allows a device administrator application to manage system parameters.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -328,7 +328,7 @@ Allows a device administrator application to set and query Wi-Fi information.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -341,7 +341,7 @@ Allows a device administrator application to manage restriction policies.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -354,7 +354,7 @@ Allows a device administrator application to manage application policies.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -367,7 +367,7 @@ Allows a device administrator application to set and query location information.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -380,7 +380,7 @@ Allows a device administrator application to shut down and restart devices.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -393,7 +393,7 @@ Allows a device administrator application to lock devices.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -406,7 +406,7 @@ Allows a device administrator application to manage settings.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 11
 
@@ -419,7 +419,7 @@ Allows a device administrator application to operate devices.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 12
 
@@ -432,7 +432,7 @@ Allows an application to manage a device administrator application.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 12
 
@@ -445,7 +445,7 @@ Allows an application to manage the enterprise recovery keys.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 13
 
@@ -458,7 +458,7 @@ Allows a device administrator application to delegate other applications to set 
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Valid since**: 14
 
@@ -471,7 +471,7 @@ Allows a device administrator application to obtain information about all applic
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -486,7 +486,7 @@ Allows a device administrator application to restrict users from modifying syste
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -501,7 +501,7 @@ Allows a device administrator application to manage device APN policies.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -516,7 +516,7 @@ Allows a device administrator application to manage device telephony policies.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -531,7 +531,7 @@ Allows a device administrator application to set the Kiosk mode.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -548,7 +548,7 @@ With this permission, the application can set the password-free login duration f
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -563,7 +563,7 @@ Allows an MDM application to manage file transfer policies and audit information
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -578,7 +578,7 @@ Allows a device administrator application to set wallpapers.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -593,7 +593,7 @@ Allows an MDM application to manage pre-installed antivirus software.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -610,7 +610,7 @@ With this permission, the MDM application can configure user_grant permission po
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -625,7 +625,7 @@ Allows a mobile device management (MDM) application to identify sensitive file c
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -640,7 +640,7 @@ Allows MDM applications to generate and decrypt DLP files, and query DLP file po
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -659,7 +659,7 @@ With this permission, the super device administrator application can manage othe
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -674,7 +674,7 @@ Allows a device administrator application to access other components.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -689,7 +689,7 @@ Allows an MDM application to collect system logs.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -704,7 +704,7 @@ Allows an activated MDM application to deactivate itself.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -719,7 +719,7 @@ Allows an enterprise MDM application to activate itself.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
