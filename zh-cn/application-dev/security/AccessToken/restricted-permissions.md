@@ -1246,6 +1246,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.KNOCK_COLLABORATION
+
+允许应用通过碰一碰的形式连接指定设备并实现信息交互和应用互动。
+
+<!--RP88--><!--RP88End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
 ## ohos.permission.PRINTER_DRIVER
 
 允许应用管理打印系统。
