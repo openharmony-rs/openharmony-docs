@@ -48,6 +48,10 @@ FormBindingData相关描述。
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |-------- | -------- |
 | data | ArkTS-Dyn: Object<br>ArkTS-Sta: RecordData | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。|
