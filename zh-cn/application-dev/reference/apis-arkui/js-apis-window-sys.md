@@ -3702,7 +3702,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
-当存在同时使用该接口、[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
+当同时使用该接口、[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
 
 **系统接口：** 此接口为系统接口。
 
