@@ -1,4 +1,4 @@
-# @ohos.app.ability.UIExtensionContentSession (带界面扩展能力界面操作类)(系统接口)
+# @ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -15,7 +15,7 @@ UIExtensionContentSession是[UIExtensionAbility](js-apis-app-ability-uiExtension
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.UIExtensionContentSession (带界面扩展能力界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)。
 
 ## 导入模块
 

@@ -1,4 +1,4 @@
-# ApplicationContext(系统接口)
+# ApplicationContext (系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
