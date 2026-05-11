@@ -4799,7 +4799,7 @@ Allows a system application to call ExtensionAbility in youth mode.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets
+**Supported devices**: general devices
 
 **Valid since**: 26.0.0
 
