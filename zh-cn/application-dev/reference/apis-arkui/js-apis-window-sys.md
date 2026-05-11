@@ -3694,11 +3694,11 @@ export default class EntryAbility extends UIAbility {
 
 setDefaultDensityEnabled(enabled: boolean): void
 
-设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)调用生效后使用。
+设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](./arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](./arkts-apis-window-Window.md#setuicontent9)调用生效后使用。
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
-当存在同时使用该接口、[setDefaultDensityEnabled(true)](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
+当存在同时使用该接口、[setDefaultDensityEnabled(true)](./arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](./arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
 
 **系统接口：** 此接口为系统接口。
 
