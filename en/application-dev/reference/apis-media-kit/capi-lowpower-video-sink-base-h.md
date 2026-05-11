@@ -2,7 +2,7 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -105,7 +105,7 @@ Called when the LowPowerVideoSink reaches the target point. This callback is inc
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const int64_t targetPts | Presentation timestamp (PTS) of the target point.|
+| const int64_t targetPts | Presentation timestamp (PTS) of the target point. The unit is microsecond.|
 | const bool isTimeout | Whether the wait for the target point has timed out. **true** if timed out, **false** otherwise.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
