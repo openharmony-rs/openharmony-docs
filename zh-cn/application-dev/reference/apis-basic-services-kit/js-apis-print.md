@@ -2248,6 +2248,10 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2295,6 +2299,10 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2334,6 +2342,10 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2370,6 +2382,10 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2411,6 +2427,10 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2563,13 +2583,13 @@ print.startPrint(printJobData).then(() => {
 | jobName | string | 否 | 否 | 表示打印任务名称。 |
 | documentFormat | [PrintDocumentFormat](#printdocumentformat23) | 否 | 否 | 表示打印数据格式。 |
 | docFlavor | [DocFlavor](#docflavor23) | 否 | 否 | 表示打印数据来源形式。 |
-| copyNumber | number | 否 | 否 | 表示文件列表副本数。 |
+| copyNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示文件列表副本数。 |
 | isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
 | colorMode | [PrintColorMode](#printcolormode11) | 否 | 否 | 表示色彩模式。 |
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
 | pageSize | [PrintPageSize](#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
 | jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
-| fdList | nmuber[] | 否 | 是 | 表示待打印文件fd列表。 |
+| fdList | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 表示待打印文件fd列表。 |
 | binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
 | printQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示打印质量。 |
 | mediaType | string | 否 | 是 | 表示打印纸张类型。 |
@@ -2594,10 +2614,10 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| top | number | 否 | 是 | 表示页面上边距。默认值为0。单位：毫米。|
-| bottom | number | 否 | 是 | 表示页面下边距。默认值为0。单位：毫米。 |
-| left | number | 否 | 是 | 表示页面左边距。默认值为0。单位：毫米。 |
-| right | number | 否 | 是 | 表示页面右边距。默认值为0。单位：毫米。 |
+| top | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示页面上边距。默认值为0。单位：毫米。|
+| bottom | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示页面下边距。默认值为0。单位：毫米。 |
+| left | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示页面左边距。默认值为0。单位：毫米。 |
+| right | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示页面右边距。默认值为0。单位：毫米。 |
 
 ## PrinterRange<sup>24+</sup>
 
@@ -2613,9 +2633,9 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| startPage | number | 否 | 是 | 表示起始页。默认值为1。 |
-| endPage | number | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
-| pages | Array&lt;number&gt; | 否 | 是 | 表示待打印的页面范围的集合。默认值为空。 |
+| startPage | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示起始页。默认值为1。 |
+| endPage | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
+| pages | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 是 | 表示待打印的页面范围的集合。默认值为空。 |
 
 ## PreviewAttribute<sup>24+</sup>
 
@@ -2632,7 +2652,7 @@ print.startPrint(printJobData).then(() => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | previewRange | [PrinterRange](#printerrange24) | 否 | 否 | 表示预览页面范围。 |
-| result | number | 否 | 是 | 表示预览文件结果。默认值为-1。 |
+| result | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示预览文件结果。默认值为-1。 |
 
 ## PrintResolution<sup>24+</sup>
 
@@ -2649,8 +2669,8 @@ print.startPrint(printJobData).then(() => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | 否 | 否 | 表示分辨率ID。 |
-| horizontalDpi | number | 否 | 否 | 表示水平DPI。单位：DPI。 |
-| verticalDpi | number | 否 | 否 | 表示垂直DPI。单位：DPI。 |
+| horizontalDpi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示水平DPI。单位：DPI。 |
+| verticalDpi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示垂直DPI。单位：DPI。 |
 
 ## PrinterCapability<sup>24+</sup>
 
@@ -2666,8 +2686,8 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| colorMode | number | 否 | 否 | 表示色彩模式。 |
-| duplexMode | number | 否 | 否 | 表示单双面打印模式。 |
+| colorMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示色彩模式。 |
+| duplexMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示单双面打印模式。 |
 | pageSize | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 否 | 否 | 表示打印机支持的页面尺寸列表。 |
 | resolution | Array&lt;[PrintResolution](#printresolution24)&gt; | 否 | 是 | 表示打印机支持的分辨率列表。 |
 | minMargin | [PrintMargin](#printmargin24) | 否 | 是 | 表示打印机最小边距。 |
@@ -2690,7 +2710,7 @@ print.startPrint(printJobData).then(() => {
 | printerId | string | 否 | 否 | 表示打印机ID。 |
 | printerName | string | 否 | 否 | 表示打印机名称。 |
 | printerState | [PrinterState](#printerstate14) | 否 | 否 | 表示当前打印机状态。 |
-| printerIcon | number | 否 | 是 | 表示打印机图标的资源ID。默认值为-1。 |
+| printerIcon | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示打印机图标的资源ID。默认值为-1。 |
 | description | string | 否 | 是 | 表示打印机说明。 |
 | capability | [PrinterCapability](#printercapability24) | 否 | 是 | 表示打印机功能。 |
 | options | Object | 否 | 是 | 表示JSON对象字符串。 |
@@ -2709,18 +2729,18 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| fdList | Array&lt;number&gt; | 否 | 否 | 表示待打印文件fd列表。 |
+| fdList | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 否 | 表示待打印文件fd列表。 |
 | jobId | string | 否 | 否 | 表示打印任务ID。 |
 | printerId | string | 否 | 否 | 表示负责打印的打印机ID。 |
 | jobState | [PrintJobState](#printjobstate14) | 否 | 否 | 表示当前打印任务状态。 |
 | jobSubstate | [PrintJobSubState](#printjobsubstate14) | 否 | 否 | 表示当前打印任务子状态。 |
-| copyNumber | number | 否 | 否 | 表示文件列表副本。 |
+| copyNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示文件列表副本。 |
 | pageRange | [PrinterRange](#printerrange24) | 否 | 否 | 表示打印范围大小。 |
 | isSequential | boolean | 否 | 否 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。 |
 | pageSize | [PrintPageSize](#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
 | isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
-| colorMode | number | 否 | 否 | 表示色彩模式。 |
-| duplexMode | number | 否 | 否 | 表示单双面打印模式。 |
+| colorMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示色彩模式。 |
+| duplexMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示单双面打印模式。 |
 | margin | [PrintMargin](#printmargin24) | 否 | 是 | 表示当前页边距设置。 |
 | preview | [PreviewAttribute](#previewattribute24) | 否 | 是 | 表示预览设置。 |
 | options | Object | 否 | 是 | 表示JSON对象字符串。 |
@@ -3003,7 +3023,9 @@ print.addPrinter(printerName, uri, ppdName).then(() => {
 
 ## print.WatermarkCallback<sup>24+</sup>
 
-type WatermarkCallback = (jobId: string, fd: number) => void
+ArkTS-Dyn: type WatermarkCallback = (jobId: string, fd: number) => void
+
+ArkTS-Sta: type WatermarkCallback = (jobId: string, fd: int) => void
 
 定义用来注册强制水印处理的监听事件时使用的回调类型。
 
@@ -3011,12 +3033,16 @@ type WatermarkCallback = (jobId: string, fd: number) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示当前打印任务的id。 |
-| fd | number | 是 | 表示当前文件的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示当前文件的文件描述符。 |
 
 ## print.registerWatermarkCallback<sup>24+</sup>
 
