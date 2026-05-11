@@ -3,6 +3,7 @@
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
 <!--Designer: @hanruofei-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 键鼠穿越功能模块，提供两台或多台设备组网协同后键鼠共享能力，实现键鼠输入设备的跨设备协同操作。
